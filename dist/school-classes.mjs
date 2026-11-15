@@ -18,9 +18,10 @@ function describe(container, definition, rubric) {
   const details=node('details');details.append(node('summary','Pojmovi i pitanja'),terms);
   const questions=node('ol');for (const question of definition.questions) questions.append(node('li',question));details.append(questions);container.append(details);
   if (rubric) {
+    if(rubric.instructions)container.append(node('h4',rubric.title),node('p',rubric.instructions));
     container.append(node('h4','Objavljeni kriteriji'));
     const criteria=node('ul');for (const item of rubric.criteria) criteria.append(node('li',item.description+(item.maxPoints===null?'':' · najviše '+item.maxPoints+' bodova')));container.append(criteria);
-    container.append(node('p',rubric.maxPoints===null?'Bodovanje još nije uključeno. Kriteriji služe pripremi rada.':'Planirano najviše '+rubric.maxPoints+' bodova. Automatsko bodovanje još nije uključeno; ovo nisu osvojeni bodovi.','account-note'));
+    container.append(node('p',rubric.authority==='server-verified'?'Automatska provjera: najviše '+rubric.maxPoints+' bodova. Podržani ciljevi: '+rubric.targets.map(t=>targetNames[t]).join(', ')+'. Rezultat prati spremljenu reviziju.':rubric.maxPoints===null?'Bodovanje još nije uključeno. Kriteriji služe pripremi rada.':'Planirano najviše '+rubric.maxPoints+' bodova. Automatsko bodovanje još nije uključeno; ovo nisu osvojeni bodovi.','account-note'));
   }
 }
 
@@ -31,13 +32,16 @@ export function createSchoolPortal({request,getUser,run,message,reloadUsers}) {
   function clear(){++epoch;classes=[];selectedClass=undefined;catalog=undefined;versions=[];clearPreview();$('#school-work').hidden=true;$('#class-detail').hidden=true;$('#invite-result').textContent='';$('#csv-text').value='';$('#school-assignments').replaceChildren();}
   function drawVersion(){
     const version=versions.find(v=>v.id===Number($('#assignment-version').value));
-    options($('#assignment-target'),version?version.definition.targets.map(t=>[t,targetNames[t]]):[],'Odaberi cilj');
+    options($('#assignment-target'),version?version.definition.targets.map(t=>[t,targetNames[t]+(version.rubric.authority==='server-verified'&&!version.rubric.targets.includes(t)?' · bez službenog bodovanja':'')]):[],'Odaberi cilj');
     $('#published-task').replaceChildren();if(version)describe($('#published-task'),version.definition,version.rubric);
   }
   function drawCatalog(){
     const item=catalog?.entries.find(e=>e.key===$('#task-key').value);$('#task-preview').replaceChildren();
     if(item)describe($('#task-preview'),item);
+    const profiles=(catalog?.gradingProfiles??[]).filter(p=>p.taskKey===item?.key);
+    options($('#task-grading'),profiles.map(p=>[p.id,p.title]),'Opisni / ručno planirani kriteriji');drawGrading();
   }
+  function drawGrading(){const profile=catalog?.gradingProfiles?.find(p=>p.id===$('#task-grading').value);$('#grading-preview').textContent=profile?.instructions??'';$('#task-criteria').disabled=!!profile;}
   function drawAssignments(assignments){
     const host=$('#school-assignments');host.replaceChildren();
     if(!assignments.length){host.append(node('p',staff()?'Razredu još nije dodijeljena vježba. Objavi inačicu zadatka pa je dodijeli razredu.':'Još nema dostupnih dodijeljenih vježbi. Nakon potvrde članstva osvježi pregled.'));return;}
@@ -52,7 +56,7 @@ export function createSchoolPortal({request,getUser,run,message,reloadUsers}) {
         const button=node('button',a.available?'Sakrij učenicima':'Omogući učenicima','secondary');button.type='button';button.addEventListener('click',()=>void run(async()=>{await request('assignment-availability',{assignmentId:a.id,available:!a.available});await refreshAssignments();message('Dostupnost vježbe je spremljena.');}));card.append(button);
       }
       if(staff()){const live=node('a','Pregled spremljenih radova','button');live.href='./?schoolReview='+a.classId+'&schoolExercise='+a.id;card.append(live);}
-      card.append(node('small','Učenički rad sprema se na školskom poslužitelju. Ponovno otvaranje nastavlja posljednju spremljenu reviziju. Službeni bodovi i zaključavanje slijede.'));host.append(card);
+      card.append(node('small','Učenički rad sprema se na školskom poslužitelju. Ponovno otvaranje nastavlja posljednju spremljenu reviziju. Objavljena pilot-provjera prikazuje bodove u laboratoriju. Zaključavanje slijedi.'));host.append(card);
     }
   }
   async function refreshAssignments(){
@@ -115,7 +119,7 @@ export function createSchoolPortal({request,getUser,run,message,reloadUsers}) {
   function form(selector,work,{reset=true}={}){$(selector).addEventListener('submit',event=>{event.preventDefault();const el=event.currentTarget;const fields=Object.fromEntries(new FormData(el));void run(async()=>{await work(fields);if(reset)el.reset();});});}
   $('#refresh-school').addEventListener('click',()=>void run(refresh));
   $('#class-select').addEventListener('change',()=>void run(openClass));
-  $('#task-key').addEventListener('change',drawCatalog);$('#assignment-version').addEventListener('change',drawVersion);
+  $('#task-key').addEventListener('change',drawCatalog);$('#task-grading').addEventListener('change',drawGrading);$('#assignment-version').addEventListener('change',drawVersion);
   form('#create-class-form',async fields=>{const result=await request('create-class',fields);await refresh();$('#class-select').value=String(result.class.id);await openClass();message('Razred je stvoren. Dodaj učenike i dodijeli vježbe.');});
   form('#teacher-form',async fields=>{if(!selectedClass)throw Error('Odaberi razred.');await request('membership',{classId:selectedClass.id,userId:Number(fields.userId),kind:'teacher',present:true});await openClass();message('Nastavnik je dodijeljen razredu.');});
   form('#invite-form',async fields=>{if(!selectedClass)throw Error('Odaberi razred.');const result=await request('create-invite',{classId:selectedClass.id,hours:Number(fields.hours),maxUses:Number(fields.maxUses)});await openClass();$('#invite-result').textContent=result.invite.code;message('Novi kod prikazan je samo sada. Podijeli ga učenicima svojeg razreda; svaki zahtjev treba tvoju potvrdu.');});
@@ -136,8 +140,8 @@ export function createSchoolPortal({request,getUser,run,message,reloadUsers}) {
   }));
   form('#join-class-form',async fields=>{await request('join-class',fields);await refresh();message('Zahtjev je poslan. Nastavnik treba potvrditi tvoj identitet i članstvo.');});
   form('#publish-task-form',async fields=>{
-    const criteria=fields.criteria.trim()?fields.criteria.trim().split('\n').map(line=>{const match=line.match(/^(.*?)\s*\|\s*(\d+)\s*$/);if(!match)throw Error('Svaki kriterij upiši kao opis | broj bodova.');return {description:match[1].trim(),maxPoints:Number(match[2])};}):null;
-    const result=await request('publish-task',{taskKey:fields.taskKey,teacherNotes:fields.teacherNotes,criteria});await refresh();$('#assignment-version').value=String(result.task.id);drawVersion();message('Objavljena je nepromjenjiva inačica '+result.task.version+'. Sada je dodijeli razredu.');
+    const criteria=!fields.gradingProfile&&(fields.criteria??'').trim()?fields.criteria.trim().split('\n').map(line=>{const match=line.match(/^(.*?)\s*\|\s*(\d+)\s*$/);if(!match)throw Error('Svaki kriterij upiši kao opis | broj bodova.');return {description:match[1].trim(),maxPoints:Number(match[2])};}):null;
+    const result=await request('publish-task',{taskKey:fields.taskKey,teacherNotes:fields.teacherNotes,criteria,gradingProfile:fields.gradingProfile||null});await refresh();$('#assignment-version').value=String(result.task.id);drawVersion();message('Objavljena je nepromjenjiva inačica '+result.task.version+'. Sada je dodijeli razredu.');
   },{reset:false});
   form('#assignment-form',async fields=>{if(!selectedClass)throw Error('Odaberi razred.');await request('create-assignment',{classId:selectedClass.id,taskVersionId:Number(fields.taskVersionId),target:fields.target,dueAt:fields.dueAt?new Date(fields.dueAt).toISOString():null});await refreshAssignments();message('Vježba je dodijeljena odabranom razredu.');},{reset:false});
   return {refresh,clear};

@@ -12,7 +12,7 @@ function respond(int $status, array $body): never
     http_response_code($status);
     if (isset($_SESSION['csrf'])) $body['csrfToken'] = $_SESSION['csrf'];
     if (session_status() === PHP_SESSION_ACTIVE) session_write_close();
-    echo json_encode(['application' => 'labosv2', 'stage' => '23D'] + $body, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
+    echo json_encode(['application' => 'labosv2', 'stage' => '23E'] + $body, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
     exit;
 }
 
@@ -27,6 +27,8 @@ try {
         'classes' => 'GET', 'class' => 'GET', 'create-class' => 'POST', 'membership' => 'POST', 'preview-students' => 'POST', 'import-students' => 'POST',
         'create-invite' => 'POST', 'revoke-invites' => 'POST', 'register' => 'POST', 'join-class' => 'POST', 'review-join' => 'POST', 'my-requests' => 'GET',
         'catalog' => 'GET', 'task-versions' => 'GET', 'publish-task' => 'POST', 'assignments' => 'GET', 'assignment' => 'GET', 'create-assignment' => 'POST', 'assignment-availability' => 'POST', 'begin-attempt' => 'POST', 'save-work' => 'POST', 'attempt' => 'GET', 'attempt-revisions' => 'GET', 'class-work' => 'GET'];
+    $routes['request-grade'] = 'POST';
+    $routes['grading'] = 'GET';
     if (!is_string($action) || !isset($routes[$action])) Labos\fail(404, 'route_missing', 'Ta funkcija nije dostupna.');
     if ($routes[$action] !== $method) { header('Allow: ' . $routes[$action]); Labos\fail(405, 'method', 'Metoda zahtjeva nije dopuštena.'); }
     $body = [];
@@ -42,7 +44,7 @@ try {
         if (!is_object($value)) Labos\fail(400, 'json', 'Zahtjev mora biti JSON objekt.');
         $body = (array)$value;
     }
-    if ($action === 'session') respond(200, ['user' => ($user = Labos\currentUser($pdo, false)) ? Labos\publicUser($user) : null, 'features' => ['accounts' => true, 'classes' => true, 'assignments' => true, 'centralStorage' => true, 'officialGrading' => false]]);
+    if ($action === 'session') respond(200, ['user' => ($user = Labos\currentUser($pdo, false)) ? Labos\publicUser($user) : null, 'features' => ['accounts' => true, 'classes' => true, 'assignments' => true, 'centralStorage' => true, 'officialGrading' => true]]);
     if ($action === 'login') respond(200, ['user' => Labos\login($pdo, $config, $body)]);
     if ($action === 'logout') {
         $user = Labos\currentUser($pdo, false);
@@ -85,6 +87,13 @@ try {
     if ($action === 'attempt') respond(200, Labos\readAttempt($pdo, $actor, $_GET['id'] ?? null, $_GET['revision'] ?? null));
     if ($action === 'attempt-revisions') respond(200, Labos\attemptRevisions($pdo, $actor, $_GET['id'] ?? null, $_GET['before'] ?? null));
     if ($action === 'class-work') respond(200, Labos\classWork($pdo, $actor, $_GET['assignmentId'] ?? null, $_GET['after'] ?? null));
+    if ($action === 'request-grade') respond(200, ['grading' => Labos\requestGrading($pdo, $actor, $body)]);
+    if ($action === 'grading') {
+        $attempt = Labos\accessibleAttempt($pdo,$actor,$_GET['id']??null);
+        $revision = isset($_GET['revision']) ? Labos\targetId($_GET['revision']) : (int)$attempt['current_revision'];
+        if (!Labos\query($pdo,'SELECT 1 FROM work_snapshots WHERE attempt_id=? AND revision=?',[$attempt['id'],$revision])->fetchColumn()) Labos\fail(404,'revision_missing','Ta snimka ne postoji.');
+        respond(200,['grading'=>Labos\snapshotGrading($pdo,(int)$attempt['id'],$revision)]);
+    }
 } catch (Labos\ApiError $error) {
     if ($error->status === 429) header('Retry-After: 900');
     respond($error->status, ['error' => ['code' => $error->errorCode, 'message' => $error->getMessage()]]);

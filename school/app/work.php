@@ -14,12 +14,12 @@ function canonicalJson(mixed $value): string
     return json_encode($sort($value), JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRESERVE_ZERO_FRACTION);
 }
 
-function workSummary(array $row): array
+function workSummary(array $row, ?array $grading = null): array
 {
     return ['id' => (int)$row['id'], 'assignmentId' => (int)$row['assignment_id'], 'studentId' => (int)$row['student_id'],
         'number' => (int)$row['attempt_number'], 'status' => $row['status'], 'revision' => (int)$row['current_revision'],
         'createdAt' => utcTime($row['created_at']), 'savedAt' => utcTime($row['updated_at']),
-        'grading' => ['status' => 'not_enabled', 'points' => null]];
+        'grading' => $grading ?? ['status' => 'not_enabled', 'points' => null]];
 }
 
 function accessibleAttempt(\PDO $pdo, array $actor, mixed $value): array
@@ -37,10 +37,11 @@ function readAttempt(\PDO $pdo, array $actor, mixed $value, mixed $revision = nu
     $snapshot = query($pdo, 'SELECT revision, project, content_hash, created_at FROM work_snapshots WHERE attempt_id=? AND revision=?', [$row['id'], $rev])->fetch();
     if (!$snapshot) fail(404, 'revision_missing', 'Ta spremljena revizija ne postoji.');
     $student = query($pdo, 'SELECT id, username, display_name FROM users WHERE id=?', [$row['student_id']])->fetch();
-    return ['attempt' => workSummary($row), 'assignment' => readAssignment($pdo, $actor, $row['assignment_id']),
+    $grading = snapshotGrading($pdo, (int)$row['id'], $rev);
+    return ['attempt' => workSummary($row, $rev === (int)$row['current_revision'] ? $grading : snapshotGrading($pdo, (int)$row['id'], (int)$row['current_revision'])), 'assignment' => readAssignment($pdo, $actor, $row['assignment_id']),
         'student' => ['id' => (int)$student['id'], 'username' => $student['username'], 'displayName' => $student['display_name']],
         'snapshot' => ['revision' => (int)$snapshot['revision'], 'contentHash' => $snapshot['content_hash'], 'savedAt' => utcTime($snapshot['created_at']),
-            'project' => json_decode($snapshot['project'], false, 64, JSON_THROW_ON_ERROR)]];
+            'grading' => $grading, 'project' => json_decode($snapshot['project'], false, 64, JSON_THROW_ON_ERROR)]];
 }
 
 function beginAttempt(\PDO $pdo, array $actor, array $body): array
@@ -68,6 +69,7 @@ function beginAttempt(\PDO $pdo, array $actor, array $body): array
             query($pdo, 'INSERT INTO school_attempts (assignment_id, student_id, current_revision) VALUES (?, ?, 1)', [$assignment['id'], $actor['id']]);
             $id = (int)$pdo->lastInsertId();
             query($pdo, 'INSERT INTO work_snapshots (attempt_id, revision, base_revision, request_key, project, content_hash) VALUES (?, 1, 0, ?, ?, ?)', [$id, 'initial-snapshot', $document, hash('sha256', $document)]);
+            enqueueGrading($pdo, $id, 1, 'initial-snapshot');
             audit($pdo, (int)$actor['id'], (int)$actor['id'], 'attempt.started', ['attemptId' => $id, 'assignmentId' => $assignment['id']]);
         } else $id = (int)$row['id'];
         return readAttempt($pdo, $actor, $id);
@@ -140,6 +142,7 @@ function saveAttempt(\PDO $pdo, array $actor, array $body): array
             $revision = $expected + 1;
             query($pdo, 'INSERT INTO work_snapshots (attempt_id, revision, base_revision, request_key, project, content_hash) VALUES (?, ?, ?, ?, ?, ?)', [$row['id'], $revision, $expected, $key, $document, $hash]);
             query($pdo, 'UPDATE school_attempts SET current_revision=?, updated_at=CURRENT_TIMESTAMP(6) WHERE id=?', [$revision, $row['id']]);
+            enqueueGrading($pdo, (int)$row['id'], $revision, $key);
             $same = query($pdo, 'SELECT revision, content_hash, created_at FROM work_snapshots WHERE attempt_id=? AND revision=?', [$row['id'], $revision])->fetch();
         }
         return ['attemptId' => (int)$row['id'], 'revision' => (int)$same['revision'], 'currentRevision' => (int)query($pdo, 'SELECT current_revision FROM school_attempts WHERE id=?', [$row['id']])->fetchColumn(),
@@ -160,7 +163,11 @@ function classWork(\PDO $pdo, array $actor, mixed $assignmentId, mixed $after = 
     requireStaff($actor); $a = readAssignment($pdo, $actor, $assignmentId); $start = $after === null ? 0 : targetId($after);
     $rows = query($pdo, 'SELECT u.id AS user_id, u.username, u.display_name, u.active, w.* FROM class_students m JOIN users u ON u.id=m.student_id LEFT JOIN school_attempts w ON w.student_id=u.id AND w.assignment_id=? AND w.attempt_number=1 WHERE m.class_id=? AND u.id>? ORDER BY u.id LIMIT 201', [$a['id'], $a['classId'], $start])->fetchAll();
     $more = count($rows) > 200; $rows = array_slice($rows, 0, 200);
+    // One additional bounded batch for the whole page, not one query per pupil.
+    $ids = array_values(array_filter(array_column($rows, 'id'))); $jobs = [];
+    if ($ids) foreach (query($pdo, 'SELECT j.* FROM grading_jobs j JOIN school_attempts w ON w.id=j.attempt_id AND w.current_revision=j.revision WHERE j.id IN (SELECT MAX(id) FROM grading_jobs WHERE attempt_id IN (' . implode(',',array_fill(0,count($ids),'?')) . ') GROUP BY attempt_id,revision)', $ids)->fetchAll() as $job) $jobs[(int)$job['attempt_id']]=$job;
+    $context=['rubric'=>$a['task']['rubric'],'target'=>$a['target']];
     return ['assignment' => $a, 'rows' => array_map(fn($r) => ['student' => ['id' => (int)$r['user_id'], 'username' => $r['username'], 'displayName' => $r['display_name'], 'active' => (bool)$r['active']],
-        'status' => $r['id'] === null ? 'not_started' : $r['status'], 'attempt' => $r['id'] === null ? null : workSummary($r)], $rows),
+        'status' => $r['id'] === null ? 'not_started' : $r['status'], 'attempt' => $r['id'] === null ? null : workSummary($r,jobSummary($jobs[(int)$r['id']]??null,$context,(int)$r['current_revision']))], $rows),
         'hasMore' => $more, 'nextAfter' => $more ? (int)$rows[array_key_last($rows)]['user_id'] : null, 'serverTime' => gmdate('Y-m-d\TH:i:s\Z')];
 }

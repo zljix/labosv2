@@ -53,11 +53,11 @@ export default function SchoolAssignment({project,open,confirm}:{project:Project
   const d=a?.task?.definition,r=a?.task?.rubric;
   return <><SchoolWork key={project.id} project={project} open={open} confirm={confirm}/>{status&&<div className="notice" role="status">{status} <a href={appAsset('school.html#account')}>Školski račun i vježbe</a></div>}
     {d&&typeof d.title==='string'&&Array.isArray(r?.criteria)&&<details className="school-task-notice"><summary>Školska kopija · {String(a.className)} · {String(d.code)} · inačica {String(a.task.version)}</summary>
-      <p>{String(d.goal)}</p><p><b>Prije početka:</b> {String(d.before)}</p>
+      <p>{String(d.goal)}</p>{r.instructions&&<p><b>{String(r.title)}:</b> {String(r.instructions)}</p>}<p><b>Prije početka:</b> {String(d.before)}</p>
       {d.teacherNotes&&<p><b>Uputa nastavnika:</b> {String(d.teacherNotes)}</p>}
       <p><b>Promjena:</b> {String(d.change)}</p><p><b>Kvar i oporavak:</b> {String(d.fault)}</p>
       <ul>{r.criteria.map((c:any,i:number)=><li key={i}>{String(c.description)}{c.maxPoints!==null?' · najviše '+String(c.maxPoints)+' bodova':''}</li>)}</ul>
-      <p>{readSchoolBinding(project)?'Rad je povezan sa školskim pokušajem. Stanje središnjeg spremanja prikazano je iznad.':'Ovo je zasebna lokalna kopija. Prenosiš je ZIP/JSON izvozom.'} Službeno bodovanje i zaključavanje još nisu uključeni.</p>
+      <p>{readSchoolBinding(project)?'Rad je povezan sa školskim pokušajem. Stanje središnjeg spremanja prikazano je iznad.':'Ovo je zasebna lokalna kopija. Prenosiš je ZIP/JSON izvozom.'} Objavljeni automatski kriteriji, ako postoje, prikazuju se uz školski pokušaj. Zaključavanje slijedi u sljedećoj etapi.</p>
       <a href={appAsset('school.html#school-work')}>Pregled mojih dodijeljenih vježbi</a>
     </details>}</>;
 }

@@ -4,6 +4,7 @@ import {SchoolApi,detachedSchoolProject,type SchoolWorkState} from './schoolSync
 import SchoolSnapshot from './SchoolSnapshot';
 import {schoolTime} from './SchoolWork';
 import {appAsset} from './assets';
+import {GradingReport,gradingLabel} from './SchoolGrading';
 
 const statuses:Record<string,string>={not_started:'Nije započeto',in_progress:'U radu',locked:'Zaključano'};
 export default function SchoolClassReview({open}:{open:(p:Project)=>Promise<void>}){
@@ -66,13 +67,14 @@ export default function SchoolClassReview({open}:{open:(p:Project)=>Promise<void
       <p role="status">{checked?'Pregled osvježen prije '+age+' s · poslužitelj: '+schoolTime(serverTime):'Odaberi razred i vježbu za pregled.'} Osvježavanje svakih 5 s prikazuje posljednje spremljene snimke.</p>
       {error&&<p role="alert" className="review-warning">{error}</p>}
       <div className="school-sync-actions"><label>Pronađi učenika<input value={query} onChange={e=>setQuery(e.target.value)}/></label><label>Status<select value={status} onChange={e=>setStatus(e.target.value)}><option value="">Svi statusi</option>{Object.entries(statuses).map(([id,label])=><option value={id} key={id}>{label}</option>)}</select></label></div>
-      <div className="school-work-table"><table><thead><tr><th>Učenik</th><th>Status</th><th>Revizija / spremljeno</th><th>Bodovanje</th><th>Rad</th></tr></thead><tbody>{visible.map(r=><tr key={r.student.id}><td>{r.student.displayName}<br/><small>{r.student.username}{r.student.active?'':' · neaktivan račun'}</small></td><td>{statuses[r.status]??r.status}</td><td>{r.attempt?<>r{r.attempt.revision}<br/>{schoolTime(r.attempt.savedAt)}</>:'—'}</td><td>Još nije uključeno</td><td>{r.attempt&&<button disabled={busy} onClick={()=>void inspect(r.attempt.id)}>Pregledaj snimku</button>}</td></tr>)}</tbody></table></div>
+      <div className="school-work-table"><table><thead><tr><th>Učenik</th><th>Status</th><th>Revizija / spremljeno</th><th>Bodovanje</th><th>Rad</th></tr></thead><tbody>{visible.map(r=><tr key={r.student.id}><td>{r.student.displayName}<br/><small>{r.student.username}{r.student.active?'':' · neaktivan račun'}</small></td><td>{statuses[r.status]??r.status}</td><td>{r.attempt?<>r{r.attempt.revision}<br/>{schoolTime(r.attempt.savedAt)}</>:'—'}</td><td>{gradingLabel(r.attempt?.grading)}</td><td>{r.attempt&&<button disabled={busy} onClick={()=>void inspect(r.attempt.id)}>Pregledaj snimku</button>}</td></tr>)}</tbody></table></div>
       {checked&&!visible.length&&<p>Nema učenika za odabrani prikaz.</p>}
       <div className="school-sync-actions">{!!previous.length&&<button onClick={()=>{const copy=[...previous];setAfter(copy.pop()!);setPrevious(copy);}}>Prethodnih 200</button>}{hasMore&&<button onClick={()=>{setPrevious([...previous,after]);setAfter(next);}}>Sljedećih 200</button>}</div>
       {detail&&<article className="school-work-detail"><h4>{detail.student.displayName} · revizija {detail.snapshot.revision}</h4><p>{schoolTime(detail.snapshot.savedAt)} · identitet iz prijavljenog računa · upute v{detail.assignment.task.version}</p>
         <p>Ovo je snimka odabrane revizije. Otvaranje pregleda ne pokreće učenikov program; popis učenika nastavlja se osvježavati.</p>
         <label>Sačuvane revizije (posljednjih 100)<select value={detail.snapshot.revision} disabled={busy} onChange={e=>void inspect(detail.attempt.id,Number(e.target.value))}>{revisions.map(r=><option key={r.revision} value={r.revision}>r{r.revision} · {schoolTime(r.savedAt)}</option>)}</select></label>
         <details><summary>Objavljene upute i kriteriji ove dodjele</summary><p>{detail.assignment.task.definition.goal}</p><p>{detail.assignment.task.definition.teacherNotes}</p><ul>{detail.assignment.task.rubric.criteria.map((c:any)=><li key={c.id}>{c.description}{c.maxPoints===null?'':' · najviše '+c.maxPoints+' bodova'}</li>)}</ul></details>
+        <GradingReport grading={detail.snapshot.grading}/>
         <SchoolSnapshot project={parseProject(detail.snapshot.project)} label="Posljednja odabrana snimka"/>
         <div className="school-sync-actions"><button onClick={()=>void inspect(detail.attempt.id)}>Učitaj najnoviju snimku</button><button onClick={exportSnapshot}>Preuzmi ovu reviziju kao JSON</button><button disabled={busy} onClick={()=>{setBusy(true);void open(detachedSchoolProject(parseProject(detail.snapshot.project))).catch(e=>setError(e.message)).finally(()=>setBusy(false));}}>Otvori zasebnu kopiju za pokus</button><button onClick={()=>{++selection.current;setDetail(undefined);setBusy(false);}}>Zatvori snimku</button></div>
       </article>}

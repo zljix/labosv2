@@ -3,6 +3,7 @@ import type {Project} from '../project/model';
 import {parseProject} from '../project/model';
 import {appAsset} from './assets';
 import SchoolSnapshot from './SchoolSnapshot';
+import SchoolGrading from './SchoolGrading';
 import {SchoolApi,SchoolSynchronizer,readSchoolBinding,prepareSchoolAttempt,detachedSchoolProject,type SyncState,type SchoolWorkState,type SchoolBinding} from './schoolSync';
 
 export const schoolTime=(value?:string)=>value&&Number.isFinite(Date.parse(value))?new Intl.DateTimeFormat('hr-HR',{dateStyle:'short',timeStyle:'medium',timeZone:'Europe/Zagreb'}).format(new Date(value))+' (Zagreb)':'Vrijeme prethodne potvrde nije dostupno';
@@ -45,7 +46,7 @@ export default function SchoolWork({project,confirm,open}:{project:Project;confi
   return <section className={'school-sync school-sync-'+state.phase} aria-label="Spremanje školskog rada">
     <div className="school-sync-top"><strong role="status" aria-live="polite">{state.message}</strong><a href={appAsset('school.html#account')}>Školski račun</a></div>
     <p>Posljednja potvrđena revizija: {state.revision} · {schoolTime(state.savedAt)}. {state.phase==='saved'?'Rad je sačuvan u bazi.':'Izmjene zadržavaš u ovom pregledniku; dostupni su ZIP i JSON izvoz.'}</p>
-    <p className="lesson-small">Službeno bodovanje i zaključavanje još nisu uključeni.</p>
+    <SchoolGrading binding={binding} revision={state.revision} saved={state.phase==='saved'}/>
     <div className="school-sync-actions">
       <button disabled={busy||state.phase==='saving'||state.phase==='conflict'} onClick={()=>void act(async()=>{if(engine.current)await engine.current.save();else await initializeRef.current?.();})}>Spremi sada / ponovi</button>
       <button disabled={busy} onClick={()=>void act(review)}>Pregledaj poslužiteljsku verziju</button>

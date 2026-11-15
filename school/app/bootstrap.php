@@ -85,3 +85,4 @@ require __DIR__ . '/auth.php';
 require __DIR__ . '/accounts.php';
 require __DIR__ . '/classes.php';
 require __DIR__ . '/tasks.php';
+require __DIR__ . '/work.php';

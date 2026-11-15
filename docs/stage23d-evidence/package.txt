@@ -1,0 +1,14 @@
+
+> esp32-micropython-lab@0.13.3-beta.1 test:school-package
+> node --test verification/school-package.test.mjs
+
+✔ school ZIP verifies every inventory entry and keeps app, SQL and configuration out of web/ (306.733988ms)
+✔ installed app worker never intercepts private school API or POST requests (2.635841ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 400.996279

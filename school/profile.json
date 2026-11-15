@@ -1,7 +1,7 @@
 {
   "format": "labosv2-school-profile",
   "version": 1,
-  "stage": "23C",
+  "stage": "23D",
   "sourceBaseline": "zljix/labos@3c4a281c10282d63b2742280f69aadbc08d7ae1e",
   "webServer": "Apache 2.4 with HTTPS",
   "phpBranches": [
@@ -18,10 +18,11 @@
   "displayTimezone": "Europe/Zagreb",
   "features": {
     "accounts": true,
-    "centralStorage": false,
+    "centralStorage": true,
     "officialGrading": false,
     "classes": true,
-    "assignments": true
+    "assignments": true,
+    "liveClassReview": true
   },
   "proof": {
     "rubric": "23A-button-led@1",
@@ -58,5 +59,13 @@
     "forcedTemporaryPasswordChange": true,
     "sessionRevocation": "auth_version",
     "teacherResetScope": "assigned-class-students"
+  },
+  "workStorage": {
+    "debounceMs": 3000,
+    "maximumEditIntervalMs": 15000,
+    "classRefreshMs": 5000,
+    "immutableRevisions": true,
+    "conflicts": "compare-and-explicit-choice",
+    "idempotentSaves": true
   }
 }

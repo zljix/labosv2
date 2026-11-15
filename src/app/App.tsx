@@ -336,7 +336,7 @@ export default function App() {
   const liveProject=useRef(p);liveProject.current=p;
   const runTicket=useRef(0);
   const lessonCheck = useLessonCheck(p, result=>ws.change("Zapis provjere rada", n=>{n.files[RESULT_FILE]=JSON.stringify(result,null,2);}),notify);
-  const [dialog, setDialog] = useState<Dialog>(null),
+  const [dialog, setDialog] = useState<Dialog>(()=>new URL(location.href).searchParams.has('schoolReview')?'class-review':null),
     [field, setField] = useState(""),
     [formError, setFormError] = useState(""),
     [projects, setProjects] = useState<Stored[]>([]),
@@ -768,9 +768,9 @@ export default function App() {
           e.target.value = "";
         }}
       />
-      <SchoolAssignment project={p} open={async next=>{
+      <SchoolAssignment project={p} confirm={binding=>{ws.change('Potvrda školskog spremanja',next=>{if(next.id===p.id)next.files['school-attempt.json']=JSON.stringify(binding);},false);}} open={async next=>{
         setWorking(true);
-        try{await ws.flush();runtime.stop();lessonCheck.cancel();await ws.add(next);setLabTab('lesson');setMobileTab('lab');setExpandedCircuit(false);setTeacher(false);notify('Otvorena je lokalna kopija dodijeljene školske vježbe.');}
+        try{await ws.flush();runtime.stop();lessonCheck.cancel();await ws.add(next);setLabTab('lesson');setMobileTab('lab');setExpandedCircuit(false);setTeacher(false);notify('Otvorena je školska vježba. Provjeri stanje spremanja iznad radnog područja.');}
         finally{setWorking(false);}
       }}/>
       {ws.error && (

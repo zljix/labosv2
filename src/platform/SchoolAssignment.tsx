@@ -2,6 +2,8 @@ import {useEffect,useRef,useState} from 'react';
 import {appAsset} from './assets';
 import {parseProject,forkProject,type Project} from '../project/model';
 import {readUrsWork} from '../lessons/ursWork';
+import {SchoolApi,prepareSchoolAttempt,readSchoolBinding,type SchoolBinding} from './schoolSync';
+import SchoolWork from './SchoolWork';
 import {URS_WORK} from '../lessons/ursCatalog';
 
 export const SCHOOL_TASK_FILE='school-assignment.json';
@@ -28,7 +30,7 @@ export function prepareSchoolAssignment(assignment:any,user:any):Project {
   return parseProject(p);
 }
 
-export default function SchoolAssignment({project,open}:{project:Project;open:(p:Project)=>Promise<void>}) {
+export default function SchoolAssignment({project,open,confirm}:{project:Project;open:(p:Project)=>Promise<void>;confirm:(binding:SchoolBinding)=>void}) {
   const once=useRef(false),[status,setStatus]=useState('');
   useEffect(()=>{
     if(once.current)return;once.current=true;
@@ -37,23 +39,25 @@ export default function SchoolAssignment({project,open}:{project:Project;open:(p
     setStatus('Otvaram dodijeljenu školsku vježbu…');
     void(async()=>{
       try{
-        const response=await fetch(appAsset('api/index.php?action=assignment&id='+id),{credentials:'same-origin',cache:'no-store',signal:AbortSignal.timeout(15000)});
-        let state:any;try{state=await response.json();}catch{throw Error('Školska vježba nije dostupna na ovoj adresi. Otvori školsku adresu i prijavi se.');}
-        if(!response.ok||state.application!=='labosv2')throw Error(state.error?.message??'Otvori školsku adresu i prijavi se prije otvaranja vježbe.');
-        await open(prepareSchoolAssignment(state.assignment,state.user));setStatus('');
+        const api=new SchoolApi();const session=await api.session();
+        let next:Project;
+        if(session.user.role==='student'&&session.features?.centralStorage){
+          next=await prepareSchoolAttempt(await api.request('begin-attempt',{assignmentId:Number(id)}));
+        }else{const state=await api.request('assignment&id='+id);next=prepareSchoolAssignment(state.assignment,state.user);}
+        await open(next);setStatus('');
         const url=new URL(location.href);url.searchParams.delete('schoolAssignment');history.replaceState(history.state,'',url);
       }catch(error){setStatus((error as Error).message||'Školska vježba nije dostupna.');}
     })();
   },[]);
   const a=readSchoolAssignment(project);
   const d=a?.task?.definition,r=a?.task?.rubric;
-  return <>{status&&<div className="notice" role="status">{status} <a href={appAsset('school.html#account')}>Školski račun i vježbe</a></div>}
+  return <><SchoolWork key={project.id} project={project} open={open} confirm={confirm}/>{status&&<div className="notice" role="status">{status} <a href={appAsset('school.html#account')}>Školski račun i vježbe</a></div>}
     {d&&typeof d.title==='string'&&Array.isArray(r?.criteria)&&<details className="school-task-notice"><summary>Školska kopija · {String(a.className)} · {String(d.code)} · inačica {String(a.task.version)}</summary>
       <p>{String(d.goal)}</p><p><b>Prije početka:</b> {String(d.before)}</p>
       {d.teacherNotes&&<p><b>Uputa nastavnika:</b> {String(d.teacherNotes)}</p>}
       <p><b>Promjena:</b> {String(d.change)}</p><p><b>Kvar i oporavak:</b> {String(d.fault)}</p>
       <ul>{r.criteria.map((c:any,i:number)=><li key={i}>{String(c.description)}{c.maxPoints!==null?' · najviše '+String(c.maxPoints)+' bodova':''}</li>)}</ul>
-      <p>Ovo je lokalna radna kopija sa spremljenim uputama i kriterijima. Zasad je prenosiš ZIP/JSON izvozom. Službeno bodovanje i zaključavanje još nisu uključeni.</p>
+      <p>{readSchoolBinding(project)?'Rad je povezan sa školskim pokušajem. Stanje središnjeg spremanja prikazano je iznad.':'Ovo je zasebna lokalna kopija. Prenosiš je ZIP/JSON izvozom.'} Službeno bodovanje i zaključavanje još nisu uključeni.</p>
       <a href={appAsset('school.html#school-work')}>Pregled mojih dodijeljenih vježbi</a>
     </details>}</>;
 }

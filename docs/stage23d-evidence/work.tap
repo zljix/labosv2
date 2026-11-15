@@ -1,0 +1,89 @@
+TAP version 13
+# Subtest: 23D actual PHP/MySQL attempts, revisions, permissions and concurrency
+    # Subtest: roster includes not-started pupils with no invented zero points
+    ok 1 - roster includes not-started pupils with no invented zero points
+      ---
+      duration_ms: 18.588169
+      type: 'test'
+      ...
+    # Subtest: parallel begin creates exactly one attempt and frozen initial snapshot
+    ok 2 - parallel begin creates exactly one attempt and frozen initial snapshot
+      ---
+      duration_ms: 264.851078
+      type: 'test'
+      ...
+    # Subtest: snapshot stores source, wiring and answers; another device resumes the same attempt
+    ok 3 - snapshot stores source, wiring and answers; another device resumes the same attempt
+      ---
+      duration_ms: 267.941748
+      type: 'test'
+      ...
+    # Subtest: lost response retries the same key without another revision, even after a newer save
+    ok 4 - lost response retries the same key without another revision, even after a newer save
+      ---
+      duration_ms: 40.071539
+      type: 'test'
+      ...
+    # Subtest: stale revision is rejected and two concurrent devices cannot overwrite each other
+    ok 5 - stale revision is rejected and two concurrent devices cannot overwrite each other
+      ---
+      duration_ms: 247.019772
+      type: 'test'
+      ...
+    # Subtest: conflict recovery is an ordinary compare-and-swap after inspecting the latest snapshot
+    ok 6 - conflict recovery is an ordinary compare-and-swap after inspecting the latest snapshot
+      ---
+      duration_ms: 24.787311
+      type: 'test'
+      ...
+    # Subtest: student impersonation, other classes and teacher writes are denied
+    ok 7 - student impersonation, other classes and teacher writes are denied
+      ---
+      duration_ms: 31.811356
+      type: 'test'
+      ...
+    # Subtest: wrong target, id, peer topology, unsafe files and oversize content do not create revisions
+    ok 8 - wrong target, id, peer topology, unsafe files and oversize content do not create revisions
+      ---
+      duration_ms: 48.224155
+      type: 'test'
+      ...
+    # Subtest: local claimed scores and assignment names never change official identities or rubric
+    ok 9 - local claimed scores and assignment names never change official identities or rubric
+      ---
+      duration_ms: 17.408301
+      type: 'test'
+      ...
+    # Subtest: hidden assignments and revoked memberships immediately block reads and saves
+    ok 10 - hidden assignments and revoked memberships immediately block reads and saves
+      ---
+      duration_ms: 49.955258
+      type: 'test'
+      ...
+    # Subtest: all 268 published starter targets retain valid object fields, both radio nodes and media
+    ok 11 - all 268 published starter targets retain valid object fields, both radio nodes and media
+      ---
+      duration_ms: 7674.535449
+      type: 'test'
+      ...
+    # Subtest: repeated migration preserves all snapshots and published versions
+    ok 12 - repeated migration preserves all snapshots and published versions
+      ---
+      duration_ms: 70.030022
+      type: 'test'
+      ...
+    1..12
+ok 1 - 23D actual PHP/MySQL attempts, revisions, permissions and concurrency
+  ---
+  duration_ms: 13188.874746
+  type: 'test'
+  ...
+1..1
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 13367.99311

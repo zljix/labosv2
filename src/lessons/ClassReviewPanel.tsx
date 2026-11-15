@@ -1,3 +1,4 @@
+import SchoolClassReview from '../platform/SchoolClassReview';
 import {useState} from 'react';
 import type {Project} from '../project/model';
 import {LIMITS} from '../project/model';
@@ -44,7 +45,7 @@ export default function ClassReviewPanel({session,change,busy,setBusy,current,op
  function update(fn:()=>ReviewSession){try{change(fn());setMessage('');}catch(e){setMessage((e as Error).message);}}
  const downloadReport=()=>{try{download('URS_evidencija_razreda.json',exportReviewReport(session,APP_VERSION),'application/json');change({...session,dirty:false});setMessage('Evidencija je pripremljena za preuzimanje. Sačuvaj JSON i izvorne predaje za nastavak pregleda.');}catch(e){setMessage((e as Error).message);}};
  return <section className="class-review" aria-label="Pregled URS predaja razreda">
-  <p className="review-intro">Učitaj URS ZIP-ove ili JSON projekte i pregledaj odgovore, opažanja i sklopove. Evidencija ostaje u ovoj otvorenoj aplikaciji. Za nastavak preuzmi JSON evidencije, zatim pri novom otvaranju ponovno učitaj evidenciju i izvorne predaje.</p>
+  <SchoolClassReview open={open}/><details className="school-local-review"><summary>Lokalni uvoz i ručna evidencija predaja</summary><p className="review-intro">Učitaj URS ZIP-ove ili JSON projekte i pregledaj odgovore, opažanja i sklopove. Evidencija ostaje u ovoj otvorenoj aplikaciji. Za nastavak preuzmi JSON evidencije, zatim pri novom otvaranju ponovno učitaj evidenciju i izvorne predaje.</p>
   <p className="lesson-small">Učitavanje provjerava format, popunjenost i podudaranje sadržaja. Nastavnički status upisuješ nakon vlastitog pregleda i pokusa. Hash i uvezeni zapis ne potvrđuju ispravnost programa ili autorstvo. Početne V1–V5 pregledavaju se pojedinačno.</p>
   <fieldset disabled={busy} className="review-imports"><legend>1 · Učitaj radove</legend>
    <label>Predaje ZIP / JSON · do 30 odjednom<input type="file" multiple accept=".zip,.json,application/zip,application/json" onChange={e=>{const files=Array.from(e.currentTarget.files??[]);e.currentTarget.value='';void addFiles(files);}}/></label>
@@ -70,5 +71,5 @@ export default function ClassReviewPanel({session,change,busy,setBusy,current,op
    </article>}</div>
   </>}
   <div className="review-exports"><h3>3 · Sačuvaj evidenciju</h3><p>JSON čuva bilješke za nastavak, a CSV daje tablični pregled. Izvorni programi i sklopovi ostaju u učeničkim ZIP-ovima; sačuvaj ih zajedno s evidencijom. Izvoz obuhvaća sve predaje i zapise bez učitanih predaja, neovisno o filtrima.</p><div className="lesson-inline-actions"><button disabled={busy||!reviewRecords(session).length} className="primary" onClick={downloadReport}>Preuzmi evidenciju JSON</button><button disabled={busy||!reviewRecords(session).length} onClick={()=>{download('URS_evidencija_razreda.csv',reviewCSV(session),'text/csv;charset=utf-8');setMessage('CSV cijele evidencije pripremljen je za preuzimanje. Za nastavak s bilješkama sačuvaj i JSON.');}}>Preuzmi pregled CSV</button><button disabled={busy||!reviewRecords(session).length} onClick={()=>{change(emptyReviewSession());setProblems([]);setGroup('');setQuery('');setVerdict('');setMessage('Otvoren je prazan pregled. Za vraćanje učitaj sačuvanu evidenciju i izvorne predaje.');}}>Započni prazan pregled</button></div></div>
- </section>;
+ </details></section>;
 }

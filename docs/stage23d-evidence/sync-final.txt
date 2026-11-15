@@ -1,0 +1,21 @@
+✔ school content fingerprint ignores local identity and sync bookkeeping but includes code, circuit, answers and peer (22.430126ms)
+✔ unchanged opening does not upload and editing waits 3 seconds (8.854065ms)
+✔ continuous typing is saved at 15 seconds without waiting for a pause (12.722539ms)
+✔ confirmation metadata does not produce an autosave feedback loop (4.406412ms)
+✔ edits made during an in-flight request are saved in a later revision (4.539672ms)
+✔ lost acknowledgement retries the exact payload and idempotency key before newer local changes (5.675338ms)
+✔ two stale editors block on conflict and do not adopt a newer revision without a review choice (3.295843ms)
+✔ an old retried acknowledgement reports a newer remote revision as conflict (3.619329ms)
+✔ explicitly reviewed local choice uses the reviewed revision as its compare-and-swap base (3.988563ms)
+✔ closing or changing projects never confirms a late response on the new workspace (3.65967ms)
+✔ account switch is detected before sending another pupil’s project (5.779566ms)
+✔ detached teacher/test copies preserve the snapshot and cannot autosave to an attempt (5.109463ms)
+✔ malformed imported sync metadata is ignored, including invalid saved timestamps (2.28948ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 387.1419

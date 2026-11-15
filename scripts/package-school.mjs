@@ -27,10 +27,10 @@ function walk(directory) { for (const item of readdirSync(directory, {withFileTy
   if (item.isDirectory()) walk(path); else entries[relative(target, path).replaceAll('\\', '/')] = new Uint8Array(readFileSync(path));
 } }
 walk(target);
-const inventory = {version, stage: '23C', appBuild: manifest.build, files: Object.entries(entries).map(([path, bytes]) => ({path, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex')}))};
+const inventory = {version, stage: '23D', appBuild: manifest.build, files: Object.entries(entries).map(([path, bytes]) => ({path, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex')}))};
 entries['package-inventory.json'] = strToU8(JSON.stringify(inventory, null, 2) + '\n');
 writeFileSync(resolve(target, 'package-inventory.json'), entries['package-inventory.json']);
 mkdirSync('release', {recursive: true});
-const output = resolve('release', 'Labosv2_' + version.split('-')[0] + '_23C_Skolski.zip');
+const output = resolve('release', 'Labosv2_' + version.split('-')[0] + '_23D_Skolski.zip');
 writeFileSync(output, zipSync(entries, {level: 6}));
 console.log(output);

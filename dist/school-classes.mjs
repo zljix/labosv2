@@ -46,12 +46,13 @@ export function createSchoolPortal({request,getUser,run,message,reloadUsers}) {
       card.append(node('p',a.className+' · '+a.schoolYear+' · inačica '+a.task.version,'label'),node('h3',a.task.definition.code+' · '+a.task.definition.variantTitle),node('p',targetNames[a.target]),node('p','Rok: '+time(a.dueAt)),node('p',a.available?'Dostupno za rad':'Privremeno skriveno','stage'));
       const details=node('details');details.append(node('summary','Pročitaj upute i kriterije'));const contents=node('div');describe(contents,a.task.definition,a.task.rubric);details.append(contents);card.append(details);
       if(a.available || staff()){
-        const link=node('a',staff()?'Otvori početnu kopiju':'Otvori vježbu u laboratoriju','button');link.href='./?schoolAssignment='+a.id;card.append(link);
+        const link=node('a',staff()?'Otvori početnu kopiju':'Otvori / nastavi vježbu u laboratoriju','button');link.href='./?schoolAssignment='+a.id;card.append(link);
       }
       if(staff()){
         const button=node('button',a.available?'Sakrij učenicima':'Omogući učenicima','secondary');button.type='button';button.addEventListener('click',()=>void run(async()=>{await request('assignment-availability',{assignmentId:a.id,available:!a.available});await refreshAssignments();message('Dostupnost vježbe je spremljena.');}));card.append(button);
       }
-      card.append(node('small','Rad se zasad čuva u ovom pregledniku. Za prijenos na drugo računalo preuzmi ZIP/JSON. Službeni bodovi i zaključavanje slijede.'));host.append(card);
+      if(staff()){const live=node('a','Pregled spremljenih radova','button');live.href='./?schoolReview='+a.classId+'&schoolExercise='+a.id;card.append(live);}
+      card.append(node('small','Učenički rad sprema se na školskom poslužitelju. Ponovno otvaranje nastavlja posljednju spremljenu reviziju. Službeni bodovi i zaključavanje slijede.'));host.append(card);
     }
   }
   async function refreshAssignments(){

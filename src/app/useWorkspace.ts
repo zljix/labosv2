@@ -193,24 +193,26 @@ export function useWorkspace(notify: (message: string) => void) {
       document.removeEventListener('visibilitychange', visibility);
     };
   }, []);
-  function change(description: string, update: (p: Project) => void) {
+  function change(description: string, update: (p: Project) => void, recordUndo = true) {
     const p = current.current;
     if (!p) return false;
     try {
       const next = editProject(p, update),
         now = Date.now();
       if (
-        !description.startsWith("Uređivanje ") ||
+        recordUndo && (!description.startsWith("Uređivanje ") ||
         lastEdit.current.label !== description ||
-        now - lastEdit.current.time > 1200
+        now - lastEdit.current.time > 1200)
       ) {
         undoStack.current.push(clone(p));
         if (undoStack.current.length > 40) undoStack.current.shift();
       }
-      lastEdit.current = { label: description, time: now };
-      redoStack.current = [];
+      if (recordUndo) {
+        lastEdit.current = { label: description, time: now };
+        redoStack.current = [];
+      }
       setUndoCount(undoStack.current.length);
-      setRedoCount(0);
+      setRedoCount(redoStack.current.length);
       label.current = description;
       show(next);
       setStatus("pending");

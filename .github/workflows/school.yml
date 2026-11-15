@@ -52,8 +52,12 @@ jobs:
           docker exec --interactive labosv2-ci-db sh -c 'MYSQL_PWD="$MYSQL_ROOT_PASSWORD" mysql --host=127.0.0.1 --user=root' <<'SQL'
           CREATE DATABASE labosv2_test_classes CHARACTER SET utf8mb4;
           CREATE DATABASE labosv2_test_portal CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_work CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_work_ui CHARACTER SET utf8mb4;
           GRANT ALL ON labosv2_test_classes.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_portal.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_work.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_work_ui.* TO 'labosv2_ci'@'%';
           SQL
       - name: Pripremi Linux izolaciju
         run: |
@@ -84,11 +88,22 @@ jobs:
         env:
           LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_portal;charset=utf8mb4
           LAB_TEST_DB_USER: labosv2_ci
+      - run: npm run test:school-sync
+      - name: Provjeri revizije i istodobno spremanje
+        run: npm run test:school-work
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_work;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - name: Provjeri sučelje središnjeg spremanja
+        run: npm run test:school-work-ui
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_work_ui;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
       - name: Provjeri projekte, vodove i neovisno izvršavanje
         run: node --import tsx --test verification/project.test.ts verification/circuit.test.ts verification/routing.test.ts verification/school.test.ts
       - uses: actions/upload-artifact@v4
         with:
-          name: Labosv2-23C-Skolski-paket
+          name: Labosv2-23D-Skolski-paket
           path: release/*.zip
           if-no-files-found: error
           retention-days: 30

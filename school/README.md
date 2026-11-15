@@ -1,8 +1,8 @@
-# Labosv2 · školski paket · etapa 23C
+# Labosv2 · školski paket · etapa 23D
 
 Etapa 23A priprema postojeći laboratorij za školski Apache/PHP/MySQL smjer i dokazuje ponovno izvršavanje izvan učenikova preglednika. Polazište je `zljix/labos@3c4a281` (0.12.9), uključujući posljednju doradu vodova. Ovaj razvoj objavljuje se u `zljix/labosv2`.
 
-**Dostupno:** simulator, postojeći projekti i izvozi, školski paket, PHP provjera preduvjeta, MySQL migracije, početni administrator, prijava/odjava, uloge, upravljanje računima i lozinkama, razredi, CSV uvoz, pozivni kodovi, potvrda učenika i verzionirane dodjele vježbi te raniji ograničeni dokaz tipkala/LED-ice. **Središnja pohrana projekata, službeni bodovi i zaključavanje još nisu uključeni.** Slijede 23D–23F. Izvorni plan od 14. 11. 2026. zadržan je.
+**Dostupno:** simulator, postojeći projekti i izvozi, školski paket, PHP provjera preduvjeta, MySQL migracije, početni administrator, prijava/odjava, uloge, upravljanje računima i lozinkama, razredi, CSV uvoz, pozivni kodovi, potvrda učenika i verzionirane dodjele vježbi te raniji ograničeni dokaz tipkala/LED-ice, poslužiteljski pokušaji, nepromjenjive radne revizije, automatsko spremanje, usporedba sukoba i nastavnički pregled rada. **Službeni bodovi i zaključavanje još nisu uključeni.** Slijede 23E–23F. Izvorni plan od 14. 11. 2026. zadržan je.
 
 ## Izgradnja
 
@@ -12,7 +12,7 @@ Node.js 24 LTS, `npm ci`, zatim:
 npm run build:school
 ```
 
-Nastaje `release/Labosv2_0.13.2_23C_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
+Nastaje `release/Labosv2_0.13.3_23D_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
 
 | Mapa | Namjena |
 | --- | --- |
@@ -104,7 +104,7 @@ Sesije koriste HttpOnly i SameSite=Strict, HTTPS postavlja Secure, identifikator
 
 Za isključivo lokalne razvojne pokuse postoji `app.allow_insecure_localhost=true` uz HTTP localhost/127.0.0.1; zahtjev mora stvarno doći s loopback adrese. Zadana školska postavka ostaje HTTPS. Proxy zaglavlja ne pretvaraju nešifrirani zahtjev u pouzdani HTTPS.
 
-API računa i sesija nikada ne ulazi u offline predmemoriju. Nakon odjave privatni popisi nisu dostupni u sučelju. Postojeći lokalni projekti ne postaju automatski službeni radovi prijavljenog računa. Kopije dodijeljenih vježbi nose lokalnu oznaku zadatka; poslužiteljski pokušaji i spremanje pripadaju 23D.
+API računa i sesija nikada ne ulazi u offline predmemoriju. Nakon odjave privatni popisi nisu dostupni u sučelju. Postojeći lokalni projekti ne postaju automatski službeni radovi prijavljenog računa. Dodijeljene učeničke vježbe sada koriste poslužiteljski pokušaj (23D). Zasebni lokalni projekti ne postaju automatski službeni radovi.
 
 ## Razredi i dodjela vježbi (23C)
 
@@ -114,13 +114,41 @@ API računa i sesija nikada ne ulazi u offline predmemoriju. Nakon odjave privat
 4. Alternativno stvori **Pozivni kod**: 1–168 sati, 1–100 novih zahtjeva. Novi kod opoziva prethodni kod razreda i prikazuje se samo pri stvaranju; poslužitelj čuva samo HMAC. Postojeći učenik ga unosi nakon prijave. Novi učenik koristi registracijski obrazac i bira vlastitu lozinku. Registracija uvijek stvara samo učenika. Kod šalje zahtjev i **ne daje članstvo**: nastavnik provjerava identitet i potvrđuje ili odbija zahtjev. Do potvrde učenik ne vidi razredne vježbe. Opoziv/istek koda ne briše već zaprimljene zahtjeve.
 5. U **Objavi inačicu zadatka i kriterija** odaberi stvarnu URS varijantu, pregledaj izvorne upute i po potrebi dodaj nastavničku uputu. Opcionalni planirani bodovni kriteriji unose se po retku kao `Opis | 3` (1–12 kriterija, svaki 1–100 bodova). Ako su prazni, ostaju opisni kriteriji bez bodovnog maksimuma. Rubrike nose oznaku `not-yet-enabled`: to su unaprijed vidljivi kriteriji, a ne službeni ili osvojeni bodovi.
 6. Objavi pa u **Dodijeli objavljenu inačicu** odaberi razred, točnu inačicu, pločicu/jezik i opcionalan rok. Rok unosiš po vremenu svojeg uređaja; API sprema UTC i prikazuje Europe/Zagreb. U 23C je rok informativan i ne zaključava rad. Kasnije uključivanje/skrivanje mijenja samo dostupnost. Zadatak, cilj i rok postojeće dodjele ne mijenjaju se tim gumbom. Za drukčiju pripremu napravi novu dodjelu.
-7. Učenik vidi samo dostupne vježbe svojih potvrđenih razreda. Prije otvaranja čita upute i kriterije, zatim **Otvori vježbu u laboratoriju** učitava početnu kopiju iz točne spremljene inačice. Time se program ne pokreće. Kopija dobiva zaseban lokalni identifikator, radni list i oznaku dodjele; stari lokalni projekt ostaje sačuvan. Izvor, sklop, upravljačke datoteke, početni mediji i oba radio čvora čuvaju se u predlošku.
+7. Učenik vidi samo dostupne vježbe svojih potvrđenih razreda. Prije otvaranja čita upute i kriterije. **Otvori / nastavi vježbu u laboratoriju** prvi put stvara školski pokušaj iz točne objavljene inačice, a poslije učitava posljednju potvrđenu reviziju. Program se ne pokreće. Svako otvaranje dobiva zasebnu lokalnu kopiju; stari lokalni projekt ostaje sačuvan. Izvor, sklop, upravljačke datoteke, početni mediji i oba radio čvora ostaju u snimci.
 
 Katalog obuhvaća postojećih 18 tema, 67 varijanti i 268 kombinacija ciljeva. Broj predložaka ne označava 268 automatski bodovanih vježbi. Zadaci i rubrike objavljeni su kao nepromjenjive inačice, a odabrani početni projekti kopiraju se u bazu pri objavi. Nova objava i nadogradnja instaliranog kataloga ne mijenjaju prethodne dodjele. Upute i kriteriji prikazuju se kao tekst. Nastavnički popis objavljenih inačica zajednički je školskim nastavnicima; učenici pristupaju isključivo svojim dodjelama.
 
 Pristup se provjerava za svaki API poziv. Uklanjanje učenika ili nastavnika iz razreda odmah ukida njegov budući pristup tom razredu kroz API. Ranije preuzeta lokalna kopija time se ne briše. Uklanjanje članstva ne briše račun, objavljene zadatke ni dodjele. Revizijski zapisi čuvaju autora i radnju bez pozivnog koda, tokena ili privremene lozinke.
 
-**Ograničenje ove etape:** kopija je još lokalna, bez poslužiteljskog pokušaja, autosavea u bazu, službenog bodovanja i zaključavanja. Na drugom računalu prenosi se ZIP/JSON izvozom. Povezivanje kopije s pokušajem i sukobi revizija slijede u 23D. Promjena lokalne oznake zadatka ili bodova nema autoritet službene evidencije.
+## Spremanje i nastavak rada (23D)
+
+Učenik se prijavljuje vlastitim računom, otvara dodijeljenu vježbu i radi u simulatoru. Lokalno spremanje i oporavak ostaju dostupni. Središnje spremanje šalje projekt nakon približno 3 sekunde bez izmjene ili najkasnije nakon 15 sekundi neprekinutog uređivanja. Svaka prihvaćena promjena stvara novu nepromjenjivu reviziju. Promjena pločice ili jezika nije dopuštena unutar iste dodjele; za druge pokuse otvori zasebnu lokalnu kopiju.
+
+Iznad radnog područja učenik vidi stanje spremanja, broj posljednje potvrđene revizije i vrijeme Europe/Zagreb. **Spremljeno na školskom poslužitelju** odnosi se samo na potvrđeni sadržaj. Nakon novih izmjena prikazuje se da su još lokalne. Pri prekidu veze ne potvrđuje se spremanje; ZIP/JSON izvoz i lokalni oporavak ostaju dostupni. Povrat veze ponavlja isti neriješeni zahtjev, a eventualni sukob novije revizije i dalje zaustavlja prepisivanje.
+
+Za nastavak na drugom računalu prijavi se i ponovno otvori istu dodijeljenu vježbu. Dobit ćeš posljednju potvrđenu snimku. Nesinkronizirane izmjene s prethodnog uređaja postoje samo u njegovoj lokalnoj kopiji ili izvezenoj datoteci.
+
+### Dvije kartice ili uređaji
+
+Svaka radna kopija pamti potvrđenu poslužiteljsku reviziju. Zastarjelo spremanje vraća sukob. **Pregledaj poslužiteljsku verziju** prikazuje lokalne i poslužiteljske izvore, odgovore i veze obaju čvorova. Nakon pregleda možeš:
+
+- učitati prikazanu poslužiteljsku verziju; postojeća lokalna kopija ostaje u **Mojim projektima**;
+- izričito spremiti svoju lokalnu verziju kao novu reviziju; ako se poslužitelj u međuvremenu opet promijenio, sustav ponovno zaustavlja spremanje;
+- nastaviti u zasebnoj lokalnoj kopiji koja nije povezana s učeničkim pokušajem.
+
+Nema tihog spajanja ni prisilnog prepisivanja. Ponovljena oznaka istog zahtjeva vraća istu potvrdu. Ako je drugi uređaj već spremio još noviji rad, prikazuje se sukob i nakon zakašnjele potvrde. Zamjena prijavljenog računa ne prenosi rad drugom učeniku.
+
+### Nastavnički pregled
+
+U portalu uz dodijeljenu vježbu odaberi **Pregled spremljenih radova**, ili u simulatoru **Pregled razreda → Školski pregled rada**. Odaberi razred i vježbu; dostupni su pretraživanje učenika i filtar statusa. Popis se skupno osvježava svakih 5 sekundi dok je kartica vidljiva. Prikazuje dob podataka, poslužiteljsko vrijeme, nezapočete radove i posljednje potvrđene revizije. Za veće razrede postoje stranice po 200 članova; pretraživanje i status filtriraju otvorenu stranicu.
+
+**Pregledaj snimku** otvara točnu reviziju bez pokretanja koda. Odabrani detalj ostaje isti dok ne učitaš noviju snimku. Moguće je čitati posljednjih 100 revizija kroz izbor, preuzeti JSON i otvoriti zasebnu kopiju za pokus. API omogućuje i starije revizije paginiranjem povijesti. Nastavnički pokus ne mijenja učenikov rad. Raniji lokalni ZIP/JSON pregled i ručna evidencija ostaju u zasebnom odjeljku.
+
+Bodovanje u 23D ima stanje **još nije uključeno**, s `points: null`. Nezapočeta vježba nije nula. Uvezeni broj bodova, ime ili rubrika ne mijenjaju identitet prijavljenog učenika ni objavljenu dodjelu. Službeno funkcionalno bodovanje i zaključavanje pripadaju 23E–23F.
+
+### Nadogradnja s 23C
+
+Sačuvaj bazu i privatnu konfiguraciju prije zamjene, privremeno zaustavi web pristup i zamijeni kompletan javni i privatni paket. Zadrži isti ključ, konfiguraciju i privatnu mapu sesija. Ponovi `php tools/console.php migrate /put/do/privatne/config.php`. Nova migracija je **004_work_snapshots.sql**; 001–003 ostaju neizmijenjene. Ponovljena migracija čuva račune, razrede, dodjele i radne revizije. Zamjena samog `web/` nije potpuna nadogradnja.
 
 ### Nadogradnja s 23B
 
@@ -177,11 +205,11 @@ Regresija: `npm run test:school`. Cjelovit dokaz s dva nova AVR izvora: `npm run
 
 `.wasm` mora imati `application/wasm`; `.mjs`/`.js` JavaScript MIME. Resursi i radnici koriste vlastitu adresu i relativne putanje. Trenutačne jezgre ne koriste SharedArrayBuffer ni Atomics; COOP/COEP zato nisu uvjet ovog profila i ne uključuju se naslijepo, jer treba očuvati upareni prozor lokalnog compiler mosta.
 
-HTTPS provjeri na svakom ciljnom uređaju. `http://localhost` provjera ne dokazuje mrežni HTTPS pristup. Promjena domene ili protokola stvara drugi origin. Na istoj GitHub domeni putanje dijele origin, pa labosv2 izričito koristi zasebne nazive IndexedDB baze, oporavka i Arduino predmemorije. Postojeći rad prenesi ZIP/JSON izvozom; dosadašnji zapisi labosa ne mijenjaju se niti se automatski prenose. Podatci se još ne sinkroniziraju preko baze.
+HTTPS provjeri na svakom ciljnom uređaju. `http://localhost` provjera ne dokazuje mrežni HTTPS pristup. Promjena domene ili protokola stvara drugi origin. Na istoj GitHub domeni putanje dijele origin, pa labosv2 izričito koristi zasebne nazive IndexedDB baze, oporavka i Arduino predmemorije. Postojeći rad prenesi ZIP/JSON izvozom; dosadašnji zapisi labosa ne mijenjaju se niti se automatski prenose. Dodijeljene učeničke vježbe sada se sinkroniziraju preko baze; zasebni lokalni projekti ostaju samo na uređaju.
 
-## Završetak 23C i otvorene provjere
+## Završetak 23D i otvorene provjere
 
-Novi dokazi nalaze se u `docs/stage23c-classes.md`; računi iz 23B i izvršni pokusi iz 23A ostaju povijesno zabilježeni u svojim izvješćima. Slijedi 23D: središnje spremanje, sukobi revizija i nastavnički pregled rada. Stvarni školski HTTPS/LAN profil, Windows/mobilni uređaji, cgroup ograničenje memorije, razred od 30 učenika i fizička oprema imaju zasebne provjere; ovaj paket ih ne proglašava potvrđenima.
+Novi dokazi nalaze se u `docs/stage23d-work.md`; prethodne etape ostaju povijesno zabilježene u svojim izvješćima. Slijede 23E–23F: službeno bodovanje prvih triju vježbi i zaključavanje predaje. Stvarni školski HTTPS/LAN profil, Windows/mobilni uređaji, cgroup ograničenje memorije, razred od 30 učenika i fizička oprema imaju zasebne provjere; ovaj paket ih ne proglašava potvrđenima.
 
 ## Tehnički izvori
 
@@ -202,3 +230,9 @@ Izbor izvršnog profila, rubrika i granice dokaza projektne su odluke. Dokumenta
 `npm run test:school-catalog` otvara i ponovno izvozi svih 268 zamrznutih početnih predložaka. `npm run test:school-classes` provjerava stvarni PHP/MySQL, uvoz, ovlasti, kodove, paralelno posljednje mjesto, inačice zadataka i dodjele. `npm run test:school-portal` izvršava stvarne module portala u DOM okruženju uz stvarni API: pripremu nastavnika, prvu prijavu učenika i potvrdu članstva. To nije vizualna potvrda ciljnog preglednika.
 
 Svaki integracijski skup zahtijeva vlastitu praznu bazu naziva `labosv2_test_*` i iste testne varijable kao skup računa: `PHP_BIN` ako PHP nije u PATH-u, `LAB_TEST_DB_DSN`, `LAB_TEST_DB_USER`, `LAB_TEST_DB_PASSWORD`. Skupovi se ne pokreću nad istom popunjenom bazom niti nad školskim podacima. Actions priprema tri zasebne baze i jednokratne vjerodajnice.
+
+## Razvojne provjere 23D
+
+`npm run test:school-sync` provjerava ritam spremanja, prekid veze, ponovljivost i sukobe. `npm run test:school-work` koristi stvarni PHP/MySQL API, nepromjenjive snimke, ovlasti, konkurentno spremanje i svih 268 početnih ciljeva. `npm run test:school-work-ui` izvršava stvarne React komponente s tim API-jem: lokalne izmjene → potvrda → prekid mreže → oporavak → sukob → izbor → nastavnički pregled. DOM provjera nije vizualna potvrda ciljnog preglednika.
+
+Svaki integracijski skup mora imati vlastitu praznu bazu `labosv2_test_*`. Koristi iste testne varijable kao 23B/23C. Actions priprema pet zasebnih baza za račune, razrede, portal, rad i React tijek. Testne baze nikada nisu školska evidencija.

@@ -56,7 +56,7 @@ function publishTask(\PDO $pdo, array $actor, array $body): array
     foreach ($entry['templates'] as $target => $filename) {
         // Paths come exclusively from the installed private catalogue.
         if (basename($filename) !== $filename || !str_ends_with($filename, '.json')) fail(503, 'catalog', 'Školski predložak nije valjan.');
-        $starters[$target] = json_decode(file_get_contents(dirname(__DIR__) . '/catalog/' . $filename), true, 64, JSON_THROW_ON_ERROR);
+        $starters[$target] = json_decode(file_get_contents(dirname(__DIR__) . '/catalog/' . $filename), false, 64, JSON_THROW_ON_ERROR);
     }
     unset($entry['templates']); $entry['teacherNotes'] = $notes; $entry['sourceVersion'] = $catalog['sourceVersion'];
     $json = fn($v) => json_encode($v, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
@@ -126,9 +126,10 @@ function readAssignment(\PDO $pdo, array $actor, mixed $value, bool $starter = f
     if ($actor['role'] === 'student' && !$row['available']) fail(403, 'assignment_unavailable', 'Ta vježba trenutačno nije dostupna.');
     $result = assignmentValue($row);
     if ($starter) {
-        $templates = json_decode(query($pdo, 'SELECT starters FROM task_versions WHERE id=?', [$row['id']])->fetchColumn(), true, 64, JSON_THROW_ON_ERROR);
-        if (!isset($templates[$row['target']])) fail(503, 'starter', 'Zamrznuti predložak nije dostupan.');
-        $result['starter'] = $templates[$row['target']];
+        $templates = json_decode(query($pdo, 'SELECT starters FROM task_versions WHERE id=?', [$row['id']])->fetchColumn(), false, 64, JSON_THROW_ON_ERROR);
+        if (!isset($templates->{$row['target']})) fail(503, 'starter', 'Zamrznuti predložak nije dostupan.');
+        $result['starter'] = $templates->{$row['target']};
+        repairStarterObjects($result['starter']);
     }
     return $result;
 }
@@ -145,4 +146,12 @@ function setAssignmentAvailability(\PDO $pdo, array $actor, array $body): void
         query($pdo, 'UPDATE class_assignments SET available=? WHERE id=?', [(int)$body['available'], $id]);
         audit($pdo, (int)$actor['id'], null, 'assignment.availability', ['classId' => $class['id'], 'assignmentId' => $id, 'available' => $body['available']]);
     });
+}
+
+// Earlier associative decoding could turn an empty properties object into [].
+// Restore only this known object field when reading legacy frozen templates.
+function repairStarterObjects(\stdClass $project): void
+{
+    foreach ($project->circuit->components as $part) if ($part->properties === []) $part->properties = new \stdClass();
+    if (isset($project->radio->peer)) repairStarterObjects($project->radio->peer);
 }

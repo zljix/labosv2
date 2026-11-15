@@ -1,0 +1,41 @@
+TAP version 13
+# Subtest: 23D actual React UI with PHP/MySQL: save, offline recovery, conflict and teacher snapshot
+    # Subtest: pupil edits are confirmed by the API and displayed as the exact revision
+    ok 1 - pupil edits are confirmed by the API and displayed as the exact revision
+      ---
+      duration_ms: 101.744266
+      type: 'test'
+      ...
+    # Subtest: offline UI never claims a new revision is saved and retries without losing edits
+    ok 2 - offline UI never claims a new revision is saved and retries without losing edits
+      ---
+      duration_ms: 183.218538
+      type: 'test'
+      ...
+    # Subtest: two devices show both source versions before an explicit conflict resolution
+    ok 3 - two devices show both source versions before an explicit conflict resolution
+      ---
+      duration_ms: 486.332494
+      type: 'test'
+      ...
+    # Subtest: teacher sees live and not-started work, inspects text safely and opens only a detached copy
+    ok 4 - teacher sees live and not-started work, inspects text safely and opens only a detached copy
+      ---
+      duration_ms: 5339.250606
+      type: 'test'
+      ...
+    1..4
+ok 1 - 23D actual React UI with PHP/MySQL: save, offline recovery, conflict and teacher snapshot
+  ---
+  duration_ms: 9898.549691
+  type: 'test'
+  ...
+1..1
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 10709.51241

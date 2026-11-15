@@ -12,7 +12,7 @@ function respond(int $status, array $body): never
     http_response_code($status);
     if (isset($_SESSION['csrf'])) $body['csrfToken'] = $_SESSION['csrf'];
     if (session_status() === PHP_SESSION_ACTIVE) session_write_close();
-    echo json_encode(['application' => 'labosv2', 'stage' => '23C'] + $body, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
+    echo json_encode(['application' => 'labosv2', 'stage' => '23D'] + $body, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
     exit;
 }
 
@@ -26,23 +26,23 @@ try {
     $routes = ['session' => 'GET', 'login' => 'POST', 'logout' => 'POST', 'password' => 'POST', 'users' => 'GET', 'user' => 'GET', 'create-user' => 'POST', 'reset-password' => 'POST', 'update-user' => 'POST',
         'classes' => 'GET', 'class' => 'GET', 'create-class' => 'POST', 'membership' => 'POST', 'preview-students' => 'POST', 'import-students' => 'POST',
         'create-invite' => 'POST', 'revoke-invites' => 'POST', 'register' => 'POST', 'join-class' => 'POST', 'review-join' => 'POST', 'my-requests' => 'GET',
-        'catalog' => 'GET', 'task-versions' => 'GET', 'publish-task' => 'POST', 'assignments' => 'GET', 'assignment' => 'GET', 'create-assignment' => 'POST', 'assignment-availability' => 'POST'];
+        'catalog' => 'GET', 'task-versions' => 'GET', 'publish-task' => 'POST', 'assignments' => 'GET', 'assignment' => 'GET', 'create-assignment' => 'POST', 'assignment-availability' => 'POST', 'begin-attempt' => 'POST', 'save-work' => 'POST', 'attempt' => 'GET', 'attempt-revisions' => 'GET', 'class-work' => 'GET'];
     if (!is_string($action) || !isset($routes[$action])) Labos\fail(404, 'route_missing', 'Ta funkcija nije dostupna.');
     if ($routes[$action] !== $method) { header('Allow: ' . $routes[$action]); Labos\fail(405, 'method', 'Metoda zahtjeva nije dopuštena.'); }
     $body = [];
     if ($method === 'POST') {
         Labos\csrf($config);
         if (strtolower(trim(explode(';', $_SERVER['CONTENT_TYPE'] ?? '')[0])) !== 'application/json') Labos\fail(415, 'content_type', 'Pošalji JSON zahtjev.');
-        $limit = in_array($action, ['preview-students', 'import-students'], true) ? 65536 : ($action === 'publish-task' ? 24576 : 8192);
+        $limit = in_array($action, ['preview-students', 'import-students'], true) ? 65536 : ($action === 'save-work' ? 3200000 : ($action === 'publish-task' ? 24576 : 8192));
         if ((int)($_SERVER['CONTENT_LENGTH'] ?? 0) > $limit) Labos\fail(413, 'body_size', 'Zahtjev je prevelik.');
         $raw = file_get_contents('php://input', false, null, 0, $limit + 1);
         if (strlen($raw) > $limit) Labos\fail(413, 'body_size', 'Zahtjev je prevelik.');
-        try { $value = json_decode($raw, false, 16, JSON_THROW_ON_ERROR); }
+        try { $value = json_decode($raw, false, $action === 'save-work' ? 64 : 16, JSON_THROW_ON_ERROR); }
         catch (JsonException $error) { Labos\fail(400, 'json', 'JSON zahtjev nije ispravan.'); }
         if (!is_object($value)) Labos\fail(400, 'json', 'Zahtjev mora biti JSON objekt.');
         $body = (array)$value;
     }
-    if ($action === 'session') respond(200, ['user' => ($user = Labos\currentUser($pdo, false)) ? Labos\publicUser($user) : null, 'features' => ['accounts' => true, 'classes' => true, 'assignments' => true, 'centralStorage' => false, 'officialGrading' => false]]);
+    if ($action === 'session') respond(200, ['user' => ($user = Labos\currentUser($pdo, false)) ? Labos\publicUser($user) : null, 'features' => ['accounts' => true, 'classes' => true, 'assignments' => true, 'centralStorage' => true, 'officialGrading' => false]]);
     if ($action === 'login') respond(200, ['user' => Labos\login($pdo, $config, $body)]);
     if ($action === 'logout') {
         $user = Labos\currentUser($pdo, false);
@@ -80,6 +80,11 @@ try {
     if ($action === 'assignment') respond(200, ['assignment' => Labos\readAssignment($pdo, $actor, $_GET['id'] ?? null, true), 'user' => Labos\publicUser($actor)]);
     if ($action === 'create-assignment') respond(201, ['assignment' => Labos\createAssignment($pdo, $actor, $body)]);
     if ($action === 'assignment-availability') { Labos\setAssignmentAvailability($pdo, $actor, $body); respond(200, ['message' => 'Dostupnost vježbe je spremljena.']); }
+    if ($action === 'begin-attempt') respond(200, Labos\beginAttempt($pdo, $actor, $body));
+    if ($action === 'save-work') respond(200, ['saved' => Labos\saveAttempt($pdo, $actor, $body)]);
+    if ($action === 'attempt') respond(200, Labos\readAttempt($pdo, $actor, $_GET['id'] ?? null, $_GET['revision'] ?? null));
+    if ($action === 'attempt-revisions') respond(200, Labos\attemptRevisions($pdo, $actor, $_GET['id'] ?? null, $_GET['before'] ?? null));
+    if ($action === 'class-work') respond(200, Labos\classWork($pdo, $actor, $_GET['assignmentId'] ?? null, $_GET['after'] ?? null));
 } catch (Labos\ApiError $error) {
     if ($error->status === 429) header('Retry-After: 900');
     respond($error->status, ['error' => ['code' => $error->errorCode, 'message' => $error->getMessage()]]);

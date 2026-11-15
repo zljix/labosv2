@@ -1,0 +1,41 @@
+TAP version 13
+# Subtest: 23C actual portal modules: teacher preparation, pupil first login and admission approval
+    # Subtest: teacher creates class and imports pupils through preview and confirmation
+    ok 1 - teacher creates class and imports pupils through preview and confirmation
+      ---
+      duration_ms: 716.770863
+      type: 'test'
+      ...
+    # Subtest: teacher publishes an immutable rubric and assigns the correct target
+    ok 2 - teacher publishes an immutable rubric and assigns the correct target
+      ---
+      duration_ms: 196.120707
+      type: 'test'
+      ...
+    # Subtest: first-login password gate and pupil view show only assigned instructions and planned points
+    ok 3 - first-login password gate and pupil view show only assigned instructions and planned points
+      ---
+      duration_ms: 772.031138
+      type: 'test'
+      ...
+    # Subtest: registration form sends an admission request; refresh after teacher approval reveals assignments
+    ok 4 - registration form sends an admission request; refresh after teacher approval reveals assignments
+      ---
+      duration_ms: 598.825298
+      type: 'test'
+      ...
+    1..4
+ok 1 - 23C actual portal modules: teacher preparation, pupil first login and admission approval
+  ---
+  duration_ms: 4047.446724
+  type: 'test'
+  ...
+1..1
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4371.877006

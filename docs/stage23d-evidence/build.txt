@@ -1,0 +1,27 @@
+
+> esp32-micropython-lab@0.13.3-beta.1 build:school
+> node scripts/build-school.mjs
+
+Školski katalog: 67 varijanti, 268 zamrznutih predložaka.
+Neovisna provjera 23A: izgrađeni ograničeni izvršni adapteri.
+
+> esp32-micropython-lab@0.13.3-beta.1 build
+> node --import tsx scripts/build-urs-exports.ts && tsc --noEmit && vite build
+
+URS CSV i obrazac pilota generirani za 0.13.3-beta.1.
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 157 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                              0.68 kB │ gzip:   0.41 kB
+dist/assets/avrWorker-DhW4AFy_.js          179.68 kB
+dist/assets/worker-B7kkINrb.js             295.00 kB
+dist/assets/ClassReviewPanel-CfM1iDYP.css    2.85 kB │ gzip:   0.94 kB
+dist/assets/index-BX92dU5F.css              64.57 kB │ gzip:  13.61 kB
+dist/assets/ClassReviewPanel-BTgT9ovz.js    20.39 kB │ gzip:   6.82 kB
+dist/assets/CodeEditor-DVgBTqqu.js         568.59 kB │ gzip: 189.73 kB
+dist/assets/index-TbbTYVsv.js              969.50 kB │ gzip: 315.13 kB
+
+✓ built in 397ms
+/workspace/scratch/a53d3e10bbce/labosv2/release/Labosv2_0.13.3_23D_Skolski.zip

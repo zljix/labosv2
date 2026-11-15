@@ -1,21 +1,22 @@
 # Labosv2 · školski laboratorij
 
-**0.13.2-beta.1 · etapa 23C · 15. studenoga 2026.**
+**0.13.3-beta.1 · etapa 23D · 15. studenoga 2026.**
 
 Nastavak postojećeg ESP32 MicroPython / Arduino laboratorija za školski sustav s PHP-om i stvarnim MySQL-om. Polazište je [labos 0.12.9](https://github.com/zljix/labos/tree/3c4a281c10282d63b2742280f69aadbc08d7ae1e), uključujući posljednje dorade vodova.
 
-[Web laboratorij](https://zljix.github.io/labosv2/) · [Školski račun](https://zljix.github.io/labosv2/school.html#account) · [Upute za instalaciju](school/README.md) · [Dokazi etape 23C](docs/stage23c-classes.md)
+[Web laboratorij](https://zljix.github.io/labosv2/) · [Školski račun](https://zljix.github.io/labosv2/school.html#account) · [Upute za instalaciju](school/README.md) · [Dokazi etape 23D](docs/stage23d-work.md)
 
-## Što je izvedeno u 23C
+## Što je izvedeno u 23D
 
-- Školske godine i razredi, nastavnikovo stvaranje vlastitog razreda i administratorska dodjela nastavnika.
-- CSV uvoz učenika s prethodnim pregledom, provjerom identiteta postojećih računa i potvrdom povezivanja.
-- Vremenski ograničen pozivni kod, registracija učenika i nastavničko prihvaćanje ili odbijanje članstva.
-- Nepromjenjive inačice uputa, kriterija i početnih projekata za postojećih 67 URS varijanti i 268 ciljeva.
-- Dodjela točne inačice razredu uz odabranu pločicu/jezik, opcionalni rok i upravljanje dostupnošću.
-- Učenikov pregled vlastitih vježbi, kriterija i otvaranje zasebne lokalne kopije u simulatoru.
+- Učenik otvara ili nastavlja isti poslužiteljski pokušaj dodijeljene vježbe. Drugo računalo dobiva posljednju potvrđenu snimku.
+- Automatsko spremanje nakon 3 sekunde mirovanja i najkasnije nakon 15 sekundi neprekinutog uređivanja. Status jasno razlikuje lokalne izmjene, slanje i potvrđenu reviziju.
+- Nepromjenjive radne revizije čuvaju izvor, sklop, odgovore, početne medije i oba radio čvora. Ponovljeni isti zahtjev ne stvara novu reviziju.
+- Dvije kartice ili uređaji ne prepisuju noviju reviziju. Sukob otvara usporedbu; učenik izričito odabire poslužiteljsku ili svoju lokalnu verziju. Ranije snimke ostaju dostupne.
+- **Pregled razreda → Školski pregled rada** dohvaća učenike i stanja odabrane vježbe svakih 5 sekundi, uključujući nezapočete radove, vrijeme spremanja i reviziju.
+- Nastavnik čita izvore, odgovore, veze i povijest bez pokretanja koda. Za pokus otvara zasebnu lokalnu kopiju koja ne može promijeniti učenički pokušaj.
+- Migracija 004 i paket za nadogradnju s 23C. Popravljen je i prijenos praznih objekata svojstava u starijim zamrznutim predlošcima.
 
-Računi, prijava, obvezna promjena privremene lozinke, ovlasti i revizijski zapisi iz 23B ostaju sačuvani. Učenik pristupa samo dostupnim dodjelama potvrđenih razreda; nastavnik samo svojim razredima. Nova rubrika ili nadogradnja kataloga ne mijenjaju ranije objavljene inačice. Planirani maksimum rubrike nije osvojeni ni službeni broj bodova.
+Prijava, uloge, razredi, CSV uvoz, pozivni kodovi i nepromjenjive inačice zadataka iz 23B/23C ostaju dostupni. Prava se ponovno provjeravaju svakim zahtjevom. Objavljeni planirani maksimum rubrike nije osvojeni broj bodova.
 
 ## Sačuvani temelj 23A
 
@@ -28,7 +29,7 @@ Računi, prijava, obvezna promjena privremene lozinke, ovlasti i revizijski zapi
 
 **386/386 ciljanih testova**, **6/6 neovisnih compiler/runtime pokusa** i **4/4 skupne HTTPS provjere**; svih 191 web resursa provjereno je bajtno na Apacheu. Stari ZIP iz 22I ponovno se otvara i izvodi. [Točne inačice, granice i otvorene provjere](docs/stage23a-school.md).
 
-Središnje spremanje projekata, službeni bodovi i zaključavanje još nisu dostupni. Probni rezultati zadržavaju oznaku `feasibility-only`. Slijedi 23D: središnje spremanje i nastavnički pregled rada. GitHub Pages služi web simulator i javni prikaz školskog izdanja; prijava zahtijeva školski PHP/MySQL poslužitelj.
+Središnje spremanje dodijeljenih vježbi i nastavnički pregled sada su dostupni na školskom poslužitelju. Službeni bodovi i zaključavanje slijede u 23E–23F. Probni rezultati 23A zadržavaju oznaku `feasibility-only`. GitHub Pages služi web simulator i javni prikaz školskog izdanja; prijava zahtijeva školski PHP/MySQL poslužitelj.
 
 ## Pokretanje i izgradnja
 
@@ -47,7 +48,7 @@ npm ci
 npm run build:school
 ```
 
-Školski paket: `release/Labosv2_0.13.2_23C_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-23C-Skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
+Školski paket: `release/Labosv2_0.13.3_23D_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-23D-Skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
 
 ```sh
 npm run build:pages
@@ -63,11 +64,12 @@ npm run build:school-grader
 npm run test:school
 npm run test:school-package
 npm run test:school-catalog
+npm run test:school-sync
 npm run test:routing
 npm test
 ```
 
-`npm run test:school-accounts` dodatno koristi stvarni PHP i praznu zasebnu MySQL bazu `labosv2_test_*` s ograničenim računom. Potrebne testne varijable i postupak opisani su u školskim uputama. Ista provjera pokreće se u Actionsu uz vlastiti MySQL servis; testna baza nikada nije školska evidencija.
+`npm run test:school-accounts` dodatno koristi stvarni PHP i praznu zasebnu MySQL bazu `labosv2_test_*` s ograničenim računom. Potrebne testne varijable i postupak opisani su u školskim uputama. `test:school-work` i `test:school-work-ui` provjeravaju i API te stvarne React komponente uz zasebne prazne baze. Iste provjere pokreću se u Actionsu uz vlastiti MySQL servis; testna baza nikada nije školska evidencija.
 
 Neovisna provjera traži Linux, Bubblewrap i dopuštene korisničke prostore. Za potpuno novi AVR izvor treba unaprijed pripremljeni zaključani alatni lanac; postupak je u školskim uputama. Nema nesigurnog zamjenskog izvođenja bez izolacije. Ukupni memorijski limit i javni servis provjere dolaze prije stvarnog učeničkog pilota.
 

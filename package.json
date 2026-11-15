@@ -1,6 +1,6 @@
 {
   "name": "esp32-micropython-lab",
-  "version": "0.13.2-beta.1",
+  "version": "0.13.3-beta.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -63,7 +63,10 @@
     "test:school-package": "node --test verification/school-package.test.mjs",
     "test:school-classes": "node --test verification/school-classes.test.mjs",
     "test:school-catalog": "node --import tsx --test verification/school-catalog.test.ts",
-    "test:school-portal": "node --test verification/school-portal.test.mjs"
+    "test:school-portal": "node --test verification/school-portal.test.mjs",
+    "test:school-work": "node --import tsx --test verification/school-work.test.mjs",
+    "test:school-sync": "node --import tsx --test verification/school-sync.test.ts",
+    "test:school-work-ui": "node --import tsx --test verification/school-work-ui.test.tsx"
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.1",

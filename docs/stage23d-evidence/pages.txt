@@ -1,0 +1,20 @@
+
+> esp32-micropython-lab@0.13.3-beta.1 test:pages
+> node --test verification/pages.test.mjs
+
+✔ Pages package contains the complete byte-verified application under its project prefix (25.1999ms)
+✔ entry page, copied guide, pilot and install manifest keep navigation inside the repository (2.48848ms)
+✔ HTTP delivery finds every prefixed file and serves WebAssembly with the correct type (213.18343ms)
+✔ the installed Pages worker reopens the entire application without network access (148.515129ms)
+✔ corrupt Pages runtime cannot be advertised as offline ready (23.327037ms)
+✔ Pages cache and routing do not intercept another project on the same GitHub origin (90.558055ms)
+✔ old runtime files use only caches belonging to this project (80.835352ms)
+✔ other GitHub project tabs do not block an explicit update but two laboratory tabs do (142.073048ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 824.625537

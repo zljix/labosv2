@@ -1,0 +1,11 @@
+✔ 24B S3 exact trusted source ignores forged and modified incoming WASM; changed source requires compilation (848.643179ms)
+✔ 24B all six S3 rubrics compile the saved source independently, including second implementations and wrong solutions (13495.753846ms)
+✔ 24B correct fast polling stays inside the same contract without losing observations (4960.517896ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 19528.271639

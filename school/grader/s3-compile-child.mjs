@@ -1,14 +1,25 @@
-import {readFile} from 'node:fs/promises';
+import {access,readFile} from 'node:fs/promises';
+import {constants} from 'node:fs';
+import {delimiter,resolve} from 'node:path';
 import {createHash} from 'node:crypto';
-import {execFile} from 'node:child_process';
-import {promisify} from 'node:util';
 import {compileS3} from '/app/scripts/s3-compile.mjs';
 let raw='';
 for await(const chunk of process.stdin){raw+=chunk;if(Buffer.byteLength(raw)>4194304)throw Error('Projekt je prevelik.');}
 const {project,clang,opt}=JSON.parse(raw);
 try{
   const artifact=await compileS3(project,{clang,opt});
-  const locate=async bin=>bin.includes('/')?bin:(await promisify(execFile)('/usr/bin/which',[bin])).stdout.trim();
+  const locate=async bin=>{
+    if(bin.includes('/'))return bin;
+    // Resolve within the administrator-selected sandbox PATH. /usr/bin/which
+    // may point through /etc/alternatives, which is intentionally not mounted.
+    for(const directory of (process.env.PATH??'').split(delimiter).filter(Boolean)){
+      const candidate=resolve(directory,bin);
+      try{await access(candidate,constants.X_OK);return candidate;}catch(error){
+        if(!['ENOENT','EACCES','ENOTDIR'].includes(error.code))throw error;
+      }
+    }
+    throw Error('Prevoditelj nije pronađen u dopuštenom PATH-u.');
+  };
   const compilerIdentity={};
   for(const [name,bin]of Object.entries({clang,opt}))compilerIdentity[name]=createHash('sha256').update(await readFile(await locate(bin))).digest('hex');
   process.stdout.write(JSON.stringify({status:'compiled',artifact,compilerIdentity}));

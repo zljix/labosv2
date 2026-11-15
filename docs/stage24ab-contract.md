@@ -27,6 +27,8 @@ Izvor se prevodi u zasebnoj Linux izolaciji s Clangom 19.1.7, Binaryenom 120, za
 
 Rezultat bilježi hash izvora, hash novog WASM-a, alatni lanac i identitet izvršenih alata. Sve pločice koriste točno spremljeni sklop. S3 WASM ostaje funkcionalni profil simulatora i nije firmware za fizički ESP32.
 
+Identitet alata računa se izravnim čitanjem izvršnih datoteka pronađenih u dopuštenom PATH-u. Integracija prije cijelog skupa provjerava instalaciju u istom izoliranom procesu koji prevodi učenički izvor.
+
 S3 izvođenje koristi deterministički virtualni sat. Pobude se mijenjaju na unaprijed određenim granicama; provjeravaju se stvarni GPIO/ADC/I2C rezultati i novi ispisi. Analogni S3 profil koristi 12 bita i zasićenje na 3,1 V, a AVR 10 bita i 5 V. S3 ADC ulaz sada se pojavljuje u opaženom GPIO stanju i kada ga program prvi put otvori samim `analogRead()`.
 
 ## Objavljene granice
@@ -46,6 +48,7 @@ Izvođenje ima granicu od 20 s zidnog vremena, prevođenje 90 s, izlaz 1 MiB i p
 | Ugovori, izolirano izvođenje i svi novi S3/Uno/Nano prijevodi | 9/9, bez preskoka |
 | Projekti, sklopovi, vodovi, školski prikaz, sinkronizacija, završetak i izvještaji | 76/76 |
 | S3 analogni profil i stvarno prevođenje promijenjenog izvora | 54/54 |
+| Isti Ubuntu S3 alati, relativne putanje i neovisni prijevodi svih šest rubrika | 3/3 |
 | Obrazac pilota, mjere i liveness | 6/6 |
 | Školski ZIP i korijenski offline paket | 10/10 |
 

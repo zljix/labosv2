@@ -1,8 +1,8 @@
-# Labosv2 · školski paket · etapa 23A
+# Labosv2 · školski paket · etapa 23B
 
 Etapa 23A priprema postojeći laboratorij za školski Apache/PHP/MySQL smjer i dokazuje ponovno izvršavanje izvan učenikova preglednika. Polazište je `zljix/labos@3c4a281` (0.12.9), uključujući posljednju doradu vodova. Ovaj razvoj objavljuje se u `zljix/labosv2`.
 
-**Dostupno:** simulator, postojeći projekti i izvozi, školski statički paket, PHP provjera preduvjeta, primjer Apache postavki te ograničeni dokaz provjere tipkala/LED-ice za MicroPython i AVR. **Prijava, središnja pohrana i službeno bodovanje još nisu uključeni.** Njihove etape ostaju 23B–23F. Izvorni plan od 14. 11. 2026. nije zamijenjen novim opsegom.
+**Dostupno:** simulator, postojeći projekti i izvozi, školski paket, PHP provjera preduvjeta, MySQL migracije, početni administrator, prijava/odjava, uloge, upravljanje računima i lozinkama te raniji ograničeni dokaz tipkala/LED-ice. **Središnja pohrana projekata, službeni bodovi i zaključavanje još nisu uključeni.** Slijede 23C–23F. Izvorni plan od 14. 11. 2026. zadržan je.
 
 ## Izgradnja
 
@@ -12,13 +12,14 @@ Node.js 24 LTS, `npm ci`, zatim:
 npm run build:school
 ```
 
-Nastaje `release/Labosv2_0.13.0_23A_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
+Nastaje `release/Labosv2_0.13.1_23B_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
 
 | Mapa | Namjena |
 | --- | --- |
-| `web/` | Jedini javni web-korijen: izgrađeni laboratorij, resursi i `api/health.php`. |
+| `web/` | Jedini javni web-korijen: laboratorij, portal računa, resursi i PHP API. |
+| `app/`, `migrations/` | Privatni PHP kod i verzionirane SQL migracije; nikada nisu web-korijen. |
 | `config/` | Primjer privatne konfiguracije bez ugrađene lozinke. |
-| `tools/` | CLI inventura PHP-a, računala i stvarne veze s MySQL-om. |
+| `tools/` | CLI inventura te migracije i jednokratno stvaranje administratora. |
 | `apache/` | Predložak HTTPS virtualnog poslužitelja. |
 | `checker/` | Zaseban CLI dokaz izvršavanja; nema javne HTTP rute. |
 | `package-inventory.json` | Veličina i SHA-256 svake datoteke isporuke. |
@@ -56,13 +57,59 @@ Windows web profil je pripremljen, ali nije proglašen provjerenim dok se ne izv
 
 Kopiraj `config/config.example.php` izvan javnog web-korijena, npr. `/srv/labosv2-private/config.php`, i upiši DSN i ograničeni aplikacijski račun. Lozinku zadaj kroz `LAB_DB_PASSWORD` ili u privatnoj, pristupom zaštićenoj konfiguraciji. Konfiguracija se ne stavlja u Git ni u `web/`.
 
-Administrator baze priprema praznu bazu `labosv2` s utf8mb4 i korisnika koji ima ovlasti samo nad tom bazom. Aplikacija ne koristi root ni globalne administracijske ovlasti. SQL migracije i stvaranje prvog administratora pripadaju etapi 23B; inventura ne stvara niti briše tablice.
+Administrator baze priprema praznu bazu `labosv2` s utf8mb4 i korisnika koji ima ovlasti samo nad tom bazom. Aplikacija ne koristi root ni globalne administracijske ovlasti. Migracijski račun treba CREATE i potrebna prava nad tom bazom; inventura ne stvara niti briše tablice. PHP API dodatno odbija root i globalne administracijske ovlasti.
 
 ```sh
 php tools/preflight.php /srv/labosv2-private/config.php
 ```
 
 Izlaz je JSON; kod 0 znači da su navedeni preduvjeti potvrđeni, a 2 da nešto nedostaje. Pregledava stvarni poslužitelj preko PDO-a, razlikuje MariaDB, provjerava InnoDB, utf8mb4 i ovlasti. Ne ispisuje lozinku, DSN ni cijeli popis ovlasti. **Preflight mora ostati izvan web-korijena.** Njegov zapis može sadržavati tehnički inventar, pa ga čuvaj privatno. `api/health.php` daje samo stanje pripreme aplikacije; njegov uspjeh nije dokaz veze s bazom.
+
+## Aktivacija računa i migracije 23B
+
+1. U privatnoj konfiguraciji popuni `app.origin` točnom HTTPS adresom instalacije. Za namjernu podputanju uključi i nju. Adresa određuje zaštitu zahtjeva i putanju kolačića.
+2. Generiraj privatni ključ naredbom `php tools/console.php key` i spremi ga u `app.key` ili u varijablu `LAB_APP_KEY`. Ne mijenjaj ga pri svakoj izgradnji. Ključ i lozinka baze ne idu u Git.
+3. Izvan `web/` stvori mapu sesija, npr. `/srv/labosv2-private/sessions`. Dopusti upis samo računu pod kojim PHP radi i postavi `app.session_directory`. Na Linuxu primjer je vlasništvo PHP računa i prava 0700; na Windowsu dodijeli odgovarajući privatni ACL.
+4. U PHP/Apache okruženju postavi `LAB_SCHOOL_CONFIG` na apsolutnu putanju privatne konfiguracije. Za mod_php možeš u virtualni poslužitelj dodati `SetEnv LAB_SCHOOL_CONFIG /srv/labosv2-private/config.php`; za FPM zadaj `env[LAB_SCHOOL_CONFIG] = /srv/labosv2-private/config.php` u odgovarajućem poolu i ponovno učitaj servis. CLI putanju prima izravno.
+5. Primijeni migracije:
+
+```sh
+php tools/console.php migrate /srv/labosv2-private/config.php
+```
+
+Migracije ne brišu podatke. Svaka ima checksum; promjena već primijenjenog SQL-a odbija se. Zaključavanje baze sprječava dvije istodobne migracije. MySQL DDL implicitno potvrđuje transakcije, pa početne migracije koriste ponovljive `CREATE TABLE IF NOT EXISTS` naredbe i zapisuju uspjeh tek nakon svih naredbi. Prekinuta početna migracija može se ponoviti. Nema automatskog destruktivnog vraćanja.
+
+6. U privatnoj privremenoj JSON datoteci pripremi svoj prvi račun:
+
+```json
+{"username":"admin.skola","displayName":"Administrator škole","password":"<tvoja nova osobna lozinka>"}
+```
+
+Privremenu datoteku zaštiti kao konfiguraciju i proslijedi kroz standardni ulaz, bez lozinke u argumentima naredbe:
+
+```sh
+php tools/console.php init-admin /srv/labosv2-private/config.php < /srv/labosv2-private/privatni-admin.json
+```
+
+Na Windowsu preusmjeravanje `<` pokreni u CMD-u uz vlastite putanje. Nakon uspjeha ukloni privremenu datoteku. Ne postoji zadana lozinka ni javna instalacijska ruta. Drugo pokretanje inicijalizacije nakon stvaranja korisnika odbija se; postojeći administrator stvara ostale račune u portalu.
+
+7. Otvori **Školski račun** u laboratoriju ili `school.html`. Prijavi se prvim računom. Dodaj nastavnika i učenika, osobno im predaj privremene lozinke i provjeri prvu prijavu.
+
+U ovoj etapi administrator stvara račune i mijenja uloge/aktivnost. Nastavnik vidi i resetira lozinke samo učenicima svojih dodijeljenih razreda; zahtjev traži i nastavnikovu trenutačnu lozinku. Temeljne tablice razreda postoje radi te provjere ovlasti. **Upravljanje razredima, dodjela nastavnika i članstva kroz sučelje dolaze u 23C.** Bez dodijeljenog razreda nastavnički je popis prazan; administrator može resetirati korisnikovu lozinku. Nema prešutnog prava na sve učenike škole.
+
+Privremena lozinka mora se promijeniti prije korištenja upravljačkih funkcija. Lozinke imaju 12–72 bajta, obrađuju se `password_hash`/`password_verify` i nikada se ne vraćaju API-jem. Promjena/reset lozinke, deaktivacija i promjena uloge opozivaju ranije sesije preko `auth_version`. Obična odjava zatvara trenutačnu sesiju. Administrator ne može sam sebi ukinuti aktivnost ili administratorsku ulogu.
+
+Sesije koriste HttpOnly i SameSite=Strict, HTTPS postavlja Secure, identifikator se obnavlja nakon prijave i promjene lozinke. Sesija traje do 30 minuta neaktivnosti ili najviše 8 sati. Izmjene zahtijevaju CSRF token i provjeru izvora. Ograničenje prijave čuva se u MySQL-u: do 8 pokušaja po korisničkom imenu i 120 po adresi u fiksnih 15 minuta, uključujući uspješne prijave. Nepoznat račun i pogrešna lozinka daju istu poruku. Revizijski zapis sadrži autora, cilj i vrstu promjene, bez lozinki ili sesijskih tokena.
+
+Za isključivo lokalne razvojne pokuse postoji `app.allow_insecure_localhost=true` uz HTTP localhost/127.0.0.1; zahtjev mora stvarno doći s loopback adrese. Zadana školska postavka ostaje HTTPS. Proxy zaglavlja ne pretvaraju nešifrirani zahtjev u pouzdani HTTPS.
+
+API računa i sesija nikada ne ulazi u offline predmemoriju. Nakon odjave privatni popisi nisu dostupni u sučelju. Lokalni simulator i njegovi već postojeći projekti još nisu povezani s prijavljenim računom; taj prijelaz pripada 23D.
+
+### Provjera instalacije i nadogradnja
+
+Prije nadogradnje sačuvaj bazu i privatnu konfiguraciju prema školskoj proceduri. Zamijeni programske datoteke i ponovi `migrate`; sačuvaj istu konfiguraciju, ključ i privatnu mapu sesija. Paket uključuje samo `config.example.php`, nikada lokalni `config.php`.
+
+Regresiju računa pokreći isključivo na zasebnoj praznoj bazi `labosv2_test_*` s ograničenim testnim korisnikom. Postavi `LAB_TEST_DB_DSN`, `LAB_TEST_DB_USER`, `LAB_TEST_DB_PASSWORD` i po potrebi `PHP_BIN`, pa `npm run test:school-accounts` nakon `npm run build:school`. Test stvara sintetske račune, izvodi stvarni PHP HTTP API i PDO, provjerava migracije, ovlasti, sesije, CSRF, reset, deaktivaciju i paralelno ograničavanje prijava. Nikada mu ne zadaj školsku bazu. GitHub Actions pokreće isti scenarij uz zaseban MySQL 8.4 servis.
 
 ## Neovisni dokaz provjere programa
 
@@ -111,13 +158,16 @@ Regresija: `npm run test:school`. Cjelovit dokaz s dva nova AVR izvora: `npm run
 
 HTTPS provjeri na svakom ciljnom uređaju. `http://localhost` provjera ne dokazuje mrežni HTTPS pristup. Promjena domene ili protokola stvara drugi origin. Na istoj GitHub domeni putanje dijele origin, pa labosv2 izričito koristi zasebne nazive IndexedDB baze, oporavka i Arduino predmemorije. Postojeći rad prenesi ZIP/JSON izvozom; dosadašnji zapisi labosa ne mijenjaju se niti se automatski prenose. Podatci se još ne sinkroniziraju preko baze.
 
-## Završetak 23A i otvorene provjere
+## Završetak 23B i otvorene provjere
 
-Dokazi i stvarno ispitane inačice nalaze se u `docs/stage23a-school.md` i `docs/stage23a-evidence/`. Nakon ove etape slijedi 23B: migracije, administrator, prijava/odjava, lozinke i uloge. Stvarni školski HTTPS/LAN profil, Windows/mobilni uređaji, cgroup ograničenje memorije, razred od 30 učenika i fizička oprema imaju zasebne provjere; ovaj paket ih ne proglašava potvrđenima.
+Novi dokazi nalaze se u `docs/stage23b-accounts.md`; raniji izvršni pokusi ostaju u `docs/stage23a-school.md`. Slijedi 23C: upravljanje razredima i verzioniranim dodijeljenim vježbama. Stvarni školski HTTPS/LAN profil, Windows/mobilni uređaji, cgroup ograničenje memorije, razred od 30 učenika i fizička oprema imaju zasebne provjere; ovaj paket ih ne proglašava potvrđenima.
 
 ## Tehnički izvori
 
 - [PHP: podržane grane](https://www.php.net/supported-versions.php)
+- [PHP: zaštita sesija](https://www.php.net/manual/en/session.security.ini.php)
+- [PHP: hashiranje lozinki](https://www.php.net/manual/en/function.password-hash.php)
+- [MySQL 8.4: implicitno potvrđivanje DDL-a](https://dev.mysql.com/doc/refman/8.4/en/implicit-commit.html)
 - [MySQL 8.4: LTS model](https://dev.mysql.com/doc/refman/8.4/en/mysql-releases.html)
 - [XAMPP i MariaDB](https://www.apachefriends.org/faq_windows.html)
 - [Apache: MIME tipovi](https://httpd.apache.org/docs/2.4/mod/mod_mime.html)

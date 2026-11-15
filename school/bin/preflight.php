@@ -56,13 +56,13 @@ if (is_readable('/proc/meminfo') && preg_match('/MemTotal:\s+(\d+) kB/', file_ge
 $cpu = null;
 if (is_readable('/proc/cpuinfo') && preg_match('/model name\s*:\s*(.+)/', file_get_contents('/proc/cpuinfo'), $match)) { $cpu = trim($match[1]); }
 $report = [
-    'format' => 'labosv2-school-preflight', 'version' => 1, 'stage' => '23A',
+    'format' => 'labosv2-school-preflight', 'version' => 1, 'stage' => '23B',
     'generatedAt' => gmdate('c'), 'displayTimezone' => 'Europe/Zagreb',
     'environment' => ['os' => PHP_OS_FAMILY, 'kernel' => php_uname('r'), 'architecture' => php_uname('m'), 'cpu' => $cpu, 'memoryBytes' => $memory, 'freeDiskBytes' => disk_free_space(__DIR__)],
     'database' => $database,
     'checks' => $checks,
     'ready' => !in_array('fail', array_column($checks, 'status'), true),
-    'scope' => 'Read-only CLI prerequisites; no accounts, migrations, official scores or school pilot.',
+    'scope' => 'Read-only CLI prerequisites; does not run migrations, initialize accounts or confirm HTTP login readiness.',
 ];
 echo json_encode($report, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR) . PHP_EOL;
 exit($report['ready'] ? 0 : 2);

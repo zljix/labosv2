@@ -16,6 +16,34 @@ jobs:
           node-version: '24'
           cache: npm
       - run: npm ci
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: pdo_mysql, json, session
+          coverage: none
+      - name: Pokreni zasebni MySQL s jednokratnim vjerodajnicama
+        shell: bash
+        run: |
+          set +x
+          db_root_pass="$(openssl rand -hex 24)"
+          db_app_pass="$(openssl rand -hex 24)"
+          echo "::add-mask::$db_root_pass"
+          echo "::add-mask::$db_app_pass"
+          docker run --detach --name labosv2-ci-db \
+            --publish 127.0.0.1:3306:3306 \
+            --env MYSQL_ROOT_PASSWORD="$db_root_pass" \
+            --env MYSQL_DATABASE=labosv2_test_ci \
+            --env MYSQL_USER=labosv2_ci \
+            --env MYSQL_PASSWORD="$db_app_pass" mysql:8.4.7
+          echo "LAB_TEST_DB_PASSWORD=$db_app_pass" >> "$GITHUB_ENV"
+          for attempt in $(seq 1 60); do
+            if docker exec labosv2-ci-db sh -c 'MYSQL_PWD="$MYSQL_ROOT_PASSWORD" mysqladmin ping --host=127.0.0.1 --silent' >/dev/null 2>&1; then
+              exit 0
+            fi
+            sleep 2
+          done
+          echo 'Test MySQL did not become ready.' >&2
+          exit 1
       - name: Pripremi Linux izolaciju
         run: |
           sudo apt-get update
@@ -28,11 +56,20 @@ jobs:
           ninja -C "$RUNNER_TEMP/bwrap-build" install
           printf '%s\n' "$RUNNER_TEMP/bwrap-install/bin" >> "$GITHUB_PATH"
       - run: npm run build:school
+      - run: npm run test:school-package
+      - name: Provjeri stvarni PHP i MySQL račune
+        run: npm run test:school-accounts
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_ci;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
       - name: Provjeri projekte, vodove i neovisno izvršavanje
         run: node --import tsx --test verification/project.test.ts verification/circuit.test.ts verification/routing.test.ts verification/school.test.ts
       - uses: actions/upload-artifact@v4
         with:
-          name: Labosv2-23A-Skolski-paket
+          name: Labosv2-23B-Skolski-paket
           path: release/*.zip
           if-no-files-found: error
           retention-days: 30
+      - name: Ugasi testnu bazu
+        if: always()
+        run: docker rm --force labosv2-ci-db || true

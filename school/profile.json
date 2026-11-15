@@ -1,7 +1,7 @@
 {
   "format": "labosv2-school-profile",
   "version": 1,
-  "stage": "23A",
+  "stage": "23B",
   "sourceBaseline": "zljix/labos@3c4a281c10282d63b2742280f69aadbc08d7ae1e",
   "webServer": "Apache 2.4 with HTTPS",
   "phpBranches": [
@@ -17,7 +17,7 @@
   "node": "24 LTS",
   "displayTimezone": "Europe/Zagreb",
   "features": {
-    "accounts": false,
+    "accounts": true,
     "centralStorage": false,
     "officialGrading": false
   },
@@ -44,5 +44,17 @@
     "hardTotalMemoryLimit": "not-yet-configured",
     "bubblewrapMinimum": "0.8.0",
     "bubblewrapTested": "0.12.0"
+  },
+  "authentication": {
+    "roles": [
+      "student",
+      "teacher",
+      "admin"
+    ],
+    "idleTimeoutMinutes": 30,
+    "absoluteTimeoutHours": 8,
+    "forcedTemporaryPasswordChange": true,
+    "sessionRevocation": "auth_version",
+    "teacherResetScope": "assigned-class-students"
   }
 }

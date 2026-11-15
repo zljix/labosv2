@@ -23,7 +23,7 @@ export async function createS3Engine(bytes,circuit,send,options={}){
   lab_gpio_mode:(p,m)=>{pin(p);if(![1,3,5,9,19].includes(m))return -22;modes.set(p,m);const latch=latches.get(p)??0;return host.mode(p,m===3||(m===19&&!latch),m===5?1:m===9?2:0,m===3?latch:m===19?0:-1);},
   lab_gpio_write:(p,v)=>{pin(p);latches.set(p,v);const mode=modes.get(p);if(mode===19)return host.mode(p,!v,0,0);if(mode===3)return host.write(p,v);return host.mode(p,0,v?1:0,-1);},
   lab_gpio_read:p=>{pin(p);const mode=modes.get(p);return host.read(p,mode===5?1:mode===9?2:mode===19?0:latches.get(p)?1:0);},
-  lab_adc:(p,bits,atten)=>{pin(p);if(p<1||p>20||atten<0||atten>3)return -22;const uv=host.adc(p);if(uv<0)return uv;const range=[950000,1250000,1750000,3100000][atten],raw=Math.round(Math.min(1,uv/range)*4095);return bits===0?Math.round(raw*range/4095000):bits>12?raw<<(bits-12):raw>>(12-bits);},
+  lab_adc:(p,bits,atten)=>{pin(p);if(p<1||p>20||atten<0||atten>3)return -22;if(!modes.has(p)){modes.set(p,1);const status=host.mode(p,0,0,-1);if(status<0)return status;}const uv=host.adc(p);if(uv<0)return uv;const range=[950000,1250000,1750000,3100000][atten],raw=Math.round(Math.min(1,uv/range)*4095);return bits===0?Math.round(raw*range/4095000):bits>12?raw<<(bits-12):raw>>(12-bits);},
   lab_pwm:(p,f,d)=>{pin(p);return host.pwm(p,f,d);},
   lab_clock:us=>{const now=host.ticksUs();return (us?Math.floor(now):Math.floor(now/1000))|0;},
   // Zero-duration yield uses wrap()'s bounded 8 ms scheduling budget. Creating

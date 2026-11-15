@@ -1,0 +1,16 @@
+✔ Pages package contains the complete byte-verified application under its project prefix (21.889581ms)
+✔ entry page, copied guide, pilot and install manifest keep navigation inside the repository (1.630592ms)
+✔ HTTP delivery finds every prefixed file and serves WebAssembly with the correct type (217.94296ms)
+✔ the installed Pages worker reopens the entire application without network access (112.964705ms)
+✔ corrupt Pages runtime cannot be advertised as offline ready (25.696431ms)
+✔ Pages cache and routing do not intercept another project on the same GitHub origin (74.297712ms)
+✔ old runtime files use only caches belonging to this project (52.890614ms)
+✔ other GitHub project tabs do not block an explicit update but two laboratory tabs do (167.517412ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 754.16928

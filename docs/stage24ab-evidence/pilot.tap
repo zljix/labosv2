@@ -1,0 +1,14 @@
+✔ a blank school pilot remains a draft and missing measurements never become zero (1.443244ms)
+✔ even an all-pass development record retains its scope and observer authority (0.596536ms)
+✔ school observations require real participant counts, environment and evidence; invalid imports fail before replacing data (1.082689ms)
+✔ actual pilot form exports a draft, preserves text on invalid export and imports observations as safe editable text (89.399966ms)
+✔ current PHP liveness capabilities match the profile; stale 23B expectations and readiness claims fail (0.554463ms)
+✔ nearest-rank latency percentiles preserve zero, do not mutate samples and distinguish missing evidence (1.036539ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 468.009829

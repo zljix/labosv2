@@ -1,0 +1,18 @@
+✔ package covers shell, lazy editor, every runtime dependency, drivers, manual and valid install icons (1.610372ms)
+✔ verified package reopens shell and executes file requests without any network (156.616041ms)
+✔ incorrect bytes or login/fallback response cannot install an eligible package (131.049301ms)
+✔ quota failure cannot advertise a partially stored package (60.109252ms)
+✔ an evicted asset invalidates offline readiness (109.234819ms)
+✔ an update needs an explicit message and refuses more than one open tab (117.397162ms)
+✔ upgrade retains previous content-addressed runtime and does not cache unrelated or private requests (59.060139ms)
+✔ content-addressed production Worker actually runs MicroPython and framebuf (155.99605ms)
+✔ school ZIP verifies every inventory entry and keeps app, SQL and configuration out of web/ (277.616155ms)
+✔ installed app worker never intercepts private school API or POST requests (2.470149ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1083.828398

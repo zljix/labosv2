@@ -4,8 +4,8 @@ import {existsSync,realpathSync} from 'node:fs';
 
 // Explicitly Linux-only: absence/failure is an infrastructure error, never a
 // request to execute untrusted input on the host as a fallback.
-/** @param {string} root @param {string} entry @param {{compiler?: boolean, cli?: string, data?: string, bounded?: boolean}} [options] */
-export function sandboxCommand(root, entry, {compiler = false, cli, data, bounded = false} = {}) {
+/** @param {string} root @param {string} entry @param {{compiler?: boolean, s3Compiler?: boolean, toolchainRoot?: string, cli?: string, data?: string, bounded?: boolean}} [options] */
+export function sandboxCommand(root, entry, {compiler = false, s3Compiler = false, toolchainRoot, cli, data, bounded = false} = {}) {
   if (process.platform !== 'linux') throw Error('Izolirana provjera 23A zasad traži Linux; nema nesigurnog zamjenskog izvođenja.');
   const node = realpathSync(process.execPath);
   const args = ['--user', '--map-root-user', '--net', 'bwrap', '--unshare-pid', '--unshare-ipc', '--unshare-uts', '--die-with-parent', '--new-session',
@@ -21,13 +21,24 @@ export function sandboxCommand(root, entry, {compiler = false, cli, data, bounde
       '--ro-bind', resolve(root, 'scripts/avr-compile.mjs'), '/app/scripts/avr-compile.mjs',
       '--ro-bind', resolve(root, 'vendor/arduino'), '/app/vendor/arduino');
   }
+  if(s3Compiler){
+    args.push('--ro-bind',resolve(root,'scripts/s3-compile.mjs'),'/app/scripts/s3-compile.mjs',
+      '--ro-bind',resolve(root,'scripts/avr-compile.mjs'),'/app/scripts/avr-compile.mjs',
+      '--ro-bind',resolve(root,'runtime/arduino-s3'),'/app/runtime/arduino-s3',
+      '--ro-bind',resolve(root,'vendor/arduino'),'/app/vendor/arduino',
+      '--setenv','BINARYEN_CORES','1');
+    // Optional, administrator-selected installation prefix for the same pinned
+    // tools. No user-supplied build flags or source paths select this mount.
+    if(toolchainRoot)args.push('--ro-bind',resolve(toolchainRoot),resolve(toolchainRoot),
+      '--setenv','PATH','/runtime:'+resolve(toolchainRoot,'bin')+':'+resolve(toolchainRoot,'usr/bin')+':/usr/bin:/bin');
+  }
   args.push('--', '/runtime/node', '--max-old-space-size=96', '--disable-proto=throw');
   if (bounded) args.push('--disable-wasm-trap-handler');
-  if (!compiler) args.push('--permission', '--allow-fs-read=/app');
+  if (!compiler&&!s3Compiler) args.push('--permission', '--allow-fs-read=/app');
   args.push('/app/child.mjs');
   // A kernel-enforced virtual-address limit complements the V8/Python heaps,
   // bounded tmpfs, output and wall-time caps. Children inherit the limits.
-  return bounded ? {command: 'prlimit', args: ['--as=2147483648', '--cpu='+(compiler?85:18), '--fsize=33554432', '--', 'unshare', ...args]} : {command: 'unshare', args};
+  return bounded ? {command: 'prlimit', args: ['--as=2147483648', '--cpu='+(compiler||s3Compiler?85:18), '--fsize=33554432', '--', 'unshare', ...args]} : {command: 'unshare', args};
 }
 
 export function runSandbox(command, payload, timeoutMs = 10000) {

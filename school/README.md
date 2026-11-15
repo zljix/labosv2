@@ -1,6 +1,6 @@
-# Labosv2 · školski paket · etapa 23I
+# Labosv2 · školski paket · etape 24A–24B
 
-Izdanje 0.13.8-beta.1 priprema školski pilot, obrazac opažanja i razvojni pokus 30 + 1; vidi [23I](../docs/stage23i-pilot.md). Etapa 23H dodala je postignuća, izvoze, komentare i korekcije, arhiviranje, čuvanje međurevizija te privatne kopije i povrat. Postupak i provjere su u [izvješću 23H](../docs/stage23h-reports-administration.md). [Raniji zapis integracije 23F](https://github.com/zljix/labosv2/actions/runs/43738711916) ostaje povijesni dokaz. Stvarni školski pilot ostaje zasebna provjera.
+Prethodno izdanje 0.13.8-beta.1 pripremilo je školski pilot, obrazac opažanja i razvojni pokus 30 + 1; vidi [23I](../docs/stage23i-pilot.md). Etapa 23H dodala je postignuća, izvoze, komentare i korekcije, arhiviranje, čuvanje međurevizija te privatne kopije i povrat. Postupak i provjere su u [izvješću 23H](../docs/stage23h-reports-administration.md). [Raniji zapis integracije 23F](https://github.com/zljix/labosv2/actions/runs/43738711916) ostaje povijesni dokaz. Stvarni školski pilot ostaje zasebna provjera.
 
 Etapa 23A priprema postojeći laboratorij za školski Apache/PHP/MySQL smjer i dokazuje ponovno izvršavanje izvan učenikova preglednika. Polazište je `zljix/labos@3c4a281` (0.12.9), uključujući posljednju doradu vodova. Ovaj razvoj objavljuje se u `zljix/labosv2`.
 
@@ -14,7 +14,7 @@ Node.js 24 LTS, `npm ci`, zatim:
 npm run build:school
 ```
 
-Nastaje `release/Labosv2_0.13.8_23I_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
+Nastaje `release/Labosv2_0.14.0_24AB_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
 
 | Mapa | Namjena |
 | --- | --- |
@@ -391,3 +391,16 @@ Na stranici **Školski račun → Školski pilot** otvori obrazac opažanja. Pra
 Razvojni izvor sadrži test:school-load. Koristi PHP CLI i zasebnu praznu MySQL bazu labosv2_test_* s ograničenim testnim računom, iste testne varijable kao ostale integracije te Linux izolaciju. Ne usmjerava se na školsku adresu ni evidenciju. Actions pokreće pokus za 30 sintetskih učenika, 90 spremanja i 30 neovisno ocijenjenih predaja; rezultat i obnovljeni ZIP čuva kao artefakte 23I.
 
 Na stvarnom školskom Apacheu provedi i zasebnu provjeru točnih resursa i MIME tipova iz razvojnog izvora naredbom school:host, uz LAB_SCHOOL_URL s pouzdanim HTTPS certifikatom. Ta provjera ne zamjenjuje prijavu i školski pilot. [Postupak i granice 23I](../docs/stage23i-pilot.md).
+
+
+## 24A–24B · zamrznuti uvjeti i ESP32-S3 C++
+
+Izdanje 0.14.0-beta.1 dodaje šest rubrika `24B-…@1`, s provjeravačem `24AB.1`. Nastavnik ih izričito odabire pri novoj objavi zadatka. Postojeći zadaci s rubrikama 23E.1 i 23G.1, zaključane predaje i bodovi ostaju sačuvani. Nema nove SQL migracije.
+
+Nadogradnja zamjenjuje programske datoteke, privatni katalog, `grading/` i `checker/`, uz čuvanje privatne konfiguracije i sesija. Ponovno pokreni radnike. Ne mijenjaj već objavljene redove u bazi.
+
+S3 C++ koristi funkcionalni simulator, a WASM nije firmware za fizičku pločicu. Za novi izvor Linux radnik treba Clang 19.1.7 s odgovarajućim `wasm-ld` i Binaryen `wasm-opt` 120. Uključi `LAB_GRADER_COMPILE=1`; `LAB_WASM_CXX` i `LAB_WASM_OPT` mogu odabrati apsolutne putanje tih alata. Ako su u zasebnom instalacijskom prefiksu, `LAB_S3_TOOLCHAIN` označava zajedničku mapu koja se montira samo za čitanje; pretražuju se njezini `bin/` i `usr/bin/`. Inačice, zaključani core i biblioteke provjeravaju se prije prevođenja.
+
+Bez prevoditelja prihvaća se samo identičan izvor iz instaliranog pouzdanog kataloga. Izmijenjeni izvor ostaje bez bodova uz objašnjenje. Učenikov `s3-build.json` nikad nije izvor službenog rezultata. Pogreška programa razlikuje se od nedostupnog alata i prekoračenja izvršnih ograničenja.
+
+[Potpuni opseg, provjere i otvorene etape](../docs/stage24ab-contract.md). Stvarni školski pilot, Windows posrednik i skupno memorijsko ograničenje ostaju zasebni uvjeti prihvata.

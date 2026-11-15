@@ -44,6 +44,7 @@ import {useLessonCheck} from "../lessons/useLessonCheck";
 import {exportSubmission} from "../lessons/submission";
 import {useOffline} from '../platform/offline';
 import SystemPanel from '../platform/SystemPanel';
+import SchoolAccountLink from '../platform/SchoolAccountLink';
 import {BOARDS,S3,getBoard,languageName,type BoardId,type Language} from '../boards/profiles';
 import {BoardFields,BoardChangePanel,SupportMatrix} from '../boards/BoardPanels';
 import {deriveProject} from '../project/derive';
@@ -651,6 +652,7 @@ export default function App() {
           {saveLabels[ws.status]}
         </span>
         <div className="header-actions">
+          <SchoolAccountLink />
           <button className="system-trigger" onClick={() => openDialog('system')} aria-label="Status aplikacije i offline rad">{offline.update ? 'Nova verzija' : offline.phase === 'ready' ? 'Offline spreman' : 'Status i offline'}</button>
           <button
             className="help-button"
@@ -674,7 +676,7 @@ export default function App() {
           >
             <Icon name={s.theme === "light" ? "moon" : "sun"} />
           </button>
-          <a className="stage-tag" href={appAsset('school.html')} title="Školsko izdanje · etapa 23A">v{APP_VERSION} · 23A</a>
+          <a className="stage-tag" href={appAsset('school.html')} title="Školsko izdanje · etapa 23B">v{APP_VERSION} · 23B</a>
         </div>
       </header>
       <div className="toolbar">

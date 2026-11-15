@@ -14,7 +14,8 @@ const target = resolve('.build/school-package');
 rmSync(target, {recursive: true, force: true}); mkdirSync(target, {recursive: true});
 function copy(from, to) { mkdirSync(dirname(resolve(target, to)), {recursive: true}); cpSync(from, resolve(target, to), {recursive: true}); }
 copy('dist', 'web'); copy('school/api', 'web/api'); copy('school/apache/web.htaccess', 'web/.htaccess');
-copy('school/config', 'config'); copy('school/bin', 'tools'); copy('school/apache/labosv2.conf.example', 'apache/labosv2.conf.example');
+copy('school/config/config.example.php', 'config/config.example.php'); copy('school/bin', 'tools'); copy('school/apache/labosv2.conf.example', 'apache/labosv2.conf.example');
+copy('school/app', 'app'); copy('school/migrations', 'migrations');
 copy('school/README.md', 'README.md'); copy('school/profile.json', 'profile.json'); copy('LICENSE', 'LICENSE');
 copy('.build/school-grader', 'checker/.build/school-grader'); copy('public', 'checker/public');
 copy('scripts/avr-compile.mjs', 'checker/scripts/avr-compile.mjs'); copy('school/grader/compile-child.mjs', 'checker/school/grader/compile-child.mjs');
@@ -25,10 +26,10 @@ function walk(directory) { for (const item of readdirSync(directory, {withFileTy
   if (item.isDirectory()) walk(path); else entries[relative(target, path).replaceAll('\\', '/')] = new Uint8Array(readFileSync(path));
 } }
 walk(target);
-const inventory = {version, stage: '23A', appBuild: manifest.build, files: Object.entries(entries).map(([path, bytes]) => ({path, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex')}))};
+const inventory = {version, stage: '23B', appBuild: manifest.build, files: Object.entries(entries).map(([path, bytes]) => ({path, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex')}))};
 entries['package-inventory.json'] = strToU8(JSON.stringify(inventory, null, 2) + '\n');
 writeFileSync(resolve(target, 'package-inventory.json'), entries['package-inventory.json']);
 mkdirSync('release', {recursive: true});
-const output = resolve('release', 'Labosv2_' + version.split('-')[0] + '_23A_Skolski.zip');
+const output = resolve('release', 'Labosv2_' + version.split('-')[0] + '_23B_Skolski.zip');
 writeFileSync(output, zipSync(entries, {level: 6}));
 console.log(output);

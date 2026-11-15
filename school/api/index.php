@@ -1,0 +1,64 @@
+<?php
+declare(strict_types=1);
+
+header('Content-Type: application/json; charset=utf-8');
+header('Cache-Control: no-store, private');
+header('X-Content-Type-Options: nosniff');
+header('Referrer-Policy: same-origin');
+ini_set('display_errors', '0');
+
+function respond(int $status, array $body): never
+{
+    http_response_code($status);
+    if (isset($_SESSION['csrf'])) $body['csrfToken'] = $_SESSION['csrf'];
+    if (session_status() === PHP_SESSION_ACTIVE) session_write_close();
+    echo json_encode(['application' => 'labosv2', 'stage' => '23B'] + $body, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
+    exit;
+}
+
+try {
+    // Packaged location: web/api/index.php. PHP application code stays outside web/.
+    require dirname(__DIR__, 2) . '/app/bootstrap.php';
+    $config = Labos\configuration(); $pdo = Labos\database($config);
+    if ((int)$pdo->query("SELECT COUNT(*) FROM users WHERE role = 'admin' AND active = TRUE")->fetchColumn() === 0) Labos\fail(503, 'not_initialized', 'Administrator treba dovršiti privatnu instalaciju.');
+    Labos\startSession($config);
+    $action = $_GET['action'] ?? 'session'; $method = $_SERVER['REQUEST_METHOD'] ?? '';
+    $routes = ['session' => 'GET', 'login' => 'POST', 'logout' => 'POST', 'password' => 'POST', 'users' => 'GET', 'user' => 'GET', 'create-user' => 'POST', 'reset-password' => 'POST', 'update-user' => 'POST'];
+    if (!is_string($action) || !isset($routes[$action])) Labos\fail(404, 'route_missing', 'Ta funkcija nije dostupna.');
+    if ($routes[$action] !== $method) { header('Allow: ' . $routes[$action]); Labos\fail(405, 'method', 'Metoda zahtjeva nije dopuštena.'); }
+    $body = [];
+    if ($method === 'POST') {
+        Labos\csrf($config);
+        if (strtolower(trim(explode(';', $_SERVER['CONTENT_TYPE'] ?? '')[0])) !== 'application/json') Labos\fail(415, 'content_type', 'Pošalji JSON zahtjev.');
+        if ((int)($_SERVER['CONTENT_LENGTH'] ?? 0) > 8192) Labos\fail(413, 'body_size', 'Zahtjev je prevelik.');
+        $raw = file_get_contents('php://input', false, null, 0, 8193);
+        if (strlen($raw) > 8192) Labos\fail(413, 'body_size', 'Zahtjev je prevelik.');
+        try { $value = json_decode($raw, false, 16, JSON_THROW_ON_ERROR); }
+        catch (JsonException $error) { Labos\fail(400, 'json', 'JSON zahtjev nije ispravan.'); }
+        if (!is_object($value)) Labos\fail(400, 'json', 'Zahtjev mora biti JSON objekt.');
+        $body = (array)$value;
+    }
+    if ($action === 'session') respond(200, ['user' => ($user = Labos\currentUser($pdo, false)) ? Labos\publicUser($user) : null, 'features' => ['accounts' => true, 'centralStorage' => false, 'officialGrading' => false]]);
+    if ($action === 'login') respond(200, ['user' => Labos\login($pdo, $config, $body)]);
+    if ($action === 'logout') {
+        $user = Labos\currentUser($pdo, false);
+        if ($user) Labos\audit($pdo, (int)$user['id'], (int)$user['id'], 'session.logout');
+        $_SESSION = []; session_destroy();
+        setcookie(session_name(), '', ['expires' => time() - 3600, 'path' => $config['app']['cookie_path'], 'secure' => $config['app']['secure'], 'httponly' => true, 'samesite' => 'Strict']);
+        respond(200, ['user' => null]);
+    }
+    if ($action === 'password') respond(200, ['user' => Labos\changePassword($pdo, $body)]);
+    $actor = Labos\readyUser($pdo);
+    if ($action === 'users') respond(200, ['users' => Labos\listUsers($pdo, $actor)]);
+    if ($action === 'user') respond(200, ['user' => Labos\readUser($pdo, $actor, $_GET['id'] ?? null)]);
+    if ($action === 'create-user') respond(201, ['user' => Labos\createUser($pdo, $actor, $body)]);
+    if ($action === 'reset-password') { Labos\resetPassword($pdo, $actor, $body); respond(200, ['message' => 'Privremena lozinka je postavljena. Prethodne sesije tog korisnika više ne vrijede.']); }
+    if ($action === 'update-user') respond(200, ['user' => Labos\updateUser($pdo, $actor, $body)]);
+} catch (Labos\ApiError $error) {
+    if ($error->status === 429) header('Retry-After: 900');
+    respond($error->status, ['error' => ['code' => $error->errorCode, 'message' => $error->getMessage()]]);
+} catch (Throwable $error) {
+    // Do not serialize PDO exceptions, configuration paths, request bodies or credentials.
+    error_log('Labosv2 school API: request failed (' . get_class($error) . ').');
+    respond(503, ['error' => ['code' => 'service_unavailable', 'message' => 'Školski servis trenutačno nije dostupan. Pokušaj ponovno ili obavijesti administratora.']]);
+}

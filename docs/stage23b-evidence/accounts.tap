@@ -1,0 +1,30 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.13.1-beta.1 test:school-accounts
+> node --test verification/school-accounts.test.mjs
+
+▶ 23B accounts against real PHP and a disposable restricted MySQL database
+  ✔ migrations are repeatable and never recreate accounts (183.143778ms)
+  ✔ bootstrap creates one administrator and permanently closes initialization (267.945158ms)
+  ✔ checksum mismatch blocks edited migrations without losing existing users (29.386481ms)
+  ✔ anonymous access, methods, body size and CSRF fail safely (44.015534ms)
+  ✔ login rotates the session ID and cannot take a role from the browser (227.387123ms)
+  ✔ administrator creates named roles with hashed temporary passwords (702.928559ms)
+  ✔ first login requires a real password change before privileged actions (887.290961ms)
+  ✔ students cannot enumerate accounts, read another profile or grant a role (1368.959143ms)
+  ✔ teacher access and reset are confined to students in an assigned class (1397.46806ms)
+  ✔ changing a password revokes a second device while keeping this one signed in (679.402584ms)
+  ✔ deactivation and role changes revoke sessions; self-demotion is refused (465.126478ms)
+  ✔ unknown and wrong-password login share an error and concurrent attempts hit a persistent limit (523.868853ms)
+  ✔ secure session parameters and idle/absolute expiry are enforced (466.955372ms)
+  ✔ logout invalidates its session and audit has events without passwords (37.394605ms)
+  ✔ migration re-run preserves all users and public web cannot read private files (71.721521ms)
+✔ 23B accounts against real PHP and a disposable restricted MySQL database (7545.05861ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7630.780432

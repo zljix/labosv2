@@ -9,4 +9,14 @@ return [
         'password' => getenv('LAB_DB_PASSWORD') ?: '',
     ],
     'timezone' => 'Europe/Zagreb',
+    'app' => [
+        // Full installation URL; a deliberate subpath is allowed.
+        'origin' => 'https://labos.skola.example',
+        // Generate once: php tools/console.php key. Keep stable and private.
+        'key' => getenv('LAB_APP_KEY') ?: '',
+        // Create outside web/, writable only by the PHP service account.
+        'session_directory' => dirname(__FILE__) . '/sessions',
+        // Development only; accepted exclusively from a loopback client.
+        'allow_insecure_localhost' => false,
+    ],
 ];

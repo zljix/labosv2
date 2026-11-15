@@ -1,0 +1,16 @@
+Prvi pokus: https://github.com/zljix/labosv2/actions/runs/43753811575
+Pogreška testnog adaptera: save-work vraća potvrdu u json.saved; test je čitao json.revision. Neuspjeli pokušaj nije stvorio load.json niti je uključen u prolazne rezultate.
+
+2026-11-15T19:42:35.4314455Z ℹ tests 6
+2026-11-15T19:43:32.3703472Z ℹ pass 1
+2026-11-15T19:44:51.6034163Z ℹ pass 16
+2026-11-15T19:45:00.3633629Z ℹ pass 17
+2026-11-15T19:45:05.1275893Z ℹ pass 15
+2026-11-15T19:45:21.5671067Z ℹ pass 13
+2026-11-15T19:46:38.8867320Z   ✖ three waves of 30 saves preserve every source; a 5-second teacher cycle sees all acknowledgements (33.050869ms)
+2026-11-15T19:46:49.5266032Z ℹ tests 6
+2026-11-15T19:46:49.5268265Z ℹ pass 1
+2026-11-15T19:46:49.5269109Z ℹ fail 5
+2026-11-15T19:46:49.5296871Z ✖ three waves of 30 saves preserve every source; a 5-second teacher cycle sees all acknowledgements (33.050869ms)
+2026-11-15T19:46:49.5298591Z   undefined !== 2
+2026-11-15T19:46:49.5299350Z       at file:///home/runner/work/labosv2/labosv2/verification/school-load.test.mjs:52:16

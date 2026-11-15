@@ -1,6 +1,6 @@
-# Labosv2 · školski paket · etapa 23H
+# Labosv2 · školski paket · etapa 23I
 
-Izdanje 0.13.7-beta.1 dodaje postignuća, izvoze, komentare i korekcije, arhiviranje, čuvanje međurevizija te privatne kopije i povrat. Postupak i provjere su u [izvješću 23H](../docs/stage23h-reports-administration.md). [Raniji zapis integracije 23F](https://github.com/zljix/labosv2/actions/runs/43738711916) ostaje povijesni dokaz. Stvarni školski pilot ostaje zasebna provjera.
+Izdanje 0.13.8-beta.1 priprema školski pilot, obrazac opažanja i razvojni pokus 30 + 1; vidi [23I](../docs/stage23i-pilot.md). Etapa 23H dodala je postignuća, izvoze, komentare i korekcije, arhiviranje, čuvanje međurevizija te privatne kopije i povrat. Postupak i provjere su u [izvješću 23H](../docs/stage23h-reports-administration.md). [Raniji zapis integracije 23F](https://github.com/zljix/labosv2/actions/runs/43738711916) ostaje povijesni dokaz. Stvarni školski pilot ostaje zasebna provjera.
 
 Etapa 23A priprema postojeći laboratorij za školski Apache/PHP/MySQL smjer i dokazuje ponovno izvršavanje izvan učenikova preglednika. Polazište je `zljix/labos@3c4a281` (0.12.9), uključujući posljednju doradu vodova. Ovaj razvoj objavljuje se u `zljix/labosv2`.
 
@@ -14,7 +14,7 @@ Node.js 24 LTS, `npm ci`, zatim:
 npm run build:school
 ```
 
-Nastaje `release/Labosv2_0.13.7_23H_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
+Nastaje `release/Labosv2_0.13.8_23I_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
 
 | Mapa | Namjena |
 | --- | --- |
@@ -380,3 +380,14 @@ php tools/console.php restore /srv/labosv2-private/povrat.php /srv/labosv2-backu
 Povrat odbija nepraznu bazu, neodgovarajuće migracije ili ključ, postojeće sesije i oštećenu ili nepotpunu kopiju. Uvoz ostaje jedna transakcija, uz uključene strane ključeve. Raniji izvještaji se čuvaju; nezavršene isporuke provjeravača vraćaju se u red. Stare prijave ne prenose se i korisnici se ponovno prijavljuju. Nema automatskog prepisivanja žive školske baze. Windows koristi iste CLI naredbe uz stvarne lokalne putanje; ciljna Windows provjera ostaje zasebna stavka.
 
 [Opseg, provjere i ograničenja 23H](../docs/stage23h-reports-administration.md). Stvarni školski pilot 23I zahtijeva školsku instalaciju i učeničke uređaje.
+
+
+## 23I · priprema i mjerenje pilota
+
+Nadogradnja s 23H ne dodaje migraciju. Sačuvaj privatnu konfiguraciju i sesije, zamijeni paket, ponovi postojeći migrate i ponovno pokreni provjeravač.
+
+Na stranici **Školski račun → Školski pilot** otvori obrazac opažanja. Prati upute za mali pilot pa rad razreda; preuzmi JSON zapis za svaki cilj i okruženje. Prazna mjerenja ostaju prazna. Razvojni/sintetski pokus ima vlastitu oznaku i ne potvrđuje stvarni školski prihvat.
+
+Razvojni izvor sadrži test:school-load. Koristi PHP CLI i zasebnu praznu MySQL bazu labosv2_test_* s ograničenim testnim računom, iste testne varijable kao ostale integracije te Linux izolaciju. Ne usmjerava se na školsku adresu ni evidenciju. Actions pokreće pokus za 30 sintetskih učenika, 90 spremanja i 30 neovisno ocijenjenih predaja; rezultat i obnovljeni ZIP čuva kao artefakte 23I.
+
+Na stvarnom školskom Apacheu provedi i zasebnu provjeru točnih resursa i MIME tipova iz razvojnog izvora naredbom school:host, uz LAB_SCHOOL_URL s pouzdanim HTTPS certifikatom. Ta provjera ne zamjenjuje prijavu i školski pilot. [Postupak i granice 23I](../docs/stage23i-pilot.md).

@@ -1,7 +1,7 @@
 {
   "format": "labosv2-school-profile",
   "version": 1,
-  "stage": "23H",
+  "stage": "23I",
   "sourceBaseline": "zljix/labos@3c4a281c10282d63b2742280f69aadbc08d7ae1e",
   "webServer": "Apache 2.4 with HTTPS",
   "phpBranches": [
@@ -30,7 +30,8 @@
     "teacherFeedback": true,
     "auditedCorrections": true,
     "yearArchive": true,
-    "backupRestore": true
+    "backupRestore": true,
+    "pilotRecords": true
   },
   "proof": {
     "rubric": "23A-button-led@1",
@@ -120,5 +121,25 @@
     "revisionRetention": "archived-years-cli-dry-run-default",
     "backup": "private-consistent-InnoDB-snapshot-with-embedded-resources",
     "restore": "empty-migrated-database-with-new-session-directory"
+  },
+  "pilot": {
+    "status": "prepared-not-school-accepted",
+    "syntheticClassSize": 30,
+    "recordFormat": "labosv2-school-pilot@1",
+    "targetsMs": {
+      "saveP95": 2000,
+      "classReviewP95": 2000,
+      "teacherVisibility": 10000,
+      "ordinaryGradeP95": 15000
+    },
+    "requiredSchoolEvidence": [
+      "HTTPS-LAN",
+      "small-pupil-pilot",
+      "30-pupil-class",
+      "Windows",
+      "mobile-browsers",
+      "aggregate-cgroup-memory",
+      "backup-restore"
+    ]
   }
 }

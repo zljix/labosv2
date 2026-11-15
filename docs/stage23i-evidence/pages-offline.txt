@@ -1,0 +1,163 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.13.8-beta.1 test:pages
+> node --test verification/pages.test.mjs
+
+✔ Pages package contains the complete byte-verified application under its project prefix (27.13357ms)
+✔ entry page, copied guide, pilot and install manifest keep navigation inside the repository (2.162529ms)
+✔ HTTP delivery finds every prefixed file and serves WebAssembly with the correct type (232.228189ms)
+✔ the installed Pages worker reopens the entire application without network access (154.629538ms)
+✔ corrupt Pages runtime cannot be advertised as offline ready (48.043432ms)
+✔ Pages cache and routing do not intercept another project on the same GitHub origin (96.842209ms)
+✔ old runtime files use only caches belonging to this project (72.389364ms)
+✔ other GitHub project tabs do not block an explicit update but two laboratory tabs do (162.034347ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 908.783908
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.13.8-beta.1 test:offline
+> node --test verification/offline.test.mjs
+
+✖ package covers shell, lazy editor, every runtime dependency, drivers, manual and valid install icons (1.255085ms)
+✖ verified package reopens shell and executes file requests without any network (2.009018ms)
+✔ incorrect bytes or login/fallback response cannot install an eligible package (2.964493ms)
+✖ quota failure cannot advertise a partially stored package (1.130939ms)
+✖ an evicted asset invalidates offline readiness (0.887874ms)
+✖ an update needs an explicit message and refuses more than one open tab (0.896997ms)
+✖ upgrade retains previous content-addressed runtime and does not cache unrelated or private requests (2.351932ms)
+✔ content-addressed production Worker actually runs MicroPython and framebuf (168.047015ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 2
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 492.344802
+
+✖ failing tests:
+
+test at verification/offline.test.mjs:50:1
+✖ package covers shell, lazy editor, every runtime dependency, drivers, manual and valid install icons (1.255085ms)
+  AssertionError [ERR_ASSERTION]: /index.html
+      at TestContext.<anonymous> (file:///workspace/scratch/149d987604d4/labosv2/verification/offline.test.mjs:52:182)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at verification/offline.test.mjs:60:1
+✖ verified package reopens shell and executes file requests without any network (2.009018ms)
+  Error: ENOENT: no such file or directory, open '/workspace/scratch/149d987604d4/labosv2/dist/labosv2/actuators.mjs'
+      at Object.openSync (node:fs:621:18)
+      at readFileSync (node:fs:487:35)
+      at fetch (file:///workspace/scratch/149d987604d4/labosv2/verification/offline.test.mjs:35:25)
+      at prepare (evalmachine.<anonymous>:16:28)
+      at Object.install (evalmachine.<anonymous>:33:19)
+      at Object.event (file:///workspace/scratch/149d987604d4/labosv2/verification/offline.test.mjs:41:59)
+      at TestContext.<anonymous> (file:///workspace/scratch/149d987604d4/labosv2/verification/offline.test.mjs:62:13)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/scratch/149d987604d4/labosv2/dist/labosv2/actuators.mjs'
+  }
+
+test at verification/offline.test.mjs:79:1
+✖ quota failure cannot advertise a partially stored package (1.130939ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Quota/. Input:
+  
+  "Error: ENOENT: no such file or directory, open '/workspace/scratch/149d987604d4/labosv2/dist/labosv2/actuators.mjs'"
+  
+      at async TestContext.<anonymous> (file:///workspace/scratch/149d987604d4/labosv2/verification/offline.test.mjs:81:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: ENOENT: no such file or directory, open '/workspace/scratch/149d987604d4/labosv2/dist/labosv2/actuators.mjs'
+        at Object.openSync (node:fs:621:18)
+        at readFileSync (node:fs:487:35)
+        at fetch (file:///workspace/scratch/149d987604d4/labosv2/verification/offline.test.mjs:35:25)
+        at prepare (evalmachine.<anonymous>:16:28)
+        at Object.install (evalmachine.<anonymous>:33:19)
+        at Object.event (file:///workspace/scratch/149d987604d4/labosv2/verification/offline.test.mjs:41:59)
+        at TestContext.<anonymous> (file:///workspace/scratch/149d987604d4/labosv2/verification/offline.test.mjs:81:28)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1402:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:974:18),
+    expected: /Quota/,
+    operator: 'rejects',
+    diff: 'simple'
+  }
+
+test at verification/offline.test.mjs:84:1
+✖ an evicted asset invalidates offline readiness (0.887874ms)
+  Error: ENOENT: no such file or directory, open '/workspace/scratch/149d987604d4/labosv2/dist/labosv2/actuators.mjs'
+      at Object.openSync (node:fs:621:18)
+      at readFileSync (node:fs:487:35)
+      at fetch (file:///workspace/scratch/149d987604d4/labosv2/verification/offline.test.mjs:35:25)
+      at prepare (evalmachine.<anonymous>:16:28)
+      at Object.install (evalmachine.<anonymous>:33:19)
+      at Object.event (file:///workspace/scratch/149d987604d4/labosv2/verification/offline.test.mjs:41:59)
+      at TestContext.<anonymous> (file:///workspace/scratch/149d987604d4/labosv2/verification/offline.test.mjs:85:40)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/scratch/149d987604d4/labosv2/dist/labosv2/actuators.mjs'
+  }
+
+test at verification/offline.test.mjs:92:1
+✖ an update needs an explicit message and refuses more than one open tab (0.896997ms)
+  Error: ENOENT: no such file or directory, open '/workspace/scratch/149d987604d4/labosv2/dist/labosv2/actuators.mjs'
+      at Object.openSync (node:fs:621:18)
+      at readFileSync (node:fs:487:35)
+      at fetch (file:///workspace/scratch/149d987604d4/labosv2/verification/offline.test.mjs:35:25)
+      at prepare (evalmachine.<anonymous>:16:28)
+      at Object.install (evalmachine.<anonymous>:33:19)
+      at Object.event (file:///workspace/scratch/149d987604d4/labosv2/verification/offline.test.mjs:41:59)
+      at TestContext.<anonymous> (file:///workspace/scratch/149d987604d4/labosv2/verification/offline.test.mjs:93:51)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/scratch/149d987604d4/labosv2/dist/labosv2/actuators.mjs'
+  }
+
+test at verification/offline.test.mjs:98:1
+✖ upgrade retains previous content-addressed runtime and does not cache unrelated or private requests (2.351932ms)
+  Error: ENOENT: no such file or directory, open '/workspace/scratch/149d987604d4/labosv2/dist/labosv2/actuators.mjs'
+      at Object.openSync (node:fs:621:18)
+      at readFileSync (node:fs:487:35)
+      at fetch (file:///workspace/scratch/149d987604d4/labosv2/verification/offline.test.mjs:35:25)
+      at prepare (evalmachine.<anonymous>:16:28)
+      at Object.install (evalmachine.<anonymous>:33:19)
+      at Object.event (file:///workspace/scratch/149d987604d4/labosv2/verification/offline.test.mjs:41:59)
+      at TestContext.<anonymous> (file:///workspace/scratch/149d987604d4/labosv2/verification/offline.test.mjs:100:59)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'open',
+    path: '/workspace/scratch/149d987604d4/labosv2/dist/labosv2/actuators.mjs'
+  }

@@ -1,0 +1,103 @@
+{
+  "format": "labosv2-synthetic-class-load",
+  "version": 1,
+  "stage": "23I",
+  "releaseVersion": "0.13.8-beta.1",
+  "recordedAt": "2026-11-15T20:00:31.984Z",
+  "startedAt": "2026-11-15T19:59:43.593Z",
+  "authority": "automated-synthetic-test",
+  "scope": "development-loopback-PHP-CLI-MySQL",
+  "appBuild": "ee6949041741a9a2",
+  "sourceCommit": "c27e0338ef73e305c28176c83afaf3d681e10082",
+  "environment": {
+    "os": "linux",
+    "architecture": "x64",
+    "node": "v24.22.2",
+    "logicalCPUs": 4,
+    "hostMemoryBytes": 16765386752,
+    "php": "8.4.27",
+    "mysql": "8.4.7",
+    "phpWorkers": 4,
+    "gradingWorkers": 2
+  },
+  "workload": {
+    "students": 30,
+    "teachers": 1,
+    "target": "micropython",
+    "rubric": "23E-button-led@1",
+    "saveWaves": 3,
+    "teacherIntervalMs": 5000,
+    "finalSubmissions": 30,
+    "finalGradingJobs": 30,
+    "workerStart": "after sealing: queued final wave, not ordinary grading latency"
+  },
+  "metrics": {
+    "login": {
+      "samples": 30,
+      "p50Ms": 782.99,
+      "p95Ms": 1378.12,
+      "maxMs": 1379.66
+    },
+    "begin": {
+      "samples": 30,
+      "p50Ms": 629.62,
+      "p95Ms": 1122.76,
+      "maxMs": 1188.12
+    },
+    "classReview": {
+      "samples": 7,
+      "p50Ms": 8.21,
+      "p95Ms": 18.39,
+      "maxMs": 18.39
+    },
+    "save": {
+      "samples": 90,
+      "p50Ms": 107.13,
+      "p95Ms": 194.82,
+      "maxMs": 206.78
+    },
+    "finish": {
+      "samples": 30,
+      "p50Ms": 100.99,
+      "p95Ms": 198.72,
+      "maxMs": 205.82
+    }
+  },
+  "visibility": {
+    "samples": 90,
+    "p50Ms": 5104.27,
+    "p95Ms": 5182.1,
+    "maxMs": 5200.37
+  },
+  "finalQueueResidence": {
+    "samples": 30,
+    "p50Ms": 9356.25,
+    "p95Ms": 12326.99,
+    "maxMs": 12383.34
+  },
+  "finalWaveMs": 7124,
+  "durationMs": 48426,
+  "integrity": {
+    "distinctStudentAttempts": 30,
+    "sourceRoundTrips": 90,
+    "immutableSubmissions": 30,
+    "independentlyEvaluated": 30,
+    "evaluatedPointsPerSubmission": 10,
+    "exportRows": 30
+  },
+  "targets": {
+    "saveP95Ms": 2000,
+    "classReviewP95Ms": 2000,
+    "teacherVisibilityMs": 10000,
+    "saveTargetMet": true,
+    "classReviewTargetMet": true,
+    "teacherVisibilityTargetMet": true
+  },
+  "limitations": [
+    "Synthetic identities, loopback and PHP CLI; not school Apache/HTTPS/LAN or a real pupil pilot.",
+    "One MicroPython rubric; the full supported matrix has separate regression tests.",
+    "Queue residence includes a deliberately stopped worker until finalization; it is not the 15-second ordinary-work target.",
+    "No Windows/iOS/Android browser, physical hardware or aggregate cgroup memory acceptance is inferred."
+  ]
+}
+

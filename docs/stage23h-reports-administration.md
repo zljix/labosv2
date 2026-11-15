@@ -53,6 +53,6 @@ Pokušaj slikovnog Chrome pregleda lokalno se nije pokrenuo jer okruženje ne do
 
 Stvarni školski pilot 23I, opterećenje učionice, Windows i ciljni mobilni preglednici ostaju zasebne provjere. Ova etapa ne proglašava stabilnu v1.0 niti službeno bodovanje svih 268 kombinacija.
 
-## Stanje objave
+## Potvrđena integracija i objava
 
-Korisnik je odobrio javnu objavu verzije 0.13.7 u zljix/labosv2 i na GitHub Pagesu. GitHub integracija provjerava pripremljeno izdanje prije spajanja. Lokalni PHP/MySQL rezultati navedeni su iznad.
+[GitHub integracija 43746530924](https://github.com/zljix/labosv2/actions/runs/43746530924) prošla je za izvor `cc1c19d42acdbc4bae10100422cb3666b98bad44`, uključujući neovisne Arduino prijevode i stvarne PHP/MySQL scenarije izvještaja, korekcija, arhive, čuvanja i povrata. Izdanje je spojeno kroz [PR #6](https://github.com/zljix/labosv2/pull/6) kao `e9cfed2394a7f10d6056502909fcab3cadab4800`. [GitHub Pages objava 43747011717](https://github.com/zljix/labosv2/actions/runs/43747011717) završila je uspješno. Naknadno su dopunjeni samo ovaj zapis i status provjera. Stvarni školski pilot ostaje zasebna provjera.

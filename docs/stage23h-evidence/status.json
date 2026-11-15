@@ -80,9 +80,18 @@
     "official grading of all 268 combinations"
   ],
   "publication": {
-    "state": "authorized-pending-integration",
+    "state": "published",
     "repository": "zljix/labosv2",
-    "userApproval": "Objavi",
-    "integration": "GitHub Actions pending; local PHP/MySQL integration passed"
+    "mergeSha": "e9cfed2394a7f10d6056502909fcab3cadab4800",
+    "pr": "https://github.com/zljix/labosv2/pull/6",
+    "integration": {
+      "url": "https://github.com/zljix/labosv2/actions/runs/43746530924",
+      "headSha": "cc1c19d42acdbc4bae10100422cb3666b98bad44",
+      "conclusion": "success"
+    },
+    "pages": {
+      "url": "https://github.com/zljix/labosv2/actions/runs/43747011717",
+      "conclusion": "success"
+    }
   }
 }

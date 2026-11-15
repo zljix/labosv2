@@ -38,6 +38,9 @@ test('school observations require real participant counts, environment and evide
     {...observed(), metrics: {saveP95Ms: -1}}, {...observed(), metrics: {saveP95Ms: '1'}},
   ]) assert.throws(() => createSchoolPilotRecord(data, 'v'));
   for (const text of ['{}', 'broken', 'x'.repeat(131073)]) assert.throws(() => importSchoolPilotRecord(text));
+  const large = observed(); large.conclusion = '測'.repeat(6000);
+  for (const check of Object.values(large.checks)) check.notes = '測'.repeat(3000);
+  assert.throws(() => createSchoolPilotRecord(large, 'v'), /128 KiB/);
 });
 test('actual pilot form exports a draft, preserves text on invalid export and imports observations as safe editable text', async () => {
   const dom = new JSDOM(readFileSync('public/school-pilot.html', 'utf8'), {url: 'https://school.example/school-pilot.html'});

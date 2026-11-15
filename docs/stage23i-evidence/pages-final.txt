@@ -1,0 +1,53 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.13.8-beta.1 build:pages
+> node scripts/build-pages.mjs
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.13.8-beta.1 build
+> node --import tsx scripts/build-school-coverage.ts && node --import tsx scripts/build-urs-exports.ts && tsc --noEmit && vite build
+
+Registar bodovanja: 18/268 kombinacija; V1–V5 evidentirane zasebno.
+URS CSV i obrazac pilota generirani za 0.13.8-beta.1.
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 163 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                              0.72 kB │ gzip:   0.42 kB
+dist/assets/avrWorker-DhW4AFy_.js          179.68 kB
+dist/assets/worker-B7kkINrb.js             295.00 kB
+dist/assets/ClassReviewPanel-CfM1iDYP.css    2.85 kB │ gzip:   0.94 kB
+dist/assets/index-qI3f0DKR.css              66.16 kB │ gzip:  13.93 kB
+dist/assets/ClassReviewPanel-BHUQAo09.js    32.28 kB │ gzip:  10.00 kB
+dist/assets/CodeEditor-CDEraFU-.js         568.59 kB │ gzip: 189.73 kB
+dist/assets/index-CP875ftG.js              986.01 kB │ gzip: 319.66 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 464ms
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.13.8-beta.1 test:pages
+> node --test verification/pages.test.mjs
+
+✔ Pages package contains the complete byte-verified application under its project prefix (24.358124ms)
+✔ entry page, copied guide, pilot and install manifest keep navigation inside the repository (2.080395ms)
+✔ HTTP delivery finds every prefixed file and serves WebAssembly with the correct type (203.152369ms)
+✔ the installed Pages worker reopens the entire application without network access (112.724963ms)
+✔ corrupt Pages runtime cannot be advertised as offline ready (24.710394ms)
+✔ Pages cache and routing do not intercept another project on the same GitHub origin (87.464419ms)
+✔ old runtime files use only caches belonging to this project (78.841064ms)
+✔ other GitHub project tabs do not block an explicit update but two laboratory tabs do (167.944025ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 796.678145

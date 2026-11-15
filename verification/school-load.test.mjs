@@ -15,6 +15,14 @@ test('23I real PHP/MySQL: 30 students, concurrent saves, class polling and indep
   const f = await schoolFixture(t), samples = {}, students = [], visibility = [];
   const startedAt = new Date().toISOString(), started = performance.now();
   let verifiedPhases = 0;
+  async function phase(name, work) {
+    let failure;
+    await t.test(name, async () => {
+      try {await work(); verifiedPhases++;}
+      catch (error) {failure = error; throw error;}
+    });
+    if (failure) throw Error('Stopped dependent workload after a failed scenario: ' + name, {cause: failure});
+  }
   const ok = async (promise, expected = 200) => {const r = await promise; assert.equal(r.status, expected, r.text); return r.json;};
   async function timed(group, promise) {
     const began = performance.now(), result = await ok(promise);
@@ -29,7 +37,7 @@ test('23I real PHP/MySQL: 30 students, concurrent saves, class polling and indep
   await ok(teacher.client.call('import-students', {classId: classroom.id, csv, previewToken: preview.previewToken, linkExisting: true}));
   const task = (await ok(teacher.client.call('publish-task', {taskKey: 'gpio/button', gradingProfile: '23E-button-led@1'}), 201)).task;
   const assignment = (await ok(teacher.client.call('create-assignment', {classId: classroom.id, taskVersionId: task.id, target: 'micropython'}), 201)).assignment;
-  await t.test('30 independent sessions log in and open only their own attempts', async () => {
+  await phase('30 independent sessions log in and open only their own attempts', async () => {
     for (const student of students) {await ok(student.client.call('logout', {})); student.client = f.client();}
     await Promise.all(students.map(async student => {
       await timed('login', student.client.login(student.user.username, f.password));
@@ -39,15 +47,14 @@ test('23I real PHP/MySQL: 30 students, concurrent saves, class polling and indep
     }));
     assert.equal(new Set(students.map(s => s.id)).size, 30);
     await ok(students[0].client.call('attempt&id=' + students[1].id), 403);
-    verifiedPhases++;
   });
   const roster = () => timed('classReview', teacher.client.call('class-work&assignmentId=' + assignment.id));
-  await t.test('three waves of 30 saves preserve every source; a 5-second teacher cycle sees all acknowledgements', async () => {
+  await phase('three waves of 30 saves preserve every source; a 5-second teacher cycle sees all acknowledgements', async () => {
     for (let wave = 1; wave <= 3; wave++) {
       const saving = students.map(async (student, index) => {
         const project = structuredClone(student.project);
         project.files['main.py'] += '\n# Sintetski učenik ' + index + ', val ' + wave;
-        const saved = await timed('save', student.client.call('save-work', {attemptId: student.id, expectedRevision: student.revision, requestKey: randomUUID(), project}));
+        const saved = (await timed('save', student.client.call('save-work', {attemptId: student.id, expectedRevision: student.revision, requestKey: randomUUID(), project}))).saved;
         student.revision++; student.project = project; student.hash = saved.contentHash; student.ackAt = performance.now();
         assert.equal(saved.revision, student.revision);
       });
@@ -63,9 +70,8 @@ test('23I real PHP/MySQL: 30 students, concurrent saves, class polling and indep
         assert.equal(read.snapshot.contentHash, student.hash); assert.deepEqual(read.snapshot.project, student.project);
       }
     }
-    verifiedPhases++;
   });
-  await t.test('a second device resumes the exact snapshot, and a stale save is rejected without data loss', async () => {
+  await phase('a second device resumes the exact snapshot, and a stale save is rejected without data loss', async () => {
     const first = students[0], otherDevice = f.client();
     await ok(otherDevice.login(first.user.username, f.password));
     const loaded = await ok(otherDevice.call('attempt&id=' + first.id));
@@ -73,10 +79,9 @@ test('23I real PHP/MySQL: 30 students, concurrent saves, class polling and indep
     const stale = await otherDevice.call('save-work', {attemptId: first.id, expectedRevision: 1, requestKey: randomUUID(), project: first.project});
     assert.equal(stale.status, 409);
     assert.equal((await ok(first.client.call('attempt&id=' + first.id))).snapshot.contentHash, first.hash);
-    verifiedPhases++;
   });
   let finalWaveStarted;
-  await t.test('30 simultaneous finalizations and repeated lost-response requests create exactly 30 immutable submissions', async () => {
+  await phase('30 simultaneous finalizations and repeated lost-response requests create exactly 30 immutable submissions', async () => {
     finalWaveStarted = performance.now();
     await Promise.all(students.map(async student => {
       student.finish = {attemptId: student.id, expectedRevision: student.revision, requestKey: randomUUID()};
@@ -93,10 +98,9 @@ test('23I real PHP/MySQL: 30 students, concurrent saves, class polling and indep
     assert.equal(f.sql("SELECT COUNT(*) AS n FROM audit_events WHERE event='attempt.submitted'")[0].n, 30);
     const late = await students[0].client.call('save-work', {attemptId: students[0].id, expectedRevision: 4, requestKey: randomUUID(), project: students[0].project});
     assert.equal(late.status, 409); assert.equal(late.json.error.code, 'attempt_locked');
-    verifiedPhases++;
   });
   let workerJobs = 0, finalWaveMs;
-  await t.test('two private workers independently execute all 30 final snapshots; points and hashes match the class export', async () => {
+  await phase('two private workers independently execute all 30 final snapshots; points and hashes match the class export', async () => {
     const worker = () => new Promise((done, reject) => {
       const process = spawn(globalThis.process.execPath, [join(f.pkg, 'tools/grade-once.mjs')], {env: f.env, stdio: ['ignore', 'pipe', 'pipe']});
       let out = '', err = '';
@@ -132,7 +136,6 @@ test('23I real PHP/MySQL: 30 students, concurrent saves, class polling and indep
       assert.equal(row.lastSubmission.grading.points, 10);
       assert.equal(entry.submission.id, student.submission.id); assert.equal(entry.assessment.points, 10);
     }
-    verifiedPhases++;
   });
   assert.equal(verifiedPhases, 5, 'Do not publish a successful load report after a failed scenario.');
   assert.equal(samples.save.length, 90);
@@ -162,5 +165,5 @@ test('23I real PHP/MySQL: 30 students, concurrent saves, class polling and indep
   };
   mkdirSync('docs/stage23i-evidence', {recursive: true});
   writeFileSync('docs/stage23i-evidence/load.json', JSON.stringify(report, null, 2) + '\n');
-  t.diagnostic(JSON.stringify({metrics, finalWaveMs: report.finalWaveMs, integrity: report.integrity, targets: report.targets}));
+  t.diagnostic('LOAD_REPORT ' + JSON.stringify(report));
 });

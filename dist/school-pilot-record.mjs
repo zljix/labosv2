@@ -78,9 +78,11 @@ export function schoolPilotSummary(observations) {
 export function createSchoolPilotRecord(input, generatedForVersion, recordedAt = new Date().toISOString()) {
   if (typeof generatedForVersion !== 'string' || generatedForVersion.length > 80 || typeof recordedAt !== 'string' || !Number.isFinite(Date.parse(recordedAt))) throw Error('Nevaljani metapodaci zapisa.');
   const observations = schoolPilotObservations(input);
-  return {format: 'labosv2-school-pilot', version: 1, generatedForVersion, recordedAt, authority: 'observer-entered',
+  const record = {format: 'labosv2-school-pilot', version: 1, generatedForVersion, recordedAt, authority: 'observer-entered',
     classification: Object.values(observations.checks).every(check => check.status === 'untested') ? 'draft' : 'observation',
     observations, summary: schoolPilotSummary(observations)};
+  if (new TextEncoder().encode(JSON.stringify(record, null, 2) + '\n').length > 131072) throw Error('Cijeli zapis prelazi 128 KiB. Skrati opažanja prije preuzimanja.');
+  return record;
 }
 
 export function importSchoolPilotRecord(text) {

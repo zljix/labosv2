@@ -51,3 +51,6 @@ Službeno bodovanje zadržava šest rubrika / **18 od 268 kombinacija**. Ostalih
 Lokalno je prošlo 83 ciljanih provjera projekata, sklopova, vodova, sinkronizacije, završetka, izvještaja i zapisa pilota, te 2 provjere školskog ZIP-a. Pages prolazi 8/8, a korijenski offline paket 8/8. Početno je korijenski offline test pogrešno pokrenut nad Pages podputanjom i prijavio 6 nedostajućih korijenskih putanja; taj je zapis sačuvan u pages-offline.txt. Nakon vraćanja odgovarajuće korijenske izgradnje cijeli offline skup prolazi u offline-root.txt. TypeScript i obje izgradnje prolaze.
 
 Lokalni Chrome nije se pokrenuo zbog zabrane potrebnog Unix socketa. Novi obrazac provjeren je stvarnim modulima u JSDOM-u; to nije vizualni pregled preglednika. Lokalno nisu instalirani PHP/MySQL: stvarni pokus 30 + 1 i ranije integracije pokreću se u Actionsu. Rezultat i poveznica bit će dopunjeni nakon izvođenja. Stvarni školski prihvat ostaje otvoren.
+
+
+Prvi CI pokus 43753811575 zaustavio je novi testni adapter: odgovor spremanja čitao je izravno umjesto iz json.saved. API je potvrdio spremanje, a test nije preuzeo reviziju i hash. Adapter je usklađen s postojećim API-jem, ovisni scenariji sada staju nakon prve pogreške, a ponovna integracija koristi novu praznu testnu bazu. Neuspjeli zapis ostaje u initial-ci-failure.txt i ne pribraja se prolaznim rezultatima.

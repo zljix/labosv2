@@ -80,7 +80,7 @@ jobs:
       - run: node scripts/avr-setup.mjs
       - run: npm run build:school
       - name: Provjeri PHP sintaksu
-        run: rg --files -g '*.php' school | xargs -n1 php -l
+        run: find school -name '*.php' -print0 | xargs -0 -n1 php -l
       - run: npm run test:school-finish-ui
       - name: Provjeri zaključavanje, ponovljive zahtjeve i dorade
         run: npm run test:school-submissions

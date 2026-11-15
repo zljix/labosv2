@@ -31,7 +31,7 @@ test('23F React final summary: save failure blocks finish; lost confirmation rep
   const root=createRoot(document.querySelector('#test')!);t.after(async()=>{await act(async()=>root.unmount());Object.assign(globalThis,prior);dom.window.close();});
   await act(async()=>root.render(<SchoolFinish binding={binding} api={api} project={()=>local} enabled flush={async()=>{if(offline)throw Error('Spremanje nije potvrđeno.');flushed=true;return binding;}} locked={s=>locked.push(s)}/>));
   const text=()=>document.body.textContent??'';
-  async function click(label:string){const b=[...document.querySelectorAll('button')].find(v=>v.textContent?.includes(label));assert(b,label);assert(!b.disabled,label);await act(async()=>{b.click();await delay(15);});}
+  async function click(label:string){const b=[...document.querySelectorAll('button')].find(v=>v.textContent?.includes(label));assert(b,label);assert(!b.disabled,label);await act(async()=>{b.click();await delay(15);});for(let i=0;i<200&&document.querySelector("dialog button:disabled");i++)await act(async()=>{await delay(10);});}
   await click('Završi i zaključaj');assert.match(text(),/Spremanje nije potvrđeno/);assert.equal(finished.length,0);assert.equal(locked.length,0);
   offline=false;await click('Ponovi spremanje');assert.match(text(),/Neostvareni kriteriji/);assert.match(text(),/3 \/ 10/);assert.match(text(),/reviziju 2/);assert.equal(document.querySelector('img'),null);
   const original=local.files['main.py'];local.files['main.py']+='\n# edit after summary';await click('Potvrdi i zaključaj');assert.equal(finished.length,0);assert.match(text(),/nove lokalne izmjene/);local.files['main.py']=original;

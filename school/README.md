@@ -1,6 +1,6 @@
 # Labosv2 · školski paket · etapa 23F
 
-Pripremljeno izdanje 0.13.5-beta.1. Lokalni pokusi i PHP sintaksa prolaze; stvarna MySQL integracija ove etape i javna objava još nisu provedene. Prije školske uporabe trebaju proći navedene integracijske provjere.
+Izdanje 0.13.5-beta.1. Lokalni pokusi, PHP sintaksa i stvarna PHP/MySQL integracija s React tijekom prolaze. [Zapis integracije](https://github.com/zljix/labosv2/actions/runs/43738711916). Stvarni školski pilot ostaje zasebna provjera.
 
 Etapa 23A priprema postojeći laboratorij za školski Apache/PHP/MySQL smjer i dokazuje ponovno izvršavanje izvan učenikova preglednika. Polazište je `zljix/labos@3c4a281` (0.12.9), uključujući posljednju doradu vodova. Ovaj razvoj objavljuje se u `zljix/labosv2`.
 

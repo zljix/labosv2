@@ -35,9 +35,9 @@ Nadogradnja s 23E: sačuvaj privatnu konfiguraciju i sesije, zamijeni programski
 - `test:school-work-ui`: stvarne React komponente uz PHP/MySQL, od izmjene preko sažetka i zaključavanja do nastavnikova dopuštanja dorade i učenikova nastavka.
 - Regresija računa, razreda, portala, reda provjera, kataloga 268 početnih kombinacija, projekata, vodova, paketa i Pages putanje ostaje u razvojnom postupku.
 
-Zapisi lokalnih provjera nalaze se u `stage23f-evidence/`. Ovo je pripremljeno izdanje: GitHub integracija i javna objava još nisu provedene. Testovi koriste zasebne prazne baze, bez stvarnih učeničkih podataka.
+Zapisi lokalnih provjera nalaze se u `stage23f-evidence/`. Stvarna PHP/MySQL integracija i cijeli React tijek prošli su u [Actions postupku 43738711916](https://github.com/zljix/labosv2/actions/runs/43738711916). Testovi koriste zasebne prazne baze, bez stvarnih učeničkih podataka.
 
-Lokalno su prošle 88/88 provjera regresije, 22/22 provjere klijenta i paketa (dijelom isti skupovi), 8/8 Pages provjera, 2/2 završne provjere školskog ZIP-a i sintaksna provjera svih 15 PHP datoteka uz PHP 8.4.27. Stvarna MySQL integracija ove etape još nije pokrenuta. Za nju je pripremljen postupak uz MySQL 8.4.7 i PHP 8.4 u Actionsu; mora proći prije spajanja i javne objave izdanja. To nije vizualna potvrda Safarija/iOS-a ili fizičkog školskog poslužitelja.
+Lokalno su prošle 88/88 provjera regresije, 22/22 provjere klijenta i paketa (dijelom isti skupovi), 8/8 Pages provjera, 2/2 završne provjere školskog ZIP-a i sintaksna provjera svih 15 PHP datoteka uz PHP 8.4.27. Stvarna integracija uz MySQL 8.4.7 i PHP 8.4 prošla je u Actionsu prije spajanja izdanja, uključujući paralelni završetak/spremanje, povezanu doradu, zakašnjele rezultate i stvarni React tijek. To nije vizualna potvrda Safarija/iOS-a ili fizičkog školskog poslužitelja.
 
 ## Granice
 

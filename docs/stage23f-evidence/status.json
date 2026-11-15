@@ -2,7 +2,7 @@
   "version": "0.13.5-beta.1",
   "stage": "23F",
   "baselineCommit": "f6ede55c0170989e555bf1aac6393812836bc4c1",
-  "status": "prepared-awaiting-integration-and-publication",
+  "status": "integration-passed",
   "localChecks": {
     "regression": {
       "passed": 88,
@@ -26,7 +26,8 @@
       "runtime": "PHP 8.4.27"
     }
   },
-  "mysqlIntegration": "not_run",
-  "githubPublication": "not_published",
-  "functionalScope": "three 23E pilots; exact-revision submission, linked rework and attempt history"
+  "mysqlIntegration": "passed",
+  "githubPublication": "release-in-progress",
+  "functionalScope": "three 23E pilots; exact-revision submission, linked rework and attempt history",
+  "integrationRun": "https://github.com/zljix/labosv2/actions/runs/43738711916"
 }

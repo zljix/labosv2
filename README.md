@@ -2,7 +2,7 @@
 
 **0.13.5-beta.1 · etapa 23F · 15. studenoga 2026.**
 
-Pripremljeno izdanje: lokalne provjere prolaze; stvarna PHP/MySQL integracija i javna objava 23F još nisu provedene.
+PHP/MySQL integracija i cjelovit React tijek prošli su u [GitHub Actionsu](https://github.com/zljix/labosv2/actions/runs/43738711916).
 
 Nastavak postojećeg ESP32 MicroPython / Arduino laboratorija za školski sustav s PHP-om i stvarnim MySQL-om. Polazište je [labos 0.12.9](https://github.com/zljix/labos/tree/3c4a281c10282d63b2742280f69aadbc08d7ae1e), uključujući posljednje dorade vodova.
 

@@ -1,0 +1,21 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.13.6-beta.1 test:school-grading
+> node --import tsx --test verification/school-grading.test.ts
+
+✔ 23E real isolated MicroPython: all three pilots, alternate solutions and distinct seeds (3109.891065ms)
+✔ 23E real Uno/Nano exact-source button and I2C pilots ignore incoming forged binaries (15409.270258ms)
+✔ 23E wrong code, threshold boundary, stale sensor and disconnected I2C do not receive full points (2290.688071ms)
+✔ 23E checker rejects altered binding, unsupported target and stale AVR artefact (48.785768ms)
+✔ 23E rubric binding is independent of database JSON object-key order (445.341733ms)
+✔ 23E no guest JavaScript access to Node, checker, stimulus or process stdout (541.783022ms)
+✔ 23E syntax error is separate from a timeout or infrastructure failure (871.252305ms)
+﹣ 23E isolated local compiler validates new source for all three Uno/Nano pilots (0.357597ms) # SKIP
+ℹ tests 8
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 1
+ℹ todo 0
+ℹ duration_ms 22977.33721

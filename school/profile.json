@@ -1,7 +1,7 @@
 {
   "format": "labosv2-school-profile",
   "version": 1,
-  "stage": "23F",
+  "stage": "23G",
   "sourceBaseline": "zljix/labos@3c4a281c10282d63b2742280f69aadbc08d7ae1e",
   "webServer": "Apache 2.4 with HTTPS",
   "phpBranches": [
@@ -24,7 +24,8 @@
     "assignments": true,
     "liveClassReview": true,
     "submissions": true,
-    "attemptHistory": true
+    "attemptHistory": true,
+    "gradingCoverage": true
   },
   "proof": {
     "rubric": "23A-button-led@1",
@@ -72,11 +73,14 @@
     "idempotentSaves": true
   },
   "grading": {
-    "checkerVersion": "23E.1",
+    "checkerVersion": "23G.1",
     "profiles": [
       "23E-button-led@1",
       "23E-analog-threshold@1",
-      "23E-bmp280@1"
+      "23E-bmp280@1",
+      "23G-led-timing@1",
+      "23G-lm35@1",
+      "23G-bmp180@1"
     ],
     "targets": [
       "micropython",
@@ -87,7 +91,16 @@
     "leaseSeconds": 180,
     "virtualAddressLimitMiB": 2048,
     "compiler": "isolated-local-or-exact-trusted-catalogue",
-    "locking": true
+    "locking": true,
+    "compatibleCheckerVersions": [
+      "23E.1"
+    ],
+    "coverage": {
+      "combinations": 268,
+      "supported": 18,
+      "unsupported": 250,
+      "introductoryLocalOnly": 5
+    }
   },
   "submissions": {
     "exactRevision": true,

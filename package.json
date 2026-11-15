@@ -1,11 +1,11 @@
 {
   "name": "esp32-micropython-lab",
-  "version": "0.13.5-beta.1",
+  "version": "0.13.6-beta.1",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "build": "node --import tsx scripts/build-urs-exports.ts && tsc --noEmit && vite build",
+    "build": "node --import tsx scripts/build-school-coverage.ts && node --import tsx scripts/build-urs-exports.ts && tsc --noEmit && vite build",
     "test": "node --import tsx --test verification/project.test.ts verification/circuit.test.ts",
     "test:runtime": "node verification/run.mjs && node verification/stage1-runtime.mjs",
     "test:simulation": "node --import tsx --test verification/simulation.test.ts",
@@ -71,7 +71,9 @@
     "test:school-grading-api": "node --import tsx --test verification/school-grading-api.test.mjs",
     "test:school-grading-ui": "node --import tsx --test verification/school-grading-ui.test.tsx",
     "test:school-submissions": "node --import tsx --test verification/school-submissions.test.mjs",
-    "test:school-finish-ui": "node --import tsx --test verification/school-finish-ui.test.tsx"
+    "test:school-finish-ui": "node --import tsx --test verification/school-finish-ui.test.tsx",
+    "test:school-coverage": "node --import tsx --test verification/school-coverage.test.ts",
+    "test:school-grading-expanded": "node --import tsx --test verification/school-grading-expanded.test.ts"
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.1",

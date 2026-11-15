@@ -1,14 +1,23 @@
 # Labosv2 · školski laboratorij
 
-**0.13.5-beta.1 · etapa 23F · 15. studenoga 2026.**
+**0.13.6-beta.1 · etapa 23G · 15. studenoga 2026.**
 
-PHP/MySQL integracija i cjelovit React tijek prošli su u [GitHub Actionsu](https://github.com/zljix/labosv2/actions/runs/43738711916).
+Prethodna 23F PHP/MySQL integracija prošla je u [GitHub Actionsu](https://github.com/zljix/labosv2/actions/runs/43738711916). Provjere novog izdanja vode se zasebno u izvješću 23G.
 
 Nastavak postojećeg ESP32 MicroPython / Arduino laboratorija za školski sustav s PHP-om i stvarnim MySQL-om. Polazište je [labos 0.12.9](https://github.com/zljix/labos/tree/3c4a281c10282d63b2742280f69aadbc08d7ae1e), uključujući posljednje dorade vodova.
 
 [Web laboratorij](https://zljix.github.io/labosv2/) · [Školski račun](https://zljix.github.io/labosv2/school.html#account) · [Upute za instalaciju](school/README.md) · [Bodovanje i dokazi 23E](docs/stage23e-grading.md)
 
-## Novo u 23F
+## Novo u 23G
+
+- [Pregled podrške bodovanja](https://zljix.github.io/labosv2/school-grading.html) s pretragom i filtrima po obitelji, cilju i statusu te CSV/JSON registrom svih **268 kombinacija**.
+- **18 podržanih kombinacija**: šest rubrika na MicroPython S3, Uno i Nano. Dodane su LED 250/750 ms, LM35 i BMP180; ranije tri rubrike ostaju sačuvane.
+- Preostalih **250 kombinacija** ima jasno objašnjenje nepodržanog službenog bodovanja i pripremne kriterije. V1–V5 vode se zasebno s lokalnim provjerama.
+- Katalog pri objavi prikazuje podršku za svaki cilj. Dodijeljena vježba pokazuje je li službena provjera stvarno uključena.
+- Postojeće inačice rubrika `23E.1` ostaju izvršive; nove koriste `23G.1`. Nema nove migracije ni prepisivanja ranijih predaja.
+- [Opseg, postupak nadogradnje i provjere 23G](docs/stage23g-grading-matrix.md).
+
+## Sačuvano iz 23F
 
 - **Završi i zaključaj vježbu** dovršava autosave i prikazuje završni sažetak točne revizije, bodove i neostvarene kriterije.
 - Jedna transakcijska predaja po pokušaju; dva klika ili izgubljeni odgovor ne stvaraju duplikate. Kasno spremanje ne mijenja zaključanu snimku.
@@ -50,7 +59,7 @@ Prijava, uloge, razredi, CSV uvoz, pozivni kodovi i nepromjenjive inačice zadat
 
 **386/386 ciljanih testova**, **6/6 neovisnih compiler/runtime pokusa** i **4/4 skupne HTTPS provjere**; svih 191 web resursa provjereno je bajtno na Apacheu. Stari ZIP iz 22I ponovno se otvara i izvodi. [Točne inačice, granice i otvorene provjere](docs/stage23a-school.md).
 
-Središnje spremanje dodijeljenih vježbi i nastavnički pregled sada su dostupni na školskom poslužitelju. Službeni bodovi za tri izričito odabrana pilota dostupni su u 23E; zaključavanje i dopuštena dorada dostupni su u 23F. Probni rezultati 23A zadržavaju oznaku `feasibility-only`. GitHub Pages služi web simulator i javni prikaz školskog izdanja; prijava zahtijeva školski PHP/MySQL poslužitelj.
+Središnje spremanje dodijeljenih vježbi i nastavnički pregled sada su dostupni na školskom poslužitelju. Službeni bodovi dostupni su za šest izričito odabranih rubrika (18 kombinacija); zaključavanje i dopuštena dorada dostupni su u 23F. Probni rezultati 23A zadržavaju oznaku `feasibility-only`. GitHub Pages služi web simulator i javni prikaz školskog izdanja; prijava zahtijeva školski PHP/MySQL poslužitelj.
 
 ## Pokretanje i izgradnja
 
@@ -69,7 +78,7 @@ npm ci
 npm run build:school
 ```
 
-Školski paket: `release/Labosv2_0.13.5_23F_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-23F-Skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
+Školski paket: `release/Labosv2_0.13.6_23G_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-23G-Skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
 
 ```sh
 npm run build:pages
@@ -85,6 +94,8 @@ npm run build:school-grader
 npm run test:school
 npm run test:school-package
 npm run test:school-catalog
+npm run test:school-coverage
+npm run test:school-grading-expanded
 npm run test:school-sync
 npm run test:school-finish-ui
 npm run test:school-submissions

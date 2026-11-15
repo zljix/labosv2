@@ -1,0 +1,43 @@
+{
+  "stage": "23G",
+  "version": "0.13.6-beta.1",
+  "baseline": "19898ca77ef7f6b5f7edd1c9e0a716fefaf808da",
+  "local": {
+    "regression": {
+      "passed": 345,
+      "failed": 0
+    },
+    "coverage": {
+      "passed": 3,
+      "failed": 0
+    },
+    "expandedGrading": {
+      "passed": 4,
+      "failed": 0,
+      "compilerSuiteSkipped": 1
+    },
+    "legacyGrading": {
+      "passed": 7,
+      "failed": 0,
+      "compilerSuiteSkipped": 1
+    },
+    "schoolPackage": {
+      "passed": 2,
+      "failed": 0
+    },
+    "pages": {
+      "passed": 8,
+      "failed": 0
+    },
+    "browser": "Chrome/Linux: filter LM35 + MicroPython + supported; criteria disclosure; no iOS/Safari claim"
+  },
+  "pendingBeforeMerge": [
+    "PHP/MySQL integration in school Actions",
+    "six new Uno/Nano source compilations in school Actions"
+  ],
+  "notClaimed": [
+    "all 268 combinations have official grading",
+    "physical school server pilot",
+    "Windows or mobile browser validation"
+  ]
+}

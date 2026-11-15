@@ -11,7 +11,7 @@ function gradingRubric(string $profileId, string $taskKey): array
 {
     $registry = gradingRegistry();
     foreach ($registry['profiles'] as $p) if ($p['id'] === $profileId && $p['taskKey'] === $taskKey) {
-        return ['format' => 'labosv2-rubric', 'version' => 1, 'authority' => 'server-verified', 'checkerVersion' => $registry['checkerVersion'],
+        return ['format' => 'labosv2-rubric', 'version' => 1, 'authority' => 'server-verified', 'checkerVersion' => $p['checkerVersion'] ?? $registry['checkerVersion'],
             'profileId' => $p['id'], 'targets' => $p['targets'], 'instructions' => $p['instructions'], 'title' => $p['title'],
             'criteria' => $p['criteria'], 'maxPoints' => array_sum(array_column($p['criteria'], 'maxPoints'))];
     }

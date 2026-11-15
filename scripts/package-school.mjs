@@ -23,7 +23,9 @@ copy('docs/stage23e-grading.md', 'docs/stage23e-grading.md');
 copy('docs/stage23e-evidence', 'docs/stage23e-evidence');
 copy('docs/stage23f-submissions.md', 'docs/stage23f-submissions.md');
 copy('docs/stage23f-evidence', 'docs/stage23f-evidence');
-writeFileSync(resolve(target, 'README.md'), readFileSync(resolve(target, 'README.md'), 'utf8').replaceAll('../docs/stage23e-grading.md', 'docs/stage23e-grading.md').replaceAll('../docs/stage23f-submissions.md', 'docs/stage23f-submissions.md'));
+copy('docs/stage23g-grading-matrix.md', 'docs/stage23g-grading-matrix.md');
+copy('docs/stage23g-evidence', 'docs/stage23g-evidence');
+writeFileSync(resolve(target, 'README.md'), readFileSync(resolve(target, 'README.md'), 'utf8').replaceAll('../docs/stage23e-grading.md', 'docs/stage23e-grading.md').replaceAll('../docs/stage23f-submissions.md', 'docs/stage23f-submissions.md').replaceAll('../docs/stage23g-grading-matrix.md', 'docs/stage23g-grading-matrix.md'));
 copy('.build/school-grader', 'checker/.build/school-grader'); copy('public', 'checker/public');
 copy('scripts/avr-compile.mjs', 'checker/scripts/avr-compile.mjs'); copy('school/grader/compile-child.mjs', 'checker/school/grader/compile-child.mjs');
 copy('vendor/arduino', 'checker/vendor/arduino');
@@ -33,10 +35,10 @@ function walk(directory) { for (const item of readdirSync(directory, {withFileTy
   if (item.isDirectory()) walk(path); else entries[relative(target, path).replaceAll('\\', '/')] = new Uint8Array(readFileSync(path));
 } }
 walk(target);
-const inventory = {version, stage: '23F', appBuild: manifest.build, files: Object.entries(entries).map(([path, bytes]) => ({path, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex')}))};
+const inventory = {version, stage: '23G', appBuild: manifest.build, files: Object.entries(entries).map(([path, bytes]) => ({path, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex')}))};
 entries['package-inventory.json'] = strToU8(JSON.stringify(inventory, null, 2) + '\n');
 writeFileSync(resolve(target, 'package-inventory.json'), entries['package-inventory.json']);
 mkdirSync('release', {recursive: true});
-const output = resolve('release', 'Labosv2_' + version.split('-')[0] + '_23F_Skolski.zip');
+const output = resolve('release', 'Labosv2_' + version.split('-')[0] + '_23G_Skolski.zip');
 writeFileSync(output, zipSync(entries, {level: 6}));
 console.log(output);

@@ -81,6 +81,12 @@ jobs:
       - run: npm run build:school
       - name: Provjeri PHP sintaksu
         run: find school -name '*.php' -print0 | xargs -0 -n1 php -l
+      - run: npm run test:school-coverage
+      - name: Provjeri nove rubrike i neovisne AVR prijevode
+        run: LAB_ARDUINO_CLI="$(command -v arduino-cli)" npm run test:school-grading-expanded
+        env:
+          LAB_GRADING_COMPILER_TEST: '1'
+          LAB_ARDUINO_DATA: ${{ github.workspace }}/avr-env/data
       - run: npm run test:school-finish-ui
       - name: Provjeri zaključavanje, ponovljive zahtjeve i dorade
         run: npm run test:school-submissions
@@ -130,7 +136,7 @@ jobs:
         run: node --import tsx --test verification/project.test.ts verification/circuit.test.ts verification/routing.test.ts verification/school.test.ts
       - uses: actions/upload-artifact@v4
         with:
-          name: Labosv2-23F-Skolski-paket
+          name: Labosv2-23G-Skolski-paket
           path: release/*.zip
           if-no-files-found: error
           retention-days: 30

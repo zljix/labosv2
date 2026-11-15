@@ -14,11 +14,11 @@ async function projectFor(key:string,target:UrsTarget='micropython'){
   }finally{globalThis.fetch=original;}
 }
 export function jobFor(project:Project,index=0){const p=registry.profiles[index],projectJson=JSON.stringify(project);return {
-  format:'labosv2-grading-job',version:1,checkerVersion:registry.checkerVersion,profileId:p.id,target:project.language==='micropython'?'micropython':project.board.id.includes('nano')?'nano':'uno',
+  format:'labosv2-grading-job',version:1,checkerVersion:p.checkerVersion??registry.checkerVersion,profileId:p.id,target:project.language==='micropython'?'micropython':project.board.id.includes('nano')?'nano':'uno',
   rubric:{profileId:p.id,criteria:p.criteria},seed:'1'.repeat(64),projectJson,snapshotHash:digest(projectJson),rubricHash:'2'.repeat(64)};}
 const pyThreshold='from machine import Pin, ADC\nfrom time import sleep_ms\na=ADC(Pin(1),atten=ADC.ATTN_11DB)\nl=Pin(4,Pin.OUT)\nwhile True:\n l.value(a.read_u16()>=32768)\n sleep_ms(20)\n';
 test('23E real isolated MicroPython: all three pilots, alternate solutions and distinct seeds',async()=>{
-  for(let index=0;index<registry.profiles.length;index++){
+  for(let index=0;index<3;index++){
     const p=await projectFor(registry.profiles[index].taskKey);if(index===1)p.files['main.py']=pyThreshold;
     const job=jobFor(p,index),r=await gradeJob(job,{root});assert.equal(r.status,'evaluated',JSON.stringify(r));assert.equal(r.points,10);assert.equal(r.authority,'server-verified');assert.equal(r.snapshotHash,job.snapshotHash);
     const alternate=structuredClone(p);alternate.files['main.py']='# Drugo ispravno rješenje\n'+alternate.files['main.py'];
@@ -75,7 +75,7 @@ test('23E syntax error is separate from a timeout or infrastructure failure',asy
   p.files['main.py']='while True:\n pass\n';const busy=await gradeJob(jobFor(p),{root,timeoutMs:700});assert.equal(busy.status,'execution_limit');assert.equal(busy.points,null);
 });
 test('23E isolated local compiler validates new source for all three Uno/Nano pilots',{skip:!process.env.LAB_GRADING_COMPILER_TEST,timeout:180000},async()=>{
-  for(const target of ['uno','nano'] as const)for(let index=0;index<registry.profiles.length;index++){
+  for(const target of ['uno','nano'] as const)for(let index=0;index<3;index++){
     const p=await projectFor(registry.profiles[index].taskKey,target);
     if(index===0)p.files['main.ino']='void setup(){pinMode(2,INPUT_PULLUP);pinMode(9,OUTPUT);}\nvoid loop(){digitalWrite(9,!digitalRead(2));delay(15);}\n';
     else if(index===1)p.files['main.ino']='void setup(){pinMode(9,OUTPUT);}\nvoid loop(){digitalWrite(9,analogRead(A0)>=512);delay(20);}\n';

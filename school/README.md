@@ -78,7 +78,7 @@ Svaki korak traje 200 ms virtualnog vremena, a odziv se očitava na kraju koraka
 
 Probni rezultat sadrži hash cijele parsirane snimke, reviziju, cilj, rubriku, dokaze po kriteriju i hash izvora/HEX-a gdje postoji. **Autoritet je `feasibility-only`**; ne postoji školski korisnik ni službena evidencija. Hash povezuje sadržaj, a ne dokazuje autorstvo.
 
-Linux mora imati `unshare` i Bubblewrap (`bwrap`) te dopuštene korisničke i mrežne prostore. Provjeravač radi bez mreže, s praznim okruženjem, javnim runtime resursima i ulazima samo za čitanje. Ne dobiva privatnu PHP konfiguraciju ni bazu. V8 heap je ograničen na 96 MiB, MicroPython na 4 MiB, privremena mapa na 128 MiB, izlaz na 1 MiB, a izvršavanje na 10 s. Ukupna nativna/WASM memorija još nema cgroup ograničenje; prije prijma proizvoljnih učeničkih programa to treba dodati. Nema nesigurnog zamjenskog izvođenja ako izolacija nije dostupna.
+Linux mora imati `unshare` i Bubblewrap (`bwrap`) najmanje 0.8; provjerena inačica je 0.12.0 te dopuštene korisničke i mrežne prostore. Provjeravač radi bez mreže, s praznim okruženjem, javnim runtime resursima i ulazima samo za čitanje. Ne dobiva privatnu PHP konfiguraciju ni bazu. V8 heap je ograničen na 96 MiB, MicroPython na 4 MiB, privremena mapa na 128 MiB, izlaz na 1 MiB, a izvršavanje na 10 s. Ukupna nativna/WASM memorija još nema cgroup ograničenje; prije prijma proizvoljnih učeničkih programa to treba dodati. Nema nesigurnog zamjenskog izvođenja ako izolacija nije dostupna.
 
 U izvornom repozitoriju:
 

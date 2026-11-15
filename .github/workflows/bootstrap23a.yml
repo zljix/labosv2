@@ -22,7 +22,17 @@ jobs:
           git clone --quiet https://github.com/zljix/labos.git "$RUNNER_TEMP/labos-source"
           git -C "$RUNNER_TEMP/labos-source" archive 3c4a281c10282d63b2742280f69aadbc08d7ae1e | tar --extract --skip-old-files --exclude='.github' --exclude='.github/**'
       - run: npm ci
-      - run: sudo apt-get update && sudo apt-get install -y bubblewrap
+      - name: Pripremi zaključani Bubblewrap 0.12.0
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcap-dev pkg-config ninja-build
+          python3 -m pip install --user meson==1.9.1
+          git clone --quiet https://github.com/containers/bubblewrap.git "$RUNNER_TEMP/bubblewrap"
+          git -C "$RUNNER_TEMP/bubblewrap" checkout --quiet 2a76602a8c71f36c1527cf9fc3417d9149822e0c
+          "$HOME/.local/bin/meson" setup "$RUNNER_TEMP/bwrap-build" "$RUNNER_TEMP/bubblewrap" --prefix="$RUNNER_TEMP/bwrap-install" -Dman=disabled -Dselinux=disabled -Dtests=false
+          ninja -C "$RUNNER_TEMP/bwrap-build"
+          ninja -C "$RUNNER_TEMP/bwrap-build" install
+          printf '%s\n' "$RUNNER_TEMP/bwrap-install/bin" >> "$GITHUB_PATH"
       - run: npm run build:school
       - name: Provjeri polazište i neovisno izvršavanje
         run: node --import tsx --test verification/project.test.ts verification/circuit.test.ts verification/routing.test.ts verification/school.test.ts

@@ -4,11 +4,45 @@
   "stage": "23A",
   "sourceBaseline": "zljix/labos@3c4a281c10282d63b2742280f69aadbc08d7ae1e",
   "webServer": "Apache 2.4 with HTTPS",
-  "phpBranches": ["8.4", "8.5"],
-  "database": {"vendor": "MySQL", "branch": "8.4 LTS", "engine": "InnoDB", "encoding": "utf8mb4"},
+  "phpBranches": [
+    "8.4",
+    "8.5"
+  ],
+  "database": {
+    "vendor": "MySQL",
+    "branch": "8.4 LTS",
+    "engine": "InnoDB",
+    "encoding": "utf8mb4"
+  },
   "node": "24 LTS",
   "displayTimezone": "Europe/Zagreb",
-  "features": {"accounts": false, "centralStorage": false, "officialGrading": false},
-  "proof": {"rubric": "23A-button-led@1", "profiles": ["micropython-wasm", "arduino-avr"], "maxPoints": 10, "authority": "feasibility-only"},
-  "sandbox": {"os": "Linux", "tools": ["unshare", "bwrap"], "network": "separate-empty-namespace", "wallTimeMs": 10000, "outputBytes": 1048576, "v8HeapMiB": 96, "micropythonHeapMiB": 4, "hardTotalMemoryLimit": "not-yet-configured"}
+  "features": {
+    "accounts": false,
+    "centralStorage": false,
+    "officialGrading": false
+  },
+  "proof": {
+    "rubric": "23A-button-led@1",
+    "profiles": [
+      "micropython-wasm",
+      "arduino-avr"
+    ],
+    "maxPoints": 10,
+    "authority": "feasibility-only"
+  },
+  "sandbox": {
+    "os": "Linux",
+    "tools": [
+      "unshare",
+      "bwrap"
+    ],
+    "network": "separate-empty-namespace",
+    "wallTimeMs": 10000,
+    "outputBytes": 1048576,
+    "v8HeapMiB": 96,
+    "micropythonHeapMiB": 4,
+    "hardTotalMemoryLimit": "not-yet-configured",
+    "bubblewrapMinimum": "0.8.0",
+    "bubblewrapTested": "0.12.0"
+  }
 }

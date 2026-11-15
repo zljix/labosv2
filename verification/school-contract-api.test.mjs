@@ -35,7 +35,7 @@ test('24AB PHP/MySQL freezes new contracts, rejects cross-job replay and preserv
     assert.equal(bad.status,2,bad.stderr);assert.match(bad.stderr,/report_binding|criteria/);
   }
   privateCall('complete',{jobId:job.jobId,lease:job.lease,report:r});
-  await ok(student.client.call('finish-attempt',{attemptId:opened.attempt.id,expectedRevision:1,requestKey:randomUUID(),project:opened.snapshot.project}));
+  await ok(student.client.call('finish-attempt',{attemptId:opened.attempt.id,expectedRevision:1,requestKey:randomUUID()}));
   assert.equal((await ok(student.client.call('attempt&id='+opened.attempt.id))).attempt.grading.points,10);
   const another=await begin(current,'micropython'),otherJob=privateCall('claim').job;
   const replay=f.gradingCommand('complete',{jobId:otherJob.jobId,lease:otherJob.lease,report:{...r,target:'micropython',snapshotHash:otherJob.snapshotHash}});

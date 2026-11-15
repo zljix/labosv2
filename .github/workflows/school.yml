@@ -115,17 +115,17 @@ jobs:
         run: find school -name '*.php' -print0 | xargs -0 -n1 php -l
       - run: npm run test:school-pilot
       - run: npm run test:school-coverage
+      - name: Provjeri PHP/MySQL ugovore, S3 posao i zaštitu od ponovne uporabe rezultata
+        run: npm run test:school-contract-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_contract;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
       - name: Provjeri ugovore, sva četiri cilja i nove neovisne prijevode
         run: LAB_ARDUINO_CLI="$(command -v arduino-cli)" npm run test:school-contract
         env:
           LAB_GRADING_COMPILER_TEST: '1'
           LAB_S3_COMPILER_TEST: '1'
           LAB_ARDUINO_DATA: ${{ github.workspace }}/avr-env/data
-      - name: Provjeri PHP/MySQL ugovore, S3 posao i zaštitu od ponovne uporabe rezultata
-        run: npm run test:school-contract-api
-        env:
-          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_contract;charset=utf8mb4
-          LAB_TEST_DB_USER: labosv2_ci
       - name: Pokus s 30 učenika, stvarnim PHP/MySQL i dva privatna provjeravača
         run: npm run test:school-load
         env:

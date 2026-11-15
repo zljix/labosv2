@@ -1,15 +1,20 @@
 {
   "stage": "23I",
   "version": "0.13.8-beta.1",
-  "status": "prepared-not-merged",
+  "status": "published",
   "pullRequest": "https://github.com/zljix/labosv2/pull/7",
   "branch": "codex/23i-school-pilot",
   "testedHead": "85732a3e421dcc4cdcb66fbc0ac68001fc9dd3fd",
   "workflow": "https://github.com/zljix/labosv2/actions/runs/43755386091",
   "workflowConclusion": "success",
   "appBuild": "ee6949041741a9a2",
-  "main": "daef77b21f36589aa2a0ec99d5f58dd6c62501f7",
-  "blockedAction": "squash merge PR #7 into main",
-  "blockReason": "Automatic approval review requires explicit user authorization for merging into main and publication.",
-  "schoolAcceptance": "not-performed"
+  "main": "99154ff61998aebe1cab753a5da31a10dee682aa",
+  "schoolAcceptance": "not-performed",
+  "mergeCommit": "99154ff61998aebe1cab753a5da31a10dee682aa",
+  "pagesWorkflow": "https://github.com/zljix/labosv2/actions/runs/43756843635",
+  "pagesConclusion": "success",
+  "publicUrl": "https://zljix.github.io/labosv2/",
+  "pilotUrl": "https://zljix.github.io/labosv2/school-pilot.html",
+  "approval": "explicit-user-publication-confirmation",
+  "verifiedAt": "2026-11-15T20:16:52.252044+00:00"
 }

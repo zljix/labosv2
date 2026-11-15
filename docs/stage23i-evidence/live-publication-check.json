@@ -1,0 +1,31 @@
+{
+  "version": "0.13.8-beta.1",
+  "build": "8f8832c5e3623183",
+  "base": "/labosv2/",
+  "checks": [
+    {
+      "path": "school.html",
+      "sha256": "e15bc6fad1668c995640f71f030877f281ed746233945e639b4b59d03ba3904c",
+      "mime": "text/html",
+      "verified": true
+    },
+    {
+      "path": "school-pilot.html",
+      "sha256": "14aeeede682c10339c8d92689c283c723c13ead05beff9518f0f721c70bc48c4",
+      "mime": "text/html",
+      "verified": true
+    },
+    {
+      "path": "school-pilot-form.mjs",
+      "sha256": "69f63c5041cbf7ece726e39bacb362a7f014066dc828e6aae68e90484c6cf8eb",
+      "mime": "text/javascript",
+      "verified": true
+    },
+    {
+      "path": "school-pilot-record.mjs",
+      "sha256": "87cf5975d7787c55bb8016df22ba5d9475e277f77bc11f10605dec009d75e990",
+      "mime": "text/javascript",
+      "verified": true
+    }
+  ]
+}

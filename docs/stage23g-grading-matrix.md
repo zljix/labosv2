@@ -53,3 +53,10 @@ Lokalni sustav nema PHP/MySQL, a izvorni Arduino CLI ne može preuzeti alatni la
 Stvarni PHP/MySQL scenarij dodan je u postojeću integraciju: objavljuje novu LM35 rubriku, stavlja posao u red, izvršava ga, prihvaća rezultat i potvrđuje da stari zadatak zadržava staru inačicu. Školski Actions postupak provjerava i šest novih izoliranih Uno/Nano prijevoda. Ti postupci moraju proći prije spajanja izdanja. Lokalni pregled Chromea na Linuxu potvrđuje filtriranje i otvaranje kriterija; nije potvrda Safarija, iOS-a, fizičkih senzora ni rada razreda na školskom poslužitelju.
 
 Širenje automatskih rubrika na ostale obitelji ostaje označeno u registru. Izvještaji s učeničkim postignućima, nastavničke korekcije, kopije/povrat i stvarni školski pilot ostaju 23H–23I iz dogovorenog plana.
+
+
+## Potvrđena integracija i objava
+
+[Školski Actions postupak 43741667624](https://github.com/zljix/labosv2/actions/runs/43741667624) završio je uspješno, sa svih 33 koraka. Prošli su PHP sintaksa, registar i korisnički prikaz, svih šest novih izoliranih Uno/Nano prijevoda te šest ranijih, stvarni PHP/MySQL računi, razredi, portal, red bodovanja s novom LM35 rubrikom, spremanje, zaključavanje, dorade i React tijek. U ovom postupku compiler provjere nisu bile preskočene. Lokalni preskoci u tablici iznad zadržani su kao točan povijesni zapis lokalnog okruženja.
+
+Provjeren je izvor `c246dcc4d2a4313c2eec208c77cb8bdfb3436031`; spojeno izdanje `8c41955b1176ec2bfccd98e3f88f00e4c8217e41` ima istu Git snimku sadržaja `108d7f151acd1f1db4f3ade467ed5d9a54659c30`. Naknadno su dopunjeni samo ovo izvješće i zapis rezultata. Potvrda automatizirane integracije i dalje ne znači potvrdu stvarnog školskog pilota ili svih 268 automatskih rubrika.

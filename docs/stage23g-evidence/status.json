@@ -31,13 +31,35 @@
     },
     "browser": "Chrome/Linux: filter LM35 + MicroPython + supported; criteria disclosure; no iOS/Safari claim"
   },
-  "pendingBeforeMerge": [
-    "PHP/MySQL integration in school Actions",
-    "six new Uno/Nano source compilations in school Actions"
-  ],
+  "pendingBeforeMerge": [],
   "notClaimed": [
     "all 268 combinations have official grading",
     "physical school server pilot",
     "Windows or mobile browser validation"
-  ]
+  ],
+  "integration": {
+    "url": "https://github.com/zljix/labosv2/actions/runs/43741667624",
+    "headSha": "c246dcc4d2a4313c2eec208c77cb8bdfb3436031",
+    "testedTree": "108d7f151acd1f1db4f3ade467ed5d9a54659c30",
+    "conclusion": "success",
+    "successfulSteps": 33,
+    "phpSyntax": "passed",
+    "phpMysql": [
+      "accounts",
+      "classes",
+      "portal",
+      "work snapshots",
+      "grading queue and expanded LM35 rubric",
+      "submissions and rework",
+      "React work flow"
+    ],
+    "expandedCompilerCases": 6,
+    "legacyCompilerCases": 6,
+    "scope": "Separate disposable MySQL 8.4.7, PHP 8.4, Linux isolation; not a physical school pilot"
+  },
+  "publication": {
+    "merged": true,
+    "mergeSha": "8c41955b1176ec2bfccd98e3f88f00e4c8217e41",
+    "pr": "https://github.com/zljix/labosv2/pull/5"
+  }
 }

@@ -40,8 +40,26 @@ function readAttempt(\PDO $pdo, array $actor, mixed $value, mixed $revision = nu
     $grading = snapshotGrading($pdo, (int)$row['id'], $rev);
     return ['attempt' => workSummary($row, $rev === (int)$row['current_revision'] ? $grading : snapshotGrading($pdo, (int)$row['id'], (int)$row['current_revision'])), 'assignment' => readAssignment($pdo, $actor, $row['assignment_id']),
         'student' => ['id' => (int)$student['id'], 'username' => $student['username'], 'displayName' => $student['display_name']],
+        'submission' => attemptSubmission($pdo, (int)$row['id']), 'reopening' => attemptReopening($pdo, (int)$row['id']),
         'snapshot' => ['revision' => (int)$snapshot['revision'], 'contentHash' => $snapshot['content_hash'], 'savedAt' => utcTime($snapshot['created_at']),
             'grading' => $grading, 'project' => json_decode($snapshot['project'], false, 64, JSON_THROW_ON_ERROR)]];
+}
+
+function newAttemptDocument(\stdClass $p, array $assignment, string $studentName): string
+{
+    $p->id = bin2hex(random_bytes(16)); $p->revision = 0;
+    $p->createdAt = $p->updatedAt = gmdate('Y-m-d\TH:i:s\Z');
+    unset($p->files->{'school-attempt.json'});
+    $record = $assignment; unset($record['starter']);
+    $p->files->{'school-assignment.json'} = json_encode(['format' => 'labosv2-assignment-copy', 'version' => 1, 'assignment' => $record], JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
+    if (isset($p->files->{'urs-vjezba.json'})) {
+        $work = json_decode($p->files->{'urs-vjezba.json'}, false, 32);
+        if ($work instanceof \stdClass) {
+            $work->student = $studentName; $work->group = $assignment['className'];
+            $p->files->{'urs-vjezba.json'} = json_encode($work, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
+        }
+    }
+    return canonicalJson($p);
 }
 
 function beginAttempt(\PDO $pdo, array $actor, array $body): array
@@ -56,16 +74,7 @@ function beginAttempt(\PDO $pdo, array $actor, array $body): array
         $row = query($pdo, 'SELECT * FROM school_attempts WHERE assignment_id=? AND student_id=? ORDER BY attempt_number DESC LIMIT 1 FOR UPDATE', [$assignment['id'], $actor['id']])->fetch();
         if (!$row) {
             $p = json_decode(json_encode($assignment['starter'], JSON_THROW_ON_ERROR), false, 64, JSON_THROW_ON_ERROR);
-            $p->id = bin2hex(random_bytes(16)); $p->revision = 0;
-            $p->createdAt = $p->updatedAt = gmdate('Y-m-d\TH:i:s\Z');
-            $record = $assignment; unset($record['starter']);
-            $p->files->{'school-assignment.json'} = json_encode(['format' => 'labosv2-assignment-copy', 'version' => 1, 'assignment' => $record], JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
-            if (isset($p->files->{'urs-vjezba.json'})) {
-                $work = json_decode($p->files->{'urs-vjezba.json'}, false, 32, JSON_THROW_ON_ERROR);
-                $work->student = $actor['display_name']; $work->group = $assignment['className'];
-                $p->files->{'urs-vjezba.json'} = json_encode($work, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
-            }
-            $document = canonicalJson($p);
+            $document = newAttemptDocument($p, $assignment, $actor['display_name']);
             query($pdo, 'INSERT INTO school_attempts (assignment_id, student_id, current_revision) VALUES (?, ?, 1)', [$assignment['id'], $actor['id']]);
             $id = (int)$pdo->lastInsertId();
             query($pdo, 'INSERT INTO work_snapshots (attempt_id, revision, base_revision, request_key, project, content_hash) VALUES (?, 1, 0, ?, ?, ?)', [$id, 'initial-snapshot', $document, hash('sha256', $document)]);
@@ -158,16 +167,27 @@ function attemptRevisions(\PDO $pdo, array $actor, mixed $value, mixed $before =
     return ['revisions' => array_map(fn($s) => ['revision' => (int)$s['revision'], 'contentHash' => $s['content_hash'], 'savedAt' => utcTime($s['created_at'])], $rows), 'hasMore' => $more];
 }
 
+function latestAttemptJobs(\PDO $pdo, array $ids): array
+{
+    $jobs = [];
+    if ($ids) foreach (query($pdo, 'SELECT j.* FROM grading_jobs j JOIN school_attempts w ON w.id=j.attempt_id AND w.current_revision=j.revision WHERE j.id IN (SELECT MAX(id) FROM grading_jobs WHERE attempt_id IN (' . implode(',',array_fill(0,count($ids),'?')) . ') GROUP BY attempt_id,revision)', $ids)->fetchAll() as $job) $jobs[(int)$job['attempt_id']]=$job;
+    return $jobs;
+}
+
 function classWork(\PDO $pdo, array $actor, mixed $assignmentId, mixed $after = null): array
 {
     requireStaff($actor); $a = readAssignment($pdo, $actor, $assignmentId); $start = $after === null ? 0 : targetId($after);
-    $rows = query($pdo, 'SELECT u.id AS user_id, u.username, u.display_name, u.active, w.* FROM class_students m JOIN users u ON u.id=m.student_id LEFT JOIN school_attempts w ON w.student_id=u.id AND w.assignment_id=? AND w.attempt_number=1 WHERE m.class_id=? AND u.id>? ORDER BY u.id LIMIT 201', [$a['id'], $a['classId'], $start])->fetchAll();
+    $rows = query($pdo, 'SELECT u.id AS user_id, u.username, u.display_name, u.active, w.* FROM class_students m JOIN users u ON u.id=m.student_id LEFT JOIN school_attempts w ON w.student_id=u.id AND w.assignment_id=? AND w.attempt_number=(SELECT MAX(newest.attempt_number) FROM school_attempts newest WHERE newest.student_id=u.id AND newest.assignment_id=w.assignment_id) WHERE m.class_id=? AND u.id>? ORDER BY u.id LIMIT 201', [$a['id'], $a['classId'], $start])->fetchAll();
     $more = count($rows) > 200; $rows = array_slice($rows, 0, 200);
-    // One additional bounded batch for the whole page, not one query per pupil.
-    $ids = array_values(array_filter(array_column($rows, 'id'))); $jobs = [];
-    if ($ids) foreach (query($pdo, 'SELECT j.* FROM grading_jobs j JOIN school_attempts w ON w.id=j.attempt_id AND w.current_revision=j.revision WHERE j.id IN (SELECT MAX(id) FROM grading_jobs WHERE attempt_id IN (' . implode(',',array_fill(0,count($ids),'?')) . ') GROUP BY attempt_id,revision)', $ids)->fetchAll() as $job) $jobs[(int)$job['attempt_id']]=$job;
+    $ids = array_values(array_filter(array_column($rows, 'id'))); $submissions = [];
+    if ($rows) foreach (query($pdo, 'SELECT s.*, w.student_id FROM school_submissions s JOIN school_attempts w ON w.id=s.attempt_id WHERE w.assignment_id=? AND w.student_id IN (' . implode(',',array_fill(0,count($rows),'?')) . ') AND s.id=(SELECT MAX(s2.id) FROM school_submissions s2 JOIN school_attempts w2 ON w2.id=s2.attempt_id WHERE w2.assignment_id=w.assignment_id AND w2.student_id=w.student_id)', [$a['id'], ...array_column($rows,'user_id')])->fetchAll() as $s) {
+        $submissions[(int)$s['student_id']] = $s; $ids[] = $s['attempt_id'];
+    }
+    $jobs = latestAttemptJobs($pdo, array_values(array_unique($ids)));
     $context=['rubric'=>$a['task']['rubric'],'target'=>$a['target']];
     return ['assignment' => $a, 'rows' => array_map(fn($r) => ['student' => ['id' => (int)$r['user_id'], 'username' => $r['username'], 'displayName' => $r['display_name'], 'active' => (bool)$r['active']],
-        'status' => $r['id'] === null ? 'not_started' : $r['status'], 'attempt' => $r['id'] === null ? null : workSummary($r,jobSummary($jobs[(int)$r['id']]??null,$context,(int)$r['current_revision']))], $rows),
+        'status' => $r['id'] === null ? 'not_started' : ($r['status'] === 'in_progress' && (int)$r['attempt_number'] > 1 ? 'reopened' : $r['status']),
+        'lastSubmission' => isset($submissions[(int)$r['user_id']]) ? submissionValue($submissions[(int)$r['user_id']], jobSummary($jobs[(int)$submissions[(int)$r['user_id']]['attempt_id']]??null,$context,(int)$submissions[(int)$r['user_id']]['revision'])) : null,
+        'attempt' => $r['id'] === null ? null : workSummary($r,jobSummary($jobs[(int)$r['id']]??null,$context,(int)$r['current_revision']))], $rows),
         'hasMore' => $more, 'nextAfter' => $more ? (int)$rows[array_key_last($rows)]['user_id'] : null, 'serverTime' => gmdate('Y-m-d\TH:i:s\Z')];
 }

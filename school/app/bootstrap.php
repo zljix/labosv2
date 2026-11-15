@@ -87,3 +87,4 @@ require __DIR__ . '/classes.php';
 require __DIR__ . '/tasks.php';
 require __DIR__ . '/work.php';
 require __DIR__ . '/grading.php';
+require __DIR__ . '/submissions.php';

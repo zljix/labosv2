@@ -1,0 +1,30 @@
+✔ every frozen school starter opens as a new local project with its precise target and immutable task metadata (803.823577ms)
+✔ imported or locally edited school metadata cannot crash the simulator or confer server authority (2.236751ms)
+✔ 23F React final summary: save failure blocks finish; lost confirmation repeats the same request (173.414784ms)
+✔ 23E result labels preserve null rather than inventing zero (0.894183ms)
+✔ 23E actual React grading: polling, revision change, local edits, retry and account revocation (139.508251ms)
+✔ school ZIP verifies every inventory entry and keeps app, SQL and configuration out of web/ (376.372873ms)
+✔ installed app worker never intercepts private school API or POST requests (3.2339ms)
+✔ school content fingerprint ignores local identity and sync bookkeeping but includes code, circuit, answers and peer (22.744989ms)
+✔ unchanged opening does not upload and editing waits 3 seconds (8.886354ms)
+✔ continuous typing is saved at 15 seconds without waiting for a pause (16.970462ms)
+✔ confirmation metadata does not produce an autosave feedback loop (5.605374ms)
+✔ edits made during an in-flight request are saved in a later revision (4.659101ms)
+✔ lost acknowledgement retries the exact payload and idempotency key before newer local changes (5.6361ms)
+✔ two stale editors block on conflict and do not adopt a newer revision without a review choice (3.249333ms)
+✔ an old retried acknowledgement reports a newer remote revision as conflict (3.292327ms)
+✔ explicitly reviewed local choice uses the reviewed revision as its compare-and-swap base (4.926294ms)
+✔ closing or changing projects never confirms a late response on the new workspace (5.596029ms)
+✔ account switch is detected before sending another pupil’s project (6.639398ms)
+✔ detached teacher/test copies preserve the snapshot and cannot autosave to an attempt (4.719433ms)
+✔ malformed imported sync metadata is ignored, including invalid saved timestamps (6.487389ms)
+✔ 23F finish flush joins an in-flight autosave and confirms the final newer edit (4.856368ms)
+✔ 23F finish flush rejects a missing acknowledgement and retries the same save before proceeding (7.372619ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1305.333957

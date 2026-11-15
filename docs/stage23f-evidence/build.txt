@@ -1,0 +1,34 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.13.5-beta.1 build:school
+> node scripts/build-school.mjs
+
+Školski katalog: 67 varijanti, 268 zamrznutih predložaka.
+Neovisna provjera 23A: izgrađeni ograničeni izvršni adapteri.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.13.5-beta.1 build
+> node --import tsx scripts/build-urs-exports.ts && tsc --noEmit && vite build
+
+URS CSV i obrazac pilota generirani za 0.13.5-beta.1.
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 160 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                              0.68 kB │ gzip:   0.41 kB
+dist/assets/avrWorker-DhW4AFy_.js          179.68 kB
+dist/assets/worker-B7kkINrb.js             295.00 kB
+dist/assets/ClassReviewPanel-CfM1iDYP.css    2.85 kB │ gzip:   0.94 kB
+dist/assets/index-JRPnHmo0.css              65.08 kB │ gzip:  13.73 kB
+dist/assets/ClassReviewPanel-DmhLM7R0.js    22.16 kB │ gzip:   7.33 kB
+dist/assets/CodeEditor-MRLlH2du.js         568.59 kB │ gzip: 189.73 kB
+dist/assets/index-BnLGxQp8.js              982.02 kB │ gzip: 318.60 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 371ms
+/workspace/scratch/90612a95679e/labosv2/release/Labosv2_0.13.5_23F_Skolski.zip

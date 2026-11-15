@@ -68,3 +68,16 @@ test('malformed imported sync metadata is ignored, including invalid saved times
   const f=await fixture(),binding=readSchoolBinding(f.p)!;
   for(const patch of [{savedAt:'not-a-date'},{userId:-1},{revision:0},{fingerprint:'x'},{origin:42}]){const p=structuredClone(f.p);p.files['school-attempt.json']=JSON.stringify({...binding,...patch});assert.equal(readSchoolBinding(p),undefined);}f.sync.stop();
 });
+
+test('23F finish flush joins an in-flight autosave and confirms the final newer edit',async()=>{
+  let finish:any;const calls:any[]=[];
+  const f=await fixture(async(_b:any,body:any)=>{calls.push(body);if(calls.length===1)await new Promise(r=>finish=r);return {attemptId:1,revision:body.expectedRevision+1,currentRevision:body.expectedRevision+1,savedAt:'now'};});
+  await f.sync.update(editProject(f.p,p=>{p.files['main.py']='print(1)';}));const saving=f.sync.save();await f.flush();
+  const final=editProject(f.p,p=>{p.files['main.py']='print(2)';});const flushed=f.sync.flush(final);await f.flush();finish();await saving;const binding=await flushed;
+  assert.equal(binding.revision,3);assert.equal(calls.length,2);assert.equal(calls[1].project.files['main.py'],'print(2)');assert.equal(f.states.at(-1)?.phase,'saved');assert.equal(f.timers.size,0);f.sync.stop();
+});
+test('23F finish flush rejects a missing acknowledgement and retries the same save before proceeding',async()=>{
+  const calls:any[]=[];const f=await fixture(async(_b:any,body:any)=>{calls.push(body);if(calls.length===1)throw Error('offline');return {attemptId:1,revision:2,currentRevision:2,savedAt:'now'};});
+  const final=editProject(f.p,p=>{p.files['main.py']='print(3)';});await assert.rejects(()=>f.sync.flush(final),/Nije spremljeno/);
+  const binding=await f.sync.flush(final);assert.equal(binding.revision,2);assert.deepEqual(calls[0],calls[1]);f.sync.stop();
+});

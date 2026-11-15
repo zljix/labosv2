@@ -4,12 +4,14 @@ import {appAsset} from './assets';
 export const SCHOOL_BINDING_FILE='school-attempt.json';
 export interface SchoolBinding {
   format:'labosv2-school-attempt';version:1;origin:string;userId:number;attemptId:number;assignmentId:number;
-  projectId:string;revision:number;fingerprint:string;savedAt?:string;
+  projectId:string;revision:number;fingerprint:string;savedAt?:string;status?:'in_progress'|'locked';
 }
+export interface SchoolSubmission {id:number;attemptId:number;revision:number;contentHash:string;taskVersionId:number;rubricHash:string;submittedAt:string;grading:any}
 export interface SchoolWorkState {
-  attempt:{id:number;assignmentId:number;studentId:number;revision:number;status:string;savedAt:string;grading?:any};
+  attempt:{id:number;assignmentId:number;studentId:number;revision:number;status:string;number?:number;savedAt:string;grading?:any};
   assignment:any;student:{id:number;username:string;displayName:string};
   snapshot:{revision:number;project:Project;contentHash:string;savedAt:string;grading?:any};
+  submission?:SchoolSubmission|null;reopening?:{previousAttemptId:number;submissionId:number;reason:string;openedBy:number;openedAt:string}|null;
 }
 export class SchoolApiError extends Error {
   constructor(message:string,public status:number,public code:string){super(message);}
@@ -42,6 +44,7 @@ export function readSchoolBinding(p:Project):SchoolBinding|undefined {
     if(b.format!=='labosv2-school-attempt'||b.version!==1||typeof b.origin!=='string'||b.origin.length>300||typeof b.projectId!=='string'
       ||!/^[A-Za-z0-9-]{8,80}$/.test(b.projectId)||!['userId','attemptId','assignmentId','revision'].every(k=>Number.isSafeInteger(b[k])&&b[k]>0)
       ||typeof b.fingerprint!=='string'||!/^[a-f0-9]{64}$/.test(b.fingerprint)
+      ||(b.status!==undefined&&!['in_progress','locked'].includes(b.status))
       ||(b.savedAt!==undefined&&(typeof b.savedAt!=='string'||!Number.isFinite(Date.parse(b.savedAt)))))return;
     return b;
   }catch{return;}
@@ -58,14 +61,14 @@ export async function schoolFingerprint(p:Project):Promise<string>{
 export async function prepareSchoolAttempt(state:SchoolWorkState,origin=location.origin):Promise<Project>{
   const p=parseProject(state.snapshot.project);const projectId=p.id;p.id=crypto.randomUUID();
   const b:SchoolBinding={format:'labosv2-school-attempt',version:1,origin,userId:state.attempt.studentId,attemptId:state.attempt.id,assignmentId:state.attempt.assignmentId,
-    projectId,revision:state.snapshot.revision,savedAt:state.snapshot.savedAt,fingerprint:await schoolFingerprint(p)};
+    projectId,revision:state.snapshot.revision,status:state.attempt.status==='locked'?'locked':'in_progress',savedAt:state.snapshot.savedAt,fingerprint:await schoolFingerprint(p)};
   p.files[SCHOOL_BINDING_FILE]=JSON.stringify(b);return parseProject(p);
 }
 export function detachedSchoolProject(project:Project):Project {
   const p=clone(project);p.id=crypto.randomUUID();delete p.files[SCHOOL_BINDING_FILE];p.title=(p.title.slice(0,73)+' — lokalna kopija').slice(0,100);return parseProject(p);
 }
 
-export type SyncPhase='checking'|'saved'|'pending'|'saving'|'error'|'conflict';
+export type SyncPhase='checking'|'saved'|'pending'|'saving'|'error'|'conflict'|'locked';
 export interface SyncState {phase:SyncPhase;message:string;revision:number;savedAt?:string}
 interface PendingSave {attemptId:number;expectedRevision:number;requestKey:string;project:Project;fingerprint:string}
 interface SyncOptions {
@@ -78,9 +81,10 @@ export class SchoolSynchronizer {
   private binding:SchoolBinding;private phase:SyncPhase='checking';private savedAt?:string;
   private latest?:{project:Project;fingerprint:string};private pending?:PendingSave;private timer:any;private dirtySince?:number;
   private running=false;private disposed=false;private generation=0;
+  private inFlight?:Promise<void>;private message='';
   private now:()=>number;private later:(fn:()=>void,ms:number)=>any;private cancel:(id:any)=>void;
   constructor(private options:SyncOptions){this.binding=clone(options.binding);this.savedAt=options.binding.savedAt;this.now=options.now??Date.now;this.later=options.later??setTimeout;this.cancel=options.cancel??clearTimeout;}
-  private state(phase:SyncPhase,message:string){this.phase=phase;if(!this.disposed)this.options.onState({phase,message,revision:this.binding.revision,savedAt:this.savedAt});}
+  private state(phase:SyncPhase,message:string){this.phase=phase;this.message=message;if(!this.disposed)this.options.onState({phase,message,revision:this.binding.revision,savedAt:this.savedAt});}
   private clear(){if(this.timer!==undefined)this.cancel(this.timer);this.timer=undefined;}
   private schedule(ms?:number){this.clear();if(this.disposed||this.running||this.phase==='conflict')return;
     this.timer=this.later(()=>{this.timer=undefined;void this.save();},ms??Math.max(0,Math.min(3000,15000-(this.now()-(this.dirtySince??this.now())))));}
@@ -97,6 +101,11 @@ export class SchoolSynchronizer {
     }catch(error){this.state('error',(error as Error).message);}
   }
   async save(){
+    if(this.inFlight)return this.inFlight;
+    const work=this.performSave();this.inFlight=work;
+    try{await work;}finally{if(this.inFlight===work)this.inFlight=undefined;}
+  }
+  private async performSave(){
     this.clear();if(this.disposed||this.running||this.phase==='conflict'||!this.latest)return;
     if(!this.pending&&this.latest.fingerprint===this.binding.fingerprint){this.state('saved','Spremljeno na školskom poslužitelju');return;}
     this.pending??={attemptId:this.binding.attemptId,expectedRevision:this.binding.revision,requestKey:crypto.randomUUID(),project:clone(this.latest.project),fingerprint:this.latest.fingerprint};
@@ -126,6 +135,19 @@ export class SchoolSynchronizer {
   }
   private conflicted(){return this.phase==='conflict';}
   private scheduleAfterRun?:number;
+  async flush(project:Project):Promise<SchoolBinding>{
+    const fingerprint=await schoolFingerprint(project);
+    await this.update(project);
+    // Join an existing autosave first, then drain any newer local edit. A
+    // failed acknowledgement retains its original request key for a retry.
+    do{
+      await this.save();
+      if(this.disposed||this.phase==='conflict'||this.phase==='error')throw Error(this.message||'Spremanje nije potvrđeno.');
+    }while(this.pending||this.binding.fingerprint!==this.latest?.fingerprint);
+    this.clear();
+    if(this.binding.fingerprint!==fingerprint)throw Error('Rad je izmijenjen tijekom završetka. Ponovno otvori završni sažetak.');
+    return clone(this.binding);
+  }
   async useLocalAfterReview(remote:SchoolWorkState){
     if(this.running||this.disposed||remote.attempt.id!==this.binding.attemptId||remote.snapshot.revision!==remote.attempt.revision)throw Error('Ponovno učitaj posljednju poslužiteljsku reviziju.');
     this.pending=undefined;this.binding={...this.binding,revision:remote.attempt.revision,fingerprint:await schoolFingerprint(remote.snapshot.project)};

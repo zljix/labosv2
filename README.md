@@ -1,18 +1,29 @@
 # Labosv2 · školski laboratorij
 
-**0.13.4-beta.1 · etapa 23E · 15. studenoga 2026.**
+**0.13.5-beta.1 · etapa 23F · 15. studenoga 2026.**
+
+PHP/MySQL integracija i cjelovit React tijek prošli su u [GitHub Actionsu](https://github.com/zljix/labosv2/actions/runs/43738711916).
 
 Nastavak postojećeg ESP32 MicroPython / Arduino laboratorija za školski sustav s PHP-om i stvarnim MySQL-om. Polazište je [labos 0.12.9](https://github.com/zljix/labos/tree/3c4a281c10282d63b2742280f69aadbc08d7ae1e), uključujući posljednje dorade vodova.
 
 [Web laboratorij](https://zljix.github.io/labosv2/) · [Školski račun](https://zljix.github.io/labosv2/school.html#account) · [Upute za instalaciju](school/README.md) · [Bodovanje i dokazi 23E](docs/stage23e-grading.md)
 
-## Novo u 23E
+## Novo u 23F
+
+- **Završi i zaključaj vježbu** dovršava autosave i prikazuje završni sažetak točne revizije, bodove i neostvarene kriterije.
+- Jedna transakcijska predaja po pokušaju; dva klika ili izgubljeni odgovor ne stvaraju duplikate. Kasno spremanje ne mijenja zaključanu snimku.
+- Bodovanje može završiti nakon zaključavanja. Rezultat ostaje uz izvorni rad i ne prelazi na novu doradu.
+- Nastavnik uz razlog dopušta **novi povezani pokušaj**. Prethodna predaja i njezini bodovi ostaju sačuvani.
+- Učenik i nastavnik pregledavaju povijest pokušaja. Pregled razreda odvojeno prikazuje aktualni rad i posljednju zaključanu predaju.
+- Migracija 006 i paket za nadogradnju s 23E. [Postupak, provjere i granice 23F](docs/stage23f-submissions.md).
+
+## Sačuvano iz 23E
 
 - Tri izričito odabrane automatske rubrike: **tipkalo → LED**, **analogni prag → LED** i **BMP280 I2C**; MicroPython S3 te Uno/Nano C++.
 - Neovisno izvođenje spremljene snimke, red poslova i potvrđeni bodovi po kriteriju. Novi Arduino izvor prevodi se u izoliranom lokalnom alatu.
 - Učenik vidi bodove uz točnu reviziju; nastavnik ih vidi u pregledu razreda i povijesti snimki. Zakašnjeli rezultat ne mijenja bodove novijeg rada.
 - Tehnička pogreška, čekanje i nepodržana provjera čuvaju prazne bodove. Stare opisne rubrike ne mijenjaju se.
-- Analogni pilot ima zasebne upute za digitalni prag; početni PWM program treba prilagoditi. Zaključavanje slijedi u 23F.
+- Analogni pilot ima zasebne upute za digitalni prag; početni PWM program treba prilagoditi. Zaključavanje i dopuštena dorada dostupni su u 23F.
 
 [Upute za uključivanje provjeravača](school/README.md#23e--automatsko-bodovanje-pilota) · [Podrška, dokazi i granice 23E](docs/stage23e-grading.md)
 
@@ -39,7 +50,7 @@ Prijava, uloge, razredi, CSV uvoz, pozivni kodovi i nepromjenjive inačice zadat
 
 **386/386 ciljanih testova**, **6/6 neovisnih compiler/runtime pokusa** i **4/4 skupne HTTPS provjere**; svih 191 web resursa provjereno je bajtno na Apacheu. Stari ZIP iz 22I ponovno se otvara i izvodi. [Točne inačice, granice i otvorene provjere](docs/stage23a-school.md).
 
-Središnje spremanje dodijeljenih vježbi i nastavnički pregled sada su dostupni na školskom poslužitelju. Službeni bodovi za tri izričito odabrana pilota dostupni su u 23E; zaključavanje slijedi u 23F. Probni rezultati 23A zadržavaju oznaku `feasibility-only`. GitHub Pages služi web simulator i javni prikaz školskog izdanja; prijava zahtijeva školski PHP/MySQL poslužitelj.
+Središnje spremanje dodijeljenih vježbi i nastavnički pregled sada su dostupni na školskom poslužitelju. Službeni bodovi za tri izričito odabrana pilota dostupni su u 23E; zaključavanje i dopuštena dorada dostupni su u 23F. Probni rezultati 23A zadržavaju oznaku `feasibility-only`. GitHub Pages služi web simulator i javni prikaz školskog izdanja; prijava zahtijeva školski PHP/MySQL poslužitelj.
 
 ## Pokretanje i izgradnja
 
@@ -58,7 +69,7 @@ npm ci
 npm run build:school
 ```
 
-Školski paket: `release/Labosv2_0.13.4_23E_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-23E-Skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
+Školski paket: `release/Labosv2_0.13.5_23F_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-23F-Skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
 
 ```sh
 npm run build:pages
@@ -75,6 +86,8 @@ npm run test:school
 npm run test:school-package
 npm run test:school-catalog
 npm run test:school-sync
+npm run test:school-finish-ui
+npm run test:school-submissions
 npm run test:routing
 npm test
 ```

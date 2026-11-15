@@ -1,0 +1,80 @@
+// MIT. Lab SDSC/FAT16 driver 1.0.0; one 512 B buffer, real SPI, root 8.3.
+#pragma once
+#include <Arduino.h>
+#include <SPI.h>
+class LabSD {
+ uint8_t cs,b[512];uint32_t speed=100000;bool located=false;const char* fault="";
+ uint16_t u16(int o){return b[o]|uint16_t(b[o+1])<<8;}
+ uint32_t u32(int o){return u16(o)|uint32_t(u16(o+2))<<16;}
+ void p16(int o,uint16_t n){b[o]=n;b[o+1]=n>>8;}
+ void p32(int o,uint32_t n){p16(o,n);p16(o+2,n>>16);}
+ bool fail(const char* s){fault=s;end();return false;}
+ static uint16_t crcByte(uint16_t c,uint8_t v){c^=uint16_t(v)<<8;for(uint8_t i=0;i<8;i++)c=(c<<1)^((c&0x8000)?0x1021:0);return c;}
+ void end(){digitalWrite(cs,HIGH);SPI.transfer(255);SPI.endTransaction();}
+ uint8_t cmd(uint8_t n,uint32_t a,uint8_t crc=1){
+  SPI.beginTransaction(SPISettings(speed,MSBFIRST,SPI_MODE0));digitalWrite(cs,LOW);
+  uint16_t wait=0;while(SPI.transfer(255)!=255)if(++wait==2000)return 255;
+  SPI.transfer(64|n);SPI.transfer(a>>24);SPI.transfer(a>>16);SPI.transfer(a>>8);SPI.transfer(a);SPI.transfer(crc);
+  for(uint8_t i=0;i<64;i++){uint8_t r=SPI.transfer(255);if(r<128)return r;}return 255;
+ }
+ bool data(uint16_t n){
+  uint16_t wait=0;uint8_t token;do{token=SPI.transfer(255);if(token!=255&&token!=254)return false;}while(token!=254&&++wait<2000);
+  if(token!=254)return false;uint16_t crc=0;for(uint16_t i=0;i<n;i++){b[i]=SPI.transfer(255);crc=crcByte(crc,b[i]);}
+  uint16_t got=uint16_t(SPI.transfer(255))<<8;got|=SPI.transfer(255);return crc==got;
+ }
+ uint16_t fat(uint16_t c){if(!readBlock(1+c/256))return 0xfff7;uint16_t v=u16((c%256)*2);if(!readBlock(65+c/256))return 0xfff7;if(v!=u16((c%256)*2)){fault="FAT copies differ";return 0xfff7;}return v;}
+ bool setFat(uint16_t c,uint16_t value){uint16_t s=c/256;if(!readBlock(1+s))return false;p16((c%256)*2,value);return writeBlock(1+s)&&writeBlock(65+s);}
+ uint16_t allocate(){for(uint16_t c=2;c<16253;c++)if(fat(c)==0){if(!setFat(c,65535))return 0;return c;}fault="FAT disk full";return 0;}
+ bool name83(const char* name,char* out){
+  memset(out,' ',11);uint8_t pos=0,ext=0;for(;*name;name++){char c=*name;if(c>='a'&&c<='z')c-=32;if(c=='.'&&!ext&&pos){ext=1;pos=8;continue;}if(!((c>='A'&&c<='Z')||(c>='0'&&c<='9')||c=='_'||c=='-')||pos>10||(!ext&&pos>=8))return false;out[pos++]=c;}return pos>0&&(!ext||pos>8);
+ }
+ bool find(const char* name,int16_t &slot,uint16_t &first,uint32_t &size){
+  char key[11];if(!name83(name,key)){fault="Use root 8.3 names";return false;}slot=-1;first=0;size=0;located=false;
+  for(uint8_t s=0;s<4;s++){if(!readBlock(129+s))return false;for(uint8_t i=0;i<16;i++){int o=i*32;if(!b[o]||b[o]==229){if(slot<0)slot=s*16+i;if(!b[o])return true;}else if(!(b[o+11]&24)&&!memcmp(b+o,key,11)){slot=s*16+i;located=true;if(b[o+11]&1){fault="FAT read-only file";return false;}first=u16(o+26);size=u32(o+28);return true;}}}
+  if(slot<0){fault="Root directory full";return false;}return true;
+ }
+ bool root(int16_t slot,const char* name,uint16_t first,uint32_t size){
+  if(!readBlock(129+slot/16))return false;int o=(slot%16)*32;char key[11];if(!name83(name,key))return false;memset(b+o,0,32);memcpy(b+o,key,11);b[o+11]=32;p16(o+24,(2026-1980)*512+33);p16(o+26,first);p32(o+28,size);return writeBlock(129+slot/16);
+ }
+public:
+ explicit LabSD(uint8_t select):cs(select){}
+ const char* error(){return fault;}
+ uint8_t* buffer(){return b;}
+ bool begin(){
+  speed=100000;fault="";pinMode(cs,OUTPUT);digitalWrite(cs,HIGH);delay(2);
+  SPI.beginTransaction(SPISettings(speed,MSBFIRST,SPI_MODE0));for(uint8_t i=0;i<10;i++)SPI.transfer(255);SPI.endTransaction();
+  if(cmd(0,0,0x95)!=1)return fail("SD CMD0");end();
+  if(cmd(8,0x1aa,0x87)!=1)return fail("SD CMD8");for(uint8_t i=0;i<4;i++)b[i]=SPI.transfer(255);end();if(b[0]||b[1]||b[2]!=1||b[3]!=0xaa)return fail("SD R7");
+  bool ready=false;for(uint8_t i=0;i<100;i++){cmd(55,0);end();uint8_t r=cmd(41,0);end();if(!r){ready=true;break;}delay(1);}if(!ready)return fail("SD ACMD41");
+  if(cmd(58,0))return fail("SD OCR");for(uint8_t i=0;i<4;i++)b[i]=SPI.transfer(255);end();if(!(b[0]&128)||(b[0]&64))return fail("SDSC required");
+  if(cmd(16,512))return fail("SD block size");end();
+  if(cmd(9,0)||!data(16))return fail("SD CSD");end();uint16_t size=((b[6]&3)<<10)|(uint16_t(b[7])<<2)|(b[8]>>6);uint8_t mult=((b[9]&3)<<1)|(b[10]>>7);uint32_t sectors=(uint32_t(size)+1)*(1UL<<(mult+2))*(1UL<<(b[5]&15))/512;
+  if((b[0]>>6)||sectors!=16384)return fail("Lab SDSC 8 MiB required");speed=1000000;return true;
+ }
+ bool readBlock(uint32_t n){if(n>=16384)return fail("SD address");if(cmd(17,n*512)||!data(512))return fail("SD read/CRC");end();return true;}
+ bool writeBlock(uint32_t n){
+  if(n>=16384)return fail("SD address");if(cmd(24,n*512))return fail("SD write command");SPI.transfer(254);uint16_t crc=0;for(uint16_t i=0;i<512;i++){SPI.transfer(b[i]);crc=crcByte(crc,b[i]);}SPI.transfer(crc>>8);SPI.transfer(crc);
+  if((SPI.transfer(255)&31)!=5)return fail("SD write rejected");uint16_t wait=0;while(SPI.transfer(255)!=255)if(++wait==2000)return fail("SD busy timeout");end();return true;
+ }
+ bool mount(){if(!readBlock(0))return false;if(u16(510)!=0xaa55||u16(11)!=512||b[13]!=1||u16(14)!=1||b[16]!=2||u16(17)!=64||u16(19)!=16384||u16(22)!=64){fault="FAT16 geometry";return false;}return true;}
+ uint32_t fileSize(const char* name){int16_t slot;uint16_t first;uint32_t size;if(!find(name,slot,first,size))return 0;return size;}
+ bool append(const char* name,const char* text){
+  fault="";uint32_t len=strlen(text),size;int16_t slot;uint16_t first;if(!find(name,slot,first,size))return false;if(size>65536||len>65536-size){fault="64 KiB file limit";return false;}
+  uint16_t seen[128],count=0,c=first;while(c&&c<65528){if(c<2||c>=16253||count>=128){fault="Invalid FAT chain";return false;}for(uint16_t i=0;i<count;i++)if(seen[i]==c){fault="Cyclic FAT chain";return false;}seen[count++]=c;c=fat(c);if(c==0xfff7)return false;}
+  if(count<(size+511)/512){fault="Short FAT chain";return false;}c=size?seen[(size-1)/512]:first;
+  uint32_t pos=size,done=0;
+  while(done<len){
+   if(!c){c=allocate();if(!c)return false;first=c;memset(b,0,512);}
+   else if(pos&&pos%512==0){uint16_t next=fat(c);if(next>=65528){next=allocate();if(!next||!setFat(c,next))return false;memset(b,0,512);}else{if(next<2||next>=16253){fault="Invalid FAT chain";return false;}if(!readBlock(133+next-2))return false;}c=next;}
+   else if(!readBlock(133+c-2))return false;
+   uint16_t offset=pos%512,n=512-offset;if(n>len-done)n=len-done;memcpy(b+offset,text+done,n);if(!writeBlock(133+c-2))return false;pos+=n;done+=n;
+  }
+  return root(slot,name,first,size+len);
+ }
+ bool printFile(const char* name,Print &out){
+  int16_t slot;uint16_t c;uint32_t size;if(!find(name,slot,c,size))return false;if(!located){fault="File not found";return false;}if(size>65536){fault="64 KiB file limit";return false;}
+  uint16_t seen[128],count=0;while(size){if(c<2||c>=16253||count>=128){fault="Invalid FAT chain";return false;}for(uint16_t i=0;i<count;i++)if(seen[i]==c){fault="Cyclic FAT chain";return false;}seen[count++]=c;
+   if(!readBlock(133+c-2))return false;uint16_t n=size<512?size:512;out.write(b,n);size-=n;if(size)c=fat(c);
+  }return true;
+ }
+};

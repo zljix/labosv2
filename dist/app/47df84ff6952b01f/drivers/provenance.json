@@ -1,0 +1,183 @@
+{
+  "retrievedOn": "2026-11-13",
+  "files": {
+    "aht10.py": {
+      "sha256": "7350e85ce96b1cfcea4d331751ac417b56e3c93a59d021985e1cc9132d1204b5",
+      "source": "ESP32 MicroPython Lab",
+      "commit": null,
+      "path": null,
+      "modifiedFromUpstream": null
+    },
+    "ssd1306.py": {
+      "sha256": "b9f5331c75297774bced61bdfd12c37d4363336d064d7cf58967c88d807efbe5",
+      "source": "micropython/micropython-lib",
+      "commit": "a08087249fda8a7994f7c54ccaad29fb9fcc448a",
+      "path": "micropython/drivers/display/ssd1306/ssd1306.py",
+      "modifiedFromUpstream": false
+    },
+    "servo.py": {
+      "sha256": "41d09d148a034ef3014a0ac7f0535391270820f90f7393253831f1b4eaddded0",
+      "source": "ESP32 MicroPython Lab",
+      "commit": null,
+      "path": null,
+      "modifiedFromUpstream": null
+    },
+    "lab_i2c_sensors.py": {
+      "sha256": "e604febe801f59b3053d0b26bb88fcb44bf325d91da0808150e9dfe3be364310",
+      "source": "ESP32 MicroPython Lab, project driver 1.0.2; BMP180 SCO polling and AM2320 elapsed-time waits",
+      "commit": null,
+      "path": "public/drivers/lab_i2c_sensors.py",
+      "modifiedFromUpstream": null
+    },
+    "lcd1602.py": {
+      "sha256": "cf946f1e28b780a7310b587fe9c73959e5c12f8680e1ea30604c99b3355790f8",
+      "source": "ESP32 MicroPython Lab, project driver 1.0.0",
+      "commit": null,
+      "path": "public/drivers/lcd1602.py",
+      "modifiedFromUpstream": null
+    },
+    "dht.py": {
+      "sha256": "2aff84bb314c8785b08bd87420e8baa8d6cf14724c953c8a69b9315fb047ec91",
+      "source": "micropython/micropython-lib",
+      "commit": "a08087249fda8a7994f7c54ccaad29fb9fcc448a",
+      "path": "micropython/drivers/sensor/dht/dht.py",
+      "modifiedFromUpstream": false
+    },
+    "onewire.py": {
+      "sha256": "11f05fe2f3fc294590da5a17e160573ba0d98f1c3f9f27612479c734db71808b",
+      "source": "micropython/micropython-lib",
+      "commit": "a08087249fda8a7994f7c54ccaad29fb9fcc448a",
+      "path": "micropython/drivers/bus/onewire/onewire.py",
+      "modifiedFromUpstream": false
+    },
+    "ds18x20.py": {
+      "sha256": "f55f41095a9047dd52c377b13ff5c07534b065f01e79361defef13ad09f092fc",
+      "source": "micropython/micropython-lib",
+      "commit": "a08087249fda8a7994f7c54ccaad29fb9fcc448a",
+      "path": "micropython/drivers/sensor/ds18x20/ds18x20.py",
+      "modifiedFromUpstream": false
+    },
+    "_onewire.py": {
+      "sha256": "36b0ba7dd361b30bf1e5c1c28f8f96703f94b8dcd2b9ac21d8ed52ab00d8c3c6",
+      "source": "ESP32 MicroPython Lab GPIO transport",
+      "commit": null,
+      "path": "public/drivers/_onewire.py",
+      "modifiedFromUpstream": null
+    },
+    "lab_encoder.py": {
+      "sha256": "7a0f7d92efd8b78879bcb9079f01b56a569d5b80122cf70d6ef49385cb147b31",
+      "source": "ESP32 MicroPython Lab",
+      "commit": null,
+      "path": null,
+      "modifiedFromUpstream": null,
+      "license": "MIT",
+      "profile": "Polling Gray decoder, four transitions per full detent at AB=11; SW debounce 20 ms"
+    },
+    "lab_ir.py": {
+      "sha256": "1193749f56beb24d95580d7d2ab9134b18f361e5460010b05aa6016616372f1e",
+      "source": "ESP32 MicroPython Lab",
+      "commit": null,
+      "path": "public/drivers/lab_ir.py",
+      "modifiedFromUpstream": null,
+      "license": "MIT",
+      "profile": "Standard NEC 8-bit address/command; GPIO pulse timing with inverse validation and repeat age limit; 38 kHz PWM transmitter"
+    },
+    "lab_tm1637.py": {
+      "sha256": "d34af94ff7b629ee2fbe7c1ed0692ce0f5c8f5ea99be09c70653187ecb72b59e",
+      "source": "ESP32 MicroPython Lab",
+      "commit": null,
+      "path": "public/drivers/lab_tm1637.py",
+      "modifiedFromUpstream": null,
+      "license": "MIT",
+      "profile": "GPIO LSB-first with ninth-clock ACK; four digits, colon, 8 duties, visible project source"
+    },
+    "lab_st7735.py": {
+      "license": "MIT",
+      "version": "1.0.0",
+      "origin": "Original ESP32 MicroPython Lab teaching driver",
+      "path": "public/drivers/lab_st7735.py",
+      "sha256": "1cf45cc53d75709df320a1e48825141c1f180e5bf56c0253cccf473e93db70c8"
+    },
+    "lab_bmp280_spi.py": {
+      "license": "MIT",
+      "version": "1.0.0",
+      "origin": "Original ESP32 MicroPython Lab teaching driver",
+      "path": "public/drivers/lab_bmp280_spi.py",
+      "sha256": "1b59e3a1783f5fd98fa1036b9701f32989c77e57f9c04e168a3052b06917d70f"
+    },
+    "lab_ili9341.py": {
+      "sha256": "b50d9c7710312e4ec5694dc4e53609a89958d7231c953417fb95635b40ac2293",
+      "source": "ESP32 MicroPython Lab, original bounded driver 1.0.0",
+      "commit": null,
+      "path": "public/drivers/lab_ili9341.py",
+      "modifiedFromUpstream": null,
+      "license": "MIT",
+      "profile": "ILI9341 write-only RGB565 240x320; four MADCTL rotations; 16-bit windows; direct writes without full framebuffer; small uppercase ASCII font"
+    },
+    "lab_ili9341.h": {
+      "sha256": "c77b5b95145f864588efb19524ef00bd193eb9f9531d7c0e600968aba9096dd4",
+      "source": "ESP32 MicroPython Lab, original bounded driver 1.0.0",
+      "commit": null,
+      "path": "public/drivers/lab_ili9341.h",
+      "modifiedFromUpstream": null,
+      "license": "MIT",
+      "profile": "ILI9341 write-only RGB565 240x320; four MADCTL rotations; 16-bit windows; direct writes without full framebuffer; small uppercase ASCII font"
+    },
+    "lab_xpt2046.py": {
+      "sha256": "7ed5a37cdddf83bdf55482c1cfc5489e454d0c778d6b6a4456b0f5bb71f0fdd4",
+      "source": "ESP32 MicroPython Lab, original bounded driver 1.0.0",
+      "path": "public/drivers/lab_xpt2046.py",
+      "license": "MIT",
+      "profile": "XPT2046 12-bit differential SPI mode 0, 24-clock X/Y/Z1/Z2, endpoint calibration and four inverse MADCTL rotations"
+    },
+    "lab_xpt2046.h": {
+      "sha256": "db23a3a7e39d8bbbc1f8bca83d25b47959bc02e58c38100c74422890b4b42fde",
+      "source": "ESP32 MicroPython Lab, original bounded driver 1.0.0",
+      "path": "public/drivers/lab_xpt2046.h",
+      "license": "MIT",
+      "profile": "XPT2046 12-bit differential SPI mode 0, 24-clock X/Y/Z1/Z2, endpoint calibration and four inverse MADCTL rotations"
+    },
+    "lab_ds1302.py": {
+      "sha256": "a5a845977848d2c912e9cbbde18f173e551d56b0296e0ba353c0017456cd07ca",
+      "source": "ESP32 MicroPython Lab; own MIT DS1302 GPIO driver 1.0.0",
+      "commit": null,
+      "path": null,
+      "modifiedFromUpstream": null
+    },
+    "lab_sdcard.py": {
+      "sha256": "ac87d56ba8e51ac0c8ea071bbcd8dc91cd4990084aec80a8e30498cec2b6ebaf",
+      "source": "ESP32 MicroPython Lab, original MIT teaching driver 1.0.0",
+      "commit": null,
+      "path": "public/drivers/lab_sdcard.py",
+      "modifiedFromUpstream": null
+    },
+    "lab_fat16.py": {
+      "sha256": "a011285b671216abaf6cd7ade7f787d195c91d57b3939d7d46ff7befd77bcbbe",
+      "source": "ESP32 MicroPython Lab, original MIT teaching driver 1.0.0",
+      "commit": null,
+      "path": "public/drivers/lab_fat16.py",
+      "modifiedFromUpstream": null
+    },
+    "lab_sd.h": {
+      "sha256": "04fef018b7f3317d1bf9abe979cbc440d5725146983fb84e38dc8030d2986b6a",
+      "source": "ESP32 MicroPython Lab, original MIT teaching driver 1.0.0",
+      "commit": null,
+      "path": "public/drivers/lab_sd.h",
+      "modifiedFromUpstream": null
+    },
+    "lab_max30102.py": {
+      "sha256": "4047b905647b4fa306496af3c3c4529c0b4217532e20abd4a5edfab07240e5db",
+      "source": "ESP32 MicroPython Lab; own MIT polling driver 1.0.0",
+      "path": "public/drivers/lab_max30102.py",
+      "license": "MIT",
+      "profile": "MAX30102 RED/RED+IR raw FIFO, polling, stop on full, no SpO2"
+    },
+    "lab_max30102.h": {
+      "sha256": "138c4857d7e5e80f743741a44dcfa169b039ef32afbeb4f9843c3de47199f074",
+      "source": "ESP32 MicroPython Lab; own MIT polling driver 1.0.0",
+      "path": "public/drivers/lab_max30102.h",
+      "license": "MIT",
+      "profile": "MAX30102 RED/RED+IR raw FIFO, polling, stop on full, no SpO2"
+    }
+  }
+}

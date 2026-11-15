@@ -5,14 +5,17 @@ import SchoolSnapshot from './SchoolSnapshot';
 import {schoolTime} from './SchoolWork';
 import {appAsset} from './assets';
 import {GradingReport,gradingLabel} from './SchoolGrading';
+import SchoolAttemptHistory from './SchoolAttemptHistory';
 
-const statuses:Record<string,string>={not_started:'Nije započeto',in_progress:'U radu',locked:'Zaključano'};
+const statuses:Record<string,string>={not_started:'Nije započeto',in_progress:'U radu',locked:'Zaključano',reopened:'Dorada dopuštena'};
 export default function SchoolClassReview({open}:{open:(p:Project)=>Promise<void>}){
   const api=useRef(new SchoolApi()),epoch=useRef(0),selection=useRef(0);
   const [user,setUser]=useState<any>(),[classes,setClasses]=useState<any[]>([]),[classId,setClassId]=useState(''),[assignments,setAssignments]=useState<any[]>([]),
     [assignmentId,setAssignmentId]=useState(''),[rows,setRows]=useState<any[]>([]),[checked,setChecked]=useState<number>(),[serverTime,setServerTime]=useState(''),
     [message,setMessage]=useState('Provjeravam školski pregled…'),[error,setError]=useState(''),[status,setStatus]=useState(''),[query,setQuery]=useState(''),
     [detail,setDetail]=useState<SchoolWorkState>(),[revisions,setRevisions]=useState<any[]>([]),[busy,setBusy]=useState(false),[hasMore,setHasMore]=useState(false),[after,setAfter]=useState(''),[previous,setPrevious]=useState<string[]>([]),[next,setNext]=useState(''),[age,setAge]=useState(0);
+  const [reason,setReason]=useState(''),[reopenMessage,setReopenMessage]=useState('');
+  const reopenRequest=useRef<{attemptId:number;reason:string;key:string}|undefined>(undefined);
   const desired=new URL(location.href).searchParams;
   useEffect(()=>{
     let cancelled=false;
@@ -55,10 +58,19 @@ export default function SchoolClassReview({open}:{open:(p:Project)=>Promise<void
     try{
       const s=await api.current.request('attempt&id='+id+(revision?'&revision='+revision:''));parseProject(s.snapshot.project);
       const history=await api.current.request('attempt-revisions&id='+id);
-      if(tick!==selection.current)return;setDetail(s);setRevisions(history.revisions);
+      if(tick!==selection.current)return;setDetail(s);setRevisions(history.revisions);setReason('');setReopenMessage('');
     }catch(e){if(tick===selection.current)setError((e as Error).message);}finally{if(tick===selection.current)setBusy(false);}
   }
   function exportSnapshot(){if(!detail)return;const url=URL.createObjectURL(new Blob([JSON.stringify(detail.snapshot.project,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='skolski-rad-'+detail.attempt.id+'-r'+detail.snapshot.revision+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+  async function reopen(){
+    if(!detail?.submission||busy)return;const tick=selection.current;
+    setBusy(true);setError('');setReopenMessage('');
+    const old=reopenRequest.current;
+    if(old?.attemptId!==detail.attempt.id||old.reason!==reason)reopenRequest.current={attemptId:detail.attempt.id,reason,key:crypto.randomUUID()};
+    try{await api.current.session();const work=await api.current.request('reopen-attempt',{attemptId:detail.attempt.id,submissionId:detail.submission.id,reason,requestKey:reopenRequest.current!.key});
+      if(tick===selection.current)setReopenMessage('Dopušten je pokušaj '+work.attempt.number+'. Predaja #'+detail.submission.id+' ostaje zaključana. Učenik otvara najnoviji pokušaj.');
+    }catch(e){if(tick===selection.current)setError((e as Error).message);}finally{if(tick===selection.current)setBusy(false);}
+  }
   const visible=rows.filter(r=>(!status||r.status===status)&&(r.student.displayName+' '+r.student.username).toLocaleLowerCase('hr').includes(query.toLocaleLowerCase('hr')));
   return <section className="school-class-review" aria-label="Školski pregled spremljenih radova"><h3>Školski pregled rada</h3>
     {message&&<p>{message} <a href={appAsset('school.html#account')}>Školski račun</a></p>}
@@ -67,15 +79,20 @@ export default function SchoolClassReview({open}:{open:(p:Project)=>Promise<void
       <p role="status">{checked?'Pregled osvježen prije '+age+' s · poslužitelj: '+schoolTime(serverTime):'Odaberi razred i vježbu za pregled.'} Osvježavanje svakih 5 s prikazuje posljednje spremljene snimke.</p>
       {error&&<p role="alert" className="review-warning">{error}</p>}
       <div className="school-sync-actions"><label>Pronađi učenika<input value={query} onChange={e=>setQuery(e.target.value)}/></label><label>Status<select value={status} onChange={e=>setStatus(e.target.value)}><option value="">Svi statusi</option>{Object.entries(statuses).map(([id,label])=><option value={id} key={id}>{label}</option>)}</select></label></div>
-      <div className="school-work-table"><table><thead><tr><th>Učenik</th><th>Status</th><th>Revizija / spremljeno</th><th>Bodovanje</th><th>Rad</th></tr></thead><tbody>{visible.map(r=><tr key={r.student.id}><td>{r.student.displayName}<br/><small>{r.student.username}{r.student.active?'':' · neaktivan račun'}</small></td><td>{statuses[r.status]??r.status}</td><td>{r.attempt?<>r{r.attempt.revision}<br/>{schoolTime(r.attempt.savedAt)}</>:'—'}</td><td>{gradingLabel(r.attempt?.grading)}</td><td>{r.attempt&&<button disabled={busy} onClick={()=>void inspect(r.attempt.id)}>Pregledaj snimku</button>}</td></tr>)}</tbody></table></div>
+      <div className="school-work-table"><table><thead><tr><th>Učenik</th><th>Status</th><th>Pokušaj / revizija / spremljeno</th><th>Bodovanje</th><th>Rad</th></tr></thead><tbody>{visible.map(r=><tr key={r.student.id}><td>{r.student.displayName}<br/><small>{r.student.username}{r.student.active?'':' · neaktivan račun'}</small></td><td>{statuses[r.status]??r.status}</td><td>{r.attempt?<>Pokušaj {r.attempt.number} · r{r.attempt.revision}<br/>{schoolTime(r.attempt.savedAt)}</>:'—'}</td><td>{gradingLabel(r.attempt?.grading)}{r.lastSubmission&&<p>Posljednja zaključana: #{r.lastSubmission.id} · {gradingLabel(r.lastSubmission.grading)}</p>}</td><td>{r.attempt&&<button disabled={busy} onClick={()=>void inspect(r.attempt.id)}>Pregledaj snimku</button>}</td></tr>)}</tbody></table></div>
       {checked&&!visible.length&&<p>Nema učenika za odabrani prikaz.</p>}
       <div className="school-sync-actions">{!!previous.length&&<button onClick={()=>{const copy=[...previous];setAfter(copy.pop()!);setPrevious(copy);}}>Prethodnih 200</button>}{hasMore&&<button onClick={()=>{setPrevious([...previous,after]);setAfter(next);}}>Sljedećih 200</button>}</div>
-      {detail&&<article className="school-work-detail"><h4>{detail.student.displayName} · revizija {detail.snapshot.revision}</h4><p>{schoolTime(detail.snapshot.savedAt)} · identitet iz prijavljenog računa · upute v{detail.assignment.task.version}</p>
+      {detail&&<article className="school-work-detail"><h4>{detail.student.displayName} · pokušaj {detail.attempt.number} · revizija {detail.snapshot.revision}</h4><p>{schoolTime(detail.snapshot.savedAt)} · identitet iz prijavljenog računa · upute v{detail.assignment.task.version}</p>
+        {detail.submission&&<p>Zaključana predaja #{detail.submission.id} · r{detail.submission.revision} · {schoolTime(detail.submission.submittedAt)}</p>}
+        {detail.reopening&&<p>Dorada predaje #{detail.reopening.submissionId}: {detail.reopening.reason} · {schoolTime(detail.reopening.openedAt)}</p>}
         <p>Ovo je snimka odabrane revizije. Otvaranje pregleda ne pokreće učenikov program; popis učenika nastavlja se osvježavati.</p>
         <label>Sačuvane revizije (posljednjih 100)<select value={detail.snapshot.revision} disabled={busy} onChange={e=>void inspect(detail.attempt.id,Number(e.target.value))}>{revisions.map(r=><option key={r.revision} value={r.revision}>r{r.revision} · {schoolTime(r.savedAt)}</option>)}</select></label>
         <details><summary>Objavljene upute i kriteriji ove dodjele</summary><p>{detail.assignment.task.definition.goal}</p><p>{detail.assignment.task.definition.teacherNotes}</p><ul>{detail.assignment.task.rubric.criteria.map((c:any)=><li key={c.id}>{c.description}{c.maxPoints===null?'':' · najviše '+c.maxPoints+' bodova'}</li>)}</ul></details>
         <GradingReport grading={detail.snapshot.grading}/>
         <SchoolSnapshot project={parseProject(detail.snapshot.project)} label="Posljednja odabrana snimka"/>
+        {detail.submission&&<div className="school-reopen"><label>Razlog dopuštanja dorade<textarea value={reason} maxLength={1000} onInput={e=>setReason(e.currentTarget.value)}/></label>
+          <button disabled={busy||!reason.trim()||!!reopenMessage} onClick={()=>void reopen()}>Dopusti doradu kao novi pokušaj</button>{reopenMessage&&<p role="status">{reopenMessage}</p>}</div>}
+        <SchoolAttemptHistory key={detail.attempt.id} api={api.current} attemptId={detail.attempt.id} select={async id=>{await inspect(id);}}/>
         <div className="school-sync-actions"><button onClick={()=>void inspect(detail.attempt.id)}>Učitaj najnoviju snimku</button><button onClick={exportSnapshot}>Preuzmi ovu reviziju kao JSON</button><button disabled={busy} onClick={()=>{setBusy(true);void open(detachedSchoolProject(parseProject(detail.snapshot.project))).catch(e=>setError(e.message)).finally(()=>setBusy(false));}}>Otvori zasebnu kopiju za pokus</button><button onClick={()=>{++selection.current;setDetail(undefined);setBusy(false);}}>Zatvori snimku</button></div>
       </article>}
     </>}

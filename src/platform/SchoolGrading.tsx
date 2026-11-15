@@ -38,6 +38,6 @@ export default function SchoolGrading({binding,revision,saved}:{binding:SchoolBi
     {grading&&!['not_enabled','unsupported'].includes(grading.status)&&<button disabled={busy||!saved||['queued','running'].includes(grading.status)} onClick={()=>{
       setBusy(true);setError('');void(async()=>{try{await api.current.session(binding.userId);const value=await api.current.request('request-grade',{attemptId:binding.attemptId,expectedRevision:revision,requestKey:crypto.randomUUID()});setGrading(value.grading);}catch(e){setError((e as Error).message);}finally{setBusy(false);}})();
     }}>Provjeri spremljenu reviziju / ponovi</button>}
-    <p className="lesson-small">Bodove potvrđuje školski poslužitelj. Završetak i zaključavanje rada slijede u sljedećoj etapi.</p>
+    <p className="lesson-small">Bodove potvrđuje školski poslužitelj za prikazanu reviziju. Završetak zaključava sadržaj; provjera može završiti naknadno.</p>
   </section>;
 }

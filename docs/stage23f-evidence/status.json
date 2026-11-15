@@ -1,0 +1,33 @@
+{
+  "version": "0.13.5-beta.1",
+  "stage": "23F",
+  "baselineCommit": "f6ede55c0170989e555bf1aac6393812836bc4c1",
+  "status": "integration-passed",
+  "localChecks": {
+    "regression": {
+      "passed": 88,
+      "failed": 0
+    },
+    "clientAndPackageOverlappingSubset": {
+      "passed": 22,
+      "failed": 0
+    },
+    "pages": {
+      "passed": 8,
+      "failed": 0
+    },
+    "schoolPackage": {
+      "passed": 2,
+      "failed": 0
+    },
+    "phpSyntax": {
+      "files": 15,
+      "failed": 0,
+      "runtime": "PHP 8.4.27"
+    }
+  },
+  "mysqlIntegration": "passed",
+  "githubPublication": "release-in-progress",
+  "functionalScope": "three 23E pilots; exact-revision submission, linked rework and attempt history",
+  "integrationRun": "https://github.com/zljix/labosv2/actions/runs/43738711916"
+}

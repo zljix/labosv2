@@ -40,6 +40,12 @@ Rezultati imaju autoritet **`feasibility-only`**. Tehnička nedostupnost i ogran
 
 Linux user/network/mount/PID izolacija ima ulaze samo za čitanje, prazno okruženje i praznu mrežu. Runtime nema bazu ni privatnu školsku konfiguraciju. Postoje ograničenja vremena, izlaza, V8 i MicroPython heapa te privremenog prostora. **Ukupnu nativnu/WASM memoriju još treba ograničiti cgroupom ili ekvivalentom prije javnog servisa.** CLI dokaz nije izložen kroz PHP. Windows put za provjeravač vraća nedostupnost, bez nesigurnog zaobilaznog puta.
 
+## Čista izgradnja i paket
+
+Čista izgradnja dodatno je provjerena bez ranije generiranog direktorija provjeravača. Testovi sada uvoze izvor, a školska izgradnja prvo priprema izvršne adaptere. Deset ponovljenih školskih testova prolazi; ponavljanje se ne dodaje broju 383. Pages putanja `/labosv2/` prošla je svojih osam provjera resursa i offline opsega.
+
+Raspakirani školski paket sadrži 447 datoteka obuhvaćenih inventarom. Njihove veličine i hashovi provjereni su u ZIP-u, a MicroPython i AVR provjera rade i iz paketa. Izolacija zahtijeva Bubblewrap najmanje 0.8; razvoj i CI zaključani su na 0.12.0, jer Ubuntu 22.04 paket 0.6.1 nema traženo ograničenje privremenog prostora. Ograničenje nije uklonjeno radi prolaza provjere.
+
 ## Granica prihvata i nastavak
 
 Razvojni kriterij 23A potvrđen je za navedeni Linux profil: stari se projekt otvara, reference se izvršavaju, Apache/PHP/MySQL su stvarno pokrenuti i neovisni MicroPython/AVR pokusi daju očekivane rezultate. Paket i upute spremni su za provjeru na školskom poslužitelju.

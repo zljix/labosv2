@@ -1,9 +1,9 @@
 {
   "stage": "23A",
-  "generatedAt": "2026-11-15T08:48:21.769Z",
+  "generatedAt": "2026-11-15T08:54:40.372Z",
   "scope": "HTTPS Apache/PHP delivery, exact resource bytes and private-path isolation; no student pilot.",
   "version": "0.13.0-beta.1",
-  "appBuild": "bdeaaf5f0d0c72b9",
+  "appBuild": "3c5421d76066ce13",
   "resources": 191,
   "checks": [
     {

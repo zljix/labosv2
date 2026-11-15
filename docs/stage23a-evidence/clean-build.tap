@@ -1,0 +1,23 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.13.0-beta.1 test:school
+> node --import tsx --test verification/school.test.ts
+
+✔ actual 22I reviewed ZIP reopens unchanged and executes its exact original AVR program (432.775919ms)
+✔ real MicroPython reference and alternate implementations follow trusted input stimuli (1056.417298ms)
+✔ printed fake points and constant LOW cannot pass input-dependent criteria (547.000443ms)
+✔ electrically equivalent visual layout preserves the result (691.78817ms)
+✔ AVR uses the trusted exact-source binary and ignores a forged uploaded artifact (605.58088ms)
+✔ AVR source changes require recompilation and never run a stale binary (14.395531ms)
+✔ busy Python is terminated with a distinct execution limit and no invented zero (725.751461ms)
+✔ syntax errors are student program errors rather than a successful result (164.022993ms)
+✔ sandbox hides host files and environment, denies children and has no network (75.112115ms)
+✔ missing sandbox prerequisites fail closed rather than rerunning on the host (3.88534ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4668.646329

@@ -2,7 +2,7 @@
   "format": "labosv2-school-preflight",
   "version": 1,
   "stage": "23A",
-  "generatedAt": "2026-11-15T08:48:21+00:00",
+  "generatedAt": "2026-11-15T08:54:39+00:00",
   "displayTimezone": "Europe/Zagreb",
   "environment": {
     "os": "Linux",
@@ -10,7 +10,7 @@
     "architecture": "x86_64",
     "cpu": "AMD EPYC 9V74 80-Core Processor",
     "memoryBytes": 10451427328,
-    "freeDiskBytes": 55943897088
+    "freeDiskBytes": 55937671168
   },
   "database": null,
   "checks": [

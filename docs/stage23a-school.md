@@ -4,7 +4,7 @@ Izdanje **0.13.0-beta.1**, 15. studenoga 2026. Objave školskih dorada koriste *
 
 ## Rezultat
 
-Pripremljen je paket s jedinim javnim korijenom `web/`, odvojenom privatnom konfiguracijom, CLI inventurom, Apache HTTPS predloškom, provjerenim MIME postavkama, izdvojenim provjeravačem i inventarom SHA-256 datoteka. Verzija, školska stranica i GitHub Pages izgradnja koriste labosv2. Školska stranica provjerava postojeći MicroPython WASM i Worker na uređaju.
+Pripremljen je paket s jedinim javnim korijenom `web/`, odvojenom privatnom konfiguracijom, CLI inventurom, Apache HTTPS predloškom, provjerenim MIME postavkama, izdvojenim provjeravačem i inventarom SHA-256 datoteka. Verzija, školska stranica i GitHub Pages izgradnja koriste labosv2. IndexedDB, oporavak i Arduino predmemorija imaju zasebne v2 nazive: izvorni radovi labosa ne čitaju se niti prepisuju pri automatskom spremanju. Prijenos je izričit ZIP/JSON uvoz. Školska stranica provjerava postojeći MicroPython WASM i Worker na uređaju.
 
 Pregledana je stvarna struktura `src/project/model.ts`, `src/project/archive.ts`, `src/circuit/compile.ts`, `src/runtime/avrEngine.ts`, `public/worker.mjs`, `public/session.mjs`, `public/machine.py`, compiler ugovor i `scripts/avr-compile.mjs`. Nema obvezne ovisnosti runtimea o prijašnjem hostingu: potrebni su vlastiti HTTP(S) resursi, ispravne putanje i postojeći lokalni compiler most za novi korisnički C++ izvor. Trenutačni runtime ne koristi SharedArrayBuffer/Atomics. Postojeći upareni prozor mosta razlog je da se COOP/COEP ne dodaju bez potrebe.
 
@@ -12,17 +12,17 @@ Pregledana je stvarna struktura `src/project/model.ts`, `src/project/archive.ts`
 
 | Provjera | Stvarni rezultat | Dokaz |
 | --- | --- | --- |
-| Ciljana regresija | **383/383**, bez preskakanja | `stage23a-evidence/regression.tap` |
+| Ciljana regresija | **386/386**, bez preskakanja | `stage23a-evidence/regression.tap` |
 | Neovisna provjera programa | **6/6**: dva MicroPython točna izvora, MicroPython pogreška ponašanja, katalogski AVR, novi točan AVR izvor, novi pogrešan AVR izvor | `stage23a-evidence/grading.json` i šest snimki projekta |
 | Ispravni programi | **10/10** | Izmjerena LED struja kroz pet promjena ulaza |
 | Trajno ugašena LED | **2/10**, ne prolazi kriterije reakcije | Lažni tekst bodova/LED stanja ne utječe na rezultat |
 | HTTPS Apache/PHP isporuka | **4/4** skupne provjere, svih **191** resursa bajtno provjereno | `stage23a-evidence/https-host.json` |
 | Stvarni MySQL preko PDO-a | MySQL **8.4.7**, InnoDB DEFAULT, utf8mb4, ograničen aplikacijski račun; sve navedene provjere prolaze | `stage23a-evidence/preflight.json` |
 | Negativna inventura | root račun odbijen; nedostatna konfiguracija odbijena; izlazni kod 2 | `preflight-root-rejected.json`, `preflight-missing-config.json` |
-| Stari projekt | Stvarni `stage22i-evidence/browser-reviewed.zip` ponovno uvezen, ZIP sadržaj očuvan i izvorni AVR program stvarno izveden | Jedan od 383 regresijskih testova |
-| Izolacija | Nema mreže, host datoteka, naslijeđene lozinke ili podprocesa runtimea; beskonačna petlja prekinuta; nema zamjenskog izvođenja bez izolacije | Deset školskih testova uključeno je u ukupan broj 383 |
+| Stari projekt | Stvarni `stage22i-evidence/browser-reviewed.zip` ponovno uvezen, ZIP sadržaj očuvan i izvorni AVR program stvarno izveden | Jedan od 386 regresijskih testova |
+| Izolacija | Nema mreže, host datoteka, naslijeđene lozinke ili podprocesa runtimea; beskonačna petlja prekinuta; nema zamjenskog izvođenja bez izolacije | Deset školskih testova uključeno je u ukupan broj 386 |
 
-Brojevi se ne zbrajaju kao da predstavljaju nepovezane jedinstvene testove. Deset školskih testova već je u broju 383. Šest dokaza prevoditelja i četiri skupne HTTPS provjere navode se zasebno zbog drukčijeg opsega. Ovo nije nova cjelovita regresija svih prethodnih senzora, fizički pokus ni učenički pilot.
+Brojevi se ne zbrajaju kao da predstavljaju nepovezane jedinstvene testove. Deset školskih testova već je u broju 386. Tri provjere odvajanja stare i nove pohrane također su uključene u broj 386. Šest dokaza prevoditelja i četiri skupne HTTPS provjere navode se zasebno zbog drukčijeg opsega. Ovo nije nova cjelovita regresija svih prethodnih senzora, fizički pokus ni učenički pilot.
 
 ## Stvarno ispitano okruženje
 
@@ -42,7 +42,7 @@ Linux user/network/mount/PID izolacija ima ulaze samo za čitanje, prazno okruž
 
 ## Čista izgradnja i paket
 
-Čista izgradnja dodatno je provjerena bez ranije generiranog direktorija provjeravača. Testovi sada uvoze izvor, a školska izgradnja prvo priprema izvršne adaptere. Deset ponovljenih školskih testova prolazi; ponavljanje se ne dodaje broju 383. Pages putanja `/labosv2/` prošla je svojih osam provjera resursa i offline opsega.
+Čista izgradnja dodatno je provjerena bez ranije generiranog direktorija provjeravača. Testovi sada uvoze izvor, a školska izgradnja prvo priprema izvršne adaptere. Deset ponovljenih školskih testova prolazi; ponavljanje se ne dodaje broju 386. Pages putanja `/labosv2/` prošla je svojih osam provjera resursa i offline opsega.
 
 Raspakirani školski paket sadrži 447 datoteka obuhvaćenih inventarom. Njihove veličine i hashovi provjereni su u ZIP-u, a MicroPython i AVR provjera rade i iz paketa. Izolacija zahtijeva Bubblewrap najmanje 0.8; razvoj i CI zaključani su na 0.12.0, jer Ubuntu 22.04 paket 0.6.1 nema traženo ograničenje privremenog prostora. Ograničenje nije uklonjeno radi prolaza provjere.
 

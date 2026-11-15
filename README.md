@@ -13,8 +13,9 @@ Nastavak postojećeg ESP32 MicroPython / Arduino laboratorija za školski sustav
 - Odvojeno izvršavanje jednog MicroPython i jednog AVR tipkalo/LED zadatka, uz ponovno prevođenje novog Arduino izvora.
 - Probna rubrika na temelju ponašanja sklopa, zanemarivanje klijentskih bodova i odbijanje zastarjelih programa.
 - Školska statusna stranica, zasebna Pages putanja i automatska izgradnja školskog ZIP-a u Actions.
+- Odvojena lokalna pohrana v2; izvorni projekti labosa prenose se izričitim ZIP/JSON uvozom.
 
-**383/383 ciljanih testova**, **6/6 neovisnih compiler/runtime pokusa** i **4/4 skupne HTTPS provjere**; svih 191 web resursa provjereno je bajtno na Apacheu. Stari ZIP iz 22I ponovno se otvara i izvodi. [Točne inačice, granice i otvorene provjere](docs/stage23a-school.md).
+**386/386 ciljanih testova**, **6/6 neovisnih compiler/runtime pokusa** i **4/4 skupne HTTPS provjere**; svih 191 web resursa provjereno je bajtno na Apacheu. Stari ZIP iz 22I ponovno se otvara i izvodi. [Točne inačice, granice i otvorene provjere](docs/stage23a-school.md).
 
 Prijava, središnje spremanje, službeni bodovi i zaključavanje još nisu dostupni. Probni rezultati imaju oznaku `feasibility-only`. Slijedi 23B: baza, administrator, prijava i uloge. GitHub Pages služi web simulator; PHP/MySQL dio koristi školsku instalaciju.
 

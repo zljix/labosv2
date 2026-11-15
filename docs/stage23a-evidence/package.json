@@ -1,10 +1,10 @@
 {
   "stage": "23A",
   "version": "0.13.0-beta.1",
-  "appBuild": "3c5421d76066ce13",
+  "appBuild": "454e1e66bd0829ab",
   "files": 447,
-  "zipBytes": 8680371,
-  "sha256": "fcf9bf125cdbdfe5001eee5bf24e13660e71848413cabeed837dc84d305304e7",
+  "zipBytes": 8680461,
+  "sha256": "61b80f5c86c6406d80ca965f931175c21d497fa58e246701735152929cb2eed2",
   "packagedRuntimeProofs": {
     "micropython": 10,
     "avr": 10

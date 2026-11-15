@@ -31,7 +31,7 @@ const complete = (tx: IDBTransaction) =>
   });
 export class ProjectStore {
   private constructor(private db: IDBDatabase) {}
-  static async open(name = "esp32-micropython-lab-v1") {
+  static async open(name = "esp32-micropython-lab-v2") {
     const r = indexedDB.open(name, 1);
     r.onupgradeneeded = () => {
       r.result.createObjectStore("projects", { keyPath: "id" });
@@ -119,14 +119,14 @@ export class ProjectStore {
     this.db.close();
   }
 }
-export const RECOVERY_KEY = "esp32-lab-recovery-v1";
+export const RECOVERY_KEY = "esp32-lab-recovery-v2";
 export function writeRecovery(document: Project, expected: number) {
   localStorage.setItem(RECOVERY_KEY, JSON.stringify({ document, expected }));
 }
 export function clearRecovery(p: Project) {
   try {
     const r = readRecovery();
-    if (r && JSON.stringify(r.document) === JSON.stringify(p))
+    if (r && JSON.stringify(r.document) === JSON.stringify(parseProject(p)))
       localStorage.removeItem(RECOVERY_KEY);
   } catch {}
 }

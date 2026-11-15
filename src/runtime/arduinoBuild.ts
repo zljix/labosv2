@@ -1,7 +1,7 @@
 import {sha256} from '../../public/avr-contract.mjs';
 import {buildFile,inputHash,validateArtifact,buildInput,memoryDescription} from '../../public/arduino-contract.mjs';
 import {clone,parseProject,type Project} from '../project/model';
-const CACHE='esp32-lab-avr-cache-v1';
+const CACHE='esp32-lab-avr-cache-v2';
 type StorageLike=Pick<Storage,'getItem'|'setItem'|'removeItem'>;
 export interface BuildDiagnostic {file:string;line:number;column:number;severity:string;message:string}
 export async function rememberBuild(project:Project,artifact:any,storage?:StorageLike){

@@ -1,0 +1,21 @@
+✔ ZIP and JSON preserve Unicode, helper files and settings (14.325197ms)
+✔ labosv2 opens separate storage and imports a legacy project without editing the original (27.757712ms)
+✔ labosv2 recovery neither reads nor clears the previous laboratory recovery (1.243459ms)
+✔ labosv2 Arduino cache leaves the earlier laboratory cache intact (34.91744ms)
+✔ future schemas and unknown board profiles are rejected (0.755695ms)
+✔ entrypoint, settings and circuit scope are validated (0.579481ms)
+✔ traversal, scripts, internal overrides and case collisions are rejected (1.471822ms)
+✔ file and decompressed archive sizes are bounded (14.011815ms)
+✔ ZIP manifest must match files; truncated packages are rejected (7.44011ms)
+✔ editing preserves immutable runtime snapshot (1.395267ms)
+✔ IndexedDB survives reopening with multiple projects, settings and history (24.013856ms)
+✔ atomic revisions protect against concurrent tab writes (2.619336ms)
+✔ bounded history restoration creates a new revision (34.489067ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 612.404513

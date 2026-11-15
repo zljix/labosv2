@@ -109,7 +109,7 @@ Regresija: `npm run test:school`. Cjelovit dokaz s dva nova AVR izvora: `npm run
 
 `.wasm` mora imati `application/wasm`; `.mjs`/`.js` JavaScript MIME. Resursi i radnici koriste vlastitu adresu i relativne putanje. Trenutačne jezgre ne koriste SharedArrayBuffer ni Atomics; COOP/COEP zato nisu uvjet ovog profila i ne uključuju se naslijepo, jer treba očuvati upareni prozor lokalnog compiler mosta.
 
-HTTPS provjeri na svakom ciljnom uređaju. `http://localhost` provjera ne dokazuje mrežni HTTPS pristup. Pri promjeni adrese ili prelasku iz `/labos/` u `/labosv2/` preglednik dobiva zasebnu pohranu; postojeći rad prenesi ZIP/JSON izvozom. Podatci se još ne sinkroniziraju preko baze.
+HTTPS provjeri na svakom ciljnom uređaju. `http://localhost` provjera ne dokazuje mrežni HTTPS pristup. Promjena domene ili protokola stvara drugi origin. Na istoj GitHub domeni putanje dijele origin, pa labosv2 izričito koristi zasebne nazive IndexedDB baze, oporavka i Arduino predmemorije. Postojeći rad prenesi ZIP/JSON izvozom; dosadašnji zapisi labosa ne mijenjaju se niti se automatski prenose. Podatci se još ne sinkroniziraju preko baze.
 
 ## Završetak 23A i otvorene provjere
 

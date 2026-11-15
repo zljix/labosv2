@@ -11,7 +11,10 @@ import {
   LIMITS,
 } from "../src/project/model";
 import { exportZip, importProject } from "../src/project/archive";
-import { ProjectStore, ConflictError } from "../src/project/storage";
+import { ProjectStore, ConflictError, readRecovery, writeRecovery, clearRecovery } from "../src/project/storage";
+import { cachedBuild, rememberBuild, clearBuildCache } from "../src/runtime/arduinoBuild";
+import { arduinoExampleProject } from "../src/runtime/arduinoExamples";
+import { readFileSync } from "node:fs";
 test("ZIP and JSON preserve Unicode, helper files and settings", () => {
   const p = newProject(
     "from pomoc import poruka\nprint(poruka)",
@@ -29,6 +32,45 @@ test("ZIP and JSON preserve Unicode, helper files and settings", () => {
   };
   assert.deepEqual(importProject(exportZip(p), "p.zip"), p);
   assert.deepEqual(importProject(strToU8(JSON.stringify(p)), "p.json"), p);
+});
+test("labosv2 opens separate storage and imports a legacy project without editing the original", async () => {
+  const original = newProject('print("stari rad")', 'Rad iz labosa');
+  const legacy = await ProjectStore.open('esp32-micropython-lab-v1');
+  const v2 = await ProjectStore.open();
+  try {
+    await legacy.save(original, 0, 'Stari laboratorij');
+    assert.equal(await v2.get(original.id), undefined);
+    const imported = importProject(exportZip(original), 'stari-rad.zip');
+    imported.files['main.py'] = 'print("dorada u v2")';
+    await v2.save(imported, 0, 'Uvoz u labosv2');
+    assert.equal((await v2.get(original.id))!.document.files['main.py'], imported.files['main.py']);
+    assert.deepEqual((await legacy.get(original.id))!.document, original);
+  } finally { legacy.close(); v2.close(); }
+});
+test("labosv2 recovery neither reads nor clears the previous laboratory recovery", () => {
+  const prior = Object.getOwnPropertyDescriptor(globalThis, 'localStorage');
+  const original = newProject('print(1)'), next = newProject('print(2)');
+  const text = JSON.stringify({document: original, expected: 7});
+  const values = new Map([['esp32-lab-recovery-v1', text]]);
+  const storage = {getItem: (key: string) => values.get(key) ?? null, setItem: (key: string, value: string) => {values.set(key, value);}, removeItem: (key: string) => {values.delete(key);}};
+  Object.defineProperty(globalThis, 'localStorage', {value: storage, configurable: true});
+  try {
+    assert.equal(readRecovery(), undefined);
+    writeRecovery(next, 0); assert.deepEqual(readRecovery(), {document: next, expected: 0});
+    clearRecovery(next); assert.equal(readRecovery(), undefined);
+    assert.equal(values.get('esp32-lab-recovery-v1'), text);
+  } finally { if (prior) Object.defineProperty(globalThis, 'localStorage', prior); else Reflect.deleteProperty(globalThis, 'localStorage'); }
+});
+test("labosv2 Arduino cache leaves the earlier laboratory cache intact", async () => {
+  const project = arduinoExampleProject('button');
+  const catalogue = JSON.parse(readFileSync('public/avr-examples.json', 'utf8'));
+  const artifact = catalogue[project.board.id].button, text = JSON.stringify([artifact]);
+  const values = new Map([['esp32-lab-avr-cache-v1', text]]);
+  const storage = {getItem: (key: string) => values.get(key) ?? null, setItem: (key: string, value: string) => {values.set(key, value);}, removeItem: (key: string) => {values.delete(key);}};
+  assert.equal(await cachedBuild(project, storage), null);
+  await rememberBuild(project, artifact, storage); assert.equal((await cachedBuild(project, storage))!.hexHash, artifact.hexHash);
+  clearBuildCache(storage); assert.equal(await cachedBuild(project, storage), null);
+  assert.equal(values.get('esp32-lab-avr-cache-v1'), text);
 });
 test("future schemas and unknown board profiles are rejected", () => {
   const p = newProject();

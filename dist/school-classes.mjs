@@ -56,7 +56,7 @@ export function createSchoolPortal({request,getUser,run,message,reloadUsers}) {
         const button=node('button',a.available?'Sakrij učenicima':'Omogući učenicima','secondary');button.type='button';button.addEventListener('click',()=>void run(async()=>{await request('assignment-availability',{assignmentId:a.id,available:!a.available});await refreshAssignments();message('Dostupnost vježbe je spremljena.');}));card.append(button);
       }
       if(staff()){const live=node('a','Pregled spremljenih radova','button');live.href='./?schoolReview='+a.classId+'&schoolExercise='+a.id;card.append(live);}
-      card.append(node('small','Učenički rad sprema se na školskom poslužitelju. Ponovno otvaranje nastavlja posljednju spremljenu reviziju. Objavljena pilot-provjera prikazuje bodove u laboratoriju. Zaključavanje slijedi.'));host.append(card);
+      card.append(node('small','Učenički rad sprema se na školskom poslužitelju. Ponovno otvaranje nastavlja posljednju spremljenu reviziju. Objavljena pilot-provjera prikazuje bodove u laboratoriju. Ondje završavaš i zaključavaš spremljenu reviziju te pregledavaš predaje i dopuštene dorade.'));host.append(card);
     }
   }
   async function refreshAssignments(){

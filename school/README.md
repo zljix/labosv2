@@ -1,8 +1,10 @@
-# Labosv2 · školski paket · etapa 23E
+# Labosv2 · školski paket · etapa 23F
+
+Pripremljeno izdanje 0.13.5-beta.1. Lokalni pokusi i PHP sintaksa prolaze; stvarna MySQL integracija ove etape i javna objava još nisu provedene. Prije školske uporabe trebaju proći navedene integracijske provjere.
 
 Etapa 23A priprema postojeći laboratorij za školski Apache/PHP/MySQL smjer i dokazuje ponovno izvršavanje izvan učenikova preglednika. Polazište je `zljix/labos@3c4a281` (0.12.9), uključujući posljednju doradu vodova. Ovaj razvoj objavljuje se u `zljix/labosv2`.
 
-**Dostupno:** simulator, postojeći projekti i izvozi, školski paket, PHP provjera preduvjeta, MySQL migracije, početni administrator, prijava/odjava, uloge, upravljanje računima i lozinkama, razredi, CSV uvoz, pozivni kodovi, potvrda učenika i verzionirane dodjele vježbi te raniji ograničeni dokaz tipkala/LED-ice, poslužiteljski pokušaji, nepromjenjive radne revizije, automatsko spremanje, usporedba sukoba i nastavnički pregled rada. **Službeno bodovanje triju izričito odabranih pilota dostupno je u 23E.** Zaključavanje slijedi u 23F. Izvorni plan od 14. 11. 2026. zadržan je.
+**Dostupno:** simulator, postojeći projekti i izvozi, školski paket, PHP provjera preduvjeta, MySQL migracije, početni administrator, prijava/odjava, uloge, upravljanje računima i lozinkama, razredi, CSV uvoz, pozivni kodovi, potvrda učenika i verzionirane dodjele vježbi te raniji ograničeni dokaz tipkala/LED-ice, poslužiteljski pokušaji, nepromjenjive radne revizije, automatsko spremanje, usporedba sukoba i nastavnički pregled rada. **Službeno bodovanje triju izričito odabranih pilota dostupno je u 23E.** Završetak, zaključavanje, povijest i dopuštena dorada dostupni su u 23F. Izvorni plan od 14. 11. 2026. zadržan je.
 
 ## Izgradnja
 
@@ -12,7 +14,7 @@ Node.js 24 LTS, `npm ci`, zatim:
 npm run build:school
 ```
 
-Nastaje `release/Labosv2_0.13.4_23E_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
+Nastaje `release/Labosv2_0.13.5_23F_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
 
 | Mapa | Namjena |
 | --- | --- |
@@ -209,7 +211,7 @@ HTTPS provjeri na svakom ciljnom uređaju. `http://localhost` provjera ne dokazu
 
 ## Završetak 23D i otvorene provjere
 
-Novi dokazi nalaze se u `docs/stage23d-work.md`; prethodne etape ostaju povijesno zabilježene u svojim izvješćima. Slijede 23E–23F: službeno bodovanje prvih triju vježbi i zaključavanje predaje. Stvarni školski HTTPS/LAN profil, Windows/mobilni uređaji, cgroup ograničenje memorije, razred od 30 učenika i fizička oprema imaju zasebne provjere; ovaj paket ih ne proglašava potvrđenima.
+Novi dokazi nalaze se u `docs/stage23d-work.md`; prethodne etape ostaju povijesno zabilježene u svojim izvješćima. Bodovanje triju pilota isporučeno je u 23E, a završetak, zaključavanje i dopuštena dorada u 23F. Stvarni školski HTTPS/LAN profil, Windows/mobilni uređaji, cgroup ograničenje memorije, razred od 30 učenika i fizička oprema imaju zasebne provjere; ovaj paket ih ne proglašava potvrđenima.
 
 ## Tehnički izvori
 
@@ -229,13 +231,13 @@ Izbor izvršnog profila, rubrika i granice dokaza projektne su odluke. Dokumenta
 
 `npm run test:school-catalog` otvara i ponovno izvozi svih 268 zamrznutih početnih predložaka. `npm run test:school-classes` provjerava stvarni PHP/MySQL, uvoz, ovlasti, kodove, paralelno posljednje mjesto, inačice zadataka i dodjele. `npm run test:school-portal` izvršava stvarne module portala u DOM okruženju uz stvarni API: pripremu nastavnika, prvu prijavu učenika i potvrdu članstva. To nije vizualna potvrda ciljnog preglednika.
 
-Svaki integracijski skup zahtijeva vlastitu praznu bazu naziva `labosv2_test_*` i iste testne varijable kao skup računa: `PHP_BIN` ako PHP nije u PATH-u, `LAB_TEST_DB_DSN`, `LAB_TEST_DB_USER`, `LAB_TEST_DB_PASSWORD`. Skupovi se ne pokreću nad istom popunjenom bazom niti nad školskim podacima. Actions priprema tri zasebne baze i jednokratne vjerodajnice.
+Svaki integracijski skup zahtijeva vlastitu praznu bazu naziva `labosv2_test_*` i iste testne varijable kao skup računa: `PHP_BIN` ako PHP nije u PATH-u, `LAB_TEST_DB_DSN`, `LAB_TEST_DB_USER`, `LAB_TEST_DB_PASSWORD`. Skupovi se ne pokreću nad istom popunjenom bazom niti nad školskim podacima. Actions priprema zasebne baze i jednokratne vjerodajnice.
 
 ## Razvojne provjere 23D
 
 `npm run test:school-sync` provjerava ritam spremanja, prekid veze, ponovljivost i sukobe. `npm run test:school-work` koristi stvarni PHP/MySQL API, nepromjenjive snimke, ovlasti, konkurentno spremanje i svih 268 početnih ciljeva. `npm run test:school-work-ui` izvršava stvarne React komponente s tim API-jem: lokalne izmjene → potvrda → prekid mreže → oporavak → sukob → izbor → nastavnički pregled. DOM provjera nije vizualna potvrda ciljnog preglednika.
 
-Svaki integracijski skup mora imati vlastitu praznu bazu `labosv2_test_*`. Koristi iste testne varijable kao 23B/23C. Actions priprema pet zasebnih baza za račune, razrede, portal, rad i React tijek. Testne baze nikada nisu školska evidencija.
+Svaki integracijski skup mora imati vlastitu praznu bazu `labosv2_test_*`. Koristi iste testne varijable kao 23B/23C. Actions priprema sedam zasebnih baza za račune, razrede, portal, rad, React tijek, bodovanje i predaje. Testne baze nikada nisu školska evidencija.
 
 
 ## 23E · automatsko bodovanje pilota
@@ -279,4 +281,23 @@ Učenik vidi **Moji bodovi**, kriterije i scenarije; nastavnik iste bodove vidi 
 
 Radnik ima 180 sekundi za isporuku. Istekla isporuka se odbija, a sljedeći prolaz označava tehnički neuspjeh. Učenik nakon tehničke pogreške ili ograničenja može zatražiti **Provjeri spremljenu reviziju / ponovi**. Aktivna i već uspješno dovršena provjera ne udvostručuju se. Nakon prestanka radnika poslovi ostaju na čekanju do njegova ponovnog pokretanja. Pri punom redu spremanje rada nastavlja se, a provjeru treba zatražiti naknadno.
 
-Bodovi su povratna informacija prema objavljenoj rubrici; nisu automatska školska ocjena niti dokaz autorstva. Završetak i zaključavanje predaje slijede u 23F. [Dokazi i ograničenja](../docs/stage23e-grading.md).
+Bodovi su povratna informacija prema objavljenoj rubrici; nisu automatska školska ocjena niti dokaz autorstva. Završetak i zaključavanje predaje dostupni su u 23F. [Dokazi i ograničenja](../docs/stage23e-grading.md).
+
+
+## 23F · završetak, zaključana predaja i dopuštena dorada
+
+Izdanje **0.13.5-beta.1**, migracija **006_submissions.sql**. Za nadogradnju s 23E sačuvaj privatnu konfiguraciju i sesije, zamijeni programski paket i pokreni:
+
+```sh
+php tools/console.php migrate /apsolutna/privatna/konfiguracija.php
+```
+
+Učenik u laboratoriju odabire **Završi i zaključaj vježbu**. Sustav čeka potvrdu posljednjih izmjena, zatim prikazuje reviziju, bodove i neostvarene kriterije. **Potvrdi i zaključaj ovu reviziju** stvara nepromjenjivu predaju s poslužiteljskim brojem i vremenom. Dopušten je završetak s manje bodova ili dok provjera traje. Bez potvrde poslužitelja sučelje ne proglašava završetak. Ako se odgovor izgubi, ponovi isti zahtjev; predaja se ne udvostručuje.
+
+Zaključani sadržaj ostaje za pregled. Lokalni pokus otvori u zasebnoj kopiji. Za službenu doradu nastavnik u **Pregled razreda → Školski pregled rada → Pregledaj snimku** upisuje razlog i odabire **Dopusti doradu kao novi pokušaj**. Učenik ponovno otvara dodijeljenu vježbu ili odabire **Provjeri dopuštenu doradu / otvori najnoviji pokušaj**. Stara predaja i bodovi ostaju sačuvani.
+
+**Povijest pokušaja / osvježi** dostupna je učeniku i nastavniku. Pregled razreda prikazuje posljednji radni pokušaj i odvojeno posljednju zaključanu predaju. Nova otvorena dorada ne zamjenjuje prethodne službene bodove; nova zaključana predaja postaje aktualna kada je učenik potvrdi. Tehnička pogreška ili provjera koja još traje nema osvojenu nulu. Rok ostaje informativan i ne završava rad automatski.
+
+Provjere: `npm run test:school-finish-ui`, `npm run test:school-sync`, `npm run test:school-submissions`, `npm run test:school-work-ui`. API integracija predaja koristi vlastitu praznu bazu `labosv2_test_submissions`, a React tijek svoju `labosv2_test_work_ui`.
+
+[Detaljan postupak, model predaja i granice 23F](../docs/stage23f-submissions.md). Javna Pages adresa nema PHP/MySQL; prijavu i službenu evidenciju omogućuje školska instalacija.

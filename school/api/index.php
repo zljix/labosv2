@@ -12,7 +12,7 @@ function respond(int $status, array $body): never
     http_response_code($status);
     if (isset($_SESSION['csrf'])) $body['csrfToken'] = $_SESSION['csrf'];
     if (session_status() === PHP_SESSION_ACTIVE) session_write_close();
-    echo json_encode(['application' => 'labosv2', 'stage' => '23E'] + $body, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
+    echo json_encode(['application' => 'labosv2', 'stage' => '23F'] + $body, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
     exit;
 }
 
@@ -27,6 +27,9 @@ try {
         'classes' => 'GET', 'class' => 'GET', 'create-class' => 'POST', 'membership' => 'POST', 'preview-students' => 'POST', 'import-students' => 'POST',
         'create-invite' => 'POST', 'revoke-invites' => 'POST', 'register' => 'POST', 'join-class' => 'POST', 'review-join' => 'POST', 'my-requests' => 'GET',
         'catalog' => 'GET', 'task-versions' => 'GET', 'publish-task' => 'POST', 'assignments' => 'GET', 'assignment' => 'GET', 'create-assignment' => 'POST', 'assignment-availability' => 'POST', 'begin-attempt' => 'POST', 'save-work' => 'POST', 'attempt' => 'GET', 'attempt-revisions' => 'GET', 'class-work' => 'GET'];
+    $routes['finish-attempt'] = 'POST';
+    $routes['reopen-attempt'] = 'POST';
+    $routes['attempt-history'] = 'GET';
     $routes['request-grade'] = 'POST';
     $routes['grading'] = 'GET';
     if (!is_string($action) || !isset($routes[$action])) Labos\fail(404, 'route_missing', 'Ta funkcija nije dostupna.');
@@ -44,7 +47,7 @@ try {
         if (!is_object($value)) Labos\fail(400, 'json', 'Zahtjev mora biti JSON objekt.');
         $body = (array)$value;
     }
-    if ($action === 'session') respond(200, ['user' => ($user = Labos\currentUser($pdo, false)) ? Labos\publicUser($user) : null, 'features' => ['accounts' => true, 'classes' => true, 'assignments' => true, 'centralStorage' => true, 'officialGrading' => true]]);
+    if ($action === 'session') respond(200, ['user' => ($user = Labos\currentUser($pdo, false)) ? Labos\publicUser($user) : null, 'features' => ['accounts' => true, 'classes' => true, 'assignments' => true, 'centralStorage' => true, 'officialGrading' => true, 'submissions' => true]]);
     if ($action === 'login') respond(200, ['user' => Labos\login($pdo, $config, $body)]);
     if ($action === 'logout') {
         $user = Labos\currentUser($pdo, false);
@@ -84,6 +87,9 @@ try {
     if ($action === 'assignment-availability') { Labos\setAssignmentAvailability($pdo, $actor, $body); respond(200, ['message' => 'Dostupnost vježbe je spremljena.']); }
     if ($action === 'begin-attempt') respond(200, Labos\beginAttempt($pdo, $actor, $body));
     if ($action === 'save-work') respond(200, ['saved' => Labos\saveAttempt($pdo, $actor, $body)]);
+    if ($action === 'finish-attempt') respond(200, Labos\finishAttempt($pdo, $actor, $body));
+    if ($action === 'reopen-attempt') respond(200, Labos\reopenAttempt($pdo, $actor, $body));
+    if ($action === 'attempt-history') respond(200, Labos\attemptHistory($pdo, $actor, $_GET['id'] ?? null, $_GET['before'] ?? null));
     if ($action === 'attempt') respond(200, Labos\readAttempt($pdo, $actor, $_GET['id'] ?? null, $_GET['revision'] ?? null));
     if ($action === 'attempt-revisions') respond(200, Labos\attemptRevisions($pdo, $actor, $_GET['id'] ?? null, $_GET['before'] ?? null));
     if ($action === 'class-work') respond(200, Labos\classWork($pdo, $actor, $_GET['assignmentId'] ?? null, $_GET['after'] ?? null));

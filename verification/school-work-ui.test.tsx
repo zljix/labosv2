@@ -52,10 +52,30 @@ test('23D actual React UI with PHP/MySQL: save, offline recovery, conflict and t
     await click('Pregledaj poslužiteljsku');await until(()=>text().includes('Usporedi lokalni rad'),'comparison');assert(text().includes('drugi uređaj'));assert(text().includes('moja odabrana verzija'));
     await click('Nakon pregleda spremi');await until(()=>text().includes('revizija: 5'),'reviewed revision saved');assert.equal((await api.request('attempt&id='+attemptId+'&revision=4')).snapshot.project.files['main.py'],'print("drugi uređaj")');
   });
+  await t.test('finish saves the final dirty edit, shows the exact summary and opens an immutable receipt',async()=>{
+    project=editProject(project,p=>{p.files['main.py']='print("moja završna predaja")';});await render();
+    await click('Završi i zaključaj');await until(()=>text().includes('Zaključavaš reviziju 6'),'final save and summary');
+    const saved=await api.request('attempt&id='+attemptId);assert.equal(saved.snapshot.revision,6);assert.equal(saved.snapshot.project.files['main.py'],'print("moja završna predaja")');
+    await click('Potvrdi i zaključaj');await until(()=>text().includes('Vježba je zaključana'),'confirmed receipt');
+    assert.equal((await api.request('attempt&id='+attemptId)).attempt.status,'locked');assert(text().includes('Sadržaj zaključane predaje'));
+    assert.equal([...document.querySelectorAll('button')].find(b=>b.textContent?.includes('Završi i zaključaj')),undefined);
+  });
   await t.test('teacher sees live and not-started work, inspects text safely and opens only a detached copy',async()=>{
     await act(async()=>root.render(<p>Promjena prikaza</p>));await api.request('logout',{});await api.request('session');await api.request('login',{username:'ui.teacher',password:f.password});
     await act(async()=>root.render(<SchoolClassReview open={open}/>));await until(()=>text().includes('Nije započeto')&&text().includes('Pregled osvježen'),'teacher roster');assert(text().includes('Učenik <img src=x>'));assert.equal(document.querySelector('img'),null);assert(!text().includes('0/'));
-    await click('Pregledaj snimku');await until(()=>text().includes('revizija 5'),'teacher snapshot');assert(text().includes('moja odabrana verzija'));await click('Otvori zasebnu kopiju');await until(()=>opened.length===1,'copy opened');assert.equal(readSchoolBinding(opened[0]),undefined);assert.equal((await api.request('attempt&id='+attemptId)).snapshot.revision,5);
+    await click('Pregledaj snimku');await until(()=>text().includes('revizija 6'),'teacher snapshot');assert(text().includes('moja završna predaja'));await click('Otvori zasebnu kopiju');await until(()=>opened.length===1,'copy opened');assert.equal(readSchoolBinding(opened[0]),undefined);assert.equal((await api.request('attempt&id='+attemptId)).snapshot.revision,6);
+    const reason=document.querySelector('.school-reopen textarea') as HTMLTextAreaElement;assert(reason);
+    await act(async()=>{reason.value='Doplni obrazloženje <img src=x>.';reason.dispatchEvent(new dom.window.Event('input',{bubbles:true}));});
+    await click('Dopusti doradu');await until(()=>text().includes('Dopušten je pokušaj 2'),'teacher rework confirmation');assert.equal(document.querySelector('img'),null);
+    await click('Povijest pokušaja / osvježi');await until(()=>text().includes('Pregledaj pokušaj 2'),'linked attempts visible');
+    const history=await api.request('attempt-history&id='+attemptId);assert.equal(history.attempts.length,2);assert.equal(history.attempts[1].attempt.status,'locked');assert.equal(history.attempts[0].reopening.previousAttemptId,attemptId);
     await act(async()=>{const session=new SchoolApi();await session.request('session');await session.request('logout',{});});await until(()=>!text().includes('Učenik <img src=x>'),'expired session clears private roster');
+  });
+  await t.test('pupil opens the permitted new attempt while the previous locked project remains unchanged',async()=>{
+    await api.request('session');await api.request('login',{username:'ui.pupil',password:f.password});
+    const next=await api.request('begin-attempt',{assignmentId:assignment.id});assert.equal(next.attempt.number,2);assert.notEqual(next.attempt.id,attemptId);
+    project=await prepareSchoolAttempt(next);await render();await until(()=>text().includes('Spremljeno na školskom poslužitelju'),'rework ready');
+    assert(text().includes('Dorada pokušaja 2'));assert.equal(project.files['main.py'],'print("moja završna predaja")');
+    assert.equal((await api.request('attempt&id='+attemptId)).snapshot.revision,6);assert.equal((await api.request('attempt&id='+attemptId)).attempt.status,'locked');
   });
 });

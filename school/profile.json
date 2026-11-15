@@ -1,7 +1,7 @@
 {
   "format": "labosv2-school-profile",
   "version": 1,
-  "stage": "23E",
+  "stage": "23F",
   "sourceBaseline": "zljix/labos@3c4a281c10282d63b2742280f69aadbc08d7ae1e",
   "webServer": "Apache 2.4 with HTTPS",
   "phpBranches": [
@@ -22,7 +22,9 @@
     "officialGrading": true,
     "classes": true,
     "assignments": true,
-    "liveClassReview": true
+    "liveClassReview": true,
+    "submissions": true,
+    "attemptHistory": true
   },
   "proof": {
     "rubric": "23A-button-led@1",
@@ -85,6 +87,12 @@
     "leaseSeconds": 180,
     "virtualAddressLimitMiB": 2048,
     "compiler": "isolated-local-or-exact-trusted-catalogue",
-    "locking": false
+    "locking": true
+  },
+  "submissions": {
+    "exactRevision": true,
+    "idempotentFinish": true,
+    "rework": "linked-new-attempt",
+    "defaultAssessment": "latest-locked-submission"
   }
 }

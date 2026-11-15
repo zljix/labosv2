@@ -1,6 +1,6 @@
 {
   "name": "esp32-micropython-lab",
-  "version": "0.13.4-beta.1",
+  "version": "0.13.5-beta.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -69,7 +69,9 @@
     "test:school-work-ui": "node --import tsx --test verification/school-work-ui.test.tsx",
     "test:school-grading": "node --import tsx --test verification/school-grading.test.ts",
     "test:school-grading-api": "node --import tsx --test verification/school-grading-api.test.mjs",
-    "test:school-grading-ui": "node --import tsx --test verification/school-grading-ui.test.tsx"
+    "test:school-grading-ui": "node --import tsx --test verification/school-grading-ui.test.tsx",
+    "test:school-submissions": "node --import tsx --test verification/school-submissions.test.mjs",
+    "test:school-finish-ui": "node --import tsx --test verification/school-finish-ui.test.tsx"
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.1",

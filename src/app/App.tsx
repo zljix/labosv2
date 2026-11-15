@@ -46,6 +46,7 @@ import {useOffline} from '../platform/offline';
 import SystemPanel from '../platform/SystemPanel';
 import SchoolAccountLink from '../platform/SchoolAccountLink';
 import SchoolAssignment from '../platform/SchoolAssignment';
+import {readSchoolBinding} from '../platform/schoolSync';
 import {BOARDS,S3,getBoard,languageName,type BoardId,type Language} from '../boards/profiles';
 import {BoardFields,BoardChangePanel,SupportMatrix} from '../boards/BoardPanels';
 import {deriveProject} from '../project/derive';
@@ -677,7 +678,7 @@ export default function App() {
           >
             <Icon name={s.theme === "light" ? "moon" : "sun"} />
           </button>
-          <a className="stage-tag" href={appAsset('school.html')} title="Školsko izdanje · etapa 23C">v{APP_VERSION} · 23C</a>
+          <a className="stage-tag" href={appAsset('school.html')} title="Školsko izdanje · etapa 23F">v{APP_VERSION} · 23F</a>
         </div>
       </header>
       <div className="toolbar">
@@ -768,7 +769,7 @@ export default function App() {
           e.target.value = "";
         }}
       />
-      <SchoolAssignment project={p} confirm={binding=>{ws.change('Potvrda školskog spremanja',next=>{if(next.id===p.id)next.files['school-attempt.json']=JSON.stringify(binding);},false);}} open={async next=>{
+      <SchoolAssignment project={p} confirm={binding=>{if(binding.status==='locked'){runtime.stop();lessonCheck.cancel();}ws.change('Potvrda školskog spremanja',next=>{if(next.id===p.id)next.files['school-attempt.json']=JSON.stringify(binding);},false);}} open={async next=>{
         setWorking(true);
         try{await ws.flush();runtime.stop();lessonCheck.cancel();await ws.add(next);setLabTab('lesson');setMobileTab('lab');setExpandedCircuit(false);setTeacher(false);notify('Otvorena je školska vježba. Provjeri stanje spremanja iznad radnog područja.');}
         finally{setWorking(false);}
@@ -804,7 +805,7 @@ export default function App() {
           </button>
         ))}
       </nav>
-      <main id="workspace" tabIndex={-1} className={`workspace ${labTab === "lesson" ? "lesson-focus" : ""} show-${mobileTab} ${labTab === "circuit" && expandedCircuit ? "circuit-focus" : ""}`}>
+      <main id="workspace" tabIndex={-1} inert={readSchoolBinding(p)?.status==='locked'} hidden={readSchoolBinding(p)?.status==='locked'} className={`workspace ${readSchoolBinding(p)?.status==='locked'?'school-locked-workspace':''} ${labTab === "lesson" ? "lesson-focus" : ""} show-${mobileTab} ${labTab === "circuit" && expandedCircuit ? "circuit-focus" : ""}`}>
         <aside className="sidebar">
           <div className="section-heading">
             PROJEKT

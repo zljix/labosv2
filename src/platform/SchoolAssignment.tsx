@@ -57,7 +57,7 @@ export default function SchoolAssignment({project,open,confirm}:{project:Project
       {d.teacherNotes&&<p><b>Uputa nastavnika:</b> {String(d.teacherNotes)}</p>}
       <p><b>Promjena:</b> {String(d.change)}</p><p><b>Kvar i oporavak:</b> {String(d.fault)}</p>
       <ul>{r.criteria.map((c:any,i:number)=><li key={i}>{String(c.description)}{c.maxPoints!==null?' · najviše '+String(c.maxPoints)+' bodova':''}</li>)}</ul>
-      <p>{readSchoolBinding(project)?'Rad je povezan sa školskim pokušajem. Stanje središnjeg spremanja prikazano je iznad.':'Ovo je zasebna lokalna kopija. Prenosiš je ZIP/JSON izvozom.'} Objavljeni automatski kriteriji, ako postoje, prikazuju se uz školski pokušaj. Zaključavanje slijedi u sljedećoj etapi.</p>
+      <p>{readSchoolBinding(project)?'Rad je povezan sa školskim pokušajem. Stanje središnjeg spremanja i završetak prikazani su iznad.':'Ovo je zasebna lokalna kopija. Prenosiš je ZIP/JSON izvozom.'} Objavljeni automatski kriteriji, ako postoje, prikazuju se uz školski pokušaj.</p>
       <a href={appAsset('school.html#school-work')}>Pregled mojih dodijeljenih vježbi</a>
     </details>}</>;
 }

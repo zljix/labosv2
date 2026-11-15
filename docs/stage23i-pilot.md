@@ -54,3 +54,6 @@ Lokalni Chrome nije se pokrenuo zbog zabrane potrebnog Unix socketa. Novi obraza
 
 
 Prvi CI pokus 43753811575 zaustavio je novi testni adapter: odgovor spremanja čitao je izravno umjesto iz json.saved. API je potvrdio spremanje, a test nije preuzeo reviziju i hash. Adapter je usklađen s postojećim API-jem, ovisni scenariji sada staju nakon prve pogreške, a ponovna integracija koristi novu praznu testnu bazu. Neuspjeli zapis ostaje u initial-ci-failure.txt i ne pribraja se prolaznim rezultatima.
+
+
+Drugi pokus 43754558932 potvrdio je svih 90 spremanja i 30 zaključanih predaja, ali se zaustavio pri dva istodobna privatna preuzimanja reda. Čišćenje isteklih isporuka odvojeno je od rezervacije posla kako ne bi zadržavalo rasponske lokote statusnog indeksa. Samo rezervacija dobiva do četiri pokušaja nakon MySQL deadlocka, uz rollback i kratko čekanje; ostale transakcije, posebno povrat datoteka, ne mijenjaju se. Privatni CLI dijagnosticira samo SQLSTATE i broj pogreške, bez SQL-a ili vjerodajnica. Pokus sada dodatno traži jedinstvene poslove i točno jednu isporuku po poslu.

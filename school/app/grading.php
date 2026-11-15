@@ -90,22 +90,34 @@ function requestGrading(\PDO $pdo, array $actor, array $body): array
 // These two functions are exposed only by a private CLI, never HTTP.
 function claimGrading(\PDO $pdo): ?array
 {
-    return transaction($pdo, function () use ($pdo) {
-        query($pdo, "UPDATE grading_jobs SET status='technical_error',lease_hash=NULL,lease_until=NULL,finished_at=CURRENT_TIMESTAMP(6) WHERE status='running' AND lease_until<CURRENT_TIMESTAMP(6)");
-        $job = $pdo->query("SELECT * FROM grading_jobs WHERE status='queued' ORDER BY id LIMIT 1 FOR UPDATE SKIP LOCKED")->fetch();
-        if (!$job) return null;
-        $lease = bin2hex(random_bytes(32));
-        query($pdo, "UPDATE grading_jobs SET status='running',lease_hash=?,lease_until=CURRENT_TIMESTAMP(6)+INTERVAL 180 SECOND,deliveries=deliveries+1 WHERE id=?", [hash('sha256', $lease),$job['id']]);
-        $snapshot = query($pdo, 'SELECT project FROM work_snapshots WHERE attempt_id=? AND revision=?', [$job['attempt_id'],$job['revision']])->fetchColumn();
-        // MySQL's JSON serializer may reorder keys and add whitespace. Rebuild
-        // the exact canonical representation used when the snapshot was saved.
-        $snapshot = canonicalJson(json_decode($snapshot,false,64,JSON_THROW_ON_ERROR));
-        if (!hash_equals($job['snapshot_hash'],hash('sha256',$snapshot))) fail(503,'snapshot_integrity','Spremljena snimka ne odgovara oznaci sadržaja.');
-        $context = gradingContext($pdo, (int)$job['attempt_id']);
-        return ['format'=>'labosv2-grading-job','version'=>1,'jobId'=>(int)$job['id'],'attemptId'=>(int)$job['attempt_id'],'revision'=>(int)$job['revision'],
-            'lease'=>$lease,'checkerVersion'=>$job['checker_version'],'profileId'=>$job['profile_id'],'rubricHash'=>$job['rubric_hash'],
-            'snapshotHash'=>$job['snapshot_hash'],'seed'=>$job['stimulus_seed'],'projectJson'=>$snapshot,'rubric'=>$context['rubric'],'target'=>$context['target']];
-    });
+    // Expiry cleanup must release its status-index range locks before a claim
+    // inserts a new running entry. Two workers must not upgrade the same gap.
+    // A deadlock rolls back the reservation, so only this DB-only operation
+    // can be retried; file-based restore and other transactions are unchanged.
+    for ($attempt = 0; $attempt < 4; $attempt++) {
+        try {
+            query($pdo, "UPDATE grading_jobs SET status='technical_error',lease_hash=NULL,lease_until=NULL,finished_at=CURRENT_TIMESTAMP(6) WHERE status='running' AND lease_until<CURRENT_TIMESTAMP(6)");
+            return transaction($pdo, function () use ($pdo) {
+                $job = $pdo->query("SELECT * FROM grading_jobs WHERE status='queued' ORDER BY id LIMIT 1 FOR UPDATE SKIP LOCKED")->fetch();
+                if (!$job) return null;
+                $lease = bin2hex(random_bytes(32));
+                query($pdo, "UPDATE grading_jobs SET status='running',lease_hash=?,lease_until=CURRENT_TIMESTAMP(6)+INTERVAL 180 SECOND,deliveries=deliveries+1 WHERE id=?", [hash('sha256', $lease),$job['id']]);
+                $snapshot = query($pdo, 'SELECT project FROM work_snapshots WHERE attempt_id=? AND revision=?', [$job['attempt_id'],$job['revision']])->fetchColumn();
+                // MySQL's JSON serializer may reorder keys and add whitespace. Rebuild
+                // the exact canonical representation used when the snapshot was saved.
+                $snapshot = canonicalJson(json_decode($snapshot,false,64,JSON_THROW_ON_ERROR));
+                if (!hash_equals($job['snapshot_hash'],hash('sha256',$snapshot))) fail(503,'snapshot_integrity','Spremljena snimka ne odgovara oznaci sadržaja.');
+                $context = gradingContext($pdo, (int)$job['attempt_id']);
+                return ['format'=>'labosv2-grading-job','version'=>1,'jobId'=>(int)$job['id'],'attemptId'=>(int)$job['attempt_id'],'revision'=>(int)$job['revision'],
+                    'lease'=>$lease,'checkerVersion'=>$job['checker_version'],'profileId'=>$job['profile_id'],'rubricHash'=>$job['rubric_hash'],
+                    'snapshotHash'=>$job['snapshot_hash'],'seed'=>$job['stimulus_seed'],'projectJson'=>$snapshot,'rubric'=>$context['rubric'],'target'=>$context['target']];
+            });
+        } catch (\PDOException $error) {
+            if ($attempt === 3 || (($error->errorInfo[1] ?? null) !== 1213 && $error->getCode() !== '40001')) throw $error;
+            usleep(random_int(10000, 30000) * ($attempt + 1));
+        }
+    }
+    return null;
 }
 
 function completeGrading(\PDO $pdo, array $body): array

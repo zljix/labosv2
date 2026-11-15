@@ -100,6 +100,7 @@ test('23I real PHP/MySQL: 30 students, concurrent saves, class polling and indep
     assert.equal(late.status, 409); assert.equal(late.json.error.code, 'attempt_locked');
   });
   let workerJobs = 0, finalWaveMs;
+  const completedJobs = new Set();
   await phase('two private workers independently execute all 30 final snapshots; points and hashes match the class export', async () => {
     const worker = () => new Promise((done, reject) => {
       const process = spawn(globalThis.process.execPath, [join(f.pkg, 'tools/grade-once.mjs')], {env: f.env, stdio: ['ignore', 'pipe', 'pipe']});
@@ -114,6 +115,9 @@ test('23I real PHP/MySQL: 30 students, concurrent saves, class polling and indep
       for (let n = 0; n < 35; n++) {
         const result = await worker();
         if (result.status === 'idle') return;
+        assert.equal(result.status, 'evaluated', 'A private worker must return a real evaluated result.');
+        assert(!completedJobs.has(result.jobId), 'Parallel workers must not deliver the same job twice.');
+        completedJobs.add(result.jobId);
         workerJobs++;
       }
       throw Error('Queue did not drain within the bounded synthetic workload.');
@@ -121,6 +125,7 @@ test('23I real PHP/MySQL: 30 students, concurrent saves, class polling and indep
     await Promise.all([drain(), drain()]);
     finalWaveMs = performance.now() - finalWaveStarted;
     assert.equal(workerJobs, 30);
+    assert.equal(f.sql('SELECT MAX(deliveries) AS n FROM grading_jobs')[0].n, 1);
     const current = await roster(), exported = await ok(teacher.client.call('export-achievements&classId=' + classroom.id));
     assert.equal(current.rows.length, 30); assert.equal(exported.rows.length, 30);
     for (const student of students) {

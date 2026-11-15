@@ -1,0 +1,10 @@
+Drugi pokus: https://github.com/zljix/labosv2/actions/runs/43754558932
+Prijave, spremanja, nastavak i zaključavanje prolaze. Zaustavljeno pri paralelnim privatnim preuzimanjima reda; uspješni load.json nije stvoren.
+▶ 23I real PHP/MySQL: 30 students, concurrent saves, class polling and independently graded locked submissions
+2026-11-15T19:55:31.2399711Z   ✔ 30 independent sessions log in and open only their own attempts (2710.194217ms)
+2026-11-15T19:55:48.4372888Z   ✔ three waves of 30 saves preserve every source; a 5-second teacher cycle sees all acknowledgements (17215.552472ms)
+2026-11-15T19:55:48.7155334Z   ✔ a second device resumes the exact snapshot, and a stale save is rejected without data loss (272.230472ms)
+2026-11-15T19:55:49.7570407Z   ✔ 30 simultaneous finalizations and repeated lost-response requests create exactly 30 immutable submissions (1039.794989ms)
+2026-11-15T19:55:49.9494281Z   ✖ two private workers independently execute all 30 final snapshots; points and hashes match the class export (107.414562ms)
+2026-11-15T19:55:49.9501563Z ✖ 23I real PHP/MySQL: 30 students, concurrent saves, class polling and independently graded locked submissions (51805.975501ms)
+2026-11-15T19:55:49.9699505Z 

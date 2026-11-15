@@ -12,4 +12,8 @@ try {
     } else Labos\fail(422,'command','Naredbe: claim, complete.');
     echo json_encode(['ok'=>true]+$value,JSON_THROW_ON_ERROR|JSON_UNESCAPED_UNICODE).PHP_EOL;
 } catch (Labos\ApiError $e) { fwrite(STDERR,json_encode(['ok'=>false,'error'=>$e->errorCode,'message'=>$e->getMessage()]).PHP_EOL);exit(2); }
-catch (Throwable $e) { fwrite(STDERR,"Servis provjere nije dostupan. Provjeri privatnu konfiguraciju i migracije.\n");exit(2); }
+catch (Throwable $e) {
+    // Private diagnostics contain codes only, never SQL, DSN or credentials.
+    if ($e instanceof PDOException) fwrite(STDERR,json_encode(['databaseError'=>true,'sqlState'=>(string)$e->getCode(),'driverCode'=>(int)($e->errorInfo[1]??0)]).PHP_EOL);
+    fwrite(STDERR,"Servis provjere nije dostupan. Provjeri privatnu konfiguraciju i migracije.\n");exit(2);
+}

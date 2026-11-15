@@ -89,6 +89,11 @@ jobs:
         run: find school -name '*.php' -print0 | xargs -0 -n1 php -l
       - run: npm run test:school-pilot
       - run: npm run test:school-coverage
+      - name: Pokus s 30 učenika, stvarnim PHP/MySQL i dva privatna provjeravača
+        run: npm run test:school-load
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_load;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
       - name: Provjeri nove rubrike i neovisne AVR prijevode
         run: LAB_ARDUINO_CLI="$(command -v arduino-cli)" npm run test:school-grading-expanded
         env:
@@ -148,11 +153,6 @@ jobs:
           LAB_TEST_DB_USER: labosv2_ci
       - name: Provjeri projekte, vodove i neovisno izvršavanje
         run: node --import tsx --test verification/project.test.ts verification/circuit.test.ts verification/routing.test.ts verification/school.test.ts
-      - name: Pokus s 30 učenika, stvarnim PHP/MySQL i dva privatna provjeravača
-        run: npm run test:school-load
-        env:
-          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_load;charset=utf8mb4
-          LAB_TEST_DB_USER: labosv2_ci
       - name: Uključi izvedeni dokaz u školski paket
         run: node scripts/package-school.mjs
       - run: npm run test:school-package

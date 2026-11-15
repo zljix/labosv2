@@ -1,7 +1,7 @@
 {
   "format": "labosv2-school-profile",
   "version": 1,
-  "stage": "23I",
+  "stage": "24AB",
   "sourceBaseline": "zljix/labos@3c4a281c10282d63b2742280f69aadbc08d7ae1e",
   "webServer": "Apache 2.4 with HTTPS",
   "phpBranches": [
@@ -31,7 +31,8 @@
     "auditedCorrections": true,
     "yearArchive": true,
     "backupRestore": true,
-    "pilotRecords": true
+    "pilotRecords": true,
+    "versionedGradingContracts": true
   },
   "proof": {
     "rubric": "23A-button-led@1",
@@ -79,17 +80,24 @@
     "idempotentSaves": true
   },
   "grading": {
-    "checkerVersion": "23G.1",
+    "checkerVersion": "24AB.1",
     "profiles": [
       "23E-button-led@1",
       "23E-analog-threshold@1",
       "23E-bmp280@1",
       "23G-led-timing@1",
       "23G-lm35@1",
-      "23G-bmp180@1"
+      "23G-bmp180@1",
+      "24B-button-led@1",
+      "24B-analog-threshold@1",
+      "24B-bmp280@1",
+      "24B-led-timing@1",
+      "24B-lm35@1",
+      "24B-bmp180@1"
     ],
     "targets": [
       "micropython",
+      "s3-cpp",
       "uno",
       "nano"
     ],
@@ -99,14 +107,17 @@
     "compiler": "isolated-local-or-exact-trusted-catalogue",
     "locking": true,
     "compatibleCheckerVersions": [
-      "23E.1"
+      "23E.1",
+      "23G.1"
     ],
     "coverage": {
       "combinations": 268,
-      "supported": 18,
-      "unsupported": 250,
+      "supported": 24,
+      "unsupported": 244,
       "introductoryLocalOnly": 5
-    }
+    },
+    "executionContract": "labosv2-execution-contract@1",
+    "jobVersion": 2
   },
   "submissions": {
     "exactRevision": true,

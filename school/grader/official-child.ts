@@ -5,6 +5,8 @@ import {checkCircuit} from '../../src/circuit/netlist';
 import {parseProject} from '../../src/project/model';
 import {AVREngine} from '../../src/runtime/avrEngine';
 import {createHost} from '../../public/host.mjs';
+import {createS3Engine} from '../../public/s3-engine.mjs';
+import {wasmBytes} from '../../public/s3-contract.mjs';
 
 let raw='';for await(const chunk of process.stdin){raw+=chunk;if(Buffer.byteLength(raw)>4194304)throw Error('Prevelika snimka.');}
 const {project:input,artifact,profile,seed}=JSON.parse(raw),project=parseProject(input);
@@ -13,10 +15,10 @@ const kind=profile.kind,led=config.leds[0],button=config.buttons[0],pot=config.p
 const sensor:any=kind==='lm35'?config.analogInputs[0]:config.i2cDevices[0];
 let randomState=parseInt(seed.slice(0,8),16)||1;
 const random=()=>{randomState^=randomState<<13;randomState^=randomState>>>17;randomState^=randomState<<5;return(randomState>>>0)/4294967296;};
-const backend=project.language==='micropython'?'micropython':'avr';
+const backend=project.language==='micropython'?'micropython':project.board.id.includes('esp32-s3')?'s3-cpp':'avr';
 // ADC receives a voltage, never a fabricated ADC return value. S3's 11 dB
 // transfer saturates at 3.1 V, whereas the Uno/Nano full scale is 5 V.
-const thresholdPosition=backend==='micropython'?3.1/3.3*2048/4095:512/1023;
+const thresholdPosition=backend!=='avr'?3.1/3.3*2048/4095:512/1023;
 const stimuli:any[]=kind==='button'?[false,true,false,true,false].map(pressed=>({pressed})):
   kind==='analog'?[0,.12+random()*.2,.7+random()*.2,thresholdPosition-.005,thresholdPosition,1,0].map(position=>({position})):
   kind==='blink'?[{}]:kind==='lm35'?[5+random()*15,40+random()*25,85+random()*25].map(t=>({temperature:Math.round(t*10)/10})):
@@ -24,6 +26,9 @@ const stimuli:any[]=kind==='button'?[false,true,false,true,false].map(pressed=>(
 if(kind==='lm35')stimuli.push({...stimuli[0]});
 const duration=kind==='sensor'?5000:kind==='blink'?4250:kind==='lm35'?1000:250,samples:any[]=[],edges:{timeMs:number;on:boolean}[]=[];
 let last:any,consoleText='',programError:string|null=null,stage=0,clockUs=0;
+let deadlineCurrent:number|null=null,stableAfterDeadline=true;
+const expectedLED=(s:any)=>kind==='button'?s.pressed:s.position>=thresholdPosition;
+const matchesLED=(current:number|null,expected:boolean)=>current!==null&&current>=0&&(expected?current>.5:current<.05);
 let lineBuffer='';const outputLines:{timeMs:number;text:string}[]=[];
 const consoleOutput=(text:string)=>{
   consoleText=(consoleText+text).slice(-32768);lineBuffer=(lineBuffer+text).slice(-32768);
@@ -39,6 +44,12 @@ const withinInterval=(times:number[],maximum:number)=>{
 const observe=(event:any)=>{
   if(event.type==='simulation'){
     last=event;
+    if(profile.contract&&['button','analog'].includes(kind)&&stage<stimuli.length){
+      const current=event.leds[led.id]?.currentMa??null;
+      const deadline=stage*duration+profile.contract.scenario.responseDeadlineMs+profile.contract.scenario.stepToleranceMs;
+      if(event.timeMs<=deadline)deadlineCurrent=current;
+      else if(event.timeMs<(stage+1)*duration&&!matchesLED(current,expectedLED(stimuli[stage])))stableAfterDeadline=false;
+    }
     if(kind==='blink'){
       const current=event.leds[led.id]?.currentMa,on=current>.5;
       if((on||current<.05)&&edges.at(-1)?.on!==on&&edges.length<1000)edges.push({timeMs:event.timeMs,on});
@@ -52,7 +63,11 @@ function record(){
   if(kind==='sensor'){
     const reads=(last?.measurements??[]).filter((m:any)=>m.component===sensor.id&&m.timeMs>stage*duration+250&&Math.abs(m.temperature-s.temperature)<.3&&Math.abs(m.pressure-s.pressure)<150);
     const lines=consoleText.matchAll(/T\s*=\s*(-?\d+(?:\.\d+)?)\s*(?:°?C)?\s+P\s*=\s*(\d+(?:\.\d+)?)/g);
-    const freshEnough=!profile.sensorKind||withinInterval(reads.map((r:any)=>r.timeMs),2300);
+    const freshLines=outputLines.filter(line=>line.timeMs>stage*duration+250&&
+      [...line.text.matchAll(/T\s*=\s*(-?\d+(?:\.\d+)?)\s*(?:°?C)?\s+P\s*=\s*(\d+(?:\.\d+)?)/g)]
+        .some(m=>Math.abs(Number(m[1])-s.temperature)<.3&&Math.abs(Number(m[2])-s.pressure)<150));
+    const freshEnough=profile.contract?withinInterval(reads.map((r:any)=>r.timeMs),2300)&&withinInterval(freshLines.map(l=>l.timeMs),2300):
+      !profile.sensorKind||withinInterval(reads.map((r:any)=>r.timeMs),2300);
     passed=reads.length>0&&freshEnough&&[...lines].some(m=>Math.abs(Number(m[1])-s.temperature)<.3&&Math.abs(Number(m[2])-s.pressure)<150);
     samples.push({index:stage+1,...s,passed,newI2cReading:reads.length>0});
   }else if(kind==='lm35'){
@@ -67,14 +82,38 @@ function record(){
   }else if(kind==='blink'){
     samples.push({index:1,edges});
   }else{
-    const expected=kind==='button'?s.pressed:s.position>=thresholdPosition;
+    const expected=expectedLED(s);
     const current=last?.leds[led.id]?.currentMa??null;
     passed=current!==null&&(expected?current>.5:current<.05);
-    samples.push({index:stage+1,...s,expected,currentMa:current,passed});
+    let timely=true;
+    if(profile.contract){
+      timely=matchesLED(deadlineCurrent,expected)&&stableAfterDeadline;
+      passed=passed&&timely;
+    }
+    samples.push({index:stage+1,...s,expected,currentMa:current,passed,...(profile.contract?{timely}:{})});
   }
   consoleText='';outputLines.length=0;lineBuffer='';
+  deadlineCurrent=last?.leds[led?.id]?.currentMa??null;stableAfterDeadline=true;
 }
-if(project.language==='arduino-cpp'){
+if(backend==='s3-cpp'){
+  let engine:any,lastObservation=-Infinity;
+  const clock={now:0,async sleep(us:number){
+    const target=clock.now+Math.max(1,us);
+    while(stage<stimuli.length&&target>=(stage+1)*duration*1000){
+      clock.now=clockUs=(stage+1)*duration*1000;engine.snapshot();record();stage++;
+      if(stage===stimuli.length){engine.stop();return;}
+      engine.input(stimulus(stimuli[stage]));
+    }
+    clock.now=clockUs=target;
+    // Bound observation cost independently of the student's polling frequency.
+    // One millisecond remains inside every published observation tolerance.
+    if(target-lastObservation>=1000){engine.snapshot();lastObservation=target;}
+  }};
+  engine=await createS3Engine(wasmBytes(artifact.wasm),config,observe,{clock});
+  try{engine.input(stimulus(stimuli[0]));await engine.run();}
+  catch{programError='Program je prijavio pogrešku. Provjeri C++ kod i sklop u laboratoriju.';}
+  finally{engine.stop();}
+}else if(backend==='avr'){
   const engine=new AVREngine(artifact.hex,config,observe,project.board.id.includes('nano')?8:6,artifact.staticRamBytes);
   try{for(stage=0;stage<stimuli.length;stage++){
     engine.input(stimulus(stimuli[stage]));
@@ -87,7 +126,7 @@ if(project.language==='arduino-cpp'){
   let complete!:()=>void;const done=new Promise<void>(ok=>complete=ok);
   host.scheduleSleep=(wake:()=>void,ms:number)=>{
     // Capture GPIO writes at their actual virtual time before advancing sleep.
-    if(kind==='blink')host.flush();
+    if(kind==='blink'||profile.contract)host.flush();
     const target=clockUs+Math.max(.05,ms)*1000;
     while(stage<stimuli.length&&target>=(stage+1)*duration*1000){
       clockUs=(stage+1)*duration*1000;host.flush();record();stage++;

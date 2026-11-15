@@ -17,6 +17,8 @@ copy('dist', 'web'); copy('school/api', 'web/api'); copy('school/apache/web.htac
 copy('school/config/config.example.php', 'config/config.example.php'); copy('school/bin', 'tools'); copy('school/apache/labosv2.conf.example', 'apache/labosv2.conf.example');
 copy('school/app', 'app'); copy('school/migrations', 'migrations');
 copy('school/grader/profiles.json', 'grading/profiles.json');
+copy('docs/stage24ab-contract.md', 'docs/stage24ab-contract.md');
+copy('docs/stage24ab-evidence', 'docs/stage24ab-evidence');
 copy('.build/school-catalog', 'catalog');
 copy('school/README.md', 'README.md'); copy('school/profile.json', 'profile.json'); copy('LICENSE', 'LICENSE');
 copy('docs/stage23e-grading.md', 'docs/stage23e-grading.md');
@@ -29,20 +31,23 @@ copy('docs/stage23h-reports-administration.md', 'docs/stage23h-reports-administr
 copy('docs/stage23h-evidence', 'docs/stage23h-evidence');
 copy('docs/stage23i-pilot.md', 'docs/stage23i-pilot.md');
 copy('docs/stage23i-evidence', 'docs/stage23i-evidence');
-writeFileSync(resolve(target, 'README.md'), readFileSync(resolve(target, 'README.md'), 'utf8').replaceAll('../docs/stage23e-grading.md', 'docs/stage23e-grading.md').replaceAll('../docs/stage23f-submissions.md', 'docs/stage23f-submissions.md').replaceAll('../docs/stage23g-grading-matrix.md', 'docs/stage23g-grading-matrix.md').replaceAll('../docs/stage23h-reports-administration.md', 'docs/stage23h-reports-administration.md').replaceAll('../docs/stage23i-pilot.md', 'docs/stage23i-pilot.md'));
+writeFileSync(resolve(target, 'README.md'), readFileSync(resolve(target, 'README.md'), 'utf8').replaceAll('../docs/stage23e-grading.md', 'docs/stage23e-grading.md').replaceAll('../docs/stage23f-submissions.md', 'docs/stage23f-submissions.md').replaceAll('../docs/stage23g-grading-matrix.md', 'docs/stage23g-grading-matrix.md').replaceAll('../docs/stage23h-reports-administration.md', 'docs/stage23h-reports-administration.md').replaceAll('../docs/stage23i-pilot.md', 'docs/stage23i-pilot.md').replaceAll('../docs/stage24ab-contract.md', 'docs/stage24ab-contract.md'));
 copy('.build/school-grader', 'checker/.build/school-grader'); copy('public', 'checker/public');
 copy('scripts/avr-compile.mjs', 'checker/scripts/avr-compile.mjs'); copy('school/grader/compile-child.mjs', 'checker/school/grader/compile-child.mjs');
 copy('vendor/arduino', 'checker/vendor/arduino');
+copy('scripts/s3-compile.mjs', 'checker/scripts/s3-compile.mjs');
+copy('runtime/arduino-s3', 'checker/runtime/arduino-s3');
+copy('school/grader/s3-compile-child.mjs', 'checker/school/grader/s3-compile-child.mjs');
 const entries = {};
 function walk(directory) { for (const item of readdirSync(directory, {withFileTypes: true})) {
   const path = resolve(directory, item.name);
   if (item.isDirectory()) walk(path); else entries[relative(target, path).replaceAll('\\', '/')] = new Uint8Array(readFileSync(path));
 } }
 walk(target);
-const inventory = {version, stage: '23I', appBuild: manifest.build, files: Object.entries(entries).map(([path, bytes]) => ({path, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex')}))};
+const inventory = {version, stage: '24AB', appBuild: manifest.build, files: Object.entries(entries).map(([path, bytes]) => ({path, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex')}))};
 entries['package-inventory.json'] = strToU8(JSON.stringify(inventory, null, 2) + '\n');
 writeFileSync(resolve(target, 'package-inventory.json'), entries['package-inventory.json']);
 mkdirSync('release', {recursive: true});
-const output = resolve('release', 'Labosv2_' + version.split('-')[0] + '_23I_Skolski.zip');
+const output = resolve('release', 'Labosv2_' + version.split('-')[0] + '_24AB_Skolski.zip');
 writeFileSync(output, zipSync(entries, {level: 6}));
 console.log(output);

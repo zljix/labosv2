@@ -15,6 +15,7 @@ function call(action,input){return new Promise((done,reject)=>{
 const {job}=await call('claim');
 if(!job){console.log(JSON.stringify({status:'idle'}));}else{
   const {gradeJob}=await import(pathToFileURL(resolve(root,'.build/school-grader/official.mjs')).href);
-  const report=await gradeJob(job,{root,compile:process.env.LAB_GRADER_COMPILE==='1',cli:process.env.LAB_ARDUINO_CLI,data:process.env.LAB_ARDUINO_DATA});
+  const report=await gradeJob(job,{root,compile:process.env.LAB_GRADER_COMPILE==='1',cli:process.env.LAB_ARDUINO_CLI,data:process.env.LAB_ARDUINO_DATA,
+    s3Toolchain:process.env.LAB_S3_TOOLCHAIN,clang:process.env.LAB_WASM_CXX,opt:process.env.LAB_WASM_OPT});
   const result=await call('complete',{jobId:job.jobId,lease:job.lease,report});console.log(JSON.stringify(result));
 }

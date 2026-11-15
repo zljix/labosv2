@@ -10,7 +10,7 @@ import {mountGradingCoverage} from '../public/school-grading-support.mjs';
 
 test('23G full URS matrix has exactly one status and explicit criteria per real catalogue combination',()=>{
   const matrix=gradingCoverage('test');
-  assert.deepEqual(matrix.summary,{themes:18,variants:67,combinations:268,supported:18,unsupported:250,introductory:5});
+  assert.deepEqual(matrix.summary,{themes:18,variants:67,combinations:268,supported:24,unsupported:244,introductory:5});
   const expected=ursLessons.flatMap(l=>l.variants.flatMap(v=>(Object.keys(ursTargets) as UrsTarget[]).filter(t=>variantAvailable(v,t)).map(t=>l.id+'/'+v.id+'/'+t)));
   assert.deepEqual(matrix.rows.map(r=>r.id),expected);assert.equal(new Set(expected).size,268);
   assert.equal(new Set(matrix.rows.map(r=>r.code)).size,18);
@@ -22,7 +22,7 @@ test('23G full URS matrix has exactly one status and explicit criteria per real 
       assert(p.targets.includes(row.target));assert.equal(p.taskKey,row.taskKey);assert.deepEqual(row.grading.criteria,p.criteria);
       assert.equal(row.grading.criteria.reduce((n,c)=>n+c.maxPoints,0),10);assert(readFileSync(row.grading.evidence!));
     }else{assert.equal(row.grading.maxPoints,null);assert.equal(row.grading.profileId,null);assert.deepEqual(row.grading.criteria,[]);}
-    if(row.target==='s3-cpp')assert.equal(row.grading.status,'unsupported');
+    if(row.target==='s3-cpp'&&row.grading.status==='supported')assert.match(row.grading.profileId!,/^24B-/);
   }
   assert.deepEqual(matrix.introductory.map(r=>r.code),['V1','V2','V3','V4','V5']);
   assert(matrix.introductory.every(r=>r.status==='local-only'&&r.maxPoints===null));
@@ -37,8 +37,8 @@ test('23G generated JSON, CSV and private catalogue agree with the authoritative
   for(const entry of catalog.entries)for(const target of entry.targets){
     assert.deepEqual(entry.gradingSupport[target],matrix.rows.find(r=>r.taskKey===entry.key&&r.target===target)!.grading);
   }
-  assert.equal(gradingSupport('gpio/button','uno').checkerVersion,'23E.1');
-  assert.equal(gradingSupport('analog/lm35','uno').checkerVersion,'23G.1');
+  assert.equal(gradingSupport('gpio/button','uno').checkerVersion,'24AB.1');
+  assert.equal(gradingSupport('analog/lm35','uno').checkerVersion,'24AB.1');
 });
 test('23G real support page filters by target, family, status and text; injected text stays text',()=>{
   const dom=new JSDOM(readFileSync('public/school-grading.html','utf8'),{url:'https://school.example/labosv2/school-grading.html'});
@@ -48,11 +48,11 @@ test('23G real support page filters by target, family, status and text; injected
     const change=(id:string,value:string,event='change')=>{const el=doc.querySelector(id) as HTMLInputElement;el.value=value;el.dispatchEvent(new dom.window.Event(event,{bubbles:true}));};
     const count=()=>doc.querySelectorAll('#rows tr').length;
     assert.equal(count(),268);assert.match(doc.querySelector('#summary')!.textContent!,/18/);
-    change('#support','supported');assert.equal(count(),18);
-    change('#target','s3-cpp');assert.equal(count(),0);assert.match(doc.querySelector('#result')!.textContent!,/Prikazano 0/);
-    change('#support','unsupported');assert.equal(count(),67);
+    change('#support','supported');assert.equal(count(),24);
+    change('#target','s3-cpp');assert.equal(count(),6);assert.match(doc.querySelector('#result')!.textContent!,/Prikazano 6/);
+    change('#support','unsupported');assert.equal(count(),61);
     change('#target','micropython');change('#support','supported');change('#query','LM35','input');assert.equal(count(),1);
-    assert.match(doc.querySelector('#rows')!.textContent!,/23G-lm35@1/);
+    assert.match(doc.querySelector('#rows')!.textContent!,/24B-lm35@1/);
     change('#query','','input');change('#family','radio');assert.equal(count(),0);
     change('#support','unsupported');assert.equal(count(),1);
     assert.equal(doc.querySelectorAll('#introductory details').length,5);

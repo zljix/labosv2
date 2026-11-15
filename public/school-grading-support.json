@@ -1,13 +1,13 @@
 {
   "format": "labosv2-grading-coverage",
   "version": 1,
-  "sourceVersion": "0.13.8-beta.1",
+  "sourceVersion": "0.14.0-beta.1",
   "summary": {
     "themes": 18,
     "variants": 67,
     "combinations": 268,
-    "supported": 18,
-    "unsupported": 250,
+    "supported": 24,
+    "unsupported": 244,
     "introductory": 5
   },
   "rows": [
@@ -33,9 +33,9 @@
       "expected": "LED mijenja stanje, tipkalo mijenja izlaz ili pomicanje klizača mijenja PWM. Sredina S3 klizača zbog zasićenja nije točno polovica raspona.",
       "grading": {
         "status": "supported",
-        "profileId": "23G-led-timing@1",
-        "checkerVersion": "23G.1",
-        "title": "LED: 250 ms uključeno i 750 ms isključeno",
+        "profileId": "24B-led-timing@1",
+        "checkerVersion": "24AB.1",
+        "title": "LED: 250 ms uključeno i 750 ms isključeno · ugovor 24AB",
         "instructions": "Prilagodi početni program: jedna vanjska LED mora ponavljati 250 ms uključeno i 750 ms isključeno, najmanje tri potpuna ciklusa. Mjeri se stvarna struja LED-ice u virtualnom vremenu; tolerancija svakog trajanja je ±24 ms. Početnih 500/500 ms ostvaruje izmjenu stanja, ali ne kriterij trajanja. Koristi serijski otpornik i zajedničku masu. Raspored i GPIO mogu se promijeniti uz odgovarajući kod.",
         "criteria": [
           {
@@ -57,7 +57,7 @@
         "maxPoints": 10,
         "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
         "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
-        "evidence": "verification/school-grading-expanded.test.ts"
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {
@@ -81,16 +81,32 @@
       "fault": "Zaustavi program, ukloni signalni vodič odabrane ulazne ili izlazne komponente, ponovno pokreni i usporedi. Vrati vodič.",
       "expected": "LED mijenja stanje, tipkalo mijenja izlaz ili pomicanje klizača mijenja PWM. Sredina S3 klizača zbog zasićenja nije točno polovica raspona.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24B-led-timing@1",
+        "checkerVersion": "24AB.1",
+        "title": "LED: 250 ms uključeno i 750 ms isključeno · ugovor 24AB",
+        "instructions": "Prilagodi početni program: jedna vanjska LED mora ponavljati 250 ms uključeno i 750 ms isključeno, najmanje tri potpuna ciklusa. Mjeri se stvarna struja LED-ice u virtualnom vremenu; tolerancija svakog trajanja je ±24 ms. Početnih 500/500 ms ostvaruje izmjenu stanja, ali ne kriterij trajanja. Koristi serijski otpornik i zajedničku masu. Raspored i GPIO mogu se promijeniti uz odgovarajući kod.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "LED ima valjan zatvoren put preko serijskog otpornika i mase",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Najmanje tri potpuna ponavljanja uključenja i isključenja LED-ice",
+            "maxPoints": 5
+          },
+          {
+            "id": "timing",
+            "description": "Svako potpuno uključenje traje 250 ms, a isključenje 750 ms, uz toleranciju ±24 ms",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {
@@ -115,9 +131,9 @@
       "expected": "LED mijenja stanje, tipkalo mijenja izlaz ili pomicanje klizača mijenja PWM. Sredina S3 klizača zbog zasićenja nije točno polovica raspona.",
       "grading": {
         "status": "supported",
-        "profileId": "23G-led-timing@1",
-        "checkerVersion": "23G.1",
-        "title": "LED: 250 ms uključeno i 750 ms isključeno",
+        "profileId": "24B-led-timing@1",
+        "checkerVersion": "24AB.1",
+        "title": "LED: 250 ms uključeno i 750 ms isključeno · ugovor 24AB",
         "instructions": "Prilagodi početni program: jedna vanjska LED mora ponavljati 250 ms uključeno i 750 ms isključeno, najmanje tri potpuna ciklusa. Mjeri se stvarna struja LED-ice u virtualnom vremenu; tolerancija svakog trajanja je ±24 ms. Početnih 500/500 ms ostvaruje izmjenu stanja, ali ne kriterij trajanja. Koristi serijski otpornik i zajedničku masu. Raspored i GPIO mogu se promijeniti uz odgovarajući kod.",
         "criteria": [
           {
@@ -139,7 +155,7 @@
         "maxPoints": 10,
         "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
         "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
-        "evidence": "verification/school-grading-expanded.test.ts"
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {
@@ -164,9 +180,9 @@
       "expected": "LED mijenja stanje, tipkalo mijenja izlaz ili pomicanje klizača mijenja PWM. Sredina S3 klizača zbog zasićenja nije točno polovica raspona.",
       "grading": {
         "status": "supported",
-        "profileId": "23G-led-timing@1",
-        "checkerVersion": "23G.1",
-        "title": "LED: 250 ms uključeno i 750 ms isključeno",
+        "profileId": "24B-led-timing@1",
+        "checkerVersion": "24AB.1",
+        "title": "LED: 250 ms uključeno i 750 ms isključeno · ugovor 24AB",
         "instructions": "Prilagodi početni program: jedna vanjska LED mora ponavljati 250 ms uključeno i 750 ms isključeno, najmanje tri potpuna ciklusa. Mjeri se stvarna struja LED-ice u virtualnom vremenu; tolerancija svakog trajanja je ±24 ms. Početnih 500/500 ms ostvaruje izmjenu stanja, ali ne kriterij trajanja. Koristi serijski otpornik i zajedničku masu. Raspored i GPIO mogu se promijeniti uz odgovarajući kod.",
         "criteria": [
           {
@@ -188,7 +204,7 @@
         "maxPoints": 10,
         "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
         "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
-        "evidence": "verification/school-grading-expanded.test.ts"
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {
@@ -213,10 +229,10 @@
       "expected": "LED mijenja stanje, tipkalo mijenja izlaz ili pomicanje klizača mijenja PWM. Sredina S3 klizača zbog zasićenja nije točno polovica raspona.",
       "grading": {
         "status": "supported",
-        "profileId": "23E-button-led@1",
-        "checkerVersion": "23E.1",
-        "title": "Pilot: tipkalo upravlja LED-icom",
-        "instructions": "LED mora svijetliti dok je tipkalo pritisnuto i biti ugašena dok je otpušteno. Provjera zadaje više pritisaka i otpuštanja. Program mora nastaviti očitavati ulaz; najveće čekanje petlje je 50 ms. Koristi jednu vanjsku LED-icu i jedno tipkalo.",
+        "profileId": "24B-button-led@1",
+        "checkerVersion": "24AB.1",
+        "title": "tipkalo upravlja LED-icom · ugovor 24AB",
+        "instructions": "LED mora svijetliti dok je tipkalo pritisnuto i biti ugašena dok je otpušteno. Provjera zadaje više pritisaka i otpuštanja. Program mora nastaviti očitavati ulaz; najveće čekanje petlje je 50 ms. Koristi jednu vanjsku LED-icu i jedno tipkalo. Rok reakcije na svaku promjenu je 50 ms, uz 4 ms tolerancije izvršnog koraka.",
         "criteria": [
           {
             "id": "connection",
@@ -237,7 +253,7 @@
         "maxPoints": 10,
         "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
         "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
-        "evidence": "verification/school-grading.test.ts"
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {
@@ -261,16 +277,32 @@
       "fault": "Zaustavi program, ukloni signalni vodič odabrane ulazne ili izlazne komponente, ponovno pokreni i usporedi. Vrati vodič.",
       "expected": "LED mijenja stanje, tipkalo mijenja izlaz ili pomicanje klizača mijenja PWM. Sredina S3 klizača zbog zasićenja nije točno polovica raspona.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24B-button-led@1",
+        "checkerVersion": "24AB.1",
+        "title": "tipkalo upravlja LED-icom · ugovor 24AB",
+        "instructions": "LED mora svijetliti dok je tipkalo pritisnuto i biti ugašena dok je otpušteno. Provjera zadaje više pritisaka i otpuštanja. Program mora nastaviti očitavati ulaz; najveće čekanje petlje je 50 ms. Koristi jednu vanjsku LED-icu i jedno tipkalo. Rok reakcije na svaku promjenu je 50 ms, uz 4 ms tolerancije izvršnog koraka.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put tipkala, mase, otpornika i LED-ice",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "LED prati pritisak i otpuštanje u svim osnovnim scenarijima",
+            "maxPoints": 5
+          },
+          {
+            "id": "repeat",
+            "description": "Ponovljeni pritisci i povrat u početno stanje",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {
@@ -295,10 +327,10 @@
       "expected": "LED mijenja stanje, tipkalo mijenja izlaz ili pomicanje klizača mijenja PWM. Sredina S3 klizača zbog zasićenja nije točno polovica raspona.",
       "grading": {
         "status": "supported",
-        "profileId": "23E-button-led@1",
-        "checkerVersion": "23E.1",
-        "title": "Pilot: tipkalo upravlja LED-icom",
-        "instructions": "LED mora svijetliti dok je tipkalo pritisnuto i biti ugašena dok je otpušteno. Provjera zadaje više pritisaka i otpuštanja. Program mora nastaviti očitavati ulaz; najveće čekanje petlje je 50 ms. Koristi jednu vanjsku LED-icu i jedno tipkalo.",
+        "profileId": "24B-button-led@1",
+        "checkerVersion": "24AB.1",
+        "title": "tipkalo upravlja LED-icom · ugovor 24AB",
+        "instructions": "LED mora svijetliti dok je tipkalo pritisnuto i biti ugašena dok je otpušteno. Provjera zadaje više pritisaka i otpuštanja. Program mora nastaviti očitavati ulaz; najveće čekanje petlje je 50 ms. Koristi jednu vanjsku LED-icu i jedno tipkalo. Rok reakcije na svaku promjenu je 50 ms, uz 4 ms tolerancije izvršnog koraka.",
         "criteria": [
           {
             "id": "connection",
@@ -319,7 +351,7 @@
         "maxPoints": 10,
         "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
         "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
-        "evidence": "verification/school-grading.test.ts"
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {
@@ -344,10 +376,10 @@
       "expected": "LED mijenja stanje, tipkalo mijenja izlaz ili pomicanje klizača mijenja PWM. Sredina S3 klizača zbog zasićenja nije točno polovica raspona.",
       "grading": {
         "status": "supported",
-        "profileId": "23E-button-led@1",
-        "checkerVersion": "23E.1",
-        "title": "Pilot: tipkalo upravlja LED-icom",
-        "instructions": "LED mora svijetliti dok je tipkalo pritisnuto i biti ugašena dok je otpušteno. Provjera zadaje više pritisaka i otpuštanja. Program mora nastaviti očitavati ulaz; najveće čekanje petlje je 50 ms. Koristi jednu vanjsku LED-icu i jedno tipkalo.",
+        "profileId": "24B-button-led@1",
+        "checkerVersion": "24AB.1",
+        "title": "tipkalo upravlja LED-icom · ugovor 24AB",
+        "instructions": "LED mora svijetliti dok je tipkalo pritisnuto i biti ugašena dok je otpušteno. Provjera zadaje više pritisaka i otpuštanja. Program mora nastaviti očitavati ulaz; najveće čekanje petlje je 50 ms. Koristi jednu vanjsku LED-icu i jedno tipkalo. Rok reakcije na svaku promjenu je 50 ms, uz 4 ms tolerancije izvršnog koraka.",
         "criteria": [
           {
             "id": "connection",
@@ -368,7 +400,7 @@
         "maxPoints": 10,
         "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
         "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
-        "evidence": "verification/school-grading.test.ts"
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {
@@ -393,10 +425,10 @@
       "expected": "LED mijenja stanje, tipkalo mijenja izlaz ili pomicanje klizača mijenja PWM. Sredina S3 klizača zbog zasićenja nije točno polovica raspona.",
       "grading": {
         "status": "supported",
-        "profileId": "23E-analog-threshold@1",
-        "checkerVersion": "23E.1",
-        "title": "Pilot: analogni prag i LED",
-        "instructions": "Ovo je zasebna bodovana nadogradnja početnog ADC/PWM primjera: zamijeni PWM digitalnim izlazom. LED uključi za očitanje ADC-a veće ili jednako polovici punog raspona, inače je ugasi. Prag je 32768 za read_u16() u MicroPythonu i 512 za analogRead() na Uno/Nano. Za read() u MicroPythonu odgovarajući je prag 2048. Provjeravaju se krajevi, vrijednosti ispod i iznad praga te sam prag; najveće čekanje petlje je 50 ms. Koristi jedan potenciometar i jednu LED-icu.",
+        "profileId": "24B-analog-threshold@1",
+        "checkerVersion": "24AB.1",
+        "title": "analogni prag i LED · ugovor 24AB",
+        "instructions": "Ovo je zasebna bodovana nadogradnja početnog ADC/PWM primjera: zamijeni PWM digitalnim izlazom. LED uključi za očitanje ADC-a veće ili jednako polovici punog raspona, inače je ugasi. Prag je 32768 za read_u16() u MicroPythonu i 512 za analogRead() na Uno/Nano. Za read() u MicroPythonu odgovarajući je prag 2048. Provjeravaju se krajevi, vrijednosti ispod i iznad praga te sam prag; najveće čekanje petlje je 50 ms. Koristi jedan potenciometar i jednu LED-icu. ESP32-S3 C++ koristi analogReadResolution(12), ADC_11db i prag 2048; analogReadMilliVolts koristi zasićenje 3100 mV. Reakcija na promjenu ulaza mora nastupiti unutar 50 ms uz 4 ms tolerancije izvršnog koraka.",
         "criteria": [
           {
             "id": "connection",
@@ -417,7 +449,7 @@
         "maxPoints": 10,
         "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
         "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
-        "evidence": "verification/school-grading.test.ts"
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {
@@ -441,16 +473,32 @@
       "fault": "Zaustavi program, ukloni signalni vodič odabrane ulazne ili izlazne komponente, ponovno pokreni i usporedi. Vrati vodič.",
       "expected": "LED mijenja stanje, tipkalo mijenja izlaz ili pomicanje klizača mijenja PWM. Sredina S3 klizača zbog zasićenja nije točno polovica raspona.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24B-analog-threshold@1",
+        "checkerVersion": "24AB.1",
+        "title": "analogni prag i LED · ugovor 24AB",
+        "instructions": "Ovo je zasebna bodovana nadogradnja početnog ADC/PWM primjera: zamijeni PWM digitalnim izlazom. LED uključi za očitanje ADC-a veće ili jednako polovici punog raspona, inače je ugasi. Prag je 32768 za read_u16() u MicroPythonu i 512 za analogRead() na Uno/Nano. Za read() u MicroPythonu odgovarajući je prag 2048. Provjeravaju se krajevi, vrijednosti ispod i iznad praga te sam prag; najveće čekanje petlje je 50 ms. Koristi jedan potenciometar i jednu LED-icu. ESP32-S3 C++ koristi analogReadResolution(12), ADC_11db i prag 2048; analogReadMilliVolts koristi zasićenje 3100 mV. Reakcija na promjenu ulaza mora nastupiti unutar 50 ms uz 4 ms tolerancije izvršnog koraka.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Potenciometar napaja i dovodi promjenjiv napon na ADC; LED ima valjan put",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Digitalni izlaz je ugašen ispod i uključen iznad polovice ADC raspona",
+            "maxPoints": 5
+          },
+          {
+            "id": "repeat",
+            "description": "Točan prag, rubne vrijednosti i povrat nakon promjene ulaza",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {
@@ -475,10 +523,10 @@
       "expected": "LED mijenja stanje, tipkalo mijenja izlaz ili pomicanje klizača mijenja PWM. Sredina S3 klizača zbog zasićenja nije točno polovica raspona.",
       "grading": {
         "status": "supported",
-        "profileId": "23E-analog-threshold@1",
-        "checkerVersion": "23E.1",
-        "title": "Pilot: analogni prag i LED",
-        "instructions": "Ovo je zasebna bodovana nadogradnja početnog ADC/PWM primjera: zamijeni PWM digitalnim izlazom. LED uključi za očitanje ADC-a veće ili jednako polovici punog raspona, inače je ugasi. Prag je 32768 za read_u16() u MicroPythonu i 512 za analogRead() na Uno/Nano. Za read() u MicroPythonu odgovarajući je prag 2048. Provjeravaju se krajevi, vrijednosti ispod i iznad praga te sam prag; najveće čekanje petlje je 50 ms. Koristi jedan potenciometar i jednu LED-icu.",
+        "profileId": "24B-analog-threshold@1",
+        "checkerVersion": "24AB.1",
+        "title": "analogni prag i LED · ugovor 24AB",
+        "instructions": "Ovo je zasebna bodovana nadogradnja početnog ADC/PWM primjera: zamijeni PWM digitalnim izlazom. LED uključi za očitanje ADC-a veće ili jednako polovici punog raspona, inače je ugasi. Prag je 32768 za read_u16() u MicroPythonu i 512 za analogRead() na Uno/Nano. Za read() u MicroPythonu odgovarajući je prag 2048. Provjeravaju se krajevi, vrijednosti ispod i iznad praga te sam prag; najveće čekanje petlje je 50 ms. Koristi jedan potenciometar i jednu LED-icu. ESP32-S3 C++ koristi analogReadResolution(12), ADC_11db i prag 2048; analogReadMilliVolts koristi zasićenje 3100 mV. Reakcija na promjenu ulaza mora nastupiti unutar 50 ms uz 4 ms tolerancije izvršnog koraka.",
         "criteria": [
           {
             "id": "connection",
@@ -499,7 +547,7 @@
         "maxPoints": 10,
         "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
         "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
-        "evidence": "verification/school-grading.test.ts"
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {
@@ -524,10 +572,10 @@
       "expected": "LED mijenja stanje, tipkalo mijenja izlaz ili pomicanje klizača mijenja PWM. Sredina S3 klizača zbog zasićenja nije točno polovica raspona.",
       "grading": {
         "status": "supported",
-        "profileId": "23E-analog-threshold@1",
-        "checkerVersion": "23E.1",
-        "title": "Pilot: analogni prag i LED",
-        "instructions": "Ovo je zasebna bodovana nadogradnja početnog ADC/PWM primjera: zamijeni PWM digitalnim izlazom. LED uključi za očitanje ADC-a veće ili jednako polovici punog raspona, inače je ugasi. Prag je 32768 za read_u16() u MicroPythonu i 512 za analogRead() na Uno/Nano. Za read() u MicroPythonu odgovarajući je prag 2048. Provjeravaju se krajevi, vrijednosti ispod i iznad praga te sam prag; najveće čekanje petlje je 50 ms. Koristi jedan potenciometar i jednu LED-icu.",
+        "profileId": "24B-analog-threshold@1",
+        "checkerVersion": "24AB.1",
+        "title": "analogni prag i LED · ugovor 24AB",
+        "instructions": "Ovo je zasebna bodovana nadogradnja početnog ADC/PWM primjera: zamijeni PWM digitalnim izlazom. LED uključi za očitanje ADC-a veće ili jednako polovici punog raspona, inače je ugasi. Prag je 32768 za read_u16() u MicroPythonu i 512 za analogRead() na Uno/Nano. Za read() u MicroPythonu odgovarajući je prag 2048. Provjeravaju se krajevi, vrijednosti ispod i iznad praga te sam prag; najveće čekanje petlje je 50 ms. Koristi jedan potenciometar i jednu LED-icu. ESP32-S3 C++ koristi analogReadResolution(12), ADC_11db i prag 2048; analogReadMilliVolts koristi zasićenje 3100 mV. Reakcija na promjenu ulaza mora nastupiti unutar 50 ms uz 4 ms tolerancije izvršnog koraka.",
         "criteria": [
           {
             "id": "connection",
@@ -548,7 +596,7 @@
         "maxPoints": 10,
         "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
         "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
-        "evidence": "verification/school-grading.test.ts"
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {
@@ -705,9 +753,9 @@
       "expected": "Očitanja prate pojedinačno zadane okoliše. AM2320 može kasniti jedan ciklus; tlak je pravilno označen jedinicom.",
       "grading": {
         "status": "supported",
-        "profileId": "23G-bmp180@1",
-        "checkerVersion": "23G.1",
-        "title": "BMP180: novo očitanje temperature i tlaka",
+        "profileId": "24B-bmp180@1",
+        "checkerVersion": "24AB.1",
+        "title": "BMP180: novo očitanje temperature i tlaka · ugovor 24AB",
         "instructions": "Preko I2C očitavaj jedan BMP180 i ispisuj T=<broj> P=<broj>, temperaturu u °C i tlak u Pa. Najveći interval očitanja je 2200 ms. Svaka promjena mora dati dovršenu novu pretvorbu, stvarni I2C prijenos i novi ispis. Tolerancija temperature je ±0,3 °C, tlaka ±150 Pa. Sam ispis ili prethodno očitanje nisu dokaz novog mjerenja.",
         "criteria": [
           {
@@ -729,7 +777,7 @@
         "maxPoints": 10,
         "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
         "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
-        "evidence": "verification/school-grading-expanded.test.ts"
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {
@@ -753,16 +801,32 @@
       "fault": "Zaustavi program, odspoji SDA jednog uređaja, pokreni i zabilježi izostanak/grešku. Vrati spoj i ponovi.",
       "expected": "Očitanja prate pojedinačno zadane okoliše. AM2320 može kasniti jedan ciklus; tlak je pravilno označen jedinicom.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24B-bmp180@1",
+        "checkerVersion": "24AB.1",
+        "title": "BMP180: novo očitanje temperature i tlaka · ugovor 24AB",
+        "instructions": "Preko I2C očitavaj jedan BMP180 i ispisuj T=<broj> P=<broj>, temperaturu u °C i tlak u Pa. Najveći interval očitanja je 2200 ms. Svaka promjena mora dati dovršenu novu pretvorbu, stvarni I2C prijenos i novi ispis. Tolerancija temperature je ±0,3 °C, tlaka ±150 Pa. Sam ispis ili prethodno očitanje nisu dokaz novog mjerenja.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajanje, masa i I2C put ostvaruju novo dovršeno očitanje BMP180",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Ispis temperature i tlaka prati dvije različite pobude u zadanim tolerancijama",
+            "maxPoints": 5
+          },
+          {
+            "id": "repeat",
+            "description": "Treća promjena daje novu pretvorbu i novi ispis BMP180",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {
@@ -787,9 +851,9 @@
       "expected": "Očitanja prate pojedinačno zadane okoliše. AM2320 može kasniti jedan ciklus; tlak je pravilno označen jedinicom.",
       "grading": {
         "status": "supported",
-        "profileId": "23G-bmp180@1",
-        "checkerVersion": "23G.1",
-        "title": "BMP180: novo očitanje temperature i tlaka",
+        "profileId": "24B-bmp180@1",
+        "checkerVersion": "24AB.1",
+        "title": "BMP180: novo očitanje temperature i tlaka · ugovor 24AB",
         "instructions": "Preko I2C očitavaj jedan BMP180 i ispisuj T=<broj> P=<broj>, temperaturu u °C i tlak u Pa. Najveći interval očitanja je 2200 ms. Svaka promjena mora dati dovršenu novu pretvorbu, stvarni I2C prijenos i novi ispis. Tolerancija temperature je ±0,3 °C, tlaka ±150 Pa. Sam ispis ili prethodno očitanje nisu dokaz novog mjerenja.",
         "criteria": [
           {
@@ -811,7 +875,7 @@
         "maxPoints": 10,
         "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
         "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
-        "evidence": "verification/school-grading-expanded.test.ts"
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {
@@ -836,9 +900,9 @@
       "expected": "Očitanja prate pojedinačno zadane okoliše. AM2320 može kasniti jedan ciklus; tlak je pravilno označen jedinicom.",
       "grading": {
         "status": "supported",
-        "profileId": "23G-bmp180@1",
-        "checkerVersion": "23G.1",
-        "title": "BMP180: novo očitanje temperature i tlaka",
+        "profileId": "24B-bmp180@1",
+        "checkerVersion": "24AB.1",
+        "title": "BMP180: novo očitanje temperature i tlaka · ugovor 24AB",
         "instructions": "Preko I2C očitavaj jedan BMP180 i ispisuj T=<broj> P=<broj>, temperaturu u °C i tlak u Pa. Najveći interval očitanja je 2200 ms. Svaka promjena mora dati dovršenu novu pretvorbu, stvarni I2C prijenos i novi ispis. Tolerancija temperature je ±0,3 °C, tlaka ±150 Pa. Sam ispis ili prethodno očitanje nisu dokaz novog mjerenja.",
         "criteria": [
           {
@@ -860,7 +924,7 @@
         "maxPoints": 10,
         "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
         "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
-        "evidence": "verification/school-grading-expanded.test.ts"
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {
@@ -885,9 +949,9 @@
       "expected": "Očitanja prate pojedinačno zadane okoliše. AM2320 može kasniti jedan ciklus; tlak je pravilno označen jedinicom.",
       "grading": {
         "status": "supported",
-        "profileId": "23E-bmp280@1",
-        "checkerVersion": "23E.1",
-        "title": "Pilot: novo očitanje BMP280 preko I2C",
+        "profileId": "24B-bmp280@1",
+        "checkerVersion": "24AB.1",
+        "title": "novo očitanje BMP280 preko I2C · ugovor 24AB",
         "instructions": "Preko I2C očitavaj jedan BMP280 i u zasebnom retku ispisuj temperaturu i tlak: T=<broj> P=<broj>. T je u °C, P u Pa (možeš dodati oznake jedinica). Najveći interval očitanja je 2200 ms. Provjera mijenja oba podatka i traži stvarni dovršeni I2C prijenos i novi ispis; prihvaća odstupanje temperature do 0,3 °C i tlaka do 150 Pa. Konzolni tekst bez očitanja senzora ne prolazi.",
         "criteria": [
           {
@@ -909,7 +973,7 @@
         "maxPoints": 10,
         "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
         "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
-        "evidence": "verification/school-grading.test.ts"
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {
@@ -933,16 +997,32 @@
       "fault": "Zaustavi program, odspoji SDA jednog uređaja, pokreni i zabilježi izostanak/grešku. Vrati spoj i ponovi.",
       "expected": "Očitanja prate pojedinačno zadane okoliše. AM2320 može kasniti jedan ciklus; tlak je pravilno označen jedinicom.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24B-bmp280@1",
+        "checkerVersion": "24AB.1",
+        "title": "novo očitanje BMP280 preko I2C · ugovor 24AB",
+        "instructions": "Preko I2C očitavaj jedan BMP280 i u zasebnom retku ispisuj temperaturu i tlak: T=<broj> P=<broj>. T je u °C, P u Pa (možeš dodati oznake jedinica). Najveći interval očitanja je 2200 ms. Provjera mijenja oba podatka i traži stvarni dovršeni I2C prijenos i novi ispis; prihvaća odstupanje temperature do 0,3 °C i tlaka do 150 Pa. Konzolni tekst bez očitanja senzora ne prolazi.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajanje, masa i I2C put ostvaruju novo dovršeno očitanje BMP280",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Ispis temperature i tlaka prati dvije različite pobude u zadanim tolerancijama",
+            "maxPoints": 5
+          },
+          {
+            "id": "repeat",
+            "description": "Treća promjena daje novo očitanje i novi ispis, bez vraćanja starog uzorka",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {
@@ -967,9 +1047,9 @@
       "expected": "Očitanja prate pojedinačno zadane okoliše. AM2320 može kasniti jedan ciklus; tlak je pravilno označen jedinicom.",
       "grading": {
         "status": "supported",
-        "profileId": "23E-bmp280@1",
-        "checkerVersion": "23E.1",
-        "title": "Pilot: novo očitanje BMP280 preko I2C",
+        "profileId": "24B-bmp280@1",
+        "checkerVersion": "24AB.1",
+        "title": "novo očitanje BMP280 preko I2C · ugovor 24AB",
         "instructions": "Preko I2C očitavaj jedan BMP280 i u zasebnom retku ispisuj temperaturu i tlak: T=<broj> P=<broj>. T je u °C, P u Pa (možeš dodati oznake jedinica). Najveći interval očitanja je 2200 ms. Provjera mijenja oba podatka i traži stvarni dovršeni I2C prijenos i novi ispis; prihvaća odstupanje temperature do 0,3 °C i tlaka do 150 Pa. Konzolni tekst bez očitanja senzora ne prolazi.",
         "criteria": [
           {
@@ -991,7 +1071,7 @@
         "maxPoints": 10,
         "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
         "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
-        "evidence": "verification/school-grading.test.ts"
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {
@@ -1016,9 +1096,9 @@
       "expected": "Očitanja prate pojedinačno zadane okoliše. AM2320 može kasniti jedan ciklus; tlak je pravilno označen jedinicom.",
       "grading": {
         "status": "supported",
-        "profileId": "23E-bmp280@1",
-        "checkerVersion": "23E.1",
-        "title": "Pilot: novo očitanje BMP280 preko I2C",
+        "profileId": "24B-bmp280@1",
+        "checkerVersion": "24AB.1",
+        "title": "novo očitanje BMP280 preko I2C · ugovor 24AB",
         "instructions": "Preko I2C očitavaj jedan BMP280 i u zasebnom retku ispisuj temperaturu i tlak: T=<broj> P=<broj>. T je u °C, P u Pa (možeš dodati oznake jedinica). Najveći interval očitanja je 2200 ms. Provjera mijenja oba podatka i traži stvarni dovršeni I2C prijenos i novi ispis; prihvaća odstupanje temperature do 0,3 °C i tlaka do 150 Pa. Konzolni tekst bez očitanja senzora ne prolazi.",
         "criteria": [
           {
@@ -1040,7 +1120,7 @@
         "maxPoints": 10,
         "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
         "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
-        "evidence": "verification/school-grading.test.ts"
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {
@@ -1329,10 +1409,10 @@
       "expected": "Program očitava mrežni napon ili digitalni prag. LM35 traži 5 V napajanje i na S3; referenca ADC-a nije napajanje senzora. S3 C++ pri 11 dB zasićuje ADC na 3,1 V; NTC na granici ispisuje NaN, a dijagnostika sklopa ostaje važna.",
       "grading": {
         "status": "supported",
-        "profileId": "23G-lm35@1",
-        "checkerVersion": "23G.1",
-        "title": "LM35: novo ADC očitanje i temperatura",
-        "instructions": "Napajaj jedan LM35 s 5 V i spoji OUT na ADC uz zajedničku masu. Očitavaj napon i ispisuj T=<broj> u °C najmanje svakih 400 ms. LM35 daje 10 mV/°C: T=U/0,010. Ako koristiš sirovi ADC, pretvorbu uskladi s referencom i rasponom cilja. Provjera mijenja temperaturu u rasponu 5–110 °C i vraća se na prvi uzorak; tolerancija je ±0,6 °C zbog kvantizacije. Fiksni ispis bez valjanog ADC puta ne prolazi.",
+        "profileId": "24B-lm35@1",
+        "checkerVersion": "24AB.1",
+        "title": "LM35: novo ADC očitanje i temperatura · ugovor 24AB",
+        "instructions": "Napajaj jedan LM35 s 5 V i spoji OUT na ADC uz zajedničku masu. Očitavaj napon i ispisuj T=<broj> u °C najmanje svakih 400 ms. LM35 daje 10 mV/°C: T=U/0,010. Ako koristiš sirovi ADC, pretvorbu uskladi s referencom i rasponom cilja. Provjera mijenja temperaturu u rasponu 5–110 °C i vraća se na prvi uzorak; tolerancija je ±0,6 °C zbog kvantizacije. Fiksni ispis bez valjanog ADC puta ne prolazi. Na ESP32-S3 C++ analogReadMilliVolts()/10.0 daje °C; za sirovi 12-bitni ADC koristi 3100 mV i ADC_11db.",
         "criteria": [
           {
             "id": "connection",
@@ -1353,7 +1433,7 @@
         "maxPoints": 10,
         "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
         "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
-        "evidence": "verification/school-grading-expanded.test.ts"
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {
@@ -1377,16 +1457,32 @@
       "fault": "Zaustavi program i odspoji signal ili masu odabrane komponente. Pokreni, zabilježi posljedicu i vrati vodič.",
       "expected": "Program očitava mrežni napon ili digitalni prag. LM35 traži 5 V napajanje i na S3; referenca ADC-a nije napajanje senzora. S3 C++ pri 11 dB zasićuje ADC na 3,1 V; NTC na granici ispisuje NaN, a dijagnostika sklopa ostaje važna.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24B-lm35@1",
+        "checkerVersion": "24AB.1",
+        "title": "LM35: novo ADC očitanje i temperatura · ugovor 24AB",
+        "instructions": "Napajaj jedan LM35 s 5 V i spoji OUT na ADC uz zajedničku masu. Očitavaj napon i ispisuj T=<broj> u °C najmanje svakih 400 ms. LM35 daje 10 mV/°C: T=U/0,010. Ako koristiš sirovi ADC, pretvorbu uskladi s referencom i rasponom cilja. Provjera mijenja temperaturu u rasponu 5–110 °C i vraća se na prvi uzorak; tolerancija je ±0,6 °C zbog kvantizacije. Fiksni ispis bez valjanog ADC puta ne prolazi. Na ESP32-S3 C++ analogReadMilliVolts()/10.0 daje °C; za sirovi 12-bitni ADC koristi 3100 mV i ADC_11db.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "LM35 je napajan s 5 V, ima zajedničku masu i OUT povezan s ADC ulazom",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Novi ispis T u °C prati dvije različite temperature unutar ±0,6 °C",
+            "maxPoints": 5
+          },
+          {
+            "id": "repeat",
+            "description": "Treća temperatura i povrat na prvi uzorak daju nove odgovarajuće ispise",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {
@@ -1411,10 +1507,10 @@
       "expected": "Program očitava mrežni napon ili digitalni prag. LM35 traži 5 V napajanje i na S3; referenca ADC-a nije napajanje senzora. S3 C++ pri 11 dB zasićuje ADC na 3,1 V; NTC na granici ispisuje NaN, a dijagnostika sklopa ostaje važna.",
       "grading": {
         "status": "supported",
-        "profileId": "23G-lm35@1",
-        "checkerVersion": "23G.1",
-        "title": "LM35: novo ADC očitanje i temperatura",
-        "instructions": "Napajaj jedan LM35 s 5 V i spoji OUT na ADC uz zajedničku masu. Očitavaj napon i ispisuj T=<broj> u °C najmanje svakih 400 ms. LM35 daje 10 mV/°C: T=U/0,010. Ako koristiš sirovi ADC, pretvorbu uskladi s referencom i rasponom cilja. Provjera mijenja temperaturu u rasponu 5–110 °C i vraća se na prvi uzorak; tolerancija je ±0,6 °C zbog kvantizacije. Fiksni ispis bez valjanog ADC puta ne prolazi.",
+        "profileId": "24B-lm35@1",
+        "checkerVersion": "24AB.1",
+        "title": "LM35: novo ADC očitanje i temperatura · ugovor 24AB",
+        "instructions": "Napajaj jedan LM35 s 5 V i spoji OUT na ADC uz zajedničku masu. Očitavaj napon i ispisuj T=<broj> u °C najmanje svakih 400 ms. LM35 daje 10 mV/°C: T=U/0,010. Ako koristiš sirovi ADC, pretvorbu uskladi s referencom i rasponom cilja. Provjera mijenja temperaturu u rasponu 5–110 °C i vraća se na prvi uzorak; tolerancija je ±0,6 °C zbog kvantizacije. Fiksni ispis bez valjanog ADC puta ne prolazi. Na ESP32-S3 C++ analogReadMilliVolts()/10.0 daje °C; za sirovi 12-bitni ADC koristi 3100 mV i ADC_11db.",
         "criteria": [
           {
             "id": "connection",
@@ -1435,7 +1531,7 @@
         "maxPoints": 10,
         "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
         "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
-        "evidence": "verification/school-grading-expanded.test.ts"
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {
@@ -1460,10 +1556,10 @@
       "expected": "Program očitava mrežni napon ili digitalni prag. LM35 traži 5 V napajanje i na S3; referenca ADC-a nije napajanje senzora. S3 C++ pri 11 dB zasićuje ADC na 3,1 V; NTC na granici ispisuje NaN, a dijagnostika sklopa ostaje važna.",
       "grading": {
         "status": "supported",
-        "profileId": "23G-lm35@1",
-        "checkerVersion": "23G.1",
-        "title": "LM35: novo ADC očitanje i temperatura",
-        "instructions": "Napajaj jedan LM35 s 5 V i spoji OUT na ADC uz zajedničku masu. Očitavaj napon i ispisuj T=<broj> u °C najmanje svakih 400 ms. LM35 daje 10 mV/°C: T=U/0,010. Ako koristiš sirovi ADC, pretvorbu uskladi s referencom i rasponom cilja. Provjera mijenja temperaturu u rasponu 5–110 °C i vraća se na prvi uzorak; tolerancija je ±0,6 °C zbog kvantizacije. Fiksni ispis bez valjanog ADC puta ne prolazi.",
+        "profileId": "24B-lm35@1",
+        "checkerVersion": "24AB.1",
+        "title": "LM35: novo ADC očitanje i temperatura · ugovor 24AB",
+        "instructions": "Napajaj jedan LM35 s 5 V i spoji OUT na ADC uz zajedničku masu. Očitavaj napon i ispisuj T=<broj> u °C najmanje svakih 400 ms. LM35 daje 10 mV/°C: T=U/0,010. Ako koristiš sirovi ADC, pretvorbu uskladi s referencom i rasponom cilja. Provjera mijenja temperaturu u rasponu 5–110 °C i vraća se na prvi uzorak; tolerancija je ±0,6 °C zbog kvantizacije. Fiksni ispis bez valjanog ADC puta ne prolazi. Na ESP32-S3 C++ analogReadMilliVolts()/10.0 daje °C; za sirovi 12-bitni ADC koristi 3100 mV i ADC_11db.",
         "criteria": [
           {
             "id": "connection",
@@ -1484,7 +1580,7 @@
         "maxPoints": 10,
         "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
         "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
-        "evidence": "verification/school-grading-expanded.test.ts"
+        "evidence": "verification/school-contract.test.ts"
       }
     },
     {

@@ -1,6 +1,6 @@
 # Labosv2 · školski laboratorij
 
-**0.13.8-beta.1 · etapa 23I · priprema školskog pilota · 15. studenoga 2026.**
+**0.14.0-beta.1 · etape 24A–24B · verzionirana provjera i S3 C++ · 15. studenoga 2026.**
 
 Prethodna 23F PHP/MySQL integracija prošla je u [GitHub Actionsu](https://github.com/zljix/labosv2/actions/runs/43738711916). Provjere izvještaja i administracije vode se zasebno u [izvješću 23H](docs/stage23h-reports-administration.md).
 
@@ -8,7 +8,14 @@ Nastavak postojećeg ESP32 MicroPython / Arduino laboratorija za školski sustav
 
 [Web laboratorij](https://zljix.github.io/labosv2/) · [Školski račun](https://zljix.github.io/labosv2/school.html#account) · [Upute za instalaciju](school/README.md) · [Bodovanje i dokazi 23E](docs/stage23e-grading.md)
 
-## Novo u 23I
+## Novo u 24A–24B
+
+- Šest novih rubrika zamrzava upute, kriterije, scenarije, rokove, tolerancije, izvršne profile i ograničenja. Rezultat pripada točnom poslu, pokušaju, reviziji i uvjetima.
+- ESP32-S3 C++ izvodi spremljeni izvor kroz izolirani Clang 19.1.7 / Binaryen 120 i funkcionalni WASM profil. Ulazni učenikov artefakt ne određuje bodove.
+- **24/268 podržanih kombinacija**, šest obitelji na sva četiri cilja. Stare rubrike i predaje ostaju sačuvane; uvodne V1–V5 i dalje imaju samo lokalnu provjeru.
+- [Opseg, dokazi, instalacija i ograničenja](docs/stage24ab-contract.md).
+
+## Sačuvano iz 23I
 
 - [Obrazac školskog pilota](https://zljix.github.io/labosv2/school-pilot.html): 14 provjera, mjerenja, JSON izvoz i siguran nastavak zapisa.
 - Razvojni pokus s 30 učenika i jednim nastavnikom: tri vala po 30 spremanja, pregled svakih 5 s, drugo računalo, zastarjela revizija i 30 zaključanih predaja.
@@ -95,7 +102,7 @@ npm ci
 npm run build:school
 ```
 
-Školski paket: `release/Labosv2_0.13.8_23I_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-23I-Skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
+Školski paket: `release/Labosv2_0.14.0_24AB_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-24AB-Skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
 
 ```sh
 npm run build:pages

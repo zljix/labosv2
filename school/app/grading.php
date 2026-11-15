@@ -13,9 +13,16 @@ function gradingRubric(string $profileId, string $taskKey): array
     foreach ($registry['profiles'] as $p) if ($p['id'] === $profileId && $p['taskKey'] === $taskKey) {
         return ['format' => 'labosv2-rubric', 'version' => 1, 'authority' => 'server-verified', 'checkerVersion' => $p['checkerVersion'] ?? $registry['checkerVersion'],
             'profileId' => $p['id'], 'targets' => $p['targets'], 'instructions' => $p['instructions'], 'title' => $p['title'],
-            'criteria' => $p['criteria'], 'maxPoints' => array_sum(array_column($p['criteria'], 'maxPoints'))];
+            'criteria' => $p['criteria'], 'maxPoints' => array_sum(array_column($p['criteria'], 'maxPoints'))]
+            + (isset($p['contract']) ? ['taskKey'=>$p['taskKey'], 'contract'=>$p['contract']] : []);
     }
     fail(422, 'grading_profile', 'Odabrana provjera ne pripada toj vježbi.');
+}
+
+function gradingDigest(mixed $value): string
+{
+    // Convert associative arrays to objects before the shared canonical encoder.
+    return hash('sha256', canonicalJson(json_decode(json_encode($value, JSON_THROW_ON_ERROR), false, 64, JSON_THROW_ON_ERROR)));
 }
 
 function gradingContext(\PDO $pdo, int $attemptId): array
@@ -108,9 +115,16 @@ function claimGrading(\PDO $pdo): ?array
                 $snapshot = canonicalJson(json_decode($snapshot,false,64,JSON_THROW_ON_ERROR));
                 if (!hash_equals($job['snapshot_hash'],hash('sha256',$snapshot))) fail(503,'snapshot_integrity','Spremljena snimka ne odgovara oznaci sadržaja.');
                 $context = gradingContext($pdo, (int)$job['attempt_id']);
-                return ['format'=>'labosv2-grading-job','version'=>1,'jobId'=>(int)$job['id'],'attemptId'=>(int)$job['attempt_id'],'revision'=>(int)$job['revision'],
+                $value = ['format'=>'labosv2-grading-job','version'=>1,'jobId'=>(int)$job['id'],'attemptId'=>(int)$job['attempt_id'],'revision'=>(int)$job['revision'],
                     'lease'=>$lease,'checkerVersion'=>$job['checker_version'],'profileId'=>$job['profile_id'],'rubricHash'=>$job['rubric_hash'],
                     'snapshotHash'=>$job['snapshot_hash'],'seed'=>$job['stimulus_seed'],'projectJson'=>$snapshot,'rubric'=>$context['rubric'],'target'=>$context['target']];
+                if (isset($context['rubric']['contract'])) {
+                    $value['version']=2;
+                    $value['taskKey']=$context['rubric']['taskKey'];
+                    $value['rubricDigest']=gradingDigest($context['rubric']);
+                    $value['contractHash']=gradingDigest($context['rubric']['contract']);
+                }
+                return $value;
             });
         } catch (\PDOException $error) {
             if ($attempt === 3 || (($error->errorInfo[1] ?? null) !== 1213 && $error->getCode() !== '40001')) throw $error;
@@ -134,12 +148,20 @@ function completeGrading(\PDO $pdo, array $body): array
         if (!in_array($status, ['evaluated','program_error','execution_limit','technical_error','unsupported'], true)) fail(422, 'report_status', 'Nevaljano stanje provjere.');
         if (!preg_match('/^[a-f0-9]{64}$/D', $report['checkerHash'] ?? '')) fail(422,'checker_hash','Nedostaje oznaka izvršenog provjeravača.');
         $context = gradingContext($pdo,(int)$job['attempt_id']); $rubric=$context['rubric'];
+        if (isset($rubric['contract'])) {
+            $binding=['jobId'=>(int)$job['id'], 'attemptId'=>(int)$job['attempt_id'], 'revision'=>(int)$job['revision'],
+                'target'=>$context['target'], 'rubricDigest'=>gradingDigest($rubric), 'contractHash'=>gradingDigest($rubric['contract']),
+                'seedHash'=>hash('sha256',$job['stimulus_seed'])];
+            foreach ($binding as $field=>$expected) if (($report[$field]??null)!==$expected)
+                fail(422,'report_binding','Rezultat ne pripada tom poslu, pokušaju i zamrznutim uvjetima.');
+        }
         if (in_array($status,['evaluated','program_error'],true)) {
             $criteria=$report['criteria'] ?? null; $points=0;
             if (!is_array($criteria) || count($criteria)!==count($rubric['criteria'])) fail(422,'criteria','Neispravni kriteriji.');
             foreach ($rubric['criteria'] as $i=>$expected) {
                 $c=$criteria[$i];
                 if (($c['id']??null)!==$expected['id'] || ($c['maxPoints']??null)!==$expected['maxPoints'] || !is_int($c['points']??null) || !in_array($c['points'],[0,$expected['maxPoints']],true)) fail(422,'criteria','Bodovi ne odgovaraju objavljenoj rubrici.');
+                if (isset($rubric['contract']) && (($c['description']??null)!==$expected['description'] || ($c['passed']??null)!==($c['points']===$expected['maxPoints']))) fail(422,'criteria','Opis i ostvarenje kriterija ne odgovaraju objavljenoj rubrici.');
                 $points+=$c['points'];
             }
             if (($report['points']??null)!==$points || ($report['maxPoints']??null)!==$rubric['maxPoints']) fail(422,'points','Zbroj bodova ne odgovara kriterijima.');

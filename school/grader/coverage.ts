@@ -14,13 +14,13 @@ const families:Record<string,[string,string]>={
 };
 
 export function gradingSupport(taskKey:string,target:string){
-  const profile=registry.profiles.find(p=>p.taskKey===taskKey&&p.targets.includes(target));
+  const profile=[...registry.profiles].reverse().find(p=>p.taskKey===taskKey&&p.targets.includes(target));
   return profile?{status:'supported' as const,profileId:profile.id,checkerVersion:profile.checkerVersion,
     title:profile.title,instructions:profile.instructions,criteria:profile.criteria,maxPoints:profile.criteria.reduce((n,c)=>n+c.maxPoints,0),
     reason:'Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.',
     requirement:target==='micropython'?'Školski Linux provjeravač s izoliranim izvođenjem izvora.':
       'Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.',
-    evidence:profile.id.startsWith('23E-')?'verification/school-grading.test.ts':'verification/school-grading-expanded.test.ts'}:
+    evidence:profile.id.startsWith('24B-')?'verification/school-contract.test.ts':profile.id.startsWith('23E-')?'verification/school-grading.test.ts':'verification/school-grading-expanded.test.ts'}:
     {status:'unsupported' as const,profileId:null,checkerVersion:null,title:null,instructions:null,criteria:[],maxPoints:null,
     reason:target==='s3-cpp'?'Službeni provjeravač još nema adapter za ESP32-S3 C++.':
       'Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.',

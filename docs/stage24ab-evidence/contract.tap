@@ -1,0 +1,17 @@
+✔ 24A published legacy profile bytes are preserved; every new profile freezes a full execution contract (3.844921ms)
+✔ 24A six MicroPython rubrics: two valid implementations, equivalent layouts, three repeatable runs (8459.057494ms)
+✔ 24A wrong programs, connection, repetition, deadline and exact ADC boundary lose their criteria (4944.62446ms)
+✔ 24A changed source, instructions, contract, target, identity or profile never inherits a valid result (1111.358993ms)
+✔ 24A failure confined to the later scenario loses only its two repetition points (1304.254923ms)
+✔ 24B S3 exact trusted source ignores forged and modified incoming WASM; changed source requires compilation (441.417117ms)
+✔ 24B all six S3 rubrics compile the saved source independently, including second implementations and wrong solutions (13672.249312ms)
+✔ 24B correct fast polling stays inside the same contract without losing observations (4370.255768ms)
+✔ 24AB all six Uno/Nano contracts compile reference and alternate saved sources (84817.68312ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 119452.843052

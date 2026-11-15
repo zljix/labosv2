@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {mkdtemp, writeFile, rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {resolve, join} from 'node:path';
-import {gradeProject} from '../.build/school-grader/index.mjs';
+import {gradeProject} from '../school/grader/index';
 import {proofFixtures} from '../school/grader/fixtures';
 import {sandboxCommand, runSandbox} from '../school/grader/sandbox.mjs';
 import {readFileSync} from 'node:fs';

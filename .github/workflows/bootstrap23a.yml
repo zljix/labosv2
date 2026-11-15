@@ -1,3 +1,4 @@
+# Čista izgradnja: testovi uvoze izvor, provjeravač se gradi prije paketa.
 name: Uvezi polazište laboratorija za 23A
 on:
   push:

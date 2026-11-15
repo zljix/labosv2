@@ -98,6 +98,18 @@ jobs:
           tar -xzf "$RUNNER_TEMP/binaryen.tar.gz" -C "$RUNNER_TEMP"
           sudo install -m 755 "$RUNNER_TEMP/binaryen-version_120/bin/wasm-opt" /usr/local/bin/wasm-opt
           echo 'LAB_WASM_OPT=/usr/local/bin/wasm-opt' >> "$GITHUB_ENV"
+      - name: Provjeri instalaciju S3 alata u istom izoliranom procesu
+        run: |
+          clang++-19 --version
+          /usr/local/bin/wasm-opt --version
+          node --import tsx --input-type=module - <<'JS'
+          import {sandboxCommand,runSandbox} from './school/grader/sandbox.mjs';
+          import {starter,solution,profiles} from './verification/school-contract-fixture.ts';
+          const project=solution(await starter(profiles[0].taskKey,'s3-cpp'),profiles[0]);
+          const result=await runSandbox(sandboxCommand(process.cwd(),process.cwd()+'/school/grader/s3-compile-child.mjs',{s3Compiler:true,bounded:true}),{project,clang:'clang++-19',opt:process.env.LAB_WASM_OPT},90000);
+          console.log(JSON.stringify({status:result.status,diagnostic:result.diagnostic??null,toolchain:result.artifact?.toolchain??null}));
+          if(result.status!=='compiled')process.exitCode=1;
+          JS
       - run: npm run build:school
       - name: Provjeri PHP sintaksu
         run: find school -name '*.php' -print0 | xargs -0 -n1 php -l

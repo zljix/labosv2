@@ -45,6 +45,7 @@ import {exportSubmission} from "../lessons/submission";
 import {useOffline} from '../platform/offline';
 import SystemPanel from '../platform/SystemPanel';
 import SchoolAccountLink from '../platform/SchoolAccountLink';
+import SchoolAssignment from '../platform/SchoolAssignment';
 import {BOARDS,S3,getBoard,languageName,type BoardId,type Language} from '../boards/profiles';
 import {BoardFields,BoardChangePanel,SupportMatrix} from '../boards/BoardPanels';
 import {deriveProject} from '../project/derive';
@@ -767,6 +768,11 @@ export default function App() {
           e.target.value = "";
         }}
       />
+      <SchoolAssignment project={p} open={async next=>{
+        setWorking(true);
+        try{await ws.flush();runtime.stop();lessonCheck.cancel();await ws.add(next);setLabTab('lesson');setMobileTab('lab');setExpandedCircuit(false);setTeacher(false);notify('Otvorena je lokalna kopija dodijeljene školske vježbe.');}
+        finally{setWorking(false);}
+      }}/>
       {ws.error && (
         <div className="error-banner" role="alert">
           <span>{ws.error}</span>

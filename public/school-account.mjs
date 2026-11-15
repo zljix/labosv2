@@ -1,7 +1,9 @@
+import {createSchoolPortal} from './school-classes.mjs';
 const $ = selector => document.querySelector(selector);
 const roles = {student: 'Učenik', teacher: 'Nastavnik', admin: 'Administrator'};
 let token = '', user = null, users = [], busy = false;
-const message = (text, error = false) => { $('#account-message').textContent = text; $('#account-message').classList.toggle('error', error); };
+const message = (text, error = false) => { for (const element of [$('#account-message'), $('#school-message')]) { element.textContent = text; element.classList.toggle('error', error); } };
+let portal;
 
 async function request(action, body) {
   const response = await fetch('./api/index.php?action=' + action, {
@@ -23,6 +25,8 @@ async function request(action, body) {
 function render() {
   $('#login-form').hidden = !!user;
   $('#signed-in').hidden = !user;
+  $('#registration').hidden = !!user;
+  if (!user || user.mustChangePassword) portal?.clear();
   $('#account-management').hidden = !user || user.mustChangePassword || user.role === 'student';
   $('#create-user-form').closest('details').hidden = user?.role !== 'admin';
   $('#update-user-form').closest('details').hidden = user?.role !== 'admin';
@@ -53,18 +57,22 @@ function drawUsers() {
       const option = document.createElement('option'); option.value = String(person.id); option.textContent = person.displayName + ' (' + person.username + ')'; select.append(option);
     }
   }
-  $('#users-note').textContent = users.length === 0 ? 'Nema dodijeljenih učenika. Upravljanje razredima dolazi u sljedećoj etapi.' : 'Prikazano računa: ' + users.length + (users.length === 1000 ? ' (najviše 1000 po pregledu).' : '.');
+  $('#users-note').textContent = users.length === 0 ? 'Nema dodijeljenih učenika. Dodaj učenike kroz odjeljak Razredi i dodijeljene vježbe.' : 'Prikazano računa: ' + users.length + (users.length === 1000 ? ' (najviše 1000 po pregledu).' : '.');
 }
 
-async function reloadUsers() {
+async function reloadUsers(refreshPortal = true) {
   if (user && !user.mustChangePassword && user.role !== 'student') { users = (await request('users')).users; drawUsers(); }
+  if (refreshPortal) await portal?.refresh();
 }
 
 async function run(work) {
-  if (busy) return; busy = true; const buttons = [...$('#account').querySelectorAll('button')]; buttons.forEach(button => button.disabled = true);
+  if (busy) return; busy = true;
+  const controls = [...document.querySelectorAll('#account button, #account input, #account select, #school-work button, #school-work input, #school-work select, #school-work textarea')].map(element => [element, element.disabled]);
+  controls.forEach(([element]) => element.disabled = true);
   message('Obrađujem zahtjev…');
-  try { await work(); } catch (error) { message(error.message || 'Školski servis nije dostupan.', true); }
-  finally { busy = false; buttons.forEach(button => button.disabled = false); }
+  try { await work(); if ($('#account-message').textContent === 'Obrađujem zahtjev…') message('Pregled je osvježen.'); }
+  catch (error) { message(error.message || 'Školski servis nije dostupan.', true); }
+  finally { busy = false; controls.forEach(([element, disabled]) => element.disabled = disabled); }
 }
 
 function form(id, work) {
@@ -73,6 +81,14 @@ function form(id, work) {
     void run(async () => { await work(fields); element.reset(); });
   });
 }
+
+portal = createSchoolPortal({request, getUser: () => user, run, message, reloadUsers});
+form('#register-form', async body => {
+  if (body.password !== body.repeatPassword) throw Error('Ponovljena lozinka nije jednaka.');
+  await request('register', {code: body.code, username: body.username, displayName: body.displayName, password: body.password});
+  $('#registration').open = false; $('#login-form input[name=username]').value = body.username;
+  message('Učenički račun je stvoren i zahtjev je poslan nastavniku. Sada se prijavi svojom lozinkom; razredne vježbe vidjet ćeš nakon njegove potvrde.');
+});
 
 form('#login-form', async body => {
   user = (await request('login', body)).user; render(); await reloadUsers();

@@ -13,8 +13,8 @@ if (!in_array($_SERVER['REQUEST_METHOD'] ?? '', ['GET', 'HEAD'], true)) {
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'HEAD') {
     echo json_encode([
         'application' => 'labosv2',
-        'stage' => '23B',
+        'stage' => '23C',
         'status' => 'alive',
-        'features' => ['accounts' => true, 'centralStorage' => false, 'officialGrading' => false],
+        'features' => ['accounts' => true, 'classes' => true, 'assignments' => true, 'centralStorage' => false, 'officialGrading' => false],
     ], JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
 }

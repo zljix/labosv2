@@ -1,8 +1,8 @@
-# Labosv2 · školski paket · etapa 23B
+# Labosv2 · školski paket · etapa 23C
 
 Etapa 23A priprema postojeći laboratorij za školski Apache/PHP/MySQL smjer i dokazuje ponovno izvršavanje izvan učenikova preglednika. Polazište je `zljix/labos@3c4a281` (0.12.9), uključujući posljednju doradu vodova. Ovaj razvoj objavljuje se u `zljix/labosv2`.
 
-**Dostupno:** simulator, postojeći projekti i izvozi, školski paket, PHP provjera preduvjeta, MySQL migracije, početni administrator, prijava/odjava, uloge, upravljanje računima i lozinkama te raniji ograničeni dokaz tipkala/LED-ice. **Središnja pohrana projekata, službeni bodovi i zaključavanje još nisu uključeni.** Slijede 23C–23F. Izvorni plan od 14. 11. 2026. zadržan je.
+**Dostupno:** simulator, postojeći projekti i izvozi, školski paket, PHP provjera preduvjeta, MySQL migracije, početni administrator, prijava/odjava, uloge, upravljanje računima i lozinkama, razredi, CSV uvoz, pozivni kodovi, potvrda učenika i verzionirane dodjele vježbi te raniji ograničeni dokaz tipkala/LED-ice. **Središnja pohrana projekata, službeni bodovi i zaključavanje još nisu uključeni.** Slijede 23D–23F. Izvorni plan od 14. 11. 2026. zadržan je.
 
 ## Izgradnja
 
@@ -12,11 +12,12 @@ Node.js 24 LTS, `npm ci`, zatim:
 npm run build:school
 ```
 
-Nastaje `release/Labosv2_0.13.1_23B_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
+Nastaje `release/Labosv2_0.13.2_23C_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
 
 | Mapa | Namjena |
 | --- | --- |
 | `web/` | Jedini javni web-korijen: laboratorij, portal računa, resursi i PHP API. |
+| `catalog/` | Privatni školski katalog i 268 početnih predložaka; objava ih kopira u nepromjenjivu inačicu u bazi. |
 | `app/`, `migrations/` | Privatni PHP kod i verzionirane SQL migracije; nikada nisu web-korijen. |
 | `config/` | Primjer privatne konfiguracije bez ugrađene lozinke. |
 | `tools/` | CLI inventura te migracije i jednokratno stvaranje administratora. |
@@ -95,7 +96,7 @@ Na Windowsu preusmjeravanje `<` pokreni u CMD-u uz vlastite putanje. Nakon uspje
 
 7. Otvori **Školski račun** u laboratoriju ili `school.html`. Prijavi se prvim računom. Dodaj nastavnika i učenika, osobno im predaj privremene lozinke i provjeri prvu prijavu.
 
-U ovoj etapi administrator stvara račune i mijenja uloge/aktivnost. Nastavnik vidi i resetira lozinke samo učenicima svojih dodijeljenih razreda; zahtjev traži i nastavnikovu trenutačnu lozinku. Temeljne tablice razreda postoje radi te provjere ovlasti. **Upravljanje razredima, dodjela nastavnika i članstva kroz sučelje dolaze u 23C.** Bez dodijeljenog razreda nastavnički je popis prazan; administrator može resetirati korisnikovu lozinku. Nema prešutnog prava na sve učenike škole.
+U ovoj etapi administrator stvara račune i mijenja uloge/aktivnost. Nastavnik vidi i resetira lozinke samo učenicima svojih dodijeljenih razreda; zahtjev traži i nastavnikovu trenutačnu lozinku. Temeljne tablice razreda postoje radi te provjere ovlasti. **Upravljanje razredima, dodjela nastavnika, CSV uvoz i potvrda članstva sada su dostupni u portalu (23C).** Bez dodijeljenog razreda nastavnički je popis prazan; administrator može resetirati korisnikovu lozinku. Nema prešutnog prava na sve učenike škole.
 
 Privremena lozinka mora se promijeniti prije korištenja upravljačkih funkcija. Lozinke imaju 12–72 bajta, obrađuju se `password_hash`/`password_verify` i nikada se ne vraćaju API-jem. Promjena/reset lozinke, deaktivacija i promjena uloge opozivaju ranije sesije preko `auth_version`. Obična odjava zatvara trenutačnu sesiju. Administrator ne može sam sebi ukinuti aktivnost ili administratorsku ulogu.
 
@@ -103,9 +104,29 @@ Sesije koriste HttpOnly i SameSite=Strict, HTTPS postavlja Secure, identifikator
 
 Za isključivo lokalne razvojne pokuse postoji `app.allow_insecure_localhost=true` uz HTTP localhost/127.0.0.1; zahtjev mora stvarno doći s loopback adrese. Zadana školska postavka ostaje HTTPS. Proxy zaglavlja ne pretvaraju nešifrirani zahtjev u pouzdani HTTPS.
 
-API računa i sesija nikada ne ulazi u offline predmemoriju. Nakon odjave privatni popisi nisu dostupni u sučelju. Lokalni simulator i njegovi već postojeći projekti još nisu povezani s prijavljenim računom; taj prijelaz pripada 23D.
+API računa i sesija nikada ne ulazi u offline predmemoriju. Nakon odjave privatni popisi nisu dostupni u sučelju. Postojeći lokalni projekti ne postaju automatski službeni radovi prijavljenog računa. Kopije dodijeljenih vježbi nose lokalnu oznaku zadatka; poslužiteljski pokušaji i spremanje pripadaju 23D.
 
-### Provjera instalacije i nadogradnja
+## Razredi i dodjela vježbi (23C)
+
+1. Nakon promjene privremene lozinke otvori **Razredi i dodijeljene vježbe**. Nastavnik može stvoriti razred i automatski mu pripada. Naziv je jedinstven unutar školske godine u formatu `2026/2027`. Administrator može stvoriti razred i dodijeliti mu aktivne nastavnike. Nastavnik vidi samo svoje razrede.
+2. U razredu otvori **Uvezi popis učenika iz CSV-a**. Koristi UTF-8, zarez ili točku sa zarezom, do 100 učenika i 60 kB. Zaglavlje je `username;displayName;temporaryPassword`. Za nove račune unesi pojedinačne privremene lozinke od 12–72 bajta. Njihovu predaju organiziraj osobno. Učenici ih mijenjaju pri prvoj prijavi.
+3. Za postojeći račun ime i prezime moraju točno odgovarati, a polje `temporaryPassword` mora biti prazno. Dopušteno je zaglavlje samo `username;displayName` ako nema novih računa. U **Pregledaj plan uvoza** provjeri identitet i svaku radnju te izričito potvrdi povezivanje postojećih računa. Uvoz ne mijenja njihovu lozinku ni ime. Pregled vrijedi 10 minuta i vezan je uz razred, nastavnika, sadržaj i stanje računa. Nakon promjene ponovi pregled; ne sprema se djelomičan uvoz. Izvorni CSV s lozinkama čuvaj privatno i nakon predaje ukloni prema školskoj politici.
+4. Alternativno stvori **Pozivni kod**: 1–168 sati, 1–100 novih zahtjeva. Novi kod opoziva prethodni kod razreda i prikazuje se samo pri stvaranju; poslužitelj čuva samo HMAC. Postojeći učenik ga unosi nakon prijave. Novi učenik koristi registracijski obrazac i bira vlastitu lozinku. Registracija uvijek stvara samo učenika. Kod šalje zahtjev i **ne daje članstvo**: nastavnik provjerava identitet i potvrđuje ili odbija zahtjev. Do potvrde učenik ne vidi razredne vježbe. Opoziv/istek koda ne briše već zaprimljene zahtjeve.
+5. U **Objavi inačicu zadatka i kriterija** odaberi stvarnu URS varijantu, pregledaj izvorne upute i po potrebi dodaj nastavničku uputu. Opcionalni planirani bodovni kriteriji unose se po retku kao `Opis | 3` (1–12 kriterija, svaki 1–100 bodova). Ako su prazni, ostaju opisni kriteriji bez bodovnog maksimuma. Rubrike nose oznaku `not-yet-enabled`: to su unaprijed vidljivi kriteriji, a ne službeni ili osvojeni bodovi.
+6. Objavi pa u **Dodijeli objavljenu inačicu** odaberi razred, točnu inačicu, pločicu/jezik i opcionalan rok. Rok unosiš po vremenu svojeg uređaja; API sprema UTC i prikazuje Europe/Zagreb. U 23C je rok informativan i ne zaključava rad. Kasnije uključivanje/skrivanje mijenja samo dostupnost. Zadatak, cilj i rok postojeće dodjele ne mijenjaju se tim gumbom. Za drukčiju pripremu napravi novu dodjelu.
+7. Učenik vidi samo dostupne vježbe svojih potvrđenih razreda. Prije otvaranja čita upute i kriterije, zatim **Otvori vježbu u laboratoriju** učitava početnu kopiju iz točne spremljene inačice. Time se program ne pokreće. Kopija dobiva zaseban lokalni identifikator, radni list i oznaku dodjele; stari lokalni projekt ostaje sačuvan. Izvor, sklop, upravljačke datoteke, početni mediji i oba radio čvora čuvaju se u predlošku.
+
+Katalog obuhvaća postojećih 18 tema, 67 varijanti i 268 kombinacija ciljeva. Broj predložaka ne označava 268 automatski bodovanih vježbi. Zadaci i rubrike objavljeni su kao nepromjenjive inačice, a odabrani početni projekti kopiraju se u bazu pri objavi. Nova objava i nadogradnja instaliranog kataloga ne mijenjaju prethodne dodjele. Upute i kriteriji prikazuju se kao tekst. Nastavnički popis objavljenih inačica zajednički je školskim nastavnicima; učenici pristupaju isključivo svojim dodjelama.
+
+Pristup se provjerava za svaki API poziv. Uklanjanje učenika ili nastavnika iz razreda odmah ukida njegov budući pristup tom razredu kroz API. Ranije preuzeta lokalna kopija time se ne briše. Uklanjanje članstva ne briše račun, objavljene zadatke ni dodjele. Revizijski zapisi čuvaju autora i radnju bez pozivnog koda, tokena ili privremene lozinke.
+
+**Ograničenje ove etape:** kopija je još lokalna, bez poslužiteljskog pokušaja, autosavea u bazu, službenog bodovanja i zaključavanja. Na drugom računalu prenosi se ZIP/JSON izvozom. Povezivanje kopije s pokušajem i sukobi revizija slijede u 23D. Promjena lokalne oznake zadatka ili bodova nema autoritet službene evidencije.
+
+### Nadogradnja s 23B
+
+Prije zamjene isporuke sačuvaj bazu i privatnu konfiguraciju prema školskoj politici. Zaustavi web pristup tijekom zamjene, zamijeni kompletan javni i privatni paket (uključujući `catalog/`), zadrži istu privatnu konfiguraciju, ključ i mapu sesija te ponovno pokreni `php tools/console.php migrate /put/do/privatne/config.php`. Nova migracija je `003_classes_tasks.sql`; 001 i 002 nisu izmijenjene. Ponovna migracija čuva račune, njihove lozinke i članstva. Uklanjanje novih tablica nije dio automatskog vraćanja.
+
+## Provjera instalacije i nadogradnja
 
 Prije nadogradnje sačuvaj bazu i privatnu konfiguraciju prema školskoj proceduri. Zamijeni programske datoteke i ponovi `migrate`; sačuvaj istu konfiguraciju, ključ i privatnu mapu sesija. Paket uključuje samo `config.example.php`, nikada lokalni `config.php`.
 
@@ -158,9 +179,9 @@ Regresija: `npm run test:school`. Cjelovit dokaz s dva nova AVR izvora: `npm run
 
 HTTPS provjeri na svakom ciljnom uređaju. `http://localhost` provjera ne dokazuje mrežni HTTPS pristup. Promjena domene ili protokola stvara drugi origin. Na istoj GitHub domeni putanje dijele origin, pa labosv2 izričito koristi zasebne nazive IndexedDB baze, oporavka i Arduino predmemorije. Postojeći rad prenesi ZIP/JSON izvozom; dosadašnji zapisi labosa ne mijenjaju se niti se automatski prenose. Podatci se još ne sinkroniziraju preko baze.
 
-## Završetak 23B i otvorene provjere
+## Završetak 23C i otvorene provjere
 
-Novi dokazi nalaze se u `docs/stage23b-accounts.md`; raniji izvršni pokusi ostaju u `docs/stage23a-school.md`. Slijedi 23C: upravljanje razredima i verzioniranim dodijeljenim vježbama. Stvarni školski HTTPS/LAN profil, Windows/mobilni uređaji, cgroup ograničenje memorije, razred od 30 učenika i fizička oprema imaju zasebne provjere; ovaj paket ih ne proglašava potvrđenima.
+Novi dokazi nalaze se u `docs/stage23c-classes.md`; računi iz 23B i izvršni pokusi iz 23A ostaju povijesno zabilježeni u svojim izvješćima. Slijedi 23D: središnje spremanje, sukobi revizija i nastavnički pregled rada. Stvarni školski HTTPS/LAN profil, Windows/mobilni uređaji, cgroup ograničenje memorije, razred od 30 učenika i fizička oprema imaju zasebne provjere; ovaj paket ih ne proglašava potvrđenima.
 
 ## Tehnički izvori
 
@@ -175,3 +196,9 @@ Novi dokazi nalaze se u `docs/stage23b-accounts.md`; raniji izvršni pokusi osta
 - [Node: granice modela dozvola](https://nodejs.org/docs/latest-v24.x/api/permissions.html)
 
 Izbor izvršnog profila, rubrika i granice dokaza projektne su odluke. Dokumentacija ne potvrđuje da je školska instalacija već izvedena.
+
+## Razvojne provjere 23C
+
+`npm run test:school-catalog` otvara i ponovno izvozi svih 268 zamrznutih početnih predložaka. `npm run test:school-classes` provjerava stvarni PHP/MySQL, uvoz, ovlasti, kodove, paralelno posljednje mjesto, inačice zadataka i dodjele. `npm run test:school-portal` izvršava stvarne module portala u DOM okruženju uz stvarni API: pripremu nastavnika, prvu prijavu učenika i potvrdu članstva. To nije vizualna potvrda ciljnog preglednika.
+
+Svaki integracijski skup zahtijeva vlastitu praznu bazu naziva `labosv2_test_*` i iste testne varijable kao skup računa: `PHP_BIN` ako PHP nije u PATH-u, `LAB_TEST_DB_DSN`, `LAB_TEST_DB_USER`, `LAB_TEST_DB_PASSWORD`. Skupovi se ne pokreću nad istom popunjenom bazom niti nad školskim podacima. Actions priprema tri zasebne baze i jednokratne vjerodajnice.

@@ -83,3 +83,5 @@ function audit(\PDO $pdo, ?int $actor, ?int $subject, string $event, array $deta
 require __DIR__ . '/migrations.php';
 require __DIR__ . '/auth.php';
 require __DIR__ . '/accounts.php';
+require __DIR__ . '/classes.php';
+require __DIR__ . '/tasks.php';

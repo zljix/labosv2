@@ -1,7 +1,7 @@
 {
   "format": "labosv2-school-profile",
   "version": 1,
-  "stage": "23B",
+  "stage": "23C",
   "sourceBaseline": "zljix/labos@3c4a281c10282d63b2742280f69aadbc08d7ae1e",
   "webServer": "Apache 2.4 with HTTPS",
   "phpBranches": [
@@ -19,7 +19,9 @@
   "features": {
     "accounts": true,
     "centralStorage": false,
-    "officialGrading": false
+    "officialGrading": false,
+    "classes": true,
+    "assignments": true
   },
   "proof": {
     "rubric": "23A-button-led@1",

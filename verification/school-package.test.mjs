@@ -7,15 +7,15 @@ import vm from 'node:vm';
 
 test('school ZIP verifies every inventory entry and keeps app, SQL and configuration out of web/', () => {
   const version = JSON.parse(readFileSync('package.json')).version;
-  const archive = unzipSync(readFileSync('release/Labosv2_' + version.split('-')[0] + '_23B_Skolski.zip'));
+  const archive = unzipSync(readFileSync('release/Labosv2_' + version.split('-')[0] + '_23C_Skolski.zip'));
   const inventory = JSON.parse(strFromU8(archive['package-inventory.json']));
-  assert.equal(inventory.stage, '23B'); assert.equal(inventory.version, version);
+  assert.equal(inventory.stage, '23C'); assert.equal(inventory.version, version);
   assert.equal(Object.keys(archive).length, inventory.files.length + 1);
   for (const file of inventory.files) {
     assert.equal(archive[file.path].byteLength, file.bytes, file.path);
     assert.equal(createHash('sha256').update(archive[file.path]).digest('hex'), file.sha256, file.path);
   }
-  for (const path of ['app/bootstrap.php', 'migrations/001_accounts.sql', 'migrations/002_class_access.sql', 'tools/console.php', 'web/api/index.php', 'web/school-account.mjs']) assert(archive[path], path);
+  for (const path of ['app/bootstrap.php', 'migrations/001_accounts.sql', 'migrations/002_class_access.sql', 'tools/console.php', 'web/api/index.php', 'web/school-account.mjs', 'web/school-classes.mjs', 'migrations/003_classes_tasks.sql', 'catalog/catalog.json']) assert(archive[path], path);
   assert.deepEqual(Object.keys(archive).filter(path => path.startsWith('config/')), ['config/config.example.php']);
   // web/app/<build>/ holds the existing public simulator runtime.
   assert(!Object.keys(archive).some(path => /^web\/(config|migrations|tools)\//.test(path) || /^web\/app\/.*\.php$/.test(path)));

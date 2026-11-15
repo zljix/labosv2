@@ -12,7 +12,7 @@ function respond(int $status, array $body): never
     http_response_code($status);
     if (isset($_SESSION['csrf'])) $body['csrfToken'] = $_SESSION['csrf'];
     if (session_status() === PHP_SESSION_ACTIVE) session_write_close();
-    echo json_encode(['application' => 'labosv2', 'stage' => '23B'] + $body, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
+    echo json_encode(['application' => 'labosv2', 'stage' => '23C'] + $body, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
     exit;
 }
 
@@ -23,22 +23,26 @@ try {
     if ((int)$pdo->query("SELECT COUNT(*) FROM users WHERE role = 'admin' AND active = TRUE")->fetchColumn() === 0) Labos\fail(503, 'not_initialized', 'Administrator treba dovršiti privatnu instalaciju.');
     Labos\startSession($config);
     $action = $_GET['action'] ?? 'session'; $method = $_SERVER['REQUEST_METHOD'] ?? '';
-    $routes = ['session' => 'GET', 'login' => 'POST', 'logout' => 'POST', 'password' => 'POST', 'users' => 'GET', 'user' => 'GET', 'create-user' => 'POST', 'reset-password' => 'POST', 'update-user' => 'POST'];
+    $routes = ['session' => 'GET', 'login' => 'POST', 'logout' => 'POST', 'password' => 'POST', 'users' => 'GET', 'user' => 'GET', 'create-user' => 'POST', 'reset-password' => 'POST', 'update-user' => 'POST',
+        'classes' => 'GET', 'class' => 'GET', 'create-class' => 'POST', 'membership' => 'POST', 'preview-students' => 'POST', 'import-students' => 'POST',
+        'create-invite' => 'POST', 'revoke-invites' => 'POST', 'register' => 'POST', 'join-class' => 'POST', 'review-join' => 'POST', 'my-requests' => 'GET',
+        'catalog' => 'GET', 'task-versions' => 'GET', 'publish-task' => 'POST', 'assignments' => 'GET', 'assignment' => 'GET', 'create-assignment' => 'POST', 'assignment-availability' => 'POST'];
     if (!is_string($action) || !isset($routes[$action])) Labos\fail(404, 'route_missing', 'Ta funkcija nije dostupna.');
     if ($routes[$action] !== $method) { header('Allow: ' . $routes[$action]); Labos\fail(405, 'method', 'Metoda zahtjeva nije dopuštena.'); }
     $body = [];
     if ($method === 'POST') {
         Labos\csrf($config);
         if (strtolower(trim(explode(';', $_SERVER['CONTENT_TYPE'] ?? '')[0])) !== 'application/json') Labos\fail(415, 'content_type', 'Pošalji JSON zahtjev.');
-        if ((int)($_SERVER['CONTENT_LENGTH'] ?? 0) > 8192) Labos\fail(413, 'body_size', 'Zahtjev je prevelik.');
-        $raw = file_get_contents('php://input', false, null, 0, 8193);
-        if (strlen($raw) > 8192) Labos\fail(413, 'body_size', 'Zahtjev je prevelik.');
+        $limit = in_array($action, ['preview-students', 'import-students'], true) ? 65536 : ($action === 'publish-task' ? 24576 : 8192);
+        if ((int)($_SERVER['CONTENT_LENGTH'] ?? 0) > $limit) Labos\fail(413, 'body_size', 'Zahtjev je prevelik.');
+        $raw = file_get_contents('php://input', false, null, 0, $limit + 1);
+        if (strlen($raw) > $limit) Labos\fail(413, 'body_size', 'Zahtjev je prevelik.');
         try { $value = json_decode($raw, false, 16, JSON_THROW_ON_ERROR); }
         catch (JsonException $error) { Labos\fail(400, 'json', 'JSON zahtjev nije ispravan.'); }
         if (!is_object($value)) Labos\fail(400, 'json', 'Zahtjev mora biti JSON objekt.');
         $body = (array)$value;
     }
-    if ($action === 'session') respond(200, ['user' => ($user = Labos\currentUser($pdo, false)) ? Labos\publicUser($user) : null, 'features' => ['accounts' => true, 'centralStorage' => false, 'officialGrading' => false]]);
+    if ($action === 'session') respond(200, ['user' => ($user = Labos\currentUser($pdo, false)) ? Labos\publicUser($user) : null, 'features' => ['accounts' => true, 'classes' => true, 'assignments' => true, 'centralStorage' => false, 'officialGrading' => false]]);
     if ($action === 'login') respond(200, ['user' => Labos\login($pdo, $config, $body)]);
     if ($action === 'logout') {
         $user = Labos\currentUser($pdo, false);
@@ -48,12 +52,34 @@ try {
         respond(200, ['user' => null]);
     }
     if ($action === 'password') respond(200, ['user' => Labos\changePassword($pdo, $body)]);
+    if ($action === 'register') {
+        if (Labos\currentUser($pdo, false)) Labos\fail(409, 'already_signed_in', 'Već si prijavljen/a. Za pridruživanje koristi svoj račun.');
+        respond(201, ['request' => Labos\requestClass($pdo, $config, null, $body)]);
+    }
     $actor = Labos\readyUser($pdo);
     if ($action === 'users') respond(200, ['users' => Labos\listUsers($pdo, $actor)]);
     if ($action === 'user') respond(200, ['user' => Labos\readUser($pdo, $actor, $_GET['id'] ?? null)]);
     if ($action === 'create-user') respond(201, ['user' => Labos\createUser($pdo, $actor, $body)]);
     if ($action === 'reset-password') { Labos\resetPassword($pdo, $actor, $body); respond(200, ['message' => 'Privremena lozinka je postavljena. Prethodne sesije tog korisnika više ne vrijede.']); }
     if ($action === 'update-user') respond(200, ['user' => Labos\updateUser($pdo, $actor, $body)]);
+    if ($action === 'classes') respond(200, ['classes' => Labos\listClasses($pdo, $actor)]);
+    if ($action === 'class') respond(200, ['class' => Labos\classDetail($pdo, $actor, $_GET['id'] ?? null)]);
+    if ($action === 'create-class') respond(201, ['class' => Labos\createClass($pdo, $actor, $body)]);
+    if ($action === 'membership') { Labos\changeMembership($pdo, $actor, $body); respond(200, ['message' => 'Članstvo je spremljeno.']); }
+    if ($action === 'preview-students') respond(200, Labos\previewStudents($pdo, $config, $actor, $body));
+    if ($action === 'import-students') respond(200, Labos\importStudents($pdo, $config, $actor, $body));
+    if ($action === 'create-invite') respond(201, ['invite' => Labos\createInvite($pdo, $config, $actor, $body)]);
+    if ($action === 'revoke-invites') { Labos\revokeInvites($pdo, $actor, $body); respond(200, ['message' => 'Pozivni kodovi su opozvani.']); }
+    if ($action === 'join-class') respond(200, ['request' => Labos\requestClass($pdo, $config, $actor, $body)]);
+    if ($action === 'review-join') { Labos\reviewJoin($pdo, $actor, $body); respond(200, ['message' => 'Zahtjev učenika je obrađen.']); }
+    if ($action === 'my-requests') respond(200, ['requests' => Labos\myJoinRequests($pdo, $actor)]);
+    if ($action === 'catalog') respond(200, ['catalog' => Labos\publicCatalog($actor)]);
+    if ($action === 'task-versions') respond(200, ['versions' => Labos\listTaskVersions($pdo, $actor)]);
+    if ($action === 'publish-task') respond(201, ['task' => Labos\publishTask($pdo, $actor, $body)]);
+    if ($action === 'assignments') respond(200, ['assignments' => Labos\listAssignments($pdo, $actor, $_GET['classId'] ?? null)]);
+    if ($action === 'assignment') respond(200, ['assignment' => Labos\readAssignment($pdo, $actor, $_GET['id'] ?? null, true), 'user' => Labos\publicUser($actor)]);
+    if ($action === 'create-assignment') respond(201, ['assignment' => Labos\createAssignment($pdo, $actor, $body)]);
+    if ($action === 'assignment-availability') { Labos\setAssignmentAvailability($pdo, $actor, $body); respond(200, ['message' => 'Dostupnost vježbe je spremljena.']); }
 } catch (Labos\ApiError $error) {
     if ($error->status === 429) header('Retry-After: 900');
     respond($error->status, ['error' => ['code' => $error->errorCode, 'message' => $error->getMessage()]]);

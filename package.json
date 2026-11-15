@@ -1,6 +1,6 @@
 {
   "name": "esp32-micropython-lab",
-  "version": "0.13.1-beta.1",
+  "version": "0.13.2-beta.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -60,7 +60,10 @@
     "school:proof": "node scripts/school-proof.mjs",
     "test:school": "node --import tsx --test verification/school.test.ts",
     "test:school-accounts": "node --test verification/school-accounts.test.mjs",
-    "test:school-package": "node --test verification/school-package.test.mjs"
+    "test:school-package": "node --test verification/school-package.test.mjs",
+    "test:school-classes": "node --test verification/school-classes.test.mjs",
+    "test:school-catalog": "node --import tsx --test verification/school-catalog.test.ts",
+    "test:school-portal": "node --test verification/school-portal.test.mjs"
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.1",
@@ -82,6 +85,7 @@
     "@vitejs/plugin-react": "6.3.0",
     "esbuild": "0.28.2",
     "fake-indexeddb": "^6.2.0",
+    "jsdom": "26.1.0",
     "tsx": "^4.20.0",
     "typescript": "7.0.2",
     "vite": "8.3.8"

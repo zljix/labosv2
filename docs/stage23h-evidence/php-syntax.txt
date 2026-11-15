@@ -1,0 +1,17 @@
+No syntax errors detected in school/config/config.example.php
+No syntax errors detected in school/bin/console.php
+No syntax errors detected in school/bin/preflight.php
+No syntax errors detected in school/bin/grading.php
+No syntax errors detected in school/app/tasks.php
+No syntax errors detected in school/app/auth.php
+No syntax errors detected in school/app/work.php
+No syntax errors detected in school/app/administration.php
+No syntax errors detected in school/app/bootstrap.php
+No syntax errors detected in school/app/reports.php
+No syntax errors detected in school/app/accounts.php
+No syntax errors detected in school/app/grading.php
+No syntax errors detected in school/app/migrations.php
+No syntax errors detected in school/app/submissions.php
+No syntax errors detected in school/app/classes.php
+No syntax errors detected in school/api/health.php
+No syntax errors detected in school/api/index.php

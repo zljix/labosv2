@@ -184,10 +184,11 @@ function classWork(\PDO $pdo, array $actor, mixed $assignmentId, mixed $after = 
         $submissions[(int)$s['student_id']] = $s; $ids[] = $s['attempt_id'];
     }
     $jobs = latestAttemptJobs($pdo, array_values(array_unique($ids)));
+    $reviews = currentTeacherReviews($pdo,array_values(array_unique($ids)));
     $context=['rubric'=>$a['task']['rubric'],'target'=>$a['target']];
     return ['assignment' => $a, 'rows' => array_map(fn($r) => ['student' => ['id' => (int)$r['user_id'], 'username' => $r['username'], 'displayName' => $r['display_name'], 'active' => (bool)$r['active']],
         'status' => $r['id'] === null ? 'not_started' : ($r['status'] === 'in_progress' && (int)$r['attempt_number'] > 1 ? 'reopened' : $r['status']),
-        'lastSubmission' => isset($submissions[(int)$r['user_id']]) ? submissionValue($submissions[(int)$r['user_id']], jobSummary($jobs[(int)$submissions[(int)$r['user_id']]['attempt_id']]??null,$context,(int)$submissions[(int)$r['user_id']]['revision'])) : null,
-        'attempt' => $r['id'] === null ? null : workSummary($r,jobSummary($jobs[(int)$r['id']]??null,$context,(int)$r['current_revision']))], $rows),
+        'lastSubmission' => isset($submissions[(int)$r['user_id']]) ? submissionValue($submissions[(int)$r['user_id']], attachTeacherReview(jobSummary($jobs[(int)$submissions[(int)$r['user_id']]['attempt_id']]??null,$context,(int)$submissions[(int)$r['user_id']]['revision']),$reviews[(int)$submissions[(int)$r['user_id']]['attempt_id']]??null)) : null,
+        'attempt' => $r['id'] === null ? null : workSummary($r,attachTeacherReview(jobSummary($jobs[(int)$r['id']]??null,$context,(int)$r['current_revision']),$reviews[(int)$r['id']]??null))], $rows),
         'hasMore' => $more, 'nextAfter' => $more ? (int)$rows[array_key_last($rows)]['user_id'] : null, 'serverTime' => gmdate('Y-m-d\TH:i:s\Z')];
 }

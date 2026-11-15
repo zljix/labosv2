@@ -1,10 +1,10 @@
-# Labosv2 · školski paket · etapa 23G
+# Labosv2 · školski paket · etapa 23H
 
-Izdanje 0.13.6-beta.1 dodaje registar svih kombinacija i tri nove rubrike. Provjere 23G i njihova ograničenja navedeni su u [izvješću 23G](../docs/stage23g-grading-matrix.md). [Raniji zapis integracije 23F](https://github.com/zljix/labosv2/actions/runs/43738711916) ostaje povijesni dokaz. Stvarni školski pilot ostaje zasebna provjera.
+Izdanje 0.13.7-beta.1 dodaje postignuća, izvoze, komentare i korekcije, arhiviranje, čuvanje međurevizija te privatne kopije i povrat. Postupak i provjere su u [izvješću 23H](../docs/stage23h-reports-administration.md). [Raniji zapis integracije 23F](https://github.com/zljix/labosv2/actions/runs/43738711916) ostaje povijesni dokaz. Stvarni školski pilot ostaje zasebna provjera.
 
 Etapa 23A priprema postojeći laboratorij za školski Apache/PHP/MySQL smjer i dokazuje ponovno izvršavanje izvan učenikova preglednika. Polazište je `zljix/labos@3c4a281` (0.12.9), uključujući posljednju doradu vodova. Ovaj razvoj objavljuje se u `zljix/labosv2`.
 
-**Dostupno:** simulator, postojeći projekti i izvozi, školski paket, PHP provjera preduvjeta, MySQL migracije, početni administrator, prijava/odjava, uloge, upravljanje računima i lozinkama, razredi, CSV uvoz, pozivni kodovi, potvrda učenika i verzionirane dodjele vježbi te raniji ograničeni dokaz tipkala/LED-ice, poslužiteljski pokušaji, nepromjenjive radne revizije, automatsko spremanje, usporedba sukoba i nastavnički pregled rada. **Službeno bodovanje triju izričito odabranih pilota dostupno je u 23E.** Završetak, zaključavanje, povijest i dopuštena dorada dostupni su u 23F. Izvorni plan od 14. 11. 2026. zadržan je.
+**Dostupno:** simulator, postojeći projekti i izvozi, školski paket, PHP provjera preduvjeta, MySQL migracije, početni administrator, prijava/odjava, uloge, upravljanje računima i lozinkama, razredi, CSV uvoz, pozivni kodovi, potvrda učenika i verzionirane dodjele vježbi te raniji ograničeni dokaz tipkala/LED-ice, poslužiteljski pokušaji, nepromjenjive radne revizije, automatsko spremanje, usporedba sukoba i nastavnički pregled rada. **Službeno bodovanje šest rubrika / 18 kombinacija dostupno je od 23G.** Završetak, zaključavanje, povijest i dopuštena dorada dostupni su u 23F. Izvorni plan od 14. 11. 2026. zadržan je.
 
 ## Izgradnja
 
@@ -14,7 +14,7 @@ Node.js 24 LTS, `npm ci`, zatim:
 npm run build:school
 ```
 
-Nastaje `release/Labosv2_0.13.6_23G_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
+Nastaje `release/Labosv2_0.13.7_23H_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
 
 | Mapa | Namjena |
 | --- | --- |
@@ -322,3 +322,61 @@ Za novi Arduino izvor potreban je lokalni izolirani prevoditelj. Bez njega dopu�
 Nadogradnja s 23F ne dodaje migraciju: sačuvaj privatnu konfiguraciju i sesije, zamijeni programski paket i pokreni postojeću naredbu `migrate`. Ponovno pokreni provjeravač iz novog paketa. Ranije objavljene rubrike zadržavaju `23E.1`, nove `23G.1`; ne mijenjaju se zaključane snimke ili ranije potvrđeni izvještaji. Pokretanje starih poslova nakon nadogradnje provjerava regresija.
 
 Provjere: `test:school-coverage`, `test:school-grading-expanded` i `test:school-grading-api`, uz ranije račune, razrede, spremanje i predaje. Compiler scenarij traži `LAB_GRADING_COMPILER_TEST=1`, `LAB_ARDUINO_CLI` i `LAB_ARDUINO_DATA`; školski Actions postupak ih postavlja i provjerava šest novih Uno/Nano izvora. To ne zamjenjuje fizički školski pilot, provjeru Windowsa ni iOS/Safarija.
+
+## 23H · izvještaji, korekcije, arhiva i sigurnosne kopije
+
+Nadogradnja s 23G: sačuvaj privatnu konfiguraciju i sesije, zamijeni programski paket, pokreni postojeći `migrate` i ponovno pokreni provjeravač. Nova **007_reports_administration.sql** dodaje zapise pregleda, odabira predaje i arhive godine. Ranije migracije, rubrike i zaključane snimke ostaju sačuvane.
+
+U laboratoriju otvori **Pregled razreda → Školski pregled rada → Postignuća i izvještaji / izvozi**. Odaberi razred pa učenika i/ili vježbu. Evidencija zadano koristi posljednju zaključanu predaju; otvorenu doradu prikazuje zasebno. Za drugi izbor otvori detalj zaključane predaje, upiši razlog i odaberi **Koristi ovu zaključanu predaju**. **Vrati posljednju zaključanu predaju** vraća zadani postupak i također ostavlja zapis.
+
+**Preuzmi cijeli odabir CSV** obuhvaća sve odabrane zapise, ne samo vidljivih 100. Najviše je 5000 zapisa; veći izvještaj suzi filtrom. Izvorni automatski bodovi, nastavnički bodovi, podrijetlo i točna predaja/revizija vode se zasebno. Nezapočeto i nepotvrđeno ne postaje nula. CSV štiti tekst od formula.
+
+**Preuzmi evidenciju i projekte ZIP** sadrži evidenciju i projektne ZIP-ove aktualne i odabrane zaključane revizije. Granice su 100 snimki i 30 MB izvornog JSON-a. Za veći razred odaberi jednu vježbu ili učenika. Radovi se čitaju kroz API i ne pokreću. Oba radio čvora, odgovori i početni mediji ostaju u izvornom formatu.
+
+U detalju točne revizije ili u učeničkom prikazu bodova otvori **Komentari i povijest korekcija / osvježi**. Učenik čita vlastite zapise. Nastavnik dodaje komentar ili korigira ukupan rezultat unutar već objavljenog maksimuma, s najviše dvije decimale. Korekcija traži razlog i čuva autora, vrijeme i originalni rezultat; ne mijenja automatski izvještaj. **Vrati automatsko bodovanje** dodaje novi zapis. Ako je drugi nastavnik u međuvremenu dopunio pregled, najprije osvježi povijest. Stari zapisi ostaju sačuvani i kod novih pokušaja.
+
+Administrator iz izvještaja arhivira cijelu odabranu školsku godinu uz razlog. Pregledi i izvozi ostaju dostupni, nove izmjene razreda i radova zaustavljaju se. Ponovno otvaranje godine ne otključava predaje. Dovršavanje ranije pokrenute provjere smije dodati rezultat njezine izvorne snimke.
+
+### Politika čuvanja radnih revizija
+
+U privatnoj konfiguraciji možeš zadati:
+
+```php
+'retention' => ['revision_days' => 90, 'keep_latest' => 10],
+```
+
+Politiku uskladi sa školskim rokovima čuvanja. Čišćenje obuhvaća samo arhivirane godine; trajno čuva prvu i zadnje revizije, sve zaključane snimke, komentirane/korigirane revizije te sve snimke s izvještajem ili nezavršenim poslom. Uklanja samo stare međukorake i njihove zamijenjene poslove bez izvještaja. Prije čišćenja izradi provjerenu privatnu kopiju.
+
+```sh
+php tools/console.php prune-revisions /srv/labosv2-private/config.php
+php tools/console.php prune-revisions /srv/labosv2-private/config.php --apply
+```
+
+Prva naredba daje samo pregled i broj mogućih uklanjanja. Druga izvršava isti postupak pod zaključavanjem održavanja i ostavlja događaj u evidenciji. Uobičajen prikaz ne nudi brisanje zaključanih predaja.
+
+### Sigurnosna kopija
+
+Koristi novu datoteku izvan `web/` u privatnoj mapi s ograničenim pristupom. Kopija sadrži hashirane lozinke i učeničke podatke; čuvaj je na zaštićenom disku prema školskoj politici. Naredba ne prepisuje postojeću datoteku. Na Linuxu stvara datoteku s pravima 0600. Kopija obuhvaća sve aplikacijske tablice i sve sadašnje projektne resurse ugrađene u JSON. Može nastati tijekom rada; InnoDB snapshot određuje jednu dosljednu vremensku točku.
+
+```sh
+php tools/console.php backup /srv/labosv2-private/config.php /srv/labosv2-backups/kopija-2026-11-15.jsonl
+```
+
+Izlaz navodi broj zapisa i SHA-256. Privatni ključ aplikacije i konfiguraciju čuvaj zasebno, izvan repozitorija i javnog paketa. SHA-256 otkriva oštećenje; ne šifrira kopiju. U ovoj inačici nema vanjskih učeničkih datoteka izvan spremljenih projektnih dokumenata.
+
+### Povrat u novu instalaciju
+
+1. Pripremi novu praznu MySQL bazu i ograničeni račun. Raspakiraj istu inačicu programskog paketa. Ciljni web i radnik ostaju zaustavljeni.
+2. U zasebnoj privatnoj konfiguraciji odaberi novu bazu, školsku adresu, **izvorni ključ aplikacije** i **novu praznu mapu sesija**. Ne inicijaliziraj novog administratora.
+3. Pokreni migracije i povrat:
+
+```sh
+php tools/console.php migrate /srv/labosv2-private/povrat.php
+php tools/console.php restore /srv/labosv2-private/povrat.php /srv/labosv2-backups/kopija-2026-11-15.jsonl
+```
+
+4. Provjeri izlaz, pokreni ciljni web i prijavi se postojećim računom. Usporedi zaključane predaje, hash snimki, bodove i nastavničke zapise s izvornom evidencijom. Tek potom uključi radnik i pristup učenika.
+
+Povrat odbija nepraznu bazu, neodgovarajuće migracije ili ključ, postojeće sesije i oštećenu ili nepotpunu kopiju. Uvoz ostaje jedna transakcija, uz uključene strane ključeve. Raniji izvještaji se čuvaju; nezavršene isporuke provjeravača vraćaju se u red. Stare prijave ne prenose se i korisnici se ponovno prijavljuju. Nema automatskog prepisivanja žive školske baze. Windows koristi iste CLI naredbe uz stvarne lokalne putanje; ciljna Windows provjera ostaje zasebna stavka.
+
+[Opseg, provjere i ograničenja 23H](../docs/stage23h-reports-administration.md). Stvarni školski pilot 23I zahtijeva školsku instalaciju i učeničke uređaje.

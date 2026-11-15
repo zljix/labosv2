@@ -1,7 +1,7 @@
 {
   "format": "labosv2-school-profile",
   "version": 1,
-  "stage": "23G",
+  "stage": "23H",
   "sourceBaseline": "zljix/labos@3c4a281c10282d63b2742280f69aadbc08d7ae1e",
   "webServer": "Apache 2.4 with HTTPS",
   "phpBranches": [
@@ -25,7 +25,12 @@
     "liveClassReview": true,
     "submissions": true,
     "attemptHistory": true,
-    "gradingCoverage": true
+    "gradingCoverage": true,
+    "reports": true,
+    "teacherFeedback": true,
+    "auditedCorrections": true,
+    "yearArchive": true,
+    "backupRestore": true
   },
   "proof": {
     "rubric": "23A-button-led@1",
@@ -106,6 +111,14 @@
     "exactRevision": true,
     "idempotentFinish": true,
     "rework": "linked-new-attempt",
-    "defaultAssessment": "latest-locked-submission"
+    "defaultAssessment": "selected-or-latest-locked-submission"
+  },
+  "administration": {
+    "reportPageSize": 100,
+    "exportRowsLimit": 5000,
+    "projectExportSnapshotsLimit": 100,
+    "revisionRetention": "archived-years-cli-dry-run-default",
+    "backup": "private-consistent-InnoDB-snapshot-with-embedded-resources",
+    "restore": "empty-migrated-database-with-new-session-directory"
   }
 }

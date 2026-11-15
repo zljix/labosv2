@@ -43,7 +43,7 @@ function snapshotGrading(\PDO $pdo, int $attemptId, int $revision, ?array $conte
 {
     $context ??= gradingContext($pdo, $attemptId);
     $job = query($pdo, 'SELECT * FROM grading_jobs WHERE attempt_id=? AND revision=? ORDER BY id DESC LIMIT 1', [$attemptId, $revision])->fetch();
-    return jobSummary($job ?: null, $context, $revision);
+    return attachTeacherReview(jobSummary($job ?: null, $context, $revision), teacherReview($pdo, $attemptId, $revision));
 }
 
 // Called while the attempt row is locked. Browser data cannot select a rubric,

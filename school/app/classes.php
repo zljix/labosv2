@@ -24,7 +24,9 @@ function schoolClass(\PDO $pdo, array $actor, mixed $value, bool $manage = false
         || ($actor['role'] === 'teacher' && query($pdo, 'SELECT 1 FROM class_teachers WHERE class_id = ? AND teacher_id = ?', [$id, $actor['id']])->fetchColumn())
         || (!$manage && $actor['role'] === 'student' && query($pdo, 'SELECT 1 FROM class_students WHERE class_id = ? AND student_id = ?', [$id, $actor['id']])->fetchColumn()));
     if (!$allowed) fail(403, 'forbidden', 'Nemaš pristup tom razredu.');
-    return ['id' => (int)$row['id'], 'name' => $row['name'], 'schoolYear' => $row['school_year']];
+    $archived = yearArchived($pdo, $row['school_year']);
+    if ($lock && $archived) fail(409, 'year_archived', 'Školska godina je arhivirana. Dostupni su pregled i izvozi.');
+    return ['id' => (int)$row['id'], 'name' => $row['name'], 'schoolYear' => $row['school_year'], 'archived' => $archived];
 }
 
 function listClasses(\PDO $pdo, array $actor): array
@@ -32,7 +34,7 @@ function listClasses(\PDO $pdo, array $actor): array
     $join = $actor['role'] === 'student' ? ' JOIN class_students m ON m.class_id = c.id AND m.student_id = ?'
         : ($actor['role'] === 'teacher' ? ' JOIN class_teachers m ON m.class_id = c.id AND m.teacher_id = ?' : '');
     $rows = query($pdo, 'SELECT c.*, (SELECT COUNT(*) FROM class_students s WHERE s.class_id=c.id) AS students FROM school_classes c' . $join . ' ORDER BY c.school_year DESC, c.name LIMIT 1000', $join ? [$actor['id']] : [])->fetchAll();
-    return array_map(fn($r) => ['id' => (int)$r['id'], 'name' => $r['name'], 'schoolYear' => $r['school_year'], 'students' => (int)$r['students']], $rows);
+    return array_map(fn($r) => ['id' => (int)$r['id'], 'name' => $r['name'], 'schoolYear' => $r['school_year'], 'archived' => yearArchived($pdo, $r['school_year']), 'students' => (int)$r['students']], $rows);
 }
 
 function createClass(\PDO $pdo, array $actor, array $body): array
@@ -42,6 +44,7 @@ function createClass(\PDO $pdo, array $actor, array $body): array
     if (!is_string($year) || !preg_match('/^(20\d{2})\/(20\d{2})$/D', $year, $m) || (int)$m[2] !== (int)$m[1] + 1) fail(422, 'school_year', 'Školsku godinu upiši kao 2026/2027.');
     return transaction($pdo, function () use ($pdo, $actor, $name, $year) {
         $actor = lockActor($pdo, $actor); requireStaff($actor);
+        if (query($pdo,'SELECT archived FROM school_year_archives WHERE school_year=? FOR UPDATE',[$year])->fetchColumn()) fail(409, 'year_archived', 'Odabrana školska godina je arhivirana.');
         try { query($pdo, 'INSERT INTO school_classes (name, school_year) VALUES (?, ?)', [$name, $year]); }
         catch (\PDOException $e) { if (($e->errorInfo[1] ?? 0) === 1062) fail(409, 'class_exists', 'Taj razred već postoji u odabranoj školskoj godini.'); throw $e; }
         $id = (int)$pdo->lastInsertId();
@@ -194,7 +197,8 @@ function requestClass(\PDO $pdo, array $config, ?array $actor, array $body): arr
         if ($actor) $actor = lockActor($pdo, $actor);
         $invite = query($pdo, 'SELECT * FROM class_invites WHERE code_hash=?', [$hash])->fetch();
         if (!$invite) fail(422, 'invite', 'Kod nije valjan, istekao je ili više nije dostupan.');
-        query($pdo, 'SELECT id FROM school_classes WHERE id=? FOR UPDATE', [$invite['class_id']])->fetch();
+        $schoolClass = query($pdo, 'SELECT id, school_year FROM school_classes WHERE id=? FOR UPDATE', [$invite['class_id']])->fetch();
+        if (yearArchived($pdo, $schoolClass['school_year'])) fail(409, 'year_archived', 'Ta školska godina je arhivirana.');
         $invite = query($pdo, 'SELECT *, expires_at>UTC_TIMESTAMP(6) AS valid_time FROM class_invites WHERE id=? FOR UPDATE', [$invite['id']])->fetch();
         if ($invite['revoked'] || !$invite['valid_time']) fail(422, 'invite', 'Kod nije valjan, istekao je ili više nije dostupan.');
         if ($actor) {

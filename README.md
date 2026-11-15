@@ -1,14 +1,23 @@
 # Labosv2 · školski laboratorij
 
-**0.13.6-beta.1 · etapa 23G · 15. studenoga 2026.**
+**0.13.7-beta.1 · etapa 23H · 15. studenoga 2026.**
 
-Prethodna 23F PHP/MySQL integracija prošla je u [GitHub Actionsu](https://github.com/zljix/labosv2/actions/runs/43738711916). Provjere novog izdanja vode se zasebno u izvješću 23G.
+Prethodna 23F PHP/MySQL integracija prošla je u [GitHub Actionsu](https://github.com/zljix/labosv2/actions/runs/43738711916). Provjere izvještaja i administracije vode se zasebno u [izvješću 23H](docs/stage23h-reports-administration.md).
 
 Nastavak postojećeg ESP32 MicroPython / Arduino laboratorija za školski sustav s PHP-om i stvarnim MySQL-om. Polazište je [labos 0.12.9](https://github.com/zljix/labos/tree/3c4a281c10282d63b2742280f69aadbc08d7ae1e), uključujući posljednje dorade vodova.
 
 [Web laboratorij](https://zljix.github.io/labosv2/) · [Školski račun](https://zljix.github.io/labosv2/school.html#account) · [Upute za instalaciju](school/README.md) · [Bodovanje i dokazi 23E](docs/stage23e-grading.md)
 
-## Novo u 23G
+## Novo u 23H
+
+- Postignuća po razredu, učeniku i dodjeli: zaseban aktualni rad i zaključana predaja za evidenciju.
+- Cijeli odabir u CSV-u te projektni ZIP-ovi s izvorima, sklopovima, oba radio čvora i početnim medijima.
+- Komentari i nastavničke korekcije uz točnu reviziju, razlog, autora i vrijeme; automatski rezultat ostaje čitljiv.
+- Zabilježeni izbor druge zaključane predaje i povrat na posljednju predaju.
+- Arhiviranje školske godine, konfigurabilno CLI čuvanje međurevizija, privatne dosljedne kopije i transakcijski povrat u praznu bazu.
+- Migracija 007; [postupak, granice i provjere 23H](docs/stage23h-reports-administration.md).
+
+## Sačuvano iz 23G
 
 - [Pregled podrške bodovanja](https://zljix.github.io/labosv2/school-grading.html) s pretragom i filtrima po obitelji, cilju i statusu te CSV/JSON registrom svih **268 kombinacija**.
 - **18 podržanih kombinacija**: šest rubrika na MicroPython S3, Uno i Nano. Dodane su LED 250/750 ms, LM35 i BMP180; ranije tri rubrike ostaju sačuvane.
@@ -78,7 +87,7 @@ npm ci
 npm run build:school
 ```
 
-Školski paket: `release/Labosv2_0.13.6_23G_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-23G-Skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
+Školski paket: `release/Labosv2_0.13.7_23H_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-23H-Skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
 
 ```sh
 npm run build:pages
@@ -99,6 +108,8 @@ npm run test:school-grading-expanded
 npm run test:school-sync
 npm run test:school-finish-ui
 npm run test:school-submissions
+npm run test:school-reports
+npm run test:school-reports-api
 npm run test:routing
 npm test
 ```

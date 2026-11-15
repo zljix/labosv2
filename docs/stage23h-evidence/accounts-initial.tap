@@ -1,0 +1,152 @@
+TAP version 13
+# Subtest: 23B accounts against real PHP and a disposable restricted MySQL database
+    # Subtest: migrations are repeatable and never recreate accounts
+    not ok 1 - migrations are repeatable and never recreate accounts
+      ---
+      duration_ms: 280.014227
+      type: 'test'
+      location: '/workspace/scratch/a285dfe2aa8a/source_repo/verification/school-accounts.test.mjs:52:11'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+
+        7 !== 6
+
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 6
+      actual: 7
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///workspace/scratch/a285dfe2aa8a/source_repo/verification/school-accounts.test.mjs:53:98)
+        Test.runInAsyncScope (node:async_hooks:227:14)
+        Test.run (node:internal/test_runner/test:1402:25)
+        Test.start (node:internal/test_runner/test:1262:17)
+        TestContext.test (node:internal/test_runner/test:400:20)
+        TestContext.<anonymous> (file:///workspace/scratch/a285dfe2aa8a/source_repo/verification/school-accounts.test.mjs:52:11)
+        process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+        async Test.run (node:internal/test_runner/test:1409:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+      ...
+    # Subtest: bootstrap creates one administrator and permanently closes initialization
+    ok 2 - bootstrap creates one administrator and permanently closes initialization
+      ---
+      duration_ms: 257.457661
+      type: 'test'
+      ...
+    # Subtest: checksum mismatch blocks edited migrations without losing existing users
+    ok 3 - checksum mismatch blocks edited migrations without losing existing users
+      ---
+      duration_ms: 40.195909
+      type: 'test'
+      ...
+    # Subtest: anonymous access, methods, body size and CSRF fail safely
+    not ok 4 - anonymous access, methods, body size and CSRF fail safely
+      ---
+      duration_ms: 113.52575
+      type: 'test'
+      location: '/workspace/scratch/a285dfe2aa8a/source_repo/verification/school-accounts.test.mjs:75:11'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+
+        401 !== 413
+
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 413
+      actual: 401
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///workspace/scratch/a285dfe2aa8a/source_repo/verification/school-accounts.test.mjs:82:12)
+        process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+        async Test.run (node:internal/test_runner/test:1409:7)
+        async TestContext.<anonymous> (file:///workspace/scratch/a285dfe2aa8a/source_repo/verification/school-accounts.test.mjs:75:3)
+        async Test.run (node:internal/test_runner/test:1409:7)
+        async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+      ...
+    # Subtest: login rotates the session ID and cannot take a role from the browser
+    ok 5 - login rotates the session ID and cannot take a role from the browser
+      ---
+      duration_ms: 246.573153
+      type: 'test'
+      ...
+    # Subtest: administrator creates named roles with hashed temporary passwords
+    ok 6 - administrator creates named roles with hashed temporary passwords
+      ---
+      duration_ms: 764.998642
+      type: 'test'
+      ...
+    # Subtest: first login requires a real password change before privileged actions
+    ok 7 - first login requires a real password change before privileged actions
+      ---
+      duration_ms: 922.923161
+      type: 'test'
+      ...
+    # Subtest: students cannot enumerate accounts, read another profile or grant a role
+    ok 8 - students cannot enumerate accounts, read another profile or grant a role
+      ---
+      duration_ms: 1410.720139
+      type: 'test'
+      ...
+    # Subtest: teacher access and reset are confined to students in an assigned class
+    ok 9 - teacher access and reset are confined to students in an assigned class
+      ---
+      duration_ms: 1442.890241
+      type: 'test'
+      ...
+    # Subtest: changing a password revokes a second device while keeping this one signed in
+    ok 10 - changing a password revokes a second device while keeping this one signed in
+      ---
+      duration_ms: 798.50082
+      type: 'test'
+      ...
+    # Subtest: deactivation and role changes revoke sessions; self-demotion is refused
+    ok 11 - deactivation and role changes revoke sessions; self-demotion is refused
+      ---
+      duration_ms: 561.190782
+      type: 'test'
+      ...
+    # Subtest: unknown and wrong-password login share an error and concurrent attempts hit a persistent limit
+    ok 12 - unknown and wrong-password login share an error and concurrent attempts hit a persistent limit
+      ---
+      duration_ms: 535.263437
+      type: 'test'
+      ...
+    # Subtest: secure session parameters and idle/absolute expiry are enforced
+    ok 13 - secure session parameters and idle/absolute expiry are enforced
+      ---
+      duration_ms: 655.089041
+      type: 'test'
+      ...
+    # Subtest: logout invalidates its session and audit has events without passwords
+    ok 14 - logout invalidates its session and audit has events without passwords
+      ---
+      duration_ms: 45.815013
+      type: 'test'
+      ...
+    # Subtest: migration re-run preserves all users and public web cannot read private files
+    ok 15 - migration re-run preserves all users and public web cannot read private files
+      ---
+      duration_ms: 72.516931
+      type: 'test'
+      ...
+    1..15
+not ok 1 - 23B accounts against real PHP and a disposable restricted MySQL database
+  ---
+  duration_ms: 8355.691261
+  type: 'test'
+  location: '/workspace/scratch/a285dfe2aa8a/source_repo/verification/school-accounts.test.mjs:10:1'
+  failureType: 'subtestsFailed'
+  error: '2 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..1
+# tests 16
+# suites 0
+# pass 13
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8494.971017

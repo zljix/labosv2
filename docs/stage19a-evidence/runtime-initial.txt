@@ -1,0 +1,124 @@
+✔ strict calendar, BCD and serialized state validation reject normalization, DST and corrupt bytes (4.314035ms)
+✔ rising command/write bits and falling reply bits read fixed independent BCD bytes (81.412075ms)
+✔ clock writes commit on falling CE; incomplete burst is discarded and trailing bytes ignored (33.256385ms)
+✔ calendar handles leap day, short months, midnight day register and year rollover (10.395218ms)
+✔ 12-hour 11:59:59 AM changes to 12 PM and 11 PM to midnight (24.069356ms)
+✔ CH freezes time; WP blocks clock and RAM including burst control, but control clears WP (21.225302ms)
+✔ RAM supports 31 single-byte addresses and partial/continuous bursts without clock aliasing (134.579121ms)
+✔ read snapshot is coherent across midnight; I/O is released with CE low (16.074504ms)
+✔ missing main supply with battery retains time/RAM but cannot communicate; restore recovers (14.281459ms)
+✔ loss of both supplies invalidates calendar and erases RAM; restored supply needs initialization (10.185053ms)
+✔ invalid calendar is flagged; invalid command and unsupported address cannot mutate RAM/time (7.592908ms)
+✔ charging register is outside clock burst and enabled charging produces explicit diagnostic (10.058475ms)
+✔ wiring checks reject merged signals, Nano analog-only pins and 5 V S3 return path (2.943356ms)
+✔ unconnected VCC cannot return valid calendar bytes (6.241376ms)
+✔ unconnected GND cannot return valid calendar bytes (9.076833ms)
+✔ unconnected CE cannot return valid calendar bytes (15.267577ms)
+✔ unconnected IO cannot return valid calendar bytes (4.774683ms)
+✔ unconnected SCLK cannot return valid calendar bytes (12.422195ms)
+✔ GPIO driving opposite to RTC push-pull output is diagnosed (5.743267ms)
+✔ session snapshot survives MCU restart and source edits, stays isolated by project/topology/initial data (18.28886ms)
+✔ S3 compiled rtcRead reads real GPIO replies and remains stoppable (68.214258ms)
+✔ S3 compiled rtcSet reads real GPIO replies and remains stoppable (45.662527ms)
+✔ S3 compiled rtcMemory reads real GPIO replies and remains stoppable (56.214582ms)
+✔ S3 compiled rtcClock reads real GPIO replies and remains stoppable (89.223424ms)
+✖ MicroPython rtcRead runs visible GPIO driver inside real WASM (812.36987ms)
+✖ MicroPython rtcSet runs visible GPIO driver inside real WASM (574.008075ms)
+✖ MicroPython rtcMemory runs visible GPIO driver inside real WASM (562.205382ms)
+✖ MicroPython rtcClock runs visible GPIO driver inside real WASM (461.883167ms)
+✖ MicroPython driver rejects absent RTC rather than inventing a timestamp (694.319011ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 24
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5307.35453
+
+✖ failing tests:
+
+test at verification/rtc.test.ts:1:14115
+✖ MicroPython rtcRead runs visible GPIO driver inside real WASM (812.36987ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'error' !== 'done'
+  
+      at TestContext.<anonymous> (/workspace/scratch/6823f6f5b8db/esp32-lab/.sites-checkout/verification/rtc.test.ts:128:84)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'error',
+    expected: 'done',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at verification/rtc.test.ts:1:14115
+✖ MicroPython rtcSet runs visible GPIO driver inside real WASM (574.008075ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'error' !== 'done'
+  
+      at TestContext.<anonymous> (/workspace/scratch/6823f6f5b8db/esp32-lab/.sites-checkout/verification/rtc.test.ts:128:84)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'error',
+    expected: 'done',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at verification/rtc.test.ts:1:14115
+✖ MicroPython rtcMemory runs visible GPIO driver inside real WASM (562.205382ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'error' !== 'done'
+  
+      at TestContext.<anonymous> (/workspace/scratch/6823f6f5b8db/esp32-lab/.sites-checkout/verification/rtc.test.ts:128:84)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'error',
+    expected: 'done',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at verification/rtc.test.ts:1:14115
+✖ MicroPython rtcClock runs visible GPIO driver inside real WASM (461.883167ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'error' !== 'done'
+  
+      at TestContext.<anonymous> (/workspace/scratch/6823f6f5b8db/esp32-lab/.sites-checkout/verification/rtc.test.ts:128:84)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'error',
+    expected: 'done',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at verification/rtc.test.ts:1:14810
+✖ MicroPython driver rejects absent RTC rather than inventing a timestamp (694.319011ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'error' !== 'done'
+  
+      at TestContext.<anonymous> (/workspace/scratch/6823f6f5b8db/esp32-lab/.sites-checkout/verification/rtc.test.ts:131:329)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'error',
+    expected: 'done',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

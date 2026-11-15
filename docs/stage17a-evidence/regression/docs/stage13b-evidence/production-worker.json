@@ -1,0 +1,7 @@
+{
+  "version": "0.7.1-beta.1",
+  "build": "e40892595a9d5584",
+  "console": "IR READY\r\nNEC A=0 C=70 R=0\r\nNEC A=0 C=70 R=1\r\n",
+  "stopMs": 3.800634999999602,
+  "scope": "Node/Linux production bundle"
+}

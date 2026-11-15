@@ -1,0 +1,104 @@
+{
+  "release": "0.5.0-beta.1",
+  "build": "b7174e2c4fc6c423",
+  "total": 205,
+  "failed": 0,
+  "skipped": 0,
+  "groups": [
+    {
+      "group": "test",
+      "passed": 26,
+      "failed": 0,
+      "skipped": 0,
+      "log": "test.log"
+    },
+    {
+      "group": "test-boards",
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "log": "test-boards.log"
+    },
+    {
+      "group": "test-simulation",
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "log": "test-simulation.log"
+    },
+    {
+      "group": "test-peripherals",
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0,
+      "log": "test-peripherals.log"
+    },
+    {
+      "group": "test-runtime",
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0,
+      "log": "test-runtime.log"
+    },
+    {
+      "group": "test-lessons",
+      "passed": 20,
+      "failed": 0,
+      "skipped": 0,
+      "log": "test-lessons.log"
+    },
+    {
+      "group": "test-avr",
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0,
+      "log": "test-avr.log"
+    },
+    {
+      "group": "test-arduino",
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "log": "test-arduino.log"
+    },
+    {
+      "group": "test-avr-peripherals",
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "log": "test-avr-peripherals.log"
+    },
+    {
+      "group": "test-offline",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "log": "test-offline.log"
+    },
+    {
+      "group": "test-environment",
+      "passed": 18,
+      "failed": 0,
+      "skipped": 0,
+      "log": "test-environment.log"
+    },
+    {
+      "group": "test-displays",
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0,
+      "log": "test-displays.log"
+    },
+    {
+      "group": "test-analog",
+      "passed": 23,
+      "failed": 0,
+      "skipped": 0,
+      "log": "test-analog.log"
+    }
+  ],
+  "assets": 82,
+  "bytes": 7166475,
+  "arduinoArtifacts": 44,
+  "scope": "Automated Node/Linux. Browser observations separately recorded; physical hardware, school PC, iOS and private-domain cold offline unverified."
+}

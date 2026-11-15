@@ -1,0 +1,34 @@
+{
+  "version": "0.7.0-beta.1",
+  "node": {
+    "uniqueCases": 421,
+    "broadPassed": 407,
+    "broadSkippedCompilerCases": 14,
+    "compilerCasesSeparatelyPassed": 14,
+    "broadFailures": 0
+  },
+  "finalTargeted": {
+    "passed": 62,
+    "failed": 0,
+    "scope": "SPI 34, boards 9, environment 19; reruns deduplicated"
+  },
+  "offline": {
+    "passed": 8,
+    "failed": 0
+  },
+  "coreAndFiles": {
+    "passed": 13,
+    "failed": 0
+  },
+  "uniqueTotalPassed": 442,
+  "newSPICases": 34,
+  "build": "f385178e29ca52cf",
+  "resourceCount": 124,
+  "totalResourceBytes": 9690405,
+  "allResourceBytesAndHashesVerified": true,
+  "earlierEvidencePreserved": true,
+  "savedNewRegressionFiles": 90,
+  "browser": "See browser.json and browser-csv.json",
+  "productionFunctionalTest": "Not performed; publication result tracked separately",
+  "hardwareAndMobile": "Not validated"
+}

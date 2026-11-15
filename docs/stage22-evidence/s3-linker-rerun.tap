@@ -1,0 +1,376 @@
+TAP version 13
+# Subtest: S3 compiled Adafruit dht11 decodes GPIO pulses with independent known bytes
+ok 1 - S3 compiled Adafruit dht11 decodes GPIO pulses with independent known bytes
+  ---
+  duration_ms: 130.578024
+  type: 'test'
+  ...
+# Subtest: S3 compiled Adafruit dht22 decodes GPIO pulses with independent known bytes
+ok 2 - S3 compiled Adafruit dht22 decodes GPIO pulses with independent known bytes
+  ---
+  duration_ms: 79.276051
+  type: 'test'
+  ...
+# Subtest: S3 DHT rejects checksum and recovers through a new physical transfer
+ok 3 - S3 DHT rejects checksum and recovers through a new physical transfer
+  ---
+  duration_ms: 110.674074
+  type: 'test'
+  ...
+# Subtest: S3 DHT rejects timeout and recovers through a new physical transfer
+ok 4 - S3 DHT rejects timeout and recovers through a new physical transfer
+  ---
+  duration_ms: 54.703895
+  type: 'test'
+  ...
+# Subtest: S3 DHT forced 300 ms attempts respect sensor minimum interval
+ok 5 - S3 DHT forced 300 ms attempts respect sensor minimum interval
+  ---
+  duration_ms: 144.321908
+  type: 'test'
+  ...
+# Subtest: S3 live DHT environment is decoded by the next C++ read
+ok 6 - S3 live DHT environment is decoded by the next C++ read
+  ---
+  duration_ms: 90.206315
+  type: 'test'
+  ...
+# Subtest: S3 DHT with missing external pull-up cannot deliver fabricated data
+ok 7 - S3 DHT with missing external pull-up cannot deliver fabricated data
+  ---
+  duration_ms: 18.438008
+  type: 'test'
+  ...
+# Subtest: S3 generic OneWire fallback searches three ROMs, matches addresses and decodes signed scratchpads
+ok 8 - S3 generic OneWire fallback searches three ROMs, matches addresses and decodes signed scratchpads
+  ---
+  duration_ms: 2239.596649
+  type: 'test'
+  ...
+# Subtest: S3 DallasTemperature writes and reads all four resolutions with correct quantization
+ok 9 - S3 DallasTemperature writes and reads all four resolutions with correct quantization
+  ---
+  duration_ms: 2160.217841
+  type: 'test'
+  ...
+# Subtest: S3 DS18B20 CRC failure affects only the addressed sensor and recovers on a new conversion
+ok 10 - S3 DS18B20 CRC failure affects only the addressed sensor and recovers on a new conversion
+  ---
+  duration_ms: 3351.418412
+  type: 'test'
+  ...
+# Subtest: S3 DS18B20 disconnected device is absent from ROM search
+ok 11 - S3 DS18B20 disconnected device is absent from ROM search
+  ---
+  duration_ms: 1956.074163
+  type: 'test'
+  ...
+# Subtest: S3 real U8g2 64-row library generates I2C page bytes and visible edge pixels
+ok 12 - S3 real U8g2 64-row library generates I2C page bytes and visible edge pixels
+  ---
+  duration_ms: 46.267134
+  type: 'test'
+  ...
+# Subtest: S3 real U8g2 32-row library generates I2C page bytes and visible edge pixels
+ok 13 - S3 real U8g2 32-row library generates I2C page bytes and visible edge pixels
+  ---
+  duration_ms: 24.433836
+  type: 'test'
+  ...
+# Subtest: S3 U8g2 hardware I2C cannot light an unconnected display
+ok 14 - S3 U8g2 hardware I2C cannot light an unconnected display
+  ---
+  duration_ms: 22.550877
+  type: 'test'
+  ...
+# Subtest: real S3 compiler rejects unavailable graphics constructors and hardware IRQ API
+ok 15 - real S3 compiler rejects unavailable graphics constructors and hardware IRQ API
+  ---
+  duration_ms: 6980.877097
+  type: 'test'
+  ...
+# Subtest: S3 C++ selection preserves old MicroPython documents and same-board language-copy wiring
+ok 16 - S3 C++ selection preserves old MicroPython documents and same-board language-copy wiring
+  ---
+  duration_ms: 22.30693
+  type: 'test'
+  ...
+# Subtest: compiled S3 blink retains exact source, target and full JSON/ZIP/IDE exports
+ok 17 - compiled S3 blink retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 28.027816
+  type: 'test'
+  ...
+# Subtest: compiled S3 button retains exact source, target and full JSON/ZIP/IDE exports
+ok 18 - compiled S3 button retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 7.371888
+  type: 'test'
+  ...
+# Subtest: compiled S3 adc retains exact source, target and full JSON/ZIP/IDE exports
+ok 19 - compiled S3 adc retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 7.108522
+  type: 'test'
+  ...
+# Subtest: compiled S3 regulator retains exact source, target and full JSON/ZIP/IDE exports
+ok 20 - compiled S3 regulator retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 11.855414
+  type: 'test'
+  ...
+# Subtest: compiled S3 sensors retains exact source, target and full JSON/ZIP/IDE exports
+ok 21 - compiled S3 sensors retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 11.363626
+  type: 'test'
+  ...
+# Subtest: compiled S3 servo retains exact source, target and full JSON/ZIP/IDE exports
+ok 22 - compiled S3 servo retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 7.495172
+  type: 'test'
+  ...
+# Subtest: compiled S3 lcd retains exact source, target and full JSON/ZIP/IDE exports
+ok 23 - compiled S3 lcd retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 7.787573
+  type: 'test'
+  ...
+# Subtest: compiled S3 touch retains exact source, target and full JSON/ZIP/IDE exports
+ok 24 - compiled S3 touch retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 18.775303
+  type: 'test'
+  ...
+# Subtest: compiled S3 dht11 retains exact source, target and full JSON/ZIP/IDE exports
+ok 25 - compiled S3 dht11 retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 6.763813
+  type: 'test'
+  ...
+# Subtest: compiled S3 dht22 retains exact source, target and full JSON/ZIP/IDE exports
+ok 26 - compiled S3 dht22 retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 5.515368
+  type: 'test'
+  ...
+# Subtest: compiled S3 dhtErrors retains exact source, target and full JSON/ZIP/IDE exports
+ok 27 - compiled S3 dhtErrors retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 6.740559
+  type: 'test'
+  ...
+# Subtest: compiled S3 ds18Multi retains exact source, target and full JSON/ZIP/IDE exports
+ok 28 - compiled S3 ds18Multi retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 9.658484
+  type: 'test'
+  ...
+# Subtest: compiled S3 ds18Resolution retains exact source, target and full JSON/ZIP/IDE exports
+ok 29 - compiled S3 ds18Resolution retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 11.108543
+  type: 'test'
+  ...
+# Subtest: compiled S3 oled64 retains exact source, target and full JSON/ZIP/IDE exports
+ok 30 - compiled S3 oled64 retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 17.807649
+  type: 'test'
+  ...
+# Subtest: compiled S3 oled32 retains exact source, target and full JSON/ZIP/IDE exports
+ok 31 - compiled S3 oled32 retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 22.018307
+  type: 'test'
+  ...
+# Subtest: compiled S3 opticalRegisters retains exact source, target and full JSON/ZIP/IDE exports
+ok 32 - compiled S3 opticalRegisters retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 10.044795
+  type: 'test'
+  ...
+# Subtest: compiled S3 opticalRaw retains exact source, target and full JSON/ZIP/IDE exports
+ok 33 - compiled S3 opticalRaw retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 8.39913
+  type: 'test'
+  ...
+# Subtest: compiled S3 opticalFrequency retains exact source, target and full JSON/ZIP/IDE exports
+ok 34 - compiled S3 opticalFrequency retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 11.02642
+  type: 'test'
+  ...
+# Subtest: compiled S3 opticalOverflow retains exact source, target and full JSON/ZIP/IDE exports
+ok 35 - compiled S3 opticalOverflow retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 5.950221
+  type: 'test'
+  ...
+# Subtest: compiled S3 sdInspect retains exact source, target and full JSON/ZIP/IDE exports
+ok 36 - compiled S3 sdInspect retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 7.271928
+  type: 'test'
+  ...
+# Subtest: compiled S3 sdBlocks retains exact source, target and full JSON/ZIP/IDE exports
+ok 37 - compiled S3 sdBlocks retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 12.186332
+  type: 'test'
+  ...
+# Subtest: compiled S3 sdFiles retains exact source, target and full JSON/ZIP/IDE exports
+ok 38 - compiled S3 sdFiles retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 53.708467
+  type: 'test'
+  ...
+# Subtest: compiled S3 sdLogger retains exact source, target and full JSON/ZIP/IDE exports
+ok 39 - compiled S3 sdLogger retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 16.47722
+  type: 'test'
+  ...
+# Subtest: compiled S3 rtcRead retains exact source, target and full JSON/ZIP/IDE exports
+ok 40 - compiled S3 rtcRead retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 5.972875
+  type: 'test'
+  ...
+# Subtest: compiled S3 rtcSet retains exact source, target and full JSON/ZIP/IDE exports
+ok 41 - compiled S3 rtcSet retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 6.756092
+  type: 'test'
+  ...
+# Subtest: compiled S3 rtcMemory retains exact source, target and full JSON/ZIP/IDE exports
+ok 42 - compiled S3 rtcMemory retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 5.597281
+  type: 'test'
+  ...
+# Subtest: compiled S3 rtcClock retains exact source, target and full JSON/ZIP/IDE exports
+ok 43 - compiled S3 rtcClock retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 6.978817
+  type: 'test'
+  ...
+# Subtest: S3 artifacts reject source, library, target, ABI and binary corruption
+ok 44 - S3 artifacts reject source, library, target, ABI and binary corruption
+  ---
+  duration_ms: 4.863438
+  type: 'test'
+  ...
+# Subtest: real blink program preserves state across nested delay calls and emits both electrical levels
+ok 45 - real blink program preserves state across nested delay calls and emits both electrical levels
+  ---
+  duration_ms: 15.669707
+  type: 'test'
+  ...
+# Subtest: button and serial input change the actual GPIO path during asynchronous C++ execution
+ok 46 - button and serial input change the actual GPIO path during asynchronous C++ execution
+  ---
+  duration_ms: 9.053765
+  type: 'test'
+  ...
+# Subtest: ADC 12-bit samples and PWM follow live potentiometer endpoints
+ok 47 - ADC 12-bit samples and PWM follow live potentiometer endpoints
+  ---
+  duration_ms: 7.741182
+  type: 'test'
+  ...
+# Subtest: AHT10 samples flow through Wire, visible OLED pixels and a calibrated LEDC servo impulse
+ok 48 - AHT10 samples flow through Wire, visible OLED pixels and a calibrated LEDC servo impulse
+  ---
+  duration_ms: 44.446228
+  type: 'test'
+  ...
+# Subtest: BMP180/BMP280 compensation and AM2320 CRC run as compiled library code
+ok 49 - BMP180/BMP280 compensation and AM2320 CRC run as compiled library code
+  ---
+  duration_ms: 35.262558
+  type: 'test'
+  ...
+# Subtest: SG90 position is derived from a 50 Hz impulse with independent 5 V supply
+ok 50 - SG90 position is derived from a 50 Hz impulse with independent 5 V supply
+  ---
+  duration_ms: 7.189735
+  type: 'test'
+  ...
+# Subtest: LCD text and custom CGRAM glyph come from actual PCF8574 transfers
+ok 51 - LCD text and custom CGRAM glyph come from actual PCF8574 transfers
+  ---
+  duration_ms: 18.182713
+  type: 'test'
+  ...
+# Subtest: SPI touch performs ADC conversion, C++ calibration, hit-test, GPIO and TFT pixel update
+ok 52 - SPI touch performs ADC conversion, C++ calibration, hit-test, GPIO and TFT pixel update
+  ---
+  duration_ms: 467.791741
+  type: 'test'
+  ...
+# Subtest: missing touch MISO cannot activate LED and reports a protocol diagnosis
+ok 53 - missing touch MISO cannot activate LED and reports a protocol diagnosis
+  ---
+  duration_ms: 344.24573
+  type: 'test'
+  ...
+# Subtest: S3 cache and submission reopen with the correct WASM artifact and measurements label
+ok 54 - S3 cache and submission reopen with the correct WASM artifact and measurements label
+  ---
+  duration_ms: 14.073096
+  type: 'test'
+  ...
+# Subtest: S3 session ignores old messages and terminates its Worker exactly once
+ok 55 - S3 session ignores old messages and terminates its Worker exactly once
+  ---
+  duration_ms: 3.824697
+  type: 'test'
+  ...
+# Subtest: real compiler supports multiple C++/C files and Bounce2 GPIO without source rewriting
+ok 56 - real compiler supports multiple C++/C files and Bounce2 GPIO without source rewriting
+  ---
+  duration_ms: 361.001631
+  type: 'test'
+  ...
+# Subtest: real compiler reports exact source lines and rejects unsupported ESP-specific includes
+ok 57 - real compiler reports exact source lines and rejects unsupported ESP-specific includes
+  ---
+  duration_ms: 370.729124
+  type: 'test'
+  ...
+# Subtest: real compiler preserves automatic-prototype boundary and rejects old ESP32 channel API
+ok 58 - real compiler preserves automatic-prototype boundary and rejects old ESP32 channel API
+  ---
+  duration_ms: 508.209647
+  type: 'test'
+  ...
+# Subtest: loopback bridge validates and caches the correct source-bound S3 result
+ok 59 - loopback bridge validates and caches the correct source-bound S3 result
+  ---
+  duration_ms: 37.003474
+  type: 'test'
+  ...
+# Subtest: actual S3 Worker accepts live input inside setup and force-stops a pure infinite C++ loop
+ok 60 - actual S3 Worker accepts live input inside setup and force-stops a pure infinite C++ loop
+  ---
+  duration_ms: 484.394151
+  type: 'test'
+  ...
+# Subtest: serial flood keeps console chunks and message rate bounded while C++ remains stoppable
+ok 61 - serial flood keeps console chunks and message rate bounded while C++ remains stoppable
+  ---
+  duration_ms: 275.40415
+  type: 'test'
+  ...
+1..61
+# tests 61
+# suites 0
+# pass 61
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 21196.267923

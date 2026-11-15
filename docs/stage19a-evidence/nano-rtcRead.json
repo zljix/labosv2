@@ -1,0 +1,294 @@
+{
+  "text": "RTC 2026-1-1 12:0:0 DAY=5\r\n",
+  "frame": {
+    "type": "simulation",
+    "clockProfile": "external-us",
+    "timeMs": 300,
+    "nets": {
+      "board:3V3": 3.3,
+      "board:5V": 5,
+      "board:A0": null,
+      "board:A1": null,
+      "board:A2": null,
+      "board:A3": null,
+      "board:A4": null,
+      "board:A5": null,
+      "board:A6": null,
+      "board:A7": null,
+      "board:D0": null,
+      "board:D1": null,
+      "board:D10": null,
+      "board:D11": null,
+      "board:D12": null,
+      "board:D13": null,
+      "board:D2": null,
+      "board:D3": null,
+      "board:D4": 0,
+      "board:D5": 0,
+      "board:D6": 0,
+      "board:D7": null,
+      "board:D8": null,
+      "board:D9": null,
+      "board:GND": 0
+    },
+    "leds": {},
+    "gpios": {
+      "0": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "1": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "2": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "3": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "4": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "5": {
+        "mode": "IN",
+        "volts": 0,
+        "level": 0
+      },
+      "6": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "7": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "8": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "9": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "10": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "11": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "12": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "13": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "14": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "15": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "16": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "17": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "18": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "19": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      }
+    },
+    "sensors": {},
+    "displays": {},
+    "measurements": [],
+    "i2cTrace": [],
+    "rtcDevices": {
+      "rtc1": {
+        "mainPower": true,
+        "battery": true,
+        "rtcMainPower": true,
+        "retained": true,
+        "valid": true,
+        "halted": false,
+        "writeProtected": false,
+        "iso": "2026-01-01T12:00:00",
+        "day": 5,
+        "reason": "Sat radi",
+        "received": 1,
+        "errors": 0,
+        "state": {
+          "registers": [
+            0,
+            0,
+            18,
+            1,
+            1,
+            5,
+            38,
+            0
+          ],
+          "ram": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trickle": 92,
+          "subsecondUs": 300000.5,
+          "valid": true
+        },
+        "trace": [
+          {
+            "timeUs": 0,
+            "operation": "main-power"
+          },
+          {
+            "timeUs": 162.9375,
+            "operation": "ce-start"
+          },
+          {
+            "timeUs": 509.4375,
+            "operation": "command",
+            "value": 191
+          },
+          {
+            "timeUs": 534.8125,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 809.125,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 1083.8125,
+            "operation": "read-byte",
+            "value": 18
+          },
+          {
+            "timeUs": 1364.5,
+            "operation": "read-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 1639.1875,
+            "operation": "read-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 1913.875,
+            "operation": "read-byte",
+            "value": 5
+          },
+          {
+            "timeUs": 2194.5625,
+            "operation": "read-byte",
+            "value": 38
+          },
+          {
+            "timeUs": 2469.25,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 2743.9375,
+            "operation": "read-byte",
+            "value": 0
+          }
+        ]
+      }
+    },
+    "touches": {},
+    "tfts": {},
+    "spiTrace": [],
+    "spiBytes": 0,
+    "steppers": {
+      "drivers": {},
+      "motors": {}
+    },
+    "tmDisplays": {},
+    "infrared": {},
+    "encoders": {},
+    "oneWireDevices": {},
+    "timedSensors": {},
+    "analogInputs": {},
+    "servos": {},
+    "diagnostics": [],
+    "avr": {
+      "cycles": 4800008,
+      "clockHz": 16000000,
+      "uartBaud": 9615,
+      "rxPending": 0,
+      "busTrace": [],
+      "memory": {
+        "staticBytes": 203,
+        "lowestSP": 2215,
+        "minFreeToStatic": 1757
+      }
+    }
+  }
+}

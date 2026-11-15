@@ -1,0 +1,507 @@
+{
+  "version": "0.8.0-beta.1",
+  "build": "6a45bc2e9326cbe1",
+  "stopMs": 22.24131800000032,
+  "console": "STEPPER +90 d",
+  "frame": {
+    "type": "simulation",
+    "clockProfile": "external-us",
+    "timeMs": 216,
+    "nets": {
+      "board:3V3": 3.3,
+      "board:5V": 5,
+      "board:A0": null,
+      "board:A1": null,
+      "board:A2": null,
+      "board:A3": null,
+      "board:A4": null,
+      "board:A5": null,
+      "board:A6": null,
+      "board:A7": null,
+      "board:D0": null,
+      "board:D1": null,
+      "board:D10": null,
+      "board:D11": null,
+      "board:D12": null,
+      "board:D13": null,
+      "board:D2": 0,
+      "board:D3": 5,
+      "board:D4": 0,
+      "board:D5": 5,
+      "board:D6": 5,
+      "board:D7": 0,
+      "board:D8": 0,
+      "board:D9": 0,
+      "board:GND": 0,
+      "stepperDriver:1A": null,
+      "stepperDriver:1B": null,
+      "stepperDriver:2A": null,
+      "stepperDriver:2B": null,
+      "stepperDriver:VMOT": 12
+    },
+    "leds": {},
+    "gpios": {
+      "0": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "1": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "2": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "3": {
+        "mode": "OUT",
+        "volts": 5,
+        "level": 1
+      },
+      "4": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "5": {
+        "mode": "OUT",
+        "volts": 5,
+        "level": 1
+      },
+      "6": {
+        "mode": "OUT",
+        "volts": 5,
+        "level": 1
+      },
+      "7": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "8": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "9": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "10": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "11": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "12": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "13": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "14": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "15": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "16": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "17": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "18": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "19": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      }
+    },
+    "sensors": {},
+    "displays": {},
+    "measurements": [],
+    "i2cTrace": [],
+    "touches": {},
+    "tfts": {},
+    "spiTrace": [],
+    "spiBytes": 0,
+    "steppers": {
+      "drivers": {
+        "stepperDriver": {
+          "powered": true,
+          "motorPower": true,
+          "enabled": true,
+          "levels": {
+            "STEP": 0,
+            "DIR": 1,
+            "ENABLE": 0,
+            "RESET": 1,
+            "SLEEP": 1,
+            "MS1": 0,
+            "MS2": 0,
+            "MS3": 0
+          },
+          "resolution": 1,
+          "translatorTicks": 800,
+          "rising": 50,
+          "accepted": 50,
+          "ignored": 0,
+          "rejected": 0,
+          "pending": false,
+          "phaseA": -0.7071067811865491,
+          "phaseB": -0.707106781186546,
+          "lastFault": "",
+          "trace": [
+            {
+              "timeUs": 0,
+              "operation": "home",
+              "value": "uključenje VDD"
+            },
+            {
+              "timeUs": 0,
+              "operation": "logic-power",
+              "value": "ON"
+            },
+            {
+              "timeUs": 0,
+              "operation": "enable",
+              "value": "izlazi OFF; translator aktivan"
+            },
+            {
+              "timeUs": 94.75,
+              "operation": "enable",
+              "value": "izlazi OFF; translator aktivan"
+            },
+            {
+              "timeUs": 112.875,
+              "operation": "home",
+              "value": "RESET LOW; osovina se ne vraća na nulu"
+            },
+            {
+              "timeUs": 141.5,
+              "operation": "home",
+              "value": "buđenje; električni Home"
+            },
+            {
+              "timeUs": 2172.625,
+              "operation": "enable",
+              "value": "izlazi ON; translator aktivan"
+            },
+            {
+              "timeUs": 2207.375,
+              "operation": "step",
+              "value": "+1/1; translator=16/16"
+            },
+            {
+              "timeUs": 6230.6875,
+              "operation": "step",
+              "value": "+1/1; translator=32/16"
+            },
+            {
+              "timeUs": 10260,
+              "operation": "step",
+              "value": "+1/1; translator=48/16"
+            },
+            {
+              "timeUs": 14282.5,
+              "operation": "step",
+              "value": "+1/1; translator=64/16"
+            },
+            {
+              "timeUs": 18308.25,
+              "operation": "step",
+              "value": "+1/1; translator=80/16"
+            },
+            {
+              "timeUs": 22330.4375,
+              "operation": "step",
+              "value": "+1/1; translator=96/16"
+            },
+            {
+              "timeUs": 26353.25,
+              "operation": "step",
+              "value": "+1/1; translator=112/16"
+            },
+            {
+              "timeUs": 30379.125,
+              "operation": "step",
+              "value": "+1/1; translator=128/16"
+            },
+            {
+              "timeUs": 34401.3125,
+              "operation": "step",
+              "value": "+1/1; translator=144/16"
+            },
+            {
+              "timeUs": 38427.375,
+              "operation": "step",
+              "value": "+1/1; translator=160/16"
+            },
+            {
+              "timeUs": 42449.5625,
+              "operation": "step",
+              "value": "+1/1; translator=176/16"
+            },
+            {
+              "timeUs": 46475.625,
+              "operation": "step",
+              "value": "+1/1; translator=192/16"
+            },
+            {
+              "timeUs": 50498.125,
+              "operation": "step",
+              "value": "+1/1; translator=208/16"
+            },
+            {
+              "timeUs": 54523.875,
+              "operation": "step",
+              "value": "+1/1; translator=224/16"
+            },
+            {
+              "timeUs": 58546.0625,
+              "operation": "step",
+              "value": "+1/1; translator=240/16"
+            },
+            {
+              "timeUs": 62575.6875,
+              "operation": "step",
+              "value": "+1/1; translator=256/16"
+            },
+            {
+              "timeUs": 66599,
+              "operation": "step",
+              "value": "+1/1; translator=272/16"
+            },
+            {
+              "timeUs": 70621.1875,
+              "operation": "step",
+              "value": "+1/1; translator=288/16"
+            },
+            {
+              "timeUs": 74643.375,
+              "operation": "step",
+              "value": "+1/1; translator=304/16"
+            },
+            {
+              "timeUs": 78665.875,
+              "operation": "step",
+              "value": "+1/1; translator=320/16"
+            },
+            {
+              "timeUs": 82691.625,
+              "operation": "step",
+              "value": "+1/1; translator=336/16"
+            },
+            {
+              "timeUs": 86714.4375,
+              "operation": "step",
+              "value": "+1/1; translator=352/16"
+            },
+            {
+              "timeUs": 90736.9375,
+              "operation": "step",
+              "value": "+1/1; translator=368/16"
+            },
+            {
+              "timeUs": 94759.125,
+              "operation": "step",
+              "value": "+1/1; translator=384/16"
+            },
+            {
+              "timeUs": 98781.3125,
+              "operation": "step",
+              "value": "+1/1; translator=400/16"
+            },
+            {
+              "timeUs": 102807.6875,
+              "operation": "step",
+              "value": "+1/1; translator=416/16"
+            },
+            {
+              "timeUs": 106830,
+              "operation": "step",
+              "value": "+1/1; translator=432/16"
+            },
+            {
+              "timeUs": 110855.75,
+              "operation": "step",
+              "value": "+1/1; translator=448/16"
+            },
+            {
+              "timeUs": 114878.25,
+              "operation": "step",
+              "value": "+1/1; translator=464/16"
+            },
+            {
+              "timeUs": 118904,
+              "operation": "step",
+              "value": "+1/1; translator=480/16"
+            },
+            {
+              "timeUs": 122927.4375,
+              "operation": "step",
+              "value": "+1/1; translator=496/16"
+            },
+            {
+              "timeUs": 126949.625,
+              "operation": "step",
+              "value": "+1/1; translator=512/16"
+            },
+            {
+              "timeUs": 130976,
+              "operation": "step",
+              "value": "+1/1; translator=528/16"
+            },
+            {
+              "timeUs": 134998.625,
+              "operation": "step",
+              "value": "+1/1; translator=544/16"
+            },
+            {
+              "timeUs": 139020.8125,
+              "operation": "step",
+              "value": "+1/1; translator=560/16"
+            },
+            {
+              "timeUs": 143043,
+              "operation": "step",
+              "value": "+1/1; translator=576/16"
+            },
+            {
+              "timeUs": 147065.5,
+              "operation": "step",
+              "value": "+1/1; translator=592/16"
+            },
+            {
+              "timeUs": 151091.25,
+              "operation": "step",
+              "value": "+1/1; translator=608/16"
+            },
+            {
+              "timeUs": 155113.75,
+              "operation": "step",
+              "value": "+1/1; translator=624/16"
+            },
+            {
+              "timeUs": 159139.8125,
+              "operation": "step",
+              "value": "+1/1; translator=640/16"
+            },
+            {
+              "timeUs": 163162,
+              "operation": "step",
+              "value": "+1/1; translator=656/16"
+            },
+            {
+              "timeUs": 167188.0625,
+              "operation": "step",
+              "value": "+1/1; translator=672/16"
+            },
+            {
+              "timeUs": 171211,
+              "operation": "step",
+              "value": "+1/1; translator=688/16"
+            },
+            {
+              "timeUs": 175233.8125,
+              "operation": "step",
+              "value": "+1/1; translator=704/16"
+            },
+            {
+              "timeUs": 179257.125,
+              "operation": "step",
+              "value": "+1/1; translator=720/16"
+            },
+            {
+              "timeUs": 183279.625,
+              "operation": "step",
+              "value": "+1/1; translator=736/16"
+            },
+            {
+              "timeUs": 187301.8125,
+              "operation": "step",
+              "value": "+1/1; translator=752/16"
+            },
+            {
+              "timeUs": 191327.875,
+              "operation": "step",
+              "value": "+1/1; translator=768/16"
+            },
+            {
+              "timeUs": 195350.5,
+              "operation": "step",
+              "value": "+1/1; translator=784/16"
+            },
+            {
+              "timeUs": 199376.25,
+              "operation": "step",
+              "value": "+1/1; translator=800/16"
+            }
+          ],
+          "reason": "Idealan pogon; bez dinamike struje i tereta"
+        }
+      },
+      "motors": {
+        "stepperMotor": {
+          "driver": "stepperDriver",
+          "connected": true,
+          "orientation": 1,
+          "energized": true,
+          "positionCertain": true,
+          "drivenTicks": 800,
+          "idealAngle": 90,
+          "angle": 90,
+          "fullSteps": 200,
+          "reason": "Idealni pomak iz pogonskih koraka"
+        }
+      }
+    },
+    "tmDisplays": {},
+    "infrared": {},
+    "encoders": {},
+    "oneWireDevices": {},
+    "timedSensors": {},
+    "analogInputs": {},
+    "servos": {},
+    "diagnostics": [],
+    "avr": {
+      "cycles": 3456014,
+      "clockHz": 16000000,
+      "uartBaud": 9615,
+      "rxPending": 0,
+      "busTrace": [],
+      "memory": {
+        "staticBytes": 194,
+        "lowestSP": 2261,
+        "minFreeToStatic": 1812
+      }
+    },
+    "session": 150
+  },
+  "scope": "Node/Linux production Worker bundle"
+}

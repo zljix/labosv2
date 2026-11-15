@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "date": "2026-11-12",
+  "programmatic": {
+    "projectCircuit": 26,
+    "simulation": 12,
+    "peripherals": 16,
+    "core": 10,
+    "files": 3,
+    "lessons": 20
+  },
+  "passed": 87,
+  "total": 87,
+  "browserQA": "partial; connection lost before complete submission flow",
+  "studentPilot": "not performed",
+  "schoolComputer": "not tested",
+  "offline": "stage 6; not implemented"
+}

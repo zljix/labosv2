@@ -1,0 +1,11 @@
+✔ real MicroPython OPEN_DRAIN releases HIGH and original Pin OUT still follows its latch (391.257668ms)
+✔ actual AVR raw ROM search and CRC fixture enumerates all three identities (6545.062079ms)
+✔ production Nano Worker reads 1-Wire live data and resets after termination (19462.796416ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 26622.703436

@@ -1,0 +1,36 @@
+{
+  "scope": "Development Chrome/Linux via Sites preview. No pupil, school computer, target mobile device, physical board, production session, or cold offline browser check.",
+  "browserVersion": "Not recorded; no version-specific compatibility claim.",
+  "initialAppVersion": "0.12.3-beta.1 before preview restart",
+  "finalAppVersion": "0.12.4-beta.1 after restart and reload",
+  "urs12": {
+    "target": "s3-cpp",
+    "variant": "spi/spiDashboard",
+    "baselineConsole": "SPI DASH T=24.00 P=101325 Pa",
+    "liveSliders": {
+      "temperature": -40,
+      "pressurePa": 30000
+    },
+    "changedConsole": "SPI DASH T=-40.00 P=30000 Pa",
+    "fault": "Removed BMP280 CS wire via element properties after Stop",
+    "faultConsole": "BMP280 SPI ID/SPOJ ERROR",
+    "recovery": "Stop, undo circuit edit, Run; baseline console recovered, no circuit warnings",
+    "manualRecord": "Explicitly labeled development review, QA without a pupil",
+    "exportedZIP": {
+      "bytes": 23609,
+      "sha256": "6895166e6e3558145e9052d94e984b951fbc40d262db07de17aef278581d76a1"
+    },
+    "import": "Real downloaded ZIP imported as a stopped copy, answers/observations retained. Reopened on 0.12.4 and original program ran again. Baseline TFT text and circuit display visually inspected."
+  },
+  "pilot": {
+    "version": 3,
+    "missingMetadata": "Completed outcome rejected; status listed missing record kind, date, computer, browser, duration and conclusion",
+    "draft": "Real downloaded JSON has classification=draft and outcome=unconfirmed; reimport restored text",
+    "invalidImport": "Version 99 rejected without replacing edited observations",
+    "dirtyImport": "Confirmation shown; dismissal retained edited text; accepted second import replaced it",
+    "legacyImport": "Actual v2 JSON imported with unknown scope and untried offline method, plus visible migration notice",
+    "hiddenInput": "Visible unintended native Choose File control found and removed with explicit hidden styling; semantic import button remains",
+    "physicalOrPupilOutcome": "No completed pupil or device record claimed.",
+    "finalDraftAction": "Final code verified in browser: Save draft sets both the displayed outcome and exported outcome to unconfirmed; recordKind=development remains explicit."
+  }
+}

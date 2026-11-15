@@ -1,0 +1,46 @@
+{
+  "environment": "Chromium development preview; not production sign-in test",
+  "release": "0.4.1-beta.1",
+  "boardChecks": {
+    "uno": {
+      "inputTemperature": [
+        30,
+        27,
+        25
+      ],
+      "observedSerialServo": [
+        90,
+        90,
+        0
+      ],
+      "displayUpdated": true,
+      "stopObserved": true
+    },
+    "nano": {
+      "fqbn": "arduino:avr:nano:cpu=atmega328",
+      "initialTemperature": 24,
+      "changedTemperature": 30,
+      "initialServo": 0,
+      "changedServo": 90,
+      "displayUpdated": true,
+      "staticSRAM": 911,
+      "selectedLibraries": [
+        "LabAHT10 1.0.0",
+        "U8g2 2.37.1",
+        "Servo 1.2.2"
+      ],
+      "stopObserved": true
+    }
+  },
+  "screenshots": [
+    "ESP32_Lab_Etapa10A_Uno.jpg",
+    "ESP32_Lab_Etapa10A_Uno_25.jpg",
+    "ESP32_Lab_Etapa10A_Nano.jpg"
+  ],
+  "limits": [
+    "No new Safari/iOS test",
+    "No new physical hardware test",
+    "No new integrated local compiler popup test",
+    "No school PC or student pilot"
+  ]
+}

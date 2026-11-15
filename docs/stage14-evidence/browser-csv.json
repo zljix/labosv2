@@ -1,0 +1,18 @@
+{
+  "bom": true,
+  "records": 128,
+  "columns": [
+    4
+  ],
+  "header": [
+    "vrijeme_us",
+    "komponenta",
+    "operacija",
+    "vrijednost"
+  ],
+  "components": [
+    "Motor A [motor1]",
+    "Motor B [motor2]"
+  ],
+  "result": "Distinct Motor A / Motor B labels and stable IDs are preserved."
+}

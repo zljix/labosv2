@@ -1,0 +1,26 @@
+[
+  {
+    "key": "touch",
+    "status": "pass",
+    "build": "7af9d95c3e1b2074",
+    "stopMs": 20.504607999999735,
+    "console": "TOUCH BUTTON READY\r\nTOUCH LED=1 X=120 Y=160\r\n",
+    "pixels": {
+      "count": 76800,
+      "nonzero": 15240,
+      "sha256": "6b19656d4dbc543edc36fe366b8601cebc2e6f2edae1e4bd6039332c2e5e689e"
+    }
+  },
+  {
+    "key": "regulator",
+    "status": "pass",
+    "build": "7af9d95c3e1b2074",
+    "stopMs": 8.843592000000172,
+    "console": "S3 T=31.00 RH=70.00 SERVO=90\r\n",
+    "pixels": {
+      "count": 1024,
+      "nonzero": 233,
+      "sha256": "bbde6a366b9262489fd739055d7c48ab5fa45af1c4950818ba1965ea12f46376"
+    }
+  }
+]

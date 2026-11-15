@@ -1,0 +1,7 @@
+{
+  "platform": "linux",
+  "engine": "v24.22.1",
+  "forceStopMs": 0.1261159999994561,
+  "limitMs": 500,
+  "scope": "Node Worker termination call; no school PC claim"
+}

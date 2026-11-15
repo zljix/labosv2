@@ -1,0 +1,10 @@
+{
+  "scope": "Actual browser download, extracted toolkit without npm install, actual Arduino CLI build",
+  "boardId": "arduino.nano-classic.atmega328p",
+  "fqbn": "arduino:avr:nano:cpu=atmega328",
+  "inputHash": "851ebaacaf2adc04e7295aa6f3e02cc4ed16c411e5706c022897c55ded1a8995",
+  "hexHash": "ef75552fd089dfadb82510ed642c03d8e9b50b70e150e8708bdc28f51a7d5329",
+  "flashBytes": 2462,
+  "staticRamBytes": 198,
+  "changedProgram": "int pwm = 255 - vrijednost / 4;"
+}

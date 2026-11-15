@@ -1,0 +1,8 @@
+{
+  "board": "arduino.nano-classic.atmega328p",
+  "source": "void setup(){Serial.begin(9600);analogReference(INTERNAL);}\nvoid loop(){Serial.print(\"REF ADC=\");Serial.println(analogRead(A6));delay(100);}\n",
+  "flash": 1924,
+  "staticRam": 198,
+  "adc": 232,
+  "reference": 1.1
+}

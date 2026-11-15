@@ -1,0 +1,53 @@
+{
+  "console": "BMP180 T=24.00 P=101324 Pa\nBMP280 T=24.00 P=101325 Pa\nAM2320 T=24.00 RH=50.00\nBMP180 T=24.00 P=101324 Pa\nBMP280 T=30.00 P=95000 Pa\nAM2320 T=24.00 RH=50.00\n",
+  "measurements": [
+    {
+      "timeMs": 2123.174213000002,
+      "component": "bmp1801",
+      "temperature": 24,
+      "humidity": null,
+      "pressure": 101324,
+      "sample": 1
+    },
+    {
+      "timeMs": 2132.580116000001,
+      "component": "bmp2801",
+      "temperature": 24.00015308793627,
+      "humidity": null,
+      "pressure": 101325.08546629165,
+      "sample": 1
+    },
+    {
+      "timeMs": 2137.379336000002,
+      "component": "am23201",
+      "temperature": 24,
+      "humidity": 50,
+      "pressure": null,
+      "sample": 1
+    },
+    {
+      "timeMs": 4253.643913,
+      "component": "bmp1801",
+      "temperature": 24,
+      "humidity": null,
+      "pressure": 101324,
+      "sample": 2
+    },
+    {
+      "timeMs": 4262.194476000001,
+      "component": "bmp2801",
+      "temperature": 29.99996937296237,
+      "humidity": null,
+      "pressure": 95000.0067852784,
+      "sample": 2
+    },
+    {
+      "timeMs": 4265.973120000002,
+      "component": "am23201",
+      "temperature": 24,
+      "humidity": 50,
+      "pressure": null,
+      "sample": 2
+    }
+  ]
+}

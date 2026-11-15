@@ -1,0 +1,23 @@
+{
+  "scope": "C++ comments and formatting, recompiled with identical pinned tools",
+  "avr": {
+    "arduino.uno-r3.atmega328p": {
+      "opticalRegisters": true,
+      "opticalRaw": true,
+      "opticalFrequency": true,
+      "opticalOverflow": true
+    },
+    "arduino.nano-classic.atmega328p": {
+      "opticalRegisters": true,
+      "opticalRaw": true,
+      "opticalFrequency": true,
+      "opticalOverflow": true
+    }
+  },
+  "s3": {
+    "opticalRegisters": true,
+    "opticalRaw": true,
+    "opticalFrequency": true,
+    "opticalOverflow": true
+  }
+}

@@ -1,0 +1,10 @@
+✔ S3 C++ live main-power interruption reports invalid read, keeps running and recovers on battery (196.158421ms)
+✔ S3 compiled restart receives battery RAM snapshot and increments it without resetting clock (187.733134ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1575.655851

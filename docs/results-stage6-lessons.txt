@@ -1,0 +1,33 @@
+
+> esp32-micropython-lab@0.3.0-beta.1 test:lessons
+> node --import tsx --test verification/lessons.test.ts
+
+✔ five gradual lessons retain the project/ZIP format and editable work with known scenario IDs (30.005342ms)
+✔ actual WASM reference: V1 LED i vrijeme (3327.184232ms)
+✔ actual WASM reference: V2 Tipkalo kao ulaz (1715.843179ms)
+✔ actual WASM reference: V3 Potenciometar i PWM (1465.049989ms)
+✔ actual WASM reference: V4 AHT10 i OLED (2244.886321ms)
+✔ actual WASM reference: V5 Regulator sa servom (10604.54424ms)
+✔ behaviour checker accepts different variable names, helper functions, component IDs and GPIO (3313.531137ms)
+✔ constant output and wrong timing are rejected by observed LED behaviour (8678.099911ms)
+✔ inverted button and fixed PWM cannot pass input/output scenarios (3145.901172ms)
+✔ OLED checker requires actual numeric pixels; console and changing temperatures alone do not pass (13780.625344ms)
+✔ single-threshold regulator fails hysteresis while still passing the ordinary hot/cold states (10512.0547ms)
+✔ submission carries names, answers, source, drivers and result; metadata is not an authenticity proof (12.066012ms)
+✔ missing answers are identified; failed attempts can be submitted without a false pass (1.830509ms)
+✔ fingerprint detects executable-file or circuit edits, but not names, answers or editor preferences (1.629308ms)
+✔ untrusted scenario and forged local result do not influence an independent rerun (1755.691982ms)
+✔ abort terminates a non-yielding program and does not leave a session running (2082.219301ms)
+✔ invalid work cannot request an unknown scenario; older projects remain parseable (1.059656ms)
+✔ broken circuit and Python exceptions are reported as failure, never a successful empty check (508.178584ms)
+✔ assessment documents are not hidden runtime inputs; ordinary text data remain available (1713.09101ms)
+✔ persist actual reference results as development evidence (2.143798ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 65203.895814
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.

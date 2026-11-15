@@ -1,0 +1,19 @@
+✔ all eight new Uno/Nano builds match source, pinned library hashes and ZIP round-trip (167.163152ms)
+✔ arduino.uno-r3.atmega328p: real Wire + U8g2 GPIO pages + Timer1 Servo follow live hysteresis (14354.833253ms)
+✔ arduino.nano-classic.atmega328p: real Wire + U8g2 GPIO pages + Timer1 Servo follow live hysteresis (14462.977516ms)
+✔ AHT10 uses AVR virtual time for busy and data; missing pins/power/pullups never supply a sample (685.106035ms)
+✔ OLED GPIO address, cable order and power affect real pixels; wrong address cannot paint text (15784.326192ms)
+✔ Servo position comes from edge width and period; absent power/ground/signal suppress position (871.977829ms)
+✔ old 3.3 V profiles survive; domain mixing and shared AHT10 bus stay explicit failures (2.72749ms)
+✔ SRAM monitor detects stack crossing static data; library changes reject the compiled program (3.88336ms)
+✔ real U8g2 hardware I2C also paints pixels; software I2C master reads ACK and all six AHT bytes (717.065671ms)
+✔ Servo and analogWrite share actual Timer1: unsupported simultaneous PWM is not idealised as healthy (125.798187ms)
+✔ compiler library verification rejects extra source files and symbolic links as well as edited bytes (9.392378ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 47553.429623

@@ -1,0 +1,6 @@
+Chromium UI could open the development preview at http://127.0.0.1:4173/?stage9.
+The cloud browser blocked acquiring the local companion popup on 127.0.0.1:8765.
+No workaround was attempted for that blocked browser action.
+Integrated popup pairing/compile therefore remains unverified in the cloud browser.
+Actual loopback HTTP compilation, authentication, origin rejection and input cache
+are covered by real Node integration checks, separately from browser observations.

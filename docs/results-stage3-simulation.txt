@@ -1,0 +1,24 @@
+
+> esp32-micropython-lab@0.1.0 test:simulation
+> node --import tsx --test verification/simulation.test.ts
+
+✔ LED follows actual Python loop; unchanged pin numbers cannot drive a rewired LED (1228.060224ms)
+✔ button changes live input in normal sleeping Python loop; release and missing wire change result (548.625313ms)
+✔ ADC and PWM use live potentiometer voltage, saturate, and publish real duty (287.682906ms)
+✔ LED current reflects series resistance, polarity, open cathode and split rail (13.297118ms)
+✔ floating ADC and ambiguous digital voltage report errors; no hidden fixture input (229.089523ms)
+✔ opposing program outputs and a contact that shorts an output raise runtime diagnostics (457.279582ms)
+✔ PWM methods, deinit, quantised 12-bit ADC, bounds and unavailable GPIOs (1318.283521ms)
+✔ stopped runs cannot deliver late events; repeated force-stop and fresh run (1615.260756ms)
+✔ compiled run snapshot and multiple inputs stay isolated from later project edits (4.302378ms)
+✔ invalid power circuit is blocked before run, and all three lesson circuits compile (10.353097ms)
+✔ atomic initial output value avoids an artificial conflict against a driven-high net (217.039624ms)
+✔ PWM channel limit is a catchable Python error; an inactive LED does not create a source (200.256056ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6498.149235

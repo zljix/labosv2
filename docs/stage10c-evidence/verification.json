@@ -1,0 +1,52 @@
+{
+  "version": "0.4.3-beta.1",
+  "date": "2026-11-12",
+  "total": 181,
+  "passed": 181,
+  "skipped": 0,
+  "groups": {
+    "project_and_circuit": 26,
+    "boards": 9,
+    "simulation": 12,
+    "peripherals": 16,
+    "runtime": 13,
+    "lessons": 20,
+    "offline": 8,
+    "avr": 15,
+    "arduino": 12,
+    "avr_peripherals": 12,
+    "environment": 17,
+    "displays": 21
+  },
+  "newArduinoExamples": {
+    "arduino.uno-r3.atmega328p": {
+      "oled32": {
+        "flashBytes": 12014,
+        "staticRamBytes": 841
+      },
+      "lcd1602": {
+        "flashBytes": 4864,
+        "staticRamBytes": 437
+      },
+      "lcdWeather": {
+        "flashBytes": 9844,
+        "staticRamBytes": 485
+      }
+    },
+    "arduino.nano-classic.atmega328p": {
+      "oled32": {
+        "flashBytes": 12014,
+        "staticRamBytes": 841
+      },
+      "lcd1602": {
+        "flashBytes": 4864,
+        "staticRamBytes": 437
+      },
+      "lcdWeather": {
+        "flashBytes": 9844,
+        "staticRamBytes": 485
+      }
+    }
+  },
+  "scope": "Node/Linux, actual MicroPython WASM, compiled AVR and production Worker. SVG component render inspected. Updated browser UI not verified; physical hardware and target browsers not verified."
+}

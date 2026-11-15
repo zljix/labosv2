@@ -1,0 +1,2395 @@
+{
+  "uniqueCases": 592,
+  "allHavePassingFinalObservation": true,
+  "groupRun": {
+    "tests": 592,
+    "pass": 590,
+    "fail": 2,
+    "skipped": 0
+  },
+  "rechecks": [
+    {
+      "file": "boards-final.txt",
+      "tests": 9,
+      "pass": 9,
+      "change": "Obsolete RTC-planned expectation updated; microSD remains planned"
+    },
+    {
+      "file": "abort-recheck.txt",
+      "tests": 1,
+      "pass": 1,
+      "change": "No code change; original failure was the subsequent button response <=300 ms, not forced termination itself"
+    }
+  ],
+  "notOneUninterruptedAllPassingRun": true,
+  "cases": {
+    "all seven actuator examples on three boards preserve sources, profiles, JSON, ZIP and sketch": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "strict parser rejects invalid source, servo calibration, relay, jumper and motor parameters": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "relay starts on NC without IN drive and actually switches electrical LED paths": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "active HIGH relay starts inactive, energizes on HIGH, and drops on missing supply": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "relay dynamic contact short is diagnosed as an output conflict": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "L298N implements forward, reverse, both brake states and EN coast on both channels": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "functional PWM gives a signed average voltage and independent channel duties": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual switched GPIO motor voltage is integrated by elapsed virtual time": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "motor polarity reversal reverses reported direction without changing code": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "missing VS, VSS and explicitly disconnected board ground prevent motor drive": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "installed EN jumper requires GPIO removal; external supplies and motor GPIO shorts are rejected": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "both EN jumpers can run bridge channels from VSS without a GPIO enable source": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "SG90 calibration maps pulses and requires the explicit shared ground": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "active buzzer sounds on DC while passive piezo requires valid alternating frequency": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "passive piezo follows captured GPIO pulses and silences after last edge expires": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "bounded actuator records reset for a new session": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual MicroPython sg90Sweep controls model and Stop preserves results": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual MicroPython relayContacts controls model and Stop preserves results": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual MicroPython activeAlarm controls model and Stop preserves results": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual MicroPython piezoTone controls model and Stop preserves results": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual MicroPython dcDrive controls model and Stop preserves results": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual MicroPython dualDrive controls model and Stop preserves results": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual MicroPython servoMotorTone controls model and Stop preserves results": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: seven actual compiled sketches drive servo, relay, tones and DC outputs": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: seven actual compiled sketches drive servo, relay, tones and DC outputs": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: newly compiled timer conflicts are visible in actual pulse output": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: newly compiled timer conflicts are visible in actual pulse output": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "motor overvoltage warns about peak voltage even when PWM average is low": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "Nano analog-only control pin and mismatched relay LV are diagnosed": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: tone reconfigures Timer2 and disrupts the real IR carrier": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: tone reconfigures Timer2 and disrupts the real IR carrier": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "production Nano Worker runs the combined actuator program and terminates within 500 ms": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "relay contact connecting a live H-bridge output to ground is diagnosed at runtime": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "external DC supply cannot bypass the mandatory series resistor for an LED": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "all eight examples preserve input profiles and exact compiled source through ZIP on three boards": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "invalid profile values, NaN, wrong LM35 supply and invented sound AO pin are rejected": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "LM35 10 mV/C is independent of board ADC reference and respects 5 V supply": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "TEMT6000 nominal light current, 10k loading and supply saturation affect actual network": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "NTC beta equation, divider direction, changed parameters affect the electrical result": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "joystick has two independent axes, passive switch, explicit pull-up and no hidden deadzone": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "flame: open-collector active LOW comparator, hysteresis, fresh reset and independent instances": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "sound: open-collector active LOW comparator, hysteresis, fresh reset and independent instances": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "missing VCC/GND/signals, wrong voltage domain and wrong ADC pin cannot silently validate inputs": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "two pots and two buttons retain independent live states and input snapshots": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython uses quantized ADC/attenuation, not direct slider temperature": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython lm35: example runs, reads wires, changes live and stops promptly": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython temt6000: example runs, reads wires, changes live and stops promptly": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython ntc: example runs, reads wires, changes live and stops promptly": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython ky023: example runs, reads wires, changes live and stops promptly": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython flame: example runs, reads wires, changes live and stops promptly": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython sound: example runs, reads wires, changes live and stops promptly": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython analogCompare: example runs, reads wires, changes live and stops promptly": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython dualInputs: example runs, reads wires, changes live and stops promptly": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: all eight real compiled examples, independent live ADC, axes and thresholds": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: all eight real compiled examples, independent live ADC, axes and thresholds": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real AVR internal 1.1 V reference and Nano A6 work; missing ADC signal reports invalid measurement": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "production Nano Worker changes both analog sensors and forced Stop stays below 500 ms": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "legacy builds stay valid; library version and bytes enter the exact input hash": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "unknown libraries, duplicate names, wrong versions and invalid source paths fail": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "browser cache validates artifacts and never reuses stale or corrupted data": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "structured diagnostics retain source, line, column, warnings and notes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "pairing accepts only loopback links with a session code": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "Arduino submission preserves a stopped reopenable full project, work and exact build": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "Arduino IDE export describes pinned libraries and preserves all C++ sources": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real blank arduino.uno-r3.atmega328p project, multiple files and pinned Bounce2 compile and execute": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real blank arduino.nano-classic.atmega328p project, multiple files and pinned Bounce2 compile and execute": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real compiler rejects an unselected library and locates an error in src/": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "local bridge enforces authentication/origin and hash cache for a real compile": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "local bridge rejects overlapping compiles and invalid source paths": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "all eight new Uno/Nano builds match source, pinned library hashes and ZIP round-trip": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: real Wire + U8g2 GPIO pages + Timer1 Servo follow live hysteresis": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: real Wire + U8g2 GPIO pages + Timer1 Servo follow live hysteresis": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "AHT10 uses AVR virtual time for busy and data; missing pins/power/pullups never supply a sample": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "OLED GPIO address, cable order and power affect real pixels; wrong address cannot paint text": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "Servo position comes from edge width and period; absent power/ground/signal suppress position": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "old 3.3 V profiles survive; domain mixing and shared AHT10 bus stay explicit failures": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "SRAM monitor detects stack crossing static data; library changes reject the compiled program": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real U8g2 hardware I2C also paints pixels; software I2C master reads ACK and all six AHT bytes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "Servo and analogWrite share actual Timer1: unsupported simultaneous PWM is not idealised as healthy": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiler library verification rejects extra source files and symbolic links as well as edited bytes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "production AVR Worker executes the integrated Nano program, accepts live input and stops promptly": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "six real Arduino builds match exact sources and survive full project ZIP import": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "source, header and target edits reject stale builds; notes and rewiring retain the code binding": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "corrupt hashes, HEX checksums, ranges, duplicate records and missing EOF are refused": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: compiled delay/millis drives physical D9 and D13 with 2 KiB SRAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: live INPUT_PULLUP button and UART receive execute the student's program": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: analogRead quantisation and actual Timer1 PWM follow the potentiometer": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: compiled delay/millis drives physical D9 and D13 with 2 KiB SRAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: live INPUT_PULLUP button and UART receive execute the student's program": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: analogRead quantisation and actual Timer1 PWM follow the potentiometer": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "Nano A6/A7 are real ADC channels without digital GPIO aliases": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real external interrupt runs on falling edge; TWI NACK and SPI idle byte come from peripherals": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "a runtime output conflict stops before electrical results are trusted": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "force Stop terminates a real busy Worker and rejects its delayed messages; Reset starts fresh": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "all six PWM pins use three real timers; UART output decodes UTF-8 across frames": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "production offline package includes AVR examples, toolkit and a runnable compiled Worker": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "v1/v2 migration retains source, circuit, identity and settings without mutating input": {
+      "status": "pass",
+      "lastEvidence": "boards-final.txt"
+    },
+    "existing raw IndexedDB row migrates on read and preserves old snapshot until an explicit save": {
+      "status": "pass",
+      "lastEvidence": "boards-final.txt"
+    },
+    "project rejects mixed boards, future profiles, wrong languages, entrypoint and runtime target": {
+      "status": "pass",
+      "lastEvidence": "boards-final.txt"
+    },
+    "Uno/Nano pin profiles preserve aliases, PWM, ADC-only pins and distinct MCU mappings": {
+      "status": "pass",
+      "lastEvidence": "boards-final.txt"
+    },
+    "electrical checks distinguish 5 V AVR input from 3.3 V ESP32 and 3.3 V-only modules": {
+      "status": "pass",
+      "lastEvidence": "boards-final.txt"
+    },
+    "board derivation saves an independent source-preserving project and detaches every old board wire": {
+      "status": "pass",
+      "lastEvidence": "boards-final.txt"
+    },
+    "breadboard 1–60 separates 30/31 rails, groups and centre channel without changing old 1–30": {
+      "status": "pass",
+      "lastEvidence": "boards-final.txt"
+    },
+    "Arduino ZIP/JSON and IDE sketch preserve sources; runtime has an AVR-only circuit path": {
+      "status": "pass",
+      "lastEvidence": "boards-final.txt"
+    },
+    "support status depends on board, language and implemented model; planned devices remain planned": {
+      "status": "pass",
+      "lastEvidence": "boards-final.txt"
+    },
+    "44 physical headers, duplicate power pins and reserved PSRAM pins": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "breadboard groups, channel, columns, rails and split at 15/16": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "wire deletion changes connectivity without a cached netlist": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "crossing and overlapping paths never create electrical joints": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "power short through breadboard is detected and clears after disconnection": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "button permanently joins each side and bridges both sides only while pressed": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "resistor, LED and potentiometer terminals remain separate nets": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "overvoltage, reserved pins, shared GPIO and contradictory known drivers": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "LED requires series resistor; bypassed resistor is detected": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "reference lesson passes; removing rail bridge exposes open path": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "rotation and movement preserve identity, connectivity and attached wire endpoint": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "malformed endpoints, IDs, component kinds, properties and coordinates reject": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "schema 1 fixture migrates without loss; future versions reject": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "ZIP and JSON preserve complete circuit; rejected input cannot mutate current project": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "autosave, reopening and immutable history preserve complete circuit": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "200 routed wires and maximum bend count round-trip beyond old manifest cap": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "separate documented DHT profiles and independently known byte encodings": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "four examples on three boards preserve exact profiles, pull-ups, NC and compiled artifacts through ZIP": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "electrical model emits 40 MSB-first bits through real low/high voltages": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "startup, short start and different repeat intervals reject early requests": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "missing supply, ground, DATA and external pull-up do not deliver a measurement": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "5 V ESP32 DATA domain, Nano ADC-only pin, tied DHTs and NC are diagnosed": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "frame latches its environment, fault injection modifies bytes and separate GPIOs remain independent": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "virtual microsecond sleep/ticks and time_pulse_us timeout outcomes are precise": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython upstream driver decodes dht11 and rejects checksum corruption": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython upstream driver decodes dht22 and rejects checksum corruption": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython negative values, live input, timeout, throttle and recovery": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython two DHT sensors decode distinct payloads and forced Stop remains prompt": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual AVR arduino.uno-r3.atmega328p dht11: Adafruit 1.4.6 pulse decoder": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual AVR arduino.uno-r3.atmega328p dht22: Adafruit 1.4.6 pulse decoder": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual AVR arduino.uno-r3.atmega328p dhtErrors: Adafruit 1.4.6 pulse decoder": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual AVR arduino.uno-r3.atmega328p dhtCompare: Adafruit 1.4.6 pulse decoder": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual AVR arduino.nano-classic.atmega328p dht11: Adafruit 1.4.6 pulse decoder": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual AVR arduino.nano-classic.atmega328p dht22: Adafruit 1.4.6 pulse decoder": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual AVR arduino.nano-classic.atmega328p dhtErrors: Adafruit 1.4.6 pulse decoder": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual AVR arduino.nano-classic.atmega328p dhtCompare: Adafruit 1.4.6 pulse decoder": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual AVR corrupt checksum, no response and missing external pull-up produce NaN path": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual AVR library caches results; live change arrives after its two-second interval": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual AVR explicitly demonstrates cached data versus a forced transaction and recovery": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "active HIGH against the open-drain DATA response is diagnosed as an output conflict": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "production Nano Worker decodes DHT live data, terminates and resets with fresh inputs": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "OLED geometries retain 1024-byte controller RAM but expose 512/1024 panel bytes and reject wrong initialization": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "HD44780 requires 4-bit initialization and E edges; DDRAM rows, hidden columns, clear/home and busy time are real state": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "LCD CGRAM aliases, cursor, blink, entry direction and display shift are controlled by instruction bytes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "PCF8574 has no register pointer; read port respects released pins, HD busy flag, DDRAM data and 100 kHz limit": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "display circuits, logical supply and artifacts round-trip through JSON and ZIP; old U8g2 profile remains unchanged": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython SSD1306 driver renders final row at height 32 and catches height 64 mismatch": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython LCD driver writes ASCII and CGRAM through actual I2C bytes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython LCD commands preserve DDRAM while display off, control backlight and reject non-ASCII text": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython BMP280 -> LCD chain follows live readings and reset starts from empty controller RAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "MicroPython LCD missing VCC/GND/LV/SDA/SCL/pull-ups, wrong address, clock and voltage never produce false text": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: real U8g2 UNIVISION C++ produces 128x32 pixels and responds to frame changes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: real LCD C++ renders CGRAM, updates counter and receives serial backlight/display commands": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: compiled BMP280 -> LCD sketch shows live pressure, safe SRAM and no stale display on new engine": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: real U8g2 UNIVISION C++ produces 128x32 pixels and responds to frame changes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: real LCD C++ renders CGRAM, updates counter and receives serial backlight/display commands": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: compiled BMP280 -> LCD sketch shows live pressure, safe SRAM and no stale display on new engine": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled LCD detects absent supply, LV, pull-ups and incorrect address on both board profiles": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "built Nano Worker executes LCD chain, receives live input and is forcibly terminated within 500 ms": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "MicroPython static LCD cursor blink advances while the program sleeps without further I2C writes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled GPIO software-I2C master writes LCD text and reads DDRAM through PCF8574 quasi-bidirectional pins": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython wrong backpack E mapping ACKs at PCF8574 but cannot fabricate LCD text": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "four encoder examples on three boards preserve profiles, source and artifacts through ZIP": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "profile rejects malformed position, speed, switch and bounce; five terminals rotate correctly": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "CW and CCW produce exactly one-bit Gray transitions and four edges per detent": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "queue preserves direction reversal before completion and reports completed versus requested position": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "deterministic contact bounce has twenty edges per detent and bounded trace": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "CLK/DT pull-ups are resistors and SW is passive with no hidden pull-up": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "passive contacts still switch with absent VCC, while supply failure remains visible": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "5 V ESP32 pull-ups and merged channels block start; Nano A6/A7 and open signals warn": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "active HIGH against a closed CLK or SW contact reports output conflict": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "independent instances retain separate phases, queues, switch and initial offsets": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "live malformed targets are ignored and queue overload is bounded without altering saved circuit": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython encoderRaw: wired signals, live direction or PWM and prompt stop": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython ky040: wired signals, live direction or PWM and prompt stop": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython encoderBounce: wired signals, live direction or PWM and prompt stop": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython encoderPWM: wired signals, live direction or PWM and prompt stop": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "MicroPython incremental decoder starts at zero despite a nonzero physical offset": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "slow MicroPython polling loses edges rather than receiving the model position": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "visible Python decoder rejects diagonals and cancels partial reversal before a full detent": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real compiled AVR INT0/INT1 receive scheduled bouncing contacts on both boards": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: four real AVR examples decode contact edges and reset through SW": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: four real AVR examples decode contact edges and reset through SW": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "AVR disconnected CLK remains visible and cannot produce a valid displacement": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "production Nano Worker runs queued live encoder turns and stops promptly": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "Bosch BMP180 published reference: calibration endian/sign, UT=27898, UP=23843, 15 C and 69964 Pa": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "BMP180 all OSS delays and raw words remain latched when live environment changes mid conversion": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "Bosch BMP280 reference: little-endian trims, ADC 519888/415148, startup, forced mode and sentinel reset": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "BMP280 normal mode, standby, skipped channels and burst shadowing are driven by virtual time": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "AM2320 startup, wake NACK, response delay, known CRC vector, negative sign and previous-sample cadence": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "all environment circuits, voltage profiles, source drivers and compiled artifacts survive JSON/ZIP": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython memory read/write/into, repeated-start and register-driven calibration give physical values": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython signed temperature and boundary pressures are compensated by driver on both BMPs": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real AM2320 driver rejects corrupt CRC and observes stale-to-fresh negative/live values": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "MicroPython missing supply/ground/pins/pullups, wrong address and swapped lines produce no false reading": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "MicroPython four-device shared bus updates OLED from program data, logs pressure and isolates reset": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "AM2320 driver measures elapsed time when host sleeps resume 500 us early": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: real compiled weather sketch, register repeated-start, hardware OLED and live environment": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: real compiled weather sketch, register repeated-start, hardware OLED and live environment": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled individual Arduino examples run and absent sensor wiring never yields valid measurements": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled software I2C uses actual GPIO repeated-start, register pointer, ACK and calibration bytes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real driver result depends on calibration read from the sensor registers": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "production Nano Worker preserves all sensor models, live pressure and a prompt forced Stop": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "BMP180 driver polls SCO after an early wake and times out a stuck conversion": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "all four examples on three boards round-trip and exact visible drivers/artifacts survive exports": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "16-bit y=319, RGB565 byte order/split and row-major window wrap are actual RAM writes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "rectangular rotation 0: logical 240x320, both far corners and fixed physical RAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "rectangular rotation 1: logical 320x240, both far corners and fixed physical RAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "rectangular rotation 2: logical 240x320, both far corners and fixed physical RAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "rectangular rotation 3: logical 320x240, both far corners and fixed physical RAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "full 76800-pixel fill and a smaller patch preserve pixels outside that patch": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "BGR interpretation, inversion, display OFF, sleep and software reset preserve RAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "CS HIGH, RESET LOW, minimum reset pulse and conservative startup wait gate writes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "missing supply, ground, SCK, MOSI, CS, DC or RESET cannot create a valid image": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "BL is separate from RAM writes; 5 V BL, wrong carrier and Nano A6 are rejected": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "mode 0/3 works; mode 1/2, LSB and excessive frequency cannot change pixels": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "invalid windows, unsupported MADCTL, RGB666, scroll and read commands are diagnosed": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "shared BMP280 CS is independent; two selected devices reject the transfer": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "ILI9341 and ST7735 can share SCK/MOSI with independent RAM, geometry and format": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython: iliGraphics, pixel dimensions and Stop retention": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython: iliRotation, pixel dimensions and Stop retention": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython: iliPartial, pixel dimensions and Stop retention": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython: iliDashboard, pixel dimensions and Stop retention": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "changing Python pixel data changes color; unchanged print alone cannot draw": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython partial refresh changes only its window, preserving title and frame": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython shared-bus environment update changes compensated reading and TFT pixels": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: actual compiled iliGraphics, full 32-bit pixel count, SPI registers and SRAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: actual compiled iliRotation, full 32-bit pixel count, SPI registers and SRAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: actual compiled iliPartial, full 32-bit pixel count, SPI registers and SRAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: actual compiled iliDashboard, full 32-bit pixel count, SPI registers and SRAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: actual compiled iliGraphics, full 32-bit pixel count, SPI registers and SRAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: actual compiled iliRotation, full 32-bit pixel count, SPI registers and SRAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: actual compiled iliPartial, full 32-bit pixel count, SPI registers and SRAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: actual compiled iliDashboard, full 32-bit pixel count, SPI registers and SRAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "packaged Nano Worker renders ILI9341 and remains forcibly stoppable within 500 ms": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "NEC envelope has LSB byte order, inverse bytes, exact timings and special repeat": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "four IR examples on three boards preserve source, profiles and artifact through JSON/ZIP": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "IR parser rejects malformed groups, voltage, address, command, hold and faults": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "remote causes wired active LOW GPIO pulses, exact edges and 110 ms repeat starts": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "unpowered, missing ground, disconnected OUT, blocked or different optical group do not inject commands": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "IR voltage domains and Nano analog-only pins are checked before run": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "receiver open collector has resistive pull-up and detects actively driven HIGH conflict": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "transmitter requires valid carrier, supply and optical path; steady HIGH and wrong frequency fail": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "remote live input validation, duplicate presses and queue limit do not modify saved circuit": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython irNEC: pulses decode, repeats, address filter or LED and stop": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython irPulses: pulses decode, repeats, address filter or LED and stop": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython irLED: pulses decode, repeats, address filter or LED and stop": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython rejects inverse and timing faults, then resynchronizes on a valid frame": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython transmitter emits PWM NEC waveform through the paired receiver": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "slow MicroPython polling loses a frame instead of receiving a decoded command from the model": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: real compiled NEC INT0 receiver, repeats, errors and PWM LED": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: real compiled NEC INT0 receiver, repeats, errors and PWM LED": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: Timer2 carrier and real simultaneous INT0 loopback decode": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: Timer2 carrier and real simultaneous INT0 loopback decode": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "production Nano Worker receives live NEC, repeat and stops promptly": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "independent receivers and remotes use separate GPIO nets and optical groups; fresh run clears pending edges": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "receiver supply through a resistor follows its GPIO source instead of a stale power cache": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython transmitter repeat parameter emits a full frame then two special repeats": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: actual carrier rejects orphan/stale repeats and exposes unread mailbox loss": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: actual carrier rejects orphan/stale repeats and exposes unread mailbox loss": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "IR software clock ignores browser pauses but a declared sleep can lose a frame": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "five gradual lessons retain the project/ZIP format and editable work with known scenario IDs": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual WASM reference: V1 LED i vrijeme": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual WASM reference: V2 Tipkalo kao ulaz": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual WASM reference: V3 Potenciometar i PWM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual WASM reference: V4 AHT10 i OLED": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual WASM reference: V5 Regulator sa servom": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "behaviour checker accepts different variable names, helper functions, component IDs and GPIO": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "constant output and wrong timing are rejected by observed LED behaviour": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "inverted button and fixed PWM cannot pass input/output scenarios": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "OLED checker requires actual numeric pixels; console and changing temperatures alone do not pass": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "single-threshold regulator fails hysteresis while still passing the ordinary hot/cold states": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "submission carries names, answers, source, drivers and result; metadata is not an authenticity proof": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "missing answers are identified; failed attempts can be submitted without a false pass": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "fingerprint detects executable-file or circuit edits, but not names, answers or editor preferences": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "untrusted scenario and forged local result do not influence an independent rerun": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "abort terminates a non-yielding program and does not leave a session running": {
+      "status": "pass",
+      "lastEvidence": "abort-recheck.txt"
+    },
+    "invalid work cannot request an unknown scenario; older projects remain parseable": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "broken circuit and Python exceptions are reported as failure, never a successful empty check": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "assessment documents are not hidden runtime inputs; ordinary text data remain available": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "persist actual reference results as development evidence": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "package covers shell, lazy editor, every runtime dependency, drivers, manual and valid install icons": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "verified package reopens shell and executes file requests without any network": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "incorrect bytes or login/fallback response cannot install an eligible package": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "quota failure cannot advertise a partially stored package": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "an evicted asset invalidates offline readiness": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "an update needs an explicit message and refuses more than one open tab": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "upgrade retains previous content-addressed runtime and does not cache unrelated or private requests": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "content-addressed production Worker actually runs MicroPython and framebuf": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "known DS18B20 scratchpad CRC, signed temperature words and conversion limits": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "four examples on all supported boards preserve ROM, drivers, artifact and ZIP/JSON": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "reset/presence uses real network LOW; Read ROM sends LSB first": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "scratchpad starts at 85 C and CRC alone does not establish freshness": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "Convert T latches environment, polls busy and only updates after its deadline": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "Write Scratchpad configures all four resolutions with known quantization and time": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "Match ROM reads separate scratchpads and Skip ROM read is wired AND": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "CRC fault changes data on the wire and disconnected DQ loses presence": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "missing external pull-up, supply, ground and DQ cannot return valid data": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "wrong voltage domain, duplicate ROM, ADC-only Nano and short reset are diagnosed": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "active GPIO HIGH against a 1-Wire LOW produces an output conflict": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "Copy and Recall Scratchpad preserve the three configuration bytes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "power cycle restores EEPROM and 85 C, and cancels an unfinished copy or conversion": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "wrong Match ROM gives no selected sensor and Read Power Supply reports external VDD": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real upstream MicroPython search finds all ROMs, initial 85 and separate signed values": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real upstream MicroPython CRC error and missing presence are explicit failures": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real upstream Alarm Search selects sensors outside configured integer thresholds": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython OPEN_DRAIN releases HIGH and original Pin OUT still follows its latch": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython live input, latched conversion and Stop/Reset": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual AVR arduino.uno-r3.atmega328p ds18b20: unmodified OneWire and DallasTemperature": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual AVR arduino.uno-r3.atmega328p ds18Multi: unmodified OneWire and DallasTemperature": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual AVR arduino.uno-r3.atmega328p ds18Resolution: unmodified OneWire and DallasTemperature": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual AVR arduino.uno-r3.atmega328p ds18Errors: unmodified OneWire and DallasTemperature": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual AVR arduino.nano-classic.atmega328p ds18b20: unmodified OneWire and DallasTemperature": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual AVR arduino.nano-classic.atmega328p ds18Multi: unmodified OneWire and DallasTemperature": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual AVR arduino.nano-classic.atmega328p ds18Resolution: unmodified OneWire and DallasTemperature": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual AVR arduino.nano-classic.atmega328p ds18Errors: unmodified OneWire and DallasTemperature": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual AVR CRC corruption and disconnected signal choose error paths then recover": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual AVR raw ROM search and CRC fixture enumerates all three identities": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "production Nano Worker reads 1-Wire live data and resets after termination": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "AHT10: startup, calibration, busy, latched 20-bit data and reset": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "SSD1306: independent addressing, commands, orientation and no fake text rendering": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "new devices and visible driver files survive project JSON and ZIP": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython: separate scan results, raw six-byte AHT10 protocol and readfrom_into": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "integrated Python drivers: live environment -> measured bytes -> OLED pixels -> servo with hysteresis": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "wrong I2C pins, swapped lines, absent VCC and ground produce NACK; repairs restore real driver": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "OLED wrong address and missing power fail; setting module and code to 0x3D restores display": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "module pull-ups are electrical paths; absent pull-ups fail, two external resistors restore bus": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "rewiring and renaming components uses actual nets and GPIO, without fixed fixture fallbacks": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "servo follows PWM pulse: 0/90/180, power/ground/signal, unsupported period and deinit": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "SSD1306 standard driver: writevto, text/graphics, inversion, power, contrast, rotate": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "two OLED addresses are isolated; duplicate address, AHT10 sharing and 5 V module are diagnosed": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "I2C declared bounds, unsupported commands and STOP are catchable Python exceptions": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "trace/history are bounded; new run clears peripheral state and Stop isolates pending work": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "program-controlled sensor power removes ACK, resets calibration and permits recovery": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "205 real conversions retain the last 200 samples and 100 I2C transactions": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "ZIP and JSON preserve Unicode, helper files and settings": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "future schemas and unknown board profiles are rejected": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "entrypoint, settings and circuit scope are validated": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "traversal, scripts, internal overrides and case collisions are rejected": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "file and decompressed archive sizes are bounded": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "ZIP manifest must match files; truncated packages are rejected": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "editing preserves immutable runtime snapshot": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "IndexedDB survives reopening with multiple projects, settings and history": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "atomic revisions protect against concurrent tab writes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "bounded history restoration creates a new revision": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "strict calendar, BCD and serialized state validation reject normalization, DST and corrupt bytes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "espressif.esp32-s3-devkitc-1.v1.1.n16r8: four RTC source/circuit projects round-trip and export actual sources": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: four RTC source/circuit projects round-trip and export actual sources": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: four RTC source/circuit projects round-trip and export actual sources": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "rising command/write bits and falling reply bits read fixed independent BCD bytes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "clock writes commit on falling CE; incomplete burst is discarded and trailing bytes ignored": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "calendar handles leap day, short months, midnight day register and year rollover": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "12-hour 11:59:59 AM changes to 12 PM and 11 PM to midnight": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "CH freezes time; WP blocks clock and RAM including burst control, but control clears WP": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "RAM supports 31 single-byte addresses and partial/continuous bursts without clock aliasing": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "read snapshot is coherent across midnight; I/O is released with CE low": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "missing main supply with battery retains time/RAM but cannot communicate; restore recovers": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "loss of both supplies invalidates calendar and erases RAM; restored supply needs initialization": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "invalid calendar is flagged; invalid command and unsupported address cannot mutate RAM/time": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "charging register is outside clock burst and enabled charging produces explicit diagnostic": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "wiring checks reject merged signals, Nano analog-only pins and 5 V S3 return path": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "unconnected VCC cannot return valid calendar bytes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "unconnected GND cannot return valid calendar bytes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "unconnected CE cannot return valid calendar bytes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "unconnected IO cannot return valid calendar bytes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "unconnected SCLK cannot return valid calendar bytes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "GPIO driving opposite to RTC push-pull output is diagnosed": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "session snapshot survives MCU restart and source edits, stays isolated by project/topology/initial data": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: actual compiled rtcRead drives RTC GPIO and display": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: actual compiled rtcSet drives RTC GPIO and display": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: actual compiled rtcMemory drives RTC GPIO and display": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: actual compiled rtcClock drives RTC GPIO and display": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: actual compiled rtcRead drives RTC GPIO and display": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: actual compiled rtcSet drives RTC GPIO and display": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: actual compiled rtcMemory drives RTC GPIO and display": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: actual compiled rtcClock drives RTC GPIO and display": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 compiled rtcRead reads real GPIO replies and remains stoppable": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 compiled rtcSet reads real GPIO replies and remains stoppable": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 compiled rtcMemory reads real GPIO replies and remains stoppable": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 compiled rtcClock reads real GPIO replies and remains stoppable": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "MicroPython rtcRead runs visible GPIO driver inside real WASM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "MicroPython rtcSet runs visible GPIO driver inside real WASM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "MicroPython rtcMemory runs visible GPIO driver inside real WASM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "MicroPython rtcClock runs visible GPIO driver inside real WASM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "MicroPython driver rejects absent RTC rather than inventing a timestamp": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 C++ live main-power interruption reports invalid read, keeps running and recovers on battery": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 compiled restart receives battery RAM snapshot and increments it without resetting clock": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 compiled Adafruit dht11 decodes GPIO pulses with independent known bytes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 compiled Adafruit dht22 decodes GPIO pulses with independent known bytes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 DHT rejects checksum and recovers through a new physical transfer": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 DHT rejects timeout and recovers through a new physical transfer": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 DHT forced 300 ms attempts respect sensor minimum interval": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 live DHT environment is decoded by the next C++ read": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 DHT with missing external pull-up cannot deliver fabricated data": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 generic OneWire fallback searches three ROMs, matches addresses and decodes signed scratchpads": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 DallasTemperature writes and reads all four resolutions with correct quantization": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 DS18B20 CRC failure affects only the addressed sensor and recovers on a new conversion": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 DS18B20 disconnected device is absent from ROM search": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 real U8g2 64-row library generates I2C page bytes and visible edge pixels": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 real U8g2 32-row library generates I2C page bytes and visible edge pixels": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 U8g2 hardware I2C cannot light an unconnected display": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real S3 compiler rejects unavailable graphics constructors and hardware IRQ API": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 C++ selection preserves old MicroPython documents and same-board language-copy wiring": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled S3 blink retains exact source, target and full JSON/ZIP/IDE exports": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled S3 button retains exact source, target and full JSON/ZIP/IDE exports": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled S3 adc retains exact source, target and full JSON/ZIP/IDE exports": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled S3 regulator retains exact source, target and full JSON/ZIP/IDE exports": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled S3 sensors retains exact source, target and full JSON/ZIP/IDE exports": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled S3 servo retains exact source, target and full JSON/ZIP/IDE exports": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled S3 lcd retains exact source, target and full JSON/ZIP/IDE exports": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled S3 touch retains exact source, target and full JSON/ZIP/IDE exports": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled S3 dht11 retains exact source, target and full JSON/ZIP/IDE exports": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled S3 dht22 retains exact source, target and full JSON/ZIP/IDE exports": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled S3 dhtErrors retains exact source, target and full JSON/ZIP/IDE exports": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled S3 ds18Multi retains exact source, target and full JSON/ZIP/IDE exports": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled S3 ds18Resolution retains exact source, target and full JSON/ZIP/IDE exports": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled S3 oled64 retains exact source, target and full JSON/ZIP/IDE exports": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled S3 oled32 retains exact source, target and full JSON/ZIP/IDE exports": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled S3 rtcRead retains exact source, target and full JSON/ZIP/IDE exports": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled S3 rtcSet retains exact source, target and full JSON/ZIP/IDE exports": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled S3 rtcMemory retains exact source, target and full JSON/ZIP/IDE exports": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled S3 rtcClock retains exact source, target and full JSON/ZIP/IDE exports": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 artifacts reject source, library, target, ABI and binary corruption": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real blink program preserves state across nested delay calls and emits both electrical levels": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "button and serial input change the actual GPIO path during asynchronous C++ execution": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "ADC 12-bit samples and PWM follow live potentiometer endpoints": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "AHT10 samples flow through Wire, visible OLED pixels and a calibrated LEDC servo impulse": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "BMP180/BMP280 compensation and AM2320 CRC run as compiled library code": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "SG90 position is derived from a 50 Hz impulse with independent 5 V supply": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "LCD text and custom CGRAM glyph come from actual PCF8574 transfers": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "SPI touch performs ADC conversion, C++ calibration, hit-test, GPIO and TFT pixel update": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "missing touch MISO cannot activate LED and reports a protocol diagnosis": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 cache and submission reopen with the correct WASM artifact and measurements label": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "S3 session ignores old messages and terminates its Worker exactly once": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real compiler supports multiple C++/C files and Bounce2 GPIO without source rewriting": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real compiler reports exact source lines and rejects unsupported ESP-specific includes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real compiler preserves automatic-prototype boundary and rejects old ESP32 channel API": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "loopback bridge validates and caches the correct source-bound S3 result": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual S3 Worker accepts live input inside setup and force-stops a pure infinite C++ loop": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "serial flood keeps console chunks and message rate bounded while C++ remains stoppable": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "LED follows actual Python loop; unchanged pin numbers cannot drive a rewired LED": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "button changes live input in normal sleeping Python loop; release and missing wire change result": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "ADC and PWM use live potentiometer voltage, saturate, and publish real duty": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "LED current reflects series resistance, polarity, open cathode and split rail": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "floating ADC and ambiguous digital voltage report errors; no hidden fixture input": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "opposing program outputs and a contact that shorts an output raise runtime diagnostics": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "PWM methods, deinit, quantised 12-bit ADC, bounds and unavailable GPIOs": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "stopped runs cannot deliver late events; repeated force-stop and fresh run": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "compiled run snapshot and multiple inputs stay isolated from later project edits": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "invalid power circuit is blocked before run, and all three lesson circuits compile": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "atomic initial output value avoids an artificial conflict against a driven-high net": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "PWM channel limit is a catchable Python error; an inactive LED does not create a source": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "all SPI examples on three boards round-trip JSON/ZIP and preserve exact Arduino IDE sources/artifacts": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "RGB565 red/green/blue, odd transfer split, window wrap, and wrong panel offset come only from bytes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "rotation 0 uses MADCTL, green-tab offsets and physical corner": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "rotation 1 uses MADCTL, green-tab offsets and physical corner": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "rotation 2 uses MADCTL, green-tab offsets and physical corner": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "rotation 3 uses MADCTL, green-tab offsets and physical corner": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "BGR bit swaps color interpretation; inversion, display OFF and sleep preserve RAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "CS HIGH and RESET LOW ignore display writes; hardware reset needs 10 us and startup wait": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "BL disconnected hides actual written pixels; 5 V BL is rejected on every board": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "missing supply, common ground, SCK, MOSI, CS, DC or RESET prevents a valid TFT image": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "mode 0 and 3 both work, mode 1/2, LSB and excessive frequency cannot mutate the display": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "unsupported TFT commands/color depths fail explicitly, without guessed pixels": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "BMP280 reads chip ID/calibration, mode status and pairs of register writes, with independent CS": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "missing MISO returns 0xFF; two active CS reject ambiguous shared-bus transfers": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "Nano A6/A7 and wrong 3.3/5 V SPI carrier cannot be used as digital SPI wiring": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "TFT memory is device-local and does not depend on console text": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython executes tftGraphics using SPI bytes and Stop retains the frame": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython executes tftRotation using SPI bytes and Stop retains the frame": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython executes bmp280SPI using SPI bytes and Stop retains the frame": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython executes spiDashboard using SPI bytes and Stop retains the frame": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython readinto/write_readinto, mode 3, deinit, SoftSPI and API validation": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "editing Python RGB565 data changes visible pixels despite the unchanged completion message": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "live BMP280 SPI environment changes the next compensated sample and TFT pixels": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: real compiled tftGraphics uses actual SPI registers without full AVR framebuffer": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: real compiled tftRotation uses actual SPI registers without full AVR framebuffer": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: real compiled bmp280SPI uses actual SPI registers without full AVR framebuffer": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: real compiled spiDashboard uses actual SPI registers without full AVR framebuffer": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: real compiled tftGraphics uses actual SPI registers without full AVR framebuffer": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: real compiled tftRotation uses actual SPI registers without full AVR framebuffer": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: real compiled bmp280SPI uses actual SPI registers without full AVR framebuffer": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: real compiled spiDashboard uses actual SPI registers without full AVR framebuffer": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "two TFT devices sharing SCK/MOSI maintain independent windows, RAM and chip selects": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "power loss disables TFT and BMP280; invalid MISO direction and swapped data wires cannot forge ID": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "the packaged Nano Worker renders ST7735 and forced termination stays below 500 ms": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "three stepper examples across three board profiles round-trip JSON, ZIP, sketch and source-bound artifacts": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "1/1: pulse count, sign and 90 degree displacement": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "1/2: pulse count, sign and 90 degree displacement": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "1/4: pulse count, sign and 90 degree displacement": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "1/8: pulse count, sign and 90 degree displacement": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "1/16: pulse count, sign and 90 degree displacement": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "400 full steps per revolution gives half the angle for the same STEP train": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "ENABLE disables coil targets but does not freeze the A4988 translator": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "RESET selects electrical Home, ignores STEP and does not home the shaft": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "SLEEP ignores STEP, wake selects Home and requires the 1 ms start interval": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "unlisted MS combinations are explicitly rejected instead of interpreted as 1/16": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "STEP HIGH and LOW shorter than 1 us cannot produce valid model movement": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "STEP is recognized once at a rising edge, validated on sustained HIGH, not by repeated frames": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "200 ns setup and hold failures are rejected without a phantom step": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "mode change at a noncommon position is blocked with an explicit limitation": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "internal MS pull-downs choose full steps when all MS wires are removed": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "unconnected STEP/DIR/ENABLE/RESET/SLEEP cannot silently create a valid drive": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "missing VDD, VMOT or common ground prevents motor movement": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "one reversed coil or phase swap reverses direction; two reversed coils preserve it": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "crossed coil pairs, output shorts and GPIO motor connections are rejected before running": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "Nano A6 and incompatible ESP32 VDD logic levels are rejected": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "5 V control HIGH with 3.3 V VDD follows independent 5.5 V input limit and relative threshold": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "disconnected phase and arbitrary console angle cannot move the motor model": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "two drivers and motors maintain independent step counts and phase topology": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "an edited MicroPython source changes pulses despite unchanged console wording": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual MicroPython stepperBasic performs GPIO protocol and Stop preserves its result": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual MicroPython stepperMicro performs GPIO protocol and Stop preserves its result": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual MicroPython stepperControl performs GPIO protocol and Stop preserves its result": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: actual compiled stepperBasic drives the translator and bipolar motor": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: actual compiled stepperMicro drives the translator and bipolar motor": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: actual compiled stepperControl drives the translator and bipolar motor": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: actual compiled stepperBasic drives the translator and bipolar motor": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: actual compiled stepperMicro drives the translator and bipolar motor": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: actual compiled stepperControl drives the translator and bipolar motor": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "trace remains bounded, fresh sessions reset counters and functional PWM is explicitly unsupported": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "relay contact shorting an enabled A4988 output to ground is diagnosed at runtime": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "the production Nano Worker runs A4988 and terminates within 500 ms": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "four TM1637 examples on three boards round-trip source, wiring, JSON and ZIP": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "parser validates explicit 5 V module and LV profile": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "actual LSB bytes, ninth ACK and address registers form 12:34": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "reversed MSB bit order cannot masquerade as a TM1637 command": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "data remains invisible before ON; OFF retains RAM, clear overwrites it": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "all eight brightness commands use datasheet duties including nonzero level 0": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "fixed and auto address modes, hidden C4/C5 and invalid C6 do not wrap": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "partial byte at STOP is ignored while earlier complete bytes remain effective": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "keyboard-read command is explicitly unsupported and leaves display RAM unchanged": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "disconnected VCC, GND, LV, CLK and DIO never produce valid data and ACK": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "voltage-domain, merged signal and Nano analog-only wiring checks apply": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "10 kOhm pulls are resistive, not fixed HIGH voltage sources": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "active HIGH against slave LOW ACK produces a conflict": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "pre-fast clock is rejected and a later normal START resynchronizes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "independent TM1637 instances use their own GPIO nets; shared pair is diagnosed": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "GPIO-switched supply resets RAM and ON state immediately on power loss": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "bounded traces and fresh sessions reset state": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython tmSegments executes GPIO driver and preserves Stop results": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython tmCounter executes GPIO driver and preserves Stop results": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython tmClock executes GPIO driver and preserves Stop results": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython tmBrightness executes GPIO driver and preserves Stop results": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython signed range, leading zeros, partial write, OFF, clear and missing ACK": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: all four actual compiled TM1637 programs run through GPIO and ACK": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: all four actual compiled TM1637 programs run through GPIO and ACK": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: newly compiled modified source handles bounds, fixed address, OFF and missing ACK": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: newly compiled modified source handles bounds, fixed address, OFF and missing ACK": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "production Nano Worker runs TM1637 and terminates promptly": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "four examples on S3/Uno/Nano preserve exact drivers, sources, inputs and artifacts through JSON/ZIP/IDE": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "raw 12-bit X/Y endpoints, Z1/Z2, leading null/trailing zeros and split transfers are actual SPI bytes": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "byte-aligned pipelining returns the previous conversion while a new command starts": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "release has zero pressure score and active LOW PENIRQ follows touch and PD0": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "optional IRQ can be disconnected while SPI polling still works; output HIGH IRQ conflicts on press": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "missing power, ground, SCK, MOSI or CS cannot yield a valid ADC conversion": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "missing MISO yields 0xFF with diagnosis; CS HIGH does not start conversion": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "CS deassert discards incomplete conversion data, preserving the input": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "unsupported touch SPI setting {\"mode\":1}": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "unsupported touch SPI setting {\"mode\":2}": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "unsupported touch SPI setting {\"mode\":3}": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "unsupported touch SPI setting {\"firstbit\":1}": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "unsupported touch SPI setting {\"freq\":4000000}": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "unsupported ADC command 0xd8 is diagnosed": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "unsupported ADC command 0xd4 is diagnosed": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "unsupported ADC command 0xd2 is diagnosed": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "unsupported ADC command 0xa0 is diagnosed": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "unsupported ADC command 0xe0 is diagnosed": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "unsupported ADC command 0x80 is diagnosed": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "shared TFT+touch CS collision rejects transfers, distinct CS leave TFT RAM unchanged": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "carrier voltage mismatch, signal shorts and Nano analog-only pins are rejected; invalid input cannot enter project": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython raw input, live pressure change, release and Stop retention": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real Python endpoint calibration handles four inverse rotations, reversal, clipping and zero-span rejection": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython two-point calibration captures SPI samples and tracks a third point": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython rejects a repeated calibration target instead of silently accepting it": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython hit-test drives wired LED through SPI; hold/drag/outside do not retoggle": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "wrong program calibration misses a valid-looking button and matched rotation 1 restores the hit": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "real MicroPython four rotations map the same physical origin to different logical coordinates": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: compiled touchRaw really reads ADC and controls state with bounded SRAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: compiled touchCalibration really reads ADC and controls state with bounded SRAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: compiled touchButton really reads ADC and controls state with bounded SRAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.uno-r3.atmega328p: compiled touchRotation really reads ADC and controls state with bounded SRAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: compiled touchRaw really reads ADC and controls state with bounded SRAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: compiled touchCalibration really reads ADC and controls state with bounded SRAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: compiled touchButton really reads ADC and controls state with bounded SRAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "arduino.nano-classic.atmega328p: compiled touchRotation really reads ADC and controls state with bounded SRAM": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    },
+    "packaged Nano Worker handles live touch, renders the result and can be stopped within 500 ms": {
+      "status": "pass",
+      "lastEvidence": "regression-complete.txt"
+    }
+  }
+}

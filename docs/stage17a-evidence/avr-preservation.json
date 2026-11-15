@@ -1,0 +1,11 @@
+{
+  "previousArtifacts": 112,
+  "currentArtifacts": 120,
+  "allPreviousByteIdentical": true,
+  "newKeys": [
+    "iliGraphics",
+    "iliRotation",
+    "iliPartial",
+    "iliDashboard"
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "version": "0.5.5-beta.1",
+  "build": "802410d3505c6fa9",
+  "uniqueChecks": {
+    "passed": 336,
+    "total": 336
+  },
+  "groups": {
+    "existingNode": {
+      "passed": 288,
+      "total": 288
+    },
+    "tm1637Node": {
+      "passed": 27,
+      "total": 27
+    },
+    "runtimeCore": {
+      "passed": 10,
+      "total": 10
+    },
+    "runtimeProjectFiles": {
+      "passed": 3,
+      "total": 3
+    },
+    "offline": {
+      "passed": 8,
+      "total": 8
+    }
+  },
+  "initialCombinedRun": {
+    "tests": 323,
+    "pass": 322,
+    "fail": 1,
+    "skip": 0
+  },
+  "resolvedFailure": {
+    "test": "support status depends on board, language and implemented model; planned devices remain planned",
+    "reason": "TM1637 is now experimental on supported execution profiles; updated prior planned-only expectation. Updated board suite passed 9/9.",
+    "evidence": "boards-final.log"
+  },
+  "finalReleaseRun": {
+    "passed": 35,
+    "total": 35,
+    "skip": 0,
+    "evidence": "release-tests.log"
+  },
+  "additionalNoTMRegression": {
+    "passed": 2,
+    "total": 2,
+    "deduplicated": true,
+    "evidence": "no-tm-regression.log"
+  },
+  "typecheck": "passed as part of npm run build",
+  "buildStatus": "passed",
+  "manifest": {
+    "resources": 110,
+    "bytes": 8709696,
+    "integrity": "all hashes and sizes passed"
+  },
+  "driverProvenance": "all hashes passed",
+  "browser": {
+    "environment": "Chromium/Linux development preview",
+    "passed": [
+      "MicroPython clock with colon",
+      "AVR Uno clock with colon",
+      "AVR Uno 8 brightness levels and OFF",
+      "Stop and retained results",
+      "CSV actual download, BOM, 4 columns, 128 rows"
+    ],
+    "unverified": [
+      "Safari/iOS",
+      "Android",
+      "physical TM1637",
+      "target school PC",
+      "student pilot",
+      "cold offline private production origin"
+    ]
+  },
+  "runtimeUnchanged": "unchanged-runtime.json",
+  "compilerSkipped": false
+}

@@ -1,0 +1,14 @@
+{
+  "profile": "S3-only native source export check; no device contacted",
+  "cli": "1.3.1",
+  "core": "esp32:esp32@3.3.12",
+  "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+  "officialIndex": "https://espressif.github.io/arduino-esp32/package_esp32_index.json",
+  "indexSHA256": "d5f26e5ee0b06c8e2c66c2196aa16fdffdbbc317c832159795f2caa5405d0f7d",
+  "selectedTools": [
+    "esp-x32@2601",
+    "esptool_py@5.3.1",
+    "esp32s3-libs@3.3.12"
+  ],
+  "notInstalled": "Other SoC libraries, RISC-V compiler, debug/upload tools; not needed for this compile-only S3 check"
+}

@@ -1,0 +1,158 @@
+✔ NRF24: reset, one-byte status and FIFO status have independent known values (2.376011ms)
+✖ NRF24: static packet crosses SPI FIFO; ACK sets TX_DS and removes TX entry (6.056542ms)
+✔ NRF24: mismatched channel gives 4 attempts, MAX_RT and retained payload (0.737478ms)
+✔ NRF24: mismatched address gives 4 attempts, MAX_RT and retained payload (0.458268ms)
+✔ NRF24: mismatched length gives 4 attempts, MAX_RT and retained payload (0.349485ms)
+✔ NRF24: mismatched rate gives 4 attempts, MAX_RT and retained payload (0.317928ms)
+✔ NRF24: mismatched CRC gives 4 attempts, MAX_RT and retained payload (0.433561ms)
+✔ NRF24: lost first ACK retries once and suppresses duplicate FIFO delivery (0.714053ms)
+✔ NRF24: lost first data retries once, then delivers one packet (0.66544ms)
+✔ NRF24: no auto-ACK completes even with no listening peer (0.456245ms)
+✔ NRF24: sender pipe-0 address must match TX address for auto-ACK (0.376325ms)
+✔ NRF24: full RX FIFO rejects new packets; status flags are write-one-clear (0.469836ms)
+✔ NRF24: CE below 10 us and power-up below 1.5 ms do not send (0.225539ms)
+✔ NRF24: power loss aborts pending ACK and clears FIFO, not another node (0.344768ms)
+✔ NRF24: unsupported dynamic features and malformed commands fail explicitly (0.64595ms)
+✖ SPI wiring: missing power, MISO, swapped signals and invalid mode do not fake register read (28.281869ms)
+✖ project format 4 roundtrips both nodes through JSON and ZIP and rejects nesting (2.468209ms)
+✖ real programs share packets and ACK: micropython → micropython (2.101227ms)
+✖ real MicroPython programs: channel (0.873583ms)
+✖ real MicroPython programs: address (0.764929ms)
+✖ real MicroPython programs: ack (0.799782ms)
+✖ real MicroPython programs: data (0.626041ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 14
+ℹ fail 8
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 710.18305
+
+✖ failing tests:
+
+test at verification/radio.test.ts:1:1852
+✖ NRF24: static packet crosses SPI FIFO; ACK sets TX_DS and removes TX entry (6.056542ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  6277 !== 6275
+  
+      at TestContext.<anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/radio.test.ts:23:387)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 6277,
+    expected: 6275,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at verification/radio.test.ts:1:5101
+✖ SPI wiring: missing power, MISO, swapped signals and invalid mode do not fake register read (28.281869ms)
+  AssertionError [ERR_ASSERTION]: none
+  
+  255 !== 2
+  
+      at TestContext.<anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/radio.test.ts:39:300)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 255,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at verification/radio.test.ts:1:5981
+✖ project format 4 roundtrips both nodes through JSON and ZIP and rejects nesting (2.468209ms)
+  Error: Vodič sadrži nepostojeći priključak.
+      at fail (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:130:37)
+      at endpoint (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:218:142)
+      at <anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:221:14)
+      at Array.map (<anonymous>)
+      at parseCircuit (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:219:18)
+      at parseProject (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/project/model.ts:118:19)
+      at TestContext.<anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/radio.test.ts:42:222)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+
+test at verification/radio.test.ts:1:8000
+✖ real programs share packets and ACK: micropython → micropython (2.101227ms)
+  Error: Vodič sadrži nepostojeći priključak.
+      at fail (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:130:37)
+      at endpoint (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:218:142)
+      at <anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:221:14)
+      at Array.map (<anonymous>)
+      at parseCircuit (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:219:18)
+      at parseProject (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/project/model.ts:118:19)
+      at createRadioExperiment (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/radio/engine.ts:22:39)
+      at execute (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/radio.test.ts:50:34)
+      at async TestContext.<anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/radio.test.ts:54:334)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+
+test at verification/radio.test.ts:1:8368
+✖ real MicroPython programs: channel (0.873583ms)
+  Error: Vodič sadrži nepostojeći priključak.
+      at fail (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:130:37)
+      at endpoint (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:218:142)
+      at <anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:221:14)
+      at Array.map (<anonymous>)
+      at parseCircuit (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:219:18)
+      at parseProject (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/project/model.ts:118:19)
+      at createRadioExperiment (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/radio/engine.ts:22:39)
+      at execute (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/radio.test.ts:50:34)
+      at async TestContext.<anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/radio.test.ts:55:114)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+
+test at verification/radio.test.ts:1:8368
+✖ real MicroPython programs: address (0.764929ms)
+  Error: Vodič sadrži nepostojeći priključak.
+      at fail (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:130:37)
+      at endpoint (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:218:142)
+      at <anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:221:14)
+      at Array.map (<anonymous>)
+      at parseCircuit (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:219:18)
+      at parseProject (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/project/model.ts:118:19)
+      at createRadioExperiment (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/radio/engine.ts:22:39)
+      at execute (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/radio.test.ts:50:34)
+      at async TestContext.<anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/radio.test.ts:55:114)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+
+test at verification/radio.test.ts:1:8368
+✖ real MicroPython programs: ack (0.799782ms)
+  Error: Vodič sadrži nepostojeći priključak.
+      at fail (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:130:37)
+      at endpoint (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:218:142)
+      at <anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:221:14)
+      at Array.map (<anonymous>)
+      at parseCircuit (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:219:18)
+      at parseProject (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/project/model.ts:118:19)
+      at createRadioExperiment (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/radio/engine.ts:22:39)
+      at execute (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/radio.test.ts:50:34)
+      at async TestContext.<anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/radio.test.ts:55:114)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+
+test at verification/radio.test.ts:1:8368
+✖ real MicroPython programs: data (0.626041ms)
+  Error: Vodič sadrži nepostojeći priključak.
+      at fail (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:130:37)
+      at endpoint (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:218:142)
+      at <anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:221:14)
+      at Array.map (<anonymous>)
+      at parseCircuit (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/circuit/model.ts:219:18)
+      at parseProject (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/project/model.ts:118:19)
+      at createRadioExperiment (/workspace/sites/esp32-micropython-lab/.sites-checkout/src/radio/engine.ts:22:39)
+      at execute (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/radio.test.ts:50:34)
+      at async TestContext.<anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/radio.test.ts:55:114)
+      at async Test.run (node:internal/test_runner/test:1409:7)

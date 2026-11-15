@@ -1,0 +1,190 @@
+TAP version 13
+# Subtest: explicit carrier pins, pull-up property and four independent signal nets survive parsing
+ok 1 - explicit carrier pins, pull-up property and four independent signal nets survive parsing
+  ---
+  duration_ms: 20.564085
+  type: 'test'
+  ...
+# Subtest: routing requires both named channels on the same converter; no crossed or split path
+ok 2 - routing requires both named channels on the same converter; no crossed or split path
+  ---
+  duration_ms: 0.377437
+  type: 'test'
+  ...
+# Subtest: idle HIGH voltages stay at 3.3/5 V while real register writes and reads cross the converter
+ok 3 - idle HIGH voltages stay at 3.3/5 V while real register writes and reads cross the converter
+  ---
+  duration_ms: 12.156398
+  type: 'test'
+  ...
+# Subtest: SDA_L: a remote open-drain LOW reaches the other domain and release restores both HIGH levels
+ok 4 - SDA_L: a remote open-drain LOW reaches the other domain and release restores both HIGH levels
+  ---
+  duration_ms: 4.425929
+  type: 'test'
+  ...
+# Subtest: SCL_L: a remote open-drain LOW reaches the other domain and release restores both HIGH levels
+ok 5 - SCL_L: a remote open-drain LOW reaches the other domain and release restores both HIGH levels
+  ---
+  duration_ms: 2.90194
+  type: 'test'
+  ...
+# Subtest: SDA_H: a remote open-drain LOW reaches the other domain and release restores both HIGH levels
+ok 6 - SDA_H: a remote open-drain LOW reaches the other domain and release restores both HIGH levels
+  ---
+  duration_ms: 3.429272
+  type: 'test'
+  ...
+# Subtest: SCL_H: a remote open-drain LOW reaches the other domain and release restores both HIGH levels
+ok 7 - SCL_H: a remote open-drain LOW reaches the other domain and release restores both HIGH levels
+  ---
+  duration_ms: 2.03042
+  type: 'test'
+  ...
+# Subtest: missing LV cannot be certified by phantom pull-up power; restoring the wire recovers ACK
+ok 8 - missing LV cannot be certified by phantom pull-up power; restoring the wire recovers ACK
+  ---
+  duration_ms: 2.604192
+  type: 'test'
+  ...
+# Subtest: missing HV cannot be certified by phantom pull-up power; restoring the wire recovers ACK
+ok 9 - missing HV cannot be certified by phantom pull-up power; restoring the wire recovers ACK
+  ---
+  duration_ms: 3.404755
+  type: 'test'
+  ...
+# Subtest: missing GND cannot be certified by phantom pull-up power; restoring the wire recovers ACK
+ok 10 - missing GND cannot be certified by phantom pull-up power; restoring the wire recovers ACK
+  ---
+  duration_ms: 3.093327
+  type: 'test'
+  ...
+# Subtest: disabling converter pull-ups leaves the board domain floating even if the remote module has pull-ups
+ok 11 - disabling converter pull-ups leaves the board domain floating even if the remote module has pull-ups
+  ---
+  duration_ms: 2.159244
+  type: 'test'
+  ...
+# Subtest: external pull-ups on each domain restore an otherwise completely floating bus
+ok 12 - external pull-ups on each domain restore an otherwise completely floating bus
+  ---
+  duration_ms: 1.646619
+  type: 'test'
+  ...
+# Subtest: the converter supplies pull-ups when module pull-ups are disabled
+ok 13 - the converter supplies pull-ups when module pull-ups are disabled
+  ---
+  duration_ms: 1.296077
+  type: 'test'
+  ...
+# Subtest: active HIGH against remote LOW reports a conflict instead of a valid logic transfer
+ok 14 - active HIGH against remote LOW reports a conflict instead of a valid logic transfer
+  ---
+  duration_ms: 1.99017
+  type: 'test'
+  ...
+# Subtest: active HIGH on an idle I2C net blocks ACK and a new input configuration recovers
+ok 15 - active HIGH on an idle I2C net blocks ACK and a new input configuration recovers
+  ---
+  duration_ms: 1.366032
+  type: 'test'
+  ...
+# Subtest: open SDA_H gives no ACK even though both converter sides still read HIGH
+ok 16 - open SDA_H gives no ACK even though both converter sides still read HIGH
+  ---
+  duration_ms: 1.379322
+  type: 'test'
+  ...
+# Subtest: open SCL_H gives no ACK even though both converter sides still read HIGH
+ok 17 - open SCL_H gives no ACK even though both converter sides still read HIGH
+  ---
+  duration_ms: 0.923307
+  type: 'test'
+  ...
+# Subtest: missing peripheral VCC or GND still prevents ACK behind a fully powered converter
+ok 18 - missing peripheral VCC or GND still prevents ACK behind a fully powered converter
+  ---
+  duration_ms: 2.233565
+  type: 'test'
+  ...
+# Subtest: static checks reject swapped signal labels, bypass, wrong supply/domain, protocol and cascade
+ok 19 - static checks reject swapped signal labels, bypass, wrong supply/domain, protocol and cascade
+  ---
+  duration_ms: 3.872468
+  type: 'test'
+  ...
+# Subtest: same-address devices across a converter remain an address collision
+ok 20 - same-address devices across a converter remain an address collision
+  ---
+  duration_ms: 0.889486
+  type: 'test'
+  ...
+# Subtest: AHT10 retains its exclusive-bus rule across both voltage domains
+ok 21 - AHT10 retains its exclusive-bus rule across both voltage domains
+  ---
+  duration_ms: 0.849176
+  type: 'test'
+  ...
+# Subtest: different addresses may coexist on both sides without losing routing or ID bytes
+ok 22 - different addresses may coexist on both sides without losing routing or ID bytes
+  ---
+  duration_ms: 2.656501
+  type: 'test'
+  ...
+# Subtest: URS18 i2cBmp280/micropython: exact retained source/artifact, opposite domain and ZIP round trip
+ok 23 - URS18 i2cBmp280/micropython: exact retained source/artifact, opposite domain and ZIP round trip
+  ---
+  duration_ms: 24.037142
+  type: 'test'
+  ...
+# Subtest: URS18 i2cOled32/micropython: exact retained source/artifact, opposite domain and ZIP round trip
+ok 24 - URS18 i2cOled32/micropython: exact retained source/artifact, opposite domain and ZIP round trip
+  ---
+  duration_ms: 6.46338
+  type: 'test'
+  ...
+# Subtest: URS18 i2cBmp280/s3-cpp: exact retained source/artifact, opposite domain and ZIP round trip
+ok 25 - URS18 i2cBmp280/s3-cpp: exact retained source/artifact, opposite domain and ZIP round trip
+  ---
+  duration_ms: 39.413132
+  type: 'test'
+  ...
+# Subtest: URS18 i2cOled32/s3-cpp: exact retained source/artifact, opposite domain and ZIP round trip
+ok 26 - URS18 i2cOled32/s3-cpp: exact retained source/artifact, opposite domain and ZIP round trip
+  ---
+  duration_ms: 34.50928
+  type: 'test'
+  ...
+# Subtest: URS18 i2cBmp280/uno: exact retained source/artifact, opposite domain and ZIP round trip
+ok 27 - URS18 i2cBmp280/uno: exact retained source/artifact, opposite domain and ZIP round trip
+  ---
+  duration_ms: 38.546199
+  type: 'test'
+  ...
+# Subtest: URS18 i2cOled32/uno: exact retained source/artifact, opposite domain and ZIP round trip
+ok 28 - URS18 i2cOled32/uno: exact retained source/artifact, opposite domain and ZIP round trip
+  ---
+  duration_ms: 36.394492
+  type: 'test'
+  ...
+# Subtest: URS18 i2cBmp280/nano: exact retained source/artifact, opposite domain and ZIP round trip
+ok 29 - URS18 i2cBmp280/nano: exact retained source/artifact, opposite domain and ZIP round trip
+  ---
+  duration_ms: 39.575336
+  type: 'test'
+  ...
+# Subtest: URS18 i2cOled32/nano: exact retained source/artifact, opposite domain and ZIP round trip
+ok 30 - URS18 i2cOled32/nano: exact retained source/artifact, opposite domain and ZIP round trip
+  ---
+  duration_ms: 47.947759
+  type: 'test'
+  ...
+1..30
+# tests 30
+# suites 0
+# pass 30
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 648.505899

@@ -1,0 +1,55 @@
+{
+  "environment": "Development preview Chromium/Linux; CUA UI interactions",
+  "arduinoUnoBasic": {
+    "run": true,
+    "stop": true,
+    "displayedIdealAngleDegrees": 90,
+    "translatorFullSteps": 50,
+    "acceptedStepsAtStop": 1250,
+    "rejectedSteps": 0,
+    "resultPreservedAfterStop": true
+  },
+  "csv": {
+    "downloadObserved": true,
+    "bom": true,
+    "header": [
+      "komponenta",
+      "vrijeme_us",
+      "operacija",
+      "vrijednost"
+    ],
+    "rows": 128,
+    "columnCounts": [
+      4
+    ]
+  },
+  "notTested": [
+    "Physical motor/carrier",
+    "School computer",
+    "Student pilot",
+    "Safari/iOS",
+    "Android",
+    "Cold offline opening of private production origin"
+  ],
+  "microPythonBasic": {
+    "run": true,
+    "observedIdealAngleDegrees": 90,
+    "translatorFullSteps": 50,
+    "stop": true,
+    "lastStateIdealAngleDegrees": 68.4,
+    "lastStateTranslatorFullSteps": 38,
+    "stopCanOccurDuringReturnMove": true,
+    "canvasVisualInspection": "A4988, 12 V source, ESP32-S3 and separate coil paths are visible"
+  },
+  "finalVersionObserved": "0.6.1-beta.1",
+  "arduinoUnoControl": {
+    "run": true,
+    "allFiveConsoleStagesObserved": true,
+    "displayedIdealAngleDegrees": 27,
+    "translatorFullSteps": 5,
+    "shaftPositionLabel": "Položaj osovine nije potvrđen nakon gubitka sinkronizacije",
+    "stop": true,
+    "measurementsPanelOpened": true
+  },
+  "productionFunctionalTest": "Not performed before packaging. Production deployment is verified by native publication status; browser access is checked after publication."
+}

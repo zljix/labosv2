@@ -1,0 +1,673 @@
+{
+  "console": "ENC READY P=0; CW=+1 CCW=-1; SW resetira brojac\nENC P=1 DIR=CW ERR=0\nENC P=0 DIR=CCW ERR=0\nENC P=-1 DIR=CCW ERR=0\nENC RESET P=0\nENC P=1 DIR=CW ERR=0\n",
+  "frame": {
+    "type": "simulation",
+    "clockProfile": "wall-us",
+    "timeMs": 735,
+    "nets": {
+      "enc1:CLK": 3.3,
+      "enc1:DT": 3.3,
+      "enc1:GND": 0,
+      "enc1:SW": 0,
+      "enc1:VCC": 3.3,
+      "esp32:J1.10": null,
+      "esp32:J1.11": null,
+      "esp32:J1.12": null,
+      "esp32:J1.13": null,
+      "esp32:J1.14": null,
+      "esp32:J1.15": null,
+      "esp32:J1.16": null,
+      "esp32:J1.17": null,
+      "esp32:J1.18": null,
+      "esp32:J1.19": null,
+      "esp32:J1.20": null,
+      "esp32:J1.21": 5,
+      "esp32:J1.7": null,
+      "esp32:J1.8": null,
+      "esp32:J1.9": null,
+      "esp32:J3.10": null,
+      "esp32:J3.14": null,
+      "esp32:J3.15": null,
+      "esp32:J3.16": null,
+      "esp32:J3.17": null,
+      "esp32:J3.18": null,
+      "esp32:J3.19": null,
+      "esp32:J3.2": null,
+      "esp32:J3.20": null,
+      "esp32:J3.3": null,
+      "esp32:J3.4": null,
+      "esp32:J3.5": null,
+      "esp32:J3.6": null,
+      "esp32:J3.7": null,
+      "esp32:J3.8": null,
+      "esp32:J3.9": null
+    },
+    "leds": {},
+    "gpios": {
+      "4": {
+        "mode": "IN",
+        "volts": 3.3,
+        "level": 1
+      },
+      "5": {
+        "mode": "IN",
+        "volts": 3.3,
+        "level": 1
+      },
+      "6": {
+        "mode": "IN",
+        "volts": 7.333333170370373e-8,
+        "level": 0
+      }
+    },
+    "sensors": {},
+    "displays": {},
+    "measurements": [],
+    "i2cTrace": [],
+    "steppers": {
+      "drivers": {},
+      "motors": {}
+    },
+    "tmDisplays": {},
+    "infrared": {},
+    "encoders": {
+      "enc1": {
+        "powered": true,
+        "position": 0,
+        "targetPosition": 0,
+        "clk": 1,
+        "dt": 1,
+        "sw": 0,
+        "busy": false,
+        "transitions": 80,
+        "trace": [
+          {
+            "timeUs": 80.6260000099428,
+            "clk": 1,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 224163.96999999415,
+            "clk": 0,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 224363.96999999415,
+            "clk": 1,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 224563.96999999415,
+            "clk": 0,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 224763.96999999415,
+            "clk": 1,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 224963.96999999415,
+            "clk": 0,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 244963.96999999415,
+            "clk": 0,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 245163.96999999415,
+            "clk": 0,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 245363.96999999415,
+            "clk": 0,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 245563.96999999415,
+            "clk": 0,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 245763.96999999415,
+            "clk": 0,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 265763.96999999415,
+            "clk": 1,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 265963.96999999415,
+            "clk": 0,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 266163.96999999415,
+            "clk": 1,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 266363.96999999415,
+            "clk": 0,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 266563.96999999415,
+            "clk": 1,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 286563.96999999415,
+            "clk": 1,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 286763.96999999415,
+            "clk": 1,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 286963.96999999415,
+            "clk": 1,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 287163.96999999415,
+            "clk": 1,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 287363.96999999415,
+            "clk": 1,
+            "dt": 1,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 362763.6070000008,
+            "clk": 1,
+            "dt": 0,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 362963.6070000008,
+            "clk": 1,
+            "dt": 1,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 363163.6070000008,
+            "clk": 1,
+            "dt": 0,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 363363.6070000008,
+            "clk": 1,
+            "dt": 1,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 363563.6070000008,
+            "clk": 1,
+            "dt": 0,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 383563.6070000008,
+            "clk": 0,
+            "dt": 0,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 383763.6070000008,
+            "clk": 1,
+            "dt": 0,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 383963.6070000008,
+            "clk": 0,
+            "dt": 0,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 384163.6070000008,
+            "clk": 1,
+            "dt": 0,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 384363.6070000008,
+            "clk": 0,
+            "dt": 0,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 404363.6070000008,
+            "clk": 0,
+            "dt": 1,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 404563.6070000008,
+            "clk": 0,
+            "dt": 0,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 404763.6070000008,
+            "clk": 0,
+            "dt": 1,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 404963.6070000008,
+            "clk": 0,
+            "dt": 0,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 405163.6070000008,
+            "clk": 0,
+            "dt": 1,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 425163.6070000008,
+            "clk": 1,
+            "dt": 1,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 425363.6070000008,
+            "clk": 0,
+            "dt": 1,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 425563.6070000008,
+            "clk": 1,
+            "dt": 1,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 425763.6070000008,
+            "clk": 0,
+            "dt": 1,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 425963.6070000008,
+            "clk": 1,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 445963.6070000008,
+            "clk": 1,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 446163.6070000008,
+            "clk": 1,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 446363.6070000008,
+            "clk": 1,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 446563.6070000008,
+            "clk": 1,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 446763.6070000008,
+            "clk": 1,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 466763.6070000008,
+            "clk": 0,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 466963.6070000008,
+            "clk": 1,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 467163.6070000008,
+            "clk": 0,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 467363.6070000008,
+            "clk": 1,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 467563.6070000008,
+            "clk": 0,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 487563.6070000008,
+            "clk": 0,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 487763.6070000008,
+            "clk": 0,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 487963.6070000008,
+            "clk": 0,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 488163.6070000008,
+            "clk": 0,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 488363.6070000008,
+            "clk": 0,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 508363.6070000008,
+            "clk": 1,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 508563.6070000008,
+            "clk": 0,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 508763.6070000008,
+            "clk": 1,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 508963.6070000008,
+            "clk": 0,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 509163.6070000008,
+            "clk": 1,
+            "dt": 1,
+            "sw": 1,
+            "position": -1
+          },
+          {
+            "timeUs": 560794.3910000031,
+            "clk": 1,
+            "dt": 1,
+            "sw": 0,
+            "position": -1
+          },
+          {
+            "timeUs": 651830.5190000101,
+            "clk": 0,
+            "dt": 1,
+            "sw": 0,
+            "position": -1
+          },
+          {
+            "timeUs": 652030.5190000101,
+            "clk": 1,
+            "dt": 1,
+            "sw": 0,
+            "position": -1
+          },
+          {
+            "timeUs": 652230.5190000101,
+            "clk": 0,
+            "dt": 1,
+            "sw": 0,
+            "position": -1
+          },
+          {
+            "timeUs": 652430.5190000101,
+            "clk": 1,
+            "dt": 1,
+            "sw": 0,
+            "position": -1
+          },
+          {
+            "timeUs": 652630.5190000101,
+            "clk": 0,
+            "dt": 1,
+            "sw": 0,
+            "position": -1
+          },
+          {
+            "timeUs": 672630.5190000101,
+            "clk": 0,
+            "dt": 0,
+            "sw": 0,
+            "position": -1
+          },
+          {
+            "timeUs": 672830.5190000101,
+            "clk": 0,
+            "dt": 1,
+            "sw": 0,
+            "position": -1
+          },
+          {
+            "timeUs": 673030.5190000101,
+            "clk": 0,
+            "dt": 0,
+            "sw": 0,
+            "position": -1
+          },
+          {
+            "timeUs": 673230.5190000101,
+            "clk": 0,
+            "dt": 1,
+            "sw": 0,
+            "position": -1
+          },
+          {
+            "timeUs": 673430.5190000101,
+            "clk": 0,
+            "dt": 0,
+            "sw": 0,
+            "position": -1
+          },
+          {
+            "timeUs": 693430.5190000101,
+            "clk": 1,
+            "dt": 0,
+            "sw": 0,
+            "position": -1
+          },
+          {
+            "timeUs": 693630.5190000101,
+            "clk": 0,
+            "dt": 0,
+            "sw": 0,
+            "position": -1
+          },
+          {
+            "timeUs": 693830.5190000101,
+            "clk": 1,
+            "dt": 0,
+            "sw": 0,
+            "position": -1
+          },
+          {
+            "timeUs": 694030.5190000101,
+            "clk": 0,
+            "dt": 0,
+            "sw": 0,
+            "position": -1
+          },
+          {
+            "timeUs": 694230.5190000101,
+            "clk": 1,
+            "dt": 0,
+            "sw": 0,
+            "position": -1
+          },
+          {
+            "timeUs": 714230.5190000101,
+            "clk": 1,
+            "dt": 1,
+            "sw": 0,
+            "position": -1
+          },
+          {
+            "timeUs": 714430.5190000101,
+            "clk": 1,
+            "dt": 0,
+            "sw": 0,
+            "position": -1
+          },
+          {
+            "timeUs": 714630.5190000101,
+            "clk": 1,
+            "dt": 1,
+            "sw": 0,
+            "position": -1
+          },
+          {
+            "timeUs": 714830.5190000101,
+            "clk": 1,
+            "dt": 0,
+            "sw": 0,
+            "position": -1
+          },
+          {
+            "timeUs": 715030.5190000101,
+            "clk": 1,
+            "dt": 1,
+            "sw": 0,
+            "position": 0
+          }
+        ],
+        "volts": {
+          "CLK": 3.3,
+          "DT": 3.3,
+          "SW": 7.333333170370373e-8
+        }
+      }
+    },
+    "oneWireDevices": {},
+    "timedSensors": {},
+    "analogInputs": {},
+    "servos": {},
+    "diagnostics": [],
+    "session": 48
+  }
+}

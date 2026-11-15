@@ -1,0 +1,110 @@
+[
+  {
+    "key": "sdInspect",
+    "status": "pass",
+    "elapsedMs": 41575,
+    "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+    "core": "esp32:esp32@3.3.12",
+    "cli": "1.3.1",
+    "exportHash": "5e9e29047f8d8bfadda69b550fd88388474f69798e109c6aec41dda42aa1a371",
+    "sourceHash": "deee53217f6cb9916337c6154aa59f5195a1f7ffaf0cea918b8addb9dbd3ec91",
+    "libraries": [],
+    "binaries": [
+      {
+        "name": "LabSketch.ino.bin",
+        "bytes": 313312,
+        "sha256": "502ed6a0d8d1603441de1b5884f0cf2d4f896575014df6074d1f945c8baf8f91"
+      },
+      {
+        "name": "LabSketch.ino.elf",
+        "bytes": 6919136,
+        "sha256": "7ff6c963e2805dbf6e337126c2e6b7a029ba5523493a6de05343cc8ca003fef1"
+      }
+    ],
+    "summary": [
+      "Sketch uses 313156 bytes (23%) of program storage space. Maximum is 1310720 bytes.",
+      "Global variables use 23208 bytes (7%) of dynamic memory, leaving 304472 bytes for local variables. Maximum is 327680 bytes."
+    ]
+  },
+  {
+    "key": "sdBlocks",
+    "status": "pass",
+    "elapsedMs": 42180,
+    "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+    "core": "esp32:esp32@3.3.12",
+    "cli": "1.3.1",
+    "exportHash": "1f62ac520cee68f47037a3faf1fa7bc9c5f216c37ce802ff954cdf6e358f6835",
+    "sourceHash": "02ad3ff00359215eefbdb9f0d168f89d2a517cffd9daee29db4a1ff0541ea93c",
+    "libraries": [],
+    "binaries": [
+      {
+        "name": "LabSketch.ino.bin",
+        "bytes": 313200,
+        "sha256": "099f056d4a310612534d8935d74f14af465539d82f73741db3a57c30426a8834"
+      },
+      {
+        "name": "LabSketch.ino.elf",
+        "bytes": 6920568,
+        "sha256": "c7aed6b4a5789402dfb744877e8e6338a9b4921cc8fccc8b24b0e3297c92efc9"
+      }
+    ],
+    "summary": [
+      "Sketch uses 313056 bytes (23%) of program storage space. Maximum is 1310720 bytes.",
+      "Global variables use 23208 bytes (7%) of dynamic memory, leaving 304472 bytes for local variables. Maximum is 327680 bytes."
+    ]
+  },
+  {
+    "key": "sdFiles",
+    "status": "pass",
+    "elapsedMs": 34834,
+    "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+    "core": "esp32:esp32@3.3.12",
+    "cli": "1.3.1",
+    "exportHash": "4ebbcd2a4ce46f5665ce1e2f77dd8a53a79e1ae406d68861fd9ca2d2c0ea3209",
+    "sourceHash": "9644d4638abedb38f90757e42e3d650b5339bcb0b489b27c29caad1fdf351cff",
+    "libraries": [],
+    "binaries": [
+      {
+        "name": "LabSketch.ino.bin",
+        "bytes": 315216,
+        "sha256": "e8c867b7b48b3bfe9adf811d160ef89d9b7663a3ff3c0f00ef47a01b266114d5"
+      },
+      {
+        "name": "LabSketch.ino.elf",
+        "bytes": 6938660,
+        "sha256": "83929e7c1070d06d70c4b36e677ff6a0aaae3151daca6de9a96f3758252cb49a"
+      }
+    ],
+    "summary": [
+      "Sketch uses 315064 bytes (24%) of program storage space. Maximum is 1310720 bytes.",
+      "Global variables use 23208 bytes (7%) of dynamic memory, leaving 304472 bytes for local variables. Maximum is 327680 bytes."
+    ]
+  },
+  {
+    "key": "sdLogger",
+    "status": "pass",
+    "elapsedMs": 29473,
+    "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+    "core": "esp32:esp32@3.3.12",
+    "cli": "1.3.1",
+    "exportHash": "75b46db37ff9af13ef70254685aa3dc943f7e0be18c09bc1a144bf5382c09bc9",
+    "sourceHash": "595b165ee75ca32cff24df0f17304235f2ba067486feaff61696c6fec0f13a71",
+    "libraries": [],
+    "binaries": [
+      {
+        "name": "LabSketch.ino.bin",
+        "bytes": 316240,
+        "sha256": "48b8096817ea4386ee6dfcb4c891009095536449c9b954fcdb755934c1ef7550"
+      },
+      {
+        "name": "LabSketch.ino.elf",
+        "bytes": 6947636,
+        "sha256": "2f5ad00fd24a806f4cbefd01ec92d3980203bab5edf7c65cd797fe5982735a81"
+      }
+    ],
+    "summary": [
+      "Sketch uses 316084 bytes (24%) of program storage space. Maximum is 1310720 bytes.",
+      "Global variables use 23224 bytes (7%) of dynamic memory, leaving 304456 bytes for local variables. Maximum is 327680 bytes."
+    ]
+  }
+]

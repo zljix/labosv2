@@ -1,0 +1,226 @@
+[
+  {
+    "key": "lm35",
+    "status": "pass",
+    "version": "0.12.1-beta.1",
+    "build": "2c8d46b0f0083eb1",
+    "stopMs": 5.18000399999994,
+    "console": "S3 LM35 ADC=330 U=0.250 T=24.98\r\nS3 LM35 ADC=991 U=0.750 T=75.02\r\n",
+    "analogInputs": {
+      "lm351": {
+        "powered": true,
+        "volts": {
+          "OUT": 0.75
+        }
+      }
+    },
+    "inputs": [
+      {
+        "component": "lm351",
+        "temperature": 75
+      }
+    ]
+  },
+  {
+    "key": "temt6000",
+    "status": "pass",
+    "version": "0.12.1-beta.1",
+    "build": "2c8d46b0f0083eb1",
+    "stopMs": 2.567849000000024,
+    "console": "S3 TEMT6000 ADC=660 U=0.500 SAT=0\r\nS3 TEMT6000 ADC=4095 U=3.100 SAT=1\r\n",
+    "analogInputs": {
+      "temt60001": {
+        "powered": true,
+        "volts": {
+          "AO": 3.1999999999999997
+        }
+      }
+    },
+    "inputs": [
+      {
+        "component": "temt60001",
+        "illuminance": 2000
+      }
+    ]
+  },
+  {
+    "key": "ntc",
+    "status": "pass",
+    "version": "0.12.1-beta.1",
+    "build": "2c8d46b0f0083eb1",
+    "stopMs": 2.0568909999999505,
+    "console": "S3 NTC ADC=2180 T=24.99\r\nS3 NTC ADC=1151 T=50.00\r\n",
+    "analogInputs": {
+      "ntc1": {
+        "powered": true,
+        "volts": {
+          "AO": 0.8714191503515207
+        },
+        "resistance": 3588.1825819290834
+      }
+    },
+    "inputs": [
+      {
+        "component": "ntc1",
+        "temperature": 50
+      }
+    ]
+  },
+  {
+    "key": "ky023",
+    "status": "pass",
+    "version": "0.12.1-beta.1",
+    "build": "2c8d46b0f0083eb1",
+    "stopMs": 6.955822000000353,
+    "console": "S3 JOY X=2180 Y=2180 NX=0.00 NY=0.00 SW=1 SATX=0 SATY=0\r\nS3 JOY X=4095 Y=0 NX=0.88 NY=-1.00 SW=0 SATX=1 SATY=0\r\n",
+    "analogInputs": {
+      "ky0231": {
+        "powered": true,
+        "volts": {
+          "VRX": 3.299999670000033,
+          "VRY": 3.299999670000033e-7,
+          "SW": 7.333333170370373e-8
+        }
+      }
+    },
+    "inputs": [
+      {
+        "component": "ky0231",
+        "axisX": 100,
+        "axisY": 0,
+        "pressed": true
+      }
+    ]
+  },
+  {
+    "key": "flame",
+    "status": "pass",
+    "version": "0.12.1-beta.1",
+    "build": "2c8d46b0f0083eb1",
+    "stopMs": 2.056601000000228,
+    "console": "S3 FLAME ADC=4095 DO=1\r\nS3 FLAME ADC=1090 DO=0\r\n",
+    "analogInputs": {
+      "flame1": {
+        "powered": true,
+        "active": true,
+        "volts": {
+          "AO": 0.825,
+          "DO": 0.0032967032967032963
+        }
+      }
+    },
+    "inputs": [
+      {
+        "component": "flame1",
+        "stimulus": 75
+      }
+    ]
+  },
+  {
+    "key": "sound",
+    "status": "pass",
+    "version": "0.12.1-beta.1",
+    "build": "2c8d46b0f0083eb1",
+    "stopMs": 1.8888789999996334,
+    "console": "S3 SOUND DO=1\r\nS3 SOUND DO=0\r\n",
+    "analogInputs": {
+      "sound1": {
+        "powered": true,
+        "active": true,
+        "volts": {
+          "DO": 0.0032967032967032963
+        }
+      }
+    },
+    "inputs": [
+      {
+        "component": "sound1",
+        "stimulus": 75
+      }
+    ]
+  },
+  {
+    "key": "analogCompare",
+    "status": "pass",
+    "version": "0.12.1-beta.1",
+    "build": "2c8d46b0f0083eb1",
+    "stopMs": 2.1851329999999507,
+    "console": "S3 COMPARE LM35=24.98 NTC=24.99\r\nS3 COMPARE LM35=49.96 NTC=50.00\r\n",
+    "analogInputs": {
+      "lm351": {
+        "powered": true,
+        "volts": {
+          "OUT": 0.5
+        }
+      },
+      "ntc1": {
+        "powered": true,
+        "volts": {
+          "AO": 0.8714191503515207
+        },
+        "resistance": 3588.1825819290834
+      }
+    },
+    "inputs": [
+      {
+        "component": "lm351",
+        "temperature": 50
+      },
+      {
+        "component": "ntc1",
+        "temperature": 50
+      }
+    ]
+  },
+  {
+    "key": "dualInputs",
+    "status": "pass",
+    "version": "0.12.1-beta.1",
+    "build": "2c8d46b0f0083eb1",
+    "stopMs": 1.5070639999999003,
+    "console": "S3 DUAL A=1090 B=3269 S1=1 S2=1\r\nS3 DUAL A=3487 B=872 S1=1 S2=0\r\n",
+    "analogInputs": {},
+    "inputs": [
+      {
+        "component": "pot1",
+        "position": 80
+      },
+      {
+        "component": "pot2",
+        "position": 20
+      },
+      {
+        "component": "sw2",
+        "pressed": true
+      }
+    ]
+  },
+  {
+    "key": "lm35-open-signal",
+    "status": "pass",
+    "version": "0.12.1-beta.1",
+    "build": "2c8d46b0f0083eb1",
+    "error": "Nepobuđen ulaz: provjeri spoj ili pull otpornik.",
+    "console": "",
+    "diagnostics": [
+      {
+        "code": "input-signal-open",
+        "severity": "warning",
+        "message": "lm351: izlaz OUT nije spojen na pločicu.",
+        "terminals": [
+          "lm351:OUT"
+        ],
+        "wires": []
+      },
+      {
+        "code": "adc-floating",
+        "severity": "warning",
+        "message": "ADC: nepobuđen ulaz. Broj 0 na AVR-u nije valjano mjerenje.",
+        "terminals": [
+          "esp32:J3.4"
+        ],
+        "wires": []
+      }
+    ]
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "generatedAt": "2026-11-12T18:04:41.035Z",
+  "runtime": "MicroPython v1.29.0",
+  "results": [
+    {
+      "name": "main imports helper and nested package",
+      "status": "pass",
+      "output": "POMOC_RADI 42"
+    },
+    {
+      "name": "text data is available to Python",
+      "status": "pass",
+      "output": "PODACI_RADE"
+    },
+    {
+      "name": "internal module override is rejected",
+      "status": "pass",
+      "output": "Nedopuštena datoteka."
+    }
+  ],
+  "passed": 3,
+  "total": 3
+}

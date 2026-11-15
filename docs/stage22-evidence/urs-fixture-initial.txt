@@ -1,0 +1,1249 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.12.0-beta.1 test:urs
+> node --import tsx --test verification/urs.test.ts
+
+✔ URS catalogue covers every available catalogue component and leaves two unconfirmed profiles explicit (16.399825ms)
+✔ URS1 blink/micropython: real source, drivers, wiring, artifact and ZIP (37.698391ms)
+✔ URS1 blink/s3-cpp: real source, drivers, wiring, artifact and ZIP (51.111468ms)
+✖ URS1 blink/uno: real source, drivers, wiring, artifact and ZIP (29.843667ms)
+✖ URS1 blink/nano: real source, drivers, wiring, artifact and ZIP (19.226091ms)
+✔ URS1 button/micropython: real source, drivers, wiring, artifact and ZIP (9.328187ms)
+✔ URS1 button/s3-cpp: real source, drivers, wiring, artifact and ZIP (16.925174ms)
+✖ URS1 button/uno: real source, drivers, wiring, artifact and ZIP (23.789168ms)
+✖ URS1 button/nano: real source, drivers, wiring, artifact and ZIP (45.188957ms)
+✔ URS1 adc/micropython: real source, drivers, wiring, artifact and ZIP (12.552794ms)
+✔ URS1 adc/s3-cpp: real source, drivers, wiring, artifact and ZIP (21.505136ms)
+✖ URS1 adc/uno: real source, drivers, wiring, artifact and ZIP (17.556153ms)
+✖ URS1 adc/nano: real source, drivers, wiring, artifact and ZIP (7.929025ms)
+✔ URS2 regulator/micropython: real source, drivers, wiring, artifact and ZIP (12.265492ms)
+✔ URS2 regulator/s3-cpp: real source, drivers, wiring, artifact and ZIP (37.6847ms)
+✖ URS2 regulator/uno: real source, drivers, wiring, artifact and ZIP (23.391982ms)
+✖ URS2 regulator/nano: real source, drivers, wiring, artifact and ZIP (16.142337ms)
+✔ URS3 bmp180/micropython: real source, drivers, wiring, artifact and ZIP (4.182645ms)
+✖ URS3 bmp180/uno: real source, drivers, wiring, artifact and ZIP (39.059626ms)
+✖ URS3 bmp180/nano: real source, drivers, wiring, artifact and ZIP (23.719705ms)
+✔ URS3 bmp280/micropython: real source, drivers, wiring, artifact and ZIP (3.064645ms)
+✖ URS3 bmp280/uno: real source, drivers, wiring, artifact and ZIP (9.676962ms)
+✖ URS3 bmp280/nano: real source, drivers, wiring, artifact and ZIP (16.88934ms)
+✔ URS3 am2320/micropython: real source, drivers, wiring, artifact and ZIP (3.858719ms)
+✖ URS3 am2320/uno: real source, drivers, wiring, artifact and ZIP (14.046358ms)
+✖ URS3 am2320/nano: real source, drivers, wiring, artifact and ZIP (8.725252ms)
+✔ URS3 weather/micropython: real source, drivers, wiring, artifact and ZIP (3.702053ms)
+✔ URS3 weather/s3-cpp: real source, drivers, wiring, artifact and ZIP (12.772104ms)
+✖ URS3 weather/uno: real source, drivers, wiring, artifact and ZIP (12.869129ms)
+✖ URS3 weather/nano: real source, drivers, wiring, artifact and ZIP (21.210213ms)
+✔ URS4 lm35/micropython: real source, drivers, wiring, artifact and ZIP (2.598585ms)
+✖ URS4 lm35/uno: real source, drivers, wiring, artifact and ZIP (7.709425ms)
+✖ URS4 lm35/nano: real source, drivers, wiring, artifact and ZIP (7.048101ms)
+✔ URS4 ntc/micropython: real source, drivers, wiring, artifact and ZIP (2.341959ms)
+✖ URS4 ntc/uno: real source, drivers, wiring, artifact and ZIP (14.860741ms)
+✖ URS4 ntc/nano: real source, drivers, wiring, artifact and ZIP (17.173909ms)
+✔ URS4 temt6000/micropython: real source, drivers, wiring, artifact and ZIP (2.529591ms)
+✖ URS4 temt6000/uno: real source, drivers, wiring, artifact and ZIP (7.300301ms)
+✖ URS4 temt6000/nano: real source, drivers, wiring, artifact and ZIP (7.200951ms)
+✔ URS4 ky023/micropython: real source, drivers, wiring, artifact and ZIP (2.001268ms)
+✖ URS4 ky023/uno: real source, drivers, wiring, artifact and ZIP (8.445762ms)
+✖ URS4 ky023/nano: real source, drivers, wiring, artifact and ZIP (8.328075ms)
+✔ URS4 flame/micropython: real source, drivers, wiring, artifact and ZIP (3.060439ms)
+✖ URS4 flame/uno: real source, drivers, wiring, artifact and ZIP (22.369095ms)
+✖ URS4 flame/nano: real source, drivers, wiring, artifact and ZIP (6.750975ms)
+✔ URS4 sound/micropython: real source, drivers, wiring, artifact and ZIP (2.04989ms)
+✖ URS4 sound/uno: real source, drivers, wiring, artifact and ZIP (7.341332ms)
+✖ URS4 sound/nano: real source, drivers, wiring, artifact and ZIP (9.949432ms)
+✔ URS4 analogCompare/micropython: real source, drivers, wiring, artifact and ZIP (7.163505ms)
+✖ URS4 analogCompare/uno: real source, drivers, wiring, artifact and ZIP (30.462336ms)
+✖ URS4 analogCompare/nano: real source, drivers, wiring, artifact and ZIP (19.927325ms)
+✔ URS4 dualInputs/micropython: real source, drivers, wiring, artifact and ZIP (2.796112ms)
+✖ URS4 dualInputs/uno: real source, drivers, wiring, artifact and ZIP (7.189584ms)
+✖ URS4 dualInputs/nano: real source, drivers, wiring, artifact and ZIP (6.806117ms)
+✔ URS5 dht11/micropython: real source, drivers, wiring, artifact and ZIP (3.255462ms)
+✔ URS5 dht11/s3-cpp: real source, drivers, wiring, artifact and ZIP (7.900042ms)
+✖ URS5 dht11/uno: real source, drivers, wiring, artifact and ZIP (8.134063ms)
+✖ URS5 dht11/nano: real source, drivers, wiring, artifact and ZIP (15.538831ms)
+✔ URS5 dht22/micropython: real source, drivers, wiring, artifact and ZIP (11.588334ms)
+✔ URS5 dht22/s3-cpp: real source, drivers, wiring, artifact and ZIP (22.51136ms)
+✖ URS5 dht22/uno: real source, drivers, wiring, artifact and ZIP (7.456965ms)
+✖ URS5 dht22/nano: real source, drivers, wiring, artifact and ZIP (7.616036ms)
+✔ URS5 dhtErrors/micropython: real source, drivers, wiring, artifact and ZIP (2.374218ms)
+✔ URS5 dhtErrors/s3-cpp: real source, drivers, wiring, artifact and ZIP (6.536413ms)
+✖ URS5 dhtErrors/uno: real source, drivers, wiring, artifact and ZIP (12.551892ms)
+✖ URS5 dhtErrors/nano: real source, drivers, wiring, artifact and ZIP (15.127192ms)
+✔ URS6 ds18Multi/micropython: real source, drivers, wiring, artifact and ZIP (4.749917ms)
+✔ URS6 ds18Multi/s3-cpp: real source, drivers, wiring, artifact and ZIP (12.80966ms)
+✖ URS6 ds18Multi/uno: real source, drivers, wiring, artifact and ZIP (9.053365ms)
+✖ URS6 ds18Multi/nano: real source, drivers, wiring, artifact and ZIP (8.969639ms)
+✔ URS6 ds18Resolution/micropython: real source, drivers, wiring, artifact and ZIP (2.727078ms)
+✔ URS6 ds18Resolution/s3-cpp: real source, drivers, wiring, artifact and ZIP (17.427209ms)
+✖ URS6 ds18Resolution/uno: real source, drivers, wiring, artifact and ZIP (13.394368ms)
+✖ URS6 ds18Resolution/nano: real source, drivers, wiring, artifact and ZIP (13.386906ms)
+✔ URS6 ds18Errors/micropython: real source, drivers, wiring, artifact and ZIP (3.083444ms)
+✖ URS6 ds18Errors/uno: real source, drivers, wiring, artifact and ZIP (7.944649ms)
+✖ URS6 ds18Errors/nano: real source, drivers, wiring, artifact and ZIP (8.13883ms)
+✔ URS7 oled32/micropython: real source, drivers, wiring, artifact and ZIP (3.138376ms)
+✔ URS7 oled32/s3-cpp: real source, drivers, wiring, artifact and ZIP (17.395671ms)
+✖ URS7 oled32/uno: real source, drivers, wiring, artifact and ZIP (9.720537ms)
+✖ URS7 oled32/nano: real source, drivers, wiring, artifact and ZIP (9.893518ms)
+✔ URS7 lcd1602/micropython: real source, drivers, wiring, artifact and ZIP (3.450595ms)
+✔ URS7 lcd1602/s3-cpp: real source, drivers, wiring, artifact and ZIP (6.990544ms)
+✖ URS7 lcd1602/uno: real source, drivers, wiring, artifact and ZIP (7.338708ms)
+✖ URS7 lcd1602/nano: real source, drivers, wiring, artifact and ZIP (10.944286ms)
+✔ URS7 tmSegments/micropython: real source, drivers, wiring, artifact and ZIP (4.348805ms)
+✖ URS7 tmSegments/uno: real source, drivers, wiring, artifact and ZIP (18.001842ms)
+✖ URS7 tmSegments/nano: real source, drivers, wiring, artifact and ZIP (7.59937ms)
+✔ URS7 tmClock/micropython: real source, drivers, wiring, artifact and ZIP (2.678675ms)
+✖ URS7 tmClock/uno: real source, drivers, wiring, artifact and ZIP (7.734774ms)
+✖ URS7 tmClock/nano: real source, drivers, wiring, artifact and ZIP (7.317626ms)
+✔ URS8 encoderRaw/micropython: real source, drivers, wiring, artifact and ZIP (2.603341ms)
+✖ URS8 encoderRaw/uno: real source, drivers, wiring, artifact and ZIP (6.890795ms)
+✖ URS8 encoderRaw/nano: real source, drivers, wiring, artifact and ZIP (42.09955ms)
+✔ URS8 ky040/micropython: real source, drivers, wiring, artifact and ZIP (3.048351ms)
+✖ URS8 ky040/uno: real source, drivers, wiring, artifact and ZIP (7.763025ms)
+✖ URS8 ky040/nano: real source, drivers, wiring, artifact and ZIP (7.587141ms)
+✔ URS8 encoderBounce/micropython: real source, drivers, wiring, artifact and ZIP (2.328168ms)
+✖ URS8 encoderBounce/uno: real source, drivers, wiring, artifact and ZIP (6.576022ms)
+✖ URS8 encoderBounce/nano: real source, drivers, wiring, artifact and ZIP (8.680254ms)
+✔ URS9 irPulses/micropython: real source, drivers, wiring, artifact and ZIP (3.555333ms)
+✖ URS9 irPulses/uno: real source, drivers, wiring, artifact and ZIP (14.057755ms)
+✖ URS9 irPulses/nano: real source, drivers, wiring, artifact and ZIP (7.855774ms)
+✔ URS9 irLED/micropython: real source, drivers, wiring, artifact and ZIP (3.498548ms)
+✖ URS9 irLED/uno: real source, drivers, wiring, artifact and ZIP (8.433674ms)
+✖ URS9 irLED/nano: real source, drivers, wiring, artifact and ZIP (8.274544ms)
+✔ URS9 irTransmit/micropython: real source, drivers, wiring, artifact and ZIP (3.059208ms)
+✖ URS9 irTransmit/uno: real source, drivers, wiring, artifact and ZIP (7.583636ms)
+✖ URS9 irTransmit/nano: real source, drivers, wiring, artifact and ZIP (29.85897ms)
+✔ URS10 relayContacts/micropython: real source, drivers, wiring, artifact and ZIP (3.462313ms)
+✖ URS10 relayContacts/uno: real source, drivers, wiring, artifact and ZIP (7.809045ms)
+✖ URS10 relayContacts/nano: real source, drivers, wiring, artifact and ZIP (8.878553ms)
+✔ URS10 activeAlarm/micropython: real source, drivers, wiring, artifact and ZIP (2.060737ms)
+✖ URS10 activeAlarm/uno: real source, drivers, wiring, artifact and ZIP (13.840729ms)
+✖ URS10 activeAlarm/nano: real source, drivers, wiring, artifact and ZIP (6.798306ms)
+✔ URS10 piezoTone/micropython: real source, drivers, wiring, artifact and ZIP (1.971583ms)
+✖ URS10 piezoTone/uno: real source, drivers, wiring, artifact and ZIP (7.066679ms)
+✖ URS10 piezoTone/nano: real source, drivers, wiring, artifact and ZIP (6.741731ms)
+✔ URS10 sg90Sweep/micropython: real source, drivers, wiring, artifact and ZIP (2.876192ms)
+✔ URS10 sg90Sweep/s3-cpp: real source, drivers, wiring, artifact and ZIP (13.450262ms)
+✖ URS10 sg90Sweep/uno: real source, drivers, wiring, artifact and ZIP (8.419202ms)
+✖ URS10 sg90Sweep/nano: real source, drivers, wiring, artifact and ZIP (7.748494ms)
+✔ URS10 dcDrive/micropython: real source, drivers, wiring, artifact and ZIP (3.238928ms)
+✖ URS10 dcDrive/uno: real source, drivers, wiring, artifact and ZIP (7.273139ms)
+✖ URS10 dcDrive/nano: real source, drivers, wiring, artifact and ZIP (10.645207ms)
+✔ URS10 dualDrive/micropython: real source, drivers, wiring, artifact and ZIP (3.963045ms)
+✖ URS10 dualDrive/uno: real source, drivers, wiring, artifact and ZIP (11.772151ms)
+✖ URS10 dualDrive/nano: real source, drivers, wiring, artifact and ZIP (7.728223ms)
+✔ URS10 servoMotorTone/micropython: real source, drivers, wiring, artifact and ZIP (3.637716ms)
+✖ URS10 servoMotorTone/uno: real source, drivers, wiring, artifact and ZIP (9.012233ms)
+✖ URS10 servoMotorTone/nano: real source, drivers, wiring, artifact and ZIP (7.857428ms)
+✔ URS11 stepperBasic/micropython: real source, drivers, wiring, artifact and ZIP (3.783165ms)
+✖ URS11 stepperBasic/uno: real source, drivers, wiring, artifact and ZIP (8.055225ms)
+✖ URS11 stepperBasic/nano: real source, drivers, wiring, artifact and ZIP (40.934233ms)
+✔ URS11 stepperMicro/micropython: real source, drivers, wiring, artifact and ZIP (3.10167ms)
+✖ URS11 stepperMicro/uno: real source, drivers, wiring, artifact and ZIP (8.083688ms)
+✖ URS11 stepperMicro/nano: real source, drivers, wiring, artifact and ZIP (7.736075ms)
+✔ URS11 stepperControl/micropython: real source, drivers, wiring, artifact and ZIP (2.998156ms)
+✖ URS11 stepperControl/uno: real source, drivers, wiring, artifact and ZIP (7.305108ms)
+✖ URS11 stepperControl/nano: real source, drivers, wiring, artifact and ZIP (14.628071ms)
+✔ URS12 tftGraphics/micropython: real source, drivers, wiring, artifact and ZIP (8.02525ms)
+✖ URS12 tftGraphics/uno: real source, drivers, wiring, artifact and ZIP (20.331232ms)
+✖ URS12 tftGraphics/nano: real source, drivers, wiring, artifact and ZIP (8.136196ms)
+✔ URS12 tftRotation/micropython: real source, drivers, wiring, artifact and ZIP (2.639877ms)
+✖ URS12 tftRotation/uno: real source, drivers, wiring, artifact and ZIP (13.833618ms)
+✖ URS12 tftRotation/nano: real source, drivers, wiring, artifact and ZIP (7.991559ms)
+✔ URS12 bmp280SPI/micropython: real source, drivers, wiring, artifact and ZIP (3.082162ms)
+✖ URS12 bmp280SPI/uno: real source, drivers, wiring, artifact and ZIP (8.848227ms)
+✖ URS12 bmp280SPI/nano: real source, drivers, wiring, artifact and ZIP (8.499192ms)
+✔ URS12 spiDashboard/micropython: real source, drivers, wiring, artifact and ZIP (4.009274ms)
+✖ URS12 spiDashboard/uno: real source, drivers, wiring, artifact and ZIP (17.084033ms)
+✖ URS12 spiDashboard/nano: real source, drivers, wiring, artifact and ZIP (10.500179ms)
+✔ URS13 iliGraphics/micropython: real source, drivers, wiring, artifact and ZIP (3.534451ms)
+✖ URS13 iliGraphics/uno: real source, drivers, wiring, artifact and ZIP (8.289547ms)
+✖ URS13 iliGraphics/nano: real source, drivers, wiring, artifact and ZIP (7.737267ms)
+✔ URS13 iliRotation/micropython: real source, drivers, wiring, artifact and ZIP (2.750253ms)
+✖ URS13 iliRotation/uno: real source, drivers, wiring, artifact and ZIP (12.141575ms)
+✖ URS13 iliRotation/nano: real source, drivers, wiring, artifact and ZIP (14.815824ms)
+✔ URS13 touchRaw/micropython: real source, drivers, wiring, artifact and ZIP (4.525961ms)
+✖ URS13 touchRaw/uno: real source, drivers, wiring, artifact and ZIP (8.770249ms)
+✖ URS13 touchRaw/nano: real source, drivers, wiring, artifact and ZIP (8.580114ms)
+✔ URS13 touchCalibration/micropython: real source, drivers, wiring, artifact and ZIP (3.508212ms)
+✖ URS13 touchCalibration/uno: real source, drivers, wiring, artifact and ZIP (8.599802ms)
+✖ URS13 touchCalibration/nano: real source, drivers, wiring, artifact and ZIP (9.338564ms)
+✔ URS13 touchButton/micropython: real source, drivers, wiring, artifact and ZIP (4.588326ms)
+✔ URS13 touchButton/s3-cpp: real source, drivers, wiring, artifact and ZIP (26.429441ms)
+✖ URS13 touchButton/uno: real source, drivers, wiring, artifact and ZIP (10.446569ms)
+✖ URS13 touchButton/nano: real source, drivers, wiring, artifact and ZIP (9.245162ms)
+✔ URS13 touchRotation/micropython: real source, drivers, wiring, artifact and ZIP (3.705639ms)
+✖ URS13 touchRotation/uno: real source, drivers, wiring, artifact and ZIP (8.737851ms)
+✖ URS13 touchRotation/nano: real source, drivers, wiring, artifact and ZIP (17.006667ms)
+✔ URS14 rtcRead/micropython: real source, drivers, wiring, artifact and ZIP (4.017838ms)
+✔ URS14 rtcRead/s3-cpp: real source, drivers, wiring, artifact and ZIP (8.834526ms)
+✖ URS14 rtcRead/uno: real source, drivers, wiring, artifact and ZIP (8.201375ms)
+✖ URS14 rtcRead/nano: real source, drivers, wiring, artifact and ZIP (8.093323ms)
+✔ URS14 rtcMemory/micropython: real source, drivers, wiring, artifact and ZIP (2.800398ms)
+✔ URS14 rtcMemory/s3-cpp: real source, drivers, wiring, artifact and ZIP (7.768273ms)
+✖ URS14 rtcMemory/uno: real source, drivers, wiring, artifact and ZIP (8.15855ms)
+✖ URS14 rtcMemory/nano: real source, drivers, wiring, artifact and ZIP (13.466677ms)
+✔ URS14 rtcClock/micropython: real source, drivers, wiring, artifact and ZIP (3.636675ms)
+✔ URS14 rtcClock/s3-cpp: real source, drivers, wiring, artifact and ZIP (9.423951ms)
+✖ URS14 rtcClock/uno: real source, drivers, wiring, artifact and ZIP (7.823777ms)
+✖ URS14 rtcClock/nano: real source, drivers, wiring, artifact and ZIP (8.202225ms)
+✔ URS14 sdInspect/micropython: real source, drivers, wiring, artifact and ZIP (4.236156ms)
+✔ URS14 sdInspect/s3-cpp: real source, drivers, wiring, artifact and ZIP (14.829966ms)
+✖ URS14 sdInspect/uno: real source, drivers, wiring, artifact and ZIP (17.50835ms)
+✖ URS14 sdInspect/nano: real source, drivers, wiring, artifact and ZIP (19.886764ms)
+✔ URS14 sdFiles/micropython: real source, drivers, wiring, artifact and ZIP (3.285758ms)
+✔ URS14 sdFiles/s3-cpp: real source, drivers, wiring, artifact and ZIP (11.564778ms)
+✖ URS14 sdFiles/uno: real source, drivers, wiring, artifact and ZIP (9.065483ms)
+✖ URS14 sdFiles/nano: real source, drivers, wiring, artifact and ZIP (15.440473ms)
+✔ URS14 sdLogger/micropython: real source, drivers, wiring, artifact and ZIP (4.23187ms)
+✔ URS14 sdLogger/s3-cpp: real source, drivers, wiring, artifact and ZIP (14.055641ms)
+✖ URS14 sdLogger/uno: real source, drivers, wiring, artifact and ZIP (9.585714ms)
+✖ URS14 sdLogger/nano: real source, drivers, wiring, artifact and ZIP (9.887268ms)
+✔ URS15 opticalRegisters/micropython: real source, drivers, wiring, artifact and ZIP (3.012958ms)
+✔ URS15 opticalRegisters/s3-cpp: real source, drivers, wiring, artifact and ZIP (11.421543ms)
+✖ URS15 opticalRegisters/uno: real source, drivers, wiring, artifact and ZIP (17.877425ms)
+✖ URS15 opticalRegisters/nano: real source, drivers, wiring, artifact and ZIP (7.863576ms)
+✔ URS15 opticalRaw/micropython: real source, drivers, wiring, artifact and ZIP (2.448539ms)
+✔ URS15 opticalRaw/s3-cpp: real source, drivers, wiring, artifact and ZIP (8.067283ms)
+✖ URS15 opticalRaw/uno: real source, drivers, wiring, artifact and ZIP (7.364257ms)
+✖ URS15 opticalRaw/nano: real source, drivers, wiring, artifact and ZIP (7.549815ms)
+✔ URS15 opticalFrequency/micropython: real source, drivers, wiring, artifact and ZIP (2.366065ms)
+✔ URS15 opticalFrequency/s3-cpp: real source, drivers, wiring, artifact and ZIP (14.392749ms)
+✖ URS15 opticalFrequency/uno: real source, drivers, wiring, artifact and ZIP (19.02528ms)
+✖ URS15 opticalFrequency/nano: real source, drivers, wiring, artifact and ZIP (8.609999ms)
+✔ URS15 opticalOverflow/micropython: real source, drivers, wiring, artifact and ZIP (2.274658ms)
+✔ URS15 opticalOverflow/s3-cpp: real source, drivers, wiring, artifact and ZIP (13.50884ms)
+✖ URS15 opticalOverflow/uno: real source, drivers, wiring, artifact and ZIP (7.995736ms)
+✖ URS15 opticalOverflow/nano: real source, drivers, wiring, artifact and ZIP (7.609074ms)
+✔ URS16 radio/micropython: real source, drivers, wiring, artifact and ZIP (4.397398ms)
+✔ URS16 radio/s3-cpp: real source, drivers, wiring, artifact and ZIP (13.444213ms)
+✖ URS16 radio/uno: real source, drivers, wiring, artifact and ZIP (5.354787ms)
+✖ URS16 radio/nano: real source, drivers, wiring, artifact and ZIP (5.356169ms)
+✔ unavailable S3 routes, unknown IDs and malformed work are rejected without a substitute program (1.759293ms)
+✔ URS export requires complete manual observations and a current source/circuit snapshot; failed work is allowed (31.552425ms)
+✖ snapshot binds both radio nodes, sources, artifacts and saved media, not titles or hand-entered answers (9.087055ms)
+✔ teacher review becomes stale after student answers change; review metadata cannot approve execution (2.78123ms)
+ℹ tests 219
+ℹ suites 0
+ℹ pass 92
+ℹ fail 127
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2796.66469
+
+✖ failing tests:
+
+test at verification/urs.test.ts:1:2561
+✖ URS1 blink/uno: real source, drivers, wiring, artifact and ZIP (29.843667ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS1 blink/nano: real source, drivers, wiring, artifact and ZIP (19.226091ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS1 button/uno: real source, drivers, wiring, artifact and ZIP (23.789168ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS1 button/nano: real source, drivers, wiring, artifact and ZIP (45.188957ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS1 adc/uno: real source, drivers, wiring, artifact and ZIP (17.556153ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS1 adc/nano: real source, drivers, wiring, artifact and ZIP (7.929025ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS2 regulator/uno: real source, drivers, wiring, artifact and ZIP (23.391982ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS2 regulator/nano: real source, drivers, wiring, artifact and ZIP (16.142337ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS3 bmp180/uno: real source, drivers, wiring, artifact and ZIP (39.059626ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS3 bmp180/nano: real source, drivers, wiring, artifact and ZIP (23.719705ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS3 bmp280/uno: real source, drivers, wiring, artifact and ZIP (9.676962ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS3 bmp280/nano: real source, drivers, wiring, artifact and ZIP (16.88934ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS3 am2320/uno: real source, drivers, wiring, artifact and ZIP (14.046358ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS3 am2320/nano: real source, drivers, wiring, artifact and ZIP (8.725252ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS3 weather/uno: real source, drivers, wiring, artifact and ZIP (12.869129ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS3 weather/nano: real source, drivers, wiring, artifact and ZIP (21.210213ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS4 lm35/uno: real source, drivers, wiring, artifact and ZIP (7.709425ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS4 lm35/nano: real source, drivers, wiring, artifact and ZIP (7.048101ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS4 ntc/uno: real source, drivers, wiring, artifact and ZIP (14.860741ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS4 ntc/nano: real source, drivers, wiring, artifact and ZIP (17.173909ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS4 temt6000/uno: real source, drivers, wiring, artifact and ZIP (7.300301ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS4 temt6000/nano: real source, drivers, wiring, artifact and ZIP (7.200951ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS4 ky023/uno: real source, drivers, wiring, artifact and ZIP (8.445762ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS4 ky023/nano: real source, drivers, wiring, artifact and ZIP (8.328075ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS4 flame/uno: real source, drivers, wiring, artifact and ZIP (22.369095ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS4 flame/nano: real source, drivers, wiring, artifact and ZIP (6.750975ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS4 sound/uno: real source, drivers, wiring, artifact and ZIP (7.341332ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS4 sound/nano: real source, drivers, wiring, artifact and ZIP (9.949432ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS4 analogCompare/uno: real source, drivers, wiring, artifact and ZIP (30.462336ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS4 analogCompare/nano: real source, drivers, wiring, artifact and ZIP (19.927325ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS4 dualInputs/uno: real source, drivers, wiring, artifact and ZIP (7.189584ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS4 dualInputs/nano: real source, drivers, wiring, artifact and ZIP (6.806117ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS5 dht11/uno: real source, drivers, wiring, artifact and ZIP (8.134063ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS5 dht11/nano: real source, drivers, wiring, artifact and ZIP (15.538831ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS5 dht22/uno: real source, drivers, wiring, artifact and ZIP (7.456965ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS5 dht22/nano: real source, drivers, wiring, artifact and ZIP (7.616036ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS5 dhtErrors/uno: real source, drivers, wiring, artifact and ZIP (12.551892ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS5 dhtErrors/nano: real source, drivers, wiring, artifact and ZIP (15.127192ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS6 ds18Multi/uno: real source, drivers, wiring, artifact and ZIP (9.053365ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS6 ds18Multi/nano: real source, drivers, wiring, artifact and ZIP (8.969639ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS6 ds18Resolution/uno: real source, drivers, wiring, artifact and ZIP (13.394368ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS6 ds18Resolution/nano: real source, drivers, wiring, artifact and ZIP (13.386906ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS6 ds18Errors/uno: real source, drivers, wiring, artifact and ZIP (7.944649ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS6 ds18Errors/nano: real source, drivers, wiring, artifact and ZIP (8.13883ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS7 oled32/uno: real source, drivers, wiring, artifact and ZIP (9.720537ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS7 oled32/nano: real source, drivers, wiring, artifact and ZIP (9.893518ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS7 lcd1602/uno: real source, drivers, wiring, artifact and ZIP (7.338708ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS7 lcd1602/nano: real source, drivers, wiring, artifact and ZIP (10.944286ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS7 tmSegments/uno: real source, drivers, wiring, artifact and ZIP (18.001842ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS7 tmSegments/nano: real source, drivers, wiring, artifact and ZIP (7.59937ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS7 tmClock/uno: real source, drivers, wiring, artifact and ZIP (7.734774ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS7 tmClock/nano: real source, drivers, wiring, artifact and ZIP (7.317626ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS8 encoderRaw/uno: real source, drivers, wiring, artifact and ZIP (6.890795ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS8 encoderRaw/nano: real source, drivers, wiring, artifact and ZIP (42.09955ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS8 ky040/uno: real source, drivers, wiring, artifact and ZIP (7.763025ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS8 ky040/nano: real source, drivers, wiring, artifact and ZIP (7.587141ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS8 encoderBounce/uno: real source, drivers, wiring, artifact and ZIP (6.576022ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS8 encoderBounce/nano: real source, drivers, wiring, artifact and ZIP (8.680254ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS9 irPulses/uno: real source, drivers, wiring, artifact and ZIP (14.057755ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS9 irPulses/nano: real source, drivers, wiring, artifact and ZIP (7.855774ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS9 irLED/uno: real source, drivers, wiring, artifact and ZIP (8.433674ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS9 irLED/nano: real source, drivers, wiring, artifact and ZIP (8.274544ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS9 irTransmit/uno: real source, drivers, wiring, artifact and ZIP (7.583636ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS9 irTransmit/nano: real source, drivers, wiring, artifact and ZIP (29.85897ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS10 relayContacts/uno: real source, drivers, wiring, artifact and ZIP (7.809045ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS10 relayContacts/nano: real source, drivers, wiring, artifact and ZIP (8.878553ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS10 activeAlarm/uno: real source, drivers, wiring, artifact and ZIP (13.840729ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS10 activeAlarm/nano: real source, drivers, wiring, artifact and ZIP (6.798306ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS10 piezoTone/uno: real source, drivers, wiring, artifact and ZIP (7.066679ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS10 piezoTone/nano: real source, drivers, wiring, artifact and ZIP (6.741731ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS10 sg90Sweep/uno: real source, drivers, wiring, artifact and ZIP (8.419202ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS10 sg90Sweep/nano: real source, drivers, wiring, artifact and ZIP (7.748494ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS10 dcDrive/uno: real source, drivers, wiring, artifact and ZIP (7.273139ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS10 dcDrive/nano: real source, drivers, wiring, artifact and ZIP (10.645207ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS10 dualDrive/uno: real source, drivers, wiring, artifact and ZIP (11.772151ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS10 dualDrive/nano: real source, drivers, wiring, artifact and ZIP (7.728223ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS10 servoMotorTone/uno: real source, drivers, wiring, artifact and ZIP (9.012233ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS10 servoMotorTone/nano: real source, drivers, wiring, artifact and ZIP (7.857428ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS11 stepperBasic/uno: real source, drivers, wiring, artifact and ZIP (8.055225ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS11 stepperBasic/nano: real source, drivers, wiring, artifact and ZIP (40.934233ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS11 stepperMicro/uno: real source, drivers, wiring, artifact and ZIP (8.083688ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS11 stepperMicro/nano: real source, drivers, wiring, artifact and ZIP (7.736075ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS11 stepperControl/uno: real source, drivers, wiring, artifact and ZIP (7.305108ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS11 stepperControl/nano: real source, drivers, wiring, artifact and ZIP (14.628071ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS12 tftGraphics/uno: real source, drivers, wiring, artifact and ZIP (20.331232ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS12 tftGraphics/nano: real source, drivers, wiring, artifact and ZIP (8.136196ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS12 tftRotation/uno: real source, drivers, wiring, artifact and ZIP (13.833618ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS12 tftRotation/nano: real source, drivers, wiring, artifact and ZIP (7.991559ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS12 bmp280SPI/uno: real source, drivers, wiring, artifact and ZIP (8.848227ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS12 bmp280SPI/nano: real source, drivers, wiring, artifact and ZIP (8.499192ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS12 spiDashboard/uno: real source, drivers, wiring, artifact and ZIP (17.084033ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS12 spiDashboard/nano: real source, drivers, wiring, artifact and ZIP (10.500179ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS13 iliGraphics/uno: real source, drivers, wiring, artifact and ZIP (8.289547ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS13 iliGraphics/nano: real source, drivers, wiring, artifact and ZIP (7.737267ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS13 iliRotation/uno: real source, drivers, wiring, artifact and ZIP (12.141575ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS13 iliRotation/nano: real source, drivers, wiring, artifact and ZIP (14.815824ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS13 touchRaw/uno: real source, drivers, wiring, artifact and ZIP (8.770249ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS13 touchRaw/nano: real source, drivers, wiring, artifact and ZIP (8.580114ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS13 touchCalibration/uno: real source, drivers, wiring, artifact and ZIP (8.599802ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS13 touchCalibration/nano: real source, drivers, wiring, artifact and ZIP (9.338564ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS13 touchButton/uno: real source, drivers, wiring, artifact and ZIP (10.446569ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS13 touchButton/nano: real source, drivers, wiring, artifact and ZIP (9.245162ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS13 touchRotation/uno: real source, drivers, wiring, artifact and ZIP (8.737851ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS13 touchRotation/nano: real source, drivers, wiring, artifact and ZIP (17.006667ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS14 rtcRead/uno: real source, drivers, wiring, artifact and ZIP (8.201375ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS14 rtcRead/nano: real source, drivers, wiring, artifact and ZIP (8.093323ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS14 rtcMemory/uno: real source, drivers, wiring, artifact and ZIP (8.15855ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS14 rtcMemory/nano: real source, drivers, wiring, artifact and ZIP (13.466677ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS14 rtcClock/uno: real source, drivers, wiring, artifact and ZIP (7.823777ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS14 rtcClock/nano: real source, drivers, wiring, artifact and ZIP (8.202225ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS14 sdInspect/uno: real source, drivers, wiring, artifact and ZIP (17.50835ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS14 sdInspect/nano: real source, drivers, wiring, artifact and ZIP (19.886764ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS14 sdFiles/uno: real source, drivers, wiring, artifact and ZIP (9.065483ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS14 sdFiles/nano: real source, drivers, wiring, artifact and ZIP (15.440473ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS14 sdLogger/uno: real source, drivers, wiring, artifact and ZIP (9.585714ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS14 sdLogger/nano: real source, drivers, wiring, artifact and ZIP (9.887268ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS15 opticalRegisters/uno: real source, drivers, wiring, artifact and ZIP (17.877425ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS15 opticalRegisters/nano: real source, drivers, wiring, artifact and ZIP (7.863576ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS15 opticalRaw/uno: real source, drivers, wiring, artifact and ZIP (7.364257ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS15 opticalRaw/nano: real source, drivers, wiring, artifact and ZIP (7.549815ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS15 opticalFrequency/uno: real source, drivers, wiring, artifact and ZIP (19.02528ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS15 opticalFrequency/nano: real source, drivers, wiring, artifact and ZIP (8.609999ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS15 opticalOverflow/uno: real source, drivers, wiring, artifact and ZIP (7.995736ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS15 opticalOverflow/nano: real source, drivers, wiring, artifact and ZIP (7.609074ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS16 radio/uno: real source, drivers, wiring, artifact and ZIP (5.354787ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:2561
+✖ URS16 radio/nano: real source, drivers, wiring, artifact and ZIP (5.356169ms)
+  Error: AVR izvršni adapter još nije dostupan. Arduino projekt nije pokrenut u MicroPythonu.
+      at compileCircuit (/workspace/scratch/f80294908aa6/.sites-checkout/src/circuit/compile.ts:6:78)
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:31:24)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/urs.test.ts:1:5594
+✖ snapshot binds both radio nodes, sources, artifacts and saved media, not titles or hand-entered answers (9.087055ms)
+  TypeError [Error]: Cannot read properties of undefined (reading 'properties')
+      at TestContext.<anonymous> (/workspace/scratch/f80294908aa6/.sites-checkout/verification/urs.test.ts:53:174)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

@@ -1,0 +1,10 @@
+✔ production AVR Worker executes the integrated Nano program, accepts live input and stops promptly (21326.939101ms)
+✔ real MicroPython ky040: wired signals, live direction or PWM and prompt stop (1201.085367ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 22871.832124

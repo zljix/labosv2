@@ -1,0 +1,12 @@
+{
+  "source": "https://github.com/thomasfredericks/Bounce2",
+  "version": "2.72",
+  "retrievedAt": "2026-11-12",
+  "files": {
+    "library.properties": "732adc7f951c86141076e14f56ed18b432f47e70",
+    "src/Bounce2.h": "af9eae1f3cf56e7525208ac3aac83a4f06f8f7cd",
+    "src/Bounce2.cpp": "6a755ea9e3f882d7043aa1667e88a6d2586817b8",
+    "LICENSE": "f945b531452ae5592a6444f89817990eb5a5f8f6"
+  },
+  "note": "Upstream blob identities from GitHub fetch_file; vendored text retains content with normalized final newline. Compiled bytes are locked by SHA-256 in lock.json."
+}

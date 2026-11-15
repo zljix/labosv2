@@ -1,0 +1,24 @@
+✔ AHT10: startup, calibration, busy, latched 20-bit data and reset (2.717896ms)
+✔ SSD1306: independent addressing, commands, orientation and no fake text rendering (3.05472ms)
+✔ new devices and visible driver files survive project JSON and ZIP (25.094041ms)
+✔ real MicroPython: separate scan results, raw six-byte AHT10 protocol and readfrom_into (501.449452ms)
+✔ integrated Python drivers: live environment -> measured bytes -> OLED pixels -> servo with hysteresis (6506.058113ms)
+✔ wrong I2C pins, swapped lines, absent VCC and ground produce NACK; repairs restore real driver (1688.793237ms)
+✔ OLED wrong address and missing power fail; setting module and code to 0x3D restores display (754.448674ms)
+✔ module pull-ups are electrical paths; absent pull-ups fail, two external resistors restore bus (548.546125ms)
+✔ rewiring and renaming components uses actual nets and GPIO, without fixed fixture fallbacks (656.069259ms)
+✔ servo follows PWM pulse: 0/90/180, power/ground/signal, unsupported period and deinit (2014.687882ms)
+✔ SSD1306 standard driver: writevto, text/graphics, inversion, power, contrast, rotate (695.015372ms)
+✔ two OLED addresses are isolated; duplicate address, AHT10 sharing and 5 V module are diagnosed (244.658249ms)
+✔ I2C declared bounds, unsupported commands and STOP are catchable Python exceptions (407.648697ms)
+✔ trace/history are bounded; new run clears peripheral state and Stop isolates pending work (875.990667ms)
+✔ program-controlled sensor power removes ACK, resets calibration and permits recovery (536.387999ms)
+✔ 205 real conversions retain the last 200 samples and 100 I2C transactions (17377.704259ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 33022.759689

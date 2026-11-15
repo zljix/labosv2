@@ -1,0 +1,306 @@
+[
+  {
+    "target": "micropython",
+    "mode": "input",
+    "status": "pass",
+    "build": "8d40aa853c244b5b",
+    "observationMs": 444.672397,
+    "stopMs": 5.343945000000076,
+    "observations": [
+      {
+        "phase": 0,
+        "timeMs": 74,
+        "direction": "B → A",
+        "inputVolts": 5,
+        "outputVolts": 3.3,
+        "logic": 1,
+        "ledCurrentMa": 0
+      },
+      {
+        "phase": 1,
+        "timeMs": 188,
+        "direction": "B → A",
+        "inputVolts": 0,
+        "outputVolts": 0,
+        "logic": 0,
+        "ledCurrentMa": 4.4118
+      },
+      {
+        "phase": 2,
+        "timeMs": 220,
+        "direction": "B → A",
+        "inputVolts": 5,
+        "outputVolts": 3.3,
+        "logic": 1,
+        "ledCurrentMa": 0
+      }
+    ],
+    "console": "Tipkalo: otpusteno\nTipkalo: pritisnuto\nTipkalo: otpusteno\n"
+  },
+  {
+    "target": "micropython",
+    "mode": "output",
+    "status": "pass",
+    "build": "8d40aa853c244b5b",
+    "observationMs": 809.65385,
+    "stopMs": 9.130336999999827,
+    "observations": [
+      {
+        "phase": 0,
+        "timeMs": 26,
+        "direction": "A → B",
+        "inputVolts": 0,
+        "outputVolts": 0,
+        "logic": 0,
+        "ledCurrentMa": 0
+      },
+      {
+        "phase": 1,
+        "timeMs": 76,
+        "direction": "A → B",
+        "inputVolts": 3.3,
+        "outputVolts": 5,
+        "logic": 1,
+        "ledCurrentMa": 9.3842
+      },
+      {
+        "phase": 2,
+        "timeMs": 578,
+        "direction": "A → B",
+        "inputVolts": 0,
+        "outputVolts": 0,
+        "logic": 0,
+        "ledCurrentMa": 0
+      }
+    ],
+    "console": "Treptanje: GPIO4, 500 ms ukljuceno / iskljuceno\n"
+  },
+  {
+    "target": "s3-cpp",
+    "mode": "input",
+    "status": "pass",
+    "build": "8d40aa853c244b5b",
+    "observationMs": 195.41743900000006,
+    "stopMs": 4.733111000000008,
+    "observations": [
+      {
+        "phase": 0,
+        "timeMs": 0,
+        "direction": "B → A",
+        "inputVolts": 5,
+        "outputVolts": 3.3,
+        "logic": 1,
+        "ledCurrentMa": 0
+      },
+      {
+        "phase": 1,
+        "timeMs": 40,
+        "direction": "B → A",
+        "inputVolts": 0,
+        "outputVolts": 0,
+        "logic": 0,
+        "ledCurrentMa": 4.4118
+      },
+      {
+        "phase": 2,
+        "timeMs": 60,
+        "direction": "B → A",
+        "inputVolts": 5,
+        "outputVolts": 3.3,
+        "logic": 1,
+        "ledCurrentMa": 0
+      }
+    ],
+    "console": "S3 READY 1/0/b\r\nS3 LED=0\r\nS3 LED=1\r\nS3 LED=0\r\n"
+  },
+  {
+    "target": "s3-cpp",
+    "mode": "output",
+    "status": "pass",
+    "build": "8d40aa853c244b5b",
+    "observationMs": 426.265588,
+    "stopMs": 1.4534140000000662,
+    "observations": [
+      {
+        "phase": 0,
+        "timeMs": 0,
+        "direction": "A → B",
+        "inputVolts": 0,
+        "outputVolts": 0,
+        "logic": 0,
+        "ledCurrentMa": 0
+      },
+      {
+        "phase": 1,
+        "timeMs": 300,
+        "direction": "A → B",
+        "inputVolts": 3.3,
+        "outputVolts": 5,
+        "logic": 1,
+        "ledCurrentMa": 9.3842
+      },
+      {
+        "phase": 2,
+        "timeMs": 600,
+        "direction": "A → B",
+        "inputVolts": 0,
+        "outputVolts": 0,
+        "logic": 0,
+        "ledCurrentMa": 0
+      }
+    ],
+    "console": "S3 LED=1 ms=0\r\nS3 LED=0 ms=300\r\n"
+  },
+  {
+    "target": "uno",
+    "mode": "input",
+    "status": "pass",
+    "build": "8d40aa853c244b5b",
+    "observationMs": 216.8711360000002,
+    "stopMs": 1.5319609999996828,
+    "observations": [
+      {
+        "phase": 0,
+        "timeMs": 4,
+        "direction": "A → B",
+        "inputVolts": 3.3,
+        "outputVolts": 5,
+        "logic": 1,
+        "ledCurrentMa": 0
+      },
+      {
+        "phase": 1,
+        "timeMs": 32,
+        "direction": "A → B",
+        "inputVolts": 0,
+        "outputVolts": 0,
+        "logic": 0,
+        "ledCurrentMa": 3.5805
+      },
+      {
+        "phase": 2,
+        "timeMs": 148,
+        "direction": "A → B",
+        "inputVolts": 3.3,
+        "outputVolts": 5,
+        "logic": 1,
+        "ledCurrentMa": 0
+      }
+    ],
+    "console": "Spremno: 1 / 0 / b\r\nLED=0\r\nLED=1\r\nLED=0\r\n"
+  },
+  {
+    "target": "uno",
+    "mode": "output",
+    "status": "pass",
+    "build": "8d40aa853c244b5b",
+    "observationMs": 805.7664830000003,
+    "stopMs": 1.8374009999997725,
+    "observations": [
+      {
+        "phase": 0,
+        "timeMs": 244,
+        "direction": "B → A",
+        "inputVolts": 0,
+        "outputVolts": 0,
+        "logic": 0,
+        "ledCurrentMa": 0.1928
+      },
+      {
+        "phase": 1,
+        "timeMs": 440,
+        "direction": "B → A",
+        "inputVolts": 5,
+        "outputVolts": 3.3,
+        "logic": 1,
+        "ledCurrentMa": 2.1435
+      },
+      {
+        "phase": 2,
+        "timeMs": 668,
+        "direction": "B → A",
+        "inputVolts": 0,
+        "outputVolts": 0,
+        "logic": 0,
+        "ledCurrentMa": 0
+      }
+    ],
+    "console": "LED=1 ms=0\r\nLED=0 ms=199\r\nLED=1 ms=400\r\nLED=0 ms=600\r\n"
+  },
+  {
+    "target": "nano",
+    "mode": "input",
+    "status": "pass",
+    "build": "8d40aa853c244b5b",
+    "observationMs": 217.35356000000002,
+    "stopMs": 2.2212070000000494,
+    "observations": [
+      {
+        "phase": 0,
+        "timeMs": 4,
+        "direction": "A → B",
+        "inputVolts": 3.3,
+        "outputVolts": 5,
+        "logic": 1,
+        "ledCurrentMa": 0
+      },
+      {
+        "phase": 1,
+        "timeMs": 28,
+        "direction": "A → B",
+        "inputVolts": 0,
+        "outputVolts": 0,
+        "logic": 0,
+        "ledCurrentMa": 3.4043
+      },
+      {
+        "phase": 2,
+        "timeMs": 80,
+        "direction": "A → B",
+        "inputVolts": 3.3,
+        "outputVolts": 5,
+        "logic": 1,
+        "ledCurrentMa": 0.2236
+      }
+    ],
+    "console": "Spremno: 1 / 0 / b\r\nLED=0\r\nLED=1\r\nLED=0\r\n"
+  },
+  {
+    "target": "nano",
+    "mode": "output",
+    "status": "pass",
+    "build": "8d40aa853c244b5b",
+    "observationMs": 588.2743559999999,
+    "stopMs": 2.2228589999999713,
+    "observations": [
+      {
+        "phase": 0,
+        "timeMs": 280,
+        "direction": "B → A",
+        "inputVolts": 0,
+        "outputVolts": 0,
+        "logic": 0,
+        "ledCurrentMa": 0
+      },
+      {
+        "phase": 1,
+        "timeMs": 424,
+        "direction": "B → A",
+        "inputVolts": 5,
+        "outputVolts": 3.3,
+        "logic": 1,
+        "ledCurrentMa": 1.2752
+      },
+      {
+        "phase": 2,
+        "timeMs": 696,
+        "direction": "B → A",
+        "inputVolts": 0,
+        "outputVolts": 0,
+        "logic": 0,
+        "ledCurrentMa": 0
+      }
+    ],
+    "console": "LED=1 ms=0\r\nLED=0 ms=199\r\nLED=1 ms=400\r\nLED=0 ms=600\r\n"
+  }
+]

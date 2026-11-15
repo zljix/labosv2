@@ -1,0 +1,26 @@
+[
+  {
+    "archive": "esp32-core-3.3.12.zip",
+    "bytes": 51102895,
+    "sha256": "87401004f279a206781e368b66098a8383b7cf87cce7811a6afd0163503fa78f",
+    "source": "https://github.com/espressif/arduino-esp32/releases/download/3.3.12/esp32-core-3.3.12.zip"
+  },
+  {
+    "archive": "xtensa-esp-elf-14.2.0_20260121-x86_64-linux-gnu.tar.gz",
+    "bytes": 334265784,
+    "sha256": "4e090a6cbf1ff7769684d9a248c9b8bdbe4c0ada098adda54b4c67a91449afa7",
+    "source": "https://github.com/espressif/crosstool-NG/releases/download/esp-14.2.0_20260121/xtensa-esp-elf-14.2.0_20260121-x86_64-linux-gnu.tar.gz"
+  },
+  {
+    "archive": "esptool-v5.3.1-linux-amd64.tar.gz",
+    "bytes": 83577947,
+    "sha256": "e9cc641f8e4a0b644b52836d7a6b59f3c6d3261213c5ccc41f8f3c3035d06aa4",
+    "source": "https://github.com/espressif/esptool/releases/download/v5.3.1/esptool-v5.3.1-linux-amd64.tar.gz"
+  },
+  {
+    "archive": "esp32s3-libs-3.3.12.zip",
+    "bytes": 91711095,
+    "sha256": "08f4e7292fee97dc011dc64e3c670a9a4e83a6b52a604c4b9b18ab2885cdd092",
+    "source": "https://github.com/espressif/arduino-esp32/releases/download/3.3.12/esp32s3-libs-3.3.12.zip"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "public/runtime/micropython.mjs": {
+    "sha256": "b262be836440ca11129b8a8fe788568460b266636dc72d6e17b90376d05b8927",
+    "same_as_13b": true
+  },
+  "public/runtime/micropython.wasm": {
+    "sha256": "f4ecb98494bb4422f2e2dbb1b497ad0242ed7851c50370d52683d1a3b509e883",
+    "same_as_13b": true
+  },
+  "public/machine.py": {
+    "sha256": "621a959a1f63ef737ec6c8d834700e70556d8c9fbe92eeb0d15994d7ecc3646b",
+    "same_as_13b": true
+  },
+  "public/avr-contract.mjs": {
+    "sha256": "bed69b2facfeabbe139739ee6daa745054d95bf018a8a6cdf625e3418cb29b7b",
+    "same_as_13b": true
+  }
+}

@@ -1,0 +1,25 @@
+✔ Bosch BMP180 published reference: calibration endian/sign, UT=27898, UP=23843, 15 C and 69964 Pa (2.226111ms)
+✔ BMP180 all OSS delays and raw words remain latched when live environment changes mid conversion (0.430244ms)
+✔ Bosch BMP280 reference: little-endian trims, ADC 519888/415148, startup, forced mode and sentinel reset (0.931955ms)
+✔ BMP280 normal mode, standby, skipped channels and burst shadowing are driven by virtual time (0.323784ms)
+✔ AM2320 startup, wake NACK, response delay, known CRC vector, negative sign and previous-sample cadence (0.595541ms)
+✔ all environment circuits, voltage profiles, source drivers and compiled artifacts survive JSON/ZIP (147.964646ms)
+✔ real MicroPython memory read/write/into, repeated-start and register-driven calibration give physical values (2573.833548ms)
+✔ real MicroPython signed temperature and boundary pressures are compensated by driver on both BMPs (1148.133943ms)
+✔ real AM2320 driver rejects corrupt CRC and observes stale-to-fresh negative/live values (8782.971534ms)
+✔ MicroPython missing supply/ground/pins/pullups, wrong address and swapped lines produce no false reading (15269.131208ms)
+✔ MicroPython four-device shared bus updates OLED from program data, logs pressure and isolates reset (4824.3219ms)
+✔ arduino.uno-r3.atmega328p: real compiled weather sketch, register repeated-start, hardware OLED and live environment (2540.057234ms)
+✔ arduino.nano-classic.atmega328p: real compiled weather sketch, register repeated-start, hardware OLED and live environment (2329.120864ms)
+✔ compiled individual Arduino examples run and absent sensor wiring never yields valid measurements (4601.890397ms)
+✔ compiled software I2C uses actual GPIO repeated-start, register pointer, ACK and calibration bytes (89.270039ms)
+✔ real driver result depends on calibration read from the sensor registers (277.282263ms)
+✔ production Nano Worker preserves all sensor models, live pressure and a prompt forced Stop (3300.783012ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 46325.193235

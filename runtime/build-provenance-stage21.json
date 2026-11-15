@@ -1,0 +1,12 @@
+{
+  "stage": 21,
+  "baseCommit": "0aa90394d78923a15dd088084d967981b27a86e3",
+  "wasmRebuilt": false,
+  "wasmUnchanged": true,
+  "gluePatch": "scripts/patch-radio-runtime.py",
+  "scope": "Optional scheduleSleep and ES-module-scoped proxy state. Each network MicroPython node imports its own module instance. Normal single-node scheduling remains the fallback.",
+  "outputs": {
+    "public/runtime/micropython.mjs": "0105e219063d76cfd40c564b3a206aee49dfb5bd282e4b7574164c207f35908f",
+    "public/runtime/micropython.wasm": "3f638e8cacd1f00168f19a17fcae35ece9773b4b661464c8241114e00c24fcce"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "version": "0.7.0-beta.1",
+  "build": "04be2abb1978293c",
+  "console": "TM COUNT=-3\r\nTM COUNT=-2\r\n",
+  "stopMs": 3.3371680000000197,
+  "scope": "Node/Linux production bundle"
+}

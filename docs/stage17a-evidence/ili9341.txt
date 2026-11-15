@@ -1,0 +1,44 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.7.1-beta.1 test:ili9341
+> node --import tsx --test verification/ili9341.test.ts
+
+✔ all four examples on three boards round-trip and exact visible drivers/artifacts survive exports (279.330092ms)
+✔ 16-bit y=319, RGB565 byte order/split and row-major window wrap are actual RAM writes (46.909725ms)
+✔ rectangular rotation 0: logical 240x320, both far corners and fixed physical RAM (17.968755ms)
+✔ rectangular rotation 1: logical 320x240, both far corners and fixed physical RAM (9.110914ms)
+✔ rectangular rotation 2: logical 240x320, both far corners and fixed physical RAM (11.023455ms)
+✔ rectangular rotation 3: logical 320x240, both far corners and fixed physical RAM (7.700771ms)
+✔ full 76800-pixel fill and a smaller patch preserve pixels outside that patch (53.083994ms)
+✔ BGR interpretation, inversion, display OFF, sleep and software reset preserve RAM (84.616282ms)
+✔ CS HIGH, RESET LOW, minimum reset pulse and conservative startup wait gate writes (76.376316ms)
+✔ missing supply, ground, SCK, MOSI, CS, DC or RESET cannot create a valid image (86.729604ms)
+✔ BL is separate from RAM writes; 5 V BL, wrong carrier and Nano A6 are rejected (29.97327ms)
+✔ mode 0/3 works; mode 1/2, LSB and excessive frequency cannot change pixels (100.979399ms)
+✔ invalid windows, unsupported MADCTL, RGB666, scroll and read commands are diagnosed (160.774757ms)
+✔ shared BMP280 CS is independent; two selected devices reject the transfer (17.677228ms)
+✔ ILI9341 and ST7735 can share SCK/MOSI with independent RAM, geometry and format (18.276392ms)
+✔ real MicroPython: iliGraphics, pixel dimensions and Stop retention (2017.419128ms)
+✔ real MicroPython: iliRotation, pixel dimensions and Stop retention (6761.438745ms)
+✔ real MicroPython: iliPartial, pixel dimensions and Stop retention (2355.260136ms)
+✔ real MicroPython: iliDashboard, pixel dimensions and Stop retention (2124.093004ms)
+✔ changing Python pixel data changes color; unchanged print alone cannot draw (2415.132106ms)
+✔ real MicroPython partial refresh changes only its window, preserving title and frame (2315.575303ms)
+✔ real MicroPython shared-bus environment update changes compensated reading and TFT pixels (2858.509071ms)
+✔ arduino.uno-r3.atmega328p: actual compiled iliGraphics, full 32-bit pixel count, SPI registers and SRAM (6568.516284ms)
+✔ arduino.uno-r3.atmega328p: actual compiled iliRotation, full 32-bit pixel count, SPI registers and SRAM (8103.059709ms)
+✔ arduino.uno-r3.atmega328p: actual compiled iliPartial, full 32-bit pixel count, SPI registers and SRAM (3365.114859ms)
+✔ arduino.uno-r3.atmega328p: actual compiled iliDashboard, full 32-bit pixel count, SPI registers and SRAM (2489.50755ms)
+✔ arduino.nano-classic.atmega328p: actual compiled iliGraphics, full 32-bit pixel count, SPI registers and SRAM (2132.196765ms)
+✔ arduino.nano-classic.atmega328p: actual compiled iliRotation, full 32-bit pixel count, SPI registers and SRAM (7161.995661ms)
+✔ arduino.nano-classic.atmega328p: actual compiled iliPartial, full 32-bit pixel count, SPI registers and SRAM (3031.661162ms)
+✔ arduino.nano-classic.atmega328p: actual compiled iliDashboard, full 32-bit pixel count, SPI registers and SRAM (2769.359937ms)
+✔ packaged Nano Worker renders ILI9341 and remains forcibly stoppable within 500 ms (4051.392452ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 62204.185556

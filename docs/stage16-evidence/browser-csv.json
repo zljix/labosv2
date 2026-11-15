@@ -1,0 +1,13 @@
+{
+  "utf8Bom": true,
+  "columns": [
+    "vrijeme_us",
+    "uredaj",
+    "operacija",
+    "bajt_hex",
+    "rezultat"
+  ],
+  "retainedEvents": 100,
+  "uniformColumnCount": true,
+  "downloadObserved": true
+}

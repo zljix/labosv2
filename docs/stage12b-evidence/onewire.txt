@@ -1,0 +1,43 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.5.2-beta.1 test:onewire
+> node --import tsx --test verification/onewire.test.ts
+
+✔ known DS18B20 scratchpad CRC, signed temperature words and conversion limits (2.065349ms)
+✔ four examples on all supported boards preserve ROM, drivers, artifact and ZIP/JSON (83.281835ms)
+✔ reset/presence uses real network LOW; Read ROM sends LSB first (21.949996ms)
+✔ scratchpad starts at 85 C and CRC alone does not establish freshness (41.475515ms)
+✔ Convert T latches environment, polls busy and only updates after its deadline (21.878489ms)
+✔ Write Scratchpad configures all four resolutions with known quantization and time (61.903574ms)
+✔ Match ROM reads separate scratchpads and Skip ROM read is wired AND (42.135832ms)
+✔ CRC fault changes data on the wire and disconnected DQ loses presence (15.700137ms)
+✔ missing external pull-up, supply, ground and DQ cannot return valid data (4.436307ms)
+✔ wrong voltage domain, duplicate ROM, ADC-only Nano and short reset are diagnosed (2.019421ms)
+✔ active GPIO HIGH against a 1-Wire LOW produces an output conflict (1.981785ms)
+✔ Copy and Recall Scratchpad preserve the three configuration bytes (23.055871ms)
+✔ power cycle restores EEPROM and 85 C, and cancels an unfinished copy or conversion (39.086721ms)
+✔ wrong Match ROM gives no selected sensor and Read Power Supply reports external VDD (8.853425ms)
+✔ real upstream MicroPython search finds all ROMs, initial 85 and separate signed values (1231.345674ms)
+✔ real upstream MicroPython CRC error and missing presence are explicit failures (537.194393ms)
+✔ real upstream Alarm Search selects sensors outside configured integer thresholds (1148.110989ms)
+✔ real MicroPython OPEN_DRAIN releases HIGH and original Pin OUT still follows its latch (233.591661ms)
+✔ real MicroPython live input, latched conversion and Stop/Reset (2194.224734ms)
+✔ actual AVR arduino.uno-r3.atmega328p ds18b20: unmodified OneWire and DallasTemperature (6187.136926ms)
+✔ actual AVR arduino.uno-r3.atmega328p ds18Multi: unmodified OneWire and DallasTemperature (8450.420965ms)
+✔ actual AVR arduino.uno-r3.atmega328p ds18Resolution: unmodified OneWire and DallasTemperature (10917.161527ms)
+✔ actual AVR arduino.uno-r3.atmega328p ds18Errors: unmodified OneWire and DallasTemperature (844.121968ms)
+✔ actual AVR arduino.nano-classic.atmega328p ds18b20: unmodified OneWire and DallasTemperature (6250.922836ms)
+✔ actual AVR arduino.nano-classic.atmega328p ds18Multi: unmodified OneWire and DallasTemperature (8010.366854ms)
+✔ actual AVR arduino.nano-classic.atmega328p ds18Resolution: unmodified OneWire and DallasTemperature (11522.526337ms)
+✔ actual AVR arduino.nano-classic.atmega328p ds18Errors: unmodified OneWire and DallasTemperature (1099.08738ms)
+✔ actual AVR CRC corruption and disconnected signal choose error paths then recover (18734.295007ms)
+✔ actual AVR raw ROM search and CRC fixture enumerates all three identities (7293.707394ms)
+✔ production Nano Worker reads 1-Wire live data and resets after termination (19048.679446ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 104389.128058

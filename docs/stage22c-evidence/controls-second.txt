@@ -1,0 +1,93 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.12.2-beta.1 test:s3-controls
+> node --import tsx --test verification/s3-controls.test.ts
+
+✔ encoderRaw: exact compiled source, netlist, project ZIP and physical sketch files (39.039254ms)
+✔ ky040: exact compiled source, netlist, project ZIP and physical sketch files (7.51322ms)
+✔ encoderBounce: exact compiled source, netlist, project ZIP and physical sketch files (10.858427ms)
+✔ encoderPWM: exact compiled source, netlist, project ZIP and physical sketch files (13.644694ms)
+✔ relayContacts: exact compiled source, netlist, project ZIP and physical sketch files (5.238652ms)
+✔ activeAlarm: exact compiled source, netlist, project ZIP and physical sketch files (3.386419ms)
+✔ piezoTone: exact compiled source, netlist, project ZIP and physical sketch files (8.410129ms)
+✔ dcDrive: exact compiled source, netlist, project ZIP and physical sketch files (9.629851ms)
+✔ dualDrive: exact compiled source, netlist, project ZIP and physical sketch files (3.63388ms)
+✔ servoMotorTone: exact compiled source, netlist, project ZIP and physical sketch files (4.095615ms)
+✔ stepperBasic: exact compiled source, netlist, project ZIP and physical sketch files (7.676466ms)
+✔ stepperMicro: exact compiled source, netlist, project ZIP and physical sketch files (4.239311ms)
+✔ stepperControl: exact compiled source, netlist, project ZIP and physical sketch files (3.511556ms)
+✔ support matrix declares exactly the six added S3 component profiles with specific evidence (4.476958ms)
+✔ S3 C++ component help uses the selected board and language (8.936319ms)
+✔ raw KY-040 exposes four Gray transitions and the independent active LOW button (618.201814ms)
+✔ ky040: three CW, two CCW and debounced SW reset execute in WASM (560.921118ms)
+✔ encoderBounce: three CW, two CCW and debounced SW reset execute in WASM (560.421919ms)
+✔ encoder program starts at zero even when the initial mechanical position is 42 (50.769212ms)
+✔ swapping CLK and DT reverses the decoded sign through the actual circuit (106.010323ms)
+✔ a button pulse shorter than the 20 ms filter does not reset the decoder (9.835471ms)
+✔ encoder PWM clamps both bounds and SW returns 50 without moving the mechanism (3799.086965ms)
+✔ KY-040 open CLK cannot yield a fabricated counter (4.181113ms)
+✔ KY-040 open DT cannot yield a fabricated counter (4.011999ms)
+✔ KY-040 missing VCC produces no completed step (3.562423ms)
+✔ KY-040 missing GND produces no completed step (148.715031ms)
+✖ an open SW remains pulled HIGH and cannot pass a physical button press to the program (66.244623ms)
+✔ 5 V KY-040 profile on S3 signals is rejected at compilation of the circuit (2.020246ms)
+✔ compiled relay starts on NC and genuinely switches both electrical LED paths (14.850496ms)
+✔ changing relay active level changes physical contact response without changing the artifact (7.518428ms)
+✔ relay missing VCC stays unenergized on NC (9.325289ms)
+✔ relay missing LV stays unenergized on NC (13.019204ms)
+✔ relay missing GND stays unenergized on NC (10.729985ms)
+✔ open relay IN is held inactive by the declared module pull resistor (9.744284ms)
+✔ loss of relay load power extinguishes LEDs while the control contacts still switch (7.336955ms)
+✔ relay NO contact short to the load ground raises a real output conflict (6.277273ms)
+✔ active buzzer starts silent, oscillates at 2300 Hz on DC, and switches off (13.727349ms)
+✔ activeAlarm: missing VCC prevents sound from a valid compiled program (11.441203ms)
+✔ activeAlarm: missing GND prevents sound from a valid compiled program (6.839648ms)
+✔ activeAlarm: missing SIG prevents sound from a valid compiled program (6.247528ms)
+✔ piezoTone: missing VCC prevents sound from a valid compiled program (13.257863ms)
+✔ piezoTone: missing GND prevents sound from a valid compiled program (11.79883ms)
+✔ piezoTone: missing SIG prevents sound from a valid compiled program (12.836951ms)
+✔ passive piezo follows three LEDC frequencies, 400 ms gates, pauses and final OFF (12.479814ms)
+✔ compiled L298N produces three duty levels, Hi-Z coast, reverse and brake (17.808212ms)
+✔ two compiled motor channels retain independent signs and enable duties (9.964925ms)
+✔ L298N missing VS prevents motor drive (16.492202ms)
+✔ L298N missing VSS prevents motor drive (13.41579ms)
+✔ L298N missing GND prevents motor drive (21.019126ms)
+✔ reversed motor wires reverse the measured direction without editing C++ (14.722253ms)
+✔ an installed EN jumper and direct motor GPIO connection are rejected (1.482538ms)
+✔ SG90, motor and 880 Hz piezo operate concurrently on four independent LEDC pins (12.718433ms)
+✔ A4988 full-step program moves +90 and back to zero from actual STEP edges (133.652496ms)
+✔ five compiled microstep modes each give 18 degrees and return to common Home (767.0151ms)
+✔ ENABLE, electrical RESET and SLEEP preserve their distinct translator/shaft meaning (58.007948ms)
+✔ A4988 missing VMOT cannot drive a motor from printed angle text (127.13371ms)
+✔ A4988 missing VDD cannot drive a motor from printed angle text (124.647313ms)
+✔ A4988 missing GND cannot drive a motor from printed angle text (125.407926ms)
+✔ open A4988 phase preserves translator pulses but cannot move the disconnected motor (141.624109ms)
+✔ editing the visible decoder or main source invalidates the bundled artifact (2.006255ms)
+✔ actual compiler executes a slower student poll and exposes lost encoder steps (496.67307ms)
+ℹ tests 61
+ℹ suites 0
+ℹ pass 60
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8913.936674
+
+✖ failing tests:
+
+test at verification/s3-controls.test.ts:1:8280
+✖ an open SW remains pulled HIGH and cannot pass a physical button press to the program (66.244623ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  undefined !== 1
+  
+      at TestContext.<anonymous> (/workspace/scratch/c12aebc85825/lab/.sites-checkout/verification/s3-controls.test.ts:122:184)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

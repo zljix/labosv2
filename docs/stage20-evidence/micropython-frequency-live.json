@@ -1,0 +1,2157 @@
+{
+  "console": "FREQ=72.29 bpm (sintetski)\nFREQ=113.21 bpm (sintetski)\n",
+  "frame": {
+    "type": "simulation",
+    "clockProfile": "wall-us",
+    "timeMs": 4064,
+    "nets": {
+      "esp32:J1.1": 3.3,
+      "esp32:J1.10": null,
+      "esp32:J1.11": null,
+      "esp32:J1.12": 3.3,
+      "esp32:J1.13": null,
+      "esp32:J1.14": null,
+      "esp32:J1.15": 3.3,
+      "esp32:J1.16": null,
+      "esp32:J1.17": null,
+      "esp32:J1.18": null,
+      "esp32:J1.19": null,
+      "esp32:J1.20": null,
+      "esp32:J1.21": 5,
+      "esp32:J1.22": 0,
+      "esp32:J1.4": null,
+      "esp32:J1.5": null,
+      "esp32:J1.6": null,
+      "esp32:J1.7": null,
+      "esp32:J1.8": null,
+      "esp32:J1.9": null,
+      "esp32:J3.10": null,
+      "esp32:J3.14": null,
+      "esp32:J3.15": null,
+      "esp32:J3.16": null,
+      "esp32:J3.17": null,
+      "esp32:J3.18": null,
+      "esp32:J3.19": null,
+      "esp32:J3.2": null,
+      "esp32:J3.20": null,
+      "esp32:J3.3": null,
+      "esp32:J3.4": null,
+      "esp32:J3.5": null,
+      "esp32:J3.6": null,
+      "esp32:J3.7": null,
+      "esp32:J3.8": null,
+      "esp32:J3.9": null
+    },
+    "leds": {},
+    "gpios": {
+      "8": {
+        "mode": "I2C",
+        "volts": 3.3,
+        "level": 1
+      },
+      "9": {
+        "mode": "I2C",
+        "volts": 3.3,
+        "level": 1
+      }
+    },
+    "optical": {
+      "optical1": {
+        "powered": true,
+        "mode": 3,
+        "shutdown": false,
+        "resetting": false,
+        "sampleRate": 100,
+        "average": 1,
+        "effectiveRate": 100,
+        "count": 1,
+        "writePointer": 13,
+        "readPointer": 12,
+        "overflow": 0,
+        "dropped": 0,
+        "generated": 397,
+        "status": 64,
+        "ledRed": 31,
+        "ledIR": 31,
+        "resolution": 18,
+        "last": {
+          "index": 396,
+          "timeMs": 4052.925451999996,
+          "red": 425,
+          "ir": 500,
+          "readTimeMs": 4053.262357999978
+        },
+        "readings": [
+          {
+            "index": 269,
+            "timeMs": 2782.925451999996,
+            "red": 72453,
+            "ir": 86361,
+            "readTimeMs": 2784.7036039999803
+          },
+          {
+            "index": 270,
+            "timeMs": 2792.925451999996,
+            "red": 72389,
+            "ir": 86270,
+            "readTimeMs": 2795.1650939999963
+          },
+          {
+            "index": 271,
+            "timeMs": 2802.925451999996,
+            "red": 72297,
+            "ir": 86139,
+            "readTimeMs": 2804.772060999996
+          },
+          {
+            "index": 272,
+            "timeMs": 2812.925451999996,
+            "red": 72179,
+            "ir": 85969,
+            "readTimeMs": 2814.0667879999964
+          },
+          {
+            "index": 273,
+            "timeMs": 2822.925451999996,
+            "red": 72037,
+            "ir": 85767,
+            "readTimeMs": 2823.3177140000043
+          },
+          {
+            "index": 274,
+            "timeMs": 2832.925451999996,
+            "red": 71874,
+            "ir": 85535,
+            "readTimeMs": 2833.003700000001
+          },
+          {
+            "index": 275,
+            "timeMs": 2842.925451999996,
+            "red": 71695,
+            "ir": 85278,
+            "readTimeMs": 2844.6139470000053
+          },
+          {
+            "index": 276,
+            "timeMs": 2852.925451999996,
+            "red": 71501,
+            "ir": 85001,
+            "readTimeMs": 2853.2567350000027
+          },
+          {
+            "index": 277,
+            "timeMs": 2862.925451999996,
+            "red": 71295,
+            "ir": 84707,
+            "readTimeMs": 2865.250208000012
+          },
+          {
+            "index": 278,
+            "timeMs": 2872.925451999996,
+            "red": 71081,
+            "ir": 84401,
+            "readTimeMs": 2874.3379839999834
+          },
+          {
+            "index": 279,
+            "timeMs": 2882.925451999996,
+            "red": 70860,
+            "ir": 84086,
+            "readTimeMs": 2883.4271829999634
+          },
+          {
+            "index": 280,
+            "timeMs": 2892.925451999996,
+            "red": 70637,
+            "ir": 83766,
+            "readTimeMs": 2894.073651999992
+          },
+          {
+            "index": 281,
+            "timeMs": 2902.925451999996,
+            "red": 70411,
+            "ir": 83444,
+            "readTimeMs": 2903.1558199999854
+          },
+          {
+            "index": 282,
+            "timeMs": 2912.925451999996,
+            "red": 70186,
+            "ir": 83123,
+            "readTimeMs": 2914.4870779999765
+          },
+          {
+            "index": 283,
+            "timeMs": 2922.925451999996,
+            "red": 69963,
+            "ir": 82804,
+            "readTimeMs": 2923.564228000003
+          },
+          {
+            "index": 284,
+            "timeMs": 2932.925451999996,
+            "red": 69742,
+            "ir": 82489,
+            "readTimeMs": 2933.1518260000157
+          },
+          {
+            "index": 285,
+            "timeMs": 2942.925451999996,
+            "red": 69526,
+            "ir": 82180,
+            "readTimeMs": 2944.6843459999654
+          },
+          {
+            "index": 286,
+            "timeMs": 2952.925451999996,
+            "red": 69314,
+            "ir": 81877,
+            "readTimeMs": 2953.7885070000193
+          },
+          {
+            "index": 287,
+            "timeMs": 2962.925451999996,
+            "red": 69107,
+            "ir": 81581,
+            "readTimeMs": 2964.4382009999827
+          },
+          {
+            "index": 288,
+            "timeMs": 2972.925451999996,
+            "red": 68904,
+            "ir": 81291,
+            "readTimeMs": 2973.843454000016
+          },
+          {
+            "index": 289,
+            "timeMs": 2982.925451999996,
+            "red": 68705,
+            "ir": 81008,
+            "readTimeMs": 2982.9995329999947
+          },
+          {
+            "index": 290,
+            "timeMs": 2992.925451999996,
+            "red": 68510,
+            "ir": 80729,
+            "readTimeMs": 2994.740095999965
+          },
+          {
+            "index": 291,
+            "timeMs": 3002.925451999996,
+            "red": 68318,
+            "ir": 80454,
+            "readTimeMs": 3003.8562449999736
+          },
+          {
+            "index": 292,
+            "timeMs": 3012.925451999996,
+            "red": 68127,
+            "ir": 80181,
+            "readTimeMs": 3015.2174280000036
+          },
+          {
+            "index": 293,
+            "timeMs": 3022.925451999996,
+            "red": 67937,
+            "ir": 79910,
+            "readTimeMs": 3024.514188000001
+          },
+          {
+            "index": 294,
+            "timeMs": 3032.925451999996,
+            "red": 67746,
+            "ir": 79637,
+            "readTimeMs": 3033.679471999989
+          },
+          {
+            "index": 295,
+            "timeMs": 3042.925451999996,
+            "red": 67554,
+            "ir": 79363,
+            "readTimeMs": 3044.9590120000066
+          },
+          {
+            "index": 296,
+            "timeMs": 3052.925451999996,
+            "red": 67360,
+            "ir": 79086,
+            "readTimeMs": 3054.0463069999823
+          },
+          {
+            "index": 297,
+            "timeMs": 3062.925451999996,
+            "red": 67163,
+            "ir": 78804,
+            "readTimeMs": 3063.495807999978
+          },
+          {
+            "index": 298,
+            "timeMs": 3072.925451999996,
+            "red": 66961,
+            "ir": 78516,
+            "readTimeMs": 3074.854737000016
+          },
+          {
+            "index": 299,
+            "timeMs": 3082.925451999996,
+            "red": 66755,
+            "ir": 78222,
+            "readTimeMs": 3083.856473999971
+          },
+          {
+            "index": 300,
+            "timeMs": 3092.925451999996,
+            "red": 66545,
+            "ir": 77922,
+            "readTimeMs": 3093.72628599999
+          },
+          {
+            "index": 301,
+            "timeMs": 3102.925451999996,
+            "red": 66330,
+            "ir": 77615,
+            "readTimeMs": 3108.8771239999915
+          },
+          {
+            "index": 302,
+            "timeMs": 3112.925451999996,
+            "red": 66111,
+            "ir": 77302,
+            "readTimeMs": 3113.4029749999754
+          },
+          {
+            "index": 303,
+            "timeMs": 3122.925451999996,
+            "red": 65889,
+            "ir": 76984,
+            "readTimeMs": 3126.2432299999637
+          },
+          {
+            "index": 304,
+            "timeMs": 3132.925451999996,
+            "red": 65664,
+            "ir": 76663,
+            "readTimeMs": 3136.1588200000115
+          },
+          {
+            "index": 305,
+            "timeMs": 3142.925451999996,
+            "red": 65439,
+            "ir": 76341,
+            "readTimeMs": 3144.508296999964
+          },
+          {
+            "index": 306,
+            "timeMs": 3152.925451999996,
+            "red": 65214,
+            "ir": 76020,
+            "readTimeMs": 3155.209557999973
+          },
+          {
+            "index": 307,
+            "timeMs": 3162.925451999996,
+            "red": 64992,
+            "ir": 75703,
+            "readTimeMs": 3162.9803359999787
+          },
+          {
+            "index": 308,
+            "timeMs": 3172.925451999996,
+            "red": 64775,
+            "ir": 75394,
+            "readTimeMs": 3172.9917399999686
+          },
+          {
+            "index": 309,
+            "timeMs": 3182.925451999996,
+            "red": 64567,
+            "ir": 75095,
+            "readTimeMs": 3183.760803000012
+          },
+          {
+            "index": 310,
+            "timeMs": 3192.925451999996,
+            "red": 64368,
+            "ir": 74812,
+            "readTimeMs": 3193.731706999999
+          },
+          {
+            "index": 311,
+            "timeMs": 3202.925451999996,
+            "red": 64184,
+            "ir": 74548,
+            "readTimeMs": 3203.054606999969
+          },
+          {
+            "index": 312,
+            "timeMs": 3212.925451999996,
+            "red": 64015,
+            "ir": 74307,
+            "readTimeMs": 3215.212235999992
+          },
+          {
+            "index": 313,
+            "timeMs": 3222.925451999996,
+            "red": 63866,
+            "ir": 74095,
+            "readTimeMs": 3225.0894589999807
+          },
+          {
+            "index": 314,
+            "timeMs": 3232.925451999996,
+            "red": 63740,
+            "ir": 73914,
+            "readTimeMs": 3234.6593700000085
+          },
+          {
+            "index": 315,
+            "timeMs": 3242.925451999996,
+            "red": 63638,
+            "ir": 73769,
+            "readTimeMs": 3243.9670059999917
+          },
+          {
+            "index": 316,
+            "timeMs": 3252.925451999996,
+            "red": 63565,
+            "ir": 73665,
+            "readTimeMs": 3253.4614639999927
+          },
+          {
+            "index": 317,
+            "timeMs": 3262.925451999996,
+            "red": 63522,
+            "ir": 73603,
+            "readTimeMs": 3265.1974799999734
+          },
+          {
+            "index": 318,
+            "timeMs": 3272.925451999996,
+            "red": 63512,
+            "ir": 73589,
+            "readTimeMs": 3274.387531000015
+          },
+          {
+            "index": 319,
+            "timeMs": 3282.925451999996,
+            "red": 63536,
+            "ir": 73624,
+            "readTimeMs": 3285.2627229999634
+          },
+          {
+            "index": 320,
+            "timeMs": 3292.925451999996,
+            "red": 63597,
+            "ir": 73710,
+            "readTimeMs": 3294.4526029999834
+          },
+          {
+            "index": 321,
+            "timeMs": 3302.925451999996,
+            "red": 63694,
+            "ir": 73848,
+            "readTimeMs": 3303.608062000014
+          },
+          {
+            "index": 322,
+            "timeMs": 3312.925451999996,
+            "red": 63828,
+            "ir": 74040,
+            "readTimeMs": 3314.4795179999783
+          },
+          {
+            "index": 323,
+            "timeMs": 3322.925451999996,
+            "red": 64000,
+            "ir": 74286,
+            "readTimeMs": 3324.261682000011
+          },
+          {
+            "index": 324,
+            "timeMs": 3332.925451999996,
+            "red": 64209,
+            "ir": 74584,
+            "readTimeMs": 3333.4045719999704
+          },
+          {
+            "index": 325,
+            "timeMs": 3342.925451999996,
+            "red": 64454,
+            "ir": 74934,
+            "readTimeMs": 3344.8567569999723
+          },
+          {
+            "index": 326,
+            "timeMs": 3352.925451999996,
+            "red": 64732,
+            "ir": 75332,
+            "readTimeMs": 3353.3348869999754
+          },
+          {
+            "index": 327,
+            "timeMs": 3362.925451999996,
+            "red": 65043,
+            "ir": 75776,
+            "readTimeMs": 3364.7806020000135
+          },
+          {
+            "index": 328,
+            "timeMs": 3372.925451999996,
+            "red": 65384,
+            "ir": 76263,
+            "readTimeMs": 3373.158886999998
+          },
+          {
+            "index": 329,
+            "timeMs": 3382.925451999996,
+            "red": 65751,
+            "ir": 76787,
+            "readTimeMs": 3384.8647779999883
+          },
+          {
+            "index": 330,
+            "timeMs": 3392.925451999996,
+            "red": 66141,
+            "ir": 77345,
+            "readTimeMs": 3393.929449999996
+          },
+          {
+            "index": 331,
+            "timeMs": 3402.925451999996,
+            "red": 66551,
+            "ir": 77930,
+            "readTimeMs": 3405.168498999963
+          },
+          {
+            "index": 332,
+            "timeMs": 3412.925451999996,
+            "red": 66975,
+            "ir": 78536,
+            "readTimeMs": 3414.2338819999713
+          },
+          {
+            "index": 333,
+            "timeMs": 3422.925451999996,
+            "red": 67411,
+            "ir": 79158,
+            "readTimeMs": 3423.736602000019
+          },
+          {
+            "index": 334,
+            "timeMs": 3432.925451999996,
+            "red": 67852,
+            "ir": 79789,
+            "readTimeMs": 3435.15363299998
+          },
+          {
+            "index": 335,
+            "timeMs": 3442.925451999996,
+            "red": 68295,
+            "ir": 80422,
+            "readTimeMs": 3444.2635379999992
+          },
+          {
+            "index": 336,
+            "timeMs": 3452.925451999996,
+            "red": 68735,
+            "ir": 81050,
+            "readTimeMs": 3453.11987699999
+          },
+          {
+            "index": 337,
+            "timeMs": 3462.925451999996,
+            "red": 69168,
+            "ir": 81668,
+            "readTimeMs": 3464.3705429999973
+          },
+          {
+            "index": 338,
+            "timeMs": 3472.925451999996,
+            "red": 69588,
+            "ir": 82268,
+            "readTimeMs": 3473.6987709999667
+          },
+          {
+            "index": 339,
+            "timeMs": 3482.925451999996,
+            "red": 69991,
+            "ir": 82844,
+            "readTimeMs": 3483.0956320000114
+          },
+          {
+            "index": 340,
+            "timeMs": 3492.925451999996,
+            "red": 70374,
+            "ir": 83391,
+            "readTimeMs": 3494.3708059999626
+          },
+          {
+            "index": 341,
+            "timeMs": 3502.925451999996,
+            "red": 70733,
+            "ir": 83904,
+            "readTimeMs": 3503.9494699999923
+          },
+          {
+            "index": 342,
+            "timeMs": 3512.925451999996,
+            "red": 71268,
+            "ir": 84668,
+            "readTimeMs": 3513.4305220000097
+          },
+          {
+            "index": 343,
+            "timeMs": 3522.925451999996,
+            "red": 71713,
+            "ir": 85305,
+            "readTimeMs": 3525.137699999963
+          },
+          {
+            "index": 344,
+            "timeMs": 3532.925451999996,
+            "red": 72061,
+            "ir": 85802,
+            "readTimeMs": 3534.4338739999803
+          },
+          {
+            "index": 345,
+            "timeMs": 3542.925451999996,
+            "red": 72306,
+            "ir": 86152,
+            "readTimeMs": 3543.6222019999987
+          },
+          {
+            "index": 346,
+            "timeMs": 3552.925451999996,
+            "red": 72448,
+            "ir": 86354,
+            "readTimeMs": 3554.305797000008
+          },
+          {
+            "index": 347,
+            "timeMs": 3562.925451999996,
+            "red": 72488,
+            "ir": 86412,
+            "readTimeMs": 3563.4556659999653
+          },
+          {
+            "index": 348,
+            "timeMs": 3572.925451999996,
+            "red": 72435,
+            "ir": 86335,
+            "readTimeMs": 3574.8248909999966
+          },
+          {
+            "index": 349,
+            "timeMs": 3582.925451999996,
+            "red": 72297,
+            "ir": 86139,
+            "readTimeMs": 3584.535854000016
+          },
+          {
+            "index": 350,
+            "timeMs": 3592.925451999996,
+            "red": 72086,
+            "ir": 85838,
+            "readTimeMs": 3593.714406999992
+          },
+          {
+            "index": 351,
+            "timeMs": 3602.925451999996,
+            "red": 71816,
+            "ir": 85452,
+            "readTimeMs": 3604.124421000015
+          },
+          {
+            "index": 352,
+            "timeMs": 3612.925451999996,
+            "red": 71501,
+            "ir": 85001,
+            "readTimeMs": 3613.5530889999936
+          },
+          {
+            "index": 353,
+            "timeMs": 3622.925451999996,
+            "red": 71153,
+            "ir": 84504,
+            "readTimeMs": 3623.3303769999766
+          },
+          {
+            "index": 354,
+            "timeMs": 3632.925451999996,
+            "red": 70786,
+            "ir": 83980,
+            "readTimeMs": 3634.660422999994
+          },
+          {
+            "index": 355,
+            "timeMs": 3642.925451999996,
+            "red": 70411,
+            "ir": 83444,
+            "readTimeMs": 3644.038555999985
+          },
+          {
+            "index": 356,
+            "timeMs": 3652.925451999996,
+            "red": 70037,
+            "ir": 82910,
+            "readTimeMs": 3653.109136999992
+          },
+          {
+            "index": 357,
+            "timeMs": 3662.925451999996,
+            "red": 69670,
+            "ir": 82385,
+            "readTimeMs": 3664.469527999987
+          },
+          {
+            "index": 358,
+            "timeMs": 3672.925451999996,
+            "red": 69314,
+            "ir": 81877,
+            "readTimeMs": 3674.1829450000077
+          },
+          {
+            "index": 359,
+            "timeMs": 3682.925451999996,
+            "red": 68971,
+            "ir": 81387,
+            "readTimeMs": 3683.5094399999944
+          },
+          {
+            "index": 360,
+            "timeMs": 3692.925451999996,
+            "red": 68640,
+            "ir": 80914,
+            "readTimeMs": 3695.008950999996
+          },
+          {
+            "index": 361,
+            "timeMs": 3702.925451999996,
+            "red": 68318,
+            "ir": 80454,
+            "readTimeMs": 3704.4963569999672
+          },
+          {
+            "index": 362,
+            "timeMs": 3712.925451999996,
+            "red": 68000,
+            "ir": 80000,
+            "readTimeMs": 3714.0774450000026
+          },
+          {
+            "index": 363,
+            "timeMs": 3722.925451999996,
+            "red": 67682,
+            "ir": 79546,
+            "readTimeMs": 3723.3812959999777
+          },
+          {
+            "index": 364,
+            "timeMs": 3732.925451999996,
+            "red": 67360,
+            "ir": 79086,
+            "readTimeMs": 3734.8019280000008
+          },
+          {
+            "index": 365,
+            "timeMs": 3742.925451999996,
+            "red": 67029,
+            "ir": 78613,
+            "readTimeMs": 3744.221393999993
+          },
+          {
+            "index": 366,
+            "timeMs": 3752.925451999996,
+            "red": 66686,
+            "ir": 78123,
+            "readTimeMs": 3753.6210180000053
+          },
+          {
+            "index": 367,
+            "timeMs": 3762.925451999996,
+            "red": 66330,
+            "ir": 77615,
+            "readTimeMs": 3764.014075999963
+          },
+          {
+            "index": 368,
+            "timeMs": 3772.925451999996,
+            "red": 65963,
+            "ir": 77090,
+            "readTimeMs": 3773.5089450000087
+          },
+          {
+            "index": 369,
+            "timeMs": 3782.925451999996,
+            "red": 65589,
+            "ir": 76556,
+            "readTimeMs": 3785.054584999976
+          },
+          {
+            "index": 370,
+            "timeMs": 3792.925451999996,
+            "red": 65214,
+            "ir": 76020,
+            "readTimeMs": 3794.2991269999766
+          },
+          {
+            "index": 371,
+            "timeMs": 3802.925451999996,
+            "red": 64847,
+            "ir": 75496,
+            "readTimeMs": 3803.4782000000123
+          },
+          {
+            "index": 372,
+            "timeMs": 3812.925451999996,
+            "red": 64499,
+            "ir": 74999,
+            "readTimeMs": 3814.2606730000116
+          },
+          {
+            "index": 373,
+            "timeMs": 3822.925451999996,
+            "red": 64184,
+            "ir": 74548,
+            "readTimeMs": 3823.4254359999904
+          },
+          {
+            "index": 374,
+            "timeMs": 3832.925451999996,
+            "red": 63914,
+            "ir": 74162,
+            "readTimeMs": 3833.758032999991
+          },
+          {
+            "index": 375,
+            "timeMs": 3842.925451999996,
+            "red": 63703,
+            "ir": 73861,
+            "readTimeMs": 3843.2058199999738
+          },
+          {
+            "index": 376,
+            "timeMs": 3852.925451999996,
+            "red": 63565,
+            "ir": 73665,
+            "readTimeMs": 3854.5930119999684
+          },
+          {
+            "index": 377,
+            "timeMs": 3862.925451999996,
+            "red": 63512,
+            "ir": 73588,
+            "readTimeMs": 3863.7761719999835
+          },
+          {
+            "index": 378,
+            "timeMs": 3872.925451999996,
+            "red": 63552,
+            "ir": 73646,
+            "readTimeMs": 3873.7332840000163
+          },
+          {
+            "index": 379,
+            "timeMs": 3882.925451999996,
+            "red": 63694,
+            "ir": 73848,
+            "readTimeMs": 3885.0644520000205
+          },
+          {
+            "index": 380,
+            "timeMs": 3892.925451999996,
+            "red": 63939,
+            "ir": 74198,
+            "readTimeMs": 3894.1850069999928
+          },
+          {
+            "index": 381,
+            "timeMs": 3902.925451999996,
+            "red": 64287,
+            "ir": 74695,
+            "readTimeMs": 3903.561478000018
+          },
+          {
+            "index": 382,
+            "timeMs": 3912.925451999996,
+            "red": 64732,
+            "ir": 75332,
+            "readTimeMs": 3915.0043939999887
+          },
+          {
+            "index": 383,
+            "timeMs": 3922.925451999996,
+            "red": 65267,
+            "ir": 76096,
+            "readTimeMs": 3924.118159000005
+          },
+          {
+            "index": 384,
+            "timeMs": 3932.925451999996,
+            "red": 65879,
+            "ir": 76970,
+            "readTimeMs": 3933.453267999983
+          },
+          {
+            "index": 385,
+            "timeMs": 3942.925451999996,
+            "red": 66551,
+            "ir": 77930,
+            "readTimeMs": 3944.111975000007
+          },
+          {
+            "index": 386,
+            "timeMs": 3952.925451999996,
+            "red": 67265,
+            "ir": 78950,
+            "readTimeMs": 3953.333102000004
+          },
+          {
+            "index": 387,
+            "timeMs": 3962.925451999996,
+            "red": 68000,
+            "ir": 80000,
+            "readTimeMs": 3964.6289460000116
+          },
+          {
+            "index": 388,
+            "timeMs": 3972.925451999996,
+            "red": 68735,
+            "ir": 81050,
+            "readTimeMs": 3974.383113000018
+          },
+          {
+            "index": 389,
+            "timeMs": 3982.925451999996,
+            "red": 69449,
+            "ir": 82070,
+            "readTimeMs": 3983.877781999996
+          },
+          {
+            "index": 390,
+            "timeMs": 3992.925451999996,
+            "red": 70121,
+            "ir": 83030,
+            "readTimeMs": 3993.3499159999774
+          },
+          {
+            "index": 391,
+            "timeMs": 4002.925451999996,
+            "red": 70733,
+            "ir": 83904,
+            "readTimeMs": 4004.9830170000205
+          },
+          {
+            "index": 392,
+            "timeMs": 4012.925451999996,
+            "red": 71268,
+            "ir": 84668,
+            "readTimeMs": 4014.1509949999745
+          },
+          {
+            "index": 393,
+            "timeMs": 4022.925451999996,
+            "red": 71713,
+            "ir": 85305,
+            "readTimeMs": 4023.3721609999775
+          },
+          {
+            "index": 394,
+            "timeMs": 4032.925451999996,
+            "red": 425,
+            "ir": 500,
+            "readTimeMs": 4034.802767999994
+          },
+          {
+            "index": 395,
+            "timeMs": 4042.925451999996,
+            "red": 425,
+            "ir": 500,
+            "readTimeMs": 4044.168171999976
+          },
+          {
+            "index": 396,
+            "timeMs": 4052.925451999996,
+            "red": 425,
+            "ir": 500,
+            "readTimeMs": 4053.262357999978
+          }
+        ],
+        "reason": "Sintetski RED/IR · polling"
+      }
+    },
+    "sensors": {},
+    "displays": {},
+    "measurements": [],
+    "i2cTrace": [
+      {
+        "timeMs": 4027.5209059999906,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4027.5385719999904,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4027.558863000013,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4027.5738249999704,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          9,
+          0,
+          9
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4029.754052000004,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          5
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4029.782133999979,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4029.805869999982,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4029.8204810000025,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4029.841192999971,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4029.8553439999814,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          9,
+          0,
+          9
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4032.335980999982,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          5
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4032.377494000015,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4032.4067379999906,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4032.4227320000064,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4032.4434529999853,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4032.459096000006,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          9,
+          0,
+          9
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4034.6150659999694,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          5
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4034.680954999989,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4034.711030000006,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4034.7271039999905,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          64
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4034.7480959999957,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4034.763528999989,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          10,
+          0,
+          9
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4034.7862529999693,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          7
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4034.8054419999826,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 6,
+        "bytes": [
+          0,
+          1,
+          169,
+          0,
+          1,
+          244
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4036.964616000012,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          5
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4036.989373999997,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4037.014260999975,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4037.0299549999763,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4037.050195000018,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4037.067280999967,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          10,
+          0,
+          10
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4039.235358999984,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          5
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4039.263710999978,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4039.289359999995,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4039.304422999965,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4039.3301709999796,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4039.427778000012,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          10,
+          0,
+          10
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4041.6223960000207,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          5
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4041.6887759999954,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4041.7185000000172,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4041.7407440000097,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4041.827064000012,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4041.846141999995,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          10,
+          0,
+          10
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4044.02097100002,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          5
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4044.051636999997,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4044.0772860000143,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4044.0941309999907,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          64
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4044.115282999992,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4044.1300049999845,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          11,
+          0,
+          10
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4044.152187999978,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          7
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4044.170125000004,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 6,
+        "bytes": [
+          0,
+          1,
+          169,
+          0,
+          1,
+          244
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4046.3335859999643,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          5
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4046.3599459999823,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4046.3942369999713,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4046.410170999996,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4046.4311129999696,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4046.4463259999757,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          11,
+          0,
+          11
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4048.5891759999795,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          5
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4048.6139529999928,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4048.6573579999967,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4048.6755160000175,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4048.6959459999925,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4048.7101779999794,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          11,
+          0,
+          11
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4050.8569840000127,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          5
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4050.880268000008,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4050.9034530000063,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4050.9178250000114,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4050.9396279999637,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4050.9548709999654,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          11,
+          0,
+          11
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4053.1171999999788,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          5
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4053.145361999981,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4053.1704199999804,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4053.185882999969,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          64
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4053.20736499998,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4053.2248120000004,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          12,
+          0,
+          11
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4053.2466140000033,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          7
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4053.2639900000067,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 6,
+        "bytes": [
+          0,
+          1,
+          169,
+          0,
+          1,
+          244
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4055.41515299998,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          5
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4055.43968999997,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4055.463825999992,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4055.47844799998,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4055.5003209999995,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4055.516856000002,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          12,
+          0,
+          12
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4057.678353999974,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          5
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4057.7047940000193,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4057.7296510000015,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4057.745064000017,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4057.7657349999645,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4057.780537999992,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          12,
+          0,
+          12
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4059.925331000006,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          5
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4059.951309999975,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4059.9765880000195,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4059.9914199999766,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4060.0115399999777,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4060.02690300002,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          12,
+          0,
+          12
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4062.1975859999657,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          5
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4062.224795999995,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4062.2496640000027,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4062.264475999982,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 4062.285487999965,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / bez STOP"
+      },
+      {
+        "timeMs": 4062.30051999999,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          12,
+          0,
+          12
+        ],
+        "result": "ACK"
+      }
+    ],
+    "sdCards": {},
+    "rtcDevices": {},
+    "touches": {},
+    "tfts": {},
+    "spiTrace": [],
+    "spiBytes": 0,
+    "steppers": {
+      "drivers": {},
+      "motors": {}
+    },
+    "tmDisplays": {},
+    "infrared": {},
+    "encoders": {},
+    "oneWireDevices": {},
+    "timedSensors": {},
+    "analogInputs": {},
+    "servos": {},
+    "diagnostics": [],
+    "session": 19
+  }
+}

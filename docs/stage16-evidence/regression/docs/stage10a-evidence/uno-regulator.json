@@ -1,0 +1,50 @@
+{
+  "platform": "linux",
+  "wallMs": 24198.632281000002,
+  "virtualMs": 8100.00175,
+  "staticSRAM": 911,
+  "memory": {
+    "staticBytes": 911,
+    "lowestSP": 2138,
+    "minFreeToStatic": 972
+  },
+  "observations": [
+    {
+      "temperature": 30,
+      "humidity": 70,
+      "servo": {
+        "powered": true,
+        "angle": 89.97,
+        "pulseUs": 1499.625,
+        "freq": 49.9917201213549,
+        "reason": "Zadani položaj (idealizirano)"
+      },
+      "pixelBytes": 307
+    },
+    {
+      "temperature": 27,
+      "humidity": 60,
+      "servo": {
+        "powered": true,
+        "angle": 89.95,
+        "pulseUs": 1499.5,
+        "freq": 49.99218872051242,
+        "reason": "Zadani položaj (idealizirano)"
+      },
+      "pixelBytes": 296
+    },
+    {
+      "temperature": 25,
+      "humidity": 40,
+      "servo": {
+        "powered": true,
+        "angle": 0,
+        "pulseUs": 499.75,
+        "freq": 49.99250112483128,
+        "reason": "Zadani položaj (idealizirano)"
+      },
+      "pixelBytes": 272
+    }
+  ],
+  "console": "Regulator spreman\r\nT=24.00 RH=50.00 Servo=0\r\nT=30.00 RH=70.00 Servo=90\r\nT=27.00 RH=60.00 Servo=90\r\nT=25.00 RH=40.00 Servo=0\r\n"
+}

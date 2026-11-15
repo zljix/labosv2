@@ -1,0 +1,2 @@
+uno: translated GPIO6/7 software I2C passed
+nano: translated GPIO6/7 software I2C passed

@@ -1,0 +1,40 @@
+{
+  "environment": "Development Chrome/Linux, actual UI interaction",
+  "appVersion": "0.12.5-beta.1",
+  "productionAuthenticated": false,
+  "studentPilot": false,
+  "targetMobileDevice": false,
+  "observations": [
+    {
+      "state": "released button",
+      "input": "B1 5.00 V",
+      "output": "A1 3.30 V",
+      "logic": 1,
+      "ledPercent": 0
+    },
+    {
+      "state": "pressed button",
+      "input": "B1 0.00 V",
+      "output": "A1 0.00 V",
+      "logic": 0,
+      "ledPercent": 88,
+      "console": "S3 LED=1"
+    },
+    {
+      "state": "VCCB wire removed",
+      "vccb": null,
+      "direction": null,
+      "output": null,
+      "message": "Provjeri VCCA=3,3 V, VCCB=5 V i zajedničku masu; izlazi modela su otpušteni."
+    },
+    {
+      "state": "wire restored by Undo and fresh Run",
+      "input": "B1 5.00 V",
+      "output": "A1 3.30 V",
+      "logic": 1
+    }
+  ],
+  "catalogue": "17 themes; 65/65 variants for selected S3 C++ target",
+  "screenshot": "ESP32_Lab_22G_Pretvornik.jpg",
+  "limits": "Development observation, not a student pilot, physical voltage measurement, cold offline test or target Safari/Android check."
+}

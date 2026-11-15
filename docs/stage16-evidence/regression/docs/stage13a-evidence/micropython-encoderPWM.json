@@ -1,0 +1,213 @@
+{
+  "console": "PWM=50\nPWM=55\nPWM=50\nPWM=55\nPWM=50\n",
+  "frame": {
+    "type": "simulation",
+    "clockProfile": "wall-us",
+    "timeMs": 647,
+    "nets": {
+      "enc1:CLK": 3.3,
+      "enc1:DT": 3.3,
+      "enc1:GND": 0,
+      "enc1:SW": 0,
+      "enc1:VCC": 3.3,
+      "encLED:A": 0.91086,
+      "encR:1": 1.64997,
+      "esp32:J1.10": null,
+      "esp32:J1.11": null,
+      "esp32:J1.12": null,
+      "esp32:J1.13": null,
+      "esp32:J1.14": null,
+      "esp32:J1.15": null,
+      "esp32:J1.16": null,
+      "esp32:J1.17": null,
+      "esp32:J1.18": null,
+      "esp32:J1.19": null,
+      "esp32:J1.20": null,
+      "esp32:J1.21": 5,
+      "esp32:J1.8": null,
+      "esp32:J1.9": null,
+      "esp32:J3.10": null,
+      "esp32:J3.14": null,
+      "esp32:J3.15": null,
+      "esp32:J3.16": null,
+      "esp32:J3.17": null,
+      "esp32:J3.18": null,
+      "esp32:J3.19": null,
+      "esp32:J3.2": null,
+      "esp32:J3.20": null,
+      "esp32:J3.3": null,
+      "esp32:J3.4": null,
+      "esp32:J3.5": null,
+      "esp32:J3.6": null,
+      "esp32:J3.7": null,
+      "esp32:J3.8": null,
+      "esp32:J3.9": null
+    },
+    "leds": {
+      "encLED": {
+        "brightness": 0.21738798716915383,
+        "currentMa": 1.0869
+      }
+    },
+    "gpios": {
+      "4": {
+        "mode": "IN",
+        "volts": 3.3,
+        "level": 1
+      },
+      "5": {
+        "mode": "IN",
+        "volts": 3.3,
+        "level": 1
+      },
+      "6": {
+        "mode": "IN",
+        "volts": 7.333333170370373e-8,
+        "level": 0
+      },
+      "7": {
+        "mode": "PWM",
+        "volts": 3.3,
+        "level": 1,
+        "freq": 1000,
+        "duty": 32767
+      }
+    },
+    "sensors": {},
+    "displays": {},
+    "measurements": [],
+    "i2cTrace": [],
+    "tfts": {},
+    "spiTrace": [],
+    "spiBytes": 0,
+    "steppers": {
+      "drivers": {},
+      "motors": {}
+    },
+    "tmDisplays": {},
+    "infrared": {},
+    "encoders": {
+      "enc1": {
+        "powered": true,
+        "position": 1,
+        "targetPosition": 1,
+        "clk": 1,
+        "dt": 1,
+        "sw": 0,
+        "busy": false,
+        "transitions": 12,
+        "trace": [
+          {
+            "timeUs": 112.59599999993952,
+            "clk": 1,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 221290.40600000008,
+            "clk": 0,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 241290.40600000008,
+            "clk": 0,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 261290.40600000008,
+            "clk": 1,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 281290.4060000001,
+            "clk": 1,
+            "dt": 1,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 357005.443,
+            "clk": 1,
+            "dt": 0,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 377005.443,
+            "clk": 0,
+            "dt": 0,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 397005.443,
+            "clk": 0,
+            "dt": 1,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 417005.443,
+            "clk": 1,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 488633.9080000007,
+            "clk": 0,
+            "dt": 1,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 508633.9080000007,
+            "clk": 0,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 528633.9080000008,
+            "clk": 1,
+            "dt": 0,
+            "sw": 1,
+            "position": 0
+          },
+          {
+            "timeUs": 548633.9080000008,
+            "clk": 1,
+            "dt": 1,
+            "sw": 1,
+            "position": 1
+          },
+          {
+            "timeUs": 604735.0890000007,
+            "clk": 1,
+            "dt": 1,
+            "sw": 0,
+            "position": 1
+          }
+        ],
+        "volts": {
+          "CLK": 3.3,
+          "DT": 3.3,
+          "SW": 7.333333170370373e-8
+        }
+      }
+    },
+    "oneWireDevices": {},
+    "timedSensors": {},
+    "analogInputs": {},
+    "servos": {},
+    "diagnostics": [],
+    "session": 4
+  }
+}

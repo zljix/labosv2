@@ -1,0 +1,96 @@
+{
+  "release": "0.5.3-beta.1",
+  "baseCommit": "149a721aa6721b2adeb00cff197812f642699cc6",
+  "uniqueChecks": 283,
+  "passed": 283,
+  "groups": {
+    "project_circuit": 26,
+    "boards": 9,
+    "simulation": 12,
+    "peripherals": 16,
+    "runtime_files": 13,
+    "lessons": 20,
+    "offline": 8,
+    "avr": 15,
+    "arduino_environment_compiler": 12,
+    "avr_peripherals": 12,
+    "environment": 18,
+    "displays": 21,
+    "analog": 23,
+    "dht": 25,
+    "onewire": 30,
+    "encoders": 23
+  },
+  "skippedCompilerChecks": 0,
+  "rerunsNotDoubleCounted": true,
+  "testExecution": {
+    "initialRegression": {
+      "tests": 268,
+      "passed": 266,
+      "failed": 2
+    },
+    "targetedFinal": {
+      "tests": 50,
+      "passed": 50,
+      "scope": "boards 9, encoders 23, environment 18"
+    },
+    "runtime": {
+      "tests": 13,
+      "passed": 13
+    },
+    "finalOffline": {
+      "tests": 8,
+      "passed": 8
+    },
+    "finalWorker": {
+      "tests": 1,
+      "passed": 1,
+      "alreadyCountedInEncoders": true
+    },
+    "notes": [
+      "Updated support test to include implemented KY-040.",
+      "Initial parallel weather MicroPython run failed; complete sequential environment rerun passed 18/18. Original failure cause not established."
+    ]
+  },
+  "package": {
+    "build": "c3927e7e16b8f3a1",
+    "resources": 102,
+    "bytes": 8199101,
+    "allHashesVerified": true
+  },
+  "compatibility": {
+    "baseCommit": "149a721aa6721b2adeb00cff197812f642699cc6",
+    "oldArduinoArtifacts": 60,
+    "oldArtifactsUnchanged": true,
+    "newArduinoArtifacts": 8,
+    "totalArduinoArtifacts": 68,
+    "wasmAndLoaderUnchanged": true,
+    "avrContractUnchanged": true
+  },
+  "browser": {
+    "environment": "Chromium/Linux, development URL",
+    "microPython": [
+      "CW five steps to P=5",
+      "CCW one step to P=4",
+      "SW reset to P=0",
+      "mechanical position completed independently of code counter"
+    ],
+    "uno": [
+      "prepared artifact, Flash 2982 B and static SRAM 220 B",
+      "CW five steps to P=5",
+      "CCW one step to P=4",
+      "SW reset to P=0"
+    ],
+    "productionBrowser": "not verified; private domain requires sign-in",
+    "initialDocument": "old offline 0.3.0; current development document with query parameter used; no storage cleared"
+  },
+  "unverified": [
+    "Safari/iOS",
+    "Android",
+    "school computer",
+    "cold private production offline startup",
+    "physical KY-040",
+    "student pilot"
+  ],
+  "nextStage": "13B — IR receiver / remote, NEC"
+}

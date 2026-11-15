@@ -1,0 +1,17 @@
+{
+  "platform": "Chromium/Linux development preview",
+  "applicationVersion": "0.7.1-beta.1",
+  "observations": [
+    "Nano: iliGraphics runs compiled SPI source and Stop retains full RGB stripes/text/geometry",
+    "ESP32-S3: iliGraphics runs actual MicroPython; physical canvas 240x320, observed ratio approximately 0.75001",
+    "ESP32-S3: iliDashboard initially reads 24.00 C / 101325 Pa; live slider to 31 C produces 31.00 C and 31.0 C TFT pixels; Stop retains picture",
+    "Uno R3: iliDashboard runs actual compiled SPI program and UART prints 24.00 C / 101325 Pa; Stop succeeds"
+  ],
+  "limits": [
+    "No physical board or module",
+    "No school PC or student pilot",
+    "No Safari/iOS or Android",
+    "Production authenticated interaction and cold offline production launch not exercised"
+  ],
+  "screenshotScope": "Internal development screenshot; not stored in repository or Library"
+}

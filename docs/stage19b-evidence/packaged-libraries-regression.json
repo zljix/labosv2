@@ -1,0 +1,57 @@
+[
+  {
+    "key": "dht22",
+    "status": "pass",
+    "build": "280c8e9babc8bf94",
+    "observationMs": 2481.554501,
+    "stopMs": 29.736820999999964,
+    "console": "DHT22 T=-12.3 C RH=67.8\r\n",
+    "timeMs": 4206
+  },
+  {
+    "key": "ds18Multi",
+    "status": "pass",
+    "build": "280c8e9babc8bf94",
+    "observationMs": 2787.364752,
+    "stopMs": 5.411092000000281,
+    "console": "ROM=28B61223913ED36B T=-10.1250 C\r\nROM=28491423927B8146 T=60.0000 C\r\nROM=2823112390012548 T=25.0000 C\r\n",
+    "timeMs": 2204
+  },
+  {
+    "key": "ds18Resolution",
+    "status": "pass",
+    "build": "280c8e9babc8bf94",
+    "observationMs": 4035.8082560000003,
+    "stopMs": 6.204883999998856,
+    "console": "BITA=9\r\nROM=2823112390012548 T=25.0000 C\r\nBITA=10\r\nROM=2823112390012548 T=25.0000 C\r\nBITA=11\r\nROM=2823112390012548 T=25.0000 C\r\nBITA=12\r\n",
+    "timeMs": 1852
+  },
+  {
+    "key": "oled64",
+    "status": "pass",
+    "build": "280c8e9babc8bf94",
+    "observationMs": 553.9735430000001,
+    "stopMs": 4.515889000000243,
+    "console": "S3 OLED64 COUNT=0\r\n",
+    "pixels": {
+      "length": 1024,
+      "nonzero": 206,
+      "sha256": "04cf28ba3594869cad9af3d30795bf84755661106c3596bbe465ce21091bb6df"
+    },
+    "timeMs": 1300
+  },
+  {
+    "key": "oled32",
+    "status": "pass",
+    "build": "280c8e9babc8bf94",
+    "observationMs": 663.3709909999998,
+    "stopMs": 5.167286999998396,
+    "console": "S3 OLED32 COUNT=0\r\n",
+    "pixels": {
+      "length": 512,
+      "nonzero": 198,
+      "sha256": "b9d1af4a388135eb612f61b5b0fd1801c4b574abbc1f2a32100f1a3d85c657c3"
+    },
+    "timeMs": 1300
+  }
+]

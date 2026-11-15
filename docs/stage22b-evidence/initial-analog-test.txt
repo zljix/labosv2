@@ -1,0 +1,81 @@
+✔ lm35: exact source/header, valid nets, ZIP and physical sketch export (50.800838ms)
+✔ temt6000: exact source/header, valid nets, ZIP and physical sketch export (11.568643ms)
+✔ ntc: exact source/header, valid nets, ZIP and physical sketch export (7.702535ms)
+✔ ky023: exact source/header, valid nets, ZIP and physical sketch export (13.521088ms)
+✔ flame: exact source/header, valid nets, ZIP and physical sketch export (11.420671ms)
+✔ sound: exact source/header, valid nets, ZIP and physical sketch export (3.624417ms)
+✔ analogCompare: exact source/header, valid nets, ZIP and physical sketch export (5.305362ms)
+✔ dualInputs: exact source/header, valid nets, ZIP and physical sketch export (5.358492ms)
+✔ matrix declares six experimental S3 profiles, URS04 coverage and actual evidence (11.625449ms)
+✔ compiled LM35 converts the 10 mV/C circuit at 2 C (14.237004ms)
+✔ compiled LM35 converts the 10 mV/C circuit at 25 C (5.562358ms)
+✔ compiled LM35 converts the 10 mV/C circuit at 50 C (4.948797ms)
+✔ compiled LM35 converts the 10 mV/C circuit at 100 C (4.447884ms)
+✔ compiled LM35 converts the 10 mV/C circuit at 150 C (4.26576ms)
+✔ LM35 live input changes the next actual C++ ADC result (7.667361ms)
+✔ compiled TEMT6000 reads network voltage, 0 lx stimulus (5.508648ms)
+✔ compiled TEMT6000 reads network voltage, 20 lx stimulus (3.301291ms)
+✔ compiled TEMT6000 reads network voltage, 100 lx stimulus (4.474955ms)
+✔ compiled TEMT6000 reads network voltage, 600 lx stimulus (4.302866ms)
+✔ compiled TEMT6000 reads network voltage, 2000 lx stimulus (4.19226ms)
+✔ compiled NTC uses the 3.3 V divider, -20 C (5.599354ms)
+✔ compiled NTC uses the 3.3 V divider, 0 C (3.993321ms)
+✔ compiled NTC uses the 3.3 V divider, 25 C (5.376589ms)
+✔ compiled NTC uses the 3.3 V divider, 50 C (3.609513ms)
+✔ compiled NTC uses the 3.3 V divider, 100 C (4.360042ms)
+✔ NTC rejects actual ADC saturation instead of displaying a fabricated temperature (4.357037ms)
+✔ NTC changed resistance really changes the measured result until source constants are adjusted (3.570456ms)
+✔ LM35 and NTC share the ADC but respond independently while running (7.350405ms)
+✔ KY-023 center, both signs, dead zone, upper clipping and active LOW button execute in C++ (10.42733ms)
+✔ flame: live comparator hysteresis and a fresh run are decoded through digitalRead (16.381266ms)
+✔ sound: live comparator hysteresis and a fresh run are decoded through digitalRead (14.48691ms)
+✔ two potentiometers and two buttons are four independent live inputs (8.315084ms)
+✔ lm35: disconnected VCC is not a valid powered measurement (3.550284ms)
+✔ lm35: disconnected GND is not a valid powered measurement (4.780313ms)
+✔ temt6000: disconnected VCC is not a valid powered measurement (5.141086ms)
+✔ temt6000: disconnected GND is not a valid powered measurement (2.729041ms)
+✔ ntc: disconnected VCC is not a valid powered measurement (7.223394ms)
+✔ ntc: disconnected GND is not a valid powered measurement (4.076095ms)
+✔ ky023: disconnected VCC is not a valid powered measurement (5.048572ms)
+✔ ky023: disconnected GND is not a valid powered measurement (5.009368ms)
+✔ flame: disconnected VCC is not a valid powered measurement (2.7283ms)
+✔ flame: disconnected GND is not a valid powered measurement (2.205164ms)
+✔ sound: disconnected VCC is not a valid powered measurement (2.565175ms)
+✔ sound: disconnected GND is not a valid powered measurement (2.952046ms)
+✔ lm35: disconnected signal stops C++ instead of substituting a slider value (3.160389ms)
+✔ temt6000: disconnected signal stops C++ instead of substituting a slider value (3.775434ms)
+✔ ntc: disconnected signal stops C++ instead of substituting a slider value (2.554439ms)
+✔ ky023: disconnected signal stops C++ instead of substituting a slider value (3.113329ms)
+✔ flame: disconnected signal stops C++ instead of substituting a slider value (2.763954ms)
+✖ sound: disconnected signal stops C++ instead of substituting a slider value (8.32474ms)
+✔ LM35 connected to 3V3 loses power validity and the real ADC read fails (11.230044ms)
+✔ a 5 V input module wired to S3 signal is rejected by the electrical compiler (2.576011ms)
+✔ changes to the sketch or visible conversion header invalidate the bundled artifact (4.282225ms)
+✔ actual compiler executes changed student conversion code and rejects a missing header (498.886671ms)
+ℹ tests 54
+ℹ suites 0
+ℹ pass 53
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1342.175929
+
+✖ failing tests:
+
+test at verification/s3-analog.test.ts:1:8836
+✖ sound: disconnected signal stops C++ instead of substituting a slider value (8.32474ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(!r.lines.length)
+  
+      at TestContext.<anonymous> (/workspace/scratch/23b5a5166c79/lab/.sites-checkout/verification/s3-analog.test.ts:121:74)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

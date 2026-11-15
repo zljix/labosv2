@@ -1,0 +1,20 @@
+{
+  "typescriptUniqueTests": 942,
+  "initialPassed": 938,
+  "initialFailures": [
+    "real S3 compiler rejects unavailable graphics constructors and hardware IRQ API",
+    "real compiler supports multiple C++/C files and Bounce2 GPIO without source rewriting",
+    "actual S3 Worker accepts live input inside setup and force-stops a pure infinite C++ loop",
+    "serial flood keeps console chunks and message rate bounded while C++ remains stoppable"
+  ],
+  "initialFailureCause": "Development environment did not expose wasm-ld-19 on PATH. Existing compiler and app code unchanged. Added scratch linker alias to PATH.",
+  "targetedRerunTests": 61,
+  "targetedRerunPassed": 61,
+  "unresolvedFailures": 0,
+  "skipped": 0,
+  "counting": "The 61 targeted S3 reruns and separate 219 URS reruns are not added to 942 unique TypeScript cases. Final offline cases are recorded separately.",
+  "offlineUniqueTests": 8,
+  "offlinePassed": 8,
+  "totalUniqueTests": 950,
+  "finalUnresolvedFailures": 0
+}

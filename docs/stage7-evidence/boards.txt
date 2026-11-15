@@ -1,0 +1,22 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.4.0-alpha.1 test:boards
+> node --import tsx --test verification/boards.test.ts
+
+✔ v1/v2 migration retains source, circuit, identity and settings without mutating input (22.404845ms)
+✔ existing raw IndexedDB row migrates on read and preserves old snapshot until an explicit save (20.228519ms)
+✔ project rejects mixed boards, future profiles, wrong languages, entrypoint and runtime target (1.13661ms)
+✔ Uno/Nano pin profiles preserve aliases, PWM, ADC-only pins and distinct MCU mappings (1.708816ms)
+✔ electrical checks distinguish 5 V AVR input from 3.3 V ESP32 and 3.3 V-only modules (1.762697ms)
+✔ board derivation saves an independent source-preserving project and detaches every old board wire (17.039279ms)
+✔ breadboard 1–60 separates 30/31 rails, groups and centre channel without changing old 1–30 (16.617011ms)
+✔ Arduino ZIP/JSON and IDE sketch preserve multiple sources and never run through MicroPython (16.317904ms)
+✔ support status depends on board, language and implemented model; planned devices remain planned (0.735921ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 542.432452

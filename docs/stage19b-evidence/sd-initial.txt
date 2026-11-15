@@ -1,0 +1,148 @@
+✔ card requires initial CS-high clocks before CMD0 (3.419061ms)
+✔ mandatory CRC7 rejects CMD0 (0.520088ms)
+✔ mandatory CRC7 rejects CMD8 (0.393055ms)
+✔ ACMD41 requires CMD55 and does not initialize from a bare command (0.513909ms)
+✔ read before initialization is an explicit illegal command (0.295667ms)
+✔ SDSC read/write uses byte addresses, CRC16 and real payloads (5.491117ms)
+✔ unaligned/out-of-range address rejected: 1 (1.071787ms)
+✔ unaligned/out-of-range address rejected: 8388608 (0.643166ms)
+✔ unaligned/out-of-range address rejected: 4294967295 (0.506559ms)
+✔ unsupported command returns illegal R1: 18 (0.419086ms)
+✔ unsupported command returns illegal R1: 25 (0.275139ms)
+✔ unsupported command returns illegal R1: 32 (0.74194ms)
+✔ unsupported command returns illegal R1: 38 (0.261718ms)
+✔ CMD59 enables command CRC and payload CRC rejection (1.037363ms)
+✔ partial write is discarded on CS release and power/protocol reset (0.35326ms)
+✔ write protection refuses a complete block without changing old contents (2.817031ms)
+✔ busy response persists for the bounded program interval (0.725166ms)
+✔ removal retains committed blocks but requires reinitialization (1.836686ms)
+✔ sparse 256-sector limit returns a write error and leaves old data intact (41.469646ms)
+✔ sparse state rejects duplicate, oversized and invalid records (0.914909ms)
+✔ 8 MiB image round trip preserves sparse sectors and boot/FAT geometry (211.305048ms)
+✔ disconnected VCC cannot give a successful initialization reply (29.358095ms)
+✔ disconnected GND cannot give a successful initialization reply (7.353926ms)
+✔ disconnected SCK cannot give a successful initialization reply (7.382725ms)
+✔ disconnected MOSI cannot give a successful initialization reply (5.085063ms)
+✔ disconnected MISO cannot give a successful initialization reply (5.994876ms)
+✔ disconnected CS cannot give a successful initialization reply (4.141769ms)
+✔ initial SPI profile rejected 1000000/0 (8.278929ms)
+✔ initial SPI profile rejected 100000/3 (3.819837ms)
+✔ two cards with active shared CS fail explicitly (7.097769ms)
+✔ 5 V SPI carrier on a 3.3 V MCU is rejected before execution (1.869033ms)
+✖ project JSON/ZIP preserves SD state and refuses malformed state (8.889143ms)
+✔ MCU media domain retains state across source edits and isolates another project (2.960278ms)
+✔ visible C++ header equals project-export driver byte for byte (0.179755ms)
+✔ actual MicroPython WASM sdInspect (3460.602849ms)
+✔ actual MicroPython WASM sdBlocks (662.899835ms)
+✔ actual MicroPython WASM sdFiles (892.156482ms)
+✔ actual MicroPython WASM sdLogger (2884.68288ms)
+✔ Python VFS crosses clusters, appends, seeks, truncates and rereads independent sectors (1129.882353ms)
+✔ Python VFS refuses long names, traversal and unsupported modes (641.026066ms)
+✔ Python write protection gives an error without publishing a file (454.393009ms)
+✔ Python read-only mount and unmount enforce the actual VFS boundary (531.256121ms)
+✔ Python missing MISO yields SD initialization error instead of invented data (491.091065ms)
+✖ S3 compiled C++ sdInspect exchanges sectors (15.839686ms)
+✖ S3 compiled C++ sdBlocks exchanges sectors (9.7003ms)
+✖ S3 compiled C++ sdFiles exchanges sectors (10.969927ms)
+✖ S3 compiled C++ sdLogger exchanges sectors (28.545373ms)
+✔ arduino.uno-r3.atmega328p real AVR sdInspect (1682.130499ms)
+✔ arduino.uno-r3.atmega328p real AVR sdBlocks (1480.902213ms)
+✔ arduino.uno-r3.atmega328p real AVR sdFiles (2180.989516ms)
+✔ arduino.uno-r3.atmega328p real AVR sdLogger (2331.698615ms)
+✔ arduino.nano-classic.atmega328p real AVR sdInspect (1010.681283ms)
+✔ arduino.nano-classic.atmega328p real AVR sdBlocks (1192.33821ms)
+✔ arduino.nano-classic.atmega328p real AVR sdFiles (2418.370763ms)
+✔ arduino.nano-classic.atmega328p real AVR sdLogger (5280.80805ms)
+✖ same media crosses Python -> C++ -> Python and survives MCU reset (1418.930151ms)
+ℹ tests 56
+ℹ suites 0
+ℹ pass 50
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 31466.232281
+
+✖ failing tests:
+
+test at verification/sd.test.ts:1:8692
+✖ project JSON/ZIP preserves SD state and refuses malformed state (8.889143ms)
+  TypeError [Error]: Cannot read properties of undefined (reading 'toLowerCase')
+      at importProject (/workspace/sites/esp32-lab/.sites-checkout/src/project/archive.ts:20:16)
+      at TestContext.<anonymous> (/workspace/sites/esp32-lab/.sites-checkout/verification/sd.test.ts:58:294)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/sd.test.ts:39:569
+✖ S3 compiled C++ sdInspect exchanges sectors (15.839686ms)
+  Error: Argument nije podržan u funkcionalnom ESP32-S3 profilu.
+      at fault (file:///workspace/sites/esp32-lab/.sites-checkout/public/s3-engine.mjs:10:24)
+      at file:///workspace/sites/esp32-lab/.sites-checkout/public/s3-engine.mjs:16:22
+      at wasm://wasm/000126b2:wasm-function[17]:0x1442
+      at wasm://wasm/000126b2:wasm-function[29]:0x1e43
+      at wasm://wasm/000126b2:wasm-function[23]:0x1bad
+      at call (file:///workspace/sites/esp32-lab/.sites-checkout/public/s3-engine.mjs:44:61)
+      at Object.run (file:///workspace/sites/esp32-lab/.sites-checkout/public/s3-engine.mjs:49:116)
+      at async runS3 (/workspace/sites/esp32-lab/.sites-checkout/verification/sd.test.ts:73:262)
+      at async TestContext.<anonymous> (/workspace/sites/esp32-lab/.sites-checkout/verification/sd.test.ts:74:90)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+
+test at verification/sd.test.ts:39:569
+✖ S3 compiled C++ sdBlocks exchanges sectors (9.7003ms)
+  Error: Argument nije podržan u funkcionalnom ESP32-S3 profilu.
+      at fault (file:///workspace/sites/esp32-lab/.sites-checkout/public/s3-engine.mjs:10:24)
+      at file:///workspace/sites/esp32-lab/.sites-checkout/public/s3-engine.mjs:16:22
+      at wasm://wasm/00012b4e:wasm-function[16]:0x110d
+      at wasm://wasm/00012b4e:wasm-function[28]:0x1ac0
+      at wasm://wasm/00012b4e:wasm-function[22]:0x1878
+      at call (file:///workspace/sites/esp32-lab/.sites-checkout/public/s3-engine.mjs:44:61)
+      at Object.run (file:///workspace/sites/esp32-lab/.sites-checkout/public/s3-engine.mjs:49:116)
+      at async runS3 (/workspace/sites/esp32-lab/.sites-checkout/verification/sd.test.ts:73:262)
+      at async TestContext.<anonymous> (/workspace/sites/esp32-lab/.sites-checkout/verification/sd.test.ts:74:90)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+
+test at verification/sd.test.ts:39:569
+✖ S3 compiled C++ sdFiles exchanges sectors (10.969927ms)
+  Error: Argument nije podržan u funkcionalnom ESP32-S3 profilu.
+      at fault (file:///workspace/sites/esp32-lab/.sites-checkout/public/s3-engine.mjs:10:24)
+      at file:///workspace/sites/esp32-lab/.sites-checkout/public/s3-engine.mjs:16:22
+      at wasm://wasm/0001d376:wasm-function[16]:0xe7e
+      at wasm://wasm/0001d376:wasm-function[31]:0x1982
+      at wasm://wasm/0001d376:wasm-function[25]:0x16c2
+      at call (file:///workspace/sites/esp32-lab/.sites-checkout/public/s3-engine.mjs:44:61)
+      at Object.run (file:///workspace/sites/esp32-lab/.sites-checkout/public/s3-engine.mjs:49:116)
+      at async runS3 (/workspace/sites/esp32-lab/.sites-checkout/verification/sd.test.ts:73:262)
+      at async TestContext.<anonymous> (/workspace/sites/esp32-lab/.sites-checkout/verification/sd.test.ts:74:90)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+
+test at verification/sd.test.ts:39:569
+✖ S3 compiled C++ sdLogger exchanges sectors (28.545373ms)
+  Error: Argument nije podržan u funkcionalnom ESP32-S3 profilu.
+      at fault (file:///workspace/sites/esp32-lab/.sites-checkout/public/s3-engine.mjs:10:24)
+      at file:///workspace/sites/esp32-lab/.sites-checkout/public/s3-engine.mjs:16:22
+      at wasm://wasm/0002495e:wasm-function[18]:0xd78
+      at wasm://wasm/0002495e:wasm-function[33]:0x1891
+      at wasm://wasm/0002495e:wasm-function[27]:0x15bc
+      at call (file:///workspace/sites/esp32-lab/.sites-checkout/public/s3-engine.mjs:44:61)
+      at Object.run (file:///workspace/sites/esp32-lab/.sites-checkout/public/s3-engine.mjs:49:116)
+      at async runS3 (/workspace/sites/esp32-lab/.sites-checkout/verification/sd.test.ts:73:262)
+      at async TestContext.<anonymous> (/workspace/sites/esp32-lab/.sites-checkout/verification/sd.test.ts:74:90)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+
+test at verification/sd.test.ts:39:1777
+✖ same media crosses Python -> C++ -> Python and survives MCU reset (1418.930151ms)
+  Error: Argument nije podržan u funkcionalnom ESP32-S3 profilu.
+      at fault (file:///workspace/sites/esp32-lab/.sites-checkout/public/s3-engine.mjs:10:24)
+      at file:///workspace/sites/esp32-lab/.sites-checkout/public/s3-engine.mjs:16:22
+      at wasm://wasm/0001d376:wasm-function[16]:0xe7e
+      at wasm://wasm/0001d376:wasm-function[31]:0x1982
+      at wasm://wasm/0001d376:wasm-function[25]:0x16c2
+      at call (file:///workspace/sites/esp32-lab/.sites-checkout/public/s3-engine.mjs:44:61)
+      at Object.run (file:///workspace/sites/esp32-lab/.sites-checkout/public/s3-engine.mjs:49:116)
+      at async runS3 (/workspace/sites/esp32-lab/.sites-checkout/verification/sd.test.ts:73:262)
+      at async TestContext.<anonymous> (/workspace/sites/esp32-lab/.sites-checkout/verification/sd.test.ts:76:240)
+      at async Test.run (node:internal/test_runner/test:1409:7)

@@ -1,0 +1,148 @@
+TAP version 13
+# Subtest: all eight examples preserve input profiles and exact compiled source through ZIP on three boards
+ok 1 - all eight examples preserve input profiles and exact compiled source through ZIP on three boards
+  ---
+  duration_ms: 143.95261
+  type: 'test'
+  ...
+# Subtest: invalid profile values, NaN, wrong LM35 supply and invented sound AO pin are rejected
+ok 2 - invalid profile values, NaN, wrong LM35 supply and invented sound AO pin are rejected
+  ---
+  duration_ms: 1.332633
+  type: 'test'
+  ...
+# Subtest: LM35 10 mV/C is independent of board ADC reference and respects 5 V supply
+ok 3 - LM35 10 mV/C is independent of board ADC reference and respects 5 V supply
+  ---
+  duration_ms: 9.370191
+  type: 'test'
+  ...
+# Subtest: TEMT6000 nominal light current, 10k loading and supply saturation affect actual network
+ok 4 - TEMT6000 nominal light current, 10k loading and supply saturation affect actual network
+  ---
+  duration_ms: 2.819827
+  type: 'test'
+  ...
+# Subtest: NTC beta equation, divider direction, changed parameters affect the electrical result
+ok 5 - NTC beta equation, divider direction, changed parameters affect the electrical result
+  ---
+  duration_ms: 3.870966
+  type: 'test'
+  ...
+# Subtest: joystick has two independent axes, passive switch, explicit pull-up and no hidden deadzone
+ok 6 - joystick has two independent axes, passive switch, explicit pull-up and no hidden deadzone
+  ---
+  duration_ms: 1.511772
+  type: 'test'
+  ...
+# Subtest: flame: open-collector active LOW comparator, hysteresis, fresh reset and independent instances
+ok 7 - flame: open-collector active LOW comparator, hysteresis, fresh reset and independent instances
+  ---
+  duration_ms: 4.210988
+  type: 'test'
+  ...
+# Subtest: sound: open-collector active LOW comparator, hysteresis, fresh reset and independent instances
+ok 8 - sound: open-collector active LOW comparator, hysteresis, fresh reset and independent instances
+  ---
+  duration_ms: 3.213834
+  type: 'test'
+  ...
+# Subtest: missing VCC/GND/signals, wrong voltage domain and wrong ADC pin cannot silently validate inputs
+ok 9 - missing VCC/GND/signals, wrong voltage domain and wrong ADC pin cannot silently validate inputs
+  ---
+  duration_ms: 13.854429
+  type: 'test'
+  ...
+# Subtest: two pots and two buttons retain independent live states and input snapshots
+ok 10 - two pots and two buttons retain independent live states and input snapshots
+  ---
+  duration_ms: 2.033125
+  type: 'test'
+  ...
+# Subtest: real MicroPython uses quantized ADC/attenuation, not direct slider temperature
+ok 11 - real MicroPython uses quantized ADC/attenuation, not direct slider temperature
+  ---
+  duration_ms: 1114.011497
+  type: 'test'
+  ...
+# Subtest: real MicroPython lm35: example runs, reads wires, changes live and stops promptly
+ok 12 - real MicroPython lm35: example runs, reads wires, changes live and stops promptly
+  ---
+  duration_ms: 621.881127
+  type: 'test'
+  ...
+# Subtest: real MicroPython temt6000: example runs, reads wires, changes live and stops promptly
+ok 13 - real MicroPython temt6000: example runs, reads wires, changes live and stops promptly
+  ---
+  duration_ms: 571.036298
+  type: 'test'
+  ...
+# Subtest: real MicroPython ntc: example runs, reads wires, changes live and stops promptly
+ok 14 - real MicroPython ntc: example runs, reads wires, changes live and stops promptly
+  ---
+  duration_ms: 614.884212
+  type: 'test'
+  ...
+# Subtest: real MicroPython ky023: example runs, reads wires, changes live and stops promptly
+ok 15 - real MicroPython ky023: example runs, reads wires, changes live and stops promptly
+  ---
+  duration_ms: 559.631078
+  type: 'test'
+  ...
+# Subtest: real MicroPython flame: example runs, reads wires, changes live and stops promptly
+ok 16 - real MicroPython flame: example runs, reads wires, changes live and stops promptly
+  ---
+  duration_ms: 570.00401
+  type: 'test'
+  ...
+# Subtest: real MicroPython sound: example runs, reads wires, changes live and stops promptly
+ok 17 - real MicroPython sound: example runs, reads wires, changes live and stops promptly
+  ---
+  duration_ms: 567.455647
+  type: 'test'
+  ...
+# Subtest: real MicroPython analogCompare: example runs, reads wires, changes live and stops promptly
+ok 18 - real MicroPython analogCompare: example runs, reads wires, changes live and stops promptly
+  ---
+  duration_ms: 569.166122
+  type: 'test'
+  ...
+# Subtest: real MicroPython dualInputs: example runs, reads wires, changes live and stops promptly
+ok 19 - real MicroPython dualInputs: example runs, reads wires, changes live and stops promptly
+  ---
+  duration_ms: 580.565597
+  type: 'test'
+  ...
+# Subtest: arduino.uno-r3.atmega328p: all eight real compiled examples, independent live ADC, axes and thresholds
+ok 20 - arduino.uno-r3.atmega328p: all eight real compiled examples, independent live ADC, axes and thresholds
+  ---
+  duration_ms: 1904.598238
+  type: 'test'
+  ...
+# Subtest: arduino.nano-classic.atmega328p: all eight real compiled examples, independent live ADC, axes and thresholds
+ok 21 - arduino.nano-classic.atmega328p: all eight real compiled examples, independent live ADC, axes and thresholds
+  ---
+  duration_ms: 1839.678424
+  type: 'test'
+  ...
+# Subtest: real AVR internal 1.1 V reference and Nano A6 work; missing ADC signal reports invalid measurement
+ok 22 - real AVR internal 1.1 V reference and Nano A6 work; missing ADC signal reports invalid measurement
+  ---
+  duration_ms: 1824.955215
+  type: 'test'
+  ...
+# Subtest: production Nano Worker changes both analog sensors and forced Stop stays below 500 ms
+ok 23 - production Nano Worker changes both analog sensors and forced Stop stays below 500 ms
+  ---
+  duration_ms: 365.26755
+  type: 'test'
+  ...
+1..23
+# tests 23
+# suites 0
+# pass 23
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 12339.559755

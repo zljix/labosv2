@@ -1,0 +1,436 @@
+{
+  "type": "simulation",
+  "clockProfile": "external-us",
+  "timeMs": 5,
+  "nets": {
+    "esp32:J1.1": 3.3,
+    "esp32:J1.10": 0,
+    "esp32:J1.11": null,
+    "esp32:J1.12": 0,
+    "esp32:J1.13": 3.3,
+    "esp32:J1.14": null,
+    "esp32:J1.15": 0,
+    "esp32:J1.16": 0,
+    "esp32:J1.17": 0,
+    "esp32:J1.18": 0,
+    "esp32:J1.19": 3.3,
+    "esp32:J1.20": 3.3,
+    "esp32:J1.21": 5,
+    "esp32:J1.22": 0,
+    "esp32:J1.4": 0,
+    "esp32:J1.5": 3.3,
+    "esp32:J1.6": 3.3,
+    "esp32:J1.7": 0,
+    "esp32:J1.8": 0,
+    "esp32:J1.9": 0,
+    "esp32:J3.10": null,
+    "esp32:J3.14": null,
+    "esp32:J3.15": null,
+    "esp32:J3.16": null,
+    "esp32:J3.17": null,
+    "esp32:J3.18": null,
+    "esp32:J3.19": null,
+    "esp32:J3.2": null,
+    "esp32:J3.20": null,
+    "esp32:J3.3": null,
+    "esp32:J3.4": null,
+    "esp32:J3.5": 0,
+    "esp32:J3.6": null,
+    "esp32:J3.7": null,
+    "esp32:J3.8": null,
+    "esp32:J3.9": null,
+    "stepperDriver:1A": null,
+    "stepperDriver:1B": null,
+    "stepperDriver:2A": null,
+    "stepperDriver:2B": null,
+    "stepperDriver2:1A": null,
+    "stepperDriver2:1B": null,
+    "stepperDriver2:2A": null,
+    "stepperDriver2:2B": null,
+    "stepperDriver2:VMOT": 12
+  },
+  "leds": {},
+  "gpios": {
+    "2": {
+      "mode": "OUT",
+      "volts": 0,
+      "level": 0
+    },
+    "3": {
+      "mode": "OUT",
+      "volts": 3.3,
+      "level": 1
+    },
+    "4": {
+      "mode": "OUT",
+      "volts": 0,
+      "level": 0
+    },
+    "5": {
+      "mode": "OUT",
+      "volts": 3.3,
+      "level": 1
+    },
+    "6": {
+      "mode": "OUT",
+      "volts": 3.3,
+      "level": 1
+    },
+    "7": {
+      "mode": "OUT",
+      "volts": 0,
+      "level": 0
+    },
+    "8": {
+      "mode": "OUT",
+      "volts": 0,
+      "level": 0
+    },
+    "9": {
+      "mode": "OUT",
+      "volts": 0,
+      "level": 0
+    },
+    "10": {
+      "mode": "OUT",
+      "volts": 0,
+      "level": 0
+    },
+    "11": {
+      "mode": "OUT",
+      "volts": 0,
+      "level": 0
+    },
+    "12": {
+      "mode": "OUT",
+      "volts": 0,
+      "level": 0
+    },
+    "13": {
+      "mode": "OUT",
+      "volts": 3.3,
+      "level": 1
+    },
+    "14": {
+      "mode": "OUT",
+      "volts": 3.3,
+      "level": 1
+    },
+    "15": {
+      "mode": "OUT",
+      "volts": 0,
+      "level": 0
+    },
+    "16": {
+      "mode": "OUT",
+      "volts": 0,
+      "level": 0
+    },
+    "17": {
+      "mode": "OUT",
+      "volts": 0,
+      "level": 0
+    }
+  },
+  "sensors": {},
+  "displays": {},
+  "measurements": [],
+  "i2cTrace": [],
+  "tfts": {},
+  "spiTrace": [],
+  "spiBytes": 0,
+  "steppers": {
+    "drivers": {
+      "stepperDriver": {
+        "powered": true,
+        "motorPower": true,
+        "enabled": true,
+        "levels": {
+          "STEP": 0,
+          "DIR": 1,
+          "ENABLE": 0,
+          "RESET": 1,
+          "SLEEP": 1,
+          "MS1": 0,
+          "MS2": 0,
+          "MS3": 0
+        },
+        "resolution": 1,
+        "translatorTicks": 160,
+        "rising": 10,
+        "accepted": 10,
+        "ignored": 0,
+        "rejected": 0,
+        "pending": false,
+        "phaseA": -0.7071067811865499,
+        "phaseB": -0.7071067811865452,
+        "lastFault": "",
+        "trace": [
+          {
+            "timeUs": 0,
+            "operation": "home",
+            "value": "uključenje VDD"
+          },
+          {
+            "timeUs": 0,
+            "operation": "logic-power",
+            "value": "ON"
+          },
+          {
+            "timeUs": 0,
+            "operation": "enable",
+            "value": "izlazi OFF; translator aktivan"
+          },
+          {
+            "timeUs": 0,
+            "operation": "enable",
+            "value": "izlazi ON; translator aktivan"
+          },
+          {
+            "timeUs": 0,
+            "operation": "home",
+            "value": "buđenje; električni Home"
+          },
+          {
+            "timeUs": 4010,
+            "operation": "step",
+            "value": "+1/1; translator=16/16"
+          },
+          {
+            "timeUs": 4030,
+            "operation": "step",
+            "value": "+1/1; translator=32/16"
+          },
+          {
+            "timeUs": 4050,
+            "operation": "step",
+            "value": "+1/1; translator=48/16"
+          },
+          {
+            "timeUs": 4070,
+            "operation": "step",
+            "value": "+1/1; translator=64/16"
+          },
+          {
+            "timeUs": 4090,
+            "operation": "step",
+            "value": "+1/1; translator=80/16"
+          },
+          {
+            "timeUs": 4110,
+            "operation": "step",
+            "value": "+1/1; translator=96/16"
+          },
+          {
+            "timeUs": 4130,
+            "operation": "step",
+            "value": "+1/1; translator=112/16"
+          },
+          {
+            "timeUs": 4150,
+            "operation": "step",
+            "value": "+1/1; translator=128/16"
+          },
+          {
+            "timeUs": 4170,
+            "operation": "step",
+            "value": "+1/1; translator=144/16"
+          },
+          {
+            "timeUs": 4190,
+            "operation": "step",
+            "value": "+1/1; translator=160/16"
+          }
+        ],
+        "reason": "Idealan pogon; bez dinamike struje i tereta"
+      },
+      "stepperDriver2": {
+        "powered": true,
+        "motorPower": true,
+        "enabled": true,
+        "levels": {
+          "STEP": 0,
+          "DIR": 0,
+          "ENABLE": 0,
+          "RESET": 1,
+          "SLEEP": 1,
+          "MS1": 0,
+          "MS2": 0,
+          "MS3": 0
+        },
+        "resolution": 1,
+        "translatorTicks": -320,
+        "rising": 20,
+        "accepted": 20,
+        "ignored": 0,
+        "rejected": 0,
+        "pending": false,
+        "phaseA": 0.707106781186546,
+        "phaseB": 0.707106781186549,
+        "lastFault": "",
+        "trace": [
+          {
+            "timeUs": 0,
+            "operation": "home",
+            "value": "uključenje VDD"
+          },
+          {
+            "timeUs": 0,
+            "operation": "logic-power",
+            "value": "ON"
+          },
+          {
+            "timeUs": 0,
+            "operation": "enable",
+            "value": "izlazi OFF; translator aktivan"
+          },
+          {
+            "timeUs": 2000,
+            "operation": "enable",
+            "value": "izlazi ON; translator aktivan"
+          },
+          {
+            "timeUs": 2000,
+            "operation": "home",
+            "value": "buđenje; električni Home"
+          },
+          {
+            "timeUs": 4210,
+            "operation": "step",
+            "value": "-1/1; translator=-16/16"
+          },
+          {
+            "timeUs": 4230,
+            "operation": "step",
+            "value": "-1/1; translator=-32/16"
+          },
+          {
+            "timeUs": 4250,
+            "operation": "step",
+            "value": "-1/1; translator=-48/16"
+          },
+          {
+            "timeUs": 4270,
+            "operation": "step",
+            "value": "-1/1; translator=-64/16"
+          },
+          {
+            "timeUs": 4290,
+            "operation": "step",
+            "value": "-1/1; translator=-80/16"
+          },
+          {
+            "timeUs": 4310,
+            "operation": "step",
+            "value": "-1/1; translator=-96/16"
+          },
+          {
+            "timeUs": 4330,
+            "operation": "step",
+            "value": "-1/1; translator=-112/16"
+          },
+          {
+            "timeUs": 4350,
+            "operation": "step",
+            "value": "-1/1; translator=-128/16"
+          },
+          {
+            "timeUs": 4370,
+            "operation": "step",
+            "value": "-1/1; translator=-144/16"
+          },
+          {
+            "timeUs": 4390,
+            "operation": "step",
+            "value": "-1/1; translator=-160/16"
+          },
+          {
+            "timeUs": 4410,
+            "operation": "step",
+            "value": "-1/1; translator=-176/16"
+          },
+          {
+            "timeUs": 4430,
+            "operation": "step",
+            "value": "-1/1; translator=-192/16"
+          },
+          {
+            "timeUs": 4450,
+            "operation": "step",
+            "value": "-1/1; translator=-208/16"
+          },
+          {
+            "timeUs": 4470,
+            "operation": "step",
+            "value": "-1/1; translator=-224/16"
+          },
+          {
+            "timeUs": 4490,
+            "operation": "step",
+            "value": "-1/1; translator=-240/16"
+          },
+          {
+            "timeUs": 4510,
+            "operation": "step",
+            "value": "-1/1; translator=-256/16"
+          },
+          {
+            "timeUs": 4530,
+            "operation": "step",
+            "value": "-1/1; translator=-272/16"
+          },
+          {
+            "timeUs": 4550,
+            "operation": "step",
+            "value": "-1/1; translator=-288/16"
+          },
+          {
+            "timeUs": 4570,
+            "operation": "step",
+            "value": "-1/1; translator=-304/16"
+          },
+          {
+            "timeUs": 4590,
+            "operation": "step",
+            "value": "-1/1; translator=-320/16"
+          }
+        ],
+        "reason": "Idealan pogon; bez dinamike struje i tereta"
+      }
+    },
+    "motors": {
+      "stepperMotor": {
+        "driver": "stepperDriver",
+        "connected": true,
+        "orientation": 1,
+        "energized": true,
+        "positionCertain": true,
+        "drivenTicks": 160,
+        "idealAngle": 18,
+        "angle": 18,
+        "fullSteps": 200,
+        "reason": "Idealni pomak iz pogonskih koraka"
+      },
+      "stepperMotor2": {
+        "driver": "stepperDriver2",
+        "connected": true,
+        "orientation": 1,
+        "energized": true,
+        "positionCertain": true,
+        "drivenTicks": -320,
+        "idealAngle": -36,
+        "angle": -36,
+        "fullSteps": 200,
+        "reason": "Idealni pomak iz pogonskih koraka"
+      }
+    }
+  },
+  "tmDisplays": {},
+  "infrared": {},
+  "encoders": {},
+  "oneWireDevices": {},
+  "timedSensors": {},
+  "analogInputs": {},
+  "servos": {},
+  "diagnostics": []
+}

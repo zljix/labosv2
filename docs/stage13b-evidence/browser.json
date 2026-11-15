@@ -1,0 +1,57 @@
+{
+  "release": "0.5.4-beta.1",
+  "browser": "Chromium/Linux cloud browser",
+  "url": "http://127.0.0.1:4173/?etapa=13b",
+  "scope": "development preview; not private production login or a mobile browser",
+  "microPythonFinalConsole": [
+    "IR READY LED=0",
+    "LED=50 R=0",
+    "LED=60 R=0",
+    "LED=70 R=0",
+    "LED=80 R=1",
+    "LED=90 R=1",
+    "LED=100 R=1",
+    "LED=100 R=1",
+    "LED=100 R=1",
+    "LED=100 R=1",
+    "LED=100 R=1",
+    "LED=100 R=1",
+    "LED=100 R=1"
+  ],
+  "arduinoUnoFinalConsole": [
+    "IR READY LED=0",
+    "LED=50 R=0",
+    "LED=60 R=0",
+    "LED=70 R=0",
+    "LED=80 R=1",
+    "LED=90 R=1",
+    "LED=100 R=1",
+    "LED=100 R=1",
+    "LED=100 R=1",
+    "LED=100 R=1",
+    "LED=100 R=1",
+    "LED=100 R=1",
+    "LED=100 R=1"
+  ],
+  "arduinoUnoTransmitterConsole": [
+    "IR TX READY",
+    "NEC A=0 C=69 R=0",
+    "NEC A=0 C=70 R=0",
+    "NEC A=0 C=69 R=0"
+  ],
+  "observed": [
+    "current version tag",
+    "visible Python driver and C++ header",
+    "POWER then PLUS then long PLUS",
+    "repeat trace 9000/2250/562.5 us in Measurements",
+    "IR CSV download control present",
+    "Stop returns UI to stopped and retains results"
+  ],
+  "notObserved": [
+    "CSV file download bytes",
+    "iOS",
+    "Android",
+    "private production functional UI",
+    "physical IR hardware"
+  ]
+}

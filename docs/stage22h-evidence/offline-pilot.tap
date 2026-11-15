@@ -1,0 +1,156 @@
+TAP version 13
+# Subtest: package covers shell, lazy editor, every runtime dependency, drivers, manual and valid install icons
+ok 1 - package covers shell, lazy editor, every runtime dependency, drivers, manual and valid install icons
+  ---
+  duration_ms: 1.230189
+  type: 'test'
+  ...
+# Subtest: verified package reopens shell and executes file requests without any network
+ok 2 - verified package reopens shell and executes file requests without any network
+  ---
+  duration_ms: 314.884188
+  type: 'test'
+  ...
+# Subtest: incorrect bytes or login/fallback response cannot install an eligible package
+ok 3 - incorrect bytes or login/fallback response cannot install an eligible package
+  ---
+  duration_ms: 282.090795
+  type: 'test'
+  ...
+# Subtest: quota failure cannot advertise a partially stored package
+ok 4 - quota failure cannot advertise a partially stored package
+  ---
+  duration_ms: 99.160622
+  type: 'test'
+  ...
+# Subtest: an evicted asset invalidates offline readiness
+ok 5 - an evicted asset invalidates offline readiness
+  ---
+  duration_ms: 420.695765
+  type: 'test'
+  ...
+# Subtest: an update needs an explicit message and refuses more than one open tab
+ok 6 - an update needs an explicit message and refuses more than one open tab
+  ---
+  duration_ms: 220.388808
+  type: 'test'
+  ...
+# Subtest: upgrade retains previous content-addressed runtime and does not cache unrelated or private requests
+ok 7 - upgrade retains previous content-addressed runtime and does not cache unrelated or private requests
+  ---
+  duration_ms: 137.061756
+  type: 'test'
+  ...
+# Subtest: content-addressed production Worker actually runs MicroPython and framebuf
+ok 8 - content-addressed production Worker actually runs MicroPython and framebuf
+  ---
+  duration_ms: 440.806594
+  type: 'test'
+  ...
+# Subtest: an empty draft round-trips without acquiring a completed outcome or checked steps
+ok 9 - an empty draft round-trips without acquiring a completed outcome or checked steps
+  ---
+  duration_ms: 1.999425
+  type: 'test'
+  ...
+# Subtest: a completed outcome needs explicit scope, environment, duration and conclusion
+ok 10 - a completed outcome needs explicit scope, environment, duration and conclusion
+  ---
+  duration_ms: 1.110368
+  type: 'test'
+  ...
+# Subtest: a pupil record needs a participant code; device/development records do not invent one
+ok 11 - a pupil record needs a participant code; device/development records do not invent one
+  ---
+  duration_ms: 0.341954
+  type: 'test'
+  ...
+# Subtest: assisted and blocked outcomes retain their different required observations
+ok 12 - assisted and blocked outcomes retain their different required observations
+  ---
+  duration_ms: 0.344838
+  type: 'test'
+  ...
+# Subtest: offline claims need both a method and measured procedure, while untried drafts remain saveable
+ok 13 - offline claims need both a method and measured procedure, while untried drafts remain saveable
+  ---
+  duration_ms: 0.370407
+  type: 'test'
+  ...
+# Subtest: radio requires an explicit peer and single-board records reject an accidental second node
+ok 14 - radio requires an explicit peer and single-board records reject an accidental second node
+  ---
+  duration_ms: 0.394793
+  type: 'test'
+  ...
+# Subtest: v2 records retain observations and import with unknown scope and untried offline method
+ok 15 - v2 records retain observations and import with unknown scope and untried offline method
+  ---
+  duration_ms: 0.261923
+  type: 'test'
+  ...
+# Subtest: untrusted classification and extra fields cannot turn a draft/development record into pupil evidence
+ok 16 - untrusted classification and extra fields cannot turn a draft/development record into pupil evidence
+  ---
+  duration_ms: 1.438823
+  type: 'test'
+  ...
+# Subtest: text survives JSON round-trip as text, including markup and Croatian characters
+ok 17 - text survives JSON round-trip as text, including markup and Croatian characters
+  ---
+  duration_ms: 0.38599
+  type: 'test'
+  ...
+# Subtest: malformed files, unsupported versions and oversized input are rejected before replacing fields
+ok 18 - malformed files, unsupported versions and oversized input are rejected before replacing fields
+  ---
+  duration_ms: 0.623758
+  type: 'test'
+  ...
+# Subtest: invalid targets, unknown lessons and nonboolean step assertions are rejected
+ok 19 - invalid targets, unknown lessons and nonboolean step assertions are rejected
+  ---
+  duration_ms: 0.235964
+  type: 'test'
+  ...
+# Subtest: limits and actual calendar dates are checked independently from draft completion
+ok 20 - limits and actual calendar dates are checked independently from draft completion
+  ---
+  duration_ms: 0.2658
+  type: 'test'
+  ...
+# Subtest: generated page exposes record recovery and all offline assets without inline legacy save code
+not ok 21 - generated page exposes record recovery and all offline assets without inline legacy save code
+  ---
+  duration_ms: 4.369026
+  type: 'test'
+  location: '/workspace/scratch/51ff116c00d0/esp32-micropython-lab/.sites-checkout/verification/pilot.test.mjs:61:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert(guide.includes('ukupno 260 kombinacija'))
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/51ff116c00d0/esp32-micropython-lab/.sites-checkout/verification/pilot.test.mjs:64:55)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+1..21
+# tests 21
+# suites 0
+# pass 20
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2341.406034

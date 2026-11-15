@@ -1,0 +1,53 @@
+{
+  "version": "0.12.3-beta.1",
+  "scope": "Development Chrome/Linux; live UI controls, not a production session, mobile device or student pilot",
+  "observations": [
+    {
+      "case": "URS coverage",
+      "target": "S3 Arduino C++",
+      "result": "All 16 themes show complete counts; URS03 4/4, URS06 3/3, URS07 4/4, URS09 3/3, URS12 4/4, URS13 6/6."
+    },
+    {
+      "case": "IR LED",
+      "actions": "POWER69, PLUS70, long press 1s",
+      "console": [
+        "S3 LED=50 R=0",
+        "S3 LED=60 R=0",
+        "S3 LED=70 R=0",
+        "S3 LED=80 R=1",
+        "S3 LED=90 R=1",
+        "S3 LED=100 R=1"
+      ],
+      "result": "Repeat clamps at 100. Stop preserves console."
+    },
+    {
+      "case": "SPI dashboard",
+      "initial": "SPI DASH T=24.00 P=101325 Pa",
+      "live": "SPI DASH T=-40.00 P=30000 Pa",
+      "result": "TFT shows -40.0 C and 300 HPA from measured registers; Stop preserves pixels/console. Saved initial controls remain 24 C/101325 Pa after Stop."
+    },
+    {
+      "case": "URS13 calibration project",
+      "files": [
+        "main.ino",
+        "lab_ili9341.h",
+        "lab_xpt2046.h",
+        "s3-build.json",
+        "urs-upute.md",
+        "urs-vjezba.json"
+      ],
+      "result": "Worksheet opens with concepts, actual pin hints, experiments, observations and submission fields. Sklop i editor opens live controls."
+    },
+    {
+      "case": "two point calibration",
+      "actions": "Sliders and hold/release button: (20,20), release, (219,299), release, press again",
+      "console": [
+        "CAL TARGET 20 20",
+        "CAL TARGET 219 299",
+        "CAL READY 201 3899 251 3849",
+        "CAL POINT 219 299"
+      ],
+      "result": "Calculated endpoints and later mapped touch appear in the real program console. Stop preserves output."
+    }
+  ]
+}

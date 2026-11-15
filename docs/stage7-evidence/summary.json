@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-12",
+  "release": "0.4.0-alpha.1",
+  "package_build": "c98c7b3d9fec1c2d",
+  "schemaVersion": 3,
+  "modelVersion": 1,
+  "checks": {
+    "project_circuit": 26,
+    "boards_migration": 9,
+    "simulation": 12,
+    "peripherals": 16,
+    "legacy_runtime": 10,
+    "project_files": 3,
+    "lessons": 20,
+    "offline": 8
+  },
+  "total": 104,
+  "failed": 0,
+  "browser_environment": "Chromium/Linux, local development preview",
+  "browser_observations": [
+    "Existing stage6 V1 migrated, source/answers/7 wires preserved, actual run and fresh 4/4",
+    "S3 to Nano creates separate project, main.py retained, main.ino added, only 3 board wires detached",
+    "Nano A6 described as ADC-only",
+    "New Uno C++ editor source changed and saved; 1–60 breadboard added",
+    "5V to GND wire produces power-short; undo removes it; save/reload retains source and breadboard",
+    "AHT10 matrix planned on Uno/Arduino and verified on S3/MicroPython",
+    "Actual IDE ZIP downloaded; LabSketch/LabSketch.ino contains the edited source and README carries arduino:avr:uno",
+    "Fresh Uno/breadboard layout reviewed without overlap"
+  ],
+  "arduino_compilation": false,
+  "arduino_execution": false,
+  "physical_hardware_tested": false,
+  "student_pilot": false,
+  "safari_ios_tested": false,
+  "browser_offline_retested": false,
+  "package_resources": 65,
+  "package_bytes": 4340353
+}

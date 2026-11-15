@@ -1,0 +1,24 @@
+{
+  "scope": "Razvojni Chrome; http://127.0.0.1:4173; nije produkcijska domena ili mobilni preglednik",
+  "observations": [
+    {
+      "scenario": "S3 rtcMemory",
+      "beforeReset": "RTC RAM=1 WP=1",
+      "afterReset": "RTC RAM=2 WP=1",
+      "afterCaptureAndReloadAndRun": "RTC RAM=3 WP=1"
+    },
+    {
+      "scenario": "S3 rtcRead; glavno napajanje OFF/ON",
+      "observed": [
+        "RTC ERROR uz isključeno primarno napajanje, Worker ostaje aktivan",
+        "Povrat RTC 2026-1-1 12:0:18 DAY=5 uz uključeno napajanje"
+      ],
+      "artifactWasmBytes": 12484
+    },
+    {
+      "scenario": "S3 rtcClock",
+      "observed": "RTC 2026-1-1 12:0:26 DAY=5 i dva prikaza TM1637 12:00; zaustavljeno nakon pregleda",
+      "artifactWasmBytes": 18606
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+ReferenceError [Error]: onmessage is not defined
+    at file:///workspace/sites/esp32-lab/.sites-checkout/dist/assets/avrWorker-DaciuXH4.js:2:116707
+    at file:///workspace/sites/esp32-lab/.sites-checkout/dist/assets/avrWorker-DaciuXH4.js:2:116945
+    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)
+    at async node:internal/modules/esm/loader:647:26
+    at async <anonymous> (/workspace/sites/esp32-lab/.sites-checkout/verification/sd-built-worker.mjs:4:1)
+
+Node.js v24.22.1

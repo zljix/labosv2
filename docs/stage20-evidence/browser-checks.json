@@ -1,0 +1,36 @@
+{
+  "environment": "development Chrome on managed Linux; local preview",
+  "version": "0.10.0-beta.1",
+  "checks": [
+    {
+      "scenario": "MicroPython frequency",
+      "observed": "72 target: 71.43–72.29/min; live target 180: 176.47–181.82/min after transient",
+      "status": "pass"
+    },
+    {
+      "scenario": "S3 C++ frequency",
+      "observed": "actual WASM 21741 B, raw waveform and 71.43–72.29/min from FIFO",
+      "status": "pass"
+    },
+    {
+      "scenario": "S3 C++ no contact",
+      "observed": "after unchecking contact: RED=425, IR=500",
+      "status": "pass"
+    },
+    {
+      "scenario": "Stop and CSV",
+      "observed": "stopped state, frozen frame and downloaded 128 CSV records; last RED/IR=425/500",
+      "status": "pass"
+    },
+    {
+      "scenario": "Run resets sensor",
+      "observed": "new FIFO/history and nominal contact restored; waveform repopulates",
+      "status": "pass"
+    }
+  ],
+  "limits": [
+    "No iOS/Safari, Android or school hardware test",
+    "No cold offline browser test",
+    "No physical sensor or native ESP32 Arduino core execution"
+  ]
+}

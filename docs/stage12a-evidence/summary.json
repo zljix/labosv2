@@ -1,0 +1,86 @@
+{
+  "release": "0.5.1-beta.1",
+  "date": "2026-11-12",
+  "uniqueChecks": 230,
+  "passed": 230,
+  "groups": {
+    "project_circuit": 26,
+    "boards": 9,
+    "simulation": 12,
+    "peripherals": 16,
+    "runtime_files": 13,
+    "lessons": 20,
+    "offline": 8,
+    "avr": 15,
+    "arduino_environment_compiler": 12,
+    "avr_peripherals": 12,
+    "environment": 18,
+    "displays": 21,
+    "analog": 23,
+    "dht": 25
+  },
+  "skippedCompilerChecks": 0,
+  "rerunsNotDoubleCounted": true,
+  "corrections": [
+    "boards support expectation updated for implemented DHT",
+    "DHT appended to preserve previous library catalog ordering",
+    "ADC compiler check actually rerun with pinned toolchain environment"
+  ],
+  "package": {
+    "build": "f540af74b9863ec0",
+    "resources": 88,
+    "bytes": 7520546
+  },
+  "examples": {
+    "arduino.uno-r3.atmega328p": {
+      "dht11": {
+        "flashBytes": 5158,
+        "staticRamBytes": 219,
+        "inputHash": "555937f59b0649f2de9a02c7891eaba70b56211db1f4091d9d285d60a941da18"
+      },
+      "dht22": {
+        "flashBytes": 5158,
+        "staticRamBytes": 219,
+        "inputHash": "507e1f46fa607da94a2bd7d47203bd97a9f54f1ae47e43133516c3fb84ce9248"
+      },
+      "dhtErrors": {
+        "flashBytes": 5166,
+        "staticRamBytes": 219,
+        "inputHash": "854c6a00ddd19301cbcff81e4dc8d5d7accf1efc5036bb60d7a38f3d88b31cd8"
+      },
+      "dhtCompare": {
+        "flashBytes": 5316,
+        "staticRamBytes": 238,
+        "inputHash": "275b88e481a1d4b2ebbcc5bd1373a7e469ed30e772adbd8ed3ca30fc9d73ca39"
+      }
+    },
+    "arduino.nano-classic.atmega328p": {
+      "dht11": {
+        "flashBytes": 5158,
+        "staticRamBytes": 219,
+        "inputHash": "89c4039577adbd9e1d62e9f76b7b89321a22b82d000a4d213fbfb3e31bd752b4"
+      },
+      "dht22": {
+        "flashBytes": 5158,
+        "staticRamBytes": 219,
+        "inputHash": "13bd0d740ad372c25da029571e83929b2d68cd4581243fed6cf992aae0c6911a"
+      },
+      "dhtErrors": {
+        "flashBytes": 5166,
+        "staticRamBytes": 219,
+        "inputHash": "01c4b3cd6d4cc556497edd55faab8f85da54b105cd069ab896b49a5c92adb424"
+      },
+      "dhtCompare": {
+        "flashBytes": 5316,
+        "staticRamBytes": 238,
+        "inputHash": "575d225a2c96a00aa73e26452a7cfde4ed2be976189da206b25e73be070b2c92"
+      }
+    }
+  },
+  "totalArduinoArtifacts": 52,
+  "runtimeOutputs": {
+    "public/runtime/micropython.mjs": "b262be836440ca11129b8a8fe788568460b266636dc72d6e17b90376d05b8927",
+    "public/runtime/micropython.wasm": "f4ecb98494bb4422f2e2dbb1b497ad0242ed7851c50370d52683d1a3b509e883"
+  },
+  "layoutFix": "Bounded desktop grid and independent scrolling sidebar/lab; existing mobile tabs retained."
+}

@@ -1,0 +1,1631 @@
+{
+  "console": "ROM=28B61223913ED36B T=-10.1250 C\r\nROM=28491423927B8146 T=60.0000 C\r\nROM=2823112390012548 T=25.0000 C\r\n",
+  "frame": {
+    "type": "simulation",
+    "clockProfile": "external-us",
+    "timeMs": 2204,
+    "nets": {
+      "ds1:DQ": 3.3,
+      "ds1:GND": 0,
+      "ds1:VDD": 3.3,
+      "esp32:J1.10": null,
+      "esp32:J1.11": null,
+      "esp32:J1.12": null,
+      "esp32:J1.13": null,
+      "esp32:J1.14": null,
+      "esp32:J1.15": null,
+      "esp32:J1.16": null,
+      "esp32:J1.17": null,
+      "esp32:J1.18": null,
+      "esp32:J1.19": null,
+      "esp32:J1.20": null,
+      "esp32:J1.21": 5,
+      "esp32:J1.5": null,
+      "esp32:J1.6": null,
+      "esp32:J1.7": null,
+      "esp32:J1.8": null,
+      "esp32:J1.9": null,
+      "esp32:J3.10": null,
+      "esp32:J3.14": null,
+      "esp32:J3.15": null,
+      "esp32:J3.16": null,
+      "esp32:J3.17": null,
+      "esp32:J3.18": null,
+      "esp32:J3.19": null,
+      "esp32:J3.2": null,
+      "esp32:J3.20": null,
+      "esp32:J3.3": null,
+      "esp32:J3.4": null,
+      "esp32:J3.5": null,
+      "esp32:J3.6": null,
+      "esp32:J3.7": null,
+      "esp32:J3.8": null,
+      "esp32:J3.9": null
+    },
+    "leds": {},
+    "gpios": {
+      "4": {
+        "mode": "IN",
+        "volts": 3.3,
+        "level": 1
+      }
+    },
+    "sensors": {},
+    "displays": {},
+    "measurements": [],
+    "i2cTrace": [],
+    "sdCards": {},
+    "rtcDevices": {},
+    "touches": {},
+    "tfts": {},
+    "spiTrace": [],
+    "spiBytes": 0,
+    "steppers": {
+      "drivers": {},
+      "motors": {}
+    },
+    "tmDisplays": {},
+    "infrared": {},
+    "encoders": {},
+    "oneWireDevices": {
+      "ds1": {
+        "powered": true,
+        "rom": "2823112390012548",
+        "temperature": 25,
+        "resolution": 12,
+        "busy": false,
+        "sample": 1,
+        "scratchpad": [
+          144,
+          1,
+          75,
+          70,
+          127,
+          255,
+          12,
+          16,
+          51
+        ],
+        "reason": "Reset prihvaćen; presence LOW",
+        "fault": "none",
+        "trace": [
+          {
+            "timeUs": 272706,
+            "operation": "rom-byte",
+            "value": 20
+          },
+          {
+            "timeUs": 273293,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 273830,
+            "operation": "rom-byte",
+            "value": 146
+          },
+          {
+            "timeUs": 274452,
+            "operation": "rom-byte",
+            "value": 123
+          },
+          {
+            "timeUs": 274994,
+            "operation": "rom-byte",
+            "value": 129
+          },
+          {
+            "timeUs": 275631,
+            "operation": "rom-byte",
+            "value": 70
+          },
+          {
+            "timeUs": 276153,
+            "operation": "function-command",
+            "value": 190
+          },
+          {
+            "timeUs": 276153,
+            "operation": "scratchpad"
+          },
+          {
+            "timeUs": 281956,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 282928,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 283935,
+            "operation": "rom-command",
+            "value": 240
+          },
+          {
+            "timeUs": 298041,
+            "operation": "search-complete",
+            "value": 1
+          },
+          {
+            "timeUs": 298536,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 299593,
+            "operation": "rom-command",
+            "value": 85
+          },
+          {
+            "timeUs": 300185,
+            "operation": "rom-byte",
+            "value": 40
+          },
+          {
+            "timeUs": 300772,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 301364,
+            "operation": "rom-byte",
+            "value": 17
+          },
+          {
+            "timeUs": 301951,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 302493,
+            "operation": "rom-byte",
+            "value": 144
+          },
+          {
+            "timeUs": 303140,
+            "operation": "rom-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 303727,
+            "operation": "rom-byte",
+            "value": 37
+          },
+          {
+            "timeUs": 304319,
+            "operation": "rom-byte",
+            "value": 72
+          },
+          {
+            "timeUs": 304851,
+            "operation": "function-command",
+            "value": 180
+          },
+          {
+            "timeUs": 305471,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 306443,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 307500,
+            "operation": "rom-command",
+            "value": 85
+          },
+          {
+            "timeUs": 308092,
+            "operation": "rom-byte",
+            "value": 40
+          },
+          {
+            "timeUs": 308679,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 309271,
+            "operation": "rom-byte",
+            "value": 17
+          },
+          {
+            "timeUs": 309858,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 310400,
+            "operation": "rom-byte",
+            "value": 144
+          },
+          {
+            "timeUs": 311047,
+            "operation": "rom-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 311634,
+            "operation": "rom-byte",
+            "value": 37
+          },
+          {
+            "timeUs": 312226,
+            "operation": "rom-byte",
+            "value": 72
+          },
+          {
+            "timeUs": 312748,
+            "operation": "function-command",
+            "value": 190
+          },
+          {
+            "timeUs": 312748,
+            "operation": "scratchpad"
+          },
+          {
+            "timeUs": 318551,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 319523,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 320530,
+            "operation": "rom-command",
+            "value": 204
+          },
+          {
+            "timeUs": 321172,
+            "operation": "function-command",
+            "value": 68
+          },
+          {
+            "timeUs": 321172,
+            "operation": "convert",
+            "value": 12
+          },
+          {
+            "timeUs": 321172,
+            "operation": "convert",
+            "value": 12
+          },
+          {
+            "timeUs": 321172,
+            "operation": "convert",
+            "value": 12
+          },
+          {
+            "timeUs": 1071519,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1072526,
+            "operation": "rom-command",
+            "value": 240
+          },
+          {
+            "timeUs": 1086572,
+            "operation": "search-complete",
+            "value": 1
+          },
+          {
+            "timeUs": 1087067,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1088124,
+            "operation": "rom-command",
+            "value": 85
+          },
+          {
+            "timeUs": 1088716,
+            "operation": "rom-byte",
+            "value": 40
+          },
+          {
+            "timeUs": 1089243,
+            "operation": "rom-byte",
+            "value": 182
+          },
+          {
+            "timeUs": 1089885,
+            "operation": "rom-byte",
+            "value": 18
+          },
+          {
+            "timeUs": 1090472,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 1091009,
+            "operation": "rom-byte",
+            "value": 145
+          },
+          {
+            "timeUs": 1091636,
+            "operation": "rom-byte",
+            "value": 62
+          },
+          {
+            "timeUs": 1092163,
+            "operation": "rom-byte",
+            "value": 211
+          },
+          {
+            "timeUs": 1092790,
+            "operation": "rom-byte",
+            "value": 107
+          },
+          {
+            "timeUs": 1093312,
+            "operation": "function-command",
+            "value": 190
+          },
+          {
+            "timeUs": 1093312,
+            "operation": "scratchpad"
+          },
+          {
+            "timeUs": 1099115,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1100123,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1101130,
+            "operation": "rom-command",
+            "value": 240
+          },
+          {
+            "timeUs": 1115176,
+            "operation": "search-complete",
+            "value": 1
+          },
+          {
+            "timeUs": 1115671,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1116678,
+            "operation": "rom-command",
+            "value": 240
+          },
+          {
+            "timeUs": 1130754,
+            "operation": "search-complete",
+            "value": 1
+          },
+          {
+            "timeUs": 1131249,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1132306,
+            "operation": "rom-command",
+            "value": 85
+          },
+          {
+            "timeUs": 1132898,
+            "operation": "rom-byte",
+            "value": 40
+          },
+          {
+            "timeUs": 1133485,
+            "operation": "rom-byte",
+            "value": 73
+          },
+          {
+            "timeUs": 1134077,
+            "operation": "rom-byte",
+            "value": 20
+          },
+          {
+            "timeUs": 1134664,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 1135201,
+            "operation": "rom-byte",
+            "value": 146
+          },
+          {
+            "timeUs": 1135823,
+            "operation": "rom-byte",
+            "value": 123
+          },
+          {
+            "timeUs": 1136365,
+            "operation": "rom-byte",
+            "value": 129
+          },
+          {
+            "timeUs": 1137002,
+            "operation": "rom-byte",
+            "value": 70
+          },
+          {
+            "timeUs": 1137524,
+            "operation": "function-command",
+            "value": 190
+          },
+          {
+            "timeUs": 1137524,
+            "operation": "scratchpad"
+          },
+          {
+            "timeUs": 1143327,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1144334,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1145341,
+            "operation": "rom-command",
+            "value": 240
+          },
+          {
+            "timeUs": 1159387,
+            "operation": "search-complete",
+            "value": 1
+          },
+          {
+            "timeUs": 1159882,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1160889,
+            "operation": "rom-command",
+            "value": 240
+          },
+          {
+            "timeUs": 1174965,
+            "operation": "search-complete",
+            "value": 1
+          },
+          {
+            "timeUs": 1175460,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1176467,
+            "operation": "rom-command",
+            "value": 240
+          },
+          {
+            "timeUs": 1190573,
+            "operation": "search-complete",
+            "value": 1
+          },
+          {
+            "timeUs": 1191068,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1192125,
+            "operation": "rom-command",
+            "value": 85
+          },
+          {
+            "timeUs": 1192717,
+            "operation": "rom-byte",
+            "value": 40
+          },
+          {
+            "timeUs": 1193304,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 1193896,
+            "operation": "rom-byte",
+            "value": 17
+          },
+          {
+            "timeUs": 1194483,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 1195025,
+            "operation": "rom-byte",
+            "value": 144
+          },
+          {
+            "timeUs": 1195672,
+            "operation": "rom-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 1196259,
+            "operation": "rom-byte",
+            "value": 37
+          },
+          {
+            "timeUs": 1196851,
+            "operation": "rom-byte",
+            "value": 72
+          },
+          {
+            "timeUs": 1197373,
+            "operation": "function-command",
+            "value": 190
+          },
+          {
+            "timeUs": 1197373,
+            "operation": "scratchpad"
+          },
+          {
+            "timeUs": 1203176,
+            "operation": "reset",
+            "value": 3
+          }
+        ]
+      },
+      "ds2": {
+        "powered": true,
+        "rom": "28B61223913ED36B",
+        "temperature": -10.125,
+        "resolution": 12,
+        "busy": false,
+        "sample": 1,
+        "scratchpad": [
+          94,
+          255,
+          75,
+          70,
+          127,
+          255,
+          12,
+          16,
+          106
+        ],
+        "reason": "Reset prihvaćen; presence LOW",
+        "fault": "none",
+        "trace": [
+          {
+            "timeUs": 272706,
+            "operation": "rom-byte",
+            "value": 20
+          },
+          {
+            "timeUs": 273293,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 273830,
+            "operation": "rom-byte",
+            "value": 146
+          },
+          {
+            "timeUs": 274452,
+            "operation": "rom-byte",
+            "value": 123
+          },
+          {
+            "timeUs": 274994,
+            "operation": "rom-byte",
+            "value": 129
+          },
+          {
+            "timeUs": 275631,
+            "operation": "rom-byte",
+            "value": 70
+          },
+          {
+            "timeUs": 276153,
+            "operation": "function-command",
+            "value": 190
+          },
+          {
+            "timeUs": 276153,
+            "operation": "scratchpad"
+          },
+          {
+            "timeUs": 281956,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 282928,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 283935,
+            "operation": "rom-command",
+            "value": 240
+          },
+          {
+            "timeUs": 298041,
+            "operation": "search-complete",
+            "value": 1
+          },
+          {
+            "timeUs": 298536,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 299593,
+            "operation": "rom-command",
+            "value": 85
+          },
+          {
+            "timeUs": 300185,
+            "operation": "rom-byte",
+            "value": 40
+          },
+          {
+            "timeUs": 300772,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 301364,
+            "operation": "rom-byte",
+            "value": 17
+          },
+          {
+            "timeUs": 301951,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 302493,
+            "operation": "rom-byte",
+            "value": 144
+          },
+          {
+            "timeUs": 303140,
+            "operation": "rom-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 303727,
+            "operation": "rom-byte",
+            "value": 37
+          },
+          {
+            "timeUs": 304319,
+            "operation": "rom-byte",
+            "value": 72
+          },
+          {
+            "timeUs": 304851,
+            "operation": "function-command",
+            "value": 180
+          },
+          {
+            "timeUs": 305471,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 306443,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 307500,
+            "operation": "rom-command",
+            "value": 85
+          },
+          {
+            "timeUs": 308092,
+            "operation": "rom-byte",
+            "value": 40
+          },
+          {
+            "timeUs": 308679,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 309271,
+            "operation": "rom-byte",
+            "value": 17
+          },
+          {
+            "timeUs": 309858,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 310400,
+            "operation": "rom-byte",
+            "value": 144
+          },
+          {
+            "timeUs": 311047,
+            "operation": "rom-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 311634,
+            "operation": "rom-byte",
+            "value": 37
+          },
+          {
+            "timeUs": 312226,
+            "operation": "rom-byte",
+            "value": 72
+          },
+          {
+            "timeUs": 312748,
+            "operation": "function-command",
+            "value": 190
+          },
+          {
+            "timeUs": 312748,
+            "operation": "scratchpad"
+          },
+          {
+            "timeUs": 318551,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 319523,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 320530,
+            "operation": "rom-command",
+            "value": 204
+          },
+          {
+            "timeUs": 321172,
+            "operation": "function-command",
+            "value": 68
+          },
+          {
+            "timeUs": 321172,
+            "operation": "convert",
+            "value": 12
+          },
+          {
+            "timeUs": 321172,
+            "operation": "convert",
+            "value": 12
+          },
+          {
+            "timeUs": 321172,
+            "operation": "convert",
+            "value": 12
+          },
+          {
+            "timeUs": 1071519,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1072526,
+            "operation": "rom-command",
+            "value": 240
+          },
+          {
+            "timeUs": 1086572,
+            "operation": "search-complete",
+            "value": 1
+          },
+          {
+            "timeUs": 1087067,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1088124,
+            "operation": "rom-command",
+            "value": 85
+          },
+          {
+            "timeUs": 1088716,
+            "operation": "rom-byte",
+            "value": 40
+          },
+          {
+            "timeUs": 1089243,
+            "operation": "rom-byte",
+            "value": 182
+          },
+          {
+            "timeUs": 1089885,
+            "operation": "rom-byte",
+            "value": 18
+          },
+          {
+            "timeUs": 1090472,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 1091009,
+            "operation": "rom-byte",
+            "value": 145
+          },
+          {
+            "timeUs": 1091636,
+            "operation": "rom-byte",
+            "value": 62
+          },
+          {
+            "timeUs": 1092163,
+            "operation": "rom-byte",
+            "value": 211
+          },
+          {
+            "timeUs": 1092790,
+            "operation": "rom-byte",
+            "value": 107
+          },
+          {
+            "timeUs": 1093312,
+            "operation": "function-command",
+            "value": 190
+          },
+          {
+            "timeUs": 1093312,
+            "operation": "scratchpad"
+          },
+          {
+            "timeUs": 1099115,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1100123,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1101130,
+            "operation": "rom-command",
+            "value": 240
+          },
+          {
+            "timeUs": 1115176,
+            "operation": "search-complete",
+            "value": 1
+          },
+          {
+            "timeUs": 1115671,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1116678,
+            "operation": "rom-command",
+            "value": 240
+          },
+          {
+            "timeUs": 1130754,
+            "operation": "search-complete",
+            "value": 1
+          },
+          {
+            "timeUs": 1131249,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1132306,
+            "operation": "rom-command",
+            "value": 85
+          },
+          {
+            "timeUs": 1132898,
+            "operation": "rom-byte",
+            "value": 40
+          },
+          {
+            "timeUs": 1133485,
+            "operation": "rom-byte",
+            "value": 73
+          },
+          {
+            "timeUs": 1134077,
+            "operation": "rom-byte",
+            "value": 20
+          },
+          {
+            "timeUs": 1134664,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 1135201,
+            "operation": "rom-byte",
+            "value": 146
+          },
+          {
+            "timeUs": 1135823,
+            "operation": "rom-byte",
+            "value": 123
+          },
+          {
+            "timeUs": 1136365,
+            "operation": "rom-byte",
+            "value": 129
+          },
+          {
+            "timeUs": 1137002,
+            "operation": "rom-byte",
+            "value": 70
+          },
+          {
+            "timeUs": 1137524,
+            "operation": "function-command",
+            "value": 190
+          },
+          {
+            "timeUs": 1137524,
+            "operation": "scratchpad"
+          },
+          {
+            "timeUs": 1143327,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1144334,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1145341,
+            "operation": "rom-command",
+            "value": 240
+          },
+          {
+            "timeUs": 1159387,
+            "operation": "search-complete",
+            "value": 1
+          },
+          {
+            "timeUs": 1159882,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1160889,
+            "operation": "rom-command",
+            "value": 240
+          },
+          {
+            "timeUs": 1174965,
+            "operation": "search-complete",
+            "value": 1
+          },
+          {
+            "timeUs": 1175460,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1176467,
+            "operation": "rom-command",
+            "value": 240
+          },
+          {
+            "timeUs": 1190573,
+            "operation": "search-complete",
+            "value": 1
+          },
+          {
+            "timeUs": 1191068,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1192125,
+            "operation": "rom-command",
+            "value": 85
+          },
+          {
+            "timeUs": 1192717,
+            "operation": "rom-byte",
+            "value": 40
+          },
+          {
+            "timeUs": 1193304,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 1193896,
+            "operation": "rom-byte",
+            "value": 17
+          },
+          {
+            "timeUs": 1194483,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 1195025,
+            "operation": "rom-byte",
+            "value": 144
+          },
+          {
+            "timeUs": 1195672,
+            "operation": "rom-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 1196259,
+            "operation": "rom-byte",
+            "value": 37
+          },
+          {
+            "timeUs": 1196851,
+            "operation": "rom-byte",
+            "value": 72
+          },
+          {
+            "timeUs": 1197373,
+            "operation": "function-command",
+            "value": 190
+          },
+          {
+            "timeUs": 1197373,
+            "operation": "scratchpad"
+          },
+          {
+            "timeUs": 1203176,
+            "operation": "reset",
+            "value": 3
+          }
+        ]
+      },
+      "ds3": {
+        "powered": true,
+        "rom": "28491423927B8146",
+        "temperature": 60,
+        "resolution": 12,
+        "busy": false,
+        "sample": 1,
+        "scratchpad": [
+          192,
+          3,
+          75,
+          70,
+          127,
+          255,
+          12,
+          16,
+          84
+        ],
+        "reason": "Reset prihvaćen; presence LOW",
+        "fault": "none",
+        "trace": [
+          {
+            "timeUs": 272706,
+            "operation": "rom-byte",
+            "value": 20
+          },
+          {
+            "timeUs": 273293,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 273830,
+            "operation": "rom-byte",
+            "value": 146
+          },
+          {
+            "timeUs": 274452,
+            "operation": "rom-byte",
+            "value": 123
+          },
+          {
+            "timeUs": 274994,
+            "operation": "rom-byte",
+            "value": 129
+          },
+          {
+            "timeUs": 275631,
+            "operation": "rom-byte",
+            "value": 70
+          },
+          {
+            "timeUs": 276153,
+            "operation": "function-command",
+            "value": 190
+          },
+          {
+            "timeUs": 276153,
+            "operation": "scratchpad"
+          },
+          {
+            "timeUs": 281956,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 282928,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 283935,
+            "operation": "rom-command",
+            "value": 240
+          },
+          {
+            "timeUs": 298041,
+            "operation": "search-complete",
+            "value": 1
+          },
+          {
+            "timeUs": 298536,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 299593,
+            "operation": "rom-command",
+            "value": 85
+          },
+          {
+            "timeUs": 300185,
+            "operation": "rom-byte",
+            "value": 40
+          },
+          {
+            "timeUs": 300772,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 301364,
+            "operation": "rom-byte",
+            "value": 17
+          },
+          {
+            "timeUs": 301951,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 302493,
+            "operation": "rom-byte",
+            "value": 144
+          },
+          {
+            "timeUs": 303140,
+            "operation": "rom-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 303727,
+            "operation": "rom-byte",
+            "value": 37
+          },
+          {
+            "timeUs": 304319,
+            "operation": "rom-byte",
+            "value": 72
+          },
+          {
+            "timeUs": 304851,
+            "operation": "function-command",
+            "value": 180
+          },
+          {
+            "timeUs": 305471,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 306443,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 307500,
+            "operation": "rom-command",
+            "value": 85
+          },
+          {
+            "timeUs": 308092,
+            "operation": "rom-byte",
+            "value": 40
+          },
+          {
+            "timeUs": 308679,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 309271,
+            "operation": "rom-byte",
+            "value": 17
+          },
+          {
+            "timeUs": 309858,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 310400,
+            "operation": "rom-byte",
+            "value": 144
+          },
+          {
+            "timeUs": 311047,
+            "operation": "rom-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 311634,
+            "operation": "rom-byte",
+            "value": 37
+          },
+          {
+            "timeUs": 312226,
+            "operation": "rom-byte",
+            "value": 72
+          },
+          {
+            "timeUs": 312748,
+            "operation": "function-command",
+            "value": 190
+          },
+          {
+            "timeUs": 312748,
+            "operation": "scratchpad"
+          },
+          {
+            "timeUs": 318551,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 319523,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 320530,
+            "operation": "rom-command",
+            "value": 204
+          },
+          {
+            "timeUs": 321172,
+            "operation": "function-command",
+            "value": 68
+          },
+          {
+            "timeUs": 321172,
+            "operation": "convert",
+            "value": 12
+          },
+          {
+            "timeUs": 321172,
+            "operation": "convert",
+            "value": 12
+          },
+          {
+            "timeUs": 321172,
+            "operation": "convert",
+            "value": 12
+          },
+          {
+            "timeUs": 1071519,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1072526,
+            "operation": "rom-command",
+            "value": 240
+          },
+          {
+            "timeUs": 1086572,
+            "operation": "search-complete",
+            "value": 1
+          },
+          {
+            "timeUs": 1087067,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1088124,
+            "operation": "rom-command",
+            "value": 85
+          },
+          {
+            "timeUs": 1088716,
+            "operation": "rom-byte",
+            "value": 40
+          },
+          {
+            "timeUs": 1089243,
+            "operation": "rom-byte",
+            "value": 182
+          },
+          {
+            "timeUs": 1089885,
+            "operation": "rom-byte",
+            "value": 18
+          },
+          {
+            "timeUs": 1090472,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 1091009,
+            "operation": "rom-byte",
+            "value": 145
+          },
+          {
+            "timeUs": 1091636,
+            "operation": "rom-byte",
+            "value": 62
+          },
+          {
+            "timeUs": 1092163,
+            "operation": "rom-byte",
+            "value": 211
+          },
+          {
+            "timeUs": 1092790,
+            "operation": "rom-byte",
+            "value": 107
+          },
+          {
+            "timeUs": 1093312,
+            "operation": "function-command",
+            "value": 190
+          },
+          {
+            "timeUs": 1093312,
+            "operation": "scratchpad"
+          },
+          {
+            "timeUs": 1099115,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1100123,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1101130,
+            "operation": "rom-command",
+            "value": 240
+          },
+          {
+            "timeUs": 1115176,
+            "operation": "search-complete",
+            "value": 1
+          },
+          {
+            "timeUs": 1115671,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1116678,
+            "operation": "rom-command",
+            "value": 240
+          },
+          {
+            "timeUs": 1130754,
+            "operation": "search-complete",
+            "value": 1
+          },
+          {
+            "timeUs": 1131249,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1132306,
+            "operation": "rom-command",
+            "value": 85
+          },
+          {
+            "timeUs": 1132898,
+            "operation": "rom-byte",
+            "value": 40
+          },
+          {
+            "timeUs": 1133485,
+            "operation": "rom-byte",
+            "value": 73
+          },
+          {
+            "timeUs": 1134077,
+            "operation": "rom-byte",
+            "value": 20
+          },
+          {
+            "timeUs": 1134664,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 1135201,
+            "operation": "rom-byte",
+            "value": 146
+          },
+          {
+            "timeUs": 1135823,
+            "operation": "rom-byte",
+            "value": 123
+          },
+          {
+            "timeUs": 1136365,
+            "operation": "rom-byte",
+            "value": 129
+          },
+          {
+            "timeUs": 1137002,
+            "operation": "rom-byte",
+            "value": 70
+          },
+          {
+            "timeUs": 1137524,
+            "operation": "function-command",
+            "value": 190
+          },
+          {
+            "timeUs": 1137524,
+            "operation": "scratchpad"
+          },
+          {
+            "timeUs": 1143327,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1144334,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1145341,
+            "operation": "rom-command",
+            "value": 240
+          },
+          {
+            "timeUs": 1159387,
+            "operation": "search-complete",
+            "value": 1
+          },
+          {
+            "timeUs": 1159882,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1160889,
+            "operation": "rom-command",
+            "value": 240
+          },
+          {
+            "timeUs": 1174965,
+            "operation": "search-complete",
+            "value": 1
+          },
+          {
+            "timeUs": 1175460,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1176467,
+            "operation": "rom-command",
+            "value": 240
+          },
+          {
+            "timeUs": 1190573,
+            "operation": "search-complete",
+            "value": 1
+          },
+          {
+            "timeUs": 1191068,
+            "operation": "reset",
+            "value": 3
+          },
+          {
+            "timeUs": 1192125,
+            "operation": "rom-command",
+            "value": 85
+          },
+          {
+            "timeUs": 1192717,
+            "operation": "rom-byte",
+            "value": 40
+          },
+          {
+            "timeUs": 1193304,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 1193896,
+            "operation": "rom-byte",
+            "value": 17
+          },
+          {
+            "timeUs": 1194483,
+            "operation": "rom-byte",
+            "value": 35
+          },
+          {
+            "timeUs": 1195025,
+            "operation": "rom-byte",
+            "value": 144
+          },
+          {
+            "timeUs": 1195672,
+            "operation": "rom-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 1196259,
+            "operation": "rom-byte",
+            "value": 37
+          },
+          {
+            "timeUs": 1196851,
+            "operation": "rom-byte",
+            "value": 72
+          },
+          {
+            "timeUs": 1197373,
+            "operation": "function-command",
+            "value": 190
+          },
+          {
+            "timeUs": 1197373,
+            "operation": "scratchpad"
+          },
+          {
+            "timeUs": 1203176,
+            "operation": "reset",
+            "value": 3
+          }
+        ]
+      }
+    },
+    "timedSensors": {},
+    "analogInputs": {},
+    "servos": {},
+    "diagnostics": []
+  }
+}

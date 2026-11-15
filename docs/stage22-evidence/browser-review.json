@@ -1,0 +1,36 @@
+{
+  "version": "0.12.0-beta.1",
+  "environment": "Development application, Chrome on Linux, desktop 1363×935",
+  "studentPilot": false,
+  "productionBrowser": false,
+  "observations": [
+    "URS catalogue target filtering, native details keyboard Enter, modal Escape and focus path.",
+    "MicroPython URS01: ADC 34888/PWM 53% at 50% slider; Home gives 0/0%, End gives 65535/100%.",
+    "Uno URS01: compiled Flash 2452 B/static SRAM 198 B; ADC 512/PWM 128.",
+    "S3 C++ URS01: functional WASM 7450 B; ADC 2180/PWM 135.",
+    "URS submission downloaded, ZIP members inspected, imported as separate copy; source, work, answers and snapshot retained.",
+    "Teacher note saved; changing an answer marks review stale.",
+    "URS16 Nano to MicroPython with first ACK dropped: 11 attempts, ten TX ACK reports and RX 1–10 once each.",
+    "Radio traffic CSV downloaded, 33 rows and a retry event.",
+    "Support CSV downloaded, 156 rows, byte-identical to generated CSV.",
+    "Pilot draft selects radio/radio, Nano and MicroPython; exported outcome remains unconfirmed. No real student session recorded."
+  ],
+  "files": {
+    "radio-traffic.csv": {
+      "bytes": 2147,
+      "sha256": "411d61c390e9cdc7344306da909c79bf610cf18329ef28dac99edd7510f92c09"
+    },
+    "support-downloaded.csv": {
+      "bytes": 68291,
+      "sha256": "13329761a1c1e15c0791e663b9f8430bb70b986d2ced934485d720e3f4f23d8d"
+    },
+    "pilot-draft.json": {
+      "bytes": 739,
+      "sha256": "68d224192eb500a4210042d9a9b611d57c50f7751d783d96585f51a965cff86e"
+    },
+    "urs-browser-submission.zip": {
+      "bytes": 4684,
+      "sha256": "67dfb2faaafbd7565d87c522aec74eedb843492c16dd938b5640b1698bee711b"
+    }
+  }
+}

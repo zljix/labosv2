@@ -1,0 +1,4 @@
+WARNING: library LabAHT10 claims to run on avr architecture(s) and may be incompatible with your current board which runs on esp32 architecture(s).
+Sketch uses 316022 bytes (24%) of program storage space. Maximum is 1310720 bytes.
+Global variables use 24692 bytes (7%) of dynamic memory, leaving 302988 bytes for local variables. Maximum is 327680 bytes.
+

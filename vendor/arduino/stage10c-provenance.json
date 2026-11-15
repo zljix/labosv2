@@ -1,0 +1,23 @@
+{
+  "createdOn": "2026-11-12",
+  "libraries": [
+    {
+      "name": "LabLCD1602",
+      "version": "1.0.0",
+      "origin": "Original project MIT implementation, no simulator-specific API"
+    },
+    {
+      "name": "U8g2_12832",
+      "upstreamVersion": "2.37.1",
+      "source": "https://github.com/olikraus/u8g2/blob/2.37.1/csrc/u8x8_d_ssd1306_128x32.c",
+      "upstreamBlob": "e780b6f8866a7da17858fa3066213081ba1f20aa",
+      "changes": "Pinned old U8g2 subset plus unmodified 128x32 driver; package renamed to preserve legacy lock. All bytes in lock.json."
+    }
+  ],
+  "references": [
+    "https://www.ti.com/lit/ds/symlink/pcf8574.pdf",
+    "https://www.sparkfun.com/datasheets/LCD/HD44780.pdf",
+    "https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf"
+  ],
+  "profile": "LCD1602 5V, PCF8574 0x20..0x27, P0 RS P1 RW P2 E P3 BL P4..7 data; explicit LV terminal and ideal I2C level converter."
+}

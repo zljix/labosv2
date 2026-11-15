@@ -1,0 +1,140 @@
+ESP32 MicroPython Lab — lokalni Arduino prevoditelj, etapa 12A
+
+Windows, Linux ili macOS; Node.js 22+ i Arduino CLI 1.3.1.
+Službena instalacija CLI: https://arduino.github.io/arduino-cli/1.3/installation/
+Arduino CLI mora biti u PATH-u ili postavljen varijablom LAB_ARDUINO_CLI.
+Ovaj ZIP nema ovisnosti o npm-u; nije potreban npm install.
+
+PRVA PRIPREMA
+1. Raspakiraj cijeli ZIP u vlastitu mapu.
+2. Instaliraj Node.js 22+ i Arduino CLI 1.3.1.
+3. Windows: dvoklik na Pripremi.cmd.
+   Linux/macOS: otvori terminal u mapi paketa i pokreni:
+   node scripts/avr-setup.mjs
+   Prvi put treba internet. U zasebni avr-env preuzima se Arduino AVR core
+   1.8.6 i AVR GCC 7.3.0-atmel3.6.1-arduino7. IDE postavke ostaju odvojene.
+   Biblioteke Bounce2 2.72 (MIT), LabAHT10 1.0.0 (MIT), U8g2 2.37.1 (BSD-2-Clause; podskup SSD1306 i font 6x10) i Servo 1.2.2 (LGPL-2.1-or-later) već su u ZIP-u. LabI2CSensors 1.0.0 (MIT), LabLCD1602 1.0.0 (MIT) i U8g2_12832 2.37.1 (BSD-2-Clause) također su uključeni. Svaka datoteka ima provjereni hash. Za OLED 128x32 odaberi U8g2_12832 umjesto U8g2; priložen je profil UNIVISION i font 6x10.
+
+SVAKI RAD
+4. Windows: dvoklik na Pokreni.cmd.
+   Linux/macOS: node scripts/avr-serve.mjs
+5. Ostavi prozor otvoren. Kopiraj cijelu ispisanu lokalnu vezu.
+6. U aplikaciji izaberi Uno ili Nano → Prevedi. Zalijepi vezu u polje
+   i klikni Poveži prevoditelj. Otvorit će se lokalna kartica.
+   Ostavi i tu karticu otvorenu. Vrati se u aplikaciju.
+7. Odaberi potrebne biblioteke i klikni Prevedi program.
+   Rezultat se vraća izravno u projekt. Zatvori dijalog pa klikni Pokreni.
+   Svaka izmjena izvora, cilja ili biblioteke traži odgovarajući rezultat.
+8. Zaustavljanje lokalnog prevoditelja: Ctrl+C u njegovu terminalu.
+   Nakon ponovnog pokretanja kopiraj novu vezu (novi kod povezivanja).
+
+Dopuštena je postojeća aplikacija:
+https://esp32-micropython-lab-tz.tzivkovi.chatgpt.site
+Za vlastiti razvojni origin možeš postaviti LAB_ARDUINO_SITE na točan origin
+(npr. http://127.0.0.1:4173); nema zamjenskih znakova ni proizvoljnog CORS-a.
+LAB_ARDUINO_PORT mijenja zadani port 8765.
+
+Ne otvaraj port na LAN-u ili internetu. Servis sluša samo na 127.0.0.1,
+zahtijeva slučajni kod i provjerava podrijetlo poruka i HTTP zahtjeva.
+To nije sigurnosno izoliran javni compiler: prevodi vlastiti ili pouzdan
+pregledani izvor. Nema pokretanja shell naredbi iz projekta, build skripti,
+instalacije biblioteka tijekom prevođenja ni slanja izvora cloud servisu.
+
+Lokalna kartica šalje zahtjeve vlastitom originu. Aplikacija i kartica
+razmjenjuju poruke uz točan origin i izvor prozora. HTTPS stranica zato
+ne treba slati fetch zahtjeve na HTTP localhost. Kod povezivanja je u
+fragmentu veze, ne pohranjuje se u projektu, ZIP-u ni localStorageu.
+Ako je skočni prozor blokiran, dopusti ga za aplikaciju i ponovi povezivanje.
+Zatvaranje kartice prekida vezu. Odustajanje ili zatvaranje dijaloga
+otkazuje zahtjev; zakašnjeli rezultat ne primjenjuje se na promijenjeni izvor.
+
+BIBLIOTEKE I DATOTEKE
+Uno R3: arduino:avr:uno; Nano classic: arduino:avr:nano:cpu=atmega328.
+Oba: ATmega328P, 16 MHz, 5 V, 2048 B SRAM-a.
+main.ino i druge .ino datoteke su u korijenu. .c/.cpp/.h/.hpp su u korijenu
+ili u src/ stablu. Primjer: pomoc.h i src/pomoc.cpp.
+Odabir Bounce2 sprema arduino-libraries.json. U programu napiši:
+#include <Bounce2.h>
+Bounce2 2.72 koristi stvarni GPIO i millis(). Model tipkala je idealan;
+mehaničko poskakivanje kontakata nije zasebno simulirano.
+Wire iz corea podržava AHT10 i SSD1306; U8g2 software I2C koristi stvarne GPIO bridove. SPI uređaji još nisu podržani. LabAHT10.h uključuje vlastiti otvoreni C++ driver za stvarni Wire protokol. Servo.h koristi Timer1; analogWrite na D9/D10 dijeli taj resurs.
+Ostale instalirane korisničke biblioteke nisu izvor za ovaj profil;
+prevođenje koristi praznu privremenu korisničku mapu i samo odabrane pakete.
+Nisu podržani proizvoljni build parametri, putanje, skripte ni drugi CPU-i.
+
+CACHE I RAD BEZ INTERNETA
+Nakon pripreme lokalni prevoditelj ne preuzima alate ni biblioteke pri radu.
+Najviše 12 rezultata čuva se u memoriji lokalnog prevoditelja, a najviše
+6 u predmemoriji preglednika. Izvor, cilj, core, alati i zaključane biblioteke
+određuju ključ. Rezultat se ponovno provjerava prije primjene i simulacije.
+Projekt čuva svoj avr-build.json i može se izvesti u ZIP ili JSON.
+Bez lokalnog prevoditelja mogu se izvoditi valjani spremljeni rezultati.
+Telefon/iOS može uređivati i simulirati takav rezultat; novi C++ izvor
+prevodi se na računalu. Safari/iOS povezivanje lokalnog prevoditelja nije
+provjereno. Cloud compiler nije isporučen.
+
+RUČNI PUT OSTAJE DOSTUPAN
+Preuzmi projekt JSON. U mapi paketa pokreni:
+node scripts/avr-compile.mjs projekt.json rezultat.avr.json
+Uvezi rezultat.avr.json kroz Prevedi → Ručni uvoz i izvoz.
+LAB_ARDUINO_CONFIG može odabrati zasebnu konfiguraciju s zaključanim alatima.
+
+PREDaja
+U Prevedi → Predaja Arduino projekta upiši ime, razred/grupu i opažanje.
+ZIP sadrži izvor, sklop, rezultat, odabir biblioteka, opažanja i serijski zapis.
+Ponovno se otvara u aplikaciji preko Uvezi, kao zaustavljena kopija.
+Hash veže izvor i rezultat; nije digitalni potpis, ocjena ni dokaz autorstva.
+Nastavnik treba pregledati sadržaj i izričito ponovno pokrenuti program.
+
+Ograničenja simulacije ostaju u aplikaciji: GPIO/ADC/PWM/timeri/UART/prekidi;
+TWI i software I2C podržavaju AHT10 i SSD1306 128x64, a Timer1 hobi servo. AHT10 koristi zasebnu sabirnicu; OLED primjer koristi SDA=D6 i SCL=D7. Oba modula koriste izričit profil s regulatorom i prilagodbom I2C razina na 5 V. To nije profil golog 3,3 V senzora. SPI zasad čita 0xFF.
+Flash i statički SRAM mjere se iz stvarnog programa. Simulator prati najmanji razmak stoga do statičkih podataka i zaustavlja ulazak u njih. Dinamički heap nije zasebno praćen. Fizički hardver i upload nisu potvrđeni.
+
+Licencije: aplikacija/most MIT; vendor/arduino/Bounce2/LICENSE: MIT,
+Thomas O Fredericks; LabAHT10/LICENSE: MIT; U8g2/LICENSE: BSD-2-Clause; font 6x10: public domain; Servo/LICENSE.txt: LGPL-2.1-or-later. Izvorni kod svih priloženih biblioteka i njihove licencije nalaze se u vendor/arduino. Arduino CLI/core/GCC imaju svoje licencije i preuzimaju
+se iz službene distribucije. ZIP ne sadrži njihove binarne datoteke.
+
+Etapa 10B: novi paket uključuje LabI2CSensors 1.0.0 (BMP180, BMP280 I2C i AM2320). Za nove izvore sa senzorima preuzmi ovaj paket. Sve datoteke i licencije su uključene i zaključane hashovima.
+
+Etapa 12A: Adafruit DHT 1.4.6 (DHT.cpp/DHT.h) dodaje DHT11/DHT22 preko stvarnih GPIO impulsa. Izvor je neizmijenjen; DHT_U/Unified Sensor API nije dio paketa. VCC i vanjski 4,7 kΩ DATA pull-up na 5 V za Uno/Nano, DATA=D2 (drugi DHT=D3). DHT11 profil zahtijeva start LOW ≥18 ms i razmak ≥1 s; DHT22 ≥1 ms i ≥2 s. Biblioteka ima vlastitu 2 s predmemoriju za oba modela; readHumidity(true) forsira novi pokušaj. Nevaljan checksum/timeout daje NaN. MIT licencija je u vendor/arduino/DHT/license.txt.
+
+Etapa 12B: DS18B20 TO-92 s vanjskim VDD i jednim pull-up otpornikom 4,7 kΩ DQ–5 V, GPIO D2. Ukljuceni su neizmijenjeni OneWire 2.3.8 i DallasTemperature 4.0.6, zajedno s licencijskim obavijestima i zakljucanim hashovima. Odaberi obje biblioteke; ROM pretraga, Match ROM, scratchpad/CRC i pretvorba 9–12 bita izvode se stvarnim programom. Vise senzora dijeli DQ; parazitsko napajanje nije podrzano. DEVICE_DISCONNECTED_C (-127) je oznaka pogreske, ne izmjerena temperatura. Pocetnih 85 C je registar nakon ukljucivanja; valjan CRC sam ne potvrduje svjezinu mjerenja.
+
+Napomena DallasTemperature 4.0.6: getTempC() odbacuje -55 C i uzorak +85 C/0C i uz valjan CRC. Pripremljeni program za te dvije vrijednosti izricito ponavlja readScratchPad i CRC-8, dekodira signed rijec / 16 te u konzoli oznacuje sirovi registar. I dalje treba dovrsiti pretvorbu; CRC nije dokaz svjezine.
+
+ESP32-S3 C++ WASM — etapa 18B
+---------------------------
+Za S3 simulator instaliraj Clang 19.1.7 s wasm32 podrškom i WASM linkerom
+te Binaryen wasm-opt 120. To nisu Espressif Xtensa alati. S3 rezultat nije
+firmware i ne može se flashati na pločicu. Postavi LAB_WASM_CXX na izvršni
+clang++ i LAB_WASM_OPT na wasm-opt; dodaj mapu WASM linkera u PATH.
+Primjer Linux/macOS terminala (prilagodi stvarne apsolutne putanje):
+  export LAB_WASM_CXX=/putanja/clang++
+  export LAB_WASM_OPT=/putanja/wasm-opt
+  node scripts/avr-serve.mjs
+Windows cmd, prije Pokreni.cmd (alati moraju biti instalirani):
+  set LAB_WASM_CXX=C:\LLVM\bin\clang++.exe
+  set LAB_WASM_OPT=C:\binaryen\bin\wasm-opt.exe
+Alati se provjeravaju pri svakom prevođenju. Automatska instalacija iz
+Pripremi.cmd i dalje priprema AVR alatni lanac; ne instalira S3 WASM alate.
+Provjereno razvojno okruženje za S3 je Debian Linux x64; Windows/macOS
+pokretanje ove kombinacije ostaje zasebna provjera.
+
+Ručni S3 put:
+  node scripts/s3-compile.mjs projekt.json rezultat.s3.json
+Uvezi rezultat kroz Prevedi. Izvorni kod i sve biblioteke vežu se SHA-256
+sažetkom. Sažetak nije digitalni potpis ni potvrda autorstva.
+.ino se prevodi pravim C++ prevoditeljem; funkciju deklariraj prije uporabe.
+Nema Arduino IDE automatskog dodavanja prototipova. Podržani su korijen i
+src/ za dodatne C/C++ datoteke. Wire/SPI traže eksplicitne pinove. Trenutačne
+biblioteke: Bounce2, LabAHT10, LabI2CSensors, LabLCD1602, DHT 1.4.6,
+OneWire 2.3.8 / DallasTemperature 4.0.6 te U8g2 / U8g2_12832 2.37.1.
+Svaka je zaključana na istu inačicu i sadržaj kao u aplikaciji.
+U8g2 paketi podržavaju SSD1306 128x64 / 128x32 i priloženi font 6x10;
+odaberi samo jedan paket. Biblioteke se ne proširuju proizvoljnim preuzimanjem.
+DHT koristi stvarne GPIO impulse; OneWire koristi postojeći generic fallback.
+noInterrupts()/interrupts() označuju kritični odsječak, ali profil ne nudi
+asinkrone hardverske prekide. Polling poziv napreduje jednu virtualnu µs;
+microsecondsToClockCycles služi timeout brojaču, nije taktni model ESP32.
+Provjeren je HW I2C put U8g2. SW I2C u S3 C++ još nije deklariran.
+Gotovi S3 primjeri već nose prevedeni program i rade bez lokalnih alata.

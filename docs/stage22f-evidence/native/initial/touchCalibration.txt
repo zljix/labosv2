@@ -1,0 +1,549 @@
+
+Used library Version Path
+SPI          3.3.12  [espressif-alati]/packages/esp32/hardware/esp32/3.3.12/libraries/SPI
+
+Used platform Version Path
+esp32:esp32   3.3.12  [espressif-alati]/packages/esp32/hardware/esp32/3.3.12
+
+[posao]/touchCalibration/LabSketch/LabSketch.ino:15:15: error: 'int16_t y0' redeclared as different kind of entity
+   15 | int16_t x0,x1,y0,y1;
+      |               ^~
+In file included from [espressif-alati]/packages/esp32/tools/esp-x32/2601/xtensa-esp-elf/include/c++/14.2.0/math.h:30,
+                 from [espressif-alati]/packages/esp32/tools/esp-x32/2601/xtensa-esp-elf/include/c++/14.2.0/cmath:47,
+                 from [espressif-alati]/packages/esp32/tools/esp-x32/2601/xtensa-esp-elf/include/c++/14.2.0/math.h:36,
+                 from [espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/esp32-hal.h:30,
+                 from [espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Arduino.h:44,
+                 from [posao]/touchCalibration/build/sketch/LabSketch.ino.cpp:1:
+[espressif-alati]/packages/esp32/tools/esp-x32/2601/xtensa-esp-elf/include/math.h:548:15: note: previous declaration 'double y0(double)'
+  548 | extern double y0 (double);
+      |               ^~
+[posao]/touchCalibration/LabSketch/LabSketch.ino:15:18: error: 'int16_t y1' redeclared as different kind of entity
+   15 | int16_t x0,x1,y0,y1;
+      |                  ^~
+[espressif-alati]/packages/esp32/tools/esp-x32/2601/xtensa-esp-elf/include/math.h:549:15: note: previous declaration 'double y1(double)'
+  549 | extern double y1 (double);
+      |               ^~
+[posao]/touchCalibration/LabSketch/LabSketch.ino: In function 'void setup()':
+[posao]/touchCalibration/LabSketch/LabSketch.ino:28:4: error: assignment of function 'double y0(double)'
+   28 |  y0=(long)a.y-((long)b.y-a.y)*20/279;y1=(long)a.y+((long)b.y-a.y)*299/279;
+      |  ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[posao]/touchCalibration/LabSketch/LabSketch.ino:28:40: error: assignment of function 'double y1(double)'
+   28 |  y0=(long)a.y-((long)b.y-a.y)*20/279;y1=(long)a.y+((long)b.y-a.y)*299/279;
+      |                                      ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:114: error: no matching function for call to 'print(double (&)(double))'
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+In file included from [espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Stream.h:25,
+                 from [espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Arduino.h:195:
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:85:10: note: candidate: 'size_t Print::print(char)' (near match)
+   85 |   size_t print(char);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:85:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:115: error: invalid conversion from 'double (*)(double)' to 'char' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                   ^~
+      |                                                                                                                   |
+      |                                                                                                                   double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:86:10: note: candidate: 'size_t Print::print(unsigned char, int)' (near match)
+   86 |   size_t print(unsigned char, int = DEC);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:86:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:115: error: invalid conversion from 'double (*)(double)' to 'unsigned char' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                   ^~
+      |                                                                                                                   |
+      |                                                                                                                   double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:87:10: note: candidate: 'size_t Print::print(int, int)' (near match)
+   87 |   size_t print(int, int = DEC);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:87:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:115: error: invalid conversion from 'double (*)(double)' to 'int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                   ^~
+      |                                                                                                                   |
+      |                                                                                                                   double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:88:10: note: candidate: 'size_t Print::print(unsigned int, int)' (near match)
+   88 |   size_t print(unsigned int, int = DEC);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:88:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:115: error: invalid conversion from 'double (*)(double)' to 'unsigned int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                   ^~
+      |                                                                                                                   |
+      |                                                                                                                   double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:89:10: note: candidate: 'size_t Print::print(long int, int)' (near match)
+   89 |   size_t print(long, int = DEC);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:89:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:115: error: invalid conversion from 'double (*)(double)' to 'long int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                   ^~
+      |                                                                                                                   |
+      |                                                                                                                   double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:90:10: note: candidate: 'size_t Print::print(long unsigned int, int)' (near match)
+   90 |   size_t print(unsigned long, int = DEC);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:90:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:115: error: invalid conversion from 'double (*)(double)' to 'long unsigned int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                   ^~
+      |                                                                                                                   |
+      |                                                                                                                   double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:91:10: note: candidate: 'size_t Print::print(long long int, int)' (near match)
+   91 |   size_t print(long long, int = DEC);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:91:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:115: error: invalid conversion from 'double (*)(double)' to 'long long int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                   ^~
+      |                                                                                                                   |
+      |                                                                                                                   double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:92:10: note: candidate: 'size_t Print::print(long long unsigned int, int)' (near match)
+   92 |   size_t print(unsigned long long, int = DEC);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:92:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:115: error: invalid conversion from 'double (*)(double)' to 'long long unsigned int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                   ^~
+      |                                                                                                                   |
+      |                                                                                                                   double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:80:10: note: candidate: 'size_t Print::print(const __FlashStringHelper*)'
+   80 |   size_t print(const __FlashStringHelper *ifsh) {
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:80:43: note:   no known conversion for argument 1 from 'double(double)' to 'const __FlashStringHelper*'
+   80 |   size_t print(const __FlashStringHelper *ifsh) {
+      |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:83:10: note: candidate: 'size_t Print::print(const String&)'
+   83 |   size_t print(const String &);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:83:16: note:   no known conversion for argument 1 from 'double(double)' to 'const String&'
+   83 |   size_t print(const String &);
+      |                ^~~~~~~~~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:84:10: note: candidate: 'size_t Print::print(const char*)'
+   84 |   size_t print(const char[]);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:84:16: note:   no known conversion for argument 1 from 'double(double)' to 'const char*'
+   84 |   size_t print(const char[]);
+      |                ^~~~~~~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:93:10: note: candidate: 'size_t Print::print(double, int)'
+   93 |   size_t print(double, int = 2);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:93:16: note:   no known conversion for argument 1 from 'double(double)' to 'double'
+   93 |   size_t print(double, int = 2);
+      |                ^~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:94:10: note: candidate: 'size_t Print::print(const Printable&)'
+   94 |   size_t print(const Printable &);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:94:16: note:   no known conversion for argument 1 from 'double(double)' to 'const Printable&'
+   94 |   size_t print(const Printable &);
+      |                ^~~~~~~~~~~~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:95:10: note: candidate: 'size_t Print::print(tm*, const char*)'
+   95 |   size_t print(struct tm *timeinfo, const char *format = NULL);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:95:27: note:   no known conversion for argument 1 from 'double(double)' to 'tm*'
+   95 |   size_t print(struct tm *timeinfo, const char *format = NULL);
+      |                ~~~~~~~~~~~^~~~~~~~
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:151: error: no matching function for call to 'println(double (&)(double))'
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:102:10: note: candidate: 'size_t Print::println(char)' (near match)
+  102 |   size_t println(char);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:102:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:152: error: invalid conversion from 'double (*)(double)' to 'char' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                                                        ^~
+      |                                                                                                                                                        |
+      |                                                                                                                                                        double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:103:10: note: candidate: 'size_t Print::println(unsigned char, int)' (near match)
+  103 |   size_t println(unsigned char, int = DEC);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:103:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:152: error: invalid conversion from 'double (*)(double)' to 'unsigned char' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                                                        ^~
+      |                                                                                                                                                        |
+      |                                                                                                                                                        double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:104:10: note: candidate: 'size_t Print::println(int, int)' (near match)
+  104 |   size_t println(int, int = DEC);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:104:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:152: error: invalid conversion from 'double (*)(double)' to 'int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                                                        ^~
+      |                                                                                                                                                        |
+      |                                                                                                                                                        double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:105:10: note: candidate: 'size_t Print::println(unsigned int, int)' (near match)
+  105 |   size_t println(unsigned int, int = DEC);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:105:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:152: error: invalid conversion from 'double (*)(double)' to 'unsigned int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                                                        ^~
+      |                                                                                                                                                        |
+      |                                                                                                                                                        double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:106:10: note: candidate: 'size_t Print::println(long int, int)' (near match)
+  106 |   size_t println(long, int = DEC);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:106:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:152: error: invalid conversion from 'double (*)(double)' to 'long int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                                                        ^~
+      |                                                                                                                                                        |
+      |                                                                                                                                                        double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:107:10: note: candidate: 'size_t Print::println(long unsigned int, int)' (near match)
+  107 |   size_t println(unsigned long, int = DEC);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:107:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:152: error: invalid conversion from 'double (*)(double)' to 'long unsigned int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                                                        ^~
+      |                                                                                                                                                        |
+      |                                                                                                                                                        double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:108:10: note: candidate: 'size_t Print::println(long long int, int)' (near match)
+  108 |   size_t println(long long, int = DEC);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:108:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:152: error: invalid conversion from 'double (*)(double)' to 'long long int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                                                        ^~
+      |                                                                                                                                                        |
+      |                                                                                                                                                        double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:109:10: note: candidate: 'size_t Print::println(long long unsigned int, int)' (near match)
+  109 |   size_t println(unsigned long long, int = DEC);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:109:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:152: error: invalid conversion from 'double (*)(double)' to 'long long unsigned int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                                                        ^~
+      |                                                                                                                                                        |
+      |                                                                                                                                                        double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:97:10: note: candidate: 'size_t Print::println(const __FlashStringHelper*)'
+   97 |   size_t println(const __FlashStringHelper *ifsh) {
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:97:45: note:   no known conversion for argument 1 from 'double(double)' to 'const __FlashStringHelper*'
+   97 |   size_t println(const __FlashStringHelper *ifsh) {
+      |                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:100:10: note: candidate: 'size_t Print::println(const String&)'
+  100 |   size_t println(const String &s);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:100:32: note:   no known conversion for argument 1 from 'double(double)' to 'const String&'
+  100 |   size_t println(const String &s);
+      |                  ~~~~~~~~~~~~~~^
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:101:10: note: candidate: 'size_t Print::println(const char*)'
+  101 |   size_t println(const char[]);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:101:18: note:   no known conversion for argument 1 from 'double(double)' to 'const char*'
+  101 |   size_t println(const char[]);
+      |                  ^~~~~~~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:110:10: note: candidate: 'size_t Print::println(double, int)'
+  110 |   size_t println(double, int = 2);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:110:18: note:   no known conversion for argument 1 from 'double(double)' to 'double'
+  110 |   size_t println(double, int = 2);
+      |                  ^~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:111:10: note: candidate: 'size_t Print::println(const Printable&)'
+  111 |   size_t println(const Printable &);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:111:18: note:   no known conversion for argument 1 from 'double(double)' to 'const Printable&'
+  111 |   size_t println(const Printable &);
+      |                  ^~~~~~~~~~~~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:112:10: note: candidate: 'size_t Print::println(tm*, const char*)'
+  112 |   size_t println(struct tm *timeinfo, const char *format = NULL);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:112:29: note:   no known conversion for argument 1 from 'double(double)' to 'tm*'
+  112 |   size_t println(struct tm *timeinfo, const char *format = NULL);
+      |                  ~~~~~~~~~~~^~~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:113:10: note: candidate: 'size_t Print::println()'
+  113 |   size_t println(void);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:113:10: note:   candidate expects 0 arguments, 1 provided
+[posao]/touchCalibration/LabSketch/LabSketch.ino: In function 'void loop()':
+[posao]/touchCalibration/LabSketch/LabSketch.ino:32:58: error: invalid conversion from 'double (*)(double)' to 'int16_t' {aka 'short int'} [-fpermissive]
+   32 | void loop(){LabXPT2046::Point p;if(touch.point(p,0,x0,x1,y0,y1)){
+      |                                                          ^~
+      |                                                          |
+      |                                                          double (*)(double)
+In file included from [posao]/touchCalibration/LabSketch/LabSketch.ino:3:
+[posao]/touchCalibration/LabSketch/lab_xpt2046.h:29:76: note:   initializing argument 5 of 'bool LabXPT2046::point(Point&, uint8_t, int16_t, int16_t, int16_t, int16_t)'
+   29 |   bool point(Point &p,uint8_t rot=0,int16_t x0=200,int16_t x1=3900,int16_t y0=250,int16_t y1=3850){
+      |                                                                    ~~~~~~~~^~~~~~
+[posao]/touchCalibration/LabSketch/LabSketch.ino:32:61: error: invalid conversion from 'double (*)(double)' to 'int16_t' {aka 'short int'} [-fpermissive]
+   32 | void loop(){LabXPT2046::Point p;if(touch.point(p,0,x0,x1,y0,y1)){
+      |                                                             ^~
+      |                                                             |
+      |                                                             double (*)(double)
+[posao]/touchCalibration/LabSketch/lab_xpt2046.h:29:91: note:   initializing argument 6 of 'bool LabXPT2046::point(Point&, uint8_t, int16_t, int16_t, int16_t, int16_t)'
+   29 |   bool point(Point &p,uint8_t rot=0,int16_t x0=200,int16_t x1=3900,int16_t y0=250,int16_t y1=3850){
+      |                                                                                   ~~~~~~~~^~~~~~~
+Error during build: exit status 1
+
+Command failed: /tmp/esp32-lab-tools/arduino-cli --config-file [izvor]/.build/esp32-native/arduino-cli.yaml compile --fqbn esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi --jobs 2 --warnings all --build-path [posao]/touchCalibration/build [posao]/touchCalibration/LabSketch
+[posao]/touchCalibration/LabSketch/LabSketch.ino:15:15: error: 'int16_t y0' redeclared as different kind of entity
+   15 | int16_t x0,x1,y0,y1;
+      |               ^~
+In file included from [espressif-alati]/packages/esp32/tools/esp-x32/2601/xtensa-esp-elf/include/c++/14.2.0/math.h:30,
+                 from [espressif-alati]/packages/esp32/tools/esp-x32/2601/xtensa-esp-elf/include/c++/14.2.0/cmath:47,
+                 from [espressif-alati]/packages/esp32/tools/esp-x32/2601/xtensa-esp-elf/include/c++/14.2.0/math.h:36,
+                 from [espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/esp32-hal.h:30,
+                 from [espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Arduino.h:44,
+                 from [posao]/touchCalibration/build/sketch/LabSketch.ino.cpp:1:
+[espressif-alati]/packages/esp32/tools/esp-x32/2601/xtensa-esp-elf/include/math.h:548:15: note: previous declaration 'double y0(double)'
+  548 | extern double y0 (double);
+      |               ^~
+[posao]/touchCalibration/LabSketch/LabSketch.ino:15:18: error: 'int16_t y1' redeclared as different kind of entity
+   15 | int16_t x0,x1,y0,y1;
+      |                  ^~
+[espressif-alati]/packages/esp32/tools/esp-x32/2601/xtensa-esp-elf/include/math.h:549:15: note: previous declaration 'double y1(double)'
+  549 | extern double y1 (double);
+      |               ^~
+[posao]/touchCalibration/LabSketch/LabSketch.ino: In function 'void setup()':
+[posao]/touchCalibration/LabSketch/LabSketch.ino:28:4: error: assignment of function 'double y0(double)'
+   28 |  y0=(long)a.y-((long)b.y-a.y)*20/279;y1=(long)a.y+((long)b.y-a.y)*299/279;
+      |  ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[posao]/touchCalibration/LabSketch/LabSketch.ino:28:40: error: assignment of function 'double y1(double)'
+   28 |  y0=(long)a.y-((long)b.y-a.y)*20/279;y1=(long)a.y+((long)b.y-a.y)*299/279;
+      |                                      ~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:114: error: no matching function for call to 'print(double (&)(double))'
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+In file included from [espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Stream.h:25,
+                 from [espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Arduino.h:195:
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:85:10: note: candidate: 'size_t Print::print(char)' (near match)
+   85 |   size_t print(char);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:85:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:115: error: invalid conversion from 'double (*)(double)' to 'char' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                   ^~
+      |                                                                                                                   |
+      |                                                                                                                   double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:86:10: note: candidate: 'size_t Print::print(unsigned char, int)' (near match)
+   86 |   size_t print(unsigned char, int = DEC);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:86:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:115: error: invalid conversion from 'double (*)(double)' to 'unsigned char' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                   ^~
+      |                                                                                                                   |
+      |                                                                                                                   double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:87:10: note: candidate: 'size_t Print::print(int, int)' (near match)
+   87 |   size_t print(int, int = DEC);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:87:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:115: error: invalid conversion from 'double (*)(double)' to 'int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                   ^~
+      |                                                                                                                   |
+      |                                                                                                                   double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:88:10: note: candidate: 'size_t Print::print(unsigned int, int)' (near match)
+   88 |   size_t print(unsigned int, int = DEC);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:88:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:115: error: invalid conversion from 'double (*)(double)' to 'unsigned int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                   ^~
+      |                                                                                                                   |
+      |                                                                                                                   double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:89:10: note: candidate: 'size_t Print::print(long int, int)' (near match)
+   89 |   size_t print(long, int = DEC);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:89:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:115: error: invalid conversion from 'double (*)(double)' to 'long int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                   ^~
+      |                                                                                                                   |
+      |                                                                                                                   double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:90:10: note: candidate: 'size_t Print::print(long unsigned int, int)' (near match)
+   90 |   size_t print(unsigned long, int = DEC);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:90:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:115: error: invalid conversion from 'double (*)(double)' to 'long unsigned int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                   ^~
+      |                                                                                                                   |
+      |                                                                                                                   double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:91:10: note: candidate: 'size_t Print::print(long long int, int)' (near match)
+   91 |   size_t print(long long, int = DEC);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:91:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:115: error: invalid conversion from 'double (*)(double)' to 'long long int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                   ^~
+      |                                                                                                                   |
+      |                                                                                                                   double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:92:10: note: candidate: 'size_t Print::print(long long unsigned int, int)' (near match)
+   92 |   size_t print(unsigned long long, int = DEC);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:92:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:115: error: invalid conversion from 'double (*)(double)' to 'long long unsigned int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                   ^~
+      |                                                                                                                   |
+      |                                                                                                                   double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:80:10: note: candidate: 'size_t Print::print(const __FlashStringHelper*)'
+   80 |   size_t print(const __FlashStringHelper *ifsh) {
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:80:43: note:   no known conversion for argument 1 from 'double(double)' to 'const __FlashStringHelper*'
+   80 |   size_t print(const __FlashStringHelper *ifsh) {
+      |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:83:10: note: candidate: 'size_t Print::print(const String&)'
+   83 |   size_t print(const String &);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:83:16: note:   no known conversion for argument 1 from 'double(double)' to 'const String&'
+   83 |   size_t print(const String &);
+      |                ^~~~~~~~~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:84:10: note: candidate: 'size_t Print::print(const char*)'
+   84 |   size_t print(const char[]);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:84:16: note:   no known conversion for argument 1 from 'double(double)' to 'const char*'
+   84 |   size_t print(const char[]);
+      |                ^~~~~~~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:93:10: note: candidate: 'size_t Print::print(double, int)'
+   93 |   size_t print(double, int = 2);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:93:16: note:   no known conversion for argument 1 from 'double(double)' to 'double'
+   93 |   size_t print(double, int = 2);
+      |                ^~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:94:10: note: candidate: 'size_t Print::print(const Printable&)'
+   94 |   size_t print(const Printable &);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:94:16: note:   no known conversion for argument 1 from 'double(double)' to 'const Printable&'
+   94 |   size_t print(const Printable &);
+      |                ^~~~~~~~~~~~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:95:10: note: candidate: 'size_t Print::print(tm*, const char*)'
+   95 |   size_t print(struct tm *timeinfo, const char *format = NULL);
+      |          ^~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:95:27: note:   no known conversion for argument 1 from 'double(double)' to 'tm*'
+   95 |   size_t print(struct tm *timeinfo, const char *format = NULL);
+      |                ~~~~~~~~~~~^~~~~~~~
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:151: error: no matching function for call to 'println(double (&)(double))'
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:102:10: note: candidate: 'size_t Print::println(char)' (near match)
+  102 |   size_t println(char);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:102:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:152: error: invalid conversion from 'double (*)(double)' to 'char' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                                                        ^~
+      |                                                                                                                                                        |
+      |                                                                                                                                                        double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:103:10: note: candidate: 'size_t Print::println(unsigned char, int)' (near match)
+  103 |   size_t println(unsigned char, int = DEC);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:103:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:152: error: invalid conversion from 'double (*)(double)' to 'unsigned char' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                                                        ^~
+      |                                                                                                                                                        |
+      |                                                                                                                                                        double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:104:10: note: candidate: 'size_t Print::println(int, int)' (near match)
+  104 |   size_t println(int, int = DEC);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:104:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:152: error: invalid conversion from 'double (*)(double)' to 'int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                                                        ^~
+      |                                                                                                                                                        |
+      |                                                                                                                                                        double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:105:10: note: candidate: 'size_t Print::println(unsigned int, int)' (near match)
+  105 |   size_t println(unsigned int, int = DEC);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:105:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:152: error: invalid conversion from 'double (*)(double)' to 'unsigned int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                                                        ^~
+      |                                                                                                                                                        |
+      |                                                                                                                                                        double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:106:10: note: candidate: 'size_t Print::println(long int, int)' (near match)
+  106 |   size_t println(long, int = DEC);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:106:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:152: error: invalid conversion from 'double (*)(double)' to 'long int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                                                        ^~
+      |                                                                                                                                                        |
+      |                                                                                                                                                        double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:107:10: note: candidate: 'size_t Print::println(long unsigned int, int)' (near match)
+  107 |   size_t println(unsigned long, int = DEC);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:107:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:152: error: invalid conversion from 'double (*)(double)' to 'long unsigned int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                                                        ^~
+      |                                                                                                                                                        |
+      |                                                                                                                                                        double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:108:10: note: candidate: 'size_t Print::println(long long int, int)' (near match)
+  108 |   size_t println(long long, int = DEC);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:108:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:152: error: invalid conversion from 'double (*)(double)' to 'long long int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                                                        ^~
+      |                                                                                                                                                        |
+      |                                                                                                                                                        double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:109:10: note: candidate: 'size_t Print::println(long long unsigned int, int)' (near match)
+  109 |   size_t println(unsigned long long, int = DEC);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:109:10: note:   conversion of argument 1 would be ill-formed:
+[posao]/touchCalibration/LabSketch/LabSketch.ino:29:152: error: invalid conversion from 'double (*)(double)' to 'long long unsigned int' [-fpermissive]
+   29 |  Serial.print(F("CAL READY "));Serial.print(x0);Serial.print(' ');Serial.print(x1);Serial.print(' ');Serial.print(y0);Serial.print(' ');Serial.println(y1);
+      |                                                                                                                                                        ^~
+      |                                                                                                                                                        |
+      |                                                                                                                                                        double (*)(double)
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:97:10: note: candidate: 'size_t Print::println(const __FlashStringHelper*)'
+   97 |   size_t println(const __FlashStringHelper *ifsh) {
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:97:45: note:   no known conversion for argument 1 from 'double(double)' to 'const __FlashStringHelper*'
+   97 |   size_t println(const __FlashStringHelper *ifsh) {
+      |                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:100:10: note: candidate: 'size_t Print::println(const String&)'
+  100 |   size_t println(const String &s);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:100:32: note:   no known conversion for argument 1 from 'double(double)' to 'const String&'
+  100 |   size_t println(const String &s);
+      |                  ~~~~~~~~~~~~~~^
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:101:10: note: candidate: 'size_t Print::println(const char*)'
+  101 |   size_t println(const char[]);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:101:18: note:   no known conversion for argument 1 from 'double(double)' to 'const char*'
+  101 |   size_t println(const char[]);
+      |                  ^~~~~~~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:110:10: note: candidate: 'size_t Print::println(double, int)'
+  110 |   size_t println(double, int = 2);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:110:18: note:   no known conversion for argument 1 from 'double(double)' to 'double'
+  110 |   size_t println(double, int = 2);
+      |                  ^~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:111:10: note: candidate: 'size_t Print::println(const Printable&)'
+  111 |   size_t println(const Printable &);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:111:18: note:   no known conversion for argument 1 from 'double(double)' to 'const Printable&'
+  111 |   size_t println(const Printable &);
+      |                  ^~~~~~~~~~~~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:112:10: note: candidate: 'size_t Print::println(tm*, const char*)'
+  112 |   size_t println(struct tm *timeinfo, const char *format = NULL);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:112:29: note:   no known conversion for argument 1 from 'double(double)' to 'tm*'
+  112 |   size_t println(struct tm *timeinfo, const char *format = NULL);
+      |                  ~~~~~~~~~~~^~~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:113:10: note: candidate: 'size_t Print::println()'
+  113 |   size_t println(void);
+      |          ^~~~~~~
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Print.h:113:10: note:   candidate expects 0 arguments, 1 provided
+[posao]/touchCalibration/LabSketch/LabSketch.ino: In function 'void loop()':
+[posao]/touchCalibration/LabSketch/LabSketch.ino:32:58: error: invalid conversion from 'double (*)(double)' to 'int16_t' {aka 'short int'} [-fpermissive]
+   32 | void loop(){LabXPT2046::Point p;if(touch.point(p,0,x0,x1,y0,y1)){
+      |                                                          ^~
+      |                                                          |
+      |                                                          double (*)(double)
+In file included from [posao]/touchCalibration/LabSketch/LabSketch.ino:3:
+[posao]/touchCalibration/LabSketch/lab_xpt2046.h:29:76: note:   initializing argument 5 of 'bool LabXPT2046::point(Point&, uint8_t, int16_t, int16_t, int16_t, int16_t)'
+   29 |   bool point(Point &p,uint8_t rot=0,int16_t x0=200,int16_t x1=3900,int16_t y0=250,int16_t y1=3850){
+      |                                                                    ~~~~~~~~^~~~~~
+[posao]/touchCalibration/LabSketch/LabSketch.ino:32:61: error: invalid conversion from 'double (*)(double)' to 'int16_t' {aka 'short int'} [-fpermissive]
+   32 | void loop(){LabXPT2046::Point p;if(touch.point(p,0,x0,x1,y0,y1)){
+      |                                                             ^~
+      |                                                             |
+      |                                                             double (*)(double)
+[posao]/touchCalibration/LabSketch/lab_xpt2046.h:29:91: note:   initializing argument 6 of 'bool LabXPT2046::point(Point&, uint8_t, int16_t, int16_t, int16_t, int16_t)'
+   29 |   bool point(Point &p,uint8_t rot=0,int16_t x0=200,int16_t x1=3900,int16_t y0=250,int16_t y1=3850){
+      |                                                                                   ~~~~~~~~^~~~~~~
+Error during build: exit status 1

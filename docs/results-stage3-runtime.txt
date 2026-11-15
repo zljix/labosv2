@@ -1,0 +1,37 @@
+
+> esp32-micropython-lab@0.1.0 test:runtime
+> node verification/run.mjs && node verification/stage1-runtime.mjs
+
+PASS runtime: "micropython\n3.4.0; MicroPython v1.29.0 on 2026-11-12\nJS_DISABLED"
+PASS time: "TIME_OK 196"
+PASS input: {"pressToOutputMs":23.6,"released":true}
+PASS stop: {"stopAwaitMs":[2,7.9,4],"stopToNewProgramCompletedMs":[130.2,159.2,121.9],"freshRuns":3,"note":"Browser terminate() has no completion acknowledgement; stopAwaitMs measures the command, not physical thread destruction."}
+PASS i2c: "scan, writeto, readfrom, readfrom_into, NACK na 0x39"
+PASS wiring: "3 negativna slučaja prolaze; echo uređaj nije model AHT10"
+PASS framebuf: "1024 bajta, 128 × 64, MONO_VLSB, tekst i rub"
+PASS gc: "GC_OK 4085440"
+PASS errors: "ValueError, SyntaxError, izolacija novog pokretanja"
+PASS console: {"consoleCharacters":8237,"consoleMessages":2,"pinMessages":16}
+{
+  "generatedAt": "2026-11-12T17:13:40.715Z",
+  "runtime": "MicroPython v1.29.0",
+  "results": [
+    {
+      "name": "main imports helper and nested package",
+      "status": "pass",
+      "output": "POMOC_RADI 42"
+    },
+    {
+      "name": "text data is available to Python",
+      "status": "pass",
+      "output": "PODACI_RADE"
+    },
+    {
+      "name": "internal module override is rejected",
+      "status": "pass",
+      "output": "Nedopuštena datoteka."
+    }
+  ],
+  "passed": 3,
+  "total": 3
+}

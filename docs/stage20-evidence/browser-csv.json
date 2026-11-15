@@ -1,0 +1,13 @@
+{
+  "rows": 128,
+  "last": {
+    "komponenta": "optical1",
+    "uzorak": "4900",
+    "vrijeme_uzorka_ms": "49001.016",
+    "vrijeme_citanja_ms": "49001.283",
+    "red_adc": "425",
+    "ir_adc": "500"
+  },
+  "bytes": 5918,
+  "status": "pass"
+}

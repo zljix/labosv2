@@ -1,0 +1,32 @@
+[
+  {
+    "path": "public/runtime/micropython.wasm",
+    "bytes": 1134289,
+    "sha256": "3f638e8cacd1f00168f19a17fcae35ece9773b4b661464c8241114e00c24fcce",
+    "unchanged": true
+  },
+  {
+    "path": "public/runtime/micropython.mjs",
+    "bytes": 225531,
+    "sha256": "0105e219063d76cfd40c564b3a206aee49dfb5bd282e4b7574164c207f35908f",
+    "unchanged": true
+  },
+  {
+    "path": "public/s3-examples.json",
+    "bytes": 1444176,
+    "sha256": "f7449339e44b6576da6593bfa693acc799d386ea374bd6ae517ca7b2efdfe969",
+    "unchanged": true
+  },
+  {
+    "path": "public/avr-examples.json",
+    "bytes": 2727980,
+    "sha256": "6a5eecfcb8bde92bde7199d99143a4f17728612666e7ababed12a02ec7bcc9c9",
+    "unchanged": true
+  },
+  {
+    "path": "public/radio-examples.json",
+    "bytes": 96580,
+    "sha256": "5cdcb51cb8b68304d7deec44e62d54e0821b4546731eb41b3f3ade855915730b",
+    "unchanged": true
+  }
+]

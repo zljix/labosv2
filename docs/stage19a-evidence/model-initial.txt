@@ -1,0 +1,72 @@
+✔ strict calendar, BCD and serialized state validation reject normalization, DST and corrupt bytes (5.429463ms)
+✔ rising command/write bits and falling reply bits read fixed independent BCD bytes (66.954051ms)
+✔ clock writes commit on falling CE; incomplete burst is discarded and trailing bytes ignored (57.753622ms)
+✔ calendar handles leap day, short months, midnight day register and year rollover (39.161764ms)
+✔ 12-hour 11:59:59 AM changes to 12 PM and 11 PM to midnight (19.406658ms)
+✔ CH freezes time; WP blocks clock and RAM including burst control, but control clears WP (21.603667ms)
+✔ RAM supports 31 single-byte addresses and partial/continuous bursts without clock aliasing (136.969139ms)
+✔ read snapshot is coherent across midnight; I/O is released with CE low (6.475442ms)
+✔ missing main supply with battery retains time/RAM but cannot communicate; restore recovers (15.1684ms)
+✔ loss of both supplies invalidates calendar and erases RAM; restored supply needs initialization (10.154322ms)
+✔ invalid calendar is flagged; invalid command and unsupported address cannot mutate RAM/time (6.922743ms)
+✔ charging register is outside clock burst and enabled charging produces explicit diagnostic (9.921133ms)
+✔ wiring checks reject merged signals, Nano analog-only pins and 5 V S3 return path (2.31465ms)
+✔ unconnected VCC cannot return valid calendar bytes (7.938332ms)
+✖ unconnected GND cannot return valid calendar bytes (9.7054ms)
+✔ unconnected CE cannot return valid calendar bytes (36.848727ms)
+✖ unconnected IO cannot return valid calendar bytes (12.694016ms)
+✔ unconnected SCLK cannot return valid calendar bytes (29.423564ms)
+✔ GPIO driving opposite to RTC push-pull output is diagnosed (5.293411ms)
+✔ session snapshot survives MCU restart and source edits, stays isolated by project/topology/initial data (6.53196ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 18
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1455.163183
+
+✖ failing tests:
+
+test at verification/rtc.test.ts:1:9983
+✖ unconnected GND cannot return valid calendar bytes (9.7054ms)
+  AssertionError [ERR_ASSERTION]: read -3
+      at input (/workspace/scratch/6823f6f5b8db/esp32-lab/.sites-checkout/verification/rtc.test.ts:37:81)
+      at <anonymous> (/workspace/scratch/6823f6f5b8db/esp32-lab/.sites-checkout/verification/rtc.test.ts:39:95)
+      at Array.from (<anonymous>)
+      at Object.rx (/workspace/scratch/6823f6f5b8db/esp32-lab/.sites-checkout/verification/rtc.test.ts:39:71)
+      at TestContext.<anonymous> (/workspace/scratch/6823f6f5b8db/esp32-lab/.sites-checkout/verification/rtc.test.ts:101:93)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at verification/rtc.test.ts:1:9983
+✖ unconnected IO cannot return valid calendar bytes (12.694016ms)
+  AssertionError [ERR_ASSERTION]: read -1
+      at input (/workspace/scratch/6823f6f5b8db/esp32-lab/.sites-checkout/verification/rtc.test.ts:37:81)
+      at <anonymous> (/workspace/scratch/6823f6f5b8db/esp32-lab/.sites-checkout/verification/rtc.test.ts:39:95)
+      at Array.from (<anonymous>)
+      at Object.rx (/workspace/scratch/6823f6f5b8db/esp32-lab/.sites-checkout/verification/rtc.test.ts:39:71)
+      at TestContext.<anonymous> (/workspace/scratch/6823f6f5b8db/esp32-lab/.sites-checkout/verification/rtc.test.ts:101:93)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

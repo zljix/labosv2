@@ -1,0 +1,21 @@
+# Stage 2 — circuit assembly and topology checks
+
+Release: 0.0.3-stage2, 12 November 2026.
+
+The authoritative project uses schemaVersion 2. Schema 1 documents are accepted only with their original stage0-fixture circuit and migrate without losing IDs, source files or settings. The fixture remains available in separate MicroPython examples. New projects use an editable circuit. Drawing-based MicroPython execution is reserved for stage 3, so Run/Reset and the runtime hook reject the editable circuit instead of silently running the fixed fixture.
+
+An editable circuit has modelVersion 1, exactly one reference board, up to 40 components and 200 wires. Each component has an immutable ID, type, label, world position, quarter-turn rotation and validated type-specific properties. Each wire has an immutable ID, two existing component/pin references, a six-digit color and at most 24 world-coordinate bend points. Wire endpoints never store graphical coordinates. Rendered endpoints follow moved/rotated components; bend points remain user-defined. Coordinates are finite and bounded. Duplicate IDs, identical endpoints, duplicate endpoint pairs and unknown terminals fail validation.
+
+The board is the existing Espressif ESP32-S3-DevKitC-1 v1.1 N16R8 reference profile: J1/J3, 22 positions each. GPIO35–37 are flagged as unavailable for external use. The user's physical board is still unconfirmed. The drawing is a simplified original illustration, not a dimensioned mechanical drawing.
+
+Breadboard model: 30 columns, ten rows A–J. A–E and F–J are separate five-hole groups in each column. Four independent horizontal power rails each split between columns 15/16. Both power and ground rails require explicit bridges across the split. Merely overlapping a component, terminal or wire path with a hole does not create a connection. Connections are explicit terminal-to-terminal wires. Crossing/overlapping wire paths are never junctions. Clicking a terminal highlights the derived conductive net. Nets are recomputed, never independently saved.
+
+Board duplicate 3V3 and ground positions share internal nets. Four-terminal buttons permanently join A1/A2 and B1/B2; the pressed property bridges both sides. Resistors, LEDs and potentiometers never union their terminals. A separate resistor reachability graph is used only for an open LED path warning, never as a zero-resistance connection.
+
+Rules detect mixed supply rails, direct 5 V GPIO wiring, reserved memory pins, unused terminals, bypassed resistors/LEDs, a directly wired LED without a series resistor and basic missing potentiometer references. Warnings flag shared GPIO and possible reversed LED polarity. Known opposing output drivers are supported by the checker API and tested, but stage 2 does not derive pin modes or levels from Python. It does not calculate currents, analog voltages, LED brightness or PWM/ADC behavior. An error-free topology check does not certify arbitrary electrical safety or correct program behavior.
+
+ZIP retains project.json and project files. Circuit properties and routing are included. Manifest decompression cap is 1 MiB to accommodate the bounded circuit; the 2 MiB input-package cap and existing source-file limits remain. Import creates a copy and does not execute code. Existing workspace storage, conflict handling and recovery remain; permanent history restoration now restores the circuit too. Discrete assembly edits have separate undo steps; only code typing coalesces.
+
+Verification: 26 project/circuit tests, existing 10 runtime groups and 3 project-file runtime tests pass. The available Chromium UI was used to check sample topology, graphical short creation/removal, missing rail bridge, separate undo steps, resistance/rotation/name edits, save/reload and real ZIP export. Exported ZIP metadata showed schema 2, six components, twelve wires and the changed resistor properties. Automated re-selection through the file chooser timed out; do not claim a successful browser ZIP import or a physical second-device transfer. Browser checks preceded recovery after environment cleanup; final restored source received fresh unit/runtime/build checks. Safari/iOS, Firefox, Edge and school hardware are not separately verified.
+
+Reference pinout: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitc-1/user_guide_v1.1.html

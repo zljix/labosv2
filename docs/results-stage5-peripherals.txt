@@ -1,0 +1,29 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.2.0 test:peripherals
+> node --import tsx --test verification/peripherals.test.ts
+
+✔ AHT10: startup, calibration, busy, latched 20-bit data and reset (3.648674ms)
+✔ SSD1306: independent addressing, commands, orientation and no fake text rendering (1.570675ms)
+✔ new devices and visible driver files survive project JSON and ZIP (19.101742ms)
+✔ real MicroPython: separate scan results, raw six-byte AHT10 protocol and readfrom_into (392.179941ms)
+✔ integrated Python drivers: live environment -> measured bytes -> OLED pixels -> servo with hysteresis (6422.047604ms)
+✔ wrong I2C pins, swapped lines, absent VCC and ground produce NACK; repairs restore real driver (1746.859722ms)
+✔ OLED wrong address and missing power fail; setting module and code to 0x3D restores display (702.70248ms)
+✔ module pull-ups are electrical paths; absent pull-ups fail, two external resistors restore bus (421.331207ms)
+✔ rewiring and renaming components uses actual nets and GPIO, without fixed fixture fallbacks (572.040475ms)
+✔ servo follows PWM pulse: 0/90/180, power/ground/signal, unsupported period and deinit (2322.139255ms)
+✔ SSD1306 standard driver: writevto, text/graphics, inversion, power, contrast, rotate (778.970922ms)
+✔ two OLED addresses are isolated; duplicate address, AHT10 sharing and 5 V module are diagnosed (254.251387ms)
+✔ I2C declared bounds, unsupported commands and STOP are catchable Python exceptions (463.246845ms)
+✔ trace/history are bounded; new run clears peripheral state and Stop isolates pending work (848.678037ms)
+✔ program-controlled sensor power removes ACK, resets calibration and permits recovery (539.66808ms)
+✔ 205 real conversions retain the last 200 samples and 100 I2C transactions (17460.961849ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 33196.602333

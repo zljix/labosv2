@@ -1,0 +1,52 @@
+[
+  {
+    "name": "projects",
+    "exitCode": 0,
+    "seconds": 0.72
+  },
+  {
+    "name": "boards",
+    "exitCode": 0,
+    "seconds": 0.54
+  },
+  {
+    "name": "simulation",
+    "exitCode": 0,
+    "seconds": 6.54
+  },
+  {
+    "name": "peripherals",
+    "exitCode": 0,
+    "seconds": 33.1
+  },
+  {
+    "name": "runtime",
+    "exitCode": 0,
+    "seconds": 3.21
+  },
+  {
+    "name": "runtime-files",
+    "exitCode": 0,
+    "seconds": 0.36
+  },
+  {
+    "name": "lessons",
+    "exitCode": 0,
+    "seconds": 64.76
+  },
+  {
+    "name": "offline",
+    "exitCode": 0,
+    "seconds": 0.82
+  },
+  {
+    "name": "avr",
+    "exitCode": 0,
+    "seconds": 3.3
+  },
+  {
+    "name": "arduino",
+    "exitCode": 0,
+    "seconds": 8.52
+  }
+]

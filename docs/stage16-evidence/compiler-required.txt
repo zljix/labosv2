@@ -1,0 +1,22 @@
+✔ arduino.uno-r3.atmega328p: newly compiled timer conflicts are visible in actual pulse output (6051.8185ms)
+✔ arduino.nano-classic.atmega328p: newly compiled timer conflicts are visible in actual pulse output (5082.042989ms)
+✔ arduino.uno-r3.atmega328p: tone reconfigures Timer2 and disrupts the real IR carrier (6186.448091ms)
+✔ arduino.nano-classic.atmega328p: tone reconfigures Timer2 and disrupts the real IR carrier (7443.577036ms)
+✔ real AVR internal 1.1 V reference and Nano A6 work; missing ADC signal reports invalid measurement (4192.50839ms)
+✔ real blank arduino.uno-r3.atmega328p project, multiple files and pinned Bounce2 compile and execute (2592.827733ms)
+✔ real blank arduino.nano-classic.atmega328p project, multiple files and pinned Bounce2 compile and execute (3242.189076ms)
+✔ real compiler rejects an unselected library and locates an error in src/ (3042.192033ms)
+✔ local bridge enforces authentication/origin and hash cache for a real compile (6706.321467ms)
+✔ real compiled AVR INT0/INT1 receive scheduled bouncing contacts on both boards (8362.003964ms)
+✔ arduino.uno-r3.atmega328p: actual carrier rejects orphan/stale repeats and exposes unread mailbox loss (10867.080852ms)
+✔ arduino.nano-classic.atmega328p: actual carrier rejects orphan/stale repeats and exposes unread mailbox loss (10145.373033ms)
+✔ arduino.uno-r3.atmega328p: newly compiled modified source handles bounds, fixed address, OFF and missing ACK (3809.684534ms)
+✔ arduino.nano-classic.atmega328p: newly compiled modified source handles bounds, fixed address, OFF and missing ACK (3499.625156ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 83764.720337

@@ -1,0 +1,29 @@
+WARNING: library LabLCD1602 claims to run on avr architecture(s) and may be incompatible with your current board which runs on esp32 architecture(s).
+Sketch uses 306955 bytes (23%) of program storage space. Maximum is 1310720 bytes.
+Global variables use 23516 bytes (7%) of dynamic memory, leaving 304164 bytes for local variables. Maximum is 327680 bytes.
+
+[izvor]/vendor/arduino/LabLCD1602/src/LabLCD1602.cpp: In member function 'bool LabLCD1602::begin()':
+[izvor]/vendor/arduino/LabLCD1602/src/LabLCD1602.cpp:16:2: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+   16 |  if(!nibble(0x30))return false;delay(5);
+      |  ^~
+[izvor]/vendor/arduino/LabLCD1602/src/LabLCD1602.cpp:16:32: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+   16 |  if(!nibble(0x30))return false;delay(5);
+      |                                ^~~~~
+[izvor]/vendor/arduino/LabLCD1602/src/LabLCD1602.cpp:17:2: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+   17 |  if(!nibble(0x30))return false;delay(1);
+      |  ^~
+[izvor]/vendor/arduino/LabLCD1602/src/LabLCD1602.cpp:17:32: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+   17 |  if(!nibble(0x30))return false;delay(1);
+      |                                ^~~~~
+[izvor]/vendor/arduino/LabLCD1602/src/LabLCD1602.cpp:18:2: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+   18 |  if(!nibble(0x30))return false;delay(1);
+      |  ^~
+[izvor]/vendor/arduino/LabLCD1602/src/LabLCD1602.cpp:18:32: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+   18 |  if(!nibble(0x30))return false;delay(1);
+      |                                ^~~~~
+[izvor]/vendor/arduino/LabLCD1602/src/LabLCD1602.cpp:19:2: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+   19 |  if(!nibble(0x20))return false;delay(1);
+      |  ^~
+[izvor]/vendor/arduino/LabLCD1602/src/LabLCD1602.cpp:19:32: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+   19 |  if(!nibble(0x20))return false;delay(1);
+      |                                ^~~~~

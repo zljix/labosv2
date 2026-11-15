@@ -1,0 +1,110 @@
+[
+  {
+    "key": "rtcRead",
+    "status": "pass",
+    "elapsedMs": 51738,
+    "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+    "core": "esp32:esp32@3.3.12",
+    "cli": "1.3.1",
+    "exportHash": "ee8a5738fba664bbf87856c6577ac7619923a7282e790eba3343bf56e984014d",
+    "sourceHash": "16a9f1cd876bd7f8f5115c6c7ea2814c568697a278727d4ef42a57ec74b444b4",
+    "libraries": [],
+    "binaries": [
+      {
+        "name": "LabSketch.ino.bin",
+        "bytes": 308704,
+        "sha256": "db1481843cd465c32d5c430c5bc015a6400c2c3fb7ae2e42f9c5f6ed26291183"
+      },
+      {
+        "name": "LabSketch.ino.elf",
+        "bytes": 6826712,
+        "sha256": "dec3873baf313af5e69b869e07e7e3d15e1d28b4be14d8f05958e65618102dcf"
+      }
+    ],
+    "summary": [
+      "Sketch uses 308556 bytes (23%) of program storage space. Maximum is 1310720 bytes.",
+      "Global variables use 22624 bytes (6%) of dynamic memory, leaving 305056 bytes for local variables. Maximum is 327680 bytes."
+    ]
+  },
+  {
+    "key": "rtcSet",
+    "status": "pass",
+    "elapsedMs": 38163,
+    "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+    "core": "esp32:esp32@3.3.12",
+    "cli": "1.3.1",
+    "exportHash": "152536b4f858a8576e6da917c91529525d56d0f394c76ec7c71e4c019f8fbf42",
+    "sourceHash": "895bf60be7a0d0bf90e366eb2b303dd40decc86e7c8b592c7225aad8438f4c3c",
+    "libraries": [],
+    "binaries": [
+      {
+        "name": "LabSketch.ino.bin",
+        "bytes": 309040,
+        "sha256": "a844cceacb45d62bfa6f4f433279d77f129bffad848b899f8eaadc40755fd973"
+      },
+      {
+        "name": "LabSketch.ino.elf",
+        "bytes": 6829092,
+        "sha256": "503768aa1f6b91a3a37f41073e9753bfff7567e0859835ef34cd421ff6b5bc06"
+      }
+    ],
+    "summary": [
+      "Sketch uses 308892 bytes (23%) of program storage space. Maximum is 1310720 bytes.",
+      "Global variables use 22624 bytes (6%) of dynamic memory, leaving 305056 bytes for local variables. Maximum is 327680 bytes."
+    ]
+  },
+  {
+    "key": "rtcMemory",
+    "status": "pass",
+    "elapsedMs": 36324,
+    "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+    "core": "esp32:esp32@3.3.12",
+    "cli": "1.3.1",
+    "exportHash": "76451b96142b12b67a3522e858a9017c11faf7e25dca94cded6e09767f7dcf54",
+    "sourceHash": "1d6879fa9dcbdcdcd2f4577b8fc788264298bcf29836f2df554d4898a452f3df",
+    "libraries": [],
+    "binaries": [
+      {
+        "name": "LabSketch.ino.bin",
+        "bytes": 309328,
+        "sha256": "1638adc1b68d189922a202194920cd57429e8022fe905e1cd928588e77f56bb6"
+      },
+      {
+        "name": "LabSketch.ino.elf",
+        "bytes": 6833484,
+        "sha256": "59f509bf2241f1497b237d3ce7a814308f0a0bac6624b98d273869612523f24a"
+      }
+    ],
+    "summary": [
+      "Sketch uses 309172 bytes (23%) of program storage space. Maximum is 1310720 bytes.",
+      "Global variables use 22624 bytes (6%) of dynamic memory, leaving 305056 bytes for local variables. Maximum is 327680 bytes."
+    ]
+  },
+  {
+    "key": "rtcClock",
+    "status": "pass",
+    "elapsedMs": 39604,
+    "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+    "core": "esp32:esp32@3.3.12",
+    "cli": "1.3.1",
+    "exportHash": "7c7bc8738acc166b3aa0071a8997a9effbdb3700a3e6bb7fae9a78fd7480a191",
+    "sourceHash": "a750f68392dbff4e982e7e2bc5bc65955f38587d5dd710400bad80e53ae9048a",
+    "libraries": [],
+    "binaries": [
+      {
+        "name": "LabSketch.ino.bin",
+        "bytes": 309424,
+        "sha256": "e09f0bf29664422c47e7309b3fa09bf2c302b3371e8b6caaf0ed6bf77fddf6ea"
+      },
+      {
+        "name": "LabSketch.ino.elf",
+        "bytes": 6834744,
+        "sha256": "07c0140392e8e2d281287a76afbc3fe77d7841efcfbdfdbd7a6cbc3d65b914c0"
+      }
+    ],
+    "summary": [
+      "Sketch uses 309272 bytes (23%) of program storage space. Maximum is 1310720 bytes.",
+      "Global variables use 22632 bytes (6%) of dynamic memory, leaving 305048 bytes for local variables. Maximum is 327680 bytes."
+    ]
+  }
+]

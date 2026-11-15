@@ -1,0 +1,27 @@
+{
+  "initial": {
+    "pass": 1259,
+    "skip": 20,
+    "fail": 6
+  },
+  "initialTests": 1285,
+  "compilerRerun": {
+    "requested": 26,
+    "passed": 26,
+    "includesInitialFailures": 6,
+    "includesInitialSkips": 20,
+    "ignoredEmptyFileWrappers": 24
+  },
+  "targetedFinal": {
+    "tests": 342,
+    "passed": 342
+  },
+  "offlineAndPilotFinal": {
+    "tests": 21,
+    "passed": 21
+  },
+  "finalUniqueTests": 1308,
+  "finalLastResultPasses": 1308,
+  "unresolved": [],
+  "scope": "Latest result for each unique named test; reruns and empty file wrappers do not increase the total. Packaged Worker scenarios and 69 retained native export hash checks are reported separately."
+}

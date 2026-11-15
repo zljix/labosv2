@@ -1,0 +1,58 @@
+[
+  {
+    "key": "blink",
+    "oldCore": "esp32-lab-s3-functional@1.0.0",
+    "newCore": "esp32-lab-s3-functional@1.1.0",
+    "status": "recompile-required",
+    "reason": "Prevedeni program pripada drugom cilju, bibliotekama ili alatnom lancu."
+  },
+  {
+    "key": "button",
+    "oldCore": "esp32-lab-s3-functional@1.0.0",
+    "newCore": "esp32-lab-s3-functional@1.1.0",
+    "status": "recompile-required",
+    "reason": "Prevedeni program pripada drugom cilju, bibliotekama ili alatnom lancu."
+  },
+  {
+    "key": "adc",
+    "oldCore": "esp32-lab-s3-functional@1.0.0",
+    "newCore": "esp32-lab-s3-functional@1.1.0",
+    "status": "recompile-required",
+    "reason": "Prevedeni program pripada drugom cilju, bibliotekama ili alatnom lancu."
+  },
+  {
+    "key": "regulator",
+    "oldCore": "esp32-lab-s3-functional@1.0.0",
+    "newCore": "esp32-lab-s3-functional@1.1.0",
+    "status": "recompile-required",
+    "reason": "Prevedeni program pripada drugom cilju, bibliotekama ili alatnom lancu."
+  },
+  {
+    "key": "sensors",
+    "oldCore": "esp32-lab-s3-functional@1.0.0",
+    "newCore": "esp32-lab-s3-functional@1.1.0",
+    "status": "recompile-required",
+    "reason": "Prevedeni program pripada drugom cilju, bibliotekama ili alatnom lancu."
+  },
+  {
+    "key": "servo",
+    "oldCore": "esp32-lab-s3-functional@1.0.0",
+    "newCore": "esp32-lab-s3-functional@1.1.0",
+    "status": "recompile-required",
+    "reason": "Prevedeni program pripada drugom cilju, bibliotekama ili alatnom lancu."
+  },
+  {
+    "key": "lcd",
+    "oldCore": "esp32-lab-s3-functional@1.0.0",
+    "newCore": "esp32-lab-s3-functional@1.1.0",
+    "status": "recompile-required",
+    "reason": "Prevedeni program pripada drugom cilju, bibliotekama ili alatnom lancu."
+  },
+  {
+    "key": "touch",
+    "oldCore": "esp32-lab-s3-functional@1.0.0",
+    "newCore": "esp32-lab-s3-functional@1.1.0",
+    "status": "recompile-required",
+    "reason": "Prevedeni program pripada drugom cilju, bibliotekama ili alatnom lancu."
+  }
+]

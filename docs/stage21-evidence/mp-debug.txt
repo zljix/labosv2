@@ -1,0 +1,30 @@
+✖ real programs share packets and ACK: micropython → micropython (515.663197ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 995.748121
+
+✖ failing tests:
+
+test at verification/radio.test.ts:1:8126
+✖ real programs share packets and ACK: micropython → micropython (515.663197ms)
+  Error: NULL object
+  TX 1 ACK
+  TX 2 ACK
+  TX 3 ACK
+  TX 4 ACK
+  TX 5 ACK
+  TX 6 ACK
+  TX 7 ACK
+  TX 8 ACK
+  TX 9 ACK
+  TX 10 ACK
+  Slanje dovrseno
+  
+      at proxy_convert_mp_to_js_obj_jsside (/workspace/sites/esp32-micropython-lab/.sites-checkout/public/runtime/micropython.mjs:6368:15)
+      at proxy_convert_mp_to_js_obj_jsside_with_free (/workspace/sites/esp32-micropython-lab/.sites-checkout/public/runtime/micropython.mjs:6423:17)
+      at Object.runPython (/workspace/sites/esp32-micropython-lab/.sites-checkout/public/runtime/micropython.mjs:5729:20)

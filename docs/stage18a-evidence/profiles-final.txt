@@ -1,0 +1,27 @@
+✔ v1/v2 migration retains source, circuit, identity and settings without mutating input (73.686227ms)
+✔ existing raw IndexedDB row migrates on read and preserves old snapshot until an explicit save (128.562883ms)
+✔ project rejects mixed boards, future profiles, wrong languages, entrypoint and runtime target (4.488281ms)
+✔ Uno/Nano pin profiles preserve aliases, PWM, ADC-only pins and distinct MCU mappings (4.984405ms)
+✔ electrical checks distinguish 5 V AVR input from 3.3 V ESP32 and 3.3 V-only modules (4.95733ms)
+✔ board derivation saves an independent source-preserving project and detaches every old board wire (36.911178ms)
+✔ breadboard 1–60 separates 30/31 rails, groups and centre channel without changing old 1–30 (20.265748ms)
+✔ Arduino ZIP/JSON and IDE sketch preserve sources; runtime has an AVR-only circuit path (53.485341ms)
+✔ support status depends on board, language and implemented model; planned devices remain planned (1.332657ms)
+✔ ZIP and JSON preserve Unicode, helper files and settings (23.863787ms)
+✔ future schemas and unknown board profiles are rejected (0.778697ms)
+✔ entrypoint, settings and circuit scope are validated (0.671973ms)
+✔ traversal, scripts, internal overrides and case collisions are rejected (1.196443ms)
+✔ file and decompressed archive sizes are bounded (20.353955ms)
+✔ ZIP manifest must match files; truncated packages are rejected (12.842772ms)
+✔ editing preserves immutable runtime snapshot (1.112667ms)
+✔ IndexedDB survives reopening with multiple projects, settings and history (75.419967ms)
+✔ atomic revisions protect against concurrent tab writes (8.252626ms)
+✔ bounded history restoration creates a new revision (70.564621ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1334.200572

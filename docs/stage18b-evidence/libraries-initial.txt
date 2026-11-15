@@ -1,0 +1,52 @@
+✔ S3 compiled Adafruit dht11 decodes GPIO pulses with independent known bytes (168.599267ms)
+✔ S3 compiled Adafruit dht22 decodes GPIO pulses with independent known bytes (101.77997ms)
+✔ S3 DHT rejects checksum and recovers through a new physical transfer (160.005259ms)
+✔ S3 DHT rejects timeout and recovers through a new physical transfer (81.683001ms)
+✔ S3 DHT forced 300 ms attempts respect sensor minimum interval (176.56353ms)
+✔ S3 live DHT environment is decoded by the next C++ read (96.871679ms)
+✔ S3 DHT with missing external pull-up cannot deliver fabricated data (23.052255ms)
+✔ S3 generic OneWire fallback searches three ROMs, matches addresses and decodes signed scratchpads (18154.103269ms)
+✔ S3 DallasTemperature writes and reads all four resolutions with correct quantization (28535.916888ms)
+✔ S3 DS18B20 CRC failure affects only the addressed sensor and recovers on a new conversion (34421.668405ms)
+✔ S3 DS18B20 disconnected device is absent from ROM search (17053.720101ms)
+✔ S3 real U8g2 64-row library generates I2C page bytes and visible edge pixels (74.090472ms)
+✔ S3 real U8g2 32-row library generates I2C page bytes and visible edge pixels (39.701312ms)
+✔ S3 U8g2 hardware I2C cannot light an unconnected display (54.356052ms)
+✖ real S3 compiler rejects unavailable graphics constructors and hardware IRQ API (10637.325757ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 14
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 110211.519449
+
+✖ failing tests:
+
+test at verification/s3-libraries.test.ts:1:6553
+✖ real S3 compiler rejects unavailable graphics constructors and hardware IRQ API (10637.325757ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /U8G2_ST7920/. Input:
+  
+  'CompileError: wasm-ld-19: error: [posao]/12.o: undefined symbol: u8x8_d_st7920_128x64\n' +
+    'clang++: error: linker command failed with exit code 1 (use -v to see invocation)\n'
+  
+      at async TestContext.<anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/s3-libraries.test.ts:41:286)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: CompileError: wasm-ld-19: error: [posao]/12.o: undefined symbol: u8x8_d_st7920_128x64
+    clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+    
+        at compileS3 (file:///workspace/sites/esp32-micropython-lab/.sites-checkout/scripts/s3-compile.mjs:42:107)
+        at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+        at async waitForActual (node:assert:646:5)
+        at async strict.rejects (node:assert:769:25)
+        at async TestContext.<anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/s3-libraries.test.ts:41:286)
+        at async Test.run (node:internal/test_runner/test:1409:7)
+        at async Test.processPendingSubtests (node:internal/test_runner/test:974:7),
+    expected: /U8G2_ST7920/,
+    operator: 'rejects',
+    diff: 'simple'
+  }

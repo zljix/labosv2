@@ -1,0 +1,334 @@
+TAP version 13
+# Subtest: arduino.uno-r3.atmega328p: newly compiled timer conflicts are visible in actual pulse output
+ok 1 - arduino.uno-r3.atmega328p: newly compiled timer conflicts are visible in actual pulse output
+  ---
+  duration_ms: 4251.270903
+  type: 'test'
+  ...
+# Subtest: arduino.nano-classic.atmega328p: newly compiled timer conflicts are visible in actual pulse output
+ok 2 - arduino.nano-classic.atmega328p: newly compiled timer conflicts are visible in actual pulse output
+  ---
+  duration_ms: 3069.62239
+  type: 'test'
+  ...
+# Subtest: arduino.uno-r3.atmega328p: tone reconfigures Timer2 and disrupts the real IR carrier
+ok 3 - arduino.uno-r3.atmega328p: tone reconfigures Timer2 and disrupts the real IR carrier
+  ---
+  duration_ms: 4285.4537
+  type: 'test'
+  ...
+# Subtest: arduino.nano-classic.atmega328p: tone reconfigures Timer2 and disrupts the real IR carrier
+ok 4 - arduino.nano-classic.atmega328p: tone reconfigures Timer2 and disrupts the real IR carrier
+  ---
+  duration_ms: 4062.638644
+  type: 'test'
+  ...
+# Subtest: real AVR internal 1.1 V reference and Nano A6 work; missing ADC signal reports invalid measurement
+ok 5 - real AVR internal 1.1 V reference and Nano A6 work; missing ADC signal reports invalid measurement
+  ---
+  duration_ms: 3662.724347
+  type: 'test'
+  ...
+# Subtest: real blank arduino.uno-r3.atmega328p project, multiple files and pinned Bounce2 compile and execute
+ok 6 - real blank arduino.uno-r3.atmega328p project, multiple files and pinned Bounce2 compile and execute
+  ---
+  duration_ms: 3672.0584
+  type: 'test'
+  ...
+# Subtest: real blank arduino.nano-classic.atmega328p project, multiple files and pinned Bounce2 compile and execute
+ok 7 - real blank arduino.nano-classic.atmega328p project, multiple files and pinned Bounce2 compile and execute
+  ---
+  duration_ms: 2765.262428
+  type: 'test'
+  ...
+# Subtest: real compiler rejects an unselected library and locates an error in src/
+ok 8 - real compiler rejects an unselected library and locates an error in src/
+  ---
+  duration_ms: 2247.315179
+  type: 'test'
+  ...
+# Subtest: local bridge enforces authentication/origin and hash cache for a real compile
+ok 9 - local bridge enforces authentication/origin and hash cache for a real compile
+  ---
+  duration_ms: 3252.987839
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/avr-peripherals.test.ts
+ok 4 - verification/avr-peripherals.test.ts
+  ---
+  duration_ms: 499.473435
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/avr.test.ts
+ok 5 - verification/avr.test.ts
+  ---
+  duration_ms: 748.698869
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/boards.test.ts
+ok 6 - verification/boards.test.ts
+  ---
+  duration_ms: 469.352248
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/circuit.test.ts
+ok 7 - verification/circuit.test.ts
+  ---
+  duration_ms: 439.128457
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/dht.test.ts
+ok 8 - verification/dht.test.ts
+  ---
+  duration_ms: 508.431838
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/displays.test.ts
+ok 9 - verification/displays.test.ts
+  ---
+  duration_ms: 427.701363
+  type: 'test'
+  ...
+# Subtest: real compiled AVR INT0/INT1 receive scheduled bouncing contacts on both boards
+ok 16 - real compiled AVR INT0/INT1 receive scheduled bouncing contacts on both boards
+  ---
+  duration_ms: 6285.982227
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/environment.test.ts
+ok 11 - verification/environment.test.ts
+  ---
+  duration_ms: 431.292871
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/i2c-levels.test.ts
+ok 12 - verification/i2c-levels.test.ts
+  ---
+  duration_ms: 360.088002
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/ili9341.test.ts
+ok 13 - verification/ili9341.test.ts
+  ---
+  duration_ms: 595.599235
+  type: 'test'
+  ...
+# Subtest: arduino.uno-r3.atmega328p: actual carrier rejects orphan/stale repeats and exposes unread mailbox loss
+ok 20 - arduino.uno-r3.atmega328p: actual carrier rejects orphan/stale repeats and exposes unread mailbox loss
+  ---
+  duration_ms: 8380.600171
+  type: 'test'
+  ...
+# Subtest: arduino.nano-classic.atmega328p: actual carrier rejects orphan/stale repeats and exposes unread mailbox loss
+ok 21 - arduino.nano-classic.atmega328p: actual carrier rejects orphan/stale repeats and exposes unread mailbox loss
+  ---
+  duration_ms: 6585.651397
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/lessons.test.ts
+ok 15 - verification/lessons.test.ts
+  ---
+  duration_ms: 298.944813
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/levels.test.ts
+ok 16 - verification/levels.test.ts
+  ---
+  duration_ms: 367.447211
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/max30102.test.ts
+ok 17 - verification/max30102.test.ts
+  ---
+  duration_ms: 634.085644
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/onewire.test.ts
+ok 18 - verification/onewire.test.ts
+  ---
+  duration_ms: 428.100493
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/peripherals.test.ts
+ok 19 - verification/peripherals.test.ts
+  ---
+  duration_ms: 363.76036
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/project.test.ts
+ok 20 - verification/project.test.ts
+  ---
+  duration_ms: 268.150435
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/radio.test.ts
+ok 21 - verification/radio.test.ts
+  ---
+  duration_ms: 324.651697
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/rtc.test.ts
+ok 22 - verification/rtc.test.ts
+  ---
+  duration_ms: 413.741865
+  type: 'test'
+  ...
+# Subtest: actual compiler executes changed student conversion code and rejects a missing header
+ok 30 - actual compiler executes changed student conversion code and rejects a missing header
+  ---
+  duration_ms: 812.235463
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/s3-completion.test.ts
+ok 24 - verification/s3-completion.test.ts
+  ---
+  duration_ms: 430.01827
+  type: 'test'
+  ...
+# Subtest: actual compiler executes a slower student poll and exposes lost encoder steps
+ok 32 - actual compiler executes a slower student poll and exposes lost encoder steps
+  ---
+  duration_ms: 736.25701
+  type: 'test'
+  ...
+# Subtest: real S3 compiler rejects unavailable graphics constructors and hardware IRQ API
+ok 33 - real S3 compiler rejects unavailable graphics constructors and hardware IRQ API
+  ---
+  duration_ms: 8318.820501
+  type: 'test'
+  ...
+# Subtest: actual compiler changes TFT pixels from modified source and rejects missing NEC header
+ok 34 - actual compiler changes TFT pixels from modified source and rejects missing NEC header
+  ---
+  duration_ms: 1201.02945
+  type: 'test'
+  ...
+# Subtest: actual compiler demonstrates that slow caller polling misses a full IR frame
+ok 35 - actual compiler demonstrates that slow caller polling misses a full IR frame
+  ---
+  duration_ms: 580.526588
+  type: 'test'
+  ...
+# Subtest: orphan repeats and repeats older than 150 ms do not create a new command
+ok 36 - orphan repeats and repeats older than 150 ms do not create a new command
+  ---
+  duration_ms: 1808.218468
+  type: 'test'
+  ...
+# Subtest: wrong SPI mode and two active CS cannot fabricate a valid display transfer
+ok 37 - wrong SPI mode and two active CS cannot fabricate a valid display transfer
+  ---
+  duration_ms: 1470.10855
+  type: 'test'
+  ...
+# Subtest: real compiler supports multiple C++/C files and Bounce2 GPIO without source rewriting
+ok 38 - real compiler supports multiple C++/C files and Bounce2 GPIO without source rewriting
+  ---
+  duration_ms: 578.59085
+  type: 'test'
+  ...
+# Subtest: real compiler reports exact source lines and rejects unsupported ESP-specific includes
+ok 39 - real compiler reports exact source lines and rejects unsupported ESP-specific includes
+  ---
+  duration_ms: 691.920856
+  type: 'test'
+  ...
+# Subtest: real compiler preserves automatic-prototype boundary and rejects old ESP32 channel API
+ok 40 - real compiler preserves automatic-prototype boundary and rejects old ESP32 channel API
+  ---
+  duration_ms: 530.074418
+  type: 'test'
+  ...
+# Subtest: actual S3 Worker accepts live input inside setup and force-stops a pure infinite C++ loop
+ok 41 - actual S3 Worker accepts live input inside setup and force-stops a pure infinite C++ loop
+  ---
+  duration_ms: 757.244555
+  type: 'test'
+  ...
+# Subtest: serial flood keeps console chunks and message rate bounded while C++ remains stoppable
+ok 42 - serial flood keeps console chunks and message rate bounded while C++ remains stoppable
+  ---
+  duration_ms: 399.850833
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/sd.test.ts
+ok 29 - verification/sd.test.ts
+  ---
+  duration_ms: 343.873428
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/simulation.test.ts
+ok 30 - verification/simulation.test.ts
+  ---
+  duration_ms: 240.127126
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/spi.test.ts
+ok 31 - verification/spi.test.ts
+  ---
+  duration_ms: 328.0938
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/steppers.test.ts
+ok 32 - verification/steppers.test.ts
+  ---
+  duration_ms: 276.406022
+  type: 'test'
+  ...
+# Subtest: arduino.uno-r3.atmega328p: newly compiled modified source handles bounds, fixed address, OFF and missing ACK
+ok 47 - arduino.uno-r3.atmega328p: newly compiled modified source handles bounds, fixed address, OFF and missing ACK
+  ---
+  duration_ms: 2968.390712
+  type: 'test'
+  ...
+# Subtest: arduino.nano-classic.atmega328p: newly compiled modified source handles bounds, fixed address, OFF and missing ACK
+ok 48 - arduino.nano-classic.atmega328p: newly compiled modified source handles bounds, fixed address, OFF and missing ACK
+  ---
+  duration_ms: 2212.438223
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/touch.test.ts
+ok 34 - verification/touch.test.ts
+  ---
+  duration_ms: 276.196036
+  type: 'test'
+  ...
+1..0
+# Subtest: verification/urs.test.ts
+ok 35 - verification/urs.test.ts
+  ---
+  duration_ms: 263.233301
+  type: 'test'
+  ...
+1..50
+# tests 50
+# suites 0
+# pass 50
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 16395.164379

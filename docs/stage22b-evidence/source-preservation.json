@@ -1,0 +1,15 @@
+{
+  "previousArtifactsUnchanged": 27,
+  "newArtifacts": 8,
+  "newKeys": [
+    "lm35",
+    "temt6000",
+    "ntc",
+    "ky023",
+    "flame",
+    "sound",
+    "analogCompare",
+    "dualInputs"
+  ],
+  "coreChanged": false
+}

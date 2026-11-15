@@ -1,0 +1,42 @@
+{
+  "version": "0.3.0-beta.1",
+  "date": "2026-11-12",
+  "build": "7989a67558aa55a5",
+  "package": {
+    "files": 65,
+    "bytes": 4204712
+  },
+  "programmatic": {
+    "projectCircuit": 26,
+    "simulation": 12,
+    "peripherals": 16,
+    "core": 10,
+    "files": 3,
+    "lessons": 20,
+    "offline": 8
+  },
+  "passed": 95,
+  "total": 95,
+  "browser": {
+    "environment": "Chromium/Linux, local production build",
+    "runtimeSmoke": "pass",
+    "offlineServerStopped": "pass: reload, editor, drivers, interpreter, AHT10/OLED/servo",
+    "submission": "pass: V1 wiring/code/check 4/4, actual ZIP download, stopped copy import, independent rerun 4/4",
+    "upgrade": "pass: two-tab activation rejected; close second tab and save latest student-field edit, code/circuit/result preserved on new build",
+    "responsive": "390 CSS px iframe: layout only; not a physical mobile test"
+  },
+  "notVerified": [
+    "real student pilot",
+    "school computer",
+    "Safari/iOS/iPadOS",
+    "Firefox",
+    "Edge",
+    "Android",
+    "physical ESP32",
+    "installed PWA",
+    "cold offline production-domain login expiry",
+    "formal WCAG audit",
+    "school hardware performance",
+    "save failure during browser upgrade"
+  ]
+}

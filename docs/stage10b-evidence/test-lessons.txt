@@ -1,0 +1,28 @@
+✔ five gradual lessons retain the project/ZIP format and editable work with known scenario IDs (38.741371ms)
+✔ actual WASM reference: V1 LED i vrijeme (3288.414607ms)
+✔ actual WASM reference: V2 Tipkalo kao ulaz (1719.393463ms)
+✔ actual WASM reference: V3 Potenciometar i PWM (1481.082135ms)
+✔ actual WASM reference: V4 AHT10 i OLED (2313.032821ms)
+✔ actual WASM reference: V5 Regulator sa servom (10426.773293ms)
+✔ behaviour checker accepts different variable names, helper functions, component IDs and GPIO (3238.561825ms)
+✔ constant output and wrong timing are rejected by observed LED behaviour (8625.627186ms)
+✔ inverted button and fixed PWM cannot pass input/output scenarios (3150.154973ms)
+✔ OLED checker requires actual numeric pixels; console and changing temperatures alone do not pass (13842.599996ms)
+✔ single-threshold regulator fails hysteresis while still passing the ordinary hot/cold states (10424.834468ms)
+✔ submission carries names, answers, source, drivers and result; metadata is not an authenticity proof (16.465845ms)
+✔ missing answers are identified; failed attempts can be submitted without a false pass (2.960629ms)
+✔ fingerprint detects executable-file or circuit edits, but not names, answers or editor preferences (1.231613ms)
+✔ untrusted scenario and forged local result do not influence an independent rerun (1701.930864ms)
+✔ abort terminates a non-yielding program and does not leave a session running (2041.550509ms)
+✔ invalid work cannot request an unknown scenario; older projects remain parseable (0.898634ms)
+✔ broken circuit and Python exceptions are reported as failure, never a successful empty check (490.802832ms)
+✔ assessment documents are not hidden runtime inputs; ordinary text data remain available (1667.571509ms)
+✔ persist actual reference results as development evidence (2.231869ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 64647.591084

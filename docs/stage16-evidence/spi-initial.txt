@@ -1,0 +1,79 @@
+✔ all SPI examples on three boards round-trip JSON/ZIP and preserve exact Arduino IDE sources/artifacts (182.783398ms)
+✔ RGB565 red/green/blue, odd transfer split, window wrap, and wrong panel offset come only from bytes (21.730199ms)
+✔ rotation 0 uses MADCTL, green-tab offsets and physical corner (6.602204ms)
+✔ rotation 1 uses MADCTL, green-tab offsets and physical corner (7.873564ms)
+✔ rotation 2 uses MADCTL, green-tab offsets and physical corner (6.241007ms)
+✔ rotation 3 uses MADCTL, green-tab offsets and physical corner (4.111342ms)
+✔ BGR bit swaps color interpretation; inversion, display OFF and sleep preserve RAM (14.38663ms)
+✔ CS HIGH and RESET LOW ignore display writes; hardware reset needs 10 us and startup wait (13.155082ms)
+✔ BL disconnected hides actual written pixels; 5 V BL is rejected on every board (11.489435ms)
+✔ missing supply, common ground, SCK, MOSI, CS, DC or RESET prevents a valid TFT image (24.359258ms)
+✔ mode 0 and 3 both work, mode 1/2, LSB and excessive frequency cannot mutate the display (33.458076ms)
+✔ unsupported TFT commands/color depths fail explicitly, without guessed pixels (8.501757ms)
+✔ BMP280 reads chip ID/calibration, mode status and pairs of register writes, with independent CS (46.046711ms)
+✔ missing MISO returns 0xFF; two active CS reject ambiguous shared-bus transfers (51.163247ms)
+✔ Nano A6/A7 and wrong 3.3/5 V SPI carrier cannot be used as digital SPI wiring (1.625645ms)
+✔ TFT memory is device-local and does not depend on console text (967.05045ms)
+✔ real MicroPython executes tftGraphics using SPI bytes and Stop retains the frame (1210.321361ms)
+✔ real MicroPython executes tftRotation using SPI bytes and Stop retains the frame (4255.210191ms)
+✔ real MicroPython executes bmp280SPI using SPI bytes and Stop retains the frame (529.744559ms)
+✔ real MicroPython executes spiDashboard using SPI bytes and Stop retains the frame (1389.549005ms)
+✔ real MicroPython readinto/write_readinto, mode 3, deinit, SoftSPI and API validation (598.613504ms)
+✔ editing Python RGB565 data changes visible pixels despite the unchanged completion message (1262.872151ms)
+✔ live BMP280 SPI environment changes the next compensated sample and TFT pixels (2558.128649ms)
+✔ arduino.uno-r3.atmega328p: real compiled tftGraphics uses actual SPI registers without full AVR framebuffer (1070.928042ms)
+✔ arduino.uno-r3.atmega328p: real compiled tftRotation uses actual SPI registers without full AVR framebuffer (3237.062378ms)
+✔ arduino.uno-r3.atmega328p: real compiled bmp280SPI uses actual SPI registers without full AVR framebuffer (74.57217ms)
+✖ arduino.uno-r3.atmega328p: real compiled spiDashboard uses actual SPI registers without full AVR framebuffer (1043.967284ms)
+✔ arduino.nano-classic.atmega328p: real compiled tftGraphics uses actual SPI registers without full AVR framebuffer (946.448495ms)
+✔ arduino.nano-classic.atmega328p: real compiled tftRotation uses actual SPI registers without full AVR framebuffer (3428.329467ms)
+✔ arduino.nano-classic.atmega328p: real compiled bmp280SPI uses actual SPI registers without full AVR framebuffer (52.011671ms)
+✖ arduino.nano-classic.atmega328p: real compiled spiDashboard uses actual SPI registers without full AVR framebuffer (1492.824142ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 29
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 25406.638785
+
+✖ failing tests:
+
+test at verification/spi.test.ts:35:1333
+✖ arduino.uno-r3.atmega328p: real compiled spiDashboard uses actual SPI registers without full AVR framebuffer (1043.967284ms)
+  AssertionError [ERR_ASSERTION]: SPI DASH T=24.0
+      at TestContext.<anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/spi.test.ts:106:523)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at verification/spi.test.ts:35:1333
+✖ arduino.nano-classic.atmega328p: real compiled spiDashboard uses actual SPI registers without full AVR framebuffer (1492.824142ms)
+  AssertionError [ERR_ASSERTION]: SPI DASH T=24.0
+      at TestContext.<anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/spi.test.ts:106:523)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

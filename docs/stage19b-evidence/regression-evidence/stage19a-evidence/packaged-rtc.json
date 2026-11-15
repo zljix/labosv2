@@ -1,0 +1,1913 @@
+[
+  {
+    "kind": "s3",
+    "key": "rtcRead",
+    "board": "espressif.esp32-s3-devkitc-1.v1.1.n16r8",
+    "status": "pass",
+    "build": "280c8e9babc8bf94",
+    "observationMs": 2426.622494,
+    "stopMs": 4.6577619999998205,
+    "console": "RTC 2026-1-1 12:0:0 DAY=5\r\nRTC ERROR\r\nRTC 2026-1-1 12:0:2 DAY=5\r\n",
+    "rtc": {
+      "mainPower": true,
+      "battery": true,
+      "rtcMainPower": true,
+      "retained": true,
+      "valid": true,
+      "halted": false,
+      "writeProtected": false,
+      "iso": "2026-01-01T12:00:03",
+      "day": 5,
+      "reason": "Sat radi",
+      "received": 2,
+      "errors": 0,
+      "state": {
+        "registers": [
+          3,
+          0,
+          18,
+          1,
+          1,
+          5,
+          38,
+          0
+        ],
+        "ram": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trickle": 92,
+        "subsecondUs": 5835,
+        "valid": true
+      },
+      "trace": [
+        {
+          "timeUs": 0,
+          "operation": "main-power"
+        },
+        {
+          "timeUs": 23,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 299,
+          "operation": "command",
+          "value": 191
+        },
+        {
+          "timeUs": 313,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 513,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 713,
+          "operation": "read-byte",
+          "value": 18
+        },
+        {
+          "timeUs": 913,
+          "operation": "read-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 1113,
+          "operation": "read-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 1313,
+          "operation": "read-byte",
+          "value": 5
+        },
+        {
+          "timeUs": 1513,
+          "operation": "read-byte",
+          "value": 38
+        },
+        {
+          "timeUs": 1713,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1913,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1001955,
+          "operation": "battery"
+        },
+        {
+          "timeUs": 2003887,
+          "operation": "main-power"
+        },
+        {
+          "timeUs": 2003903,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 2004179,
+          "operation": "command",
+          "value": 191
+        },
+        {
+          "timeUs": 2004193,
+          "operation": "read-byte",
+          "value": 2
+        },
+        {
+          "timeUs": 2004393,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 2004593,
+          "operation": "read-byte",
+          "value": 18
+        },
+        {
+          "timeUs": 2004793,
+          "operation": "read-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 2004993,
+          "operation": "read-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 2005193,
+          "operation": "read-byte",
+          "value": 5
+        },
+        {
+          "timeUs": 2005393,
+          "operation": "read-byte",
+          "value": 38
+        },
+        {
+          "timeUs": 2005593,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 2005793,
+          "operation": "read-byte",
+          "value": 2
+        }
+      ]
+    }
+  },
+  {
+    "kind": "s3",
+    "key": "rtcSet",
+    "board": "espressif.esp32-s3-devkitc-1.v1.1.n16r8",
+    "status": "pass",
+    "build": "280c8e9babc8bf94",
+    "observationMs": 2425.5940480000004,
+    "stopMs": 3.360917999999401,
+    "console": "RTC 2028-2-28 23:59:58 DAY=2\r\nRTC 2028-2-28 23:59:59 DAY=2\r\nRTC 2028-2-29 0:0:0 DAY=3\r\n",
+    "rtc": {
+      "mainPower": true,
+      "battery": true,
+      "rtcMainPower": true,
+      "retained": true,
+      "valid": true,
+      "halted": false,
+      "writeProtected": false,
+      "iso": "2028-02-29T00:00:01",
+      "day": 3,
+      "reason": "Sat radi",
+      "received": 14,
+      "errors": 0,
+      "state": {
+        "registers": [
+          1,
+          0,
+          0,
+          41,
+          2,
+          3,
+          40,
+          0
+        ],
+        "ram": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trickle": 92,
+        "subsecondUs": 5852,
+        "valid": true
+      },
+      "trace": [
+        {
+          "timeUs": 0,
+          "operation": "main-power"
+        },
+        {
+          "timeUs": 23,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 299,
+          "operation": "command",
+          "value": 142
+        },
+        {
+          "timeUs": 587,
+          "operation": "write-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 611,
+          "operation": "clock-write",
+          "value": 7
+        },
+        {
+          "timeUs": 629,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 905,
+          "operation": "command",
+          "value": 190
+        },
+        {
+          "timeUs": 1193,
+          "operation": "write-byte",
+          "value": 88
+        },
+        {
+          "timeUs": 1481,
+          "operation": "write-byte",
+          "value": 89
+        },
+        {
+          "timeUs": 1769,
+          "operation": "write-byte",
+          "value": 35
+        },
+        {
+          "timeUs": 2057,
+          "operation": "write-byte",
+          "value": 40
+        },
+        {
+          "timeUs": 2345,
+          "operation": "write-byte",
+          "value": 2
+        },
+        {
+          "timeUs": 2633,
+          "operation": "write-byte",
+          "value": 2
+        },
+        {
+          "timeUs": 2921,
+          "operation": "write-byte",
+          "value": 40
+        },
+        {
+          "timeUs": 3209,
+          "operation": "write-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 3233,
+          "operation": "clock-write",
+          "value": 8
+        },
+        {
+          "timeUs": 3251,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 3527,
+          "operation": "command",
+          "value": 191
+        },
+        {
+          "timeUs": 3541,
+          "operation": "read-byte",
+          "value": 88
+        },
+        {
+          "timeUs": 3741,
+          "operation": "read-byte",
+          "value": 89
+        },
+        {
+          "timeUs": 3941,
+          "operation": "read-byte",
+          "value": 35
+        },
+        {
+          "timeUs": 4141,
+          "operation": "read-byte",
+          "value": 40
+        },
+        {
+          "timeUs": 4341,
+          "operation": "read-byte",
+          "value": 2
+        },
+        {
+          "timeUs": 4541,
+          "operation": "read-byte",
+          "value": 2
+        },
+        {
+          "timeUs": 4741,
+          "operation": "read-byte",
+          "value": 40
+        },
+        {
+          "timeUs": 4941,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 5141,
+          "operation": "read-byte",
+          "value": 88
+        },
+        {
+          "timeUs": 1005202,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1005478,
+          "operation": "command",
+          "value": 191
+        },
+        {
+          "timeUs": 1005492,
+          "operation": "read-byte",
+          "value": 89
+        },
+        {
+          "timeUs": 1005692,
+          "operation": "read-byte",
+          "value": 89
+        },
+        {
+          "timeUs": 1005892,
+          "operation": "read-byte",
+          "value": 35
+        },
+        {
+          "timeUs": 1006092,
+          "operation": "read-byte",
+          "value": 40
+        },
+        {
+          "timeUs": 1006292,
+          "operation": "read-byte",
+          "value": 2
+        },
+        {
+          "timeUs": 1006492,
+          "operation": "read-byte",
+          "value": 2
+        },
+        {
+          "timeUs": 1006692,
+          "operation": "read-byte",
+          "value": 40
+        },
+        {
+          "timeUs": 1006892,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1007092,
+          "operation": "read-byte",
+          "value": 89
+        },
+        {
+          "timeUs": 2007153,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 2007429,
+          "operation": "command",
+          "value": 191
+        },
+        {
+          "timeUs": 2007443,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 2007643,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 2007843,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 2008043,
+          "operation": "read-byte",
+          "value": 41
+        },
+        {
+          "timeUs": 2008243,
+          "operation": "read-byte",
+          "value": 2
+        },
+        {
+          "timeUs": 2008443,
+          "operation": "read-byte",
+          "value": 3
+        },
+        {
+          "timeUs": 2008643,
+          "operation": "read-byte",
+          "value": 40
+        },
+        {
+          "timeUs": 2008843,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 2009043,
+          "operation": "read-byte",
+          "value": 0
+        }
+      ]
+    }
+  },
+  {
+    "kind": "s3",
+    "key": "rtcMemory",
+    "board": "espressif.esp32-s3-devkitc-1.v1.1.n16r8",
+    "status": "pass",
+    "build": "280c8e9babc8bf94",
+    "observationMs": 1306.7799050000003,
+    "stopMs": 3.0493829999995796,
+    "console": "RTC CH=1\r\nRTC RAM=1 WP=1\r\n",
+    "rtc": {
+      "mainPower": true,
+      "battery": true,
+      "rtcMainPower": true,
+      "retained": true,
+      "valid": true,
+      "halted": false,
+      "writeProtected": false,
+      "iso": "2026-01-01T12:00:00",
+      "day": 5,
+      "reason": "Sat radi",
+      "received": 20,
+      "errors": 0,
+      "state": {
+        "registers": [
+          0,
+          0,
+          18,
+          1,
+          1,
+          5,
+          38,
+          0
+        ],
+        "ram": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trickle": 92,
+        "subsecondUs": 4002,
+        "valid": true
+      },
+      "trace": [
+        {
+          "timeUs": 0,
+          "operation": "main-power"
+        },
+        {
+          "timeUs": 23,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 299,
+          "operation": "command",
+          "value": 142
+        },
+        {
+          "timeUs": 587,
+          "operation": "write-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 611,
+          "operation": "clock-write",
+          "value": 7
+        },
+        {
+          "timeUs": 629,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 905,
+          "operation": "command",
+          "value": 129
+        },
+        {
+          "timeUs": 919,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1119,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1149,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1425,
+          "operation": "command",
+          "value": 128
+        },
+        {
+          "timeUs": 1713,
+          "operation": "write-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 1737,
+          "operation": "clock-write",
+          "value": 0
+        },
+        {
+          "timeUs": 1762,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 2038,
+          "operation": "command",
+          "value": 129
+        },
+        {
+          "timeUs": 2052,
+          "operation": "read-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 2252,
+          "operation": "read-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 1002286,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1002562,
+          "operation": "command",
+          "value": 129
+        },
+        {
+          "timeUs": 1002576,
+          "operation": "read-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 1002776,
+          "operation": "read-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 1002806,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1003082,
+          "operation": "command",
+          "value": 128
+        },
+        {
+          "timeUs": 1003370,
+          "operation": "write-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1003394,
+          "operation": "clock-write",
+          "value": 0
+        },
+        {
+          "timeUs": 1003412,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1003688,
+          "operation": "command",
+          "value": 193
+        },
+        {
+          "timeUs": 1003702,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1003902,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1003932,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1004208,
+          "operation": "command",
+          "value": 192
+        },
+        {
+          "timeUs": 1004496,
+          "operation": "write-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 1004520,
+          "operation": "ram-write",
+          "value": 1
+        },
+        {
+          "timeUs": 1004538,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1004814,
+          "operation": "command",
+          "value": 142
+        },
+        {
+          "timeUs": 1005102,
+          "operation": "write-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 1005126,
+          "operation": "clock-write",
+          "value": 7
+        },
+        {
+          "timeUs": 1005144,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1005420,
+          "operation": "command",
+          "value": 192
+        },
+        {
+          "timeUs": 1005708,
+          "operation": "write-byte",
+          "value": 99
+        },
+        {
+          "timeUs": 1005732,
+          "operation": "write-protected"
+        },
+        {
+          "timeUs": 1005758,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1006034,
+          "operation": "command",
+          "value": 193
+        },
+        {
+          "timeUs": 1006048,
+          "operation": "read-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 1006248,
+          "operation": "read-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 1006279,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1006555,
+          "operation": "command",
+          "value": 143
+        },
+        {
+          "timeUs": 1006569,
+          "operation": "read-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 1006769,
+          "operation": "read-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 1006806,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1007082,
+          "operation": "command",
+          "value": 142
+        },
+        {
+          "timeUs": 1007370,
+          "operation": "write-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1007394,
+          "operation": "clock-write",
+          "value": 7
+        }
+      ]
+    }
+  },
+  {
+    "kind": "s3",
+    "key": "rtcClock",
+    "board": "espressif.esp32-s3-devkitc-1.v1.1.n16r8",
+    "status": "pass",
+    "build": "280c8e9babc8bf94",
+    "observationMs": 379.96880899999996,
+    "stopMs": 19.963290999999117,
+    "console": "RTC 2026-1-1 12:0:0 DAY=5\r\n",
+    "rtc": {
+      "mainPower": true,
+      "battery": true,
+      "rtcMainPower": true,
+      "retained": true,
+      "valid": true,
+      "halted": false,
+      "writeProtected": false,
+      "iso": "2026-01-01T12:00:00",
+      "day": 5,
+      "reason": "Sat radi",
+      "received": 2,
+      "errors": 0,
+      "state": {
+        "registers": [
+          0,
+          0,
+          18,
+          1,
+          1,
+          5,
+          38,
+          0
+        ],
+        "ram": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trickle": 92,
+        "subsecondUs": 507428,
+        "valid": true
+      },
+      "trace": [
+        {
+          "timeUs": 0,
+          "operation": "main-power"
+        },
+        {
+          "timeUs": 602,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 878,
+          "operation": "command",
+          "value": 191
+        },
+        {
+          "timeUs": 892,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1092,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1292,
+          "operation": "read-byte",
+          "value": 18
+        },
+        {
+          "timeUs": 1492,
+          "operation": "read-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 1692,
+          "operation": "read-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 1892,
+          "operation": "read-byte",
+          "value": 5
+        },
+        {
+          "timeUs": 2092,
+          "operation": "read-byte",
+          "value": 38
+        },
+        {
+          "timeUs": 2292,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 2492,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 5496,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 5772,
+          "operation": "command",
+          "value": 191
+        },
+        {
+          "timeUs": 5786,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 5986,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 6186,
+          "operation": "read-byte",
+          "value": 18
+        },
+        {
+          "timeUs": 6386,
+          "operation": "read-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 6586,
+          "operation": "read-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 6786,
+          "operation": "read-byte",
+          "value": 5
+        },
+        {
+          "timeUs": 6986,
+          "operation": "read-byte",
+          "value": 38
+        },
+        {
+          "timeUs": 7186,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 7386,
+          "operation": "read-byte",
+          "value": 0
+        }
+      ]
+    },
+    "display": {
+      "powered": true,
+      "on": true,
+      "bytes": [
+        6,
+        91,
+        63,
+        63,
+        0,
+        0
+      ],
+      "brightness": 7,
+      "duty": 0.875,
+      "colon": false,
+      "received": 7,
+      "errors": 0,
+      "reason": "Spreman",
+      "trace": [
+        {
+          "timeUs": 0,
+          "operation": "power-on"
+        },
+        {
+          "timeUs": 38,
+          "operation": "start"
+        },
+        {
+          "timeUs": 445,
+          "operation": "byte",
+          "value": 143
+        },
+        {
+          "timeUs": 445,
+          "operation": "ack",
+          "value": 0
+        },
+        {
+          "timeUs": 565,
+          "operation": "stop"
+        },
+        {
+          "timeUs": 2533,
+          "operation": "start"
+        },
+        {
+          "timeUs": 2940,
+          "operation": "byte",
+          "value": 64
+        },
+        {
+          "timeUs": 2940,
+          "operation": "ack",
+          "value": 0
+        },
+        {
+          "timeUs": 3060,
+          "operation": "stop"
+        },
+        {
+          "timeUs": 3108,
+          "operation": "start"
+        },
+        {
+          "timeUs": 3515,
+          "operation": "byte",
+          "value": 192
+        },
+        {
+          "timeUs": 3515,
+          "operation": "ack",
+          "value": 0
+        },
+        {
+          "timeUs": 3971,
+          "operation": "byte",
+          "value": 6
+        },
+        {
+          "timeUs": 3971,
+          "operation": "write",
+          "value": 0
+        },
+        {
+          "timeUs": 3971,
+          "operation": "ack",
+          "value": 0
+        },
+        {
+          "timeUs": 4427,
+          "operation": "byte",
+          "value": 91
+        },
+        {
+          "timeUs": 4427,
+          "operation": "write",
+          "value": 1
+        },
+        {
+          "timeUs": 4427,
+          "operation": "ack",
+          "value": 0
+        },
+        {
+          "timeUs": 4883,
+          "operation": "byte",
+          "value": 63
+        },
+        {
+          "timeUs": 4883,
+          "operation": "write",
+          "value": 2
+        },
+        {
+          "timeUs": 4883,
+          "operation": "ack",
+          "value": 0
+        },
+        {
+          "timeUs": 5339,
+          "operation": "byte",
+          "value": 63
+        },
+        {
+          "timeUs": 5339,
+          "operation": "write",
+          "value": 3
+        },
+        {
+          "timeUs": 5339,
+          "operation": "ack",
+          "value": 0
+        },
+        {
+          "timeUs": 5459,
+          "operation": "stop"
+        }
+      ]
+    }
+  },
+  {
+    "kind": "avr",
+    "key": "rtcMemory",
+    "board": "arduino.uno-r3.atmega328p",
+    "status": "pass",
+    "build": "280c8e9babc8bf94",
+    "observationMs": 1671.6028779999997,
+    "stopMs": 2.989663999998811,
+    "console": "RTC CH=1\r\nRTC RAM=1 WP=1\r\nRTC 2026-1-1 12:0:0 DAY",
+    "rtc": {
+      "mainPower": true,
+      "battery": true,
+      "rtcMainPower": true,
+      "retained": true,
+      "valid": true,
+      "halted": false,
+      "writeProtected": false,
+      "iso": "2026-01-01T12:00:00",
+      "day": 5,
+      "reason": "Sat radi",
+      "received": 21,
+      "errors": 0,
+      "state": {
+        "registers": [
+          0,
+          0,
+          18,
+          1,
+          1,
+          5,
+          38,
+          0
+        ],
+        "ram": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trickle": 92,
+        "subsecondUs": 43231.375,
+        "valid": true
+      },
+      "trace": [
+        {
+          "timeUs": 0,
+          "operation": "main-power"
+        },
+        {
+          "timeUs": 164.9375,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 512.8125,
+          "operation": "command",
+          "value": 142
+        },
+        {
+          "timeUs": 875.375,
+          "operation": "write-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 904.4375,
+          "operation": "clock-write",
+          "value": 7
+        },
+        {
+          "timeUs": 953.5625,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1308.125,
+          "operation": "command",
+          "value": 129
+        },
+        {
+          "timeUs": 1333.625,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1609.1875,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1671.75,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 2019.25,
+          "operation": "command",
+          "value": 128
+        },
+        {
+          "timeUs": 2387.9375,
+          "operation": "write-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 2417,
+          "operation": "clock-write",
+          "value": 0
+        },
+        {
+          "timeUs": 2511.75,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 2860.3125,
+          "operation": "command",
+          "value": 129
+        },
+        {
+          "timeUs": 2885.8125,
+          "operation": "read-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 3161.375,
+          "operation": "read-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 1003314.1875,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1003668.75,
+          "operation": "command",
+          "value": 129
+        },
+        {
+          "timeUs": 1003694.25,
+          "operation": "read-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 1003969.8125,
+          "operation": "read-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 1004032.375,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1004379.875,
+          "operation": "command",
+          "value": 128
+        },
+        {
+          "timeUs": 1004748.4375,
+          "operation": "write-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1004777.5,
+          "operation": "clock-write",
+          "value": 0
+        },
+        {
+          "timeUs": 1004826.375,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1005175.0625,
+          "operation": "command",
+          "value": 193
+        },
+        {
+          "timeUs": 1005200.5625,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1005476.125,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1005538.4375,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1005892.0625,
+          "operation": "command",
+          "value": 192
+        },
+        {
+          "timeUs": 1006254.75,
+          "operation": "write-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 1006283.8125,
+          "operation": "ram-write",
+          "value": 1
+        },
+        {
+          "timeUs": 1006330.9375,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1006678.8125,
+          "operation": "command",
+          "value": 142
+        },
+        {
+          "timeUs": 1007047.5,
+          "operation": "write-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 1007076.5625,
+          "operation": "clock-write",
+          "value": 7
+        },
+        {
+          "timeUs": 1007123.6875,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1007471.3125,
+          "operation": "command",
+          "value": 192
+        },
+        {
+          "timeUs": 1007840.375,
+          "operation": "write-byte",
+          "value": 99
+        },
+        {
+          "timeUs": 1007869.4375,
+          "operation": "write-protected"
+        },
+        {
+          "timeUs": 1007969.6875,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1008318.375,
+          "operation": "command",
+          "value": 193
+        },
+        {
+          "timeUs": 1008343.875,
+          "operation": "read-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 1008619.4375,
+          "operation": "read-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 1008742.1875,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1009098.875,
+          "operation": "command",
+          "value": 143
+        },
+        {
+          "timeUs": 1009124.375,
+          "operation": "read-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 1009399.9375,
+          "operation": "read-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 1009562,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1009915.875,
+          "operation": "command",
+          "value": 142
+        },
+        {
+          "timeUs": 1010286.1875,
+          "operation": "write-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1010315.25,
+          "operation": "clock-write",
+          "value": 7
+        },
+        {
+          "timeUs": 1010363.8125,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1010713,
+          "operation": "command",
+          "value": 191
+        },
+        {
+          "timeUs": 1010738.5,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1011027.8125,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1011302.4375,
+          "operation": "read-byte",
+          "value": 18
+        },
+        {
+          "timeUs": 1011577.0625,
+          "operation": "read-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 1011857.6875,
+          "operation": "read-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 1012140.0625,
+          "operation": "read-byte",
+          "value": 5
+        },
+        {
+          "timeUs": 1012414.6875,
+          "operation": "read-byte",
+          "value": 38
+        },
+        {
+          "timeUs": 1012689.3125,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1012969.9375,
+          "operation": "read-byte",
+          "value": 0
+        }
+      ]
+    }
+  },
+  {
+    "kind": "avr",
+    "key": "rtcMemory",
+    "board": "arduino.nano-classic.atmega328p",
+    "status": "pass",
+    "build": "280c8e9babc8bf94",
+    "observationMs": 1985.4608430000008,
+    "stopMs": 6.145480999999563,
+    "console": "RTC CH=1\r\nRTC RAM=1 WP=1\r\nRTC 2026-1-1 12:0:0 DAY=5\r\n",
+    "rtc": {
+      "mainPower": true,
+      "battery": true,
+      "rtcMainPower": true,
+      "retained": true,
+      "valid": true,
+      "halted": false,
+      "writeProtected": false,
+      "iso": "2026-01-01T12:00:00",
+      "day": 5,
+      "reason": "Sat radi",
+      "received": 21,
+      "errors": 0,
+      "state": {
+        "registers": [
+          0,
+          0,
+          18,
+          1,
+          1,
+          5,
+          38,
+          0
+        ],
+        "ram": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trickle": 92,
+        "subsecondUs": 47231.375,
+        "valid": true
+      },
+      "trace": [
+        {
+          "timeUs": 0,
+          "operation": "main-power"
+        },
+        {
+          "timeUs": 164.9375,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 512.8125,
+          "operation": "command",
+          "value": 142
+        },
+        {
+          "timeUs": 875.375,
+          "operation": "write-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 904.4375,
+          "operation": "clock-write",
+          "value": 7
+        },
+        {
+          "timeUs": 953.5625,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1308.125,
+          "operation": "command",
+          "value": 129
+        },
+        {
+          "timeUs": 1333.625,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1609.1875,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1671.75,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 2019.25,
+          "operation": "command",
+          "value": 128
+        },
+        {
+          "timeUs": 2387.9375,
+          "operation": "write-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 2417,
+          "operation": "clock-write",
+          "value": 0
+        },
+        {
+          "timeUs": 2511.75,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 2860.3125,
+          "operation": "command",
+          "value": 129
+        },
+        {
+          "timeUs": 2885.8125,
+          "operation": "read-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 3161.375,
+          "operation": "read-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 1003314.1875,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1003668.75,
+          "operation": "command",
+          "value": 129
+        },
+        {
+          "timeUs": 1003694.25,
+          "operation": "read-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 1003969.8125,
+          "operation": "read-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 1004032.375,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1004379.875,
+          "operation": "command",
+          "value": 128
+        },
+        {
+          "timeUs": 1004748.4375,
+          "operation": "write-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1004777.5,
+          "operation": "clock-write",
+          "value": 0
+        },
+        {
+          "timeUs": 1004826.375,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1005175.0625,
+          "operation": "command",
+          "value": 193
+        },
+        {
+          "timeUs": 1005200.5625,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1005476.125,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1005538.4375,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1005892.0625,
+          "operation": "command",
+          "value": 192
+        },
+        {
+          "timeUs": 1006254.75,
+          "operation": "write-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 1006283.8125,
+          "operation": "ram-write",
+          "value": 1
+        },
+        {
+          "timeUs": 1006330.9375,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1006678.8125,
+          "operation": "command",
+          "value": 142
+        },
+        {
+          "timeUs": 1007047.5,
+          "operation": "write-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 1007076.5625,
+          "operation": "clock-write",
+          "value": 7
+        },
+        {
+          "timeUs": 1007123.6875,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1007471.3125,
+          "operation": "command",
+          "value": 192
+        },
+        {
+          "timeUs": 1007840.375,
+          "operation": "write-byte",
+          "value": 99
+        },
+        {
+          "timeUs": 1007869.4375,
+          "operation": "write-protected"
+        },
+        {
+          "timeUs": 1007969.6875,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1008318.375,
+          "operation": "command",
+          "value": 193
+        },
+        {
+          "timeUs": 1008343.875,
+          "operation": "read-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 1008619.4375,
+          "operation": "read-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 1008742.1875,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1009098.875,
+          "operation": "command",
+          "value": 143
+        },
+        {
+          "timeUs": 1009124.375,
+          "operation": "read-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 1009399.9375,
+          "operation": "read-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 1009562,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1009915.875,
+          "operation": "command",
+          "value": 142
+        },
+        {
+          "timeUs": 1010286.1875,
+          "operation": "write-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1010315.25,
+          "operation": "clock-write",
+          "value": 7
+        },
+        {
+          "timeUs": 1010363.8125,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1010713,
+          "operation": "command",
+          "value": 191
+        },
+        {
+          "timeUs": 1010738.5,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1011027.8125,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1011302.4375,
+          "operation": "read-byte",
+          "value": 18
+        },
+        {
+          "timeUs": 1011577.0625,
+          "operation": "read-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 1011857.6875,
+          "operation": "read-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 1012140.0625,
+          "operation": "read-byte",
+          "value": 5
+        },
+        {
+          "timeUs": 1012414.6875,
+          "operation": "read-byte",
+          "value": 38
+        },
+        {
+          "timeUs": 1012689.3125,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1012969.9375,
+          "operation": "read-byte",
+          "value": 0
+        }
+      ]
+    }
+  }
+]

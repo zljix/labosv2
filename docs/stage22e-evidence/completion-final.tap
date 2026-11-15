@@ -1,0 +1,37 @@
+✔ 63 variants in all four targets give 252 executable URS routes (1.100494ms)
+✔ bmp180: separate exact source, netlist, artifact and project/sketch round trip (56.937711ms)
+✔ bmp280: separate exact source, netlist, artifact and project/sketch round trip (16.77008ms)
+✔ am2320: separate exact source, netlist, artifact and project/sketch round trip (6.073466ms)
+✔ ds18Errors: separate exact source, netlist, artifact and project/sketch round trip (22.395454ms)
+✔ tmSegments: separate exact source, netlist, artifact and project/sketch round trip (11.842096ms)
+✔ tmClock: separate exact source, netlist, artifact and project/sketch round trip (5.132542ms)
+✔ iliGraphics: separate exact source, netlist, artifact and project/sketch round trip (12.940105ms)
+✔ iliRotation: separate exact source, netlist, artifact and project/sketch round trip (16.622499ms)
+✔ touchRaw: separate exact source, netlist, artifact and project/sketch round trip (12.032521ms)
+✔ touchCalibration: separate exact source, netlist, artifact and project/sketch round trip (14.611467ms)
+✔ touchRotation: separate exact source, netlist, artifact and project/sketch round trip (6.363533ms)
+✔ bmp180: compiled I2C driver responds to live environment with documented freshness (26.706812ms)
+✔ bmp280: compiled I2C driver responds to live environment with documented freshness (13.1434ms)
+✔ am2320: compiled I2C driver responds to live environment with documented freshness (18.281201ms)
+✔ bmp180: missing SDA cannot print a valid measurement (8.538095ms)
+✔ bmp280: missing SDA cannot print a valid measurement (10.023853ms)
+✔ am2320: missing SDA cannot print a valid measurement (8.232721ms)
+✔ DS18B20 explicitly distinguishes initial, early and completed registers (233.497435ms)
+✔ DS18B20 CRC fault is invalid data and recovery returns a fresh sample (218.751317ms)
+✔ TM1637 sends all eight segment bits and ACKs through GPIO (50.097872ms)
+✔ TM1637 software clock renders 12:34 and then 12:35, with colon gating (30.930048ms)
+✔ TM1637 open CLK cannot pretend that segment transfer succeeded (21.370574ms)
+✔ ILI9341 compiled geometry writes RGB565 and the bottom-right 16-bit addressed pixel (371.044723ms)
+✔ ILI9341 four rotations preserve the corresponding physical corner and logical dimensions (439.113258ms)
+✔ raw XPT2046 data follows live press, drag and release through SPI (390.656388ms)
+✔ two-point calibration computes endpoints in the program and maps a later center press (564.064857ms)
+✔ touch rotations require release between presses and map the same physical point in four ways (880.095046ms)
+✔ touch missing MISO cannot produce a calibrated point (155.864135ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4018.862877

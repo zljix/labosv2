@@ -1,0 +1,61 @@
+{
+  "version": "0.12.2-beta.1",
+  "lessons": 16,
+  "uniqueVariants": 63,
+  "s3Menu": 48,
+  "matrix": [
+    {
+      "target": "micropython",
+      "variants": 63,
+      "status": {
+        "verified": 16,
+        "experimental": 21,
+        "planned": 2
+      }
+    },
+    {
+      "target": "s3-cpp",
+      "variants": 45,
+      "status": {
+        "verified": 0,
+        "experimental": 34,
+        "planned": 5
+      }
+    },
+    {
+      "target": "uno",
+      "variants": 63,
+      "status": {
+        "verified": 0,
+        "experimental": 37,
+        "planned": 2
+      }
+    },
+    {
+      "target": "nano",
+      "variants": 63,
+      "status": {
+        "verified": 0,
+        "experimental": 37,
+        "planned": 2
+      }
+    }
+  ],
+  "previousArtifacts": 35,
+  "unchangedArtifacts": 35,
+  "newArtifacts": [
+    "encoderRaw",
+    "ky040",
+    "encoderBounce",
+    "encoderPWM",
+    "relayContacts",
+    "activeAlarm",
+    "piezoTone",
+    "dcDrive",
+    "dualDrive",
+    "servoMotorTone",
+    "stepperBasic",
+    "stepperMicro",
+    "stepperControl"
+  ]
+}

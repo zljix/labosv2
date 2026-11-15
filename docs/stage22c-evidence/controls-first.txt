@@ -1,0 +1,285 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.12.2-beta.1 test:s3-controls
+> node --import tsx --test verification/s3-controls.test.ts
+
+✔ encoderRaw: exact compiled source, netlist, project ZIP and physical sketch files (33.901523ms)
+✔ ky040: exact compiled source, netlist, project ZIP and physical sketch files (8.000682ms)
+✔ encoderBounce: exact compiled source, netlist, project ZIP and physical sketch files (6.598356ms)
+✔ encoderPWM: exact compiled source, netlist, project ZIP and physical sketch files (4.588354ms)
+✔ relayContacts: exact compiled source, netlist, project ZIP and physical sketch files (4.882637ms)
+✔ activeAlarm: exact compiled source, netlist, project ZIP and physical sketch files (5.045472ms)
+✔ piezoTone: exact compiled source, netlist, project ZIP and physical sketch files (3.435953ms)
+✔ dcDrive: exact compiled source, netlist, project ZIP and physical sketch files (5.461427ms)
+✔ dualDrive: exact compiled source, netlist, project ZIP and physical sketch files (3.760291ms)
+✔ servoMotorTone: exact compiled source, netlist, project ZIP and physical sketch files (5.226013ms)
+✔ stepperBasic: exact compiled source, netlist, project ZIP and physical sketch files (3.809144ms)
+✔ stepperMicro: exact compiled source, netlist, project ZIP and physical sketch files (6.725566ms)
+✔ stepperControl: exact compiled source, netlist, project ZIP and physical sketch files (5.043038ms)
+✔ support matrix declares exactly the six added S3 component profiles with specific evidence (6.823243ms)
+✔ S3 C++ component help uses the selected board and language (8.322526ms)
+✔ raw KY-040 exposes four Gray transitions and the independent active LOW button (616.924995ms)
+✔ ky040: three CW, two CCW and debounced SW reset execute in WASM (561.105285ms)
+✔ encoderBounce: three CW, two CCW and debounced SW reset execute in WASM (609.593743ms)
+✔ encoder program starts at zero even when the initial mechanical position is 42 (52.418643ms)
+✔ swapping CLK and DT reverses the decoded sign through the actual circuit (105.37527ms)
+✔ a button pulse shorter than the 20 ms filter does not reset the decoder (9.180675ms)
+✖ encoder PWM clamps both bounds and SW returns 50 without moving the mechanism (5101.972177ms)
+✔ KY-040 open CLK cannot yield a fabricated counter (4.5986ms)
+✔ KY-040 open DT cannot yield a fabricated counter (7.617156ms)
+✖ KY-040 open SW cannot yield a fabricated counter (6.106055ms)
+✔ KY-040 missing VCC produces no completed step (3.375792ms)
+✔ KY-040 missing GND produces no completed step (142.559211ms)
+✖ 5 V KY-040 profile on S3 signals is rejected at compilation of the circuit (1.468276ms)
+✔ compiled relay starts on NC and genuinely switches both electrical LED paths (10.865893ms)
+✔ changing relay active level changes physical contact response without changing the artifact (7.086564ms)
+✔ relay missing VCC stays unenergized on NC (6.806328ms)
+✖ relay missing LV stays unenergized on NC (9.636961ms)
+✔ relay missing GND stays unenergized on NC (10.580509ms)
+✔ open relay IN is held inactive by the declared module pull resistor (6.850529ms)
+✔ loss of relay load power extinguishes LEDs while the control contacts still switch (6.589903ms)
+✔ relay NO contact short to the load ground raises a real output conflict (4.500032ms)
+✔ active buzzer starts silent, oscillates at 2300 Hz on DC, and switches off (14.333879ms)
+✔ activeAlarm: missing VCC prevents sound from a valid compiled program (6.226386ms)
+✔ activeAlarm: missing GND prevents sound from a valid compiled program (6.018013ms)
+✔ activeAlarm: missing SIG prevents sound from a valid compiled program (5.974497ms)
+✖ piezoTone: missing VCC prevents sound from a valid compiled program (11.620983ms)
+✖ piezoTone: missing GND prevents sound from a valid compiled program (10.24128ms)
+✖ piezoTone: missing SIG prevents sound from a valid compiled program (18.834167ms)
+✖ passive piezo follows three LEDC frequencies, 400 ms gates, pauses and final OFF (11.185358ms)
+✔ compiled L298N produces three duty levels, Hi-Z coast, reverse and brake (15.717583ms)
+✔ two compiled motor channels retain independent signs and enable duties (10.608641ms)
+✔ L298N missing VS prevents motor drive (12.671521ms)
+✔ L298N missing VSS prevents motor drive (11.704628ms)
+✔ L298N missing GND prevents motor drive (15.251048ms)
+✔ reversed motor wires reverse the measured direction without editing C++ (13.090576ms)
+✔ an installed EN jumper and direct motor GPIO connection are rejected (1.301085ms)
+✖ SG90, motor and 880 Hz piezo operate concurrently on four independent LEDC pins (14.997731ms)
+✔ A4988 full-step program moves +90 and back to zero from actual STEP edges (131.423176ms)
+✔ five compiled microstep modes each give 18 degrees and return to common Home (763.862692ms)
+✔ ENABLE, electrical RESET and SLEEP preserve their distinct translator/shaft meaning (61.533234ms)
+✔ A4988 missing VMOT cannot drive a motor from printed angle text (125.935791ms)
+✔ A4988 missing VDD cannot drive a motor from printed angle text (124.609508ms)
+✔ A4988 missing GND cannot drive a motor from printed angle text (125.48968ms)
+✔ open A4988 phase preserves translator pulses but cannot move the disconnected motor (125.326795ms)
+✔ editing the visible decoder or main source invalidates the bundled artifact (1.353904ms)
+✔ actual compiler executes a slower student poll and exposes lost encoder steps (538.249043ms)
+ℹ tests 61
+ℹ suites 0
+ℹ pass 52
+ℹ fail 9
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10095.566951
+
+✖ failing tests:
+
+test at verification/s3-controls.test.ts:1:6828
+✖ encoder PWM clamps both bounds and SW returns 50 without moving the mechanism (5101.972177ms)
+  AssertionError [ERR_ASSERTION]: S3 PWM=50
+  S3 PWM=55
+  S3 PWM=60
+  S3 PWM=65
+  S3 PWM=70
+  S3 PWM=75
+  S3 PWM=80
+  S3 PWM=85
+  S3 PWM=90
+  S3 PWM=95
+  S3 PWM=100
+  S3 PWM=100
+  S3 PWM=100
+  S3 PWM=95
+  S3 PWM=90
+  S3 PWM=85
+  S3 PWM=80
+  S3 PWM=75
+  S3 PWM=70
+  S3 PWM=65
+  S3 PWM=60
+  S3 PWM=55
+  S3 PWM=50
+  S3 PWM=45
+  S3 PWM=40
+  S3 PWM=35
+  S3 PWM=30
+  S3 PWM=25
+  S3 PWM=20
+  S3 PWM=15
+  S3 PWM=10
+  S3 PWM=5
+  S3 PWM=0
+  S3 PWM=0
+  S3 PWM=0
+  S3 PWM=0
+  S3 PWM=0
+  
+      at TestContext.<anonymous> (/workspace/scratch/c12aebc85825/lab/.sites-checkout/verification/s3-controls.test.ts:113:27)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at verification/s3-controls.test.ts:1:7686
+✖ KY-040 open SW cannot yield a fabricated counter (6.106055ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Nepobuđen/. Input:
+  
+  ''
+  
+      at TestContext.<anonymous> (/workspace/scratch/c12aebc85825/lab/.sites-checkout/verification/s3-controls.test.ts:116:65)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '',
+    expected: /Nepobuđen/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at verification/s3-controls.test.ts:1:8229
+✖ 5 V KY-040 profile on S3 signals is rejected at compilation of the circuit (1.468276ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /prekoračiti|napon/. Input:
+  
+  'Error: KY-040 1: pull-up CLK/DT na 5 V nije dopušten na ESP32. Odaberi 3,3 V profil i napajanje.\n' +
+    'KY-040 1: pull-up CLK/DT na 5 V nije dopušten na ESP32. Odaberi 3,3 V profil i napajanje.'
+  
+      at TestContext.<anonymous> (/workspace/scratch/c12aebc85825/lab/.sites-checkout/verification/s3-controls.test.ts:122:190)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: KY-040 1: pull-up CLK/DT na 5 V nije dopušten na ESP32. Odaberi 3,3 V profil i napajanje.
+    KY-040 1: pull-up CLK/DT na 5 V nije dopušten na ESP32. Odaberi 3,3 V profil i napajanje.
+        at compileCircuit (/workspace/scratch/c12aebc85825/lab/.sites-checkout/src/circuit/compile.ts:8:28)
+        at <anonymous> (/workspace/scratch/c12aebc85825/lab/.sites-checkout/verification/s3-controls.test.ts:122:201)
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at TestContext.<anonymous> (/workspace/scratch/c12aebc85825/lab/.sites-checkout/verification/s3-controls.test.ts:122:190)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1402:25)
+        at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+        at Test.postRun (node:internal/test_runner/test:1542:19)
+        at Test.run (node:internal/test_runner/test:1467:12),
+    expected: /prekoračiti|napon/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at verification/s3-controls.test.ts:1:9584
+✖ relay missing LV stays unenergized on NC (9.636961ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(r.marks.every(m=>!m.frame.actuators.relays.relay1.powered&&!m.frame.actuators.relays.relay1.energized))
+  
+      at TestContext.<anonymous> (/workspace/scratch/c12aebc85825/lab/.sites-checkout/verification/s3-controls.test.ts:134:93)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at verification/s3-controls.test.ts:1:11446
+✖ piezoTone: missing VCC prevents sound from a valid compiled program (11.620983ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'GPIO: sukob izlaza, nedostupan pin ili previsok napon.'
+  - ''
+  
+      at TestContext.<anonymous> (/workspace/scratch/c12aebc85825/lab/.sites-checkout/verification/s3-controls.test.ts:150:64)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'GPIO: sukob izlaza, nedostupan pin ili previsok napon.',
+    expected: '',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at verification/s3-controls.test.ts:1:11446
+✖ piezoTone: missing GND prevents sound from a valid compiled program (10.24128ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'GPIO: sukob izlaza, nedostupan pin ili previsok napon.'
+  - ''
+  
+      at TestContext.<anonymous> (/workspace/scratch/c12aebc85825/lab/.sites-checkout/verification/s3-controls.test.ts:150:64)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'GPIO: sukob izlaza, nedostupan pin ili previsok napon.',
+    expected: '',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at verification/s3-controls.test.ts:1:11446
+✖ piezoTone: missing SIG prevents sound from a valid compiled program (18.834167ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'GPIO: sukob izlaza, nedostupan pin ili previsok napon.'
+  - ''
+  
+      at TestContext.<anonymous> (/workspace/scratch/c12aebc85825/lab/.sites-checkout/verification/s3-controls.test.ts:150:64)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'GPIO: sukob izlaza, nedostupan pin ili previsok napon.',
+    expected: '',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at verification/s3-controls.test.ts:1:11696
+✖ passive piezo follows three LEDC frequencies, 400 ms gates, pauses and final OFF (11.185358ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'GPIO: sukob izlaza, nedostupan pin ili previsok napon.'
+  - ''
+  
+      at TestContext.<anonymous> (/workspace/scratch/c12aebc85825/lab/.sites-checkout/verification/s3-controls.test.ts:153:40)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'GPIO: sukob izlaza, nedostupan pin ili previsok napon.',
+    expected: '',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at verification/s3-controls.test.ts:1:14692
+✖ SG90, motor and 880 Hz piezo operate concurrently on four independent LEDC pins (14.997731ms)
+  AssertionError [ERR_ASSERTION]: 44.78 != 45 ± 0.15
+      at close (/workspace/scratch/c12aebc85825/lab/.sites-checkout/verification/s3-controls.test.ts:29:40)
+      at TestContext.<anonymous> (/workspace/scratch/c12aebc85825/lab/.sites-checkout/verification/s3-controls.test.ts:180:170)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

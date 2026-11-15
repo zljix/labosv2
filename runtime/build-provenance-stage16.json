@@ -1,0 +1,23 @@
+{
+  "releaseVersion": "0.7.0-beta.1",
+  "source": {
+    "version": "MicroPython v1.29.0",
+    "archive": "https://codeload.github.com/micropython/micropython/tar.gz/refs/tags/v1.29.0",
+    "sha256": "8072f6ad42c0e3bbfca88ed09bf8f1106ce207a39129af920f70081b8f2fe286"
+  },
+  "toolchain": {
+    "emscripten": "4.0.15",
+    "sdkArchiveSha256": "35be7626493e3bd22860ee2177147f9bca3b6ff871edeab27c5b061a9ed9d23d",
+    "sourceDateEpoch": 1794441600
+  },
+  "patches": {
+    "scripts/patch-runtime.py": "664c8048facf123e60481930d368fa8b01d5574f17565b61c0f271fe9bf684ae",
+    "runtime/modlab.c": "5dcfdddd5e3e18c0d0b11629cd40dfafaeddd40a0800a843dbab16e06dad2d7c",
+    "runtime/variant/mpconfigvariant.h": "99b1ac67d754264ab745cb0499722e7dae023f526bd7d0a05e9dc7b6799ba2a6",
+    "runtime/variant/mpconfigvariant.mk": "cd88b673a5b90352fd3374de6f966446b35aead394e8c9646c7097f9b2badd1d"
+  },
+  "outputs": {
+    "public/runtime/micropython.mjs": "fea2a68ade7ea4e345b4eead04b9710506d08101c563e6bbad1721dbdd4289d8",
+    "public/runtime/micropython.wasm": "3f638e8cacd1f00168f19a17fcae35ece9773b4b661464c8241114e00c24fcce"
+  }
+}

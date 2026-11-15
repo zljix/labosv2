@@ -1,0 +1,31 @@
+Sketch uses 312044 bytes (23%) of program storage space. Maximum is 1310720 bytes.
+Global variables use 22680 bytes (6%) of dynamic memory, leaving 305000 bytes for local variables. Maximum is 327680 bytes.
+
+[izvor]/vendor/arduino/OneWire/OneWire.cpp:599:22: warning: extra tokens at end of #undef directive
+  599 | #  undef noInterrupts() {portMUX_TYPE mux = portMUX_INITIALIZER_UNLOCKED;portENTER_CRITICAL(&mux)
+      |                      ^
+[izvor]/vendor/arduino/OneWire/OneWire.cpp:600:20: warning: extra tokens at end of #undef directive
+  600 | #  undef interrupts() portEXIT_CRITICAL(&mux);}
+      |                    ^
+In file included from [espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/esp32-hal-gpio.h:30,
+                 from [espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/esp32-hal.h:115,
+                 from [espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/Arduino.h:44,
+                 from [izvor]/vendor/arduino/OneWire/OneWire.cpp:147:
+[izvor]/vendor/arduino/OneWire/util/OneWire_direct_gpio.h: In function 'void directModeInput(uint32_t)':
+[espressif-alati]/packages/esp32/tools/esp32s3-libs/3.3.12/include/esp_driver_gpio/include/driver/gpio.h:25:56: warning: comparison of unsigned expression in '>= 0' is always true [-Wtype-limits]
+   25 | #define GPIO_IS_VALID_GPIO(gpio_num)        ((gpio_num >= 0) && \
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/esp32-hal-gpio.h:68:34: note: in expansion of macro 'GPIO_IS_VALID_GPIO'
+   68 | #define digitalPinIsValid(pin)   GPIO_IS_VALID_GPIO(pin)
+      |                                  ^~~~~~~~~~~~~~~~~~
+[izvor]/vendor/arduino/OneWire/util/OneWire_direct_gpio.h:214:10: note: in expansion of macro 'digitalPinIsValid'
+  214 |     if ( digitalPinIsValid(pin) )
+      |          ^~~~~~~~~~~~~~~~~
+[izvor]/vendor/arduino/OneWire/util/OneWire_direct_gpio.h: In function 'void directModeOutput(uint32_t)':
+[espressif-alati]/packages/esp32/tools/esp32s3-libs/3.3.12/include/esp_driver_gpio/include/driver/gpio.h:25:56: warning: comparison of unsigned expression in '>= 0' is always true [-Wtype-limits]
+   25 | #define GPIO_IS_VALID_GPIO(gpio_num)        ((gpio_num >= 0) && \
+[espressif-alati]/packages/esp32/hardware/esp32/3.3.12/cores/esp32/esp32-hal-gpio.h:68:34: note: in expansion of macro 'GPIO_IS_VALID_GPIO'
+   68 | #define digitalPinIsValid(pin)   GPIO_IS_VALID_GPIO(pin)
+      |                                  ^~~~~~~~~~~~~~~~~~
+[izvor]/vendor/arduino/OneWire/util/OneWire_direct_gpio.h:240:10: note: in expansion of macro 'digitalPinIsValid'
+  240 |     if ( digitalPinIsValid(pin) && pin <= 33 ) // pins above 33 can be only inputs
+      |          ^~~~~~~~~~~~~~~~~

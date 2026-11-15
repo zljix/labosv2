@@ -1,0 +1,28 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.4.0-beta.1 test:avr
+> node --import tsx --test verification/avr.test.ts
+
+✔ six real Arduino builds match exact sources and survive full project ZIP import (56.844617ms)
+✔ source, header and target edits reject stale builds; notes and rewiring retain the code binding (6.006177ms)
+✔ corrupt hashes, HEX checksums, ranges, duplicate records and missing EOF are refused (6.221082ms)
+✔ arduino.uno-r3.atmega328p: compiled delay/millis drives physical D9 and D13 with 2 KiB SRAM (293.868613ms)
+✔ arduino.uno-r3.atmega328p: live INPUT_PULLUP button and UART receive execute the student's program (126.911057ms)
+✔ arduino.uno-r3.atmega328p: analogRead quantisation and actual Timer1 PWM follow the potentiometer (274.354944ms)
+✔ arduino.nano-classic.atmega328p: compiled delay/millis drives physical D9 and D13 with 2 KiB SRAM (195.518003ms)
+✔ arduino.nano-classic.atmega328p: live INPUT_PULLUP button and UART receive execute the student's program (108.714856ms)
+✔ arduino.nano-classic.atmega328p: analogRead quantisation and actual Timer1 PWM follow the potentiometer (301.624952ms)
+✔ Nano A6/A7 are real ADC channels without digital GPIO aliases (121.129244ms)
+✔ real external interrupt runs on falling edge; TWI NACK and SPI idle byte come from peripherals (146.523678ms)
+✔ a runtime output conflict stops; unsupported Arduino peripherals cannot execute silently (3.108521ms)
+✔ force Stop terminates a real busy Worker and rejects its delayed messages; Reset starts fresh (410.949044ms)
+✔ all six PWM pins use three real timers; UART output decodes UTF-8 across frames (116.853567ms)
+✔ production offline package includes AVR examples, toolkit and a runnable compiled Worker (391.67982ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2745.407294

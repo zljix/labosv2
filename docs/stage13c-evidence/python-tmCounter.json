@@ -1,0 +1,307 @@
+{
+  "console": "TM COUNT=-3\nTM COUNT=-2\n",
+  "frame": {
+    "type": "simulation",
+    "clockProfile": "wall-us",
+    "timeMs": 687,
+    "nets": {
+      "esp32:J1.1": 3.3,
+      "esp32:J1.10": null,
+      "esp32:J1.11": null,
+      "esp32:J1.12": null,
+      "esp32:J1.13": null,
+      "esp32:J1.14": null,
+      "esp32:J1.15": null,
+      "esp32:J1.16": null,
+      "esp32:J1.17": null,
+      "esp32:J1.18": null,
+      "esp32:J1.19": null,
+      "esp32:J1.20": null,
+      "esp32:J1.21": 5,
+      "esp32:J1.22": 0,
+      "esp32:J1.4": 3.3,
+      "esp32:J1.5": 3.3,
+      "esp32:J1.6": null,
+      "esp32:J1.7": null,
+      "esp32:J1.8": null,
+      "esp32:J1.9": null,
+      "esp32:J3.10": null,
+      "esp32:J3.14": null,
+      "esp32:J3.15": null,
+      "esp32:J3.16": null,
+      "esp32:J3.17": null,
+      "esp32:J3.18": null,
+      "esp32:J3.19": null,
+      "esp32:J3.2": null,
+      "esp32:J3.20": null,
+      "esp32:J3.3": null,
+      "esp32:J3.4": null,
+      "esp32:J3.5": null,
+      "esp32:J3.6": null,
+      "esp32:J3.7": null,
+      "esp32:J3.8": null,
+      "esp32:J3.9": null
+    },
+    "leds": {},
+    "gpios": {
+      "4": {
+        "mode": "IN",
+        "volts": 3.3,
+        "level": 1
+      },
+      "5": {
+        "mode": "IN",
+        "volts": 3.3,
+        "level": 1
+      }
+    },
+    "sensors": {},
+    "displays": {},
+    "measurements": [],
+    "i2cTrace": [],
+    "tmDisplays": {
+      "tm1": {
+        "powered": true,
+        "on": true,
+        "bytes": [
+          0,
+          0,
+          64,
+          91,
+          0,
+          0
+        ],
+        "brightness": 7,
+        "duty": 0.875,
+        "colon": false,
+        "received": 13,
+        "errors": 0,
+        "reason": "Spreman",
+        "trace": [
+          {
+            "timeUs": 2327.2790000000896,
+            "operation": "power-on"
+          },
+          {
+            "timeUs": 111880.57200000004,
+            "operation": "start"
+          },
+          {
+            "timeUs": 112220.57200000004,
+            "operation": "byte",
+            "value": 143
+          },
+          {
+            "timeUs": 112220.57200000004,
+            "operation": "ack",
+            "value": 0
+          },
+          {
+            "timeUs": 112321.57200000004,
+            "operation": "stop"
+          },
+          {
+            "timeUs": 117110.22400000003,
+            "operation": "start"
+          },
+          {
+            "timeUs": 117450.22400000003,
+            "operation": "byte",
+            "value": 64
+          },
+          {
+            "timeUs": 117450.22400000003,
+            "operation": "ack",
+            "value": 0
+          },
+          {
+            "timeUs": 117551.22400000003,
+            "operation": "stop"
+          },
+          {
+            "timeUs": 126437.44699999981,
+            "operation": "start"
+          },
+          {
+            "timeUs": 126777.44699999981,
+            "operation": "byte",
+            "value": 192
+          },
+          {
+            "timeUs": 126777.44699999981,
+            "operation": "ack",
+            "value": 0
+          },
+          {
+            "timeUs": 127158.44699999981,
+            "operation": "byte",
+            "value": 0
+          },
+          {
+            "timeUs": 127158.44699999981,
+            "operation": "write",
+            "value": 0
+          },
+          {
+            "timeUs": 127158.44699999981,
+            "operation": "ack",
+            "value": 0
+          },
+          {
+            "timeUs": 127539.44699999981,
+            "operation": "byte",
+            "value": 0
+          },
+          {
+            "timeUs": 127539.44699999981,
+            "operation": "write",
+            "value": 1
+          },
+          {
+            "timeUs": 127539.44699999981,
+            "operation": "ack",
+            "value": 0
+          },
+          {
+            "timeUs": 127920.44699999981,
+            "operation": "byte",
+            "value": 64
+          },
+          {
+            "timeUs": 127920.44699999981,
+            "operation": "write",
+            "value": 2
+          },
+          {
+            "timeUs": 127920.44699999981,
+            "operation": "ack",
+            "value": 0
+          },
+          {
+            "timeUs": 128301.44699999981,
+            "operation": "byte",
+            "value": 79
+          },
+          {
+            "timeUs": 128301.44699999981,
+            "operation": "write",
+            "value": 3
+          },
+          {
+            "timeUs": 128301.44699999981,
+            "operation": "ack",
+            "value": 0
+          },
+          {
+            "timeUs": 128402.44699999981,
+            "operation": "stop"
+          },
+          {
+            "timeUs": 668589.9230000001,
+            "operation": "start"
+          },
+          {
+            "timeUs": 668929.9230000001,
+            "operation": "byte",
+            "value": 64
+          },
+          {
+            "timeUs": 668929.9230000001,
+            "operation": "ack",
+            "value": 0
+          },
+          {
+            "timeUs": 669030.9230000001,
+            "operation": "stop"
+          },
+          {
+            "timeUs": 675384.5430000002,
+            "operation": "start"
+          },
+          {
+            "timeUs": 675724.5430000002,
+            "operation": "byte",
+            "value": 192
+          },
+          {
+            "timeUs": 675724.5430000002,
+            "operation": "ack",
+            "value": 0
+          },
+          {
+            "timeUs": 676105.5430000002,
+            "operation": "byte",
+            "value": 0
+          },
+          {
+            "timeUs": 676105.5430000002,
+            "operation": "write",
+            "value": 0
+          },
+          {
+            "timeUs": 676105.5430000002,
+            "operation": "ack",
+            "value": 0
+          },
+          {
+            "timeUs": 676486.5430000002,
+            "operation": "byte",
+            "value": 0
+          },
+          {
+            "timeUs": 676486.5430000002,
+            "operation": "write",
+            "value": 1
+          },
+          {
+            "timeUs": 676486.5430000002,
+            "operation": "ack",
+            "value": 0
+          },
+          {
+            "timeUs": 676867.5430000002,
+            "operation": "byte",
+            "value": 64
+          },
+          {
+            "timeUs": 676867.5430000002,
+            "operation": "write",
+            "value": 2
+          },
+          {
+            "timeUs": 676867.5430000002,
+            "operation": "ack",
+            "value": 0
+          },
+          {
+            "timeUs": 677248.5430000002,
+            "operation": "byte",
+            "value": 91
+          },
+          {
+            "timeUs": 677248.5430000002,
+            "operation": "write",
+            "value": 3
+          },
+          {
+            "timeUs": 677248.5430000002,
+            "operation": "ack",
+            "value": 0
+          },
+          {
+            "timeUs": 677349.5430000002,
+            "operation": "stop"
+          }
+        ]
+      }
+    },
+    "infrared": {},
+    "encoders": {},
+    "oneWireDevices": {},
+    "timedSensors": {},
+    "analogInputs": {},
+    "servos": {},
+    "diagnostics": [],
+    "session": 2
+  }
+}

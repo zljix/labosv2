@@ -1,0 +1,20 @@
+✔ LED follows actual Python loop; unchanged pin numbers cannot drive a rewired LED (1346.386172ms)
+✔ button changes live input in normal sleeping Python loop; release and missing wire change result (545.526752ms)
+✔ ADC and PWM use live potentiometer voltage, saturate, and publish real duty (301.783453ms)
+✔ LED current reflects series resistance, polarity, open cathode and split rail (16.893984ms)
+✔ floating ADC and ambiguous digital voltage report errors; no hidden fixture input (234.222392ms)
+✔ opposing program outputs and a contact that shorts an output raise runtime diagnostics (469.221172ms)
+✔ PWM methods, deinit, quantised 12-bit ADC, bounds and unavailable GPIOs (1405.128836ms)
+✔ stopped runs cannot deliver late events; repeated force-stop and fresh run (1581.219169ms)
+✔ compiled run snapshot and multiple inputs stay isolated from later project edits (2.588196ms)
+✔ invalid power circuit is blocked before run, and all three lesson circuits compile (5.811479ms)
+✔ atomic initial output value avoids an artificial conflict against a driven-high net (217.046675ms)
+✔ PWM channel limit is a catchable Python error; an inactive LED does not create a source (222.126873ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6744.15701

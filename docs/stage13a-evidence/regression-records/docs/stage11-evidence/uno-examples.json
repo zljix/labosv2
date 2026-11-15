@@ -1,0 +1,1344 @@
+[
+  {
+    "key": "lm35",
+    "console": "LM35 ADC=51 T=24.93\r\nLM35 ADC=51 T=24.93\r\nLM35 ADC=102 T=49.85\r\n",
+    "frame": {
+      "type": "simulation",
+      "timeMs": 700,
+      "nets": {
+        "board:3V3": 3.3,
+        "board:5V": 5,
+        "board:A0": 0.5,
+        "board:A1": null,
+        "board:A2": null,
+        "board:A3": null,
+        "board:A4": null,
+        "board:A5": null,
+        "board:D0": null,
+        "board:D1": null,
+        "board:D10": null,
+        "board:D11": null,
+        "board:D12": null,
+        "board:D13": null,
+        "board:D2": null,
+        "board:D3": null,
+        "board:D4": null,
+        "board:D5": null,
+        "board:D6": null,
+        "board:D7": null,
+        "board:D8": null,
+        "board:D9": null,
+        "board:GND": 0
+      },
+      "leds": {},
+      "gpios": {
+        "0": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "1": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "2": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "3": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "4": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "5": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "6": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "7": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "8": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "9": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "10": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "11": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "12": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "13": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "14": {
+          "mode": "ADC",
+          "volts": 0.5,
+          "level": 0
+        },
+        "15": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "16": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "17": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "18": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "19": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        }
+      },
+      "sensors": {},
+      "displays": {},
+      "measurements": [],
+      "i2cTrace": [],
+      "encoders": {},
+      "oneWireDevices": {},
+      "timedSensors": {},
+      "analogInputs": {
+        "lm351": {
+          "powered": true,
+          "volts": {
+            "OUT": 0.5
+          }
+        }
+      },
+      "servos": {},
+      "diagnostics": [],
+      "avr": {
+        "cycles": 11200028,
+        "clockHz": 16000000,
+        "uartBaud": 9615,
+        "rxPending": 0,
+        "busTrace": [],
+        "memory": {
+          "staticBytes": 200,
+          "lowestSP": 2238,
+          "minFreeToStatic": 1783
+        }
+      }
+    },
+    "flash": 3516,
+    "staticRam": 200
+  },
+  {
+    "key": "temt6000",
+    "console": "TEMT6000 ADC=102 U=0.499\r\nTEMT6000 ADC=102 U=0.499\r\nTEMT6000 ADC=20 U=0.098\r\n",
+    "frame": {
+      "type": "simulation",
+      "timeMs": 700,
+      "nets": {
+        "board:3V3": 3.3,
+        "board:5V": 5,
+        "board:A0": 0.1,
+        "board:A1": null,
+        "board:A2": null,
+        "board:A3": null,
+        "board:A4": null,
+        "board:A5": null,
+        "board:D0": null,
+        "board:D1": null,
+        "board:D10": null,
+        "board:D11": null,
+        "board:D12": null,
+        "board:D13": null,
+        "board:D2": null,
+        "board:D3": null,
+        "board:D4": null,
+        "board:D5": null,
+        "board:D6": null,
+        "board:D7": null,
+        "board:D8": null,
+        "board:D9": null,
+        "board:GND": 0
+      },
+      "leds": {},
+      "gpios": {
+        "0": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "1": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "2": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "3": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "4": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "5": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "6": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "7": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "8": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "9": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "10": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "11": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "12": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "13": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "14": {
+          "mode": "ADC",
+          "volts": 0.1,
+          "level": 0
+        },
+        "15": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "16": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "17": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "18": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "19": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        }
+      },
+      "sensors": {},
+      "displays": {},
+      "measurements": [],
+      "i2cTrace": [],
+      "encoders": {},
+      "oneWireDevices": {},
+      "timedSensors": {},
+      "analogInputs": {
+        "temt60001": {
+          "powered": true,
+          "volts": {
+            "AO": 0.1
+          }
+        }
+      },
+      "servos": {},
+      "diagnostics": [],
+      "avr": {
+        "cycles": 11200018,
+        "clockHz": 16000000,
+        "uartBaud": 9615,
+        "rxPending": 0,
+        "busTrace": [],
+        "memory": {
+          "staticBytes": 200,
+          "lowestSP": 2235,
+          "minFreeToStatic": 1780
+        }
+      }
+    },
+    "flash": 3498,
+    "staticRam": 200
+  },
+  {
+    "key": "ntc",
+    "console": "NTC ADC=512 T=24.96\r\nNTC ADC=512 T=24.96\r\nNTC ADC=270 T=50.02\r\n",
+    "frame": {
+      "type": "simulation",
+      "timeMs": 700,
+      "nets": {
+        "board:3V3": 3.3,
+        "board:5V": 5,
+        "board:A0": 1.32033,
+        "board:A1": null,
+        "board:A2": null,
+        "board:A3": null,
+        "board:A4": null,
+        "board:A5": null,
+        "board:D0": null,
+        "board:D1": null,
+        "board:D10": null,
+        "board:D11": null,
+        "board:D12": null,
+        "board:D13": null,
+        "board:D2": null,
+        "board:D3": null,
+        "board:D4": null,
+        "board:D5": null,
+        "board:D6": null,
+        "board:D7": null,
+        "board:D8": null,
+        "board:D9": null,
+        "board:GND": 0
+      },
+      "leds": {},
+      "gpios": {
+        "0": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "1": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "2": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "3": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "4": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "5": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "6": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "7": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "8": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "9": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "10": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "11": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "12": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "13": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "14": {
+          "mode": "ADC",
+          "volts": 1.3203320459871528,
+          "level": null
+        },
+        "15": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "16": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "17": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "18": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "19": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        }
+      },
+      "sensors": {},
+      "displays": {},
+      "measurements": [],
+      "i2cTrace": [],
+      "encoders": {},
+      "oneWireDevices": {},
+      "timedSensors": {},
+      "analogInputs": {
+        "ntc1": {
+          "powered": true,
+          "volts": {
+            "AO": 1.3203320459871528
+          },
+          "resistance": 3588.1825819290834
+        }
+      },
+      "servos": {},
+      "diagnostics": [],
+      "avr": {
+        "cycles": 11200034,
+        "clockHz": 16000000,
+        "uartBaud": 9615,
+        "rxPending": 0,
+        "busTrace": [],
+        "memory": {
+          "staticBytes": 200,
+          "lowestSP": 2238,
+          "minFreeToStatic": 1783
+        }
+      }
+    },
+    "flash": 3976,
+    "staticRam": 200
+  },
+  {
+    "key": "ky023",
+    "console": "X=512 Y=512 NX=0.00 NY=0.00 SW=1\r\nX=512 Y=512 NX=0.00 NY=0.00 SW=1\r\nX=0 Y=1023 NX=-1.00 NY=1.00 SW=0\r\n",
+    "frame": {
+      "type": "simulation",
+      "timeMs": 700,
+      "nets": {
+        "board:3V3": 3.3,
+        "board:5V": 5,
+        "board:A0": 0,
+        "board:A1": 5,
+        "board:A2": null,
+        "board:A3": null,
+        "board:A4": null,
+        "board:A5": null,
+        "board:D0": null,
+        "board:D1": null,
+        "board:D10": null,
+        "board:D11": null,
+        "board:D12": null,
+        "board:D13": null,
+        "board:D2": 0,
+        "board:D3": null,
+        "board:D4": null,
+        "board:D5": null,
+        "board:D6": null,
+        "board:D7": null,
+        "board:D8": null,
+        "board:D9": null,
+        "board:GND": 0
+      },
+      "leds": {},
+      "gpios": {
+        "0": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "1": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "2": {
+          "mode": "IN",
+          "volts": 1.1111110864197537e-7,
+          "level": 0
+        },
+        "3": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "4": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "5": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "6": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "7": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "8": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "9": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "10": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "11": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "12": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "13": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "14": {
+          "mode": "ADC",
+          "volts": 4.99999950000005e-7,
+          "level": 0
+        },
+        "15": {
+          "mode": "ADC",
+          "volts": 4.99999950000005,
+          "level": 1
+        },
+        "16": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "17": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "18": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "19": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        }
+      },
+      "sensors": {},
+      "displays": {},
+      "measurements": [],
+      "i2cTrace": [],
+      "encoders": {},
+      "oneWireDevices": {},
+      "timedSensors": {},
+      "analogInputs": {
+        "ky0231": {
+          "powered": true,
+          "volts": {
+            "VRX": 4.99999950000005e-7,
+            "VRY": 4.99999950000005,
+            "SW": 1.1111110864197537e-7
+          }
+        }
+      },
+      "servos": {},
+      "diagnostics": [],
+      "avr": {
+        "cycles": 11200015,
+        "clockHz": 16000000,
+        "uartBaud": 9615,
+        "rxPending": 0,
+        "busTrace": [],
+        "memory": {
+          "staticBytes": 200,
+          "lowestSP": 2220,
+          "minFreeToStatic": 1765
+        }
+      }
+    },
+    "flash": 4206,
+    "staticRam": 200
+  },
+  {
+    "key": "flame",
+    "console": "FLAME ADC=1023 DO=1\r\nFLAME ADC=1023 DO=1\r\nFLAME ADC=204 DO=0\r\n",
+    "frame": {
+      "type": "simulation",
+      "timeMs": 700,
+      "nets": {
+        "board:3V3": 3.3,
+        "board:5V": 5,
+        "board:A0": 1,
+        "board:A1": null,
+        "board:A2": null,
+        "board:A3": null,
+        "board:A4": null,
+        "board:A5": null,
+        "board:D0": null,
+        "board:D1": null,
+        "board:D10": null,
+        "board:D11": null,
+        "board:D12": null,
+        "board:D13": null,
+        "board:D2": 0.005,
+        "board:D3": null,
+        "board:D4": null,
+        "board:D5": null,
+        "board:D6": null,
+        "board:D7": null,
+        "board:D8": null,
+        "board:D9": null,
+        "board:GND": 0
+      },
+      "leds": {},
+      "gpios": {
+        "0": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "1": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "2": {
+          "mode": "IN",
+          "volts": 0.004995004995004995,
+          "level": 0
+        },
+        "3": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "4": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "5": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "6": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "7": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "8": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "9": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "10": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "11": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "12": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "13": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "14": {
+          "mode": "ADC",
+          "volts": 0.9999999999999998,
+          "level": 0
+        },
+        "15": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "16": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "17": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "18": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "19": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        }
+      },
+      "sensors": {},
+      "displays": {},
+      "measurements": [],
+      "i2cTrace": [],
+      "encoders": {},
+      "oneWireDevices": {},
+      "timedSensors": {},
+      "analogInputs": {
+        "flame1": {
+          "powered": true,
+          "active": true,
+          "volts": {
+            "AO": 0.9999999999999998,
+            "DO": 0.004995004995004995
+          }
+        }
+      },
+      "servos": {},
+      "diagnostics": [],
+      "avr": {
+        "cycles": 11200031,
+        "clockHz": 16000000,
+        "uartBaud": 9615,
+        "rxPending": 0,
+        "busTrace": [],
+        "memory": {
+          "staticBytes": 188,
+          "lowestSP": 2238,
+          "minFreeToStatic": 1795
+        }
+      }
+    },
+    "flash": 2336,
+    "staticRam": 188
+  },
+  {
+    "key": "sound",
+    "console": "SOUND DO=1\r\nSOUND DO=1\r\nSOUND DO=0\r\n",
+    "frame": {
+      "type": "simulation",
+      "timeMs": 700,
+      "nets": {
+        "board:3V3": 3.3,
+        "board:5V": 5,
+        "board:A0": null,
+        "board:A1": null,
+        "board:A2": null,
+        "board:A3": null,
+        "board:A4": null,
+        "board:A5": null,
+        "board:D0": null,
+        "board:D1": null,
+        "board:D10": null,
+        "board:D11": null,
+        "board:D12": null,
+        "board:D13": null,
+        "board:D2": 0.005,
+        "board:D3": null,
+        "board:D4": null,
+        "board:D5": null,
+        "board:D6": null,
+        "board:D7": null,
+        "board:D8": null,
+        "board:D9": null,
+        "board:GND": 0
+      },
+      "leds": {},
+      "gpios": {
+        "0": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "1": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "2": {
+          "mode": "IN",
+          "volts": 0.004995004995004995,
+          "level": 0
+        },
+        "3": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "4": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "5": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "6": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "7": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "8": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "9": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "10": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "11": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "12": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "13": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "14": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "15": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "16": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "17": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "18": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "19": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        }
+      },
+      "sensors": {},
+      "displays": {},
+      "measurements": [],
+      "i2cTrace": [],
+      "encoders": {},
+      "oneWireDevices": {},
+      "timedSensors": {},
+      "analogInputs": {
+        "sound1": {
+          "powered": true,
+          "active": true,
+          "volts": {
+            "DO": 0.004995004995004995
+          }
+        }
+      },
+      "servos": {},
+      "diagnostics": [],
+      "avr": {
+        "cycles": 11200015,
+        "clockHz": 16000000,
+        "uartBaud": 9615,
+        "rxPending": 0,
+        "busTrace": [],
+        "memory": {
+          "staticBytes": 188,
+          "lowestSP": 2245,
+          "minFreeToStatic": 1802
+        }
+      }
+    },
+    "flash": 2024,
+    "staticRam": 188
+  },
+  {
+    "key": "analogCompare",
+    "console": "COMPARE LM35=24.93 NTC=24.96\r\nCOMPARE LM35=24.93 NTC=24.96\r\nCOMPARE LM35=49.85 NTC=50.02\r\n",
+    "frame": {
+      "type": "simulation",
+      "timeMs": 700,
+      "nets": {
+        "board:3V3": 3.3,
+        "board:5V": 5,
+        "board:A0": 0.5,
+        "board:A1": 1.32033,
+        "board:A2": null,
+        "board:A3": null,
+        "board:A4": null,
+        "board:A5": null,
+        "board:D0": null,
+        "board:D1": null,
+        "board:D10": null,
+        "board:D11": null,
+        "board:D12": null,
+        "board:D13": null,
+        "board:D2": null,
+        "board:D3": null,
+        "board:D4": null,
+        "board:D5": null,
+        "board:D6": null,
+        "board:D7": null,
+        "board:D8": null,
+        "board:D9": null,
+        "board:GND": 0
+      },
+      "leds": {},
+      "gpios": {
+        "0": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "1": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "2": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "3": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "4": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "5": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "6": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "7": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "8": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "9": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "10": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "11": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "12": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "13": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "14": {
+          "mode": "ADC",
+          "volts": 0.5,
+          "level": 0
+        },
+        "15": {
+          "mode": "ADC",
+          "volts": 1.3203320459871528,
+          "level": null
+        },
+        "16": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "17": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "18": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "19": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        }
+      },
+      "sensors": {},
+      "displays": {},
+      "measurements": [],
+      "i2cTrace": [],
+      "encoders": {},
+      "oneWireDevices": {},
+      "timedSensors": {},
+      "analogInputs": {
+        "lm351": {
+          "powered": true,
+          "volts": {
+            "OUT": 0.5
+          }
+        },
+        "ntc1": {
+          "powered": true,
+          "volts": {
+            "AO": 1.3203320459871528
+          },
+          "resistance": 3588.1825819290834
+        }
+      },
+      "servos": {},
+      "diagnostics": [],
+      "avr": {
+        "cycles": 11200028,
+        "clockHz": 16000000,
+        "uartBaud": 9615,
+        "rxPending": 0,
+        "busTrace": [],
+        "memory": {
+          "staticBytes": 200,
+          "lowestSP": 2221,
+          "minFreeToStatic": 1766
+        }
+      }
+    },
+    "flash": 4138,
+    "staticRam": 200
+  },
+  {
+    "key": "dualInputs",
+    "console": "DUAL A=256 B=768 S1=1 S2=1\r\nDUAL A=256 B=768 S1=1 S2=1\r\nDUAL A=819 B=768 S1=1 S2=0\r\n",
+    "frame": {
+      "type": "simulation",
+      "timeMs": 700,
+      "nets": {
+        "board:3V3": 3.3,
+        "board:5V": 5,
+        "board:A0": 4,
+        "board:A1": 3.75,
+        "board:A2": null,
+        "board:A3": null,
+        "board:A4": null,
+        "board:A5": null,
+        "board:D0": null,
+        "board:D1": null,
+        "board:D10": null,
+        "board:D11": null,
+        "board:D12": null,
+        "board:D13": null,
+        "board:D2": 5,
+        "board:D3": 0,
+        "board:D4": null,
+        "board:D5": null,
+        "board:D6": null,
+        "board:D7": null,
+        "board:D8": null,
+        "board:D9": null,
+        "board:GND": 0
+      },
+      "leds": {},
+      "gpios": {
+        "0": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "1": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "2": {
+          "mode": "IN",
+          "volts": 5,
+          "level": 1
+        },
+        "3": {
+          "mode": "IN",
+          "volts": 0,
+          "level": 0
+        },
+        "4": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "5": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "6": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "7": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "8": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "9": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "10": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "11": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "12": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "13": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "14": {
+          "mode": "ADC",
+          "volts": 4,
+          "level": 1
+        },
+        "15": {
+          "mode": "ADC",
+          "volts": 3.75,
+          "level": null
+        },
+        "16": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "17": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "18": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "19": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        }
+      },
+      "sensors": {},
+      "displays": {},
+      "measurements": [],
+      "i2cTrace": [],
+      "encoders": {},
+      "oneWireDevices": {},
+      "timedSensors": {},
+      "analogInputs": {},
+      "servos": {},
+      "diagnostics": [],
+      "avr": {
+        "cycles": 11200031,
+        "clockHz": 16000000,
+        "uartBaud": 9615,
+        "rxPending": 0,
+        "busTrace": [],
+        "memory": {
+          "staticBytes": 188,
+          "lowestSP": 2238,
+          "minFreeToStatic": 1795
+        }
+      }
+    },
+    "flash": 2468,
+    "staticRam": 188
+  }
+]

@@ -1,0 +1,3050 @@
+[
+  {
+    "a": "micropython",
+    "b": "uno",
+    "status": "pass",
+    "build": "d5470dff6b8e4f87",
+    "observedMs": 1537.75718,
+    "stopMs": 5.33386500000006,
+    "console": {
+      "A": "TX 1 ACK\nTX 2 ACK\nTX 3 ACK\nTX 4 ACK\nTX 5 ACK\nTX 6 ACK\nTX 7 ACK\nTX 8 ACK\nTX 9 ACK\nTX 10 ACK\n",
+      "B": "RX spreman\r\nRX 1\r\nRX 2\r\nRX 3\r\nRX 4\r\nRX 5\r\nRX 6\r\nRX 7\r\nRX 8\r\nRX 9\r\nRX 10\r\n"
+    },
+    "radio": {
+      "type": "radio",
+      "timeUs": 971627.3125,
+      "attempts": 11,
+      "delivered": 11,
+      "blocked": false,
+      "dropData": 0,
+      "dropAck": 0,
+      "trace": [
+        {
+          "timeUs": 25140,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 25277,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 25277,
+          "kind": "retry",
+          "node": "A:radio",
+          "reason": "ACK odbačen zadanim pokusom",
+          "attempt": 1
+        },
+        {
+          "timeUs": 25777,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 1
+        },
+        {
+          "timeUs": 25914,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 1,
+          "duplicate": true
+        },
+        {
+          "timeUs": 26117,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 1
+        },
+        {
+          "timeUs": 127140,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 127277,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 127480,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 228140,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 228277,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 228480,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 329140,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 329277,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 329480,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 430140,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 430277,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 430480,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 531140,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            6,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 531277,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            6,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 531480,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 632140,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 632277,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 632480,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 733140,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 733277,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 733480,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 834140,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            9,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 834277,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            9,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 834480,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 935140,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            10,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 935277,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            10,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 935480,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        }
+      ],
+      "session": 421
+    }
+  },
+  {
+    "a": "nano",
+    "b": "micropython",
+    "status": "pass",
+    "build": "d5470dff6b8e4f87",
+    "observedMs": 1348.1915510000001,
+    "stopMs": 5.295877999999902,
+    "console": {
+      "A": "TX 1 ACK\r\nTX 2 ACK\r\nTX 3 ACK\r\nTX 4 ACK\r\nTX 5 ACK\r\nTX 6 ACK\r\nTX 7 ACK\r\nTX 8 ACK\r\nTX 9 ACK\r\nTX 10 ACK",
+      "B": "RX spreman\nRX 1\nRX 2\nRX 3\nRX 4\nRX 5\nRX 6\nRX 7\nRX 8\nRX 9\nRX 10\n"
+    },
+    "radio": {
+      "type": "radio",
+      "timeUs": 950024.375,
+      "attempts": 11,
+      "delivered": 11,
+      "blocked": false,
+      "dropData": 0,
+      "dropAck": 0,
+      "trace": [
+        {
+          "timeUs": 26036.5625,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 26173.5625,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 26173.5625,
+          "kind": "retry",
+          "node": "A:radio",
+          "reason": "ACK odbačen zadanim pokusom",
+          "attempt": 1
+        },
+        {
+          "timeUs": 26673.5625,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 1
+        },
+        {
+          "timeUs": 26810.5625,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 1,
+          "duplicate": true
+        },
+        {
+          "timeUs": 27013.5625,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 1
+        },
+        {
+          "timeUs": 128531.625,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 128668.625,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 128871.625,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 229983.125,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 230120.125,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 230323.125,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 331435.125,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 331572.125,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 331775.125,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 432887.3125,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 433024.3125,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 433227.3125,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 534339.3125,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            6,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 534476.3125,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            6,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 534679.3125,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 635791.625,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 635928.625,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 636131.625,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 737240.5625,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 737377.5625,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 737580.5625,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 838695.8125,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            9,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 838832.8125,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            9,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 839035.8125,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 940151.75,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            10,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 940288.75,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            10,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 940491.75,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        }
+      ],
+      "session": 421
+    }
+  },
+  {
+    "a": "s3-cpp",
+    "b": "nano",
+    "status": "pass",
+    "build": "d5470dff6b8e4f87",
+    "observedMs": 1199.4540179999995,
+    "stopMs": 2.198938999999882,
+    "console": {
+      "A": "TX 1 ACK\r\nTX 2 ACK\r\nTX 3 ACK\r\nTX 4 ACK\r\nTX 5 ACK\r\nTX 6 ACK\r\nTX 7 ACK\r\nTX 8 ACK\r\nTX 9 ACK\r\nTX 10 ACK\r\n",
+      "B": "RX spreman\r\nRX 1\r\nRX 2\r\nRX 3\r\nRX 4\r\nRX 5\r\nRX 6\r\nRX 7\r\nRX 8\r\nRX 9\r\nRX 10\r\n"
+    },
+    "radio": {
+      "type": "radio",
+      "timeUs": 955659.5625,
+      "attempts": 11,
+      "delivered": 11,
+      "blocked": false,
+      "dropData": 0,
+      "dropAck": 0,
+      "trace": [
+        {
+          "timeUs": 25259,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 25396,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 25396,
+          "kind": "retry",
+          "node": "A:radio",
+          "reason": "ACK odbačen zadanim pokusom",
+          "attempt": 1
+        },
+        {
+          "timeUs": 25896,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 1
+        },
+        {
+          "timeUs": 26033,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 1,
+          "duplicate": true
+        },
+        {
+          "timeUs": 26236,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 1
+        },
+        {
+          "timeUs": 127341,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 127478,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 127681,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 228416,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 228553,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 228756,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 329491,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 329628,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 329831,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 430566,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 430703,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 430906,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 531641,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            6,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 531778,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            6,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 531981,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 632716,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 632853,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 633056,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 733791,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 733928,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 734131,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 834866,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            9,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 835003,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            9,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 835206,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 935941,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            10,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 936078,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            10,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 936281,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        }
+      ],
+      "session": 421
+    }
+  },
+  {
+    "a": "uno",
+    "b": "s3-cpp",
+    "status": "pass",
+    "build": "d5470dff6b8e4f87",
+    "observedMs": 1125.9062249999997,
+    "stopMs": 32.749494000000595,
+    "console": {
+      "A": "TX 1 ACK\r\nTX 2 ACK\r\nTX 3 ACK\r\nTX 4 ACK\r\nTX 5 ACK\r\nTX 6 ACK\r\nTX 7 ACK\r\nTX 8 ACK\r\nTX 9 ACK\r\nTX 10 ACK\r\n",
+      "B": "RX spreman\r\nRX 1\r\nRX 2\r\nRX 3\r\nRX 4\r\nRX 5\r\nRX 6\r\nRX 7\r\nRX 8\r\nRX 9\r\nRX 10\r\n"
+    },
+    "radio": {
+      "type": "radio",
+      "timeUs": 957564.375,
+      "attempts": 11,
+      "delivered": 11,
+      "blocked": false,
+      "dropData": 0,
+      "dropAck": 0,
+      "trace": [
+        {
+          "timeUs": 26036.5625,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 26173.5625,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 26173.5625,
+          "kind": "retry",
+          "node": "A:radio",
+          "reason": "ACK odbačen zadanim pokusom",
+          "attempt": 1
+        },
+        {
+          "timeUs": 26673.5625,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 1
+        },
+        {
+          "timeUs": 26810.5625,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 1,
+          "duplicate": true
+        },
+        {
+          "timeUs": 27013.5625,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 1
+        },
+        {
+          "timeUs": 128531.625,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 128668.625,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 128871.625,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 229983.125,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 230120.125,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 230323.125,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 331435.125,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 331572.125,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 331775.125,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 432887.3125,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 433024.3125,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 433227.3125,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 534339.3125,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            6,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 534476.3125,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            6,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 534679.3125,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 635791.625,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 635928.625,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 636131.625,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 737240.5625,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 737377.5625,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 737580.5625,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 838695.8125,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            9,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 838832.8125,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            9,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 839035.8125,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 940151.75,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            10,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 940288.75,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            10,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 940491.75,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        }
+      ],
+      "session": 421
+    }
+  },
+  {
+    "a": "micropython",
+    "b": "micropython",
+    "status": "pass",
+    "build": "d5470dff6b8e4f87",
+    "observedMs": 790.7373880000005,
+    "stopMs": 4.254673999999795,
+    "console": {
+      "A": "TX 1 ACK\nTX 2 ACK\nTX 3 ACK\nTX 4 ACK\nTX 5 ACK\nTX 6 ACK\nTX 7 ACK\nTX 8 ACK\nTX 9 ACK\nTX 10 ACK\n",
+      "B": "RX spreman\nRX 1\nRX 2\nRX 3\nRX 4\nRX 5\nRX 6\nRX 7\nRX 8\nRX 9\nRX 10\n"
+    },
+    "radio": {
+      "type": "radio",
+      "timeUs": 972000,
+      "attempts": 11,
+      "delivered": 11,
+      "blocked": false,
+      "dropData": 0,
+      "dropAck": 0,
+      "trace": [
+        {
+          "timeUs": 25140,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 25277,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 25277,
+          "kind": "retry",
+          "node": "A:radio",
+          "reason": "ACK odbačen zadanim pokusom",
+          "attempt": 1
+        },
+        {
+          "timeUs": 25777,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 1
+        },
+        {
+          "timeUs": 25914,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 1,
+          "duplicate": true
+        },
+        {
+          "timeUs": 26117,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 1
+        },
+        {
+          "timeUs": 127140,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 127277,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 127480,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 228140,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 228277,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 228480,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 329140,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 329277,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 329480,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 430140,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 430277,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 430480,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 531140,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            6,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 531277,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            6,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 531480,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 632140,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 632277,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 632480,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 733140,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 733277,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 733480,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 834140,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            9,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 834277,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            9,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 834480,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 935140,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            10,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 935277,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            10,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 935480,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        }
+      ],
+      "session": 421
+    }
+  },
+  {
+    "a": "s3-cpp",
+    "b": "s3-cpp",
+    "status": "pass",
+    "build": "d5470dff6b8e4f87",
+    "observedMs": 538.3092139999999,
+    "stopMs": 1.989520000000084,
+    "console": {
+      "A": "TX 1 ACK\r\nTX 2 ACK\r\nTX 3 ACK\r\nTX 4 ACK\r\nTX 5 ACK\r\nTX 6 ACK\r\nTX 7 ACK\r\nTX 8 ACK\r\nTX 9 ACK\r\nTX 10 ACK\r\n",
+      "B": "RX spreman\r\nRX 1\r\nRX 2\r\nRX 3\r\nRX 4\r\nRX 5\r\nRX 6\r\nRX 7\r\nRX 8\r\nRX 9\r\nRX 10\r\n"
+    },
+    "radio": {
+      "type": "radio",
+      "timeUs": 1028000,
+      "attempts": 11,
+      "delivered": 11,
+      "blocked": false,
+      "dropData": 0,
+      "dropAck": 0,
+      "trace": [
+        {
+          "timeUs": 25259,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 25396,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 25396,
+          "kind": "retry",
+          "node": "A:radio",
+          "reason": "ACK odbačen zadanim pokusom",
+          "attempt": 1
+        },
+        {
+          "timeUs": 25896,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 1
+        },
+        {
+          "timeUs": 26033,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 1,
+          "duplicate": true
+        },
+        {
+          "timeUs": 26236,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 1
+        },
+        {
+          "timeUs": 127341,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 127478,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 127681,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 228416,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 228553,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 228756,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 329491,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 329628,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 329831,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 430566,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 430703,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 430906,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 531641,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            6,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 531778,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            6,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 531981,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 632716,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 632853,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 633056,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 733791,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 733928,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 734131,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 834866,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            9,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 835003,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            9,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 835206,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        },
+        {
+          "timeUs": 935941,
+          "kind": "tx",
+          "node": "A:radio",
+          "channel": 76,
+          "address": "5552533031",
+          "bytes": [
+            10,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0
+        },
+        {
+          "timeUs": 936078,
+          "kind": "rx",
+          "node": "B:radio",
+          "from": "A:radio",
+          "pipe": 0,
+          "bytes": [
+            10,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attempt": 0,
+          "duplicate": false
+        },
+        {
+          "timeUs": 936281,
+          "kind": "ack",
+          "node": "A:radio",
+          "from": "B:radio",
+          "attempt": 0
+        }
+      ],
+      "session": 421
+    }
+  }
+]

@@ -1,0 +1,145 @@
+✔ NRF24: reset, one-byte status and FIFO status have independent known values (1.413454ms)
+✔ NRF24: static packet crosses SPI FIFO; ACK sets TX_DS and removes TX entry (1.818052ms)
+✔ NRF24: mismatched channel gives 4 attempts, MAX_RT and retained payload (0.494393ms)
+✔ NRF24: mismatched address gives 4 attempts, MAX_RT and retained payload (0.300522ms)
+✔ NRF24: mismatched length gives 4 attempts, MAX_RT and retained payload (0.305439ms)
+✔ NRF24: mismatched rate gives 4 attempts, MAX_RT and retained payload (0.161914ms)
+✔ NRF24: mismatched CRC gives 4 attempts, MAX_RT and retained payload (0.175503ms)
+✔ NRF24: lost first ACK retries once and suppresses duplicate FIFO delivery (0.355193ms)
+✔ NRF24: lost first data retries once, then delivers one packet (0.27958ms)
+✔ NRF24: no auto-ACK completes even with no listening peer (0.289956ms)
+✔ NRF24: sender pipe-0 address must match TX address for auto-ACK (0.264587ms)
+✔ NRF24: full RX FIFO rejects new packets; status flags are write-one-clear (0.223406ms)
+✔ NRF24: CE below 10 us and power-up below 1.5 ms do not send (0.238759ms)
+✔ NRF24: power loss aborts pending ACK and clears FIFO, not another node (0.169635ms)
+✔ NRF24: unsupported dynamic features and malformed commands fail explicitly (0.469466ms)
+✔ SPI wiring: missing power, MISO, swapped signals and invalid mode do not fake register read (24.957204ms)
+✔ project format 4 roundtrips both nodes through JSON and ZIP and rejects nesting (12.252543ms)
+✔ real programs share packets and ACK: micropython → micropython (497.239273ms)
+✔ real programs share packets and ACK: micropython → uno (1010.38274ms)
+✔ real programs share packets and ACK: uno → micropython (852.754392ms)
+✔ real programs share packets and ACK: nano → uno (1479.269905ms)
+✔ real programs share packets and ACK: uno → nano (1473.006371ms)
+✖ real programs share packets and ACK: s3-cpp → micropython (308.817352ms)
+✖ real programs share packets and ACK: micropython → s3-cpp (91.226088ms)
+✖ real programs share packets and ACK: s3-cpp → nano (844.143407ms)
+✖ real programs share packets and ACK: uno → s3-cpp (666.61653ms)
+✖ real programs share packets and ACK: s3-cpp → s3-cpp (17.698416ms)
+✔ real MicroPython programs: channel (216.284739ms)
+✔ real MicroPython programs: address (223.899242ms)
+✔ real MicroPython programs: ack (196.988172ms)
+✔ real MicroPython programs: data (195.911994ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 26
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8352.18748
+
+✖ failing tests:
+
+test at verification/radio.test.ts:1:8126
+✖ real programs share packets and ACK: s3-cpp → micropython (308.817352ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /TX 1 ACK/. Input:
+  
+  'NRF24 SPI pogreska\r\n'
+  
+      at TestContext.<anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/radio.test.ts:54:360)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'NRF24 SPI pogreska\r\n',
+    expected: /TX 1 ACK/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at verification/radio.test.ts:1:8126
+✖ real programs share packets and ACK: micropython → s3-cpp (91.226088ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /TX 1 ACK/. Input:
+  
+  'TX 1 MAX_RT\n' +
+    'TX 2 MAX_RT\n' +
+    'TX 3 MAX_RT\n' +
+    'TX 4 MAX_RT\n' +
+    'TX 5 MAX_RT\n' +
+    'TX 6 MAX_RT\n' +
+    'TX 7 MAX_RT\n' +
+    'TX 8 MAX_RT\n' +
+    'TX 9 MAX_RT\n' +
+    'TX 10 MAX_RT\n' +
+    'Slanje dovrseno\n'
+  
+      at TestContext.<anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/radio.test.ts:54:360)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'TX 1 MAX_RT\nTX 2 MAX_RT\nTX 3 MAX_RT\nTX 4 MAX_RT\nTX 5 MAX_RT\nTX 6 MAX_RT\nTX 7 MAX_RT\nTX 8 MAX_RT\nTX 9 MAX_RT\nTX 10 MAX_RT\nSlanje dovrseno\n',
+    expected: /TX 1 ACK/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at verification/radio.test.ts:1:8126
+✖ real programs share packets and ACK: s3-cpp → nano (844.143407ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /TX 1 ACK/. Input:
+  
+  'NRF24 SPI pogreska\r\n'
+  
+      at TestContext.<anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/radio.test.ts:54:360)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'NRF24 SPI pogreska\r\n',
+    expected: /TX 1 ACK/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at verification/radio.test.ts:1:8126
+✖ real programs share packets and ACK: uno → s3-cpp (666.61653ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /TX 1 ACK/. Input:
+  
+  'TX 1 MAX_RT\r\n' +
+    'TX 2 MAX_RT\r\n' +
+    'TX 3 MAX_RT\r\n' +
+    'TX 4 MAX_RT\r\n' +
+    'TX 5 MAX_RT\r\n' +
+    'TX 6 MAX_RT\r\n' +
+    'TX 7 MAX_RT\r\n' +
+    'TX 8 MAX_RT\r\n' +
+    'TX 9 MAX_RT\r\n' +
+    'TX 10 MAX_RT\r\n'
+  
+      at TestContext.<anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/radio.test.ts:54:360)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'TX 1 MAX_RT\r\nTX 2 MAX_RT\r\nTX 3 MAX_RT\r\nTX 4 MAX_RT\r\nTX 5 MAX_RT\r\nTX 6 MAX_RT\r\nTX 7 MAX_RT\r\nTX 8 MAX_RT\r\nTX 9 MAX_RT\r\nTX 10 MAX_RT\r\n',
+    expected: /TX 1 ACK/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at verification/radio.test.ts:1:8126
+✖ real programs share packets and ACK: s3-cpp → s3-cpp (17.698416ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /TX 1 ACK/. Input:
+  
+  'NRF24 SPI pogreska\r\n'
+  
+      at TestContext.<anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/radio.test.ts:54:360)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'NRF24 SPI pogreska\r\n',
+    expected: /TX 1 ACK/,
+    operator: 'match',
+    diff: 'simple'
+  }

@@ -1,0 +1,39 @@
+
+> esp32-micropython-lab@0.3.0-beta.1 test
+> node --import tsx --test verification/project.test.ts verification/circuit.test.ts
+
+✔ 44 physical headers, duplicate power pins and reserved PSRAM pins (14.22282ms)
+✔ breadboard groups, channel, columns, rails and split at 15/16 (12.127334ms)
+✔ wire deletion changes connectivity without a cached netlist (2.267933ms)
+✔ crossing and overlapping paths never create electrical joints (1.461246ms)
+✔ power short through breadboard is detected and clears after disconnection (8.079538ms)
+✔ button permanently joins each side and bridges both sides only while pressed (1.064843ms)
+✔ resistor, LED and potentiometer terminals remain separate nets (0.422803ms)
+✔ overvoltage, reserved pins, shared GPIO and contradictory known drivers (1.245172ms)
+✔ LED requires series resistor; bypassed resistor is detected (2.831076ms)
+✔ reference lesson passes; removing rail bridge exposes open path (18.272158ms)
+✔ rotation and movement preserve identity, connectivity and attached wire endpoint (6.211904ms)
+✔ malformed endpoints, IDs, component kinds, properties and coordinates reject (8.113028ms)
+✔ schema 1 fixture migrates without loss; future versions reject (1.574265ms)
+✔ ZIP and JSON preserve complete circuit; rejected input cannot mutate current project (18.205317ms)
+✔ autosave, reopening and immutable history preserve complete circuit (34.861453ms)
+✔ 200 routed wires and maximum bend count round-trip beyond old manifest cap (42.009407ms)
+✔ ZIP and JSON preserve Unicode, helper files and settings (9.529517ms)
+✔ future schemas and unknown board profiles are rejected (0.429853ms)
+✔ entrypoint, settings and circuit scope are validated (0.391385ms)
+✔ traversal, scripts, internal overrides and case collisions are rejected (0.556392ms)
+✔ file and decompressed archive sizes are bounded (7.229286ms)
+✔ ZIP manifest must match files; truncated packages are rejected (4.648945ms)
+✔ editing preserves immutable runtime snapshot (1.303761ms)
+✔ IndexedDB survives reopening with multiple projects, settings and history (33.835788ms)
+✔ atomic revisions protect against concurrent tab writes (3.158576ms)
+✔ bounded history restoration creates a new revision (40.676538ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 476.436378
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.

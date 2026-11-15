@@ -1,0 +1,21 @@
+✔ an empty draft round-trips without acquiring a completed outcome or checked steps (2.07578ms)
+✔ a completed outcome needs explicit scope, environment, duration and conclusion (1.096568ms)
+✔ a pupil record needs a participant code; device/development records do not invent one (0.38592ms)
+✔ assisted and blocked outcomes retain their different required observations (0.263896ms)
+✔ offline claims need both a method and measured procedure, while untried drafts remain saveable (0.315894ms)
+✔ radio requires an explicit peer and single-board records reject an accidental second node (0.340541ms)
+✔ v2 records retain observations and import with unknown scope and untried offline method (0.297046ms)
+✔ untrusted classification and extra fields cannot turn a draft/development record into pupil evidence (1.217069ms)
+✔ text survives JSON round-trip as text, including markup and Croatian characters (0.300772ms)
+✔ malformed files, unsupported versions and oversized input are rejected before replacing fields (0.538109ms)
+✔ invalid targets, unknown lessons and nonboolean step assertions are rejected (3.529705ms)
+✔ limits and actual calendar dates are checked independently from draft completion (0.302294ms)
+✔ generated page exposes record recovery and all offline assets without inline legacy save code (0.763838ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 114.997052

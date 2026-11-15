@@ -1,0 +1,11 @@
+{
+  "performedOn": "2026-11-12",
+  "cleanBuilds": 2,
+  "sameEnvironment": true,
+  "byteIdentical": true,
+  "scope": "Same Linux x86_64 environment and pinned toolchain; not an independent cross-host reproducibility claim.",
+  "outputs": {
+    "dist/runtime/micropython.mjs": "89786d227a5f35e7d80eac6bf4b5409f327c486fe16290cba2f25360e5834440",
+    "dist/runtime/micropython.wasm": "edb546814fd0cee7abe1d5730a95643994d056b5786b89ede9f2ca02eae108a3"
+  }
+}

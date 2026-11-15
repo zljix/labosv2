@@ -1,0 +1,25 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.4.0-beta.1 test:arduino
+> node --import tsx --test verification/arduino.test.ts
+
+✔ legacy builds stay valid; library version and bytes enter the exact input hash (19.269009ms)
+✔ unknown libraries, duplicate names, wrong versions and invalid source paths fail (1.132635ms)
+✔ browser cache validates artifacts and never reuses stale or corrupted data (6.22267ms)
+✔ structured diagnostics retain source, line, column, warnings and notes (1.311742ms)
+✔ pairing accepts only loopback links with a session code (0.425958ms)
+✔ Arduino submission preserves a stopped reopenable full project, work and exact build (26.878886ms)
+✔ Arduino IDE export describes pinned libraries and preserves all C++ sources (1.70473ms)
+✔ real blank arduino.uno-r3.atmega328p project, multiple files and pinned Bounce2 compile and execute (1862.006406ms)
+✔ real blank arduino.nano-classic.atmega328p project, multiple files and pinned Bounce2 compile and execute (1632.486111ms)
+✔ real compiler rejects an unselected library and locates an error in src/ (1669.744394ms)
+✔ local bridge enforces authentication/origin and hash cache for a real compile (2880.740213ms)
+✔ local bridge rejects overlapping compiles and invalid source paths (47.010129ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8540.522178

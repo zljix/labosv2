@@ -1,0 +1,31 @@
+{
+  "scope": "Development Chrome/Linux UI, not logged-in production, physical equipment, target mobile browsers or pupil pilot. Observed before comment-only Croatian code clarification; same formulas and controls.",
+  "version": "0.12.1-beta.1",
+  "urs04": {
+    "target": "S3 Arduino C++",
+    "available": 8,
+    "total": 8,
+    "observed": "All eight buttons visible and enabled; opened LM35/NTC project with source, header and bundled artifact."
+  },
+  "compare": {
+    "baseline": "S3 COMPARE LM35=24.98 NTC=24.99",
+    "changedInputs": {
+      "lm351": 150,
+      "ntc1": 100
+    },
+    "changed": "S3 COMPARE LM35=149.97 NTC=100.03",
+    "stop": "Observed return of Run control and retained output."
+  },
+  "temt6000": {
+    "baseline": "S3 TEMT6000 ADC=660 U=0.500 SAT=0",
+    "illuminationStimulus": 2000,
+    "changed": "S3 TEMT6000 ADC=4095 U=3.100 SAT=1",
+    "modelOutputVolts": 3.2,
+    "stop": "Observed Stop action and retained clipped ADC output."
+  },
+  "notes": [
+    "Arrow-key End actions changed native range controls; no direct runtime state injection.",
+    "Initial label lookup did not match the select; used the actual native select after inspecting the dialog.",
+    "No screenshot deliverable or pupil evidence is claimed."
+  ]
+}

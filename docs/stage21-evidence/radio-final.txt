@@ -1,0 +1,39 @@
+✔ NRF24: reset, one-byte status and FIFO status have independent known values (1.185872ms)
+✔ NRF24: static packet crosses SPI FIFO; ACK sets TX_DS and removes TX entry (1.506695ms)
+✔ NRF24: mismatched channel gives 4 attempts, MAX_RT and retained payload (0.472871ms)
+✔ NRF24: mismatched address gives 4 attempts, MAX_RT and retained payload (0.29933ms)
+✔ NRF24: mismatched length gives 4 attempts, MAX_RT and retained payload (0.233581ms)
+✔ NRF24: mismatched rate gives 4 attempts, MAX_RT and retained payload (0.161262ms)
+✔ NRF24: mismatched CRC gives 4 attempts, MAX_RT and retained payload (0.164037ms)
+✔ NRF24: lost first ACK retries once and suppresses duplicate FIFO delivery (0.283827ms)
+✔ NRF24: lost first data retries once, then delivers one packet (0.235354ms)
+✔ NRF24: no auto-ACK completes even with no listening peer (0.253511ms)
+✔ NRF24: sender pipe-0 address must match TX address for auto-ACK (0.210126ms)
+✔ NRF24: full RX FIFO rejects new packets; status flags are write-one-clear (0.222975ms)
+✔ NRF24: CE below 10 us and power-up below 1.5 ms do not send (0.155273ms)
+✔ NRF24: power loss aborts pending ACK and clears FIFO, not another node (0.103686ms)
+✔ NRF24: unsupported dynamic features and malformed commands fail explicitly (0.383376ms)
+✔ SPI wiring: missing power, MISO, swapped signals and invalid mode do not fake register read (22.334061ms)
+✔ project format 4 roundtrips both nodes through JSON and ZIP and rejects nesting (11.757127ms)
+✔ real programs share packets and ACK: micropython → micropython (519.579638ms)
+✔ real programs share packets and ACK: micropython → uno (998.430391ms)
+✔ real programs share packets and ACK: uno → micropython (841.630134ms)
+✔ real programs share packets and ACK: nano → uno (1679.476984ms)
+✔ real programs share packets and ACK: uno → nano (1485.738482ms)
+✔ real programs share packets and ACK: s3-cpp → micropython (384.791259ms)
+✔ real programs share packets and ACK: micropython → s3-cpp (291.765603ms)
+✔ real programs share packets and ACK: s3-cpp → nano (900.664898ms)
+✔ real programs share packets and ACK: uno → s3-cpp (870.507624ms)
+✔ real programs share packets and ACK: s3-cpp → s3-cpp (180.466948ms)
+✔ real MicroPython programs: channel (216.601905ms)
+✔ real MicroPython programs: address (183.778305ms)
+✔ real MicroPython programs: ack (191.071084ms)
+✔ real MicroPython programs: data (192.576196ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9208.645649

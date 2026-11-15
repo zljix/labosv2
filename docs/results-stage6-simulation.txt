@@ -1,0 +1,25 @@
+
+> esp32-micropython-lab@0.3.0-beta.1 test:simulation
+> node --import tsx --test verification/simulation.test.ts
+
+✔ LED follows actual Python loop; unchanged pin numbers cannot drive a rewired LED (1176.121363ms)
+✔ button changes live input in normal sleeping Python loop; release and missing wire change result (578.513769ms)
+✔ ADC and PWM use live potentiometer voltage, saturate, and publish real duty (351.769409ms)
+✔ LED current reflects series resistance, polarity, open cathode and split rail (13.662817ms)
+✔ floating ADC and ambiguous digital voltage report errors; no hidden fixture input (250.854577ms)
+✔ opposing program outputs and a contact that shorts an output raise runtime diagnostics (522.309045ms)
+✔ PWM methods, deinit, quantised 12-bit ADC, bounds and unavailable GPIOs (1760.815577ms)
+✔ stopped runs cannot deliver late events; repeated force-stop and fresh run (1860.149632ms)
+✔ compiled run snapshot and multiple inputs stay isolated from later project edits (3.451493ms)
+✔ invalid power circuit is blocked before run, and all three lesson circuits compile (8.222171ms)
+✔ atomic initial output value avoids an artificial conflict against a driven-high net (227.604293ms)
+✔ PWM channel limit is a catchable Python error; an inactive LED does not create a source (278.585476ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7483.910766
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.

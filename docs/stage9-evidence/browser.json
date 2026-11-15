@@ -1,0 +1,26 @@
+{
+  "environment": "Chromium/Linux development preview",
+  "version": "0.4.0-beta.1",
+  "blankUnoWriteCompileManualImportRun": true,
+  "source": "new code typed in browser",
+  "firstBuild": {
+    "flash": 1974,
+    "staticRam": 210,
+    "serial": "UNO ETAPA9 IZ PRAZNOG"
+  },
+  "actualZipSubmissionDownloadAndReimport": true,
+  "reopenedAsStoppedCopy": true,
+  "workRetained": true,
+  "libraryChangeRejectsArtifact": true,
+  "sourceChangeRejectsArtifact": true,
+  "ownWarningNavigates": {
+    "file": "main.ino",
+    "line": 2,
+    "column": 7,
+    "flash": 1976,
+    "staticRam": 212
+  },
+  "localPopupConnection": "not verified; cloud browser URL policy blocked the loopback popup",
+  "productionBehindSignIn": "not retested",
+  "schoolPcPhysicalHardwareIOS": "not tested"
+}

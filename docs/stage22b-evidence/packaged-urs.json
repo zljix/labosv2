@@ -1,0 +1,202 @@
+[
+  {
+    "target": "micropython",
+    "status": "pass",
+    "build": "2c8d46b0f0083eb1",
+    "observationMs": 8493.242576999999,
+    "stopMs": 8.987184999999954,
+    "observations": [
+      {
+        "phase": 0,
+        "temperature": 23.999977111816406,
+        "angle": 0,
+        "sample": 1,
+        "timeMs": 260,
+        "displayNonzero": 523
+      },
+      {
+        "phase": 1,
+        "temperature": 29.000091552734375,
+        "angle": 90,
+        "sample": 2,
+        "timeMs": 2264,
+        "displayNonzero": 528
+      },
+      {
+        "phase": 2,
+        "temperature": 27.000045776367188,
+        "angle": 90,
+        "sample": 3,
+        "timeMs": 4275,
+        "displayNonzero": 528
+      },
+      {
+        "phase": 3,
+        "temperature": 25,
+        "angle": 0,
+        "sample": 4,
+        "timeMs": 6291,
+        "displayNonzero": 522
+      },
+      {
+        "phase": 4,
+        "temperature": 27.000045776367188,
+        "angle": 0,
+        "sample": 5,
+        "timeMs": 8295,
+        "displayNonzero": 522
+      }
+    ],
+    "console": "I2C0: ['0x38']\nI2C1: ['0x3c']\nT=24.00 C, RH=50.00 %, servo=0 deg\nT=29.00 C, RH=50.00 %, servo=90 deg\nT=27.00 C, RH=50.00 %, servo=90 deg\nT=25.00 C, RH=50.00 %, servo=0 deg\n"
+  },
+  {
+    "target": "s3-cpp",
+    "status": "pass",
+    "build": "2c8d46b0f0083eb1",
+    "observationMs": 8241.265178,
+    "stopMs": 5.328617999999551,
+    "observations": [
+      {
+        "phase": 0,
+        "temperature": 23.999977111816406,
+        "angle": 0,
+        "sample": 1,
+        "timeMs": 2030,
+        "displayNonzero": 187
+      },
+      {
+        "phase": 1,
+        "temperature": 29.000091552734375,
+        "angle": 89.91,
+        "sample": 2,
+        "timeMs": 4010,
+        "displayNonzero": 187
+      },
+      {
+        "phase": 2,
+        "temperature": 27.000045776367188,
+        "angle": 89.91,
+        "sample": 3,
+        "timeMs": 4090,
+        "displayNonzero": 187
+      },
+      {
+        "phase": 3,
+        "temperature": 25,
+        "angle": 0,
+        "sample": 4,
+        "timeMs": 7970,
+        "displayNonzero": 187
+      },
+      {
+        "phase": 4,
+        "temperature": 27.000045776367188,
+        "angle": 0,
+        "sample": 5,
+        "timeMs": 8050,
+        "displayNonzero": 187
+      }
+    ],
+    "console": "S3 T=24.00 RH=50.00 SERVO=0\r\nS3 T=29.00 RH=50.00 SERVO=90\r\nS3 T=27.00 RH=50.00 SERVO=90\r\nS3 T=25.00 RH=50.00 SERVO=0\r\n"
+  },
+  {
+    "target": "uno",
+    "status": "pass",
+    "build": "2c8d46b0f0083eb1",
+    "observationMs": 23590.360695,
+    "stopMs": 3.0484460000006948,
+    "observations": [
+      {
+        "phase": 0,
+        "temperature": 23.999977111816406,
+        "angle": 0,
+        "sample": 1,
+        "timeMs": 988,
+        "displayNonzero": 1
+      },
+      {
+        "phase": 1,
+        "temperature": 29.000091552734375,
+        "angle": 90.01,
+        "sample": 2,
+        "timeMs": 3156,
+        "displayNonzero": 287
+      },
+      {
+        "phase": 2,
+        "temperature": 27.000045776367188,
+        "angle": 89.95,
+        "sample": 3,
+        "timeMs": 5304,
+        "displayNonzero": 285
+      },
+      {
+        "phase": 3,
+        "temperature": 25,
+        "angle": 0,
+        "sample": 4,
+        "timeMs": 7468,
+        "displayNonzero": 284
+      },
+      {
+        "phase": 4,
+        "temperature": 27.000045776367188,
+        "angle": 0,
+        "sample": 5,
+        "timeMs": 9624,
+        "displayNonzero": 289
+      }
+    ],
+    "console": "Regulator spreman\r\nT=24.00 RH=50.00 Servo=0\r\nT=29.00 RH=50.00 Servo=90\r\nT=27.00 RH=50.00 Servo=90\r\nT=25.00 RH=50.00 Servo=0\r\n"
+  },
+  {
+    "target": "nano",
+    "status": "pass",
+    "build": "2c8d46b0f0083eb1",
+    "observationMs": 21368.128320999997,
+    "stopMs": 2.4682490000050166,
+    "observations": [
+      {
+        "phase": 0,
+        "temperature": 23.999977111816406,
+        "angle": 0,
+        "sample": 1,
+        "timeMs": 988,
+        "displayNonzero": 1
+      },
+      {
+        "phase": 1,
+        "temperature": 29.000091552734375,
+        "angle": 90.01,
+        "sample": 2,
+        "timeMs": 3160,
+        "displayNonzero": 288
+      },
+      {
+        "phase": 2,
+        "temperature": 27.000045776367188,
+        "angle": 89.95,
+        "sample": 3,
+        "timeMs": 5304,
+        "displayNonzero": 285
+      },
+      {
+        "phase": 3,
+        "temperature": 25,
+        "angle": 0,
+        "sample": 4,
+        "timeMs": 7460,
+        "displayNonzero": 284
+      },
+      {
+        "phase": 4,
+        "temperature": 27.000045776367188,
+        "angle": 0,
+        "sample": 5,
+        "timeMs": 9624,
+        "displayNonzero": 289
+      }
+    ],
+    "console": "Regulator spreman\r\nT=24.00 RH=50.00 Servo=0\r\nT=29.00 RH=50.00 Servo=90\r\nT=27.00 RH=50.00 Servo=90\r\nT=25.00 RH=50.00 Servo=0\r\n"
+  }
+]

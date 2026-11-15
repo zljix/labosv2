@@ -1,0 +1,545 @@
+{
+  "text": "RTC CH=1\r\nRTC RAM=1 WP=1\r\nRTC 2026-1-1 12:0:0 DAY=5\r\n",
+  "frame": {
+    "type": "simulation",
+    "clockProfile": "external-us",
+    "timeMs": 1400,
+    "nets": {
+      "board:3V3": 3.3,
+      "board:5V": 5,
+      "board:A0": null,
+      "board:A1": null,
+      "board:A2": null,
+      "board:A3": null,
+      "board:A4": null,
+      "board:A5": null,
+      "board:A6": null,
+      "board:A7": null,
+      "board:D0": null,
+      "board:D1": null,
+      "board:D10": null,
+      "board:D11": null,
+      "board:D12": null,
+      "board:D13": null,
+      "board:D2": null,
+      "board:D3": null,
+      "board:D4": 0,
+      "board:D5": 0,
+      "board:D6": 0,
+      "board:D7": null,
+      "board:D8": null,
+      "board:D9": null,
+      "board:GND": 0
+    },
+    "levelShifters": {},
+    "i2cLevelShifters": {},
+    "leds": {},
+    "gpios": {
+      "0": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "1": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "2": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "3": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "4": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "5": {
+        "mode": "IN",
+        "volts": 0,
+        "level": 0
+      },
+      "6": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "7": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "8": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "9": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "10": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "11": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "12": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "13": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "14": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "15": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "16": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "17": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "18": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "19": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      }
+    },
+    "optical": {},
+    "sensors": {},
+    "displays": {},
+    "measurements": [],
+    "i2cTrace": [],
+    "radios": {},
+    "sdCards": {},
+    "rtcDevices": {
+      "rtc1": {
+        "mainPower": true,
+        "battery": true,
+        "rtcMainPower": true,
+        "retained": true,
+        "valid": true,
+        "halted": false,
+        "writeProtected": false,
+        "iso": "2026-01-01T12:00:00",
+        "day": 5,
+        "reason": "Sat radi",
+        "received": 21,
+        "errors": 0,
+        "state": {
+          "registers": [
+            0,
+            0,
+            18,
+            1,
+            1,
+            5,
+            38,
+            0
+          ],
+          "ram": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trickle": 92,
+          "subsecondUs": 395224.125,
+          "valid": true
+        },
+        "trace": [
+          {
+            "timeUs": 0,
+            "operation": "main-power"
+          },
+          {
+            "timeUs": 164.9375,
+            "operation": "ce-start"
+          },
+          {
+            "timeUs": 512.8125,
+            "operation": "command",
+            "value": 142
+          },
+          {
+            "timeUs": 875.375,
+            "operation": "write-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 904.4375,
+            "operation": "clock-write",
+            "value": 7
+          },
+          {
+            "timeUs": 953.5625,
+            "operation": "ce-start"
+          },
+          {
+            "timeUs": 1308.125,
+            "operation": "command",
+            "value": 129
+          },
+          {
+            "timeUs": 1333.625,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 1609.1875,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 1671.75,
+            "operation": "ce-start"
+          },
+          {
+            "timeUs": 2019.25,
+            "operation": "command",
+            "value": 128
+          },
+          {
+            "timeUs": 2387.9375,
+            "operation": "write-byte",
+            "value": 128
+          },
+          {
+            "timeUs": 2417,
+            "operation": "clock-write",
+            "value": 0
+          },
+          {
+            "timeUs": 2511.75,
+            "operation": "ce-start"
+          },
+          {
+            "timeUs": 2860.3125,
+            "operation": "command",
+            "value": 129
+          },
+          {
+            "timeUs": 2885.8125,
+            "operation": "read-byte",
+            "value": 128
+          },
+          {
+            "timeUs": 3161.375,
+            "operation": "read-byte",
+            "value": 128
+          },
+          {
+            "timeUs": 1003314.1875,
+            "operation": "ce-start"
+          },
+          {
+            "timeUs": 1003668.75,
+            "operation": "command",
+            "value": 129
+          },
+          {
+            "timeUs": 1003694.25,
+            "operation": "read-byte",
+            "value": 128
+          },
+          {
+            "timeUs": 1003969.8125,
+            "operation": "read-byte",
+            "value": 128
+          },
+          {
+            "timeUs": 1004032.375,
+            "operation": "ce-start"
+          },
+          {
+            "timeUs": 1004379.875,
+            "operation": "command",
+            "value": 128
+          },
+          {
+            "timeUs": 1004748.4375,
+            "operation": "write-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 1004777.5,
+            "operation": "clock-write",
+            "value": 0
+          },
+          {
+            "timeUs": 1004826.375,
+            "operation": "ce-start"
+          },
+          {
+            "timeUs": 1005175.0625,
+            "operation": "command",
+            "value": 193
+          },
+          {
+            "timeUs": 1005200.5625,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 1005476.125,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 1005538.4375,
+            "operation": "ce-start"
+          },
+          {
+            "timeUs": 1005892.0625,
+            "operation": "command",
+            "value": 192
+          },
+          {
+            "timeUs": 1006254.75,
+            "operation": "write-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 1006283.8125,
+            "operation": "ram-write",
+            "value": 1
+          },
+          {
+            "timeUs": 1006330.9375,
+            "operation": "ce-start"
+          },
+          {
+            "timeUs": 1006678.8125,
+            "operation": "command",
+            "value": 142
+          },
+          {
+            "timeUs": 1007047.5,
+            "operation": "write-byte",
+            "value": 128
+          },
+          {
+            "timeUs": 1007076.5625,
+            "operation": "clock-write",
+            "value": 7
+          },
+          {
+            "timeUs": 1007123.6875,
+            "operation": "ce-start"
+          },
+          {
+            "timeUs": 1007471.3125,
+            "operation": "command",
+            "value": 192
+          },
+          {
+            "timeUs": 1007840.375,
+            "operation": "write-byte",
+            "value": 99
+          },
+          {
+            "timeUs": 1007869.4375,
+            "operation": "write-protected"
+          },
+          {
+            "timeUs": 1007969.6875,
+            "operation": "ce-start"
+          },
+          {
+            "timeUs": 1008318.375,
+            "operation": "command",
+            "value": 193
+          },
+          {
+            "timeUs": 1008343.875,
+            "operation": "read-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 1008619.4375,
+            "operation": "read-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 1008742.1875,
+            "operation": "ce-start"
+          },
+          {
+            "timeUs": 1009098.875,
+            "operation": "command",
+            "value": 143
+          },
+          {
+            "timeUs": 1009124.375,
+            "operation": "read-byte",
+            "value": 128
+          },
+          {
+            "timeUs": 1009399.9375,
+            "operation": "read-byte",
+            "value": 128
+          },
+          {
+            "timeUs": 1009562,
+            "operation": "ce-start"
+          },
+          {
+            "timeUs": 1009915.875,
+            "operation": "command",
+            "value": 142
+          },
+          {
+            "timeUs": 1010286.1875,
+            "operation": "write-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 1010315.25,
+            "operation": "clock-write",
+            "value": 7
+          },
+          {
+            "timeUs": 1010363.8125,
+            "operation": "ce-start"
+          },
+          {
+            "timeUs": 1010713,
+            "operation": "command",
+            "value": 191
+          },
+          {
+            "timeUs": 1010738.5,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 1011027.8125,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 1011302.4375,
+            "operation": "read-byte",
+            "value": 18
+          },
+          {
+            "timeUs": 1011577.0625,
+            "operation": "read-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 1011857.6875,
+            "operation": "read-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 1012140.0625,
+            "operation": "read-byte",
+            "value": 5
+          },
+          {
+            "timeUs": 1012414.6875,
+            "operation": "read-byte",
+            "value": 38
+          },
+          {
+            "timeUs": 1012689.3125,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 1012969.9375,
+            "operation": "read-byte",
+            "value": 0
+          }
+        ]
+      }
+    },
+    "touches": {},
+    "tfts": {},
+    "spiTrace": [],
+    "spiBytes": 0,
+    "steppers": {
+      "drivers": {},
+      "motors": {}
+    },
+    "tmDisplays": {},
+    "infrared": {},
+    "encoders": {},
+    "oneWireDevices": {},
+    "timedSensors": {},
+    "analogInputs": {},
+    "servos": {},
+    "diagnostics": [],
+    "avr": {
+      "cycles": 22400026,
+      "clockHz": 16000000,
+      "uartBaud": 9615,
+      "rxPending": 0,
+      "busTrace": [],
+      "memory": {
+        "staticBytes": 203,
+        "lowestSP": 2209,
+        "minFreeToStatic": 1751
+      }
+    }
+  }
+}

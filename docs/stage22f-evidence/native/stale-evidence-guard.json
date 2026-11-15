@@ -1,0 +1,6 @@
+{
+  "status": "pass",
+  "test": "Changed the recorded source SHA-256 in an isolated evidence copy; final verifier refused it.",
+  "exitCode": 1,
+  "realEvidenceWasModified": false
+}

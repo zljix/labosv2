@@ -1,0 +1,22 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+0 !== 1
+
+    at Worker.<anonymous> (/workspace/scratch/c12aebc85825/lab/.sites-checkout/verification/s3-controls-package.ts:39:67)
+    at Worker.emit (node:events:514:28)
+    at MessagePort.<anonymous> (node:internal/worker:350:14)
+    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:869:20)
+    at MessagePort.<anonymous> (node:internal/per_context/messageport:23:28) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 0,
+  expected: 1,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.1

@@ -1,0 +1,35 @@
+{
+  "environment": "Development Chrome on Linux, http://127.0.0.1:4173/",
+  "observed": [
+    {
+      "pair": "S3 MicroPython → Uno R3",
+      "result": "TX 1–10 ACK, RX 1–10, ten TX attempts; Stop retained both consoles and final frame"
+    },
+    {
+      "pair": "S3 MicroPython → Uno R3, drop first ACK",
+      "result": "11 attempts, ten successful sends and ten RX numbers; RX 1 appeared once"
+    },
+    {
+      "pair": "S3 C++ → Nano classic",
+      "result": "TX 1–10 ACK, RX 1–10, ten attempts; Stop retained final values"
+    },
+    {
+      "view": "Node B circuit",
+      "result": "Correct Uno SPI/CE wiring visible, zero electrical warnings/errors"
+    },
+    {
+      "view": "Desktop layout",
+      "viewportWidth": 1363,
+      "dialogWidth": 1120,
+      "result": "Both consoles visible together; source editor, node selector and export controls accessible"
+    }
+  ],
+  "notVerified": [
+    "Cold offline browser restart of this release",
+    "Production authenticated browser session",
+    "Actual downloaded CSV contents in browser",
+    "Physical devices",
+    "Windows/macOS toolchains",
+    "iOS/Safari/Android target devices"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "public/avr-examples.json": {
+    "unchanged": true,
+    "sha256": "74ce7685ba60fa22212540ba71fc5420ed7bbba40723be5d0cee74861e1fa237",
+    "bytes": 2293460
+  },
+  "public/avr-contract.mjs": {
+    "unchanged": true,
+    "sha256": "bed69b2facfeabbe139739ee6daa745054d95bf018a8a6cdf625e3418cb29b7b",
+    "bytes": 8615
+  },
+  "public/runtime/micropython.wasm": {
+    "unchanged": true,
+    "sha256": "3f638e8cacd1f00168f19a17fcae35ece9773b4b661464c8241114e00c24fcce",
+    "bytes": 1134289
+  },
+  "public/runtime/micropython.mjs": {
+    "unchanged": true,
+    "sha256": "fea2a68ade7ea4e345b4eead04b9710506d08101c563e6bbad1721dbdd4289d8",
+    "bytes": 225362
+  },
+  "vendor/arduino/lock.json": {
+    "unchanged": true,
+    "sha256": "c7a3dcff23a8308d8d4428fa5a42b0c779610b1b0ae20752e9d321769ca5b692",
+    "bytes": 13612
+  },
+  "AVR artifact count": 128
+}

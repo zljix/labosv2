@@ -1,0 +1,11 @@
+{
+  "pristinePinnedSource": true,
+  "idempotentSecondApplication": true,
+  "sameCAndJSAsBuilt": true,
+  "files": [
+    "mphalport.c",
+    "api.js",
+    "Makefile",
+    "modlab.c"
+  ]
+}

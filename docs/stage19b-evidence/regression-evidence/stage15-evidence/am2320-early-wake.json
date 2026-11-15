@@ -1,0 +1,45 @@
+{
+  "console": "EARLY_WAIT (24.0, 50.0)\n",
+  "trace": [
+    {
+      "timeMs": 2147.5514330000474,
+      "bus": 0,
+      "address": 92,
+      "operation": "W",
+      "length": 0,
+      "bytes": [],
+      "result": "NACK / buđenje"
+    },
+    {
+      "timeMs": 2148.554433000047,
+      "bus": 0,
+      "address": 92,
+      "operation": "W",
+      "length": 3,
+      "bytes": [
+        3,
+        0,
+        4
+      ],
+      "result": "ACK"
+    },
+    {
+      "timeMs": 2150.5574330000472,
+      "bus": 0,
+      "address": 92,
+      "operation": "R",
+      "length": 8,
+      "bytes": [
+        3,
+        4,
+        1,
+        244,
+        0,
+        240,
+        177,
+        162
+      ],
+      "result": "ACK"
+    }
+  ]
+}

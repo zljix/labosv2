@@ -1,0 +1,29 @@
+{
+  "console": "AM2320 T=-10.10 RH=50.00\nAM2320 T=-10.10 RH=50.00\nAM2320 T=30.00 RH=70.00\n",
+  "measurements": [
+    {
+      "timeMs": 2194.7621709999994,
+      "component": "am23201",
+      "temperature": -10.1,
+      "humidity": 50,
+      "pressure": null,
+      "sample": 1
+    },
+    {
+      "timeMs": 4309.788275,
+      "component": "am23201",
+      "temperature": -10.1,
+      "humidity": 50,
+      "pressure": null,
+      "sample": 2
+    },
+    {
+      "timeMs": 6419.228131000001,
+      "component": "am23201",
+      "temperature": 30,
+      "humidity": 70,
+      "pressure": null,
+      "sample": 3
+    }
+  ]
+}

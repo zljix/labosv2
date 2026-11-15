@@ -1,0 +1,4 @@
+rtcRead: pass · Sketch uses 308556 bytes (23%) of program storage space. Maximum is 1310720 bytes. Global variables use 22624 bytes (6%) of dynamic memory, leaving 305056 bytes for local variables. Maximum is 327680 bytes.
+rtcSet: pass · Sketch uses 308892 bytes (23%) of program storage space. Maximum is 1310720 bytes. Global variables use 22624 bytes (6%) of dynamic memory, leaving 305056 bytes for local variables. Maximum is 327680 bytes.
+rtcMemory: pass · Sketch uses 309172 bytes (23%) of program storage space. Maximum is 1310720 bytes. Global variables use 22624 bytes (6%) of dynamic memory, leaving 305056 bytes for local variables. Maximum is 327680 bytes.
+rtcClock: pass · Sketch uses 309272 bytes (23%) of program storage space. Maximum is 1310720 bytes. Global variables use 22632 bytes (6%) of dynamic memory, leaving 305048 bytes for local variables. Maximum is 327680 bytes.

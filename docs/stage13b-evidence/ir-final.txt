@@ -1,0 +1,34 @@
+✔ NEC envelope has LSB byte order, inverse bytes, exact timings and special repeat (2.181723ms)
+✔ four IR examples on three boards preserve source, profiles and artifact through JSON/ZIP (99.062719ms)
+✔ IR parser rejects malformed groups, voltage, address, command, hold and faults (1.405281ms)
+✔ remote causes wired active LOW GPIO pulses, exact edges and 110 ms repeat starts (7.267009ms)
+✔ unpowered, missing ground, disconnected OUT, blocked or different optical group do not inject commands (5.298699ms)
+✔ IR voltage domains and Nano analog-only pins are checked before run (1.213682ms)
+✔ receiver open collector has resistive pull-up and detects actively driven HIGH conflict (1.716531ms)
+✔ transmitter requires valid carrier, supply and optical path; steady HIGH and wrong frequency fail (5.630509ms)
+✔ remote live input validation, duplicate presses and queue limit do not modify saved circuit (1.418121ms)
+✔ real MicroPython irNEC: pulses decode, repeats, address filter or LED and stop (431.887274ms)
+✔ real MicroPython irPulses: pulses decode, repeats, address filter or LED and stop (466.443194ms)
+✔ real MicroPython irLED: pulses decode, repeats, address filter or LED and stop (622.548751ms)
+✔ real MicroPython rejects inverse and timing faults, then resynchronizes on a valid frame (605.137681ms)
+✔ real MicroPython transmitter emits PWM NEC waveform through the paired receiver (300.301558ms)
+✔ slow MicroPython polling loses a frame instead of receiving a decoded command from the model (394.543662ms)
+✔ arduino.uno-r3.atmega328p: real compiled NEC INT0 receiver, repeats, errors and PWM LED (2896.613297ms)
+✔ arduino.nano-classic.atmega328p: real compiled NEC INT0 receiver, repeats, errors and PWM LED (2765.593803ms)
+✔ arduino.uno-r3.atmega328p: Timer2 carrier and real simultaneous INT0 loopback decode (3743.579151ms)
+✔ arduino.nano-classic.atmega328p: Timer2 carrier and real simultaneous INT0 loopback decode (3660.915422ms)
+✔ production Nano Worker receives live NEC, repeat and stops promptly (350.794226ms)
+✔ independent receivers and remotes use separate GPIO nets and optical groups; fresh run clears pending edges (3.245408ms)
+✔ receiver supply through a resistor follows its GPIO source instead of a stale power cache (1.189786ms)
+✔ real MicroPython transmitter repeat parameter emits a full frame then two special repeats (337.599349ms)
+✔ arduino.uno-r3.atmega328p: actual carrier rejects orphan/stale repeats and exposes unread mailbox loss (5615.881488ms)
+✔ arduino.nano-classic.atmega328p: actual carrier rejects orphan/stale repeats and exposes unread mailbox loss (5539.792337ms)
+✔ IR software clock ignores browser pauses but a declared sleep can lose a frame (233.690304ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 28434.834174

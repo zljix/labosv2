@@ -1,0 +1,652 @@
+[
+  {
+    "path": "docs/results-node.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/results-node.json",
+    "sha256": "c3b8fabd6ffa499002c3b521dd91ced1b9e767e7666d415d4d6d4da95fd3aa9c"
+  },
+  {
+    "path": "docs/results-stage1-runtime.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/results-stage1-runtime.json",
+    "sha256": "d10ed03cdeb2dc81407b5b7b7dbdbf851b3ce94b964796fc03f59e5d1ad260b1"
+  },
+  {
+    "path": "docs/stage10a-evidence/nano-regulator.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage10a-evidence/nano-regulator.json",
+    "sha256": "844729778ffa3c0056fe71ff197e98f54f27b02f244a651baa8909459e49034c"
+  },
+  {
+    "path": "docs/stage10a-evidence/production-worker.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage10a-evidence/production-worker.json",
+    "sha256": "e4af51d5692765d04d87f45701ebd97b9f7c87b5e88ca987c142c127846bd6ae"
+  },
+  {
+    "path": "docs/stage10a-evidence/uno-regulator.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage10a-evidence/uno-regulator.json",
+    "sha256": "4dfa028c3e8a867cb890a3d4f40bf8b0c5cfe2fff42ead30fafc7352d38dcb72"
+  },
+  {
+    "path": "docs/stage10b-evidence/am2320-live.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage10b-evidence/am2320-live.json",
+    "sha256": "e96919a3dba17eef1b6df3783e7deeef7938c90a73abf84ca35c71469beddde3"
+  },
+  {
+    "path": "docs/stage10b-evidence/micropython-weather.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage10b-evidence/micropython-weather.json",
+    "sha256": "3cdb8f7dfb5133405f36de6414d06ccda1278bb1120e8d61872b3b0d8623bb6b"
+  },
+  {
+    "path": "docs/stage10b-evidence/nano-weather.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage10b-evidence/nano-weather.json",
+    "sha256": "0cafa4554de5cf2712e1cf02253351f5336b839d6f753ef657f51495090eee14"
+  },
+  {
+    "path": "docs/stage10b-evidence/production-worker.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage10b-evidence/production-worker.json",
+    "sha256": "1307a4970e5feba5df9a41c3c2310c10f9c541a5036240140f71e2ff6d57e77a"
+  },
+  {
+    "path": "docs/stage10b-evidence/uno-weather.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage10b-evidence/uno-weather.json",
+    "sha256": "88d1e004740896d851b9289efab9ebf1046cc38758c112a03018edffb0de3217"
+  },
+  {
+    "path": "docs/stage10c-evidence/micropython-lcd.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage10c-evidence/micropython-lcd.json",
+    "sha256": "c27c0a23485dcb3bcab5d767d336811dae30a7ca1b254a1d477e791d691ea732"
+  },
+  {
+    "path": "docs/stage11-evidence/micropython-analogCompare.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage11-evidence/micropython-analogCompare.json",
+    "sha256": "6f1ac7f51b137aa58addd03a93fd89bfb9ab0da3784eafd1ce5aaac502c80046"
+  },
+  {
+    "path": "docs/stage11-evidence/micropython-dualInputs.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage11-evidence/micropython-dualInputs.json",
+    "sha256": "901267d8ff1f3010f3574438d3785e4dc293c569120e9927f0262803aa8e28b0"
+  },
+  {
+    "path": "docs/stage11-evidence/micropython-flame.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage11-evidence/micropython-flame.json",
+    "sha256": "6166c412a475748ad7ecb87e50a6fe01e557e666789d2e5ef190365f3df58dcc"
+  },
+  {
+    "path": "docs/stage11-evidence/micropython-ky023.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage11-evidence/micropython-ky023.json",
+    "sha256": "6fdd391d243d6316c0bee74994496396bd1aeeb265649fd12ddf41fc6a972e56"
+  },
+  {
+    "path": "docs/stage11-evidence/micropython-lm35.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage11-evidence/micropython-lm35.json",
+    "sha256": "94f16641087d86137ee74013c86aa5408be5672732551035c38837c900ddcf95"
+  },
+  {
+    "path": "docs/stage11-evidence/micropython-ntc.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage11-evidence/micropython-ntc.json",
+    "sha256": "de04d65618e1ecd3ac0a8c5b293bcef49959272284cbd790e0d9eebd98605285"
+  },
+  {
+    "path": "docs/stage11-evidence/micropython-sound.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage11-evidence/micropython-sound.json",
+    "sha256": "cf50091a750a1ef7cd071641fdb824b0fe4a0b5c852ad4e76ac6247f4422e20a"
+  },
+  {
+    "path": "docs/stage11-evidence/micropython-temt6000.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage11-evidence/micropython-temt6000.json",
+    "sha256": "eef34e4faa07afdeee20aaf700056483794ee8a775f9c56c41f897e0085b371e"
+  },
+  {
+    "path": "docs/stage11-evidence/nano-examples.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage11-evidence/nano-examples.json",
+    "sha256": "7e8931e87af47c947ffe32c5c0f8fabe19da601c85139c6c3f5cc7ccebb22686"
+  },
+  {
+    "path": "docs/stage11-evidence/production-worker.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage11-evidence/production-worker.json",
+    "sha256": "e379e1457d0a407f1abeb4817c1265dada496720a9d4da6e89e3a1171bbcf4ce"
+  },
+  {
+    "path": "docs/stage11-evidence/uno-examples.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage11-evidence/uno-examples.json",
+    "sha256": "fd7157975cea4c48fe35713beca3bc70dfeb00d52339935c51536217ae6a973a"
+  },
+  {
+    "path": "docs/stage13a-evidence/interrupts.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13a-evidence/interrupts.json",
+    "sha256": "36bce8b0bcbbae9300f78e74c25dc71f36150b1a10af944c1b314228ef7aaba1"
+  },
+  {
+    "path": "docs/stage13a-evidence/micropython-encoderBounce.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13a-evidence/micropython-encoderBounce.json",
+    "sha256": "57105a5f6e3fbe69a10b2bce8a38113ac9bc9a33261e826bf082e2e87f5fbf22"
+  },
+  {
+    "path": "docs/stage13a-evidence/micropython-encoderPWM.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13a-evidence/micropython-encoderPWM.json",
+    "sha256": "64dc32b5d652c64193a61fe6724b4fb5860629ee25078ae4f9d3b08b6d441d44"
+  },
+  {
+    "path": "docs/stage13a-evidence/micropython-encoderRaw.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13a-evidence/micropython-encoderRaw.json",
+    "sha256": "b8505cb6d222d06881e96b6d64660b12bc884eea701fcb543fb4a27e668bf3fd"
+  },
+  {
+    "path": "docs/stage13a-evidence/micropython-ky040.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13a-evidence/micropython-ky040.json",
+    "sha256": "4a1462a937768137faa7767cf95e90d8911ca9165159f50580039cb5a8a6cdc5"
+  },
+  {
+    "path": "docs/stage13a-evidence/nano-examples.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13a-evidence/nano-examples.json",
+    "sha256": "3b03aa126287c5c794898ab05a0fb189834090f5c817ee4a91055cc6526b62af"
+  },
+  {
+    "path": "docs/stage13a-evidence/production-worker.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13a-evidence/production-worker.json",
+    "sha256": "b26ef91502c506e669b8a586e887eb73a1f13df465ca69c97cb202d39b564a52"
+  },
+  {
+    "path": "docs/stage13a-evidence/slow-poll.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13a-evidence/slow-poll.json",
+    "sha256": "8e4e7622e7065d3967f9c8aa1eefbc9f69656e2916aadf88e9753848254db70c"
+  },
+  {
+    "path": "docs/stage13a-evidence/uno-examples.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13a-evidence/uno-examples.json",
+    "sha256": "8ee76c92aa82561a4dc5abf64425c2cdb87b2b294fbc2cdca2a30d1b2e7650c0"
+  },
+  {
+    "path": "docs/stage13b-evidence/nano-receivers.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13b-evidence/nano-receivers.json",
+    "sha256": "45689ee2229afc0804bf7e7b31d3a31fb75655637b5db61032a09bed3d55a338"
+  },
+  {
+    "path": "docs/stage13b-evidence/nano-repeat-semantics.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13b-evidence/nano-repeat-semantics.json",
+    "sha256": "e26573c0a26bf0f3e765da0d4724e6fba7364e8a2d89eb99413f93e3d38927c0"
+  },
+  {
+    "path": "docs/stage13b-evidence/nano-transmitter.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13b-evidence/nano-transmitter.json",
+    "sha256": "2baa7f9a096e4a2ec641af5fe2429103bb26a2eb05fc9efa9a420fab1589a50a"
+  },
+  {
+    "path": "docs/stage13b-evidence/production-worker.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13b-evidence/production-worker.json",
+    "sha256": "bcd1f644207854286c5233d4af1c68b07548a735c23bcdd4c1e64147f77d22e4"
+  },
+  {
+    "path": "docs/stage13b-evidence/python-invalid.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13b-evidence/python-invalid.json",
+    "sha256": "79aff0d301066f5e128d32c3e93568b5784258319460a0fdf5bac7d8b2ace757"
+  },
+  {
+    "path": "docs/stage13b-evidence/python-irLED.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13b-evidence/python-irLED.json",
+    "sha256": "a277109b0afbf58628d3164100742522658b64965a61828af2cb06d95c2f7ba8"
+  },
+  {
+    "path": "docs/stage13b-evidence/python-irNEC.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13b-evidence/python-irNEC.json",
+    "sha256": "da31b27effe91419251cc12f190559ca4c72ef90c1178b7b28d4b7c7ee3fd2f9"
+  },
+  {
+    "path": "docs/stage13b-evidence/python-irPulses.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13b-evidence/python-irPulses.json",
+    "sha256": "b53c6f7c610b186a2ddeaf0986abbe7075f9138dfd9e98d2bf2dc7a52cdd5a6b"
+  },
+  {
+    "path": "docs/stage13b-evidence/python-transmitter.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13b-evidence/python-transmitter.json",
+    "sha256": "afd73206bdf01d916be90eef3ae9b59757743b10a350113039e13e6b6d12d80e"
+  },
+  {
+    "path": "docs/stage13b-evidence/python-tx-repeats.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13b-evidence/python-tx-repeats.json",
+    "sha256": "c80bcd43fc51c35cffbd8c7ed6fc24c69a735a8e2b462db9f44aa53085577b14"
+  },
+  {
+    "path": "docs/stage13b-evidence/uno-receivers.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13b-evidence/uno-receivers.json",
+    "sha256": "d001e53b102c27bd44775d4b2ccb7f86ce3fcb9d632a40c482f7878b0ca006b6"
+  },
+  {
+    "path": "docs/stage13b-evidence/uno-repeat-semantics.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13b-evidence/uno-repeat-semantics.json",
+    "sha256": "74528f9a42d113d0bdff07da71a13c7f88efca3d3d1857fc3da1735de354f2de"
+  },
+  {
+    "path": "docs/stage13b-evidence/uno-transmitter.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13b-evidence/uno-transmitter.json",
+    "sha256": "83d1a1cf69ae805cda9929f2f4a51d2b93848df84dac15e09a99f2d1385fbfd6"
+  },
+  {
+    "path": "docs/stage13b-evidence/waveform.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13b-evidence/waveform.json",
+    "sha256": "5f186c77c32ada25bd62cb516e575d04ccd077c84d70d327332ee31dab0aa27b"
+  },
+  {
+    "path": "docs/stage13c-evidence/nano-examples.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13c-evidence/nano-examples.json",
+    "sha256": "280786b9a2968ba5c0f8bb2fb8c7cb6502932b912e47a82fe6f74ebc76ed6873"
+  },
+  {
+    "path": "docs/stage13c-evidence/nano-modified.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13c-evidence/nano-modified.json",
+    "sha256": "28cde8b69dff26ddcb18b86bad2a8fba2e2463f78888ec35335e56893f4af041"
+  },
+  {
+    "path": "docs/stage13c-evidence/production-worker.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13c-evidence/production-worker.json",
+    "sha256": "fd73289f1f6ae484b3b7e7ad285ba97c0e7800d6e83225f4c21a96b8ca827a8e"
+  },
+  {
+    "path": "docs/stage13c-evidence/protocol.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13c-evidence/protocol.json",
+    "sha256": "5ae7f4a8d7eb4c072f0fe25d75767a41e51dc03585d514ddfd465b7fab2147e2"
+  },
+  {
+    "path": "docs/stage13c-evidence/python-control.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13c-evidence/python-control.json",
+    "sha256": "f4246ba9a6118f06d8029e7c206d04538f02a5c01c005db8fe3192f28beb0ea1"
+  },
+  {
+    "path": "docs/stage13c-evidence/python-tmBrightness.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13c-evidence/python-tmBrightness.json",
+    "sha256": "bce554f8a33c7307814ad8f314a1fc4717a3ac313ec14641dd0e500f34927d92"
+  },
+  {
+    "path": "docs/stage13c-evidence/python-tmClock.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13c-evidence/python-tmClock.json",
+    "sha256": "c1da56c11c4ad17014331d871abd1a4ddf87506261aa1c948c45a809688c74c2"
+  },
+  {
+    "path": "docs/stage13c-evidence/python-tmCounter.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13c-evidence/python-tmCounter.json",
+    "sha256": "e19716c0cbe00db6e2844c408cc564016266f9d5d69cec89b7c866cce4995ed7"
+  },
+  {
+    "path": "docs/stage13c-evidence/python-tmSegments.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13c-evidence/python-tmSegments.json",
+    "sha256": "9a516f6b3a02e505602f6756a53c80413f145a3eef60c2b00358292988c7f41c"
+  },
+  {
+    "path": "docs/stage13c-evidence/uno-examples.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13c-evidence/uno-examples.json",
+    "sha256": "dc73dd781c82facd4bd3709678fada11e286d2f41441b3f5ba6fb1b9b67e8ab9"
+  },
+  {
+    "path": "docs/stage13c-evidence/uno-modified.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage13c-evidence/uno-modified.json",
+    "sha256": "57d82403dc45e9d0c60b66e518845cb09655455d2718c8405415cf2c58187a0b"
+  },
+  {
+    "path": "docs/stage14-evidence/dual-pwm.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage14-evidence/dual-pwm.json",
+    "sha256": "59946b84b5769ee3dccb55a058c09282d1a2603c98c9b49b9b238377c91b5d9d"
+  },
+  {
+    "path": "docs/stage14-evidence/nano-examples.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage14-evidence/nano-examples.json",
+    "sha256": "41cbb97811376d24fe8ab13f1289cb3f47d63a13054dc49dc17fd1c683362c12"
+  },
+  {
+    "path": "docs/stage14-evidence/nano-timer-conflict.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage14-evidence/nano-timer-conflict.json",
+    "sha256": "f450017bd773b44885aeffb755fbee913222442d8837b2652bc2eefbce67ba83"
+  },
+  {
+    "path": "docs/stage14-evidence/production-worker.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage14-evidence/production-worker.json",
+    "sha256": "76767e23c14fd6e64a44ae24170e2c255f1b552d909e5a7b9ef1db7626eb67ec"
+  },
+  {
+    "path": "docs/stage14-evidence/python-activeAlarm.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage14-evidence/python-activeAlarm.json",
+    "sha256": "5249f11d55409a1611fca2cdf4ae057a067f9d3dde6e7af80c5c9751c1205e41"
+  },
+  {
+    "path": "docs/stage14-evidence/python-dcDrive.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage14-evidence/python-dcDrive.json",
+    "sha256": "2e55459d901b59372ed912e4ac074a7f512c287b917b44a65c1ede4513ab3db8"
+  },
+  {
+    "path": "docs/stage14-evidence/python-dualDrive.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage14-evidence/python-dualDrive.json",
+    "sha256": "6fb74bd38a8be84c52252de3a2295bbe4605af331c6a8b9bd8db94a88ed33b89"
+  },
+  {
+    "path": "docs/stage14-evidence/python-piezoTone.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage14-evidence/python-piezoTone.json",
+    "sha256": "24712aa18bb77442dc5e4afea2f1332dfa6f2d21e279aa14fa09c23b92f8935c"
+  },
+  {
+    "path": "docs/stage14-evidence/python-relayContacts.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage14-evidence/python-relayContacts.json",
+    "sha256": "c9da4a721581f4150201b835bb45173a44d76742e3fd339fdf39dce87afcaed2"
+  },
+  {
+    "path": "docs/stage14-evidence/python-servoMotorTone.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage14-evidence/python-servoMotorTone.json",
+    "sha256": "24a62582b9967f2dd70c66fef1b83295e4b72b1ddfc1397c1543a644a436e7b1"
+  },
+  {
+    "path": "docs/stage14-evidence/python-sg90Sweep.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage14-evidence/python-sg90Sweep.json",
+    "sha256": "16fc48703b0101c6a5e960cc91b1a599b08623d0cfd78013f694cb18e14a97fd"
+  },
+  {
+    "path": "docs/stage14-evidence/relay.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage14-evidence/relay.json",
+    "sha256": "0cc0097133582b907a26195b61fdc325bac345071b835916c685b492af3db41d"
+  },
+  {
+    "path": "docs/stage14-evidence/uno-examples.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage14-evidence/uno-examples.json",
+    "sha256": "f20eab9d2298a5bfe998d7e766da607121b3d7793b75133229c14a3c4ec98263"
+  },
+  {
+    "path": "docs/stage14-evidence/uno-timer-conflict.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage14-evidence/uno-timer-conflict.json",
+    "sha256": "63d0b5832fdc65efad59bc38f5d0036c2462a9523ab34b9323ef041034b7f795"
+  },
+  {
+    "path": "docs/stage15-evidence/am2320-early-wake.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage15-evidence/am2320-early-wake.json",
+    "sha256": "100c5c856bffd989783e8aa33272f9978b879797f763f54f8910449a1f3dd06d"
+  },
+  {
+    "path": "docs/stage15-evidence/enable-translator.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage15-evidence/enable-translator.json",
+    "sha256": "bd7fe5ed901abd614f35572533cf35f801f4f45788a750e26b09ab1ebe5dca0d"
+  },
+  {
+    "path": "docs/stage15-evidence/independent-motors.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage15-evidence/independent-motors.json",
+    "sha256": "307e6332b542069dd72549d1725f47ff42fbe56416fa42a738670a7043a30e5d"
+  },
+  {
+    "path": "docs/stage15-evidence/microstep-sixteenth.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage15-evidence/microstep-sixteenth.json",
+    "sha256": "50e26a438dab1ad5c50e6bd8f3124e242fde8bc859ac25bf2f94f410240cb356"
+  },
+  {
+    "path": "docs/stage15-evidence/nano-stepperBasic.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage15-evidence/nano-stepperBasic.json",
+    "sha256": "253d79a1ec019a654043e094b4c2b1e6caa69edec4aa57b0d9b87c0a8ffa6c1b"
+  },
+  {
+    "path": "docs/stage15-evidence/nano-stepperControl.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage15-evidence/nano-stepperControl.json",
+    "sha256": "31365d6f0f0f00be2a11ff4c12c9332d1d2b39cf010486acfbebb37326c79d24"
+  },
+  {
+    "path": "docs/stage15-evidence/nano-stepperMicro.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage15-evidence/nano-stepperMicro.json",
+    "sha256": "227286d168dac7abd4614d34c5e5624ea1a02e169dbdd6464640cda5624988b2"
+  },
+  {
+    "path": "docs/stage15-evidence/production-worker.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage15-evidence/production-worker.json",
+    "sha256": "f0834d434b1f2233027e68493d638199bc1adb04cdf35bfebb027daa2ad36c59"
+  },
+  {
+    "path": "docs/stage15-evidence/python-edited-source.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage15-evidence/python-edited-source.json",
+    "sha256": "21c59cb760f04be5ad0d59326ea0e5bb94049b532491d3c337e5a18dee2be67f"
+  },
+  {
+    "path": "docs/stage15-evidence/python-stepperBasic.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage15-evidence/python-stepperBasic.json",
+    "sha256": "79805f2536129691ca6a1a1c2f4d6371677ddf9c19f6d8ed95a85d56d2653e3f"
+  },
+  {
+    "path": "docs/stage15-evidence/python-stepperControl.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage15-evidence/python-stepperControl.json",
+    "sha256": "647028b8d0bb261bc8f276fa2f324c0ea8b881541e769eb39926dc66aa3b48cc"
+  },
+  {
+    "path": "docs/stage15-evidence/python-stepperMicro.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage15-evidence/python-stepperMicro.json",
+    "sha256": "778b359168768e3daa90b70434afff29a959347e0fe7df00eda090b6edb80bd3"
+  },
+  {
+    "path": "docs/stage15-evidence/reset-home.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage15-evidence/reset-home.json",
+    "sha256": "303202e7747a81320e416444f70c79ab36d627ff832a1a4f8dfce52680fa3b68"
+  },
+  {
+    "path": "docs/stage15-evidence/uno-stepperBasic.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage15-evidence/uno-stepperBasic.json",
+    "sha256": "91d7ceb31bde4846e746bac71d84611f46b71cc876af8d4df478cb4a7344e669"
+  },
+  {
+    "path": "docs/stage15-evidence/uno-stepperControl.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage15-evidence/uno-stepperControl.json",
+    "sha256": "c7c8e6a2aa368b3406dc38411d2cc12108a5d81c331327698b02842878f3b19a"
+  },
+  {
+    "path": "docs/stage15-evidence/uno-stepperMicro.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage15-evidence/uno-stepperMicro.json",
+    "sha256": "6bb4a3cf042ac4cfbd26f3623f09f048cecdc5478dc15739c8b80e2a91213429"
+  },
+  {
+    "path": "docs/stage16-evidence/independent-tfts.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage16-evidence/independent-tfts.json",
+    "sha256": "f012826a0798a46f31ef638fc39777802385207eb461db9bfbd424509a41766c"
+  },
+  {
+    "path": "docs/stage16-evidence/nano-bmp280SPI.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage16-evidence/nano-bmp280SPI.json",
+    "sha256": "a800569e1615f621b2ad3834710312697a83c952cbee15a524e78c1ed49d100d"
+  },
+  {
+    "path": "docs/stage16-evidence/nano-spiDashboard.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage16-evidence/nano-spiDashboard.json",
+    "sha256": "79a353345771bda28823394932d0d3d5d055a0fd9db5e3d76ea4069af5ae879a"
+  },
+  {
+    "path": "docs/stage16-evidence/nano-tftGraphics.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage16-evidence/nano-tftGraphics.json",
+    "sha256": "c98048cc01de315bac24366828900c3ba3c28c0a9d2906106f84e60ec30248d5"
+  },
+  {
+    "path": "docs/stage16-evidence/nano-tftRotation.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage16-evidence/nano-tftRotation.json",
+    "sha256": "203efb6b4e0112b249cef22e31c95956addb646bb362caa2cf31069c5a6f5903"
+  },
+  {
+    "path": "docs/stage16-evidence/packaged-spi-worker.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage16-evidence/packaged-spi-worker.json",
+    "sha256": "fcf687905d82066d0494029f56db048aff7e24fd9029600e6fd8f814a1659125"
+  },
+  {
+    "path": "docs/stage16-evidence/protocol-rgb-window.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage16-evidence/protocol-rgb-window.json",
+    "sha256": "3be9089666c7684cb0410242a7c725d0970cb3367b846b291bdb1fee1c9bdc83"
+  },
+  {
+    "path": "docs/stage16-evidence/python-bmp280SPI.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage16-evidence/python-bmp280SPI.json",
+    "sha256": "68b305ec3e942cc110b969ae5cf3b2e27477ad7d8c6e0b5790ad0bbd7556b4e1"
+  },
+  {
+    "path": "docs/stage16-evidence/python-live-environment.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage16-evidence/python-live-environment.json",
+    "sha256": "f4e284f844ea5b0199f15c6caf12e4234538a13e6fccbc0fb32782593024ee71"
+  },
+  {
+    "path": "docs/stage16-evidence/python-spiDashboard.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage16-evidence/python-spiDashboard.json",
+    "sha256": "859f34526033c69a3ed16a8959601029b3c9bc891d9710662230ad6cdbfd7435"
+  },
+  {
+    "path": "docs/stage16-evidence/python-tftGraphics.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage16-evidence/python-tftGraphics.json",
+    "sha256": "e42773f1fab895079cf0303116ae91ff13613051df362c5e6a478da5b006eef7"
+  },
+  {
+    "path": "docs/stage16-evidence/python-tftRotation.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage16-evidence/python-tftRotation.json",
+    "sha256": "a44783324276a87dba32e5b65cd85d46d2ec14a26532cd089f5ce616a45b4a67"
+  },
+  {
+    "path": "docs/stage16-evidence/shared-bus-registers.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage16-evidence/shared-bus-registers.json",
+    "sha256": "e5d6a3172db878a1d09e3f81232ac5122e3c22020c12368806cbfb64f46d2c6b"
+  },
+  {
+    "path": "docs/stage16-evidence/uno-bmp280SPI.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage16-evidence/uno-bmp280SPI.json",
+    "sha256": "77f9b9d92ca5e1d92f3530598bb36764e1c3ea796cda376d5eb962f2939e9928"
+  },
+  {
+    "path": "docs/stage16-evidence/uno-spiDashboard.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage16-evidence/uno-spiDashboard.json",
+    "sha256": "781621c0d01c39538cb7f24eb4e4eb922d8edfaa7e8377579af30685c954165a"
+  },
+  {
+    "path": "docs/stage16-evidence/uno-tftGraphics.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage16-evidence/uno-tftGraphics.json",
+    "sha256": "fbe1415b35bd525b3d93738a23eec7a18b1d1da71474e1c8dfabbe5e8ab471b8"
+  },
+  {
+    "path": "docs/stage16-evidence/uno-tftRotation.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage16-evidence/uno-tftRotation.json",
+    "sha256": "000f0b78c1588801e82f53046d70d22fd28782dd7c791e5513e838a9736d83fc"
+  },
+  {
+    "path": "docs/stage17a-evidence/packaged-nano-worker.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage17a-evidence/packaged-nano-worker.json",
+    "sha256": "c75766d0fa15e815b0130b627ebc614f7b1a2bc8cc0a37f16ef2cc6e58e18bbc"
+  },
+  {
+    "path": "docs/stage17b-evidence/packaged-nano-worker.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage17b-evidence/packaged-nano-worker.json",
+    "sha256": "1278774a526e1a71a68454b8c73b6230facfdc4900fc1593beab28d534f2a8e8"
+  },
+  {
+    "path": "docs/stage17b-evidence/python-calibration.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage17b-evidence/python-calibration.json",
+    "sha256": "d57af4fb7e4515b8b3de27e670cac5085825738dc1c8cbcd2c1f8ecefc9be957"
+  },
+  {
+    "path": "docs/stage17b-evidence/python-rotation.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage17b-evidence/python-rotation.json",
+    "sha256": "acc53d3c6874f9c6064981b615986a0c5b1dde16fb265080e7f35d34a0b534d0"
+  },
+  {
+    "path": "docs/stage18b-evidence/dht-checksum-recovery.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage18b-evidence/dht-checksum-recovery.json",
+    "sha256": "9731b2b200223e41f431e46a54ddb1294e61b4a76fc67e9ce415385f24d6397d"
+  },
+  {
+    "path": "docs/stage18b-evidence/dht-throttle.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage18b-evidence/dht-throttle.json",
+    "sha256": "970daef08ed3fa001adbe1fde27686cc1aefad8e7589e670757017728496c497"
+  },
+  {
+    "path": "docs/stage18b-evidence/dht-timeout-recovery.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage18b-evidence/dht-timeout-recovery.json",
+    "sha256": "a544a4d9f514d2dc0420940a3c24a69b86c082246dcc4176f63c511b7f2b01a7"
+  },
+  {
+    "path": "docs/stage18b-evidence/dht11.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage18b-evidence/dht11.json",
+    "sha256": "b5e210a9cb70b1e992c5c66501c3ae50aaeb397f49f37347328ad46a3d562b97"
+  },
+  {
+    "path": "docs/stage18b-evidence/dht22.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage18b-evidence/dht22.json",
+    "sha256": "99a9a6f30766f41ed2a553774819ca1f3624ecac06b30d88a5a2e0b73b7001b6"
+  },
+  {
+    "path": "docs/stage18b-evidence/ds18-crc-recovery.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage18b-evidence/ds18-crc-recovery.json",
+    "sha256": "11c36a082a5c3953e0e3746db2de8f39a4fa8685adc75fa9b2adf9e5b501fda9"
+  },
+  {
+    "path": "docs/stage18b-evidence/ds18-multi.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage18b-evidence/ds18-multi.json",
+    "sha256": "1896661c2b26ad632b0eb8d95d0f6070ec41f2430a2f830b0e6e7ff7537e8370"
+  },
+  {
+    "path": "docs/stage18b-evidence/ds18-resolution.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage18b-evidence/ds18-resolution.json",
+    "sha256": "38a56e9daec24e36aa95b1201ae92a9ecabb8cfe37b1fe34453a52f97baff72a"
+  },
+  {
+    "path": "docs/stage18b-evidence/oled32.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage18b-evidence/oled32.json",
+    "sha256": "81cec5935f1e81135d45e9d0bec6926ee5a2000ca74cd8b3f6371d029108923c"
+  },
+  {
+    "path": "docs/stage18b-evidence/oled64.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage18b-evidence/oled64.json",
+    "sha256": "0a84900b29e5ac7a78294352e7d58fe2d8d0b997df169eab33f8f57ad971e3e9"
+  },
+  {
+    "path": "docs/stage18b-evidence/regression/adc.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage18b-evidence/regression/adc.json",
+    "sha256": "a93bf6ce9a4ba9b445263c257c84c6d9a8b3ce3395acb115b732e2b42265d9c9"
+  },
+  {
+    "path": "docs/stage18b-evidence/regression/blink.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage18b-evidence/regression/blink.json",
+    "sha256": "4ec657743081186609059f70387104d5813675ee31aca79f1114b98fb9e7bb24"
+  },
+  {
+    "path": "docs/stage18b-evidence/regression/button.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage18b-evidence/regression/button.json",
+    "sha256": "758631d71e0151c15d3f429091e7f83195fc2cbc5190a464585697d03e5fb608"
+  },
+  {
+    "path": "docs/stage18b-evidence/regression/lcd.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage18b-evidence/regression/lcd.json",
+    "sha256": "8a7de7b83d61858a3dab33bac05a2757ad1d1b62eb6085ecbb26c3c8f145c105"
+  },
+  {
+    "path": "docs/stage18b-evidence/regression/regulator.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage18b-evidence/regression/regulator.json",
+    "sha256": "ca72e9b78468e9f059218c4812d63adf41378fceae6b3ec3320bf51c4c2da3e3"
+  },
+  {
+    "path": "docs/stage18b-evidence/regression/sensors.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage18b-evidence/regression/sensors.json",
+    "sha256": "be60320e13c5201ee39f109b4b4840552f8ef8e74e308b1eef8bd81a68ba3e3f"
+  },
+  {
+    "path": "docs/stage18b-evidence/regression/servo.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage18b-evidence/regression/servo.json",
+    "sha256": "64fd0878e7372ce2f40ac739fb954b6c6f88d8659e6cb9aa393994be60f7a27b"
+  },
+  {
+    "path": "docs/stage18b-evidence/regression/touch.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage18b-evidence/regression/touch.json",
+    "sha256": "7b8269e22d1a94afeabc4a9f285e66d6e25eec94e870eb5b7941cbe0fd0ddd4c"
+  },
+  {
+    "path": "docs/stage18b-evidence/regression/worker-stop.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage18b-evidence/regression/worker-stop.json",
+    "sha256": "b4df37eb81d19862b1a6ae1d5f5e212000ee28efcdd0b47c121568a2e699552a"
+  },
+  {
+    "path": "docs/stage5-reference-results.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage5-reference-results.json",
+    "sha256": "c2897184716e92ca070b327dbf3e5389f389b25153ed2aafe31f30151c5e4d41"
+  },
+  {
+    "path": "docs/stage8-evidence/stop.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage8-evidence/stop.json",
+    "sha256": "8d804a70770cf458b5db146cf286120a5e6d2f87665da350f9ed4d8b8dddb9df"
+  },
+  {
+    "path": "docs/stage9-evidence/nano-multi.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage9-evidence/nano-multi.json",
+    "sha256": "abc1ed5e41cb2723a111d048a020214a1ec34234a4a4fa877690913f6b8bc17e"
+  },
+  {
+    "path": "docs/stage9-evidence/uno-multi.json",
+    "newObservation": "docs/stage19a-evidence/regression-evidence/docs/stage9-evidence/uno-multi.json",
+    "sha256": "9b0274fe6894bc0839e87e0bacadea77993f61bb695fce136df8ae45cabf51ed"
+  }
+]

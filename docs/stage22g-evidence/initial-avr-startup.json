@@ -1,0 +1,240 @@
+{
+  "target": "uno",
+  "mode": "output",
+  "output": "",
+  "frame": {
+    "type": "simulation",
+    "clockProfile": "external-us",
+    "timeMs": 0,
+    "nets": {
+      "board:3V3": null,
+      "board:5V": null,
+      "board:A0": null,
+      "board:A1": null,
+      "board:A2": null,
+      "board:A3": null,
+      "board:A4": null,
+      "board:A5": null,
+      "board:D0": null,
+      "board:D1": null,
+      "board:D10": null,
+      "board:D11": null,
+      "board:D12": null,
+      "board:D13": null,
+      "board:D2": null,
+      "board:D3": null,
+      "board:D4": null,
+      "board:D5": null,
+      "board:D6": null,
+      "board:D7": null,
+      "board:D8": null,
+      "board:D9": null,
+      "board:GND": null,
+      "led1:A": null,
+      "level1:A1": null,
+      "level1:A2": null
+    },
+    "levelShifters": {
+      "level1": {
+        "powered": true,
+        "direction": "B → A",
+        "vcca": 3.3,
+        "vccb": 5,
+        "dir": 0,
+        "reason": "Dva kanala dijele DIR; izlaz je aktivni push-pull.",
+        "channels": [
+          {
+            "input": "B1",
+            "output": "A1",
+            "inputVolts": null,
+            "outputVolts": null,
+            "level": null,
+            "reason": "Ulaz je plivajući ili između logičkih pragova; rezultat nije određen."
+          },
+          {
+            "input": "B2",
+            "output": "A2",
+            "inputVolts": 0,
+            "outputVolts": 0,
+            "level": 0,
+            "reason": "Valjana logička razina"
+          }
+        ]
+      }
+    },
+    "leds": {
+      "led1": {
+        "brightness": 0,
+        "currentMa": 0
+      }
+    },
+    "gpios": {
+      "0": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "1": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "2": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "3": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "4": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "5": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "6": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "7": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "8": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "9": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "10": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "11": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "12": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "13": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "14": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "15": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "16": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "17": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "18": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "19": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      }
+    },
+    "optical": {},
+    "sensors": {},
+    "displays": {},
+    "measurements": [],
+    "i2cTrace": [],
+    "radios": {},
+    "sdCards": {},
+    "rtcDevices": {},
+    "touches": {},
+    "tfts": {},
+    "spiTrace": [],
+    "spiBytes": 0,
+    "steppers": {
+      "drivers": {},
+      "motors": {}
+    },
+    "tmDisplays": {},
+    "infrared": {},
+    "encoders": {},
+    "oneWireDevices": {},
+    "timedSensors": {},
+    "analogInputs": {},
+    "servos": {},
+    "diagnostics": [
+      {
+        "code": "level-shifter-input",
+        "severity": "error",
+        "message": "SN74LVC2T45: DIR i oba ulaza trebaju valjanu logičku razinu. Neiskorišteni ulaz spoji na GND; neodređeni ulaz nije fizički trostatični izlaz.",
+        "terminals": [
+          "board:GND",
+          "board:GND2",
+          "board:GND3",
+          "led1:K",
+          "level1:GND",
+          "level1:B2",
+          "level1:DIR",
+          "r1:1",
+          "level1:A1",
+          "level1:A2",
+          "board:D9",
+          "level1:B1",
+          "board:GND",
+          "board:GND2",
+          "board:GND3",
+          "led1:K",
+          "level1:GND",
+          "level1:B2",
+          "level1:DIR"
+        ],
+        "wires": []
+      }
+    ],
+    "avr": {
+      "cycles": 0,
+      "clockHz": 16000000,
+      "uartBaud": 1000000,
+      "rxPending": 0,
+      "busTrace": [],
+      "memory": {
+        "staticBytes": 208,
+        "lowestSP": 2303,
+        "minFreeToStatic": 1840
+      }
+    },
+    "session": 227
+  },
+  "message": "Sukob GPIO izlaza ili napajanja. Zaustavljeno; provjeri sklop i program."
+}

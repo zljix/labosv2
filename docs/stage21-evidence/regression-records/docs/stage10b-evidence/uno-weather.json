@@ -1,0 +1,84 @@
+{
+  "console": "BMP180 T=24.00 P=101324\r\nBMP280 T=24.00 P=101325\r\nAM2320 T=24.00 RH=50.00\r\nBMP180 T=-10.00 P=95001\r\nBMP280 T=30.00 P=103000\r\nAM2320 T=24.00 RH=50.00\r\nBMP180 T=-10.00 P=95001\r\nBMP280 T=30.00 P=103000\r\nAM2320 T=-5.00 RH=70.00\r\n",
+  "memory": {
+    "staticBytes": 944,
+    "lowestSP": 2069,
+    "minFreeToStatic": 870
+  },
+  "measurements": [
+    {
+      "timeMs": 2386.4725625,
+      "component": "bmp1801",
+      "temperature": 24,
+      "humidity": null,
+      "pressure": 101324,
+      "sample": 1
+    },
+    {
+      "timeMs": 2395.022625,
+      "component": "bmp2801",
+      "temperature": 24.00015308793627,
+      "humidity": null,
+      "pressure": 101325.08546629165,
+      "sample": 1
+    },
+    {
+      "timeMs": 2399.7588125,
+      "component": "am23201",
+      "temperature": 24,
+      "humidity": 50,
+      "pressure": null,
+      "sample": 1
+    },
+    {
+      "timeMs": 4678.7511875,
+      "component": "bmp1801",
+      "temperature": -10,
+      "humidity": null,
+      "pressure": 95001,
+      "sample": 2
+    },
+    {
+      "timeMs": 4687.299125,
+      "component": "bmp2801",
+      "temperature": 29.99996937296237,
+      "humidity": null,
+      "pressure": 103000.06123945572,
+      "sample": 2
+    },
+    {
+      "timeMs": 4692.0399375,
+      "component": "am23201",
+      "temperature": 24,
+      "humidity": 50,
+      "pressure": null,
+      "sample": 2
+    },
+    {
+      "timeMs": 6968.0751875,
+      "component": "bmp1801",
+      "temperature": -10,
+      "humidity": null,
+      "pressure": 95001,
+      "sample": 3
+    },
+    {
+      "timeMs": 6976.6195,
+      "component": "bmp2801",
+      "temperature": 29.99996937296237,
+      "humidity": null,
+      "pressure": 103000.06123945572,
+      "sample": 3
+    },
+    {
+      "timeMs": 6981.3545,
+      "component": "am23201",
+      "temperature": -5,
+      "humidity": 70,
+      "pressure": null,
+      "sample": 3
+    }
+  ],
+  "wallMs": 3758.2195460000003,
+  "virtualMs": 7300.0004375
+}

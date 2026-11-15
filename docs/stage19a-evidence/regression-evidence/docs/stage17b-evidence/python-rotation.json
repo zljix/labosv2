@@ -1,0 +1,54 @@
+{
+  "console": "TOUCH SCREEN 0\nTOUCH ROT READY\nTOUCH ROT=0 X=0 Y=0\nTOUCH SCREEN 1\nTOUCH ROT=1 X=0 Y=239\nTOUCH SCREEN 2\nTOUCH ROT=2 X=239 Y=319\nTOUCH SCREEN 3\nTOUCH ROT=3 X=319 Y=0\n",
+  "touch": {
+    "touch1": {
+      "powered": true,
+      "down": false,
+      "x": 0,
+      "y": 0,
+      "pressure": 50,
+      "irq": 1,
+      "pd": 0,
+      "raw": {
+        "x": 0,
+        "y": 0,
+        "z1": 0,
+        "z2": 4095
+      },
+      "last": {
+        "channel": "z2",
+        "value": 3345,
+        "command": 192
+      },
+      "conversions": 56,
+      "reason": "CS HIGH · neaktivan"
+    }
+  },
+  "tft": {
+    "kind": "tft",
+    "controller": "ILI9341",
+    "width": 240,
+    "height": 320,
+    "powered": true,
+    "backlight": true,
+    "on": true,
+    "sleep": false,
+    "madctl": 72,
+    "format": 85,
+    "written": 393982,
+    "window": [
+      239,
+      0,
+      239,
+      319
+    ],
+    "reason": "Odabran CS LOW"
+  },
+  "pixels": {
+    "length": 76800,
+    "nonzero": 1053,
+    "sha256": "d5c174dfe63146978231618603dbaea4c047952e204618e00656272a51f59420"
+  },
+  "leds": {},
+  "diagnostics": []
+}

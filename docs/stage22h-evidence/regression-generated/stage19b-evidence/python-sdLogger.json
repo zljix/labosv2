@@ -1,0 +1,1334 @@
+{
+  "text": "SD CSV 0,2026-01-01 12:00:00\nSD CSV 1,2026-01-01 12:00:01\n",
+  "frame": {
+    "type": "simulation",
+    "clockProfile": "wall-us",
+    "timeMs": 2583,
+    "nets": {
+      "esp32:J1.1": 3.3,
+      "esp32:J1.10": null,
+      "esp32:J1.11": null,
+      "esp32:J1.12": 0,
+      "esp32:J1.13": null,
+      "esp32:J1.14": null,
+      "esp32:J1.15": null,
+      "esp32:J1.16": 3.3,
+      "esp32:J1.17": 0,
+      "esp32:J1.18": 0,
+      "esp32:J1.19": null,
+      "esp32:J1.20": null,
+      "esp32:J1.21": 5,
+      "esp32:J1.22": 0,
+      "esp32:J1.4": null,
+      "esp32:J1.5": null,
+      "esp32:J1.6": 0,
+      "esp32:J1.7": 0,
+      "esp32:J1.8": null,
+      "esp32:J1.9": null,
+      "esp32:J3.10": null,
+      "esp32:J3.14": null,
+      "esp32:J3.15": null,
+      "esp32:J3.16": null,
+      "esp32:J3.17": null,
+      "esp32:J3.18": null,
+      "esp32:J3.19": null,
+      "esp32:J3.2": null,
+      "esp32:J3.20": null,
+      "esp32:J3.3": null,
+      "esp32:J3.4": null,
+      "esp32:J3.5": null,
+      "esp32:J3.6": null,
+      "esp32:J3.7": null,
+      "esp32:J3.8": null,
+      "esp32:J3.9": null
+    },
+    "levelShifters": {},
+    "i2cLevelShifters": {},
+    "leds": {},
+    "gpios": {
+      "6": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "7": {
+        "mode": "IN",
+        "volts": 0,
+        "level": 0
+      },
+      "8": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "10": {
+        "mode": "OUT",
+        "volts": 3.3,
+        "level": 1
+      },
+      "11": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "12": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "13": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      }
+    },
+    "optical": {},
+    "sensors": {},
+    "displays": {},
+    "measurements": [],
+    "i2cTrace": [],
+    "radios": {},
+    "sdCards": {
+      "sd1": {
+        "powered": true,
+        "inserted": true,
+        "writeProtected": false,
+        "initialized": true,
+        "sectors": 16384,
+        "dirtyBlocks": 4,
+        "reads": 17,
+        "writes": 12,
+        "errors": 0,
+        "revision": 12,
+        "state": {
+          "version": 1,
+          "blocks": [
+            [
+              1,
+              "+P//////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+            ],
+            [
+              65,
+              "+P//////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+            ],
+            [
+              129,
+              "TE9HICAgICBDU1YgAAAAAAAAAAAAAAAAIVwCADsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+            ],
+            [
+              133,
+              "dXpvcmFrLHZyaWplbWUKMCwyMDI2LTAxLTAxIDEyOjAwOjAwCjEsMjAyNi0wMS0wMSAxMjowMDowMQoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+            ]
+          ]
+        },
+        "files": [
+          {
+            "name": "LOG.CSV",
+            "size": 59,
+            "cluster": 2
+          }
+        ],
+        "volumeError": "",
+        "trace": [
+          {
+            "timeUs": 102697.86299999976,
+            "operation": "CMD0",
+            "value": 0,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 104361.19999999992,
+            "operation": "CMD8",
+            "value": 426,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 106341.86400000012,
+            "operation": "CMD55",
+            "value": 0,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 107594.8649999999,
+            "operation": "CMD41",
+            "value": 0,
+            "result": "ACMD"
+          },
+          {
+            "timeUs": 110290.94399999993,
+            "operation": "CMD55",
+            "value": 0,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 111686.06900000013,
+            "operation": "CMD41",
+            "value": 0,
+            "result": "ACMD"
+          },
+          {
+            "timeUs": 112921.3829999999,
+            "operation": "CMD58",
+            "value": 0,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 114526.9429999999,
+            "operation": "CMD16",
+            "value": 512,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 116216.20999999985,
+            "operation": "CMD9",
+            "value": 0,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 126202.40799999994,
+            "operation": "CMD17",
+            "value": 0,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 147707.49899999984,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 162835.3290000001,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 173177.22599999982,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 183828.919,
+            "operation": "CMD17",
+            "value": 512,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 193831.7059999998,
+            "operation": "CMD17",
+            "value": 33280,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 203934.845,
+            "operation": "CMD24",
+            "value": 68096,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 214007.14899999995,
+            "operation": "write",
+            "value": 133,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 215779.40599999978,
+            "operation": "CMD24",
+            "value": 512,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 225029.71499999997,
+            "operation": "write",
+            "value": 1,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 226452.73100000003,
+            "operation": "CMD24",
+            "value": 33280,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 245053.02000000014,
+            "operation": "write",
+            "value": 65,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 246548.51500000016,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 256250.38099999994,
+            "operation": "CMD24",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 265397.444,
+            "operation": "write",
+            "value": 129,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 285101.0080000001,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 294876.79500000004,
+            "operation": "CMD17",
+            "value": 68096,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 304751.4399999998,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 314144.712,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 323579.1249999999,
+            "operation": "CMD24",
+            "value": 68096,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 332695.64400000015,
+            "operation": "write",
+            "value": 133,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 334282.3460000001,
+            "operation": "CMD24",
+            "value": 512,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 343024.23100000015,
+            "operation": "write",
+            "value": 1,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 344405.92799999996,
+            "operation": "CMD24",
+            "value": 33280,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 353629.6069999998,
+            "operation": "write",
+            "value": 65,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 355224.4009999998,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 364201.4270000002,
+            "operation": "CMD24",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 372628.83,
+            "operation": "write",
+            "value": 129,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 1425170.286,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 1437927.964,
+            "operation": "CMD17",
+            "value": 68096,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 1469433.353,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 1481759.962,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 1505184.739,
+            "operation": "CMD24",
+            "value": 68096,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 1518527.528,
+            "operation": "write",
+            "value": 133,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 1519981.3699999996,
+            "operation": "CMD24",
+            "value": 512,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 1533244.54,
+            "operation": "write",
+            "value": 1,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 1534705.2,
+            "operation": "CMD24",
+            "value": 33280,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 1553195.5639999998,
+            "operation": "write",
+            "value": 65,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 1554751.6260000002,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 1566500.187,
+            "operation": "CMD24",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 1578437.4929999998,
+            "operation": "write",
+            "value": 129,
+            "result": "512 B potvrđeno"
+          }
+        ],
+        "reason": "CS HIGH · neaktivan"
+      }
+    },
+    "rtcDevices": {
+      "rtc1": {
+        "mainPower": true,
+        "battery": true,
+        "rtcMainPower": true,
+        "retained": true,
+        "valid": true,
+        "halted": false,
+        "writeProtected": false,
+        "iso": "2026-01-01T12:00:02",
+        "day": 5,
+        "reason": "Sat radi",
+        "received": 2,
+        "errors": 0,
+        "state": {
+          "registers": [
+            2,
+            0,
+            18,
+            1,
+            1,
+            5,
+            38,
+            0
+          ],
+          "ram": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trickle": 92,
+          "subsecondUs": 581096.3060000006,
+          "valid": true
+        },
+        "trace": [
+          {
+            "timeUs": 3818.456999999853,
+            "operation": "main-power"
+          },
+          {
+            "timeUs": 267858.1989999998,
+            "operation": "ce-start"
+          },
+          {
+            "timeUs": 270209.0560000001,
+            "operation": "command",
+            "value": 191
+          },
+          {
+            "timeUs": 270505.32599999977,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 272398.8509999998,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 273903.922,
+            "operation": "read-byte",
+            "value": 18
+          },
+          {
+            "timeUs": 275603.40599999996,
+            "operation": "read-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 277019.05299999984,
+            "operation": "read-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 278557.85400000017,
+            "operation": "read-byte",
+            "value": 5
+          },
+          {
+            "timeUs": 280451.029,
+            "operation": "read-byte",
+            "value": 38
+          },
+          {
+            "timeUs": 282179.966,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 284032.5600000001,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 1376995.345,
+            "operation": "ce-start"
+          },
+          {
+            "timeUs": 1378339.169,
+            "operation": "command",
+            "value": 191
+          },
+          {
+            "timeUs": 1383149.823,
+            "operation": "read-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 1384491.348,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 1386492.7650000001,
+            "operation": "read-byte",
+            "value": 18
+          },
+          {
+            "timeUs": 1397765.435,
+            "operation": "read-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 1402544.125,
+            "operation": "read-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 1408296.3780000003,
+            "operation": "read-byte",
+            "value": 5
+          },
+          {
+            "timeUs": 1410149.142,
+            "operation": "read-byte",
+            "value": 38
+          },
+          {
+            "timeUs": 1423404.34,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 1424695.8299999998,
+            "operation": "read-byte",
+            "value": 1
+          }
+        ]
+      }
+    },
+    "touches": {},
+    "tfts": {},
+    "spiTrace": [
+      {
+        "timeUs": 1484900.3730000001,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x4c"
+      },
+      {
+        "timeUs": 1489119.669,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x66"
+      },
+      {
+        "timeUs": 1504774.2380000001,
+        "device": "—",
+        "operation": "transfer",
+        "value": 255,
+        "result": "Nema odabranog spojenog uređaja · MISO 0xFF"
+      },
+      {
+        "timeUs": 1504868.217,
+        "device": "—",
+        "operation": "transfer",
+        "value": 255,
+        "result": "Nema odabranog spojenog uređaja · MISO 0xFF"
+      },
+      {
+        "timeUs": 1505118.421,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1505180.913,
+        "device": "sd1",
+        "operation": "data",
+        "value": 88,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1505290.2650000001,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1514222.7059999998,
+        "device": "sd1",
+        "operation": "data",
+        "value": 254,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1514307.812,
+        "device": "sd1",
+        "operation": "data",
+        "value": 117,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1518493.847,
+        "device": "sd1",
+        "operation": "data",
+        "value": 34,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1518599.9329999997,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x05"
+      },
+      {
+        "timeUs": 1518658.97,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1518715.563,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1518771.444,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1518827.1459999997,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1519256.0489999999,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1519345.16,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1519402.535,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1519457.4849999999,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1519514.6189999997,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1519568.7280000001,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1519695.797,
+        "device": "—",
+        "operation": "transfer",
+        "value": 255,
+        "result": "Nema odabranog spojenog uređaja · MISO 0xFF"
+      },
+      {
+        "timeUs": 1519771.539,
+        "device": "—",
+        "operation": "transfer",
+        "value": 255,
+        "result": "Nema odabranog spojenog uređaja · MISO 0xFF"
+      },
+      {
+        "timeUs": 1519920.591,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1519978.4859999998,
+        "device": "sd1",
+        "operation": "data",
+        "value": 88,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1520083.391,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1528937.7550000001,
+        "device": "sd1",
+        "operation": "data",
+        "value": 254,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1529027.3780000003,
+        "device": "sd1",
+        "operation": "data",
+        "value": 248,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1533212.992,
+        "device": "sd1",
+        "operation": "data",
+        "value": 38,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1533316.514,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x05"
+      },
+      {
+        "timeUs": 1533373.387,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1533428.9689999998,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1533533.4039999996,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1533589.786,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1533642.9739999997,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1533698.716,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1533753.476,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1533807.886,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1533908.8260000001,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1533966.921,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1534021.4910000002,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1534076.0410000002,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1534132.4239999999,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1534186.102,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1534238.6689999998,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1534293.63,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1534415.8109999998,
+        "device": "—",
+        "operation": "transfer",
+        "value": 255,
+        "result": "Nema odabranog spojenog uređaja · MISO 0xFF"
+      },
+      {
+        "timeUs": 1534493.326,
+        "device": "—",
+        "operation": "transfer",
+        "value": 255,
+        "result": "Nema odabranog spojenog uređaja · MISO 0xFF"
+      },
+      {
+        "timeUs": 1534642.9379999998,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1534702.506,
+        "device": "sd1",
+        "operation": "data",
+        "value": 88,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1534803.836,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1546706.78,
+        "device": "sd1",
+        "operation": "data",
+        "value": 254,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1546819.8479999998,
+        "device": "sd1",
+        "operation": "data",
+        "value": 248,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1553162.4840000002,
+        "device": "sd1",
+        "operation": "data",
+        "value": 38,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1553297.783,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x05"
+      },
+      {
+        "timeUs": 1553381.6369999996,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1553455.4659999998,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1553524.9689999998,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1553598.0669999998,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1553672.1359999997,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1553744.192,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1553813.1840000001,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1553922.7159999998,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1554000.0409999997,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1554070.6849999998,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1554148.129,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1554219.9149999998,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1554382.3369999998,
+        "device": "—",
+        "operation": "transfer",
+        "value": 255,
+        "result": "Nema odabranog spojenog uređaja · MISO 0xFF"
+      },
+      {
+        "timeUs": 1554478.489,
+        "device": "—",
+        "operation": "transfer",
+        "value": 255,
+        "result": "Nema odabranog spojenog uređaja · MISO 0xFF"
+      },
+      {
+        "timeUs": 1554664.0759999997,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1554744.685,
+        "device": "sd1",
+        "operation": "data",
+        "value": 81,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1554920.1369999996,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1555038.0119999999,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1555113.1029999997,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xfe"
+      },
+      {
+        "timeUs": 1555195.575,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x4c"
+      },
+      {
+        "timeUs": 1559935.0019999999,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x66"
+      },
+      {
+        "timeUs": 1566042.635,
+        "device": "—",
+        "operation": "transfer",
+        "value": 255,
+        "result": "Nema odabranog spojenog uređaja · MISO 0xFF"
+      },
+      {
+        "timeUs": 1566196.4449999998,
+        "device": "—",
+        "operation": "transfer",
+        "value": 255,
+        "result": "Nema odabranog spojenog uređaja · MISO 0xFF"
+      },
+      {
+        "timeUs": 1566416.303,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1566496.5609999998,
+        "device": "sd1",
+        "operation": "data",
+        "value": 88,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1566618.352,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1574060.163,
+        "device": "sd1",
+        "operation": "data",
+        "value": 254,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1574158.669,
+        "device": "sd1",
+        "operation": "data",
+        "value": 76,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1578414.389,
+        "device": "sd1",
+        "operation": "data",
+        "value": 130,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1578520.0130000003,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x05"
+      },
+      {
+        "timeUs": 1578591.419,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1578660.27,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1578731.856,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1578811.9039999999,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1578884.1400000001,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1578954.9849999999,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1579025.9289999998,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1579099.3479999998,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1579169.932,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1579239.474,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1579312.121,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1579414.1330000001,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 1579496.1739999999,
+        "device": "sd1",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 1579658.2449999999,
+        "device": "—",
+        "operation": "transfer",
+        "value": 255,
+        "result": "Nema odabranog spojenog uređaja · MISO 0xFF"
+      },
+      {
+        "timeUs": 1579763.191,
+        "device": "—",
+        "operation": "transfer",
+        "value": 255,
+        "result": "Nema odabranog spojenog uređaja · MISO 0xFF"
+      }
+    ],
+    "spiBytes": 15470,
+    "steppers": {
+      "drivers": {},
+      "motors": {}
+    },
+    "tmDisplays": {},
+    "infrared": {},
+    "encoders": {},
+    "oneWireDevices": {},
+    "timedSensors": {},
+    "analogInputs": {},
+    "servos": {},
+    "diagnostics": [],
+    "session": 4
+  }
+}

@@ -1,0 +1,67 @@
+✔ NRF24: reset, one-byte status and FIFO status have independent known values (1.649628ms)
+✔ NRF24: static packet crosses SPI FIFO; ACK sets TX_DS and removes TX entry (1.996691ms)
+✔ NRF24: mismatched channel gives 4 attempts, MAX_RT and retained payload (0.564949ms)
+✔ NRF24: mismatched address gives 4 attempts, MAX_RT and retained payload (0.444718ms)
+✔ NRF24: mismatched length gives 4 attempts, MAX_RT and retained payload (0.269895ms)
+✔ NRF24: mismatched rate gives 4 attempts, MAX_RT and retained payload (0.196816ms)
+✔ NRF24: mismatched CRC gives 4 attempts, MAX_RT and retained payload (0.262485ms)
+✔ NRF24: lost first ACK retries once and suppresses duplicate FIFO delivery (0.37272ms)
+✔ NRF24: lost first data retries once, then delivers one packet (0.305169ms)
+✔ NRF24: no auto-ACK completes even with no listening peer (0.343897ms)
+✔ NRF24: sender pipe-0 address must match TX address for auto-ACK (0.238929ms)
+✔ NRF24: full RX FIFO rejects new packets; status flags are write-one-clear (0.321243ms)
+✔ NRF24: CE below 10 us and power-up below 1.5 ms do not send (0.171618ms)
+✔ NRF24: power loss aborts pending ACK and clears FIFO, not another node (0.129966ms)
+✔ NRF24: unsupported dynamic features and malformed commands fail explicitly (0.481834ms)
+✔ SPI wiring: missing power, MISO, swapped signals and invalid mode do not fake register read (31.374197ms)
+✔ project format 4 roundtrips both nodes through JSON and ZIP and rejects nesting (14.629454ms)
+✖ real programs share packets and ACK: micropython → micropython (416.714259ms)
+✖ real MicroPython programs: channel (240.294467ms)
+✖ real MicroPython programs: address (159.539785ms)
+✖ real MicroPython programs: ack (137.824543ms)
+✖ real MicroPython programs: data (148.556369ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 17
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1473.952041
+
+✖ failing tests:
+
+test at verification/radio.test.ts:1:8126
+✖ real programs share packets and ACK: micropython → micropython (416.714259ms)
+  Error: NULL object
+      at proxy_convert_mp_to_js_obj_jsside (/workspace/sites/esp32-micropython-lab/.sites-checkout/public/runtime/micropython.mjs:6368:15)
+      at proxy_convert_mp_to_js_obj_jsside_with_free (/workspace/sites/esp32-micropython-lab/.sites-checkout/public/runtime/micropython.mjs:6423:17)
+      at Object.runPython (/workspace/sites/esp32-micropython-lab/.sites-checkout/public/runtime/micropython.mjs:5729:20)
+
+test at verification/radio.test.ts:1:8494
+✖ real MicroPython programs: channel (240.294467ms)
+  Error: NULL object
+      at proxy_convert_mp_to_js_obj_jsside (/workspace/sites/esp32-micropython-lab/.sites-checkout/public/runtime/micropython.mjs:6368:15)
+      at proxy_convert_mp_to_js_obj_jsside_with_free (/workspace/sites/esp32-micropython-lab/.sites-checkout/public/runtime/micropython.mjs:6423:17)
+      at Object.runPython (/workspace/sites/esp32-micropython-lab/.sites-checkout/public/runtime/micropython.mjs:5729:20)
+
+test at verification/radio.test.ts:1:8494
+✖ real MicroPython programs: address (159.539785ms)
+  Error: NULL object
+      at proxy_convert_mp_to_js_obj_jsside (/workspace/sites/esp32-micropython-lab/.sites-checkout/public/runtime/micropython.mjs:6368:15)
+      at proxy_convert_mp_to_js_obj_jsside_with_free (/workspace/sites/esp32-micropython-lab/.sites-checkout/public/runtime/micropython.mjs:6423:17)
+      at Object.runPython (/workspace/sites/esp32-micropython-lab/.sites-checkout/public/runtime/micropython.mjs:5729:20)
+
+test at verification/radio.test.ts:1:8494
+✖ real MicroPython programs: ack (137.824543ms)
+  Error: NULL object
+      at proxy_convert_mp_to_js_obj_jsside (/workspace/sites/esp32-micropython-lab/.sites-checkout/public/runtime/micropython.mjs:6368:15)
+      at proxy_convert_mp_to_js_obj_jsside_with_free (/workspace/sites/esp32-micropython-lab/.sites-checkout/public/runtime/micropython.mjs:6423:17)
+      at Object.runPython (/workspace/sites/esp32-micropython-lab/.sites-checkout/public/runtime/micropython.mjs:5729:20)
+
+test at verification/radio.test.ts:1:8494
+✖ real MicroPython programs: data (148.556369ms)
+  Error: NULL object
+      at proxy_convert_mp_to_js_obj_jsside (/workspace/sites/esp32-micropython-lab/.sites-checkout/public/runtime/micropython.mjs:6368:15)
+      at proxy_convert_mp_to_js_obj_jsside_with_free (/workspace/sites/esp32-micropython-lab/.sites-checkout/public/runtime/micropython.mjs:6423:17)
+      at Object.runPython (/workspace/sites/esp32-micropython-lab/.sites-checkout/public/runtime/micropython.mjs:5729:20)

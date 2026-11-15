@@ -1,0 +1,12 @@
+{
+  "createdOn": "2026-11-12",
+  "library": "LabI2CSensors",
+  "version": "1.0.0",
+  "origin": "Original MIT project implementation; no simulator-specific APIs",
+  "protocolReferences": [
+    "https://cdn-shop.adafruit.com/datasheets/BST-BMP180-DS000-09.pdf",
+    "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmp280-ds001.pdf",
+    "https://cdn-shop.adafruit.com/product-files/3721/AM2320.pdf"
+  ],
+  "note": "Bosch reference calibration vectors are returned by the sensor models. Drivers read those registers and compensate ADC words. Only Wire is required."
+}

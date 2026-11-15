@@ -1,0 +1,39 @@
+{
+  "uniqueNodeCases": 516,
+  "legacyNodeCases": 489,
+  "newS3Cases": 27,
+  "finalPass": 516,
+  "unresolvedFailures": 0,
+  "skipped": 0,
+  "initialCombinedRun": {
+    "pass": 515,
+    "fail": 1,
+    "log": "regression.txt",
+    "issue": "Verification-only Bounce2 program expected LOW as pressed while library defaults to HIGH."
+  },
+  "correction": "Test sketch explicitly sets b.setPressedState(LOW); all 27 S3 cases rerun successfully in s3-final.txt. Runtime implementation was already honoring the library setting.",
+  "profileRecheck": {
+    "pass": 19,
+    "note": "Existing project/board cases repeated after metadata normalization; not counted again."
+  },
+  "offline": {
+    "pass": 8,
+    "log": "offline-final.txt"
+  },
+  "core": {
+    "pass": 10,
+    "log": "core-final.txt"
+  },
+  "files": {
+    "pass": 3,
+    "log": "files-final.txt"
+  },
+  "packagedWorkers": {
+    "pass": 2,
+    "log": "packaged-workers.json"
+  },
+  "build": "ce50ef82d68e9fdf",
+  "version": "0.8.0-beta.1",
+  "resources": 148,
+  "resourceBytes": 10748865
+}

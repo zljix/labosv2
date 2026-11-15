@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "unauthenticated": 401,
+  "foreignOrigin": 403,
+  "cached": true,
+  "calls": 2
+}

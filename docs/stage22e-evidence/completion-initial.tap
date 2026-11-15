@@ -1,0 +1,64 @@
+✔ 63 variants in all four targets give 252 executable URS routes (1.104239ms)
+✔ bmp180: separate exact source, netlist, artifact and project/sketch round trip (48.846465ms)
+✔ bmp280: separate exact source, netlist, artifact and project/sketch round trip (14.774893ms)
+✔ am2320: separate exact source, netlist, artifact and project/sketch round trip (6.432526ms)
+✔ ds18Errors: separate exact source, netlist, artifact and project/sketch round trip (23.182878ms)
+✔ tmSegments: separate exact source, netlist, artifact and project/sketch round trip (12.282508ms)
+✔ tmClock: separate exact source, netlist, artifact and project/sketch round trip (4.600904ms)
+✔ iliGraphics: separate exact source, netlist, artifact and project/sketch round trip (11.431379ms)
+✔ iliRotation: separate exact source, netlist, artifact and project/sketch round trip (11.468735ms)
+✔ touchRaw: separate exact source, netlist, artifact and project/sketch round trip (8.820054ms)
+✔ touchCalibration: separate exact source, netlist, artifact and project/sketch round trip (10.022522ms)
+✔ touchRotation: separate exact source, netlist, artifact and project/sketch round trip (6.989163ms)
+✔ bmp180: compiled I2C driver responds to live environment with documented freshness (24.04903ms)
+✔ bmp280: compiled I2C driver responds to live environment with documented freshness (16.024692ms)
+✔ am2320: compiled I2C driver responds to live environment with documented freshness (19.773524ms)
+✔ bmp180: missing SDA cannot print a valid measurement (7.615374ms)
+✔ bmp280: missing SDA cannot print a valid measurement (6.704766ms)
+✔ am2320: missing SDA cannot print a valid measurement (7.234632ms)
+✔ DS18B20 explicitly distinguishes initial, early and completed registers (188.358516ms)
+✔ DS18B20 CRC fault is invalid data and recovery returns a fresh sample (298.322275ms)
+✖ TM1637 sends all eight segment bits and ACKs through GPIO (62.744801ms)
+✔ TM1637 software clock renders 12:34 and then 12:35, with colon gating (43.850526ms)
+✔ TM1637 open CLK cannot pretend that segment transfer succeeded (27.548869ms)
+✔ ILI9341 compiled geometry writes RGB565 and the bottom-right 16-bit addressed pixel (394.114036ms)
+✔ ILI9341 four rotations preserve the corresponding physical corner and logical dimensions (414.590603ms)
+✔ raw XPT2046 data follows live press, drag and release through SPI (300.649001ms)
+✔ two-point calibration computes endpoints in the program and maps a later center press (591.785718ms)
+✖ touch rotations require release between presses and map the same physical point in four ways (1609.383392ms)
+✔ touch missing MISO cannot produce a calibrated point (170.2577ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 27
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4833.965438
+
+✖ failing tests:
+
+test at verification/s3-completion.test.ts:1:5164
+✖ TM1637 sends all eight segment bits and ACKs through GPIO (62.744801ms)
+  TypeError [Error]: Cannot read properties of undefined (reading 'tm1')
+      at TestContext.<anonymous> (/workspace/scratch/e10336c9cd0c/esp32-micropython-lab/.sites-checkout/verification/s3-completion.test.ts:64:190)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/s3-completion.test.ts:1:8091
+✖ touch rotations require release between presses and map the same physical point in four ways (1609.383392ms)
+  AssertionError [ERR_ASSERTION]: TOUCH SCREEN 0
+  TOUCH ROT READY
+  TOUCH ROT=0 X=60 Y=80
+  TOUCH SCREEN 1
+  
+      at TestContext.<anonymous> (/workspace/scratch/e10336c9cd0c/esp32-micropython-lab/.sites-checkout/verification/s3-completion.test.ts:106:65)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

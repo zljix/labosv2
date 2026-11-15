@@ -1,0 +1,7 @@
+{
+  "version": "0.5.4-beta.1",
+  "build": "e61f88ed20e9800b",
+  "console": "ENC READY P=0; CW=+1 CCW=-1; SW resetira brojac\r\nENC P=1 DIR=CW ERR=0\r\nENC P=2 DIR=CW ERR=0\r\nENC P=1 DIR=CCW ERR=0\r\nENC P=0 DIR=CCW ERR=0\r\nENC P=-1 DIR=CCW ERR=0",
+  "stopMs": 1.553674000000683,
+  "scope": "Node/Linux production bundle; not physical hardware or target browser"
+}

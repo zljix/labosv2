@@ -1,0 +1,40 @@
+{
+  "console": "ILI GRAPHICS READY\r\n",
+  "display": {
+    "kind": "tft",
+    "controller": "ILI9341",
+    "width": 240,
+    "height": 320,
+    "powered": true,
+    "backlight": true,
+    "on": true,
+    "sleep": false,
+    "madctl": 72,
+    "format": 85,
+    "written": 90965,
+    "window": [
+      239,
+      319,
+      239,
+      319
+    ],
+    "reason": "CS HIGH · neaktivan"
+  },
+  "pixels": {
+    "length": 76800,
+    "sha256": "bbb173b65b6a69be3a44622323a1f21bd28aaa18f1a5e81d852e190e89b7e155",
+    "nonzero": 14161,
+    "first": 63488,
+    "last": 63519
+  },
+  "diagnostics": [],
+  "memory": {
+    "staticBytes": 225,
+    "lowestSP": 2226,
+    "minFreeToStatic": 1746
+  },
+  "version": "0.12.6-beta.1",
+  "build": "dbecd774b876ca8e",
+  "stopMs": 3.7050279999966733,
+  "scope": "Node/Linux packaged Worker"
+}

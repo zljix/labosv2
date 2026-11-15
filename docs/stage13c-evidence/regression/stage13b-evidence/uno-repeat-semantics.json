@@ -1,0 +1,918 @@
+{
+  "source": "#include \"lab_nec.h\"\nLabNEC ir;\nvoid changed(){ir.edge(digitalRead(2));}\nvoid setup(){Serial.begin(9600);pinMode(2,INPUT);attachInterrupt(digitalPinToInterrupt(2),changed,CHANGE);LabNECSender::begin();}\nvoid loop(){uint8_t a,c;bool r;LabNECSender::repeat();delay(5);Serial.print(F(\"ORPHAN=\"));Serial.println(ir.read(a,c,r)?1:0);LabNECSender::send(18,255,2);delay(5);if(ir.read(a,c,r)){Serial.print(F(\"VALID=\"));Serial.print(a);Serial.print(',');Serial.print(c);Serial.print(',');Serial.println(r?1:0);}Serial.print(F(\"COUNT=\"));Serial.println(ir.received);Serial.print(F(\"OVERRUN=\"));Serial.println(ir.overruns);delay(200);LabNECSender::repeat();delay(5);Serial.print(F(\"STALE=\"));Serial.println(ir.read(a,c,r)?1:0);while(true){}}\n",
+  "artifact": {
+    "format": "esp32-lab-avr-build",
+    "version": 1,
+    "boardId": "arduino.uno-r3.atmega328p",
+    "boardProfile": "0.1.0",
+    "fqbn": "arduino:avr:uno",
+    "toolchain": {
+      "cli": "1.3.1",
+      "core": "arduino:avr@1.8.6",
+      "gcc": "7.3.0-atmel3.6.1-arduino7",
+      "libraries": []
+    },
+    "inputHash": "1f4f6e9e2f5290c3ee30ac4860bf117a50b09ed05d31e28c6b8ac596859a9ec9",
+    "hexHash": "8e17e9c55e4baacb148e51cbefb8310dc1ea9b726d827ad4a92dfa2ec2a707fd",
+    "hex": ":100000000C9475000C941B050C94F4040C949D0046\r\n:100010000C949D000C949D000C949D000C949D00EC\r\n:100020000C949D000C949D000C949D000C949D00DC\r\n:100030000C949D000C949D000C949D000C949D00CC\r\n:100040000C94AA040C949D000C9468050C94420531\r\n:100050000C949D000C949D000C949D000C949D00AC\r\n:100060000C949D000C949D000000000023002600CD\r\n:10007000290000000000240027002A005354414CAE\r\n:10008000453D004F56455252554E3D00434F554E4B\r\n:10009000543D0056414C49443D004F525048414E5A\r\n:1000A0003D0000000000250028002B00040404048B\r\n:1000B0000404040402020202020203030303030312\r\n:1000C00001020408102040800102040810200102EF\r\n:1000D00004081020000000080002010000030407CB\r\n:1000E0000000000000000000680711241FBECFEFD1\r\n:1000F000D8E0DEBFCDBF11E0A0E0B1E0EEE7FFE069\r\n:1001000002C005900D92AA31B107D9F721E0AAE10A\r\n:10011000B1E001C01D92AF3DB207E1F710E0C5E7C5\r\n:10012000D0E004C02197FE010E94B707C437D10771\r\n:10013000C9F70E949A050C94BD070C940000833007\r\n:1001400081F028F4813099F08230A9F00895873049\r\n:10015000A9F08830C9F08430B1F4809180008F7D9F\r\n:1001600003C0809180008F7780938000089584B5CC\r\n:100170008F7784BD089584B58F7DFBCF8091B000CB\r\n:100180008F778093B00008958091B0008F7DF9CF74\r\n:10019000CF93DF93E7EDF0E08491E3ECF0E0D491CE\r\n:1001A000EFEAF0E0C491CC2399F081110E949F0006\r\n:1001B000EC2FF0E0EE0FFF1FEE55FF4FA591B4912D\r\n:1001C0008FB7F8949C91ED2FE095E923EC938FBFC6\r\n:1001D000DF91CF9108953FB7F89480913E019091BF\r\n:1001E0003F01A0914001B091410126B5A89B05C0F7\r\n:1001F0002F3F19F00196A11DB11D3FBFBA2FA92FA6\r\n:10020000982F8827BC01CD01620F711D811D911DA2\r\n:1002100042E0660F771F881F991F4A95D1F708950E\r\n:100220008F929F92AF92BF92CF92DF92EF92FF9206\r\n:100230004B015C010E94EB006B017C010E94EB0012\r\n:100240006C197D098E099F09683E734081059105EF\r\n:10025000A8F321E0821A9108A108B10888EEC80E1F\r\n:1002600083E0D81EE11CF11C81149104A104B104A7\r\n:1002700029F7FF90EF90DF90CF90BF90AF909F90C5\r\n:100280008F9008950895AF92BF92CF92DF92EF9230\r\n:10029000FF920F931F93CF93DF936C017B018B0130\r\n:1002A000040F151FEB015E01AE18BF08C017D10780\r\n:1002B00059F06991D601ED91FC910190F081E02D0A\r\n:1002C000C6010995892B79F7C501DF91CF911F915F\r\n:1002D0000F91FF90EF90DF90CF90BF90AF90089577\r\n:1002E000FC01538D448D252F30E0842F90E0821B3C\r\n:1002F000930B541710F0CF96089501970895FC01C1\r\n:10030000918D828D981761F0A28DAE0FBF2FB11D18\r\n:100310005D968C91928D9F5F9F73928F90E0089570\r\n:100320008FEF9FEF0895FC01918D828D981731F02A\r\n:10033000828DE80FF11D858D90E008958FEF9FEF7E\r\n:100340000895FC01918D228D892F90E0805C9F4F54\r\n:10035000821B91098F739927089582E491E00E948E\r\n:10036000A10121E0892B09F420E0822F089580E08B\r\n:1003700090E0892B29F00E94AD0181110C940000BE\r\n:100380000895FC01A48DA80FB92FB11DA35ABF4F2A\r\n:100390002C91848D90E001968F739927848FA68984\r\n:1003A000B7892C93A089B1898C91837080648C93D8\r\n:1003B000938D848D981306C00288F389E02D808187\r\n:1003C0008F7D80830895EF92FF920F931F93CF93B9\r\n:1003D000DF93EC0181E0888F9B8D8C8D98131AC080\r\n:1003E000E889F989808185FF15C09FB7F894EE8967\r\n:1003F000FF896083E889F9898081837080648083C4\r\n:100400009FBF81E090E0DF91CF911F910F91FF900E\r\n:10041000EF900895F62E0B8D10E00F5F1F4F0F73B6\r\n:100420001127E02E8C8D8E110CC00FB607FCFACF71\r\n:10043000E889F989808185FFF5CFCE010E94C1014D\r\n:10044000F1CFEB8DEC0FFD2FF11DE35AFF4FF08242\r\n:100450009FB7F8940B8FEA89FB8980818062CFCFA8\r\n:100460000F931F93CF93DF938C01D0E0C0E0F8018E\r\n:10047000EC0FFD1F6491662341F082E491E00E943D\r\n:10048000E301892B11F02196F2CFCE01DF91CF91BC\r\n:100490001F910F910895CF93DF93EC01888D8823EE\r\n:1004A000B9F0AA89BB89E889F9898C9185FD03C0D7\r\n:1004B000808186FD0DC00FB607FCF7CF8C9185FFBC\r\n:1004C000F2CF808185FFEDCFCE010E94C101E9CF3F\r\n:1004D000DF91CF9108958F929F92AF92BF92CF926A\r\n:1004E000DF92EF92FF920F931F93CF93DF93E6ED8E\r\n:1004F000F0E08491E2ECF0E0D491EEEAF0E0C49117\r\n:10050000CC2309F44FC081110E949F00EC2FF0E032\r\n:10051000EE0FFF1FE859FF4FA591B491EC91ED2329\r\n:1005200091E080E009F490E0C92FD82F0E94EB0001\r\n:10053000AB01BC018091200190912101A091220189\r\n:10054000B09123018A019B01081B190B2A0B3B0B5D\r\n:10055000D901C801409320015093210160932201E9\r\n:1005600070932301209709F4D8C00456194121093A\r\n:1005700031090539114121053105B8F421E02093F5\r\n:100580001A019093300180932F01DF91CF911F9139\r\n:100590000F91FF90EF90DF90CF90BF90AF909F9022\r\n:1005A0008F900895D0E0C0E0C1CF20911A01223091\r\n:1005B00049F020911A01243029F020911A012530A8\r\n:1005C00009F034C18C019D010E55114021093109FA\r\n:1005D000053F11402105310508F028C190933201F3\r\n:1005E0008093310180911A01823021F483E080935D\r\n:1005F0001A01CBCF80911A01843009F03FC080915D\r\n:1006000028018823C1F18091240190912501A091B6\r\n:100610002601B09127018A019B01081B190B2A0BA7\r\n:100620003B0BD901C801813F9944A240B10518F59F\r\n:1006300080912901882349F08091370190913801F8\r\n:100640000196909338018093370181E080932A01CD\r\n:100650008093290140932401509325016093260142\r\n:100660007093270180913501909136010196909306\r\n:1006700036018093350110921A0187CFC0901C017A\r\n:10068000D0901D01E0901E01F0901F0180901C0190\r\n:1006900090901D01A0901E01B0901F0180911C013F\r\n:1006A00090911D01A0911E01B0911F0100911C01AC\r\n:1006B00010911D0120911E0130911F01EC2DE925A3\r\n:1006C000EF3F09F0A0C0CD01AA27BB27282F232781\r\n:1006D0002F3F09F098C020912901222351F0209149\r\n:1006E0003701309138012F5F3F4F3093380120930D\r\n:1006F0003701C0922B0180932C0181E08093280167\r\n:1007000040932401509325016093260170932701A3\r\n:1007100010922A0180932901A5CF20911A0121303E\r\n:1007200039F5AC01BD014C5A5D4061097109413D8B\r\n:1007300057406105710570F482E080931A011092B0\r\n:100740001B0110921C0110921D0110921E011092AB\r\n:100750001F011BCFAC01BD01405456406109710916\r\n:10076000453155406105710508F060C084E03FCF18\r\n:1007700020911A01233009F054C0AC01BD01405B47\r\n:10078000544061097109453853406105710580F590\r\n:1007900020911B01C0901C01D0901D01E0901E0112\r\n:1007A000F0901F0141E050E060E070E004C0440FB1\r\n:1007B000551F661F771F2A95D2F74C295D296E2990\r\n:1007C0007F2940931C0150931D0160931E0170937B\r\n:1007D0001F01909334018093330180911B018F5F3F\r\n:1007E00080931B0180911B018032C9F082E0FFCE13\r\n:1007F000AC01BD014E55514061097109453F514061\r\n:100800006105710530F380912D0190912E010196C3\r\n:1008100090932E0180932D01109228012CCF85E01A\r\n:10082000E6CE20911A01222309F4AFCE20911A01BD\r\n:100830002111E9CFCD2B09F41ECF83359340A105BB\r\n:10084000B10508F418CFDFCF1092B200E0EBF0E072\r\n:10085000208120622083880F991F880F991F059798\r\n:100860000197F1F780818F7D80830C94C80088E226\r\n:1008700093E20E94240483E293E20197F1F782E37A\r\n:1008800092E00C9424048F929F92AF92BF920F93A8\r\n:100890001F93CF93DF93CDB7DEB7A1970FB6F89430\r\n:1008A000DEBF0FBECDBF19A2423008F44AE08E0170\r\n:1008B0000F5D1F4F842E912CB12CA12CA50194010A\r\n:1008C0000E949507E62FB901CA01EA3044F5E05DC0\r\n:1008D000D801EE938D01232B242B252B79F790E063\r\n:1008E00080E0109769F0FD0101900020E9F7319751\r\n:1008F000AF014A1B5B0BBD0182E491E00E94430102\r\n:10090000A1960FB6F894DEBF0FBECDBFDF91CF9199\r\n:100910001F910F91BF90AF909F908F900895E95CC9\r\n:10092000D7CF42E050E066E171E082E491E00C94C0\r\n:100930004301CF93DF93BC01990F880B990B4AE0D9\r\n:100940000E944304EC010E9491048C0F9D1FDF91D3\r\n:10095000CF9108951F920F920FB60F9211242F93EB\r\n:100960003F938F939F93AF93BF9380913A01909160\r\n:100970003B01A0913C01B0913D013091390123E050\r\n:10098000230F2D3758F50196A11DB11D2093390174\r\n:1009900080933A0190933B01A0933C01B0933D01B9\r\n:1009A00080913E0190913F01A0914001B0914101A1\r\n:1009B0000196A11DB11D80933E0190933F01A0932C\r\n:1009C0004001B0934101BF91AF919F918F913F91B1\r\n:1009D0002F910F900FBE0F901F90189526E8230FB0\r\n:1009E0000296A11DB11DD2CF1F920F920FB60F928A\r\n:1009F00011242F933F934F935F936F937F938F9324\r\n:100A00009F93AF93BF93EF93FF93E0910201F09117\r\n:100A100003010995FF91EF91BF91AF919F918F9144\r\n:100A20007F916F915F914F913F912F910F900FBEEA\r\n:100A30000F901F9018951F920F920FB60F921124CE\r\n:100A40002F933F934F935F936F937F938F939F93D6\r\n:100A5000AF93BF93EF93FF93E0910001F0910101F9\r\n:100A60000995FF91EF91BF91AF919F918F917F91E8\r\n:100A70006F915F914F913F912F910F900FBE0F900B\r\n:100A80001F9018951F920F920FB60F9211242F935B\r\n:100A90003F934F935F936F937F938F939F93AF9306\r\n:100AA000BF93EF93FF9382E491E00E94C101FF9115\r\n:100AB000EF91BF91AF919F918F917F916F915F91D6\r\n:100AC0004F913F912F910F900FBE0F901F9018954F\r\n:100AD0001F920F920FB60F9211242F938F939F9313\r\n:100AE000EF93FF93E0915201F09153018081E091E7\r\n:100AF0005801F091590182FD1BC0908180915B01EA\r\n:100B00008F5F8F7320915C01821741F0E0915B0150\r\n:100B1000F0E0EE5BFE4F958F80935B01FF91EF91CC\r\n:100B20009F918F912F910F900FBE0F901F9018954E\r\n:100B30008081F4CFCF93DF9300D000D0CDB7DEB764\r\n:100B4000789484B5826084BD84B5816084BD85B5A8\r\n:100B5000826085BD85B5816085BD80916E008160B4\r\n:100B600080936E001092810080918100826080935A\r\n:100B7000810080918100816080938100809180005C\r\n:100B80008160809380008091B10084608093B10087\r\n:100B90008091B00081608093B00080917A00846081\r\n:100BA00080937A0080917A00826080937A008091AD\r\n:100BB0007A00816080937A0080917A0080688093C7\r\n:100BC0007A001092C100E0915201F091530182E04D\r\n:100BD0008083E0914E01F0914F011082E09150012D\r\n:100BE000F09151018FEC808310925A01E0915601EF\r\n:100BF000F091570186E08083E0915401F091550116\r\n:100C0000808180618083E0915401F0915501808161\r\n:100C100088608083E0915401F09155018081806863\r\n:100C20008083E0915401F091550180818F7D808314\r\n:100C3000E2ECF0E02491EEEAF0E084918823C9F040\r\n:100C400090E0880F991FFC01EE58FF4FA591B491D9\r\n:100C5000FC01EE55FF4F459154919FB7F8948C914C\r\n:100C6000E22FE0958E238C93DA018C91E823EC93AC\r\n:100C70009FBF8BE692E090930101809300018091E9\r\n:100C800069008C7F816080936900E89AE3ECF0E072\r\n:100C90002491EFEAF0E08491882399F090E0880FA6\r\n:100CA000991FFC01EE58FF4FA591B491FC01EE5540\r\n:100CB000FF4F859194918FB7F894EC91E22BEC93D0\r\n:100CC0008FBF0E94C80083E08093B0008AE08093C9\r\n:100CD000B10083E38093B30081E18093B4000E946C\r\n:100CE000370465E070E080E090E00E9410018AE93E\r\n:100CF00090E00E9430029FB7F894809129018823E8\r\n:100D000041F000912B0110912C0130902A0110929A\r\n:100D100029019FBF90E00E9499040E94EB002B01E3\r\n:100D20003C0182E189838DEE8A838FEF8B831C8265\r\n:100D300088E293E20E9424048BE496E40197F1F7A1\r\n:100D4000FE0131966F014E01F5E08F0E911CD60128\r\n:100D5000AD906D01F12CE12CB12C82E392E00E9468\r\n:100D60002404C5010E2C02C0959587950A94E2F7DC\r\n:100D700080FDABC082E392E0880F991F880F991F16\r\n:100D800005970197F1F7BFEFEB1AFB0AE8E0EE16C3\r\n:100D9000F10419F78C149D04D1F682E392E00E94CD\r\n:100DA00024040E94EB006419750986099709603BC9\r\n:100DB0007D4A81409105A8F30E9437040E94EB0010\r\n:100DC000641975098609970960367B45834091054A\r\n:100DD000A8F30E94370465E070E080E090E00E9494\r\n:100DE00010019FB7F89480912901882341F0009168\r\n:100DF0002B0110912C0130902A01109229019FBFE4\r\n:100E0000882301F183E990E00E943002602F70E0B6\r\n:100E100090E080E04AE00E9443046CE282E491E0CA\r\n:100E20000E94E301612F70E090E080E04AE00E94C0\r\n:100E300043046CE282E491E00E94E301832D90E0A0\r\n:100E40000E9499048CE890E00E9430026091350184\r\n:100E50007091360190E080E04AE00E9443040E94D5\r\n:100E6000910483E890E00E94300260913701709114\r\n:100E7000380190E080E04AE00E9443040E9491041F\r\n:100E800068EC70E080E090E00E9410010E9437045E\r\n:100E900065E070E080E090E00E9410018CE790E057\r\n:100EA0000E9430029FB7F89480912901882341F075\r\n:100EB00020912B0120912C0120912A0110922901CF\r\n:100EC0009FBF90E00E949904FFCF88E996E054CF3D\r\n:100ED000E2E4F1E01382128288EE93E0A0E0B0E059\r\n:100EE00084839583A683B78388E091E09183808390\r\n:100EF00085EC90E09587848784EC90E097878687DF\r\n:100F000080EC90E0918B808B81EC90E0938B828BD6\r\n:100F100082EC90E0958B848B86EC90E0978B868BAF\r\n:100F2000118E128E138E148E0895A1E21A2EAA1B12\r\n:100F3000BB1BFD010DC0AA1FBB1FEE1FFF1FA21789\r\n:100F4000B307E407F50720F0A21BB30BE40BF50B86\r\n:100F5000661F771F881F991F1A9469F7609570950F\r\n:100F6000809590959B01AC01BD01CF010895EE0FD6\r\n:0E0F7000FF1F0590F491E02D0994F894FFCF37\r\n:100F7E004201420100000000E301430170014B02F7\r\n:0A0F8E00A1017F0193010D0A00008C\r\n:00000001FF\r\n",
+    "flashBytes": 3992,
+    "staticRamBytes": 223,
+    "compiledAt": "2026-11-13T07:57:30.000Z",
+    "diagnostics": "Sketch uses 3992 bytes (12%) of program storage space. Maximum is 32256 bytes.\nGlobal variables use 223 bytes (10%) of dynamic memory, leaving 1825 bytes for local variables. Maximum is 2048 bytes.\n\nalatni-lanac/packages/arduino/hardware/avr/1.8.6/cores/arduino/new.cpp: In function 'void* operator new(std::size_t, std::nothrow_t)':\nalatni-lanac/packages/arduino/hardware/avr/1.8.6/cores/arduino/new.cpp:59:60: warning: unused parameter 'tag' [-Wunused-parameter]\n void * operator new(std::size_t size, const std::nothrow_t tag) noexcept {\n                                                            ^~~\nalatni-lanac/packages/arduino/hardware/avr/1.8.6/cores/arduino/new.cpp: In function 'void* operator new [](std::size_t, const std::nothrow_t&)':\nalatni-lanac/packages/arduino/hardware/avr/1.8.6/cores/arduino/new.cpp:68:63: warning: unused parameter 'tag' [-Wunused-parameter]\n void * operator new[](std::size_t size, const std::nothrow_t& tag) noexcept {\n                                                               ^~~\nalatni-lanac/packages/arduino/hardware/avr/1.8.6/cores/arduino/new.cpp: In function 'void operator delete(void*, const std::nothrow_t&)':\nalatni-lanac/packages/arduino/hardware/avr/1.8.6/cores/arduino/new.cpp:103:55: warning: unused parameter 'tag' [-Wunused-parameter]\n void operator delete(void* ptr, const std::nothrow_t& tag) noexcept {\n                                                       ^~~\nalatni-lanac/packages/arduino/hardware/avr/1.8.6/cores/arduino/new.cpp: In function 'void operator delete [](void*, const std::nothrow_t&)':\nalatni-lanac/packages/arduino/hardware/avr/1.8.6/cores/arduino/new.cpp:106:57: warning: unused parameter 'tag' [-Wunused-parameter]\n void operator delete[](void* ptr, const std::nothrow_t& tag) noexcept {\n                                                         ^~~\n",
+    "messages": [
+      {
+        "file": "alatni-lanac/packages/arduino/hardware/avr/1.8.6/cores/arduino/new.cpp",
+        "line": 59,
+        "column": 60,
+        "severity": "warning",
+        "message": "unused parameter 'tag' [-Wunused-parameter]"
+      },
+      {
+        "file": "alatni-lanac/packages/arduino/hardware/avr/1.8.6/cores/arduino/new.cpp",
+        "line": 68,
+        "column": 63,
+        "severity": "warning",
+        "message": "unused parameter 'tag' [-Wunused-parameter]"
+      },
+      {
+        "file": "alatni-lanac/packages/arduino/hardware/avr/1.8.6/cores/arduino/new.cpp",
+        "line": 103,
+        "column": 55,
+        "severity": "warning",
+        "message": "unused parameter 'tag' [-Wunused-parameter]"
+      },
+      {
+        "file": "alatni-lanac/packages/arduino/hardware/avr/1.8.6/cores/arduino/new.cpp",
+        "line": 106,
+        "column": 57,
+        "severity": "warning",
+        "message": "unused parameter 'tag' [-Wunused-parameter]"
+      }
+    ]
+  },
+  "console": "ORPHAN=0\r\nVALID=18,255,1\r\nCOUNT=3\r\nOVERRUN=2\r\nSTALE=0\r\n",
+  "frame": {
+    "type": "simulation",
+    "clockProfile": "external-us",
+    "timeMs": 700,
+    "nets": {
+      "board:3V3": 3.3,
+      "board:5V": 5,
+      "board:A0": null,
+      "board:A1": null,
+      "board:A2": null,
+      "board:A3": null,
+      "board:A4": null,
+      "board:A5": null,
+      "board:D0": null,
+      "board:D1": null,
+      "board:D10": null,
+      "board:D11": null,
+      "board:D12": null,
+      "board:D13": null,
+      "board:D2": 5,
+      "board:D3": 0,
+      "board:D4": null,
+      "board:D5": null,
+      "board:D6": null,
+      "board:D7": null,
+      "board:D8": null,
+      "board:D9": null,
+      "board:GND": 0
+    },
+    "leds": {},
+    "gpios": {
+      "0": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "1": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "2": {
+        "mode": "IN",
+        "volts": 5,
+        "level": 1
+      },
+      "3": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "4": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "5": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "6": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "7": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "8": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "9": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "10": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "11": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "12": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "13": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "14": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "15": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "16": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "17": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "18": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "19": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      }
+    },
+    "sensors": {},
+    "displays": {},
+    "measurements": [],
+    "i2cTrace": [],
+    "tmDisplays": {},
+    "infrared": {
+      "irRx": {
+        "kind": "receiver",
+        "powered": true,
+        "channel": 1,
+        "level": 1,
+        "busy": false,
+        "blocked": false,
+        "presses": 0,
+        "carrierHz": null,
+        "transitions": 84,
+        "trace": [
+          {
+            "timeUs": 0,
+            "level": 1
+          },
+          {
+            "timeUs": 170.75,
+            "level": 0
+          },
+          {
+            "timeUs": 9246.75,
+            "level": 1
+          },
+          {
+            "timeUs": 11524.25,
+            "level": 0
+          },
+          {
+            "timeUs": 12124.25,
+            "level": 1
+          },
+          {
+            "timeUs": 17239.75,
+            "level": 0
+          },
+          {
+            "timeUs": 26393.75,
+            "level": 1
+          },
+          {
+            "timeUs": 30932.1875,
+            "level": 0
+          },
+          {
+            "timeUs": 31532.25,
+            "level": 1
+          },
+          {
+            "timeUs": 32103.1875,
+            "level": 0
+          },
+          {
+            "timeUs": 32703.25,
+            "level": 1
+          },
+          {
+            "timeUs": 34408.1875,
+            "level": 0
+          },
+          {
+            "timeUs": 35008.25,
+            "level": 1
+          },
+          {
+            "timeUs": 35583.1875,
+            "level": 0
+          },
+          {
+            "timeUs": 36183.25,
+            "level": 1
+          },
+          {
+            "timeUs": 36756.75,
+            "level": 0
+          },
+          {
+            "timeUs": 37356.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 39068.6875,
+            "level": 0
+          },
+          {
+            "timeUs": 39668.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 40245.6875,
+            "level": 0
+          },
+          {
+            "timeUs": 40845.75,
+            "level": 1
+          },
+          {
+            "timeUs": 41420.1875,
+            "level": 0
+          },
+          {
+            "timeUs": 42020.25,
+            "level": 1
+          },
+          {
+            "timeUs": 42595.75,
+            "level": 0
+          },
+          {
+            "timeUs": 43195.75,
+            "level": 1
+          },
+          {
+            "timeUs": 44900.75,
+            "level": 0
+          },
+          {
+            "timeUs": 45500.75,
+            "level": 1
+          },
+          {
+            "timeUs": 46078.25,
+            "level": 0
+          },
+          {
+            "timeUs": 46678.1875,
+            "level": 1
+          },
+          {
+            "timeUs": 48389.6875,
+            "level": 0
+          },
+          {
+            "timeUs": 48989.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 50701.25,
+            "level": 0
+          },
+          {
+            "timeUs": 51301.1875,
+            "level": 1
+          },
+          {
+            "timeUs": 51880.75,
+            "level": 0
+          },
+          {
+            "timeUs": 52480.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 54187.25,
+            "level": 0
+          },
+          {
+            "timeUs": 54787.1875,
+            "level": 1
+          },
+          {
+            "timeUs": 56506.6875,
+            "level": 0
+          },
+          {
+            "timeUs": 57106.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 58821.25,
+            "level": 0
+          },
+          {
+            "timeUs": 59421.1875,
+            "level": 1
+          },
+          {
+            "timeUs": 61133.6875,
+            "level": 0
+          },
+          {
+            "timeUs": 61733.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 63447.25,
+            "level": 0
+          },
+          {
+            "timeUs": 64047.1875,
+            "level": 1
+          },
+          {
+            "timeUs": 65766.6875,
+            "level": 0
+          },
+          {
+            "timeUs": 66366.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 68081.75,
+            "level": 0
+          },
+          {
+            "timeUs": 68681.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 70397.1875,
+            "level": 0
+          },
+          {
+            "timeUs": 70997.1875,
+            "level": 1
+          },
+          {
+            "timeUs": 72713.25,
+            "level": 0
+          },
+          {
+            "timeUs": 73313.1875,
+            "level": 1
+          },
+          {
+            "timeUs": 75036.1875,
+            "level": 0
+          },
+          {
+            "timeUs": 75636.1875,
+            "level": 1
+          },
+          {
+            "timeUs": 77354.75,
+            "level": 0
+          },
+          {
+            "timeUs": 77954.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 78538.25,
+            "level": 0
+          },
+          {
+            "timeUs": 79138.1875,
+            "level": 1
+          },
+          {
+            "timeUs": 79711.1875,
+            "level": 0
+          },
+          {
+            "timeUs": 80311.25,
+            "level": 1
+          },
+          {
+            "timeUs": 80884.1875,
+            "level": 0
+          },
+          {
+            "timeUs": 81484.25,
+            "level": 1
+          },
+          {
+            "timeUs": 82058.25,
+            "level": 0
+          },
+          {
+            "timeUs": 82658.1875,
+            "level": 1
+          },
+          {
+            "timeUs": 83237.75,
+            "level": 0
+          },
+          {
+            "timeUs": 83837.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 84412.1875,
+            "level": 0
+          },
+          {
+            "timeUs": 85012.25,
+            "level": 1
+          },
+          {
+            "timeUs": 85586.6875,
+            "level": 0
+          },
+          {
+            "timeUs": 86186.75,
+            "level": 1
+          },
+          {
+            "timeUs": 86761.6875,
+            "level": 0
+          },
+          {
+            "timeUs": 87361.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 127238.75,
+            "level": 0
+          },
+          {
+            "timeUs": 136314.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 138592.1875,
+            "level": 0
+          },
+          {
+            "timeUs": 139192.1875,
+            "level": 1
+          },
+          {
+            "timeUs": 237238.75,
+            "level": 0
+          },
+          {
+            "timeUs": 246314.75,
+            "level": 1
+          },
+          {
+            "timeUs": 248592.25,
+            "level": 0
+          },
+          {
+            "timeUs": 249192.25,
+            "level": 1
+          },
+          {
+            "timeUs": 454794.75,
+            "level": 0
+          },
+          {
+            "timeUs": 463870.75,
+            "level": 1
+          },
+          {
+            "timeUs": 466153.75,
+            "level": 0
+          },
+          {
+            "timeUs": 466753.75,
+            "level": 1
+          }
+        ]
+      },
+      "irTx": {
+        "kind": "transmitter",
+        "powered": true,
+        "channel": 1,
+        "level": 1,
+        "busy": false,
+        "blocked": false,
+        "presses": 0,
+        "carrierHz": 38461.53846153846,
+        "transitions": 0,
+        "trace": [
+          {
+            "timeUs": 0,
+            "level": 1
+          },
+          {
+            "timeUs": 170.75,
+            "level": 0
+          },
+          {
+            "timeUs": 9246.75,
+            "level": 1
+          },
+          {
+            "timeUs": 11524.25,
+            "level": 0
+          },
+          {
+            "timeUs": 12124.25,
+            "level": 1
+          },
+          {
+            "timeUs": 17239.75,
+            "level": 0
+          },
+          {
+            "timeUs": 26393.75,
+            "level": 1
+          },
+          {
+            "timeUs": 30932.1875,
+            "level": 0
+          },
+          {
+            "timeUs": 31532.25,
+            "level": 1
+          },
+          {
+            "timeUs": 32103.1875,
+            "level": 0
+          },
+          {
+            "timeUs": 32703.25,
+            "level": 1
+          },
+          {
+            "timeUs": 34408.1875,
+            "level": 0
+          },
+          {
+            "timeUs": 35008.25,
+            "level": 1
+          },
+          {
+            "timeUs": 35583.1875,
+            "level": 0
+          },
+          {
+            "timeUs": 36183.25,
+            "level": 1
+          },
+          {
+            "timeUs": 36756.75,
+            "level": 0
+          },
+          {
+            "timeUs": 37356.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 39068.6875,
+            "level": 0
+          },
+          {
+            "timeUs": 39668.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 40245.6875,
+            "level": 0
+          },
+          {
+            "timeUs": 40845.75,
+            "level": 1
+          },
+          {
+            "timeUs": 41420.1875,
+            "level": 0
+          },
+          {
+            "timeUs": 42020.25,
+            "level": 1
+          },
+          {
+            "timeUs": 42595.75,
+            "level": 0
+          },
+          {
+            "timeUs": 43195.75,
+            "level": 1
+          },
+          {
+            "timeUs": 44900.75,
+            "level": 0
+          },
+          {
+            "timeUs": 45500.75,
+            "level": 1
+          },
+          {
+            "timeUs": 46078.25,
+            "level": 0
+          },
+          {
+            "timeUs": 46678.1875,
+            "level": 1
+          },
+          {
+            "timeUs": 48389.6875,
+            "level": 0
+          },
+          {
+            "timeUs": 48989.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 50701.25,
+            "level": 0
+          },
+          {
+            "timeUs": 51301.1875,
+            "level": 1
+          },
+          {
+            "timeUs": 51880.75,
+            "level": 0
+          },
+          {
+            "timeUs": 52480.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 54187.25,
+            "level": 0
+          },
+          {
+            "timeUs": 54787.1875,
+            "level": 1
+          },
+          {
+            "timeUs": 56506.6875,
+            "level": 0
+          },
+          {
+            "timeUs": 57106.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 58821.25,
+            "level": 0
+          },
+          {
+            "timeUs": 59421.1875,
+            "level": 1
+          },
+          {
+            "timeUs": 61133.6875,
+            "level": 0
+          },
+          {
+            "timeUs": 61733.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 63447.25,
+            "level": 0
+          },
+          {
+            "timeUs": 64047.1875,
+            "level": 1
+          },
+          {
+            "timeUs": 65766.6875,
+            "level": 0
+          },
+          {
+            "timeUs": 66366.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 68081.75,
+            "level": 0
+          },
+          {
+            "timeUs": 68681.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 70397.1875,
+            "level": 0
+          },
+          {
+            "timeUs": 70997.1875,
+            "level": 1
+          },
+          {
+            "timeUs": 72713.25,
+            "level": 0
+          },
+          {
+            "timeUs": 73313.1875,
+            "level": 1
+          },
+          {
+            "timeUs": 75036.1875,
+            "level": 0
+          },
+          {
+            "timeUs": 75636.1875,
+            "level": 1
+          },
+          {
+            "timeUs": 77354.75,
+            "level": 0
+          },
+          {
+            "timeUs": 77954.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 78538.25,
+            "level": 0
+          },
+          {
+            "timeUs": 79138.1875,
+            "level": 1
+          },
+          {
+            "timeUs": 79711.1875,
+            "level": 0
+          },
+          {
+            "timeUs": 80311.25,
+            "level": 1
+          },
+          {
+            "timeUs": 80884.1875,
+            "level": 0
+          },
+          {
+            "timeUs": 81484.25,
+            "level": 1
+          },
+          {
+            "timeUs": 82058.25,
+            "level": 0
+          },
+          {
+            "timeUs": 82658.1875,
+            "level": 1
+          },
+          {
+            "timeUs": 83237.75,
+            "level": 0
+          },
+          {
+            "timeUs": 83837.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 84412.1875,
+            "level": 0
+          },
+          {
+            "timeUs": 85012.25,
+            "level": 1
+          },
+          {
+            "timeUs": 85586.6875,
+            "level": 0
+          },
+          {
+            "timeUs": 86186.75,
+            "level": 1
+          },
+          {
+            "timeUs": 86761.6875,
+            "level": 0
+          },
+          {
+            "timeUs": 87361.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 127238.75,
+            "level": 0
+          },
+          {
+            "timeUs": 136314.6875,
+            "level": 1
+          },
+          {
+            "timeUs": 138592.1875,
+            "level": 0
+          },
+          {
+            "timeUs": 139192.1875,
+            "level": 1
+          },
+          {
+            "timeUs": 237238.75,
+            "level": 0
+          },
+          {
+            "timeUs": 246314.75,
+            "level": 1
+          },
+          {
+            "timeUs": 248592.25,
+            "level": 0
+          },
+          {
+            "timeUs": 249192.25,
+            "level": 1
+          },
+          {
+            "timeUs": 454794.75,
+            "level": 0
+          },
+          {
+            "timeUs": 463870.75,
+            "level": 1
+          },
+          {
+            "timeUs": 466153.75,
+            "level": 0
+          },
+          {
+            "timeUs": 466753.75,
+            "level": 1
+          }
+        ]
+      }
+    },
+    "encoders": {},
+    "oneWireDevices": {},
+    "timedSensors": {},
+    "analogInputs": {},
+    "servos": {},
+    "diagnostics": [],
+    "avr": {
+      "cycles": 11200029,
+      "clockHz": 16000000,
+      "uartBaud": 9615,
+      "rxPending": 0,
+      "busTrace": [],
+      "memory": {
+        "staticBytes": 223,
+        "lowestSP": 2228,
+        "minFreeToStatic": 1750
+      }
+    }
+  }
+}

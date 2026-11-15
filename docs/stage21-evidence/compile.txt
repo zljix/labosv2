@@ -1,0 +1,18 @@
+uno tx 2996 233
+uno rx 2794 229
+nano tx 2996 233
+nano rx 2794 229
+file:///workspace/sites/esp32-micropython-lab/.sites-checkout/scripts/s3-compile.mjs:42
+  }catch(e){if(e.name==='AbortError')throw e;const log=normalize(e.stderr??e.message).slice(-16000);throw new CompileError(log,parseDiagnostics(log));}
+                                                                                                          ^
+
+CompileError: clang++-19: error: unable to execute command: Executable "wasm-ld-19" doesn't exist!
+clang++-19: error: linker command failed with exit code 1 (use -v to see invocation)
+
+    at compileS3 (file:///workspace/sites/esp32-micropython-lab/.sites-checkout/scripts/s3-compile.mjs:42:107)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async <anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/scripts/build-radio-examples.ts:7:252) {
+  diagnostics: []
+}
+
+Node.js v24.22.1

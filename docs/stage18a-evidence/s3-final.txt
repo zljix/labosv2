@@ -1,0 +1,35 @@
+✔ S3 C++ selection preserves old MicroPython documents and same-board language-copy wiring (47.939878ms)
+✔ compiled S3 blink retains exact source, target and full JSON/ZIP/IDE exports (66.744219ms)
+✔ compiled S3 button retains exact source, target and full JSON/ZIP/IDE exports (39.11931ms)
+✔ compiled S3 adc retains exact source, target and full JSON/ZIP/IDE exports (19.167842ms)
+✔ compiled S3 regulator retains exact source, target and full JSON/ZIP/IDE exports (20.973246ms)
+✔ compiled S3 sensors retains exact source, target and full JSON/ZIP/IDE exports (18.247509ms)
+✔ compiled S3 servo retains exact source, target and full JSON/ZIP/IDE exports (16.918731ms)
+✔ compiled S3 lcd retains exact source, target and full JSON/ZIP/IDE exports (12.407079ms)
+✔ compiled S3 touch retains exact source, target and full JSON/ZIP/IDE exports (15.113836ms)
+✔ S3 artifacts reject source, library, target, ABI and binary corruption (12.818073ms)
+✔ real blink program preserves state across nested delay calls and emits both electrical levels (30.957964ms)
+✔ button and serial input change the actual GPIO path during asynchronous C++ execution (18.297659ms)
+✔ ADC 12-bit samples and PWM follow live potentiometer endpoints (17.053816ms)
+✔ AHT10 samples flow through Wire, visible OLED pixels and a calibrated LEDC servo impulse (62.644344ms)
+✔ BMP180/BMP280 compensation and AM2320 CRC run as compiled library code (54.714148ms)
+✔ SG90 position is derived from a 50 Hz impulse with independent 5 V supply (11.446201ms)
+✔ LCD text and custom CGRAM glyph come from actual PCF8574 transfers (32.974934ms)
+✔ SPI touch performs ADC conversion, C++ calibration, hit-test, GPIO and TFT pixel update (894.99642ms)
+✔ missing touch MISO cannot activate LED and reports a protocol diagnosis (633.240771ms)
+✔ S3 cache and submission reopen with the correct WASM artifact and measurements label (19.733064ms)
+✔ S3 session ignores old messages and terminates its Worker exactly once (4.147075ms)
+✔ real compiler supports multiple C++/C files and Bounce2 GPIO without source rewriting (669.858203ms)
+✔ real compiler reports exact source lines and rejects unsupported ESP-specific includes (798.152076ms)
+✔ real compiler preserves automatic-prototype boundary and rejects old ESP32 channel API (902.214338ms)
+✔ loopback bridge validates and caches the correct source-bound S3 result (83.210015ms)
+✔ actual S3 Worker accepts live input inside setup and force-stops a pure infinite C++ loop (845.061126ms)
+✔ serial flood keeps console chunks and message rate bounded while C++ remains stoppable (628.072177ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6729.317201

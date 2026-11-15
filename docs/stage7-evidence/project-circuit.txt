@@ -1,0 +1,39 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.4.0-alpha.1 test
+> node --import tsx --test verification/project.test.ts verification/circuit.test.ts
+
+✔ 44 physical headers, duplicate power pins and reserved PSRAM pins (11.228337ms)
+✔ breadboard groups, channel, columns, rails and split at 15/16 (7.655793ms)
+✔ wire deletion changes connectivity without a cached netlist (4.099022ms)
+✔ crossing and overlapping paths never create electrical joints (0.463053ms)
+✔ power short through breadboard is detected and clears after disconnection (4.107164ms)
+✔ button permanently joins each side and bridges both sides only while pressed (2.704997ms)
+✔ resistor, LED and potentiometer terminals remain separate nets (0.98265ms)
+✔ overvoltage, reserved pins, shared GPIO and contradictory known drivers (5.25412ms)
+✔ LED requires series resistor; bypassed resistor is detected (4.045452ms)
+✔ reference lesson passes; removing rail bridge exposes open path (12.893277ms)
+✔ rotation and movement preserve identity, connectivity and attached wire endpoint (3.80428ms)
+✔ malformed endpoints, IDs, component kinds, properties and coordinates reject (7.696994ms)
+✔ schema 1 fixture migrates without loss; future versions reject (1.412613ms)
+✔ ZIP and JSON preserve complete circuit; rejected input cannot mutate current project (10.547358ms)
+✔ autosave, reopening and immutable history preserve complete circuit (35.073897ms)
+✔ 200 routed wires and maximum bend count round-trip beyond old manifest cap (38.506431ms)
+✔ ZIP and JSON preserve Unicode, helper files and settings (12.442453ms)
+✔ future schemas and unknown board profiles are rejected (0.700949ms)
+✔ entrypoint, settings and circuit scope are validated (0.653748ms)
+✔ traversal, scripts, internal overrides and case collisions are rejected (1.343761ms)
+✔ file and decompressed archive sizes are bounded (15.010013ms)
+✔ ZIP manifest must match files; truncated packages are rejected (6.16335ms)
+✔ editing preserves immutable runtime snapshot (0.855109ms)
+✔ IndexedDB survives reopening with multiple projects, settings and history (25.95141ms)
+✔ atomic revisions protect against concurrent tab writes (3.565413ms)
+✔ bounded history restoration creates a new revision (36.86026ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 401.244388

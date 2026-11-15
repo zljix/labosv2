@@ -1,0 +1,10 @@
+PASS runtime: "micropython\n3.4.0; MicroPython v1.29.0 on 2026-11-12\nJS_DISABLED"
+PASS time: "TIME_OK 194"
+PASS input: {"pressToOutputMs":22.6,"released":true}
+PASS stop: {"stopAwaitMs":[7.65,2.02,20.77],"stopToNewProgramCompletedMs":[173.4,148.7,177.8],"freshRuns":3,"note":"Browser terminate() has no completion acknowledgement; stopAwaitMs measures the command, not physical thread destruction."}
+PASS i2c: "scan, writeto, readfrom, readfrom_into, NACK na 0x39"
+PASS wiring: "3 negativna slučaja prolaze; echo uređaj nije model AHT10"
+PASS framebuf: "1024 bajta, 128 × 64, MONO_VLSB, tekst i rub"
+PASS gc: "GC_OK 4085440"
+PASS errors: "ValueError, SyntaxError, izolacija novog pokretanja"
+PASS console: {"consoleCharacters":8237,"consoleMessages":2,"pinMessages":55}

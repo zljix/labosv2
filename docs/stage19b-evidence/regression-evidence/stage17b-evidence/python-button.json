@@ -1,0 +1,59 @@
+{
+  "console": "TOUCH BUTTON READY\nTOUCH LED=1 X=120 Y=160\nTOUCH LED=0 X=120 Y=160\n",
+  "touch": {
+    "touch1": {
+      "powered": true,
+      "down": true,
+      "x": 120,
+      "y": 160,
+      "pressure": 50,
+      "irq": 0,
+      "pd": 0,
+      "raw": {
+        "x": 2058,
+        "y": 2056,
+        "z1": 1000,
+        "z2": 3345
+      },
+      "last": {
+        "channel": "z2",
+        "value": 3345,
+        "command": 192
+      },
+      "conversions": 172,
+      "reason": "CS HIGH · neaktivan"
+    }
+  },
+  "tft": {
+    "kind": "tft",
+    "controller": "ILI9341",
+    "width": 240,
+    "height": 320,
+    "powered": true,
+    "backlight": true,
+    "on": true,
+    "sleep": false,
+    "madctl": 72,
+    "format": 85,
+    "written": 123198,
+    "window": [
+      168,
+      150,
+      170,
+      152
+    ],
+    "reason": "CS HIGH · neaktivan"
+  },
+  "pixels": {
+    "length": 76800,
+    "nonzero": 15240,
+    "sha256": "9389139170f001d64411b730fafd3a79209d02b0a9612244b1670bbd285a4c54"
+  },
+  "leds": {
+    "touchLED": {
+      "brightness": 0,
+      "currentMa": 0
+    }
+  },
+  "diagnostics": []
+}

@@ -1,0 +1,1588 @@
+TAP version 13
+# Subtest: lm35: exact source/header, valid nets, ZIP and physical sketch export
+ok 1 - lm35: exact source/header, valid nets, ZIP and physical sketch export
+  ---
+  duration_ms: 62.696043
+  type: 'test'
+  ...
+# Subtest: temt6000: exact source/header, valid nets, ZIP and physical sketch export
+ok 2 - temt6000: exact source/header, valid nets, ZIP and physical sketch export
+  ---
+  duration_ms: 8.706067
+  type: 'test'
+  ...
+# Subtest: ntc: exact source/header, valid nets, ZIP and physical sketch export
+ok 3 - ntc: exact source/header, valid nets, ZIP and physical sketch export
+  ---
+  duration_ms: 9.864749
+  type: 'test'
+  ...
+# Subtest: ky023: exact source/header, valid nets, ZIP and physical sketch export
+ok 4 - ky023: exact source/header, valid nets, ZIP and physical sketch export
+  ---
+  duration_ms: 12.687762
+  type: 'test'
+  ...
+# Subtest: flame: exact source/header, valid nets, ZIP and physical sketch export
+ok 5 - flame: exact source/header, valid nets, ZIP and physical sketch export
+  ---
+  duration_ms: 14.86217
+  type: 'test'
+  ...
+# Subtest: sound: exact source/header, valid nets, ZIP and physical sketch export
+ok 6 - sound: exact source/header, valid nets, ZIP and physical sketch export
+  ---
+  duration_ms: 10.202957
+  type: 'test'
+  ...
+# Subtest: analogCompare: exact source/header, valid nets, ZIP and physical sketch export
+ok 7 - analogCompare: exact source/header, valid nets, ZIP and physical sketch export
+  ---
+  duration_ms: 6.269094
+  type: 'test'
+  ...
+# Subtest: dualInputs: exact source/header, valid nets, ZIP and physical sketch export
+ok 8 - dualInputs: exact source/header, valid nets, ZIP and physical sketch export
+  ---
+  duration_ms: 6.680302
+  type: 'test'
+  ...
+# Subtest: matrix declares six experimental S3 profiles, URS04 coverage and actual evidence
+ok 9 - matrix declares six experimental S3 profiles, URS04 coverage and actual evidence
+  ---
+  duration_ms: 12.292037
+  type: 'test'
+  ...
+# Subtest: compiled LM35 converts the 10 mV/C circuit at 2 C
+ok 10 - compiled LM35 converts the 10 mV/C circuit at 2 C
+  ---
+  duration_ms: 17.191371
+  type: 'test'
+  ...
+# Subtest: compiled LM35 converts the 10 mV/C circuit at 25 C
+ok 11 - compiled LM35 converts the 10 mV/C circuit at 25 C
+  ---
+  duration_ms: 5.826418
+  type: 'test'
+  ...
+# Subtest: compiled LM35 converts the 10 mV/C circuit at 50 C
+ok 12 - compiled LM35 converts the 10 mV/C circuit at 50 C
+  ---
+  duration_ms: 6.155843
+  type: 'test'
+  ...
+# Subtest: compiled LM35 converts the 10 mV/C circuit at 100 C
+ok 13 - compiled LM35 converts the 10 mV/C circuit at 100 C
+  ---
+  duration_ms: 4.841458
+  type: 'test'
+  ...
+# Subtest: compiled LM35 converts the 10 mV/C circuit at 150 C
+ok 14 - compiled LM35 converts the 10 mV/C circuit at 150 C
+  ---
+  duration_ms: 5.829053
+  type: 'test'
+  ...
+# Subtest: LM35 live input changes the next actual C++ ADC result
+ok 15 - LM35 live input changes the next actual C++ ADC result
+  ---
+  duration_ms: 10.72439
+  type: 'test'
+  ...
+# Subtest: compiled TEMT6000 reads network voltage, 0 lx stimulus
+ok 16 - compiled TEMT6000 reads network voltage, 0 lx stimulus
+  ---
+  duration_ms: 6.051336
+  type: 'test'
+  ...
+# Subtest: compiled TEMT6000 reads network voltage, 20 lx stimulus
+ok 17 - compiled TEMT6000 reads network voltage, 20 lx stimulus
+  ---
+  duration_ms: 7.606855
+  type: 'test'
+  ...
+# Subtest: compiled TEMT6000 reads network voltage, 100 lx stimulus
+ok 18 - compiled TEMT6000 reads network voltage, 100 lx stimulus
+  ---
+  duration_ms: 5.561489
+  type: 'test'
+  ...
+# Subtest: compiled TEMT6000 reads network voltage, 600 lx stimulus
+ok 19 - compiled TEMT6000 reads network voltage, 600 lx stimulus
+  ---
+  duration_ms: 5.966088
+  type: 'test'
+  ...
+# Subtest: compiled TEMT6000 reads network voltage, 2000 lx stimulus
+ok 20 - compiled TEMT6000 reads network voltage, 2000 lx stimulus
+  ---
+  duration_ms: 4.875589
+  type: 'test'
+  ...
+# Subtest: compiled NTC uses the 3.3 V divider, -20 C
+ok 21 - compiled NTC uses the 3.3 V divider, -20 C
+  ---
+  duration_ms: 5.76128
+  type: 'test'
+  ...
+# Subtest: compiled NTC uses the 3.3 V divider, 0 C
+ok 22 - compiled NTC uses the 3.3 V divider, 0 C
+  ---
+  duration_ms: 5.786809
+  type: 'test'
+  ...
+# Subtest: compiled NTC uses the 3.3 V divider, 25 C
+ok 23 - compiled NTC uses the 3.3 V divider, 25 C
+  ---
+  duration_ms: 5.67432
+  type: 'test'
+  ...
+# Subtest: compiled NTC uses the 3.3 V divider, 50 C
+ok 24 - compiled NTC uses the 3.3 V divider, 50 C
+  ---
+  duration_ms: 4.365863
+  type: 'test'
+  ...
+# Subtest: compiled NTC uses the 3.3 V divider, 100 C
+ok 25 - compiled NTC uses the 3.3 V divider, 100 C
+  ---
+  duration_ms: 4.623695
+  type: 'test'
+  ...
+# Subtest: NTC rejects actual ADC saturation instead of displaying a fabricated temperature
+ok 26 - NTC rejects actual ADC saturation instead of displaying a fabricated temperature
+  ---
+  duration_ms: 8.983313
+  type: 'test'
+  ...
+# Subtest: NTC changed resistance really changes the measured result until source constants are adjusted
+ok 27 - NTC changed resistance really changes the measured result until source constants are adjusted
+  ---
+  duration_ms: 5.945047
+  type: 'test'
+  ...
+# Subtest: LM35 and NTC share the ADC but respond independently while running
+ok 28 - LM35 and NTC share the ADC but respond independently while running
+  ---
+  duration_ms: 9.363205
+  type: 'test'
+  ...
+# Subtest: KY-023 center, both signs, dead zone, upper clipping and active LOW button execute in C++
+ok 29 - KY-023 center, both signs, dead zone, upper clipping and active LOW button execute in C++
+  ---
+  duration_ms: 14.512645
+  type: 'test'
+  ...
+# Subtest: flame: live comparator hysteresis and a fresh run are decoded through digitalRead
+ok 30 - flame: live comparator hysteresis and a fresh run are decoded through digitalRead
+  ---
+  duration_ms: 20.151611
+  type: 'test'
+  ...
+# Subtest: sound: live comparator hysteresis and a fresh run are decoded through digitalRead
+ok 31 - sound: live comparator hysteresis and a fresh run are decoded through digitalRead
+  ---
+  duration_ms: 21.528983
+  type: 'test'
+  ...
+# Subtest: two potentiometers and two buttons are four independent live inputs
+ok 32 - two potentiometers and two buttons are four independent live inputs
+  ---
+  duration_ms: 11.673316
+  type: 'test'
+  ...
+# Subtest: lm35: disconnected VCC is not a valid powered measurement
+ok 33 - lm35: disconnected VCC is not a valid powered measurement
+  ---
+  duration_ms: 5.640199
+  type: 'test'
+  ...
+# Subtest: lm35: disconnected GND is not a valid powered measurement
+ok 34 - lm35: disconnected GND is not a valid powered measurement
+  ---
+  duration_ms: 5.728441
+  type: 'test'
+  ...
+# Subtest: temt6000: disconnected VCC is not a valid powered measurement
+ok 35 - temt6000: disconnected VCC is not a valid powered measurement
+  ---
+  duration_ms: 6.875745
+  type: 'test'
+  ...
+# Subtest: temt6000: disconnected GND is not a valid powered measurement
+ok 36 - temt6000: disconnected GND is not a valid powered measurement
+  ---
+  duration_ms: 7.814727
+  type: 'test'
+  ...
+# Subtest: ntc: disconnected VCC is not a valid powered measurement
+ok 37 - ntc: disconnected VCC is not a valid powered measurement
+  ---
+  duration_ms: 8.312495
+  type: 'test'
+  ...
+# Subtest: ntc: disconnected GND is not a valid powered measurement
+ok 38 - ntc: disconnected GND is not a valid powered measurement
+  ---
+  duration_ms: 5.72827
+  type: 'test'
+  ...
+# Subtest: ky023: disconnected VCC is not a valid powered measurement
+ok 39 - ky023: disconnected VCC is not a valid powered measurement
+  ---
+  duration_ms: 7.405913
+  type: 'test'
+  ...
+# Subtest: ky023: disconnected GND is not a valid powered measurement
+ok 40 - ky023: disconnected GND is not a valid powered measurement
+  ---
+  duration_ms: 6.518589
+  type: 'test'
+  ...
+# Subtest: flame: disconnected VCC is not a valid powered measurement
+ok 41 - flame: disconnected VCC is not a valid powered measurement
+  ---
+  duration_ms: 4.161275
+  type: 'test'
+  ...
+# Subtest: flame: disconnected GND is not a valid powered measurement
+ok 42 - flame: disconnected GND is not a valid powered measurement
+  ---
+  duration_ms: 3.613241
+  type: 'test'
+  ...
+# Subtest: sound: disconnected VCC is not a valid powered measurement
+ok 43 - sound: disconnected VCC is not a valid powered measurement
+  ---
+  duration_ms: 4.558833
+  type: 'test'
+  ...
+# Subtest: sound: disconnected GND is not a valid powered measurement
+ok 44 - sound: disconnected GND is not a valid powered measurement
+  ---
+  duration_ms: 3.352169
+  type: 'test'
+  ...
+# Subtest: lm35: disconnected signal stops C++ instead of substituting a slider value
+ok 45 - lm35: disconnected signal stops C++ instead of substituting a slider value
+  ---
+  duration_ms: 3.58569
+  type: 'test'
+  ...
+# Subtest: temt6000: disconnected signal stops C++ instead of substituting a slider value
+ok 46 - temt6000: disconnected signal stops C++ instead of substituting a slider value
+  ---
+  duration_ms: 3.431008
+  type: 'test'
+  ...
+# Subtest: ntc: disconnected signal stops C++ instead of substituting a slider value
+ok 47 - ntc: disconnected signal stops C++ instead of substituting a slider value
+  ---
+  duration_ms: 2.797435
+  type: 'test'
+  ...
+# Subtest: ky023: disconnected signal stops C++ instead of substituting a slider value
+ok 48 - ky023: disconnected signal stops C++ instead of substituting a slider value
+  ---
+  duration_ms: 3.287741
+  type: 'test'
+  ...
+# Subtest: flame: disconnected signal stops C++ instead of substituting a slider value
+ok 49 - flame: disconnected signal stops C++ instead of substituting a slider value
+  ---
+  duration_ms: 5.074017
+  type: 'test'
+  ...
+# Subtest: sound: disconnected signal stops C++ instead of substituting a slider value
+ok 50 - sound: disconnected signal stops C++ instead of substituting a slider value
+  ---
+  duration_ms: 2.673769
+  type: 'test'
+  ...
+# Subtest: LM35 connected to 3V3 loses power validity and the real ADC read fails
+ok 51 - LM35 connected to 3V3 loses power validity and the real ADC read fails
+  ---
+  duration_ms: 7.315387
+  type: 'test'
+  ...
+# Subtest: a 5 V input module wired to S3 signal is rejected by the electrical compiler
+ok 52 - a 5 V input module wired to S3 signal is rejected by the electrical compiler
+  ---
+  duration_ms: 2.431234
+  type: 'test'
+  ...
+# Subtest: changes to the sketch or visible conversion header invalidate the bundled artifact
+ok 53 - changes to the sketch or visible conversion header invalidate the bundled artifact
+  ---
+  duration_ms: 1.552864
+  type: 'test'
+  ...
+# Subtest: actual compiler executes changed student conversion code and rejects a missing header
+ok 54 - actual compiler executes changed student conversion code and rejects a missing header
+  ---
+  duration_ms: 620.107728
+  type: 'test'
+  ...
+# Subtest: encoderRaw: exact compiled source, netlist, project ZIP and physical sketch files
+ok 55 - encoderRaw: exact compiled source, netlist, project ZIP and physical sketch files
+  ---
+  duration_ms: 39.633596
+  type: 'test'
+  ...
+# Subtest: ky040: exact compiled source, netlist, project ZIP and physical sketch files
+ok 56 - ky040: exact compiled source, netlist, project ZIP and physical sketch files
+  ---
+  duration_ms: 8.465866
+  type: 'test'
+  ...
+# Subtest: encoderBounce: exact compiled source, netlist, project ZIP and physical sketch files
+ok 57 - encoderBounce: exact compiled source, netlist, project ZIP and physical sketch files
+  ---
+  duration_ms: 7.774211
+  type: 'test'
+  ...
+# Subtest: encoderPWM: exact compiled source, netlist, project ZIP and physical sketch files
+ok 58 - encoderPWM: exact compiled source, netlist, project ZIP and physical sketch files
+  ---
+  duration_ms: 11.105544
+  type: 'test'
+  ...
+# Subtest: relayContacts: exact compiled source, netlist, project ZIP and physical sketch files
+ok 59 - relayContacts: exact compiled source, netlist, project ZIP and physical sketch files
+  ---
+  duration_ms: 6.806251
+  type: 'test'
+  ...
+# Subtest: activeAlarm: exact compiled source, netlist, project ZIP and physical sketch files
+ok 60 - activeAlarm: exact compiled source, netlist, project ZIP and physical sketch files
+  ---
+  duration_ms: 5.555801
+  type: 'test'
+  ...
+# Subtest: piezoTone: exact compiled source, netlist, project ZIP and physical sketch files
+ok 61 - piezoTone: exact compiled source, netlist, project ZIP and physical sketch files
+  ---
+  duration_ms: 7.296739
+  type: 'test'
+  ...
+# Subtest: dcDrive: exact compiled source, netlist, project ZIP and physical sketch files
+ok 62 - dcDrive: exact compiled source, netlist, project ZIP and physical sketch files
+  ---
+  duration_ms: 9.341833
+  type: 'test'
+  ...
+# Subtest: dualDrive: exact compiled source, netlist, project ZIP and physical sketch files
+ok 63 - dualDrive: exact compiled source, netlist, project ZIP and physical sketch files
+  ---
+  duration_ms: 5.926308
+  type: 'test'
+  ...
+# Subtest: servoMotorTone: exact compiled source, netlist, project ZIP and physical sketch files
+ok 64 - servoMotorTone: exact compiled source, netlist, project ZIP and physical sketch files
+  ---
+  duration_ms: 6.984779
+  type: 'test'
+  ...
+# Subtest: stepperBasic: exact compiled source, netlist, project ZIP and physical sketch files
+ok 65 - stepperBasic: exact compiled source, netlist, project ZIP and physical sketch files
+  ---
+  duration_ms: 8.84075
+  type: 'test'
+  ...
+# Subtest: stepperMicro: exact compiled source, netlist, project ZIP and physical sketch files
+ok 66 - stepperMicro: exact compiled source, netlist, project ZIP and physical sketch files
+  ---
+  duration_ms: 5.949413
+  type: 'test'
+  ...
+# Subtest: stepperControl: exact compiled source, netlist, project ZIP and physical sketch files
+ok 67 - stepperControl: exact compiled source, netlist, project ZIP and physical sketch files
+  ---
+  duration_ms: 6.395874
+  type: 'test'
+  ...
+# Subtest: support matrix declares exactly the six added S3 component profiles with specific evidence
+ok 68 - support matrix declares exactly the six added S3 component profiles with specific evidence
+  ---
+  duration_ms: 5.861121
+  type: 'test'
+  ...
+# Subtest: S3 C++ component help uses the selected board and language
+ok 69 - S3 C++ component help uses the selected board and language
+  ---
+  duration_ms: 9.768203
+  type: 'test'
+  ...
+# Subtest: raw KY-040 exposes four Gray transitions and the independent active LOW button
+ok 70 - raw KY-040 exposes four Gray transitions and the independent active LOW button
+  ---
+  duration_ms: 727.959092
+  type: 'test'
+  ...
+# Subtest: ky040: three CW, two CCW and debounced SW reset execute in WASM
+ok 71 - ky040: three CW, two CCW and debounced SW reset execute in WASM
+  ---
+  duration_ms: 563.832531
+  type: 'test'
+  ...
+# Subtest: encoderBounce: three CW, two CCW and debounced SW reset execute in WASM
+ok 72 - encoderBounce: three CW, two CCW and debounced SW reset execute in WASM
+  ---
+  duration_ms: 664.814119
+  type: 'test'
+  ...
+# Subtest: encoder program starts at zero even when the initial mechanical position is 42
+ok 73 - encoder program starts at zero even when the initial mechanical position is 42
+  ---
+  duration_ms: 55.524428
+  type: 'test'
+  ...
+# Subtest: swapping CLK and DT reverses the decoded sign through the actual circuit
+ok 74 - swapping CLK and DT reverses the decoded sign through the actual circuit
+  ---
+  duration_ms: 107.366074
+  type: 'test'
+  ...
+# Subtest: a button pulse shorter than the 20 ms filter does not reset the decoder
+ok 75 - a button pulse shorter than the 20 ms filter does not reset the decoder
+  ---
+  duration_ms: 8.723733
+  type: 'test'
+  ...
+# Subtest: encoder PWM clamps both bounds and SW returns 50 without moving the mechanism
+ok 76 - encoder PWM clamps both bounds and SW returns 50 without moving the mechanism
+  ---
+  duration_ms: 3760.788424
+  type: 'test'
+  ...
+# Subtest: KY-040 open CLK cannot yield a fabricated counter
+ok 77 - KY-040 open CLK cannot yield a fabricated counter
+  ---
+  duration_ms: 4.9692
+  type: 'test'
+  ...
+# Subtest: KY-040 open DT cannot yield a fabricated counter
+ok 78 - KY-040 open DT cannot yield a fabricated counter
+  ---
+  duration_ms: 3.426641
+  type: 'test'
+  ...
+# Subtest: KY-040 missing VCC produces no completed step
+ok 79 - KY-040 missing VCC produces no completed step
+  ---
+  duration_ms: 3.357187
+  type: 'test'
+  ...
+# Subtest: KY-040 missing GND produces no completed step
+ok 80 - KY-040 missing GND produces no completed step
+  ---
+  duration_ms: 147.374839
+  type: 'test'
+  ...
+# Subtest: an open SW remains pulled HIGH and cannot pass a physical button press to the program
+ok 81 - an open SW remains pulled HIGH and cannot pass a physical button press to the program
+  ---
+  duration_ms: 63.093594
+  type: 'test'
+  ...
+# Subtest: 5 V KY-040 profile on S3 signals is rejected at compilation of the circuit
+ok 82 - 5 V KY-040 profile on S3 signals is rejected at compilation of the circuit
+  ---
+  duration_ms: 1.467076
+  type: 'test'
+  ...
+# Subtest: compiled relay starts on NC and genuinely switches both electrical LED paths
+ok 83 - compiled relay starts on NC and genuinely switches both electrical LED paths
+  ---
+  duration_ms: 11.819908
+  type: 'test'
+  ...
+# Subtest: changing relay active level changes physical contact response without changing the artifact
+ok 84 - changing relay active level changes physical contact response without changing the artifact
+  ---
+  duration_ms: 9.560652
+  type: 'test'
+  ...
+# Subtest: relay missing VCC stays unenergized on NC
+ok 85 - relay missing VCC stays unenergized on NC
+  ---
+  duration_ms: 5.416413
+  type: 'test'
+  ...
+# Subtest: relay missing LV stays unenergized on NC
+ok 86 - relay missing LV stays unenergized on NC
+  ---
+  duration_ms: 14.964365
+  type: 'test'
+  ...
+# Subtest: relay missing GND stays unenergized on NC
+ok 87 - relay missing GND stays unenergized on NC
+  ---
+  duration_ms: 8.131384
+  type: 'test'
+  ...
+# Subtest: open relay IN is held inactive by the declared module pull resistor
+ok 88 - open relay IN is held inactive by the declared module pull resistor
+  ---
+  duration_ms: 6.97146
+  type: 'test'
+  ...
+# Subtest: loss of relay load power extinguishes LEDs while the control contacts still switch
+ok 89 - loss of relay load power extinguishes LEDs while the control contacts still switch
+  ---
+  duration_ms: 7.17105
+  type: 'test'
+  ...
+# Subtest: relay NO contact short to the load ground raises a real output conflict
+ok 90 - relay NO contact short to the load ground raises a real output conflict
+  ---
+  duration_ms: 4.404111
+  type: 'test'
+  ...
+# Subtest: active buzzer starts silent, oscillates at 2300 Hz on DC, and switches off
+ok 91 - active buzzer starts silent, oscillates at 2300 Hz on DC, and switches off
+  ---
+  duration_ms: 13.457149
+  type: 'test'
+  ...
+# Subtest: activeAlarm: missing VCC prevents sound from a valid compiled program
+ok 92 - activeAlarm: missing VCC prevents sound from a valid compiled program
+  ---
+  duration_ms: 10.36391
+  type: 'test'
+  ...
+# Subtest: activeAlarm: missing GND prevents sound from a valid compiled program
+ok 93 - activeAlarm: missing GND prevents sound from a valid compiled program
+  ---
+  duration_ms: 6.895375
+  type: 'test'
+  ...
+# Subtest: activeAlarm: missing SIG prevents sound from a valid compiled program
+ok 94 - activeAlarm: missing SIG prevents sound from a valid compiled program
+  ---
+  duration_ms: 6.947393
+  type: 'test'
+  ...
+# Subtest: piezoTone: missing VCC prevents sound from a valid compiled program
+ok 95 - piezoTone: missing VCC prevents sound from a valid compiled program
+  ---
+  duration_ms: 12.959842
+  type: 'test'
+  ...
+# Subtest: piezoTone: missing GND prevents sound from a valid compiled program
+ok 96 - piezoTone: missing GND prevents sound from a valid compiled program
+  ---
+  duration_ms: 12.675554
+  type: 'test'
+  ...
+# Subtest: piezoTone: missing SIG prevents sound from a valid compiled program
+ok 97 - piezoTone: missing SIG prevents sound from a valid compiled program
+  ---
+  duration_ms: 13.712182
+  type: 'test'
+  ...
+# Subtest: passive piezo follows three LEDC frequencies, 400 ms gates, pauses and final OFF
+ok 98 - passive piezo follows three LEDC frequencies, 400 ms gates, pauses and final OFF
+  ---
+  duration_ms: 13.618562
+  type: 'test'
+  ...
+# Subtest: compiled L298N produces three duty levels, Hi-Z coast, reverse and brake
+ok 99 - compiled L298N produces three duty levels, Hi-Z coast, reverse and brake
+  ---
+  duration_ms: 15.761433
+  type: 'test'
+  ...
+# Subtest: two compiled motor channels retain independent signs and enable duties
+ok 100 - two compiled motor channels retain independent signs and enable duties
+  ---
+  duration_ms: 10.651692
+  type: 'test'
+  ...
+# Subtest: L298N missing VS prevents motor drive
+ok 101 - L298N missing VS prevents motor drive
+  ---
+  duration_ms: 13.880271
+  type: 'test'
+  ...
+# Subtest: L298N missing VSS prevents motor drive
+ok 102 - L298N missing VSS prevents motor drive
+  ---
+  duration_ms: 12.883757
+  type: 'test'
+  ...
+# Subtest: L298N missing GND prevents motor drive
+ok 103 - L298N missing GND prevents motor drive
+  ---
+  duration_ms: 11.977014
+  type: 'test'
+  ...
+# Subtest: reversed motor wires reverse the measured direction without editing C++
+ok 104 - reversed motor wires reverse the measured direction without editing C++
+  ---
+  duration_ms: 17.274983
+  type: 'test'
+  ...
+# Subtest: an installed EN jumper and direct motor GPIO connection are rejected
+ok 105 - an installed EN jumper and direct motor GPIO connection are rejected
+  ---
+  duration_ms: 1.660376
+  type: 'test'
+  ...
+# Subtest: SG90, motor and 880 Hz piezo operate concurrently on four independent LEDC pins
+ok 106 - SG90, motor and 880 Hz piezo operate concurrently on four independent LEDC pins
+  ---
+  duration_ms: 9.40287
+  type: 'test'
+  ...
+# Subtest: A4988 full-step program moves +90 and back to zero from actual STEP edges
+ok 107 - A4988 full-step program moves +90 and back to zero from actual STEP edges
+  ---
+  duration_ms: 137.235602
+  type: 'test'
+  ...
+# Subtest: five compiled microstep modes each give 18 degrees and return to common Home
+ok 108 - five compiled microstep modes each give 18 degrees and return to common Home
+  ---
+  duration_ms: 843.660968
+  type: 'test'
+  ...
+# Subtest: ENABLE, electrical RESET and SLEEP preserve their distinct translator/shaft meaning
+ok 109 - ENABLE, electrical RESET and SLEEP preserve their distinct translator/shaft meaning
+  ---
+  duration_ms: 50.009291
+  type: 'test'
+  ...
+# Subtest: A4988 missing VMOT cannot drive a motor from printed angle text
+ok 110 - A4988 missing VMOT cannot drive a motor from printed angle text
+  ---
+  duration_ms: 125.298038
+  type: 'test'
+  ...
+# Subtest: A4988 missing VDD cannot drive a motor from printed angle text
+ok 111 - A4988 missing VDD cannot drive a motor from printed angle text
+  ---
+  duration_ms: 129.018892
+  type: 'test'
+  ...
+# Subtest: A4988 missing GND cannot drive a motor from printed angle text
+ok 112 - A4988 missing GND cannot drive a motor from printed angle text
+  ---
+  duration_ms: 126.929265
+  type: 'test'
+  ...
+# Subtest: open A4988 phase preserves translator pulses but cannot move the disconnected motor
+ok 113 - open A4988 phase preserves translator pulses but cannot move the disconnected motor
+  ---
+  duration_ms: 130.646733
+  type: 'test'
+  ...
+# Subtest: editing the visible decoder or main source invalidates the bundled artifact
+ok 114 - editing the visible decoder or main source invalidates the bundled artifact
+  ---
+  duration_ms: 2.140468
+  type: 'test'
+  ...
+# Subtest: actual compiler executes a slower student poll and exposes lost encoder steps
+ok 115 - actual compiler executes a slower student poll and exposes lost encoder steps
+  ---
+  duration_ms: 492.25039
+  type: 'test'
+  ...
+# Subtest: S3 compiled Adafruit dht11 decodes GPIO pulses with independent known bytes
+ok 116 - S3 compiled Adafruit dht11 decodes GPIO pulses with independent known bytes
+  ---
+  duration_ms: 98.061008
+  type: 'test'
+  ...
+# Subtest: S3 compiled Adafruit dht22 decodes GPIO pulses with independent known bytes
+ok 117 - S3 compiled Adafruit dht22 decodes GPIO pulses with independent known bytes
+  ---
+  duration_ms: 68.502285
+  type: 'test'
+  ...
+# Subtest: S3 DHT rejects checksum and recovers through a new physical transfer
+ok 118 - S3 DHT rejects checksum and recovers through a new physical transfer
+  ---
+  duration_ms: 91.587893
+  type: 'test'
+  ...
+# Subtest: S3 DHT rejects timeout and recovers through a new physical transfer
+ok 119 - S3 DHT rejects timeout and recovers through a new physical transfer
+  ---
+  duration_ms: 58.062833
+  type: 'test'
+  ...
+# Subtest: S3 DHT forced 300 ms attempts respect sensor minimum interval
+ok 120 - S3 DHT forced 300 ms attempts respect sensor minimum interval
+  ---
+  duration_ms: 148.919476
+  type: 'test'
+  ...
+# Subtest: S3 live DHT environment is decoded by the next C++ read
+ok 121 - S3 live DHT environment is decoded by the next C++ read
+  ---
+  duration_ms: 66.264533
+  type: 'test'
+  ...
+# Subtest: S3 DHT with missing external pull-up cannot deliver fabricated data
+ok 122 - S3 DHT with missing external pull-up cannot deliver fabricated data
+  ---
+  duration_ms: 13.685962
+  type: 'test'
+  ...
+# Subtest: S3 generic OneWire fallback searches three ROMs, matches addresses and decodes signed scratchpads
+ok 123 - S3 generic OneWire fallback searches three ROMs, matches addresses and decodes signed scratchpads
+  ---
+  duration_ms: 1664.513622
+  type: 'test'
+  ...
+# Subtest: S3 DallasTemperature writes and reads all four resolutions with correct quantization
+ok 124 - S3 DallasTemperature writes and reads all four resolutions with correct quantization
+  ---
+  duration_ms: 1903.195309
+  type: 'test'
+  ...
+# Subtest: S3 DS18B20 CRC failure affects only the addressed sensor and recovers on a new conversion
+ok 125 - S3 DS18B20 CRC failure affects only the addressed sensor and recovers on a new conversion
+  ---
+  duration_ms: 3166.880555
+  type: 'test'
+  ...
+# Subtest: S3 DS18B20 disconnected device is absent from ROM search
+ok 126 - S3 DS18B20 disconnected device is absent from ROM search
+  ---
+  duration_ms: 1571.486497
+  type: 'test'
+  ...
+# Subtest: S3 real U8g2 64-row library generates I2C page bytes and visible edge pixels
+ok 127 - S3 real U8g2 64-row library generates I2C page bytes and visible edge pixels
+  ---
+  duration_ms: 30.626169
+  type: 'test'
+  ...
+# Subtest: S3 real U8g2 32-row library generates I2C page bytes and visible edge pixels
+ok 128 - S3 real U8g2 32-row library generates I2C page bytes and visible edge pixels
+  ---
+  duration_ms: 27.193819
+  type: 'test'
+  ...
+# Subtest: S3 U8g2 hardware I2C cannot light an unconnected display
+ok 129 - S3 U8g2 hardware I2C cannot light an unconnected display
+  ---
+  duration_ms: 23.656411
+  type: 'test'
+  ...
+# Subtest: real S3 compiler rejects unavailable graphics constructors and hardware IRQ API
+ok 130 - real S3 compiler rejects unavailable graphics constructors and hardware IRQ API
+  ---
+  duration_ms: 6614.160214
+  type: 'test'
+  ...
+# Subtest: irPulses: exact source, drivers, circuit and project/sketch export
+ok 131 - irPulses: exact source, drivers, circuit and project/sketch export
+  ---
+  duration_ms: 39.03542
+  type: 'test'
+  ...
+# Subtest: irNEC: exact source, drivers, circuit and project/sketch export
+ok 132 - irNEC: exact source, drivers, circuit and project/sketch export
+  ---
+  duration_ms: 7.186162
+  type: 'test'
+  ...
+# Subtest: irLED: exact source, drivers, circuit and project/sketch export
+ok 133 - irLED: exact source, drivers, circuit and project/sketch export
+  ---
+  duration_ms: 7.236819
+  type: 'test'
+  ...
+# Subtest: irTransmit: exact source, drivers, circuit and project/sketch export
+ok 134 - irTransmit: exact source, drivers, circuit and project/sketch export
+  ---
+  duration_ms: 6.440181
+  type: 'test'
+  ...
+# Subtest: tftGraphics: exact source, drivers, circuit and project/sketch export
+ok 135 - tftGraphics: exact source, drivers, circuit and project/sketch export
+  ---
+  duration_ms: 6.123325
+  type: 'test'
+  ...
+# Subtest: tftRotation: exact source, drivers, circuit and project/sketch export
+ok 136 - tftRotation: exact source, drivers, circuit and project/sketch export
+  ---
+  duration_ms: 7.00527
+  type: 'test'
+  ...
+# Subtest: bmp280SPI: exact source, drivers, circuit and project/sketch export
+ok 137 - bmp280SPI: exact source, drivers, circuit and project/sketch export
+  ---
+  duration_ms: 9.535164
+  type: 'test'
+  ...
+# Subtest: spiDashboard: exact source, drivers, circuit and project/sketch export
+ok 138 - spiDashboard: exact source, drivers, circuit and project/sketch export
+  ---
+  duration_ms: 7.427975
+  type: 'test'
+  ...
+# Subtest: three S3 protocol entries cite executable evidence; only the unconfirmed buzzer stays planned
+ok 139 - three S3 protocol entries cite executable evidence; only the unconfirmed buzzer stays planned
+  ---
+  duration_ms: 3.084286
+  type: 'test'
+  ...
+# Subtest: component help gives S3 pinout, bounded driver and LEDC instead of AVR code
+ok 140 - component help gives S3 pinout, bounded driver and LEDC instead of AVR code
+  ---
+  duration_ms: 6.908265
+  type: 'test'
+  ...
+# Subtest: irPulses: live full frame and long-press special repeats are decoded in WASM
+ok 141 - irPulses: live full frame and long-press special repeats are decoded in WASM
+  ---
+  duration_ms: 1084.034697
+  type: 'test'
+  ...
+# Subtest: irNEC: live full frame and long-press special repeats are decoded in WASM
+ok 142 - irNEC: live full frame and long-press special repeats are decoded in WASM
+  ---
+  duration_ms: 1088.283056
+  type: 'test'
+  ...
+# Subtest: IR PWM filters addresses, ignores unknown commands and clamps both bounds
+ok 143 - IR PWM filters addresses, ignores unknown commands and clamps both bounds
+  ---
+  duration_ms: 2527.063179
+  type: 'test'
+  ...
+# Subtest: bad inverse and timing frames cannot alter LED output; valid frame recovers the decoder
+ok 144 - bad inverse and timing frames cannot alter LED output; valid frame recovers the decoder
+  ---
+  duration_ms: 2503.410324
+  type: 'test'
+  ...
+# Subtest: IR VCC: no fabricated decoded frame
+ok 145 - IR VCC: no fabricated decoded frame
+  ---
+  duration_ms: 7.030688
+  type: 'test'
+  ...
+# Subtest: IR GND: no fabricated decoded frame
+ok 146 - IR GND: no fabricated decoded frame
+  ---
+  duration_ms: 4.98307
+  type: 'test'
+  ...
+# Subtest: IR OUT: no fabricated decoded frame
+ok 147 - IR OUT: no fabricated decoded frame
+  ---
+  duration_ms: 4.5973
+  type: 'test'
+  ...
+# Subtest: IR blocked: no fabricated decoded frame
+ok 148 - IR blocked: no fabricated decoded frame
+  ---
+  duration_ms: 619.282906
+  type: 'test'
+  ...
+# Subtest: IR group: no fabricated decoded frame
+ok 149 - IR group: no fabricated decoded frame
+  ---
+  duration_ms: 469.923837
+  type: 'test'
+  ...
+# Subtest: LEDC transmitter emits a full NEC envelope and two repeats through the receiver GPIO
+ok 150 - LEDC transmitter emits a full NEC envelope and two repeats through the receiver GPIO
+  ---
+  duration_ms: 6.071807
+  type: 'test'
+  ...
+# Subtest: transmitter VCC cannot deliver an optical waveform
+ok 151 - transmitter VCC cannot deliver an optical waveform
+  ---
+  duration_ms: 10.282677
+  type: 'test'
+  ...
+# Subtest: transmitter GND cannot deliver an optical waveform
+ok 152 - transmitter GND cannot deliver an optical waveform
+  ---
+  duration_ms: 7.220749
+  type: 'test'
+  ...
+# Subtest: transmitter SIG cannot deliver an optical waveform
+ok 153 - transmitter SIG cannot deliver an optical waveform
+  ---
+  duration_ms: 5.452436
+  type: 'test'
+  ...
+# Subtest: transmitter group cannot deliver an optical waveform
+ok 154 - transmitter group cannot deliver an optical waveform
+  ---
+  duration_ms: 5.665817
+  type: 'test'
+  ...
+# Subtest: real ST7735 program sends red/green/blue, text and geometric pixels
+ok 155 - real ST7735 program sends red/green/blue, text and geometric pixels
+  ---
+  duration_ms: 257.925305
+  type: 'test'
+  ...
+# Subtest: all four compiled rotations use the declared panel offsets and physical corners
+ok 156 - all four compiled rotations use the declared panel offsets and physical corners
+  ---
+  duration_ms: 138.361298
+  type: 'test'
+  ...
+# Subtest: ST7735 missing VCC cannot display program pixels
+ok 157 - ST7735 missing VCC cannot display program pixels
+  ---
+  duration_ms: 107.616392
+  type: 'test'
+  ...
+# Subtest: ST7735 missing GND cannot display program pixels
+ok 158 - ST7735 missing GND cannot display program pixels
+  ---
+  duration_ms: 113.859551
+  type: 'test'
+  ...
+# Subtest: ST7735 missing SCK cannot display program pixels
+ok 159 - ST7735 missing SCK cannot display program pixels
+  ---
+  duration_ms: 106.988207
+  type: 'test'
+  ...
+# Subtest: ST7735 missing MOSI cannot display program pixels
+ok 160 - ST7735 missing MOSI cannot display program pixels
+  ---
+  duration_ms: 104.913079
+  type: 'test'
+  ...
+# Subtest: ST7735 missing CS cannot display program pixels
+ok 161 - ST7735 missing CS cannot display program pixels
+  ---
+  duration_ms: 117.629589
+  type: 'test'
+  ...
+# Subtest: ST7735 missing DC cannot display program pixels
+ok 162 - ST7735 missing DC cannot display program pixels
+  ---
+  duration_ms: 245.422409
+  type: 'test'
+  ...
+# Subtest: ST7735 missing RESET cannot display program pixels
+ok 163 - ST7735 missing RESET cannot display program pixels
+  ---
+  duration_ms: 133.606397
+  type: 'test'
+  ...
+# Subtest: missing BL hides written RAM; 5 V BL is rejected before simulation
+ok 164 - missing BL hides written RAM; 5 V BL is rejected before simulation
+  ---
+  duration_ms: 124.188553
+  type: 'test'
+  ...
+# Subtest: BMP280 missing VCC fails ID instead of printing a synthetic measurement
+ok 165 - BMP280 missing VCC fails ID instead of printing a synthetic measurement
+  ---
+  duration_ms: 8.918226
+  type: 'test'
+  ...
+# Subtest: BMP280 missing GND fails ID instead of printing a synthetic measurement
+ok 166 - BMP280 missing GND fails ID instead of printing a synthetic measurement
+  ---
+  duration_ms: 6.455645
+  type: 'test'
+  ...
+# Subtest: BMP280 missing SCK fails ID instead of printing a synthetic measurement
+ok 167 - BMP280 missing SCK fails ID instead of printing a synthetic measurement
+  ---
+  duration_ms: 6.969367
+  type: 'test'
+  ...
+# Subtest: BMP280 missing MOSI fails ID instead of printing a synthetic measurement
+ok 168 - BMP280 missing MOSI fails ID instead of printing a synthetic measurement
+  ---
+  duration_ms: 7.274194
+  type: 'test'
+  ...
+# Subtest: BMP280 missing MISO fails ID instead of printing a synthetic measurement
+ok 169 - BMP280 missing MISO fails ID instead of printing a synthetic measurement
+  ---
+  duration_ms: 6.648384
+  type: 'test'
+  ...
+# Subtest: BMP280 missing CS fails ID instead of printing a synthetic measurement
+ok 170 - BMP280 missing CS fails ID instead of printing a synthetic measurement
+  ---
+  duration_ms: 9.216735
+  type: 'test'
+  ...
+# Subtest: live shared SPI environment changes compensated data and TFT pixels
+ok 171 - live shared SPI environment changes compensated data and TFT pixels
+  ---
+  duration_ms: 229.986912
+  type: 'test'
+  ...
+# Subtest: disconnected TFT CS leaves the independent BMP280 path working
+ok 172 - disconnected TFT CS leaves the independent BMP280 path working
+  ---
+  duration_ms: 167.195572
+  type: 'test'
+  ...
+# Subtest: edited driver and source reject the previous build
+ok 173 - edited driver and source reject the previous build
+  ---
+  duration_ms: 1.945684
+  type: 'test'
+  ...
+# Subtest: actual compiler changes TFT pixels from modified source and rejects missing NEC header
+ok 174 - actual compiler changes TFT pixels from modified source and rejects missing NEC header
+  ---
+  duration_ms: 654.616453
+  type: 'test'
+  ...
+# Subtest: actual compiler demonstrates that slow caller polling misses a full IR frame
+ok 175 - actual compiler demonstrates that slow caller polling misses a full IR frame
+  ---
+  duration_ms: 269.209829
+  type: 'test'
+  ...
+# Subtest: orphan repeats and repeats older than 150 ms do not create a new command
+ok 176 - orphan repeats and repeats older than 150 ms do not create a new command
+  ---
+  duration_ms: 940.758966
+  type: 'test'
+  ...
+# Subtest: wrong SPI mode and two active CS cannot fabricate a valid display transfer
+ok 177 - wrong SPI mode and two active CS cannot fabricate a valid display transfer
+  ---
+  duration_ms: 908.286498
+  type: 'test'
+  ...
+# Subtest: S3 C++ selection preserves old MicroPython documents and same-board language-copy wiring
+ok 178 - S3 C++ selection preserves old MicroPython documents and same-board language-copy wiring
+  ---
+  duration_ms: 24.177945
+  type: 'test'
+  ...
+# Subtest: compiled S3 blink retains exact source, target and full JSON/ZIP/IDE exports
+ok 179 - compiled S3 blink retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 30.943846
+  type: 'test'
+  ...
+# Subtest: compiled S3 button retains exact source, target and full JSON/ZIP/IDE exports
+ok 180 - compiled S3 button retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 10.182416
+  type: 'test'
+  ...
+# Subtest: compiled S3 adc retains exact source, target and full JSON/ZIP/IDE exports
+ok 181 - compiled S3 adc retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 9.437146
+  type: 'test'
+  ...
+# Subtest: compiled S3 regulator retains exact source, target and full JSON/ZIP/IDE exports
+ok 182 - compiled S3 regulator retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 14.627559
+  type: 'test'
+  ...
+# Subtest: compiled S3 sensors retains exact source, target and full JSON/ZIP/IDE exports
+ok 183 - compiled S3 sensors retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 15.630557
+  type: 'test'
+  ...
+# Subtest: compiled S3 servo retains exact source, target and full JSON/ZIP/IDE exports
+ok 184 - compiled S3 servo retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 5.912518
+  type: 'test'
+  ...
+# Subtest: compiled S3 lcd retains exact source, target and full JSON/ZIP/IDE exports
+ok 185 - compiled S3 lcd retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 6.488644
+  type: 'test'
+  ...
+# Subtest: compiled S3 touch retains exact source, target and full JSON/ZIP/IDE exports
+ok 186 - compiled S3 touch retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 12.530195
+  type: 'test'
+  ...
+# Subtest: compiled S3 dht11 retains exact source, target and full JSON/ZIP/IDE exports
+ok 187 - compiled S3 dht11 retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 6.795756
+  type: 'test'
+  ...
+# Subtest: compiled S3 dht22 retains exact source, target and full JSON/ZIP/IDE exports
+ok 188 - compiled S3 dht22 retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 4.935379
+  type: 'test'
+  ...
+# Subtest: compiled S3 dhtErrors retains exact source, target and full JSON/ZIP/IDE exports
+ok 189 - compiled S3 dhtErrors retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 7.694868
+  type: 'test'
+  ...
+# Subtest: compiled S3 ds18Multi retains exact source, target and full JSON/ZIP/IDE exports
+ok 190 - compiled S3 ds18Multi retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 11.565024
+  type: 'test'
+  ...
+# Subtest: compiled S3 ds18Resolution retains exact source, target and full JSON/ZIP/IDE exports
+ok 191 - compiled S3 ds18Resolution retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 11.086616
+  type: 'test'
+  ...
+# Subtest: compiled S3 oled64 retains exact source, target and full JSON/ZIP/IDE exports
+ok 192 - compiled S3 oled64 retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 14.359775
+  type: 'test'
+  ...
+# Subtest: compiled S3 oled32 retains exact source, target and full JSON/ZIP/IDE exports
+ok 193 - compiled S3 oled32 retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 18.102812
+  type: 'test'
+  ...
+# Subtest: compiled S3 lm35 retains exact source, target and full JSON/ZIP/IDE exports
+ok 194 - compiled S3 lm35 retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 9.431808
+  type: 'test'
+  ...
+# Subtest: compiled S3 temt6000 retains exact source, target and full JSON/ZIP/IDE exports
+ok 195 - compiled S3 temt6000 retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 6.440792
+  type: 'test'
+  ...
+# Subtest: compiled S3 ntc retains exact source, target and full JSON/ZIP/IDE exports
+ok 196 - compiled S3 ntc retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 6.456285
+  type: 'test'
+  ...
+# Subtest: compiled S3 ky023 retains exact source, target and full JSON/ZIP/IDE exports
+ok 197 - compiled S3 ky023 retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 7.278281
+  type: 'test'
+  ...
+# Subtest: compiled S3 flame retains exact source, target and full JSON/ZIP/IDE exports
+ok 198 - compiled S3 flame retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 5.617264
+  type: 'test'
+  ...
+# Subtest: compiled S3 sound retains exact source, target and full JSON/ZIP/IDE exports
+ok 199 - compiled S3 sound retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 4.738393
+  type: 'test'
+  ...
+# Subtest: compiled S3 analogCompare retains exact source, target and full JSON/ZIP/IDE exports
+ok 200 - compiled S3 analogCompare retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 6.195664
+  type: 'test'
+  ...
+# Subtest: compiled S3 dualInputs retains exact source, target and full JSON/ZIP/IDE exports
+ok 201 - compiled S3 dualInputs retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 5.72097
+  type: 'test'
+  ...
+# Subtest: compiled S3 encoderRaw retains exact source, target and full JSON/ZIP/IDE exports
+ok 202 - compiled S3 encoderRaw retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 4.31045
+  type: 'test'
+  ...
+# Subtest: compiled S3 ky040 retains exact source, target and full JSON/ZIP/IDE exports
+ok 203 - compiled S3 ky040 retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 4.625884
+  type: 'test'
+  ...
+# Subtest: compiled S3 encoderBounce retains exact source, target and full JSON/ZIP/IDE exports
+ok 204 - compiled S3 encoderBounce retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 3.839522
+  type: 'test'
+  ...
+# Subtest: compiled S3 encoderPWM retains exact source, target and full JSON/ZIP/IDE exports
+ok 205 - compiled S3 encoderPWM retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 4.466575
+  type: 'test'
+  ...
+# Subtest: compiled S3 relayContacts retains exact source, target and full JSON/ZIP/IDE exports
+ok 206 - compiled S3 relayContacts retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 4.575578
+  type: 'test'
+  ...
+# Subtest: compiled S3 activeAlarm retains exact source, target and full JSON/ZIP/IDE exports
+ok 207 - compiled S3 activeAlarm retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 2.72101
+  type: 'test'
+  ...
+# Subtest: compiled S3 piezoTone retains exact source, target and full JSON/ZIP/IDE exports
+ok 208 - compiled S3 piezoTone retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 3.735315
+  type: 'test'
+  ...
+# Subtest: compiled S3 dcDrive retains exact source, target and full JSON/ZIP/IDE exports
+ok 209 - compiled S3 dcDrive retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 4.520435
+  type: 'test'
+  ...
+# Subtest: compiled S3 dualDrive retains exact source, target and full JSON/ZIP/IDE exports
+ok 210 - compiled S3 dualDrive retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 3.676296
+  type: 'test'
+  ...
+# Subtest: compiled S3 servoMotorTone retains exact source, target and full JSON/ZIP/IDE exports
+ok 211 - compiled S3 servoMotorTone retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 4.223999
+  type: 'test'
+  ...
+# Subtest: compiled S3 stepperBasic retains exact source, target and full JSON/ZIP/IDE exports
+ok 212 - compiled S3 stepperBasic retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 4.415438
+  type: 'test'
+  ...
+# Subtest: compiled S3 stepperMicro retains exact source, target and full JSON/ZIP/IDE exports
+ok 213 - compiled S3 stepperMicro retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 4.260644
+  type: 'test'
+  ...
+# Subtest: compiled S3 stepperControl retains exact source, target and full JSON/ZIP/IDE exports
+ok 214 - compiled S3 stepperControl retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 4.000474
+  type: 'test'
+  ...
+# Subtest: compiled S3 irPulses retains exact source, target and full JSON/ZIP/IDE exports
+ok 215 - compiled S3 irPulses retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 4.84258
+  type: 'test'
+  ...
+# Subtest: compiled S3 irNEC retains exact source, target and full JSON/ZIP/IDE exports
+ok 216 - compiled S3 irNEC retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 4.280144
+  type: 'test'
+  ...
+# Subtest: compiled S3 irLED retains exact source, target and full JSON/ZIP/IDE exports
+ok 217 - compiled S3 irLED retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 4.702919
+  type: 'test'
+  ...
+# Subtest: compiled S3 irTransmit retains exact source, target and full JSON/ZIP/IDE exports
+ok 218 - compiled S3 irTransmit retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 3.830528
+  type: 'test'
+  ...
+# Subtest: compiled S3 tftGraphics retains exact source, target and full JSON/ZIP/IDE exports
+ok 219 - compiled S3 tftGraphics retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 5.951126
+  type: 'test'
+  ...
+# Subtest: compiled S3 tftRotation retains exact source, target and full JSON/ZIP/IDE exports
+ok 220 - compiled S3 tftRotation retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 6.077546
+  type: 'test'
+  ...
+# Subtest: compiled S3 bmp280SPI retains exact source, target and full JSON/ZIP/IDE exports
+ok 221 - compiled S3 bmp280SPI retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 5.459307
+  type: 'test'
+  ...
+# Subtest: compiled S3 spiDashboard retains exact source, target and full JSON/ZIP/IDE exports
+ok 222 - compiled S3 spiDashboard retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 8.140838
+  type: 'test'
+  ...
+# Subtest: compiled S3 bmp180 retains exact source, target and full JSON/ZIP/IDE exports
+ok 223 - compiled S3 bmp180 retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 4.723461
+  type: 'test'
+  ...
+# Subtest: compiled S3 bmp280 retains exact source, target and full JSON/ZIP/IDE exports
+ok 224 - compiled S3 bmp280 retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 5.599638
+  type: 'test'
+  ...
+# Subtest: compiled S3 am2320 retains exact source, target and full JSON/ZIP/IDE exports
+ok 225 - compiled S3 am2320 retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 4.176578
+  type: 'test'
+  ...
+# Subtest: compiled S3 ds18Errors retains exact source, target and full JSON/ZIP/IDE exports
+ok 226 - compiled S3 ds18Errors retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 8.427168
+  type: 'test'
+  ...
+# Subtest: compiled S3 tmSegments retains exact source, target and full JSON/ZIP/IDE exports
+ok 227 - compiled S3 tmSegments retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 4.825013
+  type: 'test'
+  ...
+# Subtest: compiled S3 tmClock retains exact source, target and full JSON/ZIP/IDE exports
+ok 228 - compiled S3 tmClock retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 5.066927
+  type: 'test'
+  ...
+# Subtest: compiled S3 iliGraphics retains exact source, target and full JSON/ZIP/IDE exports
+ok 229 - compiled S3 iliGraphics retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 5.751726
+  type: 'test'
+  ...
+# Subtest: compiled S3 iliRotation retains exact source, target and full JSON/ZIP/IDE exports
+ok 230 - compiled S3 iliRotation retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 6.29946
+  type: 'test'
+  ...
+# Subtest: compiled S3 touchRaw retains exact source, target and full JSON/ZIP/IDE exports
+ok 231 - compiled S3 touchRaw retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 6.874323
+  type: 'test'
+  ...
+# Subtest: compiled S3 touchCalibration retains exact source, target and full JSON/ZIP/IDE exports
+ok 232 - compiled S3 touchCalibration retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 10.448255
+  type: 'test'
+  ...
+# Subtest: compiled S3 touchRotation retains exact source, target and full JSON/ZIP/IDE exports
+ok 233 - compiled S3 touchRotation retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 7.728838
+  type: 'test'
+  ...
+# Subtest: compiled S3 opticalRegisters retains exact source, target and full JSON/ZIP/IDE exports
+ok 234 - compiled S3 opticalRegisters retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 7.648027
+  type: 'test'
+  ...
+# Subtest: compiled S3 opticalRaw retains exact source, target and full JSON/ZIP/IDE exports
+ok 235 - compiled S3 opticalRaw retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 10.466013
+  type: 'test'
+  ...
+# Subtest: compiled S3 opticalFrequency retains exact source, target and full JSON/ZIP/IDE exports
+ok 236 - compiled S3 opticalFrequency retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 12.266329
+  type: 'test'
+  ...
+# Subtest: compiled S3 opticalOverflow retains exact source, target and full JSON/ZIP/IDE exports
+ok 237 - compiled S3 opticalOverflow retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 6.254672
+  type: 'test'
+  ...
+# Subtest: compiled S3 sdInspect retains exact source, target and full JSON/ZIP/IDE exports
+ok 238 - compiled S3 sdInspect retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 8.709323
+  type: 'test'
+  ...
+# Subtest: compiled S3 sdBlocks retains exact source, target and full JSON/ZIP/IDE exports
+ok 239 - compiled S3 sdBlocks retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 8.496443
+  type: 'test'
+  ...
+# Subtest: compiled S3 sdFiles retains exact source, target and full JSON/ZIP/IDE exports
+ok 240 - compiled S3 sdFiles retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 10.944733
+  type: 'test'
+  ...
+# Subtest: compiled S3 sdLogger retains exact source, target and full JSON/ZIP/IDE exports
+ok 241 - compiled S3 sdLogger retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 13.067563
+  type: 'test'
+  ...
+# Subtest: compiled S3 rtcRead retains exact source, target and full JSON/ZIP/IDE exports
+ok 242 - compiled S3 rtcRead retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 5.259105
+  type: 'test'
+  ...
+# Subtest: compiled S3 rtcSet retains exact source, target and full JSON/ZIP/IDE exports
+ok 243 - compiled S3 rtcSet retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 6.955816
+  type: 'test'
+  ...
+# Subtest: compiled S3 rtcMemory retains exact source, target and full JSON/ZIP/IDE exports
+ok 244 - compiled S3 rtcMemory retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 5.421559
+  type: 'test'
+  ...
+# Subtest: compiled S3 rtcClock retains exact source, target and full JSON/ZIP/IDE exports
+ok 245 - compiled S3 rtcClock retains exact source, target and full JSON/ZIP/IDE exports
+  ---
+  duration_ms: 6.494994
+  type: 'test'
+  ...
+# Subtest: S3 artifacts reject source, library, target, ABI and binary corruption
+ok 246 - S3 artifacts reject source, library, target, ABI and binary corruption
+  ---
+  duration_ms: 5.206697
+  type: 'test'
+  ...
+# Subtest: real blink program preserves state across nested delay calls and emits both electrical levels
+ok 247 - real blink program preserves state across nested delay calls and emits both electrical levels
+  ---
+  duration_ms: 16.86325
+  type: 'test'
+  ...
+# Subtest: button and serial input change the actual GPIO path during asynchronous C++ execution
+ok 248 - button and serial input change the actual GPIO path during asynchronous C++ execution
+  ---
+  duration_ms: 11.843944
+  type: 'test'
+  ...
+# Subtest: ADC 12-bit samples and PWM follow live potentiometer endpoints
+ok 249 - ADC 12-bit samples and PWM follow live potentiometer endpoints
+  ---
+  duration_ms: 9.452549
+  type: 'test'
+  ...
+# Subtest: AHT10 samples flow through Wire, visible OLED pixels and a calibrated LEDC servo impulse
+ok 250 - AHT10 samples flow through Wire, visible OLED pixels and a calibrated LEDC servo impulse
+  ---
+  duration_ms: 50.02543
+  type: 'test'
+  ...
+# Subtest: BMP180/BMP280 compensation and AM2320 CRC run as compiled library code
+ok 251 - BMP180/BMP280 compensation and AM2320 CRC run as compiled library code
+  ---
+  duration_ms: 46.81671
+  type: 'test'
+  ...
+# Subtest: SG90 position is derived from a 50 Hz impulse with independent 5 V supply
+ok 252 - SG90 position is derived from a 50 Hz impulse with independent 5 V supply
+  ---
+  duration_ms: 10.467075
+  type: 'test'
+  ...
+# Subtest: LCD text and custom CGRAM glyph come from actual PCF8574 transfers
+ok 253 - LCD text and custom CGRAM glyph come from actual PCF8574 transfers
+  ---
+  duration_ms: 27.231691
+  type: 'test'
+  ...
+# Subtest: SPI touch performs ADC conversion, C++ calibration, hit-test, GPIO and TFT pixel update
+ok 254 - SPI touch performs ADC conversion, C++ calibration, hit-test, GPIO and TFT pixel update
+  ---
+  duration_ms: 454.32635
+  type: 'test'
+  ...
+# Subtest: missing touch MISO cannot activate LED and reports a protocol diagnosis
+ok 255 - missing touch MISO cannot activate LED and reports a protocol diagnosis
+  ---
+  duration_ms: 342.159432
+  type: 'test'
+  ...
+# Subtest: S3 cache and submission reopen with the correct WASM artifact and measurements label
+ok 256 - S3 cache and submission reopen with the correct WASM artifact and measurements label
+  ---
+  duration_ms: 14.658064
+  type: 'test'
+  ...
+# Subtest: S3 session ignores old messages and terminates its Worker exactly once
+ok 257 - S3 session ignores old messages and terminates its Worker exactly once
+  ---
+  duration_ms: 3.996377
+  type: 'test'
+  ...
+# Subtest: real compiler supports multiple C++/C files and Bounce2 GPIO without source rewriting
+ok 258 - real compiler supports multiple C++/C files and Bounce2 GPIO without source rewriting
+  ---
+  duration_ms: 435.019101
+  type: 'test'
+  ...
+# Subtest: real compiler reports exact source lines and rejects unsupported ESP-specific includes
+ok 259 - real compiler reports exact source lines and rejects unsupported ESP-specific includes
+  ---
+  duration_ms: 347.332031
+  type: 'test'
+  ...
+# Subtest: real compiler preserves automatic-prototype boundary and rejects old ESP32 channel API
+ok 260 - real compiler preserves automatic-prototype boundary and rejects old ESP32 channel API
+  ---
+  duration_ms: 360.491217
+  type: 'test'
+  ...
+# Subtest: loopback bridge validates and caches the correct source-bound S3 result
+ok 261 - loopback bridge validates and caches the correct source-bound S3 result
+  ---
+  duration_ms: 41.426966
+  type: 'test'
+  ...
+# Subtest: actual S3 Worker accepts live input inside setup and force-stops a pure infinite C++ loop
+ok 262 - actual S3 Worker accepts live input inside setup and force-stops a pure infinite C++ loop
+  ---
+  duration_ms: 504.299579
+  type: 'test'
+  ...
+# Subtest: serial flood keeps console chunks and message rate bounded while C++ remains stoppable
+ok 263 - serial flood keeps console chunks and message rate bounded while C++ remains stoppable
+  ---
+  duration_ms: 248.674693
+  type: 'test'
+  ...
+1..263
+# tests 263
+# suites 0
+# pass 263
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 22663.08197

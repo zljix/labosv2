@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-12",
+  "environment": "Chromium, Linux; development preview",
+  "observedPasses": [
+    "GPIO4 follows Python output while virtual button changes during execution",
+    "main.py imports a separate pomoc.py and prints its Unicode text and numeric value",
+    "JSON project import creates a separate copy with two files, dark theme and font size",
+    "Running snapshot remains unchanged when source is edited after Run",
+    "Autosave retains source and settings after reload",
+    "Persistent history restores an earlier source revision and survives reload",
+    "Second tab opens the saved project",
+    "Concurrent tab edit triggers visible conflict and preserves current editor contents",
+    "Save-as-copy resolves conflict without overwriting the first tab version",
+    "ZIP export creates a downloadable package"
+  ],
+  "limitations": [
+    "Automated file chooser upload timed out in the browser environment. ZIP decoding, manifest validation and round-trip are covered by Node tests. JSON import was exercised through visible UI.",
+    "Safari/iOS, Firefox, Edge and physical school computer not tested in this stage.",
+    "Responsive layouts implemented; no claim of physical mobile-device verification."
+  ],
+  "coreSuite": {
+    "passed": 10,
+    "total": 10,
+    "record": "results-stage1-chromium.json"
+  }
+}

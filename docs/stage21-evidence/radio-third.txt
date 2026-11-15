@@ -1,0 +1,30 @@
+✔ NRF24: reset, one-byte status and FIFO status have independent known values (1.244209ms)
+✔ NRF24: static packet crosses SPI FIFO; ACK sets TX_DS and removes TX entry (1.539253ms)
+✔ NRF24: mismatched channel gives 4 attempts, MAX_RT and retained payload (0.471028ms)
+✔ NRF24: mismatched address gives 4 attempts, MAX_RT and retained payload (0.37262ms)
+✔ NRF24: mismatched length gives 4 attempts, MAX_RT and retained payload (0.221573ms)
+✔ NRF24: mismatched rate gives 4 attempts, MAX_RT and retained payload (0.145108ms)
+✔ NRF24: mismatched CRC gives 4 attempts, MAX_RT and retained payload (0.165599ms)
+✔ NRF24: lost first ACK retries once and suppresses duplicate FIFO delivery (0.382304ms)
+✔ NRF24: lost first data retries once, then delivers one packet (0.328945ms)
+✔ NRF24: no auto-ACK completes even with no listening peer (0.400652ms)
+✔ NRF24: sender pipe-0 address must match TX address for auto-ACK (0.224768ms)
+✔ NRF24: full RX FIFO rejects new packets; status flags are write-one-clear (0.21997ms)
+✔ NRF24: CE below 10 us and power-up below 1.5 ms do not send (0.12647ms)
+✔ NRF24: power loss aborts pending ACK and clears FIFO, not another node (0.104527ms)
+✔ NRF24: unsupported dynamic features and malformed commands fail explicitly (0.491188ms)
+✔ SPI wiring: missing power, MISO, swapped signals and invalid mode do not fake register read (25.70626ms)
+✔ project format 4 roundtrips both nodes through JSON and ZIP and rejects nesting (16.482089ms)
+✔ real programs share packets and ACK: micropython → micropython (701.477914ms)
+✔ real MicroPython programs: channel (313.449933ms)
+✔ real MicroPython programs: address (388.965957ms)
+✔ real MicroPython programs: ack (238.167951ms)
+✔ real MicroPython programs: data (209.328718ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2319.463107

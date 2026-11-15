@@ -1,0 +1,20 @@
+✔ espressif.esp32-s3-devkitc-1.v1.1.n16r8: four RTC source/circuit projects round-trip and export actual sources (87.367679ms)
+✔ arduino.uno-r3.atmega328p: four RTC source/circuit projects round-trip and export actual sources (45.194472ms)
+✔ arduino.nano-classic.atmega328p: four RTC source/circuit projects round-trip and export actual sources (52.355524ms)
+✔ S3 compiled rtcRead reads real GPIO replies and remains stoppable (111.974199ms)
+✔ S3 compiled rtcSet reads real GPIO replies and remains stoppable (198.082843ms)
+✔ S3 compiled rtcMemory reads real GPIO replies and remains stoppable (105.447619ms)
+✔ S3 compiled rtcClock reads real GPIO replies and remains stoppable (386.171182ms)
+✔ MicroPython rtcRead runs visible GPIO driver inside real WASM (3927.357817ms)
+✔ MicroPython rtcSet runs visible GPIO driver inside real WASM (3820.233548ms)
+✔ MicroPython rtcMemory runs visible GPIO driver inside real WASM (5257.763726ms)
+✔ MicroPython rtcClock runs visible GPIO driver inside real WASM (2669.262411ms)
+✔ MicroPython driver rejects absent RTC rather than inventing a timestamp (873.478276ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 19591.574972

@@ -1,0 +1,1706 @@
+[
+  {
+    "kind": "mp",
+    "key": "sdFiles",
+    "board": "esp32-s3",
+    "status": "pass",
+    "build": "280c8e9babc8bf94",
+    "observationMs": 1054.973986,
+    "stopMs": 6.309111999999914,
+    "console": "SD FILE BYTES=28\nPozdrav iz FAT16 preko SPI!\n\nSD FILES ['LAB.TXT']\n",
+    "sd": {
+      "powered": true,
+      "inserted": true,
+      "writeProtected": false,
+      "initialized": true,
+      "sectors": 16384,
+      "dirtyBlocks": 4,
+      "reads": 11,
+      "writes": 4,
+      "errors": 0,
+      "revision": 4,
+      "state": {
+        "version": 1,
+        "blocks": [
+          [
+            1,
+            "+P//////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ],
+          [
+            65,
+            "+P//////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ],
+          [
+            129,
+            "TEFCICAgICBUWFQgAAAAAAAAAAAAAAAAIVwCABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ],
+          [
+            133,
+            "UG96ZHJhdiBpeiBGQVQxNiBwcmVrbyBTUEkhCgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ]
+        ]
+      },
+      "files": [
+        {
+          "name": "LAB.TXT",
+          "size": 28,
+          "cluster": 2
+        }
+      ],
+      "volumeError": "",
+      "trace": [
+        {
+          "timeUs": 322149.8200000001,
+          "operation": "CMD0",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 329384.97299999994,
+          "operation": "CMD8",
+          "value": 426,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 334969.73400000005,
+          "operation": "CMD55",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 338241.35,
+          "operation": "CMD41",
+          "value": 0,
+          "result": "ACMD"
+        },
+        {
+          "timeUs": 343772.5130000001,
+          "operation": "CMD55",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 346985.45800000004,
+          "operation": "CMD41",
+          "value": 0,
+          "result": "ACMD"
+        },
+        {
+          "timeUs": 350069.9100000001,
+          "operation": "CMD58",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 352884.77400000003,
+          "operation": "CMD16",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 356329.7159999999,
+          "operation": "CMD9",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 376350.43599999987,
+          "operation": "CMD17",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 420987.066,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 468023.2719999999,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 490132.622,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 504822.5290000001,
+          "operation": "CMD17",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 521241.40699999995,
+          "operation": "CMD17",
+          "value": 33280,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 532457.423,
+          "operation": "CMD24",
+          "value": 68096,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 543374.0739999998,
+          "operation": "write",
+          "value": 133,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 545841.674,
+          "operation": "CMD24",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 558252.666,
+          "operation": "write",
+          "value": 1,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 559788.583,
+          "operation": "CMD24",
+          "value": 33280,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 570368.767,
+          "operation": "write",
+          "value": 65,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 572200.488,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 588498.7849999999,
+          "operation": "CMD24",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 604464.7879999998,
+          "operation": "write",
+          "value": 129,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 606043.871,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 619022.204,
+          "operation": "CMD17",
+          "value": 68096,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 650289.0499999999,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 668099.1349999999,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        }
+      ],
+      "reason": "CS HIGH · neaktivan"
+    }
+  },
+  {
+    "kind": "mp",
+    "key": "sdLogger",
+    "board": "esp32-s3",
+    "status": "pass",
+    "build": "280c8e9babc8bf94",
+    "observationMs": 1994.7104960000001,
+    "stopMs": 7.932596999999987,
+    "console": "SD CSV 0,2026-01-01 12:00:00\nSD CSV 1,2026-01-01 12:00:01\n",
+    "sd": {
+      "powered": true,
+      "inserted": true,
+      "writeProtected": false,
+      "initialized": true,
+      "sectors": 16384,
+      "dirtyBlocks": 4,
+      "reads": 17,
+      "writes": 12,
+      "errors": 0,
+      "revision": 12,
+      "state": {
+        "version": 1,
+        "blocks": [
+          [
+            1,
+            "+P//////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ],
+          [
+            65,
+            "+P//////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ],
+          [
+            129,
+            "TE9HICAgICBDU1YgAAAAAAAAAAAAAAAAIVwCADsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ],
+          [
+            133,
+            "dXpvcmFrLHZyaWplbWUKMCwyMDI2LTAxLTAxIDEyOjAwOjAwCjEsMjAyNi0wMS0wMSAxMjowMDowMQoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ]
+        ]
+      },
+      "files": [
+        {
+          "name": "LOG.CSV",
+          "size": 59,
+          "cluster": 2
+        }
+      ],
+      "volumeError": "",
+      "trace": [
+        {
+          "timeUs": 184125.80900000024,
+          "operation": "CMD0",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 186539.49500000032,
+          "operation": "CMD8",
+          "value": 426,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 189500.84099999993,
+          "operation": "CMD55",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 192355.4439999999,
+          "operation": "CMD41",
+          "value": 0,
+          "result": "ACMD"
+        },
+        {
+          "timeUs": 195663.883,
+          "operation": "CMD55",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 197732.23000000013,
+          "operation": "CMD41",
+          "value": 0,
+          "result": "ACMD"
+        },
+        {
+          "timeUs": 199241.74900000004,
+          "operation": "CMD58",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 200978.5610000002,
+          "operation": "CMD16",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 202834.9590000003,
+          "operation": "CMD9",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 217912.57,
+          "operation": "CMD17",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 248443.82500000024,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 265412.8370000002,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 279471.159,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 292322.86900000024,
+          "operation": "CMD17",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 310433.8429999999,
+          "operation": "CMD17",
+          "value": 33280,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 322995.68099999987,
+          "operation": "CMD24",
+          "value": 68096,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 336102.80100000015,
+          "operation": "write",
+          "value": 133,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 340541.15399999986,
+          "operation": "CMD24",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 353133.14700000006,
+          "operation": "write",
+          "value": 1,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 354889.44399999996,
+          "operation": "CMD24",
+          "value": 33280,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 365619.4210000001,
+          "operation": "write",
+          "value": 65,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 367469.74100000033,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 380544.0179999999,
+          "operation": "CMD24",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 414959.2350000003,
+          "operation": "write",
+          "value": 129,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 462429.2290000003,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 479664.49799999996,
+          "operation": "CMD17",
+          "value": 68096,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 494728.3060000002,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 506646.56200000003,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 520229.43200000015,
+          "operation": "CMD24",
+          "value": 68096,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 531544.1410000001,
+          "operation": "write",
+          "value": 133,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 533286.0340000002,
+          "operation": "CMD24",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 546321.967,
+          "operation": "write",
+          "value": 1,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 547856.3280000002,
+          "operation": "CMD24",
+          "value": 33280,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 558846.8700000003,
+          "operation": "write",
+          "value": 65,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 561555.814,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 575179.662,
+          "operation": "CMD24",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 589249.2159999999,
+          "operation": "write",
+          "value": 129,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 1626426.138,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1637955.2960000003,
+          "operation": "CMD17",
+          "value": 68096,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1648965.902,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1665278.9270000004,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1684154.9640000002,
+          "operation": "CMD24",
+          "value": 68096,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1698841.7840000002,
+          "operation": "write",
+          "value": 133,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 1701429.4650000003,
+          "operation": "CMD24",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1717362.675,
+          "operation": "write",
+          "value": 1,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 1719509.8900000001,
+          "operation": "CMD24",
+          "value": 33280,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1734632.8630000001,
+          "operation": "write",
+          "value": 65,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 1736504.492,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1754087.3560000001,
+          "operation": "CMD24",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1776709.2960000003,
+          "operation": "write",
+          "value": 129,
+          "result": "512 B potvrđeno"
+        }
+      ],
+      "reason": "CS HIGH · neaktivan"
+    }
+  },
+  {
+    "kind": "s3",
+    "key": "sdFiles",
+    "board": "esp32-s3",
+    "status": "pass",
+    "build": "280c8e9babc8bf94",
+    "observationMs": 549.9563099999996,
+    "stopMs": 10.278156999999737,
+    "console": "SD FILE BYTES=28\r\nPozdrav iz FAT16 preko SPI!\n",
+    "sd": {
+      "powered": true,
+      "inserted": true,
+      "writeProtected": false,
+      "initialized": true,
+      "sectors": 16384,
+      "dirtyBlocks": 4,
+      "reads": 9,
+      "writes": 4,
+      "errors": 0,
+      "revision": 4,
+      "state": {
+        "version": 1,
+        "blocks": [
+          [
+            1,
+            "+P//////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ],
+          [
+            65,
+            "+P//////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ],
+          [
+            129,
+            "TEFCICAgICBUWFQgAAAAAAAAAAAAAAAAIVwCABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ],
+          [
+            133,
+            "UG96ZHJhdiBpeiBGQVQxNiBwcmVrbyBTUEkhCgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ]
+        ]
+      },
+      "files": [
+        {
+          "name": "LAB.TXT",
+          "size": 28,
+          "cluster": 2
+        }
+      ],
+      "volumeError": "",
+      "trace": [
+        {
+          "timeUs": 3308,
+          "operation": "CMD0",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 4040,
+          "operation": "CMD8",
+          "value": 426,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 5096,
+          "operation": "CMD55",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 5828,
+          "operation": "CMD41",
+          "value": 0,
+          "result": "ACMD"
+        },
+        {
+          "timeUs": 7561,
+          "operation": "CMD55",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 8293,
+          "operation": "CMD41",
+          "value": 0,
+          "result": "ACMD"
+        },
+        {
+          "timeUs": 9025,
+          "operation": "CMD58",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 10081,
+          "operation": "CMD16",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 10813,
+          "operation": "CMD9",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 12733,
+          "operation": "CMD17",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 17461,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 22189,
+          "operation": "CMD17",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 26917,
+          "operation": "CMD17",
+          "value": 33280,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 31645,
+          "operation": "CMD17",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 36373,
+          "operation": "CMD24",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 41017,
+          "operation": "write",
+          "value": 1,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 42100,
+          "operation": "CMD24",
+          "value": 33280,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 46744,
+          "operation": "write",
+          "value": 65,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 47827,
+          "operation": "CMD24",
+          "value": 68096,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 52471,
+          "operation": "write",
+          "value": 133,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 53554,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 58282,
+          "operation": "CMD24",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 62926,
+          "operation": "write",
+          "value": 129,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 64023,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 68755,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 73483,
+          "operation": "CMD17",
+          "value": 68096,
+          "result": "CMD"
+        }
+      ],
+      "reason": "CS HIGH · neaktivan"
+    }
+  },
+  {
+    "kind": "s3",
+    "key": "sdLogger",
+    "board": "esp32-s3",
+    "status": "pass",
+    "build": "280c8e9babc8bf94",
+    "observationMs": 2140.342348,
+    "stopMs": 7.822339000000284,
+    "console": "SD CSV 0,2026-01-01 12:00:00\nSD CSV 1,2026-01-01 12:00:01\n",
+    "sd": {
+      "powered": true,
+      "inserted": true,
+      "writeProtected": false,
+      "initialized": true,
+      "sectors": 16384,
+      "dirtyBlocks": 4,
+      "reads": 17,
+      "writes": 8,
+      "errors": 0,
+      "revision": 8,
+      "state": {
+        "version": 1,
+        "blocks": [
+          [
+            1,
+            "+P//////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ],
+          [
+            65,
+            "+P//////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ],
+          [
+            129,
+            "TE9HICAgICBDU1YgAAAAAAAAAAAAAAAAIVwCADsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ],
+          [
+            133,
+            "dXpvcmFrLHZyaWplbWUKMCwyMDI2LTAxLTAxIDEyOjAwOjAwCjEsMjAyNi0wMS0wMSAxMjowMDowMQoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ]
+        ]
+      },
+      "files": [
+        {
+          "name": "LOG.CSV",
+          "size": 59,
+          "cluster": 2
+        }
+      ],
+      "volumeError": "",
+      "trace": [
+        {
+          "timeUs": 3308,
+          "operation": "CMD0",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 4040,
+          "operation": "CMD8",
+          "value": 426,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 5096,
+          "operation": "CMD55",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 5828,
+          "operation": "CMD41",
+          "value": 0,
+          "result": "ACMD"
+        },
+        {
+          "timeUs": 7561,
+          "operation": "CMD55",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 8293,
+          "operation": "CMD41",
+          "value": 0,
+          "result": "ACMD"
+        },
+        {
+          "timeUs": 9025,
+          "operation": "CMD58",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 10081,
+          "operation": "CMD16",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 10813,
+          "operation": "CMD9",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 12739,
+          "operation": "CMD17",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 17467,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 22195,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 26923,
+          "operation": "CMD17",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 31651,
+          "operation": "CMD17",
+          "value": 33280,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 36379,
+          "operation": "CMD17",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 41107,
+          "operation": "CMD24",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 45751,
+          "operation": "write",
+          "value": 1,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 46834,
+          "operation": "CMD24",
+          "value": 33280,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 51478,
+          "operation": "write",
+          "value": 65,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 52561,
+          "operation": "CMD24",
+          "value": 68096,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 57205,
+          "operation": "write",
+          "value": 133,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 58288,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 63016,
+          "operation": "CMD24",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 67660,
+          "operation": "write",
+          "value": 129,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 70663,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 75391,
+          "operation": "CMD17",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 80119,
+          "operation": "CMD17",
+          "value": 33280,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 84847,
+          "operation": "CMD17",
+          "value": 68096,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 89575,
+          "operation": "CMD24",
+          "value": 68096,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 94219,
+          "operation": "write",
+          "value": 133,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 95302,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 100030,
+          "operation": "CMD24",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 104674,
+          "operation": "write",
+          "value": 129,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 1107707,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1112435,
+          "operation": "CMD17",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1117163,
+          "operation": "CMD17",
+          "value": 33280,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1121891,
+          "operation": "CMD17",
+          "value": 68096,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1126619,
+          "operation": "CMD24",
+          "value": 68096,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1131263,
+          "operation": "write",
+          "value": 133,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 1132346,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1137074,
+          "operation": "CMD24",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1141718,
+          "operation": "write",
+          "value": 129,
+          "result": "512 B potvrđeno"
+        }
+      ],
+      "reason": "CS HIGH · neaktivan"
+    }
+  },
+  {
+    "kind": "avr",
+    "key": "sdLogger",
+    "board": "arduino.uno-r3.atmega328p",
+    "status": "pass",
+    "build": "280c8e9babc8bf94",
+    "observationMs": 1848.3943979999995,
+    "stopMs": 4.96296699999948,
+    "console": "SD CSV 0,2026-01-01 12:00:00\nSD CSV 1,2026-0",
+    "sd": {
+      "powered": true,
+      "inserted": true,
+      "writeProtected": false,
+      "initialized": true,
+      "sectors": 16384,
+      "dirtyBlocks": 4,
+      "reads": 17,
+      "writes": 8,
+      "errors": 0,
+      "revision": 8,
+      "state": {
+        "version": 1,
+        "blocks": [
+          [
+            1,
+            "+P//////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ],
+          [
+            65,
+            "+P//////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ],
+          [
+            129,
+            "TE9HICAgICBDU1YgAAAAAAAAAAAAAAAAIVwCADsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ],
+          [
+            133,
+            "dXpvcmFrLHZyaWplbWUKMCwyMDI2LTAxLTAxIDEyOjAwOjAwCjEsMjAyNi0wMS0wMSAxMjowMDowMQoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ]
+        ]
+      },
+      "files": [
+        {
+          "name": "LOG.CSV",
+          "size": 59,
+          "cluster": 2
+        }
+      ],
+      "volumeError": "",
+      "trace": [
+        {
+          "timeUs": 3617.8125,
+          "operation": "CMD0",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 4227.9375,
+          "operation": "CMD8",
+          "value": 426,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 5101.4375,
+          "operation": "CMD55",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 5711.3125,
+          "operation": "CMD41",
+          "value": 0,
+          "result": "ACMD"
+        },
+        {
+          "timeUs": 7328.5,
+          "operation": "CMD55",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 7938.375,
+          "operation": "CMD41",
+          "value": 0,
+          "result": "ACMD"
+        },
+        {
+          "timeUs": 8548.5625,
+          "operation": "CMD58",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 9420.875,
+          "operation": "CMD16",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 10030.9375,
+          "operation": "CMD9",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 11771.5,
+          "operation": "CMD17",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 20370,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 28603.9375,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 36811.1875,
+          "operation": "CMD17",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 45387.625,
+          "operation": "CMD17",
+          "value": 33280,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 53973.0625,
+          "operation": "CMD17",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 62549.875,
+          "operation": "CMD24",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 71039.4375,
+          "operation": "write",
+          "value": 1,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 72148.75,
+          "operation": "CMD24",
+          "value": 33280,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 80639.0625,
+          "operation": "write",
+          "value": 65,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 81949.75,
+          "operation": "CMD24",
+          "value": 68096,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 90448.9375,
+          "operation": "write",
+          "value": 133,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 91562.375,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 99800.4375,
+          "operation": "CMD24",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 108306.1875,
+          "operation": "write",
+          "value": 129,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 112633.6875,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 121237.125,
+          "operation": "CMD17",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 129812.75,
+          "operation": "CMD17",
+          "value": 33280,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 138395.6875,
+          "operation": "CMD17",
+          "value": 68096,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 146998.1875,
+          "operation": "CMD24",
+          "value": 68096,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 155490.125,
+          "operation": "write",
+          "value": 133,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 156595.5,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 165218.6875,
+          "operation": "CMD24",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 173707.0625,
+          "operation": "write",
+          "value": 129,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 1178247.125,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1186846.375,
+          "operation": "CMD17",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1195417.9375,
+          "operation": "CMD17",
+          "value": 33280,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1204004.9375,
+          "operation": "CMD17",
+          "value": 68096,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1212603.5,
+          "operation": "CMD24",
+          "value": 68096,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1221093.5625,
+          "operation": "write",
+          "value": 133,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 1222213.25,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1230837.25,
+          "operation": "CMD24",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1239326.3125,
+          "operation": "write",
+          "value": 129,
+          "result": "512 B potvrđeno"
+        }
+      ],
+      "reason": "CS HIGH · neaktivan"
+    }
+  },
+  {
+    "kind": "avr",
+    "key": "sdLogger",
+    "board": "arduino.nano-classic.atmega328p",
+    "status": "pass",
+    "build": "280c8e9babc8bf94",
+    "observationMs": 2162.622646,
+    "stopMs": 4.050893999999971,
+    "console": "SD CSV 0,2026-01-01 12:00:00\nSD CSV 1,2026-0",
+    "sd": {
+      "powered": true,
+      "inserted": true,
+      "writeProtected": false,
+      "initialized": true,
+      "sectors": 16384,
+      "dirtyBlocks": 4,
+      "reads": 17,
+      "writes": 8,
+      "errors": 0,
+      "revision": 8,
+      "state": {
+        "version": 1,
+        "blocks": [
+          [
+            1,
+            "+P//////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ],
+          [
+            65,
+            "+P//////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ],
+          [
+            129,
+            "TE9HICAgICBDU1YgAAAAAAAAAAAAAAAAIVwCADsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ],
+          [
+            133,
+            "dXpvcmFrLHZyaWplbWUKMCwyMDI2LTAxLTAxIDEyOjAwOjAwCjEsMjAyNi0wMS0wMSAxMjowMDowMQoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+          ]
+        ]
+      },
+      "files": [
+        {
+          "name": "LOG.CSV",
+          "size": 59,
+          "cluster": 2
+        }
+      ],
+      "volumeError": "",
+      "trace": [
+        {
+          "timeUs": 3617.8125,
+          "operation": "CMD0",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 4227.9375,
+          "operation": "CMD8",
+          "value": 426,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 5101.4375,
+          "operation": "CMD55",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 5711.3125,
+          "operation": "CMD41",
+          "value": 0,
+          "result": "ACMD"
+        },
+        {
+          "timeUs": 7328.5,
+          "operation": "CMD55",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 7938.375,
+          "operation": "CMD41",
+          "value": 0,
+          "result": "ACMD"
+        },
+        {
+          "timeUs": 8548.5625,
+          "operation": "CMD58",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 9420.875,
+          "operation": "CMD16",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 10030.9375,
+          "operation": "CMD9",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 11771.5,
+          "operation": "CMD17",
+          "value": 0,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 20370,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 28603.9375,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 36811.1875,
+          "operation": "CMD17",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 45387.625,
+          "operation": "CMD17",
+          "value": 33280,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 53973.0625,
+          "operation": "CMD17",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 62549.875,
+          "operation": "CMD24",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 71039.4375,
+          "operation": "write",
+          "value": 1,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 72148.75,
+          "operation": "CMD24",
+          "value": 33280,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 80639.0625,
+          "operation": "write",
+          "value": 65,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 81949.75,
+          "operation": "CMD24",
+          "value": 68096,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 90448.9375,
+          "operation": "write",
+          "value": 133,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 91562.375,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 99800.4375,
+          "operation": "CMD24",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 108306.1875,
+          "operation": "write",
+          "value": 129,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 112633.6875,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 121237.125,
+          "operation": "CMD17",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 129812.75,
+          "operation": "CMD17",
+          "value": 33280,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 138395.6875,
+          "operation": "CMD17",
+          "value": 68096,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 146998.1875,
+          "operation": "CMD24",
+          "value": 68096,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 155490.125,
+          "operation": "write",
+          "value": 133,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 156595.5,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 165218.6875,
+          "operation": "CMD24",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 173707.0625,
+          "operation": "write",
+          "value": 129,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 1178247.125,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1186846.375,
+          "operation": "CMD17",
+          "value": 512,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1195417.9375,
+          "operation": "CMD17",
+          "value": 33280,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1204004.9375,
+          "operation": "CMD17",
+          "value": 68096,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1212603.5,
+          "operation": "CMD24",
+          "value": 68096,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1221093.5625,
+          "operation": "write",
+          "value": 133,
+          "result": "512 B potvrđeno"
+        },
+        {
+          "timeUs": 1222213.25,
+          "operation": "CMD17",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1230837.25,
+          "operation": "CMD24",
+          "value": 66048,
+          "result": "CMD"
+        },
+        {
+          "timeUs": 1239326.3125,
+          "operation": "write",
+          "value": 129,
+          "result": "512 B potvrđeno"
+        }
+      ],
+      "reason": "CS HIGH · neaktivan"
+    }
+  }
+]

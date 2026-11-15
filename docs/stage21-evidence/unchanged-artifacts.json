@@ -1,0 +1,18 @@
+{
+  "base": "0aa90394d78923a15dd088084d967981b27a86e3",
+  "byteIdentical": [
+    "public/avr-examples.json",
+    "public/s3-examples.json",
+    "public/runtime/micropython.wasm",
+    "public/machine.py",
+    "public/worker.mjs",
+    "runtime/arduino-s3/core.cpp",
+    "public/s3-core-lock.mjs",
+    "vendor/arduino/lock.json"
+  ],
+  "previousArtifacts": {
+    "AVR": 152,
+    "S3": 27
+  },
+  "newRadioArtifacts": 6
+}

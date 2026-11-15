@@ -1,0 +1,19 @@
+{
+  "headerBuilds": [
+    {
+      "board": "arduino.uno-r3.atmega328p",
+      "source": "40d8a910f4033e6e1be8418b786177a2e4958c7de8896f4fe01092b25cbbe56e",
+      "hex": "960e29ea257eec1ede0d4e669bfd3177ed153dd5ceadb81dad4b1ec983f332f7",
+      "flash": 712,
+      "ram": 9
+    },
+    {
+      "board": "arduino.nano-classic.atmega328p",
+      "source": "66416cce31ad9ab1d9930718db70685b928d07763db44d9b939cf7dac83fa998",
+      "hex": "960e29ea257eec1ede0d4e669bfd3177ed153dd5ceadb81dad4b1ec983f332f7",
+      "flash": 712,
+      "ram": 9
+    }
+  ],
+  "invalidSourceDiagnostic": "main.ino: In function 'void setup()':\nmain.ino:1:16: error: 'nedostaje' was not declared in this scope\n void setup() { nedostaje }\n                ^~~~~~~~~\nError during build: exit status 1\n"
+}

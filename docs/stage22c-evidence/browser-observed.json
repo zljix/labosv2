@@ -1,0 +1,32 @@
+{
+  "scope": "Development Chrome/Linux, 14 November 2026. Not physical hardware, mobile, student pilot or separate production browser session.",
+  "version": "0.12.2-beta.1",
+  "ursCounts": {
+    "URS08": "3/3",
+    "URS10": "7/7",
+    "URS11": "3/3"
+  },
+  "encoder": {
+    "actions": "3 CW, 2 CCW, SW, Stop",
+    "consolePositions": [
+      1,
+      2,
+      3,
+      2,
+      1
+    ],
+    "errors": 0,
+    "reset": 0,
+    "mechanicalPositionBeforeStop": 1,
+    "consoleRetainedAfterStop": true
+  },
+  "combined": {
+    "servoAngle": 135.1,
+    "servoPulseUs": 1750.5,
+    "motorVoltage": 2.008,
+    "motorRelativePercent": 33.46,
+    "piezoHz": 880,
+    "listened": false,
+    "resultsRetainedAfterStop": true
+  }
+}

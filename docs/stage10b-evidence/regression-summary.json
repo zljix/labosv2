@@ -1,0 +1,107 @@
+{
+  "uniqueChecks": 160,
+  "results": [
+    {
+      "name": "test",
+      "exitCode": 0,
+      "ms": 404.485976,
+      "file": "docs/stage10b-evidence/test.txt",
+      "tests": 26,
+      "passed": 26,
+      "failed": 0
+    },
+    {
+      "name": "test:boards",
+      "exitCode": 0,
+      "ms": 407.27245,
+      "file": "docs/stage10b-evidence/test-boards.txt",
+      "tests": 9,
+      "passed": 9,
+      "failed": 0,
+      "note": "Final successful rerun after adapting the support expectation / inspecting bounded trace history."
+    },
+    {
+      "name": "test:simulation",
+      "exitCode": 0,
+      "ms": 6821.472279,
+      "file": "docs/stage10b-evidence/test-simulation.txt",
+      "tests": 12,
+      "passed": 12,
+      "failed": 0
+    },
+    {
+      "name": "test:runtime",
+      "exitCode": 0,
+      "ms": 3787,
+      "file": "docs/stage10b-evidence/test-runtime.txt",
+      "tests": 13,
+      "passed": 13,
+      "failed": 0
+    },
+    {
+      "name": "test:peripherals",
+      "exitCode": 0,
+      "ms": 33617.28517,
+      "file": "docs/stage10b-evidence/test-peripherals.txt",
+      "tests": 16,
+      "passed": 16,
+      "failed": 0
+    },
+    {
+      "name": "test:offline",
+      "exitCode": 0,
+      "ms": 957.778169,
+      "file": "docs/stage10b-evidence/test-offline.txt",
+      "tests": 8,
+      "passed": 8,
+      "failed": 0
+    },
+    {
+      "name": "test:avr",
+      "exitCode": 0,
+      "ms": 2626.20456,
+      "file": "docs/stage10b-evidence/test-avr.txt",
+      "tests": 15,
+      "passed": 15,
+      "failed": 0
+    },
+    {
+      "name": "test:arduino",
+      "exitCode": 0,
+      "ms": 8370.518585,
+      "file": "docs/stage10b-evidence/test-arduino.txt",
+      "tests": 12,
+      "passed": 12,
+      "failed": 0
+    },
+    {
+      "name": "test:lessons",
+      "exitCode": 0,
+      "ms": 64647.591084,
+      "file": "docs/stage10b-evidence/test-lessons.txt",
+      "tests": 20,
+      "passed": 20,
+      "failed": 0
+    },
+    {
+      "name": "test:avr-peripherals",
+      "exitCode": 0,
+      "ms": 58738.391071,
+      "file": "docs/stage10b-evidence/test-avr-peripherals.txt",
+      "tests": 12,
+      "passed": 12,
+      "failed": 0
+    },
+    {
+      "name": "test:environment",
+      "exitCode": 0,
+      "ms": 46325.193235,
+      "file": "docs/stage10b-evidence/test-environment.txt",
+      "tests": 17,
+      "passed": 17,
+      "failed": 0,
+      "note": "Final successful rerun after adapting the support expectation / inspecting bounded trace history."
+    }
+  ],
+  "additionalFinalPackageRechecks": 2
+}

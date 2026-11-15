@@ -1,0 +1,16 @@
+✔ package covers shell, lazy editor, every runtime dependency, drivers, manual and valid install icons (1.429448ms)
+✔ verified package reopens shell and executes file requests without any network (415.827501ms)
+✔ incorrect bytes or login/fallback response cannot install an eligible package (198.198299ms)
+✔ quota failure cannot advertise a partially stored package (45.392666ms)
+✔ an evicted asset invalidates offline readiness (123.203351ms)
+✔ an update needs an explicit message and refuses more than one open tab (163.260651ms)
+✔ upgrade retains previous content-addressed runtime and does not cache unrelated or private requests (45.646439ms)
+✔ content-addressed production Worker actually runs MicroPython and framebuf (282.665657ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1865.844961

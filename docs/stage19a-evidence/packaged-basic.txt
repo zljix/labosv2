@@ -1,0 +1,1 @@
+[{"key":"touch","status":"pass","stopMs":20.504607999999735},{"key":"regulator","status":"pass","stopMs":8.843592000000172}]

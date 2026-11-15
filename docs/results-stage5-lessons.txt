@@ -1,0 +1,33 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.2.0 test:lessons
+> node --import tsx --test verification/lessons.test.ts
+
+✔ five gradual lessons retain the project/ZIP format and editable work with known scenario IDs (32.589013ms)
+✔ actual WASM reference: V1 LED i vrijeme (3487.900287ms)
+✔ actual WASM reference: V2 Tipkalo kao ulaz (1825.321918ms)
+✔ actual WASM reference: V3 Potenciometar i PWM (1462.612777ms)
+✔ actual WASM reference: V4 AHT10 i OLED (2184.141092ms)
+✔ actual WASM reference: V5 Regulator sa servom (10447.036459ms)
+✔ behaviour checker accepts different variable names, helper functions, component IDs and GPIO (3305.656154ms)
+✔ constant output and wrong timing are rejected by observed LED behaviour (8716.69633ms)
+✔ inverted button and fixed PWM cannot pass input/output scenarios (3238.575272ms)
+✔ OLED checker requires actual numeric pixels; console and changing temperatures alone do not pass (13794.814374ms)
+✔ single-threshold regulator fails hysteresis while still passing the ordinary hot/cold states (10483.713719ms)
+✔ submission carries names, answers, source, drivers and result; metadata is not an authenticity proof (16.598171ms)
+✔ missing answers are identified; failed attempts can be submitted without a false pass (2.067293ms)
+✔ fingerprint detects executable-file or circuit edits, but not names, answers or editor preferences (2.309397ms)
+✔ untrusted scenario and forged local result do not influence an independent rerun (1693.753515ms)
+✔ abort terminates a non-yielding program and does not leave a session running (2096.269827ms)
+✔ invalid work cannot request an unknown scenario; older projects remain parseable (1.488553ms)
+✔ broken circuit and Python exceptions are reported as failure, never a successful empty check (535.518467ms)
+✔ assessment documents are not hidden runtime inputs; ordinary text data remain available (1711.842599ms)
+✔ persist actual reference results as development evidence (2.180815ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 65365.549802

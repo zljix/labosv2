@@ -1,0 +1,477 @@
+[
+  {
+    "key": "blink",
+    "status": "pass",
+    "elapsedMs": 29876,
+    "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+    "core": "esp32:esp32@3.3.12",
+    "cli": "1.3.1",
+    "exportHash": "e64301b3d94dd1305c3356a28ce37984b4f2c018a1cd5a05dc380ce8521ba3d8",
+    "sourceHash": "151505e200cdc87e8a9b9fb737b46f7bff30a47ad559529de458b54435708de7",
+    "libraries": [],
+    "binaries": [
+      {
+        "name": "LabSketch.ino.bin",
+        "bytes": 307328,
+        "sha256": "d872b2d921b712f3d9a9f844649ec2f7ba8fca440d05334b61e26ad1163e4dd2"
+      },
+      {
+        "name": "LabSketch.ino.elf",
+        "bytes": 6815824,
+        "sha256": "58bb912fad9f2d0244e7cb29900361752a9c3b38b289160bc5d8566f1828fade"
+      }
+    ],
+    "summary": [
+      "Sketch uses 307184 bytes (23%) of program storage space. Maximum is 1310720 bytes.",
+      "Global variables use 22624 bytes (6%) of dynamic memory, leaving 305056 bytes for local variables. Maximum is 327680 bytes."
+    ]
+  },
+  {
+    "key": "button",
+    "status": "pass",
+    "elapsedMs": 32664,
+    "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+    "core": "esp32:esp32@3.3.12",
+    "cli": "1.3.1",
+    "exportHash": "c99cd93ce040238c6cfb933f1893592d3f117cf727afb7117c9747360ac9c679",
+    "sourceHash": "65e59d721b623ce6689d3a2719db586648c6ced807429bcf1ee6cd3db2e0cb2f",
+    "libraries": [],
+    "binaries": [
+      {
+        "name": "LabSketch.ino.bin",
+        "bytes": 307600,
+        "sha256": "cd59e95a383ecd6979e4c36f569089127c49ff273c2408b00e788cdc39a54840"
+      },
+      {
+        "name": "LabSketch.ino.elf",
+        "bytes": 6817744,
+        "sha256": "081642b79049462155f421e82e92b2a29838dcdebb6f97991155db65c5a47b26"
+      }
+    ],
+    "summary": [
+      "Sketch uses 307448 bytes (23%) of program storage space. Maximum is 1310720 bytes.",
+      "Global variables use 22624 bytes (6%) of dynamic memory, leaving 305056 bytes for local variables. Maximum is 327680 bytes."
+    ]
+  },
+  {
+    "key": "adc",
+    "status": "pass",
+    "elapsedMs": 30712,
+    "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+    "core": "esp32:esp32@3.3.12",
+    "cli": "1.3.1",
+    "exportHash": "01b81620702187a04b15c6d223b6f5fde53593701f331c9a4b654090df456533",
+    "sourceHash": "38dbe1b96ff07786bb16f80a5d176ff728899a5b7776a261b1b7255b987a2408",
+    "libraries": [],
+    "binaries": [
+      {
+        "name": "LabSketch.ino.bin",
+        "bytes": 300080,
+        "sha256": "ace3eb0bdabffad2163eb5071d9a7ccc692848ce94f2b1f6ee2133c0970285ef"
+      },
+      {
+        "name": "LabSketch.ino.elf",
+        "bytes": 6822068,
+        "sha256": "6c0ebd97c81d76c79fd487c0f340ea1cde0f3563d4b5455eb2a864d564abbc20"
+      }
+    ],
+    "summary": [
+      "Sketch uses 299926 bytes (22%) of program storage space. Maximum is 1310720 bytes.",
+      "Global variables use 22524 bytes (6%) of dynamic memory, leaving 305156 bytes for local variables. Maximum is 327680 bytes."
+    ]
+  },
+  {
+    "key": "regulator",
+    "status": "pass",
+    "elapsedMs": 39199,
+    "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+    "core": "esp32:esp32@3.3.12",
+    "cli": "1.3.1",
+    "exportHash": "1b1fe612bd3feb54951588fe1746c25c1add940c0ed21a7108965554f75a0aab",
+    "sourceHash": "544d8cf023a5a7b595e98ff57cf17f1049659a9ac22c8273f98d92298f5f675c",
+    "libraries": [
+      {
+        "name": "LabAHT10",
+        "version": "1.0.0",
+        "digest": "5e70d85bd5f32a4b5f6bdc05e5062b7d9a4f5b74bf8ca9d6dc943db634627d6d"
+      }
+    ],
+    "binaries": [
+      {
+        "name": "LabSketch.ino.bin",
+        "bytes": 316128,
+        "sha256": "07109cff11e94be6d98e2ea2bf17535f9c87fed6c93e12062dc1253f8c068f97"
+      },
+      {
+        "name": "LabSketch.ino.elf",
+        "bytes": 6952884,
+        "sha256": "b12960cd0852bfdb91a20fa76a47e04df47b76bb6edb7cb779f5b547a3045ac2"
+      }
+    ],
+    "summary": [
+      "Sketch uses 315974 bytes (24%) of program storage space. Maximum is 1310720 bytes.",
+      "Global variables use 24692 bytes (7%) of dynamic memory, leaving 302988 bytes for local variables. Maximum is 327680 bytes."
+    ]
+  },
+  {
+    "key": "sensors",
+    "status": "pass",
+    "elapsedMs": 37351,
+    "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+    "core": "esp32:esp32@3.3.12",
+    "cli": "1.3.1",
+    "exportHash": "7748198eed705acf66b65dde1ddb7beb347be86608e33cf16b27d9579cc98b28",
+    "sourceHash": "410e27046adc4a9a6ccaf648eb992e6844c2352ce2f483a07133cd788c69ad04",
+    "libraries": [
+      {
+        "name": "LabI2CSensors",
+        "version": "1.0.0",
+        "digest": "2e40e9a6f13867627ca9e451460107fd6cec8fbe533c447fe850b83f853af266"
+      }
+    ],
+    "binaries": [
+      {
+        "name": "LabSketch.ino.bin",
+        "bytes": 309744,
+        "sha256": "e21f115528029ea97d5bc13c8bc61abdb2475222913c98ba750997069896923f"
+      },
+      {
+        "name": "LabSketch.ino.elf",
+        "bytes": 6795096,
+        "sha256": "f65f8b2448e200c58885733a6b7335870fd590d5676ca3c14eec08c6c44468a8"
+      }
+    ],
+    "summary": [
+      "Sketch uses 309591 bytes (23%) of program storage space. Maximum is 1310720 bytes.",
+      "Global variables use 24652 bytes (7%) of dynamic memory, leaving 303028 bytes for local variables. Maximum is 327680 bytes."
+    ]
+  },
+  {
+    "key": "servo",
+    "status": "pass",
+    "elapsedMs": 34962,
+    "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+    "core": "esp32:esp32@3.3.12",
+    "cli": "1.3.1",
+    "exportHash": "7a033ae22c226e56a24b8cd24d43e4b7fd0f846582a6fc3e358a61a66a1c20bb",
+    "sourceHash": "92d1d2ca75b4a8e7eadbc9eee3b035c11c01578670e8c42c49825a9e3aae8775",
+    "libraries": [],
+    "binaries": [
+      {
+        "name": "LabSketch.ino.bin",
+        "bytes": 286976,
+        "sha256": "ab3e13910d1371a01cbfc9e1c2e20834dcc6af53c1642fef26f03d9641d15f31"
+      },
+      {
+        "name": "LabSketch.ino.elf",
+        "bytes": 6556332,
+        "sha256": "543b7c255c66f2488885c970708439c2d380bbeb11ed819960655ce1882c4afb"
+      }
+    ],
+    "summary": [
+      "Sketch uses 286822 bytes (21%) of program storage space. Maximum is 1310720 bytes.",
+      "Global variables use 22212 bytes (6%) of dynamic memory, leaving 305468 bytes for local variables. Maximum is 327680 bytes."
+    ]
+  },
+  {
+    "key": "lcd",
+    "status": "pass",
+    "elapsedMs": 51835,
+    "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+    "core": "esp32:esp32@3.3.12",
+    "cli": "1.3.1",
+    "exportHash": "c449bd3cd5cec0512d46f4141851334ae7af36444d5aef7e62fcc100daf2afb6",
+    "sourceHash": "056ac321896172a2704c6fa6e1f349d21d4bb33870ed578a8fc13c08efe4829a",
+    "libraries": [
+      {
+        "name": "LabLCD1602",
+        "version": "1.0.0",
+        "digest": "8f751ab9da944db90f2ac6b3690ee3d304128cf6e922e6d2e0510d0c04b90195"
+      }
+    ],
+    "binaries": [
+      {
+        "name": "LabSketch.ino.bin",
+        "bytes": 307056,
+        "sha256": "357217d6a58e59600a1813300687a440f5d38645c1c5cd89a8b1e3855fc6b437"
+      },
+      {
+        "name": "LabSketch.ino.elf",
+        "bytes": 6779248,
+        "sha256": "84b677f8ef25a97cfd1817a273ecc184b54f11d5205e623be08bea29d4ffd910"
+      }
+    ],
+    "summary": [
+      "Sketch uses 306907 bytes (23%) of program storage space. Maximum is 1310720 bytes.",
+      "Global variables use 23516 bytes (7%) of dynamic memory, leaving 304164 bytes for local variables. Maximum is 327680 bytes."
+    ]
+  },
+  {
+    "key": "touch",
+    "status": "pass",
+    "elapsedMs": 36204,
+    "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+    "core": "esp32:esp32@3.3.12",
+    "cli": "1.3.1",
+    "exportHash": "5657323f4fa9787a352ca7cb6aecbecdef643a7c164ae15b675743d07b9fbb3b",
+    "sourceHash": "787fb1fa8b2ec9aec4cc4a5abdb8b9a83ec30d14253f2e038e38a6fff4c82504",
+    "libraries": [],
+    "binaries": [
+      {
+        "name": "LabSketch.ino.bin",
+        "bytes": 314224,
+        "sha256": "aff202a12f42b561ca2dbba1eb379520abc66d1d23390cde47dbc5b5d90315fa"
+      },
+      {
+        "name": "LabSketch.ino.elf",
+        "bytes": 6928176,
+        "sha256": "8207b0e7bae63e9f1de87e847a2b3d8c5a77fe2d00580c94f3bbcee62213fd3e"
+      }
+    ],
+    "summary": [
+      "Sketch uses 314068 bytes (23%) of program storage space. Maximum is 1310720 bytes.",
+      "Global variables use 22712 bytes (6%) of dynamic memory, leaving 304968 bytes for local variables. Maximum is 327680 bytes."
+    ]
+  },
+  {
+    "key": "dht11",
+    "status": "pass",
+    "elapsedMs": 39624,
+    "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+    "core": "esp32:esp32@3.3.12",
+    "cli": "1.3.1",
+    "exportHash": "462479611feafe2cc02d67e16ea321ee8244155cfaf023d241551619a653421e",
+    "sourceHash": "e7be332b0ecb68dfb2054b86c20cf649336b7d04c9fe33fdeb406a527adcf04f",
+    "libraries": [
+      {
+        "name": "DHT",
+        "version": "1.4.6",
+        "digest": "f61633314452c3e38de431b91a15c26bf7d9051a1cf9bcd0593ee410081f3d36"
+      }
+    ],
+    "binaries": [
+      {
+        "name": "LabSketch.ino.bin",
+        "bytes": 309328,
+        "sha256": "176c93f2d5b8777982c124c374d3d1e8a2d9e941b936ac2d421caa14911c3766"
+      },
+      {
+        "name": "LabSketch.ino.elf",
+        "bytes": 6842832,
+        "sha256": "061a410ebda12a9d9c84a70b5036d05f8574a1f435281da8e7e4ece2d1b04ea5"
+      }
+    ],
+    "summary": [
+      "Sketch uses 309172 bytes (23%) of program storage space. Maximum is 1310720 bytes.",
+      "Global variables use 22648 bytes (6%) of dynamic memory, leaving 305032 bytes for local variables. Maximum is 327680 bytes."
+    ]
+  },
+  {
+    "key": "dht22",
+    "status": "pass",
+    "elapsedMs": 38459,
+    "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+    "core": "esp32:esp32@3.3.12",
+    "cli": "1.3.1",
+    "exportHash": "aea27944cc49844165ee13d6ab4c9bdfa02d6e9dae3baf2d61333de2dcff13bf",
+    "sourceHash": "609da91d58b910c971f71d39f5ba5e9a95ac7a91d93f441325ac116a6d306cd2",
+    "libraries": [
+      {
+        "name": "DHT",
+        "version": "1.4.6",
+        "digest": "f61633314452c3e38de431b91a15c26bf7d9051a1cf9bcd0593ee410081f3d36"
+      }
+    ],
+    "binaries": [
+      {
+        "name": "LabSketch.ino.bin",
+        "bytes": 309328,
+        "sha256": "1e782b93cbf0369b26b939aa125a5a89a940c96c68c4b221a7091a58e8704350"
+      },
+      {
+        "name": "LabSketch.ino.elf",
+        "bytes": 6842832,
+        "sha256": "0d3236f9a4973180257b0cd5a420f78c30b67c48ff2e5d504a197c1616c67427"
+      }
+    ],
+    "summary": [
+      "Sketch uses 309176 bytes (23%) of program storage space. Maximum is 1310720 bytes.",
+      "Global variables use 22648 bytes (6%) of dynamic memory, leaving 305032 bytes for local variables. Maximum is 327680 bytes."
+    ]
+  },
+  {
+    "key": "dhtErrors",
+    "status": "pass",
+    "elapsedMs": 45654,
+    "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+    "core": "esp32:esp32@3.3.12",
+    "cli": "1.3.1",
+    "exportHash": "9310064f6b2b9e48a9f505797442b540cce51cdcb1ef3852740e3eeb73630270",
+    "sourceHash": "01ed53bd960563483dea88d083ae86589ea1d798d193dd9738f64f903f17cc85",
+    "libraries": [
+      {
+        "name": "DHT",
+        "version": "1.4.6",
+        "digest": "f61633314452c3e38de431b91a15c26bf7d9051a1cf9bcd0593ee410081f3d36"
+      }
+    ],
+    "binaries": [
+      {
+        "name": "LabSketch.ino.bin",
+        "bytes": 309328,
+        "sha256": "948e008dd064c238a126566452f49eef7d732635e60f0d4e265c2ebb8bf02bbc"
+      },
+      {
+        "name": "LabSketch.ino.elf",
+        "bytes": 6842848,
+        "sha256": "efcb5be71e344d16815d7c359f509e48546854ba7ead8adcaf887e406168ecc0"
+      }
+    ],
+    "summary": [
+      "Sketch uses 309172 bytes (23%) of program storage space. Maximum is 1310720 bytes.",
+      "Global variables use 22648 bytes (6%) of dynamic memory, leaving 305032 bytes for local variables. Maximum is 327680 bytes."
+    ]
+  },
+  {
+    "key": "ds18Multi",
+    "status": "pass",
+    "elapsedMs": 40120,
+    "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+    "core": "esp32:esp32@3.3.12",
+    "cli": "1.3.1",
+    "exportHash": "e3e79eb6d4a9f2cf1611a48b342c6f53b0e05f2cbbd45d970c31926c2b687a69",
+    "sourceHash": "78f7ea3f59ab4a919f5ff361f0c890c78eb5adc4636eb49a57568b5954667b9e",
+    "libraries": [
+      {
+        "name": "DallasTemperature",
+        "version": "4.0.6",
+        "digest": "bcdf73e9dbd7dda3ad3e91c2340b335cbf6ccea6c1cab53f10c7fea675d75323"
+      },
+      {
+        "name": "OneWire",
+        "version": "2.3.8",
+        "digest": "d53be1dcf8b7e07f5b0d3120509ee5808d241bfd8cd2edcb4d22c70fa61611d0"
+      }
+    ],
+    "binaries": [
+      {
+        "name": "LabSketch.ino.bin",
+        "bytes": 312192,
+        "sha256": "5f05f3ef772d80935a36d46d63a44c389ac488b627475b364d4c6eb88723f6f0"
+      },
+      {
+        "name": "LabSketch.ino.elf",
+        "bytes": 6915516,
+        "sha256": "1986ce2cf7ee48496956e66e60fb14f59e52afe5607088dc223d1f891fc5eeca"
+      }
+    ],
+    "summary": [
+      "Sketch uses 312044 bytes (23%) of program storage space. Maximum is 1310720 bytes.",
+      "Global variables use 22680 bytes (6%) of dynamic memory, leaving 305000 bytes for local variables. Maximum is 327680 bytes."
+    ]
+  },
+  {
+    "key": "ds18Resolution",
+    "status": "pass",
+    "elapsedMs": 45674,
+    "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+    "core": "esp32:esp32@3.3.12",
+    "cli": "1.3.1",
+    "exportHash": "6db82564d7b50b5de288b6c70e26836adba8a4c78bc66a4bda84066892be6ca4",
+    "sourceHash": "6f840a50ecaf7fee68025682f895e96a52e5c47f07219cce3f421f0687a43a9a",
+    "libraries": [
+      {
+        "name": "DallasTemperature",
+        "version": "4.0.6",
+        "digest": "bcdf73e9dbd7dda3ad3e91c2340b335cbf6ccea6c1cab53f10c7fea675d75323"
+      },
+      {
+        "name": "OneWire",
+        "version": "2.3.8",
+        "digest": "d53be1dcf8b7e07f5b0d3120509ee5808d241bfd8cd2edcb4d22c70fa61611d0"
+      }
+    ],
+    "binaries": [
+      {
+        "name": "LabSketch.ino.bin",
+        "bytes": 312704,
+        "sha256": "7b9302e44d5a9bfd05d199e1334cf5d01ac690470e601811919b4d3241f29553"
+      },
+      {
+        "name": "LabSketch.ino.elf",
+        "bytes": 6915700,
+        "sha256": "41017f9b2ba5926ba247b11567a8d5074f3d56410ed24b2db7d1ffe1bd43ad5c"
+      }
+    ],
+    "summary": [
+      "Sketch uses 312552 bytes (23%) of program storage space. Maximum is 1310720 bytes.",
+      "Global variables use 22680 bytes (6%) of dynamic memory, leaving 305000 bytes for local variables. Maximum is 327680 bytes."
+    ]
+  },
+  {
+    "key": "oled64",
+    "status": "pass",
+    "elapsedMs": 67462,
+    "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+    "core": "esp32:esp32@3.3.12",
+    "cli": "1.3.1",
+    "exportHash": "f46db74d27b6aa4babe138aa1dedaa631399dc103cc33218c014ee59f5c92716",
+    "sourceHash": "8bdbb951c41e55b2dd541a452a338bc6cd62b182bc25bb762b63c74cd531925c",
+    "libraries": [
+      {
+        "name": "U8g2",
+        "version": "2.37.1",
+        "digest": "5f8b4535f5c7837f82569ede8d7381b614ba80455982c59e4ca4e7fc17d43e0b"
+      }
+    ],
+    "binaries": [
+      {
+        "name": "LabSketch.ino.bin",
+        "bytes": 340000,
+        "sha256": "adcfaada9ab9998db2602b178ee1432c8a1f536b20c62f448eb2dc9a27fcc7a6"
+      },
+      {
+        "name": "LabSketch.ino.elf",
+        "bytes": 7987616,
+        "sha256": "947ec57f04bbcc11659845a5b9c1fe984fac96835eb01470a4d336eb6005ec48"
+      }
+    ],
+    "summary": [
+      "Sketch uses 339844 bytes (25%) of program storage space. Maximum is 1310720 bytes.",
+      "Global variables use 24392 bytes (7%) of dynamic memory, leaving 303288 bytes for local variables. Maximum is 327680 bytes."
+    ]
+  },
+  {
+    "key": "oled32",
+    "status": "pass",
+    "elapsedMs": 82955,
+    "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+    "core": "esp32:esp32@3.3.12",
+    "cli": "1.3.1",
+    "exportHash": "7aedf41aa9ac9867beec6e8add58d5bf22ed21139427864e9f8d7bedb7ceca1c",
+    "sourceHash": "ea03d5f7de6dafa6a3707b73f965c7f4b97f578a6b2462225bd3ffd8e94a796b",
+    "libraries": [
+      {
+        "name": "U8g2_12832",
+        "version": "2.37.1",
+        "digest": "4ab66ed86f578895534ddb16bccd02fb848dc56c2a1a338422d9b14ec5db3e2c"
+      }
+    ],
+    "binaries": [
+      {
+        "name": "LabSketch.ino.bin",
+        "bytes": 339968,
+        "sha256": "d2f4160532164895c823c36a5000389afb43646f6040b9521b4d13fe8c163659"
+      },
+      {
+        "name": "LabSketch.ino.elf",
+        "bytes": 7985836,
+        "sha256": "0cb312dbaa06922b3efa3e851d051b8254dd805d42d47a4d39d60af99379509c"
+      }
+    ],
+    "summary": [
+      "Sketch uses 339824 bytes (25%) of program storage space. Maximum is 1310720 bytes.",
+      "Global variables use 24392 bytes (7%) of dynamic memory, leaving 303288 bytes for local variables. Maximum is 327680 bytes."
+    ]
+  }
+]

@@ -1,0 +1,1545 @@
+{
+  "format": "esp32-lab-native-export-checks",
+  "version": 1,
+  "appVersion": "0.12.6-beta.1",
+  "verifiedAt": "2026-11-14T16:15:09.864Z",
+  "scope": "Compile-only Linux check of exact exported sources. No physical board was contacted; firmware is not executed in the simulator.",
+  "cli": "1.3.1",
+  "core": "esp32:esp32@3.3.12",
+  "fqbn": "esp32:esp32:esp32s3:FlashSize=16M,PSRAM=opi",
+  "total": 69,
+  "passed": 69,
+  "menuExamples": 67,
+  "radioPrograms": 2,
+  "programs": [
+    {
+      "key": "blink",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "151505e200cdc87e8a9b9fb737b46f7bff30a47ad559529de458b54435708de7",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 307376,
+          "sha256": "00fae56c9fcf067461153a8866b49929ac2946f64db92022148c29699fd78b2b"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6823304,
+          "sha256": "6e75bbdfef6d0a1985515faf5211f4b7ad6a7a7a0a931e546cad5b4a8a30e6e2"
+        }
+      ]
+    },
+    {
+      "key": "button",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "65e59d721b623ce6689d3a2719db586648c6ced807429bcf1ee6cd3db2e0cb2f",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 307648,
+          "sha256": "042cc207d5f93e7c92f9639db06597a0e4087b58e180ed78fbba99afd7f08e34"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6825336,
+          "sha256": "ce1961bb3e26a590127035897bdda1429c83349d8856a8f9ccb2aba80e43b3bd"
+        }
+      ]
+    },
+    {
+      "key": "adc",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "38dbe1b96ff07786bb16f80a5d176ff728899a5b7776a261b1b7255b987a2408",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 300112,
+          "sha256": "20e8c14dc86e2786f14dc563a3cebd6b5dcce6baad05d63a2e1fecdcb64ceda9"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6829500,
+          "sha256": "0c21b824dafa7a13870ef3a672b9327d5558d449f28de3901b633b0d6555798f"
+        }
+      ]
+    },
+    {
+      "key": "regulator",
+      "fileHashes": {
+        "LabSketch/lab_oled.h": "663cf33832d9bb27fd0a6caf7ffa12e06005b4aa88f8d0ba67e761934771b4e2",
+        "LabSketch/LabSketch.ino": "544d8cf023a5a7b595e98ff57cf17f1049659a9ac22c8273f98d92298f5f675c",
+        "LabSketch/README.txt": "3a96d3bd9a7f315695696872b162571dc8299d21a381255bac69314899b31a29"
+      },
+      "libraries": [
+        {
+          "name": "LabAHT10",
+          "version": "1.0.0",
+          "digest": "5e70d85bd5f32a4b5f6bdc05e5062b7d9a4f5b74bf8ca9d6dc943db634627d6d"
+        }
+      ],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 316176,
+          "sha256": "ae9da7389f2d2501644dfd6148440e93692a06fbcfa6011d68837dd93a80ac2d"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6961540,
+          "sha256": "e11b4621d89425d01c3dcb448d5b0839a3097562308bf020dc2bbdb35e22239c"
+        }
+      ]
+    },
+    {
+      "key": "sensors",
+      "fileHashes": {
+        "LabSketch/lab_oled.h": "663cf33832d9bb27fd0a6caf7ffa12e06005b4aa88f8d0ba67e761934771b4e2",
+        "LabSketch/LabSketch.ino": "410e27046adc4a9a6ccaf648eb992e6844c2352ce2f483a07133cd788c69ad04",
+        "LabSketch/README.txt": "9e5b94ffcee85030743c0a9326046798c9d86fc641736d5a47215b74ebb68095"
+      },
+      "libraries": [
+        {
+          "name": "LabI2CSensors",
+          "version": "1.0.0",
+          "digest": "2e40e9a6f13867627ca9e451460107fd6cec8fbe533c447fe850b83f853af266"
+        }
+      ],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 309792,
+          "sha256": "3d986cab60ae34892f0a6f73a645bfed0ac3a58ed1edcf1d97ef26a55456d670"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6803208,
+          "sha256": "4f2e55eb6dce0546610d7229acbdc8d3754fd7e409e4d881ccaa28f85a770a10"
+        }
+      ]
+    },
+    {
+      "key": "servo",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "92d1d2ca75b4a8e7eadbc9eee3b035c11c01578670e8c42c49825a9e3aae8775",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 286992,
+          "sha256": "547899e18fb5ac80a4223db234461356125bc882f4498c91258528253419b82f"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6563164,
+          "sha256": "4c4f4aeafe38c60bc5fdec59a390594184c48ccec6a0e5e0bf0f6ae7a3ea9746"
+        }
+      ]
+    },
+    {
+      "key": "lcd",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "056ac321896172a2704c6fa6e1f349d21d4bb33870ed578a8fc13c08efe4829a",
+        "LabSketch/README.txt": "d528e6b9ad227f3ee980246540ca0d0d6bbb5bcf631b52e51c0bc26e6c7b7b4b"
+      },
+      "libraries": [
+        {
+          "name": "LabLCD1602",
+          "version": "1.0.0",
+          "digest": "8f751ab9da944db90f2ac6b3690ee3d304128cf6e922e6d2e0510d0c04b90195"
+        }
+      ],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 307104,
+          "sha256": "63250f333e6f893c550eae38f784b958f72ee6b703f781ac11358ce3398950fd"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6787360,
+          "sha256": "3101a5872c053bb035d8372bd90109990ab48d46c8a35c14e5ace91c47a2c1d7"
+        }
+      ]
+    },
+    {
+      "key": "touch",
+      "fileHashes": {
+        "LabSketch/lab_ili9341.h": "26db836535e68366ce553ca6a2ad6dbd74421242db736e7a17db1a6039cfc224",
+        "LabSketch/lab_xpt2046.h": "db23a3a7e39d8bbbc1f8bca83d25b47959bc02e58c38100c74422890b4b42fde",
+        "LabSketch/LabSketch.ino": "787fb1fa8b2ec9aec4cc4a5abdb8b9a83ec30d14253f2e038e38a6fff4c82504",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 314272,
+          "sha256": "601e4fc0452a50675b12d3c71d9c66f3edcc1703221bd373ecf26af14f7b4d22"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6936848,
+          "sha256": "4ce0cee2ab8d0818332a3ed433558e45ddaf05608df0a80d09ff76e47a32ace8"
+        }
+      ]
+    },
+    {
+      "key": "dht11",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "e7be332b0ecb68dfb2054b86c20cf649336b7d04c9fe33fdeb406a527adcf04f",
+        "LabSketch/README.txt": "21fe0a5279e7e4c78714d3e50da8bb4f080aa809e40a772da8247f998273adb2"
+      },
+      "libraries": [
+        {
+          "name": "DHT",
+          "version": "1.4.6",
+          "digest": "f61633314452c3e38de431b91a15c26bf7d9051a1cf9bcd0593ee410081f3d36"
+        }
+      ],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 309376,
+          "sha256": "7474691adb92fc082f1955a2aa915cca5d316830996c66c734e477fa0608c7d1"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6850608,
+          "sha256": "d8adf921c76f1d509c4a3248517f9702bc7a1e4cdb298aa556644c6dd6d89044"
+        }
+      ]
+    },
+    {
+      "key": "dht22",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "609da91d58b910c971f71d39f5ba5e9a95ac7a91d93f441325ac116a6d306cd2",
+        "LabSketch/README.txt": "21fe0a5279e7e4c78714d3e50da8bb4f080aa809e40a772da8247f998273adb2"
+      },
+      "libraries": [
+        {
+          "name": "DHT",
+          "version": "1.4.6",
+          "digest": "f61633314452c3e38de431b91a15c26bf7d9051a1cf9bcd0593ee410081f3d36"
+        }
+      ],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 309376,
+          "sha256": "9ce9137ea7979dec0d393f8cf2051aa27487dddfa6841a36529d13233dd451e7"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6850608,
+          "sha256": "c5df61fb8810c47deb338202bfe616db2abb8713d628e3e8554a8a17d506bf7e"
+        }
+      ]
+    },
+    {
+      "key": "dhtErrors",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "01ed53bd960563483dea88d083ae86589ea1d798d193dd9738f64f903f17cc85",
+        "LabSketch/README.txt": "21fe0a5279e7e4c78714d3e50da8bb4f080aa809e40a772da8247f998273adb2"
+      },
+      "libraries": [
+        {
+          "name": "DHT",
+          "version": "1.4.6",
+          "digest": "f61633314452c3e38de431b91a15c26bf7d9051a1cf9bcd0593ee410081f3d36"
+        }
+      ],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 309376,
+          "sha256": "a38f11e474334f1de578a192d189c9eda9693095b27ec4d91f13dd6e55d5935c"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6850616,
+          "sha256": "bee1e038e2b5d78d87b96781952ed70c36254e69e3dcfba179179a51ec125a26"
+        }
+      ]
+    },
+    {
+      "key": "ds18Multi",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "78f7ea3f59ab4a919f5ff361f0c890c78eb5adc4636eb49a57568b5954667b9e",
+        "LabSketch/README.txt": "b76dda5cec61c44fb557a0f21f3362c4938a06e92cf70f11caa25b249300eedb"
+      },
+      "libraries": [
+        {
+          "name": "DallasTemperature",
+          "version": "4.0.6",
+          "digest": "bcdf73e9dbd7dda3ad3e91c2340b335cbf6ccea6c1cab53f10c7fea675d75323"
+        },
+        {
+          "name": "OneWire",
+          "version": "2.3.8",
+          "digest": "d53be1dcf8b7e07f5b0d3120509ee5808d241bfd8cd2edcb4d22c70fa61611d0"
+        }
+      ],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 312240,
+          "sha256": "268ec92fafdaa1591c1a345e5d556d291a31c394361e927439ddb3ebdf8a5643"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6923772,
+          "sha256": "b5e6355f45c1f7345c771fee9add48e02f37a9b3b3604651d88454b6eced9b9a"
+        }
+      ]
+    },
+    {
+      "key": "ds18Resolution",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "6f840a50ecaf7fee68025682f895e96a52e5c47f07219cce3f421f0687a43a9a",
+        "LabSketch/README.txt": "b76dda5cec61c44fb557a0f21f3362c4938a06e92cf70f11caa25b249300eedb"
+      },
+      "libraries": [
+        {
+          "name": "DallasTemperature",
+          "version": "4.0.6",
+          "digest": "bcdf73e9dbd7dda3ad3e91c2340b335cbf6ccea6c1cab53f10c7fea675d75323"
+        },
+        {
+          "name": "OneWire",
+          "version": "2.3.8",
+          "digest": "d53be1dcf8b7e07f5b0d3120509ee5808d241bfd8cd2edcb4d22c70fa61611d0"
+        }
+      ],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 312752,
+          "sha256": "257d8e2b00747a35deae0f9c47cfc2f1cab520ef48565f132c67349957a29dea"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6923956,
+          "sha256": "1fde9f6d1e9a1cac0c9a9e707dfca357dd97bd2f7bd59fc3d6421136fdf25a9d"
+        }
+      ]
+    },
+    {
+      "key": "oled64",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "8bdbb951c41e55b2dd541a452a338bc6cd62b182bc25bb762b63c74cd531925c",
+        "LabSketch/README.txt": "9fa5fc33dd7df9016eb4af5168659588b748f61bd648e4f805ef999ede55642f"
+      },
+      "libraries": [
+        {
+          "name": "U8g2",
+          "version": "2.37.1",
+          "digest": "5f8b4535f5c7837f82569ede8d7381b614ba80455982c59e4ca4e7fc17d43e0b"
+        }
+      ],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 340080,
+          "sha256": "e96645bd233039e961715b8a056a5c15fdb742953eabdce17c585fc3bed0f8a3"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 7999288,
+          "sha256": "f163cb7810cde75459807adea8974f92c3694a83cf02517bddf1b77bc45c88e5"
+        }
+      ]
+    },
+    {
+      "key": "oled32",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "ea03d5f7de6dafa6a3707b73f965c7f4b97f578a6b2462225bd3ffd8e94a796b",
+        "LabSketch/README.txt": "e6fc67adb8af1ad52da148d46aeb0cfbee05308090d214c9a0dd81f4085e122c"
+      },
+      "libraries": [
+        {
+          "name": "U8g2_12832",
+          "version": "2.37.1",
+          "digest": "4ab66ed86f578895534ddb16bccd02fb848dc56c2a1a338422d9b14ec5db3e2c"
+        }
+      ],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 340048,
+          "sha256": "975fce8ede13f8585085df9ecd70ccf31ca5654552ccd755a19fc399eb94b74a"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 7997508,
+          "sha256": "c20a1b2938236ed8aea32cc19101d14a75cfcf56470f97a216a7f0e82cc15584"
+        }
+      ]
+    },
+    {
+      "key": "lm35",
+      "fileHashes": {
+        "LabSketch/lab_analog.h": "0ca2fd0daa3e04f6617710fe94af22a464127156998a9ad75b9300fa9a12f9dc",
+        "LabSketch/LabSketch.ino": "7d278dac3f567e76aabf092d68d8746f2c969e593aa127021ef8a5709c750a03",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 292848,
+          "sha256": "59163f1d25226226017121321819ae0823b818106046182bee8b128308b802e6"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6600860,
+          "sha256": "5250a4f7ab2018ff7e2fd01611f42380c779dcccfc2cbb057bfad36c75922603"
+        }
+      ]
+    },
+    {
+      "key": "temt6000",
+      "fileHashes": {
+        "LabSketch/lab_analog.h": "0ca2fd0daa3e04f6617710fe94af22a464127156998a9ad75b9300fa9a12f9dc",
+        "LabSketch/LabSketch.ino": "fc591f1ff39236d92be871e17508ecfc994fac8225919329ec8c9805a9248171",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 292848,
+          "sha256": "046cc863232ed0048d7c0177451bcb248039dd30fce591973a196ca81a53a4ae"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6600748,
+          "sha256": "0f30536f83afa5bedaee2b987da4572d4fd469bd5b72bc218e0f62102f8d680f"
+        }
+      ]
+    },
+    {
+      "key": "ntc",
+      "fileHashes": {
+        "LabSketch/lab_analog.h": "0ca2fd0daa3e04f6617710fe94af22a464127156998a9ad75b9300fa9a12f9dc",
+        "LabSketch/LabSketch.ino": "c13babae139ef802c1864ccf08ae180c60a5e688a0d9005a938be28d323c8064",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 293712,
+          "sha256": "d96d71247c1871bfb8c4e48646942a0aade062dfb6f93cc6f57dfa3182d418f1"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6610744,
+          "sha256": "9b31db4b4e2a47eccd28ae7099f94e5f20377270f669dbf1778f7ff12b268c68"
+        }
+      ]
+    },
+    {
+      "key": "ky023",
+      "fileHashes": {
+        "LabSketch/lab_analog.h": "0ca2fd0daa3e04f6617710fe94af22a464127156998a9ad75b9300fa9a12f9dc",
+        "LabSketch/LabSketch.ino": "ca43ac8c060d348e51627e90074e5c9a3e043e593705c8558e4cdc08492a938e",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 296112,
+          "sha256": "f021f72019ccb9e8d7e42e5c8f53a10d59fcfbae22f9d47cdd6189733f2a39ff"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6721644,
+          "sha256": "bd88aef0854fcd89aa35b659c717e2bdda1091caa255109ba2e21eb63651d81a"
+        }
+      ]
+    },
+    {
+      "key": "flame",
+      "fileHashes": {
+        "LabSketch/lab_analog.h": "0ca2fd0daa3e04f6617710fe94af22a464127156998a9ad75b9300fa9a12f9dc",
+        "LabSketch/LabSketch.ino": "31d18845acac3cb695c99f738c66fc4f8300cb24a36023c72dc5b9aeebc4fc1b",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 295344,
+          "sha256": "952786021a3c818de0037e7d5a5f02910f3689a28e9105bedfb016f0b894b335"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6720748,
+          "sha256": "f0aee7e6d54f22fa466eb081dae7e11cbe281efff36461d1947245e5580fd738"
+        }
+      ]
+    },
+    {
+      "key": "sound",
+      "fileHashes": {
+        "LabSketch/lab_analog.h": "0ca2fd0daa3e04f6617710fe94af22a464127156998a9ad75b9300fa9a12f9dc",
+        "LabSketch/LabSketch.ino": "a78277ef7f01bd80e63ee7700b590c09b9cb1b05801bf501213f6a852206f4e7",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 288096,
+          "sha256": "29abb5695f3161209ae2436f1fc058295b9581ef1e6632826d72eed316e595d8"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6614596,
+          "sha256": "02bc64b398c4a2970bab771eeea47b02a7ed031cefc82736410c7aaf9f7c1237"
+        }
+      ]
+    },
+    {
+      "key": "analogCompare",
+      "fileHashes": {
+        "LabSketch/lab_analog.h": "0ca2fd0daa3e04f6617710fe94af22a464127156998a9ad75b9300fa9a12f9dc",
+        "LabSketch/LabSketch.ino": "88778815fdd2e9a8f2e08e74a671dd285deb4e1871f50b77e1468e41fa387e29",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 293728,
+          "sha256": "68c43f77d402ca1ebf682fcf3100bdd152c5399d0eb656b45752dfe762b427bf"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6610996,
+          "sha256": "2348577042bb7936c284b2995c5fcb80ddc091722ae4f5c3a55ebad052df4cad"
+        }
+      ]
+    },
+    {
+      "key": "dualInputs",
+      "fileHashes": {
+        "LabSketch/lab_analog.h": "0ca2fd0daa3e04f6617710fe94af22a464127156998a9ad75b9300fa9a12f9dc",
+        "LabSketch/LabSketch.ino": "65c9dba63f58781bf1148c8b77b575181823b66c6cc2a4dbe4d0f468e831244b",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 295424,
+          "sha256": "2709684036c81f22d68b468d048a474d4ac7e1a41e717d9b76d2d3fd63bb18da"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6721036,
+          "sha256": "bb7f7ed5815f3c4f40b69b110046e875fa11a955dc2a414bef566badb05857a3"
+        }
+      ]
+    },
+    {
+      "key": "encoderRaw",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "966fd5fe37f0eaaa94a627b4342500568ec095707e1abf240f3699c13644c429",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 283808,
+          "sha256": "461b6d9bcd798628c42e4f98332c9f2a382c10632f12a4e8ff83e65603021c00"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6483488,
+          "sha256": "f76d282735ce2de5e325a187dc3423fb1235bc8368479b165867605d5613309c"
+        }
+      ]
+    },
+    {
+      "key": "ky040",
+      "fileHashes": {
+        "LabSketch/lab_encoder.h": "42f894be5f11f8da4607cf053abfbe55a0eba62b125dc43775bea31d66bb9618",
+        "LabSketch/LabSketch.ino": "f72e6814ef16d7c63caa75b22a86c058f9f92ca3cc30cff70d46328f421a49e8",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 284288,
+          "sha256": "10c60066c145929c74aed8f926073d3f08ebec93c2df8e51158ddfb103ada846"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6486784,
+          "sha256": "221f50eaf2072fd5bbdfb7e3f4ad84cb56e051db2919a47520af14eed162bc82"
+        }
+      ]
+    },
+    {
+      "key": "encoderBounce",
+      "fileHashes": {
+        "LabSketch/lab_encoder.h": "42f894be5f11f8da4607cf053abfbe55a0eba62b125dc43775bea31d66bb9618",
+        "LabSketch/LabSketch.ino": "f72e6814ef16d7c63caa75b22a86c058f9f92ca3cc30cff70d46328f421a49e8",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 284288,
+          "sha256": "74f286f667221e4d2019854ba1398243260ab404ecb13bb8ffd31b23ff1c288f"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6486808,
+          "sha256": "e68572d4191043ba646adfaeddd4d0e7b1c500a66980654120ebd774d6d2d428"
+        }
+      ]
+    },
+    {
+      "key": "encoderPWM",
+      "fileHashes": {
+        "LabSketch/lab_encoder.h": "42f894be5f11f8da4607cf053abfbe55a0eba62b125dc43775bea31d66bb9618",
+        "LabSketch/LabSketch.ino": "cad7d9dcd3e071fd77c48538e7753c70ad344021dab1f268a0b40234778c5133",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 292032,
+          "sha256": "8acf230a775157d0c06c7748e3e893c54edaa0ecaba12f5d4e9f0c4808bd2c52"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6653088,
+          "sha256": "e7164dd20db1068005eaeff952ffd4b8340f17112f030d192d3616c4baa2967d"
+        }
+      ]
+    },
+    {
+      "key": "relayContacts",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "ff4899aef98e428f60105aa6931719a4f21a37a8ae836e29945ffde99ba1c570",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 307184,
+          "sha256": "3e4f79d30c7e84d1337bdc0169ed6beeeff18072d0054159d41d0541e080da49"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6823096,
+          "sha256": "9510d340317bcf39e74fe7b2ef338fd13c99d72965f7d46dda5068d04017476a"
+        }
+      ]
+    },
+    {
+      "key": "activeAlarm",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "584613fdfe298b497436fc9b73ad86ab7ff0742da1363d8620f7ee68a86fe8d8",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 307168,
+          "sha256": "99c00220e9eec0d58a0a897e669bc1c6f81a5e0605be2b0f8d4ec2efae6e69d5"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6823096,
+          "sha256": "008f694496b6779da4a2629202f85f8e42276e1dd2bc39305eb0b270b0c4dd37"
+        }
+      ]
+    },
+    {
+      "key": "piezoTone",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "feb0ac5f55e930c87d8e655a4f29430a0fcd54ba02a6f5a24cfcb91a32e2bbec",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 315328,
+          "sha256": "c93267c8fbbed2d2cbedc1fc8e78bd351ce36b851a5b7e62c9dac027bd41bbc4"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6987172,
+          "sha256": "b4a04715ba06c647bcde553fe78184364d9e7ffc98a46e5bd99c88fc7cd45723"
+        }
+      ]
+    },
+    {
+      "key": "dcDrive",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "0b9ad8a0cefb8c329d766c7508900585224c45489282cf15514fe0406f051d88",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 315472,
+          "sha256": "0d9636ee85848a90267b0b12f87da5d3e519b4f35179a7805532243367c11284"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6987760,
+          "sha256": "c1d58061ee320e7046b44bd86d4f52e69c31839d7453f3b61a6d2d0707e32a44"
+        }
+      ]
+    },
+    {
+      "key": "dualDrive",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "8522f3ca5600ece6de5c35c83b81f832d0003162a4cd6a934d2a0464455d3c7a",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 315056,
+          "sha256": "3262ddb2a4bc3ddb0c18ef42ead7c6eb969588ec7cfcb38caa33bdd8b876ac70"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6986732,
+          "sha256": "de1e449826944bfe491208dd8692c83a90e64414c2230971c40d2efe4c84db38"
+        }
+      ]
+    },
+    {
+      "key": "servoMotorTone",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "869dbdb4b0550d4ca671478477172f282323b6fb236c78ef805e57cc0aac3e21",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 315600,
+          "sha256": "e5abc9893729fccb6476190e15bf622d89d3ff2af0ffbc8e264c365e54039840"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6988532,
+          "sha256": "0bc7442e761ffc4001116c627c358f3aa01b5806499f9fc0b46e3f51305de05f"
+        }
+      ]
+    },
+    {
+      "key": "stepperBasic",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "d06192095f8d93de339e579714ef34ff06b2a53884107df7d1bf10f8d01204a0",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 307440,
+          "sha256": "f57810d5aa8edde3e705cba716e79c74ac135440ce4a6e28172676f610b49273"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6825292,
+          "sha256": "e5c320501268bd05ae1d6c99e31dc7ad9749ab8fe02069cbe8fd1b0e9eb835b6"
+        }
+      ]
+    },
+    {
+      "key": "stepperMicro",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "fc79472166d800a8180a6673fcd855fd91619389ac809898b96313fb651e61f0",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 307824,
+          "sha256": "79526d4dc6e29aff948f31ad6aa43f7203a4f636f1e8d6058b1bb086d69b6db6"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6826360,
+          "sha256": "66c6ad8bcd0691576657f241249a97d121ea2c259e6fac3859223195f27eb332"
+        }
+      ]
+    },
+    {
+      "key": "stepperControl",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "4b19f3cf5dd75c289e49708fbca1eb0372f1928a5f72875ea70a870c4d4ad097",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 307680,
+          "sha256": "0d0b1de78b52f16af178fee4c6f20d6b1c547639805b2b8bc9b709f9f4555b88"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6826252,
+          "sha256": "7dc3d217c3fed89c1109e6d14cfc39665ac862d375b85dbe458e4a87ed06dec4"
+        }
+      ]
+    },
+    {
+      "key": "irPulses",
+      "fileHashes": {
+        "LabSketch/lab_s3_nec.h": "22198e1c5d807bf0b968785e27f4ad0081a09b620d1c747512255b326ffa2629",
+        "LabSketch/LabSketch.ino": "5bcf99a2907400fc95120e5eae17312deebd346c046bb62dc8db6eeccb8bed3b",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 284672,
+          "sha256": "9c8ffec3ad2a002ad41d2a978fdc7c70d60140e3fd2cfc3d53f1a732828d24f4"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6489480,
+          "sha256": "52ac0c64f6a92ddbcabffe87504c0757f4bcc5da1c7e97c11dd7dac7daffb731"
+        }
+      ]
+    },
+    {
+      "key": "irNEC",
+      "fileHashes": {
+        "LabSketch/lab_s3_nec.h": "22198e1c5d807bf0b968785e27f4ad0081a09b620d1c747512255b326ffa2629",
+        "LabSketch/LabSketch.ino": "104d8879a328a995ff6cfb901ca23792b34a970dd1a7fbd0e518c8b6de60bb3b",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 284608,
+          "sha256": "1284581b7cf0cb78713aa135bafd559b0a37386748ad78f410029346709d07a6"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6489348,
+          "sha256": "7f0ec0fb1cf4eaa5de8cf2e2968ec8967ee3ce27a419335f7280c25242ebd72e"
+        }
+      ]
+    },
+    {
+      "key": "irLED",
+      "fileHashes": {
+        "LabSketch/lab_s3_nec.h": "22198e1c5d807bf0b968785e27f4ad0081a09b620d1c747512255b326ffa2629",
+        "LabSketch/LabSketch.ino": "837182e143e29ade5da7e0ea8bae2dfe55bc279a6c8b3433cda15365f0ba9ddb",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 292400,
+          "sha256": "f22bfe1cbadadcecd89be5663a325ff1750162e605673e651c89ca61836dd5e6"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6656604,
+          "sha256": "2e9f11cc8e0e29f486fea6351e1ce06fb4097786ab1a9c709b1f18d09fd76a86"
+        }
+      ]
+    },
+    {
+      "key": "irTransmit",
+      "fileHashes": {
+        "LabSketch/lab_s3_nec.h": "22198e1c5d807bf0b968785e27f4ad0081a09b620d1c747512255b326ffa2629",
+        "LabSketch/LabSketch.ino": "b97aea593ad85f6a1bf61aa0e10a727486ecf69655882b7f9dd94ea2486243bf",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 287408,
+          "sha256": "9fb7168ecfa6dd648d1f8c6ea2a412735cf2e3f505ea1532e3c5e7cb69afc58a"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6568868,
+          "sha256": "c87200ead8a5fd1bb9caee1509779654e7caf74f682129f142af41904251ac91"
+        }
+      ]
+    },
+    {
+      "key": "tftGraphics",
+      "fileHashes": {
+        "LabSketch/lab_st7735.h": "98d7dd03cd42d9a0dab87dc0a7149a28a74aa00d903bc6f272e5e37fa87ec997",
+        "LabSketch/LabSketch.ino": "1390680c047b29a8eaa9d883c788c11b4fe8210d11cf47b476349a73fd8cef16",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 313472,
+          "sha256": "6341487d8eb364e8954a61a6faac69a1bb22f501757be83974c3d3dd092f4104"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6931448,
+          "sha256": "32693b4c5c484c67efc86c601a618d84d218c44ae86734c8d527e387ed9272f1"
+        }
+      ]
+    },
+    {
+      "key": "tftRotation",
+      "fileHashes": {
+        "LabSketch/lab_st7735.h": "98d7dd03cd42d9a0dab87dc0a7149a28a74aa00d903bc6f272e5e37fa87ec997",
+        "LabSketch/LabSketch.ino": "d8af4971755ca516cd8c4697681c27770003fc075083a0d26710a961f9a0ff04",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 313552,
+          "sha256": "06e7a279aea6df942544079db73b23b0716c3fc7dded1dbaa56b1b8f3772d1a9"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6930200,
+          "sha256": "b5bdcb3afaad415b4ff98ecaa5a61083f56f503c0a5c0b7b8b12254a10e69eb9"
+        }
+      ]
+    },
+    {
+      "key": "bmp280SPI",
+      "fileHashes": {
+        "LabSketch/lab_bmp280_spi.h": "4f2cc629c8e43cc494e4e0322a8129c2d5cd22a72f14b920c5d7fab4014be51c",
+        "LabSketch/LabSketch.ino": "33d2b123cc472a665013b428a9d6ff54e91e65b338a9d66c24984302797fc332",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 313360,
+          "sha256": "91b79efc47cbb669bf49983dee4a179e0771b42b3bc8eeecb04cd8dda0a03fb0"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6921632,
+          "sha256": "b746f0b69d5c7e1bc31a2ad6a7380da5e7ece90f6139f305409ad615ad9e35f4"
+        }
+      ]
+    },
+    {
+      "key": "spiDashboard",
+      "fileHashes": {
+        "LabSketch/lab_bmp280_spi.h": "4f2cc629c8e43cc494e4e0322a8129c2d5cd22a72f14b920c5d7fab4014be51c",
+        "LabSketch/lab_st7735.h": "98d7dd03cd42d9a0dab87dc0a7149a28a74aa00d903bc6f272e5e37fa87ec997",
+        "LabSketch/LabSketch.ino": "98aefb6e76e523b2ee1ec23cff39d48f86fd344371fb56f3260bc9c89ac1e5d8",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 315168,
+          "sha256": "8e55482b711024602c864084d36b435278ed0a0970c063d9929142b05626b135"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6941012,
+          "sha256": "2865d55360a2f47f15938712fecc557f301bb5a0829600d3a7f946d1581b3dbf"
+        }
+      ]
+    },
+    {
+      "key": "bmp180",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "8e7873dfd02803bd594007a7754ff1a1e6f583567e4e964d6cc1f0a99403b570",
+        "LabSketch/README.txt": "9e5b94ffcee85030743c0a9326046798c9d86fc641736d5a47215b74ebb68095"
+      },
+      "libraries": [
+        {
+          "name": "LabI2CSensors",
+          "version": "1.0.0",
+          "digest": "2e40e9a6f13867627ca9e451460107fd6cec8fbe533c447fe850b83f853af266"
+        }
+      ],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 307520,
+          "sha256": "9aec99dee380651687e4f04a7251b4ee24e17fbbd99623f80f00613465e1d108"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6793840,
+          "sha256": "a09c826911d96a4de95c15715e2e9f1330a954300215e45aea22b525336d4cf2"
+        }
+      ]
+    },
+    {
+      "key": "bmp280",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "64dd308f1c0da0b94ea44e193fb2ce4bb2320fc3d4ccc02e3f0dd004892cca27",
+        "LabSketch/README.txt": "9e5b94ffcee85030743c0a9326046798c9d86fc641736d5a47215b74ebb68095"
+      },
+      "libraries": [
+        {
+          "name": "LabI2CSensors",
+          "version": "1.0.0",
+          "digest": "2e40e9a6f13867627ca9e451460107fd6cec8fbe533c447fe850b83f853af266"
+        }
+      ],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 307680,
+          "sha256": "e10cfcf35037544d2da5b8958a221fc2d580bf05b3fabcd78a8f970b63dc06d9"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6793856,
+          "sha256": "07c845bc7b80a1cbd26e45be89273b0172068fe82602c8b1fe2c7f97a32bc053"
+        }
+      ]
+    },
+    {
+      "key": "am2320",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "49315811bd56d5783c5107b05132789d1fee577979718f02ed5dc1690145e1ee",
+        "LabSketch/README.txt": "9e5b94ffcee85030743c0a9326046798c9d86fc641736d5a47215b74ebb68095"
+      },
+      "libraries": [
+        {
+          "name": "LabI2CSensors",
+          "version": "1.0.0",
+          "digest": "2e40e9a6f13867627ca9e451460107fd6cec8fbe533c447fe850b83f853af266"
+        }
+      ],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 307040,
+          "sha256": "b8c869270320c6d04ade12ab245b51ff0e8f68465a1b5e01f82f9f8f7f141c7d"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6789128,
+          "sha256": "448aed27287a02c7ea1d33f15ba089d2c16a52f0bcb2e0b1c2b67e299e4ae783"
+        }
+      ]
+    },
+    {
+      "key": "ds18Errors",
+      "fileHashes": {
+        "LabSketch/LabSketch.ino": "a86469a82457b8f4170a0458dcba1407b1b1886c5ba464fe078a065021f4ef96",
+        "LabSketch/README.txt": "b76dda5cec61c44fb557a0f21f3362c4938a06e92cf70f11caa25b249300eedb"
+      },
+      "libraries": [
+        {
+          "name": "DallasTemperature",
+          "version": "4.0.6",
+          "digest": "bcdf73e9dbd7dda3ad3e91c2340b335cbf6ccea6c1cab53f10c7fea675d75323"
+        },
+        {
+          "name": "OneWire",
+          "version": "2.3.8",
+          "digest": "d53be1dcf8b7e07f5b0d3120509ee5808d241bfd8cd2edcb4d22c70fa61611d0"
+        }
+      ],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 312336,
+          "sha256": "4a87db6097e47e94e2ff55535991566dd7177abc355999f893bf37873fe35ade"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6923968,
+          "sha256": "57fc37650bcf92b6f0ee976d2537ed13999e53222352a536bb385558fbeb18ab"
+        }
+      ]
+    },
+    {
+      "key": "tmSegments",
+      "fileHashes": {
+        "LabSketch/lab_tm1637.h": "9ef127c3ac57f5e7efdc7fe3eb7ccf70d11c7690c76f3d0487d162fdb113cdf2",
+        "LabSketch/LabSketch.ino": "103f3e1f95e0a67aea30479d2c54d966947a1a63a6cee035b994bb19841ad18f",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 308016,
+          "sha256": "8a03657ec655065eaddc519ace837e54e7d90b91e51c22728c083364a80779e8"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6831972,
+          "sha256": "ca73f5e336118215be949bcf9843391e7faeadbebc41ce2e8d96834147c95984"
+        }
+      ]
+    },
+    {
+      "key": "tmClock",
+      "fileHashes": {
+        "LabSketch/lab_tm1637.h": "9ef127c3ac57f5e7efdc7fe3eb7ccf70d11c7690c76f3d0487d162fdb113cdf2",
+        "LabSketch/LabSketch.ino": "383edbd603ad0442a5d8e953da86673ecec86c26723acaa853765f1e38360ca2",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 308528,
+          "sha256": "165b716e8ced4afc4b983dfe01a28b1ae690fff1a6906e08d5685e47eed028b7"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6833588,
+          "sha256": "0436e0f39a10b3f27a1854c3dacc24115b7ffd543ae459726cd1647c3b269ee8"
+        }
+      ]
+    },
+    {
+      "key": "iliGraphics",
+      "fileHashes": {
+        "LabSketch/lab_ili9341.h": "26db836535e68366ce553ca6a2ad6dbd74421242db736e7a17db1a6039cfc224",
+        "LabSketch/LabSketch.ino": "8105ab92c7cc61c00cdccfeb7629bb44f051d3d4d09af892da8df5e0026bdda7",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 313488,
+          "sha256": "582d85f973698f08fc7cc4b4b7edddbb80a9cd0748736a783c0018abd0369c0c"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6932952,
+          "sha256": "ef32bcff1d2e8f9509665498878f18c8d6e7205b9f12b15a6cd71d48fe335ed7"
+        }
+      ]
+    },
+    {
+      "key": "iliRotation",
+      "fileHashes": {
+        "LabSketch/lab_ili9341.h": "26db836535e68366ce553ca6a2ad6dbd74421242db736e7a17db1a6039cfc224",
+        "LabSketch/LabSketch.ino": "4ec720961a423df9e70d9cb00427c93d88732c349553d2244395f43963bf365a",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 313776,
+          "sha256": "b077aaea5d04790b4cd418df457ac4ff49ddd3eacf24ffa790edc7c4a527bc07"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6931900,
+          "sha256": "7a4f6b00e6230fad624a9d180a0066ba80964a143a7e40af295b172cdcccde65"
+        }
+      ]
+    },
+    {
+      "key": "touchRaw",
+      "fileHashes": {
+        "LabSketch/lab_ili9341.h": "26db836535e68366ce553ca6a2ad6dbd74421242db736e7a17db1a6039cfc224",
+        "LabSketch/lab_xpt2046.h": "db23a3a7e39d8bbbc1f8bca83d25b47959bc02e58c38100c74422890b4b42fde",
+        "LabSketch/LabSketch.ino": "45747eda0c4945e906d2c126f4dd9c47377ee3e10b67e5976a3925db0077f0b1",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 313968,
+          "sha256": "579a86ace7d51e4e923c13f921e6524dcfb6d57f13be63f5b6e79a7393de41fa"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6933904,
+          "sha256": "3b1364c26947c86fab16af8c80b11a15b9094e69ec314af4337e851dc0822b09"
+        }
+      ]
+    },
+    {
+      "key": "touchCalibration",
+      "fileHashes": {
+        "LabSketch/lab_ili9341.h": "26db836535e68366ce553ca6a2ad6dbd74421242db736e7a17db1a6039cfc224",
+        "LabSketch/lab_xpt2046.h": "db23a3a7e39d8bbbc1f8bca83d25b47959bc02e58c38100c74422890b4b42fde",
+        "LabSketch/LabSketch.ino": "dc0ef09597a864944ae65d583994eec17ef6f5d37be758aa732061128a53e4ff",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 315120,
+          "sha256": "d9d68204ea5b6c46185954eb32829fc4fd0a1c4a2489353d2d061eba7b4c53f8"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6946532,
+          "sha256": "6c4f4b6b51c34010509ee2156fdb643466aad87b5245bbd79d53382c168e2d46"
+        }
+      ]
+    },
+    {
+      "key": "touchRotation",
+      "fileHashes": {
+        "LabSketch/lab_ili9341.h": "26db836535e68366ce553ca6a2ad6dbd74421242db736e7a17db1a6039cfc224",
+        "LabSketch/lab_xpt2046.h": "db23a3a7e39d8bbbc1f8bca83d25b47959bc02e58c38100c74422890b4b42fde",
+        "LabSketch/LabSketch.ino": "39674b11a8894623507c9ed3998e02c2916ad8d086b5c27343364cdeca86c425",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 314560,
+          "sha256": "e5991c43c9509063c91c3448166807575f59e496f233bf7905c181357540b52c"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6938088,
+          "sha256": "aeea4d289167a69271be973d75db9e1655011f30f43deddb6835162dbd81f1e5"
+        }
+      ]
+    },
+    {
+      "key": "opticalRegisters",
+      "fileHashes": {
+        "LabSketch/lab_max30102.h": "138c4857d7e5e80f743741a44dcfa169b039ef32afbeb4f9843c3de47199f074",
+        "LabSketch/LabSketch.ino": "3610fe1d6f7782967266645d3a1e4239a01fc9e720ee3424958722ebd468499c",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 307216,
+          "sha256": "235826a84edf25cd780f15a7855f583338b6aa0fcb07b1ec0b8c1f9b7b135012"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6770704,
+          "sha256": "0630ed1ca95c7c33f5a1d1dd2113d8819aceddad84170407119372c50f172a4b"
+        }
+      ]
+    },
+    {
+      "key": "opticalRaw",
+      "fileHashes": {
+        "LabSketch/lab_max30102.h": "138c4857d7e5e80f743741a44dcfa169b039ef32afbeb4f9843c3de47199f074",
+        "LabSketch/LabSketch.ino": "5b42d1dc4966a7a94e34a911ebf1bf2fd194b075c2eacce81e5c87d47cd4f877",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 307056,
+          "sha256": "a4a41d7b2a40580cff1807bd5c388bac2989ebb4ed5d7846a1064c9f731c3b77"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6771072,
+          "sha256": "0c1914447097a4329cef9d37a82527d312fc3239e92cf50f5dc724243fa75bad"
+        }
+      ]
+    },
+    {
+      "key": "opticalFrequency",
+      "fileHashes": {
+        "LabSketch/lab_max30102.h": "138c4857d7e5e80f743741a44dcfa169b039ef32afbeb4f9843c3de47199f074",
+        "LabSketch/LabSketch.ino": "6a81f2b8b071e844cf049e7966d06afc2ccb0c8b875f1e494676c1195f891fc3",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 307760,
+          "sha256": "c80cfdad5bc8c0d61848ae8ab57a7a137818bd213454440d76be945c508cfa69"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6775976,
+          "sha256": "05a07ead1c9e8984737f7f43d2a700a2d918473966d8f1e1be3c7353bd7b1083"
+        }
+      ]
+    },
+    {
+      "key": "opticalOverflow",
+      "fileHashes": {
+        "LabSketch/lab_max30102.h": "138c4857d7e5e80f743741a44dcfa169b039ef32afbeb4f9843c3de47199f074",
+        "LabSketch/LabSketch.ino": "f870e7058dc3a3818d4e449d389da33486c89f7d84c058b9223ef6fd5c1aaf75",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 307072,
+          "sha256": "966f3039667f2cc85f77615d60f6fb93dcca116d91f78d47ff4d375be708645c"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6770916,
+          "sha256": "18409b5a5598c194a02bbdba4dae99fb1f21fbf0c6de22e71b6338c3d351e8ca"
+        }
+      ]
+    },
+    {
+      "key": "sdInspect",
+      "fileHashes": {
+        "LabSketch/lab_sd.h": "04fef018b7f3317d1bf9abe979cbc440d5725146983fb84e38dc8030d2986b6a",
+        "LabSketch/LabSketch.ino": "7b5b68fa79879234771309da78fc7474e4b2f0fe925c1c14d7611f6429bce6cc",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 313408,
+          "sha256": "245931b638be59a0349deaa40096bece14ee384d391c5b51312930e43ac77a5b"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6927888,
+          "sha256": "c795552eddc22f688e3f170fec7bf4ac09e3fdb6bf6f2a752f3eeb76dd7bc812"
+        }
+      ]
+    },
+    {
+      "key": "sdBlocks",
+      "fileHashes": {
+        "LabSketch/lab_sd.h": "04fef018b7f3317d1bf9abe979cbc440d5725146983fb84e38dc8030d2986b6a",
+        "LabSketch/LabSketch.ino": "6b76adbfcf18abd24216b34d90eeeb8ec19ba5718f690692ab953146ae3333be",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 313264,
+          "sha256": "e23d9cdf94d806813467d4d1db3f6db26bd37e39c5e4ff7431041c5fc39b7ff9"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6929272,
+          "sha256": "3b70f8a6aad2a4d18e75261983ad8e32923ec7d78b36d75043d9d0596832733b"
+        }
+      ]
+    },
+    {
+      "key": "sdFiles",
+      "fileHashes": {
+        "LabSketch/lab_sd.h": "04fef018b7f3317d1bf9abe979cbc440d5725146983fb84e38dc8030d2986b6a",
+        "LabSketch/LabSketch.ino": "15969004e366bbc0459cd15d6f23b50047ecf186e78c95bc56e8052619f99956",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 315456,
+          "sha256": "8d86071ff35d1cffbe87d9b3bd7719e7bf375655bf40f677d2e66589a82a9584"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6948428,
+          "sha256": "51edef569d9bdecd4f672a83403093af9137516b613f8e35c1273ee36bb7343d"
+        }
+      ]
+    },
+    {
+      "key": "sdLogger",
+      "fileHashes": {
+        "LabSketch/lab_ds1302.h": "6903b386a573b9826239b58b5985e639a003cf68501ba8e7d2ea7844234a7eb1",
+        "LabSketch/lab_sd.h": "04fef018b7f3317d1bf9abe979cbc440d5725146983fb84e38dc8030d2986b6a",
+        "LabSketch/LabSketch.ino": "d25e6ca14c02cc97e7d5a775d7ff6a25fa66dcdd94682255f9e8689b62a871d7",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 316480,
+          "sha256": "95d4f97dd66e9dcd1ccac037534f67ce92dbb87234e5155db0c58a0037704c94"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6957356,
+          "sha256": "0c7c2ac8b0701bc4173c2435c9fa0d1f55a2d99ea954eecec5055fb90eb5d89a"
+        }
+      ]
+    },
+    {
+      "key": "rtcRead",
+      "fileHashes": {
+        "LabSketch/lab_ds1302.h": "6903b386a573b9826239b58b5985e639a003cf68501ba8e7d2ea7844234a7eb1",
+        "LabSketch/LabSketch.ino": "16a9f1cd876bd7f8f5115c6c7ea2814c568697a278727d4ef42a57ec74b444b4",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 308768,
+          "sha256": "d95ea263f0c80c1f6694923d61a3067947a3fd7e29cfebbce31a14057a6a1780"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6834296,
+          "sha256": "6e13f48c11e4ea94263081e38ccda14af38e8a6862a6051139485c7a430ea659"
+        }
+      ]
+    },
+    {
+      "key": "rtcSet",
+      "fileHashes": {
+        "LabSketch/lab_ds1302.h": "6903b386a573b9826239b58b5985e639a003cf68501ba8e7d2ea7844234a7eb1",
+        "LabSketch/LabSketch.ino": "895bf60be7a0d0bf90e366eb2b303dd40decc86e7c8b592c7225aad8438f4c3c",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 309104,
+          "sha256": "f12868b47aa6bbf0fae370c34e997287d6486409c03d7c2831df90691092de00"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6836676,
+          "sha256": "449d983a246228c480290f72e817888026bc4203a0bdaf41aac2b4762eb59c16"
+        }
+      ]
+    },
+    {
+      "key": "rtcMemory",
+      "fileHashes": {
+        "LabSketch/lab_ds1302.h": "6903b386a573b9826239b58b5985e639a003cf68501ba8e7d2ea7844234a7eb1",
+        "LabSketch/LabSketch.ino": "1d6879fa9dcbdcdcd2f4577b8fc788264298bcf29836f2df554d4898a452f3df",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 309376,
+          "sha256": "8d2c03b2d96c262400a41caa522eaa1bbcbe5b3c941d0ff12181243520a3830d"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6841060,
+          "sha256": "81673c494d1fe772a4b4f4bec39d7cc34f153be6027ddfbc3443395e63930613"
+        }
+      ]
+    },
+    {
+      "key": "rtcClock",
+      "fileHashes": {
+        "LabSketch/lab_ds1302.h": "6903b386a573b9826239b58b5985e639a003cf68501ba8e7d2ea7844234a7eb1",
+        "LabSketch/lab_tm1637.h": "9ef127c3ac57f5e7efdc7fe3eb7ccf70d11c7690c76f3d0487d162fdb113cdf2",
+        "LabSketch/LabSketch.ino": "a750f68392dbff4e982e7e2bc5bc65955f38587d5dd710400bad80e53ae9048a",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 309488,
+          "sha256": "5b4db7c19fb6261a238218900376e905be0f92d7b03f79650eb98c82b9c072dc"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6842328,
+          "sha256": "378bf37a7109dbc80d5283becf6c8478069720bd9fc0b33c2d60fb437aba5545"
+        }
+      ]
+    },
+    {
+      "key": "radioTX",
+      "fileHashes": {
+        "LabSketch/lab_nrf24.h": "868e8d01b789e3130a68832183dad0e63b74fd1f6e33c901e741e122e043105a",
+        "LabSketch/LabSketch.ino": "173d1414b2267a176ec21a0c5b136a54ddc49346ff03f1bc032c964cc903ed0c",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 312576,
+          "sha256": "f81f4935df56721e312be6ed3353ceadcd25419b96e82b92eba0402cae407aa7"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6921128,
+          "sha256": "7865a0700eeeb45ca911f35114a8a4175206869a5888008d694c11b8ee3f80e6"
+        }
+      ]
+    },
+    {
+      "key": "radioRX",
+      "fileHashes": {
+        "LabSketch/lab_nrf24.h": "868e8d01b789e3130a68832183dad0e63b74fd1f6e33c901e741e122e043105a",
+        "LabSketch/LabSketch.ino": "b898c23f7666fbda3e2256b65cb25074ad7226f6e2f43614ceef48edf55d8a63",
+        "LabSketch/README.txt": "6066334e4c0abec1e936692dd01f1c6cc19ed753d38c82a8dfc99d1b456e0abe"
+      },
+      "libraries": [],
+      "binaries": [
+        {
+          "name": "LabSketch.ino.bin",
+          "bytes": 312352,
+          "sha256": "cd91b0190cc1bf01f6e9f25e94d0bf98cf11ca83839b5842c91ab28f3b50fa87"
+        },
+        {
+          "name": "LabSketch.ino.elf",
+          "bytes": 6920480,
+          "sha256": "0ddeae9382075e09fe5ea8d2e4a873386f2f76fb61b61e1043e38d92b58b4fd0"
+        }
+      ]
+    }
+  ]
+}

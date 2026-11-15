@@ -1,0 +1,33 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.4.0-beta.1 test:lessons
+> node --import tsx --test verification/lessons.test.ts
+
+✔ five gradual lessons retain the project/ZIP format and editable work with known scenario IDs (25.386462ms)
+✔ actual WASM reference: V1 LED i vrijeme (3301.711023ms)
+✔ actual WASM reference: V2 Tipkalo kao ulaz (1736.33384ms)
+✔ actual WASM reference: V3 Potenciometar i PWM (1513.091576ms)
+✔ actual WASM reference: V4 AHT10 i OLED (2206.548419ms)
+✔ actual WASM reference: V5 Regulator sa servom (10480.833353ms)
+✔ behaviour checker accepts different variable names, helper functions, component IDs and GPIO (3266.20255ms)
+✔ constant output and wrong timing are rejected by observed LED behaviour (8815.195815ms)
+✔ inverted button and fixed PWM cannot pass input/output scenarios (3191.41234ms)
+✔ OLED checker requires actual numeric pixels; console and changing temperatures alone do not pass (13974.115059ms)
+✔ single-threshold regulator fails hysteresis while still passing the ordinary hot/cold states (10437.326108ms)
+✔ submission carries names, answers, source, drivers and result; metadata is not an authenticity proof (20.380503ms)
+✔ missing answers are identified; failed attempts can be submitted without a false pass (2.310187ms)
+✔ fingerprint detects executable-file or circuit edits, but not names, answers or editor preferences (1.554016ms)
+✔ untrusted scenario and forged local result do not influence an independent rerun (1677.433732ms)
+✔ abort terminates a non-yielding program and does not leave a session running (2044.737897ms)
+✔ invalid work cannot request an unknown scenario; older projects remain parseable (1.426605ms)
+✔ broken circuit and Python exceptions are reported as failure, never a successful empty check (470.210768ms)
+✔ assessment documents are not hidden runtime inputs; ordinary text data remain available (1669.527033ms)
+✔ persist actual reference results as development evidence (2.105891ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 65011.44719

@@ -1,0 +1,23 @@
+{
+  "scope": "Local development preview, Chromium/Linux; no production login/offline or physical board claim",
+  "version": "0.4.0-alpha.2",
+  "observed": [
+    "Existing format-3 project reopened without loss",
+    "Uno blink: serial millis sequence and external LED",
+    "Uno live button: pressed -> LED 100%, released -> off",
+    "Uno UART: received 1, 0, b; RX=1 and LED=1 observed",
+    "Reset: new boot message and clean state",
+    "Source edit rejected stale firmware before start",
+    "Nano ADC initial: ADC=512 PWM=128",
+    "Actual browser JSON and toolkit downloads; extracted downloaded compiler ran without npm install",
+    "Modified Nano source used int pwm = 255 - vrijednost / 4",
+    "New locally compiled result imported through actual file picker; Flash 2462 B, static SRAM 198 B",
+    "Modified Nano at 0%: ADC=0 PWM=255, LED 93% through 680 ohms",
+    "Live modified Nano at 100%: ADC=1023 PWM=0, LED 0%"
+  ],
+  "limits": [
+    "Browser initial page was an older cached offline package; network preview used for new source",
+    "No new full production offline/update test",
+    "No Safari/iOS, school computer, student pilot or physical Arduino test"
+  ]
+}

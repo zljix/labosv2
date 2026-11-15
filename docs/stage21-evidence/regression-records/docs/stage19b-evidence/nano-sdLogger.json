@@ -1,0 +1,2158 @@
+{
+  "text": "SD CSV 0,2026-01-01 12:00:00\nSD CSV 1,2026-01-01 12:00:01\nSD CSV 2,2026-01-01 12:00:02\n",
+  "frame": {
+    "type": "simulation",
+    "clockProfile": "external-us",
+    "timeMs": 2800,
+    "nets": {
+      "board:3V3": 3.3,
+      "board:5V": 5,
+      "board:A0": null,
+      "board:A1": null,
+      "board:A2": null,
+      "board:A3": null,
+      "board:A4": null,
+      "board:A5": null,
+      "board:A6": null,
+      "board:A7": null,
+      "board:D0": null,
+      "board:D1": null,
+      "board:D10": 5,
+      "board:D11": 0,
+      "board:D12": null,
+      "board:D13": 0,
+      "board:D2": null,
+      "board:D3": null,
+      "board:D4": 0,
+      "board:D5": 0,
+      "board:D6": 0,
+      "board:D7": null,
+      "board:D8": null,
+      "board:D9": null,
+      "board:GND": 0
+    },
+    "leds": {},
+    "gpios": {
+      "0": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "1": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "2": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "3": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "4": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "5": {
+        "mode": "IN",
+        "volts": 0,
+        "level": 0
+      },
+      "6": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "7": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "8": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "9": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "10": {
+        "mode": "OUT",
+        "volts": 5,
+        "level": 1
+      },
+      "11": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "12": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "13": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "14": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "15": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "16": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "17": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "18": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "19": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      }
+    },
+    "optical": {},
+    "sensors": {},
+    "displays": {},
+    "measurements": [],
+    "i2cTrace": [],
+    "radios": {},
+    "sdCards": {
+      "sd1": {
+        "powered": true,
+        "inserted": true,
+        "writeProtected": false,
+        "initialized": true,
+        "sectors": 16384,
+        "dirtyBlocks": 4,
+        "reads": 22,
+        "writes": 10,
+        "errors": 0,
+        "revision": 10,
+        "state": {
+          "version": 1,
+          "blocks": [
+            [
+              1,
+              "+P//////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+            ],
+            [
+              65,
+              "+P//////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+            ],
+            [
+              129,
+              "TE9HICAgICBDU1YgAAAAAAAAAAAAAAAAIVwCAFEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+            ],
+            [
+              133,
+              "dXpvcmFrLHZyaWplbWUKMCwyMDI2LTAxLTAxIDEyOjAwOjAwCjEsMjAyNi0wMS0wMSAxMjowMDowMQoyLDIwMjYtMDEtMDEgMTI6MDA6MDIKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+            ]
+          ]
+        },
+        "files": [
+          {
+            "name": "LOG.CSV",
+            "size": 81,
+            "cluster": 2
+          }
+        ],
+        "volumeError": "",
+        "trace": [
+          {
+            "timeUs": 3617.8125,
+            "operation": "CMD0",
+            "value": 0,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 4227.9375,
+            "operation": "CMD8",
+            "value": 426,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 5101.4375,
+            "operation": "CMD55",
+            "value": 0,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 5711.3125,
+            "operation": "CMD41",
+            "value": 0,
+            "result": "ACMD"
+          },
+          {
+            "timeUs": 7328.5,
+            "operation": "CMD55",
+            "value": 0,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 7938.375,
+            "operation": "CMD41",
+            "value": 0,
+            "result": "ACMD"
+          },
+          {
+            "timeUs": 8548.5625,
+            "operation": "CMD58",
+            "value": 0,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 9420.875,
+            "operation": "CMD16",
+            "value": 512,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 10030.9375,
+            "operation": "CMD9",
+            "value": 0,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 11771.5,
+            "operation": "CMD17",
+            "value": 0,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 20370,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 28603.9375,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 36811.1875,
+            "operation": "CMD17",
+            "value": 512,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 45387.625,
+            "operation": "CMD17",
+            "value": 33280,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 53973.0625,
+            "operation": "CMD17",
+            "value": 512,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 62549.875,
+            "operation": "CMD24",
+            "value": 512,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 71039.4375,
+            "operation": "write",
+            "value": 1,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 72148.75,
+            "operation": "CMD24",
+            "value": 33280,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 80639.0625,
+            "operation": "write",
+            "value": 65,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 81949.75,
+            "operation": "CMD24",
+            "value": 68096,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 90448.9375,
+            "operation": "write",
+            "value": 133,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 91562.375,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 99800.4375,
+            "operation": "CMD24",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 108306.1875,
+            "operation": "write",
+            "value": 129,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 112633.6875,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 121237.125,
+            "operation": "CMD17",
+            "value": 512,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 129812.75,
+            "operation": "CMD17",
+            "value": 33280,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 138395.6875,
+            "operation": "CMD17",
+            "value": 68096,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 146998.1875,
+            "operation": "CMD24",
+            "value": 68096,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 155490.125,
+            "operation": "write",
+            "value": 133,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 156595.5,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 165218.6875,
+            "operation": "CMD24",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 173707.0625,
+            "operation": "write",
+            "value": 129,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 1178247.125,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 1186846.375,
+            "operation": "CMD17",
+            "value": 512,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 1195417.9375,
+            "operation": "CMD17",
+            "value": 33280,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 1204004.9375,
+            "operation": "CMD17",
+            "value": 68096,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 1212603.5,
+            "operation": "CMD24",
+            "value": 68096,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 1221093.5625,
+            "operation": "write",
+            "value": 133,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 1222213.25,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 1230837.25,
+            "operation": "CMD24",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 1239326.3125,
+            "operation": "write",
+            "value": 129,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 2243859.125,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 2252457.0625,
+            "operation": "CMD17",
+            "value": 512,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 2261027.875,
+            "operation": "CMD17",
+            "value": 33280,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 2269615.625,
+            "operation": "CMD17",
+            "value": 68096,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 2278220.3125,
+            "operation": "CMD24",
+            "value": 68096,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 2286715.75,
+            "operation": "write",
+            "value": 133,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 2287828.1875,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 2296455.375,
+            "operation": "CMD24",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 2304951.1875,
+            "operation": "write",
+            "value": 129,
+            "result": "512 B potvrđeno"
+          }
+        ],
+        "reason": "CS HIGH · neaktivan"
+      }
+    },
+    "rtcDevices": {
+      "rtc1": {
+        "mainPower": true,
+        "battery": true,
+        "rtcMainPower": true,
+        "retained": true,
+        "valid": true,
+        "halted": false,
+        "writeProtected": false,
+        "iso": "2026-01-01T12:00:02",
+        "day": 5,
+        "reason": "Sat radi",
+        "received": 3,
+        "errors": 0,
+        "state": {
+          "registers": [
+            2,
+            0,
+            18,
+            1,
+            1,
+            5,
+            38,
+            0
+          ],
+          "ram": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trickle": 92,
+          "subsecondUs": 800003.4375,
+          "valid": true
+        },
+        "trace": [
+          {
+            "timeUs": 0,
+            "operation": "main-power"
+          },
+          {
+            "timeUs": 109373.5,
+            "operation": "ce-start"
+          },
+          {
+            "timeUs": 109720,
+            "operation": "command",
+            "value": 191
+          },
+          {
+            "timeUs": 109745.375,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 110020.875,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 110302.5625,
+            "operation": "read-byte",
+            "value": 18
+          },
+          {
+            "timeUs": 110578.25,
+            "operation": "read-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 110853.9375,
+            "operation": "read-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 111135.625,
+            "operation": "read-byte",
+            "value": 5
+          },
+          {
+            "timeUs": 111411.3125,
+            "operation": "read-byte",
+            "value": 38
+          },
+          {
+            "timeUs": 111687,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 111962.6875,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 1174980.9375,
+            "operation": "ce-start"
+          },
+          {
+            "timeUs": 1175333.4375,
+            "operation": "command",
+            "value": 191
+          },
+          {
+            "timeUs": 1175358.8125,
+            "operation": "read-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 1175634.3125,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 1175910,
+            "operation": "read-byte",
+            "value": 18
+          },
+          {
+            "timeUs": 1176191.6875,
+            "operation": "read-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 1176467.375,
+            "operation": "read-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 1176743.0625,
+            "operation": "read-byte",
+            "value": 5
+          },
+          {
+            "timeUs": 1177018.75,
+            "operation": "read-byte",
+            "value": 38
+          },
+          {
+            "timeUs": 1177300.4375,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 1177576.125,
+            "operation": "read-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 2240598.9375,
+            "operation": "ce-start"
+          },
+          {
+            "timeUs": 2240945.4375,
+            "operation": "command",
+            "value": 191
+          },
+          {
+            "timeUs": 2240970.8125,
+            "operation": "read-byte",
+            "value": 2
+          },
+          {
+            "timeUs": 2241252.3125,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 2241528,
+            "operation": "read-byte",
+            "value": 18
+          },
+          {
+            "timeUs": 2241803.6875,
+            "operation": "read-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 2242085.375,
+            "operation": "read-byte",
+            "value": 1
+          },
+          {
+            "timeUs": 2242361.0625,
+            "operation": "read-byte",
+            "value": 5
+          },
+          {
+            "timeUs": 2242636.75,
+            "operation": "read-byte",
+            "value": 38
+          },
+          {
+            "timeUs": 2242912.4375,
+            "operation": "read-byte",
+            "value": 0
+          },
+          {
+            "timeUs": 2243194.125,
+            "operation": "read-byte",
+            "value": 2
+          }
+        ]
+      }
+    },
+    "touches": {},
+    "tfts": {},
+    "spiTrace": [
+      {
+        "timeUs": 2305043.9375,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305053.25,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305062.5625,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305071.875,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305081.1875,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305090.5,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305099.8125,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305109.125,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305118.4375,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305127.75,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305137.0625,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305146.375,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305155.6875,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305165,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305174.3125,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305183.625,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305192.9375,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305202.25,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305211.5625,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305220.875,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305230.1875,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305239.5,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305248.8125,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305258.125,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305267.4375,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305276.75,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305286.0625,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305295.375,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305304.6875,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305314,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305323.3125,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305332.625,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305341.9375,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305351.25,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305360.5625,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305369.875,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305379.1875,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305388.5,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305397.8125,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305407.125,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305416.4375,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305425.75,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305435.0625,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305444.375,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305453.6875,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305463,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305472.3125,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305481.625,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305490.9375,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305500.25,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305509.5625,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305518.875,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305530.9375,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305540.25,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305549.5625,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305558.875,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305568.1875,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305577.5,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305586.8125,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305596.125,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305605.4375,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305614.75,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305624.0625,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305633.375,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305642.6875,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305652,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305661.3125,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305670.625,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305679.9375,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305689.25,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305698.5625,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305707.875,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305717.1875,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305726.5,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305735.8125,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305745.125,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305754.4375,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305763.75,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305773.0625,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305782.375,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305791.6875,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305801,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305810.3125,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305819.625,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305828.9375,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305838.25,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305847.5625,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305856.875,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305866.1875,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305875.5,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305884.8125,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305894.125,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305903.4375,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305912.75,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305922.0625,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305931.375,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305940.6875,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305950,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 2305959.3125,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 2305974.6875,
+        "device": "—",
+        "operation": "transfer",
+        "value": 255,
+        "result": "Nema odabranog spojenog uređaja · MISO 0xFF"
+      }
+    ],
+    "spiBytes": 17935,
+    "steppers": {
+      "drivers": {},
+      "motors": {}
+    },
+    "tmDisplays": {},
+    "infrared": {},
+    "encoders": {},
+    "oneWireDevices": {},
+    "timedSensors": {},
+    "analogInputs": {},
+    "servos": {},
+    "diagnostics": [],
+    "avr": {
+      "cycles": 44800055,
+      "clockHz": 16000000,
+      "uartBaud": 9615,
+      "rxPending": 0,
+      "busTrace": [
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305043.9375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305053.25
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305062.5625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305071.875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305081.1875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305090.5
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305099.8125
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305109.125
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305118.4375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305127.75
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305137.0625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305146.375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305155.6875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305165
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305174.3125
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305183.625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305192.9375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305202.25
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305211.5625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305220.875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305230.1875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305239.5
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305248.8125
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305258.125
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305267.4375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305276.75
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305286.0625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305295.375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305304.6875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305314
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305323.3125
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305332.625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305341.9375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305351.25
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305360.5625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305369.875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305379.1875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305388.5
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305397.8125
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305407.125
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305416.4375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305425.75
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305435.0625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305444.375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305453.6875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305463
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305472.3125
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305481.625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305490.9375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305500.25
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305509.5625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305518.875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305530.9375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305540.25
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305549.5625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305558.875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305568.1875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305577.5
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305586.8125
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305596.125
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305605.4375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305614.75
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305624.0625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305633.375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305642.6875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305652
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305661.3125
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305670.625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305679.9375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305689.25
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305698.5625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305707.875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305717.1875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305726.5
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305735.8125
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305745.125
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305754.4375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305763.75
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305773.0625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305782.375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305791.6875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305801
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305810.3125
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305819.625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305828.9375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305838.25
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305847.5625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305856.875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305866.1875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305875.5
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305884.8125
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305894.125
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305903.4375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305912.75
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305922.0625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305931.375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305940.6875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0x00",
+          "timeUs": 2305950
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0xff",
+          "timeUs": 2305959.3125
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 255,
+          "result": "MISO=0xff",
+          "timeUs": 2305974.6875
+        }
+      ],
+      "memory": {
+        "staticBytes": 1098,
+        "lowestSP": 1860,
+        "minFreeToStatic": 507
+      }
+    }
+  }
+}

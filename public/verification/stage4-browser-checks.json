@@ -1,0 +1,79 @@
+{
+  "performedOn": "2026-11-12",
+  "browser": "Chromium on Linux via the visible development preview",
+  "publication": "Private production deployment is verified separately by Sites; browser checks below use the development preview.",
+  "checks": [
+    {
+      "name": "Stage 3 locally saved potentiometer project opens unchanged",
+      "status": "pass"
+    },
+    {
+      "name": "Integrated example opens four visible Python files and valid wired circuit",
+      "status": "pass"
+    },
+    {
+      "name": "Live 85 C / 100 percent humidity produces OLED raster and 90 degree servo",
+      "status": "pass"
+    },
+    {
+      "name": "Final source: live 35 C / 60 percent humidity produces matching OLED raster and 90 degree servo",
+      "status": "pass"
+    },
+    {
+      "name": "OLED module address 0x3D with program 0x3C gives ENODEV plus targeted NACK diagnostic",
+      "status": "pass"
+    },
+    {
+      "name": "Undo address change restores working project",
+      "status": "pass"
+    },
+    {
+      "name": "Reset restores saved initial environment 24 C / 50 percent",
+      "status": "pass"
+    },
+    {
+      "name": "Manual Stop retains measurements; CSV file downloaded and its real CRLF rows checked",
+      "status": "pass"
+    },
+    {
+      "name": "ZIP downloaded; project manifest and all four Python sources inspected",
+      "status": "pass"
+    },
+    {
+      "name": "ZIP imported through file chooser as separate stopped copy; explicitly starting it runs the project",
+      "status": "pass"
+    }
+  ],
+  "notTested": [
+    "Safari/iOS",
+    "Firefox",
+    "Edge",
+    "school PC",
+    "physical ESP32",
+    "offline/PWA"
+  ],
+  "sampleObserved": {
+    "environmentC": 35,
+    "environmentRH": 60,
+    "displayText": [
+      "T: 35.0 C",
+      "RH: 60.0 %",
+      "Servo: 90 deg",
+      "OTVORENO"
+    ],
+    "servoAngleDegrees": 90,
+    "servoPulseUs": 1500
+  },
+  "csvObserved": {
+    "records": 4,
+    "fields": [
+      "vrijeme_ms",
+      "komponenta",
+      "uzorak",
+      "temperatura_C",
+      "relativna_vlaga_postotak"
+    ],
+    "encoding": "UTF-8 with BOM",
+    "lineEndings": "CRLF"
+  }
+}

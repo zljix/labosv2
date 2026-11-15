@@ -1,0 +1,11 @@
+{
+  "tests": 691,
+  "pass": 691,
+  "fail": 0,
+  "skipped": 0,
+  "durationMs": 688178.891444,
+  "uniqueOpticalCases": 31,
+  "scope": "One broad Node run; final C++ presentation changes recompiled to identical AVR HEX and S3 WASM, then all 12 source-bound artifacts revalidated. Repeated subsets are not counted again.",
+  "historicalEvidenceRestored": true,
+  "freshHistoricalObservationsArchived": 165
+}

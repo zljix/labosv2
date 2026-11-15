@@ -1,0 +1,23 @@
+✔ six real Arduino builds match exact sources and survive full project ZIP import (58.939806ms)
+✔ source, header and target edits reject stale builds; notes and rewiring retain the code binding (2.012491ms)
+✔ corrupt hashes, HEX checksums, ranges, duplicate records and missing EOF are refused (5.558498ms)
+✔ arduino.uno-r3.atmega328p: compiled delay/millis drives physical D9 and D13 with 2 KiB SRAM (304.750456ms)
+✔ arduino.uno-r3.atmega328p: live INPUT_PULLUP button and UART receive execute the student's program (121.905041ms)
+✔ arduino.uno-r3.atmega328p: analogRead quantisation and actual Timer1 PWM follow the potentiometer (341.877698ms)
+✔ arduino.nano-classic.atmega328p: compiled delay/millis drives physical D9 and D13 with 2 KiB SRAM (223.256306ms)
+✔ arduino.nano-classic.atmega328p: live INPUT_PULLUP button and UART receive execute the student's program (140.946974ms)
+✔ arduino.nano-classic.atmega328p: analogRead quantisation and actual Timer1 PWM follow the potentiometer (307.802388ms)
+✔ Nano A6/A7 are real ADC channels without digital GPIO aliases (134.65801ms)
+✔ real external interrupt runs on falling edge; TWI NACK and SPI idle byte come from peripherals (147.499755ms)
+✔ a runtime output conflict stops before electrical results are trusted (7.871478ms)
+✔ force Stop terminates a real busy Worker and rejects its delayed messages; Reset starts fresh (534.875691ms)
+✔ all six PWM pins use three real timers; UART output decodes UTF-8 across frames (132.204909ms)
+✔ production offline package includes AVR examples, toolkit and a runnable compiled Worker (321.987976ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3211.154959

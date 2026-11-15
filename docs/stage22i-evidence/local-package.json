@@ -1,0 +1,11 @@
+{
+  "version": "0.12.7-beta.1",
+  "build": "11bf3173ac74417a",
+  "resourceCount": 188,
+  "resourceBytes": 15304659,
+  "wasmMimeChecks": 2,
+  "zipBytes": 5193151,
+  "zipSha256": "f945edb99a3184d6412352bd8f78a810f0f16d4e9c07962e9f86959b2e2924e0",
+  "status": "pass",
+  "scope": "ZIP extraction, real loopback HTTP delivery, complete resource sizes/hashes and WASM MIME. Not a cold offline browser test."
+}

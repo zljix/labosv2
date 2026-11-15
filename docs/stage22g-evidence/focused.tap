@@ -1,0 +1,1904 @@
+TAP version 13
+# Subtest: v1/v2 migration retains source, circuit, identity and settings without mutating input
+ok 1 - v1/v2 migration retains source, circuit, identity and settings without mutating input
+  ---
+  duration_ms: 19.463929
+  type: 'test'
+  ...
+# Subtest: existing raw IndexedDB row migrates on read and preserves old snapshot until an explicit save
+ok 2 - existing raw IndexedDB row migrates on read and preserves old snapshot until an explicit save
+  ---
+  duration_ms: 18.4668
+  type: 'test'
+  ...
+# Subtest: project rejects mixed boards, future profiles, wrong languages, entrypoint and runtime target
+ok 3 - project rejects mixed boards, future profiles, wrong languages, entrypoint and runtime target
+  ---
+  duration_ms: 1.262808
+  type: 'test'
+  ...
+# Subtest: Uno/Nano pin profiles preserve aliases, PWM, ADC-only pins and distinct MCU mappings
+ok 4 - Uno/Nano pin profiles preserve aliases, PWM, ADC-only pins and distinct MCU mappings
+  ---
+  duration_ms: 1.367224
+  type: 'test'
+  ...
+# Subtest: electrical checks distinguish 5 V AVR input from 3.3 V ESP32 and 3.3 V-only modules
+ok 5 - electrical checks distinguish 5 V AVR input from 3.3 V ESP32 and 3.3 V-only modules
+  ---
+  duration_ms: 1.387525
+  type: 'test'
+  ...
+# Subtest: board derivation saves an independent source-preserving project and detaches every old board wire
+ok 6 - board derivation saves an independent source-preserving project and detaches every old board wire
+  ---
+  duration_ms: 9.494358
+  type: 'test'
+  ...
+# Subtest: breadboard 1–60 separates 30/31 rails, groups and centre channel without changing old 1–30
+ok 7 - breadboard 1–60 separates 30/31 rails, groups and centre channel without changing old 1–30
+  ---
+  duration_ms: 6.339547
+  type: 'test'
+  ...
+# Subtest: Arduino ZIP/JSON and IDE sketch preserve sources; runtime has an AVR-only circuit path
+ok 8 - Arduino ZIP/JSON and IDE sketch preserve sources; runtime has an AVR-only circuit path
+  ---
+  duration_ms: 9.291252
+  type: 'test'
+  ...
+# Subtest: support status depends on board, language and implemented model; planned devices remain planned
+ok 9 - support status depends on board, language and implemented model; planned devices remain planned
+  ---
+  duration_ms: 0.602646
+  type: 'test'
+  ...
+# Subtest: TI input thresholds at 3.3 V preserve the undefined region
+ok 10 - TI input thresholds at 3.3 V preserve the undefined region
+  ---
+  duration_ms: 1.045691
+  type: 'test'
+  ...
+# Subtest: TI input thresholds at 5 V preserve the undefined region
+ok 11 - TI input thresholds at 5 V preserve the undefined region
+  ---
+  duration_ms: 0.100742
+  type: 'test'
+  ...
+# Subtest: package pins are explicit, topology stays separated and project import preserves identity
+ok 12 - package pins are explicit, topology stays separated and project import preserves identity
+  ---
+  duration_ms: 18.754294
+  type: 'test'
+  ...
+# Subtest: 5 V tipkalo is read at 3.3 V, while the original LED follows actual GPIO writes
+ok 13 - 5 V tipkalo is read at 3.3 V, while the original LED follows actual GPIO writes
+  ---
+  duration_ms: 13.499917
+  type: 'test'
+  ...
+# Subtest: 3.3 V GPIO output becomes 5 V before the LED resistor without merging supplies
+ok 14 - 3.3 V GPIO output becomes 5 V before the LED resistor without merging supplies
+  ---
+  duration_ms: 2.207768
+  type: 'test'
+  ...
+# Subtest: both channels work independently with their shared DIR
+ok 15 - both channels work independently with their shared DIR
+  ---
+  duration_ms: 4.01905
+  type: 'test'
+  ...
+# Subtest: DIR can be driven by GPIO and reverses both channels with no automatic direction inference
+ok 16 - DIR can be driven by GPIO and reverses both channels with no automatic direction inference
+  ---
+  duration_ms: 0.330376
+  type: 'test'
+  ...
+# Subtest: missing VCCA releases the model outputs; restoring the wire recovers
+ok 17 - missing VCCA releases the model outputs; restoring the wire recovers
+  ---
+  duration_ms: 4.029445
+  type: 'test'
+  ...
+# Subtest: missing VCCB releases the model outputs; restoring the wire recovers
+ok 18 - missing VCCB releases the model outputs; restoring the wire recovers
+  ---
+  duration_ms: 3.895574
+  type: 'test'
+  ...
+# Subtest: missing GND releases the model outputs; restoring the wire recovers
+ok 19 - missing GND releases the model outputs; restoring the wire recovers
+  ---
+  duration_ms: 2.564874
+  type: 'test'
+  ...
+# Subtest: VCCA at GND invokes power isolation rather than forwarding the source
+ok 20 - VCCA at GND invokes power isolation rather than forwarding the source
+  ---
+  duration_ms: 1.448006
+  type: 'test'
+  ...
+# Subtest: VCCB at GND invokes power isolation rather than forwarding the source
+ok 21 - VCCB at GND invokes power isolation rather than forwarding the source
+  ---
+  duration_ms: 1.549148
+  type: 'test'
+  ...
+# Subtest: floating DIR is reported as unknown and cannot certify a transfer
+ok 22 - floating DIR is reported as unknown and cannot certify a transfer
+  ---
+  duration_ms: 1.925232
+  type: 'test'
+  ...
+# Subtest: floating B2 is reported as unknown and cannot certify a transfer
+ok 23 - floating B2 is reported as unknown and cannot certify a transfer
+  ---
+  duration_ms: 2.093836
+  type: 'test'
+  ...
+# Subtest: 3.3 V on the 5 V input is between TI thresholds, not silently HIGH
+ok 24 - 3.3 V on the 5 V input is between TI thresholds, not silently HIGH
+  ---
+  duration_ms: 2.002479
+  type: 'test'
+  ...
+# Subtest: external opposing GPIO drive raises a conflict instead of overriding the translated output
+ok 25 - external opposing GPIO drive raises a conflict instead of overriding the translated output
+  ---
+  duration_ms: 1.644161
+  type: 'test'
+  ...
+# Subtest: 5 V translated output onto an S3 input reports overvoltage even in input mode
+ok 26 - 5 V translated output onto an S3 input reports overvoltage even in input mode
+  ---
+  duration_ms: 1.471452
+  type: 'test'
+  ...
+# Subtest: static checks reject wrong supply, bypass, protocol endpoints and cascades
+ok 27 - static checks reject wrong supply, bypass, protocol endpoints and cascades
+  ---
+  duration_ms: 2.899618
+  type: 'test'
+  ...
+# Subtest: URS17 input/micropython: exact source artifact, both domains and ZIP round trip
+ok 28 - URS17 input/micropython: exact source artifact, both domains and ZIP round trip
+  ---
+  duration_ms: 11.791149
+  type: 'test'
+  ...
+# Subtest: URS17 output/micropython: exact source artifact, both domains and ZIP round trip
+ok 29 - URS17 output/micropython: exact source artifact, both domains and ZIP round trip
+  ---
+  duration_ms: 12.035226
+  type: 'test'
+  ...
+# Subtest: URS17 input/s3-cpp: exact source artifact, both domains and ZIP round trip
+ok 30 - URS17 input/s3-cpp: exact source artifact, both domains and ZIP round trip
+  ---
+  duration_ms: 51.03629
+  type: 'test'
+  ...
+# Subtest: URS17 output/s3-cpp: exact source artifact, both domains and ZIP round trip
+ok 31 - URS17 output/s3-cpp: exact source artifact, both domains and ZIP round trip
+  ---
+  duration_ms: 28.124374
+  type: 'test'
+  ...
+# Subtest: URS17 input/uno: exact source artifact, both domains and ZIP round trip
+ok 32 - URS17 input/uno: exact source artifact, both domains and ZIP round trip
+  ---
+  duration_ms: 55.903028
+  type: 'test'
+  ...
+# Subtest: URS17 output/uno: exact source artifact, both domains and ZIP round trip
+ok 33 - URS17 output/uno: exact source artifact, both domains and ZIP round trip
+  ---
+  duration_ms: 47.440922
+  type: 'test'
+  ...
+# Subtest: URS17 input/nano: exact source artifact, both domains and ZIP round trip
+ok 34 - URS17 input/nano: exact source artifact, both domains and ZIP round trip
+  ---
+  duration_ms: 49.134727
+  type: 'test'
+  ...
+# Subtest: URS17 output/nano: exact source artifact, both domains and ZIP round trip
+ok 35 - URS17 output/nano: exact source artifact, both domains and ZIP round trip
+  ---
+  duration_ms: 11.01244
+  type: 'test'
+  ...
+# Subtest: an empty draft round-trips without acquiring a completed outcome or checked steps
+ok 36 - an empty draft round-trips without acquiring a completed outcome or checked steps
+  ---
+  duration_ms: 1.853816
+  type: 'test'
+  ...
+# Subtest: a completed outcome needs explicit scope, environment, duration and conclusion
+ok 37 - a completed outcome needs explicit scope, environment, duration and conclusion
+  ---
+  duration_ms: 1.02441
+  type: 'test'
+  ...
+# Subtest: a pupil record needs a participant code; device/development records do not invent one
+ok 38 - a pupil record needs a participant code; device/development records do not invent one
+  ---
+  duration_ms: 0.518248
+  type: 'test'
+  ...
+# Subtest: assisted and blocked outcomes retain their different required observations
+ok 39 - assisted and blocked outcomes retain their different required observations
+  ---
+  duration_ms: 0.286541
+  type: 'test'
+  ...
+# Subtest: offline claims need both a method and measured procedure, while untried drafts remain saveable
+ok 40 - offline claims need both a method and measured procedure, while untried drafts remain saveable
+  ---
+  duration_ms: 0.300451
+  type: 'test'
+  ...
+# Subtest: radio requires an explicit peer and single-board records reject an accidental second node
+ok 41 - radio requires an explicit peer and single-board records reject an accidental second node
+  ---
+  duration_ms: 0.245278
+  type: 'test'
+  ...
+# Subtest: v2 records retain observations and import with unknown scope and untried offline method
+ok 42 - v2 records retain observations and import with unknown scope and untried offline method
+  ---
+  duration_ms: 0.297367
+  type: 'test'
+  ...
+# Subtest: untrusted classification and extra fields cannot turn a draft/development record into pupil evidence
+ok 43 - untrusted classification and extra fields cannot turn a draft/development record into pupil evidence
+  ---
+  duration_ms: 0.224778
+  type: 'test'
+  ...
+# Subtest: text survives JSON round-trip as text, including markup and Croatian characters
+ok 44 - text survives JSON round-trip as text, including markup and Croatian characters
+  ---
+  duration_ms: 0.221303
+  type: 'test'
+  ...
+# Subtest: malformed files, unsupported versions and oversized input are rejected before replacing fields
+ok 45 - malformed files, unsupported versions and oversized input are rejected before replacing fields
+  ---
+  duration_ms: 0.561073
+  type: 'test'
+  ...
+# Subtest: invalid targets, unknown lessons and nonboolean step assertions are rejected
+ok 46 - invalid targets, unknown lessons and nonboolean step assertions are rejected
+  ---
+  duration_ms: 0.255664
+  type: 'test'
+  ...
+# Subtest: limits and actual calendar dates are checked independently from draft completion
+ok 47 - limits and actual calendar dates are checked independently from draft completion
+  ---
+  duration_ms: 0.327362
+  type: 'test'
+  ...
+# Subtest: generated page exposes record recovery and all offline assets without inline legacy save code
+not ok 48 - generated page exposes record recovery and all offline assets without inline legacy save code
+  ---
+  duration_ms: 1.202667
+  type: 'test'
+  location: '/workspace/scratch/39663db54f86/esp32-lab/.sites-checkout/verification/pilot.test.mjs:61:1'
+  failureType: 'testCodeFailure'
+  error: 'false == true'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/39663db54f86/esp32-lab/.sites-checkout/verification/pilot.test.mjs:64:55)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: URS catalogue covers every available catalogue component and leaves the unconfirmed buzzer profile explicit
+ok 49 - URS catalogue covers every available catalogue component and leaves the unconfirmed buzzer profile explicit
+  ---
+  duration_ms: 11.084797
+  type: 'test'
+  ...
+# Subtest: URS1 blink/micropython: real source, drivers, wiring, artifact and ZIP
+ok 50 - URS1 blink/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 37.84391
+  type: 'test'
+  ...
+# Subtest: URS1 blink/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 51 - URS1 blink/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 63.075131
+  type: 'test'
+  ...
+# Subtest: URS1 blink/uno: real source, drivers, wiring, artifact and ZIP
+ok 52 - URS1 blink/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 48.289807
+  type: 'test'
+  ...
+# Subtest: URS1 blink/nano: real source, drivers, wiring, artifact and ZIP
+ok 53 - URS1 blink/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 60.917634
+  type: 'test'
+  ...
+# Subtest: URS1 button/micropython: real source, drivers, wiring, artifact and ZIP
+ok 54 - URS1 button/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 7.188482
+  type: 'test'
+  ...
+# Subtest: URS1 button/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 55 - URS1 button/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 13.426978
+  type: 'test'
+  ...
+# Subtest: URS1 button/uno: real source, drivers, wiring, artifact and ZIP
+ok 56 - URS1 button/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 24.966749
+  type: 'test'
+  ...
+# Subtest: URS1 button/nano: real source, drivers, wiring, artifact and ZIP
+ok 57 - URS1 button/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 48.129928
+  type: 'test'
+  ...
+# Subtest: URS1 adc/micropython: real source, drivers, wiring, artifact and ZIP
+ok 58 - URS1 adc/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 17.965598
+  type: 'test'
+  ...
+# Subtest: URS1 adc/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 59 - URS1 adc/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 18.031096
+  type: 'test'
+  ...
+# Subtest: URS1 adc/uno: real source, drivers, wiring, artifact and ZIP
+ok 60 - URS1 adc/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 19.67031
+  type: 'test'
+  ...
+# Subtest: URS1 adc/nano: real source, drivers, wiring, artifact and ZIP
+ok 61 - URS1 adc/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 51.165423
+  type: 'test'
+  ...
+# Subtest: URS2 regulator/micropython: real source, drivers, wiring, artifact and ZIP
+ok 62 - URS2 regulator/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 5.684112
+  type: 'test'
+  ...
+# Subtest: URS2 regulator/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 63 - URS2 regulator/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 11.73173
+  type: 'test'
+  ...
+# Subtest: URS2 regulator/uno: real source, drivers, wiring, artifact and ZIP
+ok 64 - URS2 regulator/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 22.038277
+  type: 'test'
+  ...
+# Subtest: URS2 regulator/nano: real source, drivers, wiring, artifact and ZIP
+ok 65 - URS2 regulator/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 23.093063
+  type: 'test'
+  ...
+# Subtest: URS3 bmp180/micropython: real source, drivers, wiring, artifact and ZIP
+ok 66 - URS3 bmp180/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 3.391827
+  type: 'test'
+  ...
+# Subtest: URS3 bmp180/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 67 - URS3 bmp180/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 14.400715
+  type: 'test'
+  ...
+# Subtest: URS3 bmp180/uno: real source, drivers, wiring, artifact and ZIP
+ok 68 - URS3 bmp180/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 24.68158
+  type: 'test'
+  ...
+# Subtest: URS3 bmp180/nano: real source, drivers, wiring, artifact and ZIP
+ok 69 - URS3 bmp180/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 12.375016
+  type: 'test'
+  ...
+# Subtest: URS3 bmp280/micropython: real source, drivers, wiring, artifact and ZIP
+ok 70 - URS3 bmp280/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.671775
+  type: 'test'
+  ...
+# Subtest: URS3 bmp280/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 71 - URS3 bmp280/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 12.342227
+  type: 'test'
+  ...
+# Subtest: URS3 bmp280/uno: real source, drivers, wiring, artifact and ZIP
+ok 72 - URS3 bmp280/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 33.431849
+  type: 'test'
+  ...
+# Subtest: URS3 bmp280/nano: real source, drivers, wiring, artifact and ZIP
+ok 73 - URS3 bmp280/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 73.95099
+  type: 'test'
+  ...
+# Subtest: URS3 am2320/micropython: real source, drivers, wiring, artifact and ZIP
+ok 74 - URS3 am2320/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 9.741113
+  type: 'test'
+  ...
+# Subtest: URS3 am2320/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 75 - URS3 am2320/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 36.40042
+  type: 'test'
+  ...
+# Subtest: URS3 am2320/uno: real source, drivers, wiring, artifact and ZIP
+ok 76 - URS3 am2320/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 18.574969
+  type: 'test'
+  ...
+# Subtest: URS3 am2320/nano: real source, drivers, wiring, artifact and ZIP
+ok 77 - URS3 am2320/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 15.344309
+  type: 'test'
+  ...
+# Subtest: URS3 weather/micropython: real source, drivers, wiring, artifact and ZIP
+ok 78 - URS3 weather/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 5.796601
+  type: 'test'
+  ...
+# Subtest: URS3 weather/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 79 - URS3 weather/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 31.616601
+  type: 'test'
+  ...
+# Subtest: URS3 weather/uno: real source, drivers, wiring, artifact and ZIP
+ok 80 - URS3 weather/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 44.486583
+  type: 'test'
+  ...
+# Subtest: URS3 weather/nano: real source, drivers, wiring, artifact and ZIP
+ok 81 - URS3 weather/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 30.502167
+  type: 'test'
+  ...
+# Subtest: URS4 lm35/micropython: real source, drivers, wiring, artifact and ZIP
+ok 82 - URS4 lm35/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.717163
+  type: 'test'
+  ...
+# Subtest: URS4 lm35/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 83 - URS4 lm35/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 6.743343
+  type: 'test'
+  ...
+# Subtest: URS4 lm35/uno: real source, drivers, wiring, artifact and ZIP
+ok 84 - URS4 lm35/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 14.878849
+  type: 'test'
+  ...
+# Subtest: URS4 lm35/nano: real source, drivers, wiring, artifact and ZIP
+ok 85 - URS4 lm35/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 7.412599
+  type: 'test'
+  ...
+# Subtest: URS4 ntc/micropython: real source, drivers, wiring, artifact and ZIP
+ok 86 - URS4 ntc/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.453497
+  type: 'test'
+  ...
+# Subtest: URS4 ntc/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 87 - URS4 ntc/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 6.875212
+  type: 'test'
+  ...
+# Subtest: URS4 ntc/uno: real source, drivers, wiring, artifact and ZIP
+ok 88 - URS4 ntc/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.128484
+  type: 'test'
+  ...
+# Subtest: URS4 ntc/nano: real source, drivers, wiring, artifact and ZIP
+ok 89 - URS4 ntc/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 7.627122
+  type: 'test'
+  ...
+# Subtest: URS4 temt6000/micropython: real source, drivers, wiring, artifact and ZIP
+ok 90 - URS4 temt6000/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.018814
+  type: 'test'
+  ...
+# Subtest: URS4 temt6000/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 91 - URS4 temt6000/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 11.128413
+  type: 'test'
+  ...
+# Subtest: URS4 temt6000/uno: real source, drivers, wiring, artifact and ZIP
+ok 92 - URS4 temt6000/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.374735
+  type: 'test'
+  ...
+# Subtest: URS4 temt6000/nano: real source, drivers, wiring, artifact and ZIP
+ok 93 - URS4 temt6000/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 7.771649
+  type: 'test'
+  ...
+# Subtest: URS4 ky023/micropython: real source, drivers, wiring, artifact and ZIP
+ok 94 - URS4 ky023/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.212315
+  type: 'test'
+  ...
+# Subtest: URS4 ky023/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 95 - URS4 ky023/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 7.291938
+  type: 'test'
+  ...
+# Subtest: URS4 ky023/uno: real source, drivers, wiring, artifact and ZIP
+ok 96 - URS4 ky023/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.650199
+  type: 'test'
+  ...
+# Subtest: URS4 ky023/nano: real source, drivers, wiring, artifact and ZIP
+ok 97 - URS4 ky023/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 35.56807
+  type: 'test'
+  ...
+# Subtest: URS4 flame/micropython: real source, drivers, wiring, artifact and ZIP
+ok 98 - URS4 flame/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.451254
+  type: 'test'
+  ...
+# Subtest: URS4 flame/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 99 - URS4 flame/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 7.081291
+  type: 'test'
+  ...
+# Subtest: URS4 flame/uno: real source, drivers, wiring, artifact and ZIP
+ok 100 - URS4 flame/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 11.349836
+  type: 'test'
+  ...
+# Subtest: URS4 flame/nano: real source, drivers, wiring, artifact and ZIP
+ok 101 - URS4 flame/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 12.346894
+  type: 'test'
+  ...
+# Subtest: URS4 sound/micropython: real source, drivers, wiring, artifact and ZIP
+ok 102 - URS4 sound/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 1.808358
+  type: 'test'
+  ...
+# Subtest: URS4 sound/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 103 - URS4 sound/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 5.872525
+  type: 'test'
+  ...
+# Subtest: URS4 sound/uno: real source, drivers, wiring, artifact and ZIP
+ok 104 - URS4 sound/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 6.792718
+  type: 'test'
+  ...
+# Subtest: URS4 sound/nano: real source, drivers, wiring, artifact and ZIP
+ok 105 - URS4 sound/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 13.421189
+  type: 'test'
+  ...
+# Subtest: URS4 analogCompare/micropython: real source, drivers, wiring, artifact and ZIP
+ok 106 - URS4 analogCompare/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.184162
+  type: 'test'
+  ...
+# Subtest: URS4 analogCompare/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 107 - URS4 analogCompare/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 6.58813
+  type: 'test'
+  ...
+# Subtest: URS4 analogCompare/uno: real source, drivers, wiring, artifact and ZIP
+ok 108 - URS4 analogCompare/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 7.928355
+  type: 'test'
+  ...
+# Subtest: URS4 analogCompare/nano: real source, drivers, wiring, artifact and ZIP
+ok 109 - URS4 analogCompare/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 9.326405
+  type: 'test'
+  ...
+# Subtest: URS4 dualInputs/micropython: real source, drivers, wiring, artifact and ZIP
+ok 110 - URS4 dualInputs/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.602501
+  type: 'test'
+  ...
+# Subtest: URS4 dualInputs/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 111 - URS4 dualInputs/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.829919
+  type: 'test'
+  ...
+# Subtest: URS4 dualInputs/uno: real source, drivers, wiring, artifact and ZIP
+ok 112 - URS4 dualInputs/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 26.694436
+  type: 'test'
+  ...
+# Subtest: URS4 dualInputs/nano: real source, drivers, wiring, artifact and ZIP
+ok 113 - URS4 dualInputs/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 7.647101
+  type: 'test'
+  ...
+# Subtest: URS5 dht11/micropython: real source, drivers, wiring, artifact and ZIP
+ok 114 - URS5 dht11/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.803693
+  type: 'test'
+  ...
+# Subtest: URS5 dht11/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 115 - URS5 dht11/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 7.620202
+  type: 'test'
+  ...
+# Subtest: URS5 dht11/uno: real source, drivers, wiring, artifact and ZIP
+ok 116 - URS5 dht11/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 10.701683
+  type: 'test'
+  ...
+# Subtest: URS5 dht11/nano: real source, drivers, wiring, artifact and ZIP
+ok 117 - URS5 dht11/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.81071
+  type: 'test'
+  ...
+# Subtest: URS5 dht22/micropython: real source, drivers, wiring, artifact and ZIP
+ok 118 - URS5 dht22/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.575019
+  type: 'test'
+  ...
+# Subtest: URS5 dht22/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 119 - URS5 dht22/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 10.583825
+  type: 'test'
+  ...
+# Subtest: URS5 dht22/uno: real source, drivers, wiring, artifact and ZIP
+ok 120 - URS5 dht22/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 11.653202
+  type: 'test'
+  ...
+# Subtest: URS5 dht22/nano: real source, drivers, wiring, artifact and ZIP
+ok 121 - URS5 dht22/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.483598
+  type: 'test'
+  ...
+# Subtest: URS5 dhtErrors/micropython: real source, drivers, wiring, artifact and ZIP
+ok 122 - URS5 dhtErrors/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.379216
+  type: 'test'
+  ...
+# Subtest: URS5 dhtErrors/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 123 - URS5 dhtErrors/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 10.138135
+  type: 'test'
+  ...
+# Subtest: URS5 dhtErrors/uno: real source, drivers, wiring, artifact and ZIP
+ok 124 - URS5 dhtErrors/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 105.185718
+  type: 'test'
+  ...
+# Subtest: URS5 dhtErrors/nano: real source, drivers, wiring, artifact and ZIP
+ok 125 - URS5 dhtErrors/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 33.907695
+  type: 'test'
+  ...
+# Subtest: URS6 ds18Multi/micropython: real source, drivers, wiring, artifact and ZIP
+ok 126 - URS6 ds18Multi/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 5.244711
+  type: 'test'
+  ...
+# Subtest: URS6 ds18Multi/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 127 - URS6 ds18Multi/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 16.23694
+  type: 'test'
+  ...
+# Subtest: URS6 ds18Multi/uno: real source, drivers, wiring, artifact and ZIP
+ok 128 - URS6 ds18Multi/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 10.92664
+  type: 'test'
+  ...
+# Subtest: URS6 ds18Multi/nano: real source, drivers, wiring, artifact and ZIP
+ok 129 - URS6 ds18Multi/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 18.397567
+  type: 'test'
+  ...
+# Subtest: URS6 ds18Resolution/micropython: real source, drivers, wiring, artifact and ZIP
+ok 130 - URS6 ds18Resolution/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 3.31369
+  type: 'test'
+  ...
+# Subtest: URS6 ds18Resolution/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 131 - URS6 ds18Resolution/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 11.341974
+  type: 'test'
+  ...
+# Subtest: URS6 ds18Resolution/uno: real source, drivers, wiring, artifact and ZIP
+ok 132 - URS6 ds18Resolution/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 9.58242
+  type: 'test'
+  ...
+# Subtest: URS6 ds18Resolution/nano: real source, drivers, wiring, artifact and ZIP
+ok 133 - URS6 ds18Resolution/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 17.237799
+  type: 'test'
+  ...
+# Subtest: URS6 ds18Errors/micropython: real source, drivers, wiring, artifact and ZIP
+ok 134 - URS6 ds18Errors/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 4.413808
+  type: 'test'
+  ...
+# Subtest: URS6 ds18Errors/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 135 - URS6 ds18Errors/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 18.429765
+  type: 'test'
+  ...
+# Subtest: URS6 ds18Errors/uno: real source, drivers, wiring, artifact and ZIP
+ok 136 - URS6 ds18Errors/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 10.283534
+  type: 'test'
+  ...
+# Subtest: URS6 ds18Errors/nano: real source, drivers, wiring, artifact and ZIP
+ok 137 - URS6 ds18Errors/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 10.185867
+  type: 'test'
+  ...
+# Subtest: URS7 oled32/micropython: real source, drivers, wiring, artifact and ZIP
+ok 138 - URS7 oled32/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.833508
+  type: 'test'
+  ...
+# Subtest: URS7 oled32/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 139 - URS7 oled32/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 15.168284
+  type: 'test'
+  ...
+# Subtest: URS7 oled32/uno: real source, drivers, wiring, artifact and ZIP
+ok 140 - URS7 oled32/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 23.987443
+  type: 'test'
+  ...
+# Subtest: URS7 oled32/nano: real source, drivers, wiring, artifact and ZIP
+ok 141 - URS7 oled32/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 18.027729
+  type: 'test'
+  ...
+# Subtest: URS7 lcd1602/micropython: real source, drivers, wiring, artifact and ZIP
+ok 142 - URS7 lcd1602/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 4.476697
+  type: 'test'
+  ...
+# Subtest: URS7 lcd1602/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 143 - URS7 lcd1602/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 10.998347
+  type: 'test'
+  ...
+# Subtest: URS7 lcd1602/uno: real source, drivers, wiring, artifact and ZIP
+ok 144 - URS7 lcd1602/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 12.284779
+  type: 'test'
+  ...
+# Subtest: URS7 lcd1602/nano: real source, drivers, wiring, artifact and ZIP
+ok 145 - URS7 lcd1602/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 19.476145
+  type: 'test'
+  ...
+# Subtest: URS7 tmSegments/micropython: real source, drivers, wiring, artifact and ZIP
+ok 146 - URS7 tmSegments/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 4.913252
+  type: 'test'
+  ...
+# Subtest: URS7 tmSegments/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 147 - URS7 tmSegments/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 10.134528
+  type: 'test'
+  ...
+# Subtest: URS7 tmSegments/uno: real source, drivers, wiring, artifact and ZIP
+ok 148 - URS7 tmSegments/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 10.970295
+  type: 'test'
+  ...
+# Subtest: URS7 tmSegments/nano: real source, drivers, wiring, artifact and ZIP
+ok 149 - URS7 tmSegments/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 27.445029
+  type: 'test'
+  ...
+# Subtest: URS7 tmClock/micropython: real source, drivers, wiring, artifact and ZIP
+ok 150 - URS7 tmClock/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 3.5604
+  type: 'test'
+  ...
+# Subtest: URS7 tmClock/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 151 - URS7 tmClock/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 10.057262
+  type: 'test'
+  ...
+# Subtest: URS7 tmClock/uno: real source, drivers, wiring, artifact and ZIP
+ok 152 - URS7 tmClock/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 15.577977
+  type: 'test'
+  ...
+# Subtest: URS7 tmClock/nano: real source, drivers, wiring, artifact and ZIP
+ok 153 - URS7 tmClock/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 16.189817
+  type: 'test'
+  ...
+# Subtest: URS8 encoderRaw/micropython: real source, drivers, wiring, artifact and ZIP
+ok 154 - URS8 encoderRaw/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 3.781652
+  type: 'test'
+  ...
+# Subtest: URS8 encoderRaw/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 155 - URS8 encoderRaw/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.6117
+  type: 'test'
+  ...
+# Subtest: URS8 encoderRaw/uno: real source, drivers, wiring, artifact and ZIP
+ok 156 - URS8 encoderRaw/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 10.525376
+  type: 'test'
+  ...
+# Subtest: URS8 encoderRaw/nano: real source, drivers, wiring, artifact and ZIP
+ok 157 - URS8 encoderRaw/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 10.359135
+  type: 'test'
+  ...
+# Subtest: URS8 ky040/micropython: real source, drivers, wiring, artifact and ZIP
+ok 158 - URS8 ky040/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 3.52022
+  type: 'test'
+  ...
+# Subtest: URS8 ky040/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 159 - URS8 ky040/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 10.024132
+  type: 'test'
+  ...
+# Subtest: URS8 ky040/uno: real source, drivers, wiring, artifact and ZIP
+ok 160 - URS8 ky040/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 33.151254
+  type: 'test'
+  ...
+# Subtest: URS8 ky040/nano: real source, drivers, wiring, artifact and ZIP
+ok 161 - URS8 ky040/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 11.265127
+  type: 'test'
+  ...
+# Subtest: URS8 encoderBounce/micropython: real source, drivers, wiring, artifact and ZIP
+ok 162 - URS8 encoderBounce/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 3.423104
+  type: 'test'
+  ...
+# Subtest: URS8 encoderBounce/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 163 - URS8 encoderBounce/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 9.382959
+  type: 'test'
+  ...
+# Subtest: URS8 encoderBounce/uno: real source, drivers, wiring, artifact and ZIP
+ok 164 - URS8 encoderBounce/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 10.902412
+  type: 'test'
+  ...
+# Subtest: URS8 encoderBounce/nano: real source, drivers, wiring, artifact and ZIP
+ok 165 - URS8 encoderBounce/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 10.560148
+  type: 'test'
+  ...
+# Subtest: URS9 irPulses/micropython: real source, drivers, wiring, artifact and ZIP
+ok 166 - URS9 irPulses/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 3.85335
+  type: 'test'
+  ...
+# Subtest: URS9 irPulses/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 167 - URS9 irPulses/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 18.455622
+  type: 'test'
+  ...
+# Subtest: URS9 irPulses/uno: real source, drivers, wiring, artifact and ZIP
+ok 168 - URS9 irPulses/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 11.563646
+  type: 'test'
+  ...
+# Subtest: URS9 irPulses/nano: real source, drivers, wiring, artifact and ZIP
+ok 169 - URS9 irPulses/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 11.057586
+  type: 'test'
+  ...
+# Subtest: URS9 irLED/micropython: real source, drivers, wiring, artifact and ZIP
+ok 170 - URS9 irLED/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 3.757316
+  type: 'test'
+  ...
+# Subtest: URS9 irLED/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 171 - URS9 irLED/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 9.868879
+  type: 'test'
+  ...
+# Subtest: URS9 irLED/uno: real source, drivers, wiring, artifact and ZIP
+ok 172 - URS9 irLED/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 11.728714
+  type: 'test'
+  ...
+# Subtest: URS9 irLED/nano: real source, drivers, wiring, artifact and ZIP
+ok 173 - URS9 irLED/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 20.950937
+  type: 'test'
+  ...
+# Subtest: URS9 irTransmit/micropython: real source, drivers, wiring, artifact and ZIP
+ok 174 - URS9 irTransmit/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.803833
+  type: 'test'
+  ...
+# Subtest: URS9 irTransmit/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 175 - URS9 irTransmit/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.14615
+  type: 'test'
+  ...
+# Subtest: URS9 irTransmit/uno: real source, drivers, wiring, artifact and ZIP
+ok 176 - URS9 irTransmit/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.03262
+  type: 'test'
+  ...
+# Subtest: URS9 irTransmit/nano: real source, drivers, wiring, artifact and ZIP
+ok 177 - URS9 irTransmit/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.772181
+  type: 'test'
+  ...
+# Subtest: URS10 relayContacts/micropython: real source, drivers, wiring, artifact and ZIP
+ok 178 - URS10 relayContacts/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 4.016806
+  type: 'test'
+  ...
+# Subtest: URS10 relayContacts/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 179 - URS10 relayContacts/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 6.165584
+  type: 'test'
+  ...
+# Subtest: URS10 relayContacts/uno: real source, drivers, wiring, artifact and ZIP
+ok 180 - URS10 relayContacts/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 16.128174
+  type: 'test'
+  ...
+# Subtest: URS10 relayContacts/nano: real source, drivers, wiring, artifact and ZIP
+ok 181 - URS10 relayContacts/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 11.450906
+  type: 'test'
+  ...
+# Subtest: URS10 activeAlarm/micropython: real source, drivers, wiring, artifact and ZIP
+ok 182 - URS10 activeAlarm/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.349891
+  type: 'test'
+  ...
+# Subtest: URS10 activeAlarm/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 183 - URS10 activeAlarm/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 6.579076
+  type: 'test'
+  ...
+# Subtest: URS10 activeAlarm/uno: real source, drivers, wiring, artifact and ZIP
+ok 184 - URS10 activeAlarm/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 7.588593
+  type: 'test'
+  ...
+# Subtest: URS10 activeAlarm/nano: real source, drivers, wiring, artifact and ZIP
+ok 185 - URS10 activeAlarm/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 9.788999
+  type: 'test'
+  ...
+# Subtest: URS10 piezoTone/micropython: real source, drivers, wiring, artifact and ZIP
+ok 186 - URS10 piezoTone/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 3.326208
+  type: 'test'
+  ...
+# Subtest: URS10 piezoTone/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 187 - URS10 piezoTone/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 12.554765
+  type: 'test'
+  ...
+# Subtest: URS10 piezoTone/uno: real source, drivers, wiring, artifact and ZIP
+ok 188 - URS10 piezoTone/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.411609
+  type: 'test'
+  ...
+# Subtest: URS10 piezoTone/nano: real source, drivers, wiring, artifact and ZIP
+ok 189 - URS10 piezoTone/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.479771
+  type: 'test'
+  ...
+# Subtest: URS10 sg90Sweep/micropython: real source, drivers, wiring, artifact and ZIP
+ok 190 - URS10 sg90Sweep/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.840698
+  type: 'test'
+  ...
+# Subtest: URS10 sg90Sweep/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 191 - URS10 sg90Sweep/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 5.993415
+  type: 'test'
+  ...
+# Subtest: URS10 sg90Sweep/uno: real source, drivers, wiring, artifact and ZIP
+ok 192 - URS10 sg90Sweep/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 16.656608
+  type: 'test'
+  ...
+# Subtest: URS10 sg90Sweep/nano: real source, drivers, wiring, artifact and ZIP
+ok 193 - URS10 sg90Sweep/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.470739
+  type: 'test'
+  ...
+# Subtest: URS10 dcDrive/micropython: real source, drivers, wiring, artifact and ZIP
+ok 194 - URS10 dcDrive/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 3.32749
+  type: 'test'
+  ...
+# Subtest: URS10 dcDrive/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 195 - URS10 dcDrive/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 6.976043
+  type: 'test'
+  ...
+# Subtest: URS10 dcDrive/uno: real source, drivers, wiring, artifact and ZIP
+ok 196 - URS10 dcDrive/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.303827
+  type: 'test'
+  ...
+# Subtest: URS10 dcDrive/nano: real source, drivers, wiring, artifact and ZIP
+ok 197 - URS10 dcDrive/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 9.645193
+  type: 'test'
+  ...
+# Subtest: URS10 dualDrive/micropython: real source, drivers, wiring, artifact and ZIP
+ok 198 - URS10 dualDrive/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 3.674031
+  type: 'test'
+  ...
+# Subtest: URS10 dualDrive/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 199 - URS10 dualDrive/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 17.799395
+  type: 'test'
+  ...
+# Subtest: URS10 dualDrive/uno: real source, drivers, wiring, artifact and ZIP
+ok 200 - URS10 dualDrive/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.941496
+  type: 'test'
+  ...
+# Subtest: URS10 dualDrive/nano: real source, drivers, wiring, artifact and ZIP
+ok 201 - URS10 dualDrive/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.420002
+  type: 'test'
+  ...
+# Subtest: URS10 servoMotorTone/micropython: real source, drivers, wiring, artifact and ZIP
+ok 202 - URS10 servoMotorTone/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 3.735513
+  type: 'test'
+  ...
+# Subtest: URS10 servoMotorTone/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 203 - URS10 servoMotorTone/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 7.918949
+  type: 'test'
+  ...
+# Subtest: URS10 servoMotorTone/uno: real source, drivers, wiring, artifact and ZIP
+ok 204 - URS10 servoMotorTone/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 14.284464
+  type: 'test'
+  ...
+# Subtest: URS10 servoMotorTone/nano: real source, drivers, wiring, artifact and ZIP
+ok 205 - URS10 servoMotorTone/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 21.218954
+  type: 'test'
+  ...
+# Subtest: URS11 stepperBasic/micropython: real source, drivers, wiring, artifact and ZIP
+ok 206 - URS11 stepperBasic/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 4.514623
+  type: 'test'
+  ...
+# Subtest: URS11 stepperBasic/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 207 - URS11 stepperBasic/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 7.522664
+  type: 'test'
+  ...
+# Subtest: URS11 stepperBasic/uno: real source, drivers, wiring, artifact and ZIP
+ok 208 - URS11 stepperBasic/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 9.214435
+  type: 'test'
+  ...
+# Subtest: URS11 stepperBasic/nano: real source, drivers, wiring, artifact and ZIP
+ok 209 - URS11 stepperBasic/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.548986
+  type: 'test'
+  ...
+# Subtest: URS11 stepperMicro/micropython: real source, drivers, wiring, artifact and ZIP
+ok 210 - URS11 stepperMicro/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.785926
+  type: 'test'
+  ...
+# Subtest: URS11 stepperMicro/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 211 - URS11 stepperMicro/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 7.249624
+  type: 'test'
+  ...
+# Subtest: URS11 stepperMicro/uno: real source, drivers, wiring, artifact and ZIP
+ok 212 - URS11 stepperMicro/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 20.681616
+  type: 'test'
+  ...
+# Subtest: URS11 stepperMicro/nano: real source, drivers, wiring, artifact and ZIP
+ok 213 - URS11 stepperMicro/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 9.954518
+  type: 'test'
+  ...
+# Subtest: URS11 stepperControl/micropython: real source, drivers, wiring, artifact and ZIP
+ok 214 - URS11 stepperControl/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.938896
+  type: 'test'
+  ...
+# Subtest: URS11 stepperControl/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 215 - URS11 stepperControl/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 7.539168
+  type: 'test'
+  ...
+# Subtest: URS11 stepperControl/uno: real source, drivers, wiring, artifact and ZIP
+ok 216 - URS11 stepperControl/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.757259
+  type: 'test'
+  ...
+# Subtest: URS11 stepperControl/nano: real source, drivers, wiring, artifact and ZIP
+ok 217 - URS11 stepperControl/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 9.829731
+  type: 'test'
+  ...
+# Subtest: URS12 tftGraphics/micropython: real source, drivers, wiring, artifact and ZIP
+ok 218 - URS12 tftGraphics/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 5.805283
+  type: 'test'
+  ...
+# Subtest: URS12 tftGraphics/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 219 - URS12 tftGraphics/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 15.867292
+  type: 'test'
+  ...
+# Subtest: URS12 tftGraphics/uno: real source, drivers, wiring, artifact and ZIP
+ok 220 - URS12 tftGraphics/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 9.772004
+  type: 'test'
+  ...
+# Subtest: URS12 tftGraphics/nano: real source, drivers, wiring, artifact and ZIP
+ok 221 - URS12 tftGraphics/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.913744
+  type: 'test'
+  ...
+# Subtest: URS12 tftRotation/micropython: real source, drivers, wiring, artifact and ZIP
+ok 222 - URS12 tftRotation/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 3.066899
+  type: 'test'
+  ...
+# Subtest: URS12 tftRotation/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 223 - URS12 tftRotation/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.390157
+  type: 'test'
+  ...
+# Subtest: URS12 tftRotation/uno: real source, drivers, wiring, artifact and ZIP
+ok 224 - URS12 tftRotation/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 12.337949
+  type: 'test'
+  ...
+# Subtest: URS12 tftRotation/nano: real source, drivers, wiring, artifact and ZIP
+ok 225 - URS12 tftRotation/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 18.073007
+  type: 'test'
+  ...
+# Subtest: URS12 bmp280SPI/micropython: real source, drivers, wiring, artifact and ZIP
+ok 226 - URS12 bmp280SPI/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.930924
+  type: 'test'
+  ...
+# Subtest: URS12 bmp280SPI/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 227 - URS12 bmp280SPI/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.552842
+  type: 'test'
+  ...
+# Subtest: URS12 bmp280SPI/uno: real source, drivers, wiring, artifact and ZIP
+ok 228 - URS12 bmp280SPI/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 10.123542
+  type: 'test'
+  ...
+# Subtest: URS12 bmp280SPI/nano: real source, drivers, wiring, artifact and ZIP
+ok 229 - URS12 bmp280SPI/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 19.91232
+  type: 'test'
+  ...
+# Subtest: URS12 spiDashboard/micropython: real source, drivers, wiring, artifact and ZIP
+ok 230 - URS12 spiDashboard/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 4.148304
+  type: 'test'
+  ...
+# Subtest: URS12 spiDashboard/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 231 - URS12 spiDashboard/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 11.366849
+  type: 'test'
+  ...
+# Subtest: URS12 spiDashboard/uno: real source, drivers, wiring, artifact and ZIP
+ok 232 - URS12 spiDashboard/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 12.419501
+  type: 'test'
+  ...
+# Subtest: URS12 spiDashboard/nano: real source, drivers, wiring, artifact and ZIP
+ok 233 - URS12 spiDashboard/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 11.945128
+  type: 'test'
+  ...
+# Subtest: URS13 iliGraphics/micropython: real source, drivers, wiring, artifact and ZIP
+ok 234 - URS13 iliGraphics/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 4.495455
+  type: 'test'
+  ...
+# Subtest: URS13 iliGraphics/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 235 - URS13 iliGraphics/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 17.728048
+  type: 'test'
+  ...
+# Subtest: URS13 iliGraphics/uno: real source, drivers, wiring, artifact and ZIP
+ok 236 - URS13 iliGraphics/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 9.068776
+  type: 'test'
+  ...
+# Subtest: URS13 iliGraphics/nano: real source, drivers, wiring, artifact and ZIP
+ok 237 - URS13 iliGraphics/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 10.35551
+  type: 'test'
+  ...
+# Subtest: URS13 iliRotation/micropython: real source, drivers, wiring, artifact and ZIP
+ok 238 - URS13 iliRotation/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.675471
+  type: 'test'
+  ...
+# Subtest: URS13 iliRotation/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 239 - URS13 iliRotation/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 9.878784
+  type: 'test'
+  ...
+# Subtest: URS13 iliRotation/uno: real source, drivers, wiring, artifact and ZIP
+ok 240 - URS13 iliRotation/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 16.569157
+  type: 'test'
+  ...
+# Subtest: URS13 iliRotation/nano: real source, drivers, wiring, artifact and ZIP
+ok 241 - URS13 iliRotation/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 12.212295
+  type: 'test'
+  ...
+# Subtest: URS13 touchRaw/micropython: real source, drivers, wiring, artifact and ZIP
+ok 242 - URS13 touchRaw/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 4.038579
+  type: 'test'
+  ...
+# Subtest: URS13 touchRaw/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 243 - URS13 touchRaw/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 10.414258
+  type: 'test'
+  ...
+# Subtest: URS13 touchRaw/uno: real source, drivers, wiring, artifact and ZIP
+ok 244 - URS13 touchRaw/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 9.013664
+  type: 'test'
+  ...
+# Subtest: URS13 touchRaw/nano: real source, drivers, wiring, artifact and ZIP
+ok 245 - URS13 touchRaw/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 14.6606
+  type: 'test'
+  ...
+# Subtest: URS13 touchCalibration/micropython: real source, drivers, wiring, artifact and ZIP
+ok 246 - URS13 touchCalibration/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 3.892659
+  type: 'test'
+  ...
+# Subtest: URS13 touchCalibration/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 247 - URS13 touchCalibration/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 11.313539
+  type: 'test'
+  ...
+# Subtest: URS13 touchCalibration/uno: real source, drivers, wiring, artifact and ZIP
+ok 248 - URS13 touchCalibration/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 10.357553
+  type: 'test'
+  ...
+# Subtest: URS13 touchCalibration/nano: real source, drivers, wiring, artifact and ZIP
+ok 249 - URS13 touchCalibration/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 9.718012
+  type: 'test'
+  ...
+# Subtest: URS13 touchButton/micropython: real source, drivers, wiring, artifact and ZIP
+ok 250 - URS13 touchButton/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 3.56032
+  type: 'test'
+  ...
+# Subtest: URS13 touchButton/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 251 - URS13 touchButton/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 17.570857
+  type: 'test'
+  ...
+# Subtest: URS13 touchButton/uno: real source, drivers, wiring, artifact and ZIP
+ok 252 - URS13 touchButton/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 13.266955
+  type: 'test'
+  ...
+# Subtest: URS13 touchButton/nano: real source, drivers, wiring, artifact and ZIP
+ok 253 - URS13 touchButton/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 68.240839
+  type: 'test'
+  ...
+# Subtest: URS13 touchRotation/micropython: real source, drivers, wiring, artifact and ZIP
+ok 254 - URS13 touchRotation/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 5.299152
+  type: 'test'
+  ...
+# Subtest: URS13 touchRotation/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 255 - URS13 touchRotation/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 22.486098
+  type: 'test'
+  ...
+# Subtest: URS13 touchRotation/uno: real source, drivers, wiring, artifact and ZIP
+ok 256 - URS13 touchRotation/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 19.262254
+  type: 'test'
+  ...
+# Subtest: URS13 touchRotation/nano: real source, drivers, wiring, artifact and ZIP
+ok 257 - URS13 touchRotation/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 13.796721
+  type: 'test'
+  ...
+# Subtest: URS14 rtcRead/micropython: real source, drivers, wiring, artifact and ZIP
+ok 258 - URS14 rtcRead/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 4.314263
+  type: 'test'
+  ...
+# Subtest: URS14 rtcRead/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 259 - URS14 rtcRead/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 10.587569
+  type: 'test'
+  ...
+# Subtest: URS14 rtcRead/uno: real source, drivers, wiring, artifact and ZIP
+ok 260 - URS14 rtcRead/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 18.270462
+  type: 'test'
+  ...
+# Subtest: URS14 rtcRead/nano: real source, drivers, wiring, artifact and ZIP
+ok 261 - URS14 rtcRead/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 11.306619
+  type: 'test'
+  ...
+# Subtest: URS14 rtcMemory/micropython: real source, drivers, wiring, artifact and ZIP
+ok 262 - URS14 rtcMemory/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 3.583535
+  type: 'test'
+  ...
+# Subtest: URS14 rtcMemory/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 263 - URS14 rtcMemory/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 11.667031
+  type: 'test'
+  ...
+# Subtest: URS14 rtcMemory/uno: real source, drivers, wiring, artifact and ZIP
+ok 264 - URS14 rtcMemory/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 9.169278
+  type: 'test'
+  ...
+# Subtest: URS14 rtcMemory/nano: real source, drivers, wiring, artifact and ZIP
+ok 265 - URS14 rtcMemory/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 11.090014
+  type: 'test'
+  ...
+# Subtest: URS14 rtcClock/micropython: real source, drivers, wiring, artifact and ZIP
+ok 266 - URS14 rtcClock/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.940358
+  type: 'test'
+  ...
+# Subtest: URS14 rtcClock/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 267 - URS14 rtcClock/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 14.544815
+  type: 'test'
+  ...
+# Subtest: URS14 rtcClock/uno: real source, drivers, wiring, artifact and ZIP
+ok 268 - URS14 rtcClock/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 9.601908
+  type: 'test'
+  ...
+# Subtest: URS14 rtcClock/nano: real source, drivers, wiring, artifact and ZIP
+ok 269 - URS14 rtcClock/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.404599
+  type: 'test'
+  ...
+# Subtest: URS14 sdInspect/micropython: real source, drivers, wiring, artifact and ZIP
+ok 270 - URS14 sdInspect/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 3.429534
+  type: 'test'
+  ...
+# Subtest: URS14 sdInspect/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 271 - URS14 sdInspect/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 9.757943
+  type: 'test'
+  ...
+# Subtest: URS14 sdInspect/uno: real source, drivers, wiring, artifact and ZIP
+ok 272 - URS14 sdInspect/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 15.114791
+  type: 'test'
+  ...
+# Subtest: URS14 sdInspect/nano: real source, drivers, wiring, artifact and ZIP
+ok 273 - URS14 sdInspect/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 9.587185
+  type: 'test'
+  ...
+# Subtest: URS14 sdFiles/micropython: real source, drivers, wiring, artifact and ZIP
+ok 274 - URS14 sdFiles/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.936452
+  type: 'test'
+  ...
+# Subtest: URS14 sdFiles/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 275 - URS14 sdFiles/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 12.314153
+  type: 'test'
+  ...
+# Subtest: URS14 sdFiles/uno: real source, drivers, wiring, artifact and ZIP
+ok 276 - URS14 sdFiles/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 10.359316
+  type: 'test'
+  ...
+# Subtest: URS14 sdFiles/nano: real source, drivers, wiring, artifact and ZIP
+ok 277 - URS14 sdFiles/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 13.855249
+  type: 'test'
+  ...
+# Subtest: URS14 sdLogger/micropython: real source, drivers, wiring, artifact and ZIP
+ok 278 - URS14 sdLogger/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 5.139213
+  type: 'test'
+  ...
+# Subtest: URS14 sdLogger/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 279 - URS14 sdLogger/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 29.24913
+  type: 'test'
+  ...
+# Subtest: URS14 sdLogger/uno: real source, drivers, wiring, artifact and ZIP
+ok 280 - URS14 sdLogger/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 10.939267
+  type: 'test'
+  ...
+# Subtest: URS14 sdLogger/nano: real source, drivers, wiring, artifact and ZIP
+ok 281 - URS14 sdLogger/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 17.649029
+  type: 'test'
+  ...
+# Subtest: URS15 opticalRegisters/micropython: real source, drivers, wiring, artifact and ZIP
+ok 282 - URS15 opticalRegisters/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.235004
+  type: 'test'
+  ...
+# Subtest: URS15 opticalRegisters/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 283 - URS15 opticalRegisters/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.97081
+  type: 'test'
+  ...
+# Subtest: URS15 opticalRegisters/uno: real source, drivers, wiring, artifact and ZIP
+ok 284 - URS15 opticalRegisters/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.617808
+  type: 'test'
+  ...
+# Subtest: URS15 opticalRegisters/nano: real source, drivers, wiring, artifact and ZIP
+ok 285 - URS15 opticalRegisters/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.749948
+  type: 'test'
+  ...
+# Subtest: URS15 opticalRaw/micropython: real source, drivers, wiring, artifact and ZIP
+ok 286 - URS15 opticalRaw/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.166576
+  type: 'test'
+  ...
+# Subtest: URS15 opticalRaw/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 287 - URS15 opticalRaw/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 7.800632
+  type: 'test'
+  ...
+# Subtest: URS15 opticalRaw/uno: real source, drivers, wiring, artifact and ZIP
+ok 288 - URS15 opticalRaw/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 17.365784
+  type: 'test'
+  ...
+# Subtest: URS15 opticalRaw/nano: real source, drivers, wiring, artifact and ZIP
+ok 289 - URS15 opticalRaw/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 48.338924
+  type: 'test'
+  ...
+# Subtest: URS15 opticalFrequency/micropython: real source, drivers, wiring, artifact and ZIP
+ok 290 - URS15 opticalFrequency/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.565515
+  type: 'test'
+  ...
+# Subtest: URS15 opticalFrequency/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 291 - URS15 opticalFrequency/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 16.667805
+  type: 'test'
+  ...
+# Subtest: URS15 opticalFrequency/uno: real source, drivers, wiring, artifact and ZIP
+ok 292 - URS15 opticalFrequency/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 12.500994
+  type: 'test'
+  ...
+# Subtest: URS15 opticalFrequency/nano: real source, drivers, wiring, artifact and ZIP
+ok 293 - URS15 opticalFrequency/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 10.431063
+  type: 'test'
+  ...
+# Subtest: URS15 opticalOverflow/micropython: real source, drivers, wiring, artifact and ZIP
+ok 294 - URS15 opticalOverflow/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.431203
+  type: 'test'
+  ...
+# Subtest: URS15 opticalOverflow/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 295 - URS15 opticalOverflow/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 16.333452
+  type: 'test'
+  ...
+# Subtest: URS15 opticalOverflow/uno: real source, drivers, wiring, artifact and ZIP
+ok 296 - URS15 opticalOverflow/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 9.860347
+  type: 'test'
+  ...
+# Subtest: URS15 opticalOverflow/nano: real source, drivers, wiring, artifact and ZIP
+ok 297 - URS15 opticalOverflow/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.690318
+  type: 'test'
+  ...
+# Subtest: URS16 radio/micropython: real source, drivers, wiring, artifact and ZIP
+ok 298 - URS16 radio/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 4.258809
+  type: 'test'
+  ...
+# Subtest: URS16 radio/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 299 - URS16 radio/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 13.432043
+  type: 'test'
+  ...
+# Subtest: URS16 radio/uno: real source, drivers, wiring, artifact and ZIP
+ok 300 - URS16 radio/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 18.092486
+  type: 'test'
+  ...
+# Subtest: URS16 radio/nano: real source, drivers, wiring, artifact and ZIP
+ok 301 - URS16 radio/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 9.013905
+  type: 'test'
+  ...
+# Subtest: URS17 levelInput/micropython: real source, drivers, wiring, artifact and ZIP
+ok 302 - URS17 levelInput/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 4.003415
+  type: 'test'
+  ...
+# Subtest: URS17 levelInput/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 303 - URS17 levelInput/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 7.811347
+  type: 'test'
+  ...
+# Subtest: URS17 levelInput/uno: real source, drivers, wiring, artifact and ZIP
+ok 304 - URS17 levelInput/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.780453
+  type: 'test'
+  ...
+# Subtest: URS17 levelInput/nano: real source, drivers, wiring, artifact and ZIP
+ok 305 - URS17 levelInput/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 8.693032
+  type: 'test'
+  ...
+# Subtest: URS17 levelOutput/micropython: real source, drivers, wiring, artifact and ZIP
+ok 306 - URS17 levelOutput/micropython: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 2.32313
+  type: 'test'
+  ...
+# Subtest: URS17 levelOutput/s3-cpp: real source, drivers, wiring, artifact and ZIP
+ok 307 - URS17 levelOutput/s3-cpp: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 6.483021
+  type: 'test'
+  ...
+# Subtest: URS17 levelOutput/uno: real source, drivers, wiring, artifact and ZIP
+ok 308 - URS17 levelOutput/uno: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 113.188629
+  type: 'test'
+  ...
+# Subtest: URS17 levelOutput/nano: real source, drivers, wiring, artifact and ZIP
+ok 309 - URS17 levelOutput/nano: real source, drivers, wiring, artifact and ZIP
+  ---
+  duration_ms: 12.907215
+  type: 'test'
+  ...
+# Subtest: unavailable S3 routes, unknown IDs and malformed work are rejected without a substitute program
+ok 310 - unavailable S3 routes, unknown IDs and malformed work are rejected without a substitute program
+  ---
+  duration_ms: 2.139255
+  type: 'test'
+  ...
+# Subtest: URS export requires complete manual observations and a current source/circuit snapshot; failed work is allowed
+ok 311 - URS export requires complete manual observations and a current source/circuit snapshot; failed work is allowed
+  ---
+  duration_ms: 27.560341
+  type: 'test'
+  ...
+# Subtest: snapshot binds both radio nodes, sources, artifacts and saved media, not titles or hand-entered answers
+ok 312 - snapshot binds both radio nodes, sources, artifacts and saved media, not titles or hand-entered answers
+  ---
+  duration_ms: 11.281111
+  type: 'test'
+  ...
+# Subtest: teacher review becomes stale after student answers change; review metadata cannot approve execution
+ok 313 - teacher review becomes stale after student answers change; review metadata cannot approve execution
+  ---
+  duration_ms: 2.398955
+  type: 'test'
+  ...
+1..313
+# tests 313
+# suites 0
+# pass 312
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3784.677312

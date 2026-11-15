@@ -1,0 +1,38 @@
+{
+  "environment": "Chromium/Linux development URL",
+  "version": "0.5.2-beta.1",
+  "micropython": {
+    "threeTemperatures": [
+      25,
+      -10.125,
+      60
+    ],
+    "liveFirst": 125,
+    "secondCrcFault": "CRC error"
+  },
+  "arduino": {
+    "board": "Uno R3",
+    "flashBytes": 6286,
+    "staticRamBytes": 251,
+    "threeTemperatures": [
+      -10.125,
+      60,
+      25
+    ],
+    "liveFirst": -55,
+    "rawFallbackLabelObserved": true,
+    "secondCrcFault": "nevaljano / CRC ili odspojen",
+    "recoverySecond": -10.125,
+    "stopObserved": true
+  },
+  "initialDocument": "older offline 0.3.0 document; current query document loaded 0.5.2",
+  "storageCleared": false,
+  "notVerified": [
+    "Safari/iOS",
+    "Android",
+    "school PC",
+    "physical DS18B20",
+    "student pilot",
+    "cold offline production auth domain"
+  ]
+}

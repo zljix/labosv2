@@ -1,0 +1,226 @@
+[
+  {
+    "boardId": "arduino.uno-r3.atmega328p",
+    "inputHash": "50ae3fbe3a1d8fad677d32783c86ad2e0e6a82e5cceaba33f99f4011a84a29af",
+    "hexHash": "6d8afb188d43dedc7d3e956b3bed5769c67dc88b9beeaeb9acc94692c7358d10",
+    "flashBytes": 3516,
+    "staticRamBytes": 200,
+    "toolchain": {
+      "cli": "1.3.1",
+      "core": "arduino:avr@1.8.6",
+      "gcc": "7.3.0-atmel3.6.1-arduino7",
+      "libraries": []
+    },
+    "example": "lm35"
+  },
+  {
+    "boardId": "arduino.uno-r3.atmega328p",
+    "inputHash": "7c1c79133d865c70c2e27b4c2ba723c1d048e48687bf13546a11cc4494c667d0",
+    "hexHash": "bade474cc606088c453e25d75c0fcb9296b8dfdcb1c9a5fe6cf6fc9fa02f474a",
+    "flashBytes": 3498,
+    "staticRamBytes": 200,
+    "toolchain": {
+      "cli": "1.3.1",
+      "core": "arduino:avr@1.8.6",
+      "gcc": "7.3.0-atmel3.6.1-arduino7",
+      "libraries": []
+    },
+    "example": "temt6000"
+  },
+  {
+    "boardId": "arduino.uno-r3.atmega328p",
+    "inputHash": "670ad0ca703f8e74721fbf529423f90dd1fb59bd45729649d26cc9b8dcc6f485",
+    "hexHash": "f9e9c4d094ca32794004429ffebe74679e01aa44f391d33d549e75ca47c1dd96",
+    "flashBytes": 3976,
+    "staticRamBytes": 200,
+    "toolchain": {
+      "cli": "1.3.1",
+      "core": "arduino:avr@1.8.6",
+      "gcc": "7.3.0-atmel3.6.1-arduino7",
+      "libraries": []
+    },
+    "example": "ntc"
+  },
+  {
+    "boardId": "arduino.uno-r3.atmega328p",
+    "inputHash": "e938c3d86f2af0169f916f43007f5429ba11587911942f154799f3081088ed21",
+    "hexHash": "d742ef69abc65d18afead53714eb963eff312b2f0a5d9605e20f6626d469f1f1",
+    "flashBytes": 4206,
+    "staticRamBytes": 200,
+    "toolchain": {
+      "cli": "1.3.1",
+      "core": "arduino:avr@1.8.6",
+      "gcc": "7.3.0-atmel3.6.1-arduino7",
+      "libraries": []
+    },
+    "example": "ky023"
+  },
+  {
+    "boardId": "arduino.uno-r3.atmega328p",
+    "inputHash": "4db8eb20aa6401188b18e6e0deb602dd5ecee0399db7556ee66f2f849d3f2d68",
+    "hexHash": "b90ed515063d7e1ea0ffe136c65f3e0ab23025585a22726a68a129197fdc8047",
+    "flashBytes": 2336,
+    "staticRamBytes": 188,
+    "toolchain": {
+      "cli": "1.3.1",
+      "core": "arduino:avr@1.8.6",
+      "gcc": "7.3.0-atmel3.6.1-arduino7",
+      "libraries": []
+    },
+    "example": "flame"
+  },
+  {
+    "boardId": "arduino.uno-r3.atmega328p",
+    "inputHash": "0f8a30758c820d12f38c23c79ad0b2eb5ad3c949482e191ba6315754318d7fdd",
+    "hexHash": "baac244dcec043edf84d636a96d5145bb36f322e574016fecea4f6d38ba38049",
+    "flashBytes": 2024,
+    "staticRamBytes": 188,
+    "toolchain": {
+      "cli": "1.3.1",
+      "core": "arduino:avr@1.8.6",
+      "gcc": "7.3.0-atmel3.6.1-arduino7",
+      "libraries": []
+    },
+    "example": "sound"
+  },
+  {
+    "boardId": "arduino.uno-r3.atmega328p",
+    "inputHash": "e01eacaecaf45b59c11e383d70611382d7e4d74f55afee075e421cd5be4ccd9a",
+    "hexHash": "d81ec2862cf6180036b6d0e7102cbd8be63a3a3252ef68f017261605a6a887c4",
+    "flashBytes": 4138,
+    "staticRamBytes": 200,
+    "toolchain": {
+      "cli": "1.3.1",
+      "core": "arduino:avr@1.8.6",
+      "gcc": "7.3.0-atmel3.6.1-arduino7",
+      "libraries": []
+    },
+    "example": "analogCompare"
+  },
+  {
+    "boardId": "arduino.uno-r3.atmega328p",
+    "inputHash": "5c36d39a325e54aee3a3ec18dd03049d541d956817e8ed5b65e3c8d5b628838b",
+    "hexHash": "2a62d15122f04b99ab8c5e548d0d5155f65c13f39e3912ce8cb2b88dde4d67a1",
+    "flashBytes": 2468,
+    "staticRamBytes": 188,
+    "toolchain": {
+      "cli": "1.3.1",
+      "core": "arduino:avr@1.8.6",
+      "gcc": "7.3.0-atmel3.6.1-arduino7",
+      "libraries": []
+    },
+    "example": "dualInputs"
+  },
+  {
+    "boardId": "arduino.nano-classic.atmega328p",
+    "inputHash": "ca59970d28813c391e2557417ffc0b25f669202bbefa689ac10bd6a2f59da65f",
+    "hexHash": "6d8afb188d43dedc7d3e956b3bed5769c67dc88b9beeaeb9acc94692c7358d10",
+    "flashBytes": 3516,
+    "staticRamBytes": 200,
+    "toolchain": {
+      "cli": "1.3.1",
+      "core": "arduino:avr@1.8.6",
+      "gcc": "7.3.0-atmel3.6.1-arduino7",
+      "libraries": []
+    },
+    "example": "lm35"
+  },
+  {
+    "boardId": "arduino.nano-classic.atmega328p",
+    "inputHash": "eb15f8c587365ffdf76144d36cc97ce1334fbdf17b9c94d4d4d995842352591d",
+    "hexHash": "bade474cc606088c453e25d75c0fcb9296b8dfdcb1c9a5fe6cf6fc9fa02f474a",
+    "flashBytes": 3498,
+    "staticRamBytes": 200,
+    "toolchain": {
+      "cli": "1.3.1",
+      "core": "arduino:avr@1.8.6",
+      "gcc": "7.3.0-atmel3.6.1-arduino7",
+      "libraries": []
+    },
+    "example": "temt6000"
+  },
+  {
+    "boardId": "arduino.nano-classic.atmega328p",
+    "inputHash": "11e93c2562974349e19a8d636b05a4ed8d40f07663f59b60953033b0d7e7dbd0",
+    "hexHash": "f9e9c4d094ca32794004429ffebe74679e01aa44f391d33d549e75ca47c1dd96",
+    "flashBytes": 3976,
+    "staticRamBytes": 200,
+    "toolchain": {
+      "cli": "1.3.1",
+      "core": "arduino:avr@1.8.6",
+      "gcc": "7.3.0-atmel3.6.1-arduino7",
+      "libraries": []
+    },
+    "example": "ntc"
+  },
+  {
+    "boardId": "arduino.nano-classic.atmega328p",
+    "inputHash": "136a57cbcd4f1d57add494deb07cdd720b4064a598cb5919c44deb3fd9c4ea07",
+    "hexHash": "d742ef69abc65d18afead53714eb963eff312b2f0a5d9605e20f6626d469f1f1",
+    "flashBytes": 4206,
+    "staticRamBytes": 200,
+    "toolchain": {
+      "cli": "1.3.1",
+      "core": "arduino:avr@1.8.6",
+      "gcc": "7.3.0-atmel3.6.1-arduino7",
+      "libraries": []
+    },
+    "example": "ky023"
+  },
+  {
+    "boardId": "arduino.nano-classic.atmega328p",
+    "inputHash": "70ab05f79ba28c9e84204697a64278076abd103cf6a2851408e26513cf8da04f",
+    "hexHash": "b90ed515063d7e1ea0ffe136c65f3e0ab23025585a22726a68a129197fdc8047",
+    "flashBytes": 2336,
+    "staticRamBytes": 188,
+    "toolchain": {
+      "cli": "1.3.1",
+      "core": "arduino:avr@1.8.6",
+      "gcc": "7.3.0-atmel3.6.1-arduino7",
+      "libraries": []
+    },
+    "example": "flame"
+  },
+  {
+    "boardId": "arduino.nano-classic.atmega328p",
+    "inputHash": "6229ee66c496af2875490bd16d902ee4072f1736cb9c2bdca253aec26dfca522",
+    "hexHash": "baac244dcec043edf84d636a96d5145bb36f322e574016fecea4f6d38ba38049",
+    "flashBytes": 2024,
+    "staticRamBytes": 188,
+    "toolchain": {
+      "cli": "1.3.1",
+      "core": "arduino:avr@1.8.6",
+      "gcc": "7.3.0-atmel3.6.1-arduino7",
+      "libraries": []
+    },
+    "example": "sound"
+  },
+  {
+    "boardId": "arduino.nano-classic.atmega328p",
+    "inputHash": "037373511c0eb1f142912e8e68e0b2fee031783a0833bfe7eafd16704f1a1fdb",
+    "hexHash": "d81ec2862cf6180036b6d0e7102cbd8be63a3a3252ef68f017261605a6a887c4",
+    "flashBytes": 4138,
+    "staticRamBytes": 200,
+    "toolchain": {
+      "cli": "1.3.1",
+      "core": "arduino:avr@1.8.6",
+      "gcc": "7.3.0-atmel3.6.1-arduino7",
+      "libraries": []
+    },
+    "example": "analogCompare"
+  },
+  {
+    "boardId": "arduino.nano-classic.atmega328p",
+    "inputHash": "232fc9ac3845332bda2621a676fb011a02a28d5552d081c1166dcff50b5ba5a0",
+    "hexHash": "2a62d15122f04b99ab8c5e548d0d5155f65c13f39e3912ce8cb2b88dde4d67a1",
+    "flashBytes": 2468,
+    "staticRamBytes": 188,
+    "toolchain": {
+      "cli": "1.3.1",
+      "core": "arduino:avr@1.8.6",
+      "gcc": "7.3.0-atmel3.6.1-arduino7",
+      "libraries": []
+    },
+    "example": "dualInputs"
+  }
+]

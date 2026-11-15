@@ -1,0 +1,13 @@
+{
+  "version": "0.5.3-beta.1",
+  "build": "be2ee5227a7817bc",
+  "board": "arduino.nano-classic.atmega328p",
+  "console": "BMP180 T=24.00 P=101324\r\nBMP280 T=24.00 P=101325\r\nAM2320 T=24.00 RH=50.00\r\nBMP180 T=24.00 P=101324\r\nBMP280 T=30.00 P=95000\r",
+  "memory": {
+    "staticBytes": 944,
+    "lowestSP": 2069,
+    "minFreeToStatic": 870
+  },
+  "stopMs": 6.236340000003111,
+  "scope": "Node/Linux production bundle, not school PC or iOS"
+}

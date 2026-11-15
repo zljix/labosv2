@@ -1,0 +1,95 @@
+{
+  "version": "0.7.2-beta.1",
+  "build": "86b7758a791275e7",
+  "nodeCases": 489,
+  "newTouchCases": 37,
+  "offlineCases": 8,
+  "runtimeCases": 13,
+  "totalUniqueCases": 510,
+  "finalUniqueFailures": 0,
+  "initialGroupedFailures": [
+    "production AVR Worker executes the integrated Nano program, accepts live input and stops promptly",
+    "real MicroPython ky040: wired signals, live direction or PWM and prompt stop"
+  ],
+  "rerunResult": "all grouped failures passed in targeted reruns; timings retained",
+  "groups": {
+    "first": {
+      "tests": 69,
+      "pass": 69,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "remaining": {
+      "tests": 383,
+      "pass": 381,
+      "fail": 2,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "worker_rerun": {
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "encoder_rerun": {
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "touch": {
+      "tests": 37,
+      "pass": 37,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "offline": {
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    }
+  },
+  "package": {
+    "resources": 136,
+    "bytes": 10372478
+  },
+  "avr": {
+    "unchanged": 120,
+    "added": 8,
+    "total": 128
+  },
+  "packagedTouchStopMs": 6.306502999999793,
+  "browserQA": {
+    "environment": "development Chromium/Linux",
+    "board": "Uno R3",
+    "observed": [
+      "keyboard held touch",
+      "pointer press and release",
+      "LED ON/OFF from program",
+      "TFT text/color from SPI",
+      "IRQ released HIGH",
+      "Stop retains image and console"
+    ]
+  },
+  "unverified": [
+    "physical modules",
+    "school computer",
+    "student pilot",
+    "Safari/iOS",
+    "Android",
+    "cold offline production sign-in"
+  ]
+}

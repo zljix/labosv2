@@ -1,0 +1,30 @@
+{
+  "environment": "Development Chromium/Linux; UI via existing application controls",
+  "appVersion": "0.7.0-beta.1",
+  "python": {
+    "tftGraphics": "red/green/blue bars, SPI TFT text, rectangle and two diagonal lines observed",
+    "sharedBus": "BMP280 and ST7735 both connected, temperature changed from 24 to 30 C via slider, resulting serial data and TFT text observed"
+  },
+  "avrUno": {
+    "example": "spiDashboard",
+    "serial": "SPI DASH T=24.00 P=101325 Pa",
+    "display": "24.0 C; pressure shown to one decimal, subject to compensation/float rounding",
+    "staticRamBytes": 284,
+    "minStackGapObservedBytes": 1570
+  },
+  "avrNano": {
+    "example": "tftGraphics",
+    "serial": "TFT GRAPHICS READY",
+    "flashBytes": 3954,
+    "staticRamBytes": 223,
+    "stopPreservesImage": true,
+    "screenshot": "nano-tft.jpg"
+  },
+  "csv": "See browser-csv.json: actual download validated",
+  "limits": [
+    "Not physical hardware validation",
+    "Not Safari/iOS or Android validation",
+    "Not an authenticated production functional test",
+    "Not cold offline opening on private production domain"
+  ]
+}

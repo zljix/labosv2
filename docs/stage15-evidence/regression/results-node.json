@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-13T11:15:52.789Z",
+  "runtime": "MicroPython v1.29.0 + lab Asyncify patch",
+  "results": [
+    {
+      "id": "runtime",
+      "title": "Stvarni MicroPython i ograničen JS pristup",
+      "status": "pass",
+      "durationMs": 330.5,
+      "detail": "micropython\n3.4.0; MicroPython v1.29.0 on 2026-11-12\nJS_DISABLED"
+    },
+    {
+      "id": "time",
+      "title": "GPIO izlaz i uobičajeno čekanje",
+      "status": "pass",
+      "durationMs": 577,
+      "detail": "TIME_OK 199"
+    },
+    {
+      "id": "input",
+      "title": "Tipkalo u aktivnoj Python petlji",
+      "status": "pass",
+      "durationMs": 380.9,
+      "detail": {
+        "pressToOutputMs": 27,
+        "released": true
+      }
+    },
+    {
+      "id": "stop",
+      "title": "Stop bez čekanja i novo pokretanje",
+      "status": "pass",
+      "durationMs": 1538.4,
+      "detail": {
+        "stopAwaitMs": [
+          20.61,
+          27.02,
+          36.72
+        ],
+        "stopToNewProgramCompletedMs": [
+          378.3,
+          261.7,
+          274.9
+        ],
+        "freshRuns": 3,
+        "note": "Browser terminate() has no completion acknowledgement; stopAwaitMs measures the command, not physical thread destruction."
+      }
+    },
+    {
+      "id": "i2c",
+      "title": "I2C transakcije i pogrešna adresa",
+      "status": "pass",
+      "durationMs": 313.4,
+      "detail": "scan, writeto, readfrom, readfrom_into, NACK na 0x39"
+    },
+    {
+      "id": "wiring",
+      "title": "I2C napajanje i zamijenjeni SDA/SCL",
+      "status": "pass",
+      "durationMs": 630.2,
+      "detail": "3 negativna slučaja prolaze; echo uređaj nije model AHT10"
+    },
+    {
+      "id": "framebuf",
+      "title": "Izvorni framebuf i izlaz piksela",
+      "status": "pass",
+      "durationMs": 207.6,
+      "detail": "1024 bajta, 128 × 64, MONO_VLSB, tekst i rub"
+    },
+    {
+      "id": "gc",
+      "title": "Garbage collector tijekom izvođenja",
+      "status": "pass",
+      "durationMs": 469.4,
+      "detail": "GC_OK 4085440"
+    },
+    {
+      "id": "errors",
+      "title": "Python pogreške i novi čisti kontekst",
+      "status": "pass",
+      "durationMs": 503.3,
+      "detail": "ValueError, SyntaxError, izolacija novog pokretanja"
+    },
+    {
+      "id": "console",
+      "title": "Ograničen ispis i odziv glavne dretve",
+      "status": "pass",
+      "durationMs": 1860.8,
+      "detail": {
+        "consoleCharacters": 8237,
+        "consoleMessages": 2,
+        "pinMessages": 90
+      }
+    }
+  ],
+  "passed": 10,
+  "total": 10,
+  "engine": "v24.22.1",
+  "platform": "linux/x64"
+}

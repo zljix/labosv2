@@ -1,0 +1,33 @@
+{
+  "format": "esp32-lab-pilot",
+  "version": 2,
+  "generatedForVersion": "0.12.0-beta.1",
+  "recordedAt": "2026-11-14T11:13:18.633Z",
+  "observations": {
+    "participant": "",
+    "date": "",
+    "appVersion": "0.12.0-beta.1",
+    "computer": "",
+    "browser": "",
+    "input": "Miš i tipkovnica",
+    "target": "nano",
+    "peer": "micropython",
+    "lesson": "radio/radio",
+    "minutes": "",
+    "outcome": "unconfirmed",
+    "assistance": "",
+    "issues": "",
+    "measurements": "",
+    "conclusion": "",
+    "concepts": false,
+    "circuit": false,
+    "code": false,
+    "feedback": false,
+    "stop": false,
+    "recovery": false,
+    "submission": false,
+    "review": false,
+    "keyboard": false,
+    "offline": false
+  }
+}

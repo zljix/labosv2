@@ -1,0 +1,14 @@
+{
+  "version": "0.5.1-beta.1",
+  "build": "86ed8a1f6e094a22",
+  "board": "arduino.nano-classic.atmega328p",
+  "console": "Regulator spreman\r\nT=24.00 RH=50.00 Servo=0\r\nT=30.00 RH=70.00 Servo=90\r\n",
+  "memory": {
+    "staticBytes": 911,
+    "lowestSP": 2138,
+    "minFreeToStatic": 972
+  },
+  "stopMs": 3.6045129999984056,
+  "stopLimitMs": 500,
+  "scope": "Node/Linux production bundle Worker; not school-PC timing"
+}

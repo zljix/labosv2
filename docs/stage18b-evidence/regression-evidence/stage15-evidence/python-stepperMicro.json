@@ -1,0 +1,797 @@
+{
+  "console": "MICRO 1/1 +18 deg\nMICRO 1/1 0 deg\nMICRO 1/2 +18 deg\nMICRO 1/2 0 deg\nMICRO 1/4 +18 deg\nMICRO 1/4 0 deg\nMICRO 1/8 +18 deg\nMICRO 1/8 0 deg\nMICRO 1/16 +18 deg\n",
+  "frame": {
+    "type": "simulation",
+    "clockProfile": "wall-us",
+    "timeMs": 5936,
+    "nets": {
+      "esp32:J1.1": 3.3,
+      "esp32:J1.10": null,
+      "esp32:J1.11": null,
+      "esp32:J1.12": 3.3,
+      "esp32:J1.13": 3.3,
+      "esp32:J1.14": null,
+      "esp32:J1.15": 3.3,
+      "esp32:J1.16": null,
+      "esp32:J1.17": null,
+      "esp32:J1.18": null,
+      "esp32:J1.19": null,
+      "esp32:J1.20": null,
+      "esp32:J1.21": 5,
+      "esp32:J1.22": 0,
+      "esp32:J1.4": 0,
+      "esp32:J1.5": 3.3,
+      "esp32:J1.6": 3.3,
+      "esp32:J1.7": 3.3,
+      "esp32:J1.8": null,
+      "esp32:J1.9": null,
+      "esp32:J3.10": null,
+      "esp32:J3.14": null,
+      "esp32:J3.15": null,
+      "esp32:J3.16": null,
+      "esp32:J3.17": null,
+      "esp32:J3.18": null,
+      "esp32:J3.19": null,
+      "esp32:J3.2": null,
+      "esp32:J3.20": null,
+      "esp32:J3.3": null,
+      "esp32:J3.4": null,
+      "esp32:J3.5": 0,
+      "esp32:J3.6": null,
+      "esp32:J3.7": null,
+      "esp32:J3.8": null,
+      "esp32:J3.9": null,
+      "stepperDriver:1A": null,
+      "stepperDriver:1B": null,
+      "stepperDriver:2A": null,
+      "stepperDriver:2B": null,
+      "stepperDriver:VMOT": 12
+    },
+    "leds": {},
+    "gpios": {
+      "2": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "3": {
+        "mode": "OUT",
+        "volts": 3.3,
+        "level": 1
+      },
+      "4": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "5": {
+        "mode": "OUT",
+        "volts": 3.3,
+        "level": 1
+      },
+      "6": {
+        "mode": "OUT",
+        "volts": 3.3,
+        "level": 1
+      },
+      "7": {
+        "mode": "OUT",
+        "volts": 3.3,
+        "level": 1
+      },
+      "8": {
+        "mode": "OUT",
+        "volts": 3.3,
+        "level": 1
+      },
+      "9": {
+        "mode": "OUT",
+        "volts": 3.3,
+        "level": 1
+      }
+    },
+    "sensors": {},
+    "displays": {},
+    "measurements": [],
+    "i2cTrace": [],
+    "touches": {},
+    "tfts": {},
+    "spiTrace": [],
+    "spiBytes": 0,
+    "steppers": {
+      "drivers": {
+        "stepperDriver": {
+          "powered": true,
+          "motorPower": true,
+          "enabled": true,
+          "levels": {
+            "STEP": 0,
+            "DIR": 1,
+            "ENABLE": 0,
+            "RESET": 1,
+            "SLEEP": 1,
+            "MS1": 1,
+            "MS2": 1,
+            "MS3": 1
+          },
+          "resolution": 16,
+          "translatorTicks": 160,
+          "rising": 460,
+          "accepted": 460,
+          "ignored": 0,
+          "rejected": 0,
+          "pending": false,
+          "phaseA": -0.7071067811865499,
+          "phaseB": -0.7071067811865452,
+          "lastFault": "",
+          "trace": [
+            {
+              "timeUs": 5317077.125999872,
+              "operation": "step",
+              "value": "+1/16; translator=33/16"
+            },
+            {
+              "timeUs": 5321939.113999968,
+              "operation": "step",
+              "value": "+1/16; translator=34/16"
+            },
+            {
+              "timeUs": 5326863.606000096,
+              "operation": "step",
+              "value": "+1/16; translator=35/16"
+            },
+            {
+              "timeUs": 5332010.872999905,
+              "operation": "step",
+              "value": "+1/16; translator=36/16"
+            },
+            {
+              "timeUs": 5336718.147000056,
+              "operation": "step",
+              "value": "+1/16; translator=37/16"
+            },
+            {
+              "timeUs": 5341258.926999969,
+              "operation": "step",
+              "value": "+1/16; translator=38/16"
+            },
+            {
+              "timeUs": 5345279.581000069,
+              "operation": "step",
+              "value": "+1/16; translator=39/16"
+            },
+            {
+              "timeUs": 5350371.872999901,
+              "operation": "step",
+              "value": "+1/16; translator=40/16"
+            },
+            {
+              "timeUs": 5354975.49500009,
+              "operation": "step",
+              "value": "+1/16; translator=41/16"
+            },
+            {
+              "timeUs": 5359514.7319998965,
+              "operation": "step",
+              "value": "+1/16; translator=42/16"
+            },
+            {
+              "timeUs": 5364159.7850000765,
+              "operation": "step",
+              "value": "+1/16; translator=43/16"
+            },
+            {
+              "timeUs": 5368654.701000005,
+              "operation": "step",
+              "value": "+1/16; translator=44/16"
+            },
+            {
+              "timeUs": 5374048.518000087,
+              "operation": "step",
+              "value": "+1/16; translator=45/16"
+            },
+            {
+              "timeUs": 5379439.451000094,
+              "operation": "step",
+              "value": "+1/16; translator=46/16"
+            },
+            {
+              "timeUs": 5384001.826000065,
+              "operation": "step",
+              "value": "+1/16; translator=47/16"
+            },
+            {
+              "timeUs": 5388696.19599998,
+              "operation": "step",
+              "value": "+1/16; translator=48/16"
+            },
+            {
+              "timeUs": 5393240.451000044,
+              "operation": "step",
+              "value": "+1/16; translator=49/16"
+            },
+            {
+              "timeUs": 5397805.114999982,
+              "operation": "step",
+              "value": "+1/16; translator=50/16"
+            },
+            {
+              "timeUs": 5402346.575999958,
+              "operation": "step",
+              "value": "+1/16; translator=51/16"
+            },
+            {
+              "timeUs": 5406819.939999925,
+              "operation": "step",
+              "value": "+1/16; translator=52/16"
+            },
+            {
+              "timeUs": 5411900.296999915,
+              "operation": "step",
+              "value": "+1/16; translator=53/16"
+            },
+            {
+              "timeUs": 5416506.061999891,
+              "operation": "step",
+              "value": "+1/16; translator=54/16"
+            },
+            {
+              "timeUs": 5423043.528999956,
+              "operation": "step",
+              "value": "+1/16; translator=55/16"
+            },
+            {
+              "timeUs": 5428621.916000079,
+              "operation": "step",
+              "value": "+1/16; translator=56/16"
+            },
+            {
+              "timeUs": 5433117.034999924,
+              "operation": "step",
+              "value": "+1/16; translator=57/16"
+            },
+            {
+              "timeUs": 5437519.931999994,
+              "operation": "step",
+              "value": "+1/16; translator=58/16"
+            },
+            {
+              "timeUs": 5443135.926999869,
+              "operation": "step",
+              "value": "+1/16; translator=59/16"
+            },
+            {
+              "timeUs": 5447634.192999927,
+              "operation": "step",
+              "value": "+1/16; translator=60/16"
+            },
+            {
+              "timeUs": 5452690.75300009,
+              "operation": "step",
+              "value": "+1/16; translator=61/16"
+            },
+            {
+              "timeUs": 5457211.809999999,
+              "operation": "step",
+              "value": "+1/16; translator=62/16"
+            },
+            {
+              "timeUs": 5461593.970000027,
+              "operation": "step",
+              "value": "+1/16; translator=63/16"
+            },
+            {
+              "timeUs": 5465944.609000087,
+              "operation": "step",
+              "value": "+1/16; translator=64/16"
+            },
+            {
+              "timeUs": 5470545.703999894,
+              "operation": "step",
+              "value": "+1/16; translator=65/16"
+            },
+            {
+              "timeUs": 5475678.57099995,
+              "operation": "step",
+              "value": "+1/16; translator=66/16"
+            },
+            {
+              "timeUs": 5480669.001999954,
+              "operation": "step",
+              "value": "+1/16; translator=67/16"
+            },
+            {
+              "timeUs": 5484414.197999919,
+              "operation": "step",
+              "value": "+1/16; translator=68/16"
+            },
+            {
+              "timeUs": 5490035.128999893,
+              "operation": "step",
+              "value": "+1/16; translator=69/16"
+            },
+            {
+              "timeUs": 5494773.136000065,
+              "operation": "step",
+              "value": "+1/16; translator=70/16"
+            },
+            {
+              "timeUs": 5499702.798999986,
+              "operation": "step",
+              "value": "+1/16; translator=71/16"
+            },
+            {
+              "timeUs": 5504664.70800004,
+              "operation": "step",
+              "value": "+1/16; translator=72/16"
+            },
+            {
+              "timeUs": 5509272.639999986,
+              "operation": "step",
+              "value": "+1/16; translator=73/16"
+            },
+            {
+              "timeUs": 5515710.856000073,
+              "operation": "step",
+              "value": "+1/16; translator=74/16"
+            },
+            {
+              "timeUs": 5521849.129000083,
+              "operation": "step",
+              "value": "+1/16; translator=75/16"
+            },
+            {
+              "timeUs": 5526344.523999933,
+              "operation": "step",
+              "value": "+1/16; translator=76/16"
+            },
+            {
+              "timeUs": 5530751.795000015,
+              "operation": "step",
+              "value": "+1/16; translator=77/16"
+            },
+            {
+              "timeUs": 5535297.519000089,
+              "operation": "step",
+              "value": "+1/16; translator=78/16"
+            },
+            {
+              "timeUs": 5539795.567999892,
+              "operation": "step",
+              "value": "+1/16; translator=79/16"
+            },
+            {
+              "timeUs": 5543983.177000014,
+              "operation": "step",
+              "value": "+1/16; translator=80/16"
+            },
+            {
+              "timeUs": 5548540.7169999555,
+              "operation": "step",
+              "value": "+1/16; translator=81/16"
+            },
+            {
+              "timeUs": 5553855.619000075,
+              "operation": "step",
+              "value": "+1/16; translator=82/16"
+            },
+            {
+              "timeUs": 5558455.308999894,
+              "operation": "step",
+              "value": "+1/16; translator=83/16"
+            },
+            {
+              "timeUs": 5562867.840999989,
+              "operation": "step",
+              "value": "+1/16; translator=84/16"
+            },
+            {
+              "timeUs": 5567166.373000024,
+              "operation": "step",
+              "value": "+1/16; translator=85/16"
+            },
+            {
+              "timeUs": 5571608.690999914,
+              "operation": "step",
+              "value": "+1/16; translator=86/16"
+            },
+            {
+              "timeUs": 5575780.372000057,
+              "operation": "step",
+              "value": "+1/16; translator=87/16"
+            },
+            {
+              "timeUs": 5580736.362999985,
+              "operation": "step",
+              "value": "+1/16; translator=88/16"
+            },
+            {
+              "timeUs": 5585423.963000039,
+              "operation": "step",
+              "value": "+1/16; translator=89/16"
+            },
+            {
+              "timeUs": 5590371.355999922,
+              "operation": "step",
+              "value": "+1/16; translator=90/16"
+            },
+            {
+              "timeUs": 5594926.627000049,
+              "operation": "step",
+              "value": "+1/16; translator=91/16"
+            },
+            {
+              "timeUs": 5600279.779999927,
+              "operation": "step",
+              "value": "+1/16; translator=92/16"
+            },
+            {
+              "timeUs": 5604795.010999944,
+              "operation": "step",
+              "value": "+1/16; translator=93/16"
+            },
+            {
+              "timeUs": 5608688.24099998,
+              "operation": "step",
+              "value": "+1/16; translator=94/16"
+            },
+            {
+              "timeUs": 5613058.049000017,
+              "operation": "step",
+              "value": "+1/16; translator=95/16"
+            },
+            {
+              "timeUs": 5617520.278999954,
+              "operation": "step",
+              "value": "+1/16; translator=96/16"
+            },
+            {
+              "timeUs": 5622813.446999891,
+              "operation": "step",
+              "value": "+1/16; translator=97/16"
+            },
+            {
+              "timeUs": 5627499.058999941,
+              "operation": "step",
+              "value": "+1/16; translator=98/16"
+            },
+            {
+              "timeUs": 5632110.211999966,
+              "operation": "step",
+              "value": "+1/16; translator=99/16"
+            },
+            {
+              "timeUs": 5636619.367000051,
+              "operation": "step",
+              "value": "+1/16; translator=100/16"
+            },
+            {
+              "timeUs": 5641465.229000058,
+              "operation": "step",
+              "value": "+1/16; translator=101/16"
+            },
+            {
+              "timeUs": 5645902.889999878,
+              "operation": "step",
+              "value": "+1/16; translator=102/16"
+            },
+            {
+              "timeUs": 5650603.76299995,
+              "operation": "step",
+              "value": "+1/16; translator=103/16"
+            },
+            {
+              "timeUs": 5655377.120999917,
+              "operation": "step",
+              "value": "+1/16; translator=104/16"
+            },
+            {
+              "timeUs": 5659780.314999921,
+              "operation": "step",
+              "value": "+1/16; translator=105/16"
+            },
+            {
+              "timeUs": 5664211.194000021,
+              "operation": "step",
+              "value": "+1/16; translator=106/16"
+            },
+            {
+              "timeUs": 5669496.627999973,
+              "operation": "step",
+              "value": "+1/16; translator=107/16"
+            },
+            {
+              "timeUs": 5674654.068999952,
+              "operation": "step",
+              "value": "+1/16; translator=108/16"
+            },
+            {
+              "timeUs": 5679311.101000076,
+              "operation": "step",
+              "value": "+1/16; translator=109/16"
+            },
+            {
+              "timeUs": 5683203.25400006,
+              "operation": "step",
+              "value": "+1/16; translator=110/16"
+            },
+            {
+              "timeUs": 5687954.877000069,
+              "operation": "step",
+              "value": "+1/16; translator=111/16"
+            },
+            {
+              "timeUs": 5692607.4939998705,
+              "operation": "step",
+              "value": "+1/16; translator=112/16"
+            },
+            {
+              "timeUs": 5697177.497999957,
+              "operation": "step",
+              "value": "+1/16; translator=113/16"
+            },
+            {
+              "timeUs": 5701849.747000001,
+              "operation": "step",
+              "value": "+1/16; translator=114/16"
+            },
+            {
+              "timeUs": 5707033.772000074,
+              "operation": "step",
+              "value": "+1/16; translator=115/16"
+            },
+            {
+              "timeUs": 5711492.922000075,
+              "operation": "step",
+              "value": "+1/16; translator=116/16"
+            },
+            {
+              "timeUs": 5716341.2979999,
+              "operation": "step",
+              "value": "+1/16; translator=117/16"
+            },
+            {
+              "timeUs": 5722091.562000038,
+              "operation": "step",
+              "value": "+1/16; translator=118/16"
+            },
+            {
+              "timeUs": 5726677.26900002,
+              "operation": "step",
+              "value": "+1/16; translator=119/16"
+            },
+            {
+              "timeUs": 5732071.958999997,
+              "operation": "step",
+              "value": "+1/16; translator=120/16"
+            },
+            {
+              "timeUs": 5736555.207000021,
+              "operation": "step",
+              "value": "+1/16; translator=121/16"
+            },
+            {
+              "timeUs": 5741477.349999957,
+              "operation": "step",
+              "value": "+1/16; translator=122/16"
+            },
+            {
+              "timeUs": 5746161.71800008,
+              "operation": "step",
+              "value": "+1/16; translator=123/16"
+            },
+            {
+              "timeUs": 5750699.360000081,
+              "operation": "step",
+              "value": "+1/16; translator=124/16"
+            },
+            {
+              "timeUs": 5755086.22799987,
+              "operation": "step",
+              "value": "+1/16; translator=125/16"
+            },
+            {
+              "timeUs": 5759601.29300002,
+              "operation": "step",
+              "value": "+1/16; translator=126/16"
+            },
+            {
+              "timeUs": 5764219.474000009,
+              "operation": "step",
+              "value": "+1/16; translator=127/16"
+            },
+            {
+              "timeUs": 5768897.176999906,
+              "operation": "step",
+              "value": "+1/16; translator=128/16"
+            },
+            {
+              "timeUs": 5773943.154000044,
+              "operation": "step",
+              "value": "+1/16; translator=129/16"
+            },
+            {
+              "timeUs": 5778507.56799994,
+              "operation": "step",
+              "value": "+1/16; translator=130/16"
+            },
+            {
+              "timeUs": 5782220.343000069,
+              "operation": "step",
+              "value": "+1/16; translator=131/16"
+            },
+            {
+              "timeUs": 5786675.825000079,
+              "operation": "step",
+              "value": "+1/16; translator=132/16"
+            },
+            {
+              "timeUs": 5791345.33499999,
+              "operation": "step",
+              "value": "+1/16; translator=133/16"
+            },
+            {
+              "timeUs": 5796021.1179999355,
+              "operation": "step",
+              "value": "+1/16; translator=134/16"
+            },
+            {
+              "timeUs": 5800461.886999905,
+              "operation": "step",
+              "value": "+1/16; translator=135/16"
+            },
+            {
+              "timeUs": 5805333.409999963,
+              "operation": "step",
+              "value": "+1/16; translator=136/16"
+            },
+            {
+              "timeUs": 5809723.7639999855,
+              "operation": "step",
+              "value": "+1/16; translator=137/16"
+            },
+            {
+              "timeUs": 5814180.858999938,
+              "operation": "step",
+              "value": "+1/16; translator=138/16"
+            },
+            {
+              "timeUs": 5818655.621000072,
+              "operation": "step",
+              "value": "+1/16; translator=139/16"
+            },
+            {
+              "timeUs": 5823040.299999956,
+              "operation": "step",
+              "value": "+1/16; translator=140/16"
+            },
+            {
+              "timeUs": 5827471.078999992,
+              "operation": "step",
+              "value": "+1/16; translator=141/16"
+            },
+            {
+              "timeUs": 5831804.168000063,
+              "operation": "step",
+              "value": "+1/16; translator=142/16"
+            },
+            {
+              "timeUs": 5836315.490999892,
+              "operation": "step",
+              "value": "+1/16; translator=143/16"
+            },
+            {
+              "timeUs": 5840343.81299994,
+              "operation": "step",
+              "value": "+1/16; translator=144/16"
+            },
+            {
+              "timeUs": 5844687.676000092,
+              "operation": "step",
+              "value": "+1/16; translator=145/16"
+            },
+            {
+              "timeUs": 5848222.819999931,
+              "operation": "step",
+              "value": "+1/16; translator=146/16"
+            },
+            {
+              "timeUs": 5852335.4599998705,
+              "operation": "step",
+              "value": "+1/16; translator=147/16"
+            },
+            {
+              "timeUs": 5856793.113999888,
+              "operation": "step",
+              "value": "+1/16; translator=148/16"
+            },
+            {
+              "timeUs": 5861186.948999874,
+              "operation": "step",
+              "value": "+1/16; translator=149/16"
+            },
+            {
+              "timeUs": 5865678.854999933,
+              "operation": "step",
+              "value": "+1/16; translator=150/16"
+            },
+            {
+              "timeUs": 5870098.766999878,
+              "operation": "step",
+              "value": "+1/16; translator=151/16"
+            },
+            {
+              "timeUs": 5874988.832000028,
+              "operation": "step",
+              "value": "+1/16; translator=152/16"
+            },
+            {
+              "timeUs": 5879353.987000026,
+              "operation": "step",
+              "value": "+1/16; translator=153/16"
+            },
+            {
+              "timeUs": 5883777.26900002,
+              "operation": "step",
+              "value": "+1/16; translator=154/16"
+            },
+            {
+              "timeUs": 5888251.805000063,
+              "operation": "step",
+              "value": "+1/16; translator=155/16"
+            },
+            {
+              "timeUs": 5892245.305999927,
+              "operation": "step",
+              "value": "+1/16; translator=156/16"
+            },
+            {
+              "timeUs": 5897080.622999966,
+              "operation": "step",
+              "value": "+1/16; translator=157/16"
+            },
+            {
+              "timeUs": 5901630.930000013,
+              "operation": "step",
+              "value": "+1/16; translator=158/16"
+            },
+            {
+              "timeUs": 5905622.541999929,
+              "operation": "step",
+              "value": "+1/16; translator=159/16"
+            },
+            {
+              "timeUs": 5910063.484000051,
+              "operation": "step",
+              "value": "+1/16; translator=160/16"
+            }
+          ],
+          "reason": "Idealan pogon; bez dinamike struje i tereta"
+        }
+      },
+      "motors": {
+        "stepperMotor": {
+          "driver": "stepperDriver",
+          "connected": true,
+          "orientation": 1,
+          "energized": true,
+          "positionCertain": true,
+          "drivenTicks": 160,
+          "idealAngle": 18,
+          "angle": 18,
+          "fullSteps": 200,
+          "reason": "Idealni pomak iz pogonskih koraka"
+        }
+      }
+    },
+    "tmDisplays": {},
+    "infrared": {},
+    "encoders": {},
+    "oneWireDevices": {},
+    "timedSensors": {},
+    "analogInputs": {},
+    "servos": {},
+    "diagnostics": [],
+    "session": 176
+  }
+}

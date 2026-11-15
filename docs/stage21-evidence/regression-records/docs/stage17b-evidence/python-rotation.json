@@ -1,0 +1,54 @@
+{
+  "console": "TOUCH SCREEN 0\nTOUCH ROT READY\nTOUCH ROT=0 X=0 Y=0\nTOUCH SCREEN 1\nTOUCH ROT=1 X=0 Y=239\nTOUCH SCREEN 2\nTOUCH ROT=2 X=239 Y=319\nTOUCH SCREEN 3\nTOUCH ROT=3 X=319 Y=0\nTOUCH SCREEN 0\n",
+  "touch": {
+    "touch1": {
+      "powered": true,
+      "down": false,
+      "x": 0,
+      "y": 0,
+      "pressure": 50,
+      "irq": 1,
+      "pd": 0,
+      "raw": {
+        "x": 0,
+        "y": 0,
+        "z1": 0,
+        "z2": 4095
+      },
+      "last": {
+        "channel": "z2",
+        "value": 4095,
+        "command": 192
+      },
+      "conversions": 64,
+      "reason": "CS HIGH · neaktivan"
+    }
+  },
+  "tft": {
+    "kind": "tft",
+    "controller": "ILI9341",
+    "width": 240,
+    "height": 320,
+    "powered": true,
+    "backlight": true,
+    "on": true,
+    "sleep": false,
+    "madctl": 72,
+    "format": 85,
+    "written": 395198,
+    "window": [
+      119,
+      105,
+      121,
+      107
+    ],
+    "reason": "CS HIGH · neaktivan"
+  },
+  "pixels": {
+    "length": 76800,
+    "nonzero": 2221,
+    "sha256": "752dca89ab6c7a76427e9c900a0f16a5de6d962b324bb6c165af6ca1ef8b1485"
+  },
+  "leds": {},
+  "diagnostics": []
+}

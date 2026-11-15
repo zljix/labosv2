@@ -1,0 +1,6913 @@
+[
+  {
+    "key": "tftGraphics",
+    "text": "TFT GRAPHICS READY\r\n",
+    "error": "",
+    "done": false,
+    "frame": {
+      "type": "simulation",
+      "clockProfile": "external-us",
+      "timeMs": 660,
+      "nets": {
+        "esp32:J1.1": 3.3,
+        "esp32:J1.10": null,
+        "esp32:J1.11": null,
+        "esp32:J1.12": 3.3,
+        "esp32:J1.13": null,
+        "esp32:J1.14": null,
+        "esp32:J1.15": 3.3,
+        "esp32:J1.16": 3.3,
+        "esp32:J1.17": 0,
+        "esp32:J1.18": 0,
+        "esp32:J1.19": null,
+        "esp32:J1.20": null,
+        "esp32:J1.21": 5,
+        "esp32:J1.22": 0,
+        "esp32:J1.4": null,
+        "esp32:J1.5": null,
+        "esp32:J1.6": null,
+        "esp32:J1.7": 3.3,
+        "esp32:J1.8": null,
+        "esp32:J1.9": null,
+        "esp32:J3.10": null,
+        "esp32:J3.14": null,
+        "esp32:J3.15": null,
+        "esp32:J3.16": null,
+        "esp32:J3.17": null,
+        "esp32:J3.18": null,
+        "esp32:J3.19": null,
+        "esp32:J3.2": null,
+        "esp32:J3.20": null,
+        "esp32:J3.3": null,
+        "esp32:J3.4": null,
+        "esp32:J3.5": null,
+        "esp32:J3.6": null,
+        "esp32:J3.7": null,
+        "esp32:J3.8": null,
+        "esp32:J3.9": null
+      },
+      "levelShifters": {},
+      "i2cLevelShifters": {},
+      "leds": {},
+      "gpios": {
+        "7": {
+          "mode": "OUT",
+          "volts": 3.3,
+          "level": 1
+        },
+        "8": {
+          "mode": "OUT",
+          "volts": 3.3,
+          "level": 1
+        },
+        "9": {
+          "mode": "OUT",
+          "volts": 3.3,
+          "level": 1
+        },
+        "10": {
+          "mode": "OUT",
+          "volts": 3.3,
+          "level": 1
+        },
+        "11": {
+          "mode": "OUT",
+          "volts": 0,
+          "level": 0
+        },
+        "12": {
+          "mode": "OUT",
+          "volts": 0,
+          "level": 0
+        },
+        "13": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        }
+      },
+      "optical": {},
+      "sensors": {},
+      "displays": {},
+      "measurements": [],
+      "i2cTrace": [],
+      "radios": {},
+      "sdCards": {},
+      "rtcDevices": {},
+      "touches": {},
+      "tfts": {
+        "tft1": {
+          "kind": "tft",
+          "width": 128,
+          "height": 128,
+          "powered": true,
+          "on": true,
+          "sleep": false,
+          "backlight": true,
+          "madctl": 200,
+          "format": 5,
+          "written": 20612,
+          "window": [
+            7,
+            124,
+            7,
+            124
+          ],
+          "pixels": {
+            "length": 16384,
+            "nonzero": 4224,
+            "sha256": "93e9bc5434fbfc3848ff1cf141a5833da15bca5a48a81e711f968095ab15a68a",
+            "rgb": [
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              2016,
+              31
+            ]
+          },
+          "reason": "CS HIGH · neaktivan"
+        }
+      },
+      "spiTrace": [
+        {
+          "timeUs": 559210,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559213,
+          "device": "tft1",
+          "operation": "data",
+          "value": 120,
+          "result": "write"
+        },
+        {
+          "timeUs": 559220,
+          "device": "tft1",
+          "operation": "command",
+          "value": 44,
+          "result": "write"
+        },
+        {
+          "timeUs": 559228,
+          "device": "tft1",
+          "operation": "data",
+          "value": 248,
+          "result": "write"
+        },
+        {
+          "timeUs": 559237,
+          "device": "tft1",
+          "operation": "command",
+          "value": 42,
+          "result": "write"
+        },
+        {
+          "timeUs": 559241,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559244,
+          "device": "tft1",
+          "operation": "data",
+          "value": 14,
+          "result": "write"
+        },
+        {
+          "timeUs": 559247,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559250,
+          "device": "tft1",
+          "operation": "data",
+          "value": 14,
+          "result": "write"
+        },
+        {
+          "timeUs": 559257,
+          "device": "tft1",
+          "operation": "command",
+          "value": 43,
+          "result": "write"
+        },
+        {
+          "timeUs": 559261,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559264,
+          "device": "tft1",
+          "operation": "data",
+          "value": 121,
+          "result": "write"
+        },
+        {
+          "timeUs": 559267,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559270,
+          "device": "tft1",
+          "operation": "data",
+          "value": 121,
+          "result": "write"
+        },
+        {
+          "timeUs": 559277,
+          "device": "tft1",
+          "operation": "command",
+          "value": 44,
+          "result": "write"
+        },
+        {
+          "timeUs": 559285,
+          "device": "tft1",
+          "operation": "data",
+          "value": 248,
+          "result": "write"
+        },
+        {
+          "timeUs": 559294,
+          "device": "tft1",
+          "operation": "command",
+          "value": 42,
+          "result": "write"
+        },
+        {
+          "timeUs": 559298,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559301,
+          "device": "tft1",
+          "operation": "data",
+          "value": 13,
+          "result": "write"
+        },
+        {
+          "timeUs": 559304,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559307,
+          "device": "tft1",
+          "operation": "data",
+          "value": 13,
+          "result": "write"
+        },
+        {
+          "timeUs": 559314,
+          "device": "tft1",
+          "operation": "command",
+          "value": 43,
+          "result": "write"
+        },
+        {
+          "timeUs": 559318,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559321,
+          "device": "tft1",
+          "operation": "data",
+          "value": 121,
+          "result": "write"
+        },
+        {
+          "timeUs": 559324,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559327,
+          "device": "tft1",
+          "operation": "data",
+          "value": 121,
+          "result": "write"
+        },
+        {
+          "timeUs": 559334,
+          "device": "tft1",
+          "operation": "command",
+          "value": 44,
+          "result": "write"
+        },
+        {
+          "timeUs": 559342,
+          "device": "tft1",
+          "operation": "data",
+          "value": 248,
+          "result": "write"
+        },
+        {
+          "timeUs": 559351,
+          "device": "tft1",
+          "operation": "command",
+          "value": 42,
+          "result": "write"
+        },
+        {
+          "timeUs": 559355,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559358,
+          "device": "tft1",
+          "operation": "data",
+          "value": 12,
+          "result": "write"
+        },
+        {
+          "timeUs": 559361,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559364,
+          "device": "tft1",
+          "operation": "data",
+          "value": 12,
+          "result": "write"
+        },
+        {
+          "timeUs": 559371,
+          "device": "tft1",
+          "operation": "command",
+          "value": 43,
+          "result": "write"
+        },
+        {
+          "timeUs": 559375,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559378,
+          "device": "tft1",
+          "operation": "data",
+          "value": 122,
+          "result": "write"
+        },
+        {
+          "timeUs": 559381,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559384,
+          "device": "tft1",
+          "operation": "data",
+          "value": 122,
+          "result": "write"
+        },
+        {
+          "timeUs": 559391,
+          "device": "tft1",
+          "operation": "command",
+          "value": 44,
+          "result": "write"
+        },
+        {
+          "timeUs": 559399,
+          "device": "tft1",
+          "operation": "data",
+          "value": 248,
+          "result": "write"
+        },
+        {
+          "timeUs": 559408,
+          "device": "tft1",
+          "operation": "command",
+          "value": 42,
+          "result": "write"
+        },
+        {
+          "timeUs": 559412,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559415,
+          "device": "tft1",
+          "operation": "data",
+          "value": 11,
+          "result": "write"
+        },
+        {
+          "timeUs": 559418,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559421,
+          "device": "tft1",
+          "operation": "data",
+          "value": 11,
+          "result": "write"
+        },
+        {
+          "timeUs": 559428,
+          "device": "tft1",
+          "operation": "command",
+          "value": 43,
+          "result": "write"
+        },
+        {
+          "timeUs": 559432,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559435,
+          "device": "tft1",
+          "operation": "data",
+          "value": 122,
+          "result": "write"
+        },
+        {
+          "timeUs": 559438,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559441,
+          "device": "tft1",
+          "operation": "data",
+          "value": 122,
+          "result": "write"
+        },
+        {
+          "timeUs": 559448,
+          "device": "tft1",
+          "operation": "command",
+          "value": 44,
+          "result": "write"
+        },
+        {
+          "timeUs": 559456,
+          "device": "tft1",
+          "operation": "data",
+          "value": 248,
+          "result": "write"
+        },
+        {
+          "timeUs": 559465,
+          "device": "tft1",
+          "operation": "command",
+          "value": 42,
+          "result": "write"
+        },
+        {
+          "timeUs": 559469,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559472,
+          "device": "tft1",
+          "operation": "data",
+          "value": 10,
+          "result": "write"
+        },
+        {
+          "timeUs": 559475,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559478,
+          "device": "tft1",
+          "operation": "data",
+          "value": 10,
+          "result": "write"
+        },
+        {
+          "timeUs": 559485,
+          "device": "tft1",
+          "operation": "command",
+          "value": 43,
+          "result": "write"
+        },
+        {
+          "timeUs": 559489,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559492,
+          "device": "tft1",
+          "operation": "data",
+          "value": 123,
+          "result": "write"
+        },
+        {
+          "timeUs": 559495,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559498,
+          "device": "tft1",
+          "operation": "data",
+          "value": 123,
+          "result": "write"
+        },
+        {
+          "timeUs": 559505,
+          "device": "tft1",
+          "operation": "command",
+          "value": 44,
+          "result": "write"
+        },
+        {
+          "timeUs": 559513,
+          "device": "tft1",
+          "operation": "data",
+          "value": 248,
+          "result": "write"
+        },
+        {
+          "timeUs": 559522,
+          "device": "tft1",
+          "operation": "command",
+          "value": 42,
+          "result": "write"
+        },
+        {
+          "timeUs": 559526,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559529,
+          "device": "tft1",
+          "operation": "data",
+          "value": 9,
+          "result": "write"
+        },
+        {
+          "timeUs": 559532,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559535,
+          "device": "tft1",
+          "operation": "data",
+          "value": 9,
+          "result": "write"
+        },
+        {
+          "timeUs": 559542,
+          "device": "tft1",
+          "operation": "command",
+          "value": 43,
+          "result": "write"
+        },
+        {
+          "timeUs": 559546,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559549,
+          "device": "tft1",
+          "operation": "data",
+          "value": 123,
+          "result": "write"
+        },
+        {
+          "timeUs": 559552,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559555,
+          "device": "tft1",
+          "operation": "data",
+          "value": 123,
+          "result": "write"
+        },
+        {
+          "timeUs": 559562,
+          "device": "tft1",
+          "operation": "command",
+          "value": 44,
+          "result": "write"
+        },
+        {
+          "timeUs": 559570,
+          "device": "tft1",
+          "operation": "data",
+          "value": 248,
+          "result": "write"
+        },
+        {
+          "timeUs": 559579,
+          "device": "tft1",
+          "operation": "command",
+          "value": 42,
+          "result": "write"
+        },
+        {
+          "timeUs": 559583,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559586,
+          "device": "tft1",
+          "operation": "data",
+          "value": 8,
+          "result": "write"
+        },
+        {
+          "timeUs": 559589,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559592,
+          "device": "tft1",
+          "operation": "data",
+          "value": 8,
+          "result": "write"
+        },
+        {
+          "timeUs": 559599,
+          "device": "tft1",
+          "operation": "command",
+          "value": 43,
+          "result": "write"
+        },
+        {
+          "timeUs": 559603,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559606,
+          "device": "tft1",
+          "operation": "data",
+          "value": 124,
+          "result": "write"
+        },
+        {
+          "timeUs": 559609,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559612,
+          "device": "tft1",
+          "operation": "data",
+          "value": 124,
+          "result": "write"
+        },
+        {
+          "timeUs": 559619,
+          "device": "tft1",
+          "operation": "command",
+          "value": 44,
+          "result": "write"
+        },
+        {
+          "timeUs": 559627,
+          "device": "tft1",
+          "operation": "data",
+          "value": 248,
+          "result": "write"
+        },
+        {
+          "timeUs": 559636,
+          "device": "tft1",
+          "operation": "command",
+          "value": 42,
+          "result": "write"
+        },
+        {
+          "timeUs": 559640,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559643,
+          "device": "tft1",
+          "operation": "data",
+          "value": 7,
+          "result": "write"
+        },
+        {
+          "timeUs": 559646,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559649,
+          "device": "tft1",
+          "operation": "data",
+          "value": 7,
+          "result": "write"
+        },
+        {
+          "timeUs": 559656,
+          "device": "tft1",
+          "operation": "command",
+          "value": 43,
+          "result": "write"
+        },
+        {
+          "timeUs": 559660,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559663,
+          "device": "tft1",
+          "operation": "data",
+          "value": 124,
+          "result": "write"
+        },
+        {
+          "timeUs": 559666,
+          "device": "tft1",
+          "operation": "data",
+          "value": 0,
+          "result": "write"
+        },
+        {
+          "timeUs": 559669,
+          "device": "tft1",
+          "operation": "data",
+          "value": 124,
+          "result": "write"
+        },
+        {
+          "timeUs": 559676,
+          "device": "tft1",
+          "operation": "command",
+          "value": 44,
+          "result": "write"
+        },
+        {
+          "timeUs": 559684,
+          "device": "tft1",
+          "operation": "data",
+          "value": 248,
+          "result": "write"
+        }
+      ],
+      "spiBytes": 44763,
+      "steppers": {
+        "drivers": {},
+        "motors": {}
+      },
+      "tmDisplays": {},
+      "infrared": {},
+      "encoders": {},
+      "oneWireDevices": {},
+      "timedSensors": {},
+      "analogInputs": {},
+      "servos": {},
+      "diagnostics": []
+    },
+    "marks": [
+      {
+        "line": "TFT GRAPHICS READY",
+        "frame": {
+          "type": "simulation",
+          "clockProfile": "external-us",
+          "timeMs": 560,
+          "nets": {
+            "esp32:J1.1": 3.3,
+            "esp32:J1.10": null,
+            "esp32:J1.11": null,
+            "esp32:J1.12": 3.3,
+            "esp32:J1.13": null,
+            "esp32:J1.14": null,
+            "esp32:J1.15": 3.3,
+            "esp32:J1.16": 3.3,
+            "esp32:J1.17": 0,
+            "esp32:J1.18": 0,
+            "esp32:J1.19": null,
+            "esp32:J1.20": null,
+            "esp32:J1.21": 5,
+            "esp32:J1.22": 0,
+            "esp32:J1.4": null,
+            "esp32:J1.5": null,
+            "esp32:J1.6": null,
+            "esp32:J1.7": 3.3,
+            "esp32:J1.8": null,
+            "esp32:J1.9": null,
+            "esp32:J3.10": null,
+            "esp32:J3.14": null,
+            "esp32:J3.15": null,
+            "esp32:J3.16": null,
+            "esp32:J3.17": null,
+            "esp32:J3.18": null,
+            "esp32:J3.19": null,
+            "esp32:J3.2": null,
+            "esp32:J3.20": null,
+            "esp32:J3.3": null,
+            "esp32:J3.4": null,
+            "esp32:J3.5": null,
+            "esp32:J3.6": null,
+            "esp32:J3.7": null,
+            "esp32:J3.8": null,
+            "esp32:J3.9": null
+          },
+          "levelShifters": {},
+          "i2cLevelShifters": {},
+          "leds": {},
+          "gpios": {
+            "7": {
+              "mode": "OUT",
+              "volts": 3.3,
+              "level": 1
+            },
+            "8": {
+              "mode": "OUT",
+              "volts": 3.3,
+              "level": 1
+            },
+            "9": {
+              "mode": "OUT",
+              "volts": 3.3,
+              "level": 1
+            },
+            "10": {
+              "mode": "OUT",
+              "volts": 3.3,
+              "level": 1
+            },
+            "11": {
+              "mode": "OUT",
+              "volts": 0,
+              "level": 0
+            },
+            "12": {
+              "mode": "OUT",
+              "volts": 0,
+              "level": 0
+            },
+            "13": {
+              "mode": "IN",
+              "volts": null,
+              "level": null
+            }
+          },
+          "optical": {},
+          "sensors": {},
+          "displays": {},
+          "measurements": [],
+          "i2cTrace": [],
+          "radios": {},
+          "sdCards": {},
+          "rtcDevices": {},
+          "touches": {},
+          "tfts": {
+            "tft1": {
+              "kind": "tft",
+              "width": 128,
+              "height": 128,
+              "powered": true,
+              "on": true,
+              "sleep": false,
+              "backlight": true,
+              "madctl": 200,
+              "format": 5,
+              "written": 20612,
+              "window": [
+                7,
+                124,
+                7,
+                124
+              ],
+              "pixels": {
+                "length": 16384,
+                "nonzero": 4224,
+                "sha256": "93e9bc5434fbfc3848ff1cf141a5833da15bca5a48a81e711f968095ab15a68a",
+                "rgb": [
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  31,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  2016,
+                  31
+                ]
+              },
+              "reason": "CS HIGH · neaktivan"
+            }
+          },
+          "spiTrace": [
+            {
+              "timeUs": 559210,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559213,
+              "device": "tft1",
+              "operation": "data",
+              "value": 120,
+              "result": "write"
+            },
+            {
+              "timeUs": 559220,
+              "device": "tft1",
+              "operation": "command",
+              "value": 44,
+              "result": "write"
+            },
+            {
+              "timeUs": 559228,
+              "device": "tft1",
+              "operation": "data",
+              "value": 248,
+              "result": "write"
+            },
+            {
+              "timeUs": 559237,
+              "device": "tft1",
+              "operation": "command",
+              "value": 42,
+              "result": "write"
+            },
+            {
+              "timeUs": 559241,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559244,
+              "device": "tft1",
+              "operation": "data",
+              "value": 14,
+              "result": "write"
+            },
+            {
+              "timeUs": 559247,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559250,
+              "device": "tft1",
+              "operation": "data",
+              "value": 14,
+              "result": "write"
+            },
+            {
+              "timeUs": 559257,
+              "device": "tft1",
+              "operation": "command",
+              "value": 43,
+              "result": "write"
+            },
+            {
+              "timeUs": 559261,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559264,
+              "device": "tft1",
+              "operation": "data",
+              "value": 121,
+              "result": "write"
+            },
+            {
+              "timeUs": 559267,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559270,
+              "device": "tft1",
+              "operation": "data",
+              "value": 121,
+              "result": "write"
+            },
+            {
+              "timeUs": 559277,
+              "device": "tft1",
+              "operation": "command",
+              "value": 44,
+              "result": "write"
+            },
+            {
+              "timeUs": 559285,
+              "device": "tft1",
+              "operation": "data",
+              "value": 248,
+              "result": "write"
+            },
+            {
+              "timeUs": 559294,
+              "device": "tft1",
+              "operation": "command",
+              "value": 42,
+              "result": "write"
+            },
+            {
+              "timeUs": 559298,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559301,
+              "device": "tft1",
+              "operation": "data",
+              "value": 13,
+              "result": "write"
+            },
+            {
+              "timeUs": 559304,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559307,
+              "device": "tft1",
+              "operation": "data",
+              "value": 13,
+              "result": "write"
+            },
+            {
+              "timeUs": 559314,
+              "device": "tft1",
+              "operation": "command",
+              "value": 43,
+              "result": "write"
+            },
+            {
+              "timeUs": 559318,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559321,
+              "device": "tft1",
+              "operation": "data",
+              "value": 121,
+              "result": "write"
+            },
+            {
+              "timeUs": 559324,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559327,
+              "device": "tft1",
+              "operation": "data",
+              "value": 121,
+              "result": "write"
+            },
+            {
+              "timeUs": 559334,
+              "device": "tft1",
+              "operation": "command",
+              "value": 44,
+              "result": "write"
+            },
+            {
+              "timeUs": 559342,
+              "device": "tft1",
+              "operation": "data",
+              "value": 248,
+              "result": "write"
+            },
+            {
+              "timeUs": 559351,
+              "device": "tft1",
+              "operation": "command",
+              "value": 42,
+              "result": "write"
+            },
+            {
+              "timeUs": 559355,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559358,
+              "device": "tft1",
+              "operation": "data",
+              "value": 12,
+              "result": "write"
+            },
+            {
+              "timeUs": 559361,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559364,
+              "device": "tft1",
+              "operation": "data",
+              "value": 12,
+              "result": "write"
+            },
+            {
+              "timeUs": 559371,
+              "device": "tft1",
+              "operation": "command",
+              "value": 43,
+              "result": "write"
+            },
+            {
+              "timeUs": 559375,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559378,
+              "device": "tft1",
+              "operation": "data",
+              "value": 122,
+              "result": "write"
+            },
+            {
+              "timeUs": 559381,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559384,
+              "device": "tft1",
+              "operation": "data",
+              "value": 122,
+              "result": "write"
+            },
+            {
+              "timeUs": 559391,
+              "device": "tft1",
+              "operation": "command",
+              "value": 44,
+              "result": "write"
+            },
+            {
+              "timeUs": 559399,
+              "device": "tft1",
+              "operation": "data",
+              "value": 248,
+              "result": "write"
+            },
+            {
+              "timeUs": 559408,
+              "device": "tft1",
+              "operation": "command",
+              "value": 42,
+              "result": "write"
+            },
+            {
+              "timeUs": 559412,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559415,
+              "device": "tft1",
+              "operation": "data",
+              "value": 11,
+              "result": "write"
+            },
+            {
+              "timeUs": 559418,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559421,
+              "device": "tft1",
+              "operation": "data",
+              "value": 11,
+              "result": "write"
+            },
+            {
+              "timeUs": 559428,
+              "device": "tft1",
+              "operation": "command",
+              "value": 43,
+              "result": "write"
+            },
+            {
+              "timeUs": 559432,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559435,
+              "device": "tft1",
+              "operation": "data",
+              "value": 122,
+              "result": "write"
+            },
+            {
+              "timeUs": 559438,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559441,
+              "device": "tft1",
+              "operation": "data",
+              "value": 122,
+              "result": "write"
+            },
+            {
+              "timeUs": 559448,
+              "device": "tft1",
+              "operation": "command",
+              "value": 44,
+              "result": "write"
+            },
+            {
+              "timeUs": 559456,
+              "device": "tft1",
+              "operation": "data",
+              "value": 248,
+              "result": "write"
+            },
+            {
+              "timeUs": 559465,
+              "device": "tft1",
+              "operation": "command",
+              "value": 42,
+              "result": "write"
+            },
+            {
+              "timeUs": 559469,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559472,
+              "device": "tft1",
+              "operation": "data",
+              "value": 10,
+              "result": "write"
+            },
+            {
+              "timeUs": 559475,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559478,
+              "device": "tft1",
+              "operation": "data",
+              "value": 10,
+              "result": "write"
+            },
+            {
+              "timeUs": 559485,
+              "device": "tft1",
+              "operation": "command",
+              "value": 43,
+              "result": "write"
+            },
+            {
+              "timeUs": 559489,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559492,
+              "device": "tft1",
+              "operation": "data",
+              "value": 123,
+              "result": "write"
+            },
+            {
+              "timeUs": 559495,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559498,
+              "device": "tft1",
+              "operation": "data",
+              "value": 123,
+              "result": "write"
+            },
+            {
+              "timeUs": 559505,
+              "device": "tft1",
+              "operation": "command",
+              "value": 44,
+              "result": "write"
+            },
+            {
+              "timeUs": 559513,
+              "device": "tft1",
+              "operation": "data",
+              "value": 248,
+              "result": "write"
+            },
+            {
+              "timeUs": 559522,
+              "device": "tft1",
+              "operation": "command",
+              "value": 42,
+              "result": "write"
+            },
+            {
+              "timeUs": 559526,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559529,
+              "device": "tft1",
+              "operation": "data",
+              "value": 9,
+              "result": "write"
+            },
+            {
+              "timeUs": 559532,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559535,
+              "device": "tft1",
+              "operation": "data",
+              "value": 9,
+              "result": "write"
+            },
+            {
+              "timeUs": 559542,
+              "device": "tft1",
+              "operation": "command",
+              "value": 43,
+              "result": "write"
+            },
+            {
+              "timeUs": 559546,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559549,
+              "device": "tft1",
+              "operation": "data",
+              "value": 123,
+              "result": "write"
+            },
+            {
+              "timeUs": 559552,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559555,
+              "device": "tft1",
+              "operation": "data",
+              "value": 123,
+              "result": "write"
+            },
+            {
+              "timeUs": 559562,
+              "device": "tft1",
+              "operation": "command",
+              "value": 44,
+              "result": "write"
+            },
+            {
+              "timeUs": 559570,
+              "device": "tft1",
+              "operation": "data",
+              "value": 248,
+              "result": "write"
+            },
+            {
+              "timeUs": 559579,
+              "device": "tft1",
+              "operation": "command",
+              "value": 42,
+              "result": "write"
+            },
+            {
+              "timeUs": 559583,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559586,
+              "device": "tft1",
+              "operation": "data",
+              "value": 8,
+              "result": "write"
+            },
+            {
+              "timeUs": 559589,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559592,
+              "device": "tft1",
+              "operation": "data",
+              "value": 8,
+              "result": "write"
+            },
+            {
+              "timeUs": 559599,
+              "device": "tft1",
+              "operation": "command",
+              "value": 43,
+              "result": "write"
+            },
+            {
+              "timeUs": 559603,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559606,
+              "device": "tft1",
+              "operation": "data",
+              "value": 124,
+              "result": "write"
+            },
+            {
+              "timeUs": 559609,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559612,
+              "device": "tft1",
+              "operation": "data",
+              "value": 124,
+              "result": "write"
+            },
+            {
+              "timeUs": 559619,
+              "device": "tft1",
+              "operation": "command",
+              "value": 44,
+              "result": "write"
+            },
+            {
+              "timeUs": 559627,
+              "device": "tft1",
+              "operation": "data",
+              "value": 248,
+              "result": "write"
+            },
+            {
+              "timeUs": 559636,
+              "device": "tft1",
+              "operation": "command",
+              "value": 42,
+              "result": "write"
+            },
+            {
+              "timeUs": 559640,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559643,
+              "device": "tft1",
+              "operation": "data",
+              "value": 7,
+              "result": "write"
+            },
+            {
+              "timeUs": 559646,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559649,
+              "device": "tft1",
+              "operation": "data",
+              "value": 7,
+              "result": "write"
+            },
+            {
+              "timeUs": 559656,
+              "device": "tft1",
+              "operation": "command",
+              "value": 43,
+              "result": "write"
+            },
+            {
+              "timeUs": 559660,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559663,
+              "device": "tft1",
+              "operation": "data",
+              "value": 124,
+              "result": "write"
+            },
+            {
+              "timeUs": 559666,
+              "device": "tft1",
+              "operation": "data",
+              "value": 0,
+              "result": "write"
+            },
+            {
+              "timeUs": 559669,
+              "device": "tft1",
+              "operation": "data",
+              "value": 124,
+              "result": "write"
+            },
+            {
+              "timeUs": 559676,
+              "device": "tft1",
+              "operation": "command",
+              "value": 44,
+              "result": "write"
+            },
+            {
+              "timeUs": 559684,
+              "device": "tft1",
+              "operation": "data",
+              "value": 248,
+              "result": "write"
+            }
+          ],
+          "spiBytes": 44763,
+          "steppers": {
+            "drivers": {},
+            "motors": {}
+          },
+          "tmDisplays": {},
+          "infrared": {},
+          "encoders": {},
+          "oneWireDevices": {},
+          "timedSensors": {},
+          "analogInputs": {},
+          "servos": {},
+          "diagnostics": []
+        }
+      }
+    ]
+  },
+  {
+    "key": "irNEC",
+    "text": "S3 IR READY\r\n",
+    "error": "",
+    "done": false,
+    "frame": {
+      "type": "simulation",
+      "clockProfile": "external-us",
+      "timeMs": 2052,
+      "nets": {
+        "esp32:J1.1": 3.3,
+        "esp32:J1.10": null,
+        "esp32:J1.11": null,
+        "esp32:J1.12": null,
+        "esp32:J1.13": null,
+        "esp32:J1.14": null,
+        "esp32:J1.15": null,
+        "esp32:J1.16": null,
+        "esp32:J1.17": null,
+        "esp32:J1.18": null,
+        "esp32:J1.19": null,
+        "esp32:J1.20": null,
+        "esp32:J1.21": 5,
+        "esp32:J1.22": 0,
+        "esp32:J1.4": 3.3,
+        "esp32:J1.5": null,
+        "esp32:J1.6": null,
+        "esp32:J1.7": null,
+        "esp32:J1.8": null,
+        "esp32:J1.9": null,
+        "esp32:J3.10": null,
+        "esp32:J3.14": null,
+        "esp32:J3.15": null,
+        "esp32:J3.16": null,
+        "esp32:J3.17": null,
+        "esp32:J3.18": null,
+        "esp32:J3.19": null,
+        "esp32:J3.2": null,
+        "esp32:J3.20": null,
+        "esp32:J3.3": null,
+        "esp32:J3.4": null,
+        "esp32:J3.5": null,
+        "esp32:J3.6": null,
+        "esp32:J3.7": null,
+        "esp32:J3.8": null,
+        "esp32:J3.9": null
+      },
+      "levelShifters": {},
+      "i2cLevelShifters": {},
+      "leds": {},
+      "gpios": {
+        "4": {
+          "mode": "IN",
+          "volts": 3.3,
+          "level": 1
+        }
+      },
+      "optical": {},
+      "sensors": {},
+      "displays": {},
+      "measurements": [],
+      "i2cTrace": [],
+      "radios": {},
+      "sdCards": {},
+      "rtcDevices": {},
+      "touches": {},
+      "tfts": {},
+      "spiTrace": [],
+      "spiBytes": 0,
+      "steppers": {
+        "drivers": {},
+        "motors": {}
+      },
+      "tmDisplays": {},
+      "infrared": {
+        "irRx": {
+          "kind": "receiver",
+          "powered": true,
+          "channel": 1,
+          "level": 1,
+          "busy": false,
+          "blocked": false,
+          "presses": 0,
+          "carrierHz": null,
+          "transitions": 68,
+          "trace": [
+            {
+              "timeUs": 0,
+              "level": 1
+            },
+            {
+              "timeUs": 10017,
+              "level": 0
+            },
+            {
+              "timeUs": 19017,
+              "level": 1
+            },
+            {
+              "timeUs": 23517,
+              "level": 0
+            },
+            {
+              "timeUs": 24079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 24642,
+              "level": 0
+            },
+            {
+              "timeUs": 25204.5,
+              "level": 1
+            },
+            {
+              "timeUs": 25767,
+              "level": 0
+            },
+            {
+              "timeUs": 26329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 26892,
+              "level": 0
+            },
+            {
+              "timeUs": 27454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 28017,
+              "level": 0
+            },
+            {
+              "timeUs": 28579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 29142,
+              "level": 0
+            },
+            {
+              "timeUs": 29704.5,
+              "level": 1
+            },
+            {
+              "timeUs": 30267,
+              "level": 0
+            },
+            {
+              "timeUs": 30829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 31392,
+              "level": 0
+            },
+            {
+              "timeUs": 31954.5,
+              "level": 1
+            },
+            {
+              "timeUs": 32517,
+              "level": 0
+            },
+            {
+              "timeUs": 33079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 34767,
+              "level": 0
+            },
+            {
+              "timeUs": 35329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 37017,
+              "level": 0
+            },
+            {
+              "timeUs": 37579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 39267,
+              "level": 0
+            },
+            {
+              "timeUs": 39829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 41517,
+              "level": 0
+            },
+            {
+              "timeUs": 42079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 43767,
+              "level": 0
+            },
+            {
+              "timeUs": 44329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 46017,
+              "level": 0
+            },
+            {
+              "timeUs": 46579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 48267,
+              "level": 0
+            },
+            {
+              "timeUs": 48829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 50517,
+              "level": 0
+            },
+            {
+              "timeUs": 51079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 52767,
+              "level": 0
+            },
+            {
+              "timeUs": 53329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 53892,
+              "level": 0
+            },
+            {
+              "timeUs": 54454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 56142,
+              "level": 0
+            },
+            {
+              "timeUs": 56704.5,
+              "level": 1
+            },
+            {
+              "timeUs": 57267,
+              "level": 0
+            },
+            {
+              "timeUs": 57829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 58392,
+              "level": 0
+            },
+            {
+              "timeUs": 58954.5,
+              "level": 1
+            },
+            {
+              "timeUs": 59517,
+              "level": 0
+            },
+            {
+              "timeUs": 60079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 61767,
+              "level": 0
+            },
+            {
+              "timeUs": 62329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 62892,
+              "level": 0
+            },
+            {
+              "timeUs": 63454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 64017,
+              "level": 0
+            },
+            {
+              "timeUs": 64579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 66267,
+              "level": 0
+            },
+            {
+              "timeUs": 66829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 67392,
+              "level": 0
+            },
+            {
+              "timeUs": 67954.5,
+              "level": 1
+            },
+            {
+              "timeUs": 69642,
+              "level": 0
+            },
+            {
+              "timeUs": 70204.5,
+              "level": 1
+            },
+            {
+              "timeUs": 71892,
+              "level": 0
+            },
+            {
+              "timeUs": 72454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 74142,
+              "level": 0
+            },
+            {
+              "timeUs": 74704.5,
+              "level": 1
+            },
+            {
+              "timeUs": 75267,
+              "level": 0
+            },
+            {
+              "timeUs": 75829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 77517,
+              "level": 0
+            },
+            {
+              "timeUs": 78079.5,
+              "level": 1
+            }
+          ]
+        },
+        "irRemote": {
+          "kind": "remote",
+          "powered": true,
+          "channel": 1,
+          "level": 1,
+          "busy": false,
+          "blocked": false,
+          "presses": 1,
+          "carrierHz": null,
+          "transitions": 0,
+          "trace": [
+            {
+              "timeUs": 0,
+              "level": 1
+            },
+            {
+              "timeUs": 10017,
+              "level": 0
+            },
+            {
+              "timeUs": 19017,
+              "level": 1
+            },
+            {
+              "timeUs": 23517,
+              "level": 0
+            },
+            {
+              "timeUs": 24079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 24642,
+              "level": 0
+            },
+            {
+              "timeUs": 25204.5,
+              "level": 1
+            },
+            {
+              "timeUs": 25767,
+              "level": 0
+            },
+            {
+              "timeUs": 26329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 26892,
+              "level": 0
+            },
+            {
+              "timeUs": 27454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 28017,
+              "level": 0
+            },
+            {
+              "timeUs": 28579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 29142,
+              "level": 0
+            },
+            {
+              "timeUs": 29704.5,
+              "level": 1
+            },
+            {
+              "timeUs": 30267,
+              "level": 0
+            },
+            {
+              "timeUs": 30829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 31392,
+              "level": 0
+            },
+            {
+              "timeUs": 31954.5,
+              "level": 1
+            },
+            {
+              "timeUs": 32517,
+              "level": 0
+            },
+            {
+              "timeUs": 33079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 34767,
+              "level": 0
+            },
+            {
+              "timeUs": 35329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 37017,
+              "level": 0
+            },
+            {
+              "timeUs": 37579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 39267,
+              "level": 0
+            },
+            {
+              "timeUs": 39829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 41517,
+              "level": 0
+            },
+            {
+              "timeUs": 42079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 43767,
+              "level": 0
+            },
+            {
+              "timeUs": 44329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 46017,
+              "level": 0
+            },
+            {
+              "timeUs": 46579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 48267,
+              "level": 0
+            },
+            {
+              "timeUs": 48829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 50517,
+              "level": 0
+            },
+            {
+              "timeUs": 51079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 52767,
+              "level": 0
+            },
+            {
+              "timeUs": 53329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 53892,
+              "level": 0
+            },
+            {
+              "timeUs": 54454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 56142,
+              "level": 0
+            },
+            {
+              "timeUs": 56704.5,
+              "level": 1
+            },
+            {
+              "timeUs": 57267,
+              "level": 0
+            },
+            {
+              "timeUs": 57829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 58392,
+              "level": 0
+            },
+            {
+              "timeUs": 58954.5,
+              "level": 1
+            },
+            {
+              "timeUs": 59517,
+              "level": 0
+            },
+            {
+              "timeUs": 60079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 61767,
+              "level": 0
+            },
+            {
+              "timeUs": 62329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 62892,
+              "level": 0
+            },
+            {
+              "timeUs": 63454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 64017,
+              "level": 0
+            },
+            {
+              "timeUs": 64579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 66267,
+              "level": 0
+            },
+            {
+              "timeUs": 66829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 67392,
+              "level": 0
+            },
+            {
+              "timeUs": 67954.5,
+              "level": 1
+            },
+            {
+              "timeUs": 69642,
+              "level": 0
+            },
+            {
+              "timeUs": 70204.5,
+              "level": 1
+            },
+            {
+              "timeUs": 71892,
+              "level": 0
+            },
+            {
+              "timeUs": 72454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 74142,
+              "level": 0
+            },
+            {
+              "timeUs": 74704.5,
+              "level": 1
+            },
+            {
+              "timeUs": 75267,
+              "level": 0
+            },
+            {
+              "timeUs": 75829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 77517,
+              "level": 0
+            },
+            {
+              "timeUs": 78079.5,
+              "level": 1
+            }
+          ]
+        }
+      },
+      "encoders": {},
+      "oneWireDevices": {},
+      "timedSensors": {},
+      "analogInputs": {},
+      "servos": {},
+      "diagnostics": []
+    },
+    "marks": [
+      {
+        "line": "S3 IR READY",
+        "frame": {
+          "type": "simulation",
+          "clockProfile": "external-us",
+          "timeMs": 0,
+          "nets": {
+            "esp32:J1.1": 3.3,
+            "esp32:J1.10": null,
+            "esp32:J1.11": null,
+            "esp32:J1.12": null,
+            "esp32:J1.13": null,
+            "esp32:J1.14": null,
+            "esp32:J1.15": null,
+            "esp32:J1.16": null,
+            "esp32:J1.17": null,
+            "esp32:J1.18": null,
+            "esp32:J1.19": null,
+            "esp32:J1.20": null,
+            "esp32:J1.21": 5,
+            "esp32:J1.22": 0,
+            "esp32:J1.4": 3.3,
+            "esp32:J1.5": null,
+            "esp32:J1.6": null,
+            "esp32:J1.7": null,
+            "esp32:J1.8": null,
+            "esp32:J1.9": null,
+            "esp32:J3.10": null,
+            "esp32:J3.14": null,
+            "esp32:J3.15": null,
+            "esp32:J3.16": null,
+            "esp32:J3.17": null,
+            "esp32:J3.18": null,
+            "esp32:J3.19": null,
+            "esp32:J3.2": null,
+            "esp32:J3.20": null,
+            "esp32:J3.3": null,
+            "esp32:J3.4": null,
+            "esp32:J3.5": null,
+            "esp32:J3.6": null,
+            "esp32:J3.7": null,
+            "esp32:J3.8": null,
+            "esp32:J3.9": null
+          },
+          "levelShifters": {},
+          "i2cLevelShifters": {},
+          "leds": {},
+          "gpios": {
+            "4": {
+              "mode": "IN",
+              "volts": 3.3,
+              "level": 1
+            }
+          },
+          "optical": {},
+          "sensors": {},
+          "displays": {},
+          "measurements": [],
+          "i2cTrace": [],
+          "radios": {},
+          "sdCards": {},
+          "rtcDevices": {},
+          "touches": {},
+          "tfts": {},
+          "spiTrace": [],
+          "spiBytes": 0,
+          "steppers": {
+            "drivers": {},
+            "motors": {}
+          },
+          "tmDisplays": {},
+          "infrared": {
+            "irRx": {
+              "kind": "receiver",
+              "powered": true,
+              "channel": 1,
+              "level": 1,
+              "busy": false,
+              "blocked": false,
+              "presses": 0,
+              "carrierHz": null,
+              "transitions": 0,
+              "trace": [
+                {
+                  "timeUs": 0,
+                  "level": 1
+                }
+              ]
+            },
+            "irRemote": {
+              "kind": "remote",
+              "powered": true,
+              "channel": 1,
+              "level": 1,
+              "busy": false,
+              "blocked": false,
+              "presses": 0,
+              "carrierHz": null,
+              "transitions": 0,
+              "trace": [
+                {
+                  "timeUs": 0,
+                  "level": 1
+                }
+              ]
+            }
+          },
+          "encoders": {},
+          "oneWireDevices": {},
+          "timedSensors": {},
+          "analogInputs": {},
+          "servos": {},
+          "diagnostics": []
+        }
+      }
+    ]
+  },
+  {
+    "key": "irNEC",
+    "text": "S3 IR READY\r\n",
+    "error": "",
+    "done": false,
+    "frame": {
+      "type": "simulation",
+      "clockProfile": "external-us",
+      "timeMs": 1177,
+      "nets": {
+        "esp32:J1.1": 3.3,
+        "esp32:J1.10": null,
+        "esp32:J1.11": null,
+        "esp32:J1.12": null,
+        "esp32:J1.13": null,
+        "esp32:J1.14": null,
+        "esp32:J1.15": null,
+        "esp32:J1.16": null,
+        "esp32:J1.17": null,
+        "esp32:J1.18": null,
+        "esp32:J1.19": null,
+        "esp32:J1.20": null,
+        "esp32:J1.21": 5,
+        "esp32:J1.22": 0,
+        "esp32:J1.4": 3.3,
+        "esp32:J1.5": null,
+        "esp32:J1.6": null,
+        "esp32:J1.7": null,
+        "esp32:J1.8": null,
+        "esp32:J1.9": null,
+        "esp32:J3.10": null,
+        "esp32:J3.14": null,
+        "esp32:J3.15": null,
+        "esp32:J3.16": null,
+        "esp32:J3.17": null,
+        "esp32:J3.18": null,
+        "esp32:J3.19": null,
+        "esp32:J3.2": null,
+        "esp32:J3.20": null,
+        "esp32:J3.3": null,
+        "esp32:J3.4": null,
+        "esp32:J3.5": null,
+        "esp32:J3.6": null,
+        "esp32:J3.7": null,
+        "esp32:J3.8": null,
+        "esp32:J3.9": null
+      },
+      "levelShifters": {},
+      "i2cLevelShifters": {},
+      "leds": {},
+      "gpios": {
+        "4": {
+          "mode": "IN",
+          "volts": 3.3,
+          "level": 1
+        }
+      },
+      "optical": {},
+      "sensors": {},
+      "displays": {},
+      "measurements": [],
+      "i2cTrace": [],
+      "radios": {},
+      "sdCards": {},
+      "rtcDevices": {},
+      "touches": {},
+      "tfts": {},
+      "spiTrace": [],
+      "spiBytes": 0,
+      "steppers": {
+        "drivers": {},
+        "motors": {}
+      },
+      "tmDisplays": {},
+      "infrared": {
+        "irRx": {
+          "kind": "receiver",
+          "powered": true,
+          "channel": 1,
+          "level": 1,
+          "busy": false,
+          "blocked": false,
+          "presses": 0,
+          "carrierHz": null,
+          "transitions": 92,
+          "trace": [
+            {
+              "timeUs": 0,
+              "level": 1
+            },
+            {
+              "timeUs": 10017,
+              "level": 0
+            },
+            {
+              "timeUs": 19017,
+              "level": 1
+            },
+            {
+              "timeUs": 23517,
+              "level": 0
+            },
+            {
+              "timeUs": 24079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 24642,
+              "level": 0
+            },
+            {
+              "timeUs": 25204.5,
+              "level": 1
+            },
+            {
+              "timeUs": 25767,
+              "level": 0
+            },
+            {
+              "timeUs": 26329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 26892,
+              "level": 0
+            },
+            {
+              "timeUs": 27454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 28017,
+              "level": 0
+            },
+            {
+              "timeUs": 28579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 29142,
+              "level": 0
+            },
+            {
+              "timeUs": 29704.5,
+              "level": 1
+            },
+            {
+              "timeUs": 30267,
+              "level": 0
+            },
+            {
+              "timeUs": 30829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 31392,
+              "level": 0
+            },
+            {
+              "timeUs": 31954.5,
+              "level": 1
+            },
+            {
+              "timeUs": 32517,
+              "level": 0
+            },
+            {
+              "timeUs": 33079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 34767,
+              "level": 0
+            },
+            {
+              "timeUs": 35329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 37017,
+              "level": 0
+            },
+            {
+              "timeUs": 37579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 39267,
+              "level": 0
+            },
+            {
+              "timeUs": 39829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 41517,
+              "level": 0
+            },
+            {
+              "timeUs": 42079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 43767,
+              "level": 0
+            },
+            {
+              "timeUs": 44329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 46017,
+              "level": 0
+            },
+            {
+              "timeUs": 46579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 48267,
+              "level": 0
+            },
+            {
+              "timeUs": 48829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 50517,
+              "level": 0
+            },
+            {
+              "timeUs": 51079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 52767,
+              "level": 0
+            },
+            {
+              "timeUs": 53329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 53892,
+              "level": 0
+            },
+            {
+              "timeUs": 54454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 56142,
+              "level": 0
+            },
+            {
+              "timeUs": 56704.5,
+              "level": 1
+            },
+            {
+              "timeUs": 57267,
+              "level": 0
+            },
+            {
+              "timeUs": 57829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 58392,
+              "level": 0
+            },
+            {
+              "timeUs": 58954.5,
+              "level": 1
+            },
+            {
+              "timeUs": 59517,
+              "level": 0
+            },
+            {
+              "timeUs": 60079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 61767,
+              "level": 0
+            },
+            {
+              "timeUs": 62329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 62892,
+              "level": 0
+            },
+            {
+              "timeUs": 63454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 64017,
+              "level": 0
+            },
+            {
+              "timeUs": 64579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 66267,
+              "level": 0
+            },
+            {
+              "timeUs": 66829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 67392,
+              "level": 0
+            },
+            {
+              "timeUs": 67954.5,
+              "level": 1
+            },
+            {
+              "timeUs": 69642,
+              "level": 0
+            },
+            {
+              "timeUs": 70204.5,
+              "level": 1
+            },
+            {
+              "timeUs": 71892,
+              "level": 0
+            },
+            {
+              "timeUs": 72454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 74142,
+              "level": 0
+            },
+            {
+              "timeUs": 74704.5,
+              "level": 1
+            },
+            {
+              "timeUs": 75267,
+              "level": 0
+            },
+            {
+              "timeUs": 75829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 77517,
+              "level": 0
+            },
+            {
+              "timeUs": 78079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 120017,
+              "level": 0
+            },
+            {
+              "timeUs": 129017,
+              "level": 1
+            },
+            {
+              "timeUs": 131267,
+              "level": 0
+            },
+            {
+              "timeUs": 131829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 230017,
+              "level": 0
+            },
+            {
+              "timeUs": 239017,
+              "level": 1
+            },
+            {
+              "timeUs": 241267,
+              "level": 0
+            },
+            {
+              "timeUs": 241829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 340017,
+              "level": 0
+            },
+            {
+              "timeUs": 349017,
+              "level": 1
+            },
+            {
+              "timeUs": 351267,
+              "level": 0
+            },
+            {
+              "timeUs": 351829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 450017,
+              "level": 0
+            },
+            {
+              "timeUs": 459017,
+              "level": 1
+            },
+            {
+              "timeUs": 461267,
+              "level": 0
+            },
+            {
+              "timeUs": 461829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 560017,
+              "level": 0
+            },
+            {
+              "timeUs": 569017,
+              "level": 1
+            },
+            {
+              "timeUs": 571267,
+              "level": 0
+            },
+            {
+              "timeUs": 571829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 670017,
+              "level": 0
+            },
+            {
+              "timeUs": 679017,
+              "level": 1
+            },
+            {
+              "timeUs": 681267,
+              "level": 0
+            },
+            {
+              "timeUs": 681829.5,
+              "level": 1
+            }
+          ]
+        },
+        "irRemote": {
+          "kind": "remote",
+          "powered": true,
+          "channel": 1,
+          "level": 1,
+          "busy": false,
+          "blocked": false,
+          "presses": 1,
+          "carrierHz": null,
+          "transitions": 0,
+          "trace": [
+            {
+              "timeUs": 0,
+              "level": 1
+            },
+            {
+              "timeUs": 10017,
+              "level": 0
+            },
+            {
+              "timeUs": 19017,
+              "level": 1
+            },
+            {
+              "timeUs": 23517,
+              "level": 0
+            },
+            {
+              "timeUs": 24079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 24642,
+              "level": 0
+            },
+            {
+              "timeUs": 25204.5,
+              "level": 1
+            },
+            {
+              "timeUs": 25767,
+              "level": 0
+            },
+            {
+              "timeUs": 26329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 26892,
+              "level": 0
+            },
+            {
+              "timeUs": 27454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 28017,
+              "level": 0
+            },
+            {
+              "timeUs": 28579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 29142,
+              "level": 0
+            },
+            {
+              "timeUs": 29704.5,
+              "level": 1
+            },
+            {
+              "timeUs": 30267,
+              "level": 0
+            },
+            {
+              "timeUs": 30829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 31392,
+              "level": 0
+            },
+            {
+              "timeUs": 31954.5,
+              "level": 1
+            },
+            {
+              "timeUs": 32517,
+              "level": 0
+            },
+            {
+              "timeUs": 33079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 34767,
+              "level": 0
+            },
+            {
+              "timeUs": 35329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 37017,
+              "level": 0
+            },
+            {
+              "timeUs": 37579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 39267,
+              "level": 0
+            },
+            {
+              "timeUs": 39829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 41517,
+              "level": 0
+            },
+            {
+              "timeUs": 42079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 43767,
+              "level": 0
+            },
+            {
+              "timeUs": 44329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 46017,
+              "level": 0
+            },
+            {
+              "timeUs": 46579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 48267,
+              "level": 0
+            },
+            {
+              "timeUs": 48829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 50517,
+              "level": 0
+            },
+            {
+              "timeUs": 51079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 52767,
+              "level": 0
+            },
+            {
+              "timeUs": 53329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 53892,
+              "level": 0
+            },
+            {
+              "timeUs": 54454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 56142,
+              "level": 0
+            },
+            {
+              "timeUs": 56704.5,
+              "level": 1
+            },
+            {
+              "timeUs": 57267,
+              "level": 0
+            },
+            {
+              "timeUs": 57829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 58392,
+              "level": 0
+            },
+            {
+              "timeUs": 58954.5,
+              "level": 1
+            },
+            {
+              "timeUs": 59517,
+              "level": 0
+            },
+            {
+              "timeUs": 60079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 61767,
+              "level": 0
+            },
+            {
+              "timeUs": 62329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 62892,
+              "level": 0
+            },
+            {
+              "timeUs": 63454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 64017,
+              "level": 0
+            },
+            {
+              "timeUs": 64579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 66267,
+              "level": 0
+            },
+            {
+              "timeUs": 66829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 67392,
+              "level": 0
+            },
+            {
+              "timeUs": 67954.5,
+              "level": 1
+            },
+            {
+              "timeUs": 69642,
+              "level": 0
+            },
+            {
+              "timeUs": 70204.5,
+              "level": 1
+            },
+            {
+              "timeUs": 71892,
+              "level": 0
+            },
+            {
+              "timeUs": 72454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 74142,
+              "level": 0
+            },
+            {
+              "timeUs": 74704.5,
+              "level": 1
+            },
+            {
+              "timeUs": 75267,
+              "level": 0
+            },
+            {
+              "timeUs": 75829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 77517,
+              "level": 0
+            },
+            {
+              "timeUs": 78079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 120017,
+              "level": 0
+            },
+            {
+              "timeUs": 129017,
+              "level": 1
+            },
+            {
+              "timeUs": 131267,
+              "level": 0
+            },
+            {
+              "timeUs": 131829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 230017,
+              "level": 0
+            },
+            {
+              "timeUs": 239017,
+              "level": 1
+            },
+            {
+              "timeUs": 241267,
+              "level": 0
+            },
+            {
+              "timeUs": 241829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 340017,
+              "level": 0
+            },
+            {
+              "timeUs": 349017,
+              "level": 1
+            },
+            {
+              "timeUs": 351267,
+              "level": 0
+            },
+            {
+              "timeUs": 351829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 450017,
+              "level": 0
+            },
+            {
+              "timeUs": 459017,
+              "level": 1
+            },
+            {
+              "timeUs": 461267,
+              "level": 0
+            },
+            {
+              "timeUs": 461829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 560017,
+              "level": 0
+            },
+            {
+              "timeUs": 569017,
+              "level": 1
+            },
+            {
+              "timeUs": 571267,
+              "level": 0
+            },
+            {
+              "timeUs": 571829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 670017,
+              "level": 0
+            },
+            {
+              "timeUs": 679017,
+              "level": 1
+            },
+            {
+              "timeUs": 681267,
+              "level": 0
+            },
+            {
+              "timeUs": 681829.5,
+              "level": 1
+            }
+          ]
+        }
+      },
+      "encoders": {},
+      "oneWireDevices": {},
+      "timedSensors": {},
+      "analogInputs": {},
+      "servos": {},
+      "diagnostics": []
+    },
+    "marks": [
+      {
+        "line": "S3 IR READY",
+        "frame": {
+          "type": "simulation",
+          "clockProfile": "external-us",
+          "timeMs": 0,
+          "nets": {
+            "esp32:J1.1": 3.3,
+            "esp32:J1.10": null,
+            "esp32:J1.11": null,
+            "esp32:J1.12": null,
+            "esp32:J1.13": null,
+            "esp32:J1.14": null,
+            "esp32:J1.15": null,
+            "esp32:J1.16": null,
+            "esp32:J1.17": null,
+            "esp32:J1.18": null,
+            "esp32:J1.19": null,
+            "esp32:J1.20": null,
+            "esp32:J1.21": 5,
+            "esp32:J1.22": 0,
+            "esp32:J1.4": 3.3,
+            "esp32:J1.5": null,
+            "esp32:J1.6": null,
+            "esp32:J1.7": null,
+            "esp32:J1.8": null,
+            "esp32:J1.9": null,
+            "esp32:J3.10": null,
+            "esp32:J3.14": null,
+            "esp32:J3.15": null,
+            "esp32:J3.16": null,
+            "esp32:J3.17": null,
+            "esp32:J3.18": null,
+            "esp32:J3.19": null,
+            "esp32:J3.2": null,
+            "esp32:J3.20": null,
+            "esp32:J3.3": null,
+            "esp32:J3.4": null,
+            "esp32:J3.5": null,
+            "esp32:J3.6": null,
+            "esp32:J3.7": null,
+            "esp32:J3.8": null,
+            "esp32:J3.9": null
+          },
+          "levelShifters": {},
+          "i2cLevelShifters": {},
+          "leds": {},
+          "gpios": {
+            "4": {
+              "mode": "IN",
+              "volts": 3.3,
+              "level": 1
+            }
+          },
+          "optical": {},
+          "sensors": {},
+          "displays": {},
+          "measurements": [],
+          "i2cTrace": [],
+          "radios": {},
+          "sdCards": {},
+          "rtcDevices": {},
+          "touches": {},
+          "tfts": {},
+          "spiTrace": [],
+          "spiBytes": 0,
+          "steppers": {
+            "drivers": {},
+            "motors": {}
+          },
+          "tmDisplays": {},
+          "infrared": {
+            "irRx": {
+              "kind": "receiver",
+              "powered": true,
+              "channel": 1,
+              "level": 1,
+              "busy": false,
+              "blocked": false,
+              "presses": 0,
+              "carrierHz": null,
+              "transitions": 0,
+              "trace": [
+                {
+                  "timeUs": 0,
+                  "level": 1
+                }
+              ]
+            },
+            "irRemote": {
+              "kind": "remote",
+              "powered": true,
+              "channel": 1,
+              "level": 1,
+              "busy": false,
+              "blocked": false,
+              "presses": 0,
+              "carrierHz": null,
+              "transitions": 0,
+              "trace": [
+                {
+                  "timeUs": 0,
+                  "level": 1
+                }
+              ]
+            }
+          },
+          "encoders": {},
+          "oneWireDevices": {},
+          "timedSensors": {},
+          "analogInputs": {},
+          "servos": {},
+          "diagnostics": []
+        }
+      }
+    ]
+  },
+  {
+    "key": "irNEC",
+    "text": "S3 IR READY\r\nS3 NEC A=0 C=69 R=0\r\n",
+    "error": "",
+    "done": false,
+    "frame": {
+      "type": "simulation",
+      "clockProfile": "external-us",
+      "timeMs": 1126,
+      "nets": {
+        "esp32:J1.1": 3.3,
+        "esp32:J1.10": null,
+        "esp32:J1.11": null,
+        "esp32:J1.12": null,
+        "esp32:J1.13": null,
+        "esp32:J1.14": null,
+        "esp32:J1.15": null,
+        "esp32:J1.16": null,
+        "esp32:J1.17": null,
+        "esp32:J1.18": null,
+        "esp32:J1.19": null,
+        "esp32:J1.20": null,
+        "esp32:J1.21": 5,
+        "esp32:J1.22": 0,
+        "esp32:J1.4": 3.3,
+        "esp32:J1.5": null,
+        "esp32:J1.6": null,
+        "esp32:J1.7": null,
+        "esp32:J1.8": null,
+        "esp32:J1.9": null,
+        "esp32:J3.10": null,
+        "esp32:J3.14": null,
+        "esp32:J3.15": null,
+        "esp32:J3.16": null,
+        "esp32:J3.17": null,
+        "esp32:J3.18": null,
+        "esp32:J3.19": null,
+        "esp32:J3.2": null,
+        "esp32:J3.20": null,
+        "esp32:J3.3": null,
+        "esp32:J3.4": null,
+        "esp32:J3.5": null,
+        "esp32:J3.6": null,
+        "esp32:J3.7": null,
+        "esp32:J3.8": null,
+        "esp32:J3.9": null
+      },
+      "levelShifters": {},
+      "i2cLevelShifters": {},
+      "leds": {},
+      "gpios": {
+        "4": {
+          "mode": "IN",
+          "volts": 3.3,
+          "level": 1
+        }
+      },
+      "optical": {},
+      "sensors": {},
+      "displays": {},
+      "measurements": [],
+      "i2cTrace": [],
+      "radios": {},
+      "sdCards": {},
+      "rtcDevices": {},
+      "touches": {},
+      "tfts": {},
+      "spiTrace": [],
+      "spiBytes": 0,
+      "steppers": {
+        "drivers": {},
+        "motors": {}
+      },
+      "tmDisplays": {},
+      "infrared": {
+        "irRx": {
+          "kind": "receiver",
+          "powered": true,
+          "channel": 1,
+          "level": 1,
+          "busy": false,
+          "blocked": false,
+          "presses": 0,
+          "carrierHz": null,
+          "transitions": 92,
+          "trace": [
+            {
+              "timeUs": 0,
+              "level": 1
+            },
+            {
+              "timeUs": 10017,
+              "level": 0
+            },
+            {
+              "timeUs": 19017,
+              "level": 1
+            },
+            {
+              "timeUs": 23517,
+              "level": 0
+            },
+            {
+              "timeUs": 24079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 24642,
+              "level": 0
+            },
+            {
+              "timeUs": 25204.5,
+              "level": 1
+            },
+            {
+              "timeUs": 25767,
+              "level": 0
+            },
+            {
+              "timeUs": 26329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 26892,
+              "level": 0
+            },
+            {
+              "timeUs": 27454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 28017,
+              "level": 0
+            },
+            {
+              "timeUs": 28579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 29142,
+              "level": 0
+            },
+            {
+              "timeUs": 29704.5,
+              "level": 1
+            },
+            {
+              "timeUs": 30267,
+              "level": 0
+            },
+            {
+              "timeUs": 30829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 31392,
+              "level": 0
+            },
+            {
+              "timeUs": 31954.5,
+              "level": 1
+            },
+            {
+              "timeUs": 32517,
+              "level": 0
+            },
+            {
+              "timeUs": 33079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 34767,
+              "level": 0
+            },
+            {
+              "timeUs": 35329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 37017,
+              "level": 0
+            },
+            {
+              "timeUs": 37579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 39267,
+              "level": 0
+            },
+            {
+              "timeUs": 39829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 41517,
+              "level": 0
+            },
+            {
+              "timeUs": 42079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 43767,
+              "level": 0
+            },
+            {
+              "timeUs": 44329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 46017,
+              "level": 0
+            },
+            {
+              "timeUs": 46579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 48267,
+              "level": 0
+            },
+            {
+              "timeUs": 48829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 50517,
+              "level": 0
+            },
+            {
+              "timeUs": 51079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 52767,
+              "level": 0
+            },
+            {
+              "timeUs": 53329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 53892,
+              "level": 0
+            },
+            {
+              "timeUs": 54454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 56142,
+              "level": 0
+            },
+            {
+              "timeUs": 56704.5,
+              "level": 1
+            },
+            {
+              "timeUs": 57267,
+              "level": 0
+            },
+            {
+              "timeUs": 57829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 58392,
+              "level": 0
+            },
+            {
+              "timeUs": 58954.5,
+              "level": 1
+            },
+            {
+              "timeUs": 59517,
+              "level": 0
+            },
+            {
+              "timeUs": 60079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 61767,
+              "level": 0
+            },
+            {
+              "timeUs": 62329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 62892,
+              "level": 0
+            },
+            {
+              "timeUs": 63454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 64017,
+              "level": 0
+            },
+            {
+              "timeUs": 64579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 66267,
+              "level": 0
+            },
+            {
+              "timeUs": 66829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 67392,
+              "level": 0
+            },
+            {
+              "timeUs": 67954.5,
+              "level": 1
+            },
+            {
+              "timeUs": 69642,
+              "level": 0
+            },
+            {
+              "timeUs": 70204.5,
+              "level": 1
+            },
+            {
+              "timeUs": 71892,
+              "level": 0
+            },
+            {
+              "timeUs": 72454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 74142,
+              "level": 0
+            },
+            {
+              "timeUs": 74704.5,
+              "level": 1
+            },
+            {
+              "timeUs": 75267,
+              "level": 0
+            },
+            {
+              "timeUs": 75829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 77517,
+              "level": 0
+            },
+            {
+              "timeUs": 78079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 120017,
+              "level": 0
+            },
+            {
+              "timeUs": 129017,
+              "level": 1
+            },
+            {
+              "timeUs": 131267,
+              "level": 0
+            },
+            {
+              "timeUs": 131829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 230017,
+              "level": 0
+            },
+            {
+              "timeUs": 239017,
+              "level": 1
+            },
+            {
+              "timeUs": 241267,
+              "level": 0
+            },
+            {
+              "timeUs": 241829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 340017,
+              "level": 0
+            },
+            {
+              "timeUs": 349017,
+              "level": 1
+            },
+            {
+              "timeUs": 351267,
+              "level": 0
+            },
+            {
+              "timeUs": 351829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 450017,
+              "level": 0
+            },
+            {
+              "timeUs": 459017,
+              "level": 1
+            },
+            {
+              "timeUs": 461267,
+              "level": 0
+            },
+            {
+              "timeUs": 461829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 560017,
+              "level": 0
+            },
+            {
+              "timeUs": 569017,
+              "level": 1
+            },
+            {
+              "timeUs": 571267,
+              "level": 0
+            },
+            {
+              "timeUs": 571829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 670017,
+              "level": 0
+            },
+            {
+              "timeUs": 679017,
+              "level": 1
+            },
+            {
+              "timeUs": 681267,
+              "level": 0
+            },
+            {
+              "timeUs": 681829.5,
+              "level": 1
+            }
+          ]
+        },
+        "irRemote": {
+          "kind": "remote",
+          "powered": true,
+          "channel": 1,
+          "level": 1,
+          "busy": false,
+          "blocked": false,
+          "presses": 1,
+          "carrierHz": null,
+          "transitions": 0,
+          "trace": [
+            {
+              "timeUs": 0,
+              "level": 1
+            },
+            {
+              "timeUs": 10017,
+              "level": 0
+            },
+            {
+              "timeUs": 19017,
+              "level": 1
+            },
+            {
+              "timeUs": 23517,
+              "level": 0
+            },
+            {
+              "timeUs": 24079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 24642,
+              "level": 0
+            },
+            {
+              "timeUs": 25204.5,
+              "level": 1
+            },
+            {
+              "timeUs": 25767,
+              "level": 0
+            },
+            {
+              "timeUs": 26329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 26892,
+              "level": 0
+            },
+            {
+              "timeUs": 27454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 28017,
+              "level": 0
+            },
+            {
+              "timeUs": 28579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 29142,
+              "level": 0
+            },
+            {
+              "timeUs": 29704.5,
+              "level": 1
+            },
+            {
+              "timeUs": 30267,
+              "level": 0
+            },
+            {
+              "timeUs": 30829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 31392,
+              "level": 0
+            },
+            {
+              "timeUs": 31954.5,
+              "level": 1
+            },
+            {
+              "timeUs": 32517,
+              "level": 0
+            },
+            {
+              "timeUs": 33079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 34767,
+              "level": 0
+            },
+            {
+              "timeUs": 35329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 37017,
+              "level": 0
+            },
+            {
+              "timeUs": 37579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 39267,
+              "level": 0
+            },
+            {
+              "timeUs": 39829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 41517,
+              "level": 0
+            },
+            {
+              "timeUs": 42079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 43767,
+              "level": 0
+            },
+            {
+              "timeUs": 44329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 46017,
+              "level": 0
+            },
+            {
+              "timeUs": 46579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 48267,
+              "level": 0
+            },
+            {
+              "timeUs": 48829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 50517,
+              "level": 0
+            },
+            {
+              "timeUs": 51079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 52767,
+              "level": 0
+            },
+            {
+              "timeUs": 53329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 53892,
+              "level": 0
+            },
+            {
+              "timeUs": 54454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 56142,
+              "level": 0
+            },
+            {
+              "timeUs": 56704.5,
+              "level": 1
+            },
+            {
+              "timeUs": 57267,
+              "level": 0
+            },
+            {
+              "timeUs": 57829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 58392,
+              "level": 0
+            },
+            {
+              "timeUs": 58954.5,
+              "level": 1
+            },
+            {
+              "timeUs": 59517,
+              "level": 0
+            },
+            {
+              "timeUs": 60079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 61767,
+              "level": 0
+            },
+            {
+              "timeUs": 62329.5,
+              "level": 1
+            },
+            {
+              "timeUs": 62892,
+              "level": 0
+            },
+            {
+              "timeUs": 63454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 64017,
+              "level": 0
+            },
+            {
+              "timeUs": 64579.5,
+              "level": 1
+            },
+            {
+              "timeUs": 66267,
+              "level": 0
+            },
+            {
+              "timeUs": 66829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 67392,
+              "level": 0
+            },
+            {
+              "timeUs": 67954.5,
+              "level": 1
+            },
+            {
+              "timeUs": 69642,
+              "level": 0
+            },
+            {
+              "timeUs": 70204.5,
+              "level": 1
+            },
+            {
+              "timeUs": 71892,
+              "level": 0
+            },
+            {
+              "timeUs": 72454.5,
+              "level": 1
+            },
+            {
+              "timeUs": 74142,
+              "level": 0
+            },
+            {
+              "timeUs": 74704.5,
+              "level": 1
+            },
+            {
+              "timeUs": 75267,
+              "level": 0
+            },
+            {
+              "timeUs": 75829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 77517,
+              "level": 0
+            },
+            {
+              "timeUs": 78079.5,
+              "level": 1
+            },
+            {
+              "timeUs": 120017,
+              "level": 0
+            },
+            {
+              "timeUs": 129017,
+              "level": 1
+            },
+            {
+              "timeUs": 131267,
+              "level": 0
+            },
+            {
+              "timeUs": 131829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 230017,
+              "level": 0
+            },
+            {
+              "timeUs": 239017,
+              "level": 1
+            },
+            {
+              "timeUs": 241267,
+              "level": 0
+            },
+            {
+              "timeUs": 241829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 340017,
+              "level": 0
+            },
+            {
+              "timeUs": 349017,
+              "level": 1
+            },
+            {
+              "timeUs": 351267,
+              "level": 0
+            },
+            {
+              "timeUs": 351829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 450017,
+              "level": 0
+            },
+            {
+              "timeUs": 459017,
+              "level": 1
+            },
+            {
+              "timeUs": 461267,
+              "level": 0
+            },
+            {
+              "timeUs": 461829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 560017,
+              "level": 0
+            },
+            {
+              "timeUs": 569017,
+              "level": 1
+            },
+            {
+              "timeUs": 571267,
+              "level": 0
+            },
+            {
+              "timeUs": 571829.5,
+              "level": 1
+            },
+            {
+              "timeUs": 670017,
+              "level": 0
+            },
+            {
+              "timeUs": 679017,
+              "level": 1
+            },
+            {
+              "timeUs": 681267,
+              "level": 0
+            },
+            {
+              "timeUs": 681829.5,
+              "level": 1
+            }
+          ]
+        }
+      },
+      "encoders": {},
+      "oneWireDevices": {},
+      "timedSensors": {},
+      "analogInputs": {},
+      "servos": {},
+      "diagnostics": []
+    },
+    "marks": [
+      {
+        "line": "S3 IR READY",
+        "frame": {
+          "type": "simulation",
+          "clockProfile": "external-us",
+          "timeMs": 0,
+          "nets": {
+            "esp32:J1.1": 3.3,
+            "esp32:J1.10": null,
+            "esp32:J1.11": null,
+            "esp32:J1.12": null,
+            "esp32:J1.13": null,
+            "esp32:J1.14": null,
+            "esp32:J1.15": null,
+            "esp32:J1.16": null,
+            "esp32:J1.17": null,
+            "esp32:J1.18": null,
+            "esp32:J1.19": null,
+            "esp32:J1.20": null,
+            "esp32:J1.21": 5,
+            "esp32:J1.22": 0,
+            "esp32:J1.4": 3.3,
+            "esp32:J1.5": null,
+            "esp32:J1.6": null,
+            "esp32:J1.7": null,
+            "esp32:J1.8": null,
+            "esp32:J1.9": null,
+            "esp32:J3.10": null,
+            "esp32:J3.14": null,
+            "esp32:J3.15": null,
+            "esp32:J3.16": null,
+            "esp32:J3.17": null,
+            "esp32:J3.18": null,
+            "esp32:J3.19": null,
+            "esp32:J3.2": null,
+            "esp32:J3.20": null,
+            "esp32:J3.3": null,
+            "esp32:J3.4": null,
+            "esp32:J3.5": null,
+            "esp32:J3.6": null,
+            "esp32:J3.7": null,
+            "esp32:J3.8": null,
+            "esp32:J3.9": null
+          },
+          "levelShifters": {},
+          "i2cLevelShifters": {},
+          "leds": {},
+          "gpios": {
+            "4": {
+              "mode": "IN",
+              "volts": 3.3,
+              "level": 1
+            }
+          },
+          "optical": {},
+          "sensors": {},
+          "displays": {},
+          "measurements": [],
+          "i2cTrace": [],
+          "radios": {},
+          "sdCards": {},
+          "rtcDevices": {},
+          "touches": {},
+          "tfts": {},
+          "spiTrace": [],
+          "spiBytes": 0,
+          "steppers": {
+            "drivers": {},
+            "motors": {}
+          },
+          "tmDisplays": {},
+          "infrared": {
+            "irRx": {
+              "kind": "receiver",
+              "powered": true,
+              "channel": 1,
+              "level": 1,
+              "busy": false,
+              "blocked": false,
+              "presses": 0,
+              "carrierHz": null,
+              "transitions": 0,
+              "trace": [
+                {
+                  "timeUs": 0,
+                  "level": 1
+                }
+              ]
+            },
+            "irRemote": {
+              "kind": "remote",
+              "powered": true,
+              "channel": 1,
+              "level": 1,
+              "busy": false,
+              "blocked": false,
+              "presses": 0,
+              "carrierHz": null,
+              "transitions": 0,
+              "trace": [
+                {
+                  "timeUs": 0,
+                  "level": 1
+                }
+              ]
+            }
+          },
+          "encoders": {},
+          "oneWireDevices": {},
+          "timedSensors": {},
+          "analogInputs": {},
+          "servos": {},
+          "diagnostics": []
+        }
+      },
+      {
+        "line": "S3 NEC A=0 C=69 R=0",
+        "frame": {
+          "type": "simulation",
+          "clockProfile": "external-us",
+          "timeMs": 278,
+          "nets": {
+            "esp32:J1.1": 3.3,
+            "esp32:J1.10": null,
+            "esp32:J1.11": null,
+            "esp32:J1.12": null,
+            "esp32:J1.13": null,
+            "esp32:J1.14": null,
+            "esp32:J1.15": null,
+            "esp32:J1.16": null,
+            "esp32:J1.17": null,
+            "esp32:J1.18": null,
+            "esp32:J1.19": null,
+            "esp32:J1.20": null,
+            "esp32:J1.21": 5,
+            "esp32:J1.22": 0,
+            "esp32:J1.4": 3.3,
+            "esp32:J1.5": null,
+            "esp32:J1.6": null,
+            "esp32:J1.7": null,
+            "esp32:J1.8": null,
+            "esp32:J1.9": null,
+            "esp32:J3.10": null,
+            "esp32:J3.14": null,
+            "esp32:J3.15": null,
+            "esp32:J3.16": null,
+            "esp32:J3.17": null,
+            "esp32:J3.18": null,
+            "esp32:J3.19": null,
+            "esp32:J3.2": null,
+            "esp32:J3.20": null,
+            "esp32:J3.3": null,
+            "esp32:J3.4": null,
+            "esp32:J3.5": null,
+            "esp32:J3.6": null,
+            "esp32:J3.7": null,
+            "esp32:J3.8": null,
+            "esp32:J3.9": null
+          },
+          "levelShifters": {},
+          "i2cLevelShifters": {},
+          "leds": {},
+          "gpios": {
+            "4": {
+              "mode": "IN",
+              "volts": 3.3,
+              "level": 1
+            }
+          },
+          "optical": {},
+          "sensors": {},
+          "displays": {},
+          "measurements": [],
+          "i2cTrace": [],
+          "radios": {},
+          "sdCards": {},
+          "rtcDevices": {},
+          "touches": {},
+          "tfts": {},
+          "spiTrace": [],
+          "spiBytes": 0,
+          "steppers": {
+            "drivers": {},
+            "motors": {}
+          },
+          "tmDisplays": {},
+          "infrared": {
+            "irRx": {
+              "kind": "receiver",
+              "powered": true,
+              "channel": 1,
+              "level": 1,
+              "busy": false,
+              "blocked": false,
+              "presses": 0,
+              "carrierHz": null,
+              "transitions": 76,
+              "trace": [
+                {
+                  "timeUs": 0,
+                  "level": 1
+                },
+                {
+                  "timeUs": 10017,
+                  "level": 0
+                },
+                {
+                  "timeUs": 19017,
+                  "level": 1
+                },
+                {
+                  "timeUs": 23517,
+                  "level": 0
+                },
+                {
+                  "timeUs": 24079.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 24642,
+                  "level": 0
+                },
+                {
+                  "timeUs": 25204.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 25767,
+                  "level": 0
+                },
+                {
+                  "timeUs": 26329.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 26892,
+                  "level": 0
+                },
+                {
+                  "timeUs": 27454.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 28017,
+                  "level": 0
+                },
+                {
+                  "timeUs": 28579.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 29142,
+                  "level": 0
+                },
+                {
+                  "timeUs": 29704.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 30267,
+                  "level": 0
+                },
+                {
+                  "timeUs": 30829.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 31392,
+                  "level": 0
+                },
+                {
+                  "timeUs": 31954.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 32517,
+                  "level": 0
+                },
+                {
+                  "timeUs": 33079.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 34767,
+                  "level": 0
+                },
+                {
+                  "timeUs": 35329.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 37017,
+                  "level": 0
+                },
+                {
+                  "timeUs": 37579.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 39267,
+                  "level": 0
+                },
+                {
+                  "timeUs": 39829.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 41517,
+                  "level": 0
+                },
+                {
+                  "timeUs": 42079.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 43767,
+                  "level": 0
+                },
+                {
+                  "timeUs": 44329.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 46017,
+                  "level": 0
+                },
+                {
+                  "timeUs": 46579.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 48267,
+                  "level": 0
+                },
+                {
+                  "timeUs": 48829.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 50517,
+                  "level": 0
+                },
+                {
+                  "timeUs": 51079.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 52767,
+                  "level": 0
+                },
+                {
+                  "timeUs": 53329.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 53892,
+                  "level": 0
+                },
+                {
+                  "timeUs": 54454.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 56142,
+                  "level": 0
+                },
+                {
+                  "timeUs": 56704.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 57267,
+                  "level": 0
+                },
+                {
+                  "timeUs": 57829.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 58392,
+                  "level": 0
+                },
+                {
+                  "timeUs": 58954.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 59517,
+                  "level": 0
+                },
+                {
+                  "timeUs": 60079.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 61767,
+                  "level": 0
+                },
+                {
+                  "timeUs": 62329.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 62892,
+                  "level": 0
+                },
+                {
+                  "timeUs": 63454.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 64017,
+                  "level": 0
+                },
+                {
+                  "timeUs": 64579.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 66267,
+                  "level": 0
+                },
+                {
+                  "timeUs": 66829.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 67392,
+                  "level": 0
+                },
+                {
+                  "timeUs": 67954.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 69642,
+                  "level": 0
+                },
+                {
+                  "timeUs": 70204.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 71892,
+                  "level": 0
+                },
+                {
+                  "timeUs": 72454.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 74142,
+                  "level": 0
+                },
+                {
+                  "timeUs": 74704.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 75267,
+                  "level": 0
+                },
+                {
+                  "timeUs": 75829.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 77517,
+                  "level": 0
+                },
+                {
+                  "timeUs": 78079.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 120017,
+                  "level": 0
+                },
+                {
+                  "timeUs": 129017,
+                  "level": 1
+                },
+                {
+                  "timeUs": 131267,
+                  "level": 0
+                },
+                {
+                  "timeUs": 131829.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 230017,
+                  "level": 0
+                },
+                {
+                  "timeUs": 239017,
+                  "level": 1
+                },
+                {
+                  "timeUs": 241267,
+                  "level": 0
+                },
+                {
+                  "timeUs": 241829.5,
+                  "level": 1
+                }
+              ]
+            },
+            "irRemote": {
+              "kind": "remote",
+              "powered": true,
+              "channel": 1,
+              "level": 1,
+              "busy": true,
+              "blocked": false,
+              "presses": 1,
+              "carrierHz": null,
+              "transitions": 0,
+              "trace": [
+                {
+                  "timeUs": 0,
+                  "level": 1
+                },
+                {
+                  "timeUs": 10017,
+                  "level": 0
+                },
+                {
+                  "timeUs": 19017,
+                  "level": 1
+                },
+                {
+                  "timeUs": 23517,
+                  "level": 0
+                },
+                {
+                  "timeUs": 24079.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 24642,
+                  "level": 0
+                },
+                {
+                  "timeUs": 25204.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 25767,
+                  "level": 0
+                },
+                {
+                  "timeUs": 26329.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 26892,
+                  "level": 0
+                },
+                {
+                  "timeUs": 27454.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 28017,
+                  "level": 0
+                },
+                {
+                  "timeUs": 28579.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 29142,
+                  "level": 0
+                },
+                {
+                  "timeUs": 29704.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 30267,
+                  "level": 0
+                },
+                {
+                  "timeUs": 30829.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 31392,
+                  "level": 0
+                },
+                {
+                  "timeUs": 31954.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 32517,
+                  "level": 0
+                },
+                {
+                  "timeUs": 33079.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 34767,
+                  "level": 0
+                },
+                {
+                  "timeUs": 35329.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 37017,
+                  "level": 0
+                },
+                {
+                  "timeUs": 37579.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 39267,
+                  "level": 0
+                },
+                {
+                  "timeUs": 39829.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 41517,
+                  "level": 0
+                },
+                {
+                  "timeUs": 42079.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 43767,
+                  "level": 0
+                },
+                {
+                  "timeUs": 44329.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 46017,
+                  "level": 0
+                },
+                {
+                  "timeUs": 46579.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 48267,
+                  "level": 0
+                },
+                {
+                  "timeUs": 48829.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 50517,
+                  "level": 0
+                },
+                {
+                  "timeUs": 51079.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 52767,
+                  "level": 0
+                },
+                {
+                  "timeUs": 53329.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 53892,
+                  "level": 0
+                },
+                {
+                  "timeUs": 54454.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 56142,
+                  "level": 0
+                },
+                {
+                  "timeUs": 56704.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 57267,
+                  "level": 0
+                },
+                {
+                  "timeUs": 57829.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 58392,
+                  "level": 0
+                },
+                {
+                  "timeUs": 58954.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 59517,
+                  "level": 0
+                },
+                {
+                  "timeUs": 60079.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 61767,
+                  "level": 0
+                },
+                {
+                  "timeUs": 62329.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 62892,
+                  "level": 0
+                },
+                {
+                  "timeUs": 63454.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 64017,
+                  "level": 0
+                },
+                {
+                  "timeUs": 64579.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 66267,
+                  "level": 0
+                },
+                {
+                  "timeUs": 66829.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 67392,
+                  "level": 0
+                },
+                {
+                  "timeUs": 67954.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 69642,
+                  "level": 0
+                },
+                {
+                  "timeUs": 70204.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 71892,
+                  "level": 0
+                },
+                {
+                  "timeUs": 72454.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 74142,
+                  "level": 0
+                },
+                {
+                  "timeUs": 74704.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 75267,
+                  "level": 0
+                },
+                {
+                  "timeUs": 75829.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 77517,
+                  "level": 0
+                },
+                {
+                  "timeUs": 78079.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 120017,
+                  "level": 0
+                },
+                {
+                  "timeUs": 129017,
+                  "level": 1
+                },
+                {
+                  "timeUs": 131267,
+                  "level": 0
+                },
+                {
+                  "timeUs": 131829.5,
+                  "level": 1
+                },
+                {
+                  "timeUs": 230017,
+                  "level": 0
+                },
+                {
+                  "timeUs": 239017,
+                  "level": 1
+                },
+                {
+                  "timeUs": 241267,
+                  "level": 0
+                },
+                {
+                  "timeUs": 241829.5,
+                  "level": 1
+                }
+              ]
+            }
+          },
+          "encoders": {},
+          "oneWireDevices": {},
+          "timedSensors": {},
+          "analogInputs": {},
+          "servos": {},
+          "diagnostics": []
+        }
+      }
+    ]
+  },
+  {
+    "key": "tftGraphics",
+    "text": "TFT GRAPHICS READY\r\n",
+    "error": "",
+    "done": false,
+    "frame": {
+      "type": "simulation",
+      "clockProfile": "external-us",
+      "timeMs": 660,
+      "nets": {
+        "esp32:J1.1": 3.3,
+        "esp32:J1.10": null,
+        "esp32:J1.11": null,
+        "esp32:J1.12": 3.3,
+        "esp32:J1.13": null,
+        "esp32:J1.14": null,
+        "esp32:J1.15": 3.3,
+        "esp32:J1.16": 3.3,
+        "esp32:J1.17": 0,
+        "esp32:J1.18": 0,
+        "esp32:J1.19": null,
+        "esp32:J1.20": null,
+        "esp32:J1.21": 5,
+        "esp32:J1.22": 0,
+        "esp32:J1.4": null,
+        "esp32:J1.5": null,
+        "esp32:J1.6": null,
+        "esp32:J1.7": 3.3,
+        "esp32:J1.8": null,
+        "esp32:J1.9": null,
+        "esp32:J3.10": null,
+        "esp32:J3.14": null,
+        "esp32:J3.15": null,
+        "esp32:J3.16": null,
+        "esp32:J3.17": null,
+        "esp32:J3.18": null,
+        "esp32:J3.19": null,
+        "esp32:J3.2": null,
+        "esp32:J3.20": null,
+        "esp32:J3.3": null,
+        "esp32:J3.4": null,
+        "esp32:J3.5": null,
+        "esp32:J3.6": null,
+        "esp32:J3.7": null,
+        "esp32:J3.8": null,
+        "esp32:J3.9": null
+      },
+      "levelShifters": {},
+      "i2cLevelShifters": {},
+      "leds": {},
+      "gpios": {
+        "7": {
+          "mode": "OUT",
+          "volts": 3.3,
+          "level": 1
+        },
+        "8": {
+          "mode": "OUT",
+          "volts": 3.3,
+          "level": 1
+        },
+        "9": {
+          "mode": "OUT",
+          "volts": 3.3,
+          "level": 1
+        },
+        "10": {
+          "mode": "OUT",
+          "volts": 3.3,
+          "level": 1
+        },
+        "11": {
+          "mode": "OUT",
+          "volts": 0,
+          "level": 0
+        },
+        "12": {
+          "mode": "OUT",
+          "volts": 0,
+          "level": 0
+        },
+        "13": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        }
+      },
+      "optical": {},
+      "sensors": {},
+      "displays": {},
+      "measurements": [],
+      "i2cTrace": [],
+      "radios": {},
+      "sdCards": {},
+      "rtcDevices": {},
+      "touches": {},
+      "tfts": {
+        "tft1": {
+          "kind": "tft",
+          "width": 128,
+          "height": 128,
+          "powered": true,
+          "on": false,
+          "sleep": true,
+          "backlight": true,
+          "madctl": 0,
+          "format": 6,
+          "written": 0,
+          "window": [
+            0,
+            0,
+            127,
+            127
+          ],
+          "pixels": {
+            "length": 16384,
+            "nonzero": 0,
+            "sha256": "f35d92d7866c9121401265fddf66908b214a7c4d27013a4fc660a6216e00ff46",
+            "rgb": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "reason": "CS HIGH · neaktivan"
+        }
+      },
+      "spiTrace": [
+        {
+          "timeUs": 10020,
+          "device": "tft1",
+          "operation": "reset",
+          "value": 0,
+          "result": "HW reset"
+        }
+      ],
+      "spiBytes": 0,
+      "steppers": {
+        "drivers": {},
+        "motors": {}
+      },
+      "tmDisplays": {},
+      "infrared": {},
+      "encoders": {},
+      "oneWireDevices": {},
+      "timedSensors": {},
+      "analogInputs": {},
+      "servos": {},
+      "diagnostics": [
+        {
+          "code": "spi-protocol",
+          "severity": "warning",
+          "message": "tft1: Podržano: SPI mode 0/3, MSB prvi, najviše 10 MHz.",
+          "terminals": [
+            "esp32:J1.16",
+            "tft1:CS"
+          ],
+          "wires": [
+            "spi4"
+          ]
+        }
+      ]
+    },
+    "marks": [
+      {
+        "line": "TFT GRAPHICS READY",
+        "frame": {
+          "type": "simulation",
+          "clockProfile": "external-us",
+          "timeMs": 560,
+          "nets": {
+            "esp32:J1.1": 3.3,
+            "esp32:J1.10": null,
+            "esp32:J1.11": null,
+            "esp32:J1.12": 3.3,
+            "esp32:J1.13": null,
+            "esp32:J1.14": null,
+            "esp32:J1.15": 3.3,
+            "esp32:J1.16": 3.3,
+            "esp32:J1.17": 0,
+            "esp32:J1.18": 0,
+            "esp32:J1.19": null,
+            "esp32:J1.20": null,
+            "esp32:J1.21": 5,
+            "esp32:J1.22": 0,
+            "esp32:J1.4": null,
+            "esp32:J1.5": null,
+            "esp32:J1.6": null,
+            "esp32:J1.7": 3.3,
+            "esp32:J1.8": null,
+            "esp32:J1.9": null,
+            "esp32:J3.10": null,
+            "esp32:J3.14": null,
+            "esp32:J3.15": null,
+            "esp32:J3.16": null,
+            "esp32:J3.17": null,
+            "esp32:J3.18": null,
+            "esp32:J3.19": null,
+            "esp32:J3.2": null,
+            "esp32:J3.20": null,
+            "esp32:J3.3": null,
+            "esp32:J3.4": null,
+            "esp32:J3.5": null,
+            "esp32:J3.6": null,
+            "esp32:J3.7": null,
+            "esp32:J3.8": null,
+            "esp32:J3.9": null
+          },
+          "levelShifters": {},
+          "i2cLevelShifters": {},
+          "leds": {},
+          "gpios": {
+            "7": {
+              "mode": "OUT",
+              "volts": 3.3,
+              "level": 1
+            },
+            "8": {
+              "mode": "OUT",
+              "volts": 3.3,
+              "level": 1
+            },
+            "9": {
+              "mode": "OUT",
+              "volts": 3.3,
+              "level": 1
+            },
+            "10": {
+              "mode": "OUT",
+              "volts": 3.3,
+              "level": 1
+            },
+            "11": {
+              "mode": "OUT",
+              "volts": 0,
+              "level": 0
+            },
+            "12": {
+              "mode": "OUT",
+              "volts": 0,
+              "level": 0
+            },
+            "13": {
+              "mode": "IN",
+              "volts": null,
+              "level": null
+            }
+          },
+          "optical": {},
+          "sensors": {},
+          "displays": {},
+          "measurements": [],
+          "i2cTrace": [],
+          "radios": {},
+          "sdCards": {},
+          "rtcDevices": {},
+          "touches": {},
+          "tfts": {
+            "tft1": {
+              "kind": "tft",
+              "width": 128,
+              "height": 128,
+              "powered": true,
+              "on": false,
+              "sleep": true,
+              "backlight": true,
+              "madctl": 0,
+              "format": 6,
+              "written": 0,
+              "window": [
+                0,
+                0,
+                127,
+                127
+              ],
+              "pixels": {
+                "length": 16384,
+                "nonzero": 0,
+                "sha256": "f35d92d7866c9121401265fddf66908b214a7c4d27013a4fc660a6216e00ff46",
+                "rgb": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "reason": "CS HIGH · neaktivan"
+            }
+          },
+          "spiTrace": [
+            {
+              "timeUs": 10020,
+              "device": "tft1",
+              "operation": "reset",
+              "value": 0,
+              "result": "HW reset"
+            }
+          ],
+          "spiBytes": 0,
+          "steppers": {
+            "drivers": {},
+            "motors": {}
+          },
+          "tmDisplays": {},
+          "infrared": {},
+          "encoders": {},
+          "oneWireDevices": {},
+          "timedSensors": {},
+          "analogInputs": {},
+          "servos": {},
+          "diagnostics": [
+            {
+              "code": "spi-protocol",
+              "severity": "warning",
+              "message": "tft1: Podržano: SPI mode 0/3, MSB prvi, najviše 10 MHz.",
+              "terminals": [
+                "esp32:J1.16",
+                "tft1:CS"
+              ],
+              "wires": [
+                "spi4"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "key": "spiDashboard",
+    "text": "SPI DASH T=24.00 P=101325 Pa\r\n",
+    "error": "",
+    "done": false,
+    "frame": {
+      "type": "simulation",
+      "clockProfile": "external-us",
+      "timeMs": 1598,
+      "nets": {
+        "bmpSPI:CS": 0,
+        "bmpSPI:GND": 0,
+        "bmpSPI:MISO": null,
+        "bmpSPI:MOSI": 0,
+        "bmpSPI:SCK": 0,
+        "bmpSPI:VCC": 3.3,
+        "esp32:J1.10": null,
+        "esp32:J1.11": null,
+        "esp32:J1.12": 3.3,
+        "esp32:J1.13": null,
+        "esp32:J1.14": null,
+        "esp32:J1.15": 3.3,
+        "esp32:J1.16": 3.3,
+        "esp32:J1.20": null,
+        "esp32:J1.21": 5,
+        "esp32:J1.4": null,
+        "esp32:J1.5": null,
+        "esp32:J1.6": null,
+        "esp32:J1.8": null,
+        "esp32:J1.9": null,
+        "esp32:J3.10": null,
+        "esp32:J3.14": null,
+        "esp32:J3.15": null,
+        "esp32:J3.16": null,
+        "esp32:J3.17": null,
+        "esp32:J3.18": null,
+        "esp32:J3.19": null,
+        "esp32:J3.2": null,
+        "esp32:J3.20": null,
+        "esp32:J3.3": null,
+        "esp32:J3.4": null,
+        "esp32:J3.5": null,
+        "esp32:J3.6": null,
+        "esp32:J3.7": null,
+        "esp32:J3.8": null,
+        "esp32:J3.9": null
+      },
+      "levelShifters": {},
+      "i2cLevelShifters": {},
+      "leds": {},
+      "gpios": {
+        "7": {
+          "mode": "OUT",
+          "volts": 0,
+          "level": 0
+        },
+        "8": {
+          "mode": "OUT",
+          "volts": 3.3,
+          "level": 1
+        },
+        "9": {
+          "mode": "OUT",
+          "volts": 3.3,
+          "level": 1
+        },
+        "10": {
+          "mode": "OUT",
+          "volts": 3.3,
+          "level": 1
+        },
+        "11": {
+          "mode": "OUT",
+          "volts": 0,
+          "level": 0
+        },
+        "12": {
+          "mode": "OUT",
+          "volts": 0,
+          "level": 0
+        },
+        "13": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        }
+      },
+      "optical": {},
+      "sensors": {
+        "bmpSPI": {
+          "powered": true,
+          "temperature": 24,
+          "pressure": 101325,
+          "busy": false,
+          "calibrated": true,
+          "sample": 1,
+          "measuredTemperature": 24.00015308793627,
+          "measuredHumidity": null,
+          "measuredPressure": 101325.08546629165
+        }
+      },
+      "displays": {},
+      "measurements": [
+        {
+          "timeMs": 552.976,
+          "component": "bmpSPI",
+          "temperature": 24.00015308793627,
+          "humidity": null,
+          "pressure": 101325.08546629165,
+          "sample": 1,
+          "valid": true
+        }
+      ],
+      "i2cTrace": [],
+      "radios": {},
+      "sdCards": {},
+      "rtcDevices": {},
+      "touches": {},
+      "tfts": {
+        "tft1": {
+          "kind": "tft",
+          "width": 128,
+          "height": 128,
+          "powered": true,
+          "on": false,
+          "sleep": true,
+          "backlight": true,
+          "madctl": 0,
+          "format": 6,
+          "written": 0,
+          "window": [
+            0,
+            0,
+            127,
+            127
+          ],
+          "pixels": {
+            "length": 16384,
+            "nonzero": 0,
+            "sha256": "f35d92d7866c9121401265fddf66908b214a7c4d27013a4fc660a6216e00ff46",
+            "rgb": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "reason": "CS HIGH · neaktivan"
+        }
+      },
+      "spiTrace": [
+        {
+          "timeUs": 10022,
+          "device": "tft1",
+          "operation": "reset",
+          "value": 0,
+          "result": "HW reset"
+        },
+        {
+          "timeUs": 465095,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 208,
+          "result": "RX 0xff"
+        },
+        {
+          "timeUs": 465104,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0x58"
+        },
+        {
+          "timeUs": 465116,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 96,
+          "result": "RX 0xff"
+        },
+        {
+          "timeUs": 465125,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 182,
+          "result": "RX 0xff"
+        },
+        {
+          "timeUs": 470138,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 136,
+          "result": "RX 0xff"
+        },
+        {
+          "timeUs": 470147,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0x70"
+        },
+        {
+          "timeUs": 470156,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0x6b"
+        },
+        {
+          "timeUs": 470165,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0x43"
+        },
+        {
+          "timeUs": 470174,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0x67"
+        },
+        {
+          "timeUs": 470183,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0x18"
+        },
+        {
+          "timeUs": 470192,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0xfc"
+        },
+        {
+          "timeUs": 470201,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0x7d"
+        },
+        {
+          "timeUs": 470210,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0x8e"
+        },
+        {
+          "timeUs": 470219,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0x43"
+        },
+        {
+          "timeUs": 470228,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0xd6"
+        },
+        {
+          "timeUs": 470237,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0xd0"
+        },
+        {
+          "timeUs": 470246,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0x0b"
+        },
+        {
+          "timeUs": 470255,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0x27"
+        },
+        {
+          "timeUs": 470264,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0x0b"
+        },
+        {
+          "timeUs": 470273,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0x8c"
+        },
+        {
+          "timeUs": 470282,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0x00"
+        },
+        {
+          "timeUs": 470291,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0xf9"
+        },
+        {
+          "timeUs": 470300,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0xff"
+        },
+        {
+          "timeUs": 470309,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0x8c"
+        },
+        {
+          "timeUs": 470318,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0x3c"
+        },
+        {
+          "timeUs": 470327,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0xf8"
+        },
+        {
+          "timeUs": 470336,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0xc6"
+        },
+        {
+          "timeUs": 470345,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0x70"
+        },
+        {
+          "timeUs": 470354,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0x17"
+        },
+        {
+          "timeUs": 470366,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 117,
+          "result": "RX 0xff"
+        },
+        {
+          "timeUs": 470375,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0xff"
+        },
+        {
+          "timeUs": 544891,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 116,
+          "result": "RX 0xff"
+        },
+        {
+          "timeUs": 544900,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 37,
+          "result": "RX 0xff"
+        },
+        {
+          "timeUs": 552913,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 247,
+          "result": "RX 0xff"
+        },
+        {
+          "timeUs": 552922,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0x64"
+        },
+        {
+          "timeUs": 552931,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0x2a"
+        },
+        {
+          "timeUs": 552940,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0xb0"
+        },
+        {
+          "timeUs": 552949,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0x7e"
+        },
+        {
+          "timeUs": 552958,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0x15"
+        },
+        {
+          "timeUs": 552967,
+          "device": "bmpSPI",
+          "operation": "data",
+          "value": 0,
+          "result": "RX 0x20"
+        }
+      ],
+      "spiBytes": 40,
+      "steppers": {
+        "drivers": {},
+        "motors": {}
+      },
+      "tmDisplays": {},
+      "infrared": {},
+      "encoders": {},
+      "oneWireDevices": {},
+      "timedSensors": {},
+      "analogInputs": {},
+      "servos": {},
+      "diagnostics": [
+        {
+          "code": "spi-protocol",
+          "severity": "warning",
+          "message": "tft1: Istodobno aktivni CS na istoj SPI sabirnici; funkcionalni model odbija prijenos.",
+          "terminals": [
+            "esp32:J1.16",
+            "tft1:CS"
+          ],
+          "wires": [
+            "spi4"
+          ]
+        },
+        {
+          "code": "spi-protocol",
+          "severity": "warning",
+          "message": "bmpSPI: Istodobno aktivni CS na istoj SPI sabirnici; funkcionalni model odbija prijenos.",
+          "terminals": [
+            "esp32:J1.7",
+            "bmpSPI:CS"
+          ],
+          "wires": [
+            "spi12"
+          ]
+        }
+      ]
+    },
+    "marks": [
+      {
+        "line": "SPI DASH T=24.00 P=101325 Pa",
+        "frame": {
+          "type": "simulation",
+          "clockProfile": "external-us",
+          "timeMs": 1598,
+          "nets": {
+            "bmpSPI:CS": 0,
+            "bmpSPI:GND": 0,
+            "bmpSPI:MISO": null,
+            "bmpSPI:MOSI": 0,
+            "bmpSPI:SCK": 0,
+            "bmpSPI:VCC": 3.3,
+            "esp32:J1.10": null,
+            "esp32:J1.11": null,
+            "esp32:J1.12": 3.3,
+            "esp32:J1.13": null,
+            "esp32:J1.14": null,
+            "esp32:J1.15": 3.3,
+            "esp32:J1.16": 3.3,
+            "esp32:J1.20": null,
+            "esp32:J1.21": 5,
+            "esp32:J1.4": null,
+            "esp32:J1.5": null,
+            "esp32:J1.6": null,
+            "esp32:J1.8": null,
+            "esp32:J1.9": null,
+            "esp32:J3.10": null,
+            "esp32:J3.14": null,
+            "esp32:J3.15": null,
+            "esp32:J3.16": null,
+            "esp32:J3.17": null,
+            "esp32:J3.18": null,
+            "esp32:J3.19": null,
+            "esp32:J3.2": null,
+            "esp32:J3.20": null,
+            "esp32:J3.3": null,
+            "esp32:J3.4": null,
+            "esp32:J3.5": null,
+            "esp32:J3.6": null,
+            "esp32:J3.7": null,
+            "esp32:J3.8": null,
+            "esp32:J3.9": null
+          },
+          "levelShifters": {},
+          "i2cLevelShifters": {},
+          "leds": {},
+          "gpios": {
+            "7": {
+              "mode": "OUT",
+              "volts": 0,
+              "level": 0
+            },
+            "8": {
+              "mode": "OUT",
+              "volts": 3.3,
+              "level": 1
+            },
+            "9": {
+              "mode": "OUT",
+              "volts": 3.3,
+              "level": 1
+            },
+            "10": {
+              "mode": "OUT",
+              "volts": 3.3,
+              "level": 1
+            },
+            "11": {
+              "mode": "OUT",
+              "volts": 0,
+              "level": 0
+            },
+            "12": {
+              "mode": "OUT",
+              "volts": 0,
+              "level": 0
+            },
+            "13": {
+              "mode": "IN",
+              "volts": null,
+              "level": null
+            }
+          },
+          "optical": {},
+          "sensors": {
+            "bmpSPI": {
+              "powered": true,
+              "temperature": 24,
+              "pressure": 101325,
+              "busy": false,
+              "calibrated": true,
+              "sample": 1,
+              "measuredTemperature": 24.00015308793627,
+              "measuredHumidity": null,
+              "measuredPressure": 101325.08546629165
+            }
+          },
+          "displays": {},
+          "measurements": [
+            {
+              "timeMs": 552.976,
+              "component": "bmpSPI",
+              "temperature": 24.00015308793627,
+              "humidity": null,
+              "pressure": 101325.08546629165,
+              "sample": 1,
+              "valid": true
+            }
+          ],
+          "i2cTrace": [],
+          "radios": {},
+          "sdCards": {},
+          "rtcDevices": {},
+          "touches": {},
+          "tfts": {
+            "tft1": {
+              "kind": "tft",
+              "width": 128,
+              "height": 128,
+              "powered": true,
+              "on": false,
+              "sleep": true,
+              "backlight": true,
+              "madctl": 0,
+              "format": 6,
+              "written": 0,
+              "window": [
+                0,
+                0,
+                127,
+                127
+              ],
+              "pixels": {
+                "length": 16384,
+                "nonzero": 0,
+                "sha256": "f35d92d7866c9121401265fddf66908b214a7c4d27013a4fc660a6216e00ff46",
+                "rgb": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "reason": "CS HIGH · neaktivan"
+            }
+          },
+          "spiTrace": [
+            {
+              "timeUs": 10022,
+              "device": "tft1",
+              "operation": "reset",
+              "value": 0,
+              "result": "HW reset"
+            },
+            {
+              "timeUs": 465095,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 208,
+              "result": "RX 0xff"
+            },
+            {
+              "timeUs": 465104,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0x58"
+            },
+            {
+              "timeUs": 465116,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 96,
+              "result": "RX 0xff"
+            },
+            {
+              "timeUs": 465125,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 182,
+              "result": "RX 0xff"
+            },
+            {
+              "timeUs": 470138,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 136,
+              "result": "RX 0xff"
+            },
+            {
+              "timeUs": 470147,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0x70"
+            },
+            {
+              "timeUs": 470156,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0x6b"
+            },
+            {
+              "timeUs": 470165,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0x43"
+            },
+            {
+              "timeUs": 470174,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0x67"
+            },
+            {
+              "timeUs": 470183,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0x18"
+            },
+            {
+              "timeUs": 470192,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0xfc"
+            },
+            {
+              "timeUs": 470201,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0x7d"
+            },
+            {
+              "timeUs": 470210,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0x8e"
+            },
+            {
+              "timeUs": 470219,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0x43"
+            },
+            {
+              "timeUs": 470228,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0xd6"
+            },
+            {
+              "timeUs": 470237,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0xd0"
+            },
+            {
+              "timeUs": 470246,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0x0b"
+            },
+            {
+              "timeUs": 470255,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0x27"
+            },
+            {
+              "timeUs": 470264,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0x0b"
+            },
+            {
+              "timeUs": 470273,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0x8c"
+            },
+            {
+              "timeUs": 470282,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0x00"
+            },
+            {
+              "timeUs": 470291,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0xf9"
+            },
+            {
+              "timeUs": 470300,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0xff"
+            },
+            {
+              "timeUs": 470309,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0x8c"
+            },
+            {
+              "timeUs": 470318,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0x3c"
+            },
+            {
+              "timeUs": 470327,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0xf8"
+            },
+            {
+              "timeUs": 470336,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0xc6"
+            },
+            {
+              "timeUs": 470345,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0x70"
+            },
+            {
+              "timeUs": 470354,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0x17"
+            },
+            {
+              "timeUs": 470366,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 117,
+              "result": "RX 0xff"
+            },
+            {
+              "timeUs": 470375,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0xff"
+            },
+            {
+              "timeUs": 544891,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 116,
+              "result": "RX 0xff"
+            },
+            {
+              "timeUs": 544900,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 37,
+              "result": "RX 0xff"
+            },
+            {
+              "timeUs": 552913,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 247,
+              "result": "RX 0xff"
+            },
+            {
+              "timeUs": 552922,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0x64"
+            },
+            {
+              "timeUs": 552931,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0x2a"
+            },
+            {
+              "timeUs": 552940,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0xb0"
+            },
+            {
+              "timeUs": 552949,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0x7e"
+            },
+            {
+              "timeUs": 552958,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0x15"
+            },
+            {
+              "timeUs": 552967,
+              "device": "bmpSPI",
+              "operation": "data",
+              "value": 0,
+              "result": "RX 0x20"
+            }
+          ],
+          "spiBytes": 40,
+          "steppers": {
+            "drivers": {},
+            "motors": {}
+          },
+          "tmDisplays": {},
+          "infrared": {},
+          "encoders": {},
+          "oneWireDevices": {},
+          "timedSensors": {},
+          "analogInputs": {},
+          "servos": {},
+          "diagnostics": [
+            {
+              "code": "spi-protocol",
+              "severity": "warning",
+              "message": "tft1: Istodobno aktivni CS na istoj SPI sabirnici; funkcionalni model odbija prijenos.",
+              "terminals": [
+                "esp32:J1.16",
+                "tft1:CS"
+              ],
+              "wires": [
+                "spi4"
+              ]
+            },
+            {
+              "code": "spi-protocol",
+              "severity": "warning",
+              "message": "bmpSPI: Istodobno aktivni CS na istoj SPI sabirnici; funkcionalni model odbija prijenos.",
+              "terminals": [
+                "esp32:J1.7",
+                "bmpSPI:CS"
+              ],
+              "wires": [
+                "spi12"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

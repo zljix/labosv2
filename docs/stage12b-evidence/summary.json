@@ -1,0 +1,96 @@
+{
+  "release": "0.5.2-beta.1",
+  "recordedAt": "2026-11-12T23:03:31.785812+00:00",
+  "uniqueChecks": 260,
+  "passed": 260,
+  "groups": {
+    "project_circuit": 26,
+    "boards": 9,
+    "simulation": 12,
+    "peripherals": 16,
+    "runtime_files": 13,
+    "lessons": 20,
+    "offline": 8,
+    "avr": 15,
+    "arduino_environment_compiler": 12,
+    "avr_peripherals": 12,
+    "environment": 18,
+    "displays": 21,
+    "analog": 23,
+    "dht": 25,
+    "onewire": 30
+  },
+  "skippedCompilerChecks": 0,
+  "rerunsNotDoubleCounted": true,
+  "finalRepeat": {
+    "previousGroups": 209,
+    "workerAndOpenDrain": 3,
+    "offline": 8
+  },
+  "package": {
+    "build": "b805474d3af4beea",
+    "resources": 98,
+    "bytes": 7973390
+  },
+  "examples": {
+    "arduino.uno-r3.atmega328p": {
+      "ds18b20": {
+        "flashBytes": 6286,
+        "staticRamBytes": 251,
+        "inputHash": "1ace672de9ab54d64ec6c25e1451b2536cff112f3baddc15e1e0c744b800d84f"
+      },
+      "ds18Multi": {
+        "flashBytes": 6286,
+        "staticRamBytes": 251,
+        "inputHash": "1ace672de9ab54d64ec6c25e1451b2536cff112f3baddc15e1e0c744b800d84f"
+      },
+      "ds18Resolution": {
+        "flashBytes": 6738,
+        "staticRamBytes": 253,
+        "inputHash": "3609708afc8b7f8f5814fbae90521c325c57490aa7be77263ebcb9b636657835"
+      },
+      "ds18Errors": {
+        "flashBytes": 6414,
+        "staticRamBytes": 251,
+        "inputHash": "e9a672e3da528d5fc09049d9ff2105af9f66dbdaa6bc8c424efedc9ec1c3418c"
+      }
+    },
+    "arduino.nano-classic.atmega328p": {
+      "ds18b20": {
+        "flashBytes": 6286,
+        "staticRamBytes": 251,
+        "inputHash": "ecfe26e8f59853a0e5395280c4f471c7086dd1399bea10897ae05a52ffcc6d1d"
+      },
+      "ds18Multi": {
+        "flashBytes": 6286,
+        "staticRamBytes": 251,
+        "inputHash": "ecfe26e8f59853a0e5395280c4f471c7086dd1399bea10897ae05a52ffcc6d1d"
+      },
+      "ds18Resolution": {
+        "flashBytes": 6738,
+        "staticRamBytes": 253,
+        "inputHash": "66c5c07932e5a95228f60e67806fe81671628959ef8a1bcc0e0ad6e3eed8c4c0"
+      },
+      "ds18Errors": {
+        "flashBytes": 6414,
+        "staticRamBytes": 251,
+        "inputHash": "4a519eeff58b34973a6c6a31dec7141efd8367b9fda04ceb7874203f6ba721ba"
+      }
+    }
+  },
+  "totalArduinoArtifacts": 60,
+  "previousArtifactsUnchanged": 52,
+  "previousLibraryLocksUnchanged": true,
+  "runtimeOutputs": {
+    "public/runtime/micropython.mjs": "b262be836440ca11129b8a8fe788568460b266636dc72d6e17b90376d05b8927",
+    "public/runtime/micropython.wasm": "f4ecb98494bb4422f2e2dbb1b497ad0242ed7851c50370d52683d1a3b509e883"
+  },
+  "runtimeRebuilt": false,
+  "runtimeOutputsMatchStage12A": true,
+  "corrections": [
+    "AVR nowUs = cycles/16; no milliseconds round-trip",
+    "reset receiver 1 us functional tolerance, recommended master reset >=480 us",
+    "explicit CRC-checked raw scratchpad path for DallasTemperature -55/85 boundaries",
+    "restore default Pin.OUT latch to 0 while adding OPEN_DRAIN"
+  ]
+}

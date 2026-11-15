@@ -1,0 +1,17 @@
+{
+  "title": "Etapa 9 provjera iz praznog Una",
+  "work": {
+    "student": "Probni Učenik",
+    "group": "4.f",
+    "observations": "Program napisan u praznom Uno projektu ispisuje UNO ETAPA9 IZ PRAZNOG i uključuje/isključuje ugrađenu LED na D13. Provjereno stvarnim prevođenjem, uvozom i pokretanjem."
+  },
+  "files": [
+    "main.ino",
+    "avr-build.json",
+    "arduino-predaja.json",
+    "arduino-predaja.md",
+    "arduino-konzola.txt"
+  ],
+  "inputHash": "d27e72fa587ec6f1c4c882c76b1995955d271d4b69fad3cda048114b1e857adc",
+  "console": "AVR · arduino:avr:uno · Flash 1974 B · statički SRAM 210/2048 B\nUNO ETAPA9 IZ PRAZNOG\r\n"
+}

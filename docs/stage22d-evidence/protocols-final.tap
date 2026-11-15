@@ -1,0 +1,60 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.12.3-beta.1 test:s3-protocols
+> node --import tsx --test verification/s3-protocols.test.ts
+
+✔ irPulses: exact source, drivers, circuit and project/sketch export (49.934084ms)
+✔ irNEC: exact source, drivers, circuit and project/sketch export (9.435738ms)
+✔ irLED: exact source, drivers, circuit and project/sketch export (15.282551ms)
+✔ irTransmit: exact source, drivers, circuit and project/sketch export (11.28143ms)
+✔ tftGraphics: exact source, drivers, circuit and project/sketch export (6.663291ms)
+✔ tftRotation: exact source, drivers, circuit and project/sketch export (10.425484ms)
+✔ bmp280SPI: exact source, drivers, circuit and project/sketch export (18.642981ms)
+✔ spiDashboard: exact source, drivers, circuit and project/sketch export (9.748957ms)
+✔ three S3 protocol entries cite executable evidence; only the two unconfirmed profiles stay planned (3.43454ms)
+✔ component help gives S3 pinout, bounded driver and LEDC instead of AVR code (7.207599ms)
+✔ irPulses: live full frame and long-press special repeats are decoded in WASM (1065.57059ms)
+✔ irNEC: live full frame and long-press special repeats are decoded in WASM (1016.589701ms)
+✔ IR PWM filters addresses, ignores unknown commands and clamps both bounds (2965.726445ms)
+✔ bad inverse and timing frames cannot alter LED output; valid frame recovers the decoder (3076.627366ms)
+✔ IR VCC: no fabricated decoded frame (7.741321ms)
+✔ IR GND: no fabricated decoded frame (5.159543ms)
+✔ IR OUT: no fabricated decoded frame (6.218975ms)
+✔ IR blocked: no fabricated decoded frame (622.634609ms)
+✔ IR group: no fabricated decoded frame (815.364277ms)
+✔ LEDC transmitter emits a full NEC envelope and two repeats through the receiver GPIO (9.910071ms)
+✔ transmitter VCC cannot deliver an optical waveform (13.578082ms)
+✔ transmitter GND cannot deliver an optical waveform (7.843905ms)
+✔ transmitter SIG cannot deliver an optical waveform (6.703723ms)
+✔ transmitter group cannot deliver an optical waveform (6.817785ms)
+✔ real ST7735 program sends red/green/blue, text and geometric pixels (189.552394ms)
+✔ all four compiled rotations use the declared panel offsets and physical corners (152.103363ms)
+✔ ST7735 missing VCC cannot display program pixels (114.384882ms)
+✔ ST7735 missing GND cannot display program pixels (191.911834ms)
+✔ ST7735 missing SCK cannot display program pixels (166.624442ms)
+✔ ST7735 missing MOSI cannot display program pixels (120.89189ms)
+✔ ST7735 missing CS cannot display program pixels (114.988074ms)
+✔ ST7735 missing DC cannot display program pixels (117.864702ms)
+✔ ST7735 missing RESET cannot display program pixels (158.228552ms)
+✔ missing BL hides written RAM; 5 V BL is rejected before simulation (135.001551ms)
+✔ BMP280 missing VCC fails ID instead of printing a synthetic measurement (8.414754ms)
+✔ BMP280 missing GND fails ID instead of printing a synthetic measurement (7.003684ms)
+✔ BMP280 missing SCK fails ID instead of printing a synthetic measurement (7.120189ms)
+✔ BMP280 missing MOSI fails ID instead of printing a synthetic measurement (6.967189ms)
+✔ BMP280 missing MISO fails ID instead of printing a synthetic measurement (7.42732ms)
+✔ BMP280 missing CS fails ID instead of printing a synthetic measurement (6.585185ms)
+✔ live shared SPI environment changes compensated data and TFT pixels (329.5622ms)
+✔ disconnected TFT CS leaves the independent BMP280 path working (130.414609ms)
+✔ edited driver and source reject the previous build (2.158143ms)
+✔ actual compiler changes TFT pixels from modified source and rejects missing NEC header (629.238343ms)
+✔ actual compiler demonstrates that slow caller polling misses a full IR frame (303.377866ms)
+✔ orphan repeats and repeats older than 150 ms do not create a new command (1002.313164ms)
+✔ wrong SPI mode and two active CS cannot fabricate a valid display transfer (809.816277ms)
+ℹ tests 47
+ℹ suites 0
+ℹ pass 47
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14933.559213

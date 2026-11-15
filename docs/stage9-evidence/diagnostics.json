@@ -1,0 +1,12 @@
+{
+  "message": "src/pomoc.cpp: In function 'const char* poruka()':\nsrc/pomoc.cpp:2:29: error: 'nepoznato' was not declared in this scope\n const char* poruka(){return nepoznato;}\n                             ^~~~~~~~~\nError during build: exit status 1\n",
+  "diagnostics": [
+    {
+      "file": "src/pomoc.cpp",
+      "line": 2,
+      "column": 29,
+      "severity": "error",
+      "message": "'nepoznato' was not declared in this scope"
+    }
+  ]
+}

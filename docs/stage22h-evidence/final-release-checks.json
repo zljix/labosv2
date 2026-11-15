@@ -1,0 +1,11 @@
+{
+  "version": "0.12.6-beta.1",
+  "build": "90a10acb9b416f14",
+  "latestUniqueTestPasses": 1308,
+  "workerScenarios": 8,
+  "workerRuns": 26,
+  "softwareI2CBoards": 2,
+  "resourceCount": 186,
+  "zipSha256": "4b98771479dfc3a93255c5a06cdbd8efe65c58d7fde7a0e07c605cd1e8f5932b",
+  "status": "pass"
+}

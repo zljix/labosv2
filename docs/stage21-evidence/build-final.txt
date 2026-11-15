@@ -1,0 +1,23 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.11.0-beta.1 build
+> tsc --noEmit && vite build
+
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 134 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                       0.68 kB │ gzip:   0.41 kB
+dist/assets/avrWorker-WOteraIS.js   173.09 kB
+dist/assets/worker-DpR9jdSL.js      281.93 kB
+dist/assets/index-BgqyrSpr.css       60.59 kB │ gzip:  12.85 kB
+dist/assets/CodeEditor-CfiKS8n4.js  568.59 kB │ gzip: 189.72 kB
+dist/assets/index-prOaJPn4.js       820.21 kB │ gzip: 265.69 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 346ms

@@ -1,0 +1,34 @@
+✔ 44 physical headers, duplicate power pins and reserved PSRAM pins (8.343341ms)
+✔ breadboard groups, channel, columns, rails and split at 15/16 (4.496397ms)
+✔ wire deletion changes connectivity without a cached netlist (3.626706ms)
+✔ crossing and overlapping paths never create electrical joints (0.746357ms)
+✔ power short through breadboard is detected and clears after disconnection (3.756679ms)
+✔ button permanently joins each side and bridges both sides only while pressed (1.018254ms)
+✔ resistor, LED and potentiometer terminals remain separate nets (0.329964ms)
+✔ overvoltage, reserved pins, shared GPIO and contradictory known drivers (1.35742ms)
+✔ LED requires series resistor; bypassed resistor is detected (1.101718ms)
+✔ reference lesson passes; removing rail bridge exposes open path (12.286231ms)
+✔ rotation and movement preserve identity, connectivity and attached wire endpoint (3.630311ms)
+✔ malformed endpoints, IDs, component kinds, properties and coordinates reject (6.838751ms)
+✔ schema 1 fixture migrates without loss; future versions reject (1.485452ms)
+✔ ZIP and JSON preserve complete circuit; rejected input cannot mutate current project (9.717062ms)
+✔ autosave, reopening and immutable history preserve complete circuit (26.111123ms)
+✔ 200 routed wires and maximum bend count round-trip beyond old manifest cap (35.03134ms)
+✔ ZIP and JSON preserve Unicode, helper files and settings (8.32873ms)
+✔ future schemas and unknown board profiles are rejected (0.654899ms)
+✔ entrypoint, settings and circuit scope are validated (0.464235ms)
+✔ traversal, scripts, internal overrides and case collisions are rejected (0.617614ms)
+✔ file and decompressed archive sizes are bounded (6.74452ms)
+✔ ZIP manifest must match files; truncated packages are rejected (7.948783ms)
+✔ editing preserves immutable runtime snapshot (0.625826ms)
+✔ IndexedDB survives reopening with multiple projects, settings and history (19.559302ms)
+✔ atomic revisions protect against concurrent tab writes (2.550245ms)
+✔ bounded history restoration creates a new revision (33.582402ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 404.485976

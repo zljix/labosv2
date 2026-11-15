@@ -1,0 +1,11 @@
+# Project format 1
+
+The authoritative document has `format: esp32-micropython-lab`, `schemaVersion: 1`, a stable UUID, dates, title, revision, a versioned board profile, a map of UTF-8 source files, fixed-fixture circuit metadata and workspace settings. The validator constructs a fresh document and rejects future schema versions and unsupported board profiles rather than silently changing them.
+
+ZIP packages contain `project.json` with a list of file paths and each source file at its relative path. JSON exports carry file contents directly. ZIP and JSON use the same document validator. Paths are case-sensitive but case collisions are rejected for portable use. Absolute paths, traversal and internal module overrides are prohibited. Limits: 64 files, 128 KiB per file, 1 MiB total source and 2 MiB archive input. Imported packages create a new project ID. Python execution is never triggered by import.
+
+IndexedDB database `esp32-micropython-lab-v1` stores projects and their histories separately from the current active-project key. A read-and-compare storage revision inside the same write transaction prevents stale tab writes. Project revisions describe edits; storage revisions describe successful commits. Autosave runs 700 ms after the last edit and serializes writes. The UI reports saved state only after transaction completion. A localStorage recovery document bridges pending edits and normal reload/close where storage permits. In a revision conflict it is recovered as a separate copy. Browser data deletion also deletes these local projects, so ZIP export is the portable backup.
+
+History contains at most 30 snapshots, additionally bounded to approximately 8 MiB of UTF-16 text. Restoring a snapshot preserves the project ID and creates a new edit revision. Undo/redo is session-local and separate from persistent history. ZIP exports contain the current document, not the entire local history.
+
+Run receives an immutable document snapshot. User files are written into a fresh Emscripten filesystem before executing main.py; Python can import helper packages and read text data. Runtime files are checked again at the Worker boundary. Stop terminates the Worker; every new run creates a fresh heap and session. Electrical networks and editable circuits are outside this schema's current accepted scope and belong to stage 2.

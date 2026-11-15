@@ -1,0 +1,73 @@
+✔ datasheet identity, reset pulse, read-only registers and explicit unsupported features (2.750674ms)
+✔ first independent known RED/IR words, six-byte burst and no FIFO auto-increment (0.431469ms)
+✔ RD advances on FIRST byte, interrupted sample is discarded, rewinding RD re-reads bank data (0.414162ms)
+✔ all four ADC resolutions are left-justified; RED mode uses three bytes and IR PA=0 gates IR (0.376226ms)
+✔ per-channel average/decimation: no word before complete group, exact independently computed mean (0.344899ms)
+✔ full versus empty equal pointers, saturating overflow, pop clears overflow and read permits recovery (0.255875ms)
+✔ averaging group already in progress when full drops correctly; long stalled reader is bounded (0.315514ms)
+✔ shutdown freezes sample acquisition, resume does not catch up and reset clears FIFO/history (0.19296ms)
+✔ physical sample-rate/pulse-width table is enforced for both supported modes (0.414123ms)
+✔ live source change keeps old FIFO words and phase; no contact or zero amplitude gives no periodic waveform (0.363186ms)
+✔ history stores only complete program reads and stays capped at 128 (1.532774ms)
+✔ espressif.esp32-s3-devkitc-1.v1.1.n16r8: four optical circuits and source projects round-trip JSON/ZIP (35.640287ms)
+✔ arduino.uno-r3.atmega328p: four optical circuits and source projects round-trip JSON/ZIP (8.08525ms)
+✔ arduino.nano-classic.atmega328p: four optical circuits and source projects round-trip JSON/ZIP (15.91145ms)
+✔ optical properties reject invalid/missing values; fixed address collides on same bus (7.224838ms)
+✔ electrical host routes address/ACK and rejects absent supply, ground, pullups and swapped lines (30.842828ms)
+✔ real MicroPython driver executes register, FIFO, averaging, full recovery and shutdown calls (1786.069632ms)
+✔ real MicroPython frequency example computes from FIFO, follows live 72→120 and contact loss (4239.758154ms)
+✔ arduino.uno-r3.atmega328p: real AVR opticalRegisters (278.268336ms)
+✔ arduino.uno-r3.atmega328p: real AVR opticalRaw (127.328959ms)
+✔ arduino.uno-r3.atmega328p: real AVR opticalFrequency (1439.011721ms)
+✔ arduino.uno-r3.atmega328p: real AVR opticalOverflow (314.774096ms)
+✔ arduino.nano-classic.atmega328p: real AVR opticalRegisters (239.13533ms)
+✔ arduino.nano-classic.atmega328p: real AVR opticalRaw (79.746015ms)
+✔ arduino.nano-classic.atmega328p: real AVR opticalFrequency (1300.963506ms)
+✔ arduino.nano-classic.atmega328p: real AVR opticalOverflow (301.754264ms)
+✔ AVR missing SDA connection reports an error and yields no sample (328.202063ms)
+✖ real S3 WASM opticalRegisters (6.332676ms)
+✖ real S3 WASM opticalRaw (6.877454ms)
+✖ real S3 WASM opticalFrequency (3.877517ms)
+✖ real S3 WASM opticalOverflow (3.956736ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 27
+ℹ fail 4
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10809.382279
+
+✖ failing tests:
+
+test at verification/max30102.test.ts:15:2595
+✖ real S3 WASM opticalRegisters (6.332676ms)
+  Error: Neispravan ili prevelik WASM program.
+      at wasmBytes (file:///workspace/sites/esp32-micropython-lab/.sites-checkout/public/s3-contract.mjs:28:131)
+      at TestContext.<anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/max30102.test.ts:133:165)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/max30102.test.ts:15:2595
+✖ real S3 WASM opticalRaw (6.877454ms)
+  Error: Neispravan ili prevelik WASM program.
+      at wasmBytes (file:///workspace/sites/esp32-micropython-lab/.sites-checkout/public/s3-contract.mjs:28:131)
+      at TestContext.<anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/max30102.test.ts:133:165)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/max30102.test.ts:15:2595
+✖ real S3 WASM opticalFrequency (3.877517ms)
+  Error: Neispravan ili prevelik WASM program.
+      at wasmBytes (file:///workspace/sites/esp32-micropython-lab/.sites-checkout/public/s3-contract.mjs:28:131)
+      at TestContext.<anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/max30102.test.ts:133:165)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+
+test at verification/max30102.test.ts:15:2595
+✖ real S3 WASM opticalOverflow (3.956736ms)
+  Error: Neispravan ili prevelik WASM program.
+      at wasmBytes (file:///workspace/sites/esp32-micropython-lab/.sites-checkout/public/s3-contract.mjs:28:131)
+      at TestContext.<anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/max30102.test.ts:133:165)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7)

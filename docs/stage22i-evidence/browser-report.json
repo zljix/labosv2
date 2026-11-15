@@ -1,0 +1,75 @@
+{
+  "format": "esp32-lab-class-review",
+  "version": 1,
+  "appVersion": "0.12.7-beta.1",
+  "recordedAt": "2026-11-14T16:50:35.702Z",
+  "records": [
+    {
+      "contentHash": "9d616dd9b467445212481d686fba6193586b59dff88a15830877dd84b03a8114",
+      "student": "Probni učenik micropython",
+      "group": "4.f",
+      "lessonId": "gpio",
+      "variantId": "blink",
+      "target": "micropython",
+      "filename": "micropython.zip",
+      "verdict": "pending",
+      "note": ""
+    },
+    {
+      "contentHash": "cb886798ba230ab00dbe369ab1099cdd3ef8414876e09344167e59ee51844643",
+      "student": "Probni učenik s3-cpp",
+      "group": "4.f",
+      "lessonId": "gpio",
+      "variantId": "blink",
+      "target": "s3-cpp",
+      "filename": "s3-cpp.zip",
+      "verdict": "pending",
+      "note": ""
+    },
+    {
+      "contentHash": "c1285537a4aeb50d790a4bb15c38de3e448990caa38c09f3d3d6fd5327895ec6",
+      "student": "Probni učenik uno",
+      "group": "4.f",
+      "lessonId": "gpio",
+      "variantId": "blink",
+      "target": "uno",
+      "filename": "uno.zip",
+      "verdict": "reviewed",
+      "note": "Razvojni pregled u verziji 0.12.7: uvoz i povrat bilješke provjereni. Uno program zasebno ponovno pokrenut; LED=1/0 u konzoli. Bez stvarnog učeničkog pilota.",
+      "recordedAt": "2026-11-14T16:49:32.317Z"
+    },
+    {
+      "contentHash": "fc00565adbd9ee4792db57665060d0d7cbea896c88e15c6acfb6eed7d805a220",
+      "student": "Probni učenik nano",
+      "group": "4.f",
+      "lessonId": "gpio",
+      "variantId": "blink",
+      "target": "nano",
+      "filename": "nano.zip",
+      "verdict": "pending",
+      "note": ""
+    },
+    {
+      "contentHash": "a35e637dd734cdf28dfd3594836c05d3e44de2487e124dd393f386ea52400e88",
+      "student": "Probni učenik micropython",
+      "group": "4.f",
+      "lessonId": "gpio",
+      "variantId": "blink",
+      "target": "micropython",
+      "filename": "stale.zip",
+      "verdict": "pending",
+      "note": ""
+    },
+    {
+      "contentHash": "5cf18a81a54c5c5eba910fa501c864eae10ba5fee4625734d6495e7d1f5577d5",
+      "student": "",
+      "group": "",
+      "lessonId": "gpio",
+      "variantId": "blink",
+      "target": "uno",
+      "filename": "incomplete.zip",
+      "verdict": "pending",
+      "note": ""
+    }
+  ]
+}

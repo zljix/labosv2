@@ -1,0 +1,32 @@
+{
+  "console": "ILI PARTIAL=0\nILI PARTIAL=1\n",
+  "display": {
+    "kind": "tft",
+    "controller": "ILI9341",
+    "width": 240,
+    "height": 320,
+    "powered": true,
+    "backlight": true,
+    "on": true,
+    "sleep": false,
+    "madctl": 72,
+    "format": 85,
+    "written": 104612,
+    "window": [
+      106,
+      167,
+      107,
+      168
+    ],
+    "reason": "CS HIGH · neaktivan"
+  },
+  "pixels": {
+    "length": 76800,
+    "sha256": "1346777fc8590219d0057aca11aa1638cc3bd4efd919fc2a093ccb1cc9bbdf28",
+    "nonzero": 76496,
+    "first": 15,
+    "last": 15
+  },
+  "diagnostics": [],
+  "changedPixels": 12316
+}

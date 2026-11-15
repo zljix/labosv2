@@ -1,0 +1,38 @@
+
+> esp32-micropython-lab@0.1.0 test
+> node --import tsx --test verification/project.test.ts verification/circuit.test.ts
+
+✔ 44 physical headers, duplicate power pins and reserved PSRAM pins (12.691817ms)
+✔ breadboard groups, channel, columns, rails and split at 15/16 (6.349819ms)
+✔ wire deletion changes connectivity without a cached netlist (2.599413ms)
+✔ crossing and overlapping paths never create electrical joints (0.51147ms)
+✔ power short through breadboard is detected and clears after disconnection (7.384077ms)
+✔ button permanently joins each side and bridges both sides only while pressed (1.455982ms)
+✔ resistor, LED and potentiometer terminals remain separate nets (0.41208ms)
+✔ overvoltage, reserved pins, shared GPIO and contradictory known drivers (1.476102ms)
+✔ LED requires series resistor; bypassed resistor is detected (1.647661ms)
+✔ reference lesson passes; removing rail bridge exposes open path (7.684259ms)
+✔ rotation and movement preserve identity, connectivity and attached wire endpoint (5.735895ms)
+✔ malformed endpoints, IDs, component kinds, properties and coordinates reject (6.820878ms)
+✔ schema 1 fixture migrates without loss; future versions reject (1.445446ms)
+✔ ZIP and JSON preserve complete circuit; rejected input cannot mutate current project (13.249536ms)
+✔ autosave, reopening and immutable history preserve complete circuit (24.269867ms)
+✔ 200 routed wires and maximum bend count round-trip beyond old manifest cap (29.832203ms)
+✔ ZIP and JSON preserve Unicode, helper files and settings (9.993375ms)
+✔ future schemas and unknown board profiles are rejected (0.63141ms)
+✔ entrypoint, settings and circuit scope are validated (0.554394ms)
+✔ traversal, scripts, internal overrides and case collisions are rejected (0.798783ms)
+✔ file and decompressed archive sizes are bounded (8.873739ms)
+✔ ZIP manifest must match files; truncated packages are rejected (2.916471ms)
+✔ editing preserves immutable runtime snapshot (0.721095ms)
+✔ IndexedDB survives reopening with multiple projects, settings and history (27.08029ms)
+✔ atomic revisions protect against concurrent tab writes (3.530745ms)
+✔ bounded history restoration creates a new revision (32.553408ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 342.612584

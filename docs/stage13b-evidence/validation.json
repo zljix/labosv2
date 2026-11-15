@@ -1,0 +1,91 @@
+{
+  "release": "0.5.4-beta.1",
+  "baseCommit": "393a66ceb7878894478d0d5b441009f439cfc7d9",
+  "uniqueChecks": 309,
+  "passed": 309,
+  "failed": 0,
+  "groups": {
+    "project_circuit": 26,
+    "boards": 9,
+    "simulation": 12,
+    "peripherals": 16,
+    "runtime_files": 13,
+    "lessons": 20,
+    "offline": 8,
+    "avr": 15,
+    "arduino_environment_compiler": 12,
+    "avr_peripherals": 12,
+    "environment": 18,
+    "displays": 21,
+    "analog": 23,
+    "dht": 25,
+    "onewire": 30,
+    "encoders": 23,
+    "infrared": 26
+  },
+  "execution": {
+    "baselineNode": {
+      "tests": 262,
+      "passed": 262,
+      "skipped": 0
+    },
+    "infraredNode": {
+      "tests": 26,
+      "passed": 26,
+      "skipped": 0
+    },
+    "runtimeCore": {
+      "tests": 10,
+      "passed": 10
+    },
+    "runtimeFiles": {
+      "tests": 3,
+      "passed": 3
+    },
+    "offlineCurrentPackage": {
+      "tests": 8,
+      "passed": 8
+    }
+  },
+  "skippedCompilerChecks": 0,
+  "rerunsNotDoubleCounted": true,
+  "package": {
+    "build": "ec848d370c2aaac9",
+    "version": "0.5.4-beta.1",
+    "files": 106,
+    "bytes": 8479557
+  },
+  "artifacts": {
+    "retainedUnchanged": 68,
+    "new": 8,
+    "total": 76,
+    "perBoard": 38,
+    "compilerContractChanged": false,
+    "newExternalLibraries": []
+  },
+  "runtimeBytesUnchanged": [
+    "public/runtime/micropython.wasm",
+    "public/runtime/micropython.mjs",
+    "public/machine.py"
+  ],
+  "timeProfiles": {
+    "MicroPythonWithIR": "software microseconds; explicit sleeps count, browser stalls between API calls do not",
+    "AVR": "16 MHz cycle clock unchanged",
+    "MicroPythonWithoutIR": "existing wall/virtual timing profile unchanged"
+  },
+  "developmentNotes": [
+    "First waveform and 20 Node checks passed, but the browser missed a leader. A bounded 12 ms receiver wait fixed short presses.",
+    "The browser long-press pass still exposed dropped repeat frames under host pauses. IR-specific software time and a 26th regression test now separate host pauses from declared sleep; final MicroPython browser repeat sequence reached 100 without errors.",
+    "One early broad baseline run was interrupted during routine refinement; it is not counted. Final completed baseline run passed 262/262.",
+    "A transient source-edit syntax error was caught by TypeScript before build; corrected before final build and IR execution."
+  ],
+  "limitations": [
+    "no physical module validation",
+    "no Safari/iOS or Android validation",
+    "no school hardware or student pilot",
+    "no cold offline verification on private production domain",
+    "standard NEC 8-bit only; no NEC2 or extended NEC",
+    "Python transmitter example shows receiver trace without simultaneous Python decode",
+    "own MIT drivers; arbitrary Arduino-IRremote API not integrated"
+  ]
+}

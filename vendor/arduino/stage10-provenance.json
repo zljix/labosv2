@@ -1,0 +1,267 @@
+{
+  "retrievedAt": "2026-11-12",
+  "libraries": [
+    {
+      "name": "U8g2",
+      "repository": "olikraus/U8g2_Arduino",
+      "commit": "b3a40de8822187c941b40cbbaaa77604a7ab90c7",
+      "files": [
+        {
+          "path": "LICENSE",
+          "blob": "2a4ef7157d02d0e1c90a785a12d35537b8de51c1",
+          "size": 3750
+        },
+        {
+          "path": "library.properties",
+          "blob": "cce7b11838b6ab15440aa0a4a79accd904d5ecff",
+          "size": 1563
+        },
+        {
+          "path": "src/U8g2lib.cpp",
+          "blob": "4f3c31215cbbcaaf8b59eea7d8eaee605273979f",
+          "size": 2205
+        },
+        {
+          "path": "src/U8g2lib.h",
+          "blob": "6323d24b38397f8edbc65e4c85b717b5debe202d",
+          "size": 2041939
+        },
+        {
+          "path": "src/U8x8lib.cpp",
+          "blob": "6ddef3ae3e9214fa84bcc5b95131c0eca6d5a371",
+          "size": 56651
+        },
+        {
+          "path": "src/U8x8lib.h",
+          "blob": "44e657d98178346827a358abdc5c5b6f5a15530d",
+          "size": 664353
+        },
+        {
+          "path": "src/clib/u8g2.h",
+          "blob": "e387dd79f92a785c8bbbd957dc0788cb35a72600",
+          "size": 381310
+        },
+        {
+          "path": "src/clib/u8g2_arc.c",
+          "blob": "9264e63a37d2d50369c21ee102d1b5d2d6a19a5e",
+          "size": 4080
+        },
+        {
+          "path": "src/clib/u8g2_bitmap.c",
+          "blob": "e1df2745535db99fa8bd705dd697b6ee71855dd0",
+          "size": 6787
+        },
+        {
+          "path": "src/clib/u8g2_box.c",
+          "blob": "539bfd55bd18bf11b897091f75acda7341db7a90",
+          "size": 4632
+        },
+        {
+          "path": "src/clib/u8g2_buffer.c",
+          "blob": "9aee96d4af24abe9a7198b195f01165f4940dacb",
+          "size": 6830
+        },
+        {
+          "path": "src/clib/u8g2_button.c",
+          "blob": "3c8429d50517cf2b38c248e53dd27364c107a1c2",
+          "size": 8639
+        },
+        {
+          "path": "src/clib/u8g2_circle.c",
+          "blob": "00c42bc5f7cadec835a45c9d83f3e8b9c0c5e96b",
+          "size": 10504
+        },
+        {
+          "path": "src/clib/u8g2_cleardisplay.c",
+          "blob": "867ed599d4f8108c55f288d889c4f502f08a8d30",
+          "size": 2197
+        },
+        {
+          "path": "src/clib/u8g2_d_memory.c",
+          "blob": "cd1a6124072ccfdc02f5fa6a28cb221c0b2fac5e",
+          "size": 41255
+        },
+        {
+          "path": "src/clib/u8g2_d_setup.c",
+          "blob": "bb06646ae1c564b9fb360adc3633e7da6d9d14e6",
+          "size": 463295
+        },
+        {
+          "path": "src/clib/u8g2_font.c",
+          "blob": "5efe7ad0e9a2dcc4a1cd87028d5daec2e4ef6d00",
+          "size": 42443
+        },
+        {
+          "path": "src/clib/u8g2_hvline.c",
+          "blob": "a98374e2ff2d8e1eaca1dcf0fa35ba6b09ab40be",
+          "size": 7078
+        },
+        {
+          "path": "src/clib/u8g2_input_value.c",
+          "blob": "b11a05b9cad4d889ff4b4a6444d85167c9e5c735",
+          "size": 4155
+        },
+        {
+          "path": "src/clib/u8g2_intersection.c",
+          "blob": "7079eea434a0a06e6261b7e69fdbc3d45a0cc1ac",
+          "size": 4246
+        },
+        {
+          "path": "src/clib/u8g2_kerning.c",
+          "blob": "f42f209886c9a04ff6c24c06bfd8fb7ec04649de",
+          "size": 2852
+        },
+        {
+          "path": "src/clib/u8g2_line.c",
+          "blob": "550e9cf41ef294fd21d80209bf4f99b8a66f2971",
+          "size": 2524
+        },
+        {
+          "path": "src/clib/u8g2_ll_hvline.c",
+          "blob": "72d7c0c85537b530d16092353d82f655456cbf88",
+          "size": 9214
+        },
+        {
+          "path": "src/clib/u8g2_message.c",
+          "blob": "15d3942dc0bd7de9801c88e0aaf02e6448c2231f",
+          "size": 5549
+        },
+        {
+          "path": "src/clib/u8g2_polygon.c",
+          "blob": "060cf49fac55b72cf85b7f7a751e4da7a8ba3d3b",
+          "size": 7405
+        },
+        {
+          "path": "src/clib/u8g2_selection_list.c",
+          "blob": "bd2092f2ccbe211d3e7e72027e8fe59f13591d4f",
+          "size": 7829
+        },
+        {
+          "path": "src/clib/u8g2_setup.c",
+          "blob": "4d84a908c2d3652ddd174ca6713c9cede70a4ec0",
+          "size": 11715
+        },
+        {
+          "path": "src/clib/u8x8.h",
+          "blob": "8a3a5889bc492dd21c2ebebdc07445830e29fb67",
+          "size": 72489
+        },
+        {
+          "path": "src/clib/u8x8_8x8.c",
+          "blob": "7e1c873a483c027a393635d5c973b85eb10d6938",
+          "size": 12077
+        },
+        {
+          "path": "src/clib/u8x8_byte.c",
+          "blob": "c90a3db84e314f1ee4e4b021e08c6bc337e46920",
+          "size": 17872
+        },
+        {
+          "path": "src/clib/u8x8_cad.c",
+          "blob": "5df0525b44515b0ef0ed3eaaada656389a21e9b9",
+          "size": 27062
+        },
+        {
+          "path": "src/clib/u8x8_capture.c",
+          "blob": "78014e8473539a0ab655e4d16d683d7b55bb0a77",
+          "size": 6466
+        },
+        {
+          "path": "src/clib/u8x8_d_ssd1306_128x64_noname.c",
+          "blob": "0cbeba8f2aa9a29a894a486eee70ba5d8b66cec2",
+          "size": 21181
+        },
+        {
+          "path": "src/clib/u8x8_debounce.c",
+          "blob": "d3277d09e78e0dad63f71f57e7c4502d39bc125b",
+          "size": 5610
+        },
+        {
+          "path": "src/clib/u8x8_display.c",
+          "blob": "d1279b69ac06926a42d0d3544956fc3557d4666d",
+          "size": 7678
+        },
+        {
+          "path": "src/clib/u8x8_gpio.c",
+          "blob": "b89a88a123de46c2eed450601a172f02519f9f1a",
+          "size": 1718
+        },
+        {
+          "path": "src/clib/u8x8_input_value.c",
+          "blob": "c75e3c7f084b9760a2398b6ece5ec101d7d8d6a0",
+          "size": 3603
+        },
+        {
+          "path": "src/clib/u8x8_message.c",
+          "blob": "b6a8bceb392cd552185eba5d4f830fa68d4427e6",
+          "size": 4425
+        },
+        {
+          "path": "src/clib/u8x8_selection_list.c",
+          "blob": "50018111af6bc73ccc2bd43fa4c156d93c819741",
+          "size": 4941
+        },
+        {
+          "path": "src/clib/u8x8_setup.c",
+          "blob": "072da9fadaea3229ada5fca37621d37bb1c8c285",
+          "size": 4874
+        },
+        {
+          "path": "src/clib/u8x8_string.c",
+          "blob": "6acdec5326845898af1975523754b09380e76f1d",
+          "size": 3983
+        },
+        {
+          "path": "src/clib/u8x8_u16toa.c",
+          "blob": "0cedde8526a916c702785e4a7036381995366845",
+          "size": 2080
+        },
+        {
+          "path": "src/clib/u8x8_u8toa.c",
+          "blob": "9173802438078c81dd95069eb3f8e435336bd6f9",
+          "size": 2679
+        }
+      ]
+    },
+    {
+      "name": "Servo",
+      "repository": "arduino-libraries/Servo",
+      "commit": "8297c322120d9eb21478eb48f1f3d80219b9d800",
+      "files": [
+        {
+          "path": "LICENSE.txt",
+          "blob": "8000a6faacf471c537530805ab29523c7732e11a",
+          "size": 26526
+        },
+        {
+          "path": "library.properties",
+          "blob": "4d17a02fc94bc7ca9226e3f408830e69bfb23292",
+          "size": 581
+        },
+        {
+          "path": "src/Servo.h",
+          "blob": "47365d857822cb0fbdab70dae5b4060205f0b7fb",
+          "size": 5404
+        },
+        {
+          "path": "src/avr/Servo.cpp",
+          "blob": "27f53a8c0307ddb0bfc928e78737187acb32d9b5",
+          "size": 10902
+        },
+        {
+          "path": "src/avr/ServoTimers.h",
+          "blob": "6189ea399e83cd953e2c2520c36c51c1bbe3cf87",
+          "size": 2174
+        }
+      ]
+    }
+  ],
+  "scope": "Unmodified upstream subset: SSD1306 128x64, U8g2 graphics core and Arduino glue; fonts packaged separately. Servo AVR files only.",
+  "font": {
+    "repository": "olikraus/u8g2",
+    "commit": "d6c8499c5f2707cac8eccd09fd8f677d12b17977",
+    "path": "tools/font/build/single_font_files/u8g2_font_6x10_tf.c",
+    "adaptation": "Prepended #include \"u8g2.h\" so the upstream single font can compile independently. Font data and copyright header unchanged.",
+    "font": "Public domain terminal emulator font"
+  }
+}

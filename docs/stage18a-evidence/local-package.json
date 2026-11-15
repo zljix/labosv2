@@ -1,0 +1,11 @@
+{
+  "status": "pass",
+  "version": "0.8.0-beta.1",
+  "build": "ce50ef82d68e9fdf",
+  "verifiedResources": 148,
+  "resourceBytes": 10748865,
+  "archiveBytes": 3818932,
+  "archiveSha256": "6b8ec9f1125c3135f0c397c2c3ce35ca529ddfa9bcbb09a41085d4daaa098bce",
+  "launch": "Node local server on loopback; HTTP contents/hash/MIME verified",
+  "browserColdOffline": "not tested"
+}

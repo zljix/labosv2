@@ -1,0 +1,813 @@
+{
+  "console": "BASELINE\r\nCONFLICT READY\r\n",
+  "frame": {
+    "type": "simulation",
+    "clockProfile": "external-us",
+    "timeMs": 500,
+    "nets": {
+      "board:3V3": 3.3,
+      "board:5V": 5,
+      "board:A0": null,
+      "board:A1": null,
+      "board:A2": null,
+      "board:A3": null,
+      "board:A4": null,
+      "board:A5": null,
+      "board:A6": null,
+      "board:A7": null,
+      "board:D0": null,
+      "board:D1": null,
+      "board:D10": null,
+      "board:D11": null,
+      "board:D12": null,
+      "board:D13": null,
+      "board:D2": null,
+      "board:D3": 0,
+      "board:D4": 0,
+      "board:D5": null,
+      "board:D6": null,
+      "board:D7": null,
+      "board:D8": 0,
+      "board:D9": 0,
+      "board:GND": 0,
+      "bridge1:OUT1": null,
+      "bridge1:OUT2": null,
+      "bridge1:OUT3": null,
+      "bridge1:OUT4": null,
+      "bridge1:VS": 6,
+      "servoSupply:+": 5
+    },
+    "leds": {},
+    "gpios": {
+      "0": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "1": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "2": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "3": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "4": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "5": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "6": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "7": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "8": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "9": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "10": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "11": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "12": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "13": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "14": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "15": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "16": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "17": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "18": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "19": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      }
+    },
+    "sensors": {},
+    "displays": {},
+    "measurements": [],
+    "i2cTrace": [],
+    "actuators": {
+      "relays": {},
+      "buzzers": {
+        "buzzer1": {
+          "powered": true,
+          "active": true,
+          "frequency": 880.2816901408451,
+          "duty": 0.5000550176056338,
+          "reason": "Ton uključen"
+        }
+      },
+      "bridges": {
+        "bridge1": {
+          "powered": true,
+          "channels": [
+            {
+              "mode": "neodređeno",
+              "voltage": null
+            },
+            {
+              "mode": "neodređeno",
+              "voltage": null
+            }
+          ]
+        }
+      },
+      "motors": {
+        "motor1": {
+          "voltage": null,
+          "relativeSpeed": 0,
+          "direction": 0,
+          "mode": "slobodno / odspojeno"
+        }
+      },
+      "trace": [
+        {
+          "timeUs": 10000,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 10000,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "OFF"
+        },
+        {
+          "timeUs": 20000,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 20000,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "OFF"
+        },
+        {
+          "timeUs": 30000,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 30000,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "OFF"
+        },
+        {
+          "timeUs": 40000,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 40000,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "OFF"
+        },
+        {
+          "timeUs": 50000.0625,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 50000.0625,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "OFF"
+        },
+        {
+          "timeUs": 60000.25,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 60000.25,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "OFF"
+        },
+        {
+          "timeUs": 70000.25,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 70000.25,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "OFF"
+        },
+        {
+          "timeUs": 80000.25,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 80000.25,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "OFF"
+        },
+        {
+          "timeUs": 90000.25,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 90000.25,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "OFF"
+        },
+        {
+          "timeUs": 100000.25,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 100000.25,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "OFF"
+        },
+        {
+          "timeUs": 110000.3125,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 110000.3125,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "OFF"
+        },
+        {
+          "timeUs": 120000.3125,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 120000.3125,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "OFF"
+        },
+        {
+          "timeUs": 130000.3125,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 130000.3125,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "OFF"
+        },
+        {
+          "timeUs": 140000.3125,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 140000.3125,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "OFF"
+        },
+        {
+          "timeUs": 150000.3125,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 150000.3125,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "OFF"
+        },
+        {
+          "timeUs": 160000.3125,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 160000.3125,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "OFF"
+        },
+        {
+          "timeUs": 170000.3125,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 170000.3125,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "OFF"
+        },
+        {
+          "timeUs": 180000.375,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 180000.375,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "OFF"
+        },
+        {
+          "timeUs": 190000.375,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 190000.375,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "OFF"
+        },
+        {
+          "timeUs": 200000.375,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 200000.375,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "OFF"
+        },
+        {
+          "timeUs": 210000.4375,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 210000.4375,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 220000.5,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 220000.5,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 230000.5625,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 230000.5625,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 240000.625,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 240000.625,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 250000.6875,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 250000.6875,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 260000.75,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 260000.75,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 270000.75,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 270000.75,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 280000.75,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 280000.75,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 290000.75,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 290000.75,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 300000.8125,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 300000.8125,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "875.90 Hz"
+        },
+        {
+          "timeUs": 310000.875,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 310000.875,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 320000.9375,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 320000.9375,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 330001,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 330001,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 340001.0625,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 340001.0625,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 350001.0625,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 350001.0625,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 360001.0625,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 360001.0625,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 370001.0625,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 370001.0625,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 380001.0625,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 380001.0625,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 390001.125,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 390001.125,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 400001.125,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 400001.125,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 410001.1875,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 410001.1875,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 420001.25,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 420001.25,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 430001.25,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 430001.25,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 440001.25,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 440001.25,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 450001.25,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 450001.25,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 460001.25,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 460001.25,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 470001.25,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 470001.25,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 480001.3125,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 480001.3125,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 490001.375,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 490001.375,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 500001.4375,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "Hi-Z"
+        },
+        {
+          "timeUs": 500001.4375,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        }
+      ]
+    },
+    "tmDisplays": {},
+    "infrared": {},
+    "encoders": {},
+    "oneWireDevices": {},
+    "timedSensors": {},
+    "analogInputs": {},
+    "servos": {
+      "sg90": {
+        "powered": true,
+        "angle": 89.9,
+        "pulseUs": 1499.4375,
+        "freq": 49.99265732845488,
+        "reason": "Zadani položaj (idealizirano)"
+      }
+    },
+    "diagnostics": [],
+    "avr": {
+      "cycles": 8000023,
+      "clockHz": 16000000,
+      "uartBaud": 9615,
+      "rxPending": 0,
+      "busTrace": [],
+      "memory": {
+        "staticBytes": 246,
+        "lowestSP": 2275,
+        "minFreeToStatic": 1774
+      }
+    }
+  }
+}

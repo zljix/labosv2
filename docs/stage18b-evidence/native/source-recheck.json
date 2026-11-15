@@ -1,0 +1,65 @@
+{
+  "checks": [
+    {
+      "key": "blink",
+      "mainSourceUnchanged": true
+    },
+    {
+      "key": "button",
+      "mainSourceUnchanged": true
+    },
+    {
+      "key": "adc",
+      "mainSourceUnchanged": true
+    },
+    {
+      "key": "regulator",
+      "mainSourceUnchanged": true
+    },
+    {
+      "key": "sensors",
+      "mainSourceUnchanged": true
+    },
+    {
+      "key": "servo",
+      "mainSourceUnchanged": true
+    },
+    {
+      "key": "lcd",
+      "mainSourceUnchanged": true
+    },
+    {
+      "key": "touch",
+      "mainSourceUnchanged": true
+    },
+    {
+      "key": "dht11",
+      "mainSourceUnchanged": true
+    },
+    {
+      "key": "dht22",
+      "mainSourceUnchanged": true
+    },
+    {
+      "key": "dhtErrors",
+      "mainSourceUnchanged": true
+    },
+    {
+      "key": "ds18Multi",
+      "mainSourceUnchanged": true
+    },
+    {
+      "key": "ds18Resolution",
+      "mainSourceUnchanged": true
+    },
+    {
+      "key": "oled64",
+      "mainSourceUnchanged": true
+    },
+    {
+      "key": "oled32",
+      "mainSourceUnchanged": true
+    }
+  ],
+  "note": "Only export README wording was clarified after native compiles; sketch source stayed identical."
+}

@@ -1,0 +1,149 @@
+{
+  "generatedAt": "2026-11-12T17:16:59.477409+00:00",
+  "environment": "Available Chromium / Linux through managed preview",
+  "passedCoreChecks": 10,
+  "totalCoreChecks": 10,
+  "coreChecks": [
+    {
+      "name": "MicroPython and restricted JS bridge",
+      "status": "pass",
+      "detail": "micropython; MicroPython v1.29.0; JS_DISABLED"
+    },
+    {
+      "name": "GPIO and time",
+      "status": "pass",
+      "detail": "TIME_OK 199"
+    },
+    {
+      "name": "Live button input",
+      "status": "pass",
+      "detail": {
+        "pressToOutputMs": 23.2,
+        "released": true
+      }
+    },
+    {
+      "name": "Force Stop and restart",
+      "status": "pass",
+      "detail": {
+        "stopAwaitMs": [
+          0,
+          0.1,
+          0.5
+        ],
+        "stopToNewProgramCompletedMs": [
+          178.1,
+          97.6,
+          96.6
+        ],
+        "freshRuns": 3,
+        "note": "Browser terminate() has no completion acknowledgement; stopAwaitMs measures the command, not physical thread destruction."
+      }
+    },
+    {
+      "name": "I2C bytes and NACK",
+      "status": "pass"
+    },
+    {
+      "name": "I2C wiring failures",
+      "status": "pass"
+    },
+    {
+      "name": "Native framebuf output",
+      "status": "pass",
+      "detail": "1024 bytes, MONO_VLSB, text and border"
+    },
+    {
+      "name": "Garbage collector",
+      "status": "pass",
+      "detail": "GC_OK 4085440"
+    },
+    {
+      "name": "Python errors and clean restart",
+      "status": "pass"
+    },
+    {
+      "name": "Bounded console",
+      "status": "pass",
+      "detail": {
+        "consoleCharacters": 8237,
+        "consoleMessages": 2,
+        "pinMessages": 16
+      }
+    }
+  ],
+  "visibleFlows": [
+    {
+      "name": "Editable blink example",
+      "status": "pass",
+      "observed": "88% LED then 0% LED while the supplied Python loop runs"
+    },
+    {
+      "name": "Editable button example",
+      "status": "pass",
+      "observed": "Input changes to pressed; LED 88%; console contains Tipkalo: pritisnuto"
+    },
+    {
+      "name": "Editable ADC/PWM example",
+      "status": "pass",
+      "observed": "50% potentiometer -> 1.650 V, read_u16 34888, PWM 53.2%, LED 47%, 2.349 mA"
+    },
+    {
+      "name": "Potentiometer endpoints",
+      "status": "pass",
+      "observed": "0% -> ADC 0, PWM 0%, LED 0%; 100% -> ADC 65535, PWM 100%, LED 88%"
+    },
+    {
+      "name": "Reset discards live input",
+      "status": "pass",
+      "observed": "After 100% live input, Reset restored stored 50% and previous 34888 ADC result"
+    },
+    {
+      "name": "Code snapshot while running",
+      "status": "pass",
+      "observed": "Replacing program with GPIO6 preserved current PWM output and showed pending-change hint until Reset"
+    },
+    {
+      "name": "GPIO and wire both determine output",
+      "status": "pass",
+      "observed": "GPIO6 code with GPIO4 wiring -> LED 0%; rewiring the resistor to GPIO6 -> LED 88%; checks 0 errors / 0 warnings"
+    },
+    {
+      "name": "Topology edit stops session",
+      "status": "pass",
+      "observed": "Deleting source wire changed run state to stopped and cleared displayed output"
+    },
+    {
+      "name": "Python syntax error location",
+      "status": "pass",
+      "observed": "main.py, line 2; SyntaxError: invalid syntax"
+    },
+    {
+      "name": "Non-yielding program Stop",
+      "status": "pass",
+      "observed": "while True: pass stopped through visible Stop; fresh example opened afterwards"
+    },
+    {
+      "name": "Local save and reload",
+      "status": "pass",
+      "observed": "Modified code and GPIO6 wire survived page reload"
+    },
+    {
+      "name": "New project clears previous console",
+      "status": "pass",
+      "observed": "Opening fresh example showed ready console rather than preceding project output"
+    }
+  ],
+  "notVerified": [
+    "Safari/iOS",
+    "Firefox",
+    "Edge",
+    "Physical school computer",
+    "Physical ESP32",
+    "ZIP upload through browser file chooser in this stage"
+  ],
+  "notes": [
+    "Visible UI flows and the runtime checks were executed, not inferred from source.",
+    "No claim of cross-browser, physical hardware or offline compatibility."
+  ]
+}

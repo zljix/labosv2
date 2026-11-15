@@ -1,0 +1,14 @@
+✔ real S3 compiler rejects unavailable graphics constructors and hardware IRQ API (13280.208724ms)
+✔ real compiler supports multiple C++/C files and Bounce2 GPIO without source rewriting (624.115044ms)
+✔ real compiler reports exact source lines and rejects unsupported ESP-specific includes (682.620203ms)
+✔ real compiler preserves automatic-prototype boundary and rejects old ESP32 channel API (703.087289ms)
+✔ actual S3 Worker accepts live input inside setup and force-stops a pure infinite C++ loop (851.492579ms)
+✔ serial flood keeps console chunks and message rate bounded while C++ remains stoppable (523.657156ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16970.68185

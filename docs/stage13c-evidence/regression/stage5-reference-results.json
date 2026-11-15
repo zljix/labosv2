@@ -1,0 +1,371 @@
+{
+  "scope": "Node Worker, stvarni MicroPython WASM; razvojna provjera, nije učenički pilot",
+  "results": [
+    {
+      "format": "esp32-lab-check",
+      "version": 1,
+      "checkerVersion": "0.2.0",
+      "lessonId": "led-time",
+      "lessonVersion": 1,
+      "sourceHash": "50ddb045a1467a12869e976db59dda28689f0f41091155c28f8dba3148235110",
+      "startedAt": "2026-11-13T07:57:50.507Z",
+      "finishedAt": "2026-11-13T07:57:53.927Z",
+      "checks": [
+        {
+          "id": "topology",
+          "title": "Priprema sklopa",
+          "passed": true,
+          "expected": "Sklop bez blokirajućih pogrešaka i s potrebnim komponentama.",
+          "observed": "Električne mreže uspješno izračunate."
+        },
+        {
+          "id": "cycles",
+          "title": "Naizmjenično treptanje",
+          "passed": true,
+          "expected": "Najmanje tri cjelovita ciklusa.",
+          "observed": "3 ciklusa opaženo."
+        },
+        {
+          "id": "on-time",
+          "title": "Trajanje uključenja",
+          "passed": true,
+          "expected": "250 ms; prihvaćeno 180–380 ms.",
+          "observed": "252 ms, 252 ms, 249 ms"
+        },
+        {
+          "id": "off-time",
+          "title": "Trajanje isključenja",
+          "passed": true,
+          "expected": "750 ms; prihvaćeno 650–1000 ms.",
+          "observed": "752 ms, 756 ms, 758 ms"
+        }
+      ],
+      "console": "Treptanje: GPIO4, 250 ms ukljuceno / 750 ms iskljuceno\n"
+    },
+    {
+      "format": "esp32-lab-check",
+      "version": 1,
+      "checkerVersion": "0.2.0",
+      "lessonId": "button",
+      "lessonVersion": 1,
+      "sourceHash": "8c8ab9b58d5c0e73eefadb30ab71dfcd3a404083ebd57f461d4bb18cb5605125",
+      "startedAt": "2026-11-13T07:57:53.931Z",
+      "finishedAt": "2026-11-13T07:57:55.689Z",
+      "checks": [
+        {
+          "id": "topology",
+          "title": "Priprema sklopa",
+          "passed": true,
+          "expected": "Sklop bez blokirajućih pogrešaka i s potrebnim komponentama.",
+          "observed": "Električne mreže uspješno izračunate."
+        },
+        {
+          "id": "button-0",
+          "title": "1. Otpuštanje",
+          "passed": true,
+          "expected": "LED ugašena unutar 300 ms.",
+          "observed": "Relativna svjetlina: 0.0 %."
+        },
+        {
+          "id": "button-1",
+          "title": "2. Pritisak",
+          "passed": true,
+          "expected": "LED uključena unutar 300 ms.",
+          "observed": "Relativna svjetlina: 88.2 %."
+        },
+        {
+          "id": "button-2",
+          "title": "3. Otpuštanje",
+          "passed": true,
+          "expected": "LED ugašena unutar 300 ms.",
+          "observed": "Relativna svjetlina: 0.0 %."
+        },
+        {
+          "id": "button-3",
+          "title": "4. Pritisak",
+          "passed": true,
+          "expected": "LED uključena unutar 300 ms.",
+          "observed": "Relativna svjetlina: 88.2 %."
+        },
+        {
+          "id": "button-4",
+          "title": "5. Otpuštanje",
+          "passed": true,
+          "expected": "LED ugašena unutar 300 ms.",
+          "observed": "Relativna svjetlina: 0.0 %."
+        }
+      ],
+      "console": "Tipkalo: otpusteno\nTipkalo: pritisnuto\nTipkalo: otpusteno\nTipkalo: pritisnuto\nTipkalo: otpusteno\n"
+    },
+    {
+      "format": "esp32-lab-check",
+      "version": 1,
+      "checkerVersion": "0.2.0",
+      "lessonId": "adc-pwm",
+      "lessonVersion": 1,
+      "sourceHash": "992529fcd7cf0e4d88e52c74692622740bfa5964f7c4733d62402fa3a162dcc8",
+      "startedAt": "2026-11-13T07:57:55.691Z",
+      "finishedAt": "2026-11-13T07:57:57.245Z",
+      "checks": [
+        {
+          "id": "topology",
+          "title": "Priprema sklopa",
+          "passed": true,
+          "expected": "Sklop bez blokirajućih pogrešaka i s potrebnim komponentama.",
+          "observed": "Električne mreže uspješno izračunate."
+        },
+        {
+          "id": "pwm",
+          "title": "PWM izlaz",
+          "passed": true,
+          "expected": "Program stvara PWM izlaz.",
+          "observed": "Opaženi duty_u16: 0 / 17444 / 34888 / 65535."
+        },
+        {
+          "id": "ends",
+          "title": "Krajnji položaji",
+          "passed": true,
+          "expected": "0 %: ugašeno; 100 %: svijetli.",
+          "observed": "Svjetlina: 0.0 % → 88.2 %."
+        },
+        {
+          "id": "low",
+          "title": "Položaj 25 %",
+          "passed": true,
+          "expected": "20–34 % najveće svjetline (oko 27 %).",
+          "observed": "26.6 % najveće svjetline."
+        },
+        {
+          "id": "mid",
+          "title": "Položaj 50 %",
+          "passed": true,
+          "expected": "44–64 % najveće svjetline (oko 53 %).",
+          "observed": "53.2 % najveće svjetline."
+        }
+      ],
+      "console": "ADC: 0 PWM: 0 %\nADC: 17444 PWM: 26 %\nADC: 34888 PWM: 53 %\nADC: 65535 PWM: 100 %\n"
+    },
+    {
+      "format": "esp32-lab-check",
+      "version": 1,
+      "checkerVersion": "0.2.0",
+      "lessonId": "aht-oled",
+      "lessonVersion": 1,
+      "sourceHash": "b40606a28360cc6cb2d2d1058e6ea9ecb1bda9051ac61edf887159d6dadfb257",
+      "startedAt": "2026-11-13T07:57:57.248Z",
+      "finishedAt": "2026-11-13T07:57:59.487Z",
+      "checks": [
+        {
+          "id": "topology",
+          "title": "Priprema sklopa",
+          "passed": true,
+          "expected": "Sklop bez blokirajućih pogrešaka i s potrebnim komponentama.",
+          "observed": "Električne mreže uspješno izračunate."
+        },
+        {
+          "id": "sensor-0",
+          "title": "1. Očitanje 20 °C / 40 % RH",
+          "passed": true,
+          "expected": "Novo dovršeno očitanje odgovara zadanom okolišu.",
+          "observed": "Uzorak 1; T=20.00; RH=40.00."
+        },
+        {
+          "id": "oled-0",
+          "title": "1. Brojke na OLED-u",
+          "passed": true,
+          "expected": "Standardni text(): 20.0 i 40.0 na zaslonu.",
+          "observed": "Obje vrijednosti pronađene u primljenim pikselima."
+        },
+        {
+          "id": "sensor-1",
+          "title": "2. Očitanje 34 °C / 40 % RH",
+          "passed": true,
+          "expected": "Novo dovršeno očitanje odgovara zadanom okolišu.",
+          "observed": "Uzorak 2; T=34.00; RH=40.00."
+        },
+        {
+          "id": "oled-1",
+          "title": "2. Brojke na OLED-u",
+          "passed": true,
+          "expected": "Standardni text(): 34.0 i 40.0 na zaslonu.",
+          "observed": "Obje vrijednosti pronađene u primljenim pikselima."
+        },
+        {
+          "id": "sensor-2",
+          "title": "3. Očitanje 34 °C / 70 % RH",
+          "passed": true,
+          "expected": "Novo dovršeno očitanje odgovara zadanom okolišu.",
+          "observed": "Uzorak 3; T=34.00; RH=70.00."
+        },
+        {
+          "id": "oled-2",
+          "title": "3. Brojke na OLED-u",
+          "passed": true,
+          "expected": "Standardni text(): 34.0 i 70.0 na zaslonu.",
+          "observed": "Obje vrijednosti pronađene u primljenim pikselima."
+        },
+        {
+          "id": "sensor-3",
+          "title": "4. Očitanje 20 °C / 40 % RH",
+          "passed": true,
+          "expected": "Novo dovršeno očitanje odgovara zadanom okolišu.",
+          "observed": "Uzorak 4; T=20.00; RH=40.00."
+        },
+        {
+          "id": "oled-3",
+          "title": "4. Brojke na OLED-u",
+          "passed": true,
+          "expected": "Standardni text(): 20.0 i 40.0 na zaslonu.",
+          "observed": "Obje vrijednosti pronađene u primljenim pikselima."
+        }
+      ],
+      "console": "20.000076293945313 39.999961853027344\n34.00001525878906 39.999961853027344\n34.00001525878906 69.99998092651367\n"
+    },
+    {
+      "format": "esp32-lab-check",
+      "version": 1,
+      "checkerVersion": "0.2.0",
+      "lessonId": "regulator",
+      "lessonVersion": 1,
+      "sourceHash": "dda0dcffabb5ad14192ee5b4e6c7591b74fa6a89b4b188ae42039cdfa82928db",
+      "startedAt": "2026-11-13T07:57:59.491Z",
+      "finishedAt": "2026-11-13T07:58:10.125Z",
+      "checks": [
+        {
+          "id": "topology",
+          "title": "Priprema sklopa",
+          "passed": true,
+          "expected": "Sklop bez blokirajućih pogrešaka i s potrebnim komponentama.",
+          "observed": "Električne mreže uspješno izračunate."
+        },
+        {
+          "id": "sensor-0",
+          "title": "1. Očitanje 24 °C / 50 % RH",
+          "passed": true,
+          "expected": "Novo dovršeno očitanje odgovara zadanom okolišu.",
+          "observed": "Uzorak 1; T=24.00; RH=50.00."
+        },
+        {
+          "id": "oled-0",
+          "title": "1. Brojke na OLED-u",
+          "passed": true,
+          "expected": "Standardni text(): 24.0 i 50.0 na zaslonu.",
+          "observed": "Obje vrijednosti pronađene u primljenim pikselima."
+        },
+        {
+          "id": "servo-0",
+          "title": "1. Servo na 24 °C",
+          "passed": true,
+          "expected": "0°.",
+          "observed": "Opaženi kut: 0.0°."
+        },
+        {
+          "id": "sensor-1",
+          "title": "2. Očitanje 29 °C / 50 % RH",
+          "passed": true,
+          "expected": "Novo dovršeno očitanje odgovara zadanom okolišu.",
+          "observed": "Uzorak 2; T=29.00; RH=50.00."
+        },
+        {
+          "id": "oled-1",
+          "title": "2. Brojke na OLED-u",
+          "passed": true,
+          "expected": "Standardni text(): 29.0 i 50.0 na zaslonu.",
+          "observed": "Obje vrijednosti pronađene u primljenim pikselima."
+        },
+        {
+          "id": "servo-1",
+          "title": "2. Servo na 29 °C",
+          "passed": true,
+          "expected": "90°.",
+          "observed": "Opaženi kut: 90.0°."
+        },
+        {
+          "id": "sensor-2",
+          "title": "3. Očitanje 27 °C / 50 % RH",
+          "passed": true,
+          "expected": "Novo dovršeno očitanje odgovara zadanom okolišu.",
+          "observed": "Uzorak 3; T=27.00; RH=50.00."
+        },
+        {
+          "id": "oled-2",
+          "title": "3. Brojke na OLED-u",
+          "passed": true,
+          "expected": "Standardni text(): 27.0 i 50.0 na zaslonu.",
+          "observed": "Obje vrijednosti pronađene u primljenim pikselima."
+        },
+        {
+          "id": "servo-2",
+          "title": "3. Servo na 27 °C",
+          "passed": true,
+          "expected": "90° uz zadržavanje prethodnog stanja.",
+          "observed": "Opaženi kut: 90.0°."
+        },
+        {
+          "id": "sensor-3",
+          "title": "4. Očitanje 25 °C / 50 % RH",
+          "passed": true,
+          "expected": "Novo dovršeno očitanje odgovara zadanom okolišu.",
+          "observed": "Uzorak 4; T=25.00; RH=50.00."
+        },
+        {
+          "id": "oled-3",
+          "title": "4. Brojke na OLED-u",
+          "passed": true,
+          "expected": "Standardni text(): 25.0 i 50.0 na zaslonu.",
+          "observed": "Obje vrijednosti pronađene u primljenim pikselima."
+        },
+        {
+          "id": "servo-3",
+          "title": "4. Servo na 25 °C",
+          "passed": true,
+          "expected": "0°.",
+          "observed": "Opaženi kut: 0.0°."
+        },
+        {
+          "id": "sensor-4",
+          "title": "5. Očitanje 27 °C / 50 % RH",
+          "passed": true,
+          "expected": "Novo dovršeno očitanje odgovara zadanom okolišu.",
+          "observed": "Uzorak 5; T=27.00; RH=50.00."
+        },
+        {
+          "id": "oled-4",
+          "title": "5. Brojke na OLED-u",
+          "passed": true,
+          "expected": "Standardni text(): 27.0 i 50.0 na zaslonu.",
+          "observed": "Obje vrijednosti pronađene u primljenim pikselima."
+        },
+        {
+          "id": "servo-4",
+          "title": "5. Servo na 27 °C",
+          "passed": true,
+          "expected": "0° uz zadržavanje prethodnog stanja.",
+          "observed": "Opaženi kut: 0.0°."
+        },
+        {
+          "id": "sensor-5",
+          "title": "6. Očitanje 29 °C / 50 % RH",
+          "passed": true,
+          "expected": "Novo dovršeno očitanje odgovara zadanom okolišu.",
+          "observed": "Uzorak 6; T=29.00; RH=50.00."
+        },
+        {
+          "id": "oled-5",
+          "title": "6. Brojke na OLED-u",
+          "passed": true,
+          "expected": "Standardni text(): 29.0 i 50.0 na zaslonu.",
+          "observed": "Obje vrijednosti pronađene u primljenim pikselima."
+        },
+        {
+          "id": "servo-5",
+          "title": "6. Servo na 29 °C",
+          "passed": true,
+          "expected": "90°.",
+          "observed": "Opaženi kut: 90.0°."
+        }
+      ],
+      "console": "I2C0: ['0x38']\nI2C1: ['0x3c']\nT=24.00 C, RH=50.00 %, servo=0 deg\nT=29.00 C, RH=50.00 %, servo=90 deg\nT=27.00 C, RH=50.00 %, servo=90 deg\nT=25.00 C, RH=50.00 %, servo=0 deg\nT=27.00 C, RH=50.00 %, servo=0 deg\n"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "arduino.uno-r3.atmega328p": {
+    "preserved": 72,
+    "new": 4,
+    "total": 76
+  },
+  "arduino.nano-classic.atmega328p": {
+    "preserved": 72,
+    "new": 4,
+    "total": 76
+  },
+  "s3": {
+    "preserved": 23,
+    "new": 4,
+    "total": 27
+  },
+  "protected_sources": "unchanged",
+  "source_baseline": "6bab1fb1d59eff67e0534fb403158b4463c39910"
+}

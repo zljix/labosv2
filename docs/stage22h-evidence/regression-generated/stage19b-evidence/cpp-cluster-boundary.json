@@ -1,0 +1,1103 @@
+{
+  "text": "SD FILE BYTES=538\r\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXPozdrav iz FAT16 preko SPI!\n",
+  "frame": {
+    "type": "simulation",
+    "clockProfile": "external-us",
+    "timeMs": 1148,
+    "nets": {
+      "esp32:J1.1": 3.3,
+      "esp32:J1.10": null,
+      "esp32:J1.11": null,
+      "esp32:J1.12": null,
+      "esp32:J1.13": null,
+      "esp32:J1.14": null,
+      "esp32:J1.15": null,
+      "esp32:J1.16": 3.3,
+      "esp32:J1.17": 0,
+      "esp32:J1.18": 0,
+      "esp32:J1.19": null,
+      "esp32:J1.20": null,
+      "esp32:J1.21": 5,
+      "esp32:J1.22": 0,
+      "esp32:J1.4": null,
+      "esp32:J1.5": null,
+      "esp32:J1.6": null,
+      "esp32:J1.7": null,
+      "esp32:J1.8": null,
+      "esp32:J1.9": null,
+      "esp32:J3.10": null,
+      "esp32:J3.14": null,
+      "esp32:J3.15": null,
+      "esp32:J3.16": null,
+      "esp32:J3.17": null,
+      "esp32:J3.18": null,
+      "esp32:J3.19": null,
+      "esp32:J3.2": null,
+      "esp32:J3.20": null,
+      "esp32:J3.3": null,
+      "esp32:J3.4": null,
+      "esp32:J3.5": null,
+      "esp32:J3.6": null,
+      "esp32:J3.7": null,
+      "esp32:J3.8": null,
+      "esp32:J3.9": null
+    },
+    "levelShifters": {},
+    "i2cLevelShifters": {},
+    "leds": {},
+    "gpios": {
+      "10": {
+        "mode": "OUT",
+        "volts": 3.3,
+        "level": 1
+      },
+      "11": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "12": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "13": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      }
+    },
+    "optical": {},
+    "sensors": {},
+    "displays": {},
+    "measurements": [],
+    "i2cTrace": [],
+    "radios": {},
+    "sdCards": {
+      "sd1": {
+        "powered": true,
+        "inserted": true,
+        "writeProtected": false,
+        "initialized": true,
+        "sectors": 16384,
+        "dirtyBlocks": 5,
+        "reads": 20,
+        "writes": 7,
+        "errors": 0,
+        "revision": 7,
+        "state": {
+          "version": 1,
+          "blocks": [
+            [
+              1,
+              "+P///wMA//8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+            ],
+            [
+              65,
+              "+P///wMA//8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+            ],
+            [
+              129,
+              "TEFCICAgICBUWFQgAAAAAAAAAAAAAAAAIVwCABoCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+            ],
+            [
+              133,
+              "WFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYUG8="
+            ],
+            [
+              134,
+              "emRyYXYgaXogRkFUMTYgcHJla28gU1BJIQoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+            ]
+          ]
+        },
+        "files": [
+          {
+            "name": "LAB.TXT",
+            "size": 538,
+            "cluster": 2
+          }
+        ],
+        "volumeError": "",
+        "trace": [
+          {
+            "timeUs": 3308,
+            "operation": "CMD0",
+            "value": 0,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 4040,
+            "operation": "CMD8",
+            "value": 426,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 5096,
+            "operation": "CMD55",
+            "value": 0,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 5828,
+            "operation": "CMD41",
+            "value": 0,
+            "result": "ACMD"
+          },
+          {
+            "timeUs": 7561,
+            "operation": "CMD55",
+            "value": 0,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 8293,
+            "operation": "CMD41",
+            "value": 0,
+            "result": "ACMD"
+          },
+          {
+            "timeUs": 9025,
+            "operation": "CMD58",
+            "value": 0,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 10081,
+            "operation": "CMD16",
+            "value": 512,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 10813,
+            "operation": "CMD9",
+            "value": 0,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 12733,
+            "operation": "CMD17",
+            "value": 0,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 17461,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 22189,
+            "operation": "CMD17",
+            "value": 512,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 26917,
+            "operation": "CMD17",
+            "value": 33280,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 31645,
+            "operation": "CMD17",
+            "value": 68096,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 36373,
+            "operation": "CMD24",
+            "value": 68096,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 41017,
+            "operation": "write",
+            "value": 133,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 42100,
+            "operation": "CMD17",
+            "value": 512,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 46828,
+            "operation": "CMD17",
+            "value": 33280,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 51556,
+            "operation": "CMD17",
+            "value": 512,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 56284,
+            "operation": "CMD17",
+            "value": 33280,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 61012,
+            "operation": "CMD17",
+            "value": 512,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 65740,
+            "operation": "CMD17",
+            "value": 33280,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 70468,
+            "operation": "CMD17",
+            "value": 512,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 75196,
+            "operation": "CMD24",
+            "value": 512,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 79840,
+            "operation": "write",
+            "value": 1,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 80923,
+            "operation": "CMD24",
+            "value": 33280,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 85567,
+            "operation": "write",
+            "value": 65,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 86650,
+            "operation": "CMD17",
+            "value": 512,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 91378,
+            "operation": "CMD24",
+            "value": 512,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 96022,
+            "operation": "write",
+            "value": 1,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 97105,
+            "operation": "CMD24",
+            "value": 33280,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 101749,
+            "operation": "write",
+            "value": 65,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 102832,
+            "operation": "CMD24",
+            "value": 68608,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 107476,
+            "operation": "write",
+            "value": 134,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 108559,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 113287,
+            "operation": "CMD24",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 117931,
+            "operation": "write",
+            "value": 129,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 119028,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 123761,
+            "operation": "CMD17",
+            "value": 66048,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 128489,
+            "operation": "CMD17",
+            "value": 68096,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 133729,
+            "operation": "CMD17",
+            "value": 512,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 138457,
+            "operation": "CMD17",
+            "value": 33280,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 143185,
+            "operation": "CMD17",
+            "value": 68608,
+            "result": "CMD"
+          }
+        ],
+        "reason": "CS HIGH · neaktivan"
+      }
+    },
+    "rtcDevices": {},
+    "touches": {},
+    "tfts": {},
+    "spiTrace": [
+      {
+        "timeUs": 146956,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 146965,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 146974,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 146983,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 146992,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147001,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147010,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147019,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147028,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147037,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147046,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147055,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147064,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147073,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147082,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147091,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147100,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147109,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147118,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147127,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147136,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147145,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147154,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147163,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147172,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147181,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147190,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147199,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147208,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147217,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147226,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147235,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147244,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147253,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147262,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147271,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147280,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147289,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147298,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147307,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147316,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147325,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147334,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147343,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147352,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147361,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147370,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147379,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147388,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147397,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147406,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147415,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147424,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147433,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147442,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147451,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147460,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147469,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147478,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147487,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147496,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147505,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147514,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147523,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147532,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147541,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147550,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147559,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147568,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147577,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147586,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147595,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147604,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147613,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147622,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147631,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147640,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147649,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147658,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147667,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147676,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147685,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147694,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147703,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147712,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147721,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147730,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147739,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147748,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147757,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147766,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147775,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147784,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147793,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147802,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147811,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147820,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 147829,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xf0"
+      },
+      {
+        "timeUs": 147838,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x9e"
+      },
+      {
+        "timeUs": 147848,
+        "device": "—",
+        "operation": "transfer",
+        "value": 255,
+        "result": "Nema odabranog spojenog uređaja · MISO 0xFF"
+      }
+    ],
+    "spiBytes": 15025,
+    "steppers": {
+      "drivers": {},
+      "motors": {}
+    },
+    "tmDisplays": {},
+    "infrared": {},
+    "encoders": {},
+    "oneWireDevices": {},
+    "timedSensors": {},
+    "analogInputs": {},
+    "servos": {},
+    "diagnostics": []
+  }
+}

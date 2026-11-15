@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: package covers shell, lazy editor, every runtime dependency, drivers, manual and valid install icons
+ok 1 - package covers shell, lazy editor, every runtime dependency, drivers, manual and valid install icons
+  ---
+  duration_ms: 1.390922
+  type: 'test'
+  ...
+# Subtest: verified package reopens shell and executes file requests without any network
+ok 2 - verified package reopens shell and executes file requests without any network
+  ---
+  duration_ms: 208.608376
+  type: 'test'
+  ...
+# Subtest: incorrect bytes or login/fallback response cannot install an eligible package
+ok 3 - incorrect bytes or login/fallback response cannot install an eligible package
+  ---
+  duration_ms: 190.254763
+  type: 'test'
+  ...
+# Subtest: quota failure cannot advertise a partially stored package
+ok 4 - quota failure cannot advertise a partially stored package
+  ---
+  duration_ms: 95.633592
+  type: 'test'
+  ...
+# Subtest: an evicted asset invalidates offline readiness
+ok 5 - an evicted asset invalidates offline readiness
+  ---
+  duration_ms: 245.712522
+  type: 'test'
+  ...
+# Subtest: an update needs an explicit message and refuses more than one open tab
+ok 6 - an update needs an explicit message and refuses more than one open tab
+  ---
+  duration_ms: 184.270125
+  type: 'test'
+  ...
+# Subtest: upgrade retains previous content-addressed runtime and does not cache unrelated or private requests
+ok 7 - upgrade retains previous content-addressed runtime and does not cache unrelated or private requests
+  ---
+  duration_ms: 99.052627
+  type: 'test'
+  ...
+# Subtest: content-addressed production Worker actually runs MicroPython and framebuf
+ok 8 - content-addressed production Worker actually runs MicroPython and framebuf
+  ---
+  duration_ms: 275.912451
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1781.291299

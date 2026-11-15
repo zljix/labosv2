@@ -1,0 +1,1113 @@
+[
+  {
+    "key": "lm35",
+    "loops": 1,
+    "text": "S3 LM35 ADC=26 U=0.020 T=1.97\r\n",
+    "error": "",
+    "analogInputs": {
+      "lm351": {
+        "powered": true,
+        "volts": {
+          "OUT": 0.02
+        }
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "lm35",
+    "loops": 1,
+    "text": "S3 LM35 ADC=330 U=0.250 T=24.98\r\n",
+    "error": "",
+    "analogInputs": {
+      "lm351": {
+        "powered": true,
+        "volts": {
+          "OUT": 0.25
+        }
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "lm35",
+    "loops": 1,
+    "text": "S3 LM35 ADC=660 U=0.500 T=49.96\r\n",
+    "error": "",
+    "analogInputs": {
+      "lm351": {
+        "powered": true,
+        "volts": {
+          "OUT": 0.5
+        }
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "lm35",
+    "loops": 1,
+    "text": "S3 LM35 ADC=1321 U=1.000 T=100.00\r\n",
+    "error": "",
+    "analogInputs": {
+      "lm351": {
+        "powered": true,
+        "volts": {
+          "OUT": 1
+        }
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "lm35",
+    "loops": 1,
+    "text": "S3 LM35 ADC=1981 U=1.500 T=149.97\r\n",
+    "error": "",
+    "analogInputs": {
+      "lm351": {
+        "powered": true,
+        "volts": {
+          "OUT": 1.5
+        }
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "lm35",
+    "loops": 3,
+    "text": "S3 LM35 ADC=330 U=0.250 T=24.98\r\nS3 LM35 ADC=991 U=0.750 T=75.02\r\nS3 LM35 ADC=132 U=0.100 T=9.99\r\n",
+    "error": "",
+    "analogInputs": {
+      "lm351": {
+        "powered": true,
+        "volts": {
+          "OUT": 0.1
+        }
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "temt6000",
+    "loops": 1,
+    "text": "S3 TEMT6000 ADC=0 U=0.000 SAT=0\r\n",
+    "error": "",
+    "analogInputs": {
+      "temt60001": {
+        "powered": true,
+        "volts": {
+          "AO": 0
+        }
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "temt6000",
+    "loops": 1,
+    "text": "S3 TEMT6000 ADC=132 U=0.100 SAT=0\r\n",
+    "error": "",
+    "analogInputs": {
+      "temt60001": {
+        "powered": true,
+        "volts": {
+          "AO": 0.1
+        }
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "temt6000",
+    "loops": 1,
+    "text": "S3 TEMT6000 ADC=660 U=0.500 SAT=0\r\n",
+    "error": "",
+    "analogInputs": {
+      "temt60001": {
+        "powered": true,
+        "volts": {
+          "AO": 0.5
+        }
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "temt6000",
+    "loops": 1,
+    "text": "S3 TEMT6000 ADC=3963 U=3.000 SAT=0\r\n",
+    "error": "",
+    "analogInputs": {
+      "temt60001": {
+        "powered": true,
+        "volts": {
+          "AO": 3
+        }
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "temt6000",
+    "loops": 1,
+    "text": "S3 TEMT6000 ADC=4095 U=3.100 SAT=1\r\n",
+    "error": "",
+    "analogInputs": {
+      "temt60001": {
+        "powered": true,
+        "volts": {
+          "AO": 3.1999999999999997
+        }
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "ntc",
+    "loops": 1,
+    "text": "S3 NTC ADC=3981 T=-19.98\r\n",
+    "error": "",
+    "analogInputs": {
+      "ntc1": {
+        "powered": true,
+        "volts": {
+          "AO": 3.014000185457246
+        },
+        "resistance": 105384.690206038
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "ntc",
+    "loops": 1,
+    "text": "S3 NTC ADC=3360 T=-0.00\r\n",
+    "error": "",
+    "analogInputs": {
+      "ntc1": {
+        "powered": true,
+        "volts": {
+          "AO": 2.5434767705018406
+        },
+        "resistance": 33620.60372143574
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "ntc",
+    "loops": 1,
+    "text": "S3 NTC ADC=2180 T=24.99\r\n",
+    "error": "",
+    "analogInputs": {
+      "ntc1": {
+        "powered": true,
+        "volts": {
+          "AO": 1.65
+        },
+        "resistance": 10000
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "ntc",
+    "loops": 1,
+    "text": "S3 NTC ADC=1151 T=50.00\r\n",
+    "error": "",
+    "analogInputs": {
+      "ntc1": {
+        "powered": true,
+        "volts": {
+          "AO": 0.8714191503515207
+        },
+        "resistance": 3588.1825819290834
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "ntc",
+    "loops": 1,
+    "text": "S3 NTC ADC=284 T=100.03\r\n",
+    "error": "",
+    "analogInputs": {
+      "ntc1": {
+        "powered": true,
+        "volts": {
+          "AO": 0.21517279703161268
+        },
+        "resistance": 697.5197729861881
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "ntc",
+    "loops": 1,
+    "text": "S3 NTC ADC=4095 T=nan\r\nNTC GRANICA: provjeri spoj ili ADC zasicenje\r\n",
+    "error": "",
+    "analogInputs": {
+      "ntc1": {
+        "powered": true,
+        "volts": {
+          "AO": 3.2673267326732676
+        },
+        "resistance": 10000
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "ntc",
+    "loops": 1,
+    "text": "S3 NTC ADC=2906 T=10.18\r\n",
+    "error": "",
+    "analogInputs": {
+      "ntc1": {
+        "powered": true,
+        "volts": {
+          "AO": 2.1999999999999997
+        },
+        "resistance": 20000
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "analogCompare",
+    "loops": 3,
+    "text": "S3 COMPARE LM35=24.98 NTC=24.99\r\nS3 COMPARE LM35=49.96 NTC=24.99\r\nS3 COMPARE LM35=49.96 NTC=50.00\r\n",
+    "error": "",
+    "analogInputs": {
+      "lm351": {
+        "powered": true,
+        "volts": {
+          "OUT": 0.5
+        }
+      },
+      "ntc1": {
+        "powered": true,
+        "volts": {
+          "AO": 0.8714191503515207
+        },
+        "resistance": 3588.1825819290834
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "ky023",
+    "loops": 4,
+    "text": "S3 JOY X=2180 Y=2180 NX=0.00 NY=0.00 SW=1 SATX=0 SATY=0\r\nS3 JOY X=2223 Y=2136 NX=0.00 NY=0.00 SW=1 SATX=0 SATY=0\r\nS3 JOY X=4095 Y=0 NX=0.88 NY=-1.00 SW=0 SATX=1 SATY=0\r\nS3 JOY X=0 Y=4095 NX=-1.00 NY=0.88 SW=1 SATX=0 SATY=1\r\n",
+    "error": "",
+    "analogInputs": {
+      "ky0231": {
+        "powered": true,
+        "volts": {
+          "VRX": 3.299999670000033e-7,
+          "VRY": 3.299999670000033,
+          "SW": 3.3
+        }
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "flame",
+    "loops": 7,
+    "text": "S3 FLAME ADC=4095 DO=1\r\nS3 FLAME ADC=2092 DO=0\r\nS3 FLAME ADC=2180 DO=0\r\nS3 FLAME ADC=2267 DO=1\r\nS3 FLAME ADC=2180 DO=1\r\nS3 FLAME ADC=0 DO=0\r\nS3 FLAME ADC=4095 DO=1\r\n",
+    "error": "",
+    "analogInputs": {
+      "flame1": {
+        "powered": true,
+        "active": false,
+        "volts": {
+          "AO": 3.3,
+          "DO": 3.3
+        }
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "flame",
+    "loops": 1,
+    "text": "S3 FLAME ADC=4095 DO=1\r\n",
+    "error": "",
+    "analogInputs": {
+      "flame1": {
+        "powered": true,
+        "active": false,
+        "volts": {
+          "AO": 3.3,
+          "DO": 3.3
+        }
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "sound",
+    "loops": 7,
+    "text": "S3 SOUND DO=1\r\nS3 SOUND DO=0\r\nS3 SOUND DO=0\r\nS3 SOUND DO=1\r\nS3 SOUND DO=1\r\nS3 SOUND DO=0\r\nS3 SOUND DO=1\r\n",
+    "error": "",
+    "analogInputs": {
+      "sound1": {
+        "powered": true,
+        "active": false,
+        "volts": {
+          "DO": 3.3
+        }
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "sound",
+    "loops": 1,
+    "text": "S3 SOUND DO=1\r\n",
+    "error": "",
+    "analogInputs": {
+      "sound1": {
+        "powered": true,
+        "active": false,
+        "volts": {
+          "DO": 3.3
+        }
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "dualInputs",
+    "loops": 4,
+    "text": "S3 DUAL A=1090 B=3269 S1=1 S2=1\r\nS3 DUAL A=3487 B=3269 S1=1 S2=0\r\nS3 DUAL A=3487 B=0 S1=0 S2=0\r\nS3 DUAL A=0 B=0 S1=1 S2=1\r\n",
+    "error": "",
+    "analogInputs": {},
+    "diagnostics": []
+  },
+  {
+    "key": "lm35",
+    "loops": 1,
+    "text": "",
+    "error": "Nepobuđen ulaz: provjeri spoj ili pull otpornik.",
+    "analogInputs": {
+      "lm351": {
+        "powered": false,
+        "volts": {
+          "OUT": null
+        }
+      }
+    },
+    "diagnostics": [
+      {
+        "code": "input-unpowered",
+        "severity": "warning",
+        "message": "lm351: provjeri VCC (5 V) i zajedničku masu; očitanje nije valjano.",
+        "terminals": [
+          "lm351:VCC",
+          "esp32:J1.22",
+          "esp32:J3.1",
+          "esp32:J3.21",
+          "esp32:J3.22",
+          "lm351:GND"
+        ],
+        "wires": [
+          "ai1"
+        ]
+      },
+      {
+        "code": "adc-floating",
+        "severity": "warning",
+        "message": "ADC: nepobuđen ulaz. Broj 0 na AVR-u nije valjano mjerenje.",
+        "terminals": [
+          "esp32:J3.4",
+          "lm351:OUT"
+        ],
+        "wires": [
+          "ai2"
+        ]
+      }
+    ]
+  },
+  {
+    "key": "lm35",
+    "loops": 1,
+    "text": "",
+    "error": "Nepobuđen ulaz: provjeri spoj ili pull otpornik.",
+    "analogInputs": {
+      "lm351": {
+        "powered": false,
+        "volts": {
+          "OUT": null
+        }
+      }
+    },
+    "diagnostics": [
+      {
+        "code": "input-unpowered",
+        "severity": "warning",
+        "message": "lm351: provjeri VCC (5 V) i zajedničku masu; očitanje nije valjano.",
+        "terminals": [
+          "esp32:J1.21",
+          "lm351:VCC",
+          "lm351:GND"
+        ],
+        "wires": [
+          "ai0"
+        ]
+      },
+      {
+        "code": "adc-floating",
+        "severity": "warning",
+        "message": "ADC: nepobuđen ulaz. Broj 0 na AVR-u nije valjano mjerenje.",
+        "terminals": [
+          "esp32:J3.4",
+          "lm351:OUT"
+        ],
+        "wires": [
+          "ai2"
+        ]
+      }
+    ]
+  },
+  {
+    "key": "temt6000",
+    "loops": 1,
+    "text": "S3 TEMT6000 ADC=0 U=0.000 SAT=0\r\n",
+    "error": "",
+    "analogInputs": {
+      "temt60001": {
+        "powered": false,
+        "volts": {
+          "AO": 0
+        }
+      }
+    },
+    "diagnostics": [
+      {
+        "code": "input-unpowered",
+        "severity": "warning",
+        "message": "temt60001: provjeri VCC (3.3 V) i zajedničku masu; očitanje nije valjano.",
+        "terminals": [
+          "temt60001:VCC",
+          "esp32:J1.22",
+          "esp32:J3.1",
+          "esp32:J3.21",
+          "esp32:J3.22",
+          "temt60001:GND"
+        ],
+        "wires": [
+          "ai1"
+        ]
+      }
+    ]
+  },
+  {
+    "key": "temt6000",
+    "loops": 1,
+    "text": "",
+    "error": "Nepobuđen ulaz: provjeri spoj ili pull otpornik.",
+    "analogInputs": {
+      "temt60001": {
+        "powered": false,
+        "volts": {
+          "AO": null
+        }
+      }
+    },
+    "diagnostics": [
+      {
+        "code": "input-unpowered",
+        "severity": "warning",
+        "message": "temt60001: provjeri VCC (3.3 V) i zajedničku masu; očitanje nije valjano.",
+        "terminals": [
+          "esp32:J1.1",
+          "esp32:J1.2",
+          "temt60001:VCC",
+          "temt60001:GND"
+        ],
+        "wires": [
+          "ai0"
+        ]
+      },
+      {
+        "code": "adc-floating",
+        "severity": "warning",
+        "message": "ADC: nepobuđen ulaz. Broj 0 na AVR-u nije valjano mjerenje.",
+        "terminals": [
+          "esp32:J3.4",
+          "temt60001:AO"
+        ],
+        "wires": [
+          "ai2"
+        ]
+      }
+    ]
+  },
+  {
+    "key": "ntc",
+    "loops": 1,
+    "text": "S3 NTC ADC=0 T=nan\r\nNTC GRANICA: provjeri spoj ili ADC zasicenje\r\n",
+    "error": "",
+    "analogInputs": {
+      "ntc1": {
+        "powered": false,
+        "volts": {
+          "AO": 0
+        },
+        "resistance": 10000
+      }
+    },
+    "diagnostics": [
+      {
+        "code": "input-unpowered",
+        "severity": "warning",
+        "message": "ntc1: provjeri VCC (3.3 V) i zajedničku masu; očitanje nije valjano.",
+        "terminals": [
+          "ntc1:VCC",
+          "esp32:J1.22",
+          "esp32:J3.1",
+          "esp32:J3.21",
+          "esp32:J3.22",
+          "ntc1:GND"
+        ],
+        "wires": [
+          "ai1"
+        ]
+      }
+    ]
+  },
+  {
+    "key": "ntc",
+    "loops": 1,
+    "text": "S3 NTC ADC=4095 T=nan\r\nNTC GRANICA: provjeri spoj ili ADC zasicenje\r\n",
+    "error": "",
+    "analogInputs": {
+      "ntc1": {
+        "powered": false,
+        "volts": {
+          "AO": 3.3
+        },
+        "resistance": 10000
+      }
+    },
+    "diagnostics": [
+      {
+        "code": "input-unpowered",
+        "severity": "warning",
+        "message": "ntc1: provjeri VCC (3.3 V) i zajedničku masu; očitanje nije valjano.",
+        "terminals": [
+          "esp32:J1.1",
+          "esp32:J1.2",
+          "ntc1:VCC",
+          "ntc1:GND"
+        ],
+        "wires": [
+          "ai0"
+        ]
+      }
+    ]
+  },
+  {
+    "key": "ky023",
+    "loops": 1,
+    "text": "S3 JOY X=0 Y=0 NX=-1.00 NY=-1.00 SW=1 SATX=0 SATY=0\r\n",
+    "error": "",
+    "analogInputs": {
+      "ky0231": {
+        "powered": false,
+        "volts": {
+          "VRX": 0,
+          "VRY": 0,
+          "SW": 3.3
+        }
+      }
+    },
+    "diagnostics": [
+      {
+        "code": "input-unpowered",
+        "severity": "warning",
+        "message": "ky0231: provjeri VCC (3.3 V) i zajedničku masu; očitanje nije valjano.",
+        "terminals": [
+          "ky0231:VCC",
+          "esp32:J1.22",
+          "esp32:J3.1",
+          "esp32:J3.21",
+          "esp32:J3.22",
+          "ky0231:GND"
+        ],
+        "wires": [
+          "ai1"
+        ]
+      }
+    ]
+  },
+  {
+    "key": "ky023",
+    "loops": 1,
+    "text": "S3 JOY X=4095 Y=4095 NX=0.88 NY=0.88 SW=1 SATX=1 SATY=1\r\n",
+    "error": "",
+    "analogInputs": {
+      "ky0231": {
+        "powered": false,
+        "volts": {
+          "VRX": 3.3,
+          "VRY": 3.3,
+          "SW": 3.3
+        }
+      }
+    },
+    "diagnostics": [
+      {
+        "code": "input-unpowered",
+        "severity": "warning",
+        "message": "ky0231: provjeri VCC (3.3 V) i zajedničku masu; očitanje nije valjano.",
+        "terminals": [
+          "esp32:J1.1",
+          "esp32:J1.2",
+          "ky0231:VCC",
+          "ky0231:GND"
+        ],
+        "wires": [
+          "ai0"
+        ]
+      }
+    ]
+  },
+  {
+    "key": "flame",
+    "loops": 1,
+    "text": "",
+    "error": "Nepobuđen ulaz: provjeri spoj ili pull otpornik.",
+    "analogInputs": {
+      "flame1": {
+        "powered": false,
+        "active": false,
+        "volts": {
+          "AO": null,
+          "DO": null
+        }
+      }
+    },
+    "diagnostics": [
+      {
+        "code": "input-unpowered",
+        "severity": "warning",
+        "message": "flame1: provjeri VCC (3.3 V) i zajedničku masu; očitanje nije valjano.",
+        "terminals": [
+          "flame1:VCC",
+          "esp32:J1.22",
+          "esp32:J3.1",
+          "esp32:J3.21",
+          "esp32:J3.22",
+          "flame1:GND"
+        ],
+        "wires": [
+          "ai1"
+        ]
+      },
+      {
+        "code": "adc-floating",
+        "severity": "warning",
+        "message": "ADC: nepobuđen ulaz. Broj 0 na AVR-u nije valjano mjerenje.",
+        "terminals": [
+          "esp32:J3.4",
+          "flame1:AO"
+        ],
+        "wires": [
+          "ai2"
+        ]
+      }
+    ]
+  },
+  {
+    "key": "flame",
+    "loops": 1,
+    "text": "",
+    "error": "Nepobuđen ulaz: provjeri spoj ili pull otpornik.",
+    "analogInputs": {
+      "flame1": {
+        "powered": false,
+        "active": false,
+        "volts": {
+          "AO": null,
+          "DO": null
+        }
+      }
+    },
+    "diagnostics": [
+      {
+        "code": "input-unpowered",
+        "severity": "warning",
+        "message": "flame1: provjeri VCC (3.3 V) i zajedničku masu; očitanje nije valjano.",
+        "terminals": [
+          "esp32:J1.1",
+          "esp32:J1.2",
+          "flame1:VCC",
+          "flame1:GND"
+        ],
+        "wires": [
+          "ai0"
+        ]
+      },
+      {
+        "code": "adc-floating",
+        "severity": "warning",
+        "message": "ADC: nepobuđen ulaz. Broj 0 na AVR-u nije valjano mjerenje.",
+        "terminals": [
+          "esp32:J3.4",
+          "flame1:AO"
+        ],
+        "wires": [
+          "ai2"
+        ]
+      }
+    ]
+  },
+  {
+    "key": "sound",
+    "loops": 1,
+    "text": "S3 SOUND DO=",
+    "error": "Nepobuđen ulaz: provjeri spoj ili pull otpornik.",
+    "analogInputs": {
+      "sound1": {
+        "powered": false,
+        "active": false,
+        "volts": {
+          "DO": null
+        }
+      }
+    },
+    "diagnostics": [
+      {
+        "code": "input-unpowered",
+        "severity": "warning",
+        "message": "sound1: provjeri VCC (3.3 V) i zajedničku masu; očitanje nije valjano.",
+        "terminals": [
+          "sound1:VCC",
+          "esp32:J1.22",
+          "esp32:J3.1",
+          "esp32:J3.21",
+          "esp32:J3.22",
+          "sound1:GND"
+        ],
+        "wires": [
+          "ai1"
+        ]
+      }
+    ]
+  },
+  {
+    "key": "sound",
+    "loops": 1,
+    "text": "S3 SOUND DO=",
+    "error": "Nepobuđen ulaz: provjeri spoj ili pull otpornik.",
+    "analogInputs": {
+      "sound1": {
+        "powered": false,
+        "active": false,
+        "volts": {
+          "DO": null
+        }
+      }
+    },
+    "diagnostics": [
+      {
+        "code": "input-unpowered",
+        "severity": "warning",
+        "message": "sound1: provjeri VCC (3.3 V) i zajedničku masu; očitanje nije valjano.",
+        "terminals": [
+          "esp32:J1.1",
+          "esp32:J1.2",
+          "sound1:VCC",
+          "sound1:GND"
+        ],
+        "wires": [
+          "ai0"
+        ]
+      }
+    ]
+  },
+  {
+    "key": "lm35",
+    "loops": 1,
+    "text": "",
+    "error": "Nepobuđen ulaz: provjeri spoj ili pull otpornik.",
+    "analogInputs": {
+      "lm351": {
+        "powered": true,
+        "volts": {
+          "OUT": 0.25
+        }
+      }
+    },
+    "diagnostics": [
+      {
+        "code": "input-signal-open",
+        "severity": "warning",
+        "message": "lm351: izlaz OUT nije spojen na pločicu.",
+        "terminals": [
+          "lm351:OUT"
+        ],
+        "wires": []
+      },
+      {
+        "code": "adc-floating",
+        "severity": "warning",
+        "message": "ADC: nepobuđen ulaz. Broj 0 na AVR-u nije valjano mjerenje.",
+        "terminals": [
+          "esp32:J3.4"
+        ],
+        "wires": []
+      }
+    ]
+  },
+  {
+    "key": "temt6000",
+    "loops": 1,
+    "text": "",
+    "error": "Nepobuđen ulaz: provjeri spoj ili pull otpornik.",
+    "analogInputs": {
+      "temt60001": {
+        "powered": true,
+        "volts": {
+          "AO": 0.5
+        }
+      }
+    },
+    "diagnostics": [
+      {
+        "code": "input-signal-open",
+        "severity": "warning",
+        "message": "temt60001: izlaz AO nije spojen na pločicu.",
+        "terminals": [
+          "temt60001:AO"
+        ],
+        "wires": []
+      },
+      {
+        "code": "adc-floating",
+        "severity": "warning",
+        "message": "ADC: nepobuđen ulaz. Broj 0 na AVR-u nije valjano mjerenje.",
+        "terminals": [
+          "esp32:J3.4"
+        ],
+        "wires": []
+      }
+    ]
+  },
+  {
+    "key": "ntc",
+    "loops": 1,
+    "text": "",
+    "error": "Nepobuđen ulaz: provjeri spoj ili pull otpornik.",
+    "analogInputs": {
+      "ntc1": {
+        "powered": true,
+        "volts": {
+          "AO": 1.65
+        },
+        "resistance": 10000
+      }
+    },
+    "diagnostics": [
+      {
+        "code": "input-signal-open",
+        "severity": "warning",
+        "message": "ntc1: izlaz AO nije spojen na pločicu.",
+        "terminals": [
+          "ntc1:AO"
+        ],
+        "wires": []
+      },
+      {
+        "code": "adc-floating",
+        "severity": "warning",
+        "message": "ADC: nepobuđen ulaz. Broj 0 na AVR-u nije valjano mjerenje.",
+        "terminals": [
+          "esp32:J3.4"
+        ],
+        "wires": []
+      }
+    ]
+  },
+  {
+    "key": "ky023",
+    "loops": 1,
+    "text": "",
+    "error": "Nepobuđen ulaz: provjeri spoj ili pull otpornik.",
+    "analogInputs": {
+      "ky0231": {
+        "powered": true,
+        "volts": {
+          "VRX": 1.65,
+          "VRY": 1.65,
+          "SW": 3.3
+        }
+      }
+    },
+    "diagnostics": [
+      {
+        "code": "input-signal-open",
+        "severity": "warning",
+        "message": "ky0231: izlaz VRX nije spojen na pločicu.",
+        "terminals": [
+          "ky0231:VRX"
+        ],
+        "wires": []
+      },
+      {
+        "code": "adc-floating",
+        "severity": "warning",
+        "message": "ADC: nepobuđen ulaz. Broj 0 na AVR-u nije valjano mjerenje.",
+        "terminals": [
+          "esp32:J3.4"
+        ],
+        "wires": []
+      }
+    ]
+  },
+  {
+    "key": "flame",
+    "loops": 1,
+    "text": "",
+    "error": "Nepobuđen ulaz: provjeri spoj ili pull otpornik.",
+    "analogInputs": {
+      "flame1": {
+        "powered": true,
+        "active": false,
+        "volts": {
+          "AO": 3.3,
+          "DO": 3.3
+        }
+      }
+    },
+    "diagnostics": [
+      {
+        "code": "input-signal-open",
+        "severity": "warning",
+        "message": "flame1: izlaz AO nije spojen na pločicu.",
+        "terminals": [
+          "flame1:AO"
+        ],
+        "wires": []
+      },
+      {
+        "code": "adc-floating",
+        "severity": "warning",
+        "message": "ADC: nepobuđen ulaz. Broj 0 na AVR-u nije valjano mjerenje.",
+        "terminals": [
+          "esp32:J3.4"
+        ],
+        "wires": []
+      }
+    ]
+  },
+  {
+    "key": "sound",
+    "loops": 1,
+    "text": "S3 SOUND DO=",
+    "error": "Nepobuđen ulaz: provjeri spoj ili pull otpornik.",
+    "analogInputs": {
+      "sound1": {
+        "powered": true,
+        "active": false,
+        "volts": {
+          "DO": 3.3
+        }
+      }
+    },
+    "diagnostics": [
+      {
+        "code": "input-signal-open",
+        "severity": "warning",
+        "message": "sound1: izlaz DO nije spojen na pločicu.",
+        "terminals": [
+          "sound1:DO"
+        ],
+        "wires": []
+      }
+    ]
+  },
+  {
+    "key": "lm35",
+    "loops": 1,
+    "text": "",
+    "error": "Nepobuđen ulaz: provjeri spoj ili pull otpornik.",
+    "analogInputs": {
+      "lm351": {
+        "powered": false,
+        "volts": {
+          "OUT": null
+        }
+      }
+    },
+    "diagnostics": [
+      {
+        "code": "input-unpowered",
+        "severity": "warning",
+        "message": "lm351: provjeri VCC (5 V) i zajedničku masu; očitanje nije valjano.",
+        "terminals": [
+          "esp32:J1.1",
+          "esp32:J1.2",
+          "lm351:VCC",
+          "esp32:J1.22",
+          "esp32:J3.1",
+          "esp32:J3.21",
+          "esp32:J3.22",
+          "lm351:GND"
+        ],
+        "wires": [
+          "ai0",
+          "ai1"
+        ]
+      },
+      {
+        "code": "adc-floating",
+        "severity": "warning",
+        "message": "ADC: nepobuđen ulaz. Broj 0 na AVR-u nije valjano mjerenje.",
+        "terminals": [
+          "esp32:J3.4",
+          "lm351:OUT"
+        ],
+        "wires": [
+          "ai2"
+        ]
+      }
+    ]
+  },
+  {
+    "key": "lm35",
+    "loops": 1,
+    "text": "S3 LM35 ADC=330 U=0.250 T=24.98\r\n",
+    "error": "",
+    "analogInputs": {
+      "lm351": {
+        "powered": true,
+        "volts": {
+          "OUT": 0.25
+        }
+      }
+    },
+    "diagnostics": []
+  },
+  {
+    "key": "lm35",
+    "loops": 1,
+    "text": "S3 LM35 ADC=330 U=0.250 T=12.49\r\n",
+    "error": "",
+    "analogInputs": {
+      "lm351": {
+        "powered": true,
+        "volts": {
+          "OUT": 0.25
+        }
+      }
+    },
+    "diagnostics": []
+  }
+]

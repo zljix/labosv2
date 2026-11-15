@@ -1,0 +1,1390 @@
+[
+  {
+    "key": "encoderRaw",
+    "console": "RAW CLK=1 DT=1 SW=1\r\nRAW CLK=0 DT=1 SW=1\r\nRAW CLK=0 DT=0 SW=1\r\nRAW CLK=1 DT=0 SW=1\r\nRAW CLK=1 DT=1 SW=1\r\nRAW CLK=1 DT=1 SW=0\r\n",
+    "frame": {
+      "type": "simulation",
+      "clockProfile": "external-us",
+      "timeMs": 950,
+      "nets": {
+        "board:3V3": 3.3,
+        "board:5V": 5,
+        "board:A0": null,
+        "board:A1": null,
+        "board:A2": null,
+        "board:A3": null,
+        "board:A4": null,
+        "board:A5": null,
+        "board:D0": null,
+        "board:D1": null,
+        "board:D10": null,
+        "board:D11": null,
+        "board:D12": null,
+        "board:D13": null,
+        "board:D2": 5,
+        "board:D3": 5,
+        "board:D4": 0,
+        "board:D5": null,
+        "board:D6": null,
+        "board:D7": null,
+        "board:D8": null,
+        "board:D9": null,
+        "board:GND": 0
+      },
+      "leds": {},
+      "gpios": {
+        "0": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "1": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "2": {
+          "mode": "IN",
+          "volts": 5,
+          "level": 1
+        },
+        "3": {
+          "mode": "IN",
+          "volts": 5,
+          "level": 1
+        },
+        "4": {
+          "mode": "IN",
+          "volts": 1.1111110864197537e-7,
+          "level": 0
+        },
+        "5": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "6": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "7": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "8": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "9": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "10": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "11": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "12": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "13": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "14": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "15": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "16": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "17": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "18": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "19": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        }
+      },
+      "sensors": {},
+      "displays": {},
+      "measurements": [],
+      "i2cTrace": [],
+      "sdCards": {},
+      "rtcDevices": {},
+      "touches": {},
+      "tfts": {},
+      "spiTrace": [],
+      "spiBytes": 0,
+      "steppers": {
+        "drivers": {},
+        "motors": {}
+      },
+      "tmDisplays": {},
+      "infrared": {},
+      "encoders": {
+        "enc1": {
+          "powered": true,
+          "position": 1,
+          "targetPosition": 1,
+          "clk": 1,
+          "dt": 1,
+          "sw": 0,
+          "busy": false,
+          "transitions": 4,
+          "trace": [
+            {
+              "timeUs": 0,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 250000.5,
+              "clk": 0,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 350000.5,
+              "clk": 0,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 450000.5,
+              "clk": 1,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 550000.5,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 850001.6875,
+              "clk": 1,
+              "dt": 1,
+              "sw": 0,
+              "position": 1
+            }
+          ],
+          "volts": {
+            "CLK": 5,
+            "DT": 5,
+            "SW": 1.1111110864197537e-7
+          }
+        }
+      },
+      "oneWireDevices": {},
+      "timedSensors": {},
+      "analogInputs": {},
+      "servos": {},
+      "diagnostics": [],
+      "avr": {
+        "cycles": 15200032,
+        "clockHz": 16000000,
+        "uartBaud": 9615,
+        "rxPending": 0,
+        "busTrace": [],
+        "memory": {
+          "staticBytes": 190,
+          "lowestSP": 2238,
+          "minFreeToStatic": 1793
+        }
+      }
+    },
+    "flash": 2472,
+    "staticRam": 190
+  },
+  {
+    "key": "ky040",
+    "console": "ENC READY P=0; CW=+1 CCW=-1; SW resetira brojac\r\nENC P=1 DIR=CW ERR=0\r\nENC P=0 DIR=CCW ERR=0\r\nENC P=-1 DIR=CCW ERR=0\r\nENC RESET P=0\r\n",
+    "frame": {
+      "type": "simulation",
+      "clockProfile": "external-us",
+      "timeMs": 1050,
+      "nets": {
+        "board:3V3": 3.3,
+        "board:5V": 5,
+        "board:A0": null,
+        "board:A1": null,
+        "board:A2": null,
+        "board:A3": null,
+        "board:A4": null,
+        "board:A5": null,
+        "board:D0": null,
+        "board:D1": null,
+        "board:D10": null,
+        "board:D11": null,
+        "board:D12": null,
+        "board:D13": null,
+        "board:D2": 5,
+        "board:D3": 5,
+        "board:D4": 0,
+        "board:D5": null,
+        "board:D6": null,
+        "board:D7": null,
+        "board:D8": null,
+        "board:D9": null,
+        "board:GND": 0
+      },
+      "leds": {},
+      "gpios": {
+        "0": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "1": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "2": {
+          "mode": "IN",
+          "volts": 5,
+          "level": 1
+        },
+        "3": {
+          "mode": "IN",
+          "volts": 5,
+          "level": 1
+        },
+        "4": {
+          "mode": "IN",
+          "volts": 1.1111110864197537e-7,
+          "level": 0
+        },
+        "5": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "6": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "7": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "8": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "9": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "10": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "11": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "12": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "13": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "14": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "15": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "16": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "17": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "18": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "19": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        }
+      },
+      "sensors": {},
+      "displays": {},
+      "measurements": [],
+      "i2cTrace": [],
+      "sdCards": {},
+      "rtcDevices": {},
+      "touches": {},
+      "tfts": {},
+      "spiTrace": [],
+      "spiBytes": 0,
+      "steppers": {
+        "drivers": {},
+        "motors": {}
+      },
+      "tmDisplays": {},
+      "infrared": {},
+      "encoders": {
+        "enc1": {
+          "powered": true,
+          "position": -1,
+          "targetPosition": -1,
+          "clk": 1,
+          "dt": 1,
+          "sw": 0,
+          "busy": false,
+          "transitions": 12,
+          "trace": [
+            {
+              "timeUs": 0,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 170000.1875,
+              "clk": 0,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 190000.1875,
+              "clk": 0,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 210000.1875,
+              "clk": 1,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 230000.1875,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 570000.6875,
+              "clk": 1,
+              "dt": 0,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 590000.6875,
+              "clk": 0,
+              "dt": 0,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 610000.6875,
+              "clk": 0,
+              "dt": 1,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 630000.6875,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 650000.6875,
+              "clk": 1,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 670000.6875,
+              "clk": 0,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 690000.6875,
+              "clk": 0,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 710000.6875,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": -1
+            },
+            {
+              "timeUs": 950001.8125,
+              "clk": 1,
+              "dt": 1,
+              "sw": 0,
+              "position": -1
+            }
+          ],
+          "volts": {
+            "CLK": 5,
+            "DT": 5,
+            "SW": 1.1111110864197537e-7
+          }
+        }
+      },
+      "oneWireDevices": {},
+      "timedSensors": {},
+      "analogInputs": {},
+      "servos": {},
+      "diagnostics": [],
+      "avr": {
+        "cycles": 16800032,
+        "clockHz": 16000000,
+        "uartBaud": 9615,
+        "rxPending": 0,
+        "busTrace": [],
+        "memory": {
+          "staticBytes": 220,
+          "lowestSP": 2238,
+          "minFreeToStatic": 1763
+        }
+      }
+    },
+    "flash": 2982,
+    "staticRam": 220
+  },
+  {
+    "key": "encoderBounce",
+    "console": "ENC READY P=0; CW=+1 CCW=-1; SW resetira brojac\r\nENC P=1 DIR=CW ERR=0\r\nENC P=0 DIR=CCW ERR=0\r\nENC P=-1 DIR=CCW ERR=0\r\nENC RESET P=0\r\n",
+    "frame": {
+      "type": "simulation",
+      "clockProfile": "external-us",
+      "timeMs": 1050,
+      "nets": {
+        "board:3V3": 3.3,
+        "board:5V": 5,
+        "board:A0": null,
+        "board:A1": null,
+        "board:A2": null,
+        "board:A3": null,
+        "board:A4": null,
+        "board:A5": null,
+        "board:D0": null,
+        "board:D1": null,
+        "board:D10": null,
+        "board:D11": null,
+        "board:D12": null,
+        "board:D13": null,
+        "board:D2": 5,
+        "board:D3": 5,
+        "board:D4": 0,
+        "board:D5": null,
+        "board:D6": null,
+        "board:D7": null,
+        "board:D8": null,
+        "board:D9": null,
+        "board:GND": 0
+      },
+      "leds": {},
+      "gpios": {
+        "0": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "1": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "2": {
+          "mode": "IN",
+          "volts": 5,
+          "level": 1
+        },
+        "3": {
+          "mode": "IN",
+          "volts": 5,
+          "level": 1
+        },
+        "4": {
+          "mode": "IN",
+          "volts": 1.1111110864197537e-7,
+          "level": 0
+        },
+        "5": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "6": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "7": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "8": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "9": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "10": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "11": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "12": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "13": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "14": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "15": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "16": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "17": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "18": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "19": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        }
+      },
+      "sensors": {},
+      "displays": {},
+      "measurements": [],
+      "i2cTrace": [],
+      "sdCards": {},
+      "rtcDevices": {},
+      "touches": {},
+      "tfts": {},
+      "spiTrace": [],
+      "spiBytes": 0,
+      "steppers": {
+        "drivers": {},
+        "motors": {}
+      },
+      "tmDisplays": {},
+      "infrared": {},
+      "encoders": {
+        "enc1": {
+          "powered": true,
+          "position": -1,
+          "targetPosition": -1,
+          "clk": 1,
+          "dt": 1,
+          "sw": 0,
+          "busy": false,
+          "transitions": 60,
+          "trace": [
+            {
+              "timeUs": 0,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 170000.1875,
+              "clk": 0,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 170200.1875,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 170400.1875,
+              "clk": 0,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 170600.1875,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 170800.1875,
+              "clk": 0,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 190800.1875,
+              "clk": 0,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 191000.1875,
+              "clk": 0,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 191200.1875,
+              "clk": 0,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 191400.1875,
+              "clk": 0,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 191600.1875,
+              "clk": 0,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 211600.1875,
+              "clk": 1,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 211800.1875,
+              "clk": 0,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 212000.1875,
+              "clk": 1,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 212200.1875,
+              "clk": 0,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 212400.1875,
+              "clk": 1,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 232400.1875,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 232600.1875,
+              "clk": 1,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 232800.1875,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 233000.1875,
+              "clk": 1,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 233200.1875,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 570000.9375,
+              "clk": 1,
+              "dt": 0,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 570200.9375,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 570400.9375,
+              "clk": 1,
+              "dt": 0,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 570600.9375,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 570800.9375,
+              "clk": 1,
+              "dt": 0,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 590800.9375,
+              "clk": 0,
+              "dt": 0,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 591000.9375,
+              "clk": 1,
+              "dt": 0,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 591200.9375,
+              "clk": 0,
+              "dt": 0,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 591400.9375,
+              "clk": 1,
+              "dt": 0,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 591600.9375,
+              "clk": 0,
+              "dt": 0,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 611600.9375,
+              "clk": 0,
+              "dt": 1,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 611800.9375,
+              "clk": 0,
+              "dt": 0,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 612000.9375,
+              "clk": 0,
+              "dt": 1,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 612200.9375,
+              "clk": 0,
+              "dt": 0,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 612400.9375,
+              "clk": 0,
+              "dt": 1,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 632400.9375,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 632600.9375,
+              "clk": 0,
+              "dt": 1,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 632800.9375,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 633000.9375,
+              "clk": 0,
+              "dt": 1,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 633200.9375,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 653200.9375,
+              "clk": 1,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 653400.9375,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 653600.9375,
+              "clk": 1,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 653800.9375,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 654000.9375,
+              "clk": 1,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 674000.9375,
+              "clk": 0,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 674200.9375,
+              "clk": 1,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 674400.9375,
+              "clk": 0,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 674600.9375,
+              "clk": 1,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 674800.9375,
+              "clk": 0,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 694800.9375,
+              "clk": 0,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 695000.9375,
+              "clk": 0,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 695200.9375,
+              "clk": 0,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 695400.9375,
+              "clk": 0,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 695600.9375,
+              "clk": 0,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 715600.9375,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 715800.9375,
+              "clk": 0,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 716000.9375,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 716200.9375,
+              "clk": 0,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 716400.9375,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": -1
+            },
+            {
+              "timeUs": 950002.0625,
+              "clk": 1,
+              "dt": 1,
+              "sw": 0,
+              "position": -1
+            }
+          ],
+          "volts": {
+            "CLK": 5,
+            "DT": 5,
+            "SW": 1.1111110864197537e-7
+          }
+        }
+      },
+      "oneWireDevices": {},
+      "timedSensors": {},
+      "analogInputs": {},
+      "servos": {},
+      "diagnostics": [],
+      "avr": {
+        "cycles": 16800039,
+        "clockHz": 16000000,
+        "uartBaud": 9615,
+        "rxPending": 0,
+        "busTrace": [],
+        "memory": {
+          "staticBytes": 220,
+          "lowestSP": 2238,
+          "minFreeToStatic": 1763
+        }
+      }
+    },
+    "flash": 2982,
+    "staticRam": 220
+  },
+  {
+    "key": "encoderPWM",
+    "console": "PWM=50\r\nPWM=55\r\nPWM=50\r\n",
+    "frame": {
+      "type": "simulation",
+      "clockProfile": "external-us",
+      "timeMs": 650,
+      "nets": {
+        "board:3V3": 3.3,
+        "board:5V": 5,
+        "board:A0": null,
+        "board:A1": null,
+        "board:A2": null,
+        "board:A3": null,
+        "board:A4": null,
+        "board:A5": null,
+        "board:D0": null,
+        "board:D1": null,
+        "board:D10": null,
+        "board:D11": null,
+        "board:D12": null,
+        "board:D13": null,
+        "board:D2": 5,
+        "board:D3": 5,
+        "board:D4": 0,
+        "board:D5": null,
+        "board:D6": null,
+        "board:D7": null,
+        "board:D8": null,
+        "board:D9": 0,
+        "board:GND": 0,
+        "encLED:A": 0
+      },
+      "leds": {
+        "encLED": {
+          "brightness": 0.4712057971014517,
+          "currentMa": 2.356
+        }
+      },
+      "gpios": {
+        "0": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "1": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "2": {
+          "mode": "IN",
+          "volts": 5,
+          "level": 1
+        },
+        "3": {
+          "mode": "IN",
+          "volts": 5,
+          "level": 1
+        },
+        "4": {
+          "mode": "IN",
+          "volts": 1.1111110864197537e-7,
+          "level": 0
+        },
+        "5": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "6": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "7": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "8": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "9": {
+          "mode": "PWM",
+          "volts": 0,
+          "level": 0,
+          "duty": 33293,
+          "freq": 490.19607843137254
+        },
+        "10": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "11": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "12": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "13": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "14": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "15": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "16": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "17": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "18": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        },
+        "19": {
+          "mode": "IN",
+          "volts": null,
+          "level": null
+        }
+      },
+      "sensors": {},
+      "displays": {},
+      "measurements": [],
+      "i2cTrace": [],
+      "sdCards": {},
+      "rtcDevices": {},
+      "touches": {},
+      "tfts": {},
+      "spiTrace": [],
+      "spiBytes": 0,
+      "steppers": {
+        "drivers": {},
+        "motors": {}
+      },
+      "tmDisplays": {},
+      "infrared": {},
+      "encoders": {
+        "enc1": {
+          "powered": true,
+          "position": 1,
+          "targetPosition": 1,
+          "clk": 1,
+          "dt": 1,
+          "sw": 0,
+          "busy": false,
+          "transitions": 4,
+          "trace": [
+            {
+              "timeUs": 0,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 170000.75,
+              "clk": 0,
+              "dt": 1,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 190000.75,
+              "clk": 0,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 210000.75,
+              "clk": 1,
+              "dt": 0,
+              "sw": 1,
+              "position": 0
+            },
+            {
+              "timeUs": 230000.75,
+              "clk": 1,
+              "dt": 1,
+              "sw": 1,
+              "position": 1
+            },
+            {
+              "timeUs": 550001.625,
+              "clk": 1,
+              "dt": 1,
+              "sw": 0,
+              "position": 1
+            }
+          ],
+          "volts": {
+            "CLK": 5,
+            "DT": 5,
+            "SW": 1.1111110864197537e-7
+          }
+        }
+      },
+      "oneWireDevices": {},
+      "timedSensors": {},
+      "analogInputs": {},
+      "servos": {},
+      "diagnostics": [],
+      "avr": {
+        "cycles": 10400028,
+        "clockHz": 16000000,
+        "uartBaud": 9615,
+        "rxPending": 0,
+        "busTrace": [],
+        "memory": {
+          "staticBytes": 222,
+          "lowestSP": 2238,
+          "minFreeToStatic": 1761
+        }
+      }
+    },
+    "flash": 3250,
+    "staticRam": 222
+  }
+]

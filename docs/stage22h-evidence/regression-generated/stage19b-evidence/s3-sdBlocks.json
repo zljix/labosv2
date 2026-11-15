@@ -1,0 +1,895 @@
+{
+  "text": "SD BLOCK MATCH=1 BYTES=512\r\n",
+  "frame": {
+    "type": "simulation",
+    "clockProfile": "external-us",
+    "timeMs": 1023,
+    "nets": {
+      "esp32:J1.1": 3.3,
+      "esp32:J1.10": null,
+      "esp32:J1.11": null,
+      "esp32:J1.12": null,
+      "esp32:J1.13": null,
+      "esp32:J1.14": null,
+      "esp32:J1.15": null,
+      "esp32:J1.16": 3.3,
+      "esp32:J1.17": 0,
+      "esp32:J1.18": 0,
+      "esp32:J1.19": null,
+      "esp32:J1.20": null,
+      "esp32:J1.21": 5,
+      "esp32:J1.22": 0,
+      "esp32:J1.4": null,
+      "esp32:J1.5": null,
+      "esp32:J1.6": null,
+      "esp32:J1.7": null,
+      "esp32:J1.8": null,
+      "esp32:J1.9": null,
+      "esp32:J3.10": null,
+      "esp32:J3.14": null,
+      "esp32:J3.15": null,
+      "esp32:J3.16": null,
+      "esp32:J3.17": null,
+      "esp32:J3.18": null,
+      "esp32:J3.19": null,
+      "esp32:J3.2": null,
+      "esp32:J3.20": null,
+      "esp32:J3.3": null,
+      "esp32:J3.4": null,
+      "esp32:J3.5": null,
+      "esp32:J3.6": null,
+      "esp32:J3.7": null,
+      "esp32:J3.8": null,
+      "esp32:J3.9": null
+    },
+    "levelShifters": {},
+    "i2cLevelShifters": {},
+    "leds": {},
+    "gpios": {
+      "10": {
+        "mode": "OUT",
+        "volts": 3.3,
+        "level": 1
+      },
+      "11": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "12": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "13": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      }
+    },
+    "optical": {},
+    "sensors": {},
+    "displays": {},
+    "measurements": [],
+    "i2cTrace": [],
+    "radios": {},
+    "sdCards": {
+      "sd1": {
+        "powered": true,
+        "inserted": true,
+        "writeProtected": false,
+        "initialized": true,
+        "sectors": 16384,
+        "dirtyBlocks": 1,
+        "reads": 1,
+        "writes": 1,
+        "errors": 0,
+        "revision": 1,
+        "state": {
+          "version": 1,
+          "blocks": [
+            [
+              16383,
+              "ExohKC82PURLUllgZ251fIOKkZifpq20u8LJ0Nfe5ezz+gEIDxYdJCsyOUBHTlVcY2pxeH+GjZSboqmwt77FzNPa4ejv9v0ECxIZICcuNTxDSlFYX2ZtdHuCiZCXnqWss7rByM/W3eTr8vkABw4VHCMqMTg/Rk1UW2JpcHd+hYyTmqGor7a9xMvS2eDn7vX8AwoRGB8mLTQ7QklQV15lbHN6gYiPlp2kq7K5wMfO1dzj6vH4/wYNFBsiKTA3PkVMU1phaG92fYSLkpmgp661vMPK0djf5u30+wIJEBceJSwzOkFIT1ZdZGtyeYCHjpWco6qxuL/GzdTb4unw9/4FDBMaISgvNj1ES1JZYGdudXyDipGYn6attLvCydDX3uXs8/oBCA8WHSQrMjlAR05VXGNqcXh/ho2Um6KpsLe+xczT2uHo7/b9BAsSGSAnLjU8Q0pRWF9mbXR7gomQl56lrLO6wcjP1t3k6/L5AAcOFRwjKjE4P0ZNVFtiaXB3foWMk5qhqK+2vcTL0tng5+71/AMKERgfJi00O0JJUFdeZWxzeoGIj5adpKuyucDHztXc4+rx+P8GDRQbIikwNz5FTFNaYWhvdn2Ei5KZoKeutbzDytHY3+bt9PsCCRAXHiUsMzpBSE9WXWRrcnmAh46VnKOqsbi/xs3U2+Lp8Pf+BQw="
+            ]
+          ]
+        },
+        "files": [],
+        "volumeError": "",
+        "trace": [
+          {
+            "timeUs": 3308,
+            "operation": "CMD0",
+            "value": 0,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 4040,
+            "operation": "CMD8",
+            "value": 426,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 5096,
+            "operation": "CMD55",
+            "value": 0,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 5828,
+            "operation": "CMD41",
+            "value": 0,
+            "result": "ACMD"
+          },
+          {
+            "timeUs": 7561,
+            "operation": "CMD55",
+            "value": 0,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 8293,
+            "operation": "CMD41",
+            "value": 0,
+            "result": "ACMD"
+          },
+          {
+            "timeUs": 9025,
+            "operation": "CMD58",
+            "value": 0,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 10081,
+            "operation": "CMD16",
+            "value": 512,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 10813,
+            "operation": "CMD9",
+            "value": 0,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 12733,
+            "operation": "CMD24",
+            "value": 8388096,
+            "result": "CMD"
+          },
+          {
+            "timeUs": 17377,
+            "operation": "write",
+            "value": 16383,
+            "result": "512 B potvrđeno"
+          },
+          {
+            "timeUs": 18460,
+            "operation": "CMD17",
+            "value": 8388096,
+            "result": "CMD"
+          }
+        ],
+        "reason": "CS HIGH · neaktivan"
+      }
+    },
+    "rtcDevices": {},
+    "touches": {},
+    "tfts": {},
+    "spiTrace": [
+      {
+        "timeUs": 22231,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x6c"
+      },
+      {
+        "timeUs": 22240,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x73"
+      },
+      {
+        "timeUs": 22249,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x7a"
+      },
+      {
+        "timeUs": 22258,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x81"
+      },
+      {
+        "timeUs": 22267,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x88"
+      },
+      {
+        "timeUs": 22276,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x8f"
+      },
+      {
+        "timeUs": 22285,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x96"
+      },
+      {
+        "timeUs": 22294,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x9d"
+      },
+      {
+        "timeUs": 22303,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xa4"
+      },
+      {
+        "timeUs": 22312,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xab"
+      },
+      {
+        "timeUs": 22321,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xb2"
+      },
+      {
+        "timeUs": 22330,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xb9"
+      },
+      {
+        "timeUs": 22339,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xc0"
+      },
+      {
+        "timeUs": 22348,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xc7"
+      },
+      {
+        "timeUs": 22357,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xce"
+      },
+      {
+        "timeUs": 22366,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xd5"
+      },
+      {
+        "timeUs": 22375,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xdc"
+      },
+      {
+        "timeUs": 22384,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xe3"
+      },
+      {
+        "timeUs": 22393,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xea"
+      },
+      {
+        "timeUs": 22402,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xf1"
+      },
+      {
+        "timeUs": 22411,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xf8"
+      },
+      {
+        "timeUs": 22420,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 22429,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x06"
+      },
+      {
+        "timeUs": 22438,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x0d"
+      },
+      {
+        "timeUs": 22447,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x14"
+      },
+      {
+        "timeUs": 22456,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x1b"
+      },
+      {
+        "timeUs": 22465,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x22"
+      },
+      {
+        "timeUs": 22474,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x29"
+      },
+      {
+        "timeUs": 22483,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x30"
+      },
+      {
+        "timeUs": 22492,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x37"
+      },
+      {
+        "timeUs": 22501,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x3e"
+      },
+      {
+        "timeUs": 22510,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x45"
+      },
+      {
+        "timeUs": 22519,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x4c"
+      },
+      {
+        "timeUs": 22528,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x53"
+      },
+      {
+        "timeUs": 22537,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x5a"
+      },
+      {
+        "timeUs": 22546,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x61"
+      },
+      {
+        "timeUs": 22555,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x68"
+      },
+      {
+        "timeUs": 22564,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x6f"
+      },
+      {
+        "timeUs": 22573,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x76"
+      },
+      {
+        "timeUs": 22582,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x7d"
+      },
+      {
+        "timeUs": 22591,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x84"
+      },
+      {
+        "timeUs": 22600,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x8b"
+      },
+      {
+        "timeUs": 22609,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x92"
+      },
+      {
+        "timeUs": 22618,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x99"
+      },
+      {
+        "timeUs": 22627,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xa0"
+      },
+      {
+        "timeUs": 22636,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xa7"
+      },
+      {
+        "timeUs": 22645,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xae"
+      },
+      {
+        "timeUs": 22654,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xb5"
+      },
+      {
+        "timeUs": 22663,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xbc"
+      },
+      {
+        "timeUs": 22672,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xc3"
+      },
+      {
+        "timeUs": 22681,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xca"
+      },
+      {
+        "timeUs": 22690,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xd1"
+      },
+      {
+        "timeUs": 22699,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xd8"
+      },
+      {
+        "timeUs": 22708,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xdf"
+      },
+      {
+        "timeUs": 22717,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xe6"
+      },
+      {
+        "timeUs": 22726,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xed"
+      },
+      {
+        "timeUs": 22735,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xf4"
+      },
+      {
+        "timeUs": 22744,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xfb"
+      },
+      {
+        "timeUs": 22753,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x02"
+      },
+      {
+        "timeUs": 22762,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x09"
+      },
+      {
+        "timeUs": 22771,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x10"
+      },
+      {
+        "timeUs": 22780,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x17"
+      },
+      {
+        "timeUs": 22789,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x1e"
+      },
+      {
+        "timeUs": 22798,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x25"
+      },
+      {
+        "timeUs": 22807,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x2c"
+      },
+      {
+        "timeUs": 22816,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x33"
+      },
+      {
+        "timeUs": 22825,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x3a"
+      },
+      {
+        "timeUs": 22834,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x41"
+      },
+      {
+        "timeUs": 22843,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x48"
+      },
+      {
+        "timeUs": 22852,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x4f"
+      },
+      {
+        "timeUs": 22861,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x56"
+      },
+      {
+        "timeUs": 22870,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x5d"
+      },
+      {
+        "timeUs": 22879,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x64"
+      },
+      {
+        "timeUs": 22888,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x6b"
+      },
+      {
+        "timeUs": 22897,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x72"
+      },
+      {
+        "timeUs": 22906,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x79"
+      },
+      {
+        "timeUs": 22915,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x80"
+      },
+      {
+        "timeUs": 22924,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x87"
+      },
+      {
+        "timeUs": 22933,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x8e"
+      },
+      {
+        "timeUs": 22942,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x95"
+      },
+      {
+        "timeUs": 22951,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x9c"
+      },
+      {
+        "timeUs": 22960,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xa3"
+      },
+      {
+        "timeUs": 22969,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xaa"
+      },
+      {
+        "timeUs": 22978,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xb1"
+      },
+      {
+        "timeUs": 22987,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xb8"
+      },
+      {
+        "timeUs": 22996,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xbf"
+      },
+      {
+        "timeUs": 23005,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xc6"
+      },
+      {
+        "timeUs": 23014,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xcd"
+      },
+      {
+        "timeUs": 23023,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xd4"
+      },
+      {
+        "timeUs": 23032,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xdb"
+      },
+      {
+        "timeUs": 23041,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xe2"
+      },
+      {
+        "timeUs": 23050,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xe9"
+      },
+      {
+        "timeUs": 23059,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xf0"
+      },
+      {
+        "timeUs": 23068,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xf7"
+      },
+      {
+        "timeUs": 23077,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xfe"
+      },
+      {
+        "timeUs": 23086,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x05"
+      },
+      {
+        "timeUs": 23095,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x0c"
+      },
+      {
+        "timeUs": 23104,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0xce"
+      },
+      {
+        "timeUs": 23113,
+        "device": "sd1",
+        "operation": "data",
+        "value": 255,
+        "result": "RX 0x79"
+      },
+      {
+        "timeUs": 23123,
+        "device": "—",
+        "operation": "transfer",
+        "value": 255,
+        "result": "Nema odabranog spojenog uređaja · MISO 0xFF"
+      }
+    ],
+    "spiBytes": 1259,
+    "steppers": {
+      "drivers": {},
+      "motors": {}
+    },
+    "tmDisplays": {},
+    "infrared": {},
+    "encoders": {},
+    "oneWireDevices": {},
+    "timedSensors": {},
+    "analogInputs": {},
+    "servos": {},
+    "diagnostics": []
+  }
+}

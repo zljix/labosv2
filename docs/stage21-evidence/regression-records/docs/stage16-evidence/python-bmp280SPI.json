@@ -1,0 +1,402 @@
+{
+  "console": "BMP280 SPI T=24.00 P=101325 Pa\n",
+  "frame": {
+    "type": "simulation",
+    "clockProfile": "wall-us",
+    "timeMs": 174,
+    "nets": {
+      "bmpSPI:CS": 3.3,
+      "bmpSPI:GND": 0,
+      "bmpSPI:MISO": null,
+      "bmpSPI:MOSI": 0,
+      "bmpSPI:SCK": 0,
+      "bmpSPI:VCC": 3.3,
+      "esp32:J1.10": null,
+      "esp32:J1.11": null,
+      "esp32:J1.12": null,
+      "esp32:J1.13": null,
+      "esp32:J1.14": null,
+      "esp32:J1.15": null,
+      "esp32:J1.16": 3.3,
+      "esp32:J1.20": null,
+      "esp32:J1.21": 5,
+      "esp32:J1.4": null,
+      "esp32:J1.5": null,
+      "esp32:J1.6": null,
+      "esp32:J1.8": null,
+      "esp32:J1.9": null,
+      "esp32:J3.10": null,
+      "esp32:J3.14": null,
+      "esp32:J3.15": null,
+      "esp32:J3.16": null,
+      "esp32:J3.17": null,
+      "esp32:J3.18": null,
+      "esp32:J3.19": null,
+      "esp32:J3.2": null,
+      "esp32:J3.20": null,
+      "esp32:J3.3": null,
+      "esp32:J3.4": null,
+      "esp32:J3.5": null,
+      "esp32:J3.6": null,
+      "esp32:J3.7": null,
+      "esp32:J3.8": null,
+      "esp32:J3.9": null
+    },
+    "leds": {},
+    "gpios": {
+      "7": {
+        "mode": "OUT",
+        "volts": 3.3,
+        "level": 1
+      },
+      "10": {
+        "mode": "OUT",
+        "volts": 3.3,
+        "level": 1
+      },
+      "11": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "12": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "13": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      }
+    },
+    "optical": {},
+    "sensors": {
+      "bmpSPI": {
+        "powered": true,
+        "temperature": 24,
+        "pressure": 101325,
+        "busy": false,
+        "calibrated": true,
+        "sample": 1,
+        "measuredTemperature": 24.00015308793627,
+        "measuredHumidity": null,
+        "measuredPressure": 101325.08546629165
+      }
+    },
+    "displays": {},
+    "measurements": [
+      {
+        "timeMs": 165.5965589999999,
+        "component": "bmpSPI",
+        "temperature": 24.00015308793627,
+        "humidity": null,
+        "pressure": 101325.08546629165,
+        "sample": 1,
+        "valid": true
+      }
+    ],
+    "i2cTrace": [],
+    "radios": {},
+    "sdCards": {},
+    "rtcDevices": {},
+    "touches": {},
+    "tfts": {},
+    "spiTrace": [
+      {
+        "timeUs": 147199.294,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 208,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 147455.77700000032,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x58"
+      },
+      {
+        "timeUs": 147824.17900000056,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 96,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 147880.94399999993,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 182,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 153975.0680000005,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 136,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 154064.2500000004,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x70"
+      },
+      {
+        "timeUs": 154070.00800000064,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x6b"
+      },
+      {
+        "timeUs": 154075.34600000057,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x43"
+      },
+      {
+        "timeUs": 154078.27100000036,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x67"
+      },
+      {
+        "timeUs": 154122.81799999985,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x18"
+      },
+      {
+        "timeUs": 154250.17900000061,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xfc"
+      },
+      {
+        "timeUs": 154253.97500000056,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x7d"
+      },
+      {
+        "timeUs": 154256.64899999998,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x8e"
+      },
+      {
+        "timeUs": 154260.85500000048,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x43"
+      },
+      {
+        "timeUs": 154263.0180000006,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xd6"
+      },
+      {
+        "timeUs": 154264.53099999984,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xd0"
+      },
+      {
+        "timeUs": 154266.29300000062,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x0b"
+      },
+      {
+        "timeUs": 154267.74600000048,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x27"
+      },
+      {
+        "timeUs": 154269.38800000065,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x0b"
+      },
+      {
+        "timeUs": 154270.77999999985,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x8c"
+      },
+      {
+        "timeUs": 154272.172,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 154273.55400000035,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xf9"
+      },
+      {
+        "timeUs": 154275.40700000012,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 154276.79900000023,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x8c"
+      },
+      {
+        "timeUs": 154278.17099999997,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x3c"
+      },
+      {
+        "timeUs": 154279.5830000005,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xf8"
+      },
+      {
+        "timeUs": 154280.96499999997,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xc6"
+      },
+      {
+        "timeUs": 154282.2969999998,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x70"
+      },
+      {
+        "timeUs": 154283.75000000055,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x17"
+      },
+      {
+        "timeUs": 155374.7309999999,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 117,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 155380.08900000027,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 155571.23200000066,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 116,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 155907.7579999998,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 37,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 165070.0720000003,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 247,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 165403.8110000002,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x64"
+      },
+      {
+        "timeUs": 165411.9540000002,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x2a"
+      },
+      {
+        "timeUs": 165414.23700000002,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xb0"
+      },
+      {
+        "timeUs": 165417.67200000054,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x7e"
+      },
+      {
+        "timeUs": 165419.03400000054,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x15"
+      },
+      {
+        "timeUs": 165420.05599999998,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x20"
+      }
+    ],
+    "spiBytes": 40,
+    "steppers": {
+      "drivers": {},
+      "motors": {}
+    },
+    "tmDisplays": {},
+    "infrared": {},
+    "encoders": {},
+    "oneWireDevices": {},
+    "timedSensors": {},
+    "analogInputs": {},
+    "servos": {},
+    "diagnostics": [],
+    "session": 4
+  }
+}

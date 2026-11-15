@@ -1,0 +1,56 @@
+{
+  "fixtures": [
+    {
+      "name": "nanoA6",
+      "inputHash": "c6401903b9961a5b332e77cf6feed6f1cb2b88a9d23b3258e3da8243436b7fa6",
+      "hexHash": "5a0ec17b98117b6fd47e650e53822ac0af285fcceb21a1abd56be9958c3b511d",
+      "flashBytes": 2452,
+      "staticRamBytes": 198,
+      "toolchain": {
+        "cli": "1.3.1",
+        "core": "arduino:avr@1.8.6",
+        "gcc": "7.3.0-atmel3.6.1-arduino7",
+        "libraries": []
+      }
+    },
+    {
+      "name": "protocols",
+      "inputHash": "acfe0eaca410772640247193c300a6f0b6764c3eab0a108265bdc97bdd25efa9",
+      "hexHash": "72bc38430f56efca5aadc5d5018ccfbe0785da5dd397a3dc35b19263aa7bd8bc",
+      "flashBytes": 4284,
+      "staticRamBytes": 425,
+      "toolchain": {
+        "cli": "1.3.1",
+        "core": "arduino:avr@1.8.6",
+        "gcc": "7.3.0-atmel3.6.1-arduino7",
+        "libraries": []
+      }
+    },
+    {
+      "name": "busy",
+      "inputHash": "6c7cdc6b8717f2290b8f350234590ce930668dc132b13057754dfcb3e1921ffe",
+      "hexHash": "997808d772ed50fbf07a7a6a1260e6f11ecd1ea1bf3f5cdd2a3f4f9be447b8e4",
+      "flashBytes": 700,
+      "staticRamBytes": 9,
+      "toolchain": {
+        "cli": "1.3.1",
+        "core": "arduino:avr@1.8.6",
+        "gcc": "7.3.0-atmel3.6.1-arduino7",
+        "libraries": []
+      }
+    },
+    {
+      "name": "pwmTimers",
+      "inputHash": "e92b243725505355298b732049c0803bf58261856c65ae013d4dbdaa611a1e2e",
+      "hexHash": "b6c6a282548268099efef5b3450e13d0a3f45ef5c710b94f99b0659ef2d78136",
+      "flashBytes": 2158,
+      "staticRamBytes": 210,
+      "toolchain": {
+        "cli": "1.3.1",
+        "core": "arduino:avr@1.8.6",
+        "gcc": "7.3.0-atmel3.6.1-arduino7",
+        "libraries": []
+      }
+    }
+  ]
+}

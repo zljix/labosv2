@@ -1,0 +1,515 @@
+{
+  "console": "DHT: nevaljano ocitanje\r\nDHT22 T=-12.3 C RH=67.8\r\n",
+  "frame": {
+    "type": "simulation",
+    "clockProfile": "external-us",
+    "timeMs": 6309,
+    "nets": {
+      "dht1:DATA": 3.3,
+      "dht1:GND": 0,
+      "dht1:NC": null,
+      "dht1:VCC": 3.3,
+      "esp32:J1.10": null,
+      "esp32:J1.11": null,
+      "esp32:J1.12": null,
+      "esp32:J1.13": null,
+      "esp32:J1.14": null,
+      "esp32:J1.15": null,
+      "esp32:J1.16": null,
+      "esp32:J1.17": null,
+      "esp32:J1.18": null,
+      "esp32:J1.19": null,
+      "esp32:J1.20": null,
+      "esp32:J1.21": 5,
+      "esp32:J1.5": null,
+      "esp32:J1.6": null,
+      "esp32:J1.7": null,
+      "esp32:J1.8": null,
+      "esp32:J1.9": null,
+      "esp32:J3.10": null,
+      "esp32:J3.14": null,
+      "esp32:J3.15": null,
+      "esp32:J3.16": null,
+      "esp32:J3.17": null,
+      "esp32:J3.18": null,
+      "esp32:J3.19": null,
+      "esp32:J3.2": null,
+      "esp32:J3.20": null,
+      "esp32:J3.3": null,
+      "esp32:J3.4": null,
+      "esp32:J3.5": null,
+      "esp32:J3.6": null,
+      "esp32:J3.7": null,
+      "esp32:J3.8": null,
+      "esp32:J3.9": null
+    },
+    "leds": {},
+    "gpios": {
+      "4": {
+        "mode": "IN",
+        "volts": 3.3,
+        "level": 1
+      }
+    },
+    "sensors": {},
+    "displays": {},
+    "measurements": [],
+    "i2cTrace": [],
+    "rtcDevices": {},
+    "touches": {},
+    "tfts": {},
+    "spiTrace": [],
+    "spiBytes": 0,
+    "steppers": {
+      "drivers": {},
+      "motors": {}
+    },
+    "tmDisplays": {},
+    "infrared": {},
+    "encoders": {},
+    "oneWireDevices": {},
+    "timedSensors": {
+      "dht1": {
+        "powered": true,
+        "sample": 1,
+        "temperature": -12.3,
+        "humidity": 67.8,
+        "bytes": [
+          2,
+          166,
+          128,
+          123,
+          163
+        ],
+        "trace": [
+          {
+            "atUs": 4205303,
+            "level": 1,
+            "durationUs": 20
+          },
+          {
+            "atUs": 4205323,
+            "level": 0,
+            "durationUs": 80
+          },
+          {
+            "atUs": 4205403,
+            "level": 1,
+            "durationUs": 80
+          },
+          {
+            "atUs": 4205483,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4205533,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4205560,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4205610,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4205637,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4205687,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4205714,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4205764,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4205791,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4205841,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4205868,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4205918,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4205945,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4205995,
+            "level": 1,
+            "durationUs": 70
+          },
+          {
+            "atUs": 4206065,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4206115,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4206142,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4206192,
+            "level": 1,
+            "durationUs": 70
+          },
+          {
+            "atUs": 4206262,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4206312,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4206339,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4206389,
+            "level": 1,
+            "durationUs": 70
+          },
+          {
+            "atUs": 4206459,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4206509,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4206536,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4206586,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4206613,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4206663,
+            "level": 1,
+            "durationUs": 70
+          },
+          {
+            "atUs": 4206733,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4206783,
+            "level": 1,
+            "durationUs": 70
+          },
+          {
+            "atUs": 4206853,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4206903,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4206930,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4206980,
+            "level": 1,
+            "durationUs": 70
+          },
+          {
+            "atUs": 4207050,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4207100,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4207127,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4207177,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4207204,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4207254,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4207281,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4207331,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4207358,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4207408,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4207435,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4207485,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4207512,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4207562,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4207589,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4207639,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4207666,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4207716,
+            "level": 1,
+            "durationUs": 70
+          },
+          {
+            "atUs": 4207786,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4207836,
+            "level": 1,
+            "durationUs": 70
+          },
+          {
+            "atUs": 4207906,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4207956,
+            "level": 1,
+            "durationUs": 70
+          },
+          {
+            "atUs": 4208026,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4208076,
+            "level": 1,
+            "durationUs": 70
+          },
+          {
+            "atUs": 4208146,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4208196,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4208223,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4208273,
+            "level": 1,
+            "durationUs": 70
+          },
+          {
+            "atUs": 4208343,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4208393,
+            "level": 1,
+            "durationUs": 70
+          },
+          {
+            "atUs": 4208463,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4208513,
+            "level": 1,
+            "durationUs": 70
+          },
+          {
+            "atUs": 4208583,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4208633,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4208660,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4208710,
+            "level": 1,
+            "durationUs": 70
+          },
+          {
+            "atUs": 4208780,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4208830,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4208857,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4208907,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4208934,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4208984,
+            "level": 1,
+            "durationUs": 27
+          },
+          {
+            "atUs": 4209011,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4209061,
+            "level": 1,
+            "durationUs": 70
+          },
+          {
+            "atUs": 4209131,
+            "level": 0,
+            "durationUs": 50
+          },
+          {
+            "atUs": 4209181,
+            "level": 1,
+            "durationUs": 70
+          },
+          {
+            "atUs": 4209251,
+            "level": 0,
+            "durationUs": 50
+          }
+        ],
+        "reason": "Prenosi se 40 bitova; provjeru radi učenikov driver",
+        "transmitting": false,
+        "fault": "none"
+      }
+    },
+    "analogInputs": {},
+    "servos": {},
+    "diagnostics": []
+  }
+}

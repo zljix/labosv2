@@ -1,0 +1,758 @@
+{
+  "flashBytes": 7030,
+  "staticRamBytes": 252,
+  "console": "BMP280 SPI T=24.00 P=101325 Pa\r\n",
+  "frame": {
+    "type": "simulation",
+    "clockProfile": "external-us",
+    "timeMs": 60,
+    "nets": {
+      "bmpSPI:CS": 5,
+      "bmpSPI:GND": 0,
+      "bmpSPI:MISO": null,
+      "bmpSPI:MOSI": 0,
+      "bmpSPI:SCK": 0,
+      "bmpSPI:VCC": 5,
+      "board:3V3": 3.3,
+      "board:A0": null,
+      "board:A1": null,
+      "board:A2": null,
+      "board:A3": null,
+      "board:A4": null,
+      "board:A5": null,
+      "board:A6": null,
+      "board:A7": null,
+      "board:D0": null,
+      "board:D1": null,
+      "board:D10": 5,
+      "board:D2": null,
+      "board:D3": null,
+      "board:D4": null,
+      "board:D5": null,
+      "board:D6": null,
+      "board:D8": null,
+      "board:D9": null
+    },
+    "leds": {},
+    "gpios": {
+      "0": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "1": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "2": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "3": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "4": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "5": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "6": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "7": {
+        "mode": "OUT",
+        "volts": 5,
+        "level": 1
+      },
+      "8": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "9": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "10": {
+        "mode": "OUT",
+        "volts": 5,
+        "level": 1
+      },
+      "11": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "12": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "13": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "14": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "15": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "16": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "17": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "18": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "19": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      }
+    },
+    "sensors": {
+      "bmpSPI": {
+        "powered": true,
+        "temperature": 24,
+        "pressure": 101325,
+        "busy": false,
+        "calibrated": true,
+        "sample": 1,
+        "measuredTemperature": 24.00015308793627,
+        "measuredHumidity": null,
+        "measuredPressure": 101325.08546629165
+      }
+    },
+    "displays": {},
+    "measurements": [
+      {
+        "timeMs": 18.6313125,
+        "component": "bmpSPI",
+        "temperature": 24.00015308793627,
+        "humidity": null,
+        "pressure": 101325.08546629165,
+        "sample": 1,
+        "valid": true
+      }
+    ],
+    "i2cTrace": [],
+    "sdCards": {},
+    "rtcDevices": {},
+    "touches": {},
+    "tfts": {},
+    "spiTrace": [
+      {
+        "timeUs": 5154.5625,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 208,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 5163.75,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x58"
+      },
+      {
+        "timeUs": 5183.75,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 96,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 5192.6875,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 182,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 10219.6875,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 136,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 10228.875,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x70"
+      },
+      {
+        "timeUs": 10238.1875,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x6b"
+      },
+      {
+        "timeUs": 10247.5,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x43"
+      },
+      {
+        "timeUs": 10256.8125,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x67"
+      },
+      {
+        "timeUs": 10266.125,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x18"
+      },
+      {
+        "timeUs": 10275.4375,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xfc"
+      },
+      {
+        "timeUs": 10284.75,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x7d"
+      },
+      {
+        "timeUs": 10294.0625,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x8e"
+      },
+      {
+        "timeUs": 10303.375,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x43"
+      },
+      {
+        "timeUs": 10312.6875,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xd6"
+      },
+      {
+        "timeUs": 10322,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xd0"
+      },
+      {
+        "timeUs": 10331.3125,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x0b"
+      },
+      {
+        "timeUs": 10340.625,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x27"
+      },
+      {
+        "timeUs": 10349.9375,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x0b"
+      },
+      {
+        "timeUs": 10359.25,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x8c"
+      },
+      {
+        "timeUs": 10368.5625,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x00"
+      },
+      {
+        "timeUs": 10377.875,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xf9"
+      },
+      {
+        "timeUs": 10387.1875,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 10396.5,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x8c"
+      },
+      {
+        "timeUs": 10405.8125,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x3c"
+      },
+      {
+        "timeUs": 10415.125,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xf8"
+      },
+      {
+        "timeUs": 10424.4375,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xc6"
+      },
+      {
+        "timeUs": 10433.75,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x70"
+      },
+      {
+        "timeUs": 10443.0625,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x17"
+      },
+      {
+        "timeUs": 10491.5625,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 117,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 10500.5,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 10521.25,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 116,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 10530.1875,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 37,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 18563.25,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 247,
+        "result": "RX 0xff"
+      },
+      {
+        "timeUs": 18572.4375,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x64"
+      },
+      {
+        "timeUs": 18581.75,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x2a"
+      },
+      {
+        "timeUs": 18591.0625,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0xb0"
+      },
+      {
+        "timeUs": 18600.375,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x7e"
+      },
+      {
+        "timeUs": 18609.6875,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x15"
+      },
+      {
+        "timeUs": 18619,
+        "device": "bmpSPI",
+        "operation": "data",
+        "value": 0,
+        "result": "RX 0x20"
+      }
+    ],
+    "spiBytes": 40,
+    "steppers": {
+      "drivers": {},
+      "motors": {}
+    },
+    "tmDisplays": {},
+    "infrared": {},
+    "encoders": {},
+    "oneWireDevices": {},
+    "timedSensors": {},
+    "analogInputs": {},
+    "servos": {},
+    "diagnostics": [],
+    "avr": {
+      "cycles": 960000,
+      "clockHz": 16000000,
+      "uartBaud": 9615,
+      "rxPending": 0,
+      "busTrace": [
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 208,
+          "result": "MISO=0xff",
+          "timeUs": 5154.5625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0x58",
+          "timeUs": 5163.75
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 96,
+          "result": "MISO=0xff",
+          "timeUs": 5183.75
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 182,
+          "result": "MISO=0xff",
+          "timeUs": 5192.6875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 136,
+          "result": "MISO=0xff",
+          "timeUs": 10219.6875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0x70",
+          "timeUs": 10228.875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0x6b",
+          "timeUs": 10238.1875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0x43",
+          "timeUs": 10247.5
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0x67",
+          "timeUs": 10256.8125
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0x18",
+          "timeUs": 10266.125
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0xfc",
+          "timeUs": 10275.4375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0x7d",
+          "timeUs": 10284.75
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0x8e",
+          "timeUs": 10294.0625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0x43",
+          "timeUs": 10303.375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0xd6",
+          "timeUs": 10312.6875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0xd0",
+          "timeUs": 10322
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0x0b",
+          "timeUs": 10331.3125
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0x27",
+          "timeUs": 10340.625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0x0b",
+          "timeUs": 10349.9375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0x8c",
+          "timeUs": 10359.25
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0x00",
+          "timeUs": 10368.5625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0xf9",
+          "timeUs": 10377.875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0xff",
+          "timeUs": 10387.1875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0x8c",
+          "timeUs": 10396.5
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0x3c",
+          "timeUs": 10405.8125
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0xf8",
+          "timeUs": 10415.125
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0xc6",
+          "timeUs": 10424.4375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0x70",
+          "timeUs": 10433.75
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0x17",
+          "timeUs": 10443.0625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 117,
+          "result": "MISO=0xff",
+          "timeUs": 10491.5625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0xff",
+          "timeUs": 10500.5
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 116,
+          "result": "MISO=0xff",
+          "timeUs": 10521.25
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 37,
+          "result": "MISO=0xff",
+          "timeUs": 10530.1875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 247,
+          "result": "MISO=0xff",
+          "timeUs": 18563.25
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0x64",
+          "timeUs": 18572.4375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0x2a",
+          "timeUs": 18581.75
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0xb0",
+          "timeUs": 18591.0625
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0x7e",
+          "timeUs": 18600.375
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0x15",
+          "timeUs": 18609.6875
+        },
+        {
+          "kind": "SPI",
+          "operation": "transfer",
+          "value": 0,
+          "result": "MISO=0x20",
+          "timeUs": 18619
+        }
+      ],
+      "memory": {
+        "staticBytes": 252,
+        "lowestSP": 2168,
+        "minFreeToStatic": 1661
+      }
+    }
+  }
+}

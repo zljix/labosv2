@@ -1,0 +1,51 @@
+import {appAsset} from '../platform/assets';
+import {useEffect,useState} from 'react';
+import {getBoard} from '../boards/profiles';
+import {terminals} from '../circuit/model';
+import type {Project} from '../project/model';
+import {getUrsLesson,ursLessons,ursTargets,variantAvailable,ursExampleHint,type UrsTarget} from './ursCatalog';
+import {readUrsWork,ursSourceHash,ursContentHash,type UrsWork} from './ursWork';
+import './lessons.css';
+
+export function UrsCatalog({busy,initialTarget,open}:{busy:boolean;initialTarget:UrsTarget;open:(lesson:string,variant:string,target:UrsTarget,peer:UrsTarget)=>void}){
+ const [target,setTarget]=useState<UrsTarget>(initialTarget),[peer,setPeer]=useState<UrsTarget>('uno'),[query,setQuery]=useState('');
+ const visible=ursLessons.filter(l=>(l.title+' '+l.goal+' '+l.variants.map(v=>v.title).join(' ')).toLocaleLowerCase('hr').includes(query.trim().toLocaleLowerCase('hr')));
+ return <section className="urs-catalog" aria-label="URS zbirka">
+  <h3>URS zbirka · {ursLessons.length} tematskih vježbi</h3><p>Numeracija URS01–{Math.max(...ursLessons.map(l=>l.number))} pripada aplikaciji i ne mijenja školske LV1/LV2. Svaka varijanta otvara zaseban projekt s početnim kodom, stvarnim spojevima i radnim listom. Kreni od prvog primjera u temi. Trajanje treba potvrditi u pilotu.</p>
+  <div className="urs-filters"><label>Cilj URS primjera<select value={target} onChange={e=>setTarget(e.target.value as UrsTarget)}>{Object.entries(ursTargets).map(([id,t])=><option key={id} value={id}>{t.label}</option>)}</select></label><label>Pronađi vježbu<input value={query} onChange={e=>setQuery(e.target.value)} placeholder="npr. ADC, motor, FIFO…"/></label></div>
+  <p className="lesson-small">Odabrani cilj nudi {ursLessons.flatMap(l=>l.variants).filter(v=>variantAvailable(v,target)).length}/{ursLessons.flatMap(l=>l.variants).length} pripremljenih varijanti. Početni C++ primjeri sadrže valjan prijevod; izmijenjeni izvor traži lokalni prevoditelj. Odabrani primjer ima svoj program, spojeve i granice modela. Fizička oprema i učenički pilot provjeravaju se zasebno.</p>
+  <div className="urs-cards">{visible.map(l=>{const variants=l.variants.filter(v=>variantAvailable(v,target));return <details key={l.id} className="urs-card"><summary><span className="lesson-number">{String(l.number).padStart(2,'0')}</span><span><b>{l.title}</b><small>{l.minutes} · {variants.length}/{l.variants.length} varijanti za ovaj cilj</small></span></summary><p>{l.goal}</p><p className="lesson-small">{l.before}</p>{l.id==='radio'&&<label>Cilj čvora B<select value={peer} onChange={e=>setPeer(e.target.value as UrsTarget)}>{Object.entries(ursTargets).map(([id,t])=><option key={id} value={id}>{t.label}</option>)}</select></label>}<div className="lesson-inline-actions">{variants.map(v=><button key={v.id} disabled={busy} onClick={()=>open(l.id,v.id,target,peer)}>Otvori · {v.title}</button>)}</div>{!variants.length&&<p role="status">Za ovaj cilj nema pripremljene varijante. Odaberi drugi cilj iznad.</p>}</details>;})}</div>
+  {!visible.length&&<p role="status">Nema vježbe za uneseni pojam.</p>}
+  <p><a href={appAsset('pilot.html')} target="_blank" rel="noreferrer">Obrazac za stvarni učenički pilot ↗</a> · <a href={appAsset('urs-podrska.csv')} download>Preuzmi matricu podrške CSV</a></p>
+ </section>;
+}
+interface Props {project:Project;change:(w:UrsWork)=>void;busy:boolean;teacher:boolean;toggleTeacher:()=>void;catalog:()=>void;circuit:()=>void;run:()=>void;radio:()=>void;record:()=>void;submit:()=>void;review:(verdict:'revise'|'reviewed',note:string)=>void;importReview:()=>void}
+export default function UrsPanel({project:p,change,busy,teacher,toggleTeacher,catalog,circuit,run,radio,record,submit,review,importReview}:Props){
+ const w=readUrsWork(p),l=w&&getUrsLesson(w.lessonId),variant=l?.variants.find(v=>v.id===w?.variantId);
+ const [fresh,setFresh]=useState(false),[reviewFresh,setReviewFresh]=useState(false),[note,setNote]=useState('');
+ useEffect(()=>{let active=true;setFresh(false);setReviewFresh(false);void Promise.all([ursSourceHash(p),ursContentHash(p)]).then(([s,c])=>{if(active){setFresh(s===w?.snapshot?.sourceHash);setReviewFresh(c===w?.review?.contentHash);}}).catch(()=>{});return()=>{active=false;};},[p]);
+ useEffect(()=>{setNote(w?.review?.note??'');},[p.id,w?.review?.recordedAt]);
+ if(!w||!l||!variant)return <div className="lesson-empty"><h2>URS radni list nije valjan.</h2><p>Uvezeni format ili oznaka vježbe nisu podržani. Izvor i sklop možeš zasebno pregledati.</p><button onClick={circuit}>Pregledaj sklop i kod</button><button onClick={catalog}>Otvori zbirku</button></div>;
+ const endpoint=(ep:{component:string;pin:string})=>{if(p.circuit.kind!=='editable')return '';const part=p.circuit.components.find(c=>c.id===ep.component);return `${part?.label??ep.component} · ${part?terminals(part).find(t=>t.pin===ep.pin)?.label??ep.pin:ep.pin}`;};
+ const setObservation=(key:keyof UrsWork['observations'],value:string)=>change({...w,observations:{...w.observations,[key]:value}});
+ return <article className="lesson-content urs-content" aria-label={`URS${l.number}: ${l.title}`}>
+  <div className="lesson-title"><div><span className="lesson-kicker">URS{String(l.number).padStart(2,'0')} · {l.minutes}</span><h2>{l.title}</h2><p>{variant.title} · {getBoard(p.board.id).short}</p></div><button onClick={catalog}>Sve vježbe</button></div>
+  <p className="lesson-goal">{l.goal}</p><div className="lesson-mode"><button aria-pressed={teacher} onClick={toggleTeacher}>{teacher?'Nastavnikov pregled':'Učenički rad'} ⇄</button>{teacher&&<button onClick={importReview}>Uvezi predaju</button>}</div>
+  <section><h3>1 · Prije početka i novi pojmovi</h3><p>{l.before}</p><dl className="lesson-concepts">{l.concepts.map(([term,explanation])=><div key={term}><dt>{term}</dt><dd>{explanation}</dd></div>)}</dl></section>
+  <section><h3>2 · Stvarni spojevi i program</h3><p>{ursExampleHint(variant,p)}</p><p>Predložak ima spojen sklop i izvršivi početni primjer. U editoru pročitaj uvodni komentar i datoteke upravljačkog programa. Izmjena C++ izvora traži novo prevođenje.</p>
+   <details><summary>Veze čvora {p.radio?'A':'projekta'} · {p.circuit.kind==='editable'?p.circuit.wires.length:0}</summary><div className="urs-table-scroll"><table><thead><tr><th>Od</th><th>Do</th></tr></thead><tbody>{p.circuit.kind==='editable'&&p.circuit.wires.map(wire=><tr key={wire.id}><td>{endpoint(wire.from)}</td><td>{endpoint(wire.to)}</td></tr>)}</tbody></table></div></details>
+   {p.radio&&<p>Čvor B ima vlastiti izvor i sklop. Pregledaj ga kroz Dva čvora → Uredi čvor B. Oba čvora ulaze u predaju.</p>}
+   <div className="lesson-inline-actions"><button onClick={circuit}>Sklop i editor</button><button disabled={busy} onClick={p.radio?radio:run}>{p.radio?'Otvori Dva čvora':'Pokreni početni pokus'}</button></div>
+  </section>
+  <section><h3>3 · Pokusi i opažanja</h3><ol><li>Pokreni, zapiši početni ulaz i opaženi izlaz.</li><li>{l.change}</li><li>{l.fault}</li><li>Vrati ispravan kod/spoj i potvrdi oporavak. Sačuvaj SD/RTC snimku prije izvoza ako je koristiš.</li></ol><p><b>Očekivano:</b> {l.expected}</p>
+   {([['baseline','Početni pokus · ulaz, izlaz i jedinice'],['change','Promjena · što si promijenio i opazio'],['fault','Pogreška i oporavak · rezultat prije i nakon popravka']] as const).map(([key,label])=><label key={key} className="lesson-answer">{label}<textarea maxLength={3000} rows={3} value={w.observations[key]} onChange={e=>setObservation(key,e.target.value)} placeholder="Zapiši stvarno opažanje; opiši i neuspjeli pokus."/></label>)}
+  </section>
+  <section><h3>4 · Objasni rezultat</h3>{l.questions.map((q,i)=><label className="lesson-answer" key={q}>{i+1}. {q}<textarea maxLength={2000} rows={3} value={w.answers[i]} onChange={e=>change({...w,answers:w.answers.map((a,j)=>j===i?e.target.value:a)})}/></label>)}</section>
+  <section className="lesson-submit"><h3>5 · Pregled sadržaja i predaja</h3><div className="lesson-student"><label>Ime i prezime<input maxLength={100} value={w.student} onChange={e=>change({...w,student:e.target.value})}/></label><label>Razred / grupa<input maxLength={40} value={w.group} onChange={e=>change({...w,group:e.target.value})}/></label></div>
+   <p>Opažanja unosiš sam. Zapis pregleda povezuje ih s trenutačnim programom i sklopom; ne provodi automatski pokus i ne potvrđuje autorstvo. Prije zapisivanja zaustavi program. ZIP se može predati i s opisanim pogreškama.</p>
+   <p role="status">{w.snapshot?(fresh?'Pregled odgovara trenutačnom programu i sklopu.':'Program ili sklop promijenjen je nakon pregleda. Zabilježi novi pregled.'):'Pregled sadržaja još nije zabilježen.'}</p>
+   <div className="lesson-inline-actions"><button disabled={busy} onClick={record}>Zabilježi pregled sadržaja</button><button className="primary" disabled={busy} onClick={submit}>Preuzmi URS predaju ZIP</button></div><p className="lesson-small">Nakon izvoza ponovno uvezi ZIP i provjeri kod, sklop, oba čvora i odgovore. Vlastiti projekti čuvaju se za ovaj preglednik; ZIP prenosi rad na drugo računalo.</p>
+  </section>
+  {teacher&&<section className="teacher-note"><h3>6 · Nastavnički pregled</h3><p>Ovaj prikaz ne provodi prijavu nastavnika. Pročitaj odgovore, pregledaj oba izvora/sklopa, ponovno pokreni pokuse i zapiši što si stvarno potvrdio. Uvezeni zapis ostaje korisnička tvrdnja.</p><ul>{l.criteria.map(c=><li key={c}>{c}</li>)}</ul><label className="lesson-answer">Opažanje nastavničkog pregleda<textarea maxLength={3000} rows={3} value={note} onChange={e=>setNote(e.target.value)}/></label><div className="lesson-inline-actions"><button disabled={busy} onClick={()=>review('revise',note)}>Zapiši: potrebna dorada</button><button disabled={busy} onClick={()=>review('reviewed',note)}>Zapiši: pregledano</button></div>{w.review&&<p role="status">{reviewFresh?'Zapis pregleda odgovara sadržaju.':'Zapis je zastario nakon promjene programa, odgovora ili opažanja.'} {w.review.verdict==='reviewed'?'Pregledano.':'Potrebna dorada.'}</p>}</section>}
+ </article>;
+}

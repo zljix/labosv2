@@ -1,0 +1,9 @@
+Starting micropython/input
+Starting micropython/output
+Starting s3-cpp/input
+Starting s3-cpp/output
+Starting uno/input
+Starting uno/output
+Starting nano/input
+Starting nano/output
+[{"target":"micropython","mode":"input","status":"pass","build":"099988b650da05ae","observationMs":384.51174699999996,"stopMs":11.224136999999928},{"target":"micropython","mode":"output","status":"pass","build":"099988b650da05ae","observationMs":789.46637,"stopMs":3.733169999999973},{"target":"s3-cpp","mode":"input","status":"pass","build":"099988b650da05ae","observationMs":187.32708900000011,"stopMs":5.543961000000081},{"target":"s3-cpp","mode":"output","status":"pass","build":"099988b650da05ae","observationMs":434.0541700000001,"stopMs":1.66279899999995},{"target":"uno","mode":"input","status":"pass","build":"099988b650da05ae","observationMs":237.96243899999968,"stopMs":1.8215180000001965},{"target":"uno","mode":"output","status":"pass","build":"099988b650da05ae","observationMs":573.756003,"stopMs":1.7152580000001763},{"target":"nano","mode":"input","status":"pass","build":"099988b650da05ae","observationMs":241.694168,"stopMs":1.9947830000000977},{"target":"nano","mode":"output","status":"pass","build":"099988b650da05ae","observationMs":609.9783590000002,"stopMs":2.0048530000003666}]

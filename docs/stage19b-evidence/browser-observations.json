@@ -1,0 +1,32 @@
+{
+  "environment": "Development Chrome, managed local preview; not production-domain, iOS or Android verification",
+  "version": "0.9.1-beta.1",
+  "status": "pass",
+  "observations": [
+    {
+      "case": "MicroPython FAT16 VFS read/write",
+      "bytes": 28
+    },
+    {
+      "case": "MCU Reset retains media",
+      "bytes": 56
+    },
+    {
+      "case": "explicit capture, page reload and Run",
+      "bytes": 84
+    },
+    {
+      "case": "S3 C++ RTC to SD CSV",
+      "observed": "CSV lines read from RTC; LOG.CSV present"
+    },
+    {
+      "case": "live write protection",
+      "observed": "LOGGER ERROR SD write rejected; prior file remains"
+    },
+    {
+      "case": "clear write protection and Reset",
+      "observed": "new CSV lines append; retained RTC time starts at 2026-01-01 12:02:14; final LOG.CSV 1283 B"
+    }
+  ],
+  "notes": "First automated checkbox check inspected before the next simulation frame. Switched live checkbox display to immediate live inputs; stopped display uses retained frame. Retest uncheck changed state immediately."
+}

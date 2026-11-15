@@ -1,0 +1,20 @@
+✔ legacy builds stay valid; library version and bytes enter the exact input hash (11.584321ms)
+✔ unknown libraries, duplicate names, wrong versions and invalid source paths fail (0.743732ms)
+✔ browser cache validates artifacts and never reuses stale or corrupted data (9.920231ms)
+✔ structured diagnostics retain source, line, column, warnings and notes (1.035069ms)
+✔ pairing accepts only loopback links with a session code (0.372006ms)
+✔ Arduino submission preserves a stopped reopenable full project, work and exact build (15.316716ms)
+✔ Arduino IDE export describes pinned libraries and preserves all C++ sources (1.181608ms)
+✔ real blank arduino.uno-r3.atmega328p project, multiple files and pinned Bounce2 compile and execute (1609.63064ms)
+✔ real blank arduino.nano-classic.atmega328p project, multiple files and pinned Bounce2 compile and execute (1646.175218ms)
+✔ real compiler rejects an unselected library and locates an error in src/ (1706.156904ms)
+✔ local bridge enforces authentication/origin and hash cache for a real compile (3137.656207ms)
+✔ local bridge rejects overlapping compiles and invalid source paths (48.980737ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8370.518585

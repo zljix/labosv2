@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-13",
+  "scope": "Chromium/Linux development UI, 127.0.0.1:4173",
+  "observed": [
+    {
+      "case": "Uno dual L298N motors",
+      "result": "Forward 33.3% / 1.997 V; reverse 49.6% / -2.976 V while running."
+    },
+    {
+      "case": "Uno combined servo, motor, tone",
+      "result": "SG90 45.1 degrees, motor 32.9% / 1.975 V, passive piezo 880.2 Hz. Audio opt-in button toggled; physical audio output not measured."
+    },
+    {
+      "case": "MicroPython relay",
+      "result": "COM–NO and COM–NC states observed, LED path changes; Stop button eventually disabled, last results retained."
+    },
+    {
+      "case": "CSV download",
+      "result": "Actual downloaded UTF-8 BOM file; header and all rows have 4 columns, 128 records. See browser-csv.json."
+    }
+  ],
+  "not_verified": [
+    "Private production domain functional UI",
+    "Physical sound/actuators",
+    "Safari/iOS",
+    "Android",
+    "School computer",
+    "Student pilot",
+    "Cold offline open of private production origin"
+  ]
+}

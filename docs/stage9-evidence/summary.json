@@ -1,0 +1,64 @@
+{
+  "project-circuit": {
+    "passed": 26,
+    "total": 26,
+    "skipped": 0
+  },
+  "boards": {
+    "passed": 9,
+    "total": 9,
+    "skipped": 0
+  },
+  "simulation": {
+    "passed": 12,
+    "total": 12,
+    "skipped": 0
+  },
+  "peripherals": {
+    "passed": 16,
+    "total": 16,
+    "skipped": 0
+  },
+  "lessons": {
+    "passed": 20,
+    "total": 20,
+    "skipped": 0
+  },
+  "offline": {
+    "passed": 8,
+    "total": 8,
+    "skipped": 0
+  },
+  "avr": {
+    "passed": 15,
+    "total": 15,
+    "skipped": 0
+  },
+  "arduino": {
+    "passed": 12,
+    "total": 12,
+    "skipped": 0
+  },
+  "core": {
+    "passed": 10,
+    "total": 10
+  },
+  "project-files": {
+    "passed": 3,
+    "total": 3
+  },
+  "total": {
+    "passed": 131,
+    "total": 131
+  },
+  "build": {
+    "passed": true,
+    "log": "build.txt"
+  },
+  "package": {
+    "version": "0.4.0-beta.1",
+    "build": "f00cb554098d669c",
+    "files": 72,
+    "bytes": 4589663
+  }
+}

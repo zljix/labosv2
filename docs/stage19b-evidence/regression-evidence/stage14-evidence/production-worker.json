@@ -1,0 +1,338 @@
+{
+  "version": "0.9.1-beta.1",
+  "build": "280c8e9babc8bf94",
+  "console": "COMBINED ANGLE=45 MOTOR=50 TONE=880\r\n",
+  "frame": {
+    "type": "simulation",
+    "clockProfile": "external-us",
+    "timeMs": 80,
+    "nets": {
+      "board:3V3": 3.3,
+      "board:5V": 5,
+      "board:A0": null,
+      "board:A1": null,
+      "board:A2": null,
+      "board:A3": null,
+      "board:A4": null,
+      "board:A5": null,
+      "board:A6": null,
+      "board:A7": null,
+      "board:D0": null,
+      "board:D1": null,
+      "board:D10": 0,
+      "board:D11": 0,
+      "board:D12": 0,
+      "board:D13": null,
+      "board:D2": null,
+      "board:D3": null,
+      "board:D4": 5,
+      "board:D5": 5,
+      "board:D6": 0,
+      "board:D7": 5,
+      "board:D8": 0,
+      "board:D9": null,
+      "board:GND": 0,
+      "bridge1:OUT1": 5,
+      "bridge1:OUT2": 1,
+      "bridge1:OUT3": null,
+      "bridge1:OUT4": null,
+      "bridge1:VS": 6,
+      "servoSupply:+": 5
+    },
+    "leds": {},
+    "gpios": {
+      "0": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "1": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "2": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "3": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "4": {
+        "mode": "OUT",
+        "volts": 5,
+        "level": 1
+      },
+      "5": {
+        "mode": "PWM",
+        "volts": 5,
+        "level": 1,
+        "duty": 31981,
+        "freq": 976.5625
+      },
+      "6": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "7": {
+        "mode": "OUT",
+        "volts": 5,
+        "level": 1
+      },
+      "8": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "9": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "10": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "11": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "12": {
+        "mode": "OUT",
+        "volts": 0,
+        "level": 0
+      },
+      "13": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "14": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "15": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "16": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "17": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "18": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "19": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      }
+    },
+    "sensors": {},
+    "displays": {},
+    "measurements": [],
+    "i2cTrace": [],
+    "sdCards": {},
+    "rtcDevices": {},
+    "touches": {},
+    "tfts": {},
+    "spiTrace": [],
+    "spiBytes": 0,
+    "steppers": {
+      "drivers": {},
+      "motors": {}
+    },
+    "actuators": {
+      "relays": {},
+      "buzzers": {
+        "buzzer1": {
+          "powered": true,
+          "active": true,
+          "frequency": 880.2816901408451,
+          "duty": 0.5,
+          "reason": "Ton uključen"
+        }
+      },
+      "bridges": {
+        "bridge1": {
+          "powered": true,
+          "channels": [
+            {
+              "mode": "naprijed",
+              "voltage": 4
+            },
+            {
+              "mode": "slobodno",
+              "voltage": null
+            }
+          ]
+        }
+      },
+      "motors": {
+        "motor1": {
+          "voltage": 1.952,
+          "relativeSpeed": 32.53,
+          "direction": 1,
+          "mode": "naprijed"
+        }
+      },
+      "trace": [
+        {
+          "timeUs": 4000,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "1.5359 V; 25.6 %; naprijed"
+        },
+        {
+          "timeUs": 4000,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.33 Hz"
+        },
+        {
+          "timeUs": 12000,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "2.048 V; 34.13 %; naprijed"
+        },
+        {
+          "timeUs": 12000,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "879.65 Hz"
+        },
+        {
+          "timeUs": 20000,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "2.0084 V; 33.47 %; naprijed"
+        },
+        {
+          "timeUs": 20000,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 32000.0625,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "1.952 V; 32.53 %; naprijed"
+        },
+        {
+          "timeUs": 32000.0625,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 40000.125,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "1.9755 V; 32.93 %; naprijed"
+        },
+        {
+          "timeUs": 40000.125,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 52000.125,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "2.048 V; 34.13 %; naprijed"
+        },
+        {
+          "timeUs": 52000.125,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        },
+        {
+          "timeUs": 60000.1875,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "2.0404 V; 34.01 %; naprijed"
+        },
+        {
+          "timeUs": 60000.1875,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.43 Hz"
+        },
+        {
+          "timeUs": 72000.375,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "1.952 V; 32.53 %; naprijed"
+        },
+        {
+          "timeUs": 72000.375,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.91 Hz"
+        },
+        {
+          "timeUs": 80000.375,
+          "component": "motor1",
+          "operation": "motor",
+          "value": "1.952 V; 32.53 %; naprijed"
+        },
+        {
+          "timeUs": 80000.375,
+          "component": "buzzer1",
+          "operation": "tone",
+          "value": "880.28 Hz"
+        }
+      ]
+    },
+    "tmDisplays": {},
+    "infrared": {},
+    "encoders": {},
+    "oneWireDevices": {},
+    "timedSensors": {},
+    "analogInputs": {},
+    "servos": {
+      "sg90": {
+        "powered": true,
+        "angle": 45.07,
+        "pulseUs": 1250.375,
+        "freq": 49.99093914228046,
+        "reason": "Zadani položaj (idealizirano)"
+      }
+    },
+    "diagnostics": [],
+    "avr": {
+      "cycles": 1280006,
+      "clockHz": 16000000,
+      "uartBaud": 9615,
+      "rxPending": 0,
+      "busTrace": [],
+      "memory": {
+        "staticBytes": 252,
+        "lowestSP": 2260,
+        "minFreeToStatic": 1753
+      }
+    },
+    "session": 140
+  },
+  "stopMs": 4.82491100000334,
+  "scope": "Node/Linux production Worker bundle"
+}

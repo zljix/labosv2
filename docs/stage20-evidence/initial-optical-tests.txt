@@ -1,0 +1,63 @@
+✔ datasheet identity, reset pulse, read-only registers and explicit unsupported features (2.763062ms)
+✔ first independent known RED/IR words, six-byte burst and no FIFO auto-increment (0.498029ms)
+✔ RD advances on FIRST byte, interrupted sample is discarded, rewinding RD re-reads bank data (0.335184ms)
+✔ all four ADC resolutions are left-justified; RED mode uses three bytes and IR PA=0 gates IR (0.37264ms)
+✔ per-channel average/decimation: no word before complete group, exact independently computed mean (0.347382ms)
+✔ full versus empty equal pointers, saturating overflow, pop clears overflow and read permits recovery (0.237326ms)
+✔ averaging group already in progress when full drops correctly; long stalled reader is bounded (0.337647ms)
+✔ shutdown freezes sample acquisition, resume does not catch up and reset clears FIFO/history (0.186371ms)
+✔ physical sample-rate/pulse-width table is enforced for both supported modes (0.408935ms)
+✔ live source change keeps old FIFO words and phase; no contact or zero amplitude gives no periodic waveform (0.291548ms)
+✔ history stores only complete program reads and stays capped at 128 (1.300254ms)
+✔ espressif.esp32-s3-devkitc-1.v1.1.n16r8: four optical circuits and source projects round-trip JSON/ZIP (38.50193ms)
+✔ arduino.uno-r3.atmega328p: four optical circuits and source projects round-trip JSON/ZIP (6.869393ms)
+✔ arduino.nano-classic.atmega328p: four optical circuits and source projects round-trip JSON/ZIP (12.027654ms)
+✔ optical properties reject invalid/missing values; fixed address collides on same bus (12.540706ms)
+✔ electrical host routes address/ACK and rejects absent supply, ground, pullups and swapped lines (22.054718ms)
+✖ real MicroPython driver executes register, FIFO, averaging, full recovery and shutdown calls (604.366653ms)
+✖ real MicroPython frequency example computes from FIFO, follows live 72→120 and contact loss (9169.15196ms)
+✔ arduino.uno-r3.atmega328p: real AVR opticalRegisters (270.249042ms)
+✔ arduino.uno-r3.atmega328p: real AVR opticalRaw (115.187576ms)
+✔ arduino.uno-r3.atmega328p: real AVR opticalFrequency (1435.252312ms)
+✔ arduino.uno-r3.atmega328p: real AVR opticalOverflow (327.980993ms)
+✔ arduino.nano-classic.atmega328p: real AVR opticalRegisters (237.668756ms)
+✔ arduino.nano-classic.atmega328p: real AVR opticalRaw (103.019454ms)
+✔ arduino.nano-classic.atmega328p: real AVR opticalFrequency (1375.721861ms)
+✔ arduino.nano-classic.atmega328p: real AVR opticalOverflow (362.117021ms)
+✔ AVR missing MISO-independent I2C connection reports an error and yields no sample (344.914001ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 25
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14945.77682
+
+✖ failing tests:
+
+test at verification/max30102.test.ts:1:9523
+✖ real MicroPython driver executes register, FIFO, averaging, full recovery and shutdown calls (604.366653ms)
+  AssertionError [ERR_ASSERTION]: [{"type":"error","message":"Traceback (most recent call last):\n  File \"<stdin>\", line 1, in <module>\n  File \"main.py\", line 10, in <module>\nAssertionError: \n","session":1}]
+  
+  'error' !== 'done'
+  
+      at TestContext.<anonymous> (/workspace/sites/esp32-micropython-lab/.sites-checkout/verification/max30102.test.ts:112:84)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'error',
+    expected: 'done',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at verification/max30102.test.ts:15:303
+✖ real MicroPython frequency example computes from FIFO, follows live 72→120 and contact loss (9169.15196ms)
+  Error: Timeout (5000 ms), status=running; FREQ=72.29 bpm (sintetski)
+  FREQ=113.21 bpm (sintetski)
+  
+      at Timeout._onTimeout (file:///workspace/sites/esp32-micropython-lab/.sites-checkout/public/session.mjs:43:16)
+      at listOnTimeout (node:internal/timers:685:17)
+      at process.processTimers (node:internal/timers:618:7)

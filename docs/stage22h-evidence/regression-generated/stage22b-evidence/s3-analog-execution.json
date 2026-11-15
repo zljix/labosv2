@@ -1,0 +1,17 @@
+[
+  {
+    "key": "lm35",
+    "loops": 1,
+    "text": "S3 LM35 ADC=330 U=0.250 T=12.49\r\n",
+    "error": "",
+    "analogInputs": {
+      "lm351": {
+        "powered": true,
+        "volts": {
+          "OUT": 0.25
+        }
+      }
+    },
+    "diagnostics": []
+  }
+]

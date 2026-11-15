@@ -1,0 +1,16 @@
+[
+  {
+    "path": "public/avr-examples.json",
+    "unchangedArtifacts": 128,
+    "allOldEqual": true
+  },
+  {
+    "path": "public/s3-examples.json",
+    "unchangedArtifacts": 15,
+    "allOldEqual": true
+  },
+  {
+    "unchangedFiles": 145,
+    "scope": "MicroPython runtime, AVR/S3 contracts/core and pinned external libraries"
+  }
+]

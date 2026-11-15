@@ -1,0 +1,31 @@
+{
+  "console": "ILI DASH T=24.00 P=101325 Pa\nILI DASH T=31.00 P=97000 Pa\n",
+  "display": {
+    "kind": "tft",
+    "controller": "ILI9341",
+    "width": 240,
+    "height": 320,
+    "powered": true,
+    "backlight": true,
+    "on": true,
+    "sleep": false,
+    "madctl": 72,
+    "format": 85,
+    "written": 134405,
+    "window": [
+      120,
+      177,
+      121,
+      178
+    ],
+    "reason": "CS HIGH · neaktivan"
+  },
+  "pixels": {
+    "length": 76800,
+    "sha256": "b5d06ce1da745c63f006f1f72e25f3d6da0d423e39f16bb347eacc756ab1b689",
+    "nonzero": 2537,
+    "first": 0,
+    "last": 0
+  },
+  "diagnostics": []
+}

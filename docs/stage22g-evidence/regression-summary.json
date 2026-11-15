@@ -1,0 +1,86 @@
+{
+  "uniqueTests": 1260,
+  "latestPassed": 1260,
+  "unresolvedFailures": 0,
+  "skipped": 0,
+  "initial": {
+    "passed": 1248,
+    "failed": 12,
+    "log": "full-regression.tap"
+  },
+  "rerun": {
+    "files": [
+      "s3-analog.test.ts",
+      "s3-controls.test.ts",
+      "s3-libraries.test.ts",
+      "s3-protocols.test.ts",
+      "s3.test.ts"
+    ],
+    "passed": 263,
+    "failed": 0,
+    "log": "s3-regression-final.tap"
+  },
+  "resolved": [
+    {
+      "initialName": "actual compiler executes changed student conversion code and rejects a missing header",
+      "finalName": "actual compiler executes changed student conversion code and rejects a missing header",
+      "status": "pass"
+    },
+    {
+      "initialName": "support matrix declares exactly the six added S3 component profiles with specific evidence",
+      "finalName": "support matrix declares exactly the six added S3 component profiles with specific evidence",
+      "status": "pass"
+    },
+    {
+      "initialName": "actual compiler executes a slower student poll and exposes lost encoder steps",
+      "finalName": "actual compiler executes a slower student poll and exposes lost encoder steps",
+      "status": "pass"
+    },
+    {
+      "initialName": "real S3 compiler rejects unavailable graphics constructors and hardware IRQ API",
+      "finalName": "real S3 compiler rejects unavailable graphics constructors and hardware IRQ API",
+      "status": "pass"
+    },
+    {
+      "initialName": "three S3 protocol entries cite executable evidence; only the two unconfirmed profiles stay planned",
+      "finalName": "three S3 protocol entries cite executable evidence; only the unconfirmed buzzer stays planned",
+      "status": "pass"
+    },
+    {
+      "initialName": "actual compiler changes TFT pixels from modified source and rejects missing NEC header",
+      "finalName": "actual compiler changes TFT pixels from modified source and rejects missing NEC header",
+      "status": "pass"
+    },
+    {
+      "initialName": "actual compiler demonstrates that slow caller polling misses a full IR frame",
+      "finalName": "actual compiler demonstrates that slow caller polling misses a full IR frame",
+      "status": "pass"
+    },
+    {
+      "initialName": "orphan repeats and repeats older than 150 ms do not create a new command",
+      "finalName": "orphan repeats and repeats older than 150 ms do not create a new command",
+      "status": "pass"
+    },
+    {
+      "initialName": "wrong SPI mode and two active CS cannot fabricate a valid display transfer",
+      "finalName": "wrong SPI mode and two active CS cannot fabricate a valid display transfer",
+      "status": "pass"
+    },
+    {
+      "initialName": "real compiler supports multiple C++/C files and Bounce2 GPIO without source rewriting",
+      "finalName": "real compiler supports multiple C++/C files and Bounce2 GPIO without source rewriting",
+      "status": "pass"
+    },
+    {
+      "initialName": "actual S3 Worker accepts live input inside setup and force-stops a pure infinite C++ loop",
+      "finalName": "actual S3 Worker accepts live input inside setup and force-stops a pure infinite C++ loop",
+      "status": "pass"
+    },
+    {
+      "initialName": "serial flood keeps console chunks and message rate bounded while C++ remains stoppable",
+      "finalName": "serial flood keeps console chunks and message rate bounded while C++ remains stoppable",
+      "status": "pass"
+    }
+  ],
+  "scope": "Latest result per unique test. Reruns do not add to the unique count. Initial raw results are preserved; no claim that the initial whole-suite run passed."
+}

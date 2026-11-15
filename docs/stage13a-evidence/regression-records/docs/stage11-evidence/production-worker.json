@@ -1,0 +1,7 @@
+{
+  "version": "0.5.3-beta.1",
+  "build": "be2ee5227a7817bc",
+  "console": "COMPARE LM35=24.93 NTC=24.96\r\nCOMPARE LM35=49.85 NTC=50.02\r\n",
+  "stopMs": 8.133459000000585,
+  "scope": "Node/Linux production bundle; not target browser or physical board"
+}

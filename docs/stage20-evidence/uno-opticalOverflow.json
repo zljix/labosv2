@@ -1,0 +1,2251 @@
+{
+  "console": "FIFO COUNT=32 OVF=31\r\nFIFO RECOVERED\r\n",
+  "frame": {
+    "type": "simulation",
+    "clockProfile": "external-us",
+    "timeMs": 800,
+    "nets": {
+      "board:3V3": 3.3,
+      "board:5V": 5,
+      "board:A0": null,
+      "board:A1": null,
+      "board:A2": null,
+      "board:A3": null,
+      "board:A4": 5,
+      "board:A5": 5,
+      "board:D0": null,
+      "board:D1": null,
+      "board:D10": null,
+      "board:D11": null,
+      "board:D12": null,
+      "board:D13": null,
+      "board:D2": null,
+      "board:D3": null,
+      "board:D4": null,
+      "board:D5": null,
+      "board:D6": null,
+      "board:D7": null,
+      "board:D8": null,
+      "board:D9": null,
+      "board:GND": 0
+    },
+    "leds": {},
+    "gpios": {
+      "0": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "1": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "2": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "3": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "4": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "5": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "6": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "7": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "8": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "9": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "10": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "11": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "12": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "13": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "14": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "15": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "16": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "17": {
+        "mode": "IN",
+        "volts": null,
+        "level": null
+      },
+      "18": {
+        "mode": "IN",
+        "volts": 5,
+        "level": 1
+      },
+      "19": {
+        "mode": "IN",
+        "volts": 5,
+        "level": 1
+      }
+    },
+    "optical": {
+      "optical1": {
+        "powered": true,
+        "mode": 3,
+        "shutdown": false,
+        "resetting": false,
+        "sampleRate": 100,
+        "average": 1,
+        "effectiveRate": 100,
+        "count": 3,
+        "writePointer": 3,
+        "readPointer": 0,
+        "overflow": 0,
+        "dropped": 38,
+        "generated": 79,
+        "status": 64,
+        "ledRed": 31,
+        "ledIR": 31,
+        "resolution": 18,
+        "last": {
+          "index": 32,
+          "timeMs": 324.046375,
+          "red": 70186,
+          "ir": 83123,
+          "readTimeMs": 772.6928125
+        },
+        "readings": [
+          {
+            "index": 1,
+            "timeMs": 14.046375000000001,
+            "red": 68000,
+            "ir": 80000,
+            "readTimeMs": 708.9636875
+          },
+          {
+            "index": 2,
+            "timeMs": 24.046375,
+            "red": 68443,
+            "ir": 80632,
+            "readTimeMs": 711.0193125
+          },
+          {
+            "index": 3,
+            "timeMs": 34.046375,
+            "red": 68880,
+            "ir": 81258,
+            "readTimeMs": 713.0776875
+          },
+          {
+            "index": 4,
+            "timeMs": 44.046375,
+            "red": 69309,
+            "ir": 81870,
+            "readTimeMs": 715.1363125
+          },
+          {
+            "index": 5,
+            "timeMs": 54.046375,
+            "red": 69724,
+            "ir": 82463,
+            "readTimeMs": 717.1946875
+          },
+          {
+            "index": 6,
+            "timeMs": 64.046375,
+            "red": 70121,
+            "ir": 83030,
+            "readTimeMs": 719.2480625
+          },
+          {
+            "index": 7,
+            "timeMs": 74.046375,
+            "red": 70496,
+            "ir": 83566,
+            "readTimeMs": 721.3015
+          },
+          {
+            "index": 8,
+            "timeMs": 84.046375,
+            "red": 70846,
+            "ir": 84066,
+            "readTimeMs": 723.3548125
+          },
+          {
+            "index": 9,
+            "timeMs": 94.046375,
+            "red": 71167,
+            "ir": 84525,
+            "readTimeMs": 725.4119375
+          },
+          {
+            "index": 10,
+            "timeMs": 104.046375,
+            "red": 71457,
+            "ir": 84939,
+            "readTimeMs": 727.471875
+          },
+          {
+            "index": 11,
+            "timeMs": 114.046375,
+            "red": 71713,
+            "ir": 85305,
+            "readTimeMs": 729.5333125
+          },
+          {
+            "index": 12,
+            "timeMs": 124.046375,
+            "red": 71934,
+            "ir": 85620,
+            "readTimeMs": 731.5874375
+          },
+          {
+            "index": 13,
+            "timeMs": 134.046375,
+            "red": 72119,
+            "ir": 85884,
+            "readTimeMs": 733.6415625
+          },
+          {
+            "index": 14,
+            "timeMs": 144.046375,
+            "red": 72266,
+            "ir": 86094,
+            "readTimeMs": 735.70075
+          },
+          {
+            "index": 15,
+            "timeMs": 154.046375,
+            "red": 72375,
+            "ir": 86250,
+            "readTimeMs": 737.7548125
+          },
+          {
+            "index": 16,
+            "timeMs": 164.046375,
+            "red": 72448,
+            "ir": 86354,
+            "readTimeMs": 739.8089375
+          },
+          {
+            "index": 17,
+            "timeMs": 174.046375,
+            "red": 72484,
+            "ir": 86405,
+            "readTimeMs": 741.8680625
+          },
+          {
+            "index": 18,
+            "timeMs": 184.046375,
+            "red": 72485,
+            "ir": 86407,
+            "readTimeMs": 743.9221875
+          },
+          {
+            "index": 19,
+            "timeMs": 194.046375,
+            "red": 72453,
+            "ir": 86361,
+            "readTimeMs": 745.9763125
+          },
+          {
+            "index": 20,
+            "timeMs": 204.046375,
+            "red": 72389,
+            "ir": 86270,
+            "readTimeMs": 748.0304375
+          },
+          {
+            "index": 21,
+            "timeMs": 214.046375,
+            "red": 72297,
+            "ir": 86139,
+            "readTimeMs": 750.084625
+          },
+          {
+            "index": 22,
+            "timeMs": 224.046375,
+            "red": 72179,
+            "ir": 85969,
+            "readTimeMs": 752.1386875
+          },
+          {
+            "index": 23,
+            "timeMs": 234.046375,
+            "red": 72037,
+            "ir": 85767,
+            "readTimeMs": 754.1928125
+          },
+          {
+            "index": 24,
+            "timeMs": 244.046375,
+            "red": 71874,
+            "ir": 85535,
+            "readTimeMs": 756.2469375
+          },
+          {
+            "index": 25,
+            "timeMs": 254.046375,
+            "red": 71695,
+            "ir": 85278,
+            "readTimeMs": 758.3010625
+          },
+          {
+            "index": 26,
+            "timeMs": 264.046375,
+            "red": 71501,
+            "ir": 85001,
+            "readTimeMs": 760.3551875
+          },
+          {
+            "index": 27,
+            "timeMs": 274.046375,
+            "red": 71295,
+            "ir": 84707,
+            "readTimeMs": 762.4093125
+          },
+          {
+            "index": 28,
+            "timeMs": 284.046375,
+            "red": 71081,
+            "ir": 84401,
+            "readTimeMs": 764.46775
+          },
+          {
+            "index": 29,
+            "timeMs": 294.046375,
+            "red": 70860,
+            "ir": 84086,
+            "readTimeMs": 766.5225625
+          },
+          {
+            "index": 30,
+            "timeMs": 304.046375,
+            "red": 70637,
+            "ir": 83766,
+            "readTimeMs": 768.5765
+          },
+          {
+            "index": 31,
+            "timeMs": 314.046375,
+            "red": 70411,
+            "ir": 83444,
+            "readTimeMs": 770.6336875
+          },
+          {
+            "index": 32,
+            "timeMs": 324.046375,
+            "red": 70186,
+            "ir": 83123,
+            "readTimeMs": 772.6928125
+          }
+        ],
+        "reason": "Sintetski RED/IR · polling"
+      }
+    },
+    "sensors": {},
+    "displays": {},
+    "measurements": [],
+    "i2cTrace": [
+      {
+        "timeMs": 739.9043125,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 6,
+        "bytes": [
+          1,
+          27,
+          0,
+          1,
+          81,
+          82
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 740.1714375,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 740.3764375,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 740.6295,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 741.0251875,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          3,
+          0,
+          16
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 741.2829375,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          7
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 741.9634375,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 6,
+        "bytes": [
+          1,
+          27,
+          36,
+          1,
+          81,
+          133
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 742.2305625,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 742.4355625,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 742.6831875,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 743.0793125,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          3,
+          0,
+          17
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 743.3371875,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          7
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 744.0175625,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 6,
+        "bytes": [
+          1,
+          27,
+          37,
+          1,
+          81,
+          135
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 744.2846875,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 744.4896875,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          64
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 744.7373125,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 745.1334375,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          4,
+          0,
+          18
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 745.3911875,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          7
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 746.0716875,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 6,
+        "bytes": [
+          1,
+          27,
+          5,
+          1,
+          81,
+          89
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 746.3388125,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 746.5438125,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 746.791625,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 747.187625,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          4,
+          0,
+          19
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 747.4453125,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          7
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 748.1258125,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 6,
+        "bytes": [
+          1,
+          26,
+          197,
+          1,
+          80,
+          254
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 748.3929375,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 748.5979375,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 748.8455625,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 749.24175,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          4,
+          0,
+          20
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 749.4994375,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          7
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 750.18,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 6,
+        "bytes": [
+          1,
+          26,
+          105,
+          1,
+          80,
+          123
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 750.4470625,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 750.6520625,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 750.8996875,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 751.2958125,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          4,
+          0,
+          21
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 751.5536875,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          7
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 752.2340625,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 6,
+        "bytes": [
+          1,
+          25,
+          243,
+          1,
+          79,
+          209
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 752.5011875,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 752.7061875,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 752.9538125,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 753.3499375,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          4,
+          0,
+          22
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 753.6076875,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          7
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 754.2881875,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 6,
+        "bytes": [
+          1,
+          25,
+          101,
+          1,
+          79,
+          7
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 754.5553125,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 754.7603125,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 755.0079375,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 755.4040625,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          5,
+          0,
+          23
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 755.6618125,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          7
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 756.3423125,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 6,
+        "bytes": [
+          1,
+          24,
+          194,
+          1,
+          78,
+          31
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 756.6094375,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 756.8144375,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 757.0620625,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 757.4581875,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          5,
+          0,
+          24
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 757.7159375,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          7
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 758.3964375,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 6,
+        "bytes": [
+          1,
+          24,
+          15,
+          1,
+          77,
+          30
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 758.6635625,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 758.8685625,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 759.1161875,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 759.5123125,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          5,
+          0,
+          25
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 759.7700625,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          7
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 760.4505625,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 6,
+        "bytes": [
+          1,
+          23,
+          77,
+          1,
+          76,
+          9
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 760.7176875,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 760.92275,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 761.1703125,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 761.5664375,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          5,
+          0,
+          26
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 761.8241875,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          7
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 762.5046875,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 6,
+        "bytes": [
+          1,
+          22,
+          127,
+          1,
+          74,
+          227
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 762.7718125,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 762.9768125,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 763.2244375,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 763.6205625,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          5,
+          0,
+          27
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 763.8783125,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          7
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 764.563125,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 6,
+        "bytes": [
+          1,
+          21,
+          169,
+          1,
+          73,
+          177
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 764.8309375,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 765.0359375,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 765.2835625,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 765.6796875,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          6,
+          0,
+          28
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 765.9374375,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          7
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 766.6179375,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 6,
+        "bytes": [
+          1,
+          20,
+          204,
+          1,
+          72,
+          118
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 766.8851875,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 767.0900625,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 767.3376875,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 767.7338125,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          6,
+          0,
+          29
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 767.9915625,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          7
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 768.6719375,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 6,
+        "bytes": [
+          1,
+          19,
+          237,
+          1,
+          71,
+          54
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 768.9395,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 769.1445,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 769.3955625,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 769.7908125,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          6,
+          0,
+          30
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 770.0485,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          7
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 770.7290625,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 6,
+        "bytes": [
+          1,
+          19,
+          11,
+          1,
+          69,
+          244
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 770.996125,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 771.201125,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 771.4546875,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          4
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 771.8499375,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 3,
+        "bytes": [
+          6,
+          0,
+          31
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 772.107625,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          7
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 772.7881875,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 6,
+        "bytes": [
+          1,
+          18,
+          42,
+          1,
+          68,
+          179
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 773.350625,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 4,
+        "bytes": [
+          4,
+          0,
+          0,
+          0
+        ],
+        "result": "ACK"
+      },
+      {
+        "timeMs": 773.5934375,
+        "bus": 0,
+        "address": 87,
+        "operation": "W",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK / repeated-start"
+      },
+      {
+        "timeMs": 773.7984375,
+        "bus": 0,
+        "address": 87,
+        "operation": "R",
+        "length": 1,
+        "bytes": [
+          0
+        ],
+        "result": "ACK"
+      }
+    ],
+    "sdCards": {},
+    "rtcDevices": {},
+    "touches": {},
+    "tfts": {},
+    "spiTrace": [],
+    "spiBytes": 0,
+    "steppers": {
+      "drivers": {},
+      "motors": {}
+    },
+    "tmDisplays": {},
+    "infrared": {},
+    "encoders": {},
+    "oneWireDevices": {},
+    "timedSensors": {},
+    "analogInputs": {},
+    "servos": {},
+    "diagnostics": [],
+    "avr": {
+      "cycles": 12800003,
+      "clockHz": 16000000,
+      "uartBaud": 9615,
+      "rxPending": 0,
+      "busTrace": [
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 118,
+          "timeUs": 766522.5625
+        },
+        {
+          "kind": "TWI",
+          "operation": "stop",
+          "timeUs": 766617.9375
+        },
+        {
+          "kind": "TWI",
+          "operation": "start",
+          "timeUs": 766681.75
+        },
+        {
+          "kind": "TWI",
+          "operation": "address-write",
+          "value": 87,
+          "result": "ACK",
+          "timeUs": 766695.9375
+        },
+        {
+          "kind": "TWI",
+          "operation": "write",
+          "value": 0,
+          "result": "ACK",
+          "timeUs": 766791.0625
+        },
+        {
+          "kind": "TWI",
+          "operation": "repeated-start",
+          "timeUs": 766885.1875
+        },
+        {
+          "kind": "TWI",
+          "operation": "address-read",
+          "value": 87,
+          "result": "ACK",
+          "timeUs": 766900.625
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 0,
+          "timeUs": 766994.6875
+        },
+        {
+          "kind": "TWI",
+          "operation": "stop",
+          "timeUs": 767090.0625
+        },
+        {
+          "kind": "TWI",
+          "operation": "start",
+          "timeUs": 767134.3125
+        },
+        {
+          "kind": "TWI",
+          "operation": "address-write",
+          "value": 87,
+          "result": "ACK",
+          "timeUs": 767148.5
+        },
+        {
+          "kind": "TWI",
+          "operation": "write",
+          "value": 4,
+          "result": "ACK",
+          "timeUs": 767243.625
+        },
+        {
+          "kind": "TWI",
+          "operation": "repeated-start",
+          "timeUs": 767337.6875
+        },
+        {
+          "kind": "TWI",
+          "operation": "address-read",
+          "value": 87,
+          "result": "ACK",
+          "timeUs": 767354.1875
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 6,
+          "timeUs": 767448.1875
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 0,
+          "timeUs": 767543.25
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 29,
+          "timeUs": 767638.375
+        },
+        {
+          "kind": "TWI",
+          "operation": "stop",
+          "timeUs": 767733.8125
+        },
+        {
+          "kind": "TWI",
+          "operation": "start",
+          "timeUs": 767788.25
+        },
+        {
+          "kind": "TWI",
+          "operation": "address-write",
+          "value": 87,
+          "result": "ACK",
+          "timeUs": 767802.4375
+        },
+        {
+          "kind": "TWI",
+          "operation": "write",
+          "value": 7,
+          "result": "ACK",
+          "timeUs": 767897.5
+        },
+        {
+          "kind": "TWI",
+          "operation": "repeated-start",
+          "timeUs": 767991.5625
+        },
+        {
+          "kind": "TWI",
+          "operation": "address-read",
+          "value": 87,
+          "result": "ACK",
+          "timeUs": 768007.125
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 1,
+          "timeUs": 768101.125
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 19,
+          "timeUs": 768196.1875
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 237,
+          "timeUs": 768291.25
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 1,
+          "timeUs": 768386.3125
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 71,
+          "timeUs": 768481.375
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 54,
+          "timeUs": 768576.5
+        },
+        {
+          "kind": "TWI",
+          "operation": "stop",
+          "timeUs": 768671.9375
+        },
+        {
+          "kind": "TWI",
+          "operation": "start",
+          "timeUs": 768736.1875
+        },
+        {
+          "kind": "TWI",
+          "operation": "address-write",
+          "value": 87,
+          "result": "ACK",
+          "timeUs": 768750.375
+        },
+        {
+          "kind": "TWI",
+          "operation": "write",
+          "value": 0,
+          "result": "ACK",
+          "timeUs": 768845.4375
+        },
+        {
+          "kind": "TWI",
+          "operation": "repeated-start",
+          "timeUs": 768939.5
+        },
+        {
+          "kind": "TWI",
+          "operation": "address-read",
+          "value": 87,
+          "result": "ACK",
+          "timeUs": 768955.0625
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 0,
+          "timeUs": 769049.125
+        },
+        {
+          "kind": "TWI",
+          "operation": "stop",
+          "timeUs": 769144.5
+        },
+        {
+          "kind": "TWI",
+          "operation": "start",
+          "timeUs": 769188.75
+        },
+        {
+          "kind": "TWI",
+          "operation": "address-write",
+          "value": 87,
+          "result": "ACK",
+          "timeUs": 769206.4375
+        },
+        {
+          "kind": "TWI",
+          "operation": "write",
+          "value": 4,
+          "result": "ACK",
+          "timeUs": 769301.5
+        },
+        {
+          "kind": "TWI",
+          "operation": "repeated-start",
+          "timeUs": 769395.5625
+        },
+        {
+          "kind": "TWI",
+          "operation": "address-read",
+          "value": 87,
+          "result": "ACK",
+          "timeUs": 769411.125
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 6,
+          "timeUs": 769505.125
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 0,
+          "timeUs": 769600.1875
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 30,
+          "timeUs": 769695.3125
+        },
+        {
+          "kind": "TWI",
+          "operation": "stop",
+          "timeUs": 769790.8125
+        },
+        {
+          "kind": "TWI",
+          "operation": "start",
+          "timeUs": 769845.1875
+        },
+        {
+          "kind": "TWI",
+          "operation": "address-write",
+          "value": 87,
+          "result": "ACK",
+          "timeUs": 769859.375
+        },
+        {
+          "kind": "TWI",
+          "operation": "write",
+          "value": 7,
+          "result": "ACK",
+          "timeUs": 769954.4375
+        },
+        {
+          "kind": "TWI",
+          "operation": "repeated-start",
+          "timeUs": 770048.5
+        },
+        {
+          "kind": "TWI",
+          "operation": "address-read",
+          "value": 87,
+          "result": "ACK",
+          "timeUs": 770064.0625
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 1,
+          "timeUs": 770158.0625
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 19,
+          "timeUs": 770253.1875
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 11,
+          "timeUs": 770348.25
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 1,
+          "timeUs": 770443.3125
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 69,
+          "timeUs": 770538.5625
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 244,
+          "timeUs": 770633.6875
+        },
+        {
+          "kind": "TWI",
+          "operation": "stop",
+          "timeUs": 770729.0625
+        },
+        {
+          "kind": "TWI",
+          "operation": "start",
+          "timeUs": 770792.8125
+        },
+        {
+          "kind": "TWI",
+          "operation": "address-write",
+          "value": 87,
+          "result": "ACK",
+          "timeUs": 770807
+        },
+        {
+          "kind": "TWI",
+          "operation": "write",
+          "value": 0,
+          "result": "ACK",
+          "timeUs": 770902.0625
+        },
+        {
+          "kind": "TWI",
+          "operation": "repeated-start",
+          "timeUs": 770996.125
+        },
+        {
+          "kind": "TWI",
+          "operation": "address-read",
+          "value": 87,
+          "result": "ACK",
+          "timeUs": 771011.6875
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 0,
+          "timeUs": 771105.75
+        },
+        {
+          "kind": "TWI",
+          "operation": "stop",
+          "timeUs": 771201.125
+        },
+        {
+          "kind": "TWI",
+          "operation": "start",
+          "timeUs": 771251.375
+        },
+        {
+          "kind": "TWI",
+          "operation": "address-write",
+          "value": 87,
+          "result": "ACK",
+          "timeUs": 771265.5625
+        },
+        {
+          "kind": "TWI",
+          "operation": "write",
+          "value": 4,
+          "result": "ACK",
+          "timeUs": 771360.625
+        },
+        {
+          "kind": "TWI",
+          "operation": "repeated-start",
+          "timeUs": 771454.6875
+        },
+        {
+          "kind": "TWI",
+          "operation": "address-read",
+          "value": 87,
+          "result": "ACK",
+          "timeUs": 771470.25
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 6,
+          "timeUs": 771564.375
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 0,
+          "timeUs": 771659.4375
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 31,
+          "timeUs": 771754.5625
+        },
+        {
+          "kind": "TWI",
+          "operation": "stop",
+          "timeUs": 771849.9375
+        },
+        {
+          "kind": "TWI",
+          "operation": "start",
+          "timeUs": 771904.3125
+        },
+        {
+          "kind": "TWI",
+          "operation": "address-write",
+          "value": 87,
+          "result": "ACK",
+          "timeUs": 771918.5
+        },
+        {
+          "kind": "TWI",
+          "operation": "write",
+          "value": 7,
+          "result": "ACK",
+          "timeUs": 772013.5625
+        },
+        {
+          "kind": "TWI",
+          "operation": "repeated-start",
+          "timeUs": 772107.625
+        },
+        {
+          "kind": "TWI",
+          "operation": "address-read",
+          "value": 87,
+          "result": "ACK",
+          "timeUs": 772123.1875
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 1,
+          "timeUs": 772217.1875
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 18,
+          "timeUs": 772312.3125
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 42,
+          "timeUs": 772407.375
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 1,
+          "timeUs": 772502.5625
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 68,
+          "timeUs": 772597.6875
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 179,
+          "timeUs": 772692.8125
+        },
+        {
+          "kind": "TWI",
+          "operation": "stop",
+          "timeUs": 772788.1875
+        },
+        {
+          "kind": "TWI",
+          "operation": "start",
+          "timeUs": 772863.5
+        },
+        {
+          "kind": "TWI",
+          "operation": "address-write",
+          "value": 87,
+          "result": "ACK",
+          "timeUs": 772877.6875
+        },
+        {
+          "kind": "TWI",
+          "operation": "write",
+          "value": 4,
+          "result": "ACK",
+          "timeUs": 772972.75
+        },
+        {
+          "kind": "TWI",
+          "operation": "write",
+          "value": 0,
+          "result": "ACK",
+          "timeUs": 773067.25
+        },
+        {
+          "kind": "TWI",
+          "operation": "write",
+          "value": 0,
+          "result": "ACK",
+          "timeUs": 773161.8125
+        },
+        {
+          "kind": "TWI",
+          "operation": "write",
+          "value": 0,
+          "result": "ACK",
+          "timeUs": 773256.375
+        },
+        {
+          "kind": "TWI",
+          "operation": "stop",
+          "timeUs": 773350.625
+        },
+        {
+          "kind": "TWI",
+          "operation": "start",
+          "timeUs": 773390.125
+        },
+        {
+          "kind": "TWI",
+          "operation": "address-write",
+          "value": 87,
+          "result": "ACK",
+          "timeUs": 773404.3125
+        },
+        {
+          "kind": "TWI",
+          "operation": "write",
+          "value": 0,
+          "result": "ACK",
+          "timeUs": 773499.375
+        },
+        {
+          "kind": "TWI",
+          "operation": "repeated-start",
+          "timeUs": 773593.4375
+        },
+        {
+          "kind": "TWI",
+          "operation": "address-read",
+          "value": 87,
+          "result": "ACK",
+          "timeUs": 773609
+        },
+        {
+          "kind": "TWI",
+          "operation": "read",
+          "value": 0,
+          "timeUs": 773703.0625
+        },
+        {
+          "kind": "TWI",
+          "operation": "stop",
+          "timeUs": 773798.4375
+        }
+      ],
+      "memory": {
+        "staticBytes": 407,
+        "lowestSP": 2230,
+        "minFreeToStatic": 1568
+      }
+    }
+  },
+  "flash": 5392,
+  "sram": 407
+}

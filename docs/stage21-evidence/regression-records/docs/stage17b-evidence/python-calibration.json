@@ -1,0 +1,54 @@
+{
+  "console": "CAL TARGET 20 20\nCAL TARGET 219 299\nCAL READY 200 3900 250 3850\nCAL POINT 120 160\n",
+  "touch": {
+    "touch1": {
+      "powered": true,
+      "down": true,
+      "x": 120,
+      "y": 160,
+      "pressure": 50,
+      "irq": 0,
+      "pd": 0,
+      "raw": {
+        "x": 2058,
+        "y": 2056,
+        "z1": 1000,
+        "z2": 3345
+      },
+      "last": {
+        "channel": "z2",
+        "value": 3345,
+        "command": 192
+      },
+      "conversions": 104,
+      "reason": "CS HIGH · neaktivan"
+    }
+  },
+  "tft": {
+    "kind": "tft",
+    "controller": "ILI9341",
+    "width": 240,
+    "height": 320,
+    "powered": true,
+    "backlight": true,
+    "on": true,
+    "sleep": false,
+    "madctl": 72,
+    "format": 85,
+    "written": 239553,
+    "window": [
+      118,
+      158,
+      122,
+      162
+    ],
+    "reason": "CS HIGH · neaktivan"
+  },
+  "pixels": {
+    "length": 76800,
+    "nonzero": 1157,
+    "sha256": "fc2e7be732c50bf319a0f82e4b64ed721699f3f7589175fbbd245e9993c95091"
+  },
+  "leds": {},
+  "diagnostics": []
+}

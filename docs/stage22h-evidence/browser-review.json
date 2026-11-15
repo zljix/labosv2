@@ -1,0 +1,33 @@
+{
+  "environment": "Development Chrome/Linux, browser UI at loopback preview; no physical equipment or signed-in production browser check.",
+  "version": "0.12.6-beta.1",
+  "steps": [
+    {
+      "action": "Open URS18 / BMP280 / S3 C++",
+      "result": "18 topics, 67/67 variants and correct converter wiring/instructions visible."
+    },
+    {
+      "action": "Run and inspect measurements",
+      "result": "SDA and SCL: low domain 3.30 V, high domain 5.00 V. Console BMP280 T=24.00 P=101325."
+    },
+    {
+      "action": "Change live temperature with keyboard",
+      "result": "32.5 C input produces BMP280 T=32.50 P=101325 after next conversion."
+    },
+    {
+      "action": "Stop, remove HV wire and run",
+      "result": "Converter marks power invalid despite a phantom 5 V through pull-ups; program prints BMP280: provjeri spoj / nema valjanog mjerenja."
+    },
+    {
+      "action": "Stop, Undo wire removal and run",
+      "result": "Valid power and both HIGH voltages restored; console BMP280 T=24.00 P=101325."
+    }
+  ],
+  "screenshot": "Internal QA screenshot was not saved as a Library deliverable.",
+  "limits": [
+    "No physical sensor or board",
+    "No pupil pilot",
+    "No school computer or Windows/macOS test",
+    "No Safari/iOS/Android or cold private-origin offline test"
+  ]
+}

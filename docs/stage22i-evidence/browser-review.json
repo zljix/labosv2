@@ -1,0 +1,22 @@
+{
+  "version": "0.12.7-beta.1",
+  "build": "11bf3173ac74417a",
+  "environment": "Chrome/Linux development browser, real final static dist through managed preview",
+  "records": 6,
+  "reviewed": 1,
+  "reviewedZipHashMatches": true,
+  "observations": [
+    "Six real-format submissions loaded: four targets, stale source, incomplete work.",
+    "Broken ZIP and same-content duplicate skipped; first copy retained.",
+    "Report restored before ZIPs; matching feedback restored.",
+    "Note edits clear final verdict and retain selection even outside status filter.",
+    "Selection and notes survive closing the review modal and opening a lab copy.",
+    "Uno lab copy explicitly run and stopped; console LED=1/0 changes at about 200 virtual ms.",
+    "Final 0.12.7 JSON, CSV and reviewed ZIP downloaded and parsed."
+  ],
+  "limits": [
+    "No real pupil, physical board, school computer or mobile device used.",
+    "No authenticated production function test or cold offline browser proof."
+  ],
+  "browserTransport": "A combined download attempt timed out after filter reset selected an unreviewed row; individual downloads from the explicitly selected reviewed row subsequently succeeded."
+}

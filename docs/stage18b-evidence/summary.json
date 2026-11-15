@@ -1,0 +1,47 @@
+{
+  "version": "0.8.1-beta.1",
+  "uniqueNodeCases": 538,
+  "legacyNodeCases": 489,
+  "s3Cases": 49,
+  "newCasesThisRelease": 22,
+  "combinedRun": {
+    "pass": 536,
+    "fail": 2,
+    "skipped": 0,
+    "durationMs": 1326877.864896
+  },
+  "rechecks": {
+    "pass": 2,
+    "fail": 0,
+    "skipped": 0,
+    "codeChanged": false
+  },
+  "finalPassingOutcomes": 538,
+  "intermittentDeadlineCases": [
+    "production AVR Worker integrated Nano regulator",
+    "MicroPython KY-040 live input"
+  ],
+  "rootCauseConfirmed": false,
+  "initialIsolatedRunCompleted": false,
+  "initialLibrariesRun": {
+    "pass": 14,
+    "fail": 1,
+    "correction": "Verification expression case only; unsupported graphics driver was correctly rejected."
+  },
+  "offline": 8,
+  "core": 10,
+  "files": 3,
+  "nativeExports": 15,
+  "packagedS3Workers": 7,
+  "avrArtifactsUnchanged": 128,
+  "unchangedProvenanceFiles": 134,
+  "build": "d185beee485e3767",
+  "resourceCount": 148,
+  "resourceBytes": 11278168,
+  "wasmMimeChecks": 2,
+  "zipBytes": 4002619,
+  "zipSha256": "be3ece6b89256277b3d71d3e67e50611965e72700dbb55edd3e033bbd9eb56ab",
+  "localPackageStatus": "pass",
+  "localPackageScope": "ZIP extraction, real loopback HTTP delivery, complete resource sizes/hashes and WASM MIME. Not a cold offline browser test.",
+  "overallStatus": "final passing outcomes with two recorded intermittent deadlines"
+}

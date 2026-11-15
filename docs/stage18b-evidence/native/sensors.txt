@@ -1,0 +1,11 @@
+WARNING: library LabI2CSensors claims to run on avr architecture(s) and may be incompatible with your current board which runs on esp32 architecture(s).
+Sketch uses 309591 bytes (23%) of program storage space. Maximum is 1310720 bytes.
+Global variables use 24652 bytes (7%) of dynamic memory, leaving 303028 bytes for local variables. Maximum is 327680 bytes.
+
+[izvor]/vendor/arduino/LabI2CSensors/src/LabI2CSensors.cpp: In member function 'bool LabBMP180::read(float&, float&, uint8_t)':
+[izvor]/vendor/arduino/LabI2CSensors/src/LabI2CSensors.cpp:26:3: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+   26 |   if(!put(0x77,0xf4,0x2e))return false;delay(5);
+      |   ^~
+[izvor]/vendor/arduino/LabI2CSensors/src/LabI2CSensors.cpp:26:40: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+   26 |   if(!put(0x77,0xf4,0x2e))return false;delay(5);
+      |                                        ^~~~~

@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-12",
+  "browser": "Chromium / Linux, cloud browser",
+  "surface": "development preview, current 0.5.1-beta.1 UI",
+  "observed": [
+    "MicroPython DHT22 initial 25.0 C / 50.0 RH",
+    "Live MicroPython controls -> -40.0 C / 100.0 RH in program console",
+    "Injected checksum fault -> checksum error caught by visible program",
+    "Arduino Uno actual DHT22 program -> -40.0 C / 50.0 RH",
+    "Live Arduino Uno controls -> 80.0 C / 100.0 RH in program console",
+    "Arduino injected checksum -> nevaljano ocitanje; restoring none -> valid 80.0 C / 100.0 RH"
+  ],
+  "notVerified": [
+    "Safari/iOS",
+    "Android",
+    "school PC",
+    "physical DHT modules",
+    "cold offline start on private production origin",
+    "student pilot"
+  ],
+  "previewCache": "Initial root document was old installed 0.3.0; one fresh document with query parameter loaded current UI. No browser storage was erased. No new production update-flow claim.",
+  "layout": {
+    "viewport": {
+      "width": 1363,
+      "height": 936
+    },
+    "documentHeight": 956,
+    "sidebarClientHeight": 718,
+    "sidebarScrollHeight": 3122,
+    "codePanelHeight": 516,
+    "consoleTop": 731.1875,
+    "consoleHeight": 188,
+    "scope": "Chromium desktop after CSS fix; DOM-backed measured geometry, no mobile claim"
+  }
+}

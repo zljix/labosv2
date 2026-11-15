@@ -1,0 +1,6 @@
+uno tx 2996 233
+uno rx 2794 229
+nano tx 2996 233
+nano rx 2794 229
+s3-cpp tx 19074 functional
+s3-cpp rx 16942 functional

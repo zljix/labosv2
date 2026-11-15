@@ -1,0 +1,1163 @@
+{
+  "console": "IR BASELINE\r\nIR CONFLICT\r\n",
+  "before": {
+    "irRx": {
+      "kind": "receiver",
+      "powered": true,
+      "channel": 1,
+      "level": 1,
+      "busy": false,
+      "blocked": false,
+      "presses": 0,
+      "carrierHz": null,
+      "transitions": 68,
+      "trace": [
+        {
+          "timeUs": 0,
+          "level": 1
+        },
+        {
+          "timeUs": 164.125,
+          "level": 0
+        },
+        {
+          "timeUs": 9214.125,
+          "level": 1
+        },
+        {
+          "timeUs": 13746.125,
+          "level": 0
+        },
+        {
+          "timeUs": 14320.125,
+          "level": 1
+        },
+        {
+          "timeUs": 14881.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 15455.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 16016.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 16590.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 17151.125,
+          "level": 0
+        },
+        {
+          "timeUs": 17725.125,
+          "level": 1
+        },
+        {
+          "timeUs": 18287.125,
+          "level": 0
+        },
+        {
+          "timeUs": 18861.125,
+          "level": 1
+        },
+        {
+          "timeUs": 19423.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 19997.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 20559.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 21133.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 21701.625,
+          "level": 0
+        },
+        {
+          "timeUs": 22275.625,
+          "level": 1
+        },
+        {
+          "timeUs": 22839.125,
+          "level": 0
+        },
+        {
+          "timeUs": 23413.125,
+          "level": 1
+        },
+        {
+          "timeUs": 25106.125,
+          "level": 0
+        },
+        {
+          "timeUs": 25680.125,
+          "level": 1
+        },
+        {
+          "timeUs": 27373.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 27947.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 29640.6875,
+          "level": 0
+        },
+        {
+          "timeUs": 30214.6875,
+          "level": 1
+        },
+        {
+          "timeUs": 31914.625,
+          "level": 0
+        },
+        {
+          "timeUs": 32488.625,
+          "level": 1
+        },
+        {
+          "timeUs": 34182.625,
+          "level": 0
+        },
+        {
+          "timeUs": 34756.625,
+          "level": 1
+        },
+        {
+          "timeUs": 36451.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 37025.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 38720.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 39294.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 40989.625,
+          "level": 0
+        },
+        {
+          "timeUs": 41563.625,
+          "level": 1
+        },
+        {
+          "timeUs": 43262.6875,
+          "level": 0
+        },
+        {
+          "timeUs": 43836.6875,
+          "level": 1
+        },
+        {
+          "timeUs": 44397.6875,
+          "level": 0
+        },
+        {
+          "timeUs": 44971.6875,
+          "level": 1
+        },
+        {
+          "timeUs": 46665.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 47239.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 47801.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 48375.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 48936.625,
+          "level": 0
+        },
+        {
+          "timeUs": 49510.625,
+          "level": 1
+        },
+        {
+          "timeUs": 50073.125,
+          "level": 0
+        },
+        {
+          "timeUs": 50647.125,
+          "level": 1
+        },
+        {
+          "timeUs": 52341.625,
+          "level": 0
+        },
+        {
+          "timeUs": 52915.625,
+          "level": 1
+        },
+        {
+          "timeUs": 53485.125,
+          "level": 0
+        },
+        {
+          "timeUs": 54059.125,
+          "level": 1
+        },
+        {
+          "timeUs": 54620.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 55194.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 56887.125,
+          "level": 0
+        },
+        {
+          "timeUs": 57461.125,
+          "level": 1
+        },
+        {
+          "timeUs": 58022.6875,
+          "level": 0
+        },
+        {
+          "timeUs": 58596.6875,
+          "level": 1
+        },
+        {
+          "timeUs": 60290.125,
+          "level": 0
+        },
+        {
+          "timeUs": 60864.125,
+          "level": 1
+        },
+        {
+          "timeUs": 62558.6875,
+          "level": 0
+        },
+        {
+          "timeUs": 63132.625,
+          "level": 1
+        },
+        {
+          "timeUs": 64833.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 65407.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 65969.625,
+          "level": 0
+        },
+        {
+          "timeUs": 66543.625,
+          "level": 1
+        },
+        {
+          "timeUs": 68240.125,
+          "level": 0
+        },
+        {
+          "timeUs": 68814.125,
+          "level": 1
+        }
+      ]
+    },
+    "irTx": {
+      "kind": "transmitter",
+      "powered": true,
+      "channel": 1,
+      "level": 1,
+      "busy": false,
+      "blocked": false,
+      "presses": 0,
+      "carrierHz": 38461.53846153846,
+      "transitions": 0,
+      "trace": [
+        {
+          "timeUs": 0,
+          "level": 1
+        },
+        {
+          "timeUs": 164.125,
+          "level": 0
+        },
+        {
+          "timeUs": 9214.125,
+          "level": 1
+        },
+        {
+          "timeUs": 13746.125,
+          "level": 0
+        },
+        {
+          "timeUs": 14320.125,
+          "level": 1
+        },
+        {
+          "timeUs": 14881.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 15455.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 16016.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 16590.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 17151.125,
+          "level": 0
+        },
+        {
+          "timeUs": 17725.125,
+          "level": 1
+        },
+        {
+          "timeUs": 18287.125,
+          "level": 0
+        },
+        {
+          "timeUs": 18861.125,
+          "level": 1
+        },
+        {
+          "timeUs": 19423.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 19997.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 20559.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 21133.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 21701.625,
+          "level": 0
+        },
+        {
+          "timeUs": 22275.625,
+          "level": 1
+        },
+        {
+          "timeUs": 22839.125,
+          "level": 0
+        },
+        {
+          "timeUs": 23413.125,
+          "level": 1
+        },
+        {
+          "timeUs": 25106.125,
+          "level": 0
+        },
+        {
+          "timeUs": 25680.125,
+          "level": 1
+        },
+        {
+          "timeUs": 27373.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 27947.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 29640.6875,
+          "level": 0
+        },
+        {
+          "timeUs": 30214.6875,
+          "level": 1
+        },
+        {
+          "timeUs": 31914.625,
+          "level": 0
+        },
+        {
+          "timeUs": 32488.625,
+          "level": 1
+        },
+        {
+          "timeUs": 34182.625,
+          "level": 0
+        },
+        {
+          "timeUs": 34756.625,
+          "level": 1
+        },
+        {
+          "timeUs": 36451.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 37025.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 38720.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 39294.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 40989.625,
+          "level": 0
+        },
+        {
+          "timeUs": 41563.625,
+          "level": 1
+        },
+        {
+          "timeUs": 43262.6875,
+          "level": 0
+        },
+        {
+          "timeUs": 43836.6875,
+          "level": 1
+        },
+        {
+          "timeUs": 44397.6875,
+          "level": 0
+        },
+        {
+          "timeUs": 44971.6875,
+          "level": 1
+        },
+        {
+          "timeUs": 46665.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 47239.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 47801.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 48375.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 48936.625,
+          "level": 0
+        },
+        {
+          "timeUs": 49510.625,
+          "level": 1
+        },
+        {
+          "timeUs": 50073.125,
+          "level": 0
+        },
+        {
+          "timeUs": 50647.125,
+          "level": 1
+        },
+        {
+          "timeUs": 52341.625,
+          "level": 0
+        },
+        {
+          "timeUs": 52915.625,
+          "level": 1
+        },
+        {
+          "timeUs": 53485.125,
+          "level": 0
+        },
+        {
+          "timeUs": 54059.125,
+          "level": 1
+        },
+        {
+          "timeUs": 54620.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 55194.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 56887.125,
+          "level": 0
+        },
+        {
+          "timeUs": 57461.125,
+          "level": 1
+        },
+        {
+          "timeUs": 58022.6875,
+          "level": 0
+        },
+        {
+          "timeUs": 58596.6875,
+          "level": 1
+        },
+        {
+          "timeUs": 60290.125,
+          "level": 0
+        },
+        {
+          "timeUs": 60864.125,
+          "level": 1
+        },
+        {
+          "timeUs": 62558.6875,
+          "level": 0
+        },
+        {
+          "timeUs": 63132.625,
+          "level": 1
+        },
+        {
+          "timeUs": 64833.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 65407.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 65969.625,
+          "level": 0
+        },
+        {
+          "timeUs": 66543.625,
+          "level": 1
+        },
+        {
+          "timeUs": 68240.125,
+          "level": 0
+        },
+        {
+          "timeUs": 68814.125,
+          "level": 1
+        }
+      ]
+    }
+  },
+  "after": {
+    "irRx": {
+      "kind": "receiver",
+      "powered": true,
+      "channel": 1,
+      "level": 1,
+      "busy": false,
+      "blocked": false,
+      "presses": 0,
+      "carrierHz": null,
+      "transitions": 68,
+      "trace": [
+        {
+          "timeUs": 0,
+          "level": 1
+        },
+        {
+          "timeUs": 164.125,
+          "level": 0
+        },
+        {
+          "timeUs": 9214.125,
+          "level": 1
+        },
+        {
+          "timeUs": 13746.125,
+          "level": 0
+        },
+        {
+          "timeUs": 14320.125,
+          "level": 1
+        },
+        {
+          "timeUs": 14881.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 15455.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 16016.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 16590.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 17151.125,
+          "level": 0
+        },
+        {
+          "timeUs": 17725.125,
+          "level": 1
+        },
+        {
+          "timeUs": 18287.125,
+          "level": 0
+        },
+        {
+          "timeUs": 18861.125,
+          "level": 1
+        },
+        {
+          "timeUs": 19423.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 19997.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 20559.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 21133.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 21701.625,
+          "level": 0
+        },
+        {
+          "timeUs": 22275.625,
+          "level": 1
+        },
+        {
+          "timeUs": 22839.125,
+          "level": 0
+        },
+        {
+          "timeUs": 23413.125,
+          "level": 1
+        },
+        {
+          "timeUs": 25106.125,
+          "level": 0
+        },
+        {
+          "timeUs": 25680.125,
+          "level": 1
+        },
+        {
+          "timeUs": 27373.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 27947.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 29640.6875,
+          "level": 0
+        },
+        {
+          "timeUs": 30214.6875,
+          "level": 1
+        },
+        {
+          "timeUs": 31914.625,
+          "level": 0
+        },
+        {
+          "timeUs": 32488.625,
+          "level": 1
+        },
+        {
+          "timeUs": 34182.625,
+          "level": 0
+        },
+        {
+          "timeUs": 34756.625,
+          "level": 1
+        },
+        {
+          "timeUs": 36451.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 37025.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 38720.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 39294.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 40989.625,
+          "level": 0
+        },
+        {
+          "timeUs": 41563.625,
+          "level": 1
+        },
+        {
+          "timeUs": 43262.6875,
+          "level": 0
+        },
+        {
+          "timeUs": 43836.6875,
+          "level": 1
+        },
+        {
+          "timeUs": 44397.6875,
+          "level": 0
+        },
+        {
+          "timeUs": 44971.6875,
+          "level": 1
+        },
+        {
+          "timeUs": 46665.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 47239.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 47801.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 48375.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 48936.625,
+          "level": 0
+        },
+        {
+          "timeUs": 49510.625,
+          "level": 1
+        },
+        {
+          "timeUs": 50073.125,
+          "level": 0
+        },
+        {
+          "timeUs": 50647.125,
+          "level": 1
+        },
+        {
+          "timeUs": 52341.625,
+          "level": 0
+        },
+        {
+          "timeUs": 52915.625,
+          "level": 1
+        },
+        {
+          "timeUs": 53485.125,
+          "level": 0
+        },
+        {
+          "timeUs": 54059.125,
+          "level": 1
+        },
+        {
+          "timeUs": 54620.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 55194.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 56887.125,
+          "level": 0
+        },
+        {
+          "timeUs": 57461.125,
+          "level": 1
+        },
+        {
+          "timeUs": 58022.6875,
+          "level": 0
+        },
+        {
+          "timeUs": 58596.6875,
+          "level": 1
+        },
+        {
+          "timeUs": 60290.125,
+          "level": 0
+        },
+        {
+          "timeUs": 60864.125,
+          "level": 1
+        },
+        {
+          "timeUs": 62558.6875,
+          "level": 0
+        },
+        {
+          "timeUs": 63132.625,
+          "level": 1
+        },
+        {
+          "timeUs": 64833.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 65407.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 65969.625,
+          "level": 0
+        },
+        {
+          "timeUs": 66543.625,
+          "level": 1
+        },
+        {
+          "timeUs": 68240.125,
+          "level": 0
+        },
+        {
+          "timeUs": 68814.125,
+          "level": 1
+        }
+      ]
+    },
+    "irTx": {
+      "kind": "transmitter",
+      "powered": true,
+      "channel": 1,
+      "level": 1,
+      "busy": false,
+      "blocked": false,
+      "presses": 0,
+      "carrierHz": 38461.53846153846,
+      "transitions": 0,
+      "trace": [
+        {
+          "timeUs": 0,
+          "level": 1
+        },
+        {
+          "timeUs": 164.125,
+          "level": 0
+        },
+        {
+          "timeUs": 9214.125,
+          "level": 1
+        },
+        {
+          "timeUs": 13746.125,
+          "level": 0
+        },
+        {
+          "timeUs": 14320.125,
+          "level": 1
+        },
+        {
+          "timeUs": 14881.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 15455.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 16016.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 16590.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 17151.125,
+          "level": 0
+        },
+        {
+          "timeUs": 17725.125,
+          "level": 1
+        },
+        {
+          "timeUs": 18287.125,
+          "level": 0
+        },
+        {
+          "timeUs": 18861.125,
+          "level": 1
+        },
+        {
+          "timeUs": 19423.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 19997.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 20559.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 21133.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 21701.625,
+          "level": 0
+        },
+        {
+          "timeUs": 22275.625,
+          "level": 1
+        },
+        {
+          "timeUs": 22839.125,
+          "level": 0
+        },
+        {
+          "timeUs": 23413.125,
+          "level": 1
+        },
+        {
+          "timeUs": 25106.125,
+          "level": 0
+        },
+        {
+          "timeUs": 25680.125,
+          "level": 1
+        },
+        {
+          "timeUs": 27373.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 27947.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 29640.6875,
+          "level": 0
+        },
+        {
+          "timeUs": 30214.6875,
+          "level": 1
+        },
+        {
+          "timeUs": 31914.625,
+          "level": 0
+        },
+        {
+          "timeUs": 32488.625,
+          "level": 1
+        },
+        {
+          "timeUs": 34182.625,
+          "level": 0
+        },
+        {
+          "timeUs": 34756.625,
+          "level": 1
+        },
+        {
+          "timeUs": 36451.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 37025.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 38720.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 39294.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 40989.625,
+          "level": 0
+        },
+        {
+          "timeUs": 41563.625,
+          "level": 1
+        },
+        {
+          "timeUs": 43262.6875,
+          "level": 0
+        },
+        {
+          "timeUs": 43836.6875,
+          "level": 1
+        },
+        {
+          "timeUs": 44397.6875,
+          "level": 0
+        },
+        {
+          "timeUs": 44971.6875,
+          "level": 1
+        },
+        {
+          "timeUs": 46665.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 47239.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 47801.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 48375.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 48936.625,
+          "level": 0
+        },
+        {
+          "timeUs": 49510.625,
+          "level": 1
+        },
+        {
+          "timeUs": 50073.125,
+          "level": 0
+        },
+        {
+          "timeUs": 50647.125,
+          "level": 1
+        },
+        {
+          "timeUs": 52341.625,
+          "level": 0
+        },
+        {
+          "timeUs": 52915.625,
+          "level": 1
+        },
+        {
+          "timeUs": 53485.125,
+          "level": 0
+        },
+        {
+          "timeUs": 54059.125,
+          "level": 1
+        },
+        {
+          "timeUs": 54620.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 55194.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 56887.125,
+          "level": 0
+        },
+        {
+          "timeUs": 57461.125,
+          "level": 1
+        },
+        {
+          "timeUs": 58022.6875,
+          "level": 0
+        },
+        {
+          "timeUs": 58596.6875,
+          "level": 1
+        },
+        {
+          "timeUs": 60290.125,
+          "level": 0
+        },
+        {
+          "timeUs": 60864.125,
+          "level": 1
+        },
+        {
+          "timeUs": 62558.6875,
+          "level": 0
+        },
+        {
+          "timeUs": 63132.625,
+          "level": 1
+        },
+        {
+          "timeUs": 64833.1875,
+          "level": 0
+        },
+        {
+          "timeUs": 65407.1875,
+          "level": 1
+        },
+        {
+          "timeUs": 65969.625,
+          "level": 0
+        },
+        {
+          "timeUs": 66543.625,
+          "level": 1
+        },
+        {
+          "timeUs": 68240.125,
+          "level": 0
+        },
+        {
+          "timeUs": 68814.125,
+          "level": 1
+        }
+      ]
+    }
+  }
+}

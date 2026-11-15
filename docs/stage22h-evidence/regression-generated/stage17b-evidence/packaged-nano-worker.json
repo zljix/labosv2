@@ -1,0 +1,68 @@
+{
+  "console": "TOUCH BUTTON READY\r\nTOUCH LED=1 X=120 Y=160\r\n",
+  "touch": {
+    "touch1": {
+      "powered": true,
+      "down": true,
+      "x": 120,
+      "y": 160,
+      "pressure": 50,
+      "irq": 0,
+      "pd": 0,
+      "raw": {
+        "x": 2058,
+        "y": 2056,
+        "z1": 1000,
+        "z2": 3345
+      },
+      "last": {
+        "channel": "z2",
+        "value": 3345,
+        "command": 192
+      },
+      "conversions": 24,
+      "reason": "CS HIGH · neaktivan"
+    }
+  },
+  "tft": {
+    "kind": "tft",
+    "controller": "ILI9341",
+    "width": 240,
+    "height": 320,
+    "powered": true,
+    "backlight": true,
+    "on": true,
+    "sleep": false,
+    "madctl": 72,
+    "format": 85,
+    "written": 107979,
+    "window": [
+      150,
+      168,
+      152,
+      170
+    ],
+    "reason": "CS HIGH · neaktivan"
+  },
+  "pixels": {
+    "length": 76800,
+    "nonzero": 15240,
+    "sha256": "6b19656d4dbc543edc36fe366b8601cebc2e6f2edae1e4bd6039332c2e5e689e"
+  },
+  "leds": {
+    "touchLED": {
+      "brightness": 0.927536231884063,
+      "currentMa": 4.6377
+    }
+  },
+  "diagnostics": [],
+  "memory": {
+    "staticBytes": 228,
+    "lowestSP": 2227,
+    "minFreeToStatic": 1744
+  },
+  "version": "0.12.6-beta.1",
+  "build": "dbecd774b876ca8e",
+  "stopMs": 3.3017020000042976,
+  "scope": "Node/Linux packaged Worker"
+}

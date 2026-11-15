@@ -1,0 +1,9 @@
+{
+  "retrievedOn": "2026-11-12",
+  "DHT": {
+    "source": "https://github.com/adafruit/DHT-sensor-library/tree/1.4.6",
+    "archiveSha256": "e8358c115776d501b3cf193041a3631a08373f4aadfa1bbc0737cf5301960a13",
+    "subset": "DHT.cpp, DHT.h, library.properties, license.txt unchanged. DHT_U is not shipped; Unified Sensor is not part of this profile.",
+    "digest": "f61633314452c3e38de431b91a15c26bf7d9051a1cf9bcd0593ee410081f3d36"
+  }
+}

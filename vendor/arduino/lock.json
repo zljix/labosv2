@@ -1,0 +1,186 @@
+{
+  "Bounce2": {
+    "version": "2.72",
+    "digest": "0b087545118fe6e07d2abd26071ecfb0e2a91edb6064ac659cf8d3ce7d4c8f01",
+    "files": {
+      "LICENSE": "663ac8714ba117fe69dd5bca269b2cfe471a31d048f80156f293a91151c34085",
+      "library.properties": "845a8f7bcd737cead7aeb975f5c22c0804c9c1213197325a739dac95a82139f1",
+      "src/Bounce2.cpp": "f728fe71aa9cbf573781c6fb87ab9712a4b1425c2a04ff522d7cd462fa4da2ea",
+      "src/Bounce2.h": "886a0dc7dc451c09327224e623e24bab51e866dbba615d0402e598019e282e5f"
+    }
+  },
+  "LabAHT10": {
+    "version": "1.0.0",
+    "digest": "5e70d85bd5f32a4b5f6bdc05e5062b7d9a4f5b74bf8ca9d6dc943db634627d6d",
+    "files": {
+      "LICENSE": "846be7db07cb39f869251862ede1abc71d83a0f4e5a8f8cd89779706bbced058",
+      "library.properties": "3ee8772d81349a4381e130abbec30c240811a49c0d6a35ecc1ac5c4c5765c545",
+      "src/LabAHT10.cpp": "57345b00029fc910bf6a3246c560b777258f4e175f660fbe0665086f30f4cd8c",
+      "src/LabAHT10.h": "e91df89bed132c741dc1268962847d6588446802a46b36ad45e76209b7c873c4"
+    }
+  },
+  "U8g2": {
+    "version": "2.37.1",
+    "digest": "5f8b4535f5c7837f82569ede8d7381b614ba80455982c59e4ca4e7fc17d43e0b",
+    "files": {
+      "LICENSE": "8cf13e2fabfb6665de2132f148011fcf4252106f464ea520c001647a71934f5e",
+      "library.properties": "dbb3ccd46479ab265a904f2f1b8e981fa396c60b6367a99cd47e53ed64454580",
+      "src/U8g2lib.cpp": "c32caddaddf5c06f1f0d54b3ae20393ecc2fad5ba6bef80a40b92c524f9e9680",
+      "src/U8g2lib.h": "e75675470edbb7aa376812ce317a622642b14ab53da9f046a5dfffd670b6b6c2",
+      "src/U8x8lib.cpp": "6b6ca33d7923fb64d36277097d5c463b9fe68cb901bd37bda78d19270dff9f7b",
+      "src/U8x8lib.h": "349cc362834c93b677ce0e966bdad5a50dd5c09199eb72618c24a296766c11db",
+      "src/clib/u8g2.h": "2d13834bb4449ba0c38756e9502d661e7bf3f63a244a9cc20270a9bd1d2fcc47",
+      "src/clib/u8g2_arc.c": "d32d1b4d155e29b6bf7d5a4298da077649b43422f275261ff2ad2c5117183d2a",
+      "src/clib/u8g2_bitmap.c": "04a85f7ccc9e646a6bafe781c16cc22633d5d2bcd0bf13b18973d72afd56da5d",
+      "src/clib/u8g2_box.c": "d329109913b00cfc42038cec55c07b0d8faf50e5995808fa0e0c132a5afd37c5",
+      "src/clib/u8g2_buffer.c": "9ca065a47345bb6bba3f7a81cad60ad7a15c3f2ca926137ad20f1e0ef1df4609",
+      "src/clib/u8g2_button.c": "2011e2e26636fbaeca46edf9d4942fe88aa5f90a83a7ebac536d4f64f0db7cd5",
+      "src/clib/u8g2_circle.c": "6fbcc0dea8c64389ae6537f3e97722edfb85730480fe39747cf4aa1ebd717148",
+      "src/clib/u8g2_cleardisplay.c": "e1ca6ab2e977d9b1e6c72e020c80f6ea38dcab61eb9177e7b0b68ea5c6847c00",
+      "src/clib/u8g2_d_memory.c": "d40dc4271eb3cfb1b95a6a5e4975f04874621730346562e647301d3cb765f8e9",
+      "src/clib/u8g2_d_setup.c": "6e61d17c90b64067c5f6ef0480cf15d31dd23b3c7711e3016d05a8e2b43047c5",
+      "src/clib/u8g2_font.c": "3d205ff43e0da767aaf87787777ef38ae930a876702c560e7d0e60183ad9730a",
+      "src/clib/u8g2_font_6x10_tf.c": "a182076da27ca3d63ff6ec514807bdfeb2b90cf6eb4f9adfbb7257dc908e70ee",
+      "src/clib/u8g2_hvline.c": "e63dad17dfe6501fb4b8f47ea7daaaa75c720a88016cfa9af39cc17523fac808",
+      "src/clib/u8g2_input_value.c": "fd6f4f7b2911bffa36677e6f3cceaa7f40dc0dd8ca589adeec2248354dc3c0bd",
+      "src/clib/u8g2_intersection.c": "ed81a18801dfc27220f09162d8ec2a74cc76467bf672431dd6fac9bde66b46c4",
+      "src/clib/u8g2_kerning.c": "c249d6394de157f6c2914bfafcca9bbcd09197fdac96c36a1d9877c8155e5ccc",
+      "src/clib/u8g2_line.c": "a26d7b7ab8ebe3d48a318a93ae618b04b02623c8d86ee02d18ed47b1f4f0302e",
+      "src/clib/u8g2_ll_hvline.c": "86fce4a252cbe32cdff4ac8bc694866136366d0311f8aaee1b0517a3c69b4ce8",
+      "src/clib/u8g2_message.c": "c8b6e01ccb075e7addeeae9551ccd74f65c29d238890adae13399c8dd9e6335d",
+      "src/clib/u8g2_polygon.c": "2f94dc6f32e0434664de8b30b24dbf98a348230db369b807226311828f6e0249",
+      "src/clib/u8g2_selection_list.c": "6b305605ee203cc124515371d38afe7f615d169061e7b84eceb6dcf6f3ee8139",
+      "src/clib/u8g2_setup.c": "80bf40f40e35ab010d33ac8bebb9a7035c6293645f6f6b662a31a9fe52321d15",
+      "src/clib/u8x8.h": "c90875cf2ae48ffbe7932c10ea49d2a742c2a3a7a61b6b8d2df45a6721859ff9",
+      "src/clib/u8x8_8x8.c": "da32dff05050e4b18ea9007fdefc49ef31bf24b85ba2200fa791755aa81b2884",
+      "src/clib/u8x8_byte.c": "bb0f154d4fd7adf26b7f9f4188298d9d3e867627b6edc83385d64e26ec00cf23",
+      "src/clib/u8x8_cad.c": "3932b469ab8a27c330f52bd10abb2964600436495f320f93045d14dceddc91b7",
+      "src/clib/u8x8_capture.c": "36f3b20027f4dec2a48053e1f83034b559cd62723c74f3cabc956567de83d776",
+      "src/clib/u8x8_d_ssd1306_128x64_noname.c": "dcfaf1582aca38fff9799a592b895ca86680b1c0d34822074d24d2ea5c8cbeac",
+      "src/clib/u8x8_debounce.c": "6c5a8bd4dff3725fbb6d208b6a106dccf57a0b686b2bd6a37a0a44cf943523a9",
+      "src/clib/u8x8_display.c": "d04b8972f964401c447bf6105b9951f50cfe4b665248e9a4c875c5c32b910cdd",
+      "src/clib/u8x8_gpio.c": "884bc9f983276256faced6767a942ca5e79a03568b284165c0d1c4f855b0d630",
+      "src/clib/u8x8_input_value.c": "4816e93ae16c41409497ea8b09facc05f4afc297a7868b2655aba12b755108ca",
+      "src/clib/u8x8_message.c": "d24fa19f1f37426b44138a4c22cb9d0342626d735faf2e0a104e9d7dbb95ef18",
+      "src/clib/u8x8_selection_list.c": "e1290066f6ac1a4b6b7d5c86b6082bb8186ba63685c173213f74811514f7231b",
+      "src/clib/u8x8_setup.c": "3f50da0b74fea01a3386a3192d412aceadc09cac3e5cbb0b879c1a7e80a38886",
+      "src/clib/u8x8_string.c": "20cfe514ca42bfa22fb5a52aaf9bac3ab8b1e69c994df3fdeb73e3353e9687cc",
+      "src/clib/u8x8_u16toa.c": "5a6877ecb5b0665a48f952588e5bdd173407cf4dac399bcfa75ba64dad412b42",
+      "src/clib/u8x8_u8toa.c": "444a0c6465a875eea039c330b4d85ca3fa582c95023697d4dcd6ea47af190489"
+    }
+  },
+  "Servo": {
+    "version": "1.2.2",
+    "digest": "6e5e44591f1790f0d1196f83d4a2537fbbe8b782bba249a55b6d2db251c43aa4",
+    "files": {
+      "LICENSE.txt": "20c17d8b8c48a600800dfd14f95d5cb9ff47066a9641ddeab48dc54aec96e331",
+      "library.properties": "c373783c19ebe10aead98deb41c7cd4d8c2840b4972f16a7b67445e32562dd89",
+      "src/Servo.h": "b444499145e8c61859c4a5fb1a9e1f18e6ffa0c207c99cfe23d23a4da18dbb3f",
+      "src/avr/Servo.cpp": "6b4477836ed3a00c3d77a5ad1e6a8636a4ee6cc905a9d93dfc60fca654860abb",
+      "src/avr/ServoTimers.h": "c18bf7dfd3804d0862572b4e0ea3b4e73431916771ceb531c28e88ed36ec4461"
+    }
+  },
+  "LabI2CSensors": {
+    "version": "1.0.0",
+    "digest": "2e40e9a6f13867627ca9e451460107fd6cec8fbe533c447fe850b83f853af266",
+    "files": {
+      "LICENSE": "846be7db07cb39f869251862ede1abc71d83a0f4e5a8f8cd89779706bbced058",
+      "library.properties": "95518b28c965f252ca093fcb6cf05ff2cabbb34b37182d52d518f3bf2fb8299e",
+      "src/LabI2CSensors.cpp": "a2b72128b8fcfbaa721048e3891f1e326d6d3bd0fa3808ec14b732ef0d84dbc1",
+      "src/LabI2CSensors.h": "7452aaabeb0c1b4f009c87fab76ecaf6eeaba3383e2a74ea9b8ac70b4b1dd49b"
+    }
+  },
+  "U8g2_12832": {
+    "version": "2.37.1",
+    "digest": "4ab66ed86f578895534ddb16bccd02fb848dc56c2a1a338422d9b14ec5db3e2c",
+    "files": {
+      "LICENSE": "8cf13e2fabfb6665de2132f148011fcf4252106f464ea520c001647a71934f5e",
+      "library.properties": "27f6a682d28fdcba4b516f105c126284f8f4006bfff48777feaa54fd2e891c66",
+      "src/U8g2lib.cpp": "c32caddaddf5c06f1f0d54b3ae20393ecc2fad5ba6bef80a40b92c524f9e9680",
+      "src/U8g2lib.h": "e75675470edbb7aa376812ce317a622642b14ab53da9f046a5dfffd670b6b6c2",
+      "src/U8x8lib.cpp": "6b6ca33d7923fb64d36277097d5c463b9fe68cb901bd37bda78d19270dff9f7b",
+      "src/U8x8lib.h": "349cc362834c93b677ce0e966bdad5a50dd5c09199eb72618c24a296766c11db",
+      "src/clib/u8g2.h": "2d13834bb4449ba0c38756e9502d661e7bf3f63a244a9cc20270a9bd1d2fcc47",
+      "src/clib/u8g2_arc.c": "d32d1b4d155e29b6bf7d5a4298da077649b43422f275261ff2ad2c5117183d2a",
+      "src/clib/u8g2_bitmap.c": "04a85f7ccc9e646a6bafe781c16cc22633d5d2bcd0bf13b18973d72afd56da5d",
+      "src/clib/u8g2_box.c": "d329109913b00cfc42038cec55c07b0d8faf50e5995808fa0e0c132a5afd37c5",
+      "src/clib/u8g2_buffer.c": "9ca065a47345bb6bba3f7a81cad60ad7a15c3f2ca926137ad20f1e0ef1df4609",
+      "src/clib/u8g2_button.c": "2011e2e26636fbaeca46edf9d4942fe88aa5f90a83a7ebac536d4f64f0db7cd5",
+      "src/clib/u8g2_circle.c": "6fbcc0dea8c64389ae6537f3e97722edfb85730480fe39747cf4aa1ebd717148",
+      "src/clib/u8g2_cleardisplay.c": "e1ca6ab2e977d9b1e6c72e020c80f6ea38dcab61eb9177e7b0b68ea5c6847c00",
+      "src/clib/u8g2_d_memory.c": "d40dc4271eb3cfb1b95a6a5e4975f04874621730346562e647301d3cb765f8e9",
+      "src/clib/u8g2_d_setup.c": "6e61d17c90b64067c5f6ef0480cf15d31dd23b3c7711e3016d05a8e2b43047c5",
+      "src/clib/u8g2_font.c": "3d205ff43e0da767aaf87787777ef38ae930a876702c560e7d0e60183ad9730a",
+      "src/clib/u8g2_font_6x10_tf.c": "a182076da27ca3d63ff6ec514807bdfeb2b90cf6eb4f9adfbb7257dc908e70ee",
+      "src/clib/u8g2_hvline.c": "e63dad17dfe6501fb4b8f47ea7daaaa75c720a88016cfa9af39cc17523fac808",
+      "src/clib/u8g2_input_value.c": "fd6f4f7b2911bffa36677e6f3cceaa7f40dc0dd8ca589adeec2248354dc3c0bd",
+      "src/clib/u8g2_intersection.c": "ed81a18801dfc27220f09162d8ec2a74cc76467bf672431dd6fac9bde66b46c4",
+      "src/clib/u8g2_kerning.c": "c249d6394de157f6c2914bfafcca9bbcd09197fdac96c36a1d9877c8155e5ccc",
+      "src/clib/u8g2_line.c": "a26d7b7ab8ebe3d48a318a93ae618b04b02623c8d86ee02d18ed47b1f4f0302e",
+      "src/clib/u8g2_ll_hvline.c": "86fce4a252cbe32cdff4ac8bc694866136366d0311f8aaee1b0517a3c69b4ce8",
+      "src/clib/u8g2_message.c": "c8b6e01ccb075e7addeeae9551ccd74f65c29d238890adae13399c8dd9e6335d",
+      "src/clib/u8g2_polygon.c": "2f94dc6f32e0434664de8b30b24dbf98a348230db369b807226311828f6e0249",
+      "src/clib/u8g2_selection_list.c": "6b305605ee203cc124515371d38afe7f615d169061e7b84eceb6dcf6f3ee8139",
+      "src/clib/u8g2_setup.c": "80bf40f40e35ab010d33ac8bebb9a7035c6293645f6f6b662a31a9fe52321d15",
+      "src/clib/u8x8.h": "c90875cf2ae48ffbe7932c10ea49d2a742c2a3a7a61b6b8d2df45a6721859ff9",
+      "src/clib/u8x8_8x8.c": "da32dff05050e4b18ea9007fdefc49ef31bf24b85ba2200fa791755aa81b2884",
+      "src/clib/u8x8_byte.c": "bb0f154d4fd7adf26b7f9f4188298d9d3e867627b6edc83385d64e26ec00cf23",
+      "src/clib/u8x8_cad.c": "3932b469ab8a27c330f52bd10abb2964600436495f320f93045d14dceddc91b7",
+      "src/clib/u8x8_capture.c": "36f3b20027f4dec2a48053e1f83034b559cd62723c74f3cabc956567de83d776",
+      "src/clib/u8x8_d_ssd1306_128x32.c": "ad440ba67788159c01f7132c3b1f928d81f05a9daf61d90dcea8b3874304403d",
+      "src/clib/u8x8_d_ssd1306_128x64_noname.c": "dcfaf1582aca38fff9799a592b895ca86680b1c0d34822074d24d2ea5c8cbeac",
+      "src/clib/u8x8_debounce.c": "6c5a8bd4dff3725fbb6d208b6a106dccf57a0b686b2bd6a37a0a44cf943523a9",
+      "src/clib/u8x8_display.c": "d04b8972f964401c447bf6105b9951f50cfe4b665248e9a4c875c5c32b910cdd",
+      "src/clib/u8x8_gpio.c": "884bc9f983276256faced6767a942ca5e79a03568b284165c0d1c4f855b0d630",
+      "src/clib/u8x8_input_value.c": "4816e93ae16c41409497ea8b09facc05f4afc297a7868b2655aba12b755108ca",
+      "src/clib/u8x8_message.c": "d24fa19f1f37426b44138a4c22cb9d0342626d735faf2e0a104e9d7dbb95ef18",
+      "src/clib/u8x8_selection_list.c": "e1290066f6ac1a4b6b7d5c86b6082bb8186ba63685c173213f74811514f7231b",
+      "src/clib/u8x8_setup.c": "3f50da0b74fea01a3386a3192d412aceadc09cac3e5cbb0b879c1a7e80a38886",
+      "src/clib/u8x8_string.c": "20cfe514ca42bfa22fb5a52aaf9bac3ab8b1e69c994df3fdeb73e3353e9687cc",
+      "src/clib/u8x8_u16toa.c": "5a6877ecb5b0665a48f952588e5bdd173407cf4dac399bcfa75ba64dad412b42",
+      "src/clib/u8x8_u8toa.c": "444a0c6465a875eea039c330b4d85ca3fa582c95023697d4dcd6ea47af190489"
+    }
+  },
+  "LabLCD1602": {
+    "version": "1.0.0",
+    "digest": "8f751ab9da944db90f2ac6b3690ee3d304128cf6e922e6d2e0510d0c04b90195",
+    "files": {
+      "LICENSE": "846be7db07cb39f869251862ede1abc71d83a0f4e5a8f8cd89779706bbced058",
+      "library.properties": "89b18675c6cd592059b60c180cd1d67f8a9e440854ebeb1947080eea653994d6",
+      "src/LabLCD1602.cpp": "46d04436722f69b460bd73d60fcefa2b38fb79d8d4a8c180f0d70a3912ab7d4a",
+      "src/LabLCD1602.h": "31d45c827455bf810dd3320f138590d05a9aac0a709c037b772aaa46c4c0a2b6"
+    }
+  },
+  "DHT": {
+    "version": "1.4.6",
+    "files": {
+      "DHT.cpp": "244dcbf3a69b2f70fcef39632a3dd65f3af9869142ea93d6bb9dd99a54f7a6fd",
+      "DHT.h": "14959c77cc5addce51585dd014dc8b3aec089bde2469e44dfa288f026ec8fae9",
+      "library.properties": "47596c540591da28429b4f4c0c69e96f090b2b4f95ed5aa8342242db9c1a9379",
+      "license.txt": "8598f9a7e17727381839097b65b763e8e574b980b8157754209e9a089176c927"
+    },
+    "digest": "f61633314452c3e38de431b91a15c26bf7d9051a1cf9bcd0593ee410081f3d36"
+  },
+  "OneWire": {
+    "version": "2.3.8",
+    "digest": "d53be1dcf8b7e07f5b0d3120509ee5808d241bfd8cd2edcb4d22c70fa61611d0",
+    "files": {
+      "LICENSE.txt": "da2cd3b4e4358b40f7b03ddc9fb6eb101babc72177bbb26a23ca008f9ec07f6e",
+      "OneWire.cpp": "a252b02f7f7e8a49f8c96c81add003175ce72e7b9c927d9d98514937d2656013",
+      "OneWire.h": "806961558963b32d380c223d8c27f3d046818b3c9dc6d1ae0bd1870ced949233",
+      "library.properties": "5027fc42bda4d6f9fd47e724fa09c3265b2d9606512b541623c6eeecfc5209f8",
+      "util/OneWire_direct_gpio.h": "6c7ab6a1a979f651abef5d00d94ed686117d410714593788d579c457d56302fe",
+      "util/OneWire_direct_regtype.h": "ad353ca653c8c280a3a894e768088dd15fc13cf7ce76920bfc88c6ac2049c851"
+    }
+  },
+  "DallasTemperature": {
+    "version": "4.0.6",
+    "digest": "bcdf73e9dbd7dda3ad3e91c2340b335cbf6ccea6c1cab53f10c7fea675d75323",
+    "files": {
+      "DallasTemperature.cpp": "a1a02460c65649b238b1cef32291052eef8214dc1c2c8b54b83b2a1456b3bf10",
+      "DallasTemperature.h": "4c0d12e1fe33653655f207847668833d378f34de3dfcc9c300a4fdaf8e3ac197",
+      "LICENSE": "d1656adecdddcf223dfbb2d3056491226836acb671d9f1b09870008036633951",
+      "library.properties": "48fb912f9282bc90c8e9d4bc31ccb0dc56261a81d94645a15bd8760e1fc24e02"
+    }
+  }
+}

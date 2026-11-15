@@ -1,0 +1,374 @@
+{
+  "before": "RTC CH=1\r\nRTC RAM=1 WP=1\r\nRTC 2026-1-1 12:0:0 DAY=5\r\nRTC 2026-1-1 12:0:1 DAY=5\r\n",
+  "after": "RTC CH=1\r\nRTC RAM=2 WP=1\r\nRTC 2026-1-1 12:0:2 DAY=5\r\n",
+  "state": {
+    "rtc1": {
+      "mainPower": true,
+      "battery": true,
+      "rtcMainPower": true,
+      "retained": true,
+      "valid": true,
+      "halted": false,
+      "writeProtected": false,
+      "iso": "2026-01-01T12:00:03",
+      "day": 5,
+      "reason": "Sat radi",
+      "received": 21,
+      "errors": 0,
+      "state": {
+        "registers": [
+          3,
+          0,
+          18,
+          1,
+          1,
+          5,
+          38,
+          0
+        ],
+        "ram": [
+          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "trickle": 92,
+        "subsecondUs": 5950,
+        "valid": true
+      },
+      "trace": [
+        {
+          "timeUs": 0,
+          "operation": "main-power"
+        },
+        {
+          "timeUs": 23,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 299,
+          "operation": "command",
+          "value": 142
+        },
+        {
+          "timeUs": 587,
+          "operation": "write-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 611,
+          "operation": "clock-write",
+          "value": 7
+        },
+        {
+          "timeUs": 629,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 905,
+          "operation": "command",
+          "value": 129
+        },
+        {
+          "timeUs": 919,
+          "operation": "read-byte",
+          "value": 2
+        },
+        {
+          "timeUs": 1119,
+          "operation": "read-byte",
+          "value": 2
+        },
+        {
+          "timeUs": 1149,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1425,
+          "operation": "command",
+          "value": 128
+        },
+        {
+          "timeUs": 1713,
+          "operation": "write-byte",
+          "value": 130
+        },
+        {
+          "timeUs": 1737,
+          "operation": "clock-write",
+          "value": 0
+        },
+        {
+          "timeUs": 1762,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 2038,
+          "operation": "command",
+          "value": 129
+        },
+        {
+          "timeUs": 2052,
+          "operation": "read-byte",
+          "value": 130
+        },
+        {
+          "timeUs": 2252,
+          "operation": "read-byte",
+          "value": 130
+        },
+        {
+          "timeUs": 1002286,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1002562,
+          "operation": "command",
+          "value": 129
+        },
+        {
+          "timeUs": 1002576,
+          "operation": "read-byte",
+          "value": 130
+        },
+        {
+          "timeUs": 1002776,
+          "operation": "read-byte",
+          "value": 130
+        },
+        {
+          "timeUs": 1002806,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1003082,
+          "operation": "command",
+          "value": 128
+        },
+        {
+          "timeUs": 1003370,
+          "operation": "write-byte",
+          "value": 2
+        },
+        {
+          "timeUs": 1003394,
+          "operation": "clock-write",
+          "value": 0
+        },
+        {
+          "timeUs": 1003412,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1003688,
+          "operation": "command",
+          "value": 193
+        },
+        {
+          "timeUs": 1003702,
+          "operation": "read-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 1003902,
+          "operation": "read-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 1003932,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1004208,
+          "operation": "command",
+          "value": 192
+        },
+        {
+          "timeUs": 1004496,
+          "operation": "write-byte",
+          "value": 2
+        },
+        {
+          "timeUs": 1004520,
+          "operation": "ram-write",
+          "value": 1
+        },
+        {
+          "timeUs": 1004538,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1004814,
+          "operation": "command",
+          "value": 142
+        },
+        {
+          "timeUs": 1005102,
+          "operation": "write-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 1005126,
+          "operation": "clock-write",
+          "value": 7
+        },
+        {
+          "timeUs": 1005144,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1005420,
+          "operation": "command",
+          "value": 192
+        },
+        {
+          "timeUs": 1005708,
+          "operation": "write-byte",
+          "value": 99
+        },
+        {
+          "timeUs": 1005732,
+          "operation": "write-protected"
+        },
+        {
+          "timeUs": 1005758,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1006034,
+          "operation": "command",
+          "value": 193
+        },
+        {
+          "timeUs": 1006048,
+          "operation": "read-byte",
+          "value": 2
+        },
+        {
+          "timeUs": 1006248,
+          "operation": "read-byte",
+          "value": 2
+        },
+        {
+          "timeUs": 1006279,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1006555,
+          "operation": "command",
+          "value": 143
+        },
+        {
+          "timeUs": 1006569,
+          "operation": "read-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 1006769,
+          "operation": "read-byte",
+          "value": 128
+        },
+        {
+          "timeUs": 1006806,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1007082,
+          "operation": "command",
+          "value": 142
+        },
+        {
+          "timeUs": 1007370,
+          "operation": "write-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1007394,
+          "operation": "clock-write",
+          "value": 7
+        },
+        {
+          "timeUs": 1007412,
+          "operation": "ce-start"
+        },
+        {
+          "timeUs": 1007688,
+          "operation": "command",
+          "value": 191
+        },
+        {
+          "timeUs": 1007702,
+          "operation": "read-byte",
+          "value": 2
+        },
+        {
+          "timeUs": 1007902,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1008102,
+          "operation": "read-byte",
+          "value": 18
+        },
+        {
+          "timeUs": 1008302,
+          "operation": "read-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 1008502,
+          "operation": "read-byte",
+          "value": 1
+        },
+        {
+          "timeUs": 1008702,
+          "operation": "read-byte",
+          "value": 5
+        },
+        {
+          "timeUs": 1008902,
+          "operation": "read-byte",
+          "value": 38
+        },
+        {
+          "timeUs": 1009102,
+          "operation": "read-byte",
+          "value": 0
+        },
+        {
+          "timeUs": 1009302,
+          "operation": "read-byte",
+          "value": 2
+        }
+      ]
+    }
+  }
+}

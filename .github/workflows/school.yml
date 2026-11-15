@@ -3,6 +3,9 @@ on:
   push:
     branches: [main]
     paths-ignore: ['docs/**']
+  pull_request:
+    branches: [main]
+    paths-ignore: ['docs/**']
   workflow_dispatch:
 permissions:
   contents: read
@@ -44,6 +47,14 @@ jobs:
           done
           echo 'Test MySQL did not become ready.' >&2
           exit 1
+      - name: Pripremi zasebne baze za razrede i korisnički tijek
+        run: |
+          docker exec --interactive labosv2-ci-db sh -c 'MYSQL_PWD="$MYSQL_ROOT_PASSWORD" mysql --host=127.0.0.1 --user=root' <<'SQL'
+          CREATE DATABASE labosv2_test_classes CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_portal CHARACTER SET utf8mb4;
+          GRANT ALL ON labosv2_test_classes.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_portal.* TO 'labosv2_ci'@'%';
+          SQL
       - name: Pripremi Linux izolaciju
         run: |
           sudo apt-get update
@@ -57,16 +68,27 @@ jobs:
           printf '%s\n' "$RUNNER_TEMP/bwrap-install/bin" >> "$GITHUB_PATH"
       - run: npm run build:school
       - run: npm run test:school-package
+      - run: npm run test:school-catalog
       - name: Provjeri stvarni PHP i MySQL račune
         run: npm run test:school-accounts
         env:
           LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_ci;charset=utf8mb4
           LAB_TEST_DB_USER: labosv2_ci
+      - name: Provjeri razrede, uvoz i dodijeljene vježbe
+        run: npm run test:school-classes
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_classes;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - name: Provjeri korisnički tijek školskog portala
+        run: npm run test:school-portal
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_portal;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
       - name: Provjeri projekte, vodove i neovisno izvršavanje
         run: node --import tsx --test verification/project.test.ts verification/circuit.test.ts verification/routing.test.ts verification/school.test.ts
       - uses: actions/upload-artifact@v4
         with:
-          name: Labosv2-23B-Skolski-paket
+          name: Labosv2-23C-Skolski-paket
           path: release/*.zip
           if-no-files-found: error
           retention-days: 30

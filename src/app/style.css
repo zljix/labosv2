@@ -2062,3 +2062,4 @@ p {
   }
 }
 .school-account-link{display:inline-flex;align-items:center;text-decoration:none;max-width:170px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.school-task-notice{margin:6px 14px;padding:10px 14px;border:1px solid var(--line);border-radius:6px;background:var(--surface);font-size:13px;max-height:38vh;overflow:auto}.school-task-notice summary{cursor:pointer;font-weight:650}.school-task-notice p{margin:10px 0}.school-task-notice a{color:var(--teal)}

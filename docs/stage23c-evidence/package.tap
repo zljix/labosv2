@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: school ZIP verifies every inventory entry and keeps app, SQL and configuration out of web/
+ok 1 - school ZIP verifies every inventory entry and keeps app, SQL and configuration out of web/
+  ---
+  duration_ms: 322.859393
+  type: 'test'
+  ...
+# Subtest: installed app worker never intercepts private school API or POST requests
+ok 2 - installed app worker never intercepts private school API or POST requests
+  ---
+  duration_ms: 2.586817
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 424.551164

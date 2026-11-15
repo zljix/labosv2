@@ -1,21 +1,21 @@
 # Labosv2 · školski laboratorij
 
-**0.13.1-beta.1 · etapa 23B · 15. studenoga 2026.**
+**0.13.2-beta.1 · etapa 23C · 15. studenoga 2026.**
 
 Nastavak postojećeg ESP32 MicroPython / Arduino laboratorija za školski sustav s PHP-om i stvarnim MySQL-om. Polazište je [labos 0.12.9](https://github.com/zljix/labos/tree/3c4a281c10282d63b2742280f69aadbc08d7ae1e), uključujući posljednje dorade vodova.
 
-[Web laboratorij](https://zljix.github.io/labosv2/) · [Školski račun](https://zljix.github.io/labosv2/school.html#account) · [Upute za instalaciju](school/README.md) · [Dokazi etape 23B](docs/stage23b-accounts.md)
+[Web laboratorij](https://zljix.github.io/labosv2/) · [Školski račun](https://zljix.github.io/labosv2/school.html#account) · [Upute za instalaciju](school/README.md) · [Dokazi etape 23C](docs/stage23c-classes.md)
 
-## Što je izvedeno u 23B
+## Što je izvedeno u 23C
 
-- Verzionirane MySQL migracije s provjerom izmjena, ponovljivim pokretanjem i zaključavanjem.
-- Jednokratna privatna aktivacija administratora bez zadane lozinke ili web instalacijskog računa.
-- Prijava/odjava, uloge učenik/nastavnik/administrator, stvaranje i deaktivacija računa.
-- Obvezna promjena privremene lozinke, vlastita promjena i nastavnički reset za učenike dodijeljenog razreda.
-- Opoziv sesija nakon promjene lozinke, uloge ili aktivnosti; CSRF i trajno ograničenje pokušaja prijave.
-- Portal računa i poveznica iz simulatora; zapis promjena bez lozinki i tokena.
+- Školske godine i razredi, nastavnikovo stvaranje vlastitog razreda i administratorska dodjela nastavnika.
+- CSV uvoz učenika s prethodnim pregledom, provjerom identiteta postojećih računa i potvrdom povezivanja.
+- Vremenski ograničen pozivni kod, registracija učenika i nastavničko prihvaćanje ili odbijanje članstva.
+- Nepromjenjive inačice uputa, kriterija i početnih projekata za postojećih 67 URS varijanti i 268 ciljeva.
+- Dodjela točne inačice razredu uz odabranu pločicu/jezik, opcionalni rok i upravljanje dostupnošću.
+- Učenikov pregled vlastitih vježbi, kriterija i otvaranje zasebne lokalne kopije u simulatoru.
 
-Nastavnik bez dodijeljenog razreda nema pristup svim školskim učenicima. Temeljne tablice članstva sada postoje radi provjere prava; upravljanje razredima i dodjele kroz sučelje dolaze u 23C. Prijavljeni račun u ovoj etapi još nije povezan s lokalnim projektima.
+Računi, prijava, obvezna promjena privremene lozinke, ovlasti i revizijski zapisi iz 23B ostaju sačuvani. Učenik pristupa samo dostupnim dodjelama potvrđenih razreda; nastavnik samo svojim razredima. Nova rubrika ili nadogradnja kataloga ne mijenjaju ranije objavljene inačice. Planirani maksimum rubrike nije osvojeni ni službeni broj bodova.
 
 ## Sačuvani temelj 23A
 
@@ -28,7 +28,7 @@ Nastavnik bez dodijeljenog razreda nema pristup svim školskim učenicima. Temel
 
 **386/386 ciljanih testova**, **6/6 neovisnih compiler/runtime pokusa** i **4/4 skupne HTTPS provjere**; svih 191 web resursa provjereno je bajtno na Apacheu. Stari ZIP iz 22I ponovno se otvara i izvodi. [Točne inačice, granice i otvorene provjere](docs/stage23a-school.md).
 
-Središnje spremanje projekata, službeni bodovi i zaključavanje još nisu dostupni. Probni rezultati zadržavaju oznaku `feasibility-only`. Slijedi 23C: razredi i dodijeljene vježbe. GitHub Pages služi web simulator i javni prikaz školskog izdanja; prijava zahtijeva školski PHP/MySQL poslužitelj.
+Središnje spremanje projekata, službeni bodovi i zaključavanje još nisu dostupni. Probni rezultati zadržavaju oznaku `feasibility-only`. Slijedi 23D: središnje spremanje i nastavnički pregled rada. GitHub Pages služi web simulator i javni prikaz školskog izdanja; prijava zahtijeva školski PHP/MySQL poslužitelj.
 
 ## Pokretanje i izgradnja
 
@@ -47,7 +47,7 @@ npm ci
 npm run build:school
 ```
 
-Školski paket: `release/Labosv2_0.13.1_23B_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-23B-Skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
+Školski paket: `release/Labosv2_0.13.2_23C_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-23C-Skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
 
 ```sh
 npm run build:pages
@@ -62,6 +62,7 @@ Pages izgradnja koristi `/labosv2/`; obična i školska izgradnja koriste `/`. Z
 npm run build:school-grader
 npm run test:school
 npm run test:school-package
+npm run test:school-catalog
 npm run test:routing
 npm test
 ```

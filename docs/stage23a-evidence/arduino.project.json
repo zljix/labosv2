@@ -1,0 +1,151 @@
+{
+  "format": "esp32-micropython-lab",
+  "schemaVersion": 3,
+  "id": "9aaf594d-64dd-40c2-ba2a-349acc567a9f",
+  "title": "Arduino · tipkalo i serijski unos",
+  "createdAt": "2026-11-15T08:50:20.452Z",
+  "updatedAt": "2026-11-15T08:50:20.452Z",
+  "revision": 0,
+  "board": {
+    "id": "arduino.uno-r3.atmega328p",
+    "profileVersion": "0.1.0"
+  },
+  "language": "arduino-cpp",
+  "runtimeProfile": {
+    "id": "arduino-avr",
+    "version": 1
+  },
+  "entryFile": "main.ino",
+  "nodeId": "main",
+  "target": {
+    "fqbn": "arduino:avr:uno"
+  },
+  "files": {
+    "main.ino": "// Serijski monitor radi pri brzini koju zada Serial.begin().\nint daljinski = -1;\nint prethodno = -1;\nvoid setup() {\n  pinMode(2, INPUT_PULLUP); pinMode(9, OUTPUT);\n  Serial.begin(9600);\n  Serial.println(\"Spremno: 1 / 0 / b\");\n}\nvoid loop() {\n  if (Serial.available()) {\n    char znak = Serial.read();\n    if (znak == '1') daljinski = 1;\n    if (znak == '0') daljinski = 0;\n    if (znak == 'b') daljinski = -1;\n    Serial.print(\"RX=\"); Serial.println(znak);\n  }\n  int stanje = daljinski < 0 ? digitalRead(2) == LOW : daljinski;\n  digitalWrite(9, stanje);\n  if (stanje != prethodno) { Serial.print(\"LED=\"); Serial.println(stanje); prethodno = stanje; }\n  delay(10);\n}\n"
+  },
+  "circuit": {
+    "kind": "editable",
+    "modelVersion": 1,
+    "components": [
+      {
+        "id": "board",
+        "kind": "board",
+        "x": 50,
+        "y": 60,
+        "label": "Uno R3",
+        "rotation": 0,
+        "properties": {
+          "boardProfileId": "arduino.uno-r3.atmega328p"
+        }
+      },
+      {
+        "id": "r1",
+        "kind": "resistor",
+        "x": 560,
+        "y": 90,
+        "label": "Otpornik",
+        "rotation": 0,
+        "properties": {
+          "resistance": 680
+        }
+      },
+      {
+        "id": "led1",
+        "kind": "led",
+        "x": 770,
+        "y": 90,
+        "label": "LED",
+        "rotation": 0,
+        "properties": {
+          "color": "red"
+        }
+      },
+      {
+        "id": "sw1",
+        "kind": "button",
+        "x": 570,
+        "y": 300,
+        "label": "Tipkalo",
+        "rotation": 0,
+        "properties": {
+          "pressed": false
+        }
+      }
+    ],
+    "wires": [
+      {
+        "id": "w0",
+        "from": {
+          "component": "board",
+          "pin": "D9"
+        },
+        "to": {
+          "component": "r1",
+          "pin": "1"
+        },
+        "color": "#087f8c",
+        "points": []
+      },
+      {
+        "id": "w1",
+        "from": {
+          "component": "r1",
+          "pin": "2"
+        },
+        "to": {
+          "component": "led1",
+          "pin": "A"
+        },
+        "color": "#087f8c",
+        "points": []
+      },
+      {
+        "id": "w2",
+        "from": {
+          "component": "led1",
+          "pin": "K"
+        },
+        "to": {
+          "component": "board",
+          "pin": "GND"
+        },
+        "color": "#087f8c",
+        "points": []
+      },
+      {
+        "id": "w3",
+        "from": {
+          "component": "board",
+          "pin": "D2"
+        },
+        "to": {
+          "component": "sw1",
+          "pin": "A1"
+        },
+        "color": "#087f8c",
+        "points": []
+      },
+      {
+        "id": "w4",
+        "from": {
+          "component": "sw1",
+          "pin": "B1"
+        },
+        "to": {
+          "component": "board",
+          "pin": "GND"
+        },
+        "color": "#087f8c",
+        "points": []
+      }
+    ]
+  },
+  "settings": {
+    "activeFile": "main.ino",
+    "theme": "light",
+    "fontSize": 14,
+    "powered": true,
+    "swapped": false,
+    "example": "avr-button"
+  }
+}

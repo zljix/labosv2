@@ -1,0 +1,18 @@
+.build/
+node_modules/
+*.tar.gz
+*.log
+.sites/
+
+avr-env/
+
+# Lokalni podaci i postavke objave
+.openai/
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+
+release/
+school/config/config.php

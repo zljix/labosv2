@@ -1,0 +1,50 @@
+import {spawn} from 'node:child_process';
+import {resolve} from 'node:path';
+import {existsSync,realpathSync} from 'node:fs';
+
+// Explicitly Linux-only: absence/failure is an infrastructure error, never a
+// request to execute untrusted input on the host as a fallback.
+/** @param {string} root @param {string} entry @param {{compiler?: boolean, cli?: string, data?: string}} [options] */
+export function sandboxCommand(root, entry, {compiler = false, cli, data} = {}) {
+  if (process.platform !== 'linux') throw Error('Izolirana provjera 23A zasad traži Linux; nema nesigurnog zamjenskog izvođenja.');
+  const node = realpathSync(process.execPath);
+  const args = ['--user', '--map-root-user', '--net', 'bwrap', '--unshare-pid', '--unshare-ipc', '--unshare-uts', '--die-with-parent', '--new-session',
+    '--ro-bind', '/usr', '/usr', '--ro-bind', '/lib', '/lib'];
+  if (existsSync('/lib64')) args.push('--ro-bind', '/lib64', '/lib64');
+  args.push('--dir', '/runtime', '--ro-bind', node, '/runtime/node', '--symlink', 'usr/bin', '/bin', '--proc', '/proc', '--dev', '/dev', '--size', '134217728', '--tmpfs', '/tmp',
+    '--dir', '/app', '--ro-bind', resolve(root, 'public'), '/app/public', '--ro-bind', resolve(entry), '/app/child.mjs',
+    '--chdir', '/app', '--clearenv', '--setenv', 'PATH', '/runtime:/usr/bin:/bin', '--setenv', 'LANG', 'C.UTF-8', '--setenv', 'HOME', '/tmp',
+    '--setenv', 'LAB_GRADER_PUBLIC', '/app/public');
+  if (compiler) {
+    if (!cli || !data) throw Error('Za neovisno prevođenje zadaj lokalni Arduino CLI i zaključani data direktorij.');
+    args.push('--ro-bind', realpathSync(cli), '/runtime/arduino-cli', '--ro-bind', resolve(data), '/toolchain',
+      '--ro-bind', resolve(root, 'scripts/avr-compile.mjs'), '/app/scripts/avr-compile.mjs',
+      '--ro-bind', resolve(root, 'vendor/arduino'), '/app/vendor/arduino');
+  }
+  args.push('--', '/runtime/node', '--max-old-space-size=96', '--disable-proto=throw');
+  if (!compiler) args.push('--permission', '--allow-fs-read=/app');
+  args.push('/app/child.mjs');
+  return {command: 'unshare', args};
+}
+
+export function runSandbox(command, payload, timeoutMs = 10000) {
+  return new Promise((accept, reject) => {
+    const child = spawn(command.command, command.args, {stdio: ['pipe', 'pipe', 'pipe'], env: {PATH: process.env.PATH}, detached: true});
+    let stdout = '', stderr = '', bytes = 0, settled = false;
+    const stop = () => { try { process.kill(-child.pid, 'SIGKILL'); } catch { child.kill('SIGKILL'); } };
+    const finish = (error, value) => { if (settled) return; settled = true; clearTimeout(timer); error ? reject(error) : accept(value); };
+    const timer = setTimeout(() => { stop(); const error = Error('Isteklo je ograničenje izvođenja.'); error.code = 'EXECUTION_LIMIT'; finish(error); }, timeoutMs);
+    for (const [stream, name] of [[child.stdout, 'stdout'], [child.stderr, 'stderr']]) stream.on('data', chunk => {
+      bytes += chunk.length;
+      if (bytes > 1048576) { stop(); const error = Error('Prekoračeno je ograničenje izlaza.'); error.code = 'OUTPUT_LIMIT'; finish(error); return; }
+      if (name === 'stdout') stdout += chunk.toString(); else stderr += chunk.toString();
+    });
+    child.on('error', error => finish(error));
+    child.on('close', code => {
+      if (code !== 0) { finish(Error('Izolirani proces nije uspio: ' + stderr.slice(-1800))); return; }
+      try { finish(null, JSON.parse(stdout)); } catch { finish(Error('Neispravan odgovor izoliranog procesa.')); }
+    });
+    child.stdin.on('error', () => {});
+    child.stdin.end(JSON.stringify(payload));
+  });
+}

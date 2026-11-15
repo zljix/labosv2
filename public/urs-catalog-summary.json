@@ -1,0 +1,25 @@
+{
+  "version": "0.13.0-beta.1",
+  "lessons": 18,
+  "variants": 67,
+  "targets": [
+    {
+      "label": "S3 · MicroPython",
+      "count": 67
+    },
+    {
+      "label": "S3 · Arduino C++",
+      "count": 67
+    },
+    {
+      "label": "Uno R3 · Arduino C++",
+      "count": 67
+    },
+    {
+      "label": "Nano classic · Arduino C++",
+      "count": 67
+    }
+  ],
+  "total": 268,
+  "components": 40
+}

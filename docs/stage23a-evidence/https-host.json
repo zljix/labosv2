@@ -1,0 +1,28 @@
+{
+  "stage": "23A",
+  "generatedAt": "2026-11-15T08:48:21.769Z",
+  "scope": "HTTPS Apache/PHP delivery, exact resource bytes and private-path isolation; no student pilot.",
+  "version": "0.13.0-beta.1",
+  "appBuild": "bdeaaf5f0d0c72b9",
+  "resources": 191,
+  "checks": [
+    {
+      "name": "HTTPS and release identity",
+      "status": "pass"
+    },
+    {
+      "name": "Every application resource has exact bytes and usable MIME",
+      "status": "pass"
+    },
+    {
+      "name": "PHP liveness has a bounded response and no cached school state",
+      "status": "pass"
+    },
+    {
+      "name": "Private configuration, tools and checker are outside the web root",
+      "status": "pass"
+    }
+  ],
+  "passed": 4,
+  "total": 4
+}

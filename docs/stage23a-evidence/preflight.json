@@ -1,0 +1,74 @@
+{
+  "format": "labosv2-school-preflight",
+  "version": 1,
+  "stage": "23A",
+  "generatedAt": "2026-11-15T08:48:21+00:00",
+  "displayTimezone": "Europe/Zagreb",
+  "environment": {
+    "os": "Linux",
+    "kernel": "6.18.57",
+    "architecture": "x86_64",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "memoryBytes": 10451427328,
+    "freeDiskBytes": 55943897088
+  },
+  "database": {
+    "version": "8.4.7",
+    "vendor": "MySQL Community Server - GPL",
+    "charset": "utf8mb4"
+  },
+  "checks": [
+    {
+      "id": "php",
+      "status": "pass",
+      "message": "PHP 8.4.27; profil 8.4 ili 8.5 s aktualnim sigurnosnim zakrpama."
+    },
+    {
+      "id": "pdo_mysql",
+      "status": "pass",
+      "message": "PHP proširenje pdo_mysql"
+    },
+    {
+      "id": "json",
+      "status": "pass",
+      "message": "PHP proširenje json"
+    },
+    {
+      "id": "session",
+      "status": "pass",
+      "message": "PHP proširenje session"
+    },
+    {
+      "id": "configuration",
+      "status": "pass",
+      "message": "Konfiguracija je učitana; vjerodajnice se ne ispisuju."
+    },
+    {
+      "id": "timezone",
+      "status": "pass",
+      "message": "Prikaz vremena Europe/Zagreb; buduća baza čuva UTC."
+    },
+    {
+      "id": "mysql",
+      "status": "pass",
+      "message": "MySQL 8.4.7; MySQL Community Server - GPL"
+    },
+    {
+      "id": "utf8mb4",
+      "status": "pass",
+      "message": "Kodiranje veze: utf8mb4"
+    },
+    {
+      "id": "innodb",
+      "status": "pass",
+      "message": "InnoDB: DEFAULT"
+    },
+    {
+      "id": "application_account",
+      "status": "pass",
+      "message": "Aplikacijski račun mora imati ovlasti ograničene na svoju bazu."
+    }
+  ],
+  "ready": true,
+  "scope": "Read-only CLI prerequisites; no accounts, migrations, official scores or school pilot."
+}

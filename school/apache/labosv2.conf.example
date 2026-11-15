@@ -1,0 +1,22 @@
+# Replace paths, hostname and certificate locations. Use only web/ as DocumentRoot.
+# Enable ssl, headers, mime, dir and your PHP 8.4/8.5 handler separately.
+<VirtualHost *:443>
+    ServerName labos.skola.example
+    DocumentRoot "/srv/labosv2/web"
+    SSLEngine on
+    SSLCertificateFile "/etc/ssl/labos/fullchain.pem"
+    SSLCertificateKeyFile "/etc/ssl/labos/private.key"
+    <Directory "/srv/labosv2/web">
+        AllowOverride FileInfo Options AuthConfig Indexes
+        Require all granted
+    </Directory>
+    # PHP-FPM example (adjust the actual socket; omit when using mod_php):
+    # <FilesMatch "\.php$">
+    #     SetHandler "proxy:unix:/run/php/php8.4-fpm.sock|fcgi://localhost/"
+    # </FilesMatch>
+    ErrorLog "${APACHE_LOG_DIR}/labosv2-error.log"
+    CustomLog "${APACHE_LOG_DIR}/labosv2-access.log" combined
+</VirtualHost>
+
+# The current single-thread WASM/Worker paths do not require SharedArrayBuffer.
+# Do not add COOP/COEP blindly: the local compiler uses a paired popup window.

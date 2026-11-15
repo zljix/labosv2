@@ -1,0 +1,40 @@
+name: Uvezi polazište laboratorija za 23A
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/bootstrap23a.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Uvezi točno zaključano polazište i sačuvaj dorade
+        shell: bash
+        run: |
+          git clone --quiet https://github.com/zljix/labos.git "$RUNNER_TEMP/labos-source"
+          git -C "$RUNNER_TEMP/labos-source" archive 3c4a281c10282d63b2742280f69aadbc08d7ae1e | tar --extract --skip-old-files --exclude='.github' --exclude='.github/**'
+      - run: npm ci
+      - run: sudo apt-get update && sudo apt-get install -y bubblewrap
+      - run: npm run build:school
+      - name: Provjeri polazište i neovisno izvršavanje
+        run: node --import tsx --test verification/project.test.ts verification/circuit.test.ts verification/routing.test.ts verification/school.test.ts
+      - name: Sačuvaj cjeloviti izvor i provjereno školsko izdanje
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --all
+          git commit -m 'Uvezi polazište labosa 0.12.9 i izgradi školsku etapu 23A'
+          git push origin HEAD:main
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Labosv2-23A-Skolski-paket
+          path: release/*.zip
+          if-no-files-found: error

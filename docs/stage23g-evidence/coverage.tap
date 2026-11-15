@@ -1,0 +1,16 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.13.6-beta.1 test:school-coverage
+> node --import tsx --test verification/school-coverage.test.ts
+
+✔ 23G full URS matrix has exactly one status and explicit criteria per real catalogue combination (3.29994ms)
+✔ 23G generated JSON, CSV and private catalogue agree with the authoritative grading registry (6.680782ms)
+✔ 23G real support page filters by target, family, status and text; injected text stays text (888.840613ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1603.707037

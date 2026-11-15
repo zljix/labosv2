@@ -10,7 +10,7 @@ test('23E actual PHP/MySQL queue, isolated results, immutable binding, permissio
   const c=(await ok(teacher.client.call('create-class',{name:'4.f bodovanje',schoolYear:'2026/2027'}),201)).class;
   const csv='username;displayName\n'+[a,b].map(p=>p.user.username+';'+p.user.displayName).join('\n');
   const preview=await ok(teacher.client.call('preview-students',{classId:c.id,csv}));await ok(teacher.client.call('import-students',{classId:c.id,csv,previewToken:preview.previewToken,linkExisting:true}));
-  const profiles=(await ok(teacher.client.call('catalog'))).catalog.gradingProfiles;assert.equal(profiles.length,3);
+  const profiles=(await ok(teacher.client.call('catalog'))).catalog.gradingProfiles;assert.equal(profiles.length,6);
   const publish=async(i=0)=> (await ok(teacher.client.call('publish-task',{taskKey:profiles[i].taskKey,gradingProfile:profiles[i].id}),201)).task;
   const task=await publish(),assignment=(await ok(teacher.client.call('create-assignment',{classId:c.id,taskVersionId:task.id,target:'micropython'}),201)).assignment;
   const privateCall=(action,body)=>{const r=f.gradingCommand(action,body);assert.equal(r.status,0,r.stderr);return JSON.parse(r.stdout);};
@@ -76,5 +76,22 @@ test('23E actual PHP/MySQL queue, isolated results, immutable binding, permissio
     const newer=await publish();assert.equal(newer.version,task.version+2); // descriptive version was published in the first scenario
     assert.equal((await ok(a.client.call('attempt&id='+opened.attempt.id))).assignment.task.contentHash,task.contentHash);
     const count=f.sql('SELECT COUNT(*) AS n FROM grading_jobs')[0].n;assert.equal(f.command('migrate').status,0);assert.equal(f.sql('SELECT COUNT(*) AS n FROM grading_jobs')[0].n,count);
+  });
+  await t.test('23G expanded profiles publish with distinct checker versions and never revise old task rubrics',async()=>{
+    const catalog=(await ok(teacher.client.call('catalog'))).catalog;
+    assert.equal(catalog.gradingSummary.combinations,268);assert.equal(catalog.gradingSummary.supported,18);
+    const entry=catalog.entries.find(e=>e.key==='analog/lm35');assert.equal(entry.gradingSupport['s3-cpp'].maxPoints,null);
+    assert.equal(task.rubric.checkerVersion,'23E.1');
+    const profile=profiles.find(p=>p.id==='23G-lm35@1');
+    const expanded=(await ok(teacher.client.call('publish-task',{taskKey:profile.taskKey,gradingProfile:profile.id}),201)).task;
+    assert.equal(expanded.rubric.checkerVersion,'23G.1');
+    const assign=(await ok(teacher.client.call('create-assignment',{classId:c.id,taskVersionId:expanded.id,target:'micropython'}),201)).assignment;
+    const begin=await ok(a.client.call('begin-attempt',{assignmentId:assign.id}));
+    f.sql("UPDATE grading_jobs SET status='superseded' WHERE attempt_id<>? AND status='queued'",[begin.attempt.id]);
+    const queued=privateCall('claim').job;assert.equal(queued.profileId,profile.id);assert.equal(queued.checkerVersion,'23G.1');
+    const result=await gradeJob(queued,{root:process.cwd()});assert.equal(result.points,10,JSON.stringify(result));
+    privateCall('complete',{jobId:queued.jobId,lease:queued.lease,report:result});
+    assert.equal((await ok(a.client.call('attempt&id='+begin.attempt.id))).attempt.grading.points,10);
+    assert.equal((await ok(a.client.call('attempt&id='+opened.attempt.id))).assignment.task.contentHash,task.contentHash);
   });
 });

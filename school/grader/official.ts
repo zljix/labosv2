@@ -23,7 +23,7 @@ export async function gradeJob(job:any,options:{root:string;compile?:boolean;cli
   }catch{return {...base,checkerHash:digest('unavailable-checker:'+registry.checkerVersion),status:'technical_error',message:'Provjeravač nije potpuno instaliran. Bodovi nisu dodijeljeni.'};}
   base.checkerHash=checker.digest('hex');
   const profile=registry.profiles.find(p=>p.id===job.profileId);
-  if(job.format!=='labosv2-grading-job'||job.version!==1||job.checkerVersion!==registry.checkerVersion||!profile
+  if(job.format!=='labosv2-grading-job'||job.version!==1||job.checkerVersion!==(profile?.checkerVersion??registry.checkerVersion)||!profile
     ||!profile.targets.includes(job.target)||!job.rubric||job.rubric.profileId!==profile.id
     ||!Array.isArray(job.rubric.criteria)||job.rubric.criteria.length!==profile.criteria.length
     ||!profile.criteria.every((c,i)=>['id','description','maxPoints'].every(k=>job.rubric.criteria[i]?.[k]===(c as any)[k]))||!(/^[a-f0-9]{64}$/).test(job.seed??'')
@@ -37,8 +37,12 @@ export async function gradeJob(job:any,options:{root:string;compile?:boolean;cli
   if(target!==job.target||project.radio)return {...base,status:'unsupported',message:'Ovaj cilj još nema službenu provjeru.'};
   try{
     const config=compileCircuit(project.circuit as any,project.language==='micropython'?'micropython':'avr');
-    if(project.circuit.kind!=='editable'||(profile.kind==='sensor'?config.i2cDevices.length!==1||config.i2cDevices[0].kind!=='bmp280':config.leds.length!==1||(profile.kind==='button'?config.buttons.length!==1:config.pots.length!==1)))
-      return failProgram('Sačuvaj komponente zadane pilot-vježbom: jedan ulaz i jedan izlaz, odnosno jedan BMP280.');
+    const sensorKind='sensorKind' in profile?profile.sensorKind:'bmp280';
+    const valid=profile.kind==='sensor'?config.i2cDevices.length===1&&config.i2cDevices[0].kind===sensorKind:
+      profile.kind==='lm35'?config.analogInputs?.length===1&&config.analogInputs[0].kind==='lm35':
+      config.leds.length===1&&(profile.kind==='blink'||(profile.kind==='button'?config.buttons.length===1:config.pots.length===1));
+    if(project.circuit.kind!=='editable'||!valid)
+      return failProgram('Sačuvaj komponente zadane objavljenom provjerom. Pregledaj upute i sklop.');
   }catch{return failProgram('Sklop ima električnu ili strukturnu pogrešku. Pregledaj dijagnostiku sklopa.');}
   try{
     let artifact:any,provenance:any={method:'source-execution'};

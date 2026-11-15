@@ -1,0 +1,18 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.13.6-beta.1 test:school-grading-expanded
+> node --import tsx --test verification/school-grading-expanded.test.ts
+
+✔ 23G isolated MicroPython: LED timing, LM35 and BMP180; distinct seeds and alternate sources (3130.375613ms)
+✔ 23G negative programs and physical connections cannot earn full points (4127.794537ms)
+✔ 23G exact-source Uno/Nano sensor examples; changed source requires the compiler (23256.381029ms)
+﹣ 23G new Uno/Nano source is compiled independently for each new rubric (0.428063ms) # SKIP
+✔ 23G version binding preserves old rubrics and rejects unapproved checker/target pairs (29.780964ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 1
+ℹ todo 0
+ℹ duration_ms 30817.713538

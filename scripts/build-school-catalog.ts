@@ -3,6 +3,7 @@ import {resolve} from 'node:path';
 import {createHash} from 'node:crypto';
 import {ursLessons,ursTargets,variantAvailable,createUrsProject,type UrsTarget} from '../src/lessons/ursCatalog';
 import {parseProject,type Project} from '../src/project/model';
+import {gradingSupport,gradingCoverage} from '../school/grader/coverage';
 
 // Private, reproducible starter snapshots. PHP never trusts a client-supplied
 // lesson/rubric/template and publication copies these bytes into MySQL.
@@ -34,10 +35,12 @@ try {
     entries.push({key,lessonId:lesson.id,variantId:variant.id,code:'URS'+String(lesson.number).padStart(2,'0'),
       title:lesson.title,variantTitle:variant.title,minutes:lesson.minutes,goal:lesson.goal,before:lesson.before,
       concepts:lesson.concepts,change:lesson.change,fault:lesson.fault,expected:lesson.expected,
-      questions:lesson.questions,criteria:lesson.criteria,targets,templates});
+      questions:lesson.questions,criteria:lesson.criteria,targets,templates,
+      gradingSupport:Object.fromEntries(targets.map(target=>[target,gradingSupport(key,target)]))});
   }
 }finally{globalThis.fetch=originalFetch;}
 writeFileSync(resolve(directory,'catalog.json'),JSON.stringify({format:'labosv2-school-catalog',version:1,
   sourceVersion:JSON.parse(readFileSync('package.json','utf8')).version,
+  gradingSummary:gradingCoverage(JSON.parse(readFileSync('package.json','utf8')).version).summary,
   targets:Object.fromEntries(Object.entries(ursTargets).map(([key,t])=>[key,t.label])),entries},null,2)+'\n');
 console.log(`Školski katalog: ${entries.length} varijanti, ${entries.reduce((n,e)=>n+e.targets.length,0)} zamrznutih predložaka.`);

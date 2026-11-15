@@ -1,6 +1,6 @@
-# Labosv2 · školski paket · etapa 23F
+# Labosv2 · školski paket · etapa 23G
 
-Izdanje 0.13.5-beta.1. Lokalni pokusi, PHP sintaksa i stvarna PHP/MySQL integracija s React tijekom prolaze. [Zapis integracije](https://github.com/zljix/labosv2/actions/runs/43738711916). Stvarni školski pilot ostaje zasebna provjera.
+Izdanje 0.13.6-beta.1 dodaje registar svih kombinacija i tri nove rubrike. Provjere 23G i njihova ograničenja navedeni su u [izvješću 23G](../docs/stage23g-grading-matrix.md). [Raniji zapis integracije 23F](https://github.com/zljix/labosv2/actions/runs/43738711916) ostaje povijesni dokaz. Stvarni školski pilot ostaje zasebna provjera.
 
 Etapa 23A priprema postojeći laboratorij za školski Apache/PHP/MySQL smjer i dokazuje ponovno izvršavanje izvan učenikova preglednika. Polazište je `zljix/labos@3c4a281` (0.12.9), uključujući posljednju doradu vodova. Ovaj razvoj objavljuje se u `zljix/labosv2`.
 
@@ -14,7 +14,7 @@ Node.js 24 LTS, `npm ci`, zatim:
 npm run build:school
 ```
 
-Nastaje `release/Labosv2_0.13.5_23F_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
+Nastaje `release/Labosv2_0.13.6_23G_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
 
 | Mapa | Namjena |
 | --- | --- |
@@ -301,3 +301,24 @@ Zaključani sadržaj ostaje za pregled. Lokalni pokus otvori u zasebnoj kopiji. 
 Provjere: `npm run test:school-finish-ui`, `npm run test:school-sync`, `npm run test:school-submissions`, `npm run test:school-work-ui`. API integracija predaja koristi vlastitu praznu bazu `labosv2_test_submissions`, a React tijek svoju `labosv2_test_work_ui`.
 
 [Detaljan postupak, model predaja i granice 23F](../docs/stage23f-submissions.md). Javna Pages adresa nema PHP/MySQL; prijavu i službenu evidenciju omogućuje školska instalacija.
+
+
+## 23G · registar i proširenje bodovanja
+
+Na `school-grading.html` dostupni su svi kriteriji pripreme i status svake od 268 URS kombinacija, uz pretragu te filtre po obitelji, cilju i podršci. CSV i JSON preuzimaju cijeli registar; ne sadrže učeničke rezultate. V1–V5 evidentirane su zasebno kao lokalne provjere.
+
+Podržano je 18 kombinacija: šest rubrika na MicroPython S3, Uno i classic Nano. Uz tri rubrike iz 23E dodane su:
+
+| Varijanta | Nova rubrika | Posebna uputa |
+| --- | --- | --- |
+| URS01 · `gpio/blink` | `23G-led-timing@1` | Prilagodi početnih 500/500 ms na 250/750 ms. Početni program može ostvariti 8/10; tražena trajanja donose preostala 2 boda. |
+| URS04 · `analog/lm35` | `23G-lm35@1` | Napajanje 5 V, ADC, pretvorba 10 mV/°C i novi ispis `T=...`; najveći interval 400 ms. |
+| URS03 · `weather/bmp180` | `23G-bmp180@1` | Nove pretvorbe i stvarni I2C prijenosi, `T=... P=...` u °C/Pa, najviše 2200 ms između očitanja. |
+
+Svaka rubrika ima 10 mogućih bodova i objavljuje svoje kriterije. Pri odabiru zadatka portal prikazuje podršku po cilju. Odabir opisnih kriterija i dalje ne uključuje automatske bodove. Ostalih 250 kombinacija ostaje označeno bez službenog bodovanja; ESP32-S3 C++ još nema službeni izvršni adapter.
+
+Za novi Arduino izvor potreban je lokalni izolirani prevoditelj. Bez njega dopušten je samo pouzdani kataloški artefakt s točno jednakim izvorom i ovisnostima. Izmijenjeni LED program za 10/10 zato zahtijeva prevoditelj. Izvorni 500/500 ms program ostaje koristan za provjeru 8/10.
+
+Nadogradnja s 23F ne dodaje migraciju: sačuvaj privatnu konfiguraciju i sesije, zamijeni programski paket i pokreni postojeću naredbu `migrate`. Ponovno pokreni provjeravač iz novog paketa. Ranije objavljene rubrike zadržavaju `23E.1`, nove `23G.1`; ne mijenjaju se zaključane snimke ili ranije potvrđeni izvještaji. Pokretanje starih poslova nakon nadogradnje provjerava regresija.
+
+Provjere: `test:school-coverage`, `test:school-grading-expanded` i `test:school-grading-api`, uz ranije račune, razrede, spremanje i predaje. Compiler scenarij traži `LAB_GRADING_COMPILER_TEST=1`, `LAB_ARDUINO_CLI` i `LAB_ARDUINO_DATA`; školski Actions postupak ih postavlja i provjerava šest novih Uno/Nano izvora. To ne zamjenjuje fizički školski pilot, provjeru Windowsa ni iOS/Safarija.

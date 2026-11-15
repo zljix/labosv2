@@ -37,7 +37,15 @@ export function createSchoolPortal({request,getUser,run,message,reloadUsers}) {
   }
   function drawCatalog(){
     const item=catalog?.entries.find(e=>e.key===$('#task-key').value);$('#task-preview').replaceChildren();
-    if(item)describe($('#task-preview'),item);
+    if(item){
+      describe($('#task-preview'),item);
+      const support=node('ul');
+      for(const target of item.targets){
+        const g=item.gradingSupport?.[target];
+        support.append(node('li',targetNames[target]+' · '+(g?.status==='supported'?'Automatska provjera dostupna: '+g.title+' (najviše '+g.maxPoints+' bodova). '+g.requirement:'Službeno bodovanje nije podržano. '+(g?.reason??''))));
+      }
+      $('#task-preview').append(node('h4','Podrška bodovanja po cilju'),support);
+    }
     const profiles=(catalog?.gradingProfiles??[]).filter(p=>p.taskKey===item?.key);
     options($('#task-grading'),profiles.map(p=>[p.id,p.title]),'Opisni / ručno planirani kriteriji');drawGrading();
   }
@@ -48,6 +56,8 @@ export function createSchoolPortal({request,getUser,run,message,reloadUsers}) {
     for(const a of assignments){
       const card=node('article',undefined,'assignment-card');
       card.append(node('p',a.className+' · '+a.schoolYear+' · inačica '+a.task.version,'label'),node('h3',a.task.definition.code+' · '+a.task.definition.variantTitle),node('p',targetNames[a.target]),node('p','Rok: '+time(a.dueAt)),node('p',a.available?'Dostupno za rad':'Privremeno skriveno','stage'));
+      const enabled=a.task.rubric.authority==='server-verified'&&a.task.rubric.targets.includes(a.target);
+      card.append(node('p',enabled?'Službena provjera uključena · najviše '+a.task.rubric.maxPoints+' bodova':'Službeno bodovanje za ovu dodjelu nije uključeno.','account-note'));
       const details=node('details');details.append(node('summary','Pročitaj upute i kriterije'));const contents=node('div');describe(contents,a.task.definition,a.task.rubric);details.append(contents);card.append(details);
       if(a.available || staff()){
         const link=node('a',staff()?'Otvori početnu kopiju':'Otvori / nastavi vježbu u laboratoriju','button');link.href='./?schoolAssignment='+a.id;card.append(link);

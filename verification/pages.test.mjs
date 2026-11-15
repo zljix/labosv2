@@ -73,7 +73,7 @@ test('Pages package contains the complete byte-verified application under its pr
 });
 
 test('entry page, copied guide, pilot and install manifest keep navigation inside the repository', () => {
-  for (const name of ['index.html', 'guide.html', 'pilot.html', 'school.html', 'school-grading.html']) {
+  for (const name of ['index.html', 'guide.html', 'pilot.html', 'school.html', 'school-grading.html', 'school-pilot.html']) {
     const html = readFileSync(resolve(dist, name), 'utf8');
     for (const [, path] of html.matchAll(/(?:href|src)=["'](\/[^"']+)["']/g)) {
       assert(path.startsWith(base) && !path.startsWith(base + base.slice(1)), path);

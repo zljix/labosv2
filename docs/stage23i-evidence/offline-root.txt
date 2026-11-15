@@ -1,0 +1,21 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.13.8-beta.1 test:offline
+> node --test verification/offline.test.mjs
+
+✔ package covers shell, lazy editor, every runtime dependency, drivers, manual and valid install icons (1.652802ms)
+✔ verified package reopens shell and executes file requests without any network (326.065451ms)
+✔ incorrect bytes or login/fallback response cannot install an eligible package (199.325832ms)
+✔ quota failure cannot advertise a partially stored package (94.382341ms)
+✔ an evicted asset invalidates offline readiness (224.471949ms)
+✔ an update needs an explicit message and refuses more than one open tab (176.459139ms)
+✔ upgrade retains previous content-addressed runtime and does not cache unrelated or private requests (81.007842ms)
+✔ content-addressed production Worker actually runs MicroPython and framebuf (208.449016ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2027.095359

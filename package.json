@@ -1,6 +1,6 @@
 {
   "name": "esp32-micropython-lab",
-  "version": "0.13.7-beta.1",
+  "version": "0.13.8-beta.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -75,7 +75,10 @@
     "test:school-coverage": "node --import tsx --test verification/school-coverage.test.ts",
     "test:school-grading-expanded": "node --import tsx --test verification/school-grading-expanded.test.ts",
     "test:school-reports": "node --import tsx --test verification/school-reports.test.ts verification/school-reports-ui.test.tsx",
-    "test:school-reports-api": "node --test verification/school-reports-api.test.mjs"
+    "test:school-reports-api": "node --test verification/school-reports-api.test.mjs",
+    "test:school-pilot": "node --test verification/school-pilot.test.mjs",
+    "test:school-load": "node --test verification/school-load.test.mjs",
+    "school:host": "node scripts/check-school-host.mjs"
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.1",

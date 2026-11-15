@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="hr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#15243b"><title>Labosv2 · školski pilot</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#edf2f7;color:#15243b;font:16px/1.6 system-ui,sans-serif}main{max-width:1000px;margin:auto;padding:36px 24px}header,section{background:#fff;border:1px solid #d8e1eb;border-radius:10px;padding:26px;margin:22px 0}header{border-top:5px solid #168981}h1{font-size:clamp(28px,5vw,42px);line-height:1.2;margin:14px 0}h2{font-size:23px;margin:0 0 12px}.label{font-size:12px;font-weight:800;letter-spacing:.12em;color:#14756f}a{color:#176389}nav{display:flex;gap:22px;flex-wrap:wrap}.note{padding:14px;background:#eef5fb;border-radius:6px}label{display:grid;gap:5px;font-size:14px;font-weight:650}input,select,textarea{width:100%;min-height:44px;padding:10px;border:1px solid #a9b9cc;border-radius:5px;background:white;color:#15243b;font:16px/1.5 system-ui,sans-serif}textarea{resize:vertical}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.wide{grid-column:1/-1}.scenario{border-top:1px solid #d8e1eb;padding:20px 0;display:grid;grid-template-columns:2fr 1fr;gap:12px}.scenario p{margin:0;font-weight:650}.scenario label:last-child{grid-column:1/-1}.actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}button,.file-button{display:inline-block;background:#176c74;color:white;border:0;border-radius:6px;padding:12px 18px;font:inherit;font-weight:700;cursor:pointer}button:disabled{opacity:.6}input[type=file]{font-size:14px}.secondary{background:#e5eef5;color:#23445d}small{font-weight:400;color:#516078}.error{color:#9b2438}#status{min-height:28px}#summary{font-weight:700}input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #359db7;outline-offset:3px}@media(max-width:650px){main{padding:14px}header,section{padding:20px}.grid,.scenario{grid-template-columns:1fr}.wide{grid-column:auto}.scenario label:last-child{grid-column:auto}}
+</style>
+<main>
+<nav><a href="./">← Laboratorij</a><a href="school.html">Školski račun i provjera uređaja</a><a href="school-grading.html">Podrška bodovanja</a></nav>
+<header><div class="label">ETAPA 23I · PRIPREMA ŠKOLSKOG PILOTA</div><h1>Od provjere do rada razreda</h1>
+<p>Zabilježi što se dogodilo na stvarnoj instalaciji: najprije s nekoliko učenika, zatim s razredom do 30 učenika i jednim nastavnikom.</p>
+<p class="note">Obrazac čuva tvoja opažanja. Razvojni pokus i suženi prikaz računala ne potvrđuju rad u školskoj mreži ni na stvarnom iPhoneu. Za svaki uređaj i cilj izradi zaseban zapis. Upiši oznake bez imena, lozinki i drugih osobnih podataka.</p>
+<p>Na javnom izdanju dostupan je simulator. Prijava, središnje spremanje i službeni bodovi zahtijevaju školsku PHP/MySQL instalaciju. Službena provjera obuhvaća 18 od 268 kombinacija.</p>
+</header>
+<form id="pilot-form">
+<section><h2>Okruženje pokusa</h2><div class="grid">
+<label>Vrsta provjere<select name="scope"><option value="development">Razvojni / sintetski pokus</option><option value="school-small">Mali pilot sa stvarnim učenicima</option><option value="school-class">Pilot stvarnog razreda</option></select></label>
+<label>Datum pokusa<input name="date" type="date"></label>
+<label>Stvarno otvorena inačica aplikacije<input name="releaseVersion" maxlength="80" placeholder="Prepiši oznaku iz otvorenog laboratorija"></label>
+<label>Oznaka instalacije<input name="installation" maxlength="200" placeholder="Npr. školski testni poslužitelj A"></label>
+<label>Broj učenika (stvarnih ili simuliranih)<input name="students" type="number" min="0" max="100" step="1" value="0"></label>
+<label>Provjereni cilj<select name="target"><option value="micropython">ESP32-S3 · MicroPython</option><option value="uno">Arduino Uno · C++</option><option value="nano">Classic Nano · C++</option></select></label>
+<label class="wide">Poslužitelj i resursi<textarea name="server" rows="2" maxlength="1000" placeholder="OS, CPU, RAM, disk, Apache/PHP/MySQL, broj provjeravača i memorijski limit"></textarea></label>
+<label>Učenički uređaji i OS<textarea name="devices" rows="2" maxlength="1000"></textarea></label>
+<label>Preglednici i verzije<textarea name="browsers" rows="2" maxlength="1000"></textarea></label>
+</div></section>
+<section><h2>Postupak</h2><ol>
+<li>Na zasebnoj testnoj instalaciji provjeri inventuru, HTTPS s učeničkog računala i obnovu sigurnosne kopije.</li>
+<li>Pripremi račune te tipkalo → LED, analogni prag → LED i BMP280 I2C s objavljenim kriterijima. Pokreni provjeru uređaja na stranici Školski račun.</li>
+<li>Provedi mali pilot. Svaki učenik sprema, prekida i nastavlja rad, pregledava bodove te zaključava predaju. Nastavnik prati rad i dopušta jednu doradu.</li>
+<li>Tek nakon uklanjanja prepreka ponovi s cijelim razredom. Mjeri API odgovore i red provjera zasebno; ispitaj i završni val od 30 predaja.</li>
+</ol><p>Za testiranje prekida veze prethodno sačuvaj izvoz. Nakon prekida poslužiteljski završetak vrijedi tek kad ga potvrdi poslužitelj.</p>
+<div id="checks"></div></section>
+<section><h2>Mjerenja</h2><p>Prazno polje znači da nema mjerenja; 0 je stvarna izmjerena nula. Za 95. percentil prikupi pojedinačne rezultate pa odaberi vrijednost na mjestu ⌈0,95 × broj uzoraka⌉ u uzlazno poredanom nizu.</p><div id="metrics" class="grid"></div>
+<label>Način mjerenja i opterećenje<textarea name="method" rows="3" maxlength="3000" placeholder="Broj uzoraka, alat, ritam spremanja/osvježavanja, istodobni korisnici, broj radnika i početak/kraj mjerenja"></textarea></label>
+<p><small>Ciljevi prvog školskog profila: 95 % spremanja i preglednih API odgovora do 2 s, nova revizija nastavniku do 10 s, potvrda bodova pri uobičajenom radu do 15 s. Završni val mjeri se zasebno. To su ciljevi, a ne već potvrđene mogućnosti instalacije.</small></p>
+</section>
+<section><h2>Zaključak i zapis</h2><label>Opažanja, prepreke i sljedeći korak<textarea name="conclusion" rows="4" maxlength="6000"></textarea></label>
+<p id="summary" aria-live="polite"></p><p id="status" role="status" aria-live="polite"></p>
+<div class="actions"><button type="submit">Preuzmi zapis JSON</button><button id="draft" type="button" class="secondary">Preuzmi prazan obrazac JSON</button></div>
+<label style="margin-top:20px">Nastavi iz spremljenog zapisa<input id="record-file" type="file" accept=".json,application/json"></label>
+<p><small>Zapis se obrađuje na ovom uređaju i preuzima kao datoteka. Uvoz ne pokreće program i ne mijenja školsku evidenciju.</small></p>
+</section></form></main>
+<script type="module" src="./school-pilot-form.mjs"></script></html>

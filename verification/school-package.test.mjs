@@ -7,9 +7,9 @@ import vm from 'node:vm';
 
 test('school ZIP verifies every inventory entry and keeps app, SQL and configuration out of web/', () => {
   const version = JSON.parse(readFileSync('package.json')).version;
-  const archive = unzipSync(readFileSync('release/Labosv2_' + version.split('-')[0] + '_23H_Skolski.zip'));
+  const archive = unzipSync(readFileSync('release/Labosv2_' + version.split('-')[0] + '_23I_Skolski.zip'));
   const inventory = JSON.parse(strFromU8(archive['package-inventory.json']));
-  assert.equal(inventory.stage, '23H'); assert.equal(inventory.version, version);
+  assert.equal(inventory.stage, '23I'); assert.equal(inventory.version, version);
   assert.equal(Object.keys(archive).length, inventory.files.length + 1);
   for (const file of inventory.files) {
     assert.equal(archive[file.path].byteLength, file.bytes, file.path);
@@ -17,6 +17,7 @@ test('school ZIP verifies every inventory entry and keeps app, SQL and configura
   }
   for (const path of ['app/bootstrap.php', 'migrations/001_accounts.sql', 'migrations/002_class_access.sql', 'tools/console.php', 'web/api/index.php', 'web/school-account.mjs', 'web/school-classes.mjs', 'migrations/003_classes_tasks.sql', 'catalog/catalog.json']) assert(archive[path], path);
   assert.deepEqual(Object.keys(archive).filter(path => path.startsWith('config/')), ['config/config.example.php']);
+  assert(archive['web/school-pilot.html']);assert(archive['web/school-pilot-record.mjs']);assert(archive['docs/stage23i-pilot.md']);
   assert(archive['web/school-grading.html']);assert(archive['web/school-grading-support.json']);assert(archive['web/school-grading-support.csv']);assert(archive['docs/stage23g-grading-matrix.md']);
   assert(archive['migrations/006_submissions.sql']);assert(archive['app/submissions.php']);assert(archive['docs/stage23f-submissions.md']);
   for(const path of ['migrations/007_reports_administration.sql','app/reports.php','app/administration.php','docs/stage23h-reports-administration.md'])assert(archive[path],path);

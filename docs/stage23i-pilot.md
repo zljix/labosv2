@@ -50,10 +50,26 @@ Službeno bodovanje zadržava šest rubrika / **18 od 268 kombinacija**. Ostalih
 
 Lokalno je prošlo 83 ciljanih provjera projekata, sklopova, vodova, sinkronizacije, završetka, izvještaja i zapisa pilota, te 2 provjere školskog ZIP-a. Pages prolazi 8/8, a korijenski offline paket 8/8. Početno je korijenski offline test pogrešno pokrenut nad Pages podputanjom i prijavio 6 nedostajućih korijenskih putanja; taj je zapis sačuvan u pages-offline.txt. Nakon vraćanja odgovarajuće korijenske izgradnje cijeli offline skup prolazi u offline-root.txt. TypeScript i obje izgradnje prolaze.
 
-Lokalni Chrome nije se pokrenuo zbog zabrane potrebnog Unix socketa. Novi obrazac provjeren je stvarnim modulima u JSDOM-u; to nije vizualni pregled preglednika. Lokalno nisu instalirani PHP/MySQL: stvarni pokus 30 + 1 i ranije integracije pokreću se u Actionsu. Rezultat i poveznica bit će dopunjeni nakon izvođenja. Stvarni školski prihvat ostaje otvoren.
+Lokalni Chrome nije se pokrenuo zbog zabrane potrebnog Unix socketa. Novi obrazac provjeren je stvarnim modulima u JSDOM-u; to nije vizualni pregled preglednika. Lokalno nisu instalirani PHP/MySQL: stvarni pokus 30 + 1 i ranije integracije pokreću se u Actionsu. Rezultat ponovljene integracije nalazi se u završnom odjeljku. Stvarni školski prihvat ostaje otvoren.
 
 
 Prvi CI pokus 43753811575 zaustavio je novi testni adapter: odgovor spremanja čitao je izravno umjesto iz json.saved. API je potvrdio spremanje, a test nije preuzeo reviziju i hash. Adapter je usklađen s postojećim API-jem, ovisni scenariji sada staju nakon prve pogreške, a ponovna integracija koristi novu praznu testnu bazu. Neuspjeli zapis ostaje u initial-ci-failure.txt i ne pribraja se prolaznim rezultatima.
 
 
 Drugi pokus 43754558932 potvrdio je svih 90 spremanja i 30 zaključanih predaja, ali se zaustavio pri dva istodobna privatna preuzimanja reda. Čišćenje isteklih isporuka odvojeno je od rezervacije posla kako ne bi zadržavalo rasponske lokote statusnog indeksa. Samo rezervacija dobiva do četiri pokušaja nakon MySQL deadlocka, uz rollback i kratko čekanje; ostale transakcije, posebno povrat datoteka, ne mijenjaju se. Privatni CLI dijagnosticira samo SQLSTATE i broj pogreške, bez SQL-a ili vjerodajnica. Pokus sada dodatno traži jedinstvene poslove i točno jednu isporuku po poslu.
+
+
+## Potvrđena integracija i stanje objave
+
+[Cijela integracija 43755386091](https://github.com/zljix/labosv2/actions/runs/43755386091) prošla je za izvor 85732a3e421dcc4cdcb66fbc0ac68001fc9dd3fd. Pokus 30 + 1 potvrđuje 90 ponovnih čitanja izvora, 30 zaključanih predaja, 30 neovisnih rezultata po 10/10 za referentno rješenje, 30 redaka izvoza i jednu isporuku po poslu uz dva radnika. Točna snimka, hash i bodovi odgovaraju evidenciji. Puna prethodna PHP/MySQL regresija, neovisni Arduino prijevodi, povrat kopije i završni paket također prolaze.
+
+| Razvojna mjera | Izmjereno |
+| --- | --- |
+| Spremanje · 95. percentil · 90 uzoraka | 194,82 ms |
+| Skupni pregled · 95. percentil · 7 uzoraka | 18,39 ms |
+| Najkasnija opažena vidljivost revizije | 5200,37 ms |
+| Završni val do svih bodova · 30 predaja | 7124 ms |
+
+Okruženje: Linux x64, 4 logičke jezgre, približno 16 GB RAM-a, Node 24.22.2, PHP 8.4.27 i MySQL 8.4.7; četiri PHP radnika i dva provjeravača. Radi se o loopback/PHP CLI pokusu jedne MicroPython rubrike. Vrijeme završnog reda ne dokazuje 15-sekundni cilj pri uobičajenom radu jer se provjeravači namjerno uključuju tek nakon zaključavanja. Izvorni rezultat je u stage23i-evidence/load.json; njegova oznaka web izgradnje ee6949041741a9a2 odgovara isporučenom paketu.
+
+[PR #7](https://github.com/zljix/labosv2/pull/7) spreman je za objavu. Automatska provjera odobrenja blokirala je squash merge u main jer zahtijeva izričito odobrenje korisnika za spajanje i javnu objavu. Spajanje nije izvršeno; main i javni GitHub Pages ostaju na 23H / 0.13.7. Pripremljeni ZIP sadrži novu aplikaciju, privatni API, korekciju reda, upute i izvedene dokaze. Stvarni školski pilot ostaje otvoren.

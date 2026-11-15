@@ -1,0 +1,23 @@
+{
+  "stage": "23A",
+  "sourceCommit": "0b4f074c4171b90d4a3b76639699d457786bbc0c",
+  "school": {
+    "runId": 43697912660,
+    "conclusion": "success",
+    "url": "https://github.com/zljix/labosv2/actions/runs/43697912660"
+  },
+  "pages": {
+    "runId": 43697912626,
+    "conclusion": "success",
+    "url": "https://github.com/zljix/labosv2/actions/runs/43697912626"
+  },
+  "artifacts": [
+    {
+      "id": 14154992491,
+      "name": "Labosv2-23A-Skolski-paket",
+      "digest": "sha256:3048b0995dd3e648a42e4b4b0c55a4716995e9841ab39012f1ef4b818b6e8fc5",
+      "expired": false,
+      "expiresAt": "2026-12-15T09:11:44Z"
+    }
+  ]
+}

@@ -50,7 +50,7 @@ Raspakirani školski paket sadrži 447 datoteka obuhvaćenih inventarom. Njihove
 
 Razvojni kriterij 23A potvrđen je za navedeni Linux profil: stari se projekt otvara, reference se izvršavaju, Apache/PHP/MySQL su stvarno pokrenuti i neovisni MicroPython/AVR pokusi daju očekivane rezultate. Paket i upute spremni su za provjeru na školskom poslužitelju.
 
-Otvorene su stvarna školska instalacija i HTTPS povjerenje iz učionice, Windows, ciljani mobilni preglednici, hladni offline pilot, ukupan memorijski limit i opterećenje razreda. Lokalni Chromium nije bilo moguće pokrenuti zbog ograničenja Unix socketa u izvršnom okruženju; taj neuspjeli pokušaj nije prikazan kao prolazna vizualna provjera. Provjera javnog web izdanja vodi se zasebno ako se uspješno izvrši.
+Otvorene su stvarna školska instalacija i HTTPS povjerenje iz učionice, Windows, ciljani mobilni preglednici, hladni offline pilot, ukupan memorijski limit i opterećenje razreda. Javno izdanje dodatno je pregledano u Chromeu: izgradnja `236ffd9db4f8f63c`, uspješna MicroPython WASM/Worker provjera, pokretanje tipkalo/LED primjera, odziv LED-ice 0 → 88 → 0 posto pri pritisku i otpuštanju te uspješan Stop. Zapis je u `stage23a-evidence/browser-public.json`. Time nije potvrđen školski LAN ili mobilni preglednik.
 
 Sljedeća etapa je **23B**: verzionirane MySQL migracije, stvaranje prvog administratora, prijava/odjava, lozinke i uloge. Postojeći lokalni identitet iz uvezene predaje ne postaje prijavljeni školski korisnik. Predaje, revizije i radni modeli ostaju odvojeni od buduće službene evidencije; još nema registracije, sinkronizacije ili zaključavanja.
 

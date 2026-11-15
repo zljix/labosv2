@@ -96,7 +96,8 @@ jobs:
           curl --fail --location --silent --show-error https://github.com/WebAssembly/binaryen/releases/download/version_120/binaryen-version_120-x86_64-linux.tar.gz --output "$RUNNER_TEMP/binaryen.tar.gz"
           printf '%s  %s\n' ddb097af51d1bdb17300d986b0de7d97422f1933dedb4c9eda3510e0bf4076cc "$RUNNER_TEMP/binaryen.tar.gz" | sha256sum --check -
           tar -xzf "$RUNNER_TEMP/binaryen.tar.gz" -C "$RUNNER_TEMP"
-          echo "LAB_WASM_OPT=$RUNNER_TEMP/binaryen-version_120/bin/wasm-opt" >> "$GITHUB_ENV"
+          sudo install -m 755 "$RUNNER_TEMP/binaryen-version_120/bin/wasm-opt" /usr/local/bin/wasm-opt
+          echo 'LAB_WASM_OPT=/usr/local/bin/wasm-opt' >> "$GITHUB_ENV"
       - run: npm run build:school
       - name: Provjeri PHP sintaksu
         run: find school -name '*.php' -print0 | xargs -0 -n1 php -l

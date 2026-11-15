@@ -1,0 +1,21 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.13.4-beta.1 test:pages
+> node --test verification/pages.test.mjs
+
+✔ Pages package contains the complete byte-verified application under its project prefix (27.742739ms)
+✔ entry page, copied guide, pilot and install manifest keep navigation inside the repository (2.147187ms)
+✔ HTTP delivery finds every prefixed file and serves WebAssembly with the correct type (200.036267ms)
+✔ the installed Pages worker reopens the entire application without network access (110.584497ms)
+✔ corrupt Pages runtime cannot be advertised as offline ready (23.548487ms)
+✔ Pages cache and routing do not intercept another project on the same GitHub origin (79.349444ms)
+✔ old runtime files use only caches belonging to this project (71.296223ms)
+✔ other GitHub project tabs do not block an explicit update but two laboratory tabs do (165.578167ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 767.512926

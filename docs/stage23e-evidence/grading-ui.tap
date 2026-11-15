@@ -1,0 +1,15 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.13.4-beta.1 test:school-grading-ui
+> node --import tsx --test verification/school-grading-ui.test.tsx
+
+✔ 23E result labels preserve null rather than inventing zero (0.776206ms)
+✔ 23E actual React grading: polling, revision change, local edits, retry and account revocation (128.516064ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 705.394267

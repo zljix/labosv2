@@ -1,7 +1,7 @@
 {
   "format": "labosv2-school-profile",
   "version": 1,
-  "stage": "23D",
+  "stage": "23E",
   "sourceBaseline": "zljix/labos@3c4a281c10282d63b2742280f69aadbc08d7ae1e",
   "webServer": "Apache 2.4 with HTTPS",
   "phpBranches": [
@@ -19,7 +19,7 @@
   "features": {
     "accounts": true,
     "centralStorage": true,
-    "officialGrading": false,
+    "officialGrading": true,
     "classes": true,
     "assignments": true,
     "liveClassReview": true
@@ -44,9 +44,10 @@
     "outputBytes": 1048576,
     "v8HeapMiB": 96,
     "micropythonHeapMiB": 4,
-    "hardTotalMemoryLimit": "not-yet-configured",
+    "hardTotalMemoryLimit": "cgroup aggregate limit pending school pilot",
     "bubblewrapMinimum": "0.8.0",
-    "bubblewrapTested": "0.12.0"
+    "bubblewrapTested": "0.12.0",
+    "perProcessAddressSpaceMiB": 2048
   },
   "authentication": {
     "roles": [
@@ -67,5 +68,23 @@
     "immutableRevisions": true,
     "conflicts": "compare-and-explicit-choice",
     "idempotentSaves": true
+  },
+  "grading": {
+    "checkerVersion": "23E.1",
+    "profiles": [
+      "23E-button-led@1",
+      "23E-analog-threshold@1",
+      "23E-bmp280@1"
+    ],
+    "targets": [
+      "micropython",
+      "uno",
+      "nano"
+    ],
+    "queue": "immutable-snapshot-and-rubric",
+    "leaseSeconds": 180,
+    "virtualAddressLimitMiB": 2048,
+    "compiler": "isolated-local-or-exact-trusted-catalogue",
+    "locking": false
   }
 }

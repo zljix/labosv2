@@ -13,6 +13,7 @@ function publicCatalog(array $actor): array
 {
     requireStaff($actor); $catalog = schoolCatalog();
     foreach ($catalog['entries'] as &$entry) unset($entry['templates']);
+    $catalog['gradingProfiles'] = gradingRegistry()['profiles'];
     return $catalog;
 }
 
@@ -52,7 +53,9 @@ function publishTask(\PDO $pdo, array $actor, array $body): array
     $entry = null; foreach ($catalog['entries'] as $item) if ($item['key'] === $key) { $entry = $item; break; }
     if (!$entry) fail(422, 'task_key', 'Odaberi postojeću vježbu i varijantu iz školskog kataloga.');
     $notes = textField($body['teacherNotes'] ?? '', 6000, 'Nastavnička uputa', true);
-    $rubric = rubric($body['criteria'] ?? null, $entry); $starters = [];
+    $profileId = $body['gradingProfile'] ?? null;
+    if ($profileId !== null && (!is_string($profileId) || ($body['criteria'] ?? null) !== null)) fail(422, 'grading_profile', 'Za automatsku provjeru koristi njezine objavljene kriterije.');
+    $rubric = $profileId === null ? rubric($body['criteria'] ?? null, $entry) : gradingRubric($profileId, $key); $starters = [];
     foreach ($entry['templates'] as $target => $filename) {
         // Paths come exclusively from the installed private catalogue.
         if (basename($filename) !== $filename || !str_ends_with($filename, '.json')) fail(503, 'catalog', 'Školski predložak nije valjan.');

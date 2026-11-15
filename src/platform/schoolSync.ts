@@ -7,9 +7,9 @@ export interface SchoolBinding {
   projectId:string;revision:number;fingerprint:string;savedAt?:string;
 }
 export interface SchoolWorkState {
-  attempt:{id:number;assignmentId:number;studentId:number;revision:number;status:string;savedAt:string};
+  attempt:{id:number;assignmentId:number;studentId:number;revision:number;status:string;savedAt:string;grading?:any};
   assignment:any;student:{id:number;username:string;displayName:string};
-  snapshot:{revision:number;project:Project;contentHash:string;savedAt:string};
+  snapshot:{revision:number;project:Project;contentHash:string;savedAt:string;grading?:any};
 }
 export class SchoolApiError extends Error {
   constructor(message:string,public status:number,public code:string){super(message);}

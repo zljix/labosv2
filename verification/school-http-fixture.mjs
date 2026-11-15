@@ -37,5 +37,6 @@ export async function schoolFixture(t) {
   };}
   const admin=client();assert.equal((await admin.login('admin.test',adminPassword)).status,200);
   async function make(username,role='student',displayName=username){const r=await admin.call('create-user',{username,role,displayName,temporaryPassword:temporary});assert.equal(r.status,201,r.text);const c=client();assert.equal((await c.login(username,temporary)).status,200);assert.equal((await c.call('password',{currentPassword:temporary,newPassword:password})).status,200);return {user:r.json.user,client:c};}
-  return {admin,client,make,sql,command,pkg,origin,password,temporary,adminPassword,get log(){return log;}};
+  const gradingCommand=(action,input)=>spawnSync(php,[join(pkg,'tools/grading.php'),action,configPath],{input:input===undefined?'':JSON.stringify(input),encoding:'utf8',env});
+  return {admin,client,make,sql,command,gradingCommand,pkg,origin,password,temporary,adminPassword,get log(){return log;}};
 }

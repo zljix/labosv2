@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS grading_jobs (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    attempt_id BIGINT UNSIGNED NOT NULL,
+    revision INT UNSIGNED NOT NULL,
+    request_key VARCHAR(80) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+    checker_version VARCHAR(40) CHARACTER SET ascii NOT NULL,
+    profile_id VARCHAR(80) CHARACTER SET ascii NOT NULL,
+    rubric_hash CHAR(64) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+    snapshot_hash CHAR(64) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+    stimulus_seed CHAR(64) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+    status ENUM('queued','running','evaluated','program_error','execution_limit','technical_error','unsupported','superseded') NOT NULL DEFAULT 'queued',
+    lease_hash CHAR(64) CHARACTER SET ascii COLLATE ascii_bin NULL,
+    lease_until DATETIME(6) NULL,
+    deliveries INT UNSIGNED NOT NULL DEFAULT 0,
+    report JSON NULL,
+    created_at DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+    finished_at DATETIME(6) NULL,
+    UNIQUE KEY grading_request (attempt_id, request_key),
+    INDEX queue_claim (status, id),
+    INDEX snapshot_jobs (attempt_id, revision, id),
+    FOREIGN KEY (attempt_id, revision) REFERENCES work_snapshots(attempt_id, revision)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

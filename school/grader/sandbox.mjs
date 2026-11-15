@@ -4,8 +4,8 @@ import {existsSync,realpathSync} from 'node:fs';
 
 // Explicitly Linux-only: absence/failure is an infrastructure error, never a
 // request to execute untrusted input on the host as a fallback.
-/** @param {string} root @param {string} entry @param {{compiler?: boolean, cli?: string, data?: string}} [options] */
-export function sandboxCommand(root, entry, {compiler = false, cli, data} = {}) {
+/** @param {string} root @param {string} entry @param {{compiler?: boolean, cli?: string, data?: string, bounded?: boolean}} [options] */
+export function sandboxCommand(root, entry, {compiler = false, cli, data, bounded = false} = {}) {
   if (process.platform !== 'linux') throw Error('Izolirana provjera 23A zasad traži Linux; nema nesigurnog zamjenskog izvođenja.');
   const node = realpathSync(process.execPath);
   const args = ['--user', '--map-root-user', '--net', 'bwrap', '--unshare-pid', '--unshare-ipc', '--unshare-uts', '--die-with-parent', '--new-session',
@@ -22,9 +22,12 @@ export function sandboxCommand(root, entry, {compiler = false, cli, data} = {}) 
       '--ro-bind', resolve(root, 'vendor/arduino'), '/app/vendor/arduino');
   }
   args.push('--', '/runtime/node', '--max-old-space-size=96', '--disable-proto=throw');
+  if (bounded) args.push('--disable-wasm-trap-handler');
   if (!compiler) args.push('--permission', '--allow-fs-read=/app');
   args.push('/app/child.mjs');
-  return {command: 'unshare', args};
+  // A kernel-enforced virtual-address limit complements the V8/Python heaps,
+  // bounded tmpfs, output and wall-time caps. Children inherit the limits.
+  return bounded ? {command: 'prlimit', args: ['--as=2147483648', '--cpu='+(compiler?85:18), '--fsize=33554432', '--', 'unshare', ...args]} : {command: 'unshare', args};
 }
 
 export function runSandbox(command, payload, timeoutMs = 10000) {

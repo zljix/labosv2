@@ -1,8 +1,8 @@
-# Labosv2 · školski paket · etapa 23D
+# Labosv2 · školski paket · etapa 23E
 
 Etapa 23A priprema postojeći laboratorij za školski Apache/PHP/MySQL smjer i dokazuje ponovno izvršavanje izvan učenikova preglednika. Polazište je `zljix/labos@3c4a281` (0.12.9), uključujući posljednju doradu vodova. Ovaj razvoj objavljuje se u `zljix/labosv2`.
 
-**Dostupno:** simulator, postojeći projekti i izvozi, školski paket, PHP provjera preduvjeta, MySQL migracije, početni administrator, prijava/odjava, uloge, upravljanje računima i lozinkama, razredi, CSV uvoz, pozivni kodovi, potvrda učenika i verzionirane dodjele vježbi te raniji ograničeni dokaz tipkala/LED-ice, poslužiteljski pokušaji, nepromjenjive radne revizije, automatsko spremanje, usporedba sukoba i nastavnički pregled rada. **Službeni bodovi i zaključavanje još nisu uključeni.** Slijede 23E–23F. Izvorni plan od 14. 11. 2026. zadržan je.
+**Dostupno:** simulator, postojeći projekti i izvozi, školski paket, PHP provjera preduvjeta, MySQL migracije, početni administrator, prijava/odjava, uloge, upravljanje računima i lozinkama, razredi, CSV uvoz, pozivni kodovi, potvrda učenika i verzionirane dodjele vježbi te raniji ograničeni dokaz tipkala/LED-ice, poslužiteljski pokušaji, nepromjenjive radne revizije, automatsko spremanje, usporedba sukoba i nastavnički pregled rada. **Službeno bodovanje triju izričito odabranih pilota dostupno je u 23E.** Zaključavanje slijedi u 23F. Izvorni plan od 14. 11. 2026. zadržan je.
 
 ## Izgradnja
 
@@ -12,7 +12,7 @@ Node.js 24 LTS, `npm ci`, zatim:
 npm run build:school
 ```
 
-Nastaje `release/Labosv2_0.13.3_23D_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
+Nastaje `release/Labosv2_0.13.4_23E_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
 
 | Mapa | Namjena |
 | --- | --- |
@@ -236,3 +236,47 @@ Svaki integracijski skup zahtijeva vlastitu praznu bazu naziva `labosv2_test_*` 
 `npm run test:school-sync` provjerava ritam spremanja, prekid veze, ponovljivost i sukobe. `npm run test:school-work` koristi stvarni PHP/MySQL API, nepromjenjive snimke, ovlasti, konkurentno spremanje i svih 268 početnih ciljeva. `npm run test:school-work-ui` izvršava stvarne React komponente s tim API-jem: lokalne izmjene → potvrda → prekid mreže → oporavak → sukob → izbor → nastavnički pregled. DOM provjera nije vizualna potvrda ciljnog preglednika.
 
 Svaki integracijski skup mora imati vlastitu praznu bazu `labosv2_test_*`. Koristi iste testne varijable kao 23B/23C. Actions priprema pet zasebnih baza za račune, razrede, portal, rad i React tijek. Testne baze nikada nisu školska evidencija.
+
+
+## 23E · automatsko bodovanje pilota
+
+Izdanje **0.13.4-beta.1**, migracija **005_grading_jobs.sql**. Za nadogradnju s 23D sačuvaj privatnu konfiguraciju i sesije, zamijeni programski paket, zatim pokreni `php tools/console.php migrate /apsolutna/privatna/config.php`. Ponovna migracija čuva postojeće radove i rubrike. Prvo pripremi sigurnosnu kopiju školskih podataka.
+
+U portalu pri objavi inačice zadatka odaberi **Način provjere**. Dostupni su `gpio/button`, `gpio/adc` i `weather/bmp280`. Odabir automatskog pilota zamrzava njegove upute i kriterije 3 + 5 + 2. Stare dodjele s opisnim ili ručno planiranim kriterijima ostaju takve. Za novu službenu provjeru objavi i dodijeli novu inačicu. Ne mijenjaj stare zapise baze ručno.
+
+**Analogni pilot** izričito traži digitalni prag na polovici ADC raspona. Početni ADC/PWM program ostaje početna podloga i učenik ga mora izmijeniti. **BMP280 pilot** traži retke `T=<broj> P=<broj>` s temperaturom u °C i tlakom u Pa, novo I2C očitanje i interval do 2200 ms. Sve upute vide se prije otvaranja rada i u laboratoriju. Podržano bodovanje: S3 MicroPython, Uno i classic Nano. S3 C++ i ostale teme imaju prazne bodove.
+
+### Privatni radnik na Linuxu
+
+Provjeravač treba Node 24, Bubblewrap 0.12, `unshare`, `prlimit` i dopuštene Linux korisničke prostore. Instaliraj paket u privatni direktorij; samo `web/` je javno dostupan. Koristi ograničeni uslužni račun. PHP CLI broker obrađuje bazu, a izvođenje učeničkog koda odvija se u zasebnom procesu bez konfiguracije, vjerodajnica ili mrežnog pristupa.
+
+Za novi Arduino izvor unaprijed pripremi zaključani CLI/core prema odjeljku 23A. U privatnom okruženju radnika postavi apsolutne `LAB_SCHOOL_CONFIG`, `LAB_ARDUINO_CLI` i `LAB_ARDUINO_DATA`; `LAB_GRADER_COMPILE=1` uključuje ponovno prevođenje. Nijedna od tih putanja ne ide u javnu stranicu ili Git. Ako lokalno prevođenje nije uključeno, dopušten je samo instalirani katalogski artefakt koji se točno podudara s izvorom; ostali programi imaju `unsupported` i prazne bodove.
+
+Jedan prolaz, iz korijena raspakiranog školskog paketa:
+
+```sh
+node tools/grade-once.mjs
+```
+
+Naredba uzima najstariji posao, izvodi provjeru i privatnim CLI-jem potvrđuje rezultat. Ako nema posla, vraća `idle`. Za stalni servis koristi nadzor procesa ili ovu petlju u privatnom servisnom okruženju:
+
+```sh
+while true; do
+  node tools/grade-once.mjs
+  sleep 1
+done
+```
+
+Jedan radnik znači jedno neovisno izvođenje odjednom. Ograničeni paralelni radnici koriste SQL zaključavanje i ne preuzimaju isti posao. Ne povećavaj broj prije mjerenja memorije i vremena na školskom poslužitelju. Svaki proces ima kernel limit od 2 GiB virtualnog adresnog prostora, uz odvojene Python/V8 heapove, ograničeni tmpfs, izlaz i vrijeme. Ovo ne zamjenjuje cgroup limit ukupne memorije servisa koji treba postaviti i izmjeriti prije razrednog pilota.
+
+Radnik ne postoji na GitHub Pagesu. PHP/MySQL na Windowsu radi kao dosad; automatska izolirana provjera u ovom paketu zahtijeva Linux uz isti privatni PHP/MySQL pristup. Automatski prijenos poslova na zaseban udaljeni Linux servis nije isporučen.
+
+### Bodovi, povijest i pogreške
+
+Svaka snimka nosi vlastiti posao i rezultat. Otvaranje i spremanje automatski stavljaju podržanu snimku u red. Stari posao na čekanju zamjenjuje se novijim; stari već pokrenuti rezultat ostaje uz staru reviziju. Nova revizija nema stare osvojene bodove. Rubrika i identitet dolaze isključivo iz baze.
+
+Učenik vidi **Moji bodovi**, kriterije i scenarije; nastavnik iste bodove vidi u skupnom pregledu te na detalju odabrane revizije. Trenutačno nespremljene lokalne izmjene nemaju poslužiteljske bodove. Kvar servisa, istek izvršavanja, čekanje i nepodržani program imaju `points: null`. Pogreška učeničkog programa prikazuje se zasebno i čuva stvarno potvrđene kriterije.
+
+Radnik ima 180 sekundi za isporuku. Istekla isporuka se odbija, a sljedeći prolaz označava tehnički neuspjeh. Učenik nakon tehničke pogreške ili ograničenja može zatražiti **Provjeri spremljenu reviziju / ponovi**. Aktivna i već uspješno dovršena provjera ne udvostručuju se. Nakon prestanka radnika poslovi ostaju na čekanju do njegova ponovnog pokretanja. Pri punom redu spremanje rada nastavlja se, a provjeru treba zatražiti naknadno.
+
+Bodovi su povratna informacija prema objavljenoj rubrici; nisu automatska školska ocjena niti dokaz autorstva. Završetak i zaključavanje predaje slijede u 23F. [Dokazi i ograničenja](../docs/stage23e-grading.md).

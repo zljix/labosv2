@@ -1,0 +1,113 @@
+TAP version 13
+# Subtest: 23C classes, admission, immutable tasks and assignments against real PHP/MySQL
+    # Subtest: teachers create their own classes; school year and unique names are checked
+    ok 1 - teachers create their own classes; school year and unique names are checked
+      ---
+      duration_ms: 81.016068
+      type: 'test'
+      ...
+    # Subtest: only administrators can assign teachers and only correct active roles qualify
+    ok 2 - only administrators can assign teachers and only correct active roles qualify
+      ---
+      duration_ms: 42.288224
+      type: 'test'
+      ...
+    # Subtest: CSV preview never returns passwords; reviewed existing identity needs explicit consent
+    ok 3 - CSV preview never returns passwords; reviewed existing identity needs explicit consent
+      ---
+      duration_ms: 324.666378
+      type: 'test'
+      ...
+    # Subtest: CSV rejects duplicates, malformed rows, bad identity, staff roles, oversized lists and silent resets
+    ok 4 - CSV rejects duplicates, malformed rows, bad identity, staff roles, oversized lists and silent resets
+      ---
+      duration_ms: 88.698694
+      type: 'test'
+      ...
+    # Subtest: CSV preview is bound to exact data, class, actor and current account state
+    ok 5 - CSV preview is bound to exact data, class, actor and current account state
+      ---
+      duration_ms: 980.771808
+      type: 'test'
+      ...
+    # Subtest: invite codes have bounds, are displayed once and are not stored in plaintext
+    ok 6 - invite codes have bounds, are displayed once and are not stored in plaintext
+      ---
+      duration_ms: 67.405348
+      type: 'test'
+      ...
+    # Subtest: anonymous registration creates only a student and grants no class access before approval
+    ok 7 - anonymous registration creates only a student and grants no class access before approval
+      ---
+      duration_ms: 555.612143
+      type: 'test'
+      ...
+    # Subtest: existing pupils request admission without replacing identity or password; replay uses no extra quota
+    ok 8 - existing pupils request admission without replacing identity or password; replay uses no extra quota
+      ---
+      duration_ms: 92.796052
+      type: 'test'
+      ...
+    # Subtest: revocation, expiry and simultaneous last-slot registration are enforced atomically
+    ok 9 - revocation, expiry and simultaneous last-slot registration are enforced atomically
+      ---
+      duration_ms: 355.34259
+      type: 'test'
+      ...
+    # Subtest: school catalogue uses all existing 67 variants and 268 targets without exposing template paths
+    ok 10 - school catalogue uses all existing 67 variants and 268 targets without exposing template paths
+      ---
+      duration_ms: 28.866894
+      type: 'test'
+      ...
+    # Subtest: publication takes trusted definitions and starter snapshots; only notes and rubric are teacher inputs
+    ok 11 - publication takes trusted definitions and starter snapshots; only notes and rubric are teacher inputs
+      ---
+      duration_ms: 39.480299
+      type: 'test'
+      ...
+    # Subtest: teacher assigns three pilot exercises with exact board/language and optional Zagreb-display UTC deadline
+    ok 12 - teacher assigns three pilot exercises with exact board/language and optional Zagreb-display UTC deadline
+      ---
+      duration_ms: 107.161743
+      type: 'test'
+      ...
+    # Subtest: students see only their available assignments; raw access to another class and hidden tasks is refused
+    ok 13 - students see only their available assignments; raw access to another class and hidden tasks is refused
+      ---
+      duration_ms: 113.139566
+      type: 'test'
+      ...
+    # Subtest: new rubric, instructions and changed installed templates cannot change any prior assignment
+    ok 14 - new rubric, instructions and changed installed templates cannot change any prior assignment
+      ---
+      duration_ms: 48.480459
+      type: 'test'
+      ...
+    # Subtest: membership removal immediately removes access; migrations preserve users, assignments and frozen sources
+    ok 15 - membership removal immediately removes access; migrations preserve users, assignments and frozen sources
+      ---
+      duration_ms: 138.534421
+      type: 'test'
+      ...
+    # Subtest: audit and API omit credentials and invite secrets; private catalogue cannot be fetched from web
+    ok 16 - audit and API omit credentials and invite secrets; private catalogue cannot be fetched from web
+      ---
+      duration_ms: 20.46699
+      type: 'test'
+      ...
+    1..16
+ok 1 - 23C classes, admission, immutable tasks and assignments against real PHP/MySQL
+  ---
+  duration_ms: 7749.680355
+  type: 'test'
+  ...
+1..1
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7880.10245

@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: Pages package contains the complete byte-verified application under its project prefix
+ok 1 - Pages package contains the complete byte-verified application under its project prefix
+  ---
+  duration_ms: 25.948556
+  type: 'test'
+  ...
+# Subtest: entry page, copied guide, pilot and install manifest keep navigation inside the repository
+ok 2 - entry page, copied guide, pilot and install manifest keep navigation inside the repository
+  ---
+  duration_ms: 1.971623
+  type: 'test'
+  ...
+# Subtest: HTTP delivery finds every prefixed file and serves WebAssembly with the correct type
+ok 3 - HTTP delivery finds every prefixed file and serves WebAssembly with the correct type
+  ---
+  duration_ms: 229.013258
+  type: 'test'
+  ...
+# Subtest: the installed Pages worker reopens the entire application without network access
+ok 4 - the installed Pages worker reopens the entire application without network access
+  ---
+  duration_ms: 160.039845
+  type: 'test'
+  ...
+# Subtest: corrupt Pages runtime cannot be advertised as offline ready
+ok 5 - corrupt Pages runtime cannot be advertised as offline ready
+  ---
+  duration_ms: 80.071843
+  type: 'test'
+  ...
+# Subtest: Pages cache and routing do not intercept another project on the same GitHub origin
+ok 6 - Pages cache and routing do not intercept another project on the same GitHub origin
+  ---
+  duration_ms: 126.873934
+  type: 'test'
+  ...
+# Subtest: old runtime files use only caches belonging to this project
+ok 7 - old runtime files use only caches belonging to this project
+  ---
+  duration_ms: 72.578041
+  type: 'test'
+  ...
+# Subtest: other GitHub project tabs do not block an explicit update but two laboratory tabs do
+ok 8 - other GitHub project tabs do not block an explicit update but two laboratory tabs do
+  ---
+  duration_ms: 247.489671
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1057.91472

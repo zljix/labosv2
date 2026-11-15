@@ -112,8 +112,9 @@ function attemptHistory(\PDO $pdo, array $actor, mixed $id, mixed $before = null
         foreach (query($pdo, 'SELECT * FROM school_submissions WHERE attempt_id IN (' . $marks . ')', $ids)->fetchAll() as $s) $submissions[(int)$s['attempt_id']] = $s;
         foreach (query($pdo, 'SELECT r.*, s.attempt_id AS previous_attempt_id FROM attempt_reopenings r JOIN school_submissions s ON s.id=r.from_submission_id WHERE r.new_attempt_id IN (' . $marks . ')', $ids)->fetchAll() as $r) $reopenings[(int)$r['new_attempt_id']] = $r;
     }
-    $attempts = array_map(function ($r) use ($jobs, $context, $submissions, $reopenings) {
-        $id = (int)$r['id']; $grading = jobSummary($jobs[$id] ?? null, $context, (int)$r['current_revision']);
+    $reviews = currentTeacherReviews($pdo,$ids);
+    $attempts = array_map(function ($r) use ($jobs, $context, $submissions, $reopenings, $reviews) {
+        $id = (int)$r['id']; $grading = attachTeacherReview(jobSummary($jobs[$id] ?? null, $context, (int)$r['current_revision']),$reviews[$id]??null);
         return ['attempt' => workSummary($r, $grading), 'submission' => isset($submissions[$id]) ? submissionValue($submissions[$id], $grading) : null,
             'reopening' => isset($reopenings[$id]) ? reopeningValue($reopenings[$id]) : null];
     }, $rows);

@@ -18,7 +18,7 @@ export async function schoolFixture(t) {
   writeFileSync(join(root,'private.json'),JSON.stringify(config),{mode:0o600});
   const configPath=join(root,'config.php');writeFileSync(configPath,'<?php return json_decode(file_get_contents(__DIR__ . "/private.json"),true,32,JSON_THROW_ON_ERROR);',{mode:0o600});
   const env={...process.env,LAB_SCHOOL_CONFIG:configPath,LAB_TEST_BOOTSTRAP:join(pkg,'app/bootstrap.php')};
-  const command=(action,input)=>spawnSync(php,[join(pkg,'tools/console.php'),action,configPath],{input:input===undefined?'':JSON.stringify(input),encoding:'utf8',env});
+  const command=(action,input,args=[])=>spawnSync(php,[join(pkg,'tools/console.php'),action,configPath,...args],{input:input===undefined?'':JSON.stringify(input),encoding:'utf8',env});
   function sql(statement,values=[]){const r=spawnSync(php,['-r','require getenv("LAB_TEST_BOOTSTRAP"); $i=json_decode(stream_get_contents(STDIN),true); $p=Labos\\database(Labos\\configuration()); $q=Labos\\query($p,$i["sql"],$i["values"]); echo json_encode($q->columnCount()?$q->fetchAll():[]);'],{input:JSON.stringify({sql:statement,values}),encoding:'utf8',env});assert.equal(r.status,0,r.stderr);return JSON.parse(r.stdout);}
   const migration=command('migrate');assert.equal(migration.status,0,migration.stderr);
   assert.equal(sql('SELECT COUNT(*) AS n FROM users')[0].n,0,'The class suite requires its own empty database.');
@@ -38,5 +38,5 @@ export async function schoolFixture(t) {
   const admin=client();assert.equal((await admin.login('admin.test',adminPassword)).status,200);
   async function make(username,role='student',displayName=username){const r=await admin.call('create-user',{username,role,displayName,temporaryPassword:temporary});assert.equal(r.status,201,r.text);const c=client();assert.equal((await c.login(username,temporary)).status,200);assert.equal((await c.call('password',{currentPassword:temporary,newPassword:password})).status,200);return {user:r.json.user,client:c};}
   const gradingCommand=(action,input)=>spawnSync(php,[join(pkg,'tools/grading.php'),action,configPath],{input:input===undefined?'':JSON.stringify(input),encoding:'utf8',env});
-  return {admin,client,make,sql,command,gradingCommand,pkg,origin,password,temporary,adminPassword,get log(){return log;}};
+  return {admin,client,make,sql,command,gradingCommand,pkg,origin,password,temporary,adminPassword,config,configPath,root,env,get log(){return log;}};
 }

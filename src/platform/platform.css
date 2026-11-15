@@ -7,6 +7,18 @@
 .school-attempt-history li { margin: .75rem 0; }
 .school-reopen label { display: grid; gap: .5rem; }
 .school-reopen textarea { width: 100%; min-height: 5rem; box-sizing: border-box; }
+.school-reports,.school-feedback { margin: 1rem 0; padding: 1rem; border: 1px solid var(--border,#647184); border-radius: 10px; min-width: 0; overflow-wrap: anywhere; }
+.school-reports h4 { margin-top: 0; }
+.school-reports .school-sync-actions { margin: .75rem 0; align-items: end; }
+.school-feedback form { display: grid; gap: .8rem; margin-top: 1rem; }
+.school-feedback label { display: grid; gap: .4rem; font-size: 14px; }
+.school-feedback textarea,.school-reports textarea { width: 100%; min-height: 6rem; box-sizing: border-box; padding: .65rem; background: var(--bg,#141a24); color: inherit; border: 1px solid var(--border,#647184); border-radius: 5px; font: inherit; }
+.school-feedback li { margin: .8rem 0; }
+.school-feedback li p { white-space: pre-wrap; }
+.school-feedback select,.school-feedback input { padding: .5rem; max-width: 100%; background: var(--bg,#141a24); color: inherit; border: 1px solid var(--border,#647184); border-radius: 4px; }
+.school-reports .school-work-table table { min-width: 680px; }
+.school-reports td button { display: block; margin-bottom: .5rem; }
+@media(max-width:700px){.school-reports,.school-feedback{padding:.75rem}.school-feedback ul{padding-left:1.2rem}}
 .school-finish-modal { max-width: 680px; max-height: 85dvh; overflow: auto; }
 .school-finish-modal p { line-height: 1.55; }
 .school-sync-locked { border-color: var(--teal); }

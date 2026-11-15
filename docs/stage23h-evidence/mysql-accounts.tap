@@ -1,0 +1,107 @@
+TAP version 13
+# Subtest: 23B accounts against real PHP and a disposable restricted MySQL database
+    # Subtest: migrations are repeatable and never recreate accounts
+    ok 1 - migrations are repeatable and never recreate accounts
+      ---
+      duration_ms: 392.371628
+      type: 'test'
+      ...
+    # Subtest: bootstrap creates one administrator and permanently closes initialization
+    ok 2 - bootstrap creates one administrator and permanently closes initialization
+      ---
+      duration_ms: 285.395038
+      type: 'test'
+      ...
+    # Subtest: checksum mismatch blocks edited migrations without losing existing users
+    ok 3 - checksum mismatch blocks edited migrations without losing existing users
+      ---
+      duration_ms: 30.302883
+      type: 'test'
+      ...
+    # Subtest: anonymous access, methods, body size and CSRF fail safely
+    ok 4 - anonymous access, methods, body size and CSRF fail safely
+      ---
+      duration_ms: 61.434896
+      type: 'test'
+      ...
+    # Subtest: login rotates the session ID and cannot take a role from the browser
+    ok 5 - login rotates the session ID and cannot take a role from the browser
+      ---
+      duration_ms: 227.479766
+      type: 'test'
+      ...
+    # Subtest: administrator creates named roles with hashed temporary passwords
+    ok 6 - administrator creates named roles with hashed temporary passwords
+      ---
+      duration_ms: 700.507359
+      type: 'test'
+      ...
+    # Subtest: first login requires a real password change before privileged actions
+    ok 7 - first login requires a real password change before privileged actions
+      ---
+      duration_ms: 899.556163
+      type: 'test'
+      ...
+    # Subtest: students cannot enumerate accounts, read another profile or grant a role
+    ok 8 - students cannot enumerate accounts, read another profile or grant a role
+      ---
+      duration_ms: 1387.579134
+      type: 'test'
+      ...
+    # Subtest: teacher access and reset are confined to students in an assigned class
+    ok 9 - teacher access and reset are confined to students in an assigned class
+      ---
+      duration_ms: 1420.071326
+      type: 'test'
+      ...
+    # Subtest: changing a password revokes a second device while keeping this one signed in
+    ok 10 - changing a password revokes a second device while keeping this one signed in
+      ---
+      duration_ms: 685.589713
+      type: 'test'
+      ...
+    # Subtest: deactivation and role changes revoke sessions; self-demotion is refused
+    ok 11 - deactivation and role changes revoke sessions; self-demotion is refused
+      ---
+      duration_ms: 649.199799
+      type: 'test'
+      ...
+    # Subtest: unknown and wrong-password login share an error and concurrent attempts hit a persistent limit
+    ok 12 - unknown and wrong-password login share an error and concurrent attempts hit a persistent limit
+      ---
+      duration_ms: 565.398296
+      type: 'test'
+      ...
+    # Subtest: secure session parameters and idle/absolute expiry are enforced
+    ok 13 - secure session parameters and idle/absolute expiry are enforced
+      ---
+      duration_ms: 525.688525
+      type: 'test'
+      ...
+    # Subtest: logout invalidates its session and audit has events without passwords
+    ok 14 - logout invalidates its session and audit has events without passwords
+      ---
+      duration_ms: 47.276187
+      type: 'test'
+      ...
+    # Subtest: migration re-run preserves all users and public web cannot read private files
+    ok 15 - migration re-run preserves all users and public web cannot read private files
+      ---
+      duration_ms: 79.669329
+      type: 'test'
+      ...
+    1..15
+ok 1 - 23B accounts against real PHP and a disposable restricted MySQL database
+  ---
+  duration_ms: 8359.664922
+  type: 'test'
+  ...
+1..1
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8551.20989

@@ -9,6 +9,8 @@ return [
         'password' => getenv('LAB_DB_PASSWORD') ?: '',
     ],
     'timezone' => 'Europe/Zagreb',
+    // Pruning is CLI-only and affects archived years. Dry-run is the default.
+    'retention' => ['revision_days' => 90, 'keep_latest' => 10],
     'app' => [
         // Full installation URL; a deliberate subpath is allowed.
         'origin' => 'https://labos.skola.example',

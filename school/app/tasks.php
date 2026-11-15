@@ -104,12 +104,12 @@ function createAssignment(\PDO $pdo, array $actor, array $body): array
 function assignmentValue(array $row): array
 {
     return ['id' => (int)$row['assignment_id'], 'classId' => (int)$row['class_id'], 'className' => $row['class_name'], 'schoolYear' => $row['school_year'],
-        'target' => $row['target'], 'available' => (bool)$row['available'], 'dueAt' => utcTime($row['due_at']), 'task' => taskValue($row)];
+        'target' => $row['target'], 'available' => (bool)$row['available'], 'archived' => (bool)$row['archived'], 'dueAt' => utcTime($row['due_at']), 'task' => taskValue($row)];
 }
 
 function assignmentSelect(): string
 {
-    return 'SELECT a.id AS assignment_id, a.class_id, a.target, a.available, a.due_at, c.name AS class_name, c.school_year, v.id, v.version, v.definition, v.rubric, v.content_hash, v.published_at, t.task_key FROM class_assignments a JOIN school_classes c ON c.id=a.class_id JOIN task_versions v ON v.id=a.task_version_id JOIN school_tasks t ON t.id=v.task_id';
+    return 'SELECT a.id AS assignment_id, a.class_id, a.target, a.available, a.due_at, c.name AS class_name, c.school_year, EXISTS(SELECT 1 FROM school_year_archives y WHERE y.school_year=c.school_year AND y.archived=TRUE) AS archived, v.id, v.version, v.definition, v.rubric, v.content_hash, v.published_at, t.task_key FROM class_assignments a JOIN school_classes c ON c.id=a.class_id JOIN task_versions v ON v.id=a.task_version_id JOIN school_tasks t ON t.id=v.task_id';
 }
 
 function listAssignments(\PDO $pdo, array $actor, mixed $classId = null): array

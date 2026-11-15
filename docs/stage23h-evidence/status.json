@@ -1,0 +1,88 @@
+{
+  "stage": "23H",
+  "version": "0.13.7-beta.1",
+  "baseline": "dddf24c72f49eb9800bf03b034f3d86cd6eb2fe9",
+  "local": {
+    "php": "8.4.27",
+    "mysql": "8.4.7",
+    "databaseSuites": {
+      "accounts": {
+        "tests": 16,
+        "pass": 16,
+        "fail": 0,
+        "skipped": 0
+      },
+      "classes": {
+        "tests": 17,
+        "pass": 17,
+        "fail": 0,
+        "skipped": 0
+      },
+      "portal": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "skipped": 0
+      },
+      "work": {
+        "tests": 13,
+        "pass": 13,
+        "fail": 0,
+        "skipped": 0
+      },
+      "work_ui": {
+        "tests": 7,
+        "pass": 7,
+        "fail": 0,
+        "skipped": 0
+      },
+      "grading": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "skipped": 0
+      },
+      "submissions": {
+        "tests": 9,
+        "pass": 9,
+        "fail": 0,
+        "skipped": 0
+      },
+      "reports": {
+        "tests": 8,
+        "pass": 8,
+        "fail": 0,
+        "skipped": 0
+      }
+    },
+    "regression": {
+      "pass": 351,
+      "fail": 0,
+      "skipped": 0
+    },
+    "package": {
+      "pass": 2,
+      "fail": 0
+    },
+    "pages": {
+      "pass": 8,
+      "fail": 0
+    },
+    "visualReview": "Chromium launch blocked by unavailable Unix socket capability; React/JSDOM flows tested, no rendered browser claim"
+  },
+  "initialRegressionFixes": [
+    "Migration count updated from six to seven for the new migration.",
+    "Restored 8 KiB request cap for existing routes; 16 KiB is limited to review-work for up to 2000 Unicode characters."
+  ],
+  "notClaimed": [
+    "physical school pilot with 30 pupils",
+    "Windows or mobile browser validation",
+    "official grading of all 268 combinations"
+  ],
+  "publication": {
+    "state": "authorized-pending-integration",
+    "repository": "zljix/labosv2",
+    "userApproval": "Objavi",
+    "integration": "GitHub Actions pending; local PHP/MySQL integration passed"
+  }
+}

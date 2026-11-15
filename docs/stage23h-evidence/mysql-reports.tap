@@ -1,0 +1,59 @@
+TAP version 13
+# Subtest: 23H PHP/MySQL: scoped achievements, immutable reviews, selection, archive, retention and verified restore
+    # Subtest: unstarted work is included and no open attempt invents assessed zero; scope is enforced
+    ok 1 - unstarted work is included and no open attempt invents assessed zero; scope is enforced
+      ---
+      duration_ms: 131.497725
+      type: 'test'
+      ...
+    # Subtest: teacher comments and corrections preserve automatic report; null, zero and decimal are distinct
+    ok 2 - teacher comments and corrections preserve automatic report; null, zero and decimal are distinct
+      ---
+      duration_ms: 166.302179
+      type: 'test'
+      ...
+    # Subtest: new attempts keep their own grades; explicit older submission selection is recorded and scoped
+    ok 3 - new attempts keep their own grades; explicit older submission selection is recorded and scoped
+      ---
+      duration_ms: 196.38255
+      type: 'test'
+      ...
+    # Subtest: paged reports and whole-selection export have exactly the same scoped pairs
+    ok 4 - paged reports and whole-selection export have exactly the same scoped pairs
+      ---
+      duration_ms: 1372.002942
+      type: 'test'
+      ...
+    # Subtest: backups include initial SD media, sources and both radio nodes as immutable snapshots
+    ok 5 - backups include initial SD media, sources and both radio nodes as immutable snapshots
+      ---
+      duration_ms: 157.630068
+      type: 'test'
+      ...
+    # Subtest: retention keeps initial/latest, all locked snapshots and reviews, with dry-run default
+    ok 6 - retention keeps initial/latest, all locked snapshots and reviews, with dry-run default
+      ---
+      duration_ms: 375.607169
+      type: 'test'
+      ...
+    # Subtest: private consistent backup restores accounts, both snapshots, original grades, decisions and hashes; corruption rolls back
+    ok 7 - private consistent backup restores accounts, both snapshots, original grades, decisions and hashes; corruption rolls back
+      ---
+      duration_ms: 1452.500921
+      type: 'test'
+      ...
+    1..7
+ok 1 - 23H PHP/MySQL: scoped achievements, immutable reviews, selection, archive, retention and verified restore
+  ---
+  duration_ms: 9116.701483
+  type: 'test'
+  ...
+1..1
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 9293.666798

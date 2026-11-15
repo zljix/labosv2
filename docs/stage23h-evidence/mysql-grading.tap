@@ -1,0 +1,65 @@
+TAP version 13
+# Subtest: 23E actual PHP/MySQL queue, isolated results, immutable binding, permissions and delayed completion
+    # Subtest: explicit pilot publication freezes criteria; descriptive and unsupported targets retain null points
+    ok 1 - explicit pilot publication freezes criteria; descriptive and unsupported targets retain null points
+      ---
+      duration_ms: 73.176794
+      type: 'test'
+      ...
+    # Subtest: opening queues one exact snapshot; repeated requests are idempotent and cannot supply points
+    ok 2 - opening queues one exact snapshot; repeated requests are idempotent and cannot supply points
+      ---
+      duration_ms: 99.244945
+      type: 'test'
+      ...
+    # Subtest: student and teacher scope applies to results and request routes; HTTP cannot claim or complete
+    ok 3 - student and teacher scope applies to results and request routes; HTTP cannot claim or complete
+      ---
+      duration_ms: 53.131885
+      type: 'test'
+      ...
+    # Subtest: real sandbox result is accepted once and contains explanations; a lost response can be repeated
+    ok 4 - real sandbox result is accepted once and contains explanations; a lost response can be repeated
+      ---
+      duration_ms: 830.457667
+      type: 'test'
+      ...
+    # Subtest: later save immediately loses old current points; late result stays attached to its old snapshot
+    ok 5 - later save immediately loses old current points; late result stays attached to its old snapshot
+      ---
+      duration_ms: 418.401089
+      type: 'test'
+      ...
+    # Subtest: expired lease and altered result binding or point sum are rejected; service failure never becomes zero
+    ok 6 - expired lease and altered result binding or point sum are rejected; service failure never becomes zero
+      ---
+      duration_ms: 456.774899
+      type: 'test'
+      ...
+    # Subtest: queued old revisions are superseded; a later rubric publication never changes the frozen one
+    ok 7 - queued old revisions are superseded; a later rubric publication never changes the frozen one
+      ---
+      duration_ms: 140.539501
+      type: 'test'
+      ...
+    # Subtest: 23G expanded profiles publish with distinct checker versions and never revise old task rubrics
+    ok 8 - 23G expanded profiles publish with distinct checker versions and never revise old task rubrics
+      ---
+      duration_ms: 879.212096
+      type: 'test'
+      ...
+    1..8
+ok 1 - 23E actual PHP/MySQL queue, isolated results, immutable binding, permissions and delayed completion
+  ---
+  duration_ms: 7694.568332
+  type: 'test'
+  ...
+1..1
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8103.88874

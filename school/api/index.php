@@ -12,7 +12,7 @@ function respond(int $status, array $body): never
     http_response_code($status);
     if (isset($_SESSION['csrf'])) $body['csrfToken'] = $_SESSION['csrf'];
     if (session_status() === PHP_SESSION_ACTIVE) session_write_close();
-    echo json_encode(['application' => 'labosv2', 'stage' => '23F'] + $body, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
+    echo json_encode(['application' => 'labosv2', 'stage' => '23H'] + $body, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
     exit;
 }
 
@@ -32,13 +32,19 @@ try {
     $routes['attempt-history'] = 'GET';
     $routes['request-grade'] = 'POST';
     $routes['grading'] = 'GET';
+    $routes['achievements'] = 'GET';
+    $routes['export-achievements'] = 'GET';
+    $routes['work-feedback'] = 'GET';
+    $routes['review-work'] = 'POST';
+    $routes['select-assessment'] = 'POST';
+    $routes['archive-year'] = 'POST';
     if (!is_string($action) || !isset($routes[$action])) Labos\fail(404, 'route_missing', 'Ta funkcija nije dostupna.');
     if ($routes[$action] !== $method) { header('Allow: ' . $routes[$action]); Labos\fail(405, 'method', 'Metoda zahtjeva nije dopuštena.'); }
     $body = [];
     if ($method === 'POST') {
         Labos\csrf($config);
         if (strtolower(trim(explode(';', $_SERVER['CONTENT_TYPE'] ?? '')[0])) !== 'application/json') Labos\fail(415, 'content_type', 'Pošalji JSON zahtjev.');
-        $limit = in_array($action, ['preview-students', 'import-students'], true) ? 65536 : ($action === 'save-work' ? 3200000 : ($action === 'publish-task' ? 24576 : 8192));
+        $limit = in_array($action, ['preview-students', 'import-students'], true) ? 65536 : ($action === 'save-work' ? 3200000 : ($action === 'publish-task' ? 24576 : ($action === 'review-work' ? 16384 : 8192)));
         if ((int)($_SERVER['CONTENT_LENGTH'] ?? 0) > $limit) Labos\fail(413, 'body_size', 'Zahtjev je prevelik.');
         $raw = file_get_contents('php://input', false, null, 0, $limit + 1);
         if (strlen($raw) > $limit) Labos\fail(413, 'body_size', 'Zahtjev je prevelik.');
@@ -47,7 +53,7 @@ try {
         if (!is_object($value)) Labos\fail(400, 'json', 'Zahtjev mora biti JSON objekt.');
         $body = (array)$value;
     }
-    if ($action === 'session') respond(200, ['user' => ($user = Labos\currentUser($pdo, false)) ? Labos\publicUser($user) : null, 'features' => ['accounts' => true, 'classes' => true, 'assignments' => true, 'centralStorage' => true, 'officialGrading' => true, 'submissions' => true]]);
+    if ($action === 'session') respond(200, ['user' => ($user = Labos\currentUser($pdo, false)) ? Labos\publicUser($user) : null, 'features' => ['accounts' => true, 'classes' => true, 'assignments' => true, 'centralStorage' => true, 'officialGrading' => true, 'submissions' => true, 'reports' => true]]);
     if ($action === 'login') respond(200, ['user' => Labos\login($pdo, $config, $body)]);
     if ($action === 'logout') {
         $user = Labos\currentUser($pdo, false);
@@ -62,6 +68,12 @@ try {
         respond(201, ['request' => Labos\requestClass($pdo, $config, null, $body)]);
     }
     $actor = Labos\readyUser($pdo);
+    if ($action === 'achievements') respond(200, Labos\transaction($pdo, fn() => Labos\achievementReport($pdo,$actor,$_GET)));
+    if ($action === 'export-achievements') respond(200, Labos\transaction($pdo, fn() => Labos\exportAchievements($pdo,$actor,$_GET)));
+    if ($action === 'work-feedback') respond(200, Labos\workFeedback($pdo,$actor,$_GET['id']??null,$_GET['revision']??null,$_GET['before']??null));
+    if ($action === 'review-work') respond(200, Labos\addWorkReview($pdo,$actor,$body));
+    if ($action === 'select-assessment') respond(200, Labos\selectAssessment($pdo,$actor,$body));
+    if ($action === 'archive-year') respond(200, Labos\archiveYear($pdo,$actor,$body));
     if ($action === 'users') respond(200, ['users' => Labos\listUsers($pdo, $actor)]);
     if ($action === 'user') respond(200, ['user' => Labos\readUser($pdo, $actor, $_GET['id'] ?? null)]);
     if ($action === 'create-user') respond(201, ['user' => Labos\createUser($pdo, $actor, $body)]);

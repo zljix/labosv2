@@ -1,10 +1,10 @@
-# Labosv2 · školski paket · etape 24A–24B
+# Labosv2 · školski paket · etapa 24C
 
 Prethodno izdanje 0.13.8-beta.1 pripremilo je školski pilot, obrazac opažanja i razvojni pokus 30 + 1; vidi [23I](../docs/stage23i-pilot.md). Etapa 23H dodala je postignuća, izvoze, komentare i korekcije, arhiviranje, čuvanje međurevizija te privatne kopije i povrat. Postupak i provjere su u [izvješću 23H](../docs/stage23h-reports-administration.md). [Raniji zapis integracije 23F](https://github.com/zljix/labosv2/actions/runs/43738711916) ostaje povijesni dokaz. Stvarni školski pilot ostaje zasebna provjera.
 
 Etapa 23A priprema postojeći laboratorij za školski Apache/PHP/MySQL smjer i dokazuje ponovno izvršavanje izvan učenikova preglednika. Polazište je `zljix/labos@3c4a281` (0.12.9), uključujući posljednju doradu vodova. Ovaj razvoj objavljuje se u `zljix/labosv2`.
 
-**Dostupno:** simulator, postojeći projekti i izvozi, školski paket, PHP provjera preduvjeta, MySQL migracije, početni administrator, prijava/odjava, uloge, upravljanje računima i lozinkama, razredi, CSV uvoz, pozivni kodovi, potvrda učenika i verzionirane dodjele vježbi te raniji ograničeni dokaz tipkala/LED-ice, poslužiteljski pokušaji, nepromjenjive radne revizije, automatsko spremanje, usporedba sukoba i nastavnički pregled rada. **Službeno bodovanje šest rubrika / 18 kombinacija dostupno je od 23G.** Završetak, zaključavanje, povijest i dopuštena dorada dostupni su u 23F. Izvorni plan od 14. 11. 2026. zadržan je.
+**Dostupno:** simulator, postojeći projekti i izvozi, školski paket, PHP provjera preduvjeta, MySQL migracije, početni administrator, prijava/odjava, uloge, upravljanje računima i lozinkama, razredi, CSV uvoz, pozivni kodovi, potvrda učenika i verzionirane dodjele vježbi te raniji ograničeni dokaz tipkala/LED-ice, poslužiteljski pokušaji, nepromjenjive radne revizije, automatsko spremanje, usporedba sukoba i nastavnički pregled rada. **Službeno bodovanje sada pokriva 52 od 268 kombinacija.** Etapa 24C dodaje analogne ulaze i zaseban puni ADC/PWM; [upute i provjere](../docs/stage24c-analog.md). Završetak, zaključavanje, povijest i dopuštena dorada dostupni su u 23F. Izvorni plan od 14. 11. 2026. zadržan je.
 
 ## Izgradnja
 
@@ -14,7 +14,7 @@ Node.js 24 LTS, `npm ci`, zatim:
 npm run build:school
 ```
 
-Nastaje `release/Labosv2_0.14.0_24AB_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
+Nastaje `release/Labosv2_0.14.1_24C_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
 
 | Mapa | Namjena |
 | --- | --- |
@@ -404,3 +404,9 @@ S3 C++ koristi funkcionalni simulator, a WASM nije firmware za fizičku pločicu
 Bez prevoditelja prihvaća se samo identičan izvor iz instaliranog pouzdanog kataloga. Izmijenjeni izvor ostaje bez bodova uz objašnjenje. Učenikov `s3-build.json` nikad nije izvor službenog rezultata. Pogreška programa razlikuje se od nedostupnog alata i prekoračenja izvršnih ograničenja.
 
 [Potpuni opseg, provjere i otvorene etape](../docs/stage24ab-contract.md). Stvarni školski pilot, Windows posrednik i skupno memorijsko ograničenje ostaju zasebni uvjeti prihvata.
+
+## 24C Analogni ulazi i ADC PWM
+
+Izdanje 0.14.1-beta.1 dodaje osam novih rubrika s provjeravačem 24C.1, ukupno 52/268 kombinacija. Nova ADC/PWM rubrika provjerava stvarni radni omjer kroz raspon, a prethodni digitalni prag ostaje zaseban. NTC, TEMT6000, joystick, plamen, zvuk, LM35/NTC i četiri neovisna ulaza koriste iste izolirane izvršne putove na MicroPythonu S3, S3 C++, Unu i Nanu.
+
+Pri nadogradnji sačuvaj konfiguraciju, sesije i bazu, zamijeni paket, pokreni postojeći migrate i ponovno pokreni provjeravače. Nema nove SQL migracije. Ranije objavljene rubrike, bodovi i zaključane predaje ostaju neizmijenjeni. [Potpuni opseg i provjere](../docs/stage24c-analog.md). Sljedeća etapa je 24D.

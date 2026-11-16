@@ -7,6 +7,7 @@ import {AVREngine} from '../../src/runtime/avrEngine';
 import {createHost} from '../../public/host.mjs';
 import {createS3Engine} from '../../public/s3-engine.mjs';
 import {wasmBytes} from '../../public/s3-contract.mjs';
+import {isAnalogContract,createAnalogCheck} from './analog';
 
 let raw='';for await(const chunk of process.stdin){raw+=chunk;if(Buffer.byteLength(raw)>4194304)throw Error('Prevelika snimka.');}
 const {project:input,artifact,profile,seed}=JSON.parse(raw),project=parseProject(input);
@@ -16,15 +17,16 @@ const sensor:any=kind==='lm35'?config.analogInputs[0]:config.i2cDevices[0];
 let randomState=parseInt(seed.slice(0,8),16)||1;
 const random=()=>{randomState^=randomState<<13;randomState^=randomState>>>17;randomState^=randomState<<5;return(randomState>>>0)/4294967296;};
 const backend=project.language==='micropython'?'micropython':project.board.id.includes('esp32-s3')?'s3-cpp':'avr';
+const analogCheck=isAnalogContract(profile)?createAnalogCheck(config,profile,seed,backend==='avr'):null;
 // ADC receives a voltage, never a fabricated ADC return value. S3's 11 dB
 // transfer saturates at 3.1 V, whereas the Uno/Nano full scale is 5 V.
 const thresholdPosition=backend!=='avr'?3.1/3.3*2048/4095:512/1023;
-const stimuli:any[]=kind==='button'?[false,true,false,true,false].map(pressed=>({pressed})):
+const stimuli:any[]=analogCheck?.stimuli??(kind==='button'?[false,true,false,true,false].map(pressed=>({pressed})):
   kind==='analog'?[0,.12+random()*.2,.7+random()*.2,thresholdPosition-.005,thresholdPosition,1,0].map(position=>({position})):
   kind==='blink'?[{}]:kind==='lm35'?[5+random()*15,40+random()*25,85+random()*25].map(t=>({temperature:Math.round(t*10)/10})):
-  [0,1,2].map(()=>({temperature:Math.round((-12+random()*55)*10)/10,pressure:Math.round(85000+random()*18000)}));
+  [0,1,2].map(()=>({temperature:Math.round((-12+random()*55)*10)/10,pressure:Math.round(85000+random()*18000)})));
 if(kind==='lm35')stimuli.push({...stimuli[0]});
-const duration=kind==='sensor'?5000:kind==='blink'?4250:kind==='lm35'?1000:250,samples:any[]=[],edges:{timeMs:number;on:boolean}[]=[];
+const duration=analogCheck?.duration??(kind==='sensor'?5000:kind==='blink'?4250:kind==='lm35'?1000:250),samples:any[]=[],edges:{timeMs:number;on:boolean}[]=[];
 let last:any,consoleText='',programError:string|null=null,stage=0,clockUs=0;
 let deadlineCurrent:number|null=null,stableAfterDeadline=true;
 const expectedLED=(s:any)=>kind==='button'?s.pressed:s.position>=thresholdPosition;
@@ -42,6 +44,7 @@ const withinInterval=(times:number[],maximum:number)=>{
   return times.length>0&&points.slice(1).every((time,i)=>time-points[i]<=maximum);
 };
 const observe=(event:any)=>{
+  analogCheck?.observe(event);
   if(event.type==='simulation'){
     last=event;
     if(profile.contract&&['button','analog'].includes(kind)&&stage<stimuli.length){
@@ -58,9 +61,11 @@ const observe=(event:any)=>{
   if(event.type==='console')consoleOutput(event.text);
 };
 const stimulus=(s:any)=>({component:kind==='button'?button.id:kind==='analog'?pot.id:kind==='blink'?led.id:sensor.id,...s,...(kind==='analog'?{position:s.position*100}:{})});
+const applyStimulus=(engine:any,s:any)=>{for(const input of analogCheck?analogCheck.inputs(s):[stimulus(s)])engine.input(input);};
 function record(){
   const s=stimuli[stage];let passed=false;
-  if(kind==='sensor'){
+  if(analogCheck){samples.push(analogCheck.record(stage,last,outputLines));}
+  else if(kind==='sensor'){
     const reads=(last?.measurements??[]).filter((m:any)=>m.component===sensor.id&&m.timeMs>stage*duration+250&&Math.abs(m.temperature-s.temperature)<.3&&Math.abs(m.pressure-s.pressure)<150);
     const lines=consoleText.matchAll(/T\s*=\s*(-?\d+(?:\.\d+)?)\s*(?:°?C)?\s+P\s*=\s*(\d+(?:\.\d+)?)/g);
     const freshLines=outputLines.filter(line=>line.timeMs>stage*duration+250&&
@@ -102,7 +107,7 @@ if(backend==='s3-cpp'){
     while(stage<stimuli.length&&target>=(stage+1)*duration*1000){
       clock.now=clockUs=(stage+1)*duration*1000;engine.snapshot();record();stage++;
       if(stage===stimuli.length){engine.stop();return;}
-      engine.input(stimulus(stimuli[stage]));
+      applyStimulus(engine,stimuli[stage]);
     }
     clock.now=clockUs=target;
     // Bound observation cost independently of the student's polling frequency.
@@ -110,19 +115,19 @@ if(backend==='s3-cpp'){
     if(target-lastObservation>=1000){engine.snapshot();lastObservation=target;}
   }};
   engine=await createS3Engine(wasmBytes(artifact.wasm),config,observe,{clock});
-  try{engine.input(stimulus(stimuli[0]));await engine.run();}
+  try{applyStimulus(engine,stimuli[0]);await engine.run();}
   catch{programError='Program je prijavio pogrešku. Provjeri C++ kod i sklop u laboratoriju.';}
   finally{engine.stop();}
 }else if(backend==='avr'){
   const engine=new AVREngine(artifact.hex,config,observe,project.board.id.includes('nano')?8:6,artifact.staticRamBytes);
   try{for(stage=0;stage<stimuli.length;stage++){
-    engine.input(stimulus(stimuli[stage]));
+    applyStimulus(engine,stimuli[stage]);
     for(let tick=0;tick<duration/4;tick++){engine.runCycles(64000);engine.frame();}
     record();
   }}catch(e){programError=(e as Error).message.slice(0,500);}finally{engine.dispose();}
 }else{
   const publicRoot=process.env.LAB_GRADER_PUBLIC!,{loadMicroPython}=await import(pathToFileURL(publicRoot+'/runtime/micropython.mjs').href);
-  const host:any=createHost(observe,{circuit:config,nowUs:()=>clockUs});host.input(stimulus(stimuli[0]));
+  const host:any=createHost(observe,{circuit:config,nowUs:()=>clockUs});applyStimulus(host,stimuli[0]);
   let complete!:()=>void;const done=new Promise<void>(ok=>complete=ok);
   host.scheduleSleep=(wake:()=>void,ms:number)=>{
     // Capture GPIO writes at their actual virtual time before advancing sleep.
@@ -131,7 +136,7 @@ if(backend==='s3-cpp'){
     while(stage<stimuli.length&&target>=(stage+1)*duration*1000){
       clockUs=(stage+1)*duration*1000;host.flush();record();stage++;
       if(stage===stimuli.length){complete();return;}
-      host.input(stimulus(stimuli[stage]));
+      applyStimulus(host,stimuli[stage]);
     }
     clockUs=target;host.flush();setImmediate(wake);
   };
@@ -164,7 +169,7 @@ const connection=kind==='sensor'?samples.some(s=>s.newI2cReading):kind==='lm35'?
 const firstOn=edges.findIndex(e=>e.on),activeEdges=edges.slice(firstOn<0?0:firstOn);
 const spans=activeEdges.slice(1).map((edge,i)=>({on:activeEdges[i].on,durationMs:edge.timeMs-activeEdges[i].timeMs})).filter(s=>s.durationMs>0);
 const repeated=spans.filter(s=>s.on).length>=3&&spans.filter(s=>!s.on).length>=3;
-const outcomes=kind==='button'?[connection,pass([0,1,2]),pass([3,4])]:kind==='analog'?[connection,pass([0,1,2]),pass([3,4,5,6])]:
+const outcomes=analogCheck?analogCheck.outcomes(samples,wiring):kind==='button'?[connection,pass([0,1,2]),pass([3,4])]:kind==='analog'?[connection,pass([0,1,2]),pass([3,4,5,6])]:
   kind==='blink'?[connection,repeated,repeated&&spans.every(s=>Math.abs(s.durationMs-(s.on?250:750))<=24)]:
   kind==='lm35'?[connection,pass([0,1]),pass([2,3])]:[connection,pass([0,1]),pass([2])];
 const criteria=profile.criteria.map((c:any,i:number)=>({...c,passed:!!outcomes[i],points:outcomes[i]?c.maxPoints:0,

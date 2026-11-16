@@ -12,7 +12,7 @@ function respond(int $status, array $body): never
     http_response_code($status);
     if (isset($_SESSION['csrf'])) $body['csrfToken'] = $_SESSION['csrf'];
     if (session_status() === PHP_SESSION_ACTIVE) session_write_close();
-    echo json_encode(['application' => 'labosv2', 'stage' => '24AB'] + $body, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
+    echo json_encode(['application' => 'labosv2', 'stage' => '24C'] + $body, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
     exit;
 }
 

@@ -1,0 +1,27 @@
+s3-cpp 24C-adc-pwm@1 PASS
+s3-cpp 24C-ntc@1 PASS
+s3-cpp 24C-temt6000@1 PASS
+s3-cpp 24C-ky023@1 PASS
+s3-cpp 24C-flame@1 PASS
+s3-cpp 24C-sound@1 PASS
+s3-cpp 24C-analogCompare@1 PASS
+s3-cpp 24C-dualInputs@1 PASS
+s3-cpp alternating false readings REJECTED
+uno 24C-adc-pwm@1 PASS
+uno 24C-ntc@1 PASS
+uno 24C-temt6000@1 PASS
+uno 24C-ky023@1 PASS
+uno 24C-flame@1 PASS
+uno 24C-sound@1 PASS
+uno 24C-analogCompare@1 PASS
+uno 24C-dualInputs@1 PASS
+uno alternating false readings REJECTED
+nano 24C-adc-pwm@1 PASS
+nano 24C-ntc@1 PASS
+nano 24C-temt6000@1 PASS
+nano 24C-ky023@1 PASS
+nano 24C-flame@1 PASS
+nano 24C-sound@1 PASS
+nano 24C-analogCompare@1 PASS
+nano 24C-dualInputs@1 PASS
+nano alternating false readings REJECTED

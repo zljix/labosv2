@@ -1,0 +1,14 @@
+✔ 24C s3-cpp 24C-flame@1: independent compilation of reference, second solution and criterion-specific wrong source (3359.823638ms)
+✔ 24C s3-cpp 24C-sound@1: independent compilation of reference, second solution and criterion-specific wrong source (3238.086549ms)
+✔ 24C uno 24C-flame@1: independent compilation of reference, second solution and criterion-specific wrong source (42019.29224ms)
+✔ 24C uno 24C-sound@1: independent compilation of reference, second solution and criterion-specific wrong source (39752.739403ms)
+✔ 24C nano 24C-flame@1: independent compilation of reference, second solution and criterion-specific wrong source (39583.237995ms)
+✔ 24C nano 24C-sound@1: independent compilation of reference, second solution and criterion-specific wrong source (40241.415567ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 168393.935727

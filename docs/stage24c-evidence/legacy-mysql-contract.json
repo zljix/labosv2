@@ -1,0 +1,228 @@
+{
+  "format": "labosv2-contract-api-evidence",
+  "version": 1,
+  "sourceCommit": null,
+  "legacy": {
+    "profileId": "23E-button-led@1",
+    "version": 1,
+    "result": {
+      "format": "labosv2-grading-result",
+      "version": 1,
+      "authority": "server-verified",
+      "checkerVersion": "23E.1",
+      "profileId": "23E-button-led@1",
+      "snapshotHash": "85ac8e7ad9e964c60a5510747fa7158f759711dd9dd54f97013a1c811be84e12",
+      "rubricHash": "8197c9d6f11dd7aa23ca6637b78318cd5ea1136d9f362d5a2c33a00b34708cd8",
+      "points": 10,
+      "checkerHash": "fb9e00b534d327799cff8174df1744ac54cede63cc7b08921650e91603557137",
+      "status": "evaluated",
+      "maxPoints": 10,
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni put tipkala, mase, otpornika i LED-ice",
+          "maxPoints": 3,
+          "passed": true,
+          "points": 3,
+          "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+        },
+        {
+          "id": "response",
+          "description": "LED prati pritisak i otpuštanje u svim osnovnim scenarijima",
+          "maxPoints": 5,
+          "passed": true,
+          "points": 5,
+          "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+        },
+        {
+          "id": "repeat",
+          "description": "Ponovljeni pritisci i povrat u početno stanje",
+          "maxPoints": 2,
+          "passed": true,
+          "points": 2,
+          "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+        }
+      ],
+      "samples": [
+        {
+          "index": 1,
+          "pressed": false,
+          "expected": false,
+          "currentMa": 0,
+          "passed": true
+        },
+        {
+          "index": 2,
+          "pressed": true,
+          "expected": true,
+          "currentMa": 4.4118,
+          "passed": true
+        },
+        {
+          "index": 3,
+          "pressed": false,
+          "expected": false,
+          "currentMa": 0,
+          "passed": true
+        },
+        {
+          "index": 4,
+          "pressed": true,
+          "expected": true,
+          "currentMa": 4.4118,
+          "passed": true
+        },
+        {
+          "index": 5,
+          "pressed": false,
+          "expected": false,
+          "currentMa": 0,
+          "passed": true
+        }
+      ],
+      "message": "Provjerena je točna spremljena snimka.",
+      "virtualDurationMs": 1250,
+      "peakRssKiB": 86736,
+      "provenance": {
+        "method": "source-execution"
+      },
+      "durationMs": 494
+    }
+  },
+  "current": {
+    "profileId": "24B-button-led@1",
+    "version": 2,
+    "jobId": 2,
+    "target": "s3-cpp",
+    "snapshotHash": "d17fa735a5f664cba0b249d2b6a3a26bc7d7376882c40662e0762c8df988eaa6",
+    "rubricDigest": "534ab8fdffa09712ba5c35b142b85d242345992b7088ef1cd81db847fe1d73ee",
+    "contractHash": "199055a669466367062f2cb83a7e40f43ebde910f56d30866cac27ee1671794b",
+    "result": {
+      "format": "labosv2-grading-result",
+      "version": 1,
+      "authority": "server-verified",
+      "checkerVersion": "24AB.1",
+      "profileId": "24B-button-led@1",
+      "snapshotHash": "d17fa735a5f664cba0b249d2b6a3a26bc7d7376882c40662e0762c8df988eaa6",
+      "rubricHash": "93436fbcea5ffb9ed2cb923e062446875367799ad93fef1e16932744a2c5c689",
+      "points": 10,
+      "jobId": 2,
+      "attemptId": 2,
+      "revision": 1,
+      "target": "s3-cpp",
+      "rubricDigest": "534ab8fdffa09712ba5c35b142b85d242345992b7088ef1cd81db847fe1d73ee",
+      "contractHash": "199055a669466367062f2cb83a7e40f43ebde910f56d30866cac27ee1671794b",
+      "seedHash": "2879dff879e261bf5f38babe5911c68c0fb6f7f70280ecc1640da5c5114cc1ce",
+      "checkerHash": "fb9e00b534d327799cff8174df1744ac54cede63cc7b08921650e91603557137",
+      "status": "evaluated",
+      "maxPoints": 10,
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni put tipkala, mase, otpornika i LED-ice",
+          "maxPoints": 3,
+          "passed": true,
+          "points": 3,
+          "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+        },
+        {
+          "id": "response",
+          "description": "LED prati pritisak i otpuštanje u svim osnovnim scenarijima",
+          "maxPoints": 5,
+          "passed": true,
+          "points": 5,
+          "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+        },
+        {
+          "id": "repeat",
+          "description": "Ponovljeni pritisci i povrat u početno stanje",
+          "maxPoints": 2,
+          "passed": true,
+          "points": 2,
+          "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+        }
+      ],
+      "samples": [
+        {
+          "index": 1,
+          "pressed": false,
+          "expected": false,
+          "currentMa": 0,
+          "passed": true,
+          "timely": true
+        },
+        {
+          "index": 2,
+          "pressed": true,
+          "expected": true,
+          "currentMa": 4.4118,
+          "passed": true,
+          "timely": true
+        },
+        {
+          "index": 3,
+          "pressed": false,
+          "expected": false,
+          "currentMa": 0,
+          "passed": true,
+          "timely": true
+        },
+        {
+          "index": 4,
+          "pressed": true,
+          "expected": true,
+          "currentMa": 4.4118,
+          "passed": true,
+          "timely": true
+        },
+        {
+          "index": 5,
+          "pressed": false,
+          "expected": false,
+          "currentMa": 0,
+          "passed": true,
+          "timely": true
+        }
+      ],
+      "message": "Provjerena je točna spremljena snimka.",
+      "virtualDurationMs": 1250,
+      "peakRssKiB": 43668,
+      "provenance": {
+        "method": "trusted-catalogue-exact-source",
+        "inputHash": "4b4a41942895b5d528e9c98be585b055be0bd8736758399ebe307cfe3f0beea8",
+        "wasmHash": "c039391a32d34eb9987e82f20d54375152a183ee06aa77397d16d8de0d3a6ed6",
+        "toolchain": {
+          "compiler": "clang@19.1.7",
+          "optimizer": "binaryen@120",
+          "core": "esp32-lab-s3-functional@1.1.0",
+          "coreDigest": "dfe172712b8bee532340afd51b552753cf291ffeae04da9d3ba5884745ac3020",
+          "flags": [
+            "--target=wasm32-unknown-unknown",
+            "-O1",
+            "-DARDUINO=10819",
+            "-ffreestanding",
+            "-fno-builtin",
+            "-fno-exceptions",
+            "-fno-rtti",
+            "-fno-threadsafe-statics",
+            "-fno-c++-static-destructors",
+            "-nostdlib",
+            "-nostdinc++",
+            "-Wall",
+            "-Wextra",
+            "-Wno-unused-parameter"
+          ],
+          "dialect": "c++17/c11; explicit-prototypes",
+          "memoryBytes": 2097152,
+          "asyncifyStackBytes": 131072,
+          "libraries": []
+        }
+      },
+      "durationMs": 126
+    }
+  },
+  "rejectedBindings": 9,
+  "crossJobReplayRejected": true,
+  "lockedSubmissionPreserved": true,
+  "legacyTaskPreserved": true
+}

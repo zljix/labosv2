@@ -1,7 +1,7 @@
 {
   "format": "labosv2-school-profile",
   "version": 1,
-  "stage": "24AB",
+  "stage": "24C",
   "sourceBaseline": "zljix/labos@3c4a281c10282d63b2742280f69aadbc08d7ae1e",
   "webServer": "Apache 2.4 with HTTPS",
   "phpBranches": [
@@ -80,7 +80,7 @@
     "idempotentSaves": true
   },
   "grading": {
-    "checkerVersion": "24AB.1",
+    "checkerVersion": "24C.1",
     "profiles": [
       "23E-button-led@1",
       "23E-analog-threshold@1",
@@ -93,7 +93,15 @@
       "24B-bmp280@1",
       "24B-led-timing@1",
       "24B-lm35@1",
-      "24B-bmp180@1"
+      "24B-bmp180@1",
+      "24C-adc-pwm@1",
+      "24C-ntc@1",
+      "24C-temt6000@1",
+      "24C-ky023@1",
+      "24C-flame@1",
+      "24C-sound@1",
+      "24C-analogCompare@1",
+      "24C-dualInputs@1"
     ],
     "targets": [
       "micropython",
@@ -108,12 +116,13 @@
     "locking": true,
     "compatibleCheckerVersions": [
       "23E.1",
-      "23G.1"
+      "23G.1",
+      "24AB.1"
     ],
     "coverage": {
       "combinations": 268,
-      "supported": 24,
-      "unsupported": 244,
+      "supported": 52,
+      "unsupported": 216,
       "introductoryLocalOnly": 5
     },
     "executionContract": "labosv2-execution-contract@1",

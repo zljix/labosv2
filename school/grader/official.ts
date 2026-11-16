@@ -9,6 +9,7 @@ import {inputHash as s3InputHash,validateArtifact as validateS3Artifact} from '.
 import {jobBinding,validContractJob} from './contract';
 import {sandboxCommand,runSandbox} from './sandbox.mjs';
 import registry from './profiles.json';
+import {isAnalogContract,validAnalogConfig} from './analog';
 
 export const digest=(s:string|Uint8Array)=>createHash('sha256').update(s).digest('hex');
 export async function gradeJob(job:any,options:{root:string;compile?:boolean;cli?:string;data?:string;timeoutMs?:number;s3Toolchain?:string;clang?:string;opt?:string}) {
@@ -41,7 +42,7 @@ export async function gradeJob(job:any,options:{root:string;compile?:boolean;cli
   try{
     const config=compileCircuit(project.circuit as any,target==='uno'||target==='nano'?'avr':'micropython');
     const sensorKind='sensorKind' in profile?profile.sensorKind:'bmp280';
-    const valid=profile.kind==='sensor'?config.i2cDevices.length===1&&config.i2cDevices[0].kind===sensorKind:
+    const valid=isAnalogContract(profile)?validAnalogConfig(config,profile.taskKey.split('/')[1]):profile.kind==='sensor'?config.i2cDevices.length===1&&config.i2cDevices[0].kind===sensorKind:
       profile.kind==='lm35'?config.analogInputs?.length===1&&config.analogInputs[0].kind==='lm35':
       config.leds.length===1&&(profile.kind==='blink'||(profile.kind==='button'?config.buttons.length===1:config.pots.length===1));
     if(project.circuit.kind!=='editable'||!valid)

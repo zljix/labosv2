@@ -1,0 +1,18 @@
+✔ 24C publishes eight distinct contracts, preserves all earlier bytes and adds exactly 28 combinations (3.66648ms)
+✔ 24C micropython: eight reference programs, all ranges and three identical executions (10368.01911ms)
+✔ 24C s3-cpp: eight reference programs, all ranges and three identical executions (3134.624689ms)
+✔ 24C uno: eight reference programs, all ranges and three identical executions (98015.314103ms)
+✔ 24C nano: eight reference programs, all ranges and three identical executions (91304.117977ms)
+✔ 24C MicroPython: second implementations, reordered equivalent layouts and changed seeded inputs (3744.968325ms)
+✔ 24C wrong outputs lose 5 and 2; isolated later failure loses exactly 2; missing connections lose all points (9784.042639ms)
+✔ 24C ADC/PWM rejects the earlier digital threshold and wrong full-scale voltage; GPIO alternatives work (3798.765953ms)
+✔ 24C stale output and altered contracts or snapshots never inherit current full points (3184.412718ms)
+✔ 24C a timed digital transcript without reading the input cannot replace a seeded comparator check (2891.168771ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 226594.973229

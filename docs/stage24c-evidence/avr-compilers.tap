@@ -1,0 +1,10 @@
+✔ 24C uno: independent compilation of reference, second solution and criterion-specific wrong source (254228.169249ms)
+✔ 24C nano: independent compilation of reference, second solution and criterion-specific wrong source (248052.016248ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 502563.436176

@@ -13,7 +13,7 @@ test('24D PHP/MySQL publishes all seven contracts, stores genuine scores, locks 
   const csv='username;displayName\n'+student.user.username+';'+student.user.displayName;
   const preview=await ok(teacher.client.call('preview-students',{classId:cls.id,csv}));await ok(teacher.client.call('import-students',{classId:cls.id,csv,previewToken:preview.previewToken,linkExisting:true}));
   const catalog=(await ok(teacher.client.call('catalog'))).catalog,profiles=catalog.gradingProfiles.filter(p=>p.id.startsWith('24D-'));
-  assert.equal(profiles.length,7);assert.equal(catalog.gradingSummary.supported,132);
+  assert.equal(profiles.length,7);assert.equal(catalog.gradingSummary.supported,144);
   const publish=async(key,id)=>(await ok(teacher.client.call('publish-task',{taskKey:key,gradingProfile:id}),201)).task;
   const legacy=await publish('gpio/adc','24B-analog-threshold@1');
   const privateCall=(action,body)=>{const r=f.gradingCommand(action,body);assert.equal(r.status,0,r.stderr);return JSON.parse(r.stdout);};

@@ -1,0 +1,3518 @@
+{
+  "checkerVersion": "24E.1",
+  "profiles": [
+    {
+      "id": "23E-button-led@1",
+      "taskKey": "gpio/button",
+      "kind": "button",
+      "targets": [
+        "micropython",
+        "uno",
+        "nano"
+      ],
+      "title": "Pilot: tipkalo upravlja LED-icom",
+      "instructions": "LED mora svijetliti dok je tipkalo pritisnuto i biti ugašena dok je otpušteno. Provjera zadaje više pritisaka i otpuštanja. Program mora nastaviti očitavati ulaz; najveće čekanje petlje je 50 ms. Koristi jednu vanjsku LED-icu i jedno tipkalo.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni put tipkala, mase, otpornika i LED-ice",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "LED prati pritisak i otpuštanje u svim osnovnim scenarijima",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Ponovljeni pritisci i povrat u početno stanje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "23E.1"
+    },
+    {
+      "id": "23E-analog-threshold@1",
+      "taskKey": "gpio/adc",
+      "kind": "analog",
+      "targets": [
+        "micropython",
+        "uno",
+        "nano"
+      ],
+      "title": "Pilot: analogni prag i LED",
+      "instructions": "Ovo je zasebna bodovana nadogradnja početnog ADC/PWM primjera: zamijeni PWM digitalnim izlazom. LED uključi za očitanje ADC-a veće ili jednako polovici punog raspona, inače je ugasi. Prag je 32768 za read_u16() u MicroPythonu i 512 za analogRead() na Uno/Nano. Za read() u MicroPythonu odgovarajući je prag 2048. Provjeravaju se krajevi, vrijednosti ispod i iznad praga te sam prag; najveće čekanje petlje je 50 ms. Koristi jedan potenciometar i jednu LED-icu.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Potenciometar napaja i dovodi promjenjiv napon na ADC; LED ima valjan put",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Digitalni izlaz je ugašen ispod i uključen iznad polovice ADC raspona",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Točan prag, rubne vrijednosti i povrat nakon promjene ulaza",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "23E.1"
+    },
+    {
+      "id": "23E-bmp280@1",
+      "taskKey": "weather/bmp280",
+      "kind": "sensor",
+      "targets": [
+        "micropython",
+        "uno",
+        "nano"
+      ],
+      "title": "Pilot: novo očitanje BMP280 preko I2C",
+      "instructions": "Preko I2C očitavaj jedan BMP280 i u zasebnom retku ispisuj temperaturu i tlak: T=<broj> P=<broj>. T je u °C, P u Pa (možeš dodati oznake jedinica). Najveći interval očitanja je 2200 ms. Provjera mijenja oba podatka i traži stvarni dovršeni I2C prijenos i novi ispis; prihvaća odstupanje temperature do 0,3 °C i tlaka do 150 Pa. Konzolni tekst bez očitanja senzora ne prolazi.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Napajanje, masa i I2C put ostvaruju novo dovršeno očitanje BMP280",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Ispis temperature i tlaka prati dvije različite pobude u zadanim tolerancijama",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Treća promjena daje novo očitanje i novi ispis, bez vraćanja starog uzorka",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "23E.1"
+    },
+    {
+      "id": "23G-led-timing@1",
+      "taskKey": "gpio/blink",
+      "kind": "blink",
+      "title": "LED: 250 ms uključeno i 750 ms isključeno",
+      "instructions": "Prilagodi početni program: jedna vanjska LED mora ponavljati 250 ms uključeno i 750 ms isključeno, najmanje tri potpuna ciklusa. Mjeri se stvarna struja LED-ice u virtualnom vremenu; tolerancija svakog trajanja je ±24 ms. Početnih 500/500 ms ostvaruje izmjenu stanja, ali ne kriterij trajanja. Koristi serijski otpornik i zajedničku masu. Raspored i GPIO mogu se promijeniti uz odgovarajući kod.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "LED ima valjan zatvoren put preko serijskog otpornika i mase",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Najmanje tri potpuna ponavljanja uključenja i isključenja LED-ice",
+          "maxPoints": 5
+        },
+        {
+          "id": "timing",
+          "description": "Svako potpuno uključenje traje 250 ms, a isključenje 750 ms, uz toleranciju ±24 ms",
+          "maxPoints": 2
+        }
+      ],
+      "targets": [
+        "micropython",
+        "uno",
+        "nano"
+      ],
+      "checkerVersion": "23G.1"
+    },
+    {
+      "id": "23G-lm35@1",
+      "taskKey": "analog/lm35",
+      "kind": "lm35",
+      "title": "LM35: novo ADC očitanje i temperatura",
+      "instructions": "Napajaj jedan LM35 s 5 V i spoji OUT na ADC uz zajedničku masu. Očitavaj napon i ispisuj T=<broj> u °C najmanje svakih 400 ms. LM35 daje 10 mV/°C: T=U/0,010. Ako koristiš sirovi ADC, pretvorbu uskladi s referencom i rasponom cilja. Provjera mijenja temperaturu u rasponu 5–110 °C i vraća se na prvi uzorak; tolerancija je ±0,6 °C zbog kvantizacije. Fiksni ispis bez valjanog ADC puta ne prolazi.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "LM35 je napajan s 5 V, ima zajedničku masu i OUT povezan s ADC ulazom",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Novi ispis T u °C prati dvije različite temperature unutar ±0,6 °C",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Treća temperatura i povrat na prvi uzorak daju nove odgovarajuće ispise",
+          "maxPoints": 2
+        }
+      ],
+      "targets": [
+        "micropython",
+        "uno",
+        "nano"
+      ],
+      "checkerVersion": "23G.1"
+    },
+    {
+      "id": "23G-bmp180@1",
+      "taskKey": "weather/bmp180",
+      "kind": "sensor",
+      "title": "BMP180: novo očitanje temperature i tlaka",
+      "instructions": "Preko I2C očitavaj jedan BMP180 i ispisuj T=<broj> P=<broj>, temperaturu u °C i tlak u Pa. Najveći interval očitanja je 2200 ms. Svaka promjena mora dati dovršenu novu pretvorbu, stvarni I2C prijenos i novi ispis. Tolerancija temperature je ±0,3 °C, tlaka ±150 Pa. Sam ispis ili prethodno očitanje nisu dokaz novog mjerenja.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Napajanje, masa i I2C put ostvaruju novo dovršeno očitanje BMP180",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Ispis temperature i tlaka prati dvije različite pobude u zadanim tolerancijama",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Treća promjena daje novu pretvorbu i novi ispis BMP180",
+          "maxPoints": 2
+        }
+      ],
+      "targets": [
+        "micropython",
+        "uno",
+        "nano"
+      ],
+      "checkerVersion": "23G.1",
+      "sensorKind": "bmp180"
+    },
+    {
+      "id": "24B-button-led@1",
+      "taskKey": "gpio/button",
+      "kind": "button",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "tipkalo upravlja LED-icom · ugovor 24AB",
+      "instructions": "LED mora svijetliti dok je tipkalo pritisnuto i biti ugašena dok je otpušteno. Provjera zadaje više pritisaka i otpuštanja. Program mora nastaviti očitavati ulaz; najveće čekanje petlje je 50 ms. Koristi jednu vanjsku LED-icu i jedno tipkalo. Rok reakcije na svaku promjenu je 50 ms, uz 4 ms tolerancije izvršnog koraka.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni put tipkala, mase, otpornika i LED-ice",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "LED prati pritisak i otpuštanje u svim osnovnim scenarijima",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Ponovljeni pritisci i povrat u početno stanje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24AB.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24AB.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "equivalent-electrical-layout",
+          "different-variable-names",
+          "equivalent-control-flow",
+          "different-gpio-with-matching-source"
+        ],
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "limits": {
+          "wallTimeMs": 20000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4
+        },
+        "faultPolicy": "Separate scenario copy; infrastructure failure leaves points null. No extra restart recovery required.",
+        "scenario": {
+          "kind": "button",
+          "stageDurationMs": 250,
+          "pressed": [
+            false,
+            true,
+            false,
+            true,
+            false
+          ],
+          "responseDeadlineMs": 50,
+          "stepToleranceMs": 4
+        }
+      }
+    },
+    {
+      "id": "24B-analog-threshold@1",
+      "taskKey": "gpio/adc",
+      "kind": "analog",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "analogni prag i LED · ugovor 24AB",
+      "instructions": "Ovo je zasebna bodovana nadogradnja početnog ADC/PWM primjera: zamijeni PWM digitalnim izlazom. LED uključi za očitanje ADC-a veće ili jednako polovici punog raspona, inače je ugasi. Prag je 32768 za read_u16() u MicroPythonu i 512 za analogRead() na Uno/Nano. Za read() u MicroPythonu odgovarajući je prag 2048. Provjeravaju se krajevi, vrijednosti ispod i iznad praga te sam prag; najveće čekanje petlje je 50 ms. Koristi jedan potenciometar i jednu LED-icu. ESP32-S3 C++ koristi analogReadResolution(12), ADC_11db i prag 2048; analogReadMilliVolts koristi zasićenje 3100 mV. Reakcija na promjenu ulaza mora nastupiti unutar 50 ms uz 4 ms tolerancije izvršnog koraka.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Potenciometar napaja i dovodi promjenjiv napon na ADC; LED ima valjan put",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Digitalni izlaz je ugašen ispod i uključen iznad polovice ADC raspona",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Točan prag, rubne vrijednosti i povrat nakon promjene ulaza",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24AB.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24AB.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "equivalent-electrical-layout",
+          "different-variable-names",
+          "equivalent-control-flow",
+          "different-gpio-with-matching-source"
+        ],
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "limits": {
+          "wallTimeMs": 20000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4
+        },
+        "faultPolicy": "Separate scenario copy; infrastructure failure leaves points null. No extra restart recovery required.",
+        "scenario": {
+          "kind": "analog",
+          "stageDurationMs": 250,
+          "positions": [
+            "zero",
+            "below",
+            "above",
+            "boundary-minus",
+            "boundary",
+            "one",
+            "zero"
+          ],
+          "responseDeadlineMs": 50,
+          "stepToleranceMs": 4,
+          "s3FullScaleUv": 3100000,
+          "avrFullScaleUv": 5000000,
+          "s3Threshold": 2048,
+          "avrThreshold": 512
+        }
+      }
+    },
+    {
+      "id": "24B-bmp280@1",
+      "taskKey": "weather/bmp280",
+      "kind": "sensor",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "novo očitanje BMP280 preko I2C · ugovor 24AB",
+      "instructions": "Preko I2C očitavaj jedan BMP280 i u zasebnom retku ispisuj temperaturu i tlak: T=<broj> P=<broj>. T je u °C, P u Pa (možeš dodati oznake jedinica). Najveći interval očitanja je 2200 ms. Provjera mijenja oba podatka i traži stvarni dovršeni I2C prijenos i novi ispis; prihvaća odstupanje temperature do 0,3 °C i tlaka do 150 Pa. Konzolni tekst bez očitanja senzora ne prolazi.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Napajanje, masa i I2C put ostvaruju novo dovršeno očitanje BMP280",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Ispis temperature i tlaka prati dvije različite pobude u zadanim tolerancijama",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Treća promjena daje novo očitanje i novi ispis, bez vraćanja starog uzorka",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24AB.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24AB.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "equivalent-electrical-layout",
+          "different-variable-names",
+          "equivalent-control-flow",
+          "different-gpio-with-matching-source"
+        ],
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "limits": {
+          "wallTimeMs": 20000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4
+        },
+        "faultPolicy": "Separate scenario copy; infrastructure failure leaves points null. No extra restart recovery required.",
+        "scenario": {
+          "kind": "sensor",
+          "sensorKind": "bmp280",
+          "stageDurationMs": 5000,
+          "temperatureRangeTenthsC": [
+            -120,
+            430
+          ],
+          "pressureRangePa": [
+            85000,
+            103000
+          ],
+          "stages": 3,
+          "maximumIntervalMs": 2200,
+          "stepToleranceMs": 100,
+          "temperatureToleranceMilliC": 300,
+          "pressureTolerancePa": 150,
+          "settlingMs": 250
+        }
+      }
+    },
+    {
+      "id": "24B-led-timing@1",
+      "taskKey": "gpio/blink",
+      "kind": "blink",
+      "title": "LED: 250 ms uključeno i 750 ms isključeno · ugovor 24AB",
+      "instructions": "Prilagodi početni program: jedna vanjska LED mora ponavljati 250 ms uključeno i 750 ms isključeno, najmanje tri potpuna ciklusa. Mjeri se stvarna struja LED-ice u virtualnom vremenu; tolerancija svakog trajanja je ±24 ms. Početnih 500/500 ms ostvaruje izmjenu stanja, ali ne kriterij trajanja. Koristi serijski otpornik i zajedničku masu. Raspored i GPIO mogu se promijeniti uz odgovarajući kod.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "LED ima valjan zatvoren put preko serijskog otpornika i mase",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Najmanje tri potpuna ponavljanja uključenja i isključenja LED-ice",
+          "maxPoints": 5
+        },
+        {
+          "id": "timing",
+          "description": "Svako potpuno uključenje traje 250 ms, a isključenje 750 ms, uz toleranciju ±24 ms",
+          "maxPoints": 2
+        }
+      ],
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "checkerVersion": "24AB.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24AB.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "equivalent-electrical-layout",
+          "different-variable-names",
+          "equivalent-control-flow",
+          "different-gpio-with-matching-source"
+        ],
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "limits": {
+          "wallTimeMs": 20000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4
+        },
+        "faultPolicy": "Separate scenario copy; infrastructure failure leaves points null. No extra restart recovery required.",
+        "scenario": {
+          "kind": "blink",
+          "stageDurationMs": 4250,
+          "minimumCompleteCycles": 3,
+          "onMs": 250,
+          "offMs": 750,
+          "toleranceMs": 24
+        }
+      }
+    },
+    {
+      "id": "24B-lm35@1",
+      "taskKey": "analog/lm35",
+      "kind": "lm35",
+      "title": "LM35: novo ADC očitanje i temperatura · ugovor 24AB",
+      "instructions": "Napajaj jedan LM35 s 5 V i spoji OUT na ADC uz zajedničku masu. Očitavaj napon i ispisuj T=<broj> u °C najmanje svakih 400 ms. LM35 daje 10 mV/°C: T=U/0,010. Ako koristiš sirovi ADC, pretvorbu uskladi s referencom i rasponom cilja. Provjera mijenja temperaturu u rasponu 5–110 °C i vraća se na prvi uzorak; tolerancija je ±0,6 °C zbog kvantizacije. Fiksni ispis bez valjanog ADC puta ne prolazi. Na ESP32-S3 C++ analogReadMilliVolts()/10.0 daje °C; za sirovi 12-bitni ADC koristi 3100 mV i ADC_11db.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "LM35 je napajan s 5 V, ima zajedničku masu i OUT povezan s ADC ulazom",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Novi ispis T u °C prati dvije različite temperature unutar ±0,6 °C",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Treća temperatura i povrat na prvi uzorak daju nove odgovarajuće ispise",
+          "maxPoints": 2
+        }
+      ],
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "checkerVersion": "24AB.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24AB.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "equivalent-electrical-layout",
+          "different-variable-names",
+          "equivalent-control-flow",
+          "different-gpio-with-matching-source"
+        ],
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "limits": {
+          "wallTimeMs": 20000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4
+        },
+        "faultPolicy": "Separate scenario copy; infrastructure failure leaves points null. No extra restart recovery required.",
+        "scenario": {
+          "kind": "lm35",
+          "stageDurationMs": 1000,
+          "temperatureRangesTenthsC": [
+            [
+              50,
+              200
+            ],
+            [
+              400,
+              650
+            ],
+            [
+              850,
+              1100
+            ]
+          ],
+          "returnFirst": true,
+          "maximumIntervalMs": 400,
+          "stepToleranceMs": 24,
+          "toleranceMilliC": 600
+        }
+      }
+    },
+    {
+      "id": "24B-bmp180@1",
+      "taskKey": "weather/bmp180",
+      "kind": "sensor",
+      "title": "BMP180: novo očitanje temperature i tlaka · ugovor 24AB",
+      "instructions": "Preko I2C očitavaj jedan BMP180 i ispisuj T=<broj> P=<broj>, temperaturu u °C i tlak u Pa. Najveći interval očitanja je 2200 ms. Svaka promjena mora dati dovršenu novu pretvorbu, stvarni I2C prijenos i novi ispis. Tolerancija temperature je ±0,3 °C, tlaka ±150 Pa. Sam ispis ili prethodno očitanje nisu dokaz novog mjerenja.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Napajanje, masa i I2C put ostvaruju novo dovršeno očitanje BMP180",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Ispis temperature i tlaka prati dvije različite pobude u zadanim tolerancijama",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Treća promjena daje novu pretvorbu i novi ispis BMP180",
+          "maxPoints": 2
+        }
+      ],
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "checkerVersion": "24AB.1",
+      "sensorKind": "bmp180",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24AB.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "equivalent-electrical-layout",
+          "different-variable-names",
+          "equivalent-control-flow",
+          "different-gpio-with-matching-source"
+        ],
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "limits": {
+          "wallTimeMs": 20000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4
+        },
+        "faultPolicy": "Separate scenario copy; infrastructure failure leaves points null. No extra restart recovery required.",
+        "scenario": {
+          "kind": "sensor",
+          "sensorKind": "bmp180",
+          "stageDurationMs": 5000,
+          "temperatureRangeTenthsC": [
+            -120,
+            430
+          ],
+          "pressureRangePa": [
+            85000,
+            103000
+          ],
+          "stages": 3,
+          "maximumIntervalMs": 2200,
+          "stepToleranceMs": 100,
+          "temperatureToleranceMilliC": 300,
+          "pressureTolerancePa": 150,
+          "settlingMs": 250
+        }
+      }
+    },
+    {
+      "id": "24C-adc-pwm@1",
+      "taskKey": "gpio/adc",
+      "kind": "adc-pwm",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "ADC i PWM",
+      "instructions": "Provjera izvodi spremljeni izvor i električni sklop. Osvježavaj rezultat najkasnije svakih 400 ms (tolerancija koraka 24 ms). Dopušteni su drukčiji nazivi varijabli, ekvivalentni izrazi, raspored i GPIO uz usklađen kod. Zadrži uloge ulaza iz početnog projekta. ADC je 0–1023 uz referencu 5 V na Uno/Nano, a 0–4095 uz 11 dB i zasićenje 3,1 V na oba S3 cilja. MicroPython read_u16() odgovara istom 12-bitnom ADC-u. Broj u ispisu ADC, X/Y ili A/B treba biti u 12-bitnom rasponu na S3. Dopušteno odstupanje sirovog ADC-a je 2 koraka na AVR-u i 3 na S3. Potenciometar upravlja stvarnim PWM radnim omjerom LED-ice razmjerno očitanju ADC-a. Provjeravaju se 0, 25, 50 i 100 % te dvije dodatne pobude i povrat. PWM rasponi: duty_u16 0–65535, analogWrite 0–255. Dopušteno odstupanje radnog omjera je 0,04. Na S3 sredina klizača daje približno 53,2 % radnog omjera. Sam digitalni prag nije rješenje ove rubrike.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Stvarni PWM radni omjer prati tri osnovne ADC pobude",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24C.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24C.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "equivalent-electrical-layout",
+          "different-variable-names",
+          "equivalent-control-flow",
+          "different-gpio-with-matching-source"
+        ],
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "limits": {
+          "wallTimeMs": 20000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4
+        },
+        "faultPolicy": "Separate scenario copy; infrastructure failure leaves points null. No extra restart recovery required.",
+        "scenario": {
+          "kind": "adc",
+          "stageDurationMs": 1000,
+          "responseDeadlineMs": 400,
+          "stepToleranceMs": 24,
+          "seeded": true,
+          "rawAdcTolerance": {
+            "avr": 2,
+            "s3": 3
+          },
+          "temperatureToleranceC": 0.6,
+          "voltageToleranceV": 0.008,
+          "normalizedTolerance": 0.025,
+          "pwmTolerance": 0.04,
+          "phases": [
+            "three-basic-stimuli",
+            "range-boundaries-and-return"
+          ]
+        }
+      }
+    },
+    {
+      "id": "24C-ntc@1",
+      "taskKey": "analog/ntc",
+      "kind": "analog-input",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "NTC i Beta jednadžba",
+      "instructions": "Provjera izvodi spremljeni izvor i električni sklop. Osvježavaj rezultat najkasnije svakih 400 ms (tolerancija koraka 24 ms). Dopušteni su drukčiji nazivi varijabli, ekvivalentni izrazi, raspored i GPIO uz usklađen kod. Zadrži uloge ulaza iz početnog projekta. ADC je 0–1023 uz referencu 5 V na Uno/Nano, a 0–4095 uz 11 dB i zasićenje 3,1 V na oba S3 cilja. MicroPython read_u16() odgovara istom 12-bitnom ADC-u. Broj u ispisu ADC, X/Y ili A/B treba biti u 12-bitnom rasponu na S3. Dopušteno odstupanje sirovog ADC-a je 2 koraka na AVR-u i 3 na S3. Ispisuj ADC=<broj> T=<temperatura u °C>, na istom retku. Mjeri kroz -20 do 100 °C, tri različite početne temperature i povrat. Djelilo VCC → fiksni otpornik → AO → NTC → GND: R25=10 kΩ, Beta=3950 K i fiksni otpornik 10 kΩ u početnom projektu. Programske konstante moraju odgovarati svojstvima. Tolerancija temperature ±0,6 °C.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24C.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24C.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "equivalent-electrical-layout",
+          "different-variable-names",
+          "equivalent-control-flow",
+          "different-gpio-with-matching-source"
+        ],
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "limits": {
+          "wallTimeMs": 20000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4
+        },
+        "faultPolicy": "Separate scenario copy; infrastructure failure leaves points null. No extra restart recovery required.",
+        "scenario": {
+          "kind": "ntc",
+          "stageDurationMs": 1000,
+          "responseDeadlineMs": 400,
+          "stepToleranceMs": 24,
+          "seeded": true,
+          "rawAdcTolerance": {
+            "avr": 2,
+            "s3": 3
+          },
+          "temperatureToleranceC": 0.6,
+          "voltageToleranceV": 0.008,
+          "normalizedTolerance": 0.025,
+          "pwmTolerance": 0.04,
+          "phases": [
+            "three-basic-stimuli",
+            "range-boundaries-and-return"
+          ]
+        }
+      }
+    },
+    {
+      "id": "24C-temt6000@1",
+      "taskKey": "analog/temt6000",
+      "kind": "analog-input",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "TEMT6000 ADC i napon",
+      "instructions": "Provjera izvodi spremljeni izvor i električni sklop. Osvježavaj rezultat najkasnije svakih 400 ms (tolerancija koraka 24 ms). Dopušteni su drukčiji nazivi varijabli, ekvivalentni izrazi, raspored i GPIO uz usklađen kod. Zadrži uloge ulaza iz početnog projekta. ADC je 0–1023 uz referencu 5 V na Uno/Nano, a 0–4095 uz 11 dB i zasićenje 3,1 V na oba S3 cilja. MicroPython read_u16() odgovara istom 12-bitnom ADC-u. Broj u ispisu ADC, X/Y ili A/B treba biti u 12-bitnom rasponu na S3. Dopušteno odstupanje sirovog ADC-a je 2 koraka na AVR-u i 3 na S3. Ispisuj ADC=<broj> U=<napon u V>, na istom retku. Nominalni model ima 0,5 µA/lx i 10 kΩ. Provjeravaju se 0–2000 lx sintetske pobude, zasićenje oko 620 lx na S3, promjene i povrat. Napon označava ADC-om izmjereni napon uz njegovo zasićenje, tolerancija ±0,008 V. Tvrdnja o luksima bez kalibracije ne zamjenjuje ova dva podatka.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24C.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24C.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "equivalent-electrical-layout",
+          "different-variable-names",
+          "equivalent-control-flow",
+          "different-gpio-with-matching-source"
+        ],
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "limits": {
+          "wallTimeMs": 20000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4
+        },
+        "faultPolicy": "Separate scenario copy; infrastructure failure leaves points null. No extra restart recovery required.",
+        "scenario": {
+          "kind": "temt6000",
+          "stageDurationMs": 1000,
+          "responseDeadlineMs": 400,
+          "stepToleranceMs": 24,
+          "seeded": true,
+          "rawAdcTolerance": {
+            "avr": 2,
+            "s3": 3
+          },
+          "temperatureToleranceC": 0.6,
+          "voltageToleranceV": 0.008,
+          "normalizedTolerance": 0.025,
+          "pwmTolerance": 0.04,
+          "phases": [
+            "three-basic-stimuli",
+            "range-boundaries-and-return"
+          ]
+        }
+      }
+    },
+    {
+      "id": "24C-ky023@1",
+      "taskKey": "analog/ky023",
+      "kind": "analog-input",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "Joystick dvije osi i tipkalo",
+      "instructions": "Provjera izvodi spremljeni izvor i električni sklop. Osvježavaj rezultat najkasnije svakih 400 ms (tolerancija koraka 24 ms). Dopušteni su drukčiji nazivi varijabli, ekvivalentni izrazi, raspored i GPIO uz usklađen kod. Zadrži uloge ulaza iz početnog projekta. ADC je 0–1023 uz referencu 5 V na Uno/Nano, a 0–4095 uz 11 dB i zasićenje 3,1 V na oba S3 cilja. MicroPython read_u16() odgovara istom 12-bitnom ADC-u. Broj u ispisu ADC, X/Y ili A/B treba biti u 12-bitnom rasponu na S3. Dopušteno odstupanje sirovog ADC-a je 2 koraka na AVR-u i 3 na S3. Ispisuj X=<ADC> Y=<ADC> NX=<normalizirano> NY=<normalizirano> SW=<0 ili 1>, na istom retku. NX/NY=2·izmjereni napon/napajanje−1, a za |N|<0,10 ispisuj 0. Tolerancija normalizacije ±0,025; na točnoj granici 45/55 % prihvaća se 0 ili pripadnih ±0,10 zbog kvantizacije. S3 gornji hod daje oko 0,88. Provjeravaju se neovisne osi, centar, krajevi, mrtva zona i oba stanja tipkala. SW koristi pull-up i pritisak daje 0.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24C.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24C.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "equivalent-electrical-layout",
+          "different-variable-names",
+          "equivalent-control-flow",
+          "different-gpio-with-matching-source"
+        ],
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "limits": {
+          "wallTimeMs": 20000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4
+        },
+        "faultPolicy": "Separate scenario copy; infrastructure failure leaves points null. No extra restart recovery required.",
+        "scenario": {
+          "kind": "ky023",
+          "stageDurationMs": 1000,
+          "responseDeadlineMs": 400,
+          "stepToleranceMs": 24,
+          "seeded": true,
+          "rawAdcTolerance": {
+            "avr": 2,
+            "s3": 3
+          },
+          "temperatureToleranceC": 0.6,
+          "voltageToleranceV": 0.008,
+          "normalizedTolerance": 0.025,
+          "pwmTolerance": 0.04,
+          "phases": [
+            "three-basic-stimuli",
+            "range-boundaries-and-return"
+          ]
+        }
+      }
+    },
+    {
+      "id": "24C-flame@1",
+      "taskKey": "analog/flame",
+      "kind": "analog-input",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "Plamen AO DO i histereza",
+      "instructions": "Provjera izvodi spremljeni izvor i električni sklop. Osvježavaj rezultat najkasnije svakih 400 ms (tolerancija koraka 24 ms). Dopušteni su drukčiji nazivi varijabli, ekvivalentni izrazi, raspored i GPIO uz usklađen kod. Zadrži uloge ulaza iz početnog projekta. ADC je 0–1023 uz referencu 5 V na Uno/Nano, a 0–4095 uz 11 dB i zasićenje 3,1 V na oba S3 cilja. MicroPython read_u16() odgovara istom 12-bitnom ADC-u. Broj u ispisu ADC, X/Y ili A/B treba biti u 12-bitnom rasponu na S3. Dopušteno odstupanje sirovog ADC-a je 2 koraka na AVR-u i 3 na S3. Ispisuj ADC=<AO broj> DO=<0 ili 1>, na istom retku. AO opada s relativnom IR pobudom. DO aktivan LOW pri prag+2 %, HIGH pri prag−2 %, između čuva stanje. Provjera uključuje točne granice, sredinu iz oba smjera, 0/100 %, nasumične pobude i povrat. Početni prag je 50 %. Nema mjerenja temperature ili udaljenosti.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24C.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24C.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "equivalent-electrical-layout",
+          "different-variable-names",
+          "equivalent-control-flow",
+          "different-gpio-with-matching-source"
+        ],
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "limits": {
+          "wallTimeMs": 20000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4
+        },
+        "faultPolicy": "Separate scenario copy; infrastructure failure leaves points null. No extra restart recovery required.",
+        "scenario": {
+          "kind": "flame",
+          "stageDurationMs": 1000,
+          "responseDeadlineMs": 400,
+          "stepToleranceMs": 24,
+          "seeded": true,
+          "rawAdcTolerance": {
+            "avr": 2,
+            "s3": 3
+          },
+          "temperatureToleranceC": 0.6,
+          "voltageToleranceV": 0.008,
+          "normalizedTolerance": 0.025,
+          "pwmTolerance": 0.04,
+          "phases": [
+            "three-basic-stimuli",
+            "range-boundaries-and-return"
+          ],
+          "comparatorOrder": "seeded basic levels, hysteresis direction and endpoint order; return to the first level"
+        }
+      }
+    },
+    {
+      "id": "24C-sound@1",
+      "taskKey": "analog/sound",
+      "kind": "analog-input",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "Zvuk DO i histereza",
+      "instructions": "Provjera izvodi spremljeni izvor i električni sklop. Osvježavaj rezultat najkasnije svakih 400 ms (tolerancija koraka 24 ms). Dopušteni su drukčiji nazivi varijabli, ekvivalentni izrazi, raspored i GPIO uz usklađen kod. Zadrži uloge ulaza iz početnog projekta. ADC je 0–1023 uz referencu 5 V na Uno/Nano, a 0–4095 uz 11 dB i zasićenje 3,1 V na oba S3 cilja. MicroPython read_u16() odgovara istom 12-bitnom ADC-u. Broj u ispisu ADC, X/Y ili A/B treba biti u 12-bitnom rasponu na S3. Dopušteno odstupanje sirovog ADC-a je 2 koraka na AVR-u i 3 na S3. Ispisuj DO=<0 ili 1>. Tropriključni profil nema AO. DO je aktivan LOW pri prag+2 %, HIGH pri prag−2 %, a između čuva stanje. Provjera uključuje točne granice, sredinu iz oba smjera, 0/100 %, nasumične pobude i povrat. Početni prag je 50 %. Pobude su sintetičke i ne predstavljaju dB.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24C.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24C.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "equivalent-electrical-layout",
+          "different-variable-names",
+          "equivalent-control-flow",
+          "different-gpio-with-matching-source"
+        ],
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "limits": {
+          "wallTimeMs": 20000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4
+        },
+        "faultPolicy": "Separate scenario copy; infrastructure failure leaves points null. No extra restart recovery required.",
+        "scenario": {
+          "kind": "sound",
+          "stageDurationMs": 1000,
+          "responseDeadlineMs": 400,
+          "stepToleranceMs": 24,
+          "seeded": true,
+          "rawAdcTolerance": {
+            "avr": 2,
+            "s3": 3
+          },
+          "temperatureToleranceC": 0.6,
+          "voltageToleranceV": 0.008,
+          "normalizedTolerance": 0.025,
+          "pwmTolerance": 0.04,
+          "phases": [
+            "three-basic-stimuli",
+            "range-boundaries-and-return"
+          ],
+          "comparatorOrder": "seeded basic levels, hysteresis direction and endpoint order; return to the first level"
+        }
+      }
+    },
+    {
+      "id": "24C-analogCompare@1",
+      "taskKey": "analog/analogCompare",
+      "kind": "analog-input",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "Usporedba LM35 i NTC",
+      "instructions": "Provjera izvodi spremljeni izvor i električni sklop. Osvježavaj rezultat najkasnije svakih 400 ms (tolerancija koraka 24 ms). Dopušteni su drukčiji nazivi varijabli, ekvivalentni izrazi, raspored i GPIO uz usklađen kod. Zadrži uloge ulaza iz početnog projekta. ADC je 0–1023 uz referencu 5 V na Uno/Nano, a 0–4095 uz 11 dB i zasićenje 3,1 V na oba S3 cilja. MicroPython read_u16() odgovara istom 12-bitnom ADC-u. Broj u ispisu ADC, X/Y ili A/B treba biti u 12-bitnom rasponu na S3. Dopušteno odstupanje sirovog ADC-a je 2 koraka na AVR-u i 3 na S3. Ispisuj LM35=<°C> NTC=<°C>, na istom retku. Oba senzora moraju davati vlastitu temperaturu unutar ±0,6 °C. Promjene su neovisne, uz krajeve LM35 2–150 °C i NTC -20–100 °C te povrat na 25 °C. LM35 napajaj s 5 V na svim ciljevima. NTC napajaj s 3,3 V na S3 ili 5 V na AVR-u; formule odgovaraju svojstvima djelila.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24C.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24C.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "equivalent-electrical-layout",
+          "different-variable-names",
+          "equivalent-control-flow",
+          "different-gpio-with-matching-source"
+        ],
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "limits": {
+          "wallTimeMs": 20000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4
+        },
+        "faultPolicy": "Separate scenario copy; infrastructure failure leaves points null. No extra restart recovery required.",
+        "scenario": {
+          "kind": "analogCompare",
+          "stageDurationMs": 1000,
+          "responseDeadlineMs": 400,
+          "stepToleranceMs": 24,
+          "seeded": true,
+          "rawAdcTolerance": {
+            "avr": 2,
+            "s3": 3
+          },
+          "temperatureToleranceC": 0.6,
+          "voltageToleranceV": 0.008,
+          "normalizedTolerance": 0.025,
+          "pwmTolerance": 0.04,
+          "phases": [
+            "three-basic-stimuli",
+            "range-boundaries-and-return"
+          ]
+        }
+      }
+    },
+    {
+      "id": "24C-dualInputs@1",
+      "taskKey": "analog/dualInputs",
+      "kind": "analog-input",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "Dva potenciometra i dva tipkala",
+      "instructions": "Provjera izvodi spremljeni izvor i električni sklop. Osvježavaj rezultat najkasnije svakih 400 ms (tolerancija koraka 24 ms). Dopušteni su drukčiji nazivi varijabli, ekvivalentni izrazi, raspored i GPIO uz usklađen kod. Zadrži uloge ulaza iz početnog projekta. ADC je 0–1023 uz referencu 5 V na Uno/Nano, a 0–4095 uz 11 dB i zasićenje 3,1 V na oba S3 cilja. MicroPython read_u16() odgovara istom 12-bitnom ADC-u. Broj u ispisu ADC, X/Y ili A/B treba biti u 12-bitnom rasponu na S3. Dopušteno odstupanje sirovog ADC-a je 2 koraka na AVR-u i 3 na S3. Ispisuj A=<ADC prvog potenciometra> B=<ADC drugog> S1=<0 ili 1> S2=<0 ili 1>, na istom retku. Uloge su pot1, pot2, sw1 i sw2 iz početnog projekta. Provjeravaju se neovisne promjene svih četiriju ulaza, krajevi 0/100 % i povrat. Tipkala koriste pull-up, pritisak daje 0.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24C.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24C.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "equivalent-electrical-layout",
+          "different-variable-names",
+          "equivalent-control-flow",
+          "different-gpio-with-matching-source"
+        ],
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "limits": {
+          "wallTimeMs": 20000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4
+        },
+        "faultPolicy": "Separate scenario copy; infrastructure failure leaves points null. No extra restart recovery required.",
+        "scenario": {
+          "kind": "dualInputs",
+          "stageDurationMs": 1000,
+          "responseDeadlineMs": 400,
+          "stepToleranceMs": 24,
+          "seeded": true,
+          "rawAdcTolerance": {
+            "avr": 2,
+            "s3": 3
+          },
+          "temperatureToleranceC": 0.6,
+          "voltageToleranceV": 0.008,
+          "normalizedTolerance": 0.025,
+          "pwmTolerance": 0.04,
+          "phases": [
+            "three-basic-stimuli",
+            "range-boundaries-and-return"
+          ]
+        }
+      }
+    },
+    {
+      "id": "24D-am2320@1",
+      "taskKey": "weather/am2320",
+      "kind": "protocol-sensor",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "AM2320: I2C, prethodni uzorak i novo mjerenje",
+      "instructions": "AM2320 na I2C adresi 0x5C, najviše 100 kHz. Očitaj puni odgovor s CRC16 i ispisuj T=<broj> RH=<broj> barem svakih 2300 ms. Senzor vraća prethodni uzorak: nakon promjene okoliša dopušteno je do 4600 ms za prvi novi podatak, zatim razmak najviše 2300 ms. Tolerancije ±0,15 °C i ±0,15 %RH. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Nova očitanja prate tri neovisne osnovne pobude",
+          "maxPoints": 5
+        },
+        {
+          "id": "range",
+          "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24D.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24D.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli i ekvivalentan programski postupak.",
+          "Ekvivalentan raspored, GPIO i valjani vanjski pull-up.",
+          "Drukčiji redoslijed ROM pretrage; identitet je ROM, a ne položaj u popisu."
+        ],
+        "output": "Potpuni novi retci T=<broj> RH=<broj> za vlagu; ROM=<16 heksadekadskih znakova> T=<broj> za više DS18B20; BITA=<9|10|11|12> prije pripadnog očitanja razlučivosti.",
+        "units": {
+          "T": "°C",
+          "RH": "%RH"
+        },
+        "scenario": {
+          "stageDurationMs": 5500,
+          "responseDeadlineMs": 4600,
+          "maximumIntervalMs": 2300,
+          "stepToleranceMs": 100,
+          "temperatureTolerance": 0.15,
+          "humidityTolerance": 0.15,
+          "seededEnvironment": true,
+          "faults": []
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Separate seeded fault phases; failures never replace measurements with zero; recovery is required in error variants."
+      }
+    },
+    {
+      "id": "24D-dht11@1",
+      "taskKey": "dht/dht11",
+      "kind": "protocol-sensor",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "DHT11: cjelobrojna temperatura i vlaga",
+      "instructions": "Jedan DHT11 s vlastitim DATA GPIO-om i vanjskim pull-upom 1–10 kΩ na isti napon kao VCC. Pričekaj stabilizaciju najmanje 1 s, zatim očitavaj valjanih 40 bitova i kontrolni zbroj. Ispisuj T=<broj> RH=<broj>. Profil zaokružuje na cijele brojeve, raspon je 0–50 °C / 20–90 %RH. Prvo novo mjerenje nakon promjene unutar 2400 ms, daljnji razmak do 2300 ms; biblioteka može čuvati rezultat do 2 s. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Nova očitanja prate tri neovisne osnovne pobude",
+          "maxPoints": 5
+        },
+        {
+          "id": "range",
+          "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24D.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24D.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli i ekvivalentan programski postupak.",
+          "Ekvivalentan raspored, GPIO i valjani vanjski pull-up.",
+          "Drukčiji redoslijed ROM pretrage; identitet je ROM, a ne položaj u popisu."
+        ],
+        "output": "Potpuni novi retci T=<broj> RH=<broj> za vlagu; ROM=<16 heksadekadskih znakova> T=<broj> za više DS18B20; BITA=<9|10|11|12> prije pripadnog očitanja razlučivosti.",
+        "units": {
+          "T": "°C",
+          "RH": "%RH"
+        },
+        "scenario": {
+          "stageDurationMs": 4500,
+          "responseDeadlineMs": 2400,
+          "maximumIntervalMs": 2300,
+          "stepToleranceMs": 100,
+          "temperatureTolerance": 0.15,
+          "humidityTolerance": 0.15,
+          "seededEnvironment": true,
+          "faults": []
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Separate seeded fault phases; failures never replace measurements with zero; recovery is required in error variants."
+      }
+    },
+    {
+      "id": "24D-dht22@1",
+      "taskKey": "dht/dht22",
+      "kind": "protocol-sensor",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "DHT22: predznak, desetinke i vlaga",
+      "instructions": "Jedan DHT22 s vanjskim pull-upom 1–10 kΩ, zajedničkom masom i valjanim DATA naponom. Stabilizacija najmanje 2 s i razmak stvarnih prijenosa najmanje 2 s. Ispisuj T=<broj> RH=<broj>, uključujući negativnu temperaturu i desetinke. Raspon −40–80 °C / 0–100 %RH. Prvi novi podatak unutar 2400 ms, daljnji razmak do 2300 ms. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Nova očitanja prate tri neovisne osnovne pobude",
+          "maxPoints": 5
+        },
+        {
+          "id": "range",
+          "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24D.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24D.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli i ekvivalentan programski postupak.",
+          "Ekvivalentan raspored, GPIO i valjani vanjski pull-up.",
+          "Drukčiji redoslijed ROM pretrage; identitet je ROM, a ne položaj u popisu."
+        ],
+        "output": "Potpuni novi retci T=<broj> RH=<broj> za vlagu; ROM=<16 heksadekadskih znakova> T=<broj> za više DS18B20; BITA=<9|10|11|12> prije pripadnog očitanja razlučivosti.",
+        "units": {
+          "T": "°C",
+          "RH": "%RH"
+        },
+        "scenario": {
+          "stageDurationMs": 4500,
+          "responseDeadlineMs": 2400,
+          "maximumIntervalMs": 2300,
+          "stepToleranceMs": 100,
+          "temperatureTolerance": 0.15,
+          "humidityTolerance": 0.15,
+          "seededEnvironment": true,
+          "faults": []
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Separate seeded fault phases; failures never replace measurements with zero; recovery is required in error variants."
+      }
+    },
+    {
+      "id": "24D-dhtErrors@1",
+      "taskKey": "dht/dhtErrors",
+      "kind": "protocol-sensor",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "DHT22: kontrolni zbroj, timeout i oporavak",
+      "instructions": "MicroPython početni primjer namjerno pokušava svakih 300 ms. Za pouzdano bodovano rješenje promijeni razmak na najmanje 2100 ms; C++ biblioteka može označiti prečeste pokušaje kao nevaljane. Zadrži provjeru kontrolnog zbroja i hvatanje pogrešaka. Novi valjani retci T=<broj> RH=<broj> prate okoliš; prvi unutar 2400 ms, daljnji razmak do 2300 ms. Provjera zasebno zadaje nevaljan checksum i timeout, zatim uredan prijenos. Nakon 2400 ms u pogrešci ispisuj jasno nevaljano/error/timeout/NaN, bez brojčanog T= ili zamjene pogreške s 0 °C. Prečesti pokušaji smiju dati pogrešku; nakon oporavka ponovno ispisuj svjež podatak. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Nova očitanja prate tri neovisne osnovne pobude",
+          "maxPoints": 5
+        },
+        {
+          "id": "recovery",
+          "description": "Prepoznate pogreške i oporavak bez lažnog mjerenja",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24D.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24D.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli i ekvivalentan programski postupak.",
+          "Ekvivalentan raspored, GPIO i valjani vanjski pull-up.",
+          "Drukčiji redoslijed ROM pretrage; identitet je ROM, a ne položaj u popisu."
+        ],
+        "output": "Potpuni novi retci T=<broj> RH=<broj> za vlagu; ROM=<16 heksadekadskih znakova> T=<broj> za više DS18B20; BITA=<9|10|11|12> prije pripadnog očitanja razlučivosti.",
+        "units": {
+          "T": "°C",
+          "RH": "%RH"
+        },
+        "scenario": {
+          "stageDurationMs": 4500,
+          "responseDeadlineMs": 2400,
+          "maximumIntervalMs": 2300,
+          "stepToleranceMs": 100,
+          "temperatureTolerance": 0.15,
+          "humidityTolerance": 0.15,
+          "seededEnvironment": true,
+          "faults": [
+            "checksum",
+            "timeout"
+          ]
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Separate seeded fault phases; failures never replace measurements with zero; recovery is required in error variants."
+      }
+    },
+    {
+      "id": "24D-ds18Multi@1",
+      "taskKey": "onewire/ds18Multi",
+      "kind": "protocol-sensor",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "DS18B20: tri ROM identiteta i neovisna mjerenja",
+      "instructions": "Tri vanjski napajana DS18B20 dijele DQ s jednim vanjskim pull-upom 1–10 kΩ. Pretraži ROM i za svaki senzor ispisuj ROM=<16 heksadekadskih znakova> T=<broj>. Pokreni pretvorbu, pričekaj dovršetak i pročitaj svih 9 bajtova scratchpada s CRC-8. Ne veži identitet uz redoslijed pretrage. Prvo novo očitanje nakon promjene unutar 3200 ms; daljnji razmak do 3000 ms. Svaki ROM mora pratiti svoj okoliš, uključujući promjenu samo jednog senzora. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Nova očitanja prate tri neovisne osnovne pobude",
+          "maxPoints": 5
+        },
+        {
+          "id": "range",
+          "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24D.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24D.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli i ekvivalentan programski postupak.",
+          "Ekvivalentan raspored, GPIO i valjani vanjski pull-up.",
+          "Drukčiji redoslijed ROM pretrage; identitet je ROM, a ne položaj u popisu."
+        ],
+        "output": "Potpuni novi retci T=<broj> RH=<broj> za vlagu; ROM=<16 heksadekadskih znakova> T=<broj> za više DS18B20; BITA=<9|10|11|12> prije pripadnog očitanja razlučivosti.",
+        "units": {
+          "T": "°C",
+          "RH": "%RH"
+        },
+        "scenario": {
+          "stageDurationMs": 4000,
+          "responseDeadlineMs": 3200,
+          "maximumIntervalMs": 3000,
+          "stepToleranceMs": 100,
+          "temperatureTolerance": 0.065,
+          "humidityTolerance": 0.15,
+          "seededEnvironment": true,
+          "faults": []
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Separate seeded fault phases; failures never replace measurements with zero; recovery is required in error variants."
+      }
+    },
+    {
+      "id": "24D-ds18Resolution@1",
+      "taskKey": "onewire/ds18Resolution",
+      "kind": "protocol-sensor",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "DS18B20: stvarna razlučivost i dovršena pretvorba",
+      "instructions": "Na jednom DS18B20 ponavljaj postavljanje 9, 10, 11 i 12 bita. Prije pripadnog novog T=<broj> ispiši BITA=<broj> na istom ili neposredno prethodnom retku. Provjera čita stvarnu konfiguraciju i potpuni scratchpad: sama oznaka nije dovoljna. Pričekaj najmanje 93,75 / 187,5 / 375 / 750 ms ili valjan busy bit. Koraci su 0,5 / 0,25 / 0,125 / 0,0625 °C, što je razlučivost. Unutar svake pobude prikaži sva četiri načina. Prvi novi podatak unutar 4500 ms; razmak između novih podataka do 4500 ms. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Nova očitanja prate tri neovisne osnovne pobude",
+          "maxPoints": 5
+        },
+        {
+          "id": "range",
+          "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24D.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24D.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli i ekvivalentan programski postupak.",
+          "Ekvivalentan raspored, GPIO i valjani vanjski pull-up.",
+          "Drukčiji redoslijed ROM pretrage; identitet je ROM, a ne položaj u popisu."
+        ],
+        "output": "Potpuni novi retci T=<broj> RH=<broj> za vlagu; ROM=<16 heksadekadskih znakova> T=<broj> za više DS18B20; BITA=<9|10|11|12> prije pripadnog očitanja razlučivosti.",
+        "units": {
+          "T": "°C",
+          "RH": "%RH"
+        },
+        "scenario": {
+          "stageDurationMs": 6000,
+          "responseDeadlineMs": 4500,
+          "maximumIntervalMs": 4500,
+          "stepToleranceMs": 100,
+          "temperatureTolerance": 0.065,
+          "humidityTolerance": 0.15,
+          "seededEnvironment": true,
+          "faults": []
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Separate seeded fault phases; failures never replace measurements with zero; recovery is required in error variants."
+      }
+    },
+    {
+      "id": "24D-ds18Errors@1",
+      "taskKey": "onewire/ds18Errors",
+      "kind": "protocol-sensor",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "DS18B20: CRC, presence, svježina i oporavak",
+      "instructions": "Jedan vanjski napajan DS18B20. Novo mjerenje zahtijeva dovršenu pretvorbu i svih 9 bajtova s CRC-8. Ispisuj T=<broj>; prvo novo očitanje unutar 3200 ms, daljnji razmak do 3000 ms. Početni registar 85 °C i stari registar smiješ prikazati samo izričito označenima POCETNI REGISTAR / STARI REGISTAR / PRIJE DOVRSETKA. Takvi retci ne donose bodove. Provjera zadaje CRC pogrešku, odspojen DQ i oporavak: nakon 3200 ms pogrešku jasno označi nevaljano/error/CRC/nema presence bez brojčanog T=. Ne pretvaraj je u 0 °C. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Nova očitanja prate tri neovisne osnovne pobude",
+          "maxPoints": 5
+        },
+        {
+          "id": "recovery",
+          "description": "Prepoznate pogreške i oporavak bez lažnog mjerenja",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24D.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24D.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli i ekvivalentan programski postupak.",
+          "Ekvivalentan raspored, GPIO i valjani vanjski pull-up.",
+          "Drukčiji redoslijed ROM pretrage; identitet je ROM, a ne položaj u popisu."
+        ],
+        "output": "Potpuni novi retci T=<broj> RH=<broj> za vlagu; ROM=<16 heksadekadskih znakova> T=<broj> za više DS18B20; BITA=<9|10|11|12> prije pripadnog očitanja razlučivosti.",
+        "units": {
+          "T": "°C",
+          "RH": "%RH"
+        },
+        "scenario": {
+          "stageDurationMs": 4500,
+          "responseDeadlineMs": 3200,
+          "maximumIntervalMs": 3000,
+          "stepToleranceMs": 100,
+          "temperatureTolerance": 0.065,
+          "humidityTolerance": 0.15,
+          "seededEnvironment": true,
+          "faults": [
+            "crc",
+            "disconnected"
+          ]
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Separate seeded fault phases; failures never replace measurements with zero; recovery is required in error variants."
+      }
+    },
+    {
+      "id": "24E-encoderRaw@1",
+      "taskKey": "encoder/encoderRaw",
+      "kind": "event-input",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "KY-040: sirovi CLK/DT/SW",
+      "instructions": "Ispisuj RAW CLK=<0|1> DT=<0|1> SW=<0|1> pri svakoj promjeni. CW je 11→01→00→10→11, CCW obrnuto. Jedan korak ima četiri brida, razmak je 100 ms. SW je aktivno LOW; koristi pull-up. Svaki novi kontakt prikaži unutar 80 ms (dopušteno odstupanje koraka 10 ms). Promatraju se tri osnovne faze, pritisak/otpuštanje SW i povratni smjer. Ne traži se ispis svakog poskoka u drugim varijantama.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+          "maxPoints": 5
+        },
+        {
+          "id": "recovery",
+          "description": "SW reset i novi koraci u oba smjera",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24E.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24E.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli, druga biblioteka ili ekvivalentan algoritam uz objavljeni izlaz.",
+          "Električno ekvivalentan raspored, valjan GPIO i vanjski pull-up.",
+          "IR TX: dodatni repeat okviri i izostanak konzolnog ispisa su dopušteni."
+        ],
+        "output": "RAW CLK= DT= SW=; ENC P= / ENC RESET P=0; NEC A= C= R= i impulsni zapis. Za IR LED/TX mjerodavan je električni izlaz.",
+        "units": {
+          "pulse": "µs",
+          "position": "puni Gray koraci",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 2000,
+          "responseDeadlineMs": 80,
+          "stepToleranceMs": 10,
+          "pulseToleranceUs": 150,
+          "dutyTolerance": 0.025,
+          "seededEnvironment": true,
+          "encoderEdgeMs": 100,
+          "bounceOffsetsUs": [
+            0,
+            200,
+            400,
+            600,
+            800
+          ],
+          "repeatPeriodUs": 110000,
+          "faults": [
+            "direction-change",
+            "switch-reset"
+          ],
+          "stimulusDelayMs": 40
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Private deterministic scenario; switch reset affects program count only. IR blocking preserves source and returns to the saved receiver state."
+      }
+    },
+    {
+      "id": "24E-ky040@1",
+      "taskKey": "encoder/ky040",
+      "kind": "event-input",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "KY-040: programski brojač i reset",
+      "instructions": "Brojač počinje od 0 neovisno o mehaničkom položaju. CW dodaje 1, CCW oduzima 1 po cijelom Gray ciklusu; ispisuj ENC P=<cijeli broj> za svaki korak. SW nakon 20 ms vraća samo programski brojač i ispisuje ENC RESET P=0. Razmak bridova je 20 ms; nakon završetka koraka ispiši rezultat unutar 80 ms. Faze traju 2000 ms; pritisak je odvojen od vrtnje. Nisu zadani nazivi varijabli ni biblioteka. Spori polling može izgubiti bridove i tada ne ostvaruje funkcionalni kriterij.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+          "maxPoints": 5
+        },
+        {
+          "id": "recovery",
+          "description": "SW reset i novi koraci u oba smjera",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24E.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24E.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli, druga biblioteka ili ekvivalentan algoritam uz objavljeni izlaz.",
+          "Električno ekvivalentan raspored, valjan GPIO i vanjski pull-up.",
+          "IR TX: dodatni repeat okviri i izostanak konzolnog ispisa su dopušteni."
+        ],
+        "output": "RAW CLK= DT= SW=; ENC P= / ENC RESET P=0; NEC A= C= R= i impulsni zapis. Za IR LED/TX mjerodavan je električni izlaz.",
+        "units": {
+          "pulse": "µs",
+          "position": "puni Gray koraci",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 2000,
+          "responseDeadlineMs": 80,
+          "stepToleranceMs": 10,
+          "pulseToleranceUs": 150,
+          "dutyTolerance": 0.025,
+          "seededEnvironment": true,
+          "encoderEdgeMs": 20,
+          "bounceOffsetsUs": [
+            0,
+            200,
+            400,
+            600,
+            800
+          ],
+          "repeatPeriodUs": 110000,
+          "faults": [
+            "direction-change",
+            "switch-reset"
+          ],
+          "stimulusDelayMs": 40
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Private deterministic scenario; switch reset affects program count only. IR blocking preserves source and returns to the saved receiver state."
+      }
+    },
+    {
+      "id": "24E-encoderBounce@1",
+      "taskKey": "encoder/encoderBounce",
+      "kind": "event-input",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "KY-040: Gray dekoder uz poskakivanje",
+      "instructions": "Jednaka pravila ENC P= i ENC RESET P=0 kao za dekoder: CW +1, CCW −1, SW reset nakon 20 ms, bez pomicanja fizičkog položaja. Razmak bridova je 20 ms. Deterministički poskoci novi/stari/novi/stari/novi nastaju na 0/200/400/600/800 µs. Svaki puni ciklus mora dati jedan neto korak, a rezultat unutar 80 ms od njegova završetka. Faze traju 2000 ms. Ne traži se otpornost na proizvoljne brzine ili stvarni mehanički šum.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+          "maxPoints": 5
+        },
+        {
+          "id": "recovery",
+          "description": "SW reset i novi koraci u oba smjera",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24E.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24E.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli, druga biblioteka ili ekvivalentan algoritam uz objavljeni izlaz.",
+          "Električno ekvivalentan raspored, valjan GPIO i vanjski pull-up.",
+          "IR TX: dodatni repeat okviri i izostanak konzolnog ispisa su dopušteni."
+        ],
+        "output": "RAW CLK= DT= SW=; ENC P= / ENC RESET P=0; NEC A= C= R= i impulsni zapis. Za IR LED/TX mjerodavan je električni izlaz.",
+        "units": {
+          "pulse": "µs",
+          "position": "puni Gray koraci",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 2000,
+          "responseDeadlineMs": 80,
+          "stepToleranceMs": 10,
+          "pulseToleranceUs": 150,
+          "dutyTolerance": 0.025,
+          "seededEnvironment": true,
+          "encoderEdgeMs": 20,
+          "bounceOffsetsUs": [
+            0,
+            200,
+            400,
+            600,
+            800
+          ],
+          "repeatPeriodUs": 110000,
+          "faults": [
+            "direction-change",
+            "switch-reset"
+          ],
+          "stimulusDelayMs": 40
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Private deterministic scenario; switch reset affects program count only. IR blocking preserves source and returns to the saved receiver state."
+      }
+    },
+    {
+      "id": "24E-irPulses@1",
+      "taskKey": "ir/irPulses",
+      "kind": "event-input",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "NEC: impulsi, adresa, naredba i repeat",
+      "instructions": "Dekodiraj stvarne OUT impulse u NEC A=<0–255> C=<0–255> R=<0|1>. Python uz svaki rezultat ispisuje IR PULSES [trajanja u µs]; C++ može ispisati PULSE LEADER=<µs> MARK=<µs> SPACE=<µs> za izmjereno zaglavlje i zadnji bit. Uvod 9000/4500 µs, oznaka 562,5 µs, razmak bita 562,5 ili 1687,5 µs. Repeat ima 9000/2250/562,5 µs, dolazi svakih 110 ms i zadržava zadnju adresu/naredbu. C++ SPACE pri repeat smije ostati iz prethodnog punog okvira. Tolerancija trajanja ±150 µs, novi ispis unutar 180 ms od kraja okvira. Kratki i 220 ms dugi pritisak nose privatno odabrane podatke; pogrešan inverz, pogrešno vrijeme ili blokirana putanja ne smiju dati valjanu naredbu. Povrat veze mora omogućiti novi okvir. Faze traju 700 ms. Polling prijamnik smije izmjeriti preostali dio početnog LOW impulsa u prihvatnom rasponu 6500–9000 µs ako čitanje započne tijekom uvoda; ostala trajanja i dalje moraju pratiti cijeli fizički okvir. Provjeravač odgađa pritisak 40 ms radi početnog smirivanja.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+          "maxPoints": 5
+        },
+        {
+          "id": "recovery",
+          "description": "Odbijanje pogrešnih okvira i obnova prijama",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24E.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24E.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli, druga biblioteka ili ekvivalentan algoritam uz objavljeni izlaz.",
+          "Električno ekvivalentan raspored, valjan GPIO i vanjski pull-up.",
+          "IR TX: dodatni repeat okviri i izostanak konzolnog ispisa su dopušteni."
+        ],
+        "output": "RAW CLK= DT= SW=; ENC P= / ENC RESET P=0; NEC A= C= R= i impulsni zapis. Za IR LED/TX mjerodavan je električni izlaz.",
+        "units": {
+          "pulse": "µs",
+          "position": "puni Gray koraci",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 700,
+          "responseDeadlineMs": 180,
+          "stepToleranceMs": 10,
+          "pulseToleranceUs": 150,
+          "dutyTolerance": 0.025,
+          "seededEnvironment": true,
+          "encoderEdgeMs": 20,
+          "bounceOffsetsUs": [
+            0,
+            200,
+            400,
+            600,
+            800
+          ],
+          "repeatPeriodUs": 110000,
+          "faults": [
+            "inverse",
+            "timing",
+            "blocked"
+          ],
+          "stimulusDelayMs": 40,
+          "leadingPulseCanBePartial": true
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Private deterministic scenario; switch reset affects program count only. IR blocking preserves source and returns to the saved receiver state."
+      }
+    },
+    {
+      "id": "24E-irLED@1",
+      "taskKey": "ir/irLED",
+      "kind": "event-input",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "NEC: upravljanje stvarnim PWM LED izlazom",
+      "instructions": "Prihvati adresu 0. POWER=69 mijenja ugašeno u 50 % i upaljeno u 0 %, samo kod novog okvira. PLUS=70 i MINUS=21 mijenjaju PWM za 10 % po okviru, uključujući repeat, uz ograničenje 0–100 %. Izlaz mora slijediti zadnju naredbu unutar 650 ms od početka faze; faza traje 700 ms, dugi pritisci 220/440/550 ms šalju puni okvir i dva/četiri/pet repeat. Ispituju se obje granice 0 i 100 %, uključujući pokušaj prelaska granice. POWER kod držanja djeluje samo jednom. Tolerancija radnog omjera je ±0,025. Druga adresa, pogrešan inverz/vrijeme i blokirana optička putanja ne smiju mijenjati izlaz. Nakon vraćanja veze nova naredba ponovno djeluje. Vrednuju se stvarni PWM i struja ispravno spojene LED-ice; tekst LED= sam ne donosi bodove.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+          "maxPoints": 5
+        },
+        {
+          "id": "recovery",
+          "description": "Repeat, nevaljani okviri, granice i obnova optičke putanje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24E.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24E.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli, druga biblioteka ili ekvivalentan algoritam uz objavljeni izlaz.",
+          "Električno ekvivalentan raspored, valjan GPIO i vanjski pull-up.",
+          "IR TX: dodatni repeat okviri i izostanak konzolnog ispisa su dopušteni."
+        ],
+        "output": "RAW CLK= DT= SW=; ENC P= / ENC RESET P=0; NEC A= C= R= i impulsni zapis. Za IR LED/TX mjerodavan je električni izlaz.",
+        "units": {
+          "pulse": "µs",
+          "position": "puni Gray koraci",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 700,
+          "responseDeadlineMs": 650,
+          "stepToleranceMs": 10,
+          "pulseToleranceUs": 150,
+          "dutyTolerance": 0.025,
+          "seededEnvironment": true,
+          "encoderEdgeMs": 20,
+          "bounceOffsetsUs": [
+            0,
+            200,
+            400,
+            600,
+            800
+          ],
+          "repeatPeriodUs": 110000,
+          "faults": [
+            "inverse",
+            "timing",
+            "blocked"
+          ],
+          "stimulusDelayMs": 40
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Private deterministic scenario; switch reset affects program count only. IR blocking preserves source and returns to the saved receiver state."
+      }
+    },
+    {
+      "id": "24E-irTransmit@1",
+      "taskKey": "ir/irTransmit",
+      "kind": "event-input",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "NEC: stvarni nositelj i optički TX/RX put",
+      "instructions": "Program ponavljano šalje adresu 0 i izmjenične naredbe 69/70. Nositelj je 34–42 kHz, duty 15–50 %, uz standardni NEC omotač. Svaka faza traje 2500 ms: traže se barem dva potpuna izmjenična okvira na prijamnikovu OUT u prvoj i završnoj fazi. Dodatni valjani repeat okviri su dopušteni, nisu obvezni. U srednjoj fazi provjeravač blokira samo prijamnik: TX nastavlja, OUT ne prima okvire. Obnova putanje vraća nove prijenose. Provjeravaju se stvarni valjani bajtovi, inverzi i impulsi, uz toleranciju omotača ±180 µs za oznake i ±1100 µs za uvod. Konzolni ispis i istodobno dekodiranje u istom programu nisu uvjet. Na AVR-u predajnik koristi stvarni Timer2; S3 koristi LEDC/PWM.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+          "maxPoints": 5
+        },
+        {
+          "id": "recovery",
+          "description": "Nastavak TX-a uz blokirani RX i novi prijam nakon obnove",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24E.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24E.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli, druga biblioteka ili ekvivalentan algoritam uz objavljeni izlaz.",
+          "Električno ekvivalentan raspored, valjan GPIO i vanjski pull-up.",
+          "IR TX: dodatni repeat okviri i izostanak konzolnog ispisa su dopušteni."
+        ],
+        "output": "RAW CLK= DT= SW=; ENC P= / ENC RESET P=0; NEC A= C= R= i impulsni zapis. Za IR LED/TX mjerodavan je električni izlaz.",
+        "units": {
+          "pulse": "µs",
+          "position": "puni Gray koraci",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 2500,
+          "responseDeadlineMs": 180,
+          "stepToleranceMs": 10,
+          "pulseToleranceUs": 150,
+          "dutyTolerance": 0.025,
+          "seededEnvironment": true,
+          "encoderEdgeMs": 20,
+          "bounceOffsetsUs": [
+            0,
+            200,
+            400,
+            600,
+            800
+          ],
+          "repeatPeriodUs": 110000,
+          "faults": [
+            "inverse",
+            "timing",
+            "blocked"
+          ],
+          "stimulusDelayMs": 40
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Private deterministic scenario; switch reset affects program count only. IR blocking preserves source and returns to the saved receiver state."
+      }
+    },
+    {
+      "id": "24F-relayContacts@1",
+      "taskKey": "actuators/relayContacts",
+      "kind": "actuator-output",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "Relej: upravljanje i stvarni COM/NO/NC krug",
+      "instructions": "Ponavljaj COM-NO 700 ms, zatim COM-NC 700 ms. U svakoj fazi pripadna LED mora stvarno provoditi struju, a druga biti ugašena. Upravljanje koristi VCC=5 V, LV=3,3 V za S3 ili 5 V za AVR te zajedničku upravljačku masu. Energetski 5 V krug ostaje zaseban i smije imati odvojenu masu. Aktivna razina može biti LOW ili HIGH uz prilagođen program. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Za pasivni ton dopušten je duty veći od 15 % i manji od 85 %. Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan stvarni upravljački i energetski put do svih zadanih aktuatora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan električni izlaz i trajanje svih faza prvoga ciklusa",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Još dva potpuna ciklusa, krajevi raspona i istodobni izlazi bez sukoba timera",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24F.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24F.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi, biblioteka ili algoritam uz isti električni izlaz i objavljeni vremenski slijed.",
+          "Električno ekvivalentan raspored, drugi valjani GPIO i preuređene oznake komponenti.",
+          "Konzola i nazivi varijabli nisu uvjet; dopušten je program bez ispisa."
+        ],
+        "output": "Stvarni kontakti i struja LED-a, frekvencija i duty, servo impuls i kut te potpisani prosječni napon motora.",
+        "units": {
+          "time": "ms",
+          "pulse": "µs",
+          "frequency": "Hz",
+          "angle": "stupnjevi",
+          "voltage": "V",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 4600,
+          "cycleDurationMs": 1400,
+          "cycles": 3,
+          "startupAllowanceMs": 250,
+          "stepToleranceMs": 80,
+          "settleToleranceMs": 60,
+          "frequencyRelativeTolerance": 0.025,
+          "servoFrequencyToleranceHz": 1,
+          "pulseToleranceUs": 20,
+          "angleToleranceDeg": 4,
+          "voltageToleranceV": 0.18,
+          "motorSupplyVolts": [
+            5.6,
+            6,
+            6.8
+          ],
+          "seededEnvironment": true,
+          "toneDutyMin": 0.15,
+          "toneDutyMax": 0.85
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Signal and energy-path faults are checked in separate saved copies. Stop, repair and restart is allowed; no hidden demand for live recovery. No mechanical torque, RPM or coil-current model."
+      }
+    },
+    {
+      "id": "24F-activeAlarm@1",
+      "taskKey": "actuators/activeAlarm",
+      "kind": "actuator-output",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "Aktivna zujalica: DC uključenje i tišina",
+      "instructions": "Ponavljaj stalni HIGH 500 ms i LOW 500 ms na stvarnom SIG ulazu aktivnog 5 V modula. Uključeni model ima vlastiti oscilator 2300 Hz. PWM koji stalno prekida SIG nije jednak traženom DC uključenju. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Za pasivni ton dopušten je duty veći od 15 % i manji od 85 %. Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan stvarni upravljački i energetski put do svih zadanih aktuatora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan električni izlaz i trajanje svih faza prvoga ciklusa",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Još dva potpuna ciklusa, krajevi raspona i istodobni izlazi bez sukoba timera",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24F.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24F.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi, biblioteka ili algoritam uz isti električni izlaz i objavljeni vremenski slijed.",
+          "Električno ekvivalentan raspored, drugi valjani GPIO i preuređene oznake komponenti.",
+          "Konzola i nazivi varijabli nisu uvjet; dopušten je program bez ispisa."
+        ],
+        "output": "Stvarni kontakti i struja LED-a, frekvencija i duty, servo impuls i kut te potpisani prosječni napon motora.",
+        "units": {
+          "time": "ms",
+          "pulse": "µs",
+          "frequency": "Hz",
+          "angle": "stupnjevi",
+          "voltage": "V",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 3400,
+          "cycleDurationMs": 1000,
+          "cycles": 3,
+          "startupAllowanceMs": 250,
+          "stepToleranceMs": 80,
+          "settleToleranceMs": 60,
+          "frequencyRelativeTolerance": 0.025,
+          "servoFrequencyToleranceHz": 1,
+          "pulseToleranceUs": 20,
+          "angleToleranceDeg": 4,
+          "voltageToleranceV": 0.18,
+          "motorSupplyVolts": [
+            5.6,
+            6,
+            6.8
+          ],
+          "seededEnvironment": true,
+          "toneDutyMin": 0.15,
+          "toneDutyMax": 0.85
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Signal and energy-path faults are checked in separate saved copies. Stop, repair and restart is allowed; no hidden demand for live recovery. No mechanical torque, RPM or coil-current model."
+      }
+    },
+    {
+      "id": "24F-piezoTone@1",
+      "taskKey": "actuators/piezoTone",
+      "kind": "actuator-output",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "Pasivni piezo: tri frekvencije i trajanje",
+      "instructions": "Ponavljaj 440, 880 i 1320 Hz, svaki ton 400 ms, a iza svakoga 100 ms tišine; nakon trećega dodaj još 500 ms tišine. Promatra se stvarna frekvencija i izmjenični signal na SIG-u pasivnog 5 V modula. AVR tone koristi Timer2; D3/D11 i IR nositelj ne mogu istodobno koristiti isti timer. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Za pasivni ton dopušten je duty veći od 15 % i manji od 85 %. Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan stvarni upravljački i energetski put do svih zadanih aktuatora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan električni izlaz i trajanje svih faza prvoga ciklusa",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Još dva potpuna ciklusa, krajevi raspona i istodobni izlazi bez sukoba timera",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24F.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24F.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi, biblioteka ili algoritam uz isti električni izlaz i objavljeni vremenski slijed.",
+          "Električno ekvivalentan raspored, drugi valjani GPIO i preuređene oznake komponenti.",
+          "Konzola i nazivi varijabli nisu uvjet; dopušten je program bez ispisa."
+        ],
+        "output": "Stvarni kontakti i struja LED-a, frekvencija i duty, servo impuls i kut te potpisani prosječni napon motora.",
+        "units": {
+          "time": "ms",
+          "pulse": "µs",
+          "frequency": "Hz",
+          "angle": "stupnjevi",
+          "voltage": "V",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 6400,
+          "cycleDurationMs": 2000,
+          "cycles": 3,
+          "startupAllowanceMs": 250,
+          "stepToleranceMs": 80,
+          "settleToleranceMs": 60,
+          "frequencyRelativeTolerance": 0.025,
+          "servoFrequencyToleranceHz": 1,
+          "pulseToleranceUs": 20,
+          "angleToleranceDeg": 4,
+          "voltageToleranceV": 0.18,
+          "motorSupplyVolts": [
+            5.6,
+            6,
+            6.8
+          ],
+          "seededEnvironment": true,
+          "toneDutyMin": 0.15,
+          "toneDutyMax": 0.85
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Signal and energy-path faults are checked in separate saved copies. Stop, repair and restart is allowed; no hidden demand for live recovery. No mechanical torque, RPM or coil-current model."
+      }
+    },
+    {
+      "id": "24F-sg90Sweep@1",
+      "taskKey": "actuators/sg90Sweep",
+      "kind": "actuator-output",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "SG90: stvarni impuls, kut i krajevi raspona",
+      "instructions": "Ponavljaj kutove 0, 90 i 180 stupnjeva po 600 ms. SG90 ima zasebnih 5 V i zajedničku masu. Kalibracija modela je 1000–2000 µs, frekvencija 50 Hz. Traže se stvarni impulsi 1000, 1500 i 2000 µs, ne ispis kuta. AVR Servo koristi Timer1 i onemogućuje uobičajeni PWM na D9/D10. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Za pasivni ton dopušten je duty veći od 15 % i manji od 85 %. Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan stvarni upravljački i energetski put do svih zadanih aktuatora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan električni izlaz i trajanje svih faza prvoga ciklusa",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Još dva potpuna ciklusa, krajevi raspona i istodobni izlazi bez sukoba timera",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24F.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24F.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi, biblioteka ili algoritam uz isti električni izlaz i objavljeni vremenski slijed.",
+          "Električno ekvivalentan raspored, drugi valjani GPIO i preuređene oznake komponenti.",
+          "Konzola i nazivi varijabli nisu uvjet; dopušten je program bez ispisa."
+        ],
+        "output": "Stvarni kontakti i struja LED-a, frekvencija i duty, servo impuls i kut te potpisani prosječni napon motora.",
+        "units": {
+          "time": "ms",
+          "pulse": "µs",
+          "frequency": "Hz",
+          "angle": "stupnjevi",
+          "voltage": "V",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 5800,
+          "cycleDurationMs": 1800,
+          "cycles": 3,
+          "startupAllowanceMs": 250,
+          "stepToleranceMs": 80,
+          "settleToleranceMs": 60,
+          "frequencyRelativeTolerance": 0.025,
+          "servoFrequencyToleranceHz": 1,
+          "pulseToleranceUs": 20,
+          "angleToleranceDeg": 4,
+          "voltageToleranceV": 0.18,
+          "motorSupplyVolts": [
+            5.6,
+            6,
+            6.8
+          ],
+          "seededEnvironment": true,
+          "toneDutyMin": 0.15,
+          "toneDutyMax": 0.85
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Signal and energy-path faults are checked in separate saved copies. Stop, repair and restart is allowed; no hidden demand for live recovery. No mechanical torque, RPM or coil-current model."
+      }
+    },
+    {
+      "id": "24F-dcDrive@1",
+      "taskKey": "actuators/dcDrive",
+      "kind": "actuator-output",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "L298N: PWM, smjer, slobodno zaustavljanje i kočenje",
+      "instructions": "Ponavljaj naprijed 25, 50 i 100 % PWM po 500 ms, EN LOW/slobodno 300 ms, natrag 50 % 600 ms pa kočenje 500 ms (oba IN jednaka, EN HIGH). L298N: spremljeni VS=6 V, VSS=5 V, pad mosta 2 V, motor 6 V, EN jumperi uklonjeni i masa zajednička. Provjeravač u zasebnoj kopiji bira VS=5,6, 6,0 ili 6,8 V; očekuje isti duty i prosječni napon (VS−2 V)×potpisani duty. Slobodno stanje je Hi-Z, a kočenje 0 V. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Za pasivni ton dopušten je duty veći od 15 % i manji od 85 %. Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan stvarni upravljački i energetski put do svih zadanih aktuatora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan električni izlaz i trajanje svih faza prvoga ciklusa",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Još dva potpuna ciklusa, krajevi raspona i istodobni izlazi bez sukoba timera",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24F.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24F.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi, biblioteka ili algoritam uz isti električni izlaz i objavljeni vremenski slijed.",
+          "Električno ekvivalentan raspored, drugi valjani GPIO i preuređene oznake komponenti.",
+          "Konzola i nazivi varijabli nisu uvjet; dopušten je program bez ispisa."
+        ],
+        "output": "Stvarni kontakti i struja LED-a, frekvencija i duty, servo impuls i kut te potpisani prosječni napon motora.",
+        "units": {
+          "time": "ms",
+          "pulse": "µs",
+          "frequency": "Hz",
+          "angle": "stupnjevi",
+          "voltage": "V",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 9100,
+          "cycleDurationMs": 2900,
+          "cycles": 3,
+          "startupAllowanceMs": 250,
+          "stepToleranceMs": 80,
+          "settleToleranceMs": 60,
+          "frequencyRelativeTolerance": 0.025,
+          "servoFrequencyToleranceHz": 1,
+          "pulseToleranceUs": 20,
+          "angleToleranceDeg": 4,
+          "voltageToleranceV": 0.18,
+          "motorSupplyVolts": [
+            5.6,
+            6,
+            6.8
+          ],
+          "seededEnvironment": true,
+          "toneDutyMin": 0.15,
+          "toneDutyMax": 0.85
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Signal and energy-path faults are checked in separate saved copies. Stop, repair and restart is allowed; no hidden demand for live recovery. No mechanical torque, RPM or coil-current model."
+      }
+    },
+    {
+      "id": "24F-dualDrive@1",
+      "taskKey": "actuators/dualDrive",
+      "kind": "actuator-output",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "L298N: dva neovisna kanala",
+      "instructions": "Ponavljaj istodobno motor A naprijed 50 % i B natrag 75 % tijekom 800 ms; zatim A naprijed 100 % i B slobodno/ENB LOW tijekom 800 ms. Kanali se mjere odvojeno i istodobno. VS=6 V, VSS=5 V, pad mosta 2 V, motori 6 V, oba EN jumpera uklonjena. U privatnoj kopiji VS je 5,6, 6,0 ili 6,8 V; prosječni napon svakog motora mora pratiti stvarni duty i polaritet. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Za pasivni ton dopušten je duty veći od 15 % i manji od 85 %. Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan stvarni upravljački i energetski put do svih zadanih aktuatora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan električni izlaz i trajanje svih faza prvoga ciklusa",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Još dva potpuna ciklusa, krajevi raspona i istodobni izlazi bez sukoba timera",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24F.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24F.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi, biblioteka ili algoritam uz isti električni izlaz i objavljeni vremenski slijed.",
+          "Električno ekvivalentan raspored, drugi valjani GPIO i preuređene oznake komponenti.",
+          "Konzola i nazivi varijabli nisu uvjet; dopušten je program bez ispisa."
+        ],
+        "output": "Stvarni kontakti i struja LED-a, frekvencija i duty, servo impuls i kut te potpisani prosječni napon motora.",
+        "units": {
+          "time": "ms",
+          "pulse": "µs",
+          "frequency": "Hz",
+          "angle": "stupnjevi",
+          "voltage": "V",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 5200,
+          "cycleDurationMs": 1600,
+          "cycles": 3,
+          "startupAllowanceMs": 250,
+          "stepToleranceMs": 80,
+          "settleToleranceMs": 60,
+          "frequencyRelativeTolerance": 0.025,
+          "servoFrequencyToleranceHz": 1,
+          "pulseToleranceUs": 20,
+          "angleToleranceDeg": 4,
+          "voltageToleranceV": 0.18,
+          "motorSupplyVolts": [
+            5.6,
+            6,
+            6.8
+          ],
+          "seededEnvironment": true,
+          "toneDutyMin": 0.15,
+          "toneDutyMax": 0.85
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Signal and energy-path faults are checked in separate saved copies. Stop, repair and restart is allowed; no hidden demand for live recovery. No mechanical torque, RPM or coil-current model."
+      }
+    },
+    {
+      "id": "24F-servoMotorTone@1",
+      "taskKey": "actuators/servoMotorTone",
+      "kind": "actuator-output",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "Servo, motor i ton: istodobni izlazi i timeri",
+      "instructions": "Istodobno održavaj motor A naprijed 50 %, pasivni piezo 880 Hz te SG90 naizmjenično 45 i 135 stupnjeva po 600 ms. SG90: 50 Hz, 1250/1750 µs i kalibracija 1000–2000 µs. Motor: VS=6 V, VSS=5 V, pad 2 V, 6 V motor, EN jumperi uklonjeni; privatna kopija bira VS=5,6, 6,0 ili 6,8 V. AVR valjan primjer koristi Servo/Timer1 na D8, PWM/Timer0 na D5 i tone/Timer2 na D4. PWM D9/D10 sukobljava se sa Servom, D3/D11 s tone. Na S3 se očekuju neovisni LEDC izlazi; AVR ograničenja ne prenose se na S3. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Za pasivni ton dopušten je duty veći od 15 % i manji od 85 %. Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan stvarni upravljački i energetski put do svih zadanih aktuatora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan električni izlaz i trajanje svih faza prvoga ciklusa",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Još dva potpuna ciklusa, krajevi raspona i istodobni izlazi bez sukoba timera",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24F.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24F.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi, biblioteka ili algoritam uz isti električni izlaz i objavljeni vremenski slijed.",
+          "Električno ekvivalentan raspored, drugi valjani GPIO i preuređene oznake komponenti.",
+          "Konzola i nazivi varijabli nisu uvjet; dopušten je program bez ispisa."
+        ],
+        "output": "Stvarni kontakti i struja LED-a, frekvencija i duty, servo impuls i kut te potpisani prosječni napon motora.",
+        "units": {
+          "time": "ms",
+          "pulse": "µs",
+          "frequency": "Hz",
+          "angle": "stupnjevi",
+          "voltage": "V",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 4000,
+          "cycleDurationMs": 1200,
+          "cycles": 3,
+          "startupAllowanceMs": 250,
+          "stepToleranceMs": 80,
+          "settleToleranceMs": 60,
+          "frequencyRelativeTolerance": 0.025,
+          "servoFrequencyToleranceHz": 1,
+          "pulseToleranceUs": 20,
+          "angleToleranceDeg": 4,
+          "voltageToleranceV": 0.18,
+          "motorSupplyVolts": [
+            5.6,
+            6,
+            6.8
+          ],
+          "seededEnvironment": true,
+          "toneDutyMin": 0.15,
+          "toneDutyMax": 0.85
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Signal and energy-path faults are checked in separate saved copies. Stop, repair and restart is allowed; no hidden demand for live recovery. No mechanical torque, RPM or coil-current model."
+      }
+    }
+  ]
+}

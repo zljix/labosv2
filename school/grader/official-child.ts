@@ -11,6 +11,7 @@ import {isAnalogContract,createAnalogCheck} from './analog';
 import {isSensorContract,createSensorCheck} from './sensors';
 import {isEventContract,createEventCheck} from './events';
 import {isActuatorContract,createActuatorCheck} from './actuators';
+import {isStepperContract,createStepperCheck} from './steppers';
 
 let raw='';for await(const chunk of process.stdin){raw+=chunk;if(Buffer.byteLength(raw)>4194304)throw Error('Prevelika snimka.');}
 const {project:input,artifact,profile,seed}=JSON.parse(raw),project=parseProject(input);
@@ -24,8 +25,9 @@ const analogCheck=isAnalogContract(profile)?createAnalogCheck(config,profile,see
 const sensorCheck=isSensorContract(profile)?createSensorCheck(config,profile,seed):null;
 const eventCheck=isEventContract(profile)?createEventCheck(config,profile,seed,backend):null;
 const actuatorCheck=isActuatorContract(profile)?createActuatorCheck(config,profile,seed):null;
-const extendedCheck=actuatorCheck??eventCheck??sensorCheck??analogCheck;
-const protocolClock=!!(sensorCheck||eventCheck);
+const stepperCheck=isStepperContract(profile)?createStepperCheck(config,profile,seed):null;
+const extendedCheck=stepperCheck??actuatorCheck??eventCheck??sensorCheck??analogCheck;
+const protocolClock=!!(sensorCheck||eventCheck||stepperCheck);
 // ADC receives a voltage, never a fabricated ADC return value. S3's 11 dB
 // transfer saturates at 3.1 V, whereas the Uno/Nano full scale is 5 V.
 const thresholdPosition=backend!=='avr'?3.1/3.3*2048/4095:512/1023;

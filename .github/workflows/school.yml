@@ -65,6 +65,7 @@ jobs:
           CREATE DATABASE labosv2_test_events CHARACTER SET utf8mb4;
           CREATE DATABASE labosv2_test_actuators CHARACTER SET utf8mb4;
           CREATE DATABASE labosv2_test_displays CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_environment CHARACTER SET utf8mb4;
           CREATE DATABASE labosv2_test_steppers CHARACTER SET utf8mb4;
           GRANT ALL ON labosv2_test_classes.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_portal.* TO 'labosv2_ci'@'%';
@@ -81,6 +82,7 @@ jobs:
           GRANT ALL ON labosv2_test_events.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_actuators.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_displays.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_environment.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_steppers.* TO 'labosv2_ci'@'%';
           SQL
       - name: Pripremi Linux izolaciju
@@ -182,6 +184,11 @@ jobs:
         env:
           LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_displays;charset=utf8mb4
           LAB_TEST_DB_USER: labosv2_ci
+      - name: Provjeri svih osam 24I dodjela, bodove i zaključavanje
+        run: npm run test:school-environment-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_environment;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
       - name: Pokus s 30 učenika, stvarnim PHP/MySQL i dva privatna provjeravača
         run: npm run test:school-load
         env:
@@ -252,7 +259,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: Labosv2-24H-Dokazi
+          name: Labosv2-24I-Dokazi
           path: |
             docs/stage24ab-evidence/
             docs/stage24c-evidence/
@@ -260,12 +267,14 @@ jobs:
             docs/stage24e-evidence/
             docs/stage24f-evidence/
             docs/stage24g-evidence/
+            docs/stage24h-evidence/
+            docs/stage24i-evidence/
             docs/stage23i-evidence/
           if-no-files-found: error
           retention-days: 30
       - uses: actions/upload-artifact@v4
         with:
-          name: Labosv2-24H-Skolski-paket
+          name: Labosv2-24I-Skolski-paket
           path: release/*.zip
           if-no-files-found: error
           retention-days: 30

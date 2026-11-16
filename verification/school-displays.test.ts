@@ -17,7 +17,7 @@ test.after(()=>{mkdirSync('docs/stage24h-evidence',{recursive:true});writeFileSy
 test('24H publishes eight device-memory contracts and preserves all 43 previous profiles',()=>{
  const registry=JSON.parse(readFileSync('school/grader/profiles.json','utf8'));
  assert.deepEqual(registry.profiles.slice(0,43),JSON.parse(readFileSync('verification/fixtures/24g-grading-profiles.json','utf8')).profiles);
- assert.equal(displayProfiles.length,8);assert.equal(gradingCoverage('test').summary.supported,176);
+ assert.equal(displayProfiles.length,8);assert(gradingCoverage('test').summary.supported>=176);
  for(const p of displayProfiles){assert.equal(p.checkerVersion,'24H.1');assert.deepEqual(p.criteria.map(c=>c.maxPoints),[3,5,2]);
   for(const t of p.targets)assert.equal(gradingSupport(p.taskKey,t).profileId,p.id);}
 });

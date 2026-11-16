@@ -24,3 +24,7 @@ docs/stage24g-evidence/mysql-steppers.json
 # Detalji zaslonskog prihvata ostaju u privatnim CI artefaktima i paketu.
 docs/stage24h-evidence/displays-*.json
 docs/stage24h-evidence/mysql-displays.json
+
+# Detaljni sintetski prihvat 24I ostaje u CI artefaktima i školskom paketu.
+docs/stage24i-evidence/environment-*.json
+docs/stage24i-evidence/mysql-environment.json

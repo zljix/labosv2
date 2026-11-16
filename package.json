@@ -1,6 +1,6 @@
 {
   "name": "esp32-micropython-lab",
-  "version": "0.14.6-beta.1",
+  "version": "0.14.7-beta.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -92,7 +92,9 @@
     "test:school-steppers": "node --import tsx --test verification/school-steppers.test.ts",
     "test:school-steppers-api": "node --import tsx --test verification/school-steppers-api.test.mjs",
     "test:school-displays": "node --import tsx --test verification/school-displays.test.ts",
-    "test:school-displays-api": "node --import tsx --test verification/school-displays-api.test.mjs"
+    "test:school-displays-api": "node --import tsx --test verification/school-displays-api.test.mjs",
+    "test:school-environment": "node --import tsx --test verification/school-environment.test.ts",
+    "test:school-environment-api": "node --import tsx --test verification/school-environment-api.test.mjs"
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.1",

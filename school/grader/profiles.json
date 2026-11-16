@@ -1,5 +1,5 @@
 {
-  "checkerVersion": "24H.1",
+  "checkerVersion": "24I.1",
   "profiles": [
     {
       "id": "23E-button-led@1",
@@ -4714,6 +4714,269 @@
           "format": "labosv2-display-oracles@1",
           "sha256": "97474343a6892e9fce389cce1ff23a6257df2e956ea886bd6681d56a53227499",
           "file": "school/grader/display-oracles.json"
+        }
+      }
+    },
+    {
+      "id": "24I-regulator@1",
+      "taskKey": "regulator/regulator",
+      "kind": "environment-system",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "AHT10 → OLED → servo: histereza i svježi podaci",
+      "instructions": "Etape po 3000 ms. Osnovni slijed 24,29,27,25,27,29 °C daje 0,90,90,0,0,90°. Nastavak: 25,9998;27,9998;28;26;25,9998;26,0002;28,0002;24 °C. RH naizmjence 35 i 65 %, sjeme bira prvi redoslijed. Otvaraj na dekodirano T≥28, zatvaraj na T≤26, između čuvaj stanje. AHT10 kodira round((T+50)·2^20/200); nominalnih 26 daje oko 26,000023 °C pa ostaje prethodno stanje do nižeg predstavljivog uzorka. Prag primijeni prije zaokruživanja za prikaz. Prvo novo očitanje do 2300 ms, daljnji razmak do 2400 ms. Kut ±2°, 50±2 Hz; nakon 2300 ms mora ostati ispravan. OLED T u pojasu y=0..13; RH y=14..27 (S3 C++ y=16..23); MicroPython font visine 8 koristi y=0..7 i y=14..21. Prikaz novog para stabilan najmanje 100 ms u svakoj etapi. Kriteriji: 3 boda stvarni napajani put do AHT10, OLED-a i serva; 5 osnovni slijed sa svježim T/RH, pikselima i kutom; 2 cijeli nastavak s oba smjera i granicama. Svaki senzor mora dati najmanje jedno novo dovršeno očitanje u svakoj etapi; ponovljeni registar nije novi uzorak. OLED 128×64 vrednuje se iz primljenih piksela, nikad iz konzole ili lokalnog spremnika. T i RH prikazuju se s jednom decimalom, tlak na zaslonu u hPa s jednom decimalom. Dopušteni su drugi algoritmi, nazivi, valjani GPIO, pomaknuti tekst unutar objavljenih vodoravnih pojaseva i električno ekvivalentan raspored. Zadrži font početnog primjera: framebuf 8×8 na MicroPythonu, U8g2 6×10 na AVR-u, LabOLED 5×7 na S3 C++. Slobodni dijelovi slike i otvoreni odgovori ne donose automatske bodove. Stop, popravak i novo pokretanje dopušteni su.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Napajani AHT10/OLED put, novo očitanje i stvarni servo impuls",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Šest osnovnih promjena: nova očitanja, OLED i kut uz histerezu",
+          "maxPoints": 5
+        },
+        {
+          "id": "continuation",
+          "description": "Granični uzorci, oba smjera histereze i završni povrat",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24I.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24I.1",
+        "observation": "independent-fresh-I2C-measurements-received-OLED-pixels-and-servo-pulses",
+        "allowedAlternatives": [
+          "Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored.",
+          "Pomak teksta unutar objavljenog pojasa uz font početnog primjera.",
+          "Slobodni dijelovi slike i konzola regulatora ne utječu na rezultat."
+        ],
+        "output": "Nova očitanja po identitetu senzora, primljeni OLED pikseli i stvarni servo impulsi.",
+        "units": {
+          "time": "ms",
+          "temperature": "°C",
+          "humidity": "% RH",
+          "pressure": "Pa",
+          "screenPressure": "hPa",
+          "angle": "deg"
+        },
+        "scenario": {
+          "stageDurationMs": 3000,
+          "responseDeadlineMs": 2300,
+          "maximumIntervalMs": 2400,
+          "sampleSettleMs": 100,
+          "minimumStableMs": 100,
+          "observationStepMs": 50,
+          "temperatureToleranceC": 0.3,
+          "humidityTolerance": 0.2,
+          "pressureTolerancePa": 150,
+          "servoAngleToleranceDeg": 2,
+          "servoFrequencyToleranceHz": 2,
+          "basicStages": 6,
+          "lowerThresholdC": 26,
+          "upperThresholdC": 28,
+          "temperatures": [
+            24,
+            29,
+            27,
+            25,
+            27,
+            29,
+            25.9998,
+            27.9998,
+            28,
+            26,
+            25.9998,
+            26.0002,
+            28.0002,
+            24
+          ],
+          "humidities": [
+            35,
+            65
+          ],
+          "specification": "Etape po 3000 ms. Osnovni slijed 24,29,27,25,27,29 °C daje 0,90,90,0,0,90°. Nastavak: 25,9998;27,9998;28;26;25,9998;26,0002;28,0002;24 °C. RH naizmjence 35 i 65 %, sjeme bira prvi redoslijed. Otvaraj na dekodirano T≥28, zatvaraj na T≤26, između čuvaj stanje. AHT10 kodira round((T+50)·2^20/200); nominalnih 26 daje oko 26,000023 °C pa ostaje prethodno stanje do nižeg predstavljivog uzorka. Prag primijeni prije zaokruživanja za prikaz. Prvo novo očitanje do 2300 ms, daljnji razmak do 2400 ms. Kut ±2°, 50±2 Hz; nakon 2300 ms mora ostati ispravan. OLED T u pojasu y=0..13; RH y=14..27 (S3 C++ y=16..23); MicroPython font visine 8 koristi y=0..7 i y=14..21. Prikaz novog para stabilan najmanje 100 ms u svakoj etapi. Kriteriji: 3 boda stvarni napajani put do AHT10, OLED-a i serva; 5 osnovni slijed sa svježim T/RH, pikselima i kutom; 2 cijeli nastavak s oba smjera i granicama.",
+          "minimumFreshReads": 1
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Prekid SDA/SCL ili napajanja pojedinog uređaja, pogrešna adresa i servo signal ispituju se u zasebnoj kopiji. Stop, popravak i novo pokretanje dopušteni su. Model ne potvrđuje fizičku točnost, šum, struju i moment serva.",
+        "visualOracle": {
+          "format": "labosv2-environment-fonts@1",
+          "sha256": "c99cfa5d3362059e313e9d9545cfa21c272622a25ab5b6fc5bc38fa5e19a16c8",
+          "file": "school/grader/environment-fonts.json"
+        }
+      }
+    },
+    {
+      "id": "24I-weather@1",
+      "taskKey": "weather/weather",
+      "kind": "environment-system",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "Meteorološka stanica: tri neovisna senzora i OLED",
+      "instructions": "Šest etapa po 8000 ms: prvi okoliš, promjena samo AM2320, samo BMP180, samo BMP280, drugi okoliš i povrat. Sjeme može zamijeniti prvi/drugi okoliš. Okoliš A: BMP180 12 °C/93000 Pa, BMP280 32 °C/104000 Pa, AM2320 22 °C/35 % RH. B: BMP180 42 °C/107000 Pa, BMP280 8 °C/88000 Pa, AM2320 36 °C/75 % RH. Prvo novo očitanje do 5500 ms, daljnji razmak do 3000 ms. AM2320 smije vratiti prethodni uzorak tijekom tog početnog roka. Ispis svake nove vrijednosti nosi identitet BMP180/BMP280/AM2320 te T i P u Pa odnosno T i RH; prihvaćen je imenovani T=/P=/RH= ili pozicijski format početnog S3 primjera. T ±0,3 °C, P ±150 Pa, RH ±0,2 %. OLED na MicroPythonu/AVR-u: BMP180 hPa u pojasu y=0..13, BMP280 hPa y=14..27, AM2320 T y=28..41 i RH y=42..55; MicroPython zadržava 8-pikselne retke od y=0,14,28,42. S3 C++ početni prikaz ostaje BMP280 T y=0..7 i BMP280 hPa y=16..23. Prikaz stabilan najmanje 100 ms u svakoj etapi. Kriteriji: 3 boda napajanje, stvarni put i očitanje svakog senzora te upis OLED-a; 5 sva neovisna nova mjerenja i pripadni ispisi kroz šest etapa; 2 odgovarajući primljeni OLED pikseli kroz cijeli pokus. Svaki senzor mora dati najmanje dva nova dovršena očitanja u svakoj etapi; ponovljeni registar nije novi uzorak. OLED 128×64 vrednuje se iz primljenih piksela, nikad iz konzole ili lokalnog spremnika. T i RH prikazuju se s jednom decimalom, tlak na zaslonu u hPa s jednom decimalom. Dopušteni su drugi algoritmi, nazivi, valjani GPIO, pomaknuti tekst unutar objavljenih vodoravnih pojaseva i električno ekvivalentan raspored. Zadrži font početnog primjera: framebuf 8×8 na MicroPythonu, U8g2 6×10 na AVR-u, LabOLED 5×7 na S3 C++. Slobodni dijelovi slike i otvoreni odgovori ne donose automatske bodove. Stop, popravak i novo pokretanje dopušteni su.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Napajani put i stvarni prijenosi tri senzora i OLED-a",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Tri neovisna nova mjerenja i pripadni ispisi u svih šest etapa",
+          "maxPoints": 5
+        },
+        {
+          "id": "continuation",
+          "description": "Nove vrijednosti u stvarnim OLED pikselima kroz promjene i povrat",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24I.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24I.1",
+        "observation": "independent-fresh-I2C-measurements-received-OLED-pixels-and-servo-pulses",
+        "allowedAlternatives": [
+          "Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored.",
+          "Pomak teksta unutar objavljenog pojasa uz font početnog primjera.",
+          "Slobodni dijelovi slike i konzola regulatora ne utječu na rezultat."
+        ],
+        "output": "Nova očitanja po identitetu senzora, primljeni OLED pikseli i stvarni servo impulsi.",
+        "units": {
+          "time": "ms",
+          "temperature": "°C",
+          "humidity": "% RH",
+          "pressure": "Pa",
+          "screenPressure": "hPa",
+          "angle": "deg"
+        },
+        "scenario": {
+          "stageDurationMs": 8000,
+          "responseDeadlineMs": 5500,
+          "maximumIntervalMs": 3000,
+          "sampleSettleMs": 100,
+          "minimumStableMs": 100,
+          "observationStepMs": 50,
+          "temperatureToleranceC": 0.3,
+          "humidityTolerance": 0.2,
+          "pressureTolerancePa": 150,
+          "servoAngleToleranceDeg": 2,
+          "servoFrequencyToleranceHz": 2,
+          "environments": [
+            {
+              "bmp180": {
+                "temperature": 12,
+                "pressure": 93000
+              },
+              "bmp280": {
+                "temperature": 32,
+                "pressure": 104000
+              },
+              "am2320": {
+                "temperature": 22,
+                "humidity": 35
+              }
+            },
+            {
+              "bmp180": {
+                "temperature": 42,
+                "pressure": 107000
+              },
+              "bmp280": {
+                "temperature": 8,
+                "pressure": 88000
+              },
+              "am2320": {
+                "temperature": 36,
+                "humidity": 75
+              }
+            }
+          ],
+          "specification": "Šest etapa po 8000 ms: prvi okoliš, promjena samo AM2320, samo BMP180, samo BMP280, drugi okoliš i povrat. Sjeme može zamijeniti prvi/drugi okoliš. Okoliš A: BMP180 12 °C/93000 Pa, BMP280 32 °C/104000 Pa, AM2320 22 °C/35 % RH. B: BMP180 42 °C/107000 Pa, BMP280 8 °C/88000 Pa, AM2320 36 °C/75 % RH. Prvo novo očitanje do 5500 ms, daljnji razmak do 3000 ms. AM2320 smije vratiti prethodni uzorak tijekom tog početnog roka. Ispis svake nove vrijednosti nosi identitet BMP180/BMP280/AM2320 te T i P u Pa odnosno T i RH; prihvaćen je imenovani T=/P=/RH= ili pozicijski format početnog S3 primjera. T ±0,3 °C, P ±150 Pa, RH ±0,2 %. OLED na MicroPythonu/AVR-u: BMP180 hPa u pojasu y=0..13, BMP280 hPa y=14..27, AM2320 T y=28..41 i RH y=42..55; MicroPython zadržava 8-pikselne retke od y=0,14,28,42. S3 C++ početni prikaz ostaje BMP280 T y=0..7 i BMP280 hPa y=16..23. Prikaz stabilan najmanje 100 ms u svakoj etapi. Kriteriji: 3 boda napajanje, stvarni put i očitanje svakog senzora te upis OLED-a; 5 sva neovisna nova mjerenja i pripadni ispisi kroz šest etapa; 2 odgovarajući primljeni OLED pikseli kroz cijeli pokus.",
+          "minimumFreshReads": 2
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Prekid SDA/SCL ili napajanja pojedinog uređaja, pogrešna adresa i servo signal ispituju se u zasebnoj kopiji. Stop, popravak i novo pokretanje dopušteni su. Model ne potvrđuje fizičku točnost, šum, struju i moment serva.",
+        "visualOracle": {
+          "format": "labosv2-environment-fonts@1",
+          "sha256": "c99cfa5d3362059e313e9d9545cfa21c272622a25ab5b6fc5bc38fa5e19a16c8",
+          "file": "school/grader/environment-fonts.json"
         }
       }
     }

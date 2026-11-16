@@ -59,7 +59,7 @@ test('24G alternate MicroPython, reordered components and a remapped STEP GPIO p
 });
 for(const target of ['micropython','s3-cpp','uno','nano'] as UrsTarget[])test(`24G ${target}: supply boundaries, signal, energy and coil faults`,{skip:selected(target),timeout:600000},async()=>{
   for(const p of stepperProfiles){
-    for(const [seed,voltage]of [['0'.repeat(64),8],['2'.repeat(64),35]] as const){const r=await run(await starter(p.taskKey,target),p,{root},seed);assert.equal(r.points,10,JSON.stringify(r));assert.equal(r.samples[0].motorSupplyV,voltage);}
+    for(const [seed,voltage]of [['0'.repeat(64),8],['00000002'+'0'.repeat(56),35]] as const){const r=await run(await starter(p.taskKey,target),p,{root},seed);assert.equal(r.points,10,JSON.stringify(r));assert.equal(r.samples[0].motorSupplyV,voltage);}
     for(const pin of ['STEP','VMOT','1A']){
       const project=await starter(p.taskKey,target);if(project.circuit.kind!=='editable')throw Error('editable');
       const d=project.circuit.components.find(c=>c.kind==='a4988')!;

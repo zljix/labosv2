@@ -1,5 +1,5 @@
 {
-  "checkerVersion": "24AB.1",
+  "checkerVersion": "24E.1",
   "profiles": [
     {
       "id": "23E-button-led@1",
@@ -2142,6 +2142,634 @@
           }
         },
         "faultPolicy": "Separate seeded fault phases; failures never replace measurements with zero; recovery is required in error variants."
+      }
+    },
+    {
+      "id": "24E-encoderRaw@1",
+      "taskKey": "encoder/encoderRaw",
+      "kind": "event-input",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "KY-040: sirovi CLK/DT/SW",
+      "instructions": "Ispisuj RAW CLK=<0|1> DT=<0|1> SW=<0|1> pri svakoj promjeni. CW je 11→01→00→10→11, CCW obrnuto. Jedan korak ima četiri brida, razmak je 100 ms. SW je aktivno LOW; koristi pull-up. Svaki novi kontakt prikaži unutar 80 ms (dopušteno odstupanje koraka 10 ms). Promatraju se tri osnovne faze, pritisak/otpuštanje SW i povratni smjer. Ne traži se ispis svakog poskoka u drugim varijantama.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+          "maxPoints": 5
+        },
+        {
+          "id": "recovery",
+          "description": "SW reset i novi koraci u oba smjera",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24E.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24E.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli, druga biblioteka ili ekvivalentan algoritam uz objavljeni izlaz.",
+          "Električno ekvivalentan raspored, valjan GPIO i vanjski pull-up.",
+          "IR TX: dodatni repeat okviri i izostanak konzolnog ispisa su dopušteni."
+        ],
+        "output": "RAW CLK= DT= SW=; ENC P= / ENC RESET P=0; NEC A= C= R= i impulsni zapis. Za IR LED/TX mjerodavan je električni izlaz.",
+        "units": {
+          "pulse": "µs",
+          "position": "puni Gray koraci",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 2000,
+          "responseDeadlineMs": 80,
+          "stepToleranceMs": 10,
+          "pulseToleranceUs": 150,
+          "dutyTolerance": 0.025,
+          "seededEnvironment": true,
+          "encoderEdgeMs": 100,
+          "bounceOffsetsUs": [
+            0,
+            200,
+            400,
+            600,
+            800
+          ],
+          "repeatPeriodUs": 110000,
+          "faults": [
+            "direction-change",
+            "switch-reset"
+          ],
+          "stimulusDelayMs": 40
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Private deterministic scenario; switch reset affects program count only. IR blocking preserves source and returns to the saved receiver state."
+      }
+    },
+    {
+      "id": "24E-ky040@1",
+      "taskKey": "encoder/ky040",
+      "kind": "event-input",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "KY-040: programski brojač i reset",
+      "instructions": "Brojač počinje od 0 neovisno o mehaničkom položaju. CW dodaje 1, CCW oduzima 1 po cijelom Gray ciklusu; ispisuj ENC P=<cijeli broj> za svaki korak. SW nakon 20 ms vraća samo programski brojač i ispisuje ENC RESET P=0. Razmak bridova je 20 ms; nakon završetka koraka ispiši rezultat unutar 80 ms. Faze traju 2000 ms; pritisak je odvojen od vrtnje. Nisu zadani nazivi varijabli ni biblioteka. Spori polling može izgubiti bridove i tada ne ostvaruje funkcionalni kriterij.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+          "maxPoints": 5
+        },
+        {
+          "id": "recovery",
+          "description": "SW reset i novi koraci u oba smjera",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24E.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24E.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli, druga biblioteka ili ekvivalentan algoritam uz objavljeni izlaz.",
+          "Električno ekvivalentan raspored, valjan GPIO i vanjski pull-up.",
+          "IR TX: dodatni repeat okviri i izostanak konzolnog ispisa su dopušteni."
+        ],
+        "output": "RAW CLK= DT= SW=; ENC P= / ENC RESET P=0; NEC A= C= R= i impulsni zapis. Za IR LED/TX mjerodavan je električni izlaz.",
+        "units": {
+          "pulse": "µs",
+          "position": "puni Gray koraci",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 2000,
+          "responseDeadlineMs": 80,
+          "stepToleranceMs": 10,
+          "pulseToleranceUs": 150,
+          "dutyTolerance": 0.025,
+          "seededEnvironment": true,
+          "encoderEdgeMs": 20,
+          "bounceOffsetsUs": [
+            0,
+            200,
+            400,
+            600,
+            800
+          ],
+          "repeatPeriodUs": 110000,
+          "faults": [
+            "direction-change",
+            "switch-reset"
+          ],
+          "stimulusDelayMs": 40
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Private deterministic scenario; switch reset affects program count only. IR blocking preserves source and returns to the saved receiver state."
+      }
+    },
+    {
+      "id": "24E-encoderBounce@1",
+      "taskKey": "encoder/encoderBounce",
+      "kind": "event-input",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "KY-040: Gray dekoder uz poskakivanje",
+      "instructions": "Jednaka pravila ENC P= i ENC RESET P=0 kao za dekoder: CW +1, CCW −1, SW reset nakon 20 ms, bez pomicanja fizičkog položaja. Razmak bridova je 20 ms. Deterministički poskoci novi/stari/novi/stari/novi nastaju na 0/200/400/600/800 µs. Svaki puni ciklus mora dati jedan neto korak, a rezultat unutar 80 ms od njegova završetka. Faze traju 2000 ms. Ne traži se otpornost na proizvoljne brzine ili stvarni mehanički šum.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+          "maxPoints": 5
+        },
+        {
+          "id": "recovery",
+          "description": "SW reset i novi koraci u oba smjera",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24E.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24E.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli, druga biblioteka ili ekvivalentan algoritam uz objavljeni izlaz.",
+          "Električno ekvivalentan raspored, valjan GPIO i vanjski pull-up.",
+          "IR TX: dodatni repeat okviri i izostanak konzolnog ispisa su dopušteni."
+        ],
+        "output": "RAW CLK= DT= SW=; ENC P= / ENC RESET P=0; NEC A= C= R= i impulsni zapis. Za IR LED/TX mjerodavan je električni izlaz.",
+        "units": {
+          "pulse": "µs",
+          "position": "puni Gray koraci",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 2000,
+          "responseDeadlineMs": 80,
+          "stepToleranceMs": 10,
+          "pulseToleranceUs": 150,
+          "dutyTolerance": 0.025,
+          "seededEnvironment": true,
+          "encoderEdgeMs": 20,
+          "bounceOffsetsUs": [
+            0,
+            200,
+            400,
+            600,
+            800
+          ],
+          "repeatPeriodUs": 110000,
+          "faults": [
+            "direction-change",
+            "switch-reset"
+          ],
+          "stimulusDelayMs": 40
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Private deterministic scenario; switch reset affects program count only. IR blocking preserves source and returns to the saved receiver state."
+      }
+    },
+    {
+      "id": "24E-irPulses@1",
+      "taskKey": "ir/irPulses",
+      "kind": "event-input",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "NEC: impulsi, adresa, naredba i repeat",
+      "instructions": "Dekodiraj stvarne OUT impulse u NEC A=<0–255> C=<0–255> R=<0|1>. Python uz svaki rezultat ispisuje IR PULSES [trajanja u µs]; C++ može ispisati PULSE LEADER=<µs> MARK=<µs> SPACE=<µs> za izmjereno zaglavlje i zadnji bit. Uvod 9000/4500 µs, oznaka 562,5 µs, razmak bita 562,5 ili 1687,5 µs. Repeat ima 9000/2250/562,5 µs, dolazi svakih 110 ms i zadržava zadnju adresu/naredbu. C++ SPACE pri repeat smije ostati iz prethodnog punog okvira. Tolerancija trajanja ±150 µs, novi ispis unutar 180 ms od kraja okvira. Kratki i 220 ms dugi pritisak nose privatno odabrane podatke; pogrešan inverz, pogrešno vrijeme ili blokirana putanja ne smiju dati valjanu naredbu. Povrat veze mora omogućiti novi okvir. Faze traju 700 ms. Polling prijamnik smije izmjeriti preostali dio početnog LOW impulsa u prihvatnom rasponu 6500–9000 µs ako čitanje započne tijekom uvoda; ostala trajanja i dalje moraju pratiti cijeli fizički okvir. Provjeravač odgađa pritisak 40 ms radi početnog smirivanja.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+          "maxPoints": 5
+        },
+        {
+          "id": "recovery",
+          "description": "Odbijanje pogrešnih okvira i obnova prijama",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24E.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24E.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli, druga biblioteka ili ekvivalentan algoritam uz objavljeni izlaz.",
+          "Električno ekvivalentan raspored, valjan GPIO i vanjski pull-up.",
+          "IR TX: dodatni repeat okviri i izostanak konzolnog ispisa su dopušteni."
+        ],
+        "output": "RAW CLK= DT= SW=; ENC P= / ENC RESET P=0; NEC A= C= R= i impulsni zapis. Za IR LED/TX mjerodavan je električni izlaz.",
+        "units": {
+          "pulse": "µs",
+          "position": "puni Gray koraci",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 700,
+          "responseDeadlineMs": 180,
+          "stepToleranceMs": 10,
+          "pulseToleranceUs": 150,
+          "dutyTolerance": 0.025,
+          "seededEnvironment": true,
+          "encoderEdgeMs": 20,
+          "bounceOffsetsUs": [
+            0,
+            200,
+            400,
+            600,
+            800
+          ],
+          "repeatPeriodUs": 110000,
+          "faults": [
+            "inverse",
+            "timing",
+            "blocked"
+          ],
+          "stimulusDelayMs": 40,
+          "leadingPulseCanBePartial": true
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Private deterministic scenario; switch reset affects program count only. IR blocking preserves source and returns to the saved receiver state."
+      }
+    },
+    {
+      "id": "24E-irLED@1",
+      "taskKey": "ir/irLED",
+      "kind": "event-input",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "NEC: upravljanje stvarnim PWM LED izlazom",
+      "instructions": "Prihvati adresu 0. POWER=69 mijenja ugašeno u 50 % i upaljeno u 0 %, samo kod novog okvira. PLUS=70 i MINUS=21 mijenjaju PWM za 10 % po okviru, uključujući repeat, uz ograničenje 0–100 %. Izlaz mora slijediti zadnju naredbu unutar 650 ms od početka faze; faza traje 700 ms, dugi pritisci 220/440/550 ms šalju puni okvir i dva/četiri/pet repeat. Ispituju se obje granice 0 i 100 %, uključujući pokušaj prelaska granice. POWER kod držanja djeluje samo jednom. Tolerancija radnog omjera je ±0,025. Druga adresa, pogrešan inverz/vrijeme i blokirana optička putanja ne smiju mijenjati izlaz. Nakon vraćanja veze nova naredba ponovno djeluje. Vrednuju se stvarni PWM i struja ispravno spojene LED-ice; tekst LED= sam ne donosi bodove.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+          "maxPoints": 5
+        },
+        {
+          "id": "recovery",
+          "description": "Repeat, nevaljani okviri, granice i obnova optičke putanje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24E.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24E.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli, druga biblioteka ili ekvivalentan algoritam uz objavljeni izlaz.",
+          "Električno ekvivalentan raspored, valjan GPIO i vanjski pull-up.",
+          "IR TX: dodatni repeat okviri i izostanak konzolnog ispisa su dopušteni."
+        ],
+        "output": "RAW CLK= DT= SW=; ENC P= / ENC RESET P=0; NEC A= C= R= i impulsni zapis. Za IR LED/TX mjerodavan je električni izlaz.",
+        "units": {
+          "pulse": "µs",
+          "position": "puni Gray koraci",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 700,
+          "responseDeadlineMs": 650,
+          "stepToleranceMs": 10,
+          "pulseToleranceUs": 150,
+          "dutyTolerance": 0.025,
+          "seededEnvironment": true,
+          "encoderEdgeMs": 20,
+          "bounceOffsetsUs": [
+            0,
+            200,
+            400,
+            600,
+            800
+          ],
+          "repeatPeriodUs": 110000,
+          "faults": [
+            "inverse",
+            "timing",
+            "blocked"
+          ],
+          "stimulusDelayMs": 40
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Private deterministic scenario; switch reset affects program count only. IR blocking preserves source and returns to the saved receiver state."
+      }
+    },
+    {
+      "id": "24E-irTransmit@1",
+      "taskKey": "ir/irTransmit",
+      "kind": "event-input",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "NEC: stvarni nositelj i optički TX/RX put",
+      "instructions": "Program ponavljano šalje adresu 0 i izmjenične naredbe 69/70. Nositelj je 34–42 kHz, duty 15–50 %, uz standardni NEC omotač. Svaka faza traje 2500 ms: traže se barem dva potpuna izmjenična okvira na prijamnikovu OUT u prvoj i završnoj fazi. Dodatni valjani repeat okviri su dopušteni, nisu obvezni. U srednjoj fazi provjeravač blokira samo prijamnik: TX nastavlja, OUT ne prima okvire. Obnova putanje vraća nove prijenose. Provjeravaju se stvarni valjani bajtovi, inverzi i impulsi, uz toleranciju omotača ±180 µs za oznake i ±1100 µs za uvod. Konzolni ispis i istodobno dekodiranje u istom programu nisu uvjet. Na AVR-u predajnik koristi stvarni Timer2; S3 koristi LEDC/PWM.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+          "maxPoints": 5
+        },
+        {
+          "id": "recovery",
+          "description": "Nastavak TX-a uz blokirani RX i novi prijam nakon obnove",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24E.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24E.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli, druga biblioteka ili ekvivalentan algoritam uz objavljeni izlaz.",
+          "Električno ekvivalentan raspored, valjan GPIO i vanjski pull-up.",
+          "IR TX: dodatni repeat okviri i izostanak konzolnog ispisa su dopušteni."
+        ],
+        "output": "RAW CLK= DT= SW=; ENC P= / ENC RESET P=0; NEC A= C= R= i impulsni zapis. Za IR LED/TX mjerodavan je električni izlaz.",
+        "units": {
+          "pulse": "µs",
+          "position": "puni Gray koraci",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 2500,
+          "responseDeadlineMs": 180,
+          "stepToleranceMs": 10,
+          "pulseToleranceUs": 150,
+          "dutyTolerance": 0.025,
+          "seededEnvironment": true,
+          "encoderEdgeMs": 20,
+          "bounceOffsetsUs": [
+            0,
+            200,
+            400,
+            600,
+            800
+          ],
+          "repeatPeriodUs": 110000,
+          "faults": [
+            "inverse",
+            "timing",
+            "blocked"
+          ],
+          "stimulusDelayMs": 40
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Private deterministic scenario; switch reset affects program count only. IR blocking preserves source and returns to the saved receiver state."
       }
     }
   ]

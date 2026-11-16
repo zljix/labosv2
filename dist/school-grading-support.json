@@ -1,13 +1,13 @@
 {
   "format": "labosv2-grading-coverage",
   "version": 1,
-  "sourceVersion": "0.14.1-beta.1",
+  "sourceVersion": "0.14.3-beta.1",
   "summary": {
     "themes": 18,
     "variants": 67,
     "combinations": 268,
-    "supported": 52,
-    "unsupported": 216,
+    "supported": 104,
+    "unsupported": 164,
     "introductory": 5
   },
   "rows": [
@@ -1144,16 +1144,32 @@
       "fault": "Zaustavi program, odspoji SDA jednog uređaja, pokreni i zabilježi izostanak/grešku. Vrati spoj i ponovi.",
       "expected": "Očitanja prate pojedinačno zadane okoliše. AM2320 može kasniti jedan ciklus; tlak je pravilno označen jedinicom.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-am2320@1",
+        "checkerVersion": "24D.1",
+        "title": "AM2320: I2C, prethodni uzorak i novo mjerenje",
+        "instructions": "AM2320 na I2C adresi 0x5C, najviše 100 kHz. Očitaj puni odgovor s CRC16 i ispisuj T=<broj> RH=<broj> barem svakih 2300 ms. Senzor vraća prethodni uzorak: nakon promjene okoliša dopušteno je do 4600 ms za prvi novi podatak, zatim razmak najviše 2300 ms. Tolerancije ±0,15 °C i ±0,15 %RH. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "range",
+            "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -1177,16 +1193,32 @@
       "fault": "Zaustavi program, odspoji SDA jednog uređaja, pokreni i zabilježi izostanak/grešku. Vrati spoj i ponovi.",
       "expected": "Očitanja prate pojedinačno zadane okoliše. AM2320 može kasniti jedan ciklus; tlak je pravilno označen jedinicom.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-am2320@1",
+        "checkerVersion": "24D.1",
+        "title": "AM2320: I2C, prethodni uzorak i novo mjerenje",
+        "instructions": "AM2320 na I2C adresi 0x5C, najviše 100 kHz. Očitaj puni odgovor s CRC16 i ispisuj T=<broj> RH=<broj> barem svakih 2300 ms. Senzor vraća prethodni uzorak: nakon promjene okoliša dopušteno je do 4600 ms za prvi novi podatak, zatim razmak najviše 2300 ms. Tolerancije ±0,15 °C i ±0,15 %RH. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "range",
+            "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -1210,16 +1242,32 @@
       "fault": "Zaustavi program, odspoji SDA jednog uređaja, pokreni i zabilježi izostanak/grešku. Vrati spoj i ponovi.",
       "expected": "Očitanja prate pojedinačno zadane okoliše. AM2320 može kasniti jedan ciklus; tlak je pravilno označen jedinicom.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-am2320@1",
+        "checkerVersion": "24D.1",
+        "title": "AM2320: I2C, prethodni uzorak i novo mjerenje",
+        "instructions": "AM2320 na I2C adresi 0x5C, najviše 100 kHz. Očitaj puni odgovor s CRC16 i ispisuj T=<broj> RH=<broj> barem svakih 2300 ms. Senzor vraća prethodni uzorak: nakon promjene okoliša dopušteno je do 4600 ms za prvi novi podatak, zatim razmak najviše 2300 ms. Tolerancije ±0,15 °C i ±0,15 %RH. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "range",
+            "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -1243,16 +1291,32 @@
       "fault": "Zaustavi program, odspoji SDA jednog uređaja, pokreni i zabilježi izostanak/grešku. Vrati spoj i ponovi.",
       "expected": "Očitanja prate pojedinačno zadane okoliše. AM2320 može kasniti jedan ciklus; tlak je pravilno označen jedinicom.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-am2320@1",
+        "checkerVersion": "24D.1",
+        "title": "AM2320: I2C, prethodni uzorak i novo mjerenje",
+        "instructions": "AM2320 na I2C adresi 0x5C, najviše 100 kHz. Očitaj puni odgovor s CRC16 i ispisuj T=<broj> RH=<broj> barem svakih 2300 ms. Senzor vraća prethodni uzorak: nakon promjene okoliša dopušteno je do 4600 ms za prvi novi podatak, zatim razmak najviše 2300 ms. Tolerancije ±0,15 °C i ±0,15 %RH. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "range",
+            "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -2976,16 +3040,32 @@
       "fault": "U Živim ulazima zadaj pogrešan checksum ili timeout pa vrati uredan prijenos. Ako driver čuva prethodni podatak, zabilježi i tu činjenicu.",
       "expected": "Driver provjerava podatke. Nevaljan uzorak označava pogrešku/NaN, a ne novo mjerenje od 0 °C.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-dht11@1",
+        "checkerVersion": "24D.1",
+        "title": "DHT11: cjelobrojna temperatura i vlaga",
+        "instructions": "Jedan DHT11 s vlastitim DATA GPIO-om i vanjskim pull-upom 1–10 kΩ na isti napon kao VCC. Pričekaj stabilizaciju najmanje 1 s, zatim očitavaj valjanih 40 bitova i kontrolni zbroj. Ispisuj T=<broj> RH=<broj>. Profil zaokružuje na cijele brojeve, raspon je 0–50 °C / 20–90 %RH. Prvo novo mjerenje nakon promjene unutar 2400 ms, daljnji razmak do 2300 ms; biblioteka može čuvati rezultat do 2 s. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "range",
+            "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -3009,16 +3089,32 @@
       "fault": "U Živim ulazima zadaj pogrešan checksum ili timeout pa vrati uredan prijenos. Ako driver čuva prethodni podatak, zabilježi i tu činjenicu.",
       "expected": "Driver provjerava podatke. Nevaljan uzorak označava pogrešku/NaN, a ne novo mjerenje od 0 °C.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-dht11@1",
+        "checkerVersion": "24D.1",
+        "title": "DHT11: cjelobrojna temperatura i vlaga",
+        "instructions": "Jedan DHT11 s vlastitim DATA GPIO-om i vanjskim pull-upom 1–10 kΩ na isti napon kao VCC. Pričekaj stabilizaciju najmanje 1 s, zatim očitavaj valjanih 40 bitova i kontrolni zbroj. Ispisuj T=<broj> RH=<broj>. Profil zaokružuje na cijele brojeve, raspon je 0–50 °C / 20–90 %RH. Prvo novo mjerenje nakon promjene unutar 2400 ms, daljnji razmak do 2300 ms; biblioteka može čuvati rezultat do 2 s. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "range",
+            "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -3042,16 +3138,32 @@
       "fault": "U Živim ulazima zadaj pogrešan checksum ili timeout pa vrati uredan prijenos. Ako driver čuva prethodni podatak, zabilježi i tu činjenicu.",
       "expected": "Driver provjerava podatke. Nevaljan uzorak označava pogrešku/NaN, a ne novo mjerenje od 0 °C.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-dht11@1",
+        "checkerVersion": "24D.1",
+        "title": "DHT11: cjelobrojna temperatura i vlaga",
+        "instructions": "Jedan DHT11 s vlastitim DATA GPIO-om i vanjskim pull-upom 1–10 kΩ na isti napon kao VCC. Pričekaj stabilizaciju najmanje 1 s, zatim očitavaj valjanih 40 bitova i kontrolni zbroj. Ispisuj T=<broj> RH=<broj>. Profil zaokružuje na cijele brojeve, raspon je 0–50 °C / 20–90 %RH. Prvo novo mjerenje nakon promjene unutar 2400 ms, daljnji razmak do 2300 ms; biblioteka može čuvati rezultat do 2 s. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "range",
+            "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -3075,16 +3187,32 @@
       "fault": "U Živim ulazima zadaj pogrešan checksum ili timeout pa vrati uredan prijenos. Ako driver čuva prethodni podatak, zabilježi i tu činjenicu.",
       "expected": "Driver provjerava podatke. Nevaljan uzorak označava pogrešku/NaN, a ne novo mjerenje od 0 °C.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-dht11@1",
+        "checkerVersion": "24D.1",
+        "title": "DHT11: cjelobrojna temperatura i vlaga",
+        "instructions": "Jedan DHT11 s vlastitim DATA GPIO-om i vanjskim pull-upom 1–10 kΩ na isti napon kao VCC. Pričekaj stabilizaciju najmanje 1 s, zatim očitavaj valjanih 40 bitova i kontrolni zbroj. Ispisuj T=<broj> RH=<broj>. Profil zaokružuje na cijele brojeve, raspon je 0–50 °C / 20–90 %RH. Prvo novo mjerenje nakon promjene unutar 2400 ms, daljnji razmak do 2300 ms; biblioteka može čuvati rezultat do 2 s. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "range",
+            "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -3108,16 +3236,32 @@
       "fault": "U Živim ulazima zadaj pogrešan checksum ili timeout pa vrati uredan prijenos. Ako driver čuva prethodni podatak, zabilježi i tu činjenicu.",
       "expected": "Driver provjerava podatke. Nevaljan uzorak označava pogrešku/NaN, a ne novo mjerenje od 0 °C.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-dht22@1",
+        "checkerVersion": "24D.1",
+        "title": "DHT22: predznak, desetinke i vlaga",
+        "instructions": "Jedan DHT22 s vanjskim pull-upom 1–10 kΩ, zajedničkom masom i valjanim DATA naponom. Stabilizacija najmanje 2 s i razmak stvarnih prijenosa najmanje 2 s. Ispisuj T=<broj> RH=<broj>, uključujući negativnu temperaturu i desetinke. Raspon −40–80 °C / 0–100 %RH. Prvi novi podatak unutar 2400 ms, daljnji razmak do 2300 ms. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "range",
+            "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -3141,16 +3285,32 @@
       "fault": "U Živim ulazima zadaj pogrešan checksum ili timeout pa vrati uredan prijenos. Ako driver čuva prethodni podatak, zabilježi i tu činjenicu.",
       "expected": "Driver provjerava podatke. Nevaljan uzorak označava pogrešku/NaN, a ne novo mjerenje od 0 °C.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-dht22@1",
+        "checkerVersion": "24D.1",
+        "title": "DHT22: predznak, desetinke i vlaga",
+        "instructions": "Jedan DHT22 s vanjskim pull-upom 1–10 kΩ, zajedničkom masom i valjanim DATA naponom. Stabilizacija najmanje 2 s i razmak stvarnih prijenosa najmanje 2 s. Ispisuj T=<broj> RH=<broj>, uključujući negativnu temperaturu i desetinke. Raspon −40–80 °C / 0–100 %RH. Prvi novi podatak unutar 2400 ms, daljnji razmak do 2300 ms. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "range",
+            "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -3174,16 +3334,32 @@
       "fault": "U Živim ulazima zadaj pogrešan checksum ili timeout pa vrati uredan prijenos. Ako driver čuva prethodni podatak, zabilježi i tu činjenicu.",
       "expected": "Driver provjerava podatke. Nevaljan uzorak označava pogrešku/NaN, a ne novo mjerenje od 0 °C.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-dht22@1",
+        "checkerVersion": "24D.1",
+        "title": "DHT22: predznak, desetinke i vlaga",
+        "instructions": "Jedan DHT22 s vanjskim pull-upom 1–10 kΩ, zajedničkom masom i valjanim DATA naponom. Stabilizacija najmanje 2 s i razmak stvarnih prijenosa najmanje 2 s. Ispisuj T=<broj> RH=<broj>, uključujući negativnu temperaturu i desetinke. Raspon −40–80 °C / 0–100 %RH. Prvi novi podatak unutar 2400 ms, daljnji razmak do 2300 ms. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "range",
+            "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -3207,16 +3383,32 @@
       "fault": "U Živim ulazima zadaj pogrešan checksum ili timeout pa vrati uredan prijenos. Ako driver čuva prethodni podatak, zabilježi i tu činjenicu.",
       "expected": "Driver provjerava podatke. Nevaljan uzorak označava pogrešku/NaN, a ne novo mjerenje od 0 °C.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-dht22@1",
+        "checkerVersion": "24D.1",
+        "title": "DHT22: predznak, desetinke i vlaga",
+        "instructions": "Jedan DHT22 s vanjskim pull-upom 1–10 kΩ, zajedničkom masom i valjanim DATA naponom. Stabilizacija najmanje 2 s i razmak stvarnih prijenosa najmanje 2 s. Ispisuj T=<broj> RH=<broj>, uključujući negativnu temperaturu i desetinke. Raspon −40–80 °C / 0–100 %RH. Prvi novi podatak unutar 2400 ms, daljnji razmak do 2300 ms. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "range",
+            "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -3240,16 +3432,32 @@
       "fault": "U Živim ulazima zadaj pogrešan checksum ili timeout pa vrati uredan prijenos. Ako driver čuva prethodni podatak, zabilježi i tu činjenicu.",
       "expected": "Driver provjerava podatke. Nevaljan uzorak označava pogrešku/NaN, a ne novo mjerenje od 0 °C.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-dhtErrors@1",
+        "checkerVersion": "24D.1",
+        "title": "DHT22: kontrolni zbroj, timeout i oporavak",
+        "instructions": "MicroPython početni primjer namjerno pokušava svakih 300 ms. Za pouzdano bodovano rješenje promijeni razmak na najmanje 2100 ms; C++ biblioteka može označiti prečeste pokušaje kao nevaljane. Zadrži provjeru kontrolnog zbroja i hvatanje pogrešaka. Novi valjani retci T=<broj> RH=<broj> prate okoliš; prvi unutar 2400 ms, daljnji razmak do 2300 ms. Provjera zasebno zadaje nevaljan checksum i timeout, zatim uredan prijenos. Nakon 2400 ms u pogrešci ispisuj jasno nevaljano/error/timeout/NaN, bez brojčanog T= ili zamjene pogreške s 0 °C. Prečesti pokušaji smiju dati pogrešku; nakon oporavka ponovno ispisuj svjež podatak. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "Prepoznate pogreške i oporavak bez lažnog mjerenja",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -3273,16 +3481,32 @@
       "fault": "U Živim ulazima zadaj pogrešan checksum ili timeout pa vrati uredan prijenos. Ako driver čuva prethodni podatak, zabilježi i tu činjenicu.",
       "expected": "Driver provjerava podatke. Nevaljan uzorak označava pogrešku/NaN, a ne novo mjerenje od 0 °C.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-dhtErrors@1",
+        "checkerVersion": "24D.1",
+        "title": "DHT22: kontrolni zbroj, timeout i oporavak",
+        "instructions": "MicroPython početni primjer namjerno pokušava svakih 300 ms. Za pouzdano bodovano rješenje promijeni razmak na najmanje 2100 ms; C++ biblioteka može označiti prečeste pokušaje kao nevaljane. Zadrži provjeru kontrolnog zbroja i hvatanje pogrešaka. Novi valjani retci T=<broj> RH=<broj> prate okoliš; prvi unutar 2400 ms, daljnji razmak do 2300 ms. Provjera zasebno zadaje nevaljan checksum i timeout, zatim uredan prijenos. Nakon 2400 ms u pogrešci ispisuj jasno nevaljano/error/timeout/NaN, bez brojčanog T= ili zamjene pogreške s 0 °C. Prečesti pokušaji smiju dati pogrešku; nakon oporavka ponovno ispisuj svjež podatak. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "Prepoznate pogreške i oporavak bez lažnog mjerenja",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -3306,16 +3530,32 @@
       "fault": "U Živim ulazima zadaj pogrešan checksum ili timeout pa vrati uredan prijenos. Ako driver čuva prethodni podatak, zabilježi i tu činjenicu.",
       "expected": "Driver provjerava podatke. Nevaljan uzorak označava pogrešku/NaN, a ne novo mjerenje od 0 °C.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-dhtErrors@1",
+        "checkerVersion": "24D.1",
+        "title": "DHT22: kontrolni zbroj, timeout i oporavak",
+        "instructions": "MicroPython početni primjer namjerno pokušava svakih 300 ms. Za pouzdano bodovano rješenje promijeni razmak na najmanje 2100 ms; C++ biblioteka može označiti prečeste pokušaje kao nevaljane. Zadrži provjeru kontrolnog zbroja i hvatanje pogrešaka. Novi valjani retci T=<broj> RH=<broj> prate okoliš; prvi unutar 2400 ms, daljnji razmak do 2300 ms. Provjera zasebno zadaje nevaljan checksum i timeout, zatim uredan prijenos. Nakon 2400 ms u pogrešci ispisuj jasno nevaljano/error/timeout/NaN, bez brojčanog T= ili zamjene pogreške s 0 °C. Prečesti pokušaji smiju dati pogrešku; nakon oporavka ponovno ispisuj svjež podatak. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "Prepoznate pogreške i oporavak bez lažnog mjerenja",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -3339,16 +3579,32 @@
       "fault": "U Živim ulazima zadaj pogrešan checksum ili timeout pa vrati uredan prijenos. Ako driver čuva prethodni podatak, zabilježi i tu činjenicu.",
       "expected": "Driver provjerava podatke. Nevaljan uzorak označava pogrešku/NaN, a ne novo mjerenje od 0 °C.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-dhtErrors@1",
+        "checkerVersion": "24D.1",
+        "title": "DHT22: kontrolni zbroj, timeout i oporavak",
+        "instructions": "MicroPython početni primjer namjerno pokušava svakih 300 ms. Za pouzdano bodovano rješenje promijeni razmak na najmanje 2100 ms; C++ biblioteka može označiti prečeste pokušaje kao nevaljane. Zadrži provjeru kontrolnog zbroja i hvatanje pogrešaka. Novi valjani retci T=<broj> RH=<broj> prate okoliš; prvi unutar 2400 ms, daljnji razmak do 2300 ms. Provjera zasebno zadaje nevaljan checksum i timeout, zatim uredan prijenos. Nakon 2400 ms u pogrešci ispisuj jasno nevaljano/error/timeout/NaN, bez brojčanog T= ili zamjene pogreške s 0 °C. Prečesti pokušaji smiju dati pogrešku; nakon oporavka ponovno ispisuj svjež podatak. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "Prepoznate pogreške i oporavak bez lažnog mjerenja",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -3372,16 +3628,32 @@
       "fault": "Zaustavi program, ukloni vanjski DQ pull-up, pokreni i zabilježi posljedicu. Vrati ga i potvrdi valjano očitanje.",
       "expected": "Identiteti ostaju različiti, očitanje prati odabrani senzor, a trajanje pretvorbe ovisi o razlučivosti.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-ds18Multi@1",
+        "checkerVersion": "24D.1",
+        "title": "DS18B20: tri ROM identiteta i neovisna mjerenja",
+        "instructions": "Tri vanjski napajana DS18B20 dijele DQ s jednim vanjskim pull-upom 1–10 kΩ. Pretraži ROM i za svaki senzor ispisuj ROM=<16 heksadekadskih znakova> T=<broj>. Pokreni pretvorbu, pričekaj dovršetak i pročitaj svih 9 bajtova scratchpada s CRC-8. Ne veži identitet uz redoslijed pretrage. Prvo novo očitanje nakon promjene unutar 3200 ms; daljnji razmak do 3000 ms. Svaki ROM mora pratiti svoj okoliš, uključujući promjenu samo jednog senzora. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "range",
+            "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -3405,16 +3677,32 @@
       "fault": "Zaustavi program, ukloni vanjski DQ pull-up, pokreni i zabilježi posljedicu. Vrati ga i potvrdi valjano očitanje.",
       "expected": "Identiteti ostaju različiti, očitanje prati odabrani senzor, a trajanje pretvorbe ovisi o razlučivosti.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-ds18Multi@1",
+        "checkerVersion": "24D.1",
+        "title": "DS18B20: tri ROM identiteta i neovisna mjerenja",
+        "instructions": "Tri vanjski napajana DS18B20 dijele DQ s jednim vanjskim pull-upom 1–10 kΩ. Pretraži ROM i za svaki senzor ispisuj ROM=<16 heksadekadskih znakova> T=<broj>. Pokreni pretvorbu, pričekaj dovršetak i pročitaj svih 9 bajtova scratchpada s CRC-8. Ne veži identitet uz redoslijed pretrage. Prvo novo očitanje nakon promjene unutar 3200 ms; daljnji razmak do 3000 ms. Svaki ROM mora pratiti svoj okoliš, uključujući promjenu samo jednog senzora. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "range",
+            "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -3438,16 +3726,32 @@
       "fault": "Zaustavi program, ukloni vanjski DQ pull-up, pokreni i zabilježi posljedicu. Vrati ga i potvrdi valjano očitanje.",
       "expected": "Identiteti ostaju različiti, očitanje prati odabrani senzor, a trajanje pretvorbe ovisi o razlučivosti.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-ds18Multi@1",
+        "checkerVersion": "24D.1",
+        "title": "DS18B20: tri ROM identiteta i neovisna mjerenja",
+        "instructions": "Tri vanjski napajana DS18B20 dijele DQ s jednim vanjskim pull-upom 1–10 kΩ. Pretraži ROM i za svaki senzor ispisuj ROM=<16 heksadekadskih znakova> T=<broj>. Pokreni pretvorbu, pričekaj dovršetak i pročitaj svih 9 bajtova scratchpada s CRC-8. Ne veži identitet uz redoslijed pretrage. Prvo novo očitanje nakon promjene unutar 3200 ms; daljnji razmak do 3000 ms. Svaki ROM mora pratiti svoj okoliš, uključujući promjenu samo jednog senzora. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "range",
+            "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -3471,16 +3775,32 @@
       "fault": "Zaustavi program, ukloni vanjski DQ pull-up, pokreni i zabilježi posljedicu. Vrati ga i potvrdi valjano očitanje.",
       "expected": "Identiteti ostaju različiti, očitanje prati odabrani senzor, a trajanje pretvorbe ovisi o razlučivosti.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-ds18Multi@1",
+        "checkerVersion": "24D.1",
+        "title": "DS18B20: tri ROM identiteta i neovisna mjerenja",
+        "instructions": "Tri vanjski napajana DS18B20 dijele DQ s jednim vanjskim pull-upom 1–10 kΩ. Pretraži ROM i za svaki senzor ispisuj ROM=<16 heksadekadskih znakova> T=<broj>. Pokreni pretvorbu, pričekaj dovršetak i pročitaj svih 9 bajtova scratchpada s CRC-8. Ne veži identitet uz redoslijed pretrage. Prvo novo očitanje nakon promjene unutar 3200 ms; daljnji razmak do 3000 ms. Svaki ROM mora pratiti svoj okoliš, uključujući promjenu samo jednog senzora. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "range",
+            "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -3504,16 +3824,32 @@
       "fault": "Zaustavi program, ukloni vanjski DQ pull-up, pokreni i zabilježi posljedicu. Vrati ga i potvrdi valjano očitanje.",
       "expected": "Identiteti ostaju različiti, očitanje prati odabrani senzor, a trajanje pretvorbe ovisi o razlučivosti.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-ds18Resolution@1",
+        "checkerVersion": "24D.1",
+        "title": "DS18B20: stvarna razlučivost i dovršena pretvorba",
+        "instructions": "Na jednom DS18B20 ponavljaj postavljanje 9, 10, 11 i 12 bita. Prije pripadnog novog T=<broj> ispiši BITA=<broj> na istom ili neposredno prethodnom retku. Provjera čita stvarnu konfiguraciju i potpuni scratchpad: sama oznaka nije dovoljna. Pričekaj najmanje 93,75 / 187,5 / 375 / 750 ms ili valjan busy bit. Koraci su 0,5 / 0,25 / 0,125 / 0,0625 °C, što je razlučivost. Unutar svake pobude prikaži sva četiri načina. Prvi novi podatak unutar 4500 ms; razmak između novih podataka do 4500 ms. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "range",
+            "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -3537,16 +3873,32 @@
       "fault": "Zaustavi program, ukloni vanjski DQ pull-up, pokreni i zabilježi posljedicu. Vrati ga i potvrdi valjano očitanje.",
       "expected": "Identiteti ostaju različiti, očitanje prati odabrani senzor, a trajanje pretvorbe ovisi o razlučivosti.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-ds18Resolution@1",
+        "checkerVersion": "24D.1",
+        "title": "DS18B20: stvarna razlučivost i dovršena pretvorba",
+        "instructions": "Na jednom DS18B20 ponavljaj postavljanje 9, 10, 11 i 12 bita. Prije pripadnog novog T=<broj> ispiši BITA=<broj> na istom ili neposredno prethodnom retku. Provjera čita stvarnu konfiguraciju i potpuni scratchpad: sama oznaka nije dovoljna. Pričekaj najmanje 93,75 / 187,5 / 375 / 750 ms ili valjan busy bit. Koraci su 0,5 / 0,25 / 0,125 / 0,0625 °C, što je razlučivost. Unutar svake pobude prikaži sva četiri načina. Prvi novi podatak unutar 4500 ms; razmak između novih podataka do 4500 ms. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "range",
+            "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -3570,16 +3922,32 @@
       "fault": "Zaustavi program, ukloni vanjski DQ pull-up, pokreni i zabilježi posljedicu. Vrati ga i potvrdi valjano očitanje.",
       "expected": "Identiteti ostaju različiti, očitanje prati odabrani senzor, a trajanje pretvorbe ovisi o razlučivosti.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-ds18Resolution@1",
+        "checkerVersion": "24D.1",
+        "title": "DS18B20: stvarna razlučivost i dovršena pretvorba",
+        "instructions": "Na jednom DS18B20 ponavljaj postavljanje 9, 10, 11 i 12 bita. Prije pripadnog novog T=<broj> ispiši BITA=<broj> na istom ili neposredno prethodnom retku. Provjera čita stvarnu konfiguraciju i potpuni scratchpad: sama oznaka nije dovoljna. Pričekaj najmanje 93,75 / 187,5 / 375 / 750 ms ili valjan busy bit. Koraci su 0,5 / 0,25 / 0,125 / 0,0625 °C, što je razlučivost. Unutar svake pobude prikaži sva četiri načina. Prvi novi podatak unutar 4500 ms; razmak između novih podataka do 4500 ms. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "range",
+            "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -3603,16 +3971,32 @@
       "fault": "Zaustavi program, ukloni vanjski DQ pull-up, pokreni i zabilježi posljedicu. Vrati ga i potvrdi valjano očitanje.",
       "expected": "Identiteti ostaju različiti, očitanje prati odabrani senzor, a trajanje pretvorbe ovisi o razlučivosti.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-ds18Resolution@1",
+        "checkerVersion": "24D.1",
+        "title": "DS18B20: stvarna razlučivost i dovršena pretvorba",
+        "instructions": "Na jednom DS18B20 ponavljaj postavljanje 9, 10, 11 i 12 bita. Prije pripadnog novog T=<broj> ispiši BITA=<broj> na istom ili neposredno prethodnom retku. Provjera čita stvarnu konfiguraciju i potpuni scratchpad: sama oznaka nije dovoljna. Pričekaj najmanje 93,75 / 187,5 / 375 / 750 ms ili valjan busy bit. Koraci su 0,5 / 0,25 / 0,125 / 0,0625 °C, što je razlučivost. Unutar svake pobude prikaži sva četiri načina. Prvi novi podatak unutar 4500 ms; razmak između novih podataka do 4500 ms. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "range",
+            "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -3636,16 +4020,32 @@
       "fault": "Zaustavi program, ukloni vanjski DQ pull-up, pokreni i zabilježi posljedicu. Vrati ga i potvrdi valjano očitanje.",
       "expected": "Identiteti ostaju različiti, očitanje prati odabrani senzor, a trajanje pretvorbe ovisi o razlučivosti.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-ds18Errors@1",
+        "checkerVersion": "24D.1",
+        "title": "DS18B20: CRC, presence, svježina i oporavak",
+        "instructions": "Jedan vanjski napajan DS18B20. Novo mjerenje zahtijeva dovršenu pretvorbu i svih 9 bajtova s CRC-8. Ispisuj T=<broj>; prvo novo očitanje unutar 3200 ms, daljnji razmak do 3000 ms. Početni registar 85 °C i stari registar smiješ prikazati samo izričito označenima POCETNI REGISTAR / STARI REGISTAR / PRIJE DOVRSETKA. Takvi retci ne donose bodove. Provjera zadaje CRC pogrešku, odspojen DQ i oporavak: nakon 3200 ms pogrešku jasno označi nevaljano/error/CRC/nema presence bez brojčanog T=. Ne pretvaraj je u 0 °C. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "Prepoznate pogreške i oporavak bez lažnog mjerenja",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -3669,16 +4069,32 @@
       "fault": "Zaustavi program, ukloni vanjski DQ pull-up, pokreni i zabilježi posljedicu. Vrati ga i potvrdi valjano očitanje.",
       "expected": "Identiteti ostaju različiti, očitanje prati odabrani senzor, a trajanje pretvorbe ovisi o razlučivosti.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-ds18Errors@1",
+        "checkerVersion": "24D.1",
+        "title": "DS18B20: CRC, presence, svježina i oporavak",
+        "instructions": "Jedan vanjski napajan DS18B20. Novo mjerenje zahtijeva dovršenu pretvorbu i svih 9 bajtova s CRC-8. Ispisuj T=<broj>; prvo novo očitanje unutar 3200 ms, daljnji razmak do 3000 ms. Početni registar 85 °C i stari registar smiješ prikazati samo izričito označenima POCETNI REGISTAR / STARI REGISTAR / PRIJE DOVRSETKA. Takvi retci ne donose bodove. Provjera zadaje CRC pogrešku, odspojen DQ i oporavak: nakon 3200 ms pogrešku jasno označi nevaljano/error/CRC/nema presence bez brojčanog T=. Ne pretvaraj je u 0 °C. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "Prepoznate pogreške i oporavak bez lažnog mjerenja",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -3702,16 +4118,32 @@
       "fault": "Zaustavi program, ukloni vanjski DQ pull-up, pokreni i zabilježi posljedicu. Vrati ga i potvrdi valjano očitanje.",
       "expected": "Identiteti ostaju različiti, očitanje prati odabrani senzor, a trajanje pretvorbe ovisi o razlučivosti.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-ds18Errors@1",
+        "checkerVersion": "24D.1",
+        "title": "DS18B20: CRC, presence, svježina i oporavak",
+        "instructions": "Jedan vanjski napajan DS18B20. Novo mjerenje zahtijeva dovršenu pretvorbu i svih 9 bajtova s CRC-8. Ispisuj T=<broj>; prvo novo očitanje unutar 3200 ms, daljnji razmak do 3000 ms. Početni registar 85 °C i stari registar smiješ prikazati samo izričito označenima POCETNI REGISTAR / STARI REGISTAR / PRIJE DOVRSETKA. Takvi retci ne donose bodove. Provjera zadaje CRC pogrešku, odspojen DQ i oporavak: nakon 3200 ms pogrešku jasno označi nevaljano/error/CRC/nema presence bez brojčanog T=. Ne pretvaraj je u 0 °C. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "Prepoznate pogreške i oporavak bez lažnog mjerenja",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -3735,16 +4167,32 @@
       "fault": "Zaustavi program, ukloni vanjski DQ pull-up, pokreni i zabilježi posljedicu. Vrati ga i potvrdi valjano očitanje.",
       "expected": "Identiteti ostaju različiti, očitanje prati odabrani senzor, a trajanje pretvorbe ovisi o razlučivosti.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24D-ds18Errors@1",
+        "checkerVersion": "24D.1",
+        "title": "DS18B20: CRC, presence, svježina i oporavak",
+        "instructions": "Jedan vanjski napajan DS18B20. Novo mjerenje zahtijeva dovršenu pretvorbu i svih 9 bajtova s CRC-8. Ispisuj T=<broj>; prvo novo očitanje unutar 3200 ms, daljnji razmak do 3000 ms. Početni registar 85 °C i stari registar smiješ prikazati samo izričito označenima POCETNI REGISTAR / STARI REGISTAR / PRIJE DOVRSETKA. Takvi retci ne donose bodove. Provjera zadaje CRC pogrešku, odspojen DQ i oporavak: nakon 3200 ms pogrešku jasno označi nevaljano/error/CRC/nema presence bez brojčanog T=. Ne pretvaraj je u 0 °C. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "Prepoznate pogreške i oporavak bez lažnog mjerenja",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-sensors.test.ts"
       }
     },
     {
@@ -4296,16 +4744,32 @@
       "fault": "Povećaj čekanje petlje pa zadaj bržu vrtnju. Zabilježi mogući gubitak koraka; vrati kratko čekanje.",
       "expected": "Pri dovoljno brzom čitanju tri koraka u jednom i dva u drugom smjeru daju neto jedan korak.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-encoderRaw@1",
+        "checkerVersion": "24E.1",
+        "title": "KY-040: sirovi CLK/DT/SW",
+        "instructions": "Ispisuj RAW CLK=<0|1> DT=<0|1> SW=<0|1> pri svakoj promjeni. CW je 11→01→00→10→11, CCW obrnuto. Jedan korak ima četiri brida, razmak je 100 ms. SW je aktivno LOW; koristi pull-up. Svaki novi kontakt prikaži unutar 80 ms (dopušteno odstupanje koraka 10 ms). Promatraju se tri osnovne faze, pritisak/otpuštanje SW i povratni smjer. Ne traži se ispis svakog poskoka u drugim varijantama.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "SW reset i novi koraci u oba smjera",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {
@@ -4329,16 +4793,32 @@
       "fault": "Povećaj čekanje petlje pa zadaj bržu vrtnju. Zabilježi mogući gubitak koraka; vrati kratko čekanje.",
       "expected": "Pri dovoljno brzom čitanju tri koraka u jednom i dva u drugom smjeru daju neto jedan korak.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-encoderRaw@1",
+        "checkerVersion": "24E.1",
+        "title": "KY-040: sirovi CLK/DT/SW",
+        "instructions": "Ispisuj RAW CLK=<0|1> DT=<0|1> SW=<0|1> pri svakoj promjeni. CW je 11→01→00→10→11, CCW obrnuto. Jedan korak ima četiri brida, razmak je 100 ms. SW je aktivno LOW; koristi pull-up. Svaki novi kontakt prikaži unutar 80 ms (dopušteno odstupanje koraka 10 ms). Promatraju se tri osnovne faze, pritisak/otpuštanje SW i povratni smjer. Ne traži se ispis svakog poskoka u drugim varijantama.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "SW reset i novi koraci u oba smjera",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {
@@ -4362,16 +4842,32 @@
       "fault": "Povećaj čekanje petlje pa zadaj bržu vrtnju. Zabilježi mogući gubitak koraka; vrati kratko čekanje.",
       "expected": "Pri dovoljno brzom čitanju tri koraka u jednom i dva u drugom smjeru daju neto jedan korak.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-encoderRaw@1",
+        "checkerVersion": "24E.1",
+        "title": "KY-040: sirovi CLK/DT/SW",
+        "instructions": "Ispisuj RAW CLK=<0|1> DT=<0|1> SW=<0|1> pri svakoj promjeni. CW je 11→01→00→10→11, CCW obrnuto. Jedan korak ima četiri brida, razmak je 100 ms. SW je aktivno LOW; koristi pull-up. Svaki novi kontakt prikaži unutar 80 ms (dopušteno odstupanje koraka 10 ms). Promatraju se tri osnovne faze, pritisak/otpuštanje SW i povratni smjer. Ne traži se ispis svakog poskoka u drugim varijantama.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "SW reset i novi koraci u oba smjera",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {
@@ -4395,16 +4891,32 @@
       "fault": "Povećaj čekanje petlje pa zadaj bržu vrtnju. Zabilježi mogući gubitak koraka; vrati kratko čekanje.",
       "expected": "Pri dovoljno brzom čitanju tri koraka u jednom i dva u drugom smjeru daju neto jedan korak.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-encoderRaw@1",
+        "checkerVersion": "24E.1",
+        "title": "KY-040: sirovi CLK/DT/SW",
+        "instructions": "Ispisuj RAW CLK=<0|1> DT=<0|1> SW=<0|1> pri svakoj promjeni. CW je 11→01→00→10→11, CCW obrnuto. Jedan korak ima četiri brida, razmak je 100 ms. SW je aktivno LOW; koristi pull-up. Svaki novi kontakt prikaži unutar 80 ms (dopušteno odstupanje koraka 10 ms). Promatraju se tri osnovne faze, pritisak/otpuštanje SW i povratni smjer. Ne traži se ispis svakog poskoka u drugim varijantama.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "SW reset i novi koraci u oba smjera",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {
@@ -4428,16 +4940,32 @@
       "fault": "Povećaj čekanje petlje pa zadaj bržu vrtnju. Zabilježi mogući gubitak koraka; vrati kratko čekanje.",
       "expected": "Pri dovoljno brzom čitanju tri koraka u jednom i dva u drugom smjeru daju neto jedan korak.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-ky040@1",
+        "checkerVersion": "24E.1",
+        "title": "KY-040: programski brojač i reset",
+        "instructions": "Brojač počinje od 0 neovisno o mehaničkom položaju. CW dodaje 1, CCW oduzima 1 po cijelom Gray ciklusu; ispisuj ENC P=<cijeli broj> za svaki korak. SW nakon 20 ms vraća samo programski brojač i ispisuje ENC RESET P=0. Razmak bridova je 20 ms; nakon završetka koraka ispiši rezultat unutar 80 ms. Faze traju 2000 ms; pritisak je odvojen od vrtnje. Nisu zadani nazivi varijabli ni biblioteka. Spori polling može izgubiti bridove i tada ne ostvaruje funkcionalni kriterij.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "SW reset i novi koraci u oba smjera",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {
@@ -4461,16 +4989,32 @@
       "fault": "Povećaj čekanje petlje pa zadaj bržu vrtnju. Zabilježi mogući gubitak koraka; vrati kratko čekanje.",
       "expected": "Pri dovoljno brzom čitanju tri koraka u jednom i dva u drugom smjeru daju neto jedan korak.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-ky040@1",
+        "checkerVersion": "24E.1",
+        "title": "KY-040: programski brojač i reset",
+        "instructions": "Brojač počinje od 0 neovisno o mehaničkom položaju. CW dodaje 1, CCW oduzima 1 po cijelom Gray ciklusu; ispisuj ENC P=<cijeli broj> za svaki korak. SW nakon 20 ms vraća samo programski brojač i ispisuje ENC RESET P=0. Razmak bridova je 20 ms; nakon završetka koraka ispiši rezultat unutar 80 ms. Faze traju 2000 ms; pritisak je odvojen od vrtnje. Nisu zadani nazivi varijabli ni biblioteka. Spori polling može izgubiti bridove i tada ne ostvaruje funkcionalni kriterij.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "SW reset i novi koraci u oba smjera",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {
@@ -4494,16 +5038,32 @@
       "fault": "Povećaj čekanje petlje pa zadaj bržu vrtnju. Zabilježi mogući gubitak koraka; vrati kratko čekanje.",
       "expected": "Pri dovoljno brzom čitanju tri koraka u jednom i dva u drugom smjeru daju neto jedan korak.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-ky040@1",
+        "checkerVersion": "24E.1",
+        "title": "KY-040: programski brojač i reset",
+        "instructions": "Brojač počinje od 0 neovisno o mehaničkom položaju. CW dodaje 1, CCW oduzima 1 po cijelom Gray ciklusu; ispisuj ENC P=<cijeli broj> za svaki korak. SW nakon 20 ms vraća samo programski brojač i ispisuje ENC RESET P=0. Razmak bridova je 20 ms; nakon završetka koraka ispiši rezultat unutar 80 ms. Faze traju 2000 ms; pritisak je odvojen od vrtnje. Nisu zadani nazivi varijabli ni biblioteka. Spori polling može izgubiti bridove i tada ne ostvaruje funkcionalni kriterij.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "SW reset i novi koraci u oba smjera",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {
@@ -4527,16 +5087,32 @@
       "fault": "Povećaj čekanje petlje pa zadaj bržu vrtnju. Zabilježi mogući gubitak koraka; vrati kratko čekanje.",
       "expected": "Pri dovoljno brzom čitanju tri koraka u jednom i dva u drugom smjeru daju neto jedan korak.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-ky040@1",
+        "checkerVersion": "24E.1",
+        "title": "KY-040: programski brojač i reset",
+        "instructions": "Brojač počinje od 0 neovisno o mehaničkom položaju. CW dodaje 1, CCW oduzima 1 po cijelom Gray ciklusu; ispisuj ENC P=<cijeli broj> za svaki korak. SW nakon 20 ms vraća samo programski brojač i ispisuje ENC RESET P=0. Razmak bridova je 20 ms; nakon završetka koraka ispiši rezultat unutar 80 ms. Faze traju 2000 ms; pritisak je odvojen od vrtnje. Nisu zadani nazivi varijabli ni biblioteka. Spori polling može izgubiti bridove i tada ne ostvaruje funkcionalni kriterij.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "SW reset i novi koraci u oba smjera",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {
@@ -4560,16 +5136,32 @@
       "fault": "Povećaj čekanje petlje pa zadaj bržu vrtnju. Zabilježi mogući gubitak koraka; vrati kratko čekanje.",
       "expected": "Pri dovoljno brzom čitanju tri koraka u jednom i dva u drugom smjeru daju neto jedan korak.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-encoderBounce@1",
+        "checkerVersion": "24E.1",
+        "title": "KY-040: Gray dekoder uz poskakivanje",
+        "instructions": "Jednaka pravila ENC P= i ENC RESET P=0 kao za dekoder: CW +1, CCW −1, SW reset nakon 20 ms, bez pomicanja fizičkog položaja. Razmak bridova je 20 ms. Deterministički poskoci novi/stari/novi/stari/novi nastaju na 0/200/400/600/800 µs. Svaki puni ciklus mora dati jedan neto korak, a rezultat unutar 80 ms od njegova završetka. Faze traju 2000 ms. Ne traži se otpornost na proizvoljne brzine ili stvarni mehanički šum.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "SW reset i novi koraci u oba smjera",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {
@@ -4593,16 +5185,32 @@
       "fault": "Povećaj čekanje petlje pa zadaj bržu vrtnju. Zabilježi mogući gubitak koraka; vrati kratko čekanje.",
       "expected": "Pri dovoljno brzom čitanju tri koraka u jednom i dva u drugom smjeru daju neto jedan korak.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-encoderBounce@1",
+        "checkerVersion": "24E.1",
+        "title": "KY-040: Gray dekoder uz poskakivanje",
+        "instructions": "Jednaka pravila ENC P= i ENC RESET P=0 kao za dekoder: CW +1, CCW −1, SW reset nakon 20 ms, bez pomicanja fizičkog položaja. Razmak bridova je 20 ms. Deterministički poskoci novi/stari/novi/stari/novi nastaju na 0/200/400/600/800 µs. Svaki puni ciklus mora dati jedan neto korak, a rezultat unutar 80 ms od njegova završetka. Faze traju 2000 ms. Ne traži se otpornost na proizvoljne brzine ili stvarni mehanički šum.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "SW reset i novi koraci u oba smjera",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {
@@ -4626,16 +5234,32 @@
       "fault": "Povećaj čekanje petlje pa zadaj bržu vrtnju. Zabilježi mogući gubitak koraka; vrati kratko čekanje.",
       "expected": "Pri dovoljno brzom čitanju tri koraka u jednom i dva u drugom smjeru daju neto jedan korak.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-encoderBounce@1",
+        "checkerVersion": "24E.1",
+        "title": "KY-040: Gray dekoder uz poskakivanje",
+        "instructions": "Jednaka pravila ENC P= i ENC RESET P=0 kao za dekoder: CW +1, CCW −1, SW reset nakon 20 ms, bez pomicanja fizičkog položaja. Razmak bridova je 20 ms. Deterministički poskoci novi/stari/novi/stari/novi nastaju na 0/200/400/600/800 µs. Svaki puni ciklus mora dati jedan neto korak, a rezultat unutar 80 ms od njegova završetka. Faze traju 2000 ms. Ne traži se otpornost na proizvoljne brzine ili stvarni mehanički šum.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "SW reset i novi koraci u oba smjera",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {
@@ -4659,16 +5283,32 @@
       "fault": "Povećaj čekanje petlje pa zadaj bržu vrtnju. Zabilježi mogući gubitak koraka; vrati kratko čekanje.",
       "expected": "Pri dovoljno brzom čitanju tri koraka u jednom i dva u drugom smjeru daju neto jedan korak.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-encoderBounce@1",
+        "checkerVersion": "24E.1",
+        "title": "KY-040: Gray dekoder uz poskakivanje",
+        "instructions": "Jednaka pravila ENC P= i ENC RESET P=0 kao za dekoder: CW +1, CCW −1, SW reset nakon 20 ms, bez pomicanja fizičkog položaja. Razmak bridova je 20 ms. Deterministički poskoci novi/stari/novi/stari/novi nastaju na 0/200/400/600/800 µs. Svaki puni ciklus mora dati jedan neto korak, a rezultat unutar 80 ms od njegova završetka. Faze traju 2000 ms. Ne traži se otpornost na proizvoljne brzine ili stvarni mehanički šum.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "SW reset i novi koraci u oba smjera",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {
@@ -4692,16 +5332,32 @@
       "fault": "Zaustavi program, promijeni optičku skupinu samo prijamnika pa pokreni slanje. Vrati usklađene skupine.",
       "expected": "Valjana naredba nastaje iz impulsa. Neusklađena putanja sprječava prijam; repeat se razlikuje od nove naredbe.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-irPulses@1",
+        "checkerVersion": "24E.1",
+        "title": "NEC: impulsi, adresa, naredba i repeat",
+        "instructions": "Dekodiraj stvarne OUT impulse u NEC A=<0–255> C=<0–255> R=<0|1>. Python uz svaki rezultat ispisuje IR PULSES [trajanja u µs]; C++ može ispisati PULSE LEADER=<µs> MARK=<µs> SPACE=<µs> za izmjereno zaglavlje i zadnji bit. Uvod 9000/4500 µs, oznaka 562,5 µs, razmak bita 562,5 ili 1687,5 µs. Repeat ima 9000/2250/562,5 µs, dolazi svakih 110 ms i zadržava zadnju adresu/naredbu. C++ SPACE pri repeat smije ostati iz prethodnog punog okvira. Tolerancija trajanja ±150 µs, novi ispis unutar 180 ms od kraja okvira. Kratki i 220 ms dugi pritisak nose privatno odabrane podatke; pogrešan inverz, pogrešno vrijeme ili blokirana putanja ne smiju dati valjanu naredbu. Povrat veze mora omogućiti novi okvir. Faze traju 700 ms. Polling prijamnik smije izmjeriti preostali dio početnog LOW impulsa u prihvatnom rasponu 6500–9000 µs ako čitanje započne tijekom uvoda; ostala trajanja i dalje moraju pratiti cijeli fizički okvir. Provjeravač odgađa pritisak 40 ms radi početnog smirivanja.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "Odbijanje pogrešnih okvira i obnova prijama",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {
@@ -4725,16 +5381,32 @@
       "fault": "Zaustavi program, promijeni optičku skupinu samo prijamnika pa pokreni slanje. Vrati usklađene skupine.",
       "expected": "Valjana naredba nastaje iz impulsa. Neusklađena putanja sprječava prijam; repeat se razlikuje od nove naredbe.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-irPulses@1",
+        "checkerVersion": "24E.1",
+        "title": "NEC: impulsi, adresa, naredba i repeat",
+        "instructions": "Dekodiraj stvarne OUT impulse u NEC A=<0–255> C=<0–255> R=<0|1>. Python uz svaki rezultat ispisuje IR PULSES [trajanja u µs]; C++ može ispisati PULSE LEADER=<µs> MARK=<µs> SPACE=<µs> za izmjereno zaglavlje i zadnji bit. Uvod 9000/4500 µs, oznaka 562,5 µs, razmak bita 562,5 ili 1687,5 µs. Repeat ima 9000/2250/562,5 µs, dolazi svakih 110 ms i zadržava zadnju adresu/naredbu. C++ SPACE pri repeat smije ostati iz prethodnog punog okvira. Tolerancija trajanja ±150 µs, novi ispis unutar 180 ms od kraja okvira. Kratki i 220 ms dugi pritisak nose privatno odabrane podatke; pogrešan inverz, pogrešno vrijeme ili blokirana putanja ne smiju dati valjanu naredbu. Povrat veze mora omogućiti novi okvir. Faze traju 700 ms. Polling prijamnik smije izmjeriti preostali dio početnog LOW impulsa u prihvatnom rasponu 6500–9000 µs ako čitanje započne tijekom uvoda; ostala trajanja i dalje moraju pratiti cijeli fizički okvir. Provjeravač odgađa pritisak 40 ms radi početnog smirivanja.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "Odbijanje pogrešnih okvira i obnova prijama",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {
@@ -4758,16 +5430,32 @@
       "fault": "Zaustavi program, promijeni optičku skupinu samo prijamnika pa pokreni slanje. Vrati usklađene skupine.",
       "expected": "Valjana naredba nastaje iz impulsa. Neusklađena putanja sprječava prijam; repeat se razlikuje od nove naredbe.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-irPulses@1",
+        "checkerVersion": "24E.1",
+        "title": "NEC: impulsi, adresa, naredba i repeat",
+        "instructions": "Dekodiraj stvarne OUT impulse u NEC A=<0–255> C=<0–255> R=<0|1>. Python uz svaki rezultat ispisuje IR PULSES [trajanja u µs]; C++ može ispisati PULSE LEADER=<µs> MARK=<µs> SPACE=<µs> za izmjereno zaglavlje i zadnji bit. Uvod 9000/4500 µs, oznaka 562,5 µs, razmak bita 562,5 ili 1687,5 µs. Repeat ima 9000/2250/562,5 µs, dolazi svakih 110 ms i zadržava zadnju adresu/naredbu. C++ SPACE pri repeat smije ostati iz prethodnog punog okvira. Tolerancija trajanja ±150 µs, novi ispis unutar 180 ms od kraja okvira. Kratki i 220 ms dugi pritisak nose privatno odabrane podatke; pogrešan inverz, pogrešno vrijeme ili blokirana putanja ne smiju dati valjanu naredbu. Povrat veze mora omogućiti novi okvir. Faze traju 700 ms. Polling prijamnik smije izmjeriti preostali dio početnog LOW impulsa u prihvatnom rasponu 6500–9000 µs ako čitanje započne tijekom uvoda; ostala trajanja i dalje moraju pratiti cijeli fizički okvir. Provjeravač odgađa pritisak 40 ms radi početnog smirivanja.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "Odbijanje pogrešnih okvira i obnova prijama",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {
@@ -4791,16 +5479,32 @@
       "fault": "Zaustavi program, promijeni optičku skupinu samo prijamnika pa pokreni slanje. Vrati usklađene skupine.",
       "expected": "Valjana naredba nastaje iz impulsa. Neusklađena putanja sprječava prijam; repeat se razlikuje od nove naredbe.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-irPulses@1",
+        "checkerVersion": "24E.1",
+        "title": "NEC: impulsi, adresa, naredba i repeat",
+        "instructions": "Dekodiraj stvarne OUT impulse u NEC A=<0–255> C=<0–255> R=<0|1>. Python uz svaki rezultat ispisuje IR PULSES [trajanja u µs]; C++ može ispisati PULSE LEADER=<µs> MARK=<µs> SPACE=<µs> za izmjereno zaglavlje i zadnji bit. Uvod 9000/4500 µs, oznaka 562,5 µs, razmak bita 562,5 ili 1687,5 µs. Repeat ima 9000/2250/562,5 µs, dolazi svakih 110 ms i zadržava zadnju adresu/naredbu. C++ SPACE pri repeat smije ostati iz prethodnog punog okvira. Tolerancija trajanja ±150 µs, novi ispis unutar 180 ms od kraja okvira. Kratki i 220 ms dugi pritisak nose privatno odabrane podatke; pogrešan inverz, pogrešno vrijeme ili blokirana putanja ne smiju dati valjanu naredbu. Povrat veze mora omogućiti novi okvir. Faze traju 700 ms. Polling prijamnik smije izmjeriti preostali dio početnog LOW impulsa u prihvatnom rasponu 6500–9000 µs ako čitanje započne tijekom uvoda; ostala trajanja i dalje moraju pratiti cijeli fizički okvir. Provjeravač odgađa pritisak 40 ms radi početnog smirivanja.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "Odbijanje pogrešnih okvira i obnova prijama",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {
@@ -4824,16 +5528,32 @@
       "fault": "Zaustavi program, promijeni optičku skupinu samo prijamnika pa pokreni slanje. Vrati usklađene skupine.",
       "expected": "Valjana naredba nastaje iz impulsa. Neusklađena putanja sprječava prijam; repeat se razlikuje od nove naredbe.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-irLED@1",
+        "checkerVersion": "24E.1",
+        "title": "NEC: upravljanje stvarnim PWM LED izlazom",
+        "instructions": "Prihvati adresu 0. POWER=69 mijenja ugašeno u 50 % i upaljeno u 0 %, samo kod novog okvira. PLUS=70 i MINUS=21 mijenjaju PWM za 10 % po okviru, uključujući repeat, uz ograničenje 0–100 %. Izlaz mora slijediti zadnju naredbu unutar 650 ms od početka faze; faza traje 700 ms, dugi pritisci 220/440/550 ms šalju puni okvir i dva/četiri/pet repeat. Ispituju se obje granice 0 i 100 %, uključujući pokušaj prelaska granice. POWER kod držanja djeluje samo jednom. Tolerancija radnog omjera je ±0,025. Druga adresa, pogrešan inverz/vrijeme i blokirana optička putanja ne smiju mijenjati izlaz. Nakon vraćanja veze nova naredba ponovno djeluje. Vrednuju se stvarni PWM i struja ispravno spojene LED-ice; tekst LED= sam ne donosi bodove.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "Repeat, nevaljani okviri, granice i obnova optičke putanje",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {
@@ -4857,16 +5577,32 @@
       "fault": "Zaustavi program, promijeni optičku skupinu samo prijamnika pa pokreni slanje. Vrati usklađene skupine.",
       "expected": "Valjana naredba nastaje iz impulsa. Neusklađena putanja sprječava prijam; repeat se razlikuje od nove naredbe.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-irLED@1",
+        "checkerVersion": "24E.1",
+        "title": "NEC: upravljanje stvarnim PWM LED izlazom",
+        "instructions": "Prihvati adresu 0. POWER=69 mijenja ugašeno u 50 % i upaljeno u 0 %, samo kod novog okvira. PLUS=70 i MINUS=21 mijenjaju PWM za 10 % po okviru, uključujući repeat, uz ograničenje 0–100 %. Izlaz mora slijediti zadnju naredbu unutar 650 ms od početka faze; faza traje 700 ms, dugi pritisci 220/440/550 ms šalju puni okvir i dva/četiri/pet repeat. Ispituju se obje granice 0 i 100 %, uključujući pokušaj prelaska granice. POWER kod držanja djeluje samo jednom. Tolerancija radnog omjera je ±0,025. Druga adresa, pogrešan inverz/vrijeme i blokirana optička putanja ne smiju mijenjati izlaz. Nakon vraćanja veze nova naredba ponovno djeluje. Vrednuju se stvarni PWM i struja ispravno spojene LED-ice; tekst LED= sam ne donosi bodove.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "Repeat, nevaljani okviri, granice i obnova optičke putanje",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {
@@ -4890,16 +5626,32 @@
       "fault": "Zaustavi program, promijeni optičku skupinu samo prijamnika pa pokreni slanje. Vrati usklađene skupine.",
       "expected": "Valjana naredba nastaje iz impulsa. Neusklađena putanja sprječava prijam; repeat se razlikuje od nove naredbe.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-irLED@1",
+        "checkerVersion": "24E.1",
+        "title": "NEC: upravljanje stvarnim PWM LED izlazom",
+        "instructions": "Prihvati adresu 0. POWER=69 mijenja ugašeno u 50 % i upaljeno u 0 %, samo kod novog okvira. PLUS=70 i MINUS=21 mijenjaju PWM za 10 % po okviru, uključujući repeat, uz ograničenje 0–100 %. Izlaz mora slijediti zadnju naredbu unutar 650 ms od početka faze; faza traje 700 ms, dugi pritisci 220/440/550 ms šalju puni okvir i dva/četiri/pet repeat. Ispituju se obje granice 0 i 100 %, uključujući pokušaj prelaska granice. POWER kod držanja djeluje samo jednom. Tolerancija radnog omjera je ±0,025. Druga adresa, pogrešan inverz/vrijeme i blokirana optička putanja ne smiju mijenjati izlaz. Nakon vraćanja veze nova naredba ponovno djeluje. Vrednuju se stvarni PWM i struja ispravno spojene LED-ice; tekst LED= sam ne donosi bodove.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "Repeat, nevaljani okviri, granice i obnova optičke putanje",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {
@@ -4923,16 +5675,32 @@
       "fault": "Zaustavi program, promijeni optičku skupinu samo prijamnika pa pokreni slanje. Vrati usklađene skupine.",
       "expected": "Valjana naredba nastaje iz impulsa. Neusklađena putanja sprječava prijam; repeat se razlikuje od nove naredbe.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-irLED@1",
+        "checkerVersion": "24E.1",
+        "title": "NEC: upravljanje stvarnim PWM LED izlazom",
+        "instructions": "Prihvati adresu 0. POWER=69 mijenja ugašeno u 50 % i upaljeno u 0 %, samo kod novog okvira. PLUS=70 i MINUS=21 mijenjaju PWM za 10 % po okviru, uključujući repeat, uz ograničenje 0–100 %. Izlaz mora slijediti zadnju naredbu unutar 650 ms od početka faze; faza traje 700 ms, dugi pritisci 220/440/550 ms šalju puni okvir i dva/četiri/pet repeat. Ispituju se obje granice 0 i 100 %, uključujući pokušaj prelaska granice. POWER kod držanja djeluje samo jednom. Tolerancija radnog omjera je ±0,025. Druga adresa, pogrešan inverz/vrijeme i blokirana optička putanja ne smiju mijenjati izlaz. Nakon vraćanja veze nova naredba ponovno djeluje. Vrednuju se stvarni PWM i struja ispravno spojene LED-ice; tekst LED= sam ne donosi bodove.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "Repeat, nevaljani okviri, granice i obnova optičke putanje",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {
@@ -4956,16 +5724,32 @@
       "fault": "Zaustavi program, promijeni optičku skupinu samo prijamnika pa pokreni slanje. Vrati usklađene skupine.",
       "expected": "Valjana naredba nastaje iz impulsa. Neusklađena putanja sprječava prijam; repeat se razlikuje od nove naredbe.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-irTransmit@1",
+        "checkerVersion": "24E.1",
+        "title": "NEC: stvarni nositelj i optički TX/RX put",
+        "instructions": "Program ponavljano šalje adresu 0 i izmjenične naredbe 69/70. Nositelj je 34–42 kHz, duty 15–50 %, uz standardni NEC omotač. Svaka faza traje 2500 ms: traže se barem dva potpuna izmjenična okvira na prijamnikovu OUT u prvoj i završnoj fazi. Dodatni valjani repeat okviri su dopušteni, nisu obvezni. U srednjoj fazi provjeravač blokira samo prijamnik: TX nastavlja, OUT ne prima okvire. Obnova putanje vraća nove prijenose. Provjeravaju se stvarni valjani bajtovi, inverzi i impulsi, uz toleranciju omotača ±180 µs za oznake i ±1100 µs za uvod. Konzolni ispis i istodobno dekodiranje u istom programu nisu uvjet. Na AVR-u predajnik koristi stvarni Timer2; S3 koristi LEDC/PWM.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "Nastavak TX-a uz blokirani RX i novi prijam nakon obnove",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {
@@ -4989,16 +5773,32 @@
       "fault": "Zaustavi program, promijeni optičku skupinu samo prijamnika pa pokreni slanje. Vrati usklađene skupine.",
       "expected": "Valjana naredba nastaje iz impulsa. Neusklađena putanja sprječava prijam; repeat se razlikuje od nove naredbe.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-irTransmit@1",
+        "checkerVersion": "24E.1",
+        "title": "NEC: stvarni nositelj i optički TX/RX put",
+        "instructions": "Program ponavljano šalje adresu 0 i izmjenične naredbe 69/70. Nositelj je 34–42 kHz, duty 15–50 %, uz standardni NEC omotač. Svaka faza traje 2500 ms: traže se barem dva potpuna izmjenična okvira na prijamnikovu OUT u prvoj i završnoj fazi. Dodatni valjani repeat okviri su dopušteni, nisu obvezni. U srednjoj fazi provjeravač blokira samo prijamnik: TX nastavlja, OUT ne prima okvire. Obnova putanje vraća nove prijenose. Provjeravaju se stvarni valjani bajtovi, inverzi i impulsi, uz toleranciju omotača ±180 µs za oznake i ±1100 µs za uvod. Konzolni ispis i istodobno dekodiranje u istom programu nisu uvjet. Na AVR-u predajnik koristi stvarni Timer2; S3 koristi LEDC/PWM.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "Nastavak TX-a uz blokirani RX i novi prijam nakon obnove",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {
@@ -5022,16 +5822,32 @@
       "fault": "Zaustavi program, promijeni optičku skupinu samo prijamnika pa pokreni slanje. Vrati usklađene skupine.",
       "expected": "Valjana naredba nastaje iz impulsa. Neusklađena putanja sprječava prijam; repeat se razlikuje od nove naredbe.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-irTransmit@1",
+        "checkerVersion": "24E.1",
+        "title": "NEC: stvarni nositelj i optički TX/RX put",
+        "instructions": "Program ponavljano šalje adresu 0 i izmjenične naredbe 69/70. Nositelj je 34–42 kHz, duty 15–50 %, uz standardni NEC omotač. Svaka faza traje 2500 ms: traže se barem dva potpuna izmjenična okvira na prijamnikovu OUT u prvoj i završnoj fazi. Dodatni valjani repeat okviri su dopušteni, nisu obvezni. U srednjoj fazi provjeravač blokira samo prijamnik: TX nastavlja, OUT ne prima okvire. Obnova putanje vraća nove prijenose. Provjeravaju se stvarni valjani bajtovi, inverzi i impulsi, uz toleranciju omotača ±180 µs za oznake i ±1100 µs za uvod. Konzolni ispis i istodobno dekodiranje u istom programu nisu uvjet. Na AVR-u predajnik koristi stvarni Timer2; S3 koristi LEDC/PWM.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "Nastavak TX-a uz blokirani RX i novi prijam nakon obnove",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {
@@ -5055,16 +5871,32 @@
       "fault": "Zaustavi program, promijeni optičku skupinu samo prijamnika pa pokreni slanje. Vrati usklađene skupine.",
       "expected": "Valjana naredba nastaje iz impulsa. Neusklađena putanja sprječava prijam; repeat se razlikuje od nove naredbe.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24E-irTransmit@1",
+        "checkerVersion": "24E.1",
+        "title": "NEC: stvarni nositelj i optički TX/RX put",
+        "instructions": "Program ponavljano šalje adresu 0 i izmjenične naredbe 69/70. Nositelj je 34–42 kHz, duty 15–50 %, uz standardni NEC omotač. Svaka faza traje 2500 ms: traže se barem dva potpuna izmjenična okvira na prijamnikovu OUT u prvoj i završnoj fazi. Dodatni valjani repeat okviri su dopušteni, nisu obvezni. U srednjoj fazi provjeravač blokira samo prijamnik: TX nastavlja, OUT ne prima okvire. Obnova putanje vraća nove prijenose. Provjeravaju se stvarni valjani bajtovi, inverzi i impulsi, uz toleranciju omotača ±180 µs za oznake i ±1100 µs za uvod. Konzolni ispis i istodobno dekodiranje u istom programu nisu uvjet. Na AVR-u predajnik koristi stvarni Timer2; S3 koristi LEDC/PWM.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5
+          },
+          {
+            "id": "recovery",
+            "description": "Nastavak TX-a uz blokirani RX i novi prijam nakon obnove",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-events.test.ts"
       }
     },
     {

@@ -75,7 +75,9 @@ export function createInfrared({c,pins,gpioNet,rootData,idleSolution,clockUs}) {
    if(!Number.isSafeInteger(data.irPress)||data.irPress<=remote.lastPress)return;
    if(remote.queue.length>768)throw Error('IR: pričekaj dovršetak prethodnih pritisaka.');
    remote.lastPress=data.irPress;remote.presses++;
-   const start=Math.max(clockUs()+10000,(remote.queue.at(-1)?.at??-Infinity)+40000);
+   // A private deterministic harness may reserve an idle settling interval.
+   // Ordinary saved projects keep the existing 10 ms panel latency.
+   const start=Math.max(clockUs()+(remote.pressDelayUs??10000),(remote.queue.at(-1)?.at??-Infinity)+40000);
    for(let i=0;i<=Math.floor(remote.irHoldMs/110);i++){
     let at=start+i*110000;
     for(const s of necEnvelope(remote.irAddress,remote.irCommand,i>0,remote.irFault)){remote.queue.push({at,level:s.level});at+=s.durationUs;}

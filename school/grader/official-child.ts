@@ -9,6 +9,7 @@ import {createS3Engine} from '../../public/s3-engine.mjs';
 import {wasmBytes} from '../../public/s3-contract.mjs';
 import {isAnalogContract,createAnalogCheck} from './analog';
 import {isSensorContract,createSensorCheck} from './sensors';
+import {isEventContract,createEventCheck} from './events';
 
 let raw='';for await(const chunk of process.stdin){raw+=chunk;if(Buffer.byteLength(raw)>4194304)throw Error('Prevelika snimka.');}
 const {project:input,artifact,profile,seed}=JSON.parse(raw),project=parseProject(input);
@@ -20,7 +21,9 @@ const random=()=>{randomState^=randomState<<13;randomState^=randomState>>>17;ran
 const backend=project.language==='micropython'?'micropython':project.board.id.includes('esp32-s3')?'s3-cpp':'avr';
 const analogCheck=isAnalogContract(profile)?createAnalogCheck(config,profile,seed,backend==='avr'):null;
 const sensorCheck=isSensorContract(profile)?createSensorCheck(config,profile,seed):null;
-const extendedCheck=sensorCheck??analogCheck;
+const eventCheck=isEventContract(profile)?createEventCheck(config,profile,seed,backend):null;
+const extendedCheck=eventCheck??sensorCheck??analogCheck;
+const protocolClock=!!(sensorCheck||eventCheck);
 // ADC receives a voltage, never a fabricated ADC return value. S3's 11 dB
 // transfer saturates at 3.1 V, whereas the Uno/Nano full scale is 5 V.
 const thresholdPosition=backend!=='avr'?3.1/3.3*2048/4095:512/1023;
@@ -133,7 +136,7 @@ if(backend==='s3-cpp'){
 }else{
   const publicRoot=process.env.LAB_GRADER_PUBLIC!,{loadMicroPython}=await import(pathToFileURL(publicRoot+'/runtime/micropython.mjs').href);
   const host:any=createHost(observe,{circuit:config,nowUs:()=>clockUs});applyStimulus(host,stimuli[0]);
-  if(sensorCheck)outputTime=()=>host.ticksUs()/1000;
+  if(protocolClock)outputTime=()=>host.ticksUs()/1000;
   let complete!:()=>void;const done=new Promise<void>(ok=>complete=ok);
   host.scheduleSleep=(wake:()=>void,ms:number)=>{
     // Capture GPIO writes at their actual virtual time before advancing sleep.
@@ -141,7 +144,7 @@ if(backend==='s3-cpp'){
     // GPIO pulse decoding advances the host's protocol clock between sleeps.
     // Account for that offset in new sensor scenarios without shifting legacy
     // rubrics: changing the sleep-only clock would misdate conversions/prints.
-    const offset=sensorCheck?host.ticksUs()-clockUs:0;
+    const offset=protocolClock?host.ticksUs()-clockUs:0;
     const target=clockUs+offset+Math.max(.05,ms)*1000;
     while(stage<stimuli.length&&target>=(stage+1)*duration*1000){
       clockUs=(stage+1)*duration*1000-offset;host.flush();record();stage++;
@@ -155,7 +158,7 @@ if(backend==='s3-cpp'){
   // The upstream WASM port exposes a `js` proxy rooted at slot zero. Student
   // Python must never reach Node, Module.labHost, the checker or its stimulus.
   (globalThis as any).proxy_js_ref[0]=Object.freeze(Object.create(null));
-  mp._module.labHost=host;Date.now=()=>Math.floor(sensorCheck?host.ticksUs()/1000:clockUs/1000);
+  mp._module.labHost=host;Date.now=()=>Math.floor(protocolClock?host.ticksUs()/1000:clockUs/1000);
   mp.FS.writeFile('/machine.py',await readFile(publicRoot+'/machine.py','utf8'));
   for(const [name,value]of Object.entries(project.files)){
     if(!/\.(py|txt|json)$/.test(name)||name.split('/').some(p=>['machine.py','_lab.py','project.json'].includes(p.toLowerCase())))continue;

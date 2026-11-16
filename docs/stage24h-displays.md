@@ -2,6 +2,8 @@
 
 Izdanje **0.14.6-beta.1** dodaje osam rubrika `24H-…@1` i provjeravač `24H.1`: **32 nove kombinacije**, ukupno **176 od 268**, odnosno 44 varijante na MicroPythonu S3, S3 Arduino C++, Unu i Nanu. Ranije 43 verzije rubrika ostaju neizmijenjene. Uvodne V1–V5 zasad zadržavaju lokalnu provjeru.
 
+[Završni prihvat 24H](https://github.com/zljix/labosv2/actions/runs/43937992501) potvrđuje sva četiri cilja, 96 neovisnih prijevoda i svih 32 zaključanih dodjela. [Zbirni rezultat](stage24h-evidence/acceptance-summary.json) navodi točan programski commit; isporučeni provjeravač bajtno odgovara prihvaćenoj izgradnji.
+
 ## Zadaci i bodovi
 
 Svaka rubrika ima 3 boda za napajani komunikacijski put, 5 za osnovni dio i 2 za nastavak ili napredni dio. Upute i potpuni uvjeti objavljuju se prije početka rada; slobodni odgovori ostaju opisni.

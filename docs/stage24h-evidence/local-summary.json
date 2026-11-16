@@ -5,7 +5,6 @@
   "stage": "24H",
   "date": "2026-11-16",
   "baselineCommit": "ccfc9b71018f86a8515a039d66dbf7d03f5371dc",
-  "publication": "blocked-by-automatic-approval-review",
   "destination": {
     "repository": "https://github.com/zljix/labosv2",
     "productionBranch": "main",
@@ -84,10 +83,12 @@
       "failed": 0
     }
   },
-  "pending": [
-    "96 isolated independent C++ compilations",
-    "PHP/MySQL 8.4 assignment, score and locking acceptance",
-    "GitHub publication and Pages deployment"
-  ],
-  "publicationReviewReason": "Automatic approval review requested explicit authorization for the exact public destination and source payload."
+  "publicationAuthorization": "approved",
+  "ciAcceptance": {
+    "runId": 43937992501,
+    "sourceCommit": "fe6ed6eeee522433d6f6a471c12dfa5c3442ee41",
+    "status": "success",
+    "independentCompilations": 96,
+    "lockedAssignments": 32
+  }
 }

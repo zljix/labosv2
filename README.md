@@ -2,7 +2,7 @@
 
 **0.14.6-beta.1 · etapa 24H · zasloni i SPI uređaji · 16. studenoga 2026.**
 
-**Status 24H:** lokalno pripremljeno izdanje; novi neovisni C++ prijevodi, PHP/MySQL prihvat i javna objava čekaju odobren upis u `zljix/labosv2`.
+**Prihvat 24H:** [GitHub Actions](https://github.com/zljix/labosv2/actions/runs/43937992501) potvrđuje sva četiri cilja, 96 neovisnih C++ prijevoda, 32 zaključane dodjele, PHP/MySQL, izvještaje, povrat kopije i pokus s 30 simuliranih učenika. Programske datoteke provjeravača bajtno odgovaraju prihvaćenoj izgradnji.
 
 [Završni prihvat 24G](https://github.com/zljix/labosv2/actions/runs/43925558604) potvrđuje sva četiri cilja, 36 neovisnih C++ prijevoda, 12 zaključanih dodjela, pravi PHP/MySQL, izvještaje, povrat kopije i pokus s 30 simuliranih učenika. Provjereno je svih 880 datoteka iz inventure paketa; programski izvor odgovara prihvatu.
 

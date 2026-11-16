@@ -1,0 +1,44 @@
+{
+  "format": "labosv2-24h-acceptance",
+  "version": 1,
+  "releaseVersion": "0.14.6-beta.1",
+  "sourceCommit": "fe6ed6eeee522433d6f6a471c12dfa5c3442ee41",
+  "nativeSourceCommit": "b53d54f7dab6049084d20db5916a7d17c8c8200f",
+  "nativeRunId": 43935335257,
+  "runId": 43937992501,
+  "runUrl": "https://github.com/zljix/labosv2/actions/runs/43937992501",
+  "coverage": {
+    "supported": 176,
+    "total": 268,
+    "new": 32
+  },
+  "targets": [
+    {
+      "target": "micropython",
+      "referenceRuns": 24,
+      "independentCompilations": 0
+    },
+    {
+      "target": "s3-cpp",
+      "referenceRuns": 24,
+      "independentCompilations": 32
+    },
+    {
+      "target": "uno",
+      "referenceRuns": 24,
+      "independentCompilations": 32
+    },
+    {
+      "target": "nano",
+      "referenceRuns": 24,
+      "independentCompilations": 32
+    }
+  ],
+  "independentCompilations": 96,
+  "lockedAssignments": 32,
+  "legacyPreserved": true,
+  "packageFiles": 887,
+  "offlineResources": 205,
+  "checkerByteComparison": true,
+  "status": "ci-accepted"
+}

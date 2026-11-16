@@ -1,13 +1,13 @@
 {
   "format": "labosv2-grading-coverage",
   "version": 1,
-  "sourceVersion": "0.14.5-beta.1",
+  "sourceVersion": "0.14.6-beta.1",
   "summary": {
     "themes": 18,
     "variants": 67,
     "combinations": 268,
-    "supported": 144,
-    "unsupported": 124,
+    "supported": 176,
+    "unsupported": 92,
     "introductory": 5
   },
   "rows": [
@@ -4216,16 +4216,32 @@
       "fault": "Zaustavi program, odspoji SCL ili CLK i ponovno pokreni. Usporedi zastali prikaz ili pogrešku, zatim vrati vodič.",
       "expected": "Novi prikaz nastaje iz prijenosa programa. TM programsko brojilo nije RTC; LCD profil prikazuje ASCII i vlastite znakove.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-oled32@1",
+        "checkerVersion": "24H.1",
+        "title": "OLED 128 × 32: tekst i brojač",
+        "instructions": "OLED mora primiti tekst i brojač 0, 1, 2. MicroPython: ugrađeni framebuf font 8×8, \"OLED 128 x 32\" (0,0), \"URS laboratorij\" (0,8), \"Brojac: n\" (0,16), \"Redak 4\" (0,24). Uno/Nano: U8g2 6×10, \"OLED 128 x 32\" s osnovicom (0,8), \"Brojac: n\" (0,18), \"Zadnji redak\" (0,30). S3 C++: U8g2 6×10, \"ESP32-S3 U8g2\" s osnovicom (0,10), \"COUNT n\" (0,24), okvir (100,0,28,32). Prvi prikaz do 1800 ms, razmak početaka novih brojeva 850–1500 ms, svaki stabilan najmanje 200 ms. 5 bodova potvrđuje 0 i stalni tekst; 2 potvrđuju 1 i 2. Modul 0x3C s 32 retka, VCC/logika 3,3 V na S3 odnosno deklarirani 5 V modul na AVR-u. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -4249,16 +4265,32 @@
       "fault": "Zaustavi program, odspoji SCL ili CLK i ponovno pokreni. Usporedi zastali prikaz ili pogrešku, zatim vrati vodič.",
       "expected": "Novi prikaz nastaje iz prijenosa programa. TM programsko brojilo nije RTC; LCD profil prikazuje ASCII i vlastite znakove.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-oled32@1",
+        "checkerVersion": "24H.1",
+        "title": "OLED 128 × 32: tekst i brojač",
+        "instructions": "OLED mora primiti tekst i brojač 0, 1, 2. MicroPython: ugrađeni framebuf font 8×8, \"OLED 128 x 32\" (0,0), \"URS laboratorij\" (0,8), \"Brojac: n\" (0,16), \"Redak 4\" (0,24). Uno/Nano: U8g2 6×10, \"OLED 128 x 32\" s osnovicom (0,8), \"Brojac: n\" (0,18), \"Zadnji redak\" (0,30). S3 C++: U8g2 6×10, \"ESP32-S3 U8g2\" s osnovicom (0,10), \"COUNT n\" (0,24), okvir (100,0,28,32). Prvi prikaz do 1800 ms, razmak početaka novih brojeva 850–1500 ms, svaki stabilan najmanje 200 ms. 5 bodova potvrđuje 0 i stalni tekst; 2 potvrđuju 1 i 2. Modul 0x3C s 32 retka, VCC/logika 3,3 V na S3 odnosno deklarirani 5 V modul na AVR-u. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -4282,16 +4314,32 @@
       "fault": "Zaustavi program, odspoji SCL ili CLK i ponovno pokreni. Usporedi zastali prikaz ili pogrešku, zatim vrati vodič.",
       "expected": "Novi prikaz nastaje iz prijenosa programa. TM programsko brojilo nije RTC; LCD profil prikazuje ASCII i vlastite znakove.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-oled32@1",
+        "checkerVersion": "24H.1",
+        "title": "OLED 128 × 32: tekst i brojač",
+        "instructions": "OLED mora primiti tekst i brojač 0, 1, 2. MicroPython: ugrađeni framebuf font 8×8, \"OLED 128 x 32\" (0,0), \"URS laboratorij\" (0,8), \"Brojac: n\" (0,16), \"Redak 4\" (0,24). Uno/Nano: U8g2 6×10, \"OLED 128 x 32\" s osnovicom (0,8), \"Brojac: n\" (0,18), \"Zadnji redak\" (0,30). S3 C++: U8g2 6×10, \"ESP32-S3 U8g2\" s osnovicom (0,10), \"COUNT n\" (0,24), okvir (100,0,28,32). Prvi prikaz do 1800 ms, razmak početaka novih brojeva 850–1500 ms, svaki stabilan najmanje 200 ms. 5 bodova potvrđuje 0 i stalni tekst; 2 potvrđuju 1 i 2. Modul 0x3C s 32 retka, VCC/logika 3,3 V na S3 odnosno deklarirani 5 V modul na AVR-u. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -4315,16 +4363,32 @@
       "fault": "Zaustavi program, odspoji SCL ili CLK i ponovno pokreni. Usporedi zastali prikaz ili pogrešku, zatim vrati vodič.",
       "expected": "Novi prikaz nastaje iz prijenosa programa. TM programsko brojilo nije RTC; LCD profil prikazuje ASCII i vlastite znakove.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-oled32@1",
+        "checkerVersion": "24H.1",
+        "title": "OLED 128 × 32: tekst i brojač",
+        "instructions": "OLED mora primiti tekst i brojač 0, 1, 2. MicroPython: ugrađeni framebuf font 8×8, \"OLED 128 x 32\" (0,0), \"URS laboratorij\" (0,8), \"Brojac: n\" (0,16), \"Redak 4\" (0,24). Uno/Nano: U8g2 6×10, \"OLED 128 x 32\" s osnovicom (0,8), \"Brojac: n\" (0,18), \"Zadnji redak\" (0,30). S3 C++: U8g2 6×10, \"ESP32-S3 U8g2\" s osnovicom (0,10), \"COUNT n\" (0,24), okvir (100,0,28,32). Prvi prikaz do 1800 ms, razmak početaka novih brojeva 850–1500 ms, svaki stabilan najmanje 200 ms. 5 bodova potvrđuje 0 i stalni tekst; 2 potvrđuju 1 i 2. Modul 0x3C s 32 retka, VCC/logika 3,3 V na S3 odnosno deklarirani 5 V modul na AVR-u. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -4348,16 +4412,32 @@
       "fault": "Zaustavi program, odspoji SCL ili CLK i ponovno pokreni. Usporedi zastali prikaz ili pogrešku, zatim vrati vodič.",
       "expected": "Novi prikaz nastaje iz prijenosa programa. TM programsko brojilo nije RTC; LCD profil prikazuje ASCII i vlastite znakove.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-lcd1602@1",
+        "checkerVersion": "24H.1",
+        "title": "LCD1602: ASCII, CGRAM i brojač",
+        "instructions": "Na LCD1602 prikaži u prvom retku \"Pozdrav, URS! \" i vlastiti znak s redcima 0,10,10,0,17,14,0,0; dopušten je bilo koji CGRAM slot 0–7 i njegov alias 8–15. MicroPython/Uno/Nano imaju vlastiti znak u stupcu 14 i drugi redak \"Brojac: n\" za 0,1,2. S3 C++ koristi pozdrav \"S3 C++ LAB \" s vlastitim znakom u stupcu 11 i drugi redak \"COUNT n\" za 0,1,2. Stupci počinju s 0; ostatak drugog retka su razmaci. Prvi prikaz do 1800 ms; novi brojevi svakih 850–1500 ms, svaki stabilan najmanje 200 ms. 5 bodova: pozdrav, vidljivi vlastiti znak i 0; 2: 1 i 2. PCF8574 je 0x27, najviše 100 kHz, VCC=5 V; LV=3,3 V na S3 ili 5 V na AVR-u. Složeni školski modul uključuje idealni prilagodnik; nije goli backpack. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -4381,16 +4461,32 @@
       "fault": "Zaustavi program, odspoji SCL ili CLK i ponovno pokreni. Usporedi zastali prikaz ili pogrešku, zatim vrati vodič.",
       "expected": "Novi prikaz nastaje iz prijenosa programa. TM programsko brojilo nije RTC; LCD profil prikazuje ASCII i vlastite znakove.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-lcd1602@1",
+        "checkerVersion": "24H.1",
+        "title": "LCD1602: ASCII, CGRAM i brojač",
+        "instructions": "Na LCD1602 prikaži u prvom retku \"Pozdrav, URS! \" i vlastiti znak s redcima 0,10,10,0,17,14,0,0; dopušten je bilo koji CGRAM slot 0–7 i njegov alias 8–15. MicroPython/Uno/Nano imaju vlastiti znak u stupcu 14 i drugi redak \"Brojac: n\" za 0,1,2. S3 C++ koristi pozdrav \"S3 C++ LAB \" s vlastitim znakom u stupcu 11 i drugi redak \"COUNT n\" za 0,1,2. Stupci počinju s 0; ostatak drugog retka su razmaci. Prvi prikaz do 1800 ms; novi brojevi svakih 850–1500 ms, svaki stabilan najmanje 200 ms. 5 bodova: pozdrav, vidljivi vlastiti znak i 0; 2: 1 i 2. PCF8574 je 0x27, najviše 100 kHz, VCC=5 V; LV=3,3 V na S3 ili 5 V na AVR-u. Složeni školski modul uključuje idealni prilagodnik; nije goli backpack. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -4414,16 +4510,32 @@
       "fault": "Zaustavi program, odspoji SCL ili CLK i ponovno pokreni. Usporedi zastali prikaz ili pogrešku, zatim vrati vodič.",
       "expected": "Novi prikaz nastaje iz prijenosa programa. TM programsko brojilo nije RTC; LCD profil prikazuje ASCII i vlastite znakove.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-lcd1602@1",
+        "checkerVersion": "24H.1",
+        "title": "LCD1602: ASCII, CGRAM i brojač",
+        "instructions": "Na LCD1602 prikaži u prvom retku \"Pozdrav, URS! \" i vlastiti znak s redcima 0,10,10,0,17,14,0,0; dopušten je bilo koji CGRAM slot 0–7 i njegov alias 8–15. MicroPython/Uno/Nano imaju vlastiti znak u stupcu 14 i drugi redak \"Brojac: n\" za 0,1,2. S3 C++ koristi pozdrav \"S3 C++ LAB \" s vlastitim znakom u stupcu 11 i drugi redak \"COUNT n\" za 0,1,2. Stupci počinju s 0; ostatak drugog retka su razmaci. Prvi prikaz do 1800 ms; novi brojevi svakih 850–1500 ms, svaki stabilan najmanje 200 ms. 5 bodova: pozdrav, vidljivi vlastiti znak i 0; 2: 1 i 2. PCF8574 je 0x27, najviše 100 kHz, VCC=5 V; LV=3,3 V na S3 ili 5 V na AVR-u. Složeni školski modul uključuje idealni prilagodnik; nije goli backpack. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -4447,16 +4559,32 @@
       "fault": "Zaustavi program, odspoji SCL ili CLK i ponovno pokreni. Usporedi zastali prikaz ili pogrešku, zatim vrati vodič.",
       "expected": "Novi prikaz nastaje iz prijenosa programa. TM programsko brojilo nije RTC; LCD profil prikazuje ASCII i vlastite znakove.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-lcd1602@1",
+        "checkerVersion": "24H.1",
+        "title": "LCD1602: ASCII, CGRAM i brojač",
+        "instructions": "Na LCD1602 prikaži u prvom retku \"Pozdrav, URS! \" i vlastiti znak s redcima 0,10,10,0,17,14,0,0; dopušten je bilo koji CGRAM slot 0–7 i njegov alias 8–15. MicroPython/Uno/Nano imaju vlastiti znak u stupcu 14 i drugi redak \"Brojac: n\" za 0,1,2. S3 C++ koristi pozdrav \"S3 C++ LAB \" s vlastitim znakom u stupcu 11 i drugi redak \"COUNT n\" za 0,1,2. Stupci počinju s 0; ostatak drugog retka su razmaci. Prvi prikaz do 1800 ms; novi brojevi svakih 850–1500 ms, svaki stabilan najmanje 200 ms. 5 bodova: pozdrav, vidljivi vlastiti znak i 0; 2: 1 i 2. PCF8574 je 0x27, najviše 100 kHz, VCC=5 V; LV=3,3 V na S3 ili 5 V na AVR-u. Složeni školski modul uključuje idealni prilagodnik; nije goli backpack. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -4480,16 +4608,32 @@
       "fault": "Zaustavi program, odspoji SCL ili CLK i ponovno pokreni. Usporedi zastali prikaz ili pogrešku, zatim vrati vodič.",
       "expected": "Novi prikaz nastaje iz prijenosa programa. TM programsko brojilo nije RTC; LCD profil prikazuje ASCII i vlastite znakove.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-tmSegments@1",
+        "checkerVersion": "24H.1",
+        "title": "TM1637: stvarni segmentni bajtovi",
+        "instructions": "Na sve četiri znamenke šalji redom 1<<bit za bitove 0–7, dva potpuna obilaska. Prikaz uključen, svjetlina 7. Bit 7 vidljiv je samo kao dvotočka druge znamenke. Svaki korak traje 500 ms uz dodatni prijenos: početci susjednih stanja 400–650 ms, stabilni sadržaj najmanje 380 ms, početak do 1800 ms. 5 bodova: prvi obilazak; 2: drugi obilazak. CLK/DIO, LSB prvi i deveti ACK takt; nije I2C. VCC=5 V, LV=3,3 V na S3 ili 5 V na AVR-u. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -4513,16 +4657,32 @@
       "fault": "Zaustavi program, odspoji SCL ili CLK i ponovno pokreni. Usporedi zastali prikaz ili pogrešku, zatim vrati vodič.",
       "expected": "Novi prikaz nastaje iz prijenosa programa. TM programsko brojilo nije RTC; LCD profil prikazuje ASCII i vlastite znakove.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-tmSegments@1",
+        "checkerVersion": "24H.1",
+        "title": "TM1637: stvarni segmentni bajtovi",
+        "instructions": "Na sve četiri znamenke šalji redom 1<<bit za bitove 0–7, dva potpuna obilaska. Prikaz uključen, svjetlina 7. Bit 7 vidljiv je samo kao dvotočka druge znamenke. Svaki korak traje 500 ms uz dodatni prijenos: početci susjednih stanja 400–650 ms, stabilni sadržaj najmanje 380 ms, početak do 1800 ms. 5 bodova: prvi obilazak; 2: drugi obilazak. CLK/DIO, LSB prvi i deveti ACK takt; nije I2C. VCC=5 V, LV=3,3 V na S3 ili 5 V na AVR-u. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -4546,16 +4706,32 @@
       "fault": "Zaustavi program, odspoji SCL ili CLK i ponovno pokreni. Usporedi zastali prikaz ili pogrešku, zatim vrati vodič.",
       "expected": "Novi prikaz nastaje iz prijenosa programa. TM programsko brojilo nije RTC; LCD profil prikazuje ASCII i vlastite znakove.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-tmSegments@1",
+        "checkerVersion": "24H.1",
+        "title": "TM1637: stvarni segmentni bajtovi",
+        "instructions": "Na sve četiri znamenke šalji redom 1<<bit za bitove 0–7, dva potpuna obilaska. Prikaz uključen, svjetlina 7. Bit 7 vidljiv je samo kao dvotočka druge znamenke. Svaki korak traje 500 ms uz dodatni prijenos: početci susjednih stanja 400–650 ms, stabilni sadržaj najmanje 380 ms, početak do 1800 ms. 5 bodova: prvi obilazak; 2: drugi obilazak. CLK/DIO, LSB prvi i deveti ACK takt; nije I2C. VCC=5 V, LV=3,3 V na S3 ili 5 V na AVR-u. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -4579,16 +4755,32 @@
       "fault": "Zaustavi program, odspoji SCL ili CLK i ponovno pokreni. Usporedi zastali prikaz ili pogrešku, zatim vrati vodič.",
       "expected": "Novi prikaz nastaje iz prijenosa programa. TM programsko brojilo nije RTC; LCD profil prikazuje ASCII i vlastite znakove.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-tmSegments@1",
+        "checkerVersion": "24H.1",
+        "title": "TM1637: stvarni segmentni bajtovi",
+        "instructions": "Na sve četiri znamenke šalji redom 1<<bit za bitove 0–7, dva potpuna obilaska. Prikaz uključen, svjetlina 7. Bit 7 vidljiv je samo kao dvotočka druge znamenke. Svaki korak traje 500 ms uz dodatni prijenos: početci susjednih stanja 400–650 ms, stabilni sadržaj najmanje 380 ms, početak do 1800 ms. 5 bodova: prvi obilazak; 2: drugi obilazak. CLK/DIO, LSB prvi i deveti ACK takt; nije I2C. VCC=5 V, LV=3,3 V na S3 ili 5 V na AVR-u. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -4612,16 +4804,32 @@
       "fault": "Zaustavi program, odspoji SCL ili CLK i ponovno pokreni. Usporedi zastali prikaz ili pogrešku, zatim vrati vodič.",
       "expected": "Novi prikaz nastaje iz prijenosa programa. TM programsko brojilo nije RTC; LCD profil prikazuje ASCII i vlastite znakove.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-tmClock@1",
+        "checkerVersion": "24H.1",
+        "title": "TM1637: minute, sekunde i dvotočka",
+        "instructions": "Programsko brojilo počinje s 12:34 i vodećim nulama. Ista vrijednost ima dvotočku uključenu 500 ms pa isključenu 500 ms; zatim 12:35 i 12:36 na isti način. Prikaz uključen, svjetlina 7. Početci susjednih stanja 400–650 ms, stabilnost najmanje 380 ms, prvi početak do 1800 ms. 5 bodova: oba stanja 12:34; 2: oba stanja 12:35 i 12:36. Brojilo nije RTC. CLK/DIO i ACK, VCC=5 V; LV=3,3 V na S3 ili 5 V na AVR-u. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -4645,16 +4853,32 @@
       "fault": "Zaustavi program, odspoji SCL ili CLK i ponovno pokreni. Usporedi zastali prikaz ili pogrešku, zatim vrati vodič.",
       "expected": "Novi prikaz nastaje iz prijenosa programa. TM programsko brojilo nije RTC; LCD profil prikazuje ASCII i vlastite znakove.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-tmClock@1",
+        "checkerVersion": "24H.1",
+        "title": "TM1637: minute, sekunde i dvotočka",
+        "instructions": "Programsko brojilo počinje s 12:34 i vodećim nulama. Ista vrijednost ima dvotočku uključenu 500 ms pa isključenu 500 ms; zatim 12:35 i 12:36 na isti način. Prikaz uključen, svjetlina 7. Početci susjednih stanja 400–650 ms, stabilnost najmanje 380 ms, prvi početak do 1800 ms. 5 bodova: oba stanja 12:34; 2: oba stanja 12:35 i 12:36. Brojilo nije RTC. CLK/DIO i ACK, VCC=5 V; LV=3,3 V na S3 ili 5 V na AVR-u. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -4678,16 +4902,32 @@
       "fault": "Zaustavi program, odspoji SCL ili CLK i ponovno pokreni. Usporedi zastali prikaz ili pogrešku, zatim vrati vodič.",
       "expected": "Novi prikaz nastaje iz prijenosa programa. TM programsko brojilo nije RTC; LCD profil prikazuje ASCII i vlastite znakove.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-tmClock@1",
+        "checkerVersion": "24H.1",
+        "title": "TM1637: minute, sekunde i dvotočka",
+        "instructions": "Programsko brojilo počinje s 12:34 i vodećim nulama. Ista vrijednost ima dvotočku uključenu 500 ms pa isključenu 500 ms; zatim 12:35 i 12:36 na isti način. Prikaz uključen, svjetlina 7. Početci susjednih stanja 400–650 ms, stabilnost najmanje 380 ms, prvi početak do 1800 ms. 5 bodova: oba stanja 12:34; 2: oba stanja 12:35 i 12:36. Brojilo nije RTC. CLK/DIO i ACK, VCC=5 V; LV=3,3 V na S3 ili 5 V na AVR-u. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -4711,16 +4951,32 @@
       "fault": "Zaustavi program, odspoji SCL ili CLK i ponovno pokreni. Usporedi zastali prikaz ili pogrešku, zatim vrati vodič.",
       "expected": "Novi prikaz nastaje iz prijenosa programa. TM programsko brojilo nije RTC; LCD profil prikazuje ASCII i vlastite znakove.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-tmClock@1",
+        "checkerVersion": "24H.1",
+        "title": "TM1637: minute, sekunde i dvotočka",
+        "instructions": "Programsko brojilo počinje s 12:34 i vodećim nulama. Ista vrijednost ima dvotočku uključenu 500 ms pa isključenu 500 ms; zatim 12:35 i 12:36 na isti način. Prikaz uključen, svjetlina 7. Početci susjednih stanja 400–650 ms, stabilnost najmanje 380 ms, prvi početak do 1800 ms. 5 bodova: oba stanja 12:34; 2: oba stanja 12:35 i 12:36. Brojilo nije RTC. CLK/DIO i ACK, VCC=5 V; LV=3,3 V na S3 ili 5 V na AVR-u. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -7880,16 +8136,32 @@
       "fault": "Zaustavi, odspoji CS jednog uređaja i pokreni. Zabilježi koji dio instrumenta prestaje raditi; vrati vodič.",
       "expected": "Pikseli i sirova mjerenja nastaju iz SPI prijenosa. TFT i senzor imaju zasebni CS.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-tftGraphics@1",
+        "checkerVersion": "24H.1",
+        "title": "ST7735: RGB565, tekst i geometrija",
+        "instructions": "ST7735 128×128: crvena RGB565 0xF800 (0,0,42,26), zelena 0x07E0 (42,0,43,26), plava 0x001F (85,0,43,26); bijeli \"SPI TFT\" font 5×7, skala 2, početak (10,38). Napredni dio: žuti okvir (4,65,120,58), cijan linija (5,66)–(122,121), magenta linija (122,66)–(5,121), pozadina tog područja crna. Prikaz dovrši do 3500 ms i zadrži najmanje 200 ms. 5 bodova: tri obojena polja i tekst; 2: okvir i obje linije. Boje i relevantni pikseli moraju stvarno stići u TFT RAM. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -7913,16 +8185,32 @@
       "fault": "Zaustavi, odspoji CS jednog uređaja i pokreni. Zabilježi koji dio instrumenta prestaje raditi; vrati vodič.",
       "expected": "Pikseli i sirova mjerenja nastaju iz SPI prijenosa. TFT i senzor imaju zasebni CS.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-tftGraphics@1",
+        "checkerVersion": "24H.1",
+        "title": "ST7735: RGB565, tekst i geometrija",
+        "instructions": "ST7735 128×128: crvena RGB565 0xF800 (0,0,42,26), zelena 0x07E0 (42,0,43,26), plava 0x001F (85,0,43,26); bijeli \"SPI TFT\" font 5×7, skala 2, početak (10,38). Napredni dio: žuti okvir (4,65,120,58), cijan linija (5,66)–(122,121), magenta linija (122,66)–(5,121), pozadina tog područja crna. Prikaz dovrši do 3500 ms i zadrži najmanje 200 ms. 5 bodova: tri obojena polja i tekst; 2: okvir i obje linije. Boje i relevantni pikseli moraju stvarno stići u TFT RAM. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -7946,16 +8234,32 @@
       "fault": "Zaustavi, odspoji CS jednog uređaja i pokreni. Zabilježi koji dio instrumenta prestaje raditi; vrati vodič.",
       "expected": "Pikseli i sirova mjerenja nastaju iz SPI prijenosa. TFT i senzor imaju zasebni CS.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-tftGraphics@1",
+        "checkerVersion": "24H.1",
+        "title": "ST7735: RGB565, tekst i geometrija",
+        "instructions": "ST7735 128×128: crvena RGB565 0xF800 (0,0,42,26), zelena 0x07E0 (42,0,43,26), plava 0x001F (85,0,43,26); bijeli \"SPI TFT\" font 5×7, skala 2, početak (10,38). Napredni dio: žuti okvir (4,65,120,58), cijan linija (5,66)–(122,121), magenta linija (122,66)–(5,121), pozadina tog područja crna. Prikaz dovrši do 3500 ms i zadrži najmanje 200 ms. 5 bodova: tri obojena polja i tekst; 2: okvir i obje linije. Boje i relevantni pikseli moraju stvarno stići u TFT RAM. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -7979,16 +8283,32 @@
       "fault": "Zaustavi, odspoji CS jednog uređaja i pokreni. Zabilježi koji dio instrumenta prestaje raditi; vrati vodič.",
       "expected": "Pikseli i sirova mjerenja nastaju iz SPI prijenosa. TFT i senzor imaju zasebni CS.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-tftGraphics@1",
+        "checkerVersion": "24H.1",
+        "title": "ST7735: RGB565, tekst i geometrija",
+        "instructions": "ST7735 128×128: crvena RGB565 0xF800 (0,0,42,26), zelena 0x07E0 (42,0,43,26), plava 0x001F (85,0,43,26); bijeli \"SPI TFT\" font 5×7, skala 2, početak (10,38). Napredni dio: žuti okvir (4,65,120,58), cijan linija (5,66)–(122,121), magenta linija (122,66)–(5,121), pozadina tog područja crna. Prikaz dovrši do 3500 ms i zadrži najmanje 200 ms. 5 bodova: tri obojena polja i tekst; 2: okvir i obje linije. Boje i relevantni pikseli moraju stvarno stići u TFT RAM. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -8012,16 +8332,32 @@
       "fault": "Zaustavi, odspoji CS jednog uređaja i pokreni. Zabilježi koji dio instrumenta prestaje raditi; vrati vodič.",
       "expected": "Pikseli i sirova mjerenja nastaju iz SPI prijenosa. TFT i senzor imaju zasebni CS.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-tftRotation@1",
+        "checkerVersion": "24H.1",
+        "title": "ST7735: četiri rotacije i fizički kutovi",
+        "instructions": "Redom prikaži rotacije 0,1,2,3 pa ponovno 0. U svakoj: crna pozadina, crveno polje (0,0,18,18), bijeli okvir (0,0,128,128), zeleni \"ROT n\" u fontu 5×7, skala 2, početak (30,48). Koordinate su logičke; crveni kut obilazi četiri fizička kuta. Promijeni MADCTL i pomake panela, pošalji novi prikaz, zatim čekaj 900 ms. Prvi dovršeni prikaz do 1800 ms, početci dovršenih prikaza 800–2000 ms, stabilnost najmanje 700 ms. 5 bodova: rotacije 0 i 1; 2: 2,3 i povrat na 0. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -8045,16 +8381,32 @@
       "fault": "Zaustavi, odspoji CS jednog uređaja i pokreni. Zabilježi koji dio instrumenta prestaje raditi; vrati vodič.",
       "expected": "Pikseli i sirova mjerenja nastaju iz SPI prijenosa. TFT i senzor imaju zasebni CS.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-tftRotation@1",
+        "checkerVersion": "24H.1",
+        "title": "ST7735: četiri rotacije i fizički kutovi",
+        "instructions": "Redom prikaži rotacije 0,1,2,3 pa ponovno 0. U svakoj: crna pozadina, crveno polje (0,0,18,18), bijeli okvir (0,0,128,128), zeleni \"ROT n\" u fontu 5×7, skala 2, početak (30,48). Koordinate su logičke; crveni kut obilazi četiri fizička kuta. Promijeni MADCTL i pomake panela, pošalji novi prikaz, zatim čekaj 900 ms. Prvi dovršeni prikaz do 1800 ms, početci dovršenih prikaza 800–2000 ms, stabilnost najmanje 700 ms. 5 bodova: rotacije 0 i 1; 2: 2,3 i povrat na 0. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -8078,16 +8430,32 @@
       "fault": "Zaustavi, odspoji CS jednog uređaja i pokreni. Zabilježi koji dio instrumenta prestaje raditi; vrati vodič.",
       "expected": "Pikseli i sirova mjerenja nastaju iz SPI prijenosa. TFT i senzor imaju zasebni CS.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-tftRotation@1",
+        "checkerVersion": "24H.1",
+        "title": "ST7735: četiri rotacije i fizički kutovi",
+        "instructions": "Redom prikaži rotacije 0,1,2,3 pa ponovno 0. U svakoj: crna pozadina, crveno polje (0,0,18,18), bijeli okvir (0,0,128,128), zeleni \"ROT n\" u fontu 5×7, skala 2, početak (30,48). Koordinate su logičke; crveni kut obilazi četiri fizička kuta. Promijeni MADCTL i pomake panela, pošalji novi prikaz, zatim čekaj 900 ms. Prvi dovršeni prikaz do 1800 ms, početci dovršenih prikaza 800–2000 ms, stabilnost najmanje 700 ms. 5 bodova: rotacije 0 i 1; 2: 2,3 i povrat na 0. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -8111,16 +8479,32 @@
       "fault": "Zaustavi, odspoji CS jednog uređaja i pokreni. Zabilježi koji dio instrumenta prestaje raditi; vrati vodič.",
       "expected": "Pikseli i sirova mjerenja nastaju iz SPI prijenosa. TFT i senzor imaju zasebni CS.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-tftRotation@1",
+        "checkerVersion": "24H.1",
+        "title": "ST7735: četiri rotacije i fizički kutovi",
+        "instructions": "Redom prikaži rotacije 0,1,2,3 pa ponovno 0. U svakoj: crna pozadina, crveno polje (0,0,18,18), bijeli okvir (0,0,128,128), zeleni \"ROT n\" u fontu 5×7, skala 2, početak (30,48). Koordinate su logičke; crveni kut obilazi četiri fizička kuta. Promijeni MADCTL i pomake panela, pošalji novi prikaz, zatim čekaj 900 ms. Prvi dovršeni prikaz do 1800 ms, početci dovršenih prikaza 800–2000 ms, stabilnost najmanje 700 ms. 5 bodova: rotacije 0 i 1; 2: 2,3 i povrat na 0. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -8144,16 +8528,32 @@
       "fault": "Zaustavi, odspoji CS jednog uređaja i pokreni. Zabilježi koji dio instrumenta prestaje raditi; vrati vodič.",
       "expected": "Pikseli i sirova mjerenja nastaju iz SPI prijenosa. TFT i senzor imaju zasebni CS.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-bmp280SPI@1",
+        "checkerVersion": "24H.1",
+        "title": "BMP280 SPI: nova kompenzirana mjerenja",
+        "instructions": "BMP280 SPI mora čitati ID 0x58, kalibraciju i nove dovršene pretvorbe. Provjeravač zadaje tri okoliša po 3500 ms: −10 °C/90000 Pa, 55 °C/107000 Pa i povrat na prvi, ili obrnuti redoslijed. Ispiši T=<temperatura> P=<tlak> u °C i Pa, tolerancije ±0,3 °C i ±150 Pa. U svakoj etapi traži se novo stvarno SPI očitanje i odgovarajući ispis nakon prvih 100 ms, najdulji razmak 1800 ms. 5 bodova: prva dva okoliša; 2: povrat. MISO 0xFF, stara vrijednost ili sama identifikacija nisu novo mjerenje. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -8177,16 +8577,32 @@
       "fault": "Zaustavi, odspoji CS jednog uređaja i pokreni. Zabilježi koji dio instrumenta prestaje raditi; vrati vodič.",
       "expected": "Pikseli i sirova mjerenja nastaju iz SPI prijenosa. TFT i senzor imaju zasebni CS.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-bmp280SPI@1",
+        "checkerVersion": "24H.1",
+        "title": "BMP280 SPI: nova kompenzirana mjerenja",
+        "instructions": "BMP280 SPI mora čitati ID 0x58, kalibraciju i nove dovršene pretvorbe. Provjeravač zadaje tri okoliša po 3500 ms: −10 °C/90000 Pa, 55 °C/107000 Pa i povrat na prvi, ili obrnuti redoslijed. Ispiši T=<temperatura> P=<tlak> u °C i Pa, tolerancije ±0,3 °C i ±150 Pa. U svakoj etapi traži se novo stvarno SPI očitanje i odgovarajući ispis nakon prvih 100 ms, najdulji razmak 1800 ms. 5 bodova: prva dva okoliša; 2: povrat. MISO 0xFF, stara vrijednost ili sama identifikacija nisu novo mjerenje. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -8210,16 +8626,32 @@
       "fault": "Zaustavi, odspoji CS jednog uređaja i pokreni. Zabilježi koji dio instrumenta prestaje raditi; vrati vodič.",
       "expected": "Pikseli i sirova mjerenja nastaju iz SPI prijenosa. TFT i senzor imaju zasebni CS.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-bmp280SPI@1",
+        "checkerVersion": "24H.1",
+        "title": "BMP280 SPI: nova kompenzirana mjerenja",
+        "instructions": "BMP280 SPI mora čitati ID 0x58, kalibraciju i nove dovršene pretvorbe. Provjeravač zadaje tri okoliša po 3500 ms: −10 °C/90000 Pa, 55 °C/107000 Pa i povrat na prvi, ili obrnuti redoslijed. Ispiši T=<temperatura> P=<tlak> u °C i Pa, tolerancije ±0,3 °C i ±150 Pa. U svakoj etapi traži se novo stvarno SPI očitanje i odgovarajući ispis nakon prvih 100 ms, najdulji razmak 1800 ms. 5 bodova: prva dva okoliša; 2: povrat. MISO 0xFF, stara vrijednost ili sama identifikacija nisu novo mjerenje. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -8243,16 +8675,32 @@
       "fault": "Zaustavi, odspoji CS jednog uređaja i pokreni. Zabilježi koji dio instrumenta prestaje raditi; vrati vodič.",
       "expected": "Pikseli i sirova mjerenja nastaju iz SPI prijenosa. TFT i senzor imaju zasebni CS.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-bmp280SPI@1",
+        "checkerVersion": "24H.1",
+        "title": "BMP280 SPI: nova kompenzirana mjerenja",
+        "instructions": "BMP280 SPI mora čitati ID 0x58, kalibraciju i nove dovršene pretvorbe. Provjeravač zadaje tri okoliša po 3500 ms: −10 °C/90000 Pa, 55 °C/107000 Pa i povrat na prvi, ili obrnuti redoslijed. Ispiši T=<temperatura> P=<tlak> u °C i Pa, tolerancije ±0,3 °C i ±150 Pa. U svakoj etapi traži se novo stvarno SPI očitanje i odgovarajući ispis nakon prvih 100 ms, najdulji razmak 1800 ms. 5 bodova: prva dva okoliša; 2: povrat. MISO 0xFF, stara vrijednost ili sama identifikacija nisu novo mjerenje. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -8276,16 +8724,32 @@
       "fault": "Zaustavi, odspoji CS jednog uređaja i pokreni. Zabilježi koji dio instrumenta prestaje raditi; vrati vodič.",
       "expected": "Pikseli i sirova mjerenja nastaju iz SPI prijenosa. TFT i senzor imaju zasebni CS.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-spiDashboard@1",
+        "checkerVersion": "24H.1",
+        "title": "BMP280 → ST7735: mjerenje i primljeni pikseli",
+        "instructions": "BMP280 i ST7735 dijele SCK/MOSI uz zasebni CS i MISO senzora. Tri okoliša po 4500 ms: −10 °C/90000 Pa, 55 °C/107000 Pa i povrat, ili obrnuto. Novi SPI uzorci nakon prvih 100 ms, T ±0,3 °C i P ±150 Pa, razmak najviše 1800 ms. TFT mora prikazati cijan \"SPI STANICA\" (7,10), žuti \"%.1f C\" (8,40), skala 2, i zeleni \"%.1f HPA\" (8,74), skala 1, iz novog uzorka; font 5×7, crna pozadina tekstnih polja temperature (8,40,84,14) i tlaka (8,74,60,7). Prikaz u svakoj etapi stabilan najmanje 200 ms i najviše 1800 ms nakon pripadnog novog uzorka. 5 bodova: dva različita okoliša i pikseli; 2: povrat. Ispis nije obvezan. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -8309,16 +8773,32 @@
       "fault": "Zaustavi, odspoji CS jednog uređaja i pokreni. Zabilježi koji dio instrumenta prestaje raditi; vrati vodič.",
       "expected": "Pikseli i sirova mjerenja nastaju iz SPI prijenosa. TFT i senzor imaju zasebni CS.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-spiDashboard@1",
+        "checkerVersion": "24H.1",
+        "title": "BMP280 → ST7735: mjerenje i primljeni pikseli",
+        "instructions": "BMP280 i ST7735 dijele SCK/MOSI uz zasebni CS i MISO senzora. Tri okoliša po 4500 ms: −10 °C/90000 Pa, 55 °C/107000 Pa i povrat, ili obrnuto. Novi SPI uzorci nakon prvih 100 ms, T ±0,3 °C i P ±150 Pa, razmak najviše 1800 ms. TFT mora prikazati cijan \"SPI STANICA\" (7,10), žuti \"%.1f C\" (8,40), skala 2, i zeleni \"%.1f HPA\" (8,74), skala 1, iz novog uzorka; font 5×7, crna pozadina tekstnih polja temperature (8,40,84,14) i tlaka (8,74,60,7). Prikaz u svakoj etapi stabilan najmanje 200 ms i najviše 1800 ms nakon pripadnog novog uzorka. 5 bodova: dva različita okoliša i pikseli; 2: povrat. Ispis nije obvezan. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -8342,16 +8822,32 @@
       "fault": "Zaustavi, odspoji CS jednog uređaja i pokreni. Zabilježi koji dio instrumenta prestaje raditi; vrati vodič.",
       "expected": "Pikseli i sirova mjerenja nastaju iz SPI prijenosa. TFT i senzor imaju zasebni CS.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-spiDashboard@1",
+        "checkerVersion": "24H.1",
+        "title": "BMP280 → ST7735: mjerenje i primljeni pikseli",
+        "instructions": "BMP280 i ST7735 dijele SCK/MOSI uz zasebni CS i MISO senzora. Tri okoliša po 4500 ms: −10 °C/90000 Pa, 55 °C/107000 Pa i povrat, ili obrnuto. Novi SPI uzorci nakon prvih 100 ms, T ±0,3 °C i P ±150 Pa, razmak najviše 1800 ms. TFT mora prikazati cijan \"SPI STANICA\" (7,10), žuti \"%.1f C\" (8,40), skala 2, i zeleni \"%.1f HPA\" (8,74), skala 1, iz novog uzorka; font 5×7, crna pozadina tekstnih polja temperature (8,40,84,14) i tlaka (8,74,60,7). Prikaz u svakoj etapi stabilan najmanje 200 ms i najviše 1800 ms nakon pripadnog novog uzorka. 5 bodova: dva različita okoliša i pikseli; 2: povrat. Ispis nije obvezan. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {
@@ -8375,16 +8871,32 @@
       "fault": "Zaustavi, odspoji CS jednog uređaja i pokreni. Zabilježi koji dio instrumenta prestaje raditi; vrati vodič.",
       "expected": "Pikseli i sirova mjerenja nastaju iz SPI prijenosa. TFT i senzor imaju zasebni CS.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24H-spiDashboard@1",
+        "checkerVersion": "24H.1",
+        "title": "BMP280 → ST7735: mjerenje i primljeni pikseli",
+        "instructions": "BMP280 i ST7735 dijele SCK/MOSI uz zasebni CS i MISO senzora. Tri okoliša po 4500 ms: −10 °C/90000 Pa, 55 °C/107000 Pa i povrat, ili obrnuto. Novi SPI uzorci nakon prvih 100 ms, T ±0,3 °C i P ±150 Pa, razmak najviše 1800 ms. TFT mora prikazati cijan \"SPI STANICA\" (7,10), žuti \"%.1f C\" (8,40), skala 2, i zeleni \"%.1f HPA\" (8,74), skala 1, iz novog uzorka; font 5×7, crna pozadina tekstnih polja temperature (8,40,84,14) i tlaka (8,74,60,7). Prikaz u svakoj etapi stabilan najmanje 200 ms i najviše 1800 ms nakon pripadnog novog uzorka. 5 bodova: dva različita okoliša i pikseli; 2: povrat. Ispis nije obvezan. Kriteriji su 3 boda za valjan napajani komunikacijski put, 5 za osnovni sadržaj i 2 za nastavak/napredni dio. Konzola ne nadomješta zaslon; lokalni framebuffer bez prijenosa ne vrijedi. Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored dopušteni su uz zadane prikazane elemente. Slobodni dijelovi slike ne boduju se. Zadrži objavljeni raster font i položaje bodovanih elemenata; otvoreni odgovori ostaju opisni. Kvar se ispituje u zasebnoj kopiji: Stop, popravak i novo pokretanje su dopušteni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-displays.test.ts"
       }
     },
     {

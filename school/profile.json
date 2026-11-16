@@ -1,7 +1,7 @@
 {
   "format": "labosv2-school-profile",
   "version": 1,
-  "stage": "24G",
+  "stage": "24H",
   "sourceBaseline": "zljix/labos@3c4a281c10282d63b2742280f69aadbc08d7ae1e",
   "webServer": "Apache 2.4 with HTTPS",
   "phpBranches": [
@@ -80,7 +80,7 @@
     "idempotentSaves": true
   },
   "grading": {
-    "checkerVersion": "24G.1",
+    "checkerVersion": "24H.1",
     "profiles": [
       "23E-button-led@1",
       "23E-analog-threshold@1",
@@ -124,7 +124,15 @@
       "24F-servoMotorTone@1",
       "24G-stepperBasic@1",
       "24G-stepperMicro@1",
-      "24G-stepperControl@1"
+      "24G-stepperControl@1",
+      "24H-oled32@1",
+      "24H-lcd1602@1",
+      "24H-tmSegments@1",
+      "24H-tmClock@1",
+      "24H-tftGraphics@1",
+      "24H-tftRotation@1",
+      "24H-bmp280SPI@1",
+      "24H-spiDashboard@1"
     ],
     "targets": [
       "micropython",
@@ -144,12 +152,13 @@
       "24C.1",
       "24D.1",
       "24E.1",
-      "24F.1"
+      "24F.1",
+      "24G.1"
     ],
     "coverage": {
       "combinations": 268,
-      "supported": 144,
-      "unsupported": 124,
+      "supported": 176,
+      "unsupported": 92,
       "introductoryLocalOnly": 5
     },
     "executionContract": "labosv2-execution-contract@1",
@@ -161,7 +170,9 @@
     "actuatorWallTimeMs": 65000,
     "actuatorCpuSeconds": 58,
     "stepperWallTimeMs": 65000,
-    "stepperCpuSeconds": 58
+    "stepperCpuSeconds": 58,
+    "displayWallTimeMs": 65000,
+    "displayCpuSeconds": 58
   },
   "submissions": {
     "exactRevision": true,

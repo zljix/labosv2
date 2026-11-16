@@ -19,7 +19,7 @@ test.after(()=>{mkdirSync('docs/stage24g-evidence',{recursive:true});writeFileSy
 test('24G publishes three immutable contracts and preserves all 40 older profiles',()=>{
   const registry=JSON.parse(readFileSync('school/grader/profiles.json','utf8'));
   assert.deepEqual(registry.profiles.slice(0,40),JSON.parse(readFileSync('verification/fixtures/24f-grading-profiles.json','utf8')).profiles);
-  assert.equal(stepperProfiles.length,3);assert.equal(gradingCoverage('test').summary.supported,144);
+  assert.equal(stepperProfiles.length,3);assert(gradingCoverage('test').summary.supported>=144);
   for(const p of stepperProfiles){assert.equal(p.checkerVersion,'24G.1');assert.equal(p.contract!.scenarioVersion,'24G.1');
     assert.deepEqual(p.criteria.map(c=>c.maxPoints),[3,5,2]);for(const t of p.targets)assert.equal(gradingSupport(p.taskKey,t).profileId,p.id);}
 });

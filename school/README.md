@@ -1,3 +1,7 @@
+## 24H — zasloni i SPI uređaji
+
+Izdanje **0.14.6-beta.1** dodaje osam rubrika i 32 kombinacije: ukupno **176/268**. OLED, LCD, TM1637, ST7735 i BMP280 SPI provjeravaju se iz stvarnih prijenosa i memorije uređaja. [Opseg, kriteriji i provjere 24H](../docs/stage24h-displays.md). Nema nove SQL migracije. Sačuvaj bazu, konfiguraciju i sesije; zamijeni kompletan paket, pokreni postojeći migrate i ponovno pokreni provjeravače. Ranije predaje ostaju vezane uz svoje uvjete.
+
 ## 24G — A4988 i koračni motor
 
 Izdanje **0.14.5-beta.1** dodaje tri rubrike i 12 kombinacija: ukupno **144/268**. [Opseg i provjere 24G](../docs/stage24g-steppers.md). ENABLE isključuje pobudu, translator broji dalje; RESET ne referencira osovinu. Upute za nadogradnju i kriteriji nalaze se u odjeljku 24G na kraju dokumenta. Nema nove SQL migracije.
@@ -8,13 +12,13 @@ Izdanje 0.14.4-beta.1 dodaje sedam rubrika 24F-…@1 i 28 kombinacija (ukupno 13
 
 Nema nove SQL migracije. Prije nadogradnje sačuvaj bazu i privatnu konfiguraciju. Zamijeni programski paket, zadrži sesije/konfiguraciju, pokreni postojeći migrate i ponovno pokreni Linux provjeravače. Ranije verzije rubrika i zaključane predaje ostaju izvršive uz stare uvjete. Nova objava izričito bira novu rubriku.
 
-# Labosv2 · školski paket · etapa 24G
+# Labosv2 · školski paket · etapa 24H
 
 Prethodno izdanje 0.13.8-beta.1 pripremilo je školski pilot, obrazac opažanja i razvojni pokus 30 + 1; vidi [23I](../docs/stage23i-pilot.md). Etapa 23H dodala je postignuća, izvoze, komentare i korekcije, arhiviranje, čuvanje međurevizija te privatne kopije i povrat. Postupak i provjere su u [izvješću 23H](../docs/stage23h-reports-administration.md). [Raniji zapis integracije 23F](https://github.com/zljix/labosv2/actions/runs/43738711916) ostaje povijesni dokaz. Stvarni školski pilot ostaje zasebna provjera.
 
 Etapa 23A priprema postojeći laboratorij za školski Apache/PHP/MySQL smjer i dokazuje ponovno izvršavanje izvan učenikova preglednika. Polazište je `zljix/labos@3c4a281` (0.12.9), uključujući posljednju doradu vodova. Ovaj razvoj objavljuje se u `zljix/labosv2`.
 
-**Dostupno:** simulator, postojeći projekti i izvozi, školski paket, PHP provjera preduvjeta, MySQL migracije, početni administrator, prijava/odjava, uloge, upravljanje računima i lozinkama, razredi, CSV uvoz, pozivni kodovi, potvrda učenika i verzionirane dodjele vježbi te raniji ograničeni dokaz tipkala/LED-ice, poslužiteljski pokušaji, nepromjenjive radne revizije, automatsko spremanje, usporedba sukoba i nastavnički pregled rada. **Službeno bodovanje sada pokriva 104 od 268 kombinacija.** Etapa 24E dodaje šest rubrika enkodera i IR-a; [upute i provjere](../docs/stage24e-events.md). Završetak, zaključavanje, povijest i dopuštena dorada dostupni su u 23F. Izvorni plan od 14. 11. 2026. zadržan je.
+**Dostupno:** simulator, postojeći projekti i izvozi, školski paket, PHP provjera preduvjeta, MySQL migracije, početni administrator, prijava/odjava, uloge, upravljanje računima i lozinkama, razredi, CSV uvoz, pozivni kodovi, potvrda učenika i verzionirane dodjele vježbi te raniji ograničeni dokaz tipkala/LED-ice, poslužiteljski pokušaji, nepromjenjive radne revizije, automatsko spremanje, usporedba sukoba i nastavnički pregled rada. **Službeno bodovanje sada pokriva 176 od 268 kombinacija.** Etapa 24E dodaje šest rubrika enkodera i IR-a; [upute i provjere](../docs/stage24e-events.md). Završetak, zaključavanje, povijest i dopuštena dorada dostupni su u 23F. Izvorni plan od 14. 11. 2026. zadržan je.
 
 ## Izgradnja
 
@@ -24,7 +28,7 @@ Node.js 24 LTS, `npm ci`, zatim:
 npm run build:school
 ```
 
-Nastaje `release/Labosv2_0.14.3_24E_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
+Nastaje `release/Labosv2_0.14.6_24H_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
 
 | Mapa | Namjena |
 | --- | --- |

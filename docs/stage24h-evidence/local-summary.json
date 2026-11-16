@@ -1,0 +1,93 @@
+{
+  "format": "labosv2-24h-local-acceptance",
+  "version": 1,
+  "releaseVersion": "0.14.6-beta.1",
+  "stage": "24H",
+  "date": "2026-11-16",
+  "baselineCommit": "ccfc9b71018f86a8515a039d66dbf7d03f5371dc",
+  "publication": "blocked-by-automatic-approval-review",
+  "destination": {
+    "repository": "https://github.com/zljix/labosv2",
+    "productionBranch": "main",
+    "pages": "https://zljix.github.io/labosv2/"
+  },
+  "coverage": {
+    "supported": 176,
+    "combinations": 268,
+    "new": 32
+  },
+  "localTargets": {
+    "micropython": {
+      "referenceRuns": 24,
+      "distinctProfiles": 8,
+      "evaluations": 82,
+      "failures": 0,
+      "independentCompilations": 0,
+      "sourceExecution": "MicroPython source"
+    },
+    "s3-cpp": {
+      "referenceRuns": 24,
+      "distinctProfiles": 8,
+      "evaluations": 54,
+      "failures": 0,
+      "independentCompilations": 0,
+      "sourceExecution": "exact trusted catalogue C++ source/artefact match"
+    },
+    "uno": {
+      "referenceRuns": 24,
+      "distinctProfiles": 8,
+      "evaluations": 54,
+      "failures": 0,
+      "independentCompilations": 0,
+      "sourceExecution": "exact trusted catalogue C++ source/artefact match"
+    },
+    "nano": {
+      "referenceRuns": 24,
+      "distinctProfiles": 8,
+      "evaluations": 54,
+      "failures": 0,
+      "independentCompilations": 0,
+      "sourceExecution": "exact trusted catalogue C++ source/artefact match"
+    }
+  },
+  "localChecks": {
+    "coverage": {
+      "passed": 3,
+      "failed": 0
+    },
+    "package": {
+      "passed": 2,
+      "failed": 0
+    },
+    "pages": {
+      "passed": 8,
+      "failed": 0
+    },
+    "regression": {
+      "passed": 50,
+      "failed": 0
+    },
+    "finishUI": {
+      "passed": 1,
+      "failed": 0
+    },
+    "reports": {
+      "passed": 3,
+      "failed": 0
+    },
+    "sync": {
+      "passed": 15,
+      "failed": 0
+    },
+    "legacyRegistry": {
+      "passed": 4,
+      "failed": 0
+    }
+  },
+  "pending": [
+    "96 isolated independent C++ compilations",
+    "PHP/MySQL 8.4 assignment, score and locking acceptance",
+    "GitHub publication and Pages deployment"
+  ],
+  "publicationReviewReason": "Automatic approval review requested explicit authorization for the exact public destination and source payload."
+}

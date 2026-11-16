@@ -1,6 +1,8 @@
 # Labosv2 · školski laboratorij
 
-**0.14.5-beta.1 · etapa 24G · A4988 i koračni motor · 16. studenoga 2026.**
+**0.14.6-beta.1 · etapa 24H · zasloni i SPI uređaji · 16. studenoga 2026.**
+
+**Status 24H:** lokalno pripremljeno izdanje; novi neovisni C++ prijevodi, PHP/MySQL prihvat i javna objava čekaju odobren upis u `zljix/labosv2`.
 
 [Završni prihvat 24G](https://github.com/zljix/labosv2/actions/runs/43925558604) potvrđuje sva četiri cilja, 36 neovisnih C++ prijevoda, 12 zaključanih dodjela, pravi PHP/MySQL, izvještaje, povrat kopije i pokus s 30 simuliranih učenika. Provjereno je svih 880 datoteka iz inventure paketa; programski izvor odgovara prihvatu.
 
@@ -12,7 +14,15 @@ Nastavak postojećeg ESP32 MicroPython / Arduino laboratorija za školski sustav
 
 [Neovisni prihvat 24F](https://github.com/zljix/labosv2/actions/runs/43915429891) potvrđuje sva četiri cilja i 67 novih prijevoda. [Školski prihvat 24F](https://github.com/zljix/labosv2/actions/runs/43916966742) potvrđuje identičan programski izvor, PHP/MySQL, bodove, zaključavanje, 30 simuliranih učenika, izvještaje i paket.
 
-## Novo u 24G
+## Novo u 24H
+
+- Osam novih rubrika za OLED 128×32, LCD1602, TM1637 segmente i programsko vrijeme, ST7735 grafiku/rotaciju te BMP280 SPI i instrument.
+- **176/268 podržanih kombinacija**: 44 varijante na sva četiri cilja.
+- Bodovi slijede primljene piksele, DDRAM/CGRAM znakove, segmentne bajtove/ACK i nova dovršena SPI mjerenja. Instrument prati promjenu okoliša i povrat.
+- Postojeći rasporedi teksta zadržani su po cilju, kriteriji 3 + 5 + 2 i tolerancije vidljivi su prije rada; ranije 43 rubrike ostaju neizmijenjene.
+- [Opseg, provjere i nadogradnja](docs/stage24h-displays.md). Nema nove SQL migracije. Slijedi 24I: meteorološka stanica i regulator.
+
+## Sačuvano iz 24G
 
 - Tri nove rubrike: broj koraka i smjer, svih pet mikrostep načina te ENABLE/RESET/SLEEP.
 - **144/268 podržanih kombinacija**: 36 varijanti na sva četiri cilja.
@@ -123,7 +133,7 @@ Prijava, uloge, razredi, CSV uvoz, pozivni kodovi i nepromjenjive inačice zadat
 
 **386/386 ciljanih testova**, **6/6 neovisnih compiler/runtime pokusa** i **4/4 skupne HTTPS provjere**; svih 191 web resursa provjereno je bajtno na Apacheu. Stari ZIP iz 22I ponovno se otvara i izvodi. [Točne inačice, granice i otvorene provjere](docs/stage23a-school.md).
 
-Središnje spremanje dodijeljenih vježbi i nastavnički pregled sada su dostupni na školskom poslužitelju. Službeni bodovi dostupni su za 36 URS varijanti na sva četiri cilja (144 kombinacije); zaključavanje i dopuštena dorada dostupni su u 23F. Probni rezultati 23A zadržavaju oznaku `feasibility-only`. GitHub Pages služi web simulator i javni prikaz školskog izdanja; prijava zahtijeva školski PHP/MySQL poslužitelj.
+Središnje spremanje dodijeljenih vježbi i nastavnički pregled sada su dostupni na školskom poslužitelju. Službeni bodovi dostupni su za 44 URS varijante na sva četiri cilja (176 kombinacija); zaključavanje i dopuštena dorada dostupni su u 23F. Probni rezultati 23A zadržavaju oznaku `feasibility-only`. GitHub Pages služi web simulator i javni prikaz školskog izdanja; prijava zahtijeva školski PHP/MySQL poslužitelj.
 
 ## Pokretanje i izgradnja
 
@@ -142,7 +152,7 @@ npm ci
 npm run build:school
 ```
 
-Školski paket: `release/Labosv2_0.14.5_24G_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-24G-Skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
+Školski paket: `release/Labosv2_0.14.6_24H_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-24H-Provjeren-skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
 
 ```sh
 npm run build:pages

@@ -1,3 +1,4 @@
+import {isDisplayContract,createDisplayCheck} from './displays';
 import {readFile} from 'node:fs/promises';
 import {pathToFileURL} from 'node:url';
 import {compileCircuit} from '../../src/circuit/compile';
@@ -26,8 +27,9 @@ const sensorCheck=isSensorContract(profile)?createSensorCheck(config,profile,see
 const eventCheck=isEventContract(profile)?createEventCheck(config,profile,seed,backend):null;
 const actuatorCheck=isActuatorContract(profile)?createActuatorCheck(config,profile,seed):null;
 const stepperCheck=isStepperContract(profile)?createStepperCheck(config,profile,seed):null;
-const extendedCheck=stepperCheck??actuatorCheck??eventCheck??sensorCheck??analogCheck;
-const protocolClock=!!(sensorCheck||eventCheck||stepperCheck);
+const displayCheck=isDisplayContract(profile)?createDisplayCheck(config,profile,seed,backend):null;
+const extendedCheck=displayCheck??stepperCheck??actuatorCheck??eventCheck??sensorCheck??analogCheck;
+const protocolClock=!!(displayCheck||sensorCheck||eventCheck||stepperCheck);
 // ADC receives a voltage, never a fabricated ADC return value. S3's 11 dB
 // transfer saturates at 3.1 V, whereas the Uno/Nano full scale is 5 V.
 const thresholdPosition=backend!=='avr'?3.1/3.3*2048/4095:512/1023;

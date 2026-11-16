@@ -42,5 +42,5 @@ test('24E PHP/MySQL publishes all six contracts, stores genuine scores, locks wo
   assert.equal(f.command('migrate').status,0);
   const preserved=await ok(student.client.call('attempt&id='+old.attempt.id));assert.equal(preserved.assignment.task.contentHash,legacy.contentHash);assert.equal(preserved.attempt.grading.points,oldResult.points);
   assert.equal(preserved.assignment.task.rubric.profileId,'24B-analog-threshold@1');
-  mkdirSync('docs/stage24d-evidence',{recursive:true});writeFileSync('docs/stage24d-evidence/mysql-events.json',JSON.stringify({format:'labosv2-events-api-evidence',version:1,sourceCommit:process.env.GITHUB_SHA??null,legacyPreserved:true,legacyResult:oldResult,results},null,2)+'\n');
+  mkdirSync('docs/stage24e-evidence',{recursive:true});writeFileSync('docs/stage24e-evidence/mysql-events.json',JSON.stringify({format:'labosv2-events-api-evidence',version:1,sourceCommit:process.env.GITHUB_SHA??null,legacyPreserved:true,legacyResult:oldResult,results},null,2)+'\n');
 });

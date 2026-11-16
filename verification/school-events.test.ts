@@ -8,6 +8,7 @@ import {eventProfiles,starter,jobFor,compilerOptions,alternateEvent,wrongEvent} 
 import {decodeNEC} from '../school/grader/events';
 import {necEnvelope} from '../public/infrared.mjs';
 import type {UrsTarget} from '../src/lessons/ursCatalog';
+import {makePart,terminals} from '../src/circuit/model';
 const root=process.cwd(),evidence:any[]=[];
 async function run(project:any,profile:any,options:any={root},seed='5'.repeat(64)){
   const job=jobFor(project,profile,seed),result=await gradeJob(job,options);
@@ -64,6 +65,21 @@ test('24E slow polling, swapped phases, forged reports and disconnected optical 
   const p=eventProfiles.find(p=>p.taskKey==='encoder/ky040')!,swapped=await starter(p.taskKey);
   swapped.files['main.py']=swapped.files['main.py'].replace('Pin(4, Pin.IN), Pin(5, Pin.IN)','Pin(5, Pin.IN), Pin(4, Pin.IN)');
   assert.equal((await run(swapped,p)).points,3);
+});
+test('24E LED accepts GPIO endpoints and follows only the electrically connected duty source',{skip:!!process.env.LAB_EVENT_TARGET&&process.env.LAB_EVENT_TARGET!=='micropython',timeout:45000},async()=>{
+  const profile=eventProfiles.find(p=>p.taskKey==='ir/irLED')!,endpoints=await starter(profile.taskKey);
+  endpoints.files['main.py']=endpoints.files['main.py'].replace(/(^[ \t]*)led.duty_u16\(svjetlina \* 65535 \/\/ 100\)/m,(_line,indent)=>
+    indent+'if svjetlina == 0 or svjetlina == 100:\n'+indent+'    led.deinit()\n'+indent+'    Pin(7, Pin.OUT).value(1 if svjetlina else 0)\n'+indent+'else:\n'+indent+'    led.init(duty_u16=svjetlina * 65535 // 100)');
+  assert.equal((await run(endpoints,profile)).points,10);
+  const unrelated=await starter(profile.taskKey);assert.equal(unrelated.circuit.kind,'editable');
+  if(unrelated.circuit.kind!=='editable')throw Error('Expected editable circuit');
+  const c=unrelated.circuit,b=c.components.find(p=>p.kind==='board')!,pins=terminals(b),pin=(n:number)=>pins.find(t=>t.gpio===n)!.pin;
+  for(const w of c.wires)for(const e of [w.from,w.to])if(e.component===b.id&&e.pin===pin(7))e.pin=pin(10);
+  const r=makePart('resistor',600,600,'unrelated-pwm-load');r.properties.resistance=680;c.components.push(r);
+  c.wires.push({id:'fake-pwm',from:{component:b.id,pin:pin(7)},to:{component:r.id,pin:'1'},color:'#087f8c',points:[]},
+    {id:'fake-ground',from:{component:r.id,pin:'2'},to:{component:b.id,pin:pins.find(t=>t.role==='ground')!.pin},color:'#334155',points:[]});
+  unrelated.files['main.py']=unrelated.files['main.py'].replace('svjetlina = 0','gate = Pin(10, Pin.OUT, value=0)\nsvjetlina = 0').replace('led.duty_u16(svjetlina * 65535 // 100)','led.duty_u16(svjetlina * 65535 // 100)\n                gate.value(1 if svjetlina else 0)');
+  assert.equal((await run(unrelated,profile)).points,3);
 });
 for(const target of ['s3-cpp','uno','nano'] as UrsTarget[])for(const p of eventProfiles)test(`24E ${target} ${p.id}: independent reference, alternate and wrong source compilation`,{
   skip:(!!process.env.LAB_EVENT_TARGET&&process.env.LAB_EVENT_TARGET!==target)||!(target==='s3-cpp'?process.env.LAB_S3_COMPILER_TEST:process.env.LAB_GRADING_COMPILER_TEST),timeout:300000},async()=>{

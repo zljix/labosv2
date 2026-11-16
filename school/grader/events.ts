@@ -96,7 +96,7 @@ export function createEventCheck(c:SimulationConfig,profile:any,seed:string,back
     const path=frames.some(e=>{
       const d=(encoder?e.encoders:e.infrared)?.[device.id];
       return d?.powered&&(encoder?[device.clk,device.dt,device.sw].every(n=>gpioInput(e,n)):
-        tx?e.infrared?.[transmitter.id]?.powered&&c.gpios.some(g=>g.net===transmitter.signal&&['OUT','PWM'].includes(e.gpios?.[g.pin]?.mode)):
+        tx?e.infrared?.[transmitter.id]?.powered&&c.gpios.some(g=>g.net===device.output)&&c.gpios.some(g=>g.net===transmitter.signal&&['OUT','PWM'].includes(e.gpios?.[g.pin]?.mode)):
         gpioInput(e,device.output));
     });
     if(encoder){
@@ -160,7 +160,7 @@ export function createEventCheck(c:SimulationConfig,profile:any,seed:string,back
         }
         const m=l.text.match(/PULSE LEADER=(\d+) MARK=(\d+) SPACE=(\d+)/);if(!m)return false;
         const f=received[i];if(!f)return false;
-        return Math.abs(+m[1]-9000)<=s.pulseToleranceUs&&Math.abs(+m[2]-562.5)<=s.pulseToleranceUs&&
+        return +m[1]>=6500&&+m[1]<=9000+s.pulseToleranceUs&&Math.abs(+m[2]-562.5)<=s.pulseToleranceUs&&
           Math.abs(+m[3]-(v.command&128?562.5:1687.5))<=s.pulseToleranceUs;
       });
       passed=path&&matching&&pulseValid&&(expected.length===0||received.length===expected.length);
@@ -168,11 +168,21 @@ export function createEventCheck(c:SimulationConfig,profile:any,seed:string,back
     }else{
       // Inspect electrical LED current and the actual PWM output. Text is
       // diagnostic only and can neither create nor remove an output point.
-      const led=c.leds[0],nets=new Set([led.a,led.k]);
-      for(const r of c.resistors)if(nets.has(r.a)||nets.has(r.b)){nets.add(r.a);nets.add(r.b);}
+      const led=c.leds[0];
+      const reachable=(origin:number)=>{
+        const nets=new Set([origin]),rail=(net:number)=>c.rails.some(r=>r.net===net);
+        if(rail(origin))return new Set<number>();
+        for(let changed=true;changed;){changed=false;
+          for(const r of c.resistors)for(const [a,b]of [[r.a,r.b],[r.b,r.a]])
+            if(nets.has(a)&&!nets.has(b)&&!rail(b)){nets.add(b);changed=true;}
+        }return nets;
+      };
+      const anode=reachable(led.a),cathode=reachable(led.k);
       const matches=(e:any)=>c.gpios.some(g=>{
-        if(!nets.has(g.net))return false;const pin=e.gpios?.[g.pin],current=e.leds?.[led.id]?.currentMa;
-        const duty=pin?.mode==='PWM'?pin.duty/65535:pin?.mode==='OUT'?(pin.value?1:0):NaN;
+        if(!anode.has(g.net)&&!cathode.has(g.net))return false;
+        const pin=e.gpios?.[g.pin],current=e.leds?.[led.id]?.currentMa;
+        let duty=pin?.mode==='PWM'?pin.duty/65535:pin?.mode==='OUT'?pin.level:NaN;
+        if(cathode.has(g.net))duty=1-duty;
         return Math.abs(duty-v.brightness/100)<=s.dutyTolerance&&(v.brightness===0?current<.05:current>.1);
       });
       const stable=frames.filter(e=>e.timeMs>=start+s.responseDeadlineMs),truthful=stable.length>0&&stable.every(matches);

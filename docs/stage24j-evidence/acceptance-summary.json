@@ -46,5 +46,8 @@
   "executions": 234,
   "ciArchiveSha256": "ad41bb39f2b4c3912db0bdba447f4e2f09f5f8b6e2fbf15f780439d7258b578a",
   "protectedSourceFilesVerified": 3037,
-  "applicationFilesMatchNativeSource": true
+  "applicationFilesMatchNativeSource": true,
+  "distributionInventoryFilesVerified": 898,
+  "distributionApplicationFilesPreserved": 775,
+  "distributionChanges": "Release documentation only; all accepted CI application bytes preserved"
 }

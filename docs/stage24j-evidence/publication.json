@@ -1,0 +1,1265 @@
+{
+  "format": "labosv2-publication-check",
+  "version": 1,
+  "status": "published",
+  "releaseVersion": "0.14.8-beta.1",
+  "stage": "24J",
+  "url": "https://zljix.github.io/labosv2/",
+  "publishedSourceCommit": "ae3ea75e03e70a3129a216d51bc7542d24b5d741",
+  "acceptedCodeCommit": "bc908d998423adb443b2606d0863af7869714b63",
+  "acceptedBackendCommit": "8385d011dd7da9ecb621362e6d6a8569c9ccb42b",
+  "pagesRun": "https://github.com/zljix/labosv2/actions/runs/43962714154",
+  "acceptanceRun": "https://github.com/zljix/labosv2/actions/runs/43959526722",
+  "checkedAtUTC": "2026-11-16T21:45:33.524751+00:00",
+  "build": "e82971fa88c93f08",
+  "supported": 208,
+  "combinations": 268,
+  "newCombinations": 24,
+  "verifiedManifestFiles": 205,
+  "httpChecks": [
+    {
+      "path": "/labosv2/",
+      "status": 200,
+      "bytes": 728,
+      "sha256": "86bf2f8d20736910160cca37e168647542a5c1f096f0bf94265d6e338951f1f5"
+    },
+    {
+      "path": "/labosv2/actuators.mjs",
+      "status": 200,
+      "bytes": 6237,
+      "sha256": "435146cd09d40d9d3e4089253a43e589bef8a8686171943d362421d28a9c9219"
+    },
+    {
+      "path": "/labosv2/analog-inputs.mjs",
+      "status": 200,
+      "bytes": 3682,
+      "sha256": "dc9b56c0ab75369ad11f7e491e0d5f4b890918636210fc35ab00ebf4c4b62308"
+    },
+    {
+      "path": "/labosv2/app.mjs",
+      "status": 200,
+      "bytes": 7595,
+      "sha256": "73d2ef6af87662751dd28b3b8cc1d7c0119ce4e4807a92ad3f1b963568f607b6"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/actuators.mjs",
+      "status": 200,
+      "bytes": 6237,
+      "sha256": "435146cd09d40d9d3e4089253a43e589bef8a8686171943d362421d28a9c9219"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/analog-inputs.mjs",
+      "status": 200,
+      "bytes": 3682,
+      "sha256": "dc9b56c0ab75369ad11f7e491e0d5f4b890918636210fc35ab00ebf4c4b62308"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/app.mjs",
+      "status": 200,
+      "bytes": 7595,
+      "sha256": "73d2ef6af87662751dd28b3b8cc1d7c0119ce4e4807a92ad3f1b963568f607b6"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/arduino-contract.mjs",
+      "status": 200,
+      "bytes": 762,
+      "sha256": "c55d06d8ccb7ac9da75d89117194cdd707419f3b27ec76aa808474b1dfaa79a2"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/avr-contract.mjs",
+      "status": 200,
+      "bytes": 8615,
+      "sha256": "bed69b2facfeabbe139739ee6daa745054d95bf018a8a6cdf625e3418cb29b7b"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/avr-examples.json",
+      "status": 200,
+      "bytes": 2727980,
+      "sha256": "6a5eecfcb8bde92bde7199d99143a4f17728612666e7ababed12a02ec7bcc9c9"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/circuit-host.mjs",
+      "status": 200,
+      "bytes": 32066,
+      "sha256": "794d3ccdd1a7597d77a9e923b6f6b63e7cdaf0f7a47b0ef958139628d9d4c620"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/dht-bus.mjs",
+      "status": 200,
+      "bytes": 5464,
+      "sha256": "cd6289016d59e32092ccadbc487757db6509af170424a4f1f4513ff261eefa28"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/_onewire.py",
+      "status": 200,
+      "bytes": 1435,
+      "sha256": "36b0ba7dd361b30bf1e5c1c28f8f96703f94b8dcd2b9ac21d8ed52ab00d8c3c6"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/aht10.py",
+      "status": 200,
+      "bytes": 1383,
+      "sha256": "7350e85ce96b1cfcea4d331751ac417b56e3c93a59d021985e1cc9132d1204b5"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/dht.py",
+      "status": 200,
+      "bytes": 1094,
+      "sha256": "2aff84bb314c8785b08bd87420e8baa8d6cf14724c953c8a69b9315fb047ec91"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/ds18x20.py",
+      "status": 200,
+      "bytes": 1453,
+      "sha256": "f55f41095a9047dd52c377b13ff5c07534b065f01e79361defef13ad09f092fc"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/lab_bmp280_spi.h",
+      "status": 200,
+      "bytes": 2103,
+      "sha256": "4f2cc629c8e43cc494e4e0322a8129c2d5cd22a72f14b920c5d7fab4014be51c"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/lab_bmp280_spi.py",
+      "status": 200,
+      "bytes": 781,
+      "sha256": "1b59e3a1783f5fd98fa1036b9701f32989c77e57f9c04e168a3052b06917d70f"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/lab_ds1302.py",
+      "status": 200,
+      "bytes": 4135,
+      "sha256": "a5a845977848d2c912e9cbbde18f173e551d56b0296e0ba353c0017456cd07ca"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/lab_encoder.py",
+      "status": 200,
+      "bytes": 2017,
+      "sha256": "7a0f7d92efd8b78879bcb9079f01b56a569d5b80122cf70d6ef49385cb147b31"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/lab_fat16.py",
+      "status": 200,
+      "bytes": 9195,
+      "sha256": "a011285b671216abaf6cd7ade7f787d195c91d57b3939d7d46ff7befd77bcbbe"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/lab_i2c_sensors.py",
+      "status": 200,
+      "bytes": 5109,
+      "sha256": "e604febe801f59b3053d0b26bb88fcb44bf325d91da0808150e9dfe3be364310"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/lab_ili9341.h",
+      "status": 200,
+      "bytes": 3961,
+      "sha256": "c77b5b95145f864588efb19524ef00bd193eb9f9531d7c0e600968aba9096dd4"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/lab_ili9341.py",
+      "status": 200,
+      "bytes": 4822,
+      "sha256": "b50d9c7710312e4ec5694dc4e53609a89958d7231c953417fb95635b40ac2293"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/lab_ir.py",
+      "status": 200,
+      "bytes": 4266,
+      "sha256": "1193749f56beb24d95580d7d2ab9134b18f361e5460010b05aa6016616372f1e"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/lab_max30102.h",
+      "status": 200,
+      "bytes": 1945,
+      "sha256": "138c4857d7e5e80f743741a44dcfa169b039ef32afbeb4f9843c3de47199f074"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/lab_max30102.py",
+      "status": 200,
+      "bytes": 2377,
+      "sha256": "4047b905647b4fa306496af3c3c4529c0b4217532e20abd4a5edfab07240e5db"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/lab_s3_nec.h",
+      "status": 200,
+      "bytes": 3426,
+      "sha256": "22198e1c5d807bf0b968785e27f4ad0081a09b620d1c747512255b326ffa2629"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/lab_sd.h",
+      "status": 200,
+      "bytes": 7133,
+      "sha256": "04fef018b7f3317d1bf9abe979cbc440d5725146983fb84e38dc8030d2986b6a"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/lab_sdcard.py",
+      "status": 200,
+      "bytes": 4666,
+      "sha256": "ac87d56ba8e51ac0c8ea071bbcd8dc91cd4990084aec80a8e30498cec2b6ebaf"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/lab_st7735.h",
+      "status": 200,
+      "bytes": 3737,
+      "sha256": "988700ae9bf4282c8d5253ea56eea5a62e4f62c37d74a31d42ecb770a46b4235"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/lab_st7735.py",
+      "status": 200,
+      "bytes": 4629,
+      "sha256": "1cf45cc53d75709df320a1e48825141c1f180e5bf56c0253cccf473e93db70c8"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/lab_tm1637.py",
+      "status": 200,
+      "bytes": 3013,
+      "sha256": "d34af94ff7b629ee2fbe7c1ed0692ce0f5c8f5ea99be09c70653187ecb72b59e"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/lab_xpt2046.h",
+      "status": 200,
+      "bytes": 1639,
+      "sha256": "db23a3a7e39d8bbbc1f8bca83d25b47959bc02e58c38100c74422890b4b42fde"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/lab_xpt2046.py",
+      "status": 200,
+      "bytes": 2228,
+      "sha256": "7ed5a37cdddf83bdf55482c1cfc5489e454d0c778d6b6a4456b0f5bb71f0fdd4"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/lcd1602.py",
+      "status": 200,
+      "bytes": 2665,
+      "sha256": "cf946f1e28b780a7310b587fe9c73959e5c12f8680e1ea30604c99b3355790f8"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/onewire.py",
+      "status": 200,
+      "bytes": 2395,
+      "sha256": "11f05fe2f3fc294590da5a17e160573ba0d98f1c3f9f27612479c734db71808b"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/provenance.json",
+      "status": 200,
+      "bytes": 7913,
+      "sha256": "ca874768996e8918f0961e38c67251d0696e87532037fd42f90b55af7020b0bd"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/servo.py",
+      "status": 200,
+      "bytes": 770,
+      "sha256": "41d09d148a034ef3014a0ac7f0535391270820f90f7393253831f1b4eaddded0"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/drivers/ssd1306.py",
+      "status": 200,
+      "bytes": 4922,
+      "sha256": "b9f5331c75297774bced61bdfd12c37d4363336d064d7cf58967c88d807efbe5"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/environment-sensors.mjs",
+      "status": 200,
+      "bytes": 11050,
+      "sha256": "ac13efffc7df8780a6bfaa8a52009b525bd8aff7426b309a6a0883fed700c8fe"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/examples.mjs",
+      "status": 200,
+      "bytes": 2366,
+      "sha256": "c5f1443515c33bcdc9aa4294bdd7ade632aa1d0bd85210202fc83a5490df54ae"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/host.mjs",
+      "status": 200,
+      "bytes": 3055,
+      "sha256": "a34f281d2b301286c00b67d8cf5bc51c40011adb3671deee22dec343fb241f5d"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/i2c-host.mjs",
+      "status": 200,
+      "bytes": 13708,
+      "sha256": "e01aa19ad31c8363cb8e9f143aab57cdd4b6b79b1093ad76f3d2b328d2ecd17e"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/i2c-level-shifter.mjs",
+      "status": 200,
+      "bytes": 2578,
+      "sha256": "ba9fe5b1066cb3bdb402812db877c51ea878a3a4f8b8fd5ce537a0dab8f75bf1"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/ili9341.mjs",
+      "status": 200,
+      "bytes": 4004,
+      "sha256": "1e0f8658b76545f505b6650d0c96d396fd7bae3bba57331f7c5e7627d15dd896"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/infrared.mjs",
+      "status": 200,
+      "bytes": 7464,
+      "sha256": "755bbd28af890e7203d1919cd9349dc1a68592c9f1774b94edf1171de709b9b0"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/lcd1602.mjs",
+      "status": 200,
+      "bytes": 4855,
+      "sha256": "4da4e9e3635c097037f74cea05ad9762b827e95eefeed2f6e65fd85f1b6048d4"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/level-shifter.mjs",
+      "status": 200,
+      "bytes": 2231,
+      "sha256": "9ff452857ff84c998264813a01df5289964c5cbac08a7ec20a8effc24d6a28fe"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/machine.py",
+      "status": 200,
+      "bytes": 15196,
+      "sha256": "b5f9371299fae07275b7549588c5eba86f592c30c1e89717c2a075151c616661"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/max30102.mjs",
+      "status": 200,
+      "bytes": 7800,
+      "sha256": "fdd0f4a8280ac174e415f59fabc4bd08096a8b491d809363380ecb949abf1fe4"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/nrf24.mjs",
+      "status": 200,
+      "bytes": 9482,
+      "sha256": "6413f258cf4bb18bbd98c4f3a24e671b5fcc9dcf3eb1efb6b693423b6af1536b"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/onewire-bus.mjs",
+      "status": 200,
+      "bytes": 10375,
+      "sha256": "545106544cafc4745863c67f3085887e56ee4084947f2d155d9a5428ee2a0dff"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/peripherals.mjs",
+      "status": 200,
+      "bytes": 7263,
+      "sha256": "2c2d065663a6dfe7bea11bb064f1d8427a718ccc49db778e16890a1ad146e9fd"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/pilot-form.mjs",
+      "status": 200,
+      "bytes": 2781,
+      "sha256": "a4076e84e951868d6830cd32a111933248de79a9bccdc79f3e1f4febbc99539a"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/pilot-record.mjs",
+      "status": 200,
+      "bytes": 4684,
+      "sha256": "d77cabd1b067521a74c2bde36948a1bbd6bbf1dd1db9788102c5a7e579a10fcb"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/quadrature-inputs.mjs",
+      "status": 200,
+      "bytes": 5236,
+      "sha256": "4981f6a49fdcbbfe77f43b6a4dab41f4698aa926e1b394084147e9abec2d9228"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/radio-clock.mjs",
+      "status": 200,
+      "bytes": 769,
+      "sha256": "d5a216076b71a2fb0651509246edc7e5394a23ca264ed826590da1dbf8b7f787"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/radio-examples.json",
+      "status": 200,
+      "bytes": 96580,
+      "sha256": "5cdcb51cb8b68304d7deec44e62d54e0821b4546731eb41b3f3ade855915730b"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/rtc-ds1302.mjs",
+      "status": 200,
+      "bytes": 9221,
+      "sha256": "c733562d237348097d30f87658a4004aff3907372b9d9025d3d8d7a81b24d376"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/runtime/micropython.mjs",
+      "status": 200,
+      "bytes": 225531,
+      "sha256": "0105e219063d76cfd40c564b3a206aee49dfb5bd282e4b7574164c207f35908f"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/runtime/micropython.wasm",
+      "status": 200,
+      "bytes": 1134289,
+      "sha256": "3f638e8cacd1f00168f19a17fcae35ece9773b4b661464c8241114e00c24fcce"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/s3-contract.mjs",
+      "status": 200,
+      "bytes": 6002,
+      "sha256": "cf12cd5e65fcc51eadfc2ac8ac3f84b85442f593926fc658f55a2d26747a1a3e"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/s3-core-lock.mjs",
+      "status": 200,
+      "bytes": 1239,
+      "sha256": "b6ce5ce30ce6dbb7f45b74a4d313b88df709fca06df0735a7f18fd3fd4c5de3e"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/s3-engine.mjs",
+      "status": 200,
+      "bytes": 6965,
+      "sha256": "c709e349b2718965933ab556c510454e210b37c603a21286caec7d7913db0f55"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/s3-examples.json",
+      "status": 200,
+      "bytes": 1444176,
+      "sha256": "f7449339e44b6576da6593bfa693acc799d386ea374bd6ae517ca7b2efdfe969"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/s3-worker.mjs",
+      "status": 200,
+      "bytes": 625,
+      "sha256": "04c48c2aa4667fde02868c0e3907299dda7e16bb6d8cc4a7a1277c140998af3d"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/school-account.mjs",
+      "status": 200,
+      "bytes": 7741,
+      "sha256": "4e163d335db8365c3f20b4496d3f238fee972e77ecfb58e20a29a898d192816a"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/school-check.mjs",
+      "status": 200,
+      "bytes": 1866,
+      "sha256": "91cffb080644f01fd56c6b3fa14f894f6092877882e38ea98208e8794c5047e9"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/school-classes.mjs",
+      "status": 200,
+      "bytes": 17209,
+      "sha256": "026344d0565e6e49a46dcaa96b024184a69cfc89ae1b6bab976790be60acc893"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/school-grading-support.mjs",
+      "status": 200,
+      "bytes": 3507,
+      "sha256": "0e7fb01bbf7c9f885c8fe8fc93b80f2bf6fc87cd35554163b692ebe36916b896"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/school-pilot-form.mjs",
+      "status": 200,
+      "bytes": 5177,
+      "sha256": "69f63c5041cbf7ece726e39bacb362a7f014066dc828e6aae68e90484c6cf8eb"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/school-pilot-record.mjs",
+      "status": 200,
+      "bytes": 6740,
+      "sha256": "87cf5975d7787c55bb8016df22ba5d9475e277f77bc11f10605dec009d75e990"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/sd-card.mjs",
+      "status": 200,
+      "bytes": 8178,
+      "sha256": "3be1cfc4482836eb2c6a9ad3c9ee0467b995d34878cdc59b9a1072ab1c77c6d5"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/session.mjs",
+      "status": 200,
+      "bytes": 2041,
+      "sha256": "34ab7d0f12c9da77c66c665cb851ef17eafc583730a242cbc48c77c68ba4917e"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/spi-devices.mjs",
+      "status": 200,
+      "bytes": 13158,
+      "sha256": "121225f88f741e37d84cbbf8b4239a8c215b2defe7560710d181210aa95fe25c"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/stepper.mjs",
+      "status": 200,
+      "bytes": 8521,
+      "sha256": "c98f7087aecf51ed81750fb0707e80c5e638d0766330759ed7c168fcfc5f7cc5"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/suite.mjs",
+      "status": 200,
+      "bytes": 7832,
+      "sha256": "d0f4648479e4d6ce154769f635c07cc69e1edd61655aa76b0d9e010977e337aa"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/tm1637.mjs",
+      "status": 200,
+      "bytes": 5180,
+      "sha256": "2109a7a49a7c3014f9ab9b4aed4d2d0af2c44636e80d078dbbcac68462958b1c"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/worker.mjs",
+      "status": 200,
+      "bytes": 2564,
+      "sha256": "112131bd027448432724576116dd6b75f03815703ce21046384920a0ef30eb54"
+    },
+    {
+      "path": "/labosv2/app/e82971fa88c93f08/xpt2046.mjs",
+      "status": 200,
+      "bytes": 2652,
+      "sha256": "c9228227d9d187bb507d15bc26e20c974e37c883ef05c89e18bda100690cd5ca"
+    },
+    {
+      "path": "/labosv2/arduino-contract.mjs",
+      "status": 200,
+      "bytes": 762,
+      "sha256": "c55d06d8ccb7ac9da75d89117194cdd707419f3b27ec76aa808474b1dfaa79a2"
+    },
+    {
+      "path": "/labosv2/arduino-development-bridge.zip",
+      "status": 200,
+      "bytes": 624965,
+      "sha256": "9da7516589966ae55a5963345f72a47fcc7309191e459316c256d7b9640c8ab1"
+    },
+    {
+      "path": "/labosv2/assets/ClassReviewPanel-CfM1iDYP.css",
+      "status": 200,
+      "bytes": 2855,
+      "sha256": "3c3f134e01829f2b4db3f91b754cb7ed05b3d6d083e8113cc6e7b2af698f7cbd"
+    },
+    {
+      "path": "/labosv2/assets/ClassReviewPanel-DMI2PYf1.js",
+      "status": 200,
+      "bytes": 32287,
+      "sha256": "365f54d161674e9faa4973728080635ece80d5319c99a6290ab6fa87ab103492"
+    },
+    {
+      "path": "/labosv2/assets/CodeEditor-CqTiyl2m.js",
+      "status": 200,
+      "bytes": 568596,
+      "sha256": "d1e7dffd8ccf7b0ad7899d883f413451758d53675871a858a097eb97d3dc6163"
+    },
+    {
+      "path": "/labosv2/assets/avrWorker-DGjbEPqj.js",
+      "status": 200,
+      "bytes": 181957,
+      "sha256": "5e78eb2750d400bac7f62a2a865370a481cfc0181e8af929595fd5c53465a997"
+    },
+    {
+      "path": "/labosv2/assets/index-15QTxX-b.js",
+      "status": 200,
+      "bytes": 986014,
+      "sha256": "9bb8f19c4a53a21a931d56768a35399c77eb497239acd24a8cd2fe41a954f68e"
+    },
+    {
+      "path": "/labosv2/assets/index-qI3f0DKR.css",
+      "status": 200,
+      "bytes": 66169,
+      "sha256": "93b3e8f1f4f1ef3a5a74bd867d2fc3bc29ff3edd0fb89dd655adf71796bed94a"
+    },
+    {
+      "path": "/labosv2/assets/worker-DSx6EOi9.js",
+      "status": 200,
+      "bytes": 297343,
+      "sha256": "197b8d85e03f01f8396f7a7786d6e353e0ef9a455d22fc6984a067b50ab883cb"
+    },
+    {
+      "path": "/labosv2/avr-contract.mjs",
+      "status": 200,
+      "bytes": 8615,
+      "sha256": "bed69b2facfeabbe139739ee6daa745054d95bf018a8a6cdf625e3418cb29b7b"
+    },
+    {
+      "path": "/labosv2/avr-examples.json",
+      "status": 200,
+      "bytes": 2727980,
+      "sha256": "6a5eecfcb8bde92bde7199d99143a4f17728612666e7ababed12a02ec7bcc9c9"
+    },
+    {
+      "path": "/labosv2/circuit-host.mjs",
+      "status": 200,
+      "bytes": 32066,
+      "sha256": "794d3ccdd1a7597d77a9e923b6f6b63e7cdaf0f7a47b0ef958139628d9d4c620"
+    },
+    {
+      "path": "/labosv2/dht-bus.mjs",
+      "status": 200,
+      "bytes": 5464,
+      "sha256": "cd6289016d59e32092ccadbc487757db6509af170424a4f1f4513ff261eefa28"
+    },
+    {
+      "path": "/labosv2/diagnostics.html",
+      "status": 200,
+      "bytes": 7340,
+      "sha256": "674af0a742fa329732cde8eafa22ddc6cad76589f3781b8b3c8b94271b552205"
+    },
+    {
+      "path": "/labosv2/drivers/_onewire.py",
+      "status": 200,
+      "bytes": 1435,
+      "sha256": "36b0ba7dd361b30bf1e5c1c28f8f96703f94b8dcd2b9ac21d8ed52ab00d8c3c6"
+    },
+    {
+      "path": "/labosv2/drivers/aht10.py",
+      "status": 200,
+      "bytes": 1383,
+      "sha256": "7350e85ce96b1cfcea4d331751ac417b56e3c93a59d021985e1cc9132d1204b5"
+    },
+    {
+      "path": "/labosv2/drivers/dht.py",
+      "status": 200,
+      "bytes": 1094,
+      "sha256": "2aff84bb314c8785b08bd87420e8baa8d6cf14724c953c8a69b9315fb047ec91"
+    },
+    {
+      "path": "/labosv2/drivers/ds18x20.py",
+      "status": 200,
+      "bytes": 1453,
+      "sha256": "f55f41095a9047dd52c377b13ff5c07534b065f01e79361defef13ad09f092fc"
+    },
+    {
+      "path": "/labosv2/drivers/lab_bmp280_spi.h",
+      "status": 200,
+      "bytes": 2103,
+      "sha256": "4f2cc629c8e43cc494e4e0322a8129c2d5cd22a72f14b920c5d7fab4014be51c"
+    },
+    {
+      "path": "/labosv2/drivers/lab_bmp280_spi.py",
+      "status": 200,
+      "bytes": 781,
+      "sha256": "1b59e3a1783f5fd98fa1036b9701f32989c77e57f9c04e168a3052b06917d70f"
+    },
+    {
+      "path": "/labosv2/drivers/lab_ds1302.py",
+      "status": 200,
+      "bytes": 4135,
+      "sha256": "a5a845977848d2c912e9cbbde18f173e551d56b0296e0ba353c0017456cd07ca"
+    },
+    {
+      "path": "/labosv2/drivers/lab_encoder.py",
+      "status": 200,
+      "bytes": 2017,
+      "sha256": "7a0f7d92efd8b78879bcb9079f01b56a569d5b80122cf70d6ef49385cb147b31"
+    },
+    {
+      "path": "/labosv2/drivers/lab_fat16.py",
+      "status": 200,
+      "bytes": 9195,
+      "sha256": "a011285b671216abaf6cd7ade7f787d195c91d57b3939d7d46ff7befd77bcbbe"
+    },
+    {
+      "path": "/labosv2/drivers/lab_i2c_sensors.py",
+      "status": 200,
+      "bytes": 5109,
+      "sha256": "e604febe801f59b3053d0b26bb88fcb44bf325d91da0808150e9dfe3be364310"
+    },
+    {
+      "path": "/labosv2/drivers/lab_ili9341.h",
+      "status": 200,
+      "bytes": 3961,
+      "sha256": "c77b5b95145f864588efb19524ef00bd193eb9f9531d7c0e600968aba9096dd4"
+    },
+    {
+      "path": "/labosv2/drivers/lab_ili9341.py",
+      "status": 200,
+      "bytes": 4822,
+      "sha256": "b50d9c7710312e4ec5694dc4e53609a89958d7231c953417fb95635b40ac2293"
+    },
+    {
+      "path": "/labosv2/drivers/lab_ir.py",
+      "status": 200,
+      "bytes": 4266,
+      "sha256": "1193749f56beb24d95580d7d2ab9134b18f361e5460010b05aa6016616372f1e"
+    },
+    {
+      "path": "/labosv2/drivers/lab_max30102.h",
+      "status": 200,
+      "bytes": 1945,
+      "sha256": "138c4857d7e5e80f743741a44dcfa169b039ef32afbeb4f9843c3de47199f074"
+    },
+    {
+      "path": "/labosv2/drivers/lab_max30102.py",
+      "status": 200,
+      "bytes": 2377,
+      "sha256": "4047b905647b4fa306496af3c3c4529c0b4217532e20abd4a5edfab07240e5db"
+    },
+    {
+      "path": "/labosv2/drivers/lab_s3_nec.h",
+      "status": 200,
+      "bytes": 3426,
+      "sha256": "22198e1c5d807bf0b968785e27f4ad0081a09b620d1c747512255b326ffa2629"
+    },
+    {
+      "path": "/labosv2/drivers/lab_sd.h",
+      "status": 200,
+      "bytes": 7133,
+      "sha256": "04fef018b7f3317d1bf9abe979cbc440d5725146983fb84e38dc8030d2986b6a"
+    },
+    {
+      "path": "/labosv2/drivers/lab_sdcard.py",
+      "status": 200,
+      "bytes": 4666,
+      "sha256": "ac87d56ba8e51ac0c8ea071bbcd8dc91cd4990084aec80a8e30498cec2b6ebaf"
+    },
+    {
+      "path": "/labosv2/drivers/lab_st7735.h",
+      "status": 200,
+      "bytes": 3737,
+      "sha256": "988700ae9bf4282c8d5253ea56eea5a62e4f62c37d74a31d42ecb770a46b4235"
+    },
+    {
+      "path": "/labosv2/drivers/lab_st7735.py",
+      "status": 200,
+      "bytes": 4629,
+      "sha256": "1cf45cc53d75709df320a1e48825141c1f180e5bf56c0253cccf473e93db70c8"
+    },
+    {
+      "path": "/labosv2/drivers/lab_tm1637.py",
+      "status": 200,
+      "bytes": 3013,
+      "sha256": "d34af94ff7b629ee2fbe7c1ed0692ce0f5c8f5ea99be09c70653187ecb72b59e"
+    },
+    {
+      "path": "/labosv2/drivers/lab_xpt2046.h",
+      "status": 200,
+      "bytes": 1639,
+      "sha256": "db23a3a7e39d8bbbc1f8bca83d25b47959bc02e58c38100c74422890b4b42fde"
+    },
+    {
+      "path": "/labosv2/drivers/lab_xpt2046.py",
+      "status": 200,
+      "bytes": 2228,
+      "sha256": "7ed5a37cdddf83bdf55482c1cfc5489e454d0c778d6b6a4456b0f5bb71f0fdd4"
+    },
+    {
+      "path": "/labosv2/drivers/lcd1602.py",
+      "status": 200,
+      "bytes": 2665,
+      "sha256": "cf946f1e28b780a7310b587fe9c73959e5c12f8680e1ea30604c99b3355790f8"
+    },
+    {
+      "path": "/labosv2/drivers/onewire.py",
+      "status": 200,
+      "bytes": 2395,
+      "sha256": "11f05fe2f3fc294590da5a17e160573ba0d98f1c3f9f27612479c734db71808b"
+    },
+    {
+      "path": "/labosv2/drivers/provenance.json",
+      "status": 200,
+      "bytes": 7913,
+      "sha256": "ca874768996e8918f0961e38c67251d0696e87532037fd42f90b55af7020b0bd"
+    },
+    {
+      "path": "/labosv2/drivers/servo.py",
+      "status": 200,
+      "bytes": 770,
+      "sha256": "41d09d148a034ef3014a0ac7f0535391270820f90f7393253831f1b4eaddded0"
+    },
+    {
+      "path": "/labosv2/drivers/ssd1306.py",
+      "status": 200,
+      "bytes": 4922,
+      "sha256": "b9f5331c75297774bced61bdfd12c37d4363336d064d7cf58967c88d807efbe5"
+    },
+    {
+      "path": "/labosv2/environment-sensors.mjs",
+      "status": 200,
+      "bytes": 11050,
+      "sha256": "ac13efffc7df8780a6bfaa8a52009b525bd8aff7426b309a6a0883fed700c8fe"
+    },
+    {
+      "path": "/labosv2/examples.mjs",
+      "status": 200,
+      "bytes": 2366,
+      "sha256": "c5f1443515c33bcdc9aa4294bdd7ade632aa1d0bd85210202fc83a5490df54ae"
+    },
+    {
+      "path": "/labosv2/fonts.css",
+      "status": 200,
+      "bytes": 70,
+      "sha256": "57f3440e2cef38521ec5e021696a5aac2fa09007faba8cc46cd2c84f6fa64b28"
+    },
+    {
+      "path": "/labosv2/guide.html",
+      "status": 200,
+      "bytes": 49836,
+      "sha256": "fa87ec2ced48a64e25dc101b06a9344100355ff2a9efcce335765d19aabdf4b0"
+    },
+    {
+      "path": "/labosv2/host.mjs",
+      "status": 200,
+      "bytes": 3055,
+      "sha256": "a34f281d2b301286c00b67d8cf5bc51c40011adb3671deee22dec343fb241f5d"
+    },
+    {
+      "path": "/labosv2/i2c-host.mjs",
+      "status": 200,
+      "bytes": 13708,
+      "sha256": "e01aa19ad31c8363cb8e9f143aab57cdd4b6b79b1093ad76f3d2b328d2ecd17e"
+    },
+    {
+      "path": "/labosv2/i2c-level-shifter.mjs",
+      "status": 200,
+      "bytes": 2578,
+      "sha256": "ba9fe5b1066cb3bdb402812db877c51ea878a3a4f8b8fd5ce537a0dab8f75bf1"
+    },
+    {
+      "path": "/labosv2/icon.svg",
+      "status": 200,
+      "bytes": 237,
+      "sha256": "1f89446d64b4f948aa123c86297b83cf3837f0f8a2b1182f8ef100f8981855af"
+    },
+    {
+      "path": "/labosv2/icons/lab-192.png",
+      "status": 200,
+      "bytes": 4506,
+      "sha256": "75e23d73a808eb241200c0f10aa350ec74a48d1e1bd12287fcd6de09b31e38db"
+    },
+    {
+      "path": "/labosv2/icons/lab-512.png",
+      "status": 200,
+      "bytes": 3591,
+      "sha256": "a755d44532afe1d01867bfa936a504dd1bc239d4cdd475bc70323ac20cc29e47"
+    },
+    {
+      "path": "/labosv2/ili9341.mjs",
+      "status": 200,
+      "bytes": 4004,
+      "sha256": "1e0f8658b76545f505b6650d0c96d396fd7bae3bba57331f7c5e7627d15dd896"
+    },
+    {
+      "path": "/labosv2/index.html",
+      "status": 200,
+      "bytes": 728,
+      "sha256": "86bf2f8d20736910160cca37e168647542a5c1f096f0bf94265d6e338951f1f5"
+    },
+    {
+      "path": "/labosv2/infrared.mjs",
+      "status": 200,
+      "bytes": 7464,
+      "sha256": "755bbd28af890e7203d1919cd9349dc1a68592c9f1774b94edf1171de709b9b0"
+    },
+    {
+      "path": "/labosv2/lcd1602.mjs",
+      "status": 200,
+      "bytes": 4855,
+      "sha256": "4da4e9e3635c097037f74cea05ad9762b827e95eefeed2f6e65fd85f1b6048d4"
+    },
+    {
+      "path": "/labosv2/level-shifter.mjs",
+      "status": 200,
+      "bytes": 2231,
+      "sha256": "9ff452857ff84c998264813a01df5289964c5cbac08a7ec20a8effc24d6a28fe"
+    },
+    {
+      "path": "/labosv2/licenses/Bounce2-LICENSE.txt",
+      "status": 200,
+      "bytes": 1083,
+      "sha256": "663ac8714ba117fe69dd5bca269b2cfe471a31d048f80156f293a91151c34085"
+    },
+    {
+      "path": "/labosv2/licenses/DHT-LICENSE.txt",
+      "status": 200,
+      "bytes": 1064,
+      "sha256": "8598f9a7e17727381839097b65b763e8e574b980b8157754209e9a089176c927"
+    },
+    {
+      "path": "/labosv2/licenses/DallasTemperature-LICENSE.txt",
+      "status": 200,
+      "bytes": 1070,
+      "sha256": "d1656adecdddcf223dfbb2d3056491226836acb671d9f1b09870008036633951"
+    },
+    {
+      "path": "/labosv2/licenses/Emscripten-LICENSE.txt",
+      "status": 200,
+      "bytes": 5093,
+      "sha256": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86"
+    },
+    {
+      "path": "/labosv2/licenses/Lab-MIT.txt",
+      "status": 200,
+      "bytes": 1091,
+      "sha256": "846be7db07cb39f869251862ede1abc71d83a0f4e5a8f8cd89779706bbced058"
+    },
+    {
+      "path": "/labosv2/licenses/MicroPython-MIT.txt",
+      "status": 200,
+      "bytes": 3419,
+      "sha256": "80d3459978572b5bbb1dd274a98b01a625aeff467588ad69cefdf7eb607c1306"
+    },
+    {
+      "path": "/labosv2/licenses/OneWire-LICENSE.txt",
+      "status": 200,
+      "bytes": 6797,
+      "sha256": "da2cd3b4e4358b40f7b03ddc9fb6eb101babc72177bbb26a23ca008f9ec07f6e"
+    },
+    {
+      "path": "/labosv2/licenses/THIRD-PARTY.txt",
+      "status": 200,
+      "bytes": 349415,
+      "sha256": "c3529e57dea4b34f61fa5d1b24b03cb2c93c758b856084dc87af0fa84b60b69f"
+    },
+    {
+      "path": "/labosv2/licenses/compiler-rt-LICENSE.txt",
+      "status": 200,
+      "bytes": 16708,
+      "sha256": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d"
+    },
+    {
+      "path": "/labosv2/licenses/micropython-lib-LICENSE.txt",
+      "status": 200,
+      "bytes": 14363,
+      "sha256": "a38cf48836aa313254cdcf3de9fb7c24da4a2eab75ead2cc0cecd998336e7800"
+    },
+    {
+      "path": "/labosv2/licenses/musl-COPYRIGHT.txt",
+      "status": 200,
+      "bytes": 6204,
+      "sha256": "f9bc4423732350eb0b3f7ed7e91d530298476f8fec0c6c427a1c04ade22655af"
+    },
+    {
+      "path": "/labosv2/machine.py",
+      "status": 200,
+      "bytes": 15196,
+      "sha256": "b5f9371299fae07275b7549588c5eba86f592c30c1e89717c2a075151c616661"
+    },
+    {
+      "path": "/labosv2/manifest.webmanifest",
+      "status": 200,
+      "bytes": 750,
+      "sha256": "6d3d31c13092831feeeb038004a5d10bf93739194c232484b874adb51c671b12"
+    },
+    {
+      "path": "/labosv2/max30102.mjs",
+      "status": 200,
+      "bytes": 7800,
+      "sha256": "fdd0f4a8280ac174e415f59fabc4bd08096a8b491d809363380ecb949abf1fe4"
+    },
+    {
+      "path": "/labosv2/nrf24.mjs",
+      "status": 200,
+      "bytes": 9482,
+      "sha256": "6413f258cf4bb18bbd98c4f3a24e671b5fcc9dcf3eb1efb6b693423b6af1536b"
+    },
+    {
+      "path": "/labosv2/offline-package.json",
+      "status": 200,
+      "bytes": 34994,
+      "sha256": "60e1d0ddecaf6ee6f11c6fd937c4731f63bb9290d8a07cf7242d725b1aed55f8"
+    },
+    {
+      "path": "/labosv2/onewire-bus.mjs",
+      "status": 200,
+      "bytes": 10375,
+      "sha256": "545106544cafc4745863c67f3085887e56ee4084947f2d155d9a5428ee2a0dff"
+    },
+    {
+      "path": "/labosv2/peripherals.mjs",
+      "status": 200,
+      "bytes": 7263,
+      "sha256": "2c2d065663a6dfe7bea11bb064f1d8427a718ccc49db778e16890a1ad146e9fd"
+    },
+    {
+      "path": "/labosv2/pilot-form.mjs",
+      "status": 200,
+      "bytes": 2781,
+      "sha256": "a4076e84e951868d6830cd32a111933248de79a9bccdc79f3e1f4febbc99539a"
+    },
+    {
+      "path": "/labosv2/pilot-record.mjs",
+      "status": 200,
+      "bytes": 4684,
+      "sha256": "d77cabd1b067521a74c2bde36948a1bbd6bbf1dd1db9788102c5a7e579a10fcb"
+    },
+    {
+      "path": "/labosv2/pilot.html",
+      "status": 200,
+      "bytes": 15205,
+      "sha256": "2d7abc10fec1f8a867980d46a008dac6b31217b92ec9ff79f0c7d9a41e0af40c"
+    },
+    {
+      "path": "/labosv2/quadrature-inputs.mjs",
+      "status": 200,
+      "bytes": 5236,
+      "sha256": "4981f6a49fdcbbfe77f43b6a4dab41f4698aa926e1b394084147e9abec2d9228"
+    },
+    {
+      "path": "/labosv2/radio-clock.mjs",
+      "status": 200,
+      "bytes": 769,
+      "sha256": "d5a216076b71a2fb0651509246edc7e5394a23ca264ed826590da1dbf8b7f787"
+    },
+    {
+      "path": "/labosv2/radio-examples.json",
+      "status": 200,
+      "bytes": 96580,
+      "sha256": "5cdcb51cb8b68304d7deec44e62d54e0821b4546731eb41b3f3ade855915730b"
+    },
+    {
+      "path": "/labosv2/report.css",
+      "status": 200,
+      "bytes": 1681,
+      "sha256": "72482bbea497d4994a8ab3e7029229502e8bc478b9dc20a6498ce28033d01bb6"
+    },
+    {
+      "path": "/labosv2/report.html",
+      "status": 200,
+      "bytes": 7562,
+      "sha256": "d12d46f9fe61dad3b6b768e95c02cd5083ef24fa3f5e16c354aa0f26aefb3576"
+    },
+    {
+      "path": "/labosv2/rtc-ds1302.mjs",
+      "status": 200,
+      "bytes": 9221,
+      "sha256": "c733562d237348097d30f87658a4004aff3907372b9d9025d3d8d7a81b24d376"
+    },
+    {
+      "path": "/labosv2/runtime/micropython.mjs",
+      "status": 200,
+      "bytes": 225531,
+      "sha256": "0105e219063d76cfd40c564b3a206aee49dfb5bd282e4b7574164c207f35908f"
+    },
+    {
+      "path": "/labosv2/runtime/micropython.wasm",
+      "status": 200,
+      "bytes": 1134289,
+      "sha256": "3f638e8cacd1f00168f19a17fcae35ece9773b4b661464c8241114e00c24fcce"
+    },
+    {
+      "path": "/labosv2/s3-contract.mjs",
+      "status": 200,
+      "bytes": 6002,
+      "sha256": "cf12cd5e65fcc51eadfc2ac8ac3f84b85442f593926fc658f55a2d26747a1a3e"
+    },
+    {
+      "path": "/labosv2/s3-core-lock.mjs",
+      "status": 200,
+      "bytes": 1239,
+      "sha256": "b6ce5ce30ce6dbb7f45b74a4d313b88df709fca06df0735a7f18fd3fd4c5de3e"
+    },
+    {
+      "path": "/labosv2/s3-engine.mjs",
+      "status": 200,
+      "bytes": 6965,
+      "sha256": "c709e349b2718965933ab556c510454e210b37c603a21286caec7d7913db0f55"
+    },
+    {
+      "path": "/labosv2/s3-examples.json",
+      "status": 200,
+      "bytes": 1444176,
+      "sha256": "f7449339e44b6576da6593bfa693acc799d386ea374bd6ae517ca7b2efdfe969"
+    },
+    {
+      "path": "/labosv2/s3-worker.mjs",
+      "status": 200,
+      "bytes": 625,
+      "sha256": "04c48c2aa4667fde02868c0e3907299dda7e16bb6d8cc4a7a1277c140998af3d"
+    },
+    {
+      "path": "/labosv2/school-account.mjs",
+      "status": 200,
+      "bytes": 7741,
+      "sha256": "4e163d335db8365c3f20b4496d3f238fee972e77ecfb58e20a29a898d192816a"
+    },
+    {
+      "path": "/labosv2/school-check.mjs",
+      "status": 200,
+      "bytes": 1866,
+      "sha256": "91cffb080644f01fd56c6b3fa14f894f6092877882e38ea98208e8794c5047e9"
+    },
+    {
+      "path": "/labosv2/school-classes.mjs",
+      "status": 200,
+      "bytes": 17209,
+      "sha256": "026344d0565e6e49a46dcaa96b024184a69cfc89ae1b6bab976790be60acc893"
+    },
+    {
+      "path": "/labosv2/school-grading-support.csv",
+      "status": 200,
+      "bytes": 131030,
+      "sha256": "d488d69b0e80129c7ebf1ecda245b192afc91a7d4715c0031a1cc44a99f40943"
+    },
+    {
+      "path": "/labosv2/school-grading-support.json",
+      "status": 200,
+      "bytes": 734934,
+      "sha256": "be97d97ed4d86859441060e076721dda3608b1572a1a857b17e6ce748a2fcda8"
+    },
+    {
+      "path": "/labosv2/school-grading-support.mjs",
+      "status": 200,
+      "bytes": 3507,
+      "sha256": "0e7fb01bbf7c9f885c8fe8fc93b80f2bf6fc87cd35554163b692ebe36916b896"
+    },
+    {
+      "path": "/labosv2/school-grading.html",
+      "status": 200,
+      "bytes": 4928,
+      "sha256": "8eade53e897e4c9e495931ba05e6cda7fdc037ab8438ee2fcd2908d9c7d4c0a1"
+    },
+    {
+      "path": "/labosv2/school-pilot-form.mjs",
+      "status": 200,
+      "bytes": 5177,
+      "sha256": "69f63c5041cbf7ece726e39bacb362a7f014066dc828e6aae68e90484c6cf8eb"
+    },
+    {
+      "path": "/labosv2/school-pilot-record.mjs",
+      "status": 200,
+      "bytes": 6740,
+      "sha256": "87cf5975d7787c55bb8016df22ba5d9475e277f77bc11f10605dec009d75e990"
+    },
+    {
+      "path": "/labosv2/school-pilot.html",
+      "status": 200,
+      "bytes": 6779,
+      "sha256": "14aeeede682c10339c8d92689c283c723c13ead05beff9518f0f721c70bc48c4"
+    },
+    {
+      "path": "/labosv2/school.html",
+      "status": 200,
+      "bytes": 17934,
+      "sha256": "f862bf1682d55a990fba1870ba0a3065cf905167f48c9c04c1b2b802aebbe256"
+    },
+    {
+      "path": "/labosv2/sd-card.mjs",
+      "status": 200,
+      "bytes": 8178,
+      "sha256": "3be1cfc4482836eb2c6a9ad3c9ee0467b995d34878cdc59b9a1072ab1c77c6d5"
+    },
+    {
+      "path": "/labosv2/session.mjs",
+      "status": 200,
+      "bytes": 2041,
+      "sha256": "34ab7d0f12c9da77c66c665cb851ef17eafc583730a242cbc48c77c68ba4917e"
+    },
+    {
+      "path": "/labosv2/spi-devices.mjs",
+      "status": 200,
+      "bytes": 13158,
+      "sha256": "121225f88f741e37d84cbbf8b4239a8c215b2defe7560710d181210aa95fe25c"
+    },
+    {
+      "path": "/labosv2/stepper.mjs",
+      "status": 200,
+      "bytes": 8521,
+      "sha256": "c98f7087aecf51ed81750fb0707e80c5e638d0766330759ed7c168fcfc5f7cc5"
+    },
+    {
+      "path": "/labosv2/style.css",
+      "status": 200,
+      "bytes": 16214,
+      "sha256": "d14ad03ffcbc46be144e2f04fc6947a70a1f7df506a5bc2afeff0a3b0d1df555"
+    },
+    {
+      "path": "/labosv2/suite.mjs",
+      "status": 200,
+      "bytes": 7832,
+      "sha256": "d0f4648479e4d6ce154769f635c07cc69e1edd61655aa76b0d9e010977e337aa"
+    },
+    {
+      "path": "/labosv2/tm1637.mjs",
+      "status": 200,
+      "bytes": 5180,
+      "sha256": "2109a7a49a7c3014f9ab9b4aed4d2d0af2c44636e80d078dbbcac68462958b1c"
+    },
+    {
+      "path": "/labosv2/urs-catalog-summary.json",
+      "status": 200,
+      "bytes": 405,
+      "sha256": "f074fbf46ede82b3810b7c7dfb375a9c50b88d800f71dbc1261325c32316c98e"
+    },
+    {
+      "path": "/labosv2/urs-podrska.csv",
+      "status": 200,
+      "bytes": 82239,
+      "sha256": "2aecda71c87765dcfa543bf449b1134379db4f81d840d753317196ead3c17685"
+    },
+    {
+      "path": "/labosv2/verification/board-profile.json",
+      "status": 200,
+      "bytes": 3185,
+      "sha256": "6ff91307194119d07dc0303f606cf3be48805bc18984dc06fa96beec9762c180"
+    },
+    {
+      "path": "/labosv2/verification/reproducibility-stage12a.json",
+      "status": 200,
+      "bytes": 457,
+      "sha256": "6466b347742415e1c2f3fd2de17905fc0cc7f8c2e897c0c6f20b06fcfe8690e4"
+    },
+    {
+      "path": "/labosv2/verification/reproducibility-stage3.json",
+      "status": 200,
+      "bytes": 457,
+      "sha256": "d7040e9c9825d504b228d88bfcd37b91fad7255fea1a109a8f09682cdb6d203b"
+    },
+    {
+      "path": "/labosv2/verification/reproducibility-stage4.json",
+      "status": 200,
+      "bytes": 457,
+      "sha256": "4982e9447de0610a491baf64d76a48498bf4af17651c4513d2ddaa0a93d69395"
+    },
+    {
+      "path": "/labosv2/verification/reproducibility.json",
+      "status": 200,
+      "bytes": 453,
+      "sha256": "b2430056f6201787b31c557cb7ee50da51f385abaaf3d3eaedc26902acd06212"
+    },
+    {
+      "path": "/labosv2/verification/results-chromium.json",
+      "status": 200,
+      "bytes": 2854,
+      "sha256": "b0565d24491026074889fd4c01d54fef2a327c288a832ca76ffbfe6d3b7bdf64"
+    },
+    {
+      "path": "/labosv2/verification/results-node.json",
+      "status": 200,
+      "bytes": 2628,
+      "sha256": "c89f1bc1092dad9204c704e9ecbddc82309e3edad80cd2ceb6edd5af70d86930"
+    },
+    {
+      "path": "/labosv2/verification/results-stage1-chromium.json",
+      "status": 200,
+      "bytes": 2853,
+      "sha256": "e932a4b90a198485716e017df11f3957b195a7d238cd9347df0f4452feecc5cc"
+    },
+    {
+      "path": "/labosv2/verification/results-stage1-runtime.json",
+      "status": 200,
+      "bytes": 506,
+      "sha256": "f55bfd9703cccd169fe0d0994e3592572a07adb7f44193f6e35709dd9a9c67a4"
+    },
+    {
+      "path": "/labosv2/verification/s3-native-exports.json",
+      "status": 200,
+      "bytes": 54839,
+      "sha256": "76b5b3e04db61ecf6c1b5d9d49ac6144c4031a82e2ea5e48a233f6dd9ac4b221"
+    },
+    {
+      "path": "/labosv2/verification/stage1-browser-checks.json",
+      "status": 200,
+      "bytes": 1345,
+      "sha256": "9431f6d47430ca20fb3bf2d71169c66446cf0998477993ce0997dc5c7b1f8cb2"
+    },
+    {
+      "path": "/labosv2/verification/stage3-browser-checks.json",
+      "status": 200,
+      "bytes": 4208,
+      "sha256": "34550ef0e76178ceb6f0ef198a8df24ebca2b7c231b003559b7c304e9af5a7b4"
+    },
+    {
+      "path": "/labosv2/verification/stage4-browser-checks.json",
+      "status": 200,
+      "bytes": 2134,
+      "sha256": "fd14e4591894e9a281651889fe2fcf36a83570130d98b30b956f68293ae03aef"
+    },
+    {
+      "path": "/labosv2/worker.mjs",
+      "status": 200,
+      "bytes": 2564,
+      "sha256": "112131bd027448432724576116dd6b75f03815703ce21046384920a0ef30eb54"
+    },
+    {
+      "path": "/labosv2/xpt2046.mjs",
+      "status": 200,
+      "bytes": 2652,
+      "sha256": "c9228227d9d187bb507d15bc26e20c974e37c883ef05c89e18bda100690cd5ca"
+    }
+  ],
+  "liveFilesMatchManifest": true,
+  "schoolBackend": "Apache/PHP/MySQL installer; GitHub Pages serves the simulator"
+}

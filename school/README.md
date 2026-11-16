@@ -1,10 +1,14 @@
+## 24G — A4988 i koračni motor
+
+Izdanje **0.14.5-beta.1** dodaje tri rubrike i 12 kombinacija: ukupno **144/268**. [Opseg i provjere 24G](../docs/stage24g-steppers.md). ENABLE isključuje pobudu, translator broji dalje; RESET ne referencira osovinu. Upute za nadogradnju i kriteriji nalaze se u odjeljku 24G na kraju dokumenta. Nema nove SQL migracije.
+
 ## 24F — relej, zvuk, servo i DC motori
 
 Izdanje 0.14.4-beta.1 dodaje sedam rubrika 24F-…@1 i 28 kombinacija (ukupno 132/268). Objavljene upute opisuju stvarne kontakte, impulse, tonove, potpisani prosječni napon, vremenski slijed i tolerancije. [Opseg i provjere 24F](../docs/stage24f-actuators.md).
 
 Nema nove SQL migracije. Prije nadogradnje sačuvaj bazu i privatnu konfiguraciju. Zamijeni programski paket, zadrži sesije/konfiguraciju, pokreni postojeći migrate i ponovno pokreni Linux provjeravače. Ranije verzije rubrika i zaključane predaje ostaju izvršive uz stare uvjete. Nova objava izričito bira novu rubriku.
 
-# Labosv2 · školski paket · etapa 24E
+# Labosv2 · školski paket · etapa 24G
 
 Prethodno izdanje 0.13.8-beta.1 pripremilo je školski pilot, obrazac opažanja i razvojni pokus 30 + 1; vidi [23I](../docs/stage23i-pilot.md). Etapa 23H dodala je postignuća, izvoze, komentare i korekcije, arhiviranje, čuvanje međurevizija te privatne kopije i povrat. Postupak i provjere su u [izvješću 23H](../docs/stage23h-reports-administration.md). [Raniji zapis integracije 23F](https://github.com/zljix/labosv2/actions/runs/43738711916) ostaje povijesni dokaz. Stvarni školski pilot ostaje zasebna provjera.
 
@@ -429,3 +433,12 @@ Nema nove SQL migracije. Sačuvaj konfiguraciju, sesije i bazu, pokreni postoje�
 Izdanje 0.14.3-beta.1 pokriva 104/268 kombinacija. Sirovi CLK/DT/SW, dekoder i poskakivanje te NEC impulsi, LED i TX/RX imaju zasebne rubrike na sva četiri cilja. Kriteriji i rokovi su vidljivi prije početka. Novi provjeravač koristi stvarne tragove bridova i električni izlaz; fizički položaj enkodera ne zamjenjuje programski brojač.
 
 Nema nove SQL migracije. Sačuvaj konfiguraciju, sesije i bazu, pokreni postojeći migrate i ponovno pokreni provjeravače. Ranije rubrike i zaključane predaje ostaju neizmijenjene. Novi scenariji zadržavaju 65 s zidnog i 58 s CPU ograničenja. [Opseg i provjere](../docs/stage24e-events.md). Sljedeća etapa je 24F.
+
+
+## 24G · A4988 i koračni motor
+
+Izdanje 0.14.5-beta.1 uvodi tri rubrike `24G-…@1`, ukupno 144/268 podržanih kombinacija. Broje se valjani STEP impulsi, DIR, svih pet MS načina i stanje translatora. ENABLE HIGH isključuje pobudu motora, dok translator nastavlja brojiti; RESET nije referenciranje fizičke osovine. RESET/SLEEP ignoriraju zadane impulse, a buđenje mora završiti prije novih pogonskih koraka.
+
+Upute prije rada objavljuju motor s 200 punih koraka/okret, napajanje 8–35 V (predložak 12 V), vremenske uvjete i kriterije 3 + 5 + 2 boda. Rubrike za broj koraka i mikrostep provjeravaju tri ciklusa; kontrolna rubrika jedan potpuni slijed s ENABLE, RESET i SLEEP. [Opseg i provjere](../docs/stage24g-steppers.md).
+
+Nema nove SQL migracije. Sačuvaj privatnu konfiguraciju, sesije i bazu; zamijeni paket, pokreni postojeći migrate i ponovno pokreni provjeravače. Nastavnik novu rubriku izričito bira pri objavi zadatka. Sljedeća je etapa 24H.

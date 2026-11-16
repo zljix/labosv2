@@ -13,7 +13,7 @@ test('24F PHP/MySQL publishes all seven actuator contracts, stores genuine score
   const csv='username;displayName\n'+student.user.username+';'+student.user.displayName;
   const preview=await ok(teacher.client.call('preview-students',{classId:cls.id,csv}));await ok(teacher.client.call('import-students',{classId:cls.id,csv,previewToken:preview.previewToken,linkExisting:true}));
   const catalog=(await ok(teacher.client.call('catalog'))).catalog,profiles=catalog.gradingProfiles.filter(p=>p.id.startsWith('24F-'));
-  assert.equal(profiles.length,7);assert.equal(catalog.gradingSummary.supported,132);
+  assert.equal(profiles.length,7);assert.equal(catalog.gradingSummary.supported,144);
   const publish=async(key,id)=>(await ok(teacher.client.call('publish-task',{taskKey:key,gradingProfile:id}),201)).task;
   const legacy=await publish('gpio/adc','24B-analog-threshold@1');
   const privateCall=(action,body)=>{const r=f.gradingCommand(action,body);assert.equal(r.status,0,r.stderr);return JSON.parse(r.stdout);};
@@ -42,5 +42,5 @@ test('24F PHP/MySQL publishes all seven actuator contracts, stores genuine score
   assert.equal(f.command('migrate').status,0);
   const preserved=await ok(student.client.call('attempt&id='+old.attempt.id));assert.equal(preserved.assignment.task.contentHash,legacy.contentHash);assert.equal(preserved.attempt.grading.points,oldResult.points);
   assert.equal(preserved.assignment.task.rubric.profileId,'24B-analog-threshold@1');
-  mkdirSync('docs/stage24e-evidence',{recursive:true});writeFileSync('docs/stage24e-evidence/mysql-actuators.json',JSON.stringify({format:'labosv2-actuators-api-evidence',version:1,sourceCommit:process.env.GITHUB_SHA??null,legacyPreserved:true,legacyResult:oldResult,results},null,2)+'\n');
+  mkdirSync('docs/stage24f-evidence',{recursive:true});writeFileSync('docs/stage24f-evidence/mysql-actuators.json',JSON.stringify({format:'labosv2-actuators-api-evidence',version:1,sourceCommit:process.env.GITHUB_SHA??null,legacyPreserved:true,legacyResult:oldResult,results},null,2)+'\n');
 });

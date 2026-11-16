@@ -1,5 +1,5 @@
 {
-  "checkerVersion": "24E.1",
+  "checkerVersion": "24G.1",
   "profiles": [
     {
       "id": "23E-button-led@1",
@@ -3512,6 +3512,318 @@
           }
         },
         "faultPolicy": "Signal and energy-path faults are checked in separate saved copies. Stop, repair and restart is allowed; no hidden demand for live recovery. No mechanical torque, RPM or coil-current model."
+      }
+    },
+    {
+      "id": "24G-stepperBasic@1",
+      "taskKey": "stepper/stepperBasic",
+      "kind": "stepper-output",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "A4988: broj valjanih koraka i smjer",
+      "instructions": "Ponavljaj 50 punih koraka naprijed (+90°), stani 600 ms, 50 natrag (0°), stani 600 ms. Provjeravaju se tri ciklusa. Motor ima 200 punih koraka po okretu. VDD=3,3 V na S3 ili 5 V na AVR-u, VMOT je zaseban izvor 8–35 V (predložak 12 V), uz zajedničku masu i dvije odvojene zavojnice. Koristi digitalne STEP impulse: HIGH najmanje 1 µs, LOW najmanje 1 µs; razmak valjanih impulsa 4,01 ms ±0,6 ms, DIR/MS setup i hold najmanje 0,2 µs, buđenje najmanje 1 ms. Počni do 250 ms; stanke su ±80 ms, kut ±0,001°. Drugi valjani GPIO, električno ekvivalentan raspored i program bez ispisa su dopušteni. Funkcionalni PWM na STEP nije podržan. Konzolni tekst ne donosi bodove. Raspodjela: 3 boda za spoj, 5 za prvi propisani slijed, 2 za ponavljanja odnosno RESET/SLEEP i buđenje. Otvoreni odgovori ostaju opisni.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan upravljački i energetski put, A4988 i obje zavojnice motora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Prvi puni ciklus: 50 +50 koraka, smjer, kut i obje stanke",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Još dva potpuna ciklusa bez izgubljenih ili dodatnih impulsa",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24G.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24G.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi algoritam i nazivi uz isti slijed stvarnih STEP impulsa, MS načina i stanki.",
+          "Električno ekvivalentan raspored, preuređene oznake i drugi valjani digitalni GPIO.",
+          "Konzola nije uvjet; dopušten je program bez ispisa."
+        ],
+        "output": "Valjani STEP bridovi, MS način, translator u 1/16 koraka, pobuda i idealni pomak motora; fizički položaj može biti nepoznat.",
+        "units": {
+          "time": "ms",
+          "pulse": "µs",
+          "translator": "1/16 punog koraka",
+          "angle": "stupnjevi",
+          "voltage": "V"
+        },
+        "scenario": {
+          "stageDurationMs": 5204,
+          "cycles": 3,
+          "startupAllowanceMs": 250,
+          "pulsePeriodMs": 4.01,
+          "pulsePeriodToleranceMs": 0.6,
+          "pauseToleranceMs": 80,
+          "angleToleranceDeg": 0.001,
+          "stepHighMinimumUs": 1,
+          "stepLowMinimumUs": 1,
+          "setupHoldMinimumUs": 0.2,
+          "wakeMinimumUs": 1000,
+          "motorFullSteps": 200,
+          "motorSupplyVolts": [
+            8,
+            12,
+            35
+          ],
+          "seededEnvironment": true
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Odvojene kopije s prekidom STEP, VMOT i zavojnice; Stop, popravak i novo pokretanje su dopušteni. ENABLE isključuje mostove, a translator broji; RESET i SLEEP ignoriraju STEP. Idealni pomak nije fizičko referenciranje. Nema modela momenta, struje, ubrzanja ili proklizavanja."
+      }
+    },
+    {
+      "id": "24G-stepperMicro@1",
+      "taskKey": "stepper/stepperMicro",
+      "kind": "stepper-output",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "A4988: svih pet mikrostep načina",
+      "instructions": "Redom koristi MS1/MS2/MS3: 000=1, 100=1/2, 010=1/4, 110=1/8 i 111=1/16. U svakom načinu napravi 10 × faktor impulsa naprijed (+18°), stani 400 ms, isto natrag (0°), stani 400 ms. Način mijenjaj na zajedničkom Home položaju. Provjeravaju se tri puna obilaska svih pet načina. Motor ima 200 punih koraka po okretu. VDD=3,3 V na S3 ili 5 V na AVR-u, VMOT je zaseban izvor 8–35 V (predložak 12 V), uz zajedničku masu i dvije odvojene zavojnice. Koristi digitalne STEP impulse: HIGH najmanje 1 µs, LOW najmanje 1 µs; razmak valjanih impulsa 4,01 ms ±0,6 ms, DIR/MS setup i hold najmanje 0,2 µs, buđenje najmanje 1 ms. Počni do 250 ms; stanke su ±80 ms, kut ±0,001°. Drugi valjani GPIO, električno ekvivalentan raspored i program bez ispisa su dopušteni. Funkcionalni PWM na STEP nije podržan. Konzolni tekst ne donosi bodove. Raspodjela: 3 boda za spoj, 5 za prvi propisani slijed, 2 za ponavljanja odnosno RESET/SLEEP i buđenje. Otvoreni odgovori ostaju opisni.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan upravljački i energetski put, A4988 i obje zavojnice motora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Prvi obilazak svih pet MS načina: impulsi, translator, kut i stanke",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Još dva potpuna obilaska svih pet načina bez gubitka položaja",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24G.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24G.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi algoritam i nazivi uz isti slijed stvarnih STEP impulsa, MS načina i stanki.",
+          "Električno ekvivalentan raspored, preuređene oznake i drugi valjani digitalni GPIO.",
+          "Konzola nije uvjet; dopušten je program bez ispisa."
+        ],
+        "output": "Valjani STEP bridovi, MS način, translator u 1/16 koraka, pobuda i idealni pomak motora; fizički položaj može biti nepoznat.",
+        "units": {
+          "time": "ms",
+          "pulse": "µs",
+          "translator": "1/16 punog koraka",
+          "angle": "stupnjevi",
+          "voltage": "V"
+        },
+        "scenario": {
+          "stageDurationMs": 19860,
+          "cycles": 3,
+          "startupAllowanceMs": 250,
+          "pulsePeriodMs": 4.01,
+          "pulsePeriodToleranceMs": 0.6,
+          "pauseToleranceMs": 80,
+          "angleToleranceDeg": 0.001,
+          "stepHighMinimumUs": 1,
+          "stepLowMinimumUs": 1,
+          "setupHoldMinimumUs": 0.2,
+          "wakeMinimumUs": 1000,
+          "motorFullSteps": 200,
+          "motorSupplyVolts": [
+            8,
+            12,
+            35
+          ],
+          "seededEnvironment": true
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Odvojene kopije s prekidom STEP, VMOT i zavojnice; Stop, popravak i novo pokretanje su dopušteni. ENABLE isključuje mostove, a translator broji; RESET i SLEEP ignoriraju STEP. Idealni pomak nije fizičko referenciranje. Nema modela momenta, struje, ubrzanja ili proklizavanja."
+      }
+    },
+    {
+      "id": "24G-stepperControl@1",
+      "taskKey": "stepper/stepperControl",
+      "kind": "stepper-output",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "A4988: ENABLE, RESET i SLEEP",
+      "instructions": "Jedan slijed: 10 pogonskih impulsa (+18°), stanka 700 ms; ENABLE HIGH i još 10 (translator=20 punih koraka, idealni pogon ostaje 18°, položaj osovine nepoznat), stanka 700 ms; RESET LOW i 3 impulsa koji se ignoriraju, RESET HIGH, translator=0, stanka 700 ms; SLEEP LOW i 3 ignorirana impulsa, stanka 700 ms; SLEEP HIGH, čekaj 2 ms, ENABLE LOW i 5 impulsa (translator=5, idealni zbroj pogona 27°, fizički položaj i dalje nepoznat). Potom miruj najmanje 100 ms. RESET ne referencira osovinu. Motor ima 200 punih koraka po okretu. VDD=3,3 V na S3 ili 5 V na AVR-u, VMOT je zaseban izvor 8–35 V (predložak 12 V), uz zajedničku masu i dvije odvojene zavojnice. Koristi digitalne STEP impulse: HIGH najmanje 1 µs, LOW najmanje 1 µs; razmak valjanih impulsa 4,01 ms ±0,6 ms, DIR/MS setup i hold najmanje 0,2 µs, buđenje najmanje 1 ms. Počni do 250 ms; stanke su ±80 ms, kut ±0,001°. Drugi valjani GPIO, električno ekvivalentan raspored i program bez ispisa su dopušteni. Funkcionalni PWM na STEP nije podržan. Konzolni tekst ne donosi bodove. Raspodjela: 3 boda za spoj, 5 za prvi propisani slijed, 2 za ponavljanja odnosno RESET/SLEEP i buđenje. Otvoreni odgovori ostaju opisni.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan upravljački i energetski put, A4988 i obje zavojnice motora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Pogon i ENABLE: 10 +10 valjanih STEP, translator 20 i nepobuđena osovina",
+          "maxPoints": 5
+        },
+        {
+          "id": "control",
+          "description": "RESET/SLEEP ignoriraju po 3 impulsa; buđenje i 5 novih koraka bez izmišljene nule osovine",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24G.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24G.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi algoritam i nazivi uz isti slijed stvarnih STEP impulsa, MS načina i stanki.",
+          "Električno ekvivalentan raspored, preuređene oznake i drugi valjani digitalni GPIO.",
+          "Konzola nije uvjet; dopušten je program bez ispisa."
+        ],
+        "output": "Valjani STEP bridovi, MS način, translator u 1/16 koraka, pobuda i idealni pomak motora; fizički položaj može biti nepoznat.",
+        "units": {
+          "time": "ms",
+          "pulse": "µs",
+          "translator": "1/16 punog koraka",
+          "angle": "stupnjevi",
+          "voltage": "V"
+        },
+        "scenario": {
+          "stageDurationMs": 4200,
+          "cycles": 1,
+          "startupAllowanceMs": 250,
+          "pulsePeriodMs": 4.01,
+          "pulsePeriodToleranceMs": 0.6,
+          "pauseToleranceMs": 80,
+          "angleToleranceDeg": 0.001,
+          "stepHighMinimumUs": 1,
+          "stepLowMinimumUs": 1,
+          "setupHoldMinimumUs": 0.2,
+          "wakeMinimumUs": 1000,
+          "motorFullSteps": 200,
+          "motorSupplyVolts": [
+            8,
+            12,
+            35
+          ],
+          "seededEnvironment": true
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Odvojene kopije s prekidom STEP, VMOT i zavojnice; Stop, popravak i novo pokretanje su dopušteni. ENABLE isključuje mostove, a translator broji; RESET i SLEEP ignoriraju STEP. Idealni pomak nije fizičko referenciranje. Nema modela momenta, struje, ubrzanja ili proklizavanja."
       }
     }
   ]

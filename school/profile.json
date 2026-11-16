@@ -1,7 +1,7 @@
 {
   "format": "labosv2-school-profile",
   "version": 1,
-  "stage": "24F",
+  "stage": "24G",
   "sourceBaseline": "zljix/labos@3c4a281c10282d63b2742280f69aadbc08d7ae1e",
   "webServer": "Apache 2.4 with HTTPS",
   "phpBranches": [
@@ -80,7 +80,7 @@
     "idempotentSaves": true
   },
   "grading": {
-    "checkerVersion": "24F.1",
+    "checkerVersion": "24G.1",
     "profiles": [
       "23E-button-led@1",
       "23E-analog-threshold@1",
@@ -121,7 +121,10 @@
       "24F-sg90Sweep@1",
       "24F-dcDrive@1",
       "24F-dualDrive@1",
-      "24F-servoMotorTone@1"
+      "24F-servoMotorTone@1",
+      "24G-stepperBasic@1",
+      "24G-stepperMicro@1",
+      "24G-stepperControl@1"
     ],
     "targets": [
       "micropython",
@@ -140,12 +143,13 @@
       "24AB.1",
       "24C.1",
       "24D.1",
-      "24E.1"
+      "24E.1",
+      "24F.1"
     ],
     "coverage": {
       "combinations": 268,
-      "supported": 132,
-      "unsupported": 136,
+      "supported": 144,
+      "unsupported": 124,
       "introductoryLocalOnly": 5
     },
     "executionContract": "labosv2-execution-contract@1",
@@ -155,7 +159,9 @@
     "eventWallTimeMs": 65000,
     "eventCpuSeconds": 58,
     "actuatorWallTimeMs": 65000,
-    "actuatorCpuSeconds": 58
+    "actuatorCpuSeconds": 58,
+    "stepperWallTimeMs": 65000,
+    "stepperCpuSeconds": 58
   },
   "submissions": {
     "exactRevision": true,

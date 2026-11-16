@@ -1,0 +1,54 @@
+{
+  "format": "labosv2-24i-acceptance",
+  "version": 1,
+  "sourceCommit": "91669a14a1514c622edfaae874b00d23cc059557",
+  "acceptanceRun": "https://github.com/zljix/labosv2/actions/runs/43949417346",
+  "nativeSourceCommit": "6b1cdb1d376385646e6342b0d884f5ad198a042f",
+  "nativeAcceptanceRun": "https://github.com/zljix/labosv2/actions/runs/43944087051",
+  "nativeCheckerSha256": "d320bfbfdce50ce4be06c1bd89247f38a2c8bfec686c26e0cea222627a7ef823",
+  "finalChanges": [
+    "whole numeric OLED fields",
+    "PK-based expiry cleanup",
+    "bounded DB-only grading completion retries"
+  ],
+  "syntheticLoadRuns": 2,
+  "syntheticStudentsPerRun": 30,
+  "duplicateResults": 0,
+  "releaseVersion": "0.14.7-beta.1",
+  "supported": 184,
+  "combinations": 268,
+  "previousProfilesPreserved": 51,
+  "records": [
+    {
+      "target": "micropython",
+      "repeatedReferences": 6,
+      "independentCompilations": 0,
+      "executions": 23
+    },
+    {
+      "target": "s3-cpp",
+      "repeatedReferences": 6,
+      "independentCompilations": 8,
+      "executions": 25
+    },
+    {
+      "target": "uno",
+      "repeatedReferences": 6,
+      "independentCompilations": 8,
+      "executions": 25
+    },
+    {
+      "target": "nano",
+      "repeatedReferences": 6,
+      "independentCompilations": 8,
+      "executions": 25
+    }
+  ],
+  "independentCompilations": 24,
+  "lockedAssignments": 8,
+  "legacyPreserved": true,
+  "checkerSha256": "0f369eff9fe589cc75c46485f1ca479986b62ef8b42dec9fc9646d5406e78756",
+  "inventoryFilesVerified": 900,
+  "ciArchiveSha256": "52f447c36458c6aad7bbc234c891bdc159808ae0b66486dd54de29de75103dad",
+  "schoolPilot": "prepared-not-school-accepted"
+}

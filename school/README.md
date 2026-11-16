@@ -2,6 +2,8 @@
 
 Izdanje **0.14.7-beta.1** dodaje dvije rubrike i osam kombinacija, ukupno **184/268**. Stanica provjerava tri neovisna nova očitanja i primljene OLED piksele; regulator dodaje oba smjera histereze, granične AHT10 uzorke i stvarne servo impulse. [Opseg, kriteriji i provjere 24I](../docs/stage24i-environment.md). Nema nove SQL migracije. Sačuvaj bazu, konfiguraciju i sesije; zamijeni kompletan paket, pokreni postojeći migrate i ponovno pokreni provjeravače. Stare dodjele i zaključane predaje ostaju sačuvane.
 
+Provjera OLED-a uspoređuje cijele brojeve, uključujući predznak i decimalni dio. Privatni red provjera nakon SQL deadlocka ograničeno ponavlja DB preuzimanje ili potpuno vraćenu transakciju rezultata; dva vala po 30 sintetičkih predaja prošla su bez udvostručavanja.
+
 ## 24H — zasloni i SPI uređaji
 
 Izdanje **0.14.6-beta.1** dodaje osam rubrika i 32 kombinacije: ukupno **176/268**. OLED, LCD, TM1637, ST7735 i BMP280 SPI provjeravaju se iz stvarnih prijenosa i memorije uređaja. [Opseg, kriteriji i provjere 24H](../docs/stage24h-displays.md). Nema nove SQL migracije. Sačuvaj bazu, konfiguraciju i sesije; zamijeni kompletan paket, pokreni postojeći migrate i ponovno pokreni provjeravače. Ranije predaje ostaju vezane uz svoje uvjete.

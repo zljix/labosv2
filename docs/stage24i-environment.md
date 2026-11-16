@@ -58,6 +58,15 @@ Zadržani su postojeći sadržaji po cilju. MicroPython koristi framebuf 8×8; A
 
 Ponovno otpuštanje već otpuštenog I2C slave izlaza više ne traži novo rješavanje iste električne mreže. Time se skraćuje izvođenje mješovite hardverske i softverske I2C sabirnice; stvarni bridovi i prijenosi ostaju opažani.
 
+
+Konačni prihvat provjerava cijela brojčana polja: 24,0 unutar pogrešnog 124,0 ne vrijedi, kao ni dodatna završna znamenka, decimalna točka ili pogrešan predznak. Provjeravaju se sva tri fonta i stvarni pogrešni OLED prijenosi. Ispravna alternativna rješenja ostaju prihvaćena.
+
+Neovisni prijevodi i konačni paket imaju zasebne otiske izvora. `native/` čuva sva četiri izvorna izvršna dokaza, a `boundary-validation.json` potvrđuje da prevoditelji, runtimeovi, driveri i rubrike nisu promijenjeni. Konačna izmjena provjeravača odnosi se samo na granice brojčanih polja; svih osam službenih dodjela ponovno je izvršeno kroz PHP/MySQL s isporučenim provjeravačem.
+
+Privatni SQL red uklanja istekle poslove po primarnom ključu. Nakon deadlocka ograničeno ponavlja DB preuzimanje posla ili potpuno vraćenu transakciju potvrde rezultata. Opće transakcije i povrat datoteka ne ponavljaju se automatski. Kontrolirani SQL kvar potvrđuje da ne ostaju djelomični ili dvostruki upisi; trajna pogreška ne ponavlja se. Dva odvojena vala po 30 sintetičkih učenika potvrđuju 60 jedinstvenih predaja i rezultata uz dva provjeravača.
+
+[Završni prihvat](https://github.com/zljix/labosv2/actions/runs/43949417346) i [sažetak s otiscima](stage24i-evidence/acceptance-summary.json) navode točan opseg. Školski paket zadržava iste programske bajtove kao potvrđeno izvršavanje.
+
 Nema nove SQL migracije. Sačuvaj bazu, privatnu konfiguraciju i sesije; zamijeni kompletan paket, pokreni postojeći migrate i ponovno pokreni Linux provjeravače. Novu rubriku izričito odaberi pri objavi novog zadatka. Stare dodjele, njihove upute i zaključane predaje ostaju sačuvane.
 
 Izolacija i ograničenja ostaju 65 s zidnog i 58 s CPU vremena, 90 s prevođenja, 2048 MiB adresnog prostora i 1 MiB izlaza. Stari ili učenikov artefakt ne bira rezultat. Tehnički kvar ili nepodržana provjera ostaju bez bodova.

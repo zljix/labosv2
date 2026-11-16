@@ -2,6 +2,8 @@
 
 **0.14.7-beta.1 · etapa 24I · meteorološka stanica i regulator · 16. studenoga 2026.**
 
+**Prihvat 24I:** [Završne provjere](https://github.com/zljix/labosv2/actions/runs/43949417346) povezuju sva četiri cilja i 24 neovisna C++ prijevoda s konačnim provjeravačem: osam službenih dodjela, ispravne cijele OLED brojke, dva vala po 30 predaja bez dvostrukih rezultata, izvještaji i povrat sigurnosne kopije. [Sažetak dokaza](docs/stage24i-evidence/acceptance-summary.json).
+
 **Prihvat 24H:** [GitHub Actions](https://github.com/zljix/labosv2/actions/runs/43937992501) potvrđuje sva četiri cilja, 96 neovisnih C++ prijevoda, 32 zaključane dodjele, PHP/MySQL, izvještaje, povrat kopije i pokus s 30 simuliranih učenika. Programske datoteke provjeravača bajtno odgovaraju prihvaćenoj izgradnji.
 
 [Završni prihvat 24G](https://github.com/zljix/labosv2/actions/runs/43925558604) potvrđuje sva četiri cilja, 36 neovisnih C++ prijevoda, 12 zaključanih dodjela, pravi PHP/MySQL, izvještaje, povrat kopije i pokus s 30 simuliranih učenika. Provjereno je svih 880 datoteka iz inventure paketa; programski izvor odgovara prihvatu.
@@ -160,7 +162,7 @@ npm ci
 npm run build:school
 ```
 
-Školski paket: `release/Labosv2_0.14.7_24I_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-24I-Provjeren-skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
+Školski paket: `release/Labosv2_0.14.7_24I_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-24I-Konacni-skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
 
 ```sh
 npm run build:pages

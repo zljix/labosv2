@@ -334,7 +334,13 @@ export function createCircuitHost(send, config) {
     },
     nextTimedEdgeUs:nextEdge,
     timedStep(){dirty=true;},
-    busDrive(id,pin,low){if(low)busLow.set(id,pin);else busLow.delete(id);dirty=true;},
+    busDrive(id,pin,low){
+      // Releasing an already released slave output changes no electrical state.
+      // In mixed hardware/software I2C this also avoids solving the full network
+      // again for every unrelated GPIO edge while the hardware bus is enabled.
+      if(low?busLow.get(id)===pin:!busLow.has(id))return;
+      if(low)busLow.set(id,pin);else busLow.delete(id);dirty=true;
+    },
     capturePulse(pin,pulseUs,periodUs){pulses.set(pin,{pulseUs,periodUs,at:now()});},
     mode(id, output, pull=0, value=-1) {
       if(!gpioNet.has(id))return -2;

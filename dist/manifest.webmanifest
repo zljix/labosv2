@@ -1,17 +1,32 @@
 {
-  "id": "/",
+  "id": "/labosv2/",
   "name": "ESP32 MicroPython Lab",
   "short_name": "ESP32 Lab",
   "lang": "hr",
   "description": "Sastavljanje sklopa, MicroPython simulacija i nastavne vježbe.",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "/labosv2/",
+  "scope": "/labosv2/",
   "display": "standalone",
   "background_color": "#f5f7fa",
   "theme_color": "#087c70",
   "icons": [
-    { "src": "/icons/lab-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/icons/lab-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+    {
+      "src": "/labosv2/icons/lab-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/labosv2/icons/lab-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/labosv2/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
   ]
 }

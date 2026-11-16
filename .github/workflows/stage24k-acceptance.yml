@@ -68,7 +68,7 @@ jobs:
           fi
           npm run test:school-storage
         env:
-          LAB_TOUCH_TARGET: ${{ matrix.target }}
+          LAB_STORAGE_TARGET: ${{ matrix.target }}
           LAB_GRADING_COMPILER_TEST: '1'
           LAB_S3_COMPILER_TEST: '1'
           LAB_ARDUINO_DATA: ${{ github.workspace }}/avr-env/data

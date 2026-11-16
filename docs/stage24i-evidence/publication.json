@@ -1,0 +1,36 @@
+{
+  "format": "labosv2-publication-check",
+  "version": 1,
+  "status": "published",
+  "releaseVersion": "0.14.7-beta.1",
+  "stage": "24I",
+  "url": "https://zljix.github.io/labosv2/",
+  "publishedSourceCommit": "7eb2df1f6d99ce59995d188fdcf5060b87a5aa9a",
+  "acceptedCodeCommit": "91669a14a1514c622edfaae874b00d23cc059557",
+  "pagesRun": "https://github.com/zljix/labosv2/actions/runs/43951343869",
+  "acceptanceRun": "https://github.com/zljix/labosv2/actions/runs/43949417346",
+  "checkedAtUTC": "2026-11-16T20:39:23.081546+00:00",
+  "build": "743ae42dcb3c5c53",
+  "supported": 184,
+  "combinations": 268,
+  "newCombinations": 8,
+  "httpChecks": [
+    {
+      "path": "/",
+      "status": 200,
+      "sha256": "24055d1287152785e3031ceddf8b9d8b8c6284f6365e2e694bd36974ac2416fd"
+    },
+    {
+      "path": "offline-package.json",
+      "status": 200,
+      "sha256": "4f57886e97a6c09c3cc8d407d9377fd9a7f671871f52e4fde2e206f20f90e9d5"
+    },
+    {
+      "path": "school-grading-support.json",
+      "status": 200,
+      "sha256": "7e863ed9ec7abb851ef896fff166a77545f806f290970fbc849225cb18c51850"
+    }
+  ],
+  "liveFilesMatchManifest": true,
+  "schoolBackend": "Apache/PHP/MySQL installer; GitHub Pages serves the simulator"
+}

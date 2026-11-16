@@ -48,7 +48,9 @@
   "lockedAssignments": 8,
   "legacyPreserved": true,
   "checkerSha256": "0f369eff9fe589cc75c46485f1ca479986b62ef8b42dec9fc9646d5406e78756",
-  "inventoryFilesVerified": 900,
   "ciArchiveSha256": "52f447c36458c6aad7bbc234c891bdc159808ae0b66486dd54de29de75103dad",
-  "schoolPilot": "prepared-not-school-accepted"
+  "schoolPilot": "prepared-not-school-accepted",
+  "ciInventoryFilesVerified": 900,
+  "distributionInventoryFilesVerified": 902,
+  "distributionChanges": "release documentation only; all CI program bytes preserved"
 }

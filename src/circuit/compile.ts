@@ -75,7 +75,7 @@ export interface SimulationFrame {
   clockProfile?:string;
   infrared?:Record<string,{kind:'receiver'|'remote'|'transmitter';powered:boolean;channel:number;level:number;busy:boolean;blocked:boolean;presses:number;carrierHz:number|null;transitions:number;trace:{timeUs:number;level:number}[]}>;
   encoders?:Record<string,{powered:boolean;position:number;targetPosition:number;clk:number;dt:number;sw:number;busy:boolean;transitions:number;volts:Record<string,number|null>;trace:{timeUs:number;clk:number;dt:number;sw:number;position:number}[]}>;
-  oneWireDevices?:Record<string,{powered:boolean;rom:string;temperature:number;resolution:number;busy:boolean;sample:number;scratchpad:number[];reason:string;fault:string;trace:{timeUs:number;operation:string;value?:number}[]}>;
+  oneWireDevices?:Record<string,{powered:boolean;rom:string;temperature:number;resolution:number;busy:boolean;sample:number;scratchpad:number[];reason:string;fault:string;trace:{timeUs:number;operation:string;value?:number}[];readings?:{timeUs:number;sample:number;busy:boolean;convertedAtUs:number;resolution:number;temperature:number;valid:boolean}[]}>;
   timedSensors?:Record<string,{powered:boolean;sample:number;temperature:number;humidity:number;bytes:number[];reason:string;transmitting:boolean;fault:string;trace:{atUs:number;durationUs:number;level:number}[]}>;
   analogInputs?:Record<string,{powered:boolean;active?:boolean;volts:Record<string,number|null>;resistance?:number}>;
   avr?:{memory?:{staticBytes:number;lowestSP:number;minFreeToStatic:number};cycles:number;clockHz:number;uartBaud:number;rxPending:number;busTrace:{kind:string;operation:string;value?:number;result?:string;timeUs:number}[]};

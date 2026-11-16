@@ -1,6 +1,6 @@
 # Labosv2 · školski laboratorij
 
-**0.14.1-beta.1 · etapa 24C · analogni ulazi i puni ADC/PWM · 16. studenoga 2026.**
+**0.14.2-beta.1 · etapa 24D · senzori, CRC i svježina očitanja · 16. studenoga 2026.**
 
 Prethodna 23F PHP/MySQL integracija prošla je u [GitHub Actionsu](https://github.com/zljix/labosv2/actions/runs/43738711916). Provjere izvještaja i administracije vode se zasebno u [izvješću 23H](docs/stage23h-reports-administration.md).
 
@@ -8,12 +8,17 @@ Nastavak postojećeg ESP32 MicroPython / Arduino laboratorija za školski sustav
 
 [Web laboratorij](https://zljix.github.io/labosv2/) · [Školski račun](https://zljix.github.io/labosv2/school.html#account) · [Upute za instalaciju](school/README.md) · [Bodovanje i dokazi 23E](docs/stage23e-grading.md)
 
-## Novo u 24C
+## Novo u 24D
 
-- Osam novih rubrika pokriva puni ADC/PWM, NTC, TEMT6000, joystick, plamen, zvuk, LM35/NTC i dva potenciometra s tipkalima.
-- **52/268 podržanih kombinacija**, odnosno 13 varijanti na sva četiri cilja. ADC/PWM dobiva zasebnu provjeru stvarnog radnog omjera uz očuvanu raniju rubriku digitalnog praga.
-- Provjera prati svježa očitanja, neovisne ulaze, zasićenje, točne pragove i povrat. Upute i raspodjela 3 + 5 + 2 boda objavljuju se prije početka rada.
-- [Opseg, provjere i nadogradnja](docs/stage24c-analog.md). Nema nove SQL migracije. Sljedeća etapa je 24D.
+- Sedam novih rubrika za AM2320, DHT11/DHT22, pogreške DHT-a te tri DS18B20 varijante.
+- **80/268 podržanih kombinacija**, odnosno 20 varijanti na sva četiri cilja.
+- Stvarni prijenosi, ROM identiteti, dovršene pretvorbe, razlučivost 9–12 bita, CRC, pogreške i oporavak.
+- Upute, jedinice, rokovi, tolerancije i raspodjela 3 + 5 + 2 boda vidljivi su prije rada.
+- [Opseg, provjere, ograničenja i nadogradnja](docs/stage24d-sensors.md). Nema nove SQL migracije. Sljedeća etapa je 24E.
+
+## Sačuvano iz 24C
+
+Osam rubrika za puni ADC/PWM, NTC, TEMT6000, joystick, plamen, zvuk, LM35/NTC i dva potenciometra s tipkalima ostaje neizmijenjeno. Digitalni prag i puni PWM imaju zasebne identitete. [Opseg i provjere 24C](docs/stage24c-analog.md).
 
 ## Sačuvano iz 24A–24B
 
@@ -125,6 +130,8 @@ npm run build:school-grader
 npm run test:school
 npm run test:school-package
 npm run test:school-catalog
+npm run test:school-sensors
+npm run test:school-sensors-api
 npm run test:school-coverage
 npm run test:school-grading-expanded
 npm run test:school-sync

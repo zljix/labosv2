@@ -76,6 +76,15 @@ test('Match ROM reads separate scratchpads and Skip ROM read is wired AND',()=>{
 test('CRC fault changes data on the wire and disconnected DQ loses presence',()=>{
  const f=fixture();try{f.h.input({component:'ds1',oneWireFault:'crc'});assert.notEqual(crc8(f.scratch()),0);f.h.input({component:'ds1',oneWireFault:'disconnected'});assert(!f.reset());f.h.input({component:'ds1',oneWireFault:'none'});assert(f.reset());assert.equal(crc8(f.scratch()),0);}finally{f.close();}
 });
+test('24D telemetry distinguishes an initial register, a complete fresh read and an incomplete scratchpad',()=>{
+ const f=fixture();try{
+  f.scratch();let rows=f.frame().oneWireDevices.ds1.readings;assert.equal(rows.length,1);assert.equal(rows[0].sample,0);assert.equal(rows[0].temperature,85);
+  f.select();f.write(0x44);f.h.delayUs(750000);f.scratch();rows=f.frame().oneWireDevices.ds1.readings;
+  assert.equal(rows.length,2);assert.equal(rows[1].sample,1);assert.equal(rows[1].temperature,25);assert.equal(rows[1].valid,true);assert.equal(rows[1].busy,false);assert(rows[1].convertedAtUs<=rows[1].timeUs);
+  f.select();f.write(0xbe);f.read();f.read();assert.equal(f.frame().oneWireDevices.ds1.readings.length,2);
+  f.select();f.write(0x44);f.scratch();const busy=f.frame().oneWireDevices.ds1.readings.at(-1);assert.equal(busy.busy,true);assert.equal(busy.sample,1);
+ }finally{f.close();}
+});
 test('missing external pull-up, supply, ground and DQ cannot return valid data',()=>{
  for(const pin of ['VDD','GND','DQ','pull']){const f=fixture('ds18b20',c=>remove(c,pin==='pull'?'owPull':'ds1',pin==='pull'?'1':pin));try{assert(!f.reset(),pin);assert.equal(f.frame().oneWireDevices.ds1.sample,0);}finally{f.close();}}
 });

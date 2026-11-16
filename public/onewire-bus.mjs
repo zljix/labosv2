@@ -7,7 +7,7 @@ export const conversionUs=bits=>750000/(1<<(12-bits));
 export function temperatureBytes(t,bits=12){let raw=Math.round(Math.max(-55,Math.min(125,t))*16);raw&=~((1<<(12-bits))-1);return [raw&255,(raw>>8)&255];}
 
 export function createOneWireBus({c,pins,gpioNet,rootData,idleSolution,clockUs,logicVoltage}){
- const states=(c.oneWireDevices??[]).map(d=>({d,rom:d.rom.match(/../g).map(v=>parseInt(v,16)),powered:false,scratch:[0x50,5,75,70,0x7f,0xff,0x0c,0x10],sample:0,pending:null,reason:'Čeka reset/presence',eeprom:[75,70,0x7f],copyUntil:0,alarm:false}));
+ const states=(c.oneWireDevices??[]).map(d=>({d,rom:d.rom.match(/../g).map(v=>parseInt(v,16)),powered:false,scratch:[0x50,5,75,70,0x7f,0xff,0x0c,0x10],sample:0,pending:null,reason:'Čeka reset/presence',eeprom:[75,70,0x7f],copyUntil:0,alarm:false,convertedAtUs:0,readings:[]}));
  const buses=new Map();
  const same=(a,b)=>rootData().root(a)===rootData().root(b);
  function environment(s){const v=idleSolution().volts,d=s.d,supply=v[d.vdd]===null||v[d.gnd]===null?null:v[d.vdd]-v[d.gnd];
@@ -19,7 +19,7 @@ export function createOneWireBus({c,pins,gpioNet,rootData,idleSolution,clockUs,l
  function sync(){const t=clockUs();for(const s of states){const e=environment(s);
   if(s.powered!==e.powered){s.powered=e.powered;s.scratch=[0x50,5,...s.eeprom,0xff,0x0c,0x10];s.pending=null;s.copyUntil=0;s.sample=0;s.alarm=false;s.reason=e.powered?'Početni registar +85 °C; pokreni pretvorbu':'Provjeri VDD i zajedničku masu';}
   if(!e.powered)s.pending=null;
-  if(s.pending&&t>=s.pending.until){const p=s.pending;s.scratch.splice(0,2,...temperatureBytes(p.temperature,p.bits));s.pending=null;s.sample++;const hi=s.scratch[2]<<24>>24,lo=s.scratch[3]<<24>>24,integer=(s.scratch[1]<<24>>16|s.scratch[0])>>4;s.alarm=integer>=hi||integer<=lo;s.reason='Pretvorba dovršena; rezultat čita program uz CRC';}
+  if(s.pending&&t>=s.pending.until){const p=s.pending;s.scratch.splice(0,2,...temperatureBytes(p.temperature,p.bits));s.convertedAtUs=p.until;s.pending=null;s.sample++;const hi=s.scratch[2]<<24>>24,lo=s.scratch[3]<<24>>24,integer=(s.scratch[1]<<24>>16|s.scratch[0])>>4;s.alarm=integer>=hi||integer<=lo;s.reason='Pretvorba dovršena; rezultat čita program uz CRC';}
   if(s.copyUntil&&t>=s.copyUntil){s.eeprom=s.copyValues;s.copyUntil=0;}
  }
  }
@@ -27,7 +27,7 @@ export function createOneWireBus({c,pins,gpioNet,rootData,idleSolution,clockUs,l
  function eligible(net){return members(net).filter(s=>{const e=environment(s);return e.powered&&e.pull&&e.goodLevel&&s.d.oneWireFault!=='disconnected';});}
  function scratch(s){const v=[...s.scratch,crc8(s.scratch)];if(s.d.oneWireFault==='crc')v[8]^=1;return v;}
  function log(b,operation,value){b.trace.push({timeUs:clockUs(),operation,...(value===undefined?{}:{value})});if(b.trace.length>100)b.trace.shift();}
- function reset(b){const t=clockUs();b.selected=eligible(b.net);b.phase='rom';b.rx=[];b.match=[];b.tx=[];b.bit=0;b.searchIndex=0;b.searchPart=0;b.lowAt=null;b.sinks=[];b.slot=null;
+ function reset(b){const t=clockUs();b.selected=eligible(b.net);b.phase='rom';b.rx=[];b.match=[];b.tx=[];b.bit=0;b.searchIndex=0;b.searchPart=0;b.lowAt=null;b.sinks=[];b.slot=null;b.scratchRead=false;b.readMeta=[];
   if(b.selected.length)b.sinks.push({start:t+30,end:t+150,devices:[...b.selected]});
   b.presenceUntil=t+150;log(b,'reset',b.selected.length);for(const s of b.selected)s.reason='Reset prihvaćen; presence LOW';
  }
@@ -43,7 +43,8 @@ export function createOneWireBus({c,pins,gpioNet,rootData,idleSolution,clockUs,l
   if(b.phase==='write'){b.write.push(value);if(b.write.length===3){for(const s of b.selected){s.scratch[2]=b.write[0];s.scratch[3]=b.write[1];s.scratch[4]=(b.write[2]&0x60)|0x1f;}b.phase='idle';}return;}
   if(b.phase!=='function')return;
   if(value===0x44){for(const s of b.selected){const resolution=9+((s.scratch[4]>>5)&3);s.pending={until:clockUs()+conversionUs(resolution),temperature:s.d.temperature,bits:resolution};s.reason=`Pretvorba ${resolution} bita u tijeku`;log(b,'convert',resolution);}b.phase='busy';}
-  else if(value===0xbe){const rows=b.selected.map(s=>scratch(s));b.tx=Array.from({length:9},(_,i)=>rows.reduce((v,row)=>v&row[i],255));b.bit=0;b.phase='read';log(b,'scratchpad');}
+  else if(value===0xbe){const rows=b.selected.map(s=>scratch(s));b.tx=Array.from({length:9},(_,i)=>rows.reduce((v,row)=>v&row[i],255));b.bit=0;b.phase='read';b.scratchRead=true;
+   b.readMeta=b.selected.map((s,i)=>({s,sample:s.sample,busy:!!s.pending,convertedAtUs:s.convertedAtUs,resolution:9+((rows[i][4]>>5)&3)}));log(b,'scratchpad');}
   else if(value===0x4e){b.phase='write';b.write=[];}
   else if(value===0xb4){b.tx=[255];b.bit=0;b.phase='read';}
   else if(value===0x48){for(const s of b.selected){s.copyValues=s.scratch.slice(2,5);s.copyUntil=clockUs()+10000;}b.phase='busy';}
@@ -52,7 +53,12 @@ export function createOneWireBus({c,pins,gpioNet,rootData,idleSolution,clockUs,l
  }
  function readBit(b){
   if(b.phase==='busy')return b.selected.every(s=>!s.pending&&!s.copyUntil)?1:0;
-  if(b.phase==='read'){const i=b.bit++;return i<b.tx.length*8?(b.tx[i>>3]>>(i&7))&1:1;}
+  if(b.phase==='read'){const i=b.bit++;
+   if(b.scratchRead&&i===71)for(const m of b.readMeta){const raw=(b.tx[0]|b.tx[1]<<8)<<16>>16;
+    m.s.readings.push({timeUs:clockUs(),sample:m.sample,busy:m.busy,convertedAtUs:m.convertedAtUs,resolution:m.resolution,temperature:raw/16,valid:b.readMeta.length===1&&crc8(b.tx)===0});
+    if(m.s.readings.length>100)m.s.readings.shift();
+   }
+   return i<b.tx.length*8?(b.tx[i>>3]>>(i&7))&1:1;}
   if(b.phase==='search'&&b.searchPart<2){const index=b.searchIndex,part=b.searchPart++;return b.selected.every(s=>(((s.rom[index>>3]>>(index&7))&1)^(part===1?1:0))===1)?1:0;}
   return null;
  }
@@ -86,7 +92,7 @@ export function createOneWireBus({c,pins,gpioNet,rootData,idleSolution,clockUs,l
   nextEdgeUs(){const t=clockUs();let next=Infinity;for(const b of buses.values())for(const v of b.sinks)for(const at of [v.start,v.end])if(at>t+.001)next=Math.min(next,at);return next;},
   input(data){const s=states.find(s=>s.d.id===data.component);if(!s)return;if(Number.isFinite(data.temperature))s.d.temperature=Math.max(-55,Math.min(125,data.temperature));if(['none','crc','disconnected'].includes(data.oneWireFault))s.d.oneWireFault=data.oneWireFault;},
   snapshot(){sync();const result={},diagnostics=[];for(const s of states){const e=environment(s),b=buses.get(rootData().root(s.d.data));
-   result[s.d.id]={powered:s.powered,rom:s.d.rom,temperature:s.d.temperature,resolution:9+((s.scratch[4]>>5)&3),busy:!!s.pending,sample:s.sample,scratchpad:scratch(s),reason:s.reason,fault:s.d.oneWireFault,trace:b?.trace.slice()??[]};
+   result[s.d.id]={powered:s.powered,rom:s.d.rom,temperature:s.d.temperature,resolution:9+((s.scratch[4]>>5)&3),busy:!!s.pending,sample:s.sample,scratchpad:scratch(s),reason:s.reason,fault:s.d.oneWireFault,trace:b?.trace.slice()??[],readings:s.readings.slice()};
    const reason=!e.powered?'VDD=3–5,5 V i zajednička masa; parazitsko napajanje nije podržano':!e.pull?'Dodaj vanjski pull-up 1–10 kΩ DQ–VDD':!e.goodLevel?'DQ nema valjanu HIGH razinu ili je naponska domena pogrešna':null;
    if(reason)diagnostics.push({code:'onewire-electrical',severity:'warning',message:s.d.id+': '+reason,terminals:c.nets[s.d.data].terminals,wires:c.nets[s.d.data].wires});
   }return {oneWireDevices:result,diagnostics};},

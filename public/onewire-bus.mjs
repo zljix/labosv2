@@ -9,22 +9,22 @@ export function temperatureBytes(t,bits=12){let raw=Math.round(Math.max(-55,Math
 export function createOneWireBus({c,pins,gpioNet,rootData,idleSolution,clockUs,logicVoltage}){
  const states=(c.oneWireDevices??[]).map(d=>({d,rom:d.rom.match(/../g).map(v=>parseInt(v,16)),powered:false,scratch:[0x50,5,75,70,0x7f,0xff,0x0c,0x10],sample:0,pending:null,reason:'Čeka reset/presence',eeprom:[75,70,0x7f],copyUntil:0,alarm:false,convertedAtUs:0,readings:[]}));
  const buses=new Map();
- const same=(a,b)=>rootData().root(a)===rootData().root(b);
- function environment(s){const v=idleSolution().volts,d=s.d,supply=v[d.vdd]===null||v[d.gnd]===null?null:v[d.vdd]-v[d.gnd];
+ const same=(a,b,roots=rootData())=>roots.root(a)===roots.root(b);
+ function environment(s,v=idleSolution().volts,roots=rootData()){const d=s.d,supply=v[d.vdd]===null||v[d.gnd]===null?null:v[d.vdd]-v[d.gnd];
   const powered=supply!==null&&Math.abs(v[d.gnd])<.05&&supply>=3-.01&&supply<=5.5+.01;
-  const pull=c.resistors.some(r=>r.ohms>=1000&&r.ohms<=10000&&((same(r.a,d.data)&&same(r.b,d.vdd))||(same(r.b,d.data)&&same(r.a,d.vdd))));
+  const pull=c.resistors.some(r=>r.ohms>=1000&&r.ohms<=10000&&((same(r.a,d.data,roots)&&same(r.b,d.vdd,roots))||(same(r.b,d.data,roots)&&same(r.a,d.vdd,roots))));
   const level=v[d.data],goodLevel=level!==null&&level>=logicVoltage*.75&&level<=logicVoltage+.3&&level<=supply+.3;
   return {powered,pull,goodLevel};
  }
- function sync(){const t=clockUs();for(const s of states){const e=environment(s);
+ function sync(){if(!states.length)return;const t=clockUs(),volts=states.length?idleSolution().volts:[],roots=rootData();for(const s of states){const e=environment(s,volts,roots);
   if(s.powered!==e.powered){s.powered=e.powered;s.scratch=[0x50,5,...s.eeprom,0xff,0x0c,0x10];s.pending=null;s.copyUntil=0;s.sample=0;s.alarm=false;s.reason=e.powered?'Početni registar +85 °C; pokreni pretvorbu':'Provjeri VDD i zajedničku masu';}
   if(!e.powered)s.pending=null;
   if(s.pending&&t>=s.pending.until){const p=s.pending;s.scratch.splice(0,2,...temperatureBytes(p.temperature,p.bits));s.convertedAtUs=p.until;s.pending=null;s.sample++;const hi=s.scratch[2]<<24>>24,lo=s.scratch[3]<<24>>24,integer=(s.scratch[1]<<24>>16|s.scratch[0])>>4;s.alarm=integer>=hi||integer<=lo;s.reason='Pretvorba dovršena; rezultat čita program uz CRC';}
   if(s.copyUntil&&t>=s.copyUntil){s.eeprom=s.copyValues;s.copyUntil=0;}
  }
  }
- function members(net){return states.filter(s=>same(s.d.data,net));}
- function eligible(net){return members(net).filter(s=>{const e=environment(s);return e.powered&&e.pull&&e.goodLevel&&s.d.oneWireFault!=='disconnected';});}
+ function members(net,roots=rootData()){return states.filter(s=>same(s.d.data,net,roots));}
+ function eligible(net){const volts=idleSolution().volts,roots=rootData();return members(net,roots).filter(s=>{const e=environment(s,volts,roots);return e.powered&&e.pull&&e.goodLevel&&s.d.oneWireFault!=='disconnected';});}
  function scratch(s){const v=[...s.scratch,crc8(s.scratch)];if(s.d.oneWireFault==='crc')v[8]^=1;return v;}
  function log(b,operation,value){b.trace.push({timeUs:clockUs(),operation,...(value===undefined?{}:{value})});if(b.trace.length>100)b.trace.shift();}
  function reset(b){const t=clockUs();b.selected=eligible(b.net);b.phase='rom';b.rx=[];b.match=[];b.tx=[];b.bit=0;b.searchIndex=0;b.searchPart=0;b.lowAt=null;b.sinks=[];b.slot=null;b.scratchRead=false;b.readMeta=[];
@@ -67,9 +67,9 @@ export function createOneWireBus({c,pins,gpioNet,rootData,idleSolution,clockUs,l
   if(!['rom','match','function','write'].includes(b.phase))return;
   b.rx.push(value);if(b.rx.length===8){const value=b.rx.reduce((v,bit,i)=>v|(bit<<i),0);b.rx=[];command(b,value);}
  }
- function observe(){sync();const t=clockUs(),roots=[...new Set(states.map(s=>rootData().root(s.d.data)))];
+ function observe(){if(!states.length)return;sync();const t=clockUs(),topology=rootData(),roots=[...new Set(states.map(s=>topology.root(s.d.data)))];
   for(const net of roots){let b=buses.get(net);if(!b){b={net,phase:'idle',lowAt:null,selected:[],rx:[],trace:[],sinks:[],slot:null};buses.set(net,b);}
-   const low=[...gpioNet].some(([pin,n])=>same(n,net)&&pins.get(pin)?.mode==='OUT'&&pins.get(pin)?.value===0);
+   const low=[...gpioNet].some(([pin,n])=>same(n,net,topology)&&pins.get(pin)?.mode==='OUT'&&pins.get(pin)?.value===0);
    b.sinks=b.sinks.filter(v=>v.end>t);
    if(low&&b.lowAt===null){b.lowAt=t;const value=readBit(b);b.slot=value===null?'write':'read';if(value===0)b.sinks.push({start:t+2,end:t+60,devices:[...b.selected]});}
    else if(!low&&b.lowAt!==null){const duration=t-b.lowAt;b.lowAt=null;
@@ -88,10 +88,10 @@ export function createOneWireBus({c,pins,gpioNet,rootData,idleSolution,clockUs,l
  return {
   observe,
   edges(root,edge){sync();for(const b of buses.values())for(const sink of b.sinks)if(sinkActive(sink)){const s=sink.devices.find(s=>s.powered&&s.d.oneWireFault!=='disconnected');edge(root(b.net),root(s.d.gnd),10);break;}},
-  conflicts(){return [...buses.values()].filter(b=>b.sinks.some(sinkActive)&&[...gpioNet].some(([pin,net])=>same(net,b.net)&&pins.get(pin)?.mode==='OUT'&&pins.get(pin)?.value===1)).map(b=>b.net);},
+  conflicts(){if(!buses.size)return [];const roots=rootData();return [...buses.values()].filter(b=>b.sinks.some(sinkActive)&&[...gpioNet].some(([pin,net])=>same(net,b.net,roots)&&pins.get(pin)?.mode==='OUT'&&pins.get(pin)?.value===1)).map(b=>b.net);},
   nextEdgeUs(){const t=clockUs();let next=Infinity;for(const b of buses.values())for(const v of b.sinks)for(const at of [v.start,v.end])if(at>t+.001)next=Math.min(next,at);return next;},
   input(data){const s=states.find(s=>s.d.id===data.component);if(!s)return;if(Number.isFinite(data.temperature))s.d.temperature=Math.max(-55,Math.min(125,data.temperature));if(['none','crc','disconnected'].includes(data.oneWireFault))s.d.oneWireFault=data.oneWireFault;},
-  snapshot(){sync();const result={},diagnostics=[];for(const s of states){const e=environment(s),b=buses.get(rootData().root(s.d.data));
+  snapshot(){sync();const result={},diagnostics=[],volts=states.length?idleSolution().volts:[],roots=rootData();for(const s of states){const e=environment(s,volts,roots),b=buses.get(roots.root(s.d.data));
    result[s.d.id]={powered:s.powered,rom:s.d.rom,temperature:s.d.temperature,resolution:9+((s.scratch[4]>>5)&3),busy:!!s.pending,sample:s.sample,scratchpad:scratch(s),reason:s.reason,fault:s.d.oneWireFault,trace:b?.trace.slice()??[],readings:s.readings.slice()};
    const reason=!e.powered?'VDD=3–5,5 V i zajednička masa; parazitsko napajanje nije podržano':!e.pull?'Dodaj vanjski pull-up 1–10 kΩ DQ–VDD':!e.goodLevel?'DQ nema valjanu HIGH razinu ili je naponska domena pogrešna':null;
    if(reason)diagnostics.push({code:'onewire-electrical',severity:'warning',message:s.d.id+': '+reason,terminals:c.nets[s.d.data].terminals,wires:c.nets[s.d.data].wires});

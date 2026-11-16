@@ -66,6 +66,7 @@ jobs:
           CREATE DATABASE labosv2_test_actuators CHARACTER SET utf8mb4;
           CREATE DATABASE labosv2_test_displays CHARACTER SET utf8mb4;
           CREATE DATABASE labosv2_test_environment CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_touch CHARACTER SET utf8mb4;
           CREATE DATABASE labosv2_test_steppers CHARACTER SET utf8mb4;
           GRANT ALL ON labosv2_test_classes.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_portal.* TO 'labosv2_ci'@'%';
@@ -83,6 +84,7 @@ jobs:
           GRANT ALL ON labosv2_test_actuators.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_displays.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_environment.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_touch.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_steppers.* TO 'labosv2_ci'@'%';
           SQL
       - name: Pripremi Linux izolaciju
@@ -199,6 +201,11 @@ jobs:
         env:
           LAB_GRADING_COMPILER_TEST: '1'
           LAB_ARDUINO_DATA: ${{ github.workspace }}/avr-env/data
+      - name: Provjeri 24 dodjele ILI9341/dodira i zaključane predaje
+        run: npm run test:school-touch-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_touch;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
       - run: npm run test:school-finish-ui
       - run: npm run test:school-reports
       - name: Provjeri izvještaje, korekcije, arhivu, čuvanje i povrat sigurnosne kopije
@@ -259,7 +266,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: Labosv2-24I-Dokazi
+          name: Labosv2-24J-Dokazi
           path: |
             docs/stage24ab-evidence/
             docs/stage24c-evidence/
@@ -269,12 +276,13 @@ jobs:
             docs/stage24g-evidence/
             docs/stage24h-evidence/
             docs/stage24i-evidence/
+            docs/stage24j-evidence/
             docs/stage23i-evidence/
           if-no-files-found: error
           retention-days: 30
       - uses: actions/upload-artifact@v4
         with:
-          name: Labosv2-24I-Skolski-paket
+          name: Labosv2-24J-Skolski-paket
           path: release/*.zip
           if-no-files-found: error
           retention-days: 30

@@ -60,3 +60,9 @@ Dvanaest etapa po 2500 ms: otpušteno; novi A (rotacija 0→1); povlačenje B be
 Nema nove SQL migracije. Prije zamjene sačuvaj bazu i privatnu konfiguraciju. Zamijeni kompletan paket, sačuvaj ključ i sesije, pokreni postojeći `migrate` i ponovno pokreni Linux provjeravače. Novu rubriku izričito odaberi pri objavi novog zadatka. Stare dodjele, upute i zaključane predaje ostaju vezane uz stare ugovore.
 
 Izolacija ostaje 65 s zidnog i 58 s CPU vremena, 90 s prevođenja, 2048 MiB adresnog prostora i 1 MiB izlaza. Tehnički kvar i nepodržan izvor ostaju bez bodova. Stvarni školski pilot, Windows veza prema Linux provjeravaču, ciljni mobilni preglednici i ukupno cgroup ograničenje memorije ostaju zasebni završni uvjeti. Slijedi 24K: RTC i SD po postojećem katalogu; optičke i preostale sabirničke provjere također ostaju u nepodržanom dijelu matrice.
+
+## Završni prihvat
+
+[Potpuni školski prihvat](https://github.com/zljix/labosv2/actions/runs/43959526722) uspješno je dovršen. Objedinjuje [neovisne izvedbe svih četiriju ciljeva](https://github.com/zljix/labosv2/actions/runs/43957177747): ukupno 234 ciljane izvedbe, 72 prijevoda, 24 nove zaključane dodjele i regresije ranijih obitelji. Školski API dodatno je potvrdio račune, razrede, istodobno spremanje, izvještaje, korekcije, arhivu, povrat kopije i sintetski razred od 30 učenika.
+
+[Sažetak](stage24j-evidence/acceptance-summary.json) i [podrijetlo bajtova](stage24j-evidence/program-provenance.json) potvrđuju isti SHA-256 provjeravača u nativnim pokusima, PHP/MySQL dodjelama i isporučenom paketu. Dokumentacijska dorada nakon prihvata ne mijenja programske datoteke. Otisci svih 896 početnih datoteka CI isporuke zasebno su provjereni.

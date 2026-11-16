@@ -1,0 +1,30 @@
+{
+  "format": "labosv2-24j-native-acceptance",
+  "version": 1,
+  "sourceCommit": "8385d011dd7da9ecb621362e6d6a8569c9ccb42b",
+  "nativeSourceCommit": "bc908d998423adb443b2606d0863af7869714b63",
+  "nativeRun": "https://github.com/zljix/labosv2/actions/runs/43957177747",
+  "records": [
+    {
+      "target": "micropython",
+      "repeatedReferences": 18,
+      "independentCompilations": 0
+    },
+    {
+      "target": "s3-cpp",
+      "repeatedReferences": 18,
+      "independentCompilations": 24
+    },
+    {
+      "target": "uno",
+      "repeatedReferences": 18,
+      "independentCompilations": 24
+    },
+    {
+      "target": "nano",
+      "repeatedReferences": 18,
+      "independentCompilations": 24
+    }
+  ],
+  "independentCompilations": 72
+}

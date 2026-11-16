@@ -1,0 +1,11 @@
+{
+  "format": "labosv2-24j-program-provenance",
+  "version": 1,
+  "nativeSourceCommit": "bc908d998423adb443b2606d0863af7869714b63",
+  "backendSourceCommit": "8385d011dd7da9ecb621362e6d6a8569c9ccb42b",
+  "checkerHash": "280f27739e6d41c01c91aa061880e66485a48c33db45e22988b1ede7f58d065e",
+  "applicationFilesChanged": [],
+  "workflowOnlyChange": [
+    ".github/workflows/stage24j-school-acceptance.yml"
+  ]
+}

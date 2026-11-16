@@ -9,10 +9,12 @@ export class XPT2046 {
   get irqLow(){return !!this.device.touchDown&&this.pd===0;}
   channels(){
     const d=this.device,down=!!d.touchDown,p=Math.max(0,Math.min(100,d.touchPressure??50));
+    const cal=Array.isArray(d.rawCalibration)&&d.rawCalibration.length===4&&d.rawCalibration.every(v=>Number.isFinite(v)&&v>=0&&v<=4095)
+      &&d.rawCalibration[1]-d.rawCalibration[0]>=500&&d.rawCalibration[3]-d.rawCalibration[2]>=500?d.rawCalibration:[200,3900,250,3850];
     // Explicit synthetic panel: physical 240x320, endpoint calibration is fixed.
     // Z1/Z2 are dimensionless ADC readings, never force in N or pressure in Pa.
-    return {x:down?200+Math.round((d.touchX??120)*3700/239):0,
-      y:down?250+Math.round((d.touchY??160)*3600/319):0,
+    return {x:down?cal[0]+Math.round((d.touchX??120)*(cal[1]-cal[0])/239):0,
+      y:down?cal[2]+Math.round((d.touchY??160)*(cal[3]-cal[2])/319):0,
       z1:down?Math.round(p*20):0,z2:down?4095-Math.round(p*15):4095};
   }
   byte(tx){

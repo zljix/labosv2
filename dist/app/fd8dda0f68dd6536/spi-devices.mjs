@@ -72,7 +72,7 @@ export function createSPIHost({c,pins,gpioNet,rootData,solution,clockUs,advanceU
   const localClock=radioMedium?null:new RadioClock();
   const medium=radioMedium??new RadioMedium(localClock);
   const devices=(c.spiDevices??[]).map(d=>({d,model:d.kind==='nrf24'?new NRF24((radioNode??'main')+':'+d.id,medium):d.kind==='microSD'?new SDCard(d,clockUs):isTFT(d.kind)?(d.kind==='ili9341'?new ILI9341(()=>clockUs()/1000):new ST7735(()=>clockUs()/1000)):d.kind==='xpt2046'?new XPT2046(d):new BMP280SPI(d,()=>clockUs()/1000),powered:false,selected:false,reset:1,resetAt:null,reason:'Čeka program'}));
-  const buses=new Map(),trace=[],issues=new Map(),measurements=[],recorded=new Map();let count=0;
+  const buses=new Map(),trace=[],issues=new Map(),measurements=[],touchReadings=[],recorded=new Map();let count=0,touchSample=0;
   const log=(device,operation,value,result)=>{trace.push({timeUs:clockUs(),device,operation,value,result});if(trace.length>100)trace.shift();};
   const same=(a,b)=>a!==undefined&&b!==undefined&&rootData().root(a)===rootData().root(b);
   const level=(d,net,v)=>v[net]===null||v[d.gnd]===null?null:v[net]-v[d.gnd]<=d.logicVoltage*.2?0:v[net]-v[d.gnd]>=d.logicVoltage*.8&&v[net]-v[d.gnd]<=d.logicVoltage+.3?1:null;
@@ -92,6 +92,7 @@ export function createSPIHost({c,pins,gpioNet,rootData,solution,clockUs,advanceU
       const selected=level(d,d.cs,v)===0;
       if(s.selected&&!selected&&d.kind==='bmp280_spi'){const m=s.model.sensor.readMeta;if(m?.valid&&m.sample!==recorded.get(d.id)){measurements.push({timeMs:clockUs()/1000,component:d.id,...m});recorded.set(d.id,m.sample);if(measurements.length>200)measurements.shift();}s.model.end();}
       if(!s.selected&&selected&&d.kind==='bmp280_spi')s.model.begin();
+      if(d.kind==='xpt2046'&&selected!==s.selected)s.touchRx=null;
       if((d.kind==='nrf24'||d.kind==='xpt2046'||d.kind==='microSD')&&selected!==s.selected){if(selected)s.model.begin();else s.model.end();}
       s.selected=selected;s.reason=isTFT(d.kind)&&s.reset!==1?'RESET nije HIGH':selected?'Odabran CS LOW':'CS HIGH · neaktivan';
     }
@@ -114,7 +115,15 @@ export function createSPIHost({c,pins,gpioNet,rootData,solution,clockUs,advanceU
     if((d.kind==='nrf24'||d.kind==='bmp280_spi'||d.kind==='xpt2046'||d.kind==='microSD')&&!readable)issue(s,'MISO nije spojen na ulaz pločice; primljeni bajt je 0xFF.');
     try{
       const dc=isTFT(d.kind)?level(d,d.dc,v):1;
-      for(let i=0;i<bytes.length;i++){const value=s.model.byte(bytes[i],dc);if(readable)out[i]=value;count++;if(d.kind==='bmp280_spi'||d.kind==='xpt2046'||!dc||i===0)log(d.id,dc?'data':'command',bytes[i],readable?'RX 0x'+out[i].toString(16).padStart(2,'0'):'write');}
+      for(let i=0;i<bytes.length;i++){const value=s.model.byte(bytes[i],dc);if(readable)out[i]=value;
+        if(d.kind==='xpt2046'){
+          if(s.touchRx){s.touchRx.valid&&=readable;s.touchRx.bytes.push(value);if(s.touchRx.bytes.length===2){
+            if(s.touchRx.valid){touchReadings.push({component:d.id,sample:++touchSample,timeMs:clockUs()/1000,channel:s.touchRx.channel,value:(s.touchRx.bytes[0]*256+value)>>3});if(touchReadings.length>128)touchReadings.shift();}
+            s.touchRx=null;
+          }}
+          if(bytes[i]&128)s.touchRx={channel:({1:'y',3:'z1',4:'z2',5:'x'})[(bytes[i]>>4)&7],bytes:[],valid:true};
+        }
+        count++;if(d.kind==='bmp280_spi'||d.kind==='xpt2046'||!dc||i===0)log(d.id,dc?'data':'command',bytes[i],readable?'RX 0x'+out[i].toString(16).padStart(2,'0'):'write');}
     }catch(e){issue(s,e.message);return out;}
     return out;
   }
@@ -126,6 +135,6 @@ export function createSPIHost({c,pins,gpioNet,rootData,solution,clockUs,advanceU
     edges(root,edge){for(const s of devices)if(s.d.kind==='xpt2046'){edge(root(s.d.irq),root(s.d.vcc),10000);if(s.powered&&s.model.irqLow)edge(root(s.d.irq),root(s.d.gnd),20);}},
     conflicts(){const out=[];for(const s of devices)if(s.d.kind==='xpt2046'&&s.powered&&s.model.irqLow)for(const [pin,p]of pins)if(same(gpioNet.get(pin),s.d.irq)&&p.mode==='OUT'&&p.value)out.push(s.d.irq);return out;},
     input(data){const card=devices.find(s=>s.d.id===data.component&&s.d.kind==='microSD');if(card){if(typeof data.sdInserted==='boolean'&&data.sdInserted!==card.d.sdInserted){card.d.sdInserted=data.sdInserted;card.model.reset();}if(typeof data.sdWriteProtected==='boolean')card.d.sdWriteProtected=data.sdWriteProtected;}const touch=devices.find(s=>s.d.id===data.component&&s.d.kind==='xpt2046');if(touch)touch.model.input(data);const s=devices.find(s=>s.d.id===data.component&&s.d.kind==='bmp280_spi');if(s)for(const [key,lo,hi]of [['temperature',-40,85],['pressure',30000,110000]])if(Number.isFinite(data[key]))s.d[key]=Math.min(hi,Math.max(lo,data[key]));},
-    snapshot(v){observe(v);return {radios:Object.fromEntries(devices.filter(s=>s.d.kind==='nrf24').map(s=>[s.d.id,{...s.model.snapshot(),reason:s.reason}])),sdCards:Object.fromEntries(devices.filter(s=>s.d.kind==='microSD').map(s=>[s.d.id,{...s.model.snapshot(s.powered),reason:s.reason}])),touches:Object.fromEntries(devices.filter(s=>s.d.kind==='xpt2046').map(s=>[s.d.id,{...s.model.snapshot(s.powered),reason:s.reason}])),tfts:Object.fromEntries(devices.filter(s=>isTFT(s.d.kind)).map(s=>[s.d.id,{...s.model.snapshot(s.powered,v[s.d.bl]!==null&&v[s.d.bl]-v[s.d.gnd]>=2.5&&v[s.d.bl]-v[s.d.gnd]<=3.6),reason:s.reason}])),sensors:Object.fromEntries(devices.filter(s=>s.d.kind==='bmp280_spi').map(s=>[s.d.id,s.model.sensor.snapshot(s.powered)])),trace:trace.slice(),count,measurements:measurements.slice(),diagnostics:[...issues.values()]};}
+    snapshot(v){observe(v);return {radios:Object.fromEntries(devices.filter(s=>s.d.kind==='nrf24').map(s=>[s.d.id,{...s.model.snapshot(),reason:s.reason}])),sdCards:Object.fromEntries(devices.filter(s=>s.d.kind==='microSD').map(s=>[s.d.id,{...s.model.snapshot(s.powered),reason:s.reason}])),touches:Object.fromEntries(devices.filter(s=>s.d.kind==='xpt2046').map(s=>[s.d.id,{...s.model.snapshot(s.powered),reason:s.reason}])),tfts:Object.fromEntries(devices.filter(s=>isTFT(s.d.kind)).map(s=>[s.d.id,{...s.model.snapshot(s.powered,v[s.d.bl]!==null&&v[s.d.bl]-v[s.d.gnd]>=2.5&&v[s.d.bl]-v[s.d.gnd]<=3.6),reason:s.reason}])),sensors:Object.fromEntries(devices.filter(s=>s.d.kind==='bmp280_spi').map(s=>[s.d.id,s.model.sensor.snapshot(s.powered)])),touchReadings:touchReadings.slice(),trace:trace.slice(),count,measurements:measurements.slice(),diagnostics:[...issues.values()]};}
   };
 }

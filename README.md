@@ -2,6 +2,8 @@
 
 **0.14.8-beta.1 · etapa 24J · ILI9341 i dodir XPT2046 · 16. studenoga 2026.**
 
+**Prihvat 24J:** [Završne provjere](https://github.com/zljix/labosv2/actions/runs/43959526722) potvrđuju sva četiri cilja, 234 ciljane izvedbe, 72 neovisna C++ prijevoda i 24 stvarne školske dodjele, zaključavanje te očuvanje ranijih predaja. Isti provjeravač isporučen je u školskom paketu. [Sažetak dokaza](docs/stage24j-evidence/acceptance-summary.json).
+
 **Prihvat 24I:** [Završne provjere](https://github.com/zljix/labosv2/actions/runs/43949417346) povezuju sva četiri cilja i 24 neovisna C++ prijevoda s konačnim provjeravačem: osam službenih dodjela, ispravne cijele OLED brojke, dva vala po 30 predaja bez dvostrukih rezultata, izvještaji i povrat sigurnosne kopije. [Sažetak dokaza](docs/stage24i-evidence/acceptance-summary.json).
 
 **Prihvat 24H:** [GitHub Actions](https://github.com/zljix/labosv2/actions/runs/43937992501) potvrđuje sva četiri cilja, 96 neovisnih C++ prijevoda, 32 zaključane dodjele, PHP/MySQL, izvještaje, povrat kopije i pokus s 30 simuliranih učenika. Programske datoteke provjeravača bajtno odgovaraju prihvaćenoj izgradnji.
@@ -169,7 +171,7 @@ npm ci
 npm run build:school
 ```
 
-Školski paket: `release/Labosv2_0.14.8_24J_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-24J-Provjeren-skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
+Školski paket: `release/Labosv2_0.14.8_24J_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-24J-Backend-Skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
 
 ```sh
 npm run build:pages

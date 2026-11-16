@@ -2,6 +2,8 @@
 
 Izdanje **0.14.8-beta.1** dodaje šest rubrika i 24 kombinacije, ukupno **208/268**. Grafika, rotacije, sirova očitanja, izmjerena kalibracija i tipkalo provjeravaju se preko stvarnih SPI bajtova, fizičkih TFT piksela i struje LED-ice. [Uvjeti, kriteriji i provjere 24J](../docs/stage24j-touch.md). Nema nove SQL migracije. Sačuvaj bazu, privatnu konfiguraciju i sesije; zamijeni kompletan paket, pokreni postojeći migrate i ponovno pokreni provjeravače. Stare dodjele i zaključane predaje ostaju sačuvane.
 
+[Završni prihvat 24J](https://github.com/zljix/labosv2/actions/runs/43959526722) potvrđuje sva četiri cilja, 72 neovisna C++ prijevoda i 24 stvarne dodjele. [Sažetak i otisci](../docs/stage24j-evidence/acceptance-summary.json) povezuju provjere s isporučenim provjeravačem.
+
 ## 24I — meteorološka stanica i regulator
 
 Izdanje **0.14.7-beta.1** dodaje dvije rubrike i osam kombinacija, ukupno **184/268**. Stanica provjerava tri neovisna nova očitanja i primljene OLED piksele; regulator dodaje oba smjera histereze, granične AHT10 uzorke i stvarne servo impulse. [Opseg, kriteriji i provjere 24I](../docs/stage24i-environment.md). Nema nove SQL migracije. Sačuvaj bazu, konfiguraciju i sesije; zamijeni kompletan paket, pokreni postojeći migrate i ponovno pokreni provjeravače. Stare dodjele i zaključane predaje ostaju sačuvane.

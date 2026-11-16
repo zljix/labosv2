@@ -76,6 +76,13 @@ test('missing MISO yields 0xFF with diagnosis; CS HIGH does not start conversion
  const f=fixture(c=>{c.wires=c.wires.filter(w=>!(w.to.component==='touch1'&&w.to.pin==='MISO'));});try{f.input();assert.equal(f.read(0xd0),8191);assert(f.snap().diagnostics.some(d=>/MISO/.test(d.message)));assert.deepEqual(f.snap().touchReadings,[]);}finally{f.h.dispose();}
  const g=fixture();try{g.input();assert.deepEqual(g.xfer([0xd0,0,0]),[255,255,255]);assert.equal(g.snap().touches!.touch1.conversions,0);}finally{g.h.dispose();}
 });
+test('both returned bytes must reach an input MISO pin before a completed read is recorded',()=>{
+ const f=fixture();try{
+  f.input();f.set(7,0);f.xfer([0xd0]);f.h.mode(13,1,0,0);f.xfer([0]);f.h.mode(13,0);f.xfer([0]);f.set(7,1);
+  assert.deepEqual(f.snap().touchReadings,[]);assert.equal(f.read(0xd0),2058);
+  assert.deepEqual(f.snap().touchReadings!.map(r=>[r.channel,r.value]),[['x',2058]]);
+ }finally{f.h.dispose();}
+});
 test('CS deassert discards incomplete conversion data, preserving the input',()=>{
  const f=fixture();try{f.input();f.set(7,0);f.xfer([0xd0]);f.set(7,1);f.set(7,0);assert.deepEqual(f.xfer([0,0]),[0,0]);f.set(7,1);assert.equal(f.read(0xd0),2058);}finally{f.h.dispose();}
 });

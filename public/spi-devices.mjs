@@ -117,11 +117,11 @@ export function createSPIHost({c,pins,gpioNet,rootData,solution,clockUs,advanceU
       const dc=isTFT(d.kind)?level(d,d.dc,v):1;
       for(let i=0;i<bytes.length;i++){const value=s.model.byte(bytes[i],dc);if(readable)out[i]=value;
         if(d.kind==='xpt2046'){
-          if(s.touchRx){s.touchRx.bytes.push(value);if(s.touchRx.bytes.length===2){
-            if(readable){touchReadings.push({component:d.id,sample:++touchSample,timeMs:clockUs()/1000,channel:s.touchRx.channel,value:(s.touchRx.bytes[0]*256+value)>>3});if(touchReadings.length>128)touchReadings.shift();}
+          if(s.touchRx){s.touchRx.valid&&=readable;s.touchRx.bytes.push(value);if(s.touchRx.bytes.length===2){
+            if(s.touchRx.valid){touchReadings.push({component:d.id,sample:++touchSample,timeMs:clockUs()/1000,channel:s.touchRx.channel,value:(s.touchRx.bytes[0]*256+value)>>3});if(touchReadings.length>128)touchReadings.shift();}
             s.touchRx=null;
           }}
-          if(bytes[i]&128)s.touchRx={channel:({1:'y',3:'z1',4:'z2',5:'x'})[(bytes[i]>>4)&7],bytes:[]};
+          if(bytes[i]&128)s.touchRx={channel:({1:'y',3:'z1',4:'z2',5:'x'})[(bytes[i]>>4)&7],bytes:[],valid:true};
         }
         count++;if(d.kind==='bmp280_spi'||d.kind==='xpt2046'||!dc||i===0)log(d.id,dc?'data':'command',bytes[i],readable?'RX 0x'+out[i].toString(16).padStart(2,'0'):'write');}
     }catch(e){issue(s,e.message);return out;}

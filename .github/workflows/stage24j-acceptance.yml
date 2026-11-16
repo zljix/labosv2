@@ -56,6 +56,9 @@ jobs:
           tar -xzf "$RUNNER_TEMP/binaryen.tar.gz" -C "$RUNNER_TEMP"
           sudo install -m 755 "$RUNNER_TEMP/binaryen-version_120/bin/wasm-opt" /usr/local/bin/wasm-opt
           echo 'LAB_WASM_OPT=/usr/local/bin/wasm-opt' >> "$GITHUB_ENV"
+      - name: Provjeri dovršene, preklopljene i prekinute ADC prijenose
+        if: matrix.target == 'micropython'
+        run: node --import tsx --test --test-name-pattern="byte-aligned pipelining|missing MISO|both returned bytes" verification/touch.test.ts
       - run: npm run build:school-grader
       - name: Tri ponavljanja, alternativna rješenja i namjerno pogrešan rad
         shell: bash

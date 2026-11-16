@@ -83,9 +83,9 @@ export function createTouchCheck(c:SimulationConfig,p:any,seed:string,backend:st
       text(mask,'X '+x+' Y '+y,12,115,65535,2);rect(mask,x-2,y-2,5,5,0xffe0);masks.push(mask);}
     return masks;});
   let lastObserved=-Infinity;
-  let stage=0,path=false,adcPath=false,ledPath=false,last:any,overflow=false,lastLabel=-1,spans:any[]=[],screenSince:number|null=null,screenStable=false;
+  let stage=0,path=false,adcPath=false,ledPath=false,overflow=false,lastLabel=-1,spans:any[]=[],screenSince:number|null=null,screenStable=false;
   let pointSince:number|null=null,pointPixelStable=false;
-  let lateCount=0,lateGood=true,channels=new Set<string>(),adcSamples=0,endpoints:boolean|null=null;
+  let lateCount=0,lateGood=true,channels=new Set<string>(),endpoints:boolean|null=null;
   const validPanel=(d:any)=>!!(d?.powered&&d.on&&!d.sleep&&d.backlight&&d.format===0x55&&d.width===240&&d.height===320);
   function label(e:any){
     const d=e.tfts?.[panel.id];if(!validPanel(d))return -1;
@@ -102,13 +102,13 @@ export function createTouchCheck(c:SimulationConfig,p:any,seed:string,backend:st
     y:q.down?calibration[2]+Math.round(q.y*(calibration[3]-calibration[2])/319):0,
     z1:q.down?Math.round(q.pressure*20):0,z2:q.down?4095-Math.round(q.pressure*15):4095});
   function observe(e:any){
-    if(e.type!=='simulation'||stage>=stimuli.length||e.timeMs-lastObserved<s.observationStepMs)return;lastObserved=e.timeMs;last=e;
+    if(e.type!=='simulation'||stage>=stimuli.length||e.timeMs-lastObserved<s.observationStepMs)return;lastObserved=e.timeMs;
     const d=e.tfts?.[panel.id],start=stage*duration;
     path ||= validPanel(d)&&d.written>0&&e.spiTrace?.some((t:any)=>t.device===panel.id);
     if(touch){
-      const state=e.touches?.[touch.id],trace=e.spiTrace??[],expected=expectedRaw(stimuli[stage]);
+      const state=e.touches?.[touch.id],expected=expectedRaw(stimuli[stage]);
       for(const r of e.touchReadings??[])if(r.component===touch.id&&r.timeMs>=start&&r.timeMs<(stage+1)*duration
-        &&r.value===expected[r.channel as keyof typeof expected]){channels.add(r.channel);adcSamples++;}
+        &&r.value===expected[r.channel as keyof typeof expected])channels.add(r.channel);
       adcPath ||= !!(state?.powered&&state.conversions>0&&channels.size===4);
     }
     if(v==='touchCalibration'&&stimuli[stage].point){
@@ -150,8 +150,7 @@ export function createTouchCheck(c:SimulationConfig,p:any,seed:string,backend:st
       if(ready.length)endpoints=ready.every((values:number[])=>values.every((n,i)=>Math.abs(n-calibration[i])<=s.calibrationTolerance));
       const pointLines=settled.flatMap(l=>{const m=l.text.match(/^CAL POINT (\d+) (\d+)\s*$/);return m?[{timeMs:l.timeMs,x:+m[1],y:+m[2]}]:[];});
       const pointOK=pointLines.length>=2&&pointLines.every(a=>Math.abs(a.x-q.x)<=s.coordinateTolerance&&Math.abs(a.y-q.y)<=s.coordinateTolerance);
-      const a=pointLines.at(-1),mask:Mask=new Map();
-      if(a){text(mask,'X '+a.x+' Y '+a.y,12,115,65535,2);rect(mask,a.x-2,a.y-2,5,5,0xffe0);}
+      const a=pointLines.at(-1);
       basic=screenStable&&channels.size===4&&(q.target!==undefined?(!q.down||channels.size===4):q.ready?endpoints===true:q.point?pointOK:q.quiet?pointLines.length===0:false);
       advanced=basic&&(!q.point||pointPixelStable);
       detail={calibration,endpoints,pointLines:pointLines.length,lastPoint:a??null};
@@ -164,7 +163,7 @@ export function createTouchCheck(c:SimulationConfig,p:any,seed:string,backend:st
       basic=advanced=reportOK&&screenStable&&channels.size===4;detail={reports,expectedRotation:q.rotation};
     }
     const result={index:stage+1,input:q,basic,advanced,screenStable,channels:[...channels].sort(),spans:spans.filter(f=>f.end-f.start>=s.minimumStableMs),...detail};
-    stage++;spans=[];lastLabel=-1;channels=new Set();adcSamples=0;screenSince=null;screenStable=false;lateCount=0;lateGood=true;pointSince=null;pointPixelStable=false;return result;
+    stage++;spans=[];lastLabel=-1;channels=new Set();screenSince=null;screenStable=false;lateCount=0;lateGood=true;pointSince=null;pointPixelStable=false;return result;
   }
   return {stimuli,duration,inputs:(q:any)=>touch?[{component:touch.id,touchDown:q.down,touchX:q.x,touchY:q.y,touchPressure:q.pressure}]:[],observe,record,
     outcomes:(samples:any[],wiring:boolean)=>{

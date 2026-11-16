@@ -1,13 +1,13 @@
 {
   "format": "labosv2-grading-coverage",
   "version": 1,
-  "sourceVersion": "0.14.4-beta.1",
+  "sourceVersion": "0.14.5-beta.1",
   "summary": {
     "themes": 18,
     "variants": 67,
     "combinations": 268,
-    "supported": 132,
-    "unsupported": 136,
+    "supported": 144,
+    "unsupported": 124,
     "introductory": 5
   },
   "rows": [
@@ -7292,16 +7292,32 @@
       "fault": "U primjeru upravljanja usporedi ENABLE s RESET. Ili zaustavi i odspoji STEP pa ponovno pokreni; vrati vezu.",
       "expected": "Kut slijedi broj valjanih impulsa i način. Nema modela struje, ubrzanja, momenta ni proklizavanja.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24G-stepperBasic@1",
+        "checkerVersion": "24G.1",
+        "title": "A4988: broj valjanih koraka i smjer",
+        "instructions": "Ponavljaj 50 punih koraka naprijed (+90°), stani 600 ms, 50 natrag (0°), stani 600 ms. Provjeravaju se tri ciklusa. Motor ima 200 punih koraka po okretu. VDD=3,3 V na S3 ili 5 V na AVR-u, VMOT je zaseban izvor 8–35 V (predložak 12 V), uz zajedničku masu i dvije odvojene zavojnice. Koristi digitalne STEP impulse: HIGH najmanje 1 µs, LOW najmanje 1 µs; razmak valjanih impulsa 4,01 ms ±0,6 ms, DIR/MS setup i hold najmanje 0,2 µs, buđenje najmanje 1 ms. Počni do 250 ms; stanke su ±80 ms uz dodatnu 1 ms toleranciju promatranja, kut ±0,001°. Drugi valjani GPIO, električno ekvivalentan raspored i program bez ispisa su dopušteni. Funkcionalni PWM na STEP nije podržan. Konzolni tekst ne donosi bodove. Raspodjela: 3 boda za spoj, 5 za prvi propisani slijed, 2 za ponavljanja odnosno RESET/SLEEP i buđenje. Otvoreni odgovori ostaju opisni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan upravljački i energetski put, A4988 i obje zavojnice motora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Prvi puni ciklus: 50 +50 koraka, smjer, kut i obje stanke",
+            "maxPoints": 5
+          },
+          {
+            "id": "repeat",
+            "description": "Još dva potpuna ciklusa bez izgubljenih ili dodatnih impulsa",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-steppers.test.ts"
       }
     },
     {
@@ -7325,16 +7341,32 @@
       "fault": "U primjeru upravljanja usporedi ENABLE s RESET. Ili zaustavi i odspoji STEP pa ponovno pokreni; vrati vezu.",
       "expected": "Kut slijedi broj valjanih impulsa i način. Nema modela struje, ubrzanja, momenta ni proklizavanja.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24G-stepperBasic@1",
+        "checkerVersion": "24G.1",
+        "title": "A4988: broj valjanih koraka i smjer",
+        "instructions": "Ponavljaj 50 punih koraka naprijed (+90°), stani 600 ms, 50 natrag (0°), stani 600 ms. Provjeravaju se tri ciklusa. Motor ima 200 punih koraka po okretu. VDD=3,3 V na S3 ili 5 V na AVR-u, VMOT je zaseban izvor 8–35 V (predložak 12 V), uz zajedničku masu i dvije odvojene zavojnice. Koristi digitalne STEP impulse: HIGH najmanje 1 µs, LOW najmanje 1 µs; razmak valjanih impulsa 4,01 ms ±0,6 ms, DIR/MS setup i hold najmanje 0,2 µs, buđenje najmanje 1 ms. Počni do 250 ms; stanke su ±80 ms uz dodatnu 1 ms toleranciju promatranja, kut ±0,001°. Drugi valjani GPIO, električno ekvivalentan raspored i program bez ispisa su dopušteni. Funkcionalni PWM na STEP nije podržan. Konzolni tekst ne donosi bodove. Raspodjela: 3 boda za spoj, 5 za prvi propisani slijed, 2 za ponavljanja odnosno RESET/SLEEP i buđenje. Otvoreni odgovori ostaju opisni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan upravljački i energetski put, A4988 i obje zavojnice motora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Prvi puni ciklus: 50 +50 koraka, smjer, kut i obje stanke",
+            "maxPoints": 5
+          },
+          {
+            "id": "repeat",
+            "description": "Još dva potpuna ciklusa bez izgubljenih ili dodatnih impulsa",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-steppers.test.ts"
       }
     },
     {
@@ -7358,16 +7390,32 @@
       "fault": "U primjeru upravljanja usporedi ENABLE s RESET. Ili zaustavi i odspoji STEP pa ponovno pokreni; vrati vezu.",
       "expected": "Kut slijedi broj valjanih impulsa i način. Nema modela struje, ubrzanja, momenta ni proklizavanja.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24G-stepperBasic@1",
+        "checkerVersion": "24G.1",
+        "title": "A4988: broj valjanih koraka i smjer",
+        "instructions": "Ponavljaj 50 punih koraka naprijed (+90°), stani 600 ms, 50 natrag (0°), stani 600 ms. Provjeravaju se tri ciklusa. Motor ima 200 punih koraka po okretu. VDD=3,3 V na S3 ili 5 V na AVR-u, VMOT je zaseban izvor 8–35 V (predložak 12 V), uz zajedničku masu i dvije odvojene zavojnice. Koristi digitalne STEP impulse: HIGH najmanje 1 µs, LOW najmanje 1 µs; razmak valjanih impulsa 4,01 ms ±0,6 ms, DIR/MS setup i hold najmanje 0,2 µs, buđenje najmanje 1 ms. Počni do 250 ms; stanke su ±80 ms uz dodatnu 1 ms toleranciju promatranja, kut ±0,001°. Drugi valjani GPIO, električno ekvivalentan raspored i program bez ispisa su dopušteni. Funkcionalni PWM na STEP nije podržan. Konzolni tekst ne donosi bodove. Raspodjela: 3 boda za spoj, 5 za prvi propisani slijed, 2 za ponavljanja odnosno RESET/SLEEP i buđenje. Otvoreni odgovori ostaju opisni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan upravljački i energetski put, A4988 i obje zavojnice motora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Prvi puni ciklus: 50 +50 koraka, smjer, kut i obje stanke",
+            "maxPoints": 5
+          },
+          {
+            "id": "repeat",
+            "description": "Još dva potpuna ciklusa bez izgubljenih ili dodatnih impulsa",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-steppers.test.ts"
       }
     },
     {
@@ -7391,16 +7439,32 @@
       "fault": "U primjeru upravljanja usporedi ENABLE s RESET. Ili zaustavi i odspoji STEP pa ponovno pokreni; vrati vezu.",
       "expected": "Kut slijedi broj valjanih impulsa i način. Nema modela struje, ubrzanja, momenta ni proklizavanja.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24G-stepperBasic@1",
+        "checkerVersion": "24G.1",
+        "title": "A4988: broj valjanih koraka i smjer",
+        "instructions": "Ponavljaj 50 punih koraka naprijed (+90°), stani 600 ms, 50 natrag (0°), stani 600 ms. Provjeravaju se tri ciklusa. Motor ima 200 punih koraka po okretu. VDD=3,3 V na S3 ili 5 V na AVR-u, VMOT je zaseban izvor 8–35 V (predložak 12 V), uz zajedničku masu i dvije odvojene zavojnice. Koristi digitalne STEP impulse: HIGH najmanje 1 µs, LOW najmanje 1 µs; razmak valjanih impulsa 4,01 ms ±0,6 ms, DIR/MS setup i hold najmanje 0,2 µs, buđenje najmanje 1 ms. Počni do 250 ms; stanke su ±80 ms uz dodatnu 1 ms toleranciju promatranja, kut ±0,001°. Drugi valjani GPIO, električno ekvivalentan raspored i program bez ispisa su dopušteni. Funkcionalni PWM na STEP nije podržan. Konzolni tekst ne donosi bodove. Raspodjela: 3 boda za spoj, 5 za prvi propisani slijed, 2 za ponavljanja odnosno RESET/SLEEP i buđenje. Otvoreni odgovori ostaju opisni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan upravljački i energetski put, A4988 i obje zavojnice motora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Prvi puni ciklus: 50 +50 koraka, smjer, kut i obje stanke",
+            "maxPoints": 5
+          },
+          {
+            "id": "repeat",
+            "description": "Još dva potpuna ciklusa bez izgubljenih ili dodatnih impulsa",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-steppers.test.ts"
       }
     },
     {
@@ -7424,16 +7488,32 @@
       "fault": "U primjeru upravljanja usporedi ENABLE s RESET. Ili zaustavi i odspoji STEP pa ponovno pokreni; vrati vezu.",
       "expected": "Kut slijedi broj valjanih impulsa i način. Nema modela struje, ubrzanja, momenta ni proklizavanja.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24G-stepperMicro@1",
+        "checkerVersion": "24G.1",
+        "title": "A4988: svih pet mikrostep načina",
+        "instructions": "Redom koristi MS1/MS2/MS3: 000=1, 100=1/2, 010=1/4, 110=1/8 i 111=1/16. U svakom načinu napravi 10 × faktor impulsa naprijed (+18°), stani 400 ms, isto natrag (0°), stani 400 ms. Način mijenjaj na zajedničkom Home položaju. Provjeravaju se tri puna obilaska svih pet načina. Motor ima 200 punih koraka po okretu. VDD=3,3 V na S3 ili 5 V na AVR-u, VMOT je zaseban izvor 8–35 V (predložak 12 V), uz zajedničku masu i dvije odvojene zavojnice. Koristi digitalne STEP impulse: HIGH najmanje 1 µs, LOW najmanje 1 µs; razmak valjanih impulsa 4,01 ms ±0,6 ms, DIR/MS setup i hold najmanje 0,2 µs, buđenje najmanje 1 ms. Počni do 250 ms; stanke su ±80 ms uz dodatnu 1 ms toleranciju promatranja, kut ±0,001°. Drugi valjani GPIO, električno ekvivalentan raspored i program bez ispisa su dopušteni. Funkcionalni PWM na STEP nije podržan. Konzolni tekst ne donosi bodove. Raspodjela: 3 boda za spoj, 5 za prvi propisani slijed, 2 za ponavljanja odnosno RESET/SLEEP i buđenje. Otvoreni odgovori ostaju opisni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan upravljački i energetski put, A4988 i obje zavojnice motora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Prvi obilazak svih pet MS načina: impulsi, translator, kut i stanke",
+            "maxPoints": 5
+          },
+          {
+            "id": "repeat",
+            "description": "Još dva potpuna obilaska svih pet načina bez gubitka položaja",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-steppers.test.ts"
       }
     },
     {
@@ -7457,16 +7537,32 @@
       "fault": "U primjeru upravljanja usporedi ENABLE s RESET. Ili zaustavi i odspoji STEP pa ponovno pokreni; vrati vezu.",
       "expected": "Kut slijedi broj valjanih impulsa i način. Nema modela struje, ubrzanja, momenta ni proklizavanja.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24G-stepperMicro@1",
+        "checkerVersion": "24G.1",
+        "title": "A4988: svih pet mikrostep načina",
+        "instructions": "Redom koristi MS1/MS2/MS3: 000=1, 100=1/2, 010=1/4, 110=1/8 i 111=1/16. U svakom načinu napravi 10 × faktor impulsa naprijed (+18°), stani 400 ms, isto natrag (0°), stani 400 ms. Način mijenjaj na zajedničkom Home položaju. Provjeravaju se tri puna obilaska svih pet načina. Motor ima 200 punih koraka po okretu. VDD=3,3 V na S3 ili 5 V na AVR-u, VMOT je zaseban izvor 8–35 V (predložak 12 V), uz zajedničku masu i dvije odvojene zavojnice. Koristi digitalne STEP impulse: HIGH najmanje 1 µs, LOW najmanje 1 µs; razmak valjanih impulsa 4,01 ms ±0,6 ms, DIR/MS setup i hold najmanje 0,2 µs, buđenje najmanje 1 ms. Počni do 250 ms; stanke su ±80 ms uz dodatnu 1 ms toleranciju promatranja, kut ±0,001°. Drugi valjani GPIO, električno ekvivalentan raspored i program bez ispisa su dopušteni. Funkcionalni PWM na STEP nije podržan. Konzolni tekst ne donosi bodove. Raspodjela: 3 boda za spoj, 5 za prvi propisani slijed, 2 za ponavljanja odnosno RESET/SLEEP i buđenje. Otvoreni odgovori ostaju opisni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan upravljački i energetski put, A4988 i obje zavojnice motora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Prvi obilazak svih pet MS načina: impulsi, translator, kut i stanke",
+            "maxPoints": 5
+          },
+          {
+            "id": "repeat",
+            "description": "Još dva potpuna obilaska svih pet načina bez gubitka položaja",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-steppers.test.ts"
       }
     },
     {
@@ -7490,16 +7586,32 @@
       "fault": "U primjeru upravljanja usporedi ENABLE s RESET. Ili zaustavi i odspoji STEP pa ponovno pokreni; vrati vezu.",
       "expected": "Kut slijedi broj valjanih impulsa i način. Nema modela struje, ubrzanja, momenta ni proklizavanja.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24G-stepperMicro@1",
+        "checkerVersion": "24G.1",
+        "title": "A4988: svih pet mikrostep načina",
+        "instructions": "Redom koristi MS1/MS2/MS3: 000=1, 100=1/2, 010=1/4, 110=1/8 i 111=1/16. U svakom načinu napravi 10 × faktor impulsa naprijed (+18°), stani 400 ms, isto natrag (0°), stani 400 ms. Način mijenjaj na zajedničkom Home položaju. Provjeravaju se tri puna obilaska svih pet načina. Motor ima 200 punih koraka po okretu. VDD=3,3 V na S3 ili 5 V na AVR-u, VMOT je zaseban izvor 8–35 V (predložak 12 V), uz zajedničku masu i dvije odvojene zavojnice. Koristi digitalne STEP impulse: HIGH najmanje 1 µs, LOW najmanje 1 µs; razmak valjanih impulsa 4,01 ms ±0,6 ms, DIR/MS setup i hold najmanje 0,2 µs, buđenje najmanje 1 ms. Počni do 250 ms; stanke su ±80 ms uz dodatnu 1 ms toleranciju promatranja, kut ±0,001°. Drugi valjani GPIO, električno ekvivalentan raspored i program bez ispisa su dopušteni. Funkcionalni PWM na STEP nije podržan. Konzolni tekst ne donosi bodove. Raspodjela: 3 boda za spoj, 5 za prvi propisani slijed, 2 za ponavljanja odnosno RESET/SLEEP i buđenje. Otvoreni odgovori ostaju opisni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan upravljački i energetski put, A4988 i obje zavojnice motora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Prvi obilazak svih pet MS načina: impulsi, translator, kut i stanke",
+            "maxPoints": 5
+          },
+          {
+            "id": "repeat",
+            "description": "Još dva potpuna obilaska svih pet načina bez gubitka položaja",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-steppers.test.ts"
       }
     },
     {
@@ -7523,16 +7635,32 @@
       "fault": "U primjeru upravljanja usporedi ENABLE s RESET. Ili zaustavi i odspoji STEP pa ponovno pokreni; vrati vezu.",
       "expected": "Kut slijedi broj valjanih impulsa i način. Nema modela struje, ubrzanja, momenta ni proklizavanja.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24G-stepperMicro@1",
+        "checkerVersion": "24G.1",
+        "title": "A4988: svih pet mikrostep načina",
+        "instructions": "Redom koristi MS1/MS2/MS3: 000=1, 100=1/2, 010=1/4, 110=1/8 i 111=1/16. U svakom načinu napravi 10 × faktor impulsa naprijed (+18°), stani 400 ms, isto natrag (0°), stani 400 ms. Način mijenjaj na zajedničkom Home položaju. Provjeravaju se tri puna obilaska svih pet načina. Motor ima 200 punih koraka po okretu. VDD=3,3 V na S3 ili 5 V na AVR-u, VMOT je zaseban izvor 8–35 V (predložak 12 V), uz zajedničku masu i dvije odvojene zavojnice. Koristi digitalne STEP impulse: HIGH najmanje 1 µs, LOW najmanje 1 µs; razmak valjanih impulsa 4,01 ms ±0,6 ms, DIR/MS setup i hold najmanje 0,2 µs, buđenje najmanje 1 ms. Počni do 250 ms; stanke su ±80 ms uz dodatnu 1 ms toleranciju promatranja, kut ±0,001°. Drugi valjani GPIO, električno ekvivalentan raspored i program bez ispisa su dopušteni. Funkcionalni PWM na STEP nije podržan. Konzolni tekst ne donosi bodove. Raspodjela: 3 boda za spoj, 5 za prvi propisani slijed, 2 za ponavljanja odnosno RESET/SLEEP i buđenje. Otvoreni odgovori ostaju opisni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan upravljački i energetski put, A4988 i obje zavojnice motora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Prvi obilazak svih pet MS načina: impulsi, translator, kut i stanke",
+            "maxPoints": 5
+          },
+          {
+            "id": "repeat",
+            "description": "Još dva potpuna obilaska svih pet načina bez gubitka položaja",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-steppers.test.ts"
       }
     },
     {
@@ -7556,16 +7684,32 @@
       "fault": "U primjeru upravljanja usporedi ENABLE s RESET. Ili zaustavi i odspoji STEP pa ponovno pokreni; vrati vezu.",
       "expected": "Kut slijedi broj valjanih impulsa i način. Nema modela struje, ubrzanja, momenta ni proklizavanja.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24G-stepperControl@1",
+        "checkerVersion": "24G.1",
+        "title": "A4988: ENABLE, RESET i SLEEP",
+        "instructions": "Jedan slijed: 10 pogonskih impulsa (+18°), stanka 700 ms; ENABLE HIGH i još 10 (translator=20 punih koraka, idealni pogon ostaje 18°, položaj osovine nepoznat), stanka 700 ms; RESET LOW i 3 impulsa koji se ignoriraju, RESET HIGH, translator=0, stanka 700 ms; SLEEP LOW i 3 ignorirana impulsa, stanka 700 ms; SLEEP HIGH, čekaj 2 ms, ENABLE LOW i 5 impulsa (translator=5, idealni zbroj pogona 27°, fizički položaj i dalje nepoznat). Potom miruj najmanje 100 ms. RESET ne referencira osovinu. Motor ima 200 punih koraka po okretu. VDD=3,3 V na S3 ili 5 V na AVR-u, VMOT je zaseban izvor 8–35 V (predložak 12 V), uz zajedničku masu i dvije odvojene zavojnice. Koristi digitalne STEP impulse: HIGH najmanje 1 µs, LOW najmanje 1 µs; razmak valjanih impulsa 4,01 ms ±0,6 ms, DIR/MS setup i hold najmanje 0,2 µs, buđenje najmanje 1 ms. Počni do 250 ms; stanke su ±80 ms uz dodatnu 1 ms toleranciju promatranja, kut ±0,001°. Drugi valjani GPIO, električno ekvivalentan raspored i program bez ispisa su dopušteni. Funkcionalni PWM na STEP nije podržan. Konzolni tekst ne donosi bodove. Raspodjela: 3 boda za spoj, 5 za prvi propisani slijed, 2 za ponavljanja odnosno RESET/SLEEP i buđenje. Otvoreni odgovori ostaju opisni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan upravljački i energetski put, A4988 i obje zavojnice motora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Pogon i ENABLE: 10 +10 valjanih STEP, translator 20 i nepobuđena osovina",
+            "maxPoints": 5
+          },
+          {
+            "id": "control",
+            "description": "RESET/SLEEP ignoriraju po 3 impulsa; buđenje i 5 novih koraka bez izmišljene nule osovine",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-steppers.test.ts"
       }
     },
     {
@@ -7589,16 +7733,32 @@
       "fault": "U primjeru upravljanja usporedi ENABLE s RESET. Ili zaustavi i odspoji STEP pa ponovno pokreni; vrati vezu.",
       "expected": "Kut slijedi broj valjanih impulsa i način. Nema modela struje, ubrzanja, momenta ni proklizavanja.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24G-stepperControl@1",
+        "checkerVersion": "24G.1",
+        "title": "A4988: ENABLE, RESET i SLEEP",
+        "instructions": "Jedan slijed: 10 pogonskih impulsa (+18°), stanka 700 ms; ENABLE HIGH i još 10 (translator=20 punih koraka, idealni pogon ostaje 18°, položaj osovine nepoznat), stanka 700 ms; RESET LOW i 3 impulsa koji se ignoriraju, RESET HIGH, translator=0, stanka 700 ms; SLEEP LOW i 3 ignorirana impulsa, stanka 700 ms; SLEEP HIGH, čekaj 2 ms, ENABLE LOW i 5 impulsa (translator=5, idealni zbroj pogona 27°, fizički položaj i dalje nepoznat). Potom miruj najmanje 100 ms. RESET ne referencira osovinu. Motor ima 200 punih koraka po okretu. VDD=3,3 V na S3 ili 5 V na AVR-u, VMOT je zaseban izvor 8–35 V (predložak 12 V), uz zajedničku masu i dvije odvojene zavojnice. Koristi digitalne STEP impulse: HIGH najmanje 1 µs, LOW najmanje 1 µs; razmak valjanih impulsa 4,01 ms ±0,6 ms, DIR/MS setup i hold najmanje 0,2 µs, buđenje najmanje 1 ms. Počni do 250 ms; stanke su ±80 ms uz dodatnu 1 ms toleranciju promatranja, kut ±0,001°. Drugi valjani GPIO, električno ekvivalentan raspored i program bez ispisa su dopušteni. Funkcionalni PWM na STEP nije podržan. Konzolni tekst ne donosi bodove. Raspodjela: 3 boda za spoj, 5 za prvi propisani slijed, 2 za ponavljanja odnosno RESET/SLEEP i buđenje. Otvoreni odgovori ostaju opisni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan upravljački i energetski put, A4988 i obje zavojnice motora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Pogon i ENABLE: 10 +10 valjanih STEP, translator 20 i nepobuđena osovina",
+            "maxPoints": 5
+          },
+          {
+            "id": "control",
+            "description": "RESET/SLEEP ignoriraju po 3 impulsa; buđenje i 5 novih koraka bez izmišljene nule osovine",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-steppers.test.ts"
       }
     },
     {
@@ -7622,16 +7782,32 @@
       "fault": "U primjeru upravljanja usporedi ENABLE s RESET. Ili zaustavi i odspoji STEP pa ponovno pokreni; vrati vezu.",
       "expected": "Kut slijedi broj valjanih impulsa i način. Nema modela struje, ubrzanja, momenta ni proklizavanja.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24G-stepperControl@1",
+        "checkerVersion": "24G.1",
+        "title": "A4988: ENABLE, RESET i SLEEP",
+        "instructions": "Jedan slijed: 10 pogonskih impulsa (+18°), stanka 700 ms; ENABLE HIGH i još 10 (translator=20 punih koraka, idealni pogon ostaje 18°, položaj osovine nepoznat), stanka 700 ms; RESET LOW i 3 impulsa koji se ignoriraju, RESET HIGH, translator=0, stanka 700 ms; SLEEP LOW i 3 ignorirana impulsa, stanka 700 ms; SLEEP HIGH, čekaj 2 ms, ENABLE LOW i 5 impulsa (translator=5, idealni zbroj pogona 27°, fizički položaj i dalje nepoznat). Potom miruj najmanje 100 ms. RESET ne referencira osovinu. Motor ima 200 punih koraka po okretu. VDD=3,3 V na S3 ili 5 V na AVR-u, VMOT je zaseban izvor 8–35 V (predložak 12 V), uz zajedničku masu i dvije odvojene zavojnice. Koristi digitalne STEP impulse: HIGH najmanje 1 µs, LOW najmanje 1 µs; razmak valjanih impulsa 4,01 ms ±0,6 ms, DIR/MS setup i hold najmanje 0,2 µs, buđenje najmanje 1 ms. Počni do 250 ms; stanke su ±80 ms uz dodatnu 1 ms toleranciju promatranja, kut ±0,001°. Drugi valjani GPIO, električno ekvivalentan raspored i program bez ispisa su dopušteni. Funkcionalni PWM na STEP nije podržan. Konzolni tekst ne donosi bodove. Raspodjela: 3 boda za spoj, 5 za prvi propisani slijed, 2 za ponavljanja odnosno RESET/SLEEP i buđenje. Otvoreni odgovori ostaju opisni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan upravljački i energetski put, A4988 i obje zavojnice motora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Pogon i ENABLE: 10 +10 valjanih STEP, translator 20 i nepobuđena osovina",
+            "maxPoints": 5
+          },
+          {
+            "id": "control",
+            "description": "RESET/SLEEP ignoriraju po 3 impulsa; buđenje i 5 novih koraka bez izmišljene nule osovine",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-steppers.test.ts"
       }
     },
     {
@@ -7655,16 +7831,32 @@
       "fault": "U primjeru upravljanja usporedi ENABLE s RESET. Ili zaustavi i odspoji STEP pa ponovno pokreni; vrati vezu.",
       "expected": "Kut slijedi broj valjanih impulsa i način. Nema modela struje, ubrzanja, momenta ni proklizavanja.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24G-stepperControl@1",
+        "checkerVersion": "24G.1",
+        "title": "A4988: ENABLE, RESET i SLEEP",
+        "instructions": "Jedan slijed: 10 pogonskih impulsa (+18°), stanka 700 ms; ENABLE HIGH i još 10 (translator=20 punih koraka, idealni pogon ostaje 18°, položaj osovine nepoznat), stanka 700 ms; RESET LOW i 3 impulsa koji se ignoriraju, RESET HIGH, translator=0, stanka 700 ms; SLEEP LOW i 3 ignorirana impulsa, stanka 700 ms; SLEEP HIGH, čekaj 2 ms, ENABLE LOW i 5 impulsa (translator=5, idealni zbroj pogona 27°, fizički položaj i dalje nepoznat). Potom miruj najmanje 100 ms. RESET ne referencira osovinu. Motor ima 200 punih koraka po okretu. VDD=3,3 V na S3 ili 5 V na AVR-u, VMOT je zaseban izvor 8–35 V (predložak 12 V), uz zajedničku masu i dvije odvojene zavojnice. Koristi digitalne STEP impulse: HIGH najmanje 1 µs, LOW najmanje 1 µs; razmak valjanih impulsa 4,01 ms ±0,6 ms, DIR/MS setup i hold najmanje 0,2 µs, buđenje najmanje 1 ms. Počni do 250 ms; stanke su ±80 ms uz dodatnu 1 ms toleranciju promatranja, kut ±0,001°. Drugi valjani GPIO, električno ekvivalentan raspored i program bez ispisa su dopušteni. Funkcionalni PWM na STEP nije podržan. Konzolni tekst ne donosi bodove. Raspodjela: 3 boda za spoj, 5 za prvi propisani slijed, 2 za ponavljanja odnosno RESET/SLEEP i buđenje. Otvoreni odgovori ostaju opisni.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan upravljački i energetski put, A4988 i obje zavojnice motora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Pogon i ENABLE: 10 +10 valjanih STEP, translator 20 i nepobuđena osovina",
+            "maxPoints": 5
+          },
+          {
+            "id": "control",
+            "description": "RESET/SLEEP ignoriraju po 3 impulsa; buđenje i 5 novih koraka bez izmišljene nule osovine",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-steppers.test.ts"
       }
     },
     {

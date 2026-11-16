@@ -1,0 +1,16 @@
+{
+  "format": "labosv2-24g-release-acceptance",
+  "version": 1,
+  "release": "0.14.5-beta.1",
+  "validatedHead": "81f615e3408df419acd90f7c182a64b903874b8b",
+  "validatedMerge": "09e7b2f7a952136ad6b43dac28984782f029a5a8",
+  "workflowRun": 43925558604,
+  "nativeRecords": 153,
+  "independentCompilations": 36,
+  "lockedAssignments": 12,
+  "legacyPreserved": true,
+  "packageFiles": 880,
+  "offlineFiles": 205,
+  "appBuild": "51fd4df8201f7381",
+  "packageSHA256": "87dad1faf2e2b504ce1128bbee4ceed6af1c4af9936a855a2420b55d8ad03407"
+}

@@ -33,3 +33,8 @@ Produkcijski provjeravač ostaje u Linux izolaciji, izvršava točno spremljeni 
 Nema nove SQL migracije. Sačuvaj privatnu konfiguraciju, sesije i bazu; zamijeni paket, pokreni postojeći migrate i ponovno pokreni provjeravače. Nova rubrika bira se izričito pri novoj objavi. Prethodni zadaci, ugovori i zaključane predaje ostaju sačuvani.
 
 Slijedi **24H: zasloni i SPI uređaji**. Stvarni školski pilot, Windows veza prema Linux provjeravaču, ciljni mobilni preglednici i ukupna memorijska granica ostaju zasebni uvjeti prihvata.
+
+
+## Izvedeni prihvat
+
+[GitHub Actions 43925558604](https://github.com/zljix/labosv2/actions/runs/43925558604) potvrdio je sva četiri cilja i 36 neovisnih C++ prijevoda. Izvršena su 153 zabilježena pokusa, svih 12 PHP/MySQL dodjela zaključano je s 10/10 bodova, a starija predaja ostala je sačuvana. Prošli su spremanje, izvještaji, povrat kopije i pokus s 30 simuliranih učenika. Provjereno je svih 880 datoteka iz inventure paketa i svih 205 web resursa offline manifesta. Programske datoteke provjeravača bajtno odgovaraju prihvaćenoj izgradnji.

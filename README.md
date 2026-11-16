@@ -2,6 +2,8 @@
 
 **0.14.5-beta.1 · etapa 24G · A4988 i koračni motor · 16. studenoga 2026.**
 
+[Završni prihvat 24G](https://github.com/zljix/labosv2/actions/runs/43925558604) potvrđuje sva četiri cilja, 36 neovisnih C++ prijevoda, 12 zaključanih dodjela, pravi PHP/MySQL, izvještaje, povrat kopije i pokus s 30 simuliranih učenika. Provjereno je svih 880 datoteka iz inventure paketa; programski izvor odgovara prihvatu.
+
 Prethodna 23F PHP/MySQL integracija prošla je u [GitHub Actionsu](https://github.com/zljix/labosv2/actions/runs/43738711916). Provjere izvještaja i administracije vode se zasebno u [izvješću 23H](docs/stage23h-reports-administration.md).
 
 Nastavak postojećeg ESP32 MicroPython / Arduino laboratorija za školski sustav s PHP-om i stvarnim MySQL-om. Polazište je [labos 0.12.9](https://github.com/zljix/labos/tree/3c4a281c10282d63b2742280f69aadbc08d7ae1e), uključujući posljednje dorade vodova.

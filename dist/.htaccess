@@ -1,0 +1,13 @@
+Options -Indexes -MultiViews
+DirectoryIndex index.html
+AddType application/wasm .wasm
+AddType text/javascript .mjs .js
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    <FilesMatch "^(index\.html|sw\.js|offline-package\.json)$">
+        Header always set Cache-Control "no-store"
+    </FilesMatch>
+</IfModule>
+<FilesMatch "(^\.|\.(ini|sql|log|env|bak)$)">
+    Require all denied
+</FilesMatch>

@@ -16,3 +16,7 @@ Thumbs.db
 
 release/
 school/config/config.php
+
+# Detaljni zapisi prihvata ostaju u CI artefaktima i instalacijskom paketu.
+docs/stage24g-evidence/steppers-*.json
+docs/stage24g-evidence/mysql-steppers.json

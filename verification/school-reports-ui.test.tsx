@@ -4,7 +4,7 @@ import {JSDOM} from 'jsdom';
 import React,{act} from 'react';
 import {createRoot} from 'react-dom/client';
 import {setTimeout as delay} from 'node:timers/promises';
-import SchoolReports from '../src/platform/SchoolReports';
+import SchoolReports from '../src/platform/SchoolReportsView';
 import SchoolFeedback from '../src/platform/SchoolFeedback';
 import {gradingLabel} from '../src/platform/SchoolGrading';
 

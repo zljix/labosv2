@@ -63,6 +63,7 @@ jobs:
           CREATE DATABASE labosv2_test_analog CHARACTER SET utf8mb4;
           CREATE DATABASE labosv2_test_sensors CHARACTER SET utf8mb4;
           CREATE DATABASE labosv2_test_events CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_actuators CHARACTER SET utf8mb4;
           GRANT ALL ON labosv2_test_classes.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_portal.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_work.* TO 'labosv2_ci'@'%';
@@ -76,6 +77,7 @@ jobs:
           GRANT ALL ON labosv2_test_analog.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_sensors.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_events.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_actuators.* TO 'labosv2_ci'@'%';
           SQL
       - name: Pripremi Linux izolaciju
         run: |
@@ -161,6 +163,11 @@ jobs:
         env:
           LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_events;charset=utf8mb4
           LAB_TEST_DB_USER: labosv2_ci
+      - name: Provjeri sedam aktuatorskih dodjela, stvarne bodove i zaključavanje
+        run: npm run test:school-actuators-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_actuators;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
       - name: Pokus s 30 učenika, stvarnim PHP/MySQL i dva privatna provjeravača
         run: npm run test:school-load
         env:
@@ -231,18 +238,19 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: Labosv2-24E-Dokazi
+          name: Labosv2-24F-Dokazi
           path: |
             docs/stage24ab-evidence/
             docs/stage24c-evidence/
             docs/stage24d-evidence/
             docs/stage24e-evidence/
+            docs/stage24f-evidence/
             docs/stage23i-evidence/
           if-no-files-found: error
           retention-days: 30
       - uses: actions/upload-artifact@v4
         with:
-          name: Labosv2-24E-Skolski-paket
+          name: Labosv2-24F-Skolski-paket
           path: release/*.zip
           if-no-files-found: error
           retention-days: 30

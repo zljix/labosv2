@@ -10,6 +10,7 @@ import {wasmBytes} from '../../public/s3-contract.mjs';
 import {isAnalogContract,createAnalogCheck} from './analog';
 import {isSensorContract,createSensorCheck} from './sensors';
 import {isEventContract,createEventCheck} from './events';
+import {isActuatorContract,createActuatorCheck} from './actuators';
 
 let raw='';for await(const chunk of process.stdin){raw+=chunk;if(Buffer.byteLength(raw)>4194304)throw Error('Prevelika snimka.');}
 const {project:input,artifact,profile,seed}=JSON.parse(raw),project=parseProject(input);
@@ -22,7 +23,8 @@ const backend=project.language==='micropython'?'micropython':project.board.id.in
 const analogCheck=isAnalogContract(profile)?createAnalogCheck(config,profile,seed,backend==='avr'):null;
 const sensorCheck=isSensorContract(profile)?createSensorCheck(config,profile,seed):null;
 const eventCheck=isEventContract(profile)?createEventCheck(config,profile,seed,backend):null;
-const extendedCheck=eventCheck??sensorCheck??analogCheck;
+const actuatorCheck=isActuatorContract(profile)?createActuatorCheck(config,profile,seed):null;
+const extendedCheck=actuatorCheck??eventCheck??sensorCheck??analogCheck;
 const protocolClock=!!(sensorCheck||eventCheck);
 // ADC receives a voltage, never a fabricated ADC return value. S3's 11 dB
 // transfer saturates at 3.1 V, whereas the Uno/Nano full scale is 5 V.

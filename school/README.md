@@ -1,3 +1,9 @@
+## 24F — relej, zvuk, servo i DC motori
+
+Izdanje 0.14.4-beta.1 dodaje sedam rubrika 24F-…@1 i 28 kombinacija (ukupno 132/268). Objavljene upute opisuju stvarne kontakte, impulse, tonove, potpisani prosječni napon, vremenski slijed i tolerancije. [Opseg i provjere 24F](../docs/stage24f-actuators.md).
+
+Nema nove SQL migracije. Prije nadogradnje sačuvaj bazu i privatnu konfiguraciju. Zamijeni programski paket, zadrži sesije/konfiguraciju, pokreni postojeći migrate i ponovno pokreni Linux provjeravače. Ranije verzije rubrika i zaključane predaje ostaju izvršive uz stare uvjete. Nova objava izričito bira novu rubriku.
+
 # Labosv2 · školski paket · etapa 24E
 
 Prethodno izdanje 0.13.8-beta.1 pripremilo je školski pilot, obrazac opažanja i razvojni pokus 30 + 1; vidi [23I](../docs/stage23i-pilot.md). Etapa 23H dodala je postignuća, izvoze, komentare i korekcije, arhiviranje, čuvanje međurevizija te privatne kopije i povrat. Postupak i provjere su u [izvješću 23H](../docs/stage23h-reports-administration.md). [Raniji zapis integracije 23F](https://github.com/zljix/labosv2/actions/runs/43738711916) ostaje povijesni dokaz. Stvarni školski pilot ostaje zasebna provjera.

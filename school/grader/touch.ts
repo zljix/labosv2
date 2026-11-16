@@ -102,7 +102,9 @@ export function createTouchCheck(c:SimulationConfig,p:any,seed:string,backend:st
     y:q.down?calibration[2]+Math.round(q.y*(calibration[3]-calibration[2])/319):0,
     z1:q.down?Math.round(q.pressure*20):0,z2:q.down?4095-Math.round(q.pressure*15):4095});
   function observe(e:any){
-    if(e.type!=='simulation'||stage>=stimuli.length||e.timeMs-lastObserved<s.observationStepMs)return;lastObserved=e.timeMs;
+    // S3 rotation redraws may emit a partial and a complete frame at the same
+    // virtual time. Keep both so a clear cannot hide the completed picture.
+    if(e.type!=='simulation'||stage>=stimuli.length||(v!=='iliRotation'&&e.timeMs-lastObserved<s.observationStepMs))return;lastObserved=e.timeMs;
     const d=e.tfts?.[panel.id],start=stage*duration;
     path ||= validPanel(d)&&d.written>0&&e.spiTrace?.some((t:any)=>t.device===panel.id);
     if(touch){

@@ -1,6 +1,6 @@
 {
   "name": "esp32-micropython-lab",
-  "version": "0.14.0-beta.1",
+  "version": "0.14.1-beta.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -80,7 +80,9 @@
     "test:school-load": "node --test verification/school-load.test.mjs",
     "school:host": "node scripts/check-school-host.mjs",
     "test:school-contract": "node --import tsx --test verification/school-contract.test.ts",
-    "test:school-contract-api": "node --import tsx --test verification/school-contract-api.test.mjs"
+    "test:school-contract-api": "node --import tsx --test verification/school-contract-api.test.mjs",
+    "test:school-analog": "node --import tsx --test verification/school-analog.test.ts",
+    "test:school-analog-api": "node --import tsx --test verification/school-analog-api.test.mjs"
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.1",

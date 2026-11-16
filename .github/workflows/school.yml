@@ -60,6 +60,7 @@ jobs:
           CREATE DATABASE labosv2_test_restore CHARACTER SET utf8mb4;
           CREATE DATABASE labosv2_test_load CHARACTER SET utf8mb4;
           CREATE DATABASE labosv2_test_contract CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_analog CHARACTER SET utf8mb4;
           GRANT ALL ON labosv2_test_classes.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_portal.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_work.* TO 'labosv2_ci'@'%';
@@ -70,6 +71,7 @@ jobs:
           GRANT ALL ON labosv2_test_restore.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_load.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_contract.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_analog.* TO 'labosv2_ci'@'%';
           SQL
       - name: Pripremi Linux izolaciju
         run: |
@@ -126,6 +128,17 @@ jobs:
           LAB_GRADING_COMPILER_TEST: '1'
           LAB_S3_COMPILER_TEST: '1'
           LAB_ARDUINO_DATA: ${{ github.workspace }}/avr-env/data
+      - name: Provjeri svih 32 ADC/PWM i analognih kombinacija te promijenjene izvore
+        run: LAB_ARDUINO_CLI="$(command -v arduino-cli)" npm run test:school-analog
+        env:
+          LAB_GRADING_COMPILER_TEST: '1'
+          LAB_S3_COMPILER_TEST: '1'
+          LAB_ARDUINO_DATA: ${{ github.workspace }}/avr-env/data
+      - name: Provjeri nove analogne dodjele, bodove, zaključavanje i stare rubrike
+        run: npm run test:school-analog-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_analog;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
       - name: Pokus s 30 učenika, stvarnim PHP/MySQL i dva privatna provjeravača
         run: npm run test:school-load
         env:
@@ -196,15 +209,16 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: Labosv2-24AB-Dokazi
+          name: Labosv2-24C-Dokazi
           path: |
             docs/stage24ab-evidence/
+            docs/stage24c-evidence/
             docs/stage23i-evidence/
           if-no-files-found: error
           retention-days: 30
       - uses: actions/upload-artifact@v4
         with:
-          name: Labosv2-24AB-Skolski-paket
+          name: Labosv2-24C-Skolski-paket
           path: release/*.zip
           if-no-files-found: error
           retention-days: 30

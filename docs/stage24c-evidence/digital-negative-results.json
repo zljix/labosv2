@@ -1,0 +1,4154 @@
+{
+  "format": "labosv2-analog-evidence",
+  "version": 1,
+  "sourceCommit": null,
+  "results": [
+    {
+      "profileId": "24C-adc-pwm@1",
+      "target": "micropython",
+      "snapshotHash": "5997af7743e3827cd8d8a4060977eea7f1056549d23f456f7e9892880664063f",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "94a970fc2135528d00ccc68501f2cc1a039ff21986165e66aaf3c33ddf24c544",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-adc-pwm@1",
+        "snapshotHash": "5997af7743e3827cd8d8a4060977eea7f1056549d23f456f7e9892880664063f",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 3,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "4a4442f442728402316f2e0a2c8abaa185483dcbac1ce5c2f28e6292565e5601",
+        "contractHash": "94a970fc2135528d00ccc68501f2cc1a039ff21986165e66aaf3c33ddf24c544",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "evaluated",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Stvarni PWM radni omjer prati tri osnovne ADC pobude",
+            "maxPoints": 5,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "position": 0,
+            "expected": {
+              "duty": 0
+            },
+            "observedDuty": 0,
+            "validPath": true,
+            "timely": true,
+            "passed": true
+          },
+          {
+            "index": 2,
+            "position": 15,
+            "expected": {
+              "duty": 0.1597069597069597
+            },
+            "observedDuty": 0,
+            "validPath": true,
+            "timely": false,
+            "passed": false
+          },
+          {
+            "index": 3,
+            "position": 72.9,
+            "expected": {
+              "duty": 0.7760683760683761
+            },
+            "observedDuty": 0,
+            "validPath": true,
+            "timely": false,
+            "passed": false
+          },
+          {
+            "index": 4,
+            "position": 25,
+            "expected": {
+              "duty": 0.2661782661782662
+            },
+            "observedDuty": 0,
+            "validPath": true,
+            "timely": false,
+            "passed": false
+          },
+          {
+            "index": 5,
+            "position": 50,
+            "expected": {
+              "duty": 0.5323565323565324
+            },
+            "observedDuty": 0,
+            "validPath": true,
+            "timely": false,
+            "passed": false
+          },
+          {
+            "index": 6,
+            "position": 100,
+            "expected": {
+              "duty": 1
+            },
+            "observedDuty": 0,
+            "validPath": true,
+            "timely": false,
+            "passed": false
+          },
+          {
+            "index": 7,
+            "position": 0,
+            "expected": {
+              "duty": 0
+            },
+            "observedDuty": 0,
+            "validPath": true,
+            "timely": true,
+            "passed": true
+          }
+        ],
+        "message": "Provjerena je točna spremljena snimka.",
+        "virtualDurationMs": 7000,
+        "peakRssKiB": 106204,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 830
+      }
+    },
+    {
+      "profileId": "24C-adc-pwm@1",
+      "target": "micropython",
+      "snapshotHash": "1a52b3cd10d7643e7e49d6689a4090303302f5e4c50e80f15d0d5b6bf1106345",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "94a970fc2135528d00ccc68501f2cc1a039ff21986165e66aaf3c33ddf24c544",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-adc-pwm@1",
+        "snapshotHash": "1a52b3cd10d7643e7e49d6689a4090303302f5e4c50e80f15d0d5b6bf1106345",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 8,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "4a4442f442728402316f2e0a2c8abaa185483dcbac1ce5c2f28e6292565e5601",
+        "contractHash": "94a970fc2135528d00ccc68501f2cc1a039ff21986165e66aaf3c33ddf24c544",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "evaluated",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Stvarni PWM radni omjer prati tri osnovne ADC pobude",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "position": 0,
+            "expected": {
+              "duty": 0
+            },
+            "observedDuty": 0,
+            "validPath": true,
+            "timely": true,
+            "passed": true
+          },
+          {
+            "index": 2,
+            "position": 15,
+            "expected": {
+              "duty": 0.1597069597069597
+            },
+            "observedDuty": 0.15970092317082474,
+            "validPath": true,
+            "timely": true,
+            "passed": true
+          },
+          {
+            "index": 3,
+            "position": 72.9,
+            "expected": {
+              "duty": 0.7760683760683761
+            },
+            "observedDuty": 0.77607385366598,
+            "validPath": true,
+            "timely": true,
+            "passed": true
+          },
+          {
+            "index": 4,
+            "position": 25,
+            "expected": {
+              "duty": 0.2661782661782662
+            },
+            "observedDuty": 0,
+            "validPath": true,
+            "timely": false,
+            "passed": false
+          },
+          {
+            "index": 5,
+            "position": 50,
+            "expected": {
+              "duty": 0.5323565323565324
+            },
+            "observedDuty": 0,
+            "validPath": true,
+            "timely": false,
+            "passed": false
+          },
+          {
+            "index": 6,
+            "position": 100,
+            "expected": {
+              "duty": 1
+            },
+            "observedDuty": 0,
+            "validPath": true,
+            "timely": false,
+            "passed": false
+          },
+          {
+            "index": 7,
+            "position": 0,
+            "expected": {
+              "duty": 0
+            },
+            "observedDuty": 0,
+            "validPath": true,
+            "timely": true,
+            "passed": true
+          }
+        ],
+        "message": "Provjerena je točna spremljena snimka.",
+        "virtualDurationMs": 7000,
+        "peakRssKiB": 153012,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 703
+      }
+    },
+    {
+      "profileId": "24C-adc-pwm@1",
+      "target": "micropython",
+      "snapshotHash": "b8790a891d5235fe02efa6b78891d2d7099f4ced08e4cd04326d83b7015cd75d",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "94a970fc2135528d00ccc68501f2cc1a039ff21986165e66aaf3c33ddf24c544",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-adc-pwm@1",
+        "snapshotHash": "b8790a891d5235fe02efa6b78891d2d7099f4ced08e4cd04326d83b7015cd75d",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 0,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "4a4442f442728402316f2e0a2c8abaa185483dcbac1ce5c2f28e6292565e5601",
+        "contractHash": "94a970fc2135528d00ccc68501f2cc1a039ff21986165e66aaf3c33ddf24c544",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "program_error",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "response",
+            "description": "Stvarni PWM radni omjer prati tri osnovne ADC pobude",
+            "maxPoints": 5,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [],
+        "message": "Program je prijavio pogrešku. Provjeri kod pokretanjem u laboratoriju.",
+        "virtualDurationMs": 7000,
+        "peakRssKiB": 87132,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 538
+      }
+    },
+    {
+      "profileId": "24C-ntc@1",
+      "target": "micropython",
+      "snapshotHash": "8b4097b62c38db297d952e13ba5db66d7d9f12dbf03b0dd4cf63f3ab4abc92c6",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "5019bdf4fbb9006adb3ae05c9eb01d977878216b8dbad90023cc368bca18a879",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-ntc@1",
+        "snapshotHash": "8b4097b62c38db297d952e13ba5db66d7d9f12dbf03b0dd4cf63f3ab4abc92c6",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 3,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "efdeaa20f0ae36c88dd6786151c7c859b654e86839c30c8a6a5cfd1501341d06",
+        "contractHash": "5019bdf4fbb9006adb3ae05c9eb01d977878216b8dbad90023cc368bca18a879",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "evaluated",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "temperature": 25,
+            "expected": {
+              "ADC": 2180,
+              "T": 25
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 2,
+            "temperature": 35,
+            "expected": {
+              "ADC": 1718,
+              "T": 35
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 3,
+            "temperature": 9.7,
+            "expected": {
+              "ADC": 2929,
+              "T": 9.7
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 4,
+            "temperature": -20,
+            "expected": {
+              "ADC": 3981,
+              "T": -20
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 5,
+            "temperature": 100,
+            "expected": {
+              "ADC": 284,
+              "T": 100
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 6,
+            "temperature": 25,
+            "expected": {
+              "ADC": 2180,
+              "T": 25
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          }
+        ],
+        "message": "Provjerena je točna spremljena snimka.",
+        "virtualDurationMs": 6000,
+        "peakRssKiB": 84364,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 561
+      }
+    },
+    {
+      "profileId": "24C-ntc@1",
+      "target": "micropython",
+      "snapshotHash": "e762ec6a454f6e9cae6768390b44db9029c45a646769ff710b1199fe06e74aa0",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "5019bdf4fbb9006adb3ae05c9eb01d977878216b8dbad90023cc368bca18a879",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-ntc@1",
+        "snapshotHash": "e762ec6a454f6e9cae6768390b44db9029c45a646769ff710b1199fe06e74aa0",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 8,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "efdeaa20f0ae36c88dd6786151c7c859b654e86839c30c8a6a5cfd1501341d06",
+        "contractHash": "5019bdf4fbb9006adb3ae05c9eb01d977878216b8dbad90023cc368bca18a879",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "evaluated",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "temperature": 25,
+            "expected": {
+              "ADC": 2180,
+              "T": 25
+            },
+            "observed": {
+              "ADC": 2180,
+              "T": 24.99
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 2,
+            "temperature": 35,
+            "expected": {
+              "ADC": 1718,
+              "T": 35
+            },
+            "observed": {
+              "ADC": 1718,
+              "T": 35
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 3,
+            "temperature": 9.7,
+            "expected": {
+              "ADC": 2929,
+              "T": 9.7
+            },
+            "observed": {
+              "ADC": 2929,
+              "T": 9.7
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 4,
+            "temperature": -20,
+            "expected": {
+              "ADC": 3981,
+              "T": -20
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 5,
+            "temperature": 100,
+            "expected": {
+              "ADC": 284,
+              "T": 100
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 6,
+            "temperature": 25,
+            "expected": {
+              "ADC": 2180,
+              "T": 25
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          }
+        ],
+        "message": "Provjerena je točna spremljena snimka.",
+        "virtualDurationMs": 6000,
+        "peakRssKiB": 98608,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 412
+      }
+    },
+    {
+      "profileId": "24C-ntc@1",
+      "target": "micropython",
+      "snapshotHash": "567fef15234b0f119e18e66cc65fb2410fe45602996e43c836381d0117c11f29",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "5019bdf4fbb9006adb3ae05c9eb01d977878216b8dbad90023cc368bca18a879",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-ntc@1",
+        "snapshotHash": "567fef15234b0f119e18e66cc65fb2410fe45602996e43c836381d0117c11f29",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 0,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "efdeaa20f0ae36c88dd6786151c7c859b654e86839c30c8a6a5cfd1501341d06",
+        "contractHash": "5019bdf4fbb9006adb3ae05c9eb01d977878216b8dbad90023cc368bca18a879",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "program_error",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [],
+        "message": "Program je prijavio pogrešku. Provjeri kod pokretanjem u laboratoriju.",
+        "virtualDurationMs": 6000,
+        "peakRssKiB": 84408,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 608
+      }
+    },
+    {
+      "profileId": "24C-temt6000@1",
+      "target": "micropython",
+      "snapshotHash": "5cf35e816fad5755fad78630bfa165025b416220306311c4f2bcfca82c24cdb7",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "059709f57f2a6adf23d58047904f37680cd2c57f7452d8b3a4f7af9f75ef9036",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-temt6000@1",
+        "snapshotHash": "5cf35e816fad5755fad78630bfa165025b416220306311c4f2bcfca82c24cdb7",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 3,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "d517343ebefc06bbf8681fb8104638e279db6900b96f2c59263c203165a8c3a4",
+        "contractHash": "059709f57f2a6adf23d58047904f37680cd2c57f7452d8b3a4f7af9f75ef9036",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "evaluated",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "illuminance": 100,
+            "expected": {
+              "ADC": 660,
+              "U": 0.49963369963369964
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 2,
+            "illuminance": 20,
+            "expected": {
+              "ADC": 132,
+              "U": 0.09992673992673992
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 3,
+            "illuminance": 411.7,
+            "expected": {
+              "ADC": 2719,
+              "U": 2.058339438339438
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 4,
+            "illuminance": 0,
+            "expected": {
+              "ADC": 0,
+              "U": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 5,
+            "illuminance": 620,
+            "expected": {
+              "ADC": 4095,
+              "U": 3.1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 6,
+            "illuminance": 2000,
+            "expected": {
+              "ADC": 4095,
+              "U": 3.1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 7,
+            "illuminance": 100,
+            "expected": {
+              "ADC": 660,
+              "U": 0.49963369963369964
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          }
+        ],
+        "message": "Provjerena je točna spremljena snimka.",
+        "virtualDurationMs": 7000,
+        "peakRssKiB": 84500,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 573
+      }
+    },
+    {
+      "profileId": "24C-temt6000@1",
+      "target": "micropython",
+      "snapshotHash": "c8e6d571a84e4ca501b00ba192184d3b39bca2f66d8c14370dc8af9584fd1d1e",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "059709f57f2a6adf23d58047904f37680cd2c57f7452d8b3a4f7af9f75ef9036",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-temt6000@1",
+        "snapshotHash": "c8e6d571a84e4ca501b00ba192184d3b39bca2f66d8c14370dc8af9584fd1d1e",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 8,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "d517343ebefc06bbf8681fb8104638e279db6900b96f2c59263c203165a8c3a4",
+        "contractHash": "059709f57f2a6adf23d58047904f37680cd2c57f7452d8b3a4f7af9f75ef9036",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "evaluated",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "illuminance": 100,
+            "expected": {
+              "ADC": 660,
+              "U": 0.49963369963369964
+            },
+            "observed": {
+              "ADC": 660,
+              "U": 0.5
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 2,
+            "illuminance": 20,
+            "expected": {
+              "ADC": 132,
+              "U": 0.09992673992673992
+            },
+            "observed": {
+              "ADC": 132,
+              "U": 0.1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 3,
+            "illuminance": 411.7,
+            "expected": {
+              "ADC": 2719,
+              "U": 2.058339438339438
+            },
+            "observed": {
+              "ADC": 2719,
+              "U": 2.058
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 4,
+            "illuminance": 0,
+            "expected": {
+              "ADC": 0,
+              "U": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 5,
+            "illuminance": 620,
+            "expected": {
+              "ADC": 4095,
+              "U": 3.1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 6,
+            "illuminance": 2000,
+            "expected": {
+              "ADC": 4095,
+              "U": 3.1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 7,
+            "illuminance": 100,
+            "expected": {
+              "ADC": 660,
+              "U": 0.49963369963369964
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          }
+        ],
+        "message": "Provjerena je točna spremljena snimka.",
+        "virtualDurationMs": 7000,
+        "peakRssKiB": 87324,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 374
+      }
+    },
+    {
+      "profileId": "24C-temt6000@1",
+      "target": "micropython",
+      "snapshotHash": "d1bba2d378263e722f8d33650ff30983f9fe4c9e66b504f9e1aefdd508000176",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "059709f57f2a6adf23d58047904f37680cd2c57f7452d8b3a4f7af9f75ef9036",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-temt6000@1",
+        "snapshotHash": "d1bba2d378263e722f8d33650ff30983f9fe4c9e66b504f9e1aefdd508000176",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 0,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "d517343ebefc06bbf8681fb8104638e279db6900b96f2c59263c203165a8c3a4",
+        "contractHash": "059709f57f2a6adf23d58047904f37680cd2c57f7452d8b3a4f7af9f75ef9036",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "program_error",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [],
+        "message": "Program je prijavio pogrešku. Provjeri kod pokretanjem u laboratoriju.",
+        "virtualDurationMs": 7000,
+        "peakRssKiB": 84348,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 375
+      }
+    },
+    {
+      "profileId": "24C-ky023@1",
+      "target": "micropython",
+      "snapshotHash": "989b6839407bfa6c2b83942b4aedaf46adf9000c7e398c9aa4ff5c10f58824cb",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "ddac8463154249a2290ad80f47830b7e432762d3d5fa2c24eed4be23ebe29ac0",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-ky023@1",
+        "snapshotHash": "989b6839407bfa6c2b83942b4aedaf46adf9000c7e398c9aa4ff5c10f58824cb",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 3,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "da651950f7c36eeee52ece0fc5c057fc96a023b7c5e362b196991e9c99200334",
+        "contractHash": "ddac8463154249a2290ad80f47830b7e432762d3d5fa2c24eed4be23ebe29ac0",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "evaluated",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "axisX": 50,
+            "axisY": 50,
+            "pressed": false,
+            "expected": {
+              "X": 2180,
+              "Y": 2180,
+              "NX": 0,
+              "NY": 0,
+              "SW": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 2,
+            "axisX": 15,
+            "axisY": 74.7,
+            "pressed": true,
+            "expected": {
+              "X": 654,
+              "Y": 3256,
+              "NX": -0.6999444999444999,
+              "NY": 0.493854293854294,
+              "SW": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 3,
+            "axisX": 75.9,
+            "axisY": 31.2,
+            "pressed": false,
+            "expected": {
+              "X": 3309,
+              "Y": 1360,
+              "NX": 0.5181707181707182,
+              "NY": -0.37603137603137604,
+              "SW": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 4,
+            "axisX": 0,
+            "axisY": 100,
+            "pressed": true,
+            "expected": {
+              "X": 0,
+              "Y": 4095,
+              "NX": -1,
+              "NY": 0.8787878787878789,
+              "SW": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 5,
+            "axisX": 100,
+            "axisY": 0,
+            "pressed": false,
+            "expected": {
+              "X": 4095,
+              "Y": 0,
+              "NX": 0.8787878787878789,
+              "NY": -1,
+              "SW": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 6,
+            "axisX": 51,
+            "axisY": 49,
+            "pressed": true,
+            "expected": {
+              "X": 2223,
+              "Y": 2136,
+              "NX": 0,
+              "NY": 0,
+              "SW": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 7,
+            "axisX": 45,
+            "axisY": 55,
+            "pressed": false,
+            "expected": {
+              "X": 1962,
+              "Y": 2398,
+              "NX": 0,
+              "NY": 0.10020350020350022,
+              "SW": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 8,
+            "axisX": 50,
+            "axisY": 50,
+            "pressed": false,
+            "expected": {
+              "X": 2180,
+              "Y": 2180,
+              "NX": 0,
+              "NY": 0,
+              "SW": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          }
+        ],
+        "message": "Provjerena je točna spremljena snimka.",
+        "virtualDurationMs": 8000,
+        "peakRssKiB": 101928,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 434
+      }
+    },
+    {
+      "profileId": "24C-ky023@1",
+      "target": "micropython",
+      "snapshotHash": "946b1c8ee57f2d51181a16297daba9f966b628eb429d57e52e567ef24cce244c",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "ddac8463154249a2290ad80f47830b7e432762d3d5fa2c24eed4be23ebe29ac0",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-ky023@1",
+        "snapshotHash": "946b1c8ee57f2d51181a16297daba9f966b628eb429d57e52e567ef24cce244c",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 8,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "da651950f7c36eeee52ece0fc5c057fc96a023b7c5e362b196991e9c99200334",
+        "contractHash": "ddac8463154249a2290ad80f47830b7e432762d3d5fa2c24eed4be23ebe29ac0",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "evaluated",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "axisX": 50,
+            "axisY": 50,
+            "pressed": false,
+            "expected": {
+              "X": 2180,
+              "Y": 2180,
+              "NX": 0,
+              "NY": 0,
+              "SW": 1
+            },
+            "observed": {
+              "X": 2180,
+              "Y": 2180,
+              "NX": 0,
+              "NY": 0,
+              "SW": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 2,
+            "axisX": 15,
+            "axisY": 74.7,
+            "pressed": true,
+            "expected": {
+              "X": 654,
+              "Y": 3256,
+              "NX": -0.6999444999444999,
+              "NY": 0.493854293854294,
+              "SW": 0
+            },
+            "observed": {
+              "X": 654,
+              "Y": 3256,
+              "NX": -0.7,
+              "NY": 0.49,
+              "SW": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 3,
+            "axisX": 75.9,
+            "axisY": 31.2,
+            "pressed": false,
+            "expected": {
+              "X": 3309,
+              "Y": 1360,
+              "NX": 0.5181707181707182,
+              "NY": -0.37603137603137604,
+              "SW": 1
+            },
+            "observed": {
+              "X": 3309,
+              "Y": 1360,
+              "NX": 0.52,
+              "NY": -0.38,
+              "SW": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 4,
+            "axisX": 0,
+            "axisY": 100,
+            "pressed": true,
+            "expected": {
+              "X": 0,
+              "Y": 4095,
+              "NX": -1,
+              "NY": 0.8787878787878789,
+              "SW": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 5,
+            "axisX": 100,
+            "axisY": 0,
+            "pressed": false,
+            "expected": {
+              "X": 4095,
+              "Y": 0,
+              "NX": 0.8787878787878789,
+              "NY": -1,
+              "SW": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 6,
+            "axisX": 51,
+            "axisY": 49,
+            "pressed": true,
+            "expected": {
+              "X": 2223,
+              "Y": 2136,
+              "NX": 0,
+              "NY": 0,
+              "SW": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 7,
+            "axisX": 45,
+            "axisY": 55,
+            "pressed": false,
+            "expected": {
+              "X": 1962,
+              "Y": 2398,
+              "NX": 0,
+              "NY": 0.10020350020350022,
+              "SW": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 8,
+            "axisX": 50,
+            "axisY": 50,
+            "pressed": false,
+            "expected": {
+              "X": 2180,
+              "Y": 2180,
+              "NX": 0,
+              "NY": 0,
+              "SW": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          }
+        ],
+        "message": "Provjerena je točna spremljena snimka.",
+        "virtualDurationMs": 8000,
+        "peakRssKiB": 115808,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 384
+      }
+    },
+    {
+      "profileId": "24C-ky023@1",
+      "target": "micropython",
+      "snapshotHash": "93d9a8f03e3ac245b131b9ad50333b9179aa632d65888c305d55eec76b09c5d3",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "ddac8463154249a2290ad80f47830b7e432762d3d5fa2c24eed4be23ebe29ac0",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-ky023@1",
+        "snapshotHash": "93d9a8f03e3ac245b131b9ad50333b9179aa632d65888c305d55eec76b09c5d3",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 0,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "da651950f7c36eeee52ece0fc5c057fc96a023b7c5e362b196991e9c99200334",
+        "contractHash": "ddac8463154249a2290ad80f47830b7e432762d3d5fa2c24eed4be23ebe29ac0",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "program_error",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [],
+        "message": "Program je prijavio pogrešku. Provjeri kod pokretanjem u laboratoriju.",
+        "virtualDurationMs": 8000,
+        "peakRssKiB": 84532,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 461
+      }
+    },
+    {
+      "profileId": "24C-flame@1",
+      "target": "micropython",
+      "snapshotHash": "97be63c91d2c7f7cfa431f9f5764910d44e76bf2f80441b30862d2f92816beb1",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "84fbd8f49988152f191e9b5461992b9fbd1a7762cfe09c8538445b3cd25c3d77",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-flame@1",
+        "snapshotHash": "97be63c91d2c7f7cfa431f9f5764910d44e76bf2f80441b30862d2f92816beb1",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 3,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "0ffc89e4d96c3a8da40621a40fc374fd56d76c374d758386376a82831ae8f27a",
+        "contractHash": "84fbd8f49988152f191e9b5461992b9fbd1a7762cfe09c8538445b3cd25c3d77",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "evaluated",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "stimulus": 30.4,
+            "active": false,
+            "expected": {
+              "ADC": 3034,
+              "DO": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 2,
+            "stimulus": 71.4,
+            "active": true,
+            "expected": {
+              "ADC": 1247,
+              "DO": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 3,
+            "stimulus": 91,
+            "active": true,
+            "expected": {
+              "ADC": 392,
+              "DO": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 4,
+            "stimulus": 52,
+            "active": true,
+            "expected": {
+              "ADC": 2092,
+              "DO": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 5,
+            "stimulus": 50,
+            "active": true,
+            "expected": {
+              "ADC": 2180,
+              "DO": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 6,
+            "stimulus": 48,
+            "active": false,
+            "expected": {
+              "ADC": 2267,
+              "DO": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 7,
+            "stimulus": 50,
+            "active": false,
+            "expected": {
+              "ADC": 2180,
+              "DO": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 8,
+            "stimulus": 100,
+            "active": true,
+            "expected": {
+              "ADC": 0,
+              "DO": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 9,
+            "stimulus": 0,
+            "active": false,
+            "expected": {
+              "ADC": 4095,
+              "DO": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 10,
+            "stimulus": 30.4,
+            "active": false,
+            "expected": {
+              "ADC": 3034,
+              "DO": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          }
+        ],
+        "message": "Provjerena je točna spremljena snimka.",
+        "virtualDurationMs": 10000,
+        "peakRssKiB": 89760,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 423
+      }
+    },
+    {
+      "profileId": "24C-flame@1",
+      "target": "micropython",
+      "snapshotHash": "57658967c6e4b82c58c51e1350f7872706462129b30a3a35b084ad8c31b9541a",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "84fbd8f49988152f191e9b5461992b9fbd1a7762cfe09c8538445b3cd25c3d77",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-flame@1",
+        "snapshotHash": "57658967c6e4b82c58c51e1350f7872706462129b30a3a35b084ad8c31b9541a",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 8,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "0ffc89e4d96c3a8da40621a40fc374fd56d76c374d758386376a82831ae8f27a",
+        "contractHash": "84fbd8f49988152f191e9b5461992b9fbd1a7762cfe09c8538445b3cd25c3d77",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "evaluated",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "stimulus": 30.4,
+            "active": false,
+            "expected": {
+              "ADC": 3034,
+              "DO": 1
+            },
+            "observed": {
+              "ADC": 3034,
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 2,
+            "stimulus": 71.4,
+            "active": true,
+            "expected": {
+              "ADC": 1247,
+              "DO": 0
+            },
+            "observed": {
+              "ADC": 1247,
+              "DO": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 3,
+            "stimulus": 91,
+            "active": true,
+            "expected": {
+              "ADC": 392,
+              "DO": 0
+            },
+            "observed": {
+              "ADC": 392,
+              "DO": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 4,
+            "stimulus": 52,
+            "active": true,
+            "expected": {
+              "ADC": 2092,
+              "DO": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 5,
+            "stimulus": 50,
+            "active": true,
+            "expected": {
+              "ADC": 2180,
+              "DO": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 6,
+            "stimulus": 48,
+            "active": false,
+            "expected": {
+              "ADC": 2267,
+              "DO": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 7,
+            "stimulus": 50,
+            "active": false,
+            "expected": {
+              "ADC": 2180,
+              "DO": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 8,
+            "stimulus": 100,
+            "active": true,
+            "expected": {
+              "ADC": 0,
+              "DO": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 9,
+            "stimulus": 0,
+            "active": false,
+            "expected": {
+              "ADC": 4095,
+              "DO": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 10,
+            "stimulus": 30.4,
+            "active": false,
+            "expected": {
+              "ADC": 3034,
+              "DO": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          }
+        ],
+        "message": "Provjerena je točna spremljena snimka.",
+        "virtualDurationMs": 10000,
+        "peakRssKiB": 102464,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 422
+      }
+    },
+    {
+      "profileId": "24C-flame@1",
+      "target": "micropython",
+      "snapshotHash": "ec48aef0e8ded38b6b7ce561a6ece249e2aaf13d861c159e041d0ffd8eeeb196",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "84fbd8f49988152f191e9b5461992b9fbd1a7762cfe09c8538445b3cd25c3d77",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-flame@1",
+        "snapshotHash": "ec48aef0e8ded38b6b7ce561a6ece249e2aaf13d861c159e041d0ffd8eeeb196",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 0,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "0ffc89e4d96c3a8da40621a40fc374fd56d76c374d758386376a82831ae8f27a",
+        "contractHash": "84fbd8f49988152f191e9b5461992b9fbd1a7762cfe09c8538445b3cd25c3d77",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "program_error",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [],
+        "message": "Program je prijavio pogrešku. Provjeri kod pokretanjem u laboratoriju.",
+        "virtualDurationMs": 10000,
+        "peakRssKiB": 84228,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 557
+      }
+    },
+    {
+      "profileId": "24C-sound@1",
+      "target": "micropython",
+      "snapshotHash": "223a02d167cb449a7b0730187e7318880194dbfead41de3c0b9f52885058c14f",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "212b57793f49e67da6f0c249c93faca2b489275730a9c80e58c883f034788ef9",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-sound@1",
+        "snapshotHash": "223a02d167cb449a7b0730187e7318880194dbfead41de3c0b9f52885058c14f",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 3,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "30ac3dfbb91732eae642c532c223258631af72c8541ddcae07467145c77e96f7",
+        "contractHash": "212b57793f49e67da6f0c249c93faca2b489275730a9c80e58c883f034788ef9",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "evaluated",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "stimulus": 30.4,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 2,
+            "stimulus": 71.4,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 3,
+            "stimulus": 91,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 4,
+            "stimulus": 52,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 5,
+            "stimulus": 50,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 6,
+            "stimulus": 48,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 7,
+            "stimulus": 50,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 8,
+            "stimulus": 100,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 9,
+            "stimulus": 0,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 10,
+            "stimulus": 30.4,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          }
+        ],
+        "message": "Provjerena je točna spremljena snimka.",
+        "virtualDurationMs": 10000,
+        "peakRssKiB": 91248,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 438
+      }
+    },
+    {
+      "profileId": "24C-sound@1",
+      "target": "micropython",
+      "snapshotHash": "224fd21a8b871547269b55a5dd441fced8cd447cdc11a7c7621744a24f2cbbc4",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "212b57793f49e67da6f0c249c93faca2b489275730a9c80e58c883f034788ef9",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-sound@1",
+        "snapshotHash": "224fd21a8b871547269b55a5dd441fced8cd447cdc11a7c7621744a24f2cbbc4",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 8,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "30ac3dfbb91732eae642c532c223258631af72c8541ddcae07467145c77e96f7",
+        "contractHash": "212b57793f49e67da6f0c249c93faca2b489275730a9c80e58c883f034788ef9",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "evaluated",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "stimulus": 30.4,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 2,
+            "stimulus": 71.4,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": {
+              "DO": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 3,
+            "stimulus": 91,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": {
+              "DO": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 4,
+            "stimulus": 52,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 5,
+            "stimulus": 50,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 6,
+            "stimulus": 48,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 7,
+            "stimulus": 50,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 8,
+            "stimulus": 100,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 9,
+            "stimulus": 0,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 10,
+            "stimulus": 30.4,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          }
+        ],
+        "message": "Provjerena je točna spremljena snimka.",
+        "virtualDurationMs": 10000,
+        "peakRssKiB": 94896,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 409
+      }
+    },
+    {
+      "profileId": "24C-sound@1",
+      "target": "micropython",
+      "snapshotHash": "9bb6af4f1cf135a6672cd455b14d1e7422e969ac9292e449c18915881e5f65c0",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "212b57793f49e67da6f0c249c93faca2b489275730a9c80e58c883f034788ef9",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-sound@1",
+        "snapshotHash": "9bb6af4f1cf135a6672cd455b14d1e7422e969ac9292e449c18915881e5f65c0",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 0,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "30ac3dfbb91732eae642c532c223258631af72c8541ddcae07467145c77e96f7",
+        "contractHash": "212b57793f49e67da6f0c249c93faca2b489275730a9c80e58c883f034788ef9",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "program_error",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [],
+        "message": "Program je prijavio pogrešku. Provjeri kod pokretanjem u laboratoriju.",
+        "virtualDurationMs": 10000,
+        "peakRssKiB": 84380,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 376
+      }
+    },
+    {
+      "profileId": "24C-analogCompare@1",
+      "target": "micropython",
+      "snapshotHash": "ca0c4d91144728ff0ea25d06d938ab2f30e96cd75d621f8fda9051228efa155a",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "a0ef843e7fa0e18c9f7055010ef537fae6a2300c67eaafc628552fc7b266d605",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-analogCompare@1",
+        "snapshotHash": "ca0c4d91144728ff0ea25d06d938ab2f30e96cd75d621f8fda9051228efa155a",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 3,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "801a59b4965ba110f65d6293c704d783f7fb439d1fb9dc884dc455c7386569c8",
+        "contractHash": "a0ef843e7fa0e18c9f7055010ef537fae6a2300c67eaafc628552fc7b266d605",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "evaluated",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "lm35": 25,
+            "ntc": 25,
+            "expected": {
+              "LM35": 25,
+              "NTC": 25
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 2,
+            "lm35": 40,
+            "ntc": 25,
+            "expected": {
+              "LM35": 40,
+              "NTC": 25
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 3,
+            "lm35": 25,
+            "ntc": 59.4,
+            "expected": {
+              "LM35": 25,
+              "NTC": 59.4
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 4,
+            "lm35": 2,
+            "ntc": -20,
+            "expected": {
+              "LM35": 2,
+              "NTC": -20
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 5,
+            "lm35": 150,
+            "ntc": 100,
+            "expected": {
+              "LM35": 150,
+              "NTC": 100
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 6,
+            "lm35": 25,
+            "ntc": 25,
+            "expected": {
+              "LM35": 25,
+              "NTC": 25
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          }
+        ],
+        "message": "Provjerena je točna spremljena snimka.",
+        "virtualDurationMs": 6000,
+        "peakRssKiB": 87444,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 371
+      }
+    },
+    {
+      "profileId": "24C-analogCompare@1",
+      "target": "micropython",
+      "snapshotHash": "228179338212a3acac3322f11a577805abd3b820d2a9e3fa134b362c604d309d",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "a0ef843e7fa0e18c9f7055010ef537fae6a2300c67eaafc628552fc7b266d605",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-analogCompare@1",
+        "snapshotHash": "228179338212a3acac3322f11a577805abd3b820d2a9e3fa134b362c604d309d",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 8,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "801a59b4965ba110f65d6293c704d783f7fb439d1fb9dc884dc455c7386569c8",
+        "contractHash": "a0ef843e7fa0e18c9f7055010ef537fae6a2300c67eaafc628552fc7b266d605",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "evaluated",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "lm35": 25,
+            "ntc": 25,
+            "expected": {
+              "LM35": 25,
+              "NTC": 25
+            },
+            "observed": {
+              "LM35": 24.98,
+              "NTC": 24.99
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 2,
+            "lm35": 40,
+            "ntc": 25,
+            "expected": {
+              "LM35": 40,
+              "NTC": 25
+            },
+            "observed": {
+              "LM35": 39.97,
+              "NTC": 24.99
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 3,
+            "lm35": 25,
+            "ntc": 59.4,
+            "expected": {
+              "LM35": 25,
+              "NTC": 59.4
+            },
+            "observed": {
+              "LM35": 24.98,
+              "NTC": 59.4
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 4,
+            "lm35": 2,
+            "ntc": -20,
+            "expected": {
+              "LM35": 2,
+              "NTC": -20
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 5,
+            "lm35": 150,
+            "ntc": 100,
+            "expected": {
+              "LM35": 150,
+              "NTC": 100
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 6,
+            "lm35": 25,
+            "ntc": 25,
+            "expected": {
+              "LM35": 25,
+              "NTC": 25
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          }
+        ],
+        "message": "Provjerena je točna spremljena snimka.",
+        "virtualDurationMs": 6000,
+        "peakRssKiB": 103700,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 513
+      }
+    },
+    {
+      "profileId": "24C-analogCompare@1",
+      "target": "micropython",
+      "snapshotHash": "e3d28d10e2834b85899dc24432bf779f8e236d03ff7c885c6f1b6cf46e7a88f3",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "a0ef843e7fa0e18c9f7055010ef537fae6a2300c67eaafc628552fc7b266d605",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-analogCompare@1",
+        "snapshotHash": "e3d28d10e2834b85899dc24432bf779f8e236d03ff7c885c6f1b6cf46e7a88f3",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 0,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "801a59b4965ba110f65d6293c704d783f7fb439d1fb9dc884dc455c7386569c8",
+        "contractHash": "a0ef843e7fa0e18c9f7055010ef537fae6a2300c67eaafc628552fc7b266d605",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "program_error",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [],
+        "message": "Program je prijavio pogrešku. Provjeri kod pokretanjem u laboratoriju.",
+        "virtualDurationMs": 6000,
+        "peakRssKiB": 106036,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 394
+      }
+    },
+    {
+      "profileId": "24C-dualInputs@1",
+      "target": "micropython",
+      "snapshotHash": "20e4fe1bbe4b9ab32ceee1cd2a429f63e63246a9fefee8821559248c296b802b",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "ba3d8f884f35666e12953b5fda4caab9c73035889ddec4c81ee53af9a8a54d16",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-dualInputs@1",
+        "snapshotHash": "20e4fe1bbe4b9ab32ceee1cd2a429f63e63246a9fefee8821559248c296b802b",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 3,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "2a877dce233a13cadc4e10d6cb8810d1be49e47a0f134dfd4e638e661a6b4a79",
+        "contractHash": "ba3d8f884f35666e12953b5fda4caab9c73035889ddec4c81ee53af9a8a54d16",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "evaluated",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "a": 25,
+            "b": 75,
+            "s1": false,
+            "s2": false,
+            "expected": {
+              "A": 1090,
+              "B": 3269,
+              "S1": 1,
+              "S2": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 2,
+            "a": 55,
+            "b": 75,
+            "s1": true,
+            "s2": false,
+            "expected": {
+              "A": 2398,
+              "B": 3269,
+              "S1": 0,
+              "S2": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 3,
+            "a": 25,
+            "b": 21.2,
+            "s1": false,
+            "s2": true,
+            "expected": {
+              "A": 1090,
+              "B": 924,
+              "S1": 1,
+              "S2": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 4,
+            "a": 0,
+            "b": 100,
+            "s1": true,
+            "s2": false,
+            "expected": {
+              "A": 0,
+              "B": 4095,
+              "S1": 0,
+              "S2": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 5,
+            "a": 100,
+            "b": 0,
+            "s1": false,
+            "s2": true,
+            "expected": {
+              "A": 4095,
+              "B": 0,
+              "S1": 1,
+              "S2": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 6,
+            "a": 25,
+            "b": 75,
+            "s1": false,
+            "s2": false,
+            "expected": {
+              "A": 1090,
+              "B": 3269,
+              "S1": 1,
+              "S2": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          }
+        ],
+        "message": "Provjerena je točna spremljena snimka.",
+        "virtualDurationMs": 6000,
+        "peakRssKiB": 93432,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 389
+      }
+    },
+    {
+      "profileId": "24C-dualInputs@1",
+      "target": "micropython",
+      "snapshotHash": "4a9a1af629fde372f813e6e56f523f5ed7ff0127e321a5a9ce45d4b3c62537ec",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "ba3d8f884f35666e12953b5fda4caab9c73035889ddec4c81ee53af9a8a54d16",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-dualInputs@1",
+        "snapshotHash": "4a9a1af629fde372f813e6e56f523f5ed7ff0127e321a5a9ce45d4b3c62537ec",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 8,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "2a877dce233a13cadc4e10d6cb8810d1be49e47a0f134dfd4e638e661a6b4a79",
+        "contractHash": "ba3d8f884f35666e12953b5fda4caab9c73035889ddec4c81ee53af9a8a54d16",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "evaluated",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "a": 25,
+            "b": 75,
+            "s1": false,
+            "s2": false,
+            "expected": {
+              "A": 1090,
+              "B": 3269,
+              "S1": 1,
+              "S2": 1
+            },
+            "observed": {
+              "A": 1090,
+              "B": 3269,
+              "S1": 1,
+              "S2": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 2,
+            "a": 55,
+            "b": 75,
+            "s1": true,
+            "s2": false,
+            "expected": {
+              "A": 2398,
+              "B": 3269,
+              "S1": 0,
+              "S2": 1
+            },
+            "observed": {
+              "A": 2398,
+              "B": 3269,
+              "S1": 0,
+              "S2": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 3,
+            "a": 25,
+            "b": 21.2,
+            "s1": false,
+            "s2": true,
+            "expected": {
+              "A": 1090,
+              "B": 924,
+              "S1": 1,
+              "S2": 0
+            },
+            "observed": {
+              "A": 1090,
+              "B": 924,
+              "S1": 1,
+              "S2": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 4,
+            "a": 0,
+            "b": 100,
+            "s1": true,
+            "s2": false,
+            "expected": {
+              "A": 0,
+              "B": 4095,
+              "S1": 0,
+              "S2": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 5,
+            "a": 100,
+            "b": 0,
+            "s1": false,
+            "s2": true,
+            "expected": {
+              "A": 4095,
+              "B": 0,
+              "S1": 1,
+              "S2": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 6,
+            "a": 25,
+            "b": 75,
+            "s1": false,
+            "s2": false,
+            "expected": {
+              "A": 1090,
+              "B": 3269,
+              "S1": 1,
+              "S2": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          }
+        ],
+        "message": "Provjerena je točna spremljena snimka.",
+        "virtualDurationMs": 6000,
+        "peakRssKiB": 89928,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 395
+      }
+    },
+    {
+      "profileId": "24C-dualInputs@1",
+      "target": "micropython",
+      "snapshotHash": "c4533042231d2090f47aa02926ca2d93a76457b25106287f4ac18d4a95307c6e",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "ba3d8f884f35666e12953b5fda4caab9c73035889ddec4c81ee53af9a8a54d16",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-dualInputs@1",
+        "snapshotHash": "c4533042231d2090f47aa02926ca2d93a76457b25106287f4ac18d4a95307c6e",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 0,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "2a877dce233a13cadc4e10d6cb8810d1be49e47a0f134dfd4e638e661a6b4a79",
+        "contractHash": "ba3d8f884f35666e12953b5fda4caab9c73035889ddec4c81ee53af9a8a54d16",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "program_error",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [],
+        "message": "Program je prijavio pogrešku. Provjeri kod pokretanjem u laboratoriju.",
+        "virtualDurationMs": 6000,
+        "peakRssKiB": 84760,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 355
+      }
+    },
+    {
+      "profileId": "24C-sound@1",
+      "target": "micropython",
+      "snapshotHash": "f57e351f9c913cd6d1273d499dbd19a570ab42e0493d5f5842041bd13c1bdc44",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "212b57793f49e67da6f0c249c93faca2b489275730a9c80e58c883f034788ef9",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-sound@1",
+        "snapshotHash": "f57e351f9c913cd6d1273d499dbd19a570ab42e0493d5f5842041bd13c1bdc44",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 5,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "30ac3dfbb91732eae642c532c223258631af72c8541ddcae07467145c77e96f7",
+        "contractHash": "212b57793f49e67da6f0c249c93faca2b489275730a9c80e58c883f034788ef9",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "evaluated",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "stimulus": 30.4,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 2,
+            "stimulus": 71.4,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 3,
+            "stimulus": 91,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": {
+              "DO": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 4,
+            "stimulus": 52,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": {
+              "DO": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 5,
+            "stimulus": 50,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": {
+              "DO": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 6,
+            "stimulus": 48,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 7,
+            "stimulus": 50,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 8,
+            "stimulus": 100,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": {
+              "DO": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 9,
+            "stimulus": 0,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 10,
+            "stimulus": 30.4,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          }
+        ],
+        "message": "Provjerena je točna spremljena snimka.",
+        "virtualDurationMs": 10000,
+        "peakRssKiB": 99564,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 403
+      }
+    },
+    {
+      "profileId": "24C-sound@1",
+      "target": "micropython",
+      "snapshotHash": "f57e351f9c913cd6d1273d499dbd19a570ab42e0493d5f5842041bd13c1bdc44",
+      "seed": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "contractHash": "212b57793f49e67da6f0c249c93faca2b489275730a9c80e58c883f034788ef9",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-sound@1",
+        "snapshotHash": "f57e351f9c913cd6d1273d499dbd19a570ab42e0493d5f5842041bd13c1bdc44",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 3,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "30ac3dfbb91732eae642c532c223258631af72c8541ddcae07467145c77e96f7",
+        "contractHash": "212b57793f49e67da6f0c249c93faca2b489275730a9c80e58c883f034788ef9",
+        "seedHash": "ffe054fe7ae0cb6dc65c3af9b61d5209f439851db43d0ba5997337df154668eb",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "evaluated",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "stimulus": 16.4,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 2,
+            "stimulus": 57.3,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 3,
+            "stimulus": 33.2,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 4,
+            "stimulus": 48,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 5,
+            "stimulus": 50,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 6,
+            "stimulus": 52,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 7,
+            "stimulus": 50,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 8,
+            "stimulus": 100,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": {
+              "DO": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 9,
+            "stimulus": 0,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 10,
+            "stimulus": 16.4,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          }
+        ],
+        "message": "Provjerena je točna spremljena snimka.",
+        "virtualDurationMs": 10000,
+        "peakRssKiB": 92888,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 375
+      }
+    },
+    {
+      "profileId": "24C-sound@1",
+      "target": "micropython",
+      "snapshotHash": "f57e351f9c913cd6d1273d499dbd19a570ab42e0493d5f5842041bd13c1bdc44",
+      "seed": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+      "contractHash": "212b57793f49e67da6f0c249c93faca2b489275730a9c80e58c883f034788ef9",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-sound@1",
+        "snapshotHash": "f57e351f9c913cd6d1273d499dbd19a570ab42e0493d5f5842041bd13c1bdc44",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 5,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "30ac3dfbb91732eae642c532c223258631af72c8541ddcae07467145c77e96f7",
+        "contractHash": "212b57793f49e67da6f0c249c93faca2b489275730a9c80e58c883f034788ef9",
+        "seedHash": "a8ae6e6ee929abea3afcfc5258c8ccd6f85273e0d4626d26c7279f3250f77c8e",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "evaluated",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": false,
+            "points": 0,
+            "explanation": "Zahtjev nije potvrđen u svim pripadnim scenarijima."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "stimulus": 21.7,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 2,
+            "stimulus": 56.7,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": null,
+            "validPath": true,
+            "freshEnough": false,
+            "passed": false
+          },
+          {
+            "index": 3,
+            "stimulus": 96.4,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": {
+              "DO": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 4,
+            "stimulus": 52,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": {
+              "DO": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 5,
+            "stimulus": 50,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": {
+              "DO": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 6,
+            "stimulus": 48,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 7,
+            "stimulus": 50,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 8,
+            "stimulus": 100,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": {
+              "DO": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 9,
+            "stimulus": 0,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 10,
+            "stimulus": 21.7,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          }
+        ],
+        "message": "Provjerena je točna spremljena snimka.",
+        "virtualDurationMs": 10000,
+        "peakRssKiB": 106820,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 380
+      }
+    },
+    {
+      "profileId": "24C-sound@1",
+      "target": "micropython",
+      "snapshotHash": "2b85660489f1e1b23d27e76fd254eb06ceb0f896051399dc69d7d8ea0f55496e",
+      "seed": "5555555555555555555555555555555555555555555555555555555555555555",
+      "contractHash": "212b57793f49e67da6f0c249c93faca2b489275730a9c80e58c883f034788ef9",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-sound@1",
+        "snapshotHash": "2b85660489f1e1b23d27e76fd254eb06ceb0f896051399dc69d7d8ea0f55496e",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 10,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "30ac3dfbb91732eae642c532c223258631af72c8541ddcae07467145c77e96f7",
+        "contractHash": "212b57793f49e67da6f0c249c93faca2b489275730a9c80e58c883f034788ef9",
+        "seedHash": "911878b1ff94a6daecaba1d7ef6fda0b97116a16291389427b402a013a2ae79f",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "evaluated",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "stimulus": 30.4,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 2,
+            "stimulus": 71.4,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": {
+              "DO": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 3,
+            "stimulus": 91,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": {
+              "DO": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 4,
+            "stimulus": 52,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": {
+              "DO": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 5,
+            "stimulus": 50,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": {
+              "DO": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 6,
+            "stimulus": 48,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 7,
+            "stimulus": 50,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 8,
+            "stimulus": 100,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": {
+              "DO": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 9,
+            "stimulus": 0,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 10,
+            "stimulus": 30.4,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          }
+        ],
+        "message": "Provjerena je točna spremljena snimka.",
+        "virtualDurationMs": 10000,
+        "peakRssKiB": 86416,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 384
+      }
+    },
+    {
+      "profileId": "24C-sound@1",
+      "target": "micropython",
+      "snapshotHash": "0339964d9bec969e5d588f9d2c3e4b6a864dc34d735b73e0aed7610a8548fd5e",
+      "seed": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "contractHash": "212b57793f49e67da6f0c249c93faca2b489275730a9c80e58c883f034788ef9",
+      "result": {
+        "format": "labosv2-grading-result",
+        "version": 1,
+        "authority": "server-verified",
+        "checkerVersion": "24C.1",
+        "profileId": "24C-sound@1",
+        "snapshotHash": "0339964d9bec969e5d588f9d2c3e4b6a864dc34d735b73e0aed7610a8548fd5e",
+        "rubricHash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "points": 10,
+        "jobId": 7,
+        "attemptId": 3,
+        "revision": 2,
+        "target": "micropython",
+        "rubricDigest": "30ac3dfbb91732eae642c532c223258631af72c8541ddcae07467145c77e96f7",
+        "contractHash": "212b57793f49e67da6f0c249c93faca2b489275730a9c80e58c883f034788ef9",
+        "seedHash": "ffe054fe7ae0cb6dc65c3af9b61d5209f439851db43d0ba5997337df154668eb",
+        "checkerHash": "20b90543a5d9f6d96cc1e4ca7be3fa3710ea4dc1ed76360d6202fa904fae9da9",
+        "status": "evaluated",
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "stimulus": 16.4,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 2,
+            "stimulus": 57.3,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": {
+              "DO": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 3,
+            "stimulus": 33.2,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 4,
+            "stimulus": 48,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 5,
+            "stimulus": 50,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 6,
+            "stimulus": 52,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": {
+              "DO": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 7,
+            "stimulus": 50,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": {
+              "DO": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 8,
+            "stimulus": 100,
+            "active": true,
+            "expected": {
+              "DO": 0
+            },
+            "observed": {
+              "DO": 0
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 9,
+            "stimulus": 0,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          },
+          {
+            "index": 10,
+            "stimulus": 16.4,
+            "active": false,
+            "expected": {
+              "DO": 1
+            },
+            "observed": {
+              "DO": 1
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "passed": true
+          }
+        ],
+        "message": "Provjerena je točna spremljena snimka.",
+        "virtualDurationMs": 10000,
+        "peakRssKiB": 117944,
+        "provenance": {
+          "method": "source-execution"
+        },
+        "durationMs": 353
+      }
+    }
+  ]
+}

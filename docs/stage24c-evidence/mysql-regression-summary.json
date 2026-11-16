@@ -1,0 +1,42 @@
+[
+  {
+    "suite": "analog",
+    "returnCode": 0
+  },
+  {
+    "suite": "contract",
+    "returnCode": 0
+  },
+  {
+    "suite": "grading",
+    "returnCode": 0
+  },
+  {
+    "suite": "submissions",
+    "returnCode": 0
+  },
+  {
+    "suite": "reports",
+    "returnCode": 0
+  },
+  {
+    "suite": "classes",
+    "returnCode": 0
+  },
+  {
+    "suite": "portal",
+    "returnCode": 0
+  },
+  {
+    "suite": "work",
+    "returnCode": 0
+  },
+  {
+    "suite": "work_ui",
+    "returnCode": 0
+  },
+  {
+    "suite": "ci",
+    "returnCode": 0
+  }
+]

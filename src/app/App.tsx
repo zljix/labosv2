@@ -678,7 +678,7 @@ export default function App() {
           >
             <Icon name={s.theme === "light" ? "moon" : "sun"} />
           </button>
-          <a className="stage-tag" href={appAsset('school.html')} title="Školsko izdanje · pravila bodovanja i S3 C++">v{APP_VERSION} · 24AB</a>
+          <a className="stage-tag" href={appAsset('school.html')} title="Školsko izdanje · analogni ulazi i ADC/PWM">v{APP_VERSION} · 24C</a>
         </div>
       </header>
       <div className="toolbar">

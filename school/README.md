@@ -1,10 +1,10 @@
-# Labosv2 · školski paket · etapa 24D
+# Labosv2 · školski paket · etapa 24E
 
 Prethodno izdanje 0.13.8-beta.1 pripremilo je školski pilot, obrazac opažanja i razvojni pokus 30 + 1; vidi [23I](../docs/stage23i-pilot.md). Etapa 23H dodala je postignuća, izvoze, komentare i korekcije, arhiviranje, čuvanje međurevizija te privatne kopije i povrat. Postupak i provjere su u [izvješću 23H](../docs/stage23h-reports-administration.md). [Raniji zapis integracije 23F](https://github.com/zljix/labosv2/actions/runs/43738711916) ostaje povijesni dokaz. Stvarni školski pilot ostaje zasebna provjera.
 
 Etapa 23A priprema postojeći laboratorij za školski Apache/PHP/MySQL smjer i dokazuje ponovno izvršavanje izvan učenikova preglednika. Polazište je `zljix/labos@3c4a281` (0.12.9), uključujući posljednju doradu vodova. Ovaj razvoj objavljuje se u `zljix/labosv2`.
 
-**Dostupno:** simulator, postojeći projekti i izvozi, školski paket, PHP provjera preduvjeta, MySQL migracije, početni administrator, prijava/odjava, uloge, upravljanje računima i lozinkama, razredi, CSV uvoz, pozivni kodovi, potvrda učenika i verzionirane dodjele vježbi te raniji ograničeni dokaz tipkala/LED-ice, poslužiteljski pokušaji, nepromjenjive radne revizije, automatsko spremanje, usporedba sukoba i nastavnički pregled rada. **Službeno bodovanje sada pokriva 80 od 268 kombinacija.** Etapa 24D dodaje sedam senzorskih rubrika; [upute i provjere](../docs/stage24d-sensors.md). Završetak, zaključavanje, povijest i dopuštena dorada dostupni su u 23F. Izvorni plan od 14. 11. 2026. zadržan je.
+**Dostupno:** simulator, postojeći projekti i izvozi, školski paket, PHP provjera preduvjeta, MySQL migracije, početni administrator, prijava/odjava, uloge, upravljanje računima i lozinkama, razredi, CSV uvoz, pozivni kodovi, potvrda učenika i verzionirane dodjele vježbi te raniji ograničeni dokaz tipkala/LED-ice, poslužiteljski pokušaji, nepromjenjive radne revizije, automatsko spremanje, usporedba sukoba i nastavnički pregled rada. **Službeno bodovanje sada pokriva 104 od 268 kombinacija.** Etapa 24E dodaje šest rubrika enkodera i IR-a; [upute i provjere](../docs/stage24e-events.md). Završetak, zaključavanje, povijest i dopuštena dorada dostupni su u 23F. Izvorni plan od 14. 11. 2026. zadržan je.
 
 ## Izgradnja
 
@@ -14,7 +14,7 @@ Node.js 24 LTS, `npm ci`, zatim:
 npm run build:school
 ```
 
-Nastaje `release/Labosv2_0.14.2_24D_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
+Nastaje `release/Labosv2_0.14.3_24E_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
 
 | Mapa | Namjena |
 | --- | --- |
@@ -417,3 +417,9 @@ Pri nadogradnji sačuvaj konfiguraciju, sesije i bazu, zamijeni paket, pokreni p
 Izdanje 0.14.2-beta.1 pokriva 80/268 kombinacija. AM2320, DHT11/DHT22, pogreške DHT-a te DS18B20 ROM, razlučivost i pogreške imaju zasebne rubrike na sva četiri cilja. Učenik prije rada vidi rokove, jedinice i kriterije. Početni MicroPython pokus prečestog DHT čitanja treba prilagoditi intervalu senzora.
 
 Nema nove SQL migracije. Sačuvaj konfiguraciju, sesije i bazu, pokreni postojeći migrate i ponovno pokreni provjeravače. Novi dulji senzorski scenariji imaju granice 65 s zidnog i 58 s CPU vremena uz postojeću 180-sekundnu isporuku. [Opseg, provjere i ograničenja](../docs/stage24d-sensors.md). Sljedeća etapa je 24E.
+
+## 24E Enkoder i infracrveno upravljanje
+
+Izdanje 0.14.3-beta.1 pokriva 104/268 kombinacija. Sirovi CLK/DT/SW, dekoder i poskakivanje te NEC impulsi, LED i TX/RX imaju zasebne rubrike na sva četiri cilja. Kriteriji i rokovi su vidljivi prije početka. Novi provjeravač koristi stvarne tragove bridova i električni izlaz; fizički položaj enkodera ne zamjenjuje programski brojač.
+
+Nema nove SQL migracije. Sačuvaj konfiguraciju, sesije i bazu, pokreni postojeći migrate i ponovno pokreni provjeravače. Ranije rubrike i zaključane predaje ostaju neizmijenjene. Novi scenariji zadržavaju 65 s zidnog i 58 s CPU ograničenja. [Opseg i provjere](../docs/stage24e-events.md). Sljedeća etapa je 24F.

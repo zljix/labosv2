@@ -1,7 +1,7 @@
 {
   "format": "labosv2-school-profile",
   "version": 1,
-  "stage": "24D",
+  "stage": "24E",
   "sourceBaseline": "zljix/labos@3c4a281c10282d63b2742280f69aadbc08d7ae1e",
   "webServer": "Apache 2.4 with HTTPS",
   "phpBranches": [
@@ -80,7 +80,7 @@
     "idempotentSaves": true
   },
   "grading": {
-    "checkerVersion": "24D.1",
+    "checkerVersion": "24E.1",
     "profiles": [
       "23E-button-led@1",
       "23E-analog-threshold@1",
@@ -108,7 +108,13 @@
       "24D-dhtErrors@1",
       "24D-ds18Multi@1",
       "24D-ds18Resolution@1",
-      "24D-ds18Errors@1"
+      "24D-ds18Errors@1",
+      "24E-encoderRaw@1",
+      "24E-ky040@1",
+      "24E-encoderBounce@1",
+      "24E-irPulses@1",
+      "24E-irLED@1",
+      "24E-irTransmit@1"
     ],
     "targets": [
       "micropython",
@@ -125,18 +131,21 @@
       "23E.1",
       "23G.1",
       "24AB.1",
-      "24C.1"
+      "24C.1",
+      "24D.1"
     ],
     "coverage": {
       "combinations": 268,
-      "supported": 80,
-      "unsupported": 188,
+      "supported": 104,
+      "unsupported": 164,
       "introductoryLocalOnly": 5
     },
     "executionContract": "labosv2-execution-contract@1",
     "jobVersion": 2,
     "sensorWallTimeMs": 65000,
-    "sensorCpuSeconds": 58
+    "sensorCpuSeconds": 58,
+    "eventWallTimeMs": 65000,
+    "eventCpuSeconds": 58
   },
   "submissions": {
     "exactRevision": true,

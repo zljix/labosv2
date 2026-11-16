@@ -1,6 +1,6 @@
 {
   "name": "esp32-micropython-lab",
-  "version": "0.14.2-beta.1",
+  "version": "0.14.3-beta.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -84,7 +84,9 @@
     "test:school-analog": "node --import tsx --test verification/school-analog.test.ts",
     "test:school-analog-api": "node --import tsx --test verification/school-analog-api.test.mjs",
     "test:school-sensors": "node --import tsx --test verification/school-sensors.test.ts",
-    "test:school-sensors-api": "node --import tsx --test verification/school-sensors-api.test.mjs"
+    "test:school-sensors-api": "node --import tsx --test verification/school-sensors-api.test.mjs",
+    "test:school-events": "node --import tsx --test verification/school-events.test.ts",
+    "test:school-events-api": "node --import tsx --test verification/school-events-api.test.mjs"
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.1",

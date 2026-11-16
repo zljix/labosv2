@@ -1,0 +1,157 @@
+name: Etapa 24L · završni izvještaj i provjereni paket
+on:
+  push:
+    branches: [stage24l-finalize]
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  finalize:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - name: Potvrdi neizmijenjeni program i prolaz svih funkcionalnih koraka
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node --input-type=module - <<'JS'
+          import {readFileSync,mkdirSync,writeFileSync} from 'node:fs';
+          import {execFileSync} from 'node:child_process';
+          const base='29f3e134927a606146bedf981f279a83c4bccaf2';
+          const changes=execFileSync('git',['diff','--name-only',base,'HEAD'],{encoding:'utf8'}).trim().split('\n').sort();
+          if(JSON.stringify(changes)!==JSON.stringify(['.github/workflows/stage24l-finalize.yml','verification/school-optical-api.test.mjs']))throw Error('Unexpected source change');
+          const old=execFileSync('git',['show',base+':verification/school-optical-api.test.mjs'],{encoding:'utf8'});
+          if(readFileSync('verification/school-optical-api.test.mjs','utf8').replaceAll('stage24l-evidence','stage24k-evidence')!==old)throw Error('API test changed beyond its evidence directory');
+          const api='https://api.github.com/repos/'+process.env.GITHUB_REPOSITORY;
+          const get=async path=>{const r=await fetch(api+path,{headers:{Authorization:'Bearer '+process.env.GH_TOKEN,Accept:'application/vnd.github+json'}});if(!r.ok)throw Error('Evidence API '+r.status);return r.json();};
+          const run=await get('/actions/runs/43978541338');if(run.head_sha!==base)throw Error('Wrong original source');
+          const {jobs}=await get('/actions/runs/43978541338/jobs?per_page=100');
+          const native=jobs.filter(j=>j.name.startsWith('environment ('));
+          if(native.length!==4||native.some(j=>j.conclusion!=='success'))throw Error('Native acceptance incomplete');
+          const school=jobs.find(j=>j.name==='school-acceptance'),assembly=school.steps.find(s=>s.name==='Poveži nativni prihvat, školske rezultate i isporučeni provjeravač');
+          if(!assembly||assembly.conclusion!=='failure')throw Error('Unexpected original assembly state');
+          const verified=school.steps.filter(s=>s.number<assembly.number);
+          if(verified.length<30||verified.some(s=>!['success','skipped'].includes(s.conclusion)))throw Error('Original functional step failed');
+          for(const name of ['Provjeri svih 16 novih dodjela, bodove i zaključavanje','Regresija svih 24 RTC i SD dodjela','Pokus s 30 učenika, stvarnim PHP/MySQL i dva privatna provjeravača','Provjeri izvještaje, korekcije, arhivu, čuvanje i povrat sigurnosne kopije','Provjeri sučelje središnjeg spremanja']){
+           if(!verified.some(s=>s.name===name&&s.conclusion==='success'))throw Error('Missing successful check: '+name);
+          }
+          mkdirSync('docs/stage24l-evidence',{recursive:true});
+          const receipt={format:'labosv2-24l-regression-receipt',version:1,sourceCommit:base,runURL:run.html_url,
+           allFunctionalStepsPassed:true,verifiedSteps:verified.map(({number,name,conclusion})=>({number,name,conclusion})),
+           assemblyRepair:'The optical API evidence directory was corrected from stage24k-evidence to stage24l-evidence; application and checker bytes are unchanged.'};
+          writeFileSync('docs/stage24l-evidence/regression-receipt.json',JSON.stringify(receipt,null,2)+'\n');
+          console.log(JSON.stringify({sourceCommit:base,verifiedSteps:verified.length,allFunctionalStepsPassed:true}));
+          JS
+      - uses: actions/download-artifact@v4
+        with:
+          name: Labosv2-24L-Zavrsni-dokazi
+          run-id: 43978541338
+          github-token: ${{ github.token }}
+          path: docs
+      - name: Potvrdi i ukloni samo pogrešno smještenu kopiju izvještaja
+        run: |
+          node --input-type=module - <<'JS'
+          import {readFileSync,unlinkSync} from 'node:fs';
+          const p='docs/stage24k-evidence/mysql-optical.json',e=JSON.parse(readFileSync(p));
+          if(e.sourceCommit!=='29f3e134927a606146bedf981f279a83c4bccaf2'||e.results.length!==16||e.results.some(r=>r.report.points!==10||!r.locked)||!e.legacyPreserved)throw Error('Original optical evidence incomplete');
+          unlinkSync(p);
+          JS
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: pdo_mysql, json, session
+          coverage: none
+      - name: Pokreni zasebni MySQL s jednokratnim vjerodajnicama
+        shell: bash
+        run: |
+          set +x
+          db_root_pass="$(openssl rand -hex 24)"
+          db_app_pass="$(openssl rand -hex 24)"
+          echo "::add-mask::$db_root_pass"
+          echo "::add-mask::$db_app_pass"
+          docker run --detach --name labosv2-ci-db \
+            --publish 127.0.0.1:3306:3306 \
+            --env MYSQL_ROOT_PASSWORD="$db_root_pass" \
+            --env MYSQL_DATABASE=labosv2_test_optical \
+            --env MYSQL_USER=labosv2_ci \
+            --env MYSQL_PASSWORD="$db_app_pass" mysql:8.4.7
+          echo "LAB_TEST_DB_PASSWORD=$db_app_pass" >> "$GITHUB_ENV"
+          for attempt in $(seq 1 60); do
+            if docker exec labosv2-ci-db sh -c 'MYSQL_PWD="$MYSQL_ROOT_PASSWORD" mysqladmin ping --host=127.0.0.1 --silent' >/dev/null 2>&1; then
+              exit 0
+            fi
+            sleep 2
+          done
+          echo 'Test MySQL did not become ready.' >&2
+          exit 1
+      - name: Pripremi Linux izolaciju
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcap-dev pkg-config ninja-build
+          python3 -m pip install --user meson==1.9.1
+          git clone --quiet https://github.com/containers/bubblewrap.git "$RUNNER_TEMP/bubblewrap"
+          git -C "$RUNNER_TEMP/bubblewrap" checkout --quiet 2a76602a8c71f36c1527cf9fc3417d9149822e0c
+          "$HOME/.local/bin/meson" setup "$RUNNER_TEMP/bwrap-build" "$RUNNER_TEMP/bubblewrap" --prefix="$RUNNER_TEMP/bwrap-install" -Dman=disabled -Dselinux=disabled -Dtests=false
+          ninja -C "$RUNNER_TEMP/bwrap-build"
+          ninja -C "$RUNNER_TEMP/bwrap-build" install
+          printf '%s\n' "$RUNNER_TEMP/bwrap-install/bin" >> "$GITHUB_PATH"
+      - run: npm run build:school
+      - name: Ponovi svih 16 dodjela i napiši dokaz u ispravnu mapu
+        run: npm run test:school-optical-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_optical;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - run: npm run test:school-coverage
+      - name: Poveži prihvaćene izvedbe s isporučenim provjeravačem
+        run: |
+          node --input-type=module - <<'JS'
+          import {readFileSync,writeFileSync} from 'node:fs';
+          import {createHash} from 'node:crypto';
+          const base='29f3e134927a606146bedf981f279a83c4bccaf2',targets=['micropython','s3-cpp','uno','nano'];
+          const records=targets.flatMap(t=>{const e=JSON.parse(readFileSync('docs/stage24l-evidence/optical-'+t+'.json'));if(e.sourceCommit!==base)throw Error('Wrong native evidence');return e.results;});
+          const api=JSON.parse(readFileSync('docs/stage24l-evidence/mysql-optical.json'));
+          if(api.sourceCommit!==process.env.GITHUB_SHA||api.results.length!==16||api.results.some(r=>r.report.points!==10||!r.locked)||!api.legacyPreserved)throw Error('School acceptance incomplete');
+          const checker=createHash('sha256');
+          for(const n of ['official.mjs','official-child.mjs'])checker.update(readFileSync('.build/school-grader/'+n));
+          for(const n of ['machine.py','runtime/micropython.mjs','runtime/micropython.wasm','avr-examples.json','s3-examples.json','s3-core-lock.mjs'])checker.update(readFileSync('public/'+n));
+          for(const n of ['scripts/avr-compile.mjs','scripts/s3-compile.mjs','school/grader/compile-child.mjs','school/grader/s3-compile-child.mjs','vendor/arduino/lock.json'])checker.update(readFileSync(n));
+          const hash=checker.digest('hex'),hashes=new Set([...records.map(r=>r.result.checkerHash),...api.results.map(r=>r.report.checkerHash),hash]);
+          if(hashes.size!==1||hash!=='dfa31f379e8bddf884a1ba5ccf35a756c6a4f3c801d6d9931c3f6adf642d7480')throw Error('Checker bytes differ');
+          const receipt=JSON.parse(readFileSync('docs/stage24l-evidence/regression-receipt.json'));if(!receipt.allFunctionalStepsPassed||receipt.sourceCommit!==base)throw Error('Missing regression receipt');
+          const summary={format:'labosv2-24l-acceptance',version:1,sourceCommit:process.env.GITHUB_SHA,nativeSourceCommit:base,regressionSourceCommit:base,
+           checkerHash:hash,coverage:{supported:248,total:268},targets,targetedExecutions:records.length,
+           independentCompilations:records.filter(r=>r.result.provenance?.method==='isolated-source-compilation').length,
+           lockedSchoolAssignments:api.results.length,legacyPreserved:true,
+           stageRunURL:process.env.GITHUB_SERVER_URL+'/'+process.env.GITHUB_REPOSITORY+'/actions/runs/'+process.env.GITHUB_RUN_ID,regressionRunURL:receipt.runURL};
+          if(summary.targetedExecutions!==162||summary.independentCompilations!==48)throw Error('Missing target evidence');
+          writeFileSync('docs/stage24l-evidence/acceptance-summary.json',JSON.stringify(summary,null,2)+'\n');console.log(JSON.stringify(summary));
+          JS
+      - run: node scripts/package-school.mjs
+      - run: npm run test:school-package
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Labosv2-24L-Zavrsni-dokazi
+          path: |
+            docs/stage24l-evidence/
+            docs/stage23i-evidence/
+          if-no-files-found: error
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Labosv2-24L-Provjeren-skolski-paket
+          path: release/*.zip
+          if-no-files-found: error
+          retention-days: 30
+      - name: Ugasi testnu bazu
+        if: always()
+        run: docker rm --force labosv2-ci-db || true

@@ -42,5 +42,5 @@ test('24L PHP/MySQL publishes all 16 optical combinations, stores genuine scores
   assert.equal(f.command('migrate').status,0);
   const preserved=await ok(student.client.call('attempt&id='+old.attempt.id));assert.equal(preserved.assignment.task.contentHash,legacy.contentHash);assert.equal(preserved.attempt.grading.points,oldResult.points);
   assert.equal(preserved.assignment.task.rubric.profileId,'24B-analog-threshold@1');
-  mkdirSync('docs/stage24k-evidence',{recursive:true});writeFileSync('docs/stage24k-evidence/mysql-optical.json',JSON.stringify({format:'labosv2-optical-api-evidence',version:1,sourceCommit:process.env.GITHUB_SHA??null,legacyPreserved:true,legacyResult:oldResult,results},null,2)+'\n');
+  mkdirSync('docs/stage24l-evidence',{recursive:true});writeFileSync('docs/stage24l-evidence/mysql-optical.json',JSON.stringify({format:'labosv2-optical-api-evidence',version:1,sourceCommit:process.env.GITHUB_SHA??null,legacyPreserved:true,legacyResult:oldResult,results},null,2)+'\n');
 });

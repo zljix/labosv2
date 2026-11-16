@@ -1,0 +1,30 @@
+{
+  "format": "labosv2-24l-publication",
+  "version": 1,
+  "publishedCommit": "2f7e8ceedefad0ceb2fff935581d74f5ba8d674d",
+  "observedAt": "2026-11-16T23:51:20.284552+00:00",
+  "liveURL": "https://zljix.github.io/labosv2/",
+  "liveVersion": "0.14.10-beta.1",
+  "liveBuild": "37433b10590d51ca",
+  "verifiedResources": 205,
+  "verifiedBytes": 16448954,
+  "allManifestBytesVerified": true,
+  "runtimeMIMEsVerified": true,
+  "serviceWorkerVersionVerified": true,
+  "coverage": {
+    "supported": 248,
+    "total": 268
+  },
+  "acceptedSourceCommit": "3872d0ece3562aebd736e6f2c761a266a47d5fdb",
+  "nativeCodeSourceCommit": "29f3e134927a606146bedf981f279a83c4bccaf2",
+  "acceptanceRun": "https://github.com/zljix/labosv2/actions/runs/43981733195",
+  "regressionRun": "https://github.com/zljix/labosv2/actions/runs/43978541338",
+  "pagesRun": "https://github.com/zljix/labosv2/actions/runs/43982373789",
+  "installer": {
+    "filename": "Labosv2_0.14.10_24L_Objavljeno.zip",
+    "sha256": "4f192837392f7c6d034713de6c6f10643646b154d6f98f94b1c85be92a7de8b6",
+    "verifiedInventoryFiles": 911,
+    "checkerHash": "dfa31f379e8bddf884a1ba5ccf35a756c6a4f3c801d6d9931c3f6adf642d7480",
+    "unchangedCIInstaller": true
+  }
+}

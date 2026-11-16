@@ -1,0 +1,31 @@
+{
+  "format": "labosv2-release-download-verification",
+  "version": 1,
+  "release": "0.14.4-beta.1",
+  "stage": "24F",
+  "build": "48e33a6862aaa182",
+  "schoolRun": 43916966742,
+  "sourceHead": "d4887fd109f73292bde2878038434b1bebe0619f",
+  "filesVerified": 876,
+  "coverage": {
+    "themes": 18,
+    "variants": 67,
+    "combinations": 268,
+    "supported": 132,
+    "unsupported": 136,
+    "introductory": 5
+  },
+  "bytes": 12181913,
+  "sha256": "fa84df7320611a69e507900d28227a835f44a337d2fde4b22c39bccd4d102601",
+  "nativeBaseline": {
+    "run": 43915429891,
+    "head": "0f06dc124fb9ed5cde5e5ddeb5f257cd644fb260",
+    "targets": [
+      "micropython",
+      "s3-cpp",
+      "uno",
+      "nano"
+    ],
+    "independentCompilations": 67
+  }
+}

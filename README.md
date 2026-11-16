@@ -8,6 +8,8 @@ Nastavak postojećeg ESP32 MicroPython / Arduino laboratorija za školski sustav
 
 [Web laboratorij](https://zljix.github.io/labosv2/) · [Školski račun](https://zljix.github.io/labosv2/school.html#account) · [Upute za instalaciju](school/README.md) · [Bodovanje i dokazi 23E](docs/stage23e-grading.md)
 
+[Neovisni prihvat 24F](https://github.com/zljix/labosv2/actions/runs/43915429891) potvrđuje sva četiri cilja i 67 novih prijevoda. [Školski prihvat 24F](https://github.com/zljix/labosv2/actions/runs/43916966742) potvrđuje identičan programski izvor, PHP/MySQL, bodove, zaključavanje, 30 simuliranih učenika, izvještaje i paket.
+
 ## Novo u 24F
 
 - Sedam novih rubrika za relej, aktivnu i pasivnu zujalicu, SG90, jedan i dva L298N kanala te istodobni servo/motor/ton.

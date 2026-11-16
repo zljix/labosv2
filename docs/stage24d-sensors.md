@@ -23,7 +23,7 @@ Za temperaturu i vlagu koristi se `T=<broj> RH=<broj>`. Tri DS18B20 moraju uz te
 | AM2320 | 4600 ms | 2300 ms | ±0,15 °C / ±0,15 %RH |
 | DHT11 / DHT22 | 2400 ms | 2300 ms | ±0,15 prema prenesenom podatku |
 | DS18B20, više senzora / pogreške | 3200 ms | 3000 ms | ±0,065 °C prema registru |
-| DS18B20, razlučivost | 6500 ms | 4500 ms | ±0,065 °C prema registru i stvarnom broju bitova |
+| DS18B20, razlučivost | 4500 ms | 4500 ms | ±0,065 °C prema registru i stvarnom broju bitova |
 
 Tolerancija koraka izvršavanja je 100 ms. DHT11 se uspoređuje sa zaokruženim cjelobrojnim podatkom. DS18B20 se uspoređuje s kvantiziranim registrom, a ne s izmišljenom fizičkom preciznošću. AM2320 smije vratiti prethodni uzorak tijekom početnog roka; nakon toga se traži novi podatak i potpuni I2C prijenos.
 

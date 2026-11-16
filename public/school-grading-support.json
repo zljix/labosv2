@@ -3828,7 +3828,7 @@
         "profileId": "24D-ds18Resolution@1",
         "checkerVersion": "24D.1",
         "title": "DS18B20: stvarna razlučivost i dovršena pretvorba",
-        "instructions": "Na jednom DS18B20 ponavljaj postavljanje 9, 10, 11 i 12 bita. Prije pripadnog novog T=<broj> ispiši BITA=<broj> na istom ili neposredno prethodnom retku. Provjera čita stvarnu konfiguraciju i potpuni scratchpad: sama oznaka nije dovoljna. Pričekaj najmanje 93,75 / 187,5 / 375 / 750 ms ili valjan busy bit. Koraci su 0,5 / 0,25 / 0,125 / 0,0625 °C, što je razlučivost. Unutar svake pobude prikaži sva četiri načina. Prvi novi podatak unutar 6500 ms; razmak između novih podataka do 4500 ms. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
+        "instructions": "Na jednom DS18B20 ponavljaj postavljanje 9, 10, 11 i 12 bita. Prije pripadnog novog T=<broj> ispiši BITA=<broj> na istom ili neposredno prethodnom retku. Provjera čita stvarnu konfiguraciju i potpuni scratchpad: sama oznaka nije dovoljna. Pričekaj najmanje 93,75 / 187,5 / 375 / 750 ms ili valjan busy bit. Koraci su 0,5 / 0,25 / 0,125 / 0,0625 °C, što je razlučivost. Unutar svake pobude prikaži sva četiri načina. Prvi novi podatak unutar 4500 ms; razmak između novih podataka do 4500 ms. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
         "criteria": [
           {
             "id": "connection",
@@ -3877,7 +3877,7 @@
         "profileId": "24D-ds18Resolution@1",
         "checkerVersion": "24D.1",
         "title": "DS18B20: stvarna razlučivost i dovršena pretvorba",
-        "instructions": "Na jednom DS18B20 ponavljaj postavljanje 9, 10, 11 i 12 bita. Prije pripadnog novog T=<broj> ispiši BITA=<broj> na istom ili neposredno prethodnom retku. Provjera čita stvarnu konfiguraciju i potpuni scratchpad: sama oznaka nije dovoljna. Pričekaj najmanje 93,75 / 187,5 / 375 / 750 ms ili valjan busy bit. Koraci su 0,5 / 0,25 / 0,125 / 0,0625 °C, što je razlučivost. Unutar svake pobude prikaži sva četiri načina. Prvi novi podatak unutar 6500 ms; razmak između novih podataka do 4500 ms. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
+        "instructions": "Na jednom DS18B20 ponavljaj postavljanje 9, 10, 11 i 12 bita. Prije pripadnog novog T=<broj> ispiši BITA=<broj> na istom ili neposredno prethodnom retku. Provjera čita stvarnu konfiguraciju i potpuni scratchpad: sama oznaka nije dovoljna. Pričekaj najmanje 93,75 / 187,5 / 375 / 750 ms ili valjan busy bit. Koraci su 0,5 / 0,25 / 0,125 / 0,0625 °C, što je razlučivost. Unutar svake pobude prikaži sva četiri načina. Prvi novi podatak unutar 4500 ms; razmak između novih podataka do 4500 ms. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
         "criteria": [
           {
             "id": "connection",
@@ -3926,7 +3926,7 @@
         "profileId": "24D-ds18Resolution@1",
         "checkerVersion": "24D.1",
         "title": "DS18B20: stvarna razlučivost i dovršena pretvorba",
-        "instructions": "Na jednom DS18B20 ponavljaj postavljanje 9, 10, 11 i 12 bita. Prije pripadnog novog T=<broj> ispiši BITA=<broj> na istom ili neposredno prethodnom retku. Provjera čita stvarnu konfiguraciju i potpuni scratchpad: sama oznaka nije dovoljna. Pričekaj najmanje 93,75 / 187,5 / 375 / 750 ms ili valjan busy bit. Koraci su 0,5 / 0,25 / 0,125 / 0,0625 °C, što je razlučivost. Unutar svake pobude prikaži sva četiri načina. Prvi novi podatak unutar 6500 ms; razmak između novih podataka do 4500 ms. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
+        "instructions": "Na jednom DS18B20 ponavljaj postavljanje 9, 10, 11 i 12 bita. Prije pripadnog novog T=<broj> ispiši BITA=<broj> na istom ili neposredno prethodnom retku. Provjera čita stvarnu konfiguraciju i potpuni scratchpad: sama oznaka nije dovoljna. Pričekaj najmanje 93,75 / 187,5 / 375 / 750 ms ili valjan busy bit. Koraci su 0,5 / 0,25 / 0,125 / 0,0625 °C, što je razlučivost. Unutar svake pobude prikaži sva četiri načina. Prvi novi podatak unutar 4500 ms; razmak između novih podataka do 4500 ms. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
         "criteria": [
           {
             "id": "connection",
@@ -3975,7 +3975,7 @@
         "profileId": "24D-ds18Resolution@1",
         "checkerVersion": "24D.1",
         "title": "DS18B20: stvarna razlučivost i dovršena pretvorba",
-        "instructions": "Na jednom DS18B20 ponavljaj postavljanje 9, 10, 11 i 12 bita. Prije pripadnog novog T=<broj> ispiši BITA=<broj> na istom ili neposredno prethodnom retku. Provjera čita stvarnu konfiguraciju i potpuni scratchpad: sama oznaka nije dovoljna. Pričekaj najmanje 93,75 / 187,5 / 375 / 750 ms ili valjan busy bit. Koraci su 0,5 / 0,25 / 0,125 / 0,0625 °C, što je razlučivost. Unutar svake pobude prikaži sva četiri načina. Prvi novi podatak unutar 6500 ms; razmak između novih podataka do 4500 ms. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
+        "instructions": "Na jednom DS18B20 ponavljaj postavljanje 9, 10, 11 i 12 bita. Prije pripadnog novog T=<broj> ispiši BITA=<broj> na istom ili neposredno prethodnom retku. Provjera čita stvarnu konfiguraciju i potpuni scratchpad: sama oznaka nije dovoljna. Pričekaj najmanje 93,75 / 187,5 / 375 / 750 ms ili valjan busy bit. Koraci su 0,5 / 0,25 / 0,125 / 0,0625 °C, što je razlučivost. Unutar svake pobude prikaži sva četiri načina. Prvi novi podatak unutar 4500 ms; razmak između novih podataka do 4500 ms. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
         "criteria": [
           {
             "id": "connection",

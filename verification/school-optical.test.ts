@@ -5,6 +5,7 @@ import {gradeJob} from '../school/grader/official';
 import {gradingCoverage,gradingSupport} from '../school/grader/coverage';
 import {compileCircuit} from '../src/circuit/compile';
 import {createOpticalCheck,validOpticalConfig} from '../school/grader/optical';
+import {MAX30102} from '../public/max30102.mjs';
 import {opticalProfiles,starter,jobFor,compilerOptions,alternateOptical,wrongOptical} from './school-optical-fixture';
 import type {UrsTarget} from '../src/lessons/ursCatalog';
 const root=process.cwd(),evidence:any[]=[];
@@ -25,6 +26,16 @@ test('24L fake console output cannot create identity, registers or FIFO samples'
     const check=createOpticalCheck(c,p,'5'.repeat(64));check.observe({type:'console',text:'MAX ID=0x15 RAW N=10 RED=1 IR=1 FREQ=72 bpm (sintetski) points=10'});
     assert.deepEqual(check.outcomes([check.record()],true),[false,false,false]);
   }
+});
+test('24L a frame before I2C STOP waits for completion instead of permanently discarding the sample',async()=>{
+  const p=opticalProfiles.find(p=>p.taskKey==='optical/opticalRaw')!,c=compileCircuit((await starter(p.taskKey)).circuit as any);
+  const check=createOpticalCheck(c,p,'5'.repeat(64)),device=c.i2cDevices[0];let now=0;
+  const m=new MAX30102(device,()=>now),put=(r:number,v:number)=>{m.onAddress(true);m.write(Uint8Array.of(r,v));m.end(true);};
+  for(const [r,v]of [[8,0],[10,39],[12,31],[13,31],[9,3]])put(r,v);
+  now=20;m.onAddress(true);m.write(Uint8Array.of(7));m.end(true);m.onAddress(false);m.read(6);
+  const frame=()=>({type:'simulation',timeMs:now,optical:{[device.id]:m.snapshot(true)}});
+  check.observe(frame());m.end(false);check.observe(frame());
+  assert.equal(check.record().completeSamples,1);
 });
 for(const target of ['micropython','s3-cpp','uno','nano'] as UrsTarget[])test(`24L ${target}: three independent repetitions of all four saved sources`,{skip:selected(target),timeout:1200000},async()=>{
   for(const p of opticalProfiles)for(let i=0;i<3;i++){
@@ -68,6 +79,11 @@ test('24L tampered contracts, snapshots and stale Arduino binaries receive no po
     const r=await gradeJob({...job,...patch},{root});assert.equal(r.status,'unsupported');assert.equal(r.points,null);}
   for(const target of ['s3-cpp','uno','nano'] as UrsTarget[]){const changed=await starter(p.taskKey,target);changed.files['main.ino']+='\n// changed source, old binary\n';
     const r=await gradeJob(jobFor(changed,p),{root});assert.equal(r.status,'unsupported');assert.equal(r.points,null);}
+});
+test('24L shutdown confirmation follows the actual wait rather than an early empty-FIFO claim',{skip:selected('micropython'),timeout:60000},async()=>{
+  const p=opticalProfiles[0],project=await starter(p.taskKey);
+  project.files['main.py']=project.files['main.py'].replace('sleep_ms(500)','sleep_ms(1)')+'\nsleep_ms(500)\n';
+  const r=await run(project,p);assert.equal(r.status,'evaluated',JSON.stringify(r));assert.equal(r.points,8,JSON.stringify(r));
 });
 for(const target of ['s3-cpp','uno','nano'] as UrsTarget[])for(const p of opticalProfiles)test(`24L ${target} ${p.id}: compile reference, alternative and both wrong criteria`,{
   skip:selected(target)||!(target==='s3-cpp'?process.env.LAB_S3_COMPILER_TEST:process.env.LAB_GRADING_COMPILER_TEST),timeout:600000},async()=>{

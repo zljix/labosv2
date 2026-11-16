@@ -326,7 +326,7 @@ jobs:
             coverage:{supported:248,total:268},targets,targetedExecutions:records.length,
             independentCompilations:records.filter(r=>r.result.provenance?.method==='isolated-source-compilation').length,
             lockedSchoolAssignments:api.results.length,legacyPreserved:true,stageRunURL:process.env.GITHUB_SERVER_URL+'/'+process.env.GITHUB_REPOSITORY+'/actions/runs/'+process.env.GITHUB_RUN_ID};
-          if(summary.targetedExecutions!==161||summary.independentCompilations!==48)throw Error('Missing target evidence');
+          if(summary.targetedExecutions!==162||summary.independentCompilations!==48)throw Error('Missing target evidence');
           writeFileSync('docs/stage24l-evidence/acceptance-summary.json',JSON.stringify(summary,null,2)+'\n');console.log(JSON.stringify(summary));
           JS
       - name: Uključi izvedeni dokaz u školski paket

@@ -31,8 +31,9 @@ export function createOpticalCheck(c:SimulationConfig,p:any,seed:string){
     }
     for(const r of f.readings??[]){
       const key=r.transaction+':'+r.index+':'+r.timeMs+':'+r.readTimeMs;
-      if(seenReadings.has(key))continue;seenReadings.add(key);
+      if(seenReadings.has(key))continue;
       if(!fifoRead(r))continue;
+      seenReadings.add(key);
       if(readings.length<8192)readings.push({...r,ordinal:readings.length+1});
     }
     if(f.powered&&f.shutdown&&f.count===0){
@@ -53,9 +54,11 @@ export function createOpticalCheck(c:SimulationConfig,p:any,seed:string){
       const config=current.some(l=>/^MAX MODE=3 CONFIG=0x27\s*$/i.test(l.text)&&bytesAt(9,3,l.timeMs)&&bytesAt(10,39,l.timeMs));
       const reset=transfers.some(t=>t.operation==='write'&&t.register===9&&(t.bytes[0]&64)!==0);
       basic=id&&config&&reset&&configured;
+      const shutdown=transfers.find(t=>t.operation==='write'&&t.register===9&&(t.bytes[0]&128)!==0);
       advanced=basic&&shutdownMs>=s.minimumShutdownMs&&last?.shutdown===true&&last?.count===0
         &&current.some(l=>/^MAX SHUTDOWN FIFO=0\s*$/.test(l.text)&&transfers.some(t=>t.operation==='read'
-          &&t.register===4&&t.length>=3&&t.count===0&&t.shutdown&&t.timeMs<=l.timeMs+s.stepToleranceMs&&l.timeMs-t.timeMs<=350));
+          &&t.register===4&&t.length>=3&&t.count===0&&t.shutdown&&shutdown&&t.timeMs-shutdown.timeMs>=s.minimumShutdownMs
+          &&t.timeMs<=l.timeMs+s.stepToleranceMs&&l.timeMs-t.timeMs<=350));
       detail.shutdownMs=shutdownMs;detail.identityReported=id;detail.configReported=config;
     }else if(v==='opticalRaw'){
       const reports=current.flatMap(l=>{const m=l.text.match(/^RAW N=(\d+) RED=(\d+) IR=(\d+)\s*$/);return m?[{...l,n:+m[1],red:+m[2],ir:+m[3]}]:[];});

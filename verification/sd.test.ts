@@ -39,6 +39,13 @@ test('card requires initial CS-high clocks before CMD0',()=>{const c=card();asse
 for(const [cmd,arg]of [[0,0],[8,0x1aa]])test('mandatory CRC7 rejects CMD'+cmd,()=>{const c=card();c.m.clocks(80);assert.equal(c.cmd(cmd,arg,1),9);assert.equal(c.m.errors,1);});
 test('ACMD41 requires CMD55 and does not initialize from a bare command',()=>{const c=card();c.m.clocks(80);c.cmd(0);c.end();assert.equal(c.cmd(41),5);assert(c.m.idle);});
 test('read before initialization is an explicit illegal command',()=>{const c=card();c.m.clocks(80);c.cmd(0);c.end();assert.equal(c.cmd(17),5);});
+test('24K incomplete SD payload or missing CRC cannot count as a completed boot read',()=>{
+ const c=card();c.init();assert.equal(c.cmd(17,0),0);assert.equal(c.x(),255);assert.equal(c.x(),254);
+ for(let i=0;i<512;i++)c.x();c.x();assert.equal(c.m.completedReads,0);assert.equal(c.m.bootReads,0);c.end();
+ assert.equal(c.m.transfers.length,0);const boot=c.read(0);assert.equal(c.m.completedReads,1);assert.equal(c.m.bootReads,1);
+ assert.deepEqual(c.m.transfers[0].bytes,Array.from(boot));
+ for(let i=0;i<20;i++)c.read(1);assert.equal(c.m.transfers.length,16);assert.equal(c.m.bootReads,1);
+});
 test('SDSC read/write uses byte addresses, CRC16 and real payloads',()=>{const c=card();c.init();const b=Uint8Array.from({length:512},(_,i)=>i*7+19);assert.equal(c.write(142,b),5);assert.deepEqual(c.read(142),b);assert.equal(c.m.writes,1);assert.equal(c.m.reads,1);});
 for(const a of [1,16384*512,0xffffffff])test('unaligned/out-of-range address rejected: '+a,()=>{const c=card();c.init();assert.equal(c.cmd(17,a),32);c.end();assert.equal(c.cmd(24,a),32);assert.equal(c.m.writes,0);});
 for(const n of [18,25,32,38])test('unsupported command returns illegal R1: '+n,()=>{const c=card();c.init();assert.equal(c.cmd(n),4);assert.equal(c.m.writes,0);});

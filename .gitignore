@@ -32,3 +32,8 @@ docs/stage24i-evidence/mysql-environment.json
 # Detaljni sintetski prihvat 24J ostaje u CI artefaktima i školskom paketu.
 docs/stage24j-evidence/touch-*.json
 docs/stage24j-evidence/mysql-touch.json
+
+# Izvedeni dokazi 24K ostaju u CI artefaktima i instalacijskom paketu.
+docs/stage24k-evidence/storage-*.json
+docs/stage24k-evidence/mysql-storage.json
+docs/stage24k-evidence/initial-smoke.json

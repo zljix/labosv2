@@ -1,3 +1,4 @@
+import {isStorageContract,createStorageCheck} from './storage';
 import {isTouchContract,createTouchCheck} from './touch';
 import {isEnvironmentContract,createEnvironmentCheck} from './environment';
 import {isDisplayContract,createDisplayCheck} from './displays';
@@ -32,8 +33,9 @@ const stepperCheck=isStepperContract(profile)?createStepperCheck(config,profile,
 const displayCheck=isDisplayContract(profile)?createDisplayCheck(config,profile,seed,backend):null;
 const environmentCheck=isEnvironmentContract(profile)?createEnvironmentCheck(config,profile,seed,backend):null;
 const touchCheck=isTouchContract(profile)?createTouchCheck(config,profile,seed,backend):null;
-const extendedCheck=touchCheck??environmentCheck??displayCheck??stepperCheck??actuatorCheck??eventCheck??sensorCheck??analogCheck;
-const protocolClock=!!(touchCheck||environmentCheck||displayCheck||sensorCheck||eventCheck||stepperCheck);
+const storageCheck=isStorageContract(profile)?createStorageCheck(config,profile,seed):null;
+const extendedCheck=storageCheck??touchCheck??environmentCheck??displayCheck??stepperCheck??actuatorCheck??eventCheck??sensorCheck??analogCheck;
+const protocolClock=!!(storageCheck||touchCheck||environmentCheck||displayCheck||sensorCheck||eventCheck||stepperCheck);
 // ADC receives a voltage, never a fabricated ADC return value. S3's 11 dB
 // transfer saturates at 3.1 V, whereas the Uno/Nano full scale is 5 V.
 const thresholdPosition=backend!=='avr'?3.1/3.3*2048/4095:512/1023;
@@ -129,7 +131,7 @@ if(backend==='s3-cpp'){
     clock.now=clockUs=target;
     // Bound observation cost independently of the student's polling frequency.
     // Legacy GPIO uses 1 ms; sensor telemetry uses 20 ms inside its 100 ms tolerance.
-    if(target-lastObservation>=(sensorCheck||environmentCheck||touchCheck?20000:1000)){engine.snapshot();lastObservation=target;}
+    if(target-lastObservation>=(sensorCheck||environmentCheck||touchCheck||storageCheck?20000:1000)){engine.snapshot();lastObservation=target;}
   }};
   engine=await createS3Engine(wasmBytes(artifact.wasm),config,observe,{clock});
   try{applyStimulus(engine,stimuli[0]);await engine.run();}
@@ -139,7 +141,7 @@ if(backend==='s3-cpp'){
   const engine=new AVREngine(artifact.hex,config,observe,project.board.id.includes('nano')?8:6,artifact.staticRamBytes);
   try{for(stage=0;stage<stimuli.length;stage++){
     applyStimulus(engine,stimuli[stage]);
-    const step=sensorCheck||environmentCheck||touchCheck?20:4;
+    const step=sensorCheck||environmentCheck||touchCheck||storageCheck?20:4;
     for(let tick=0;tick<duration/step;tick++){engine.runCycles(16000*step);engine.frame();}
     record();
   }}catch(e){programError=(e as Error).message.slice(0,500);}finally{engine.dispose();}
@@ -176,7 +178,11 @@ if(backend==='s3-cpp'){
     mp.FS.writeFile('/'+name,value);
   }
   const running=mp.runPython("exec(compile(open('/main.py').read(), 'main.py', 'exec'))").then(()=>{
-    if(stage<stimuli.length){programError='Program je završio prije završetka scenarija.';complete();}
+    if(stage<stimuli.length){
+      if(storageCheck?.finite){host.flush();record();stage++;}
+      else programError='Program je završio prije završetka scenarija.';
+      complete();
+    }
   }).catch(()=>{programError='Program je prijavio pogrešku. Provjeri kod pokretanjem u laboratoriju.';complete();});
   await Promise.race([done,running]);
 }

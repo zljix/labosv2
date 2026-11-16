@@ -1,6 +1,6 @@
 {
   "name": "esp32-micropython-lab",
-  "version": "0.14.8-beta.1",
+  "version": "0.14.9-beta.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -96,7 +96,9 @@
     "test:school-environment": "node --import tsx --test verification/school-environment.test.ts",
     "test:school-environment-api": "node --import tsx --test verification/school-environment-api.test.mjs",
     "test:school-touch": "node --import tsx --test verification/school-touch.test.ts",
-    "test:school-touch-api": "node --import tsx --test verification/school-touch-api.test.mjs"
+    "test:school-touch-api": "node --import tsx --test verification/school-touch-api.test.mjs",
+    "test:school-storage": "node --import tsx --test verification/school-storage.test.ts",
+    "test:school-storage-api": "node --import tsx --test verification/school-storage-api.test.mjs"
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.1",

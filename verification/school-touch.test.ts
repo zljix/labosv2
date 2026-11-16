@@ -18,7 +18,7 @@ test.after(()=>{mkdirSync('docs/stage24j-evidence',{recursive:true});writeFileSy
 test('24J publishes six contracts and preserves all 53 previous profiles',()=>{
   const registry=JSON.parse(readFileSync('school/grader/profiles.json','utf8'));
   assert.deepEqual(registry.profiles.slice(0,53),JSON.parse(readFileSync('verification/fixtures/24i-grading-profiles.json','utf8')).profiles);
-  assert.equal(touchProfiles.length,6);assert.equal(gradingCoverage('test').summary.supported,208);
+  assert.equal(touchProfiles.length,6);assert(gradingCoverage('test').summary.supported>=208);
   for(const p of touchProfiles){assert.deepEqual(p.criteria.map(c=>c.maxPoints),[3,5,2]);for(const t of p.targets)assert.equal(gradingSupport(p.taskKey,t).profileId,p.id);}
 });
 test('24J physical and logical rotations are inverse at asymmetric points and all corners',()=>{

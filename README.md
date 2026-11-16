@@ -1,6 +1,6 @@
 # Labosv2 · školski laboratorij
 
-**0.14.8-beta.1 · etapa 24J · ILI9341 i dodir XPT2046 · 16. studenoga 2026.**
+**0.14.9-beta.1 · etapa 24K · RTC i SD · 16. studenoga 2026.**
 
 **Prihvat 24J:** [Završne provjere](https://github.com/zljix/labosv2/actions/runs/43959526722) potvrđuju sva četiri cilja, 234 ciljane izvedbe, 72 neovisna C++ prijevoda i 24 stvarne školske dodjele, zaključavanje te očuvanje ranijih predaja. Isti provjeravač isporučen je u školskom paketu. [Sažetak dokaza](docs/stage24j-evidence/acceptance-summary.json).
 
@@ -18,7 +18,14 @@ Nastavak postojećeg ESP32 MicroPython / Arduino laboratorija za školski sustav
 
 [Neovisni prihvat 24F](https://github.com/zljix/labosv2/actions/runs/43915429891) potvrđuje sva četiri cilja i 67 novih prijevoda. [Školski prihvat 24F](https://github.com/zljix/labosv2/actions/runs/43916966742) potvrđuje identičan programski izvor, PHP/MySQL, bodove, zaključavanje, 30 simuliranih učenika, izvještaje i paket.
 
-## Novo u 24J
+## Novo u 24K
+
+- Šest rubrika za RTC čitanje/bateriju, CH/WP/RAM, TM1637 sat, SD boot sektor, FAT16 dopisivanje i RTC CSV zapisivač.
+- **232/268 kombinacija**, odnosno 58 URS varijanti na sva četiri cilja; svih 59 ranijih rubrika ostaje neizmijenjeno.
+- Bodovi iz dovršenih RTC bajtova, stvarnih SPI sektora, sadržaja datoteka i primljenih segmenata; provjera čuva početne SD podatke i prijelaz preko 512 bajtova.
+- [Točni uvjeti i nadogradnja](docs/stage24k-storage.md). Nema nove SQL migracije.
+
+## Sačuvano iz 24J
 
 - Šest rubrika i 24 nove kombinacije: **208/268**, odnosno 52 URS varijante na sva četiri cilja.
 - ILI9341 grafika i četiri rotacije; XPT2046 sirovi kanali, izmjerena kalibracija, dodirno tipkalo i rotacije dodira.
@@ -152,7 +159,7 @@ Prijava, uloge, razredi, CSV uvoz, pozivni kodovi i nepromjenjive inačice zadat
 
 **386/386 ciljanih testova**, **6/6 neovisnih compiler/runtime pokusa** i **4/4 skupne HTTPS provjere**; svih 191 web resursa provjereno je bajtno na Apacheu. Stari ZIP iz 22I ponovno se otvara i izvodi. [Točne inačice, granice i otvorene provjere](docs/stage23a-school.md).
 
-Središnje spremanje dodijeljenih vježbi i nastavnički pregled sada su dostupni na školskom poslužitelju. Službeni bodovi dostupni su za 52 URS varijante na sva četiri cilja (208 kombinacija); zaključavanje i dopuštena dorada dostupni su u 23F. Probni rezultati 23A zadržavaju oznaku `feasibility-only`. GitHub Pages služi web simulator i javni prikaz školskog izdanja; prijava zahtijeva školski PHP/MySQL poslužitelj.
+Središnje spremanje dodijeljenih vježbi i nastavnički pregled sada su dostupni na školskom poslužitelju. Službeni bodovi dostupni su za 58 URS varijanti na sva četiri cilja (232 kombinacije); zaključavanje i dopuštena dorada dostupni su u 23F. Probni rezultati 23A zadržavaju oznaku `feasibility-only`. GitHub Pages služi web simulator i javni prikaz školskog izdanja; prijava zahtijeva školski PHP/MySQL poslužitelj.
 
 ## Pokretanje i izgradnja
 
@@ -171,7 +178,7 @@ npm ci
 npm run build:school
 ```
 
-Školski paket: `release/Labosv2_0.14.8_24J_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-24J-Backend-Skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
+Školski paket: `release/Labosv2_0.14.9_24K_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-24K-Provjeren-skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
 
 ```sh
 npm run build:pages

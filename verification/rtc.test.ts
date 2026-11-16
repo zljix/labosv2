@@ -54,6 +54,14 @@ for(const board of [S3,UNO,NANO] as const)test(board+': four RTC source/circuit 
 test('rising command/write bits and falling reply bits read fixed independent BCD bytes',()=>{
  const f=fixture();try{assert.deepEqual(f.rx(0xbf,8),[0,0,0x12,1,1,5,0x26,0]);assert.equal(f.state().errors,0);assert(f.state().received===1);assert(f.state().trace.some(t=>t.operation==='read-byte'));}finally{f.h.dispose();}
 });
+test('24K completed RTC transfers contain only whole returned bytes after CE release',()=>{
+ const f=fixture();try{
+  f.begin();f.byte(0xbf,true);for(let i=0;i<6;i++){f.put(f.clk,1);f.put(f.clk,0);}f.end();
+  assert.equal(f.state().transfers!.filter(t=>t.operation==='read').length,0);
+  assert.deepEqual(f.rx(0xbf,8),[0,0,0x12,1,1,5,0x26,0]);
+  const t=f.state().transfers!.at(-1)!;assert.equal(t.operation,'read');assert.equal(t.command,0xbf);assert.deepEqual(t.bytes,[0,0,0x12,1,1,5,0x26,0]);
+ }finally{f.h.dispose();}
+});
 test('clock writes commit on falling CE; incomplete burst is discarded and trailing bytes ignored',()=>{
  const f=fixture();try{
   f.tx(0xbe,[0x58,0x59,0x23,0x28,2,2,0x28]);assert.equal(f.state().iso,'2026-01-01T12:00:00');

@@ -15,7 +15,7 @@ test.after(()=>{mkdirSync('docs/stage24d-evidence',{recursive:true});writeFileSy
 test('24D publishes seven contracts, preserves all earlier profile bytes and adds exactly 28 combinations',()=>{
   const registry=JSON.parse(readFileSync('school/grader/profiles.json','utf8'));
   assert.equal(sensorProfiles.length,7);assert.deepEqual(registry.profiles.slice(0,20),JSON.parse(readFileSync('verification/fixtures/24c-grading-profiles.json','utf8')).profiles);
-  assert.equal(gradingCoverage('test').summary.supported,132);
+  assert.equal(gradingCoverage('test').summary.supported,144);
   for(const p of sensorProfiles){assert.equal(p.criteria.reduce((n,c)=>n+c.maxPoints,0),10);assert.equal(p.contract!.scenarioVersion,'24D.1');assert.deepEqual(p.targets,['micropython','s3-cpp','uno','nano']);
     for(const t of p.targets)assert.equal(gradingSupport(p.taskKey,t).profileId,p.id);
   }

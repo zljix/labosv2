@@ -1,13 +1,13 @@
 {
   "format": "labosv2-grading-coverage",
   "version": 1,
-  "sourceVersion": "0.14.8-beta.1",
+  "sourceVersion": "0.14.9-beta.1",
   "summary": {
     "themes": 18,
     "variants": 67,
     "combinations": 268,
-    "supported": 208,
-    "unsupported": 60,
+    "supported": 232,
+    "unsupported": 36,
     "introductory": 5
   },
   "rows": [
@@ -10224,16 +10224,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-rtcRead@1",
+        "checkerVersion": "24K.1",
+        "title": "DS1302: novo čitanje, kalendar i baterija",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. Tri etape po 3200 ms: glavno napajanje uključeno, isključeno uz bateriju, ponovno uključeno. Svakih najviše 1400 ms ispiši RTC YYYY-M-D H:M:S DAY=d iz novog čitanja; najmanje dva različita vremena u napajanoj etapi. Ne zapisuj sat. Tijekom prekida ispisuj RTC ERROR, nakon povratka nastavi stvarni zadržani sat. Datum i dan moraju pratiti prijestupni dan ili novu godinu.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova BCD čitanja i ispisi prije prekida",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Gubitak komunikacije uz bateriju i nova očitanja nakon povratka",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {
@@ -10257,16 +10273,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-rtcRead@1",
+        "checkerVersion": "24K.1",
+        "title": "DS1302: novo čitanje, kalendar i baterija",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. Tri etape po 3200 ms: glavno napajanje uključeno, isključeno uz bateriju, ponovno uključeno. Svakih najviše 1400 ms ispiši RTC YYYY-M-D H:M:S DAY=d iz novog čitanja; najmanje dva različita vremena u napajanoj etapi. Ne zapisuj sat. Tijekom prekida ispisuj RTC ERROR, nakon povratka nastavi stvarni zadržani sat. Datum i dan moraju pratiti prijestupni dan ili novu godinu.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova BCD čitanja i ispisi prije prekida",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Gubitak komunikacije uz bateriju i nova očitanja nakon povratka",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {
@@ -10290,16 +10322,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-rtcRead@1",
+        "checkerVersion": "24K.1",
+        "title": "DS1302: novo čitanje, kalendar i baterija",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. Tri etape po 3200 ms: glavno napajanje uključeno, isključeno uz bateriju, ponovno uključeno. Svakih najviše 1400 ms ispiši RTC YYYY-M-D H:M:S DAY=d iz novog čitanja; najmanje dva različita vremena u napajanoj etapi. Ne zapisuj sat. Tijekom prekida ispisuj RTC ERROR, nakon povratka nastavi stvarni zadržani sat. Datum i dan moraju pratiti prijestupni dan ili novu godinu.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova BCD čitanja i ispisi prije prekida",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Gubitak komunikacije uz bateriju i nova očitanja nakon povratka",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {
@@ -10323,16 +10371,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-rtcRead@1",
+        "checkerVersion": "24K.1",
+        "title": "DS1302: novo čitanje, kalendar i baterija",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. Tri etape po 3200 ms: glavno napajanje uključeno, isključeno uz bateriju, ponovno uključeno. Svakih najviše 1400 ms ispiši RTC YYYY-M-D H:M:S DAY=d iz novog čitanja; najmanje dva različita vremena u napajanoj etapi. Ne zapisuj sat. Tijekom prekida ispisuj RTC ERROR, nakon povratka nastavi stvarni zadržani sat. Datum i dan moraju pratiti prijestupni dan ili novu godinu.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova BCD čitanja i ispisi prije prekida",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Gubitak komunikacije uz bateriju i nova očitanja nakon povratka",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {
@@ -10356,16 +10420,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-rtcMemory@1",
+        "checkerVersion": "24K.1",
+        "title": "DS1302: CH, zaštita pisanja i zadržani RAM",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. Pokus traje 6000 ms. Postavi CH=1 najmanje 950 ms, potvrdi RTC CH=1 i vrati CH=0. Pročitaj početni RAM[0], povećaj ga za jedan modulo 256, uključi WP i pokušaj zapisati 99. Zapis mora biti odbijen. Ispiši RTC RAM=n WP=1 za stvarni zadržani n. Zatim vrati WP=0 i nastavi čitanje kalendara; najmanje tri različite ispravne vremenske oznake.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "CH zaustavlja sat; inkrement i odbijeni zapis RAM-a uz WP",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Ukinuta zaštita i nastavak sata bez gubitka RAM-a",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {
@@ -10389,16 +10469,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-rtcMemory@1",
+        "checkerVersion": "24K.1",
+        "title": "DS1302: CH, zaštita pisanja i zadržani RAM",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. Pokus traje 6000 ms. Postavi CH=1 najmanje 950 ms, potvrdi RTC CH=1 i vrati CH=0. Pročitaj početni RAM[0], povećaj ga za jedan modulo 256, uključi WP i pokušaj zapisati 99. Zapis mora biti odbijen. Ispiši RTC RAM=n WP=1 za stvarni zadržani n. Zatim vrati WP=0 i nastavi čitanje kalendara; najmanje tri različite ispravne vremenske oznake.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "CH zaustavlja sat; inkrement i odbijeni zapis RAM-a uz WP",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Ukinuta zaštita i nastavak sata bez gubitka RAM-a",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {
@@ -10422,16 +10518,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-rtcMemory@1",
+        "checkerVersion": "24K.1",
+        "title": "DS1302: CH, zaštita pisanja i zadržani RAM",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. Pokus traje 6000 ms. Postavi CH=1 najmanje 950 ms, potvrdi RTC CH=1 i vrati CH=0. Pročitaj početni RAM[0], povećaj ga za jedan modulo 256, uključi WP i pokušaj zapisati 99. Zapis mora biti odbijen. Ispiši RTC RAM=n WP=1 za stvarni zadržani n. Zatim vrati WP=0 i nastavi čitanje kalendara; najmanje tri različite ispravne vremenske oznake.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "CH zaustavlja sat; inkrement i odbijeni zapis RAM-a uz WP",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Ukinuta zaštita i nastavak sata bez gubitka RAM-a",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {
@@ -10455,16 +10567,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-rtcMemory@1",
+        "checkerVersion": "24K.1",
+        "title": "DS1302: CH, zaštita pisanja i zadržani RAM",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. Pokus traje 6000 ms. Postavi CH=1 najmanje 950 ms, potvrdi RTC CH=1 i vrati CH=0. Pročitaj početni RAM[0], povećaj ga za jedan modulo 256, uključi WP i pokušaj zapisati 99. Zapis mora biti odbijen. Ispiši RTC RAM=n WP=1 za stvarni zadržani n. Zatim vrati WP=0 i nastavi čitanje kalendara; najmanje tri različite ispravne vremenske oznake.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "CH zaustavlja sat; inkrement i odbijeni zapis RAM-a uz WP",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Ukinuta zaštita i nastavak sata bez gubitka RAM-a",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {
@@ -10488,16 +10616,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-rtcClock@1",
+        "checkerVersion": "24K.1",
+        "title": "DS1302 → TM1637: stvarni sati, minute i dvotočka",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. Tri etape po 3200 ms kao pri čitanju RTC-a. Očitavaj najviše svakih 1400 ms; TM1637 prikazuje HHMM s vodećom nulom, segmentima 0–9 i dvotočkom uključenom u neparnoj sekundi. Dopušteno je najviše 500 ms kašnjenja osvježavanja na prijelazu minute. Ispis RTC YYYY-M-D H:M:S DAY=d ili RTC DISPLAY=H:M:S mora pratiti stvarno čitanje. Za vrijeme gubitka komunikacije prikaži četiri crtice 0x40 i RTC ERROR. Nakon povratka obnovi prikaz; obje parnosti dvotočke moraju biti primljene.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Novo RTC čitanje i stvarni segmenti sata/minuta",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Četiri crtice tijekom prekida, povrat i obje parnosti dvotočke",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {
@@ -10521,16 +10665,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-rtcClock@1",
+        "checkerVersion": "24K.1",
+        "title": "DS1302 → TM1637: stvarni sati, minute i dvotočka",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. Tri etape po 3200 ms kao pri čitanju RTC-a. Očitavaj najviše svakih 1400 ms; TM1637 prikazuje HHMM s vodećom nulom, segmentima 0–9 i dvotočkom uključenom u neparnoj sekundi. Dopušteno je najviše 500 ms kašnjenja osvježavanja na prijelazu minute. Ispis RTC YYYY-M-D H:M:S DAY=d ili RTC DISPLAY=H:M:S mora pratiti stvarno čitanje. Za vrijeme gubitka komunikacije prikaži četiri crtice 0x40 i RTC ERROR. Nakon povratka obnovi prikaz; obje parnosti dvotočke moraju biti primljene.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Novo RTC čitanje i stvarni segmenti sata/minuta",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Četiri crtice tijekom prekida, povrat i obje parnosti dvotočke",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {
@@ -10554,16 +10714,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-rtcClock@1",
+        "checkerVersion": "24K.1",
+        "title": "DS1302 → TM1637: stvarni sati, minute i dvotočka",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. Tri etape po 3200 ms kao pri čitanju RTC-a. Očitavaj najviše svakih 1400 ms; TM1637 prikazuje HHMM s vodećom nulom, segmentima 0–9 i dvotočkom uključenom u neparnoj sekundi. Dopušteno je najviše 500 ms kašnjenja osvježavanja na prijelazu minute. Ispis RTC YYYY-M-D H:M:S DAY=d ili RTC DISPLAY=H:M:S mora pratiti stvarno čitanje. Za vrijeme gubitka komunikacije prikaži četiri crtice 0x40 i RTC ERROR. Nakon povratka obnovi prikaz; obje parnosti dvotočke moraju biti primljene.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Novo RTC čitanje i stvarni segmenti sata/minuta",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Četiri crtice tijekom prekida, povrat i obje parnosti dvotočke",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {
@@ -10587,16 +10763,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-rtcClock@1",
+        "checkerVersion": "24K.1",
+        "title": "DS1302 → TM1637: stvarni sati, minute i dvotočka",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. Tri etape po 3200 ms kao pri čitanju RTC-a. Očitavaj najviše svakih 1400 ms; TM1637 prikazuje HHMM s vodećom nulom, segmentima 0–9 i dvotočkom uključenom u neparnoj sekundi. Dopušteno je najviše 500 ms kašnjenja osvježavanja na prijelazu minute. Ispis RTC YYYY-M-D H:M:S DAY=d ili RTC DISPLAY=H:M:S mora pratiti stvarno čitanje. Za vrijeme gubitka komunikacije prikaži četiri crtice 0x40 i RTC ERROR. Nakon povratka obnovi prikaz; obje parnosti dvotočke moraju biti primljene.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Novo RTC čitanje i stvarni segmenti sata/minuta",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Četiri crtice tijekom prekida, povrat i obje parnosti dvotočke",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {
@@ -10620,16 +10812,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-sdInspect@1",
+        "checkerVersion": "24K.1",
+        "title": "microSD: cijeli boot sektor i FAT16",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. U najviše 4000 ms inicijaliziraj SDSC, preko CMD17 primi svih 512 bajtova i oba CRC bajta sektora 0. Ispiši SD SECTORS=16384 SIGNATURE=55AA. Montiraj ograničeni FAT16; Python ispisuje SD FILES i čita korijenski direktorij, C++ ispisuje SD FAT16 MOUNT=1 nakon ponovnog čitanja boot sektora. Ne formatiraj karticu. Jednokratni program smije završiti.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Dovršen boot sektor, broj sektora i potpis 55AA",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Stvarno čitanje pri FAT16 montiranju ili popisu datoteka",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {
@@ -10653,16 +10861,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-sdInspect@1",
+        "checkerVersion": "24K.1",
+        "title": "microSD: cijeli boot sektor i FAT16",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. U najviše 4000 ms inicijaliziraj SDSC, preko CMD17 primi svih 512 bajtova i oba CRC bajta sektora 0. Ispiši SD SECTORS=16384 SIGNATURE=55AA. Montiraj ograničeni FAT16; Python ispisuje SD FILES i čita korijenski direktorij, C++ ispisuje SD FAT16 MOUNT=1 nakon ponovnog čitanja boot sektora. Ne formatiraj karticu. Jednokratni program smije završiti.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Dovršen boot sektor, broj sektora i potpis 55AA",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Stvarno čitanje pri FAT16 montiranju ili popisu datoteka",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {
@@ -10686,16 +10910,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-sdInspect@1",
+        "checkerVersion": "24K.1",
+        "title": "microSD: cijeli boot sektor i FAT16",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. U najviše 4000 ms inicijaliziraj SDSC, preko CMD17 primi svih 512 bajtova i oba CRC bajta sektora 0. Ispiši SD SECTORS=16384 SIGNATURE=55AA. Montiraj ograničeni FAT16; Python ispisuje SD FILES i čita korijenski direktorij, C++ ispisuje SD FAT16 MOUNT=1 nakon ponovnog čitanja boot sektora. Ne formatiraj karticu. Jednokratni program smije završiti.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Dovršen boot sektor, broj sektora i potpis 55AA",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Stvarno čitanje pri FAT16 montiranju ili popisu datoteka",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {
@@ -10719,16 +10959,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-sdInspect@1",
+        "checkerVersion": "24K.1",
+        "title": "microSD: cijeli boot sektor i FAT16",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. U najviše 4000 ms inicijaliziraj SDSC, preko CMD17 primi svih 512 bajtova i oba CRC bajta sektora 0. Ispiši SD SECTORS=16384 SIGNATURE=55AA. Montiraj ograničeni FAT16; Python ispisuje SD FILES i čita korijenski direktorij, C++ ispisuje SD FAT16 MOUNT=1 nakon ponovnog čitanja boot sektora. Ne formatiraj karticu. Jednokratni program smije završiti.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Dovršen boot sektor, broj sektora i potpis 55AA",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Stvarno čitanje pri FAT16 montiranju ili popisu datoteka",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {
@@ -10752,16 +11008,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-sdFiles@1",
+        "checkerVersion": "24K.1",
+        "title": "microSD: dopisivanje i ponovno čitanje FAT16",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. U najviše 4000 ms montiraj postojeću karticu i u LAB.TXT točno jednom dopiši Pozdrav iz FAT16 preko SPI! i LF (28 bajtova). Sačuvaj postojeći prefiks, uključujući prijelaz preko 512 bajtova. Zatvori zapis, ponovno pročitaj stvarne podatkovne sektore i ispiši SD FILE BYTES=n te sadržaj datoteke. Nema automatskog formatiranja. Jednokratni program smije završiti.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Stvarno dopisanih 28 bajtova uz očuvanje prefiksa",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Novo čitanje nakon upisa, točna duljina i ispis sadržaja",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {
@@ -10785,16 +11057,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-sdFiles@1",
+        "checkerVersion": "24K.1",
+        "title": "microSD: dopisivanje i ponovno čitanje FAT16",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. U najviše 4000 ms montiraj postojeću karticu i u LAB.TXT točno jednom dopiši Pozdrav iz FAT16 preko SPI! i LF (28 bajtova). Sačuvaj postojeći prefiks, uključujući prijelaz preko 512 bajtova. Zatvori zapis, ponovno pročitaj stvarne podatkovne sektore i ispiši SD FILE BYTES=n te sadržaj datoteke. Nema automatskog formatiranja. Jednokratni program smije završiti.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Stvarno dopisanih 28 bajtova uz očuvanje prefiksa",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Novo čitanje nakon upisa, točna duljina i ispis sadržaja",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {
@@ -10818,16 +11106,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-sdFiles@1",
+        "checkerVersion": "24K.1",
+        "title": "microSD: dopisivanje i ponovno čitanje FAT16",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. U najviše 4000 ms montiraj postojeću karticu i u LAB.TXT točno jednom dopiši Pozdrav iz FAT16 preko SPI! i LF (28 bajtova). Sačuvaj postojeći prefiks, uključujući prijelaz preko 512 bajtova. Zatvori zapis, ponovno pročitaj stvarne podatkovne sektore i ispiši SD FILE BYTES=n te sadržaj datoteke. Nema automatskog formatiranja. Jednokratni program smije završiti.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Stvarno dopisanih 28 bajtova uz očuvanje prefiksa",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Novo čitanje nakon upisa, točna duljina i ispis sadržaja",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {
@@ -10851,16 +11155,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-sdFiles@1",
+        "checkerVersion": "24K.1",
+        "title": "microSD: dopisivanje i ponovno čitanje FAT16",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. U najviše 4000 ms montiraj postojeću karticu i u LAB.TXT točno jednom dopiši Pozdrav iz FAT16 preko SPI! i LF (28 bajtova). Sačuvaj postojeći prefiks, uključujući prijelaz preko 512 bajtova. Zatvori zapis, ponovno pročitaj stvarne podatkovne sektore i ispiši SD FILE BYTES=n te sadržaj datoteke. Nema automatskog formatiranja. Jednokratni program smije završiti.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Stvarno dopisanih 28 bajtova uz očuvanje prefiksa",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Novo čitanje nakon upisa, točna duljina i ispis sadržaja",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {
@@ -10884,16 +11204,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-sdLogger@1",
+        "checkerVersion": "24K.1",
+        "title": "DS1302 → microSD: provjereni CSV zapisi",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. Pokus traje 6000 ms. Sačuvaj postojeći LOG.CSV; na praznoj kartici stvori zaglavlje uzorak,vrijeme i LF. Dopisuj retke n,YYYY-MM-DD HH:MM:SS i LF, s uzorkom od 0 i povećanjem za jedan. Svaka oznaka mora biti dobivena dovršenim novim RTC čitanjem; datoteku zatvori nakon svakog retka. Prva dva ispravna retka čine osnovni kriterij, najmanje četiri strogo rastuća vremena i svi novi retci nastavak. Provjerava se sadržaj FAT16 sektora, a ne samo SD CSV ispis.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Prva dva stvarna CSV retka iz novih RTC čitanja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Najmanje četiri rastuća zapisa i prijelaz kalendara",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {
@@ -10917,16 +11253,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-sdLogger@1",
+        "checkerVersion": "24K.1",
+        "title": "DS1302 → microSD: provjereni CSV zapisi",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. Pokus traje 6000 ms. Sačuvaj postojeći LOG.CSV; na praznoj kartici stvori zaglavlje uzorak,vrijeme i LF. Dopisuj retke n,YYYY-MM-DD HH:MM:SS i LF, s uzorkom od 0 i povećanjem za jedan. Svaka oznaka mora biti dobivena dovršenim novim RTC čitanjem; datoteku zatvori nakon svakog retka. Prva dva ispravna retka čine osnovni kriterij, najmanje četiri strogo rastuća vremena i svi novi retci nastavak. Provjerava se sadržaj FAT16 sektora, a ne samo SD CSV ispis.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Prva dva stvarna CSV retka iz novih RTC čitanja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Najmanje četiri rastuća zapisa i prijelaz kalendara",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {
@@ -10950,16 +11302,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-sdLogger@1",
+        "checkerVersion": "24K.1",
+        "title": "DS1302 → microSD: provjereni CSV zapisi",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. Pokus traje 6000 ms. Sačuvaj postojeći LOG.CSV; na praznoj kartici stvori zaglavlje uzorak,vrijeme i LF. Dopisuj retke n,YYYY-MM-DD HH:MM:SS i LF, s uzorkom od 0 i povećanjem za jedan. Svaka oznaka mora biti dobivena dovršenim novim RTC čitanjem; datoteku zatvori nakon svakog retka. Prva dva ispravna retka čine osnovni kriterij, najmanje četiri strogo rastuća vremena i svi novi retci nastavak. Provjerava se sadržaj FAT16 sektora, a ne samo SD CSV ispis.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Prva dva stvarna CSV retka iz novih RTC čitanja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Najmanje četiri rastuća zapisa i prijelaz kalendara",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {
@@ -10983,16 +11351,32 @@
       "fault": "RTC: uključi zaštitu pisanja i pokušaj upis u odgovarajućem primjeru. SD: izvadi karticu ili uključi zaštitu; vrati je i ponovno inicijaliziraj program.",
       "expected": "Datoteka prati stvarne sektorske prijenose, a CSV ima vremenske oznake. Profil je SDSC 8 MiB/FAT16, do 64 KiB po datoteci; nije opći SD.h/SD_MMC.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24K-sdLogger@1",
+        "checkerVersion": "24K.1",
+        "title": "DS1302 → microSD: provjereni CSV zapisi",
+        "instructions": "DS1302 koristi stvarne CE/I/O/SCLK prijenose LSB prvi; microSD koristi SDSC v2 8 MiB, SPI i FAT16. Provjerava se spremljeni izvor i sklop, uz dopuštene druge algoritme, nazive i električno ekvivalentan raspored. Konzolni ispis bez dovršenog prijenosa nije dokaz. U privatnoj izvršnoj kopiji RTC počinje 28. 2. 2028. ili 31. 12. 2026. u 23:59:58, RAM[0] je 41 ili 200, baterija i glavno napajanje uključeni. Spremljeni projekt se ne mijenja; početni SD sektori ostaju iz snimke. Pokus traje 6000 ms. Sačuvaj postojeći LOG.CSV; na praznoj kartici stvori zaglavlje uzorak,vrijeme i LF. Dopisuj retke n,YYYY-MM-DD HH:MM:SS i LF, s uzorkom od 0 i povećanjem za jedan. Svaka oznaka mora biti dobivena dovršenim novim RTC čitanjem; datoteku zatvori nakon svakog retka. Prva dva ispravna retka čine osnovni kriterij, najmanje četiri strogo rastuća vremena i svi novi retci nastavak. Provjerava se sadržaj FAT16 sektora, a ne samo SD CSV ispis.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Prva dva stvarna CSV retka iz novih RTC čitanja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Najmanje četiri rastuća zapisa i prijelaz kalendara",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-storage.test.ts"
       }
     },
     {

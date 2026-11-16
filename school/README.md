@@ -1,5 +1,7 @@
 ## 24K — RTC i SD
 
+[Potpuni prihvat 24K](https://github.com/zljix/labosv2/actions/runs/43968133436) potvrđuje 238 ciljanih izvedbi, 72 neovisna C++ prijevoda, 24 zaključane školske dodjele, ranije obitelji, izvještaje, povrat kopije i sintetski razred od 30 učenika. [Sažetak i otisak provjeravača](../docs/stage24k-evidence/acceptance-summary.json).
+
 Izdanje **0.14.9-beta.1** dodaje šest rubrika i 24 kombinacije, ukupno **232/268**. Provjera koristi dovršene RTC bajtove, stvarne SD sektore i FAT16 datoteke te primljene TM1637 segmente. [Uvjeti i provjere 24K](../docs/stage24k-storage.md). Nema nove SQL migracije. Sačuvaj bazu i privatnu konfiguraciju, zamijeni kompletan paket, zadrži ključ i sesije, pokreni postojeći migrate i ponovno pokreni provjeravače.
 
 ## 24J — ILI9341 i dodir XPT2046

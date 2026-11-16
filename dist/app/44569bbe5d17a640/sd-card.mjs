@@ -36,11 +36,12 @@ export function sdReadFile(state,name){
  return out;
 }
 export class SDCard {
- constructor(d,now=()=>0){this.d=d;this.now=now;this.blocks=new Map();if(d.sdState){if(!validSDState(d.sdState))throw Error('Neispravna microSD snimka.');for(const [n,s]of d.sdState.blocks)this.blocks.set(n,decode(s));}this.revision=0;this.reads=0;this.writes=0;this.errors=0;this.trace=[];this.reset();}
+ constructor(d,now=()=>0){this.d=d;this.now=now;this.blocks=new Map();if(d.sdState){if(!validSDState(d.sdState))throw Error('Neispravna microSD snimka.');for(const [n,s]of d.sdState.blocks)this.blocks.set(n,decode(s));}this.revision=0;this.reads=0;this.completedReads=0;this.bootReads=0;this.writes=0;this.errors=0;this.trace=[];this.transfers=[];this.reset();}
+ transfer(operation,lba,bytes){this.transfers.push({timeUs:this.now(),operation,lba,bytes:Array.from(bytes)});if(this.transfers.length>16)this.transfers.shift();}
  log(operation,value,result){this.trace.push({timeUs:this.now(),operation,value,result});if(this.trace.length>80)this.trace.shift();}
- reset(){this.idle=true;this.spi=false;this.startClocks=0;this.command=[];this.reply=[];this.app=false;this.crc=false;this.write=null;this.busyUntil=0;this.attempts=0;}
+ reset(){this.idle=true;this.spi=false;this.startClocks=0;this.command=[];this.reply=[];this.pendingRead=null;this.app=false;this.crc=false;this.write=null;this.busyUntil=0;this.attempts=0;}
  begin(){}
- end(){if(this.write?.data?.length)this.log('abort',this.write.lba,'Nepotpun blok odbačen');this.command=[];this.reply=[];this.write=null;}
+ end(){if(this.write?.data?.length)this.log('abort',this.write.lba,'Nepotpun blok odbačen');this.command=[];this.reply=[];this.pendingRead=null;this.write=null;}
  clocks(count){if(this.d.sdInserted!==false)this.startClocks+=count;}
  block(n){return this.blocks.get(n)?.slice()??sdBaseBlock(n);}
  state(){return {version:1,blocks:[...this.blocks].sort((a,b)=>a[0]-b[0]).map(([n,b])=>[n,encode(b)])};}
@@ -62,16 +63,16 @@ export class SDCard {
  if(cmd===16){this.reply.push(arg===512?0:64);return;}
  if(cmd===13){this.reply.push(0,0);return;}
  if(cmd===9||cmd===10){this.reply.push(0);const b=new Uint8Array(16);if(cmd===9){const set=(hi,lo,v)=>{for(let i=lo;i<=hi;i++){const at=127-i;b[at>>3]|=((v>>>(i-lo))&1)<<(7-(at%8));}};set(83,80,9);set(73,62,4095);set(25,22,9);b[0]=0;b[5]=0x59;}else b.set(enc.encode('LAB SDSC 1.0'));b[15]=crc7(b.subarray(0,15));this.dataBlock(b);return;}
- if(cmd===17||cmd===24){const lba=this.address(arg);if(lba<0){this.errors++;this.reply.push(32);return;}this.reply.push(0);if(cmd===17){this.reads++;this.dataBlock(this.block(lba));}else this.write={lba,data:null};return;}
+ if(cmd===17||cmd===24){const lba=this.address(arg);if(lba<0){this.errors++;this.reply.push(32);return;}this.reply.push(0);if(cmd===17){this.reads++;const bytes=this.block(lba);this.dataBlock(bytes);this.pendingRead={lba,bytes};}else this.write={lba,data:null};return;}
  this.errors++;this.reply.push(4); // No silent acceptance of multi-block/erase commands.
  }
  byte(v){
  if(this.d.sdInserted===false)return 255;
- if(this.reply.length)return this.reply.shift();
+ if(this.reply.length){const value=this.reply.shift();if(!this.reply.length&&this.pendingRead){this.completedReads++;if(this.pendingRead.lba===0)this.bootReads++;this.transfer('read',this.pendingRead.lba,this.pendingRead.bytes);this.pendingRead=null;}return value;}
  if(this.now()<this.busyUntil)return 0;
- if(this.write){const w=this.write;if(w.data===null){if(v===0xfe)w.data=[];return 255;}w.data.push(v);if(w.data.length===514){const b=Uint8Array.from(w.data.slice(0,512)),bad=this.crc&&crc16(b)!==w.data[512]*256+w.data[513];const ok=!bad&&!this.d.sdWriteProtected&&this.store(w.lba,b);if(ok)this.writes++;else this.errors++;this.reply.push(bad?0x0b:ok?0x05:0x0d);if(ok)this.busyUntil=this.now()+1000;this.log(ok?'write':'write-error',w.lba,bad?'CRC':ok?'512 B potvrđeno':'Zaštita ili budžet sektora');this.write=null;}return 255;}
+ if(this.write){const w=this.write;if(w.data===null){if(v===0xfe)w.data=[];return 255;}w.data.push(v);if(w.data.length===514){const b=Uint8Array.from(w.data.slice(0,512)),bad=this.crc&&crc16(b)!==w.data[512]*256+w.data[513];const ok=!bad&&!this.d.sdWriteProtected&&this.store(w.lba,b);if(ok){this.writes++;this.transfer('write',w.lba,b);}else this.errors++;this.reply.push(bad?0x0b:ok?0x05:0x0d);if(ok)this.busyUntil=this.now()+1000;this.log(ok?'write':'write-error',w.lba,bad?'CRC':ok?'512 B potvrđeno':'Zaštita ili budžet sektora');this.write=null;}return 255;}
  if(!this.command.length){if((v&0xc0)!==0x40)return 255;this.command=[v];}else this.command.push(v);
  if(this.command.length===6){const p=this.command;this.command=[];this.execute(p);}return 255;
  }
- snapshot(powered){const state=this.state();let files=[],volumeError='';try{files=sdFiles(state);}catch(e){volumeError=e.message;}return {powered,inserted:this.d.sdInserted!==false,writeProtected:!!this.d.sdWriteProtected,initialized:this.spi&&!this.idle,sectors:SD_SECTORS,dirtyBlocks:this.blocks.size,reads:this.reads,writes:this.writes,errors:this.errors,revision:this.revision,state,files,volumeError,trace:this.trace.slice()};}
+ snapshot(powered){const state=this.state();let files=[],volumeError='';try{files=sdFiles(state);}catch(e){volumeError=e.message;}return {powered,inserted:this.d.sdInserted!==false,writeProtected:!!this.d.sdWriteProtected,initialized:this.spi&&!this.idle,sectors:SD_SECTORS,dirtyBlocks:this.blocks.size,reads:this.reads,completedReads:this.completedReads,bootReads:this.bootReads,writes:this.writes,errors:this.errors,revision:this.revision,state,files,volumeError,trace:this.trace.slice(),transfers:this.transfers.map(t=>({...t,bytes:[...t.bytes]}))};}
 }

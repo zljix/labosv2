@@ -20,7 +20,8 @@ export function initialRTC(s=RTC_DEFAULT){
 }
 export function validRTCState(s){return !!s&&Array.isArray(s.registers)&&s.registers.length===8&&Array.isArray(s.ram)&&s.ram.length===31&&[...s.registers,...s.ram,s.trickle].every(n=>Number.isInteger(n)&&n>=0&&n<=255)&&Number.isFinite(s.subsecondUs)&&s.subsecondUs>=0&&s.subsecondUs<1000000&&typeof s.valid==='boolean'&&(!s.valid||rtcCalendar(s.registers).valid);}
 export function createDS1302({c,pins,gpioNet,rootData,idleSolution,clockUs}){
- const devices=(c.rtcDevices??[]).map(d=>({...d,state:structuredClone(d.rtcState??initialRTC(d.rtcInitial)),at:clockUs(),main:false,retained:true,ce:0,clk:0,active:false,phase:'command',bits:0,value:0,command:0,rx:[],tx:[],txBit:0,drive:null,trace:[],received:0,errors:0,reason:'Čeka napajanje',lastEdge:-Infinity}));
+ const devices=(c.rtcDevices??[]).map(d=>({...d,state:structuredClone(d.rtcState??initialRTC(d.rtcInitial)),at:clockUs(),main:false,retained:true,ce:0,clk:0,active:false,phase:'command',bits:0,value:0,command:0,rx:[],tx:[],txBit:0,drive:null,trace:[],transfers:[],received:0,errors:0,reason:'Čeka napajanje',lastEdge:-Infinity}));
+ const transfer=(d,operation,bytes,accepted=true)=>{d.transfers.push({timeUs:clockUs(),operation,command:d.command,bytes:[...bytes],accepted});if(d.transfers.length>64)d.transfers.shift();};
  const record=(d,operation,value)=>{d.trace.push({timeUs:clockUs(),operation,...(value===undefined?{}:{value})});if(d.trace.length>128)d.trace.shift();};
  const resetBus=d=>{d.active=false;d.drive=null;d.phase='command';d.bits=0;d.value=0;d.rx=[];d.tx=[];d.txBit=0;};
  function tick(d,now){
@@ -33,9 +34,11 @@ export function createDS1302({c,pins,gpioNet,rootData,idleSolution,clockUs}){
   s.registers.splice(0,7,bcd(dt.getUTCSeconds()),bcd(dt.getUTCMinutes()),prev.twelve?128|(hour>=12?32:0)|bcd(hour%12||12):bcd(hour),bcd(dt.getUTCDate()),bcd(dt.getUTCMonth()+1),(prev.day-1+days)%7+1,bcd(dt.getUTCFullYear()-2000));
  }
  function commit(d){
+  if(d.phase==='read'){const count=Math.min(d.tx.length,Math.floor(d.txBit/8));if(count)transfer(d,'read',d.tx.slice(0,count));return;}
   if(d.phase!=='write'||!d.rx.length)return;
   const cmd=d.command,index=(cmd>>1)&31,ram=!!(cmd&64),burst=index===31,s=d.state;
-  if(d.writeProtected&&!(index===7&&!ram&&!burst)){record(d,'write-protected');return;}
+  if(d.writeProtected&&!(index===7&&!ram&&!burst)){record(d,'write-protected');transfer(d,'write',d.rx,false);return;}
+  if(!burst||ram||d.rx.length===8)transfer(d,'write',d.rx);
   if(ram){for(let i=0;i<(burst?Math.min(31,d.rx.length):1);i++){s.ram[burst?i:index]=d.rx[i];}record(d,'ram-write',d.rx.length);return;}
   if(burst&&d.rx.length!==8){record(d,'discard-partial-clock',d.rx.length);return;}
   if(!burst&&index>8){d.errors++;record(d,'unsupported-register',index);return;}
@@ -105,7 +108,7 @@ export function createDS1302({c,pins,gpioNet,rootData,idleSolution,clockUs}){
   const rtcDevices={},diagnostics=[];
   for(const d of devices){
    const cal=rtcCalendar(d.state.registers),charging=(d.state.trickle&240)===160&&[1,2].includes((d.state.trickle>>2)&3)&&!!(d.state.trickle&3);
-   rtcDevices[d.id]={mainPower:d.main,battery:d.rtcBattery,rtcMainPower:d.rtcMainPower,retained:d.retained,valid:d.state.valid,halted:!!(d.state.registers[0]&128),writeProtected:!!(d.state.registers[7]&128),iso:d.state.valid?new Date(cal.epoch).toISOString().slice(0,19):null,day:cal.day,reason:d.reason,received:d.received,errors:d.errors,state:structuredClone(d.state),trace:d.trace.map(t=>({...t}))};
+   rtcDevices[d.id]={mainPower:d.main,battery:d.rtcBattery,rtcMainPower:d.rtcMainPower,retained:d.retained,valid:d.state.valid,halted:!!(d.state.registers[0]&128),writeProtected:!!(d.state.registers[7]&128),iso:d.state.valid?new Date(cal.epoch).toISOString().slice(0,19):null,day:cal.day,reason:d.reason,received:d.received,errors:d.errors,state:structuredClone(d.state),trace:d.trace.map(t=>({...t})),transfers:d.transfers.map(t=>({...t,bytes:[...t.bytes]}))};
    if(charging)diagnostics.push({code:'rtc-charger',severity:'warning',message:d.id+': trickle nabojnik je uključen u registru; punjenje baterije nije simulirano. Ne uključuj ga za nepunjivu CR2032.',terminals:c.nets[d.vcc].terminals,wires:[]});
    if(d.main&&d.reason.startsWith('Provjeri'))diagnostics.push({code:'rtc-signal-open',severity:'warning',message:d.id+': '+d.reason,terminals:[d.ceNet,d.ioNet,d.clkNet].flatMap(n=>c.nets[n].terminals),wires:[]});
   }

@@ -64,3 +64,7 @@ Nema nove SQL migracije. Prije nadogradnje sačuvaj bazu i privatnu konfiguracij
 Ograničenja ostaju 65 s zidnog i 58 s CPU vremena, 90 s prevođenja, 2048 MiB adresnog prostora i 1 MiB izlaza. GitHub Pages služi simulator i prikaz podrške; školska prijava i službeno bodovanje zahtijevaju PHP/MySQL i privatni Linux provjeravač.
 
 Sljedeća predviđena etapa 24L obuhvaća optički MAX30102. Preostale sabirničke, radio i električne razine još nisu pokrivene svim rubrikama. Stvarni školski pilot, Windows veza prema Linux provjeravaču, ciljni mobilni preglednici i skupno cgroup ograničenje memorije ostaju zasebni završni uvjeti.
+
+## Završni prihvat
+
+[Potpuni prihvat](https://github.com/zljix/labosv2/actions/runs/43968133436) uspješno je dovršen za MicroPython, S3 C++, Uno i Nano. Potvrđuje 238 ciljanih izvedbi, 72 neovisna prijevoda i 24 zaključane dodjele uz ranije obitelji i školske administrativne provjere. [Sažetak](stage24k-evidence/acceptance-summary.json) veže rezultate uz isti provjeravač u instalacijskom paketu. Svih 903 datoteka iz CI inventure provjereno je po veličini i SHA-256; isporučeni ZIP ostaje bajtno jednak potvrđenom CI paketu.

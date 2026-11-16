@@ -2,6 +2,8 @@
 
 **0.14.9-beta.1 · etapa 24K · RTC i SD · 16. studenoga 2026.**
 
+**Prihvat 24K:** [Završne provjere](https://github.com/zljix/labosv2/actions/runs/43968133436) potvrđuju sva četiri cilja, 238 ciljanih izvedbi, 72 neovisna C++ prijevoda i 24 zaključane RTC/SD dodjele kroz pravi PHP/MySQL. Prošli su ranije obitelji, pokus s 30 učenika, izvještaji i povrat sigurnosne kopije. [Sažetak dokaza](docs/stage24k-evidence/acceptance-summary.json) povezuje rezultate s isporučenim provjeravačem.
+
 **Prihvat 24J:** [Završne provjere](https://github.com/zljix/labosv2/actions/runs/43959526722) potvrđuju sva četiri cilja, 234 ciljane izvedbe, 72 neovisna C++ prijevoda i 24 stvarne školske dodjele, zaključavanje te očuvanje ranijih predaja. Isti provjeravač isporučen je u školskom paketu. [Sažetak dokaza](docs/stage24j-evidence/acceptance-summary.json).
 
 **Prihvat 24I:** [Završne provjere](https://github.com/zljix/labosv2/actions/runs/43949417346) povezuju sva četiri cilja i 24 neovisna C++ prijevoda s konačnim provjeravačem: osam službenih dodjela, ispravne cijele OLED brojke, dva vala po 30 predaja bez dvostrukih rezultata, izvještaji i povrat sigurnosne kopije. [Sažetak dokaza](docs/stage24i-evidence/acceptance-summary.json).

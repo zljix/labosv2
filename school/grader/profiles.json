@@ -1500,6 +1500,649 @@
           ]
         }
       }
+    },
+    {
+      "id": "24D-am2320@1",
+      "taskKey": "weather/am2320",
+      "kind": "protocol-sensor",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "AM2320: I2C, prethodni uzorak i novo mjerenje",
+      "instructions": "AM2320 na I2C adresi 0x5C, najviše 100 kHz. Očitaj puni odgovor s CRC16 i ispisuj T=<broj> RH=<broj> barem svakih 2300 ms. Senzor vraća prethodni uzorak: nakon promjene okoliša dopušteno je do 4600 ms za prvi novi podatak, zatim razmak najviše 2300 ms. Tolerancije ±0,15 °C i ±0,15 %RH. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Nova očitanja prate tri neovisne osnovne pobude",
+          "maxPoints": 5
+        },
+        {
+          "id": "range",
+          "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24D.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24D.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli i ekvivalentan programski postupak.",
+          "Ekvivalentan raspored, GPIO i valjani vanjski pull-up.",
+          "Drukčiji redoslijed ROM pretrage; identitet je ROM, a ne položaj u popisu."
+        ],
+        "output": "Potpuni novi retci T=<broj> RH=<broj> za vlagu; ROM=<16 heksadekadskih znakova> T=<broj> za više DS18B20; BITA=<9|10|11|12> prije pripadnog očitanja razlučivosti.",
+        "units": {
+          "T": "°C",
+          "RH": "%RH"
+        },
+        "scenario": {
+          "stageDurationMs": 5500,
+          "responseDeadlineMs": 4600,
+          "maximumIntervalMs": 2300,
+          "stepToleranceMs": 100,
+          "temperatureTolerance": 0.15,
+          "humidityTolerance": 0.15,
+          "seededEnvironment": true,
+          "faults": []
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Separate seeded fault phases; failures never replace measurements with zero; recovery is required in error variants."
+      }
+    },
+    {
+      "id": "24D-dht11@1",
+      "taskKey": "dht/dht11",
+      "kind": "protocol-sensor",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "DHT11: cjelobrojna temperatura i vlaga",
+      "instructions": "Jedan DHT11 s vlastitim DATA GPIO-om i vanjskim pull-upom 1–10 kΩ na isti napon kao VCC. Pričekaj stabilizaciju najmanje 1 s, zatim očitavaj valjanih 40 bitova i kontrolni zbroj. Ispisuj T=<broj> RH=<broj>. Profil zaokružuje na cijele brojeve, raspon je 0–50 °C / 20–90 %RH. Prvo novo mjerenje nakon promjene unutar 2400 ms, daljnji razmak do 2300 ms; biblioteka može čuvati rezultat do 2 s. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Nova očitanja prate tri neovisne osnovne pobude",
+          "maxPoints": 5
+        },
+        {
+          "id": "range",
+          "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24D.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24D.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli i ekvivalentan programski postupak.",
+          "Ekvivalentan raspored, GPIO i valjani vanjski pull-up.",
+          "Drukčiji redoslijed ROM pretrage; identitet je ROM, a ne položaj u popisu."
+        ],
+        "output": "Potpuni novi retci T=<broj> RH=<broj> za vlagu; ROM=<16 heksadekadskih znakova> T=<broj> za više DS18B20; BITA=<9|10|11|12> prije pripadnog očitanja razlučivosti.",
+        "units": {
+          "T": "°C",
+          "RH": "%RH"
+        },
+        "scenario": {
+          "stageDurationMs": 4500,
+          "responseDeadlineMs": 2400,
+          "maximumIntervalMs": 2300,
+          "stepToleranceMs": 100,
+          "temperatureTolerance": 0.15,
+          "humidityTolerance": 0.15,
+          "seededEnvironment": true,
+          "faults": []
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Separate seeded fault phases; failures never replace measurements with zero; recovery is required in error variants."
+      }
+    },
+    {
+      "id": "24D-dht22@1",
+      "taskKey": "dht/dht22",
+      "kind": "protocol-sensor",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "DHT22: predznak, desetinke i vlaga",
+      "instructions": "Jedan DHT22 s vanjskim pull-upom 1–10 kΩ, zajedničkom masom i valjanim DATA naponom. Stabilizacija najmanje 2 s i razmak stvarnih prijenosa najmanje 2 s. Ispisuj T=<broj> RH=<broj>, uključujući negativnu temperaturu i desetinke. Raspon −40–80 °C / 0–100 %RH. Prvi novi podatak unutar 2400 ms, daljnji razmak do 2300 ms. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Nova očitanja prate tri neovisne osnovne pobude",
+          "maxPoints": 5
+        },
+        {
+          "id": "range",
+          "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24D.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24D.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli i ekvivalentan programski postupak.",
+          "Ekvivalentan raspored, GPIO i valjani vanjski pull-up.",
+          "Drukčiji redoslijed ROM pretrage; identitet je ROM, a ne položaj u popisu."
+        ],
+        "output": "Potpuni novi retci T=<broj> RH=<broj> za vlagu; ROM=<16 heksadekadskih znakova> T=<broj> za više DS18B20; BITA=<9|10|11|12> prije pripadnog očitanja razlučivosti.",
+        "units": {
+          "T": "°C",
+          "RH": "%RH"
+        },
+        "scenario": {
+          "stageDurationMs": 4500,
+          "responseDeadlineMs": 2400,
+          "maximumIntervalMs": 2300,
+          "stepToleranceMs": 100,
+          "temperatureTolerance": 0.15,
+          "humidityTolerance": 0.15,
+          "seededEnvironment": true,
+          "faults": []
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Separate seeded fault phases; failures never replace measurements with zero; recovery is required in error variants."
+      }
+    },
+    {
+      "id": "24D-dhtErrors@1",
+      "taskKey": "dht/dhtErrors",
+      "kind": "protocol-sensor",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "DHT22: kontrolni zbroj, timeout i oporavak",
+      "instructions": "MicroPython početni primjer namjerno pokušava svakih 300 ms. Za pouzdano bodovano rješenje promijeni razmak na najmanje 2100 ms; C++ biblioteka može označiti prečeste pokušaje kao nevaljane. Zadrži provjeru kontrolnog zbroja i hvatanje pogrešaka. Novi valjani retci T=<broj> RH=<broj> prate okoliš; prvi unutar 2400 ms, daljnji razmak do 2300 ms. Provjera zasebno zadaje nevaljan checksum i timeout, zatim uredan prijenos. Nakon 2400 ms u pogrešci ispisuj jasno nevaljano/error/timeout/NaN, bez brojčanog T= ili zamjene pogreške s 0 °C. Prečesti pokušaji smiju dati pogrešku; nakon oporavka ponovno ispisuj svjež podatak. Tolerancija koraka izvršavanja je 100 ms. Ispis prema prenesenom podatku dopušta ±0,15 °C i ±0,15 %RH.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Nova očitanja prate tri neovisne osnovne pobude",
+          "maxPoints": 5
+        },
+        {
+          "id": "recovery",
+          "description": "Prepoznate pogreške i oporavak bez lažnog mjerenja",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24D.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24D.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli i ekvivalentan programski postupak.",
+          "Ekvivalentan raspored, GPIO i valjani vanjski pull-up.",
+          "Drukčiji redoslijed ROM pretrage; identitet je ROM, a ne položaj u popisu."
+        ],
+        "output": "Potpuni novi retci T=<broj> RH=<broj> za vlagu; ROM=<16 heksadekadskih znakova> T=<broj> za više DS18B20; BITA=<9|10|11|12> prije pripadnog očitanja razlučivosti.",
+        "units": {
+          "T": "°C",
+          "RH": "%RH"
+        },
+        "scenario": {
+          "stageDurationMs": 4500,
+          "responseDeadlineMs": 2400,
+          "maximumIntervalMs": 2300,
+          "stepToleranceMs": 100,
+          "temperatureTolerance": 0.15,
+          "humidityTolerance": 0.15,
+          "seededEnvironment": true,
+          "faults": [
+            "checksum",
+            "timeout"
+          ]
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Separate seeded fault phases; failures never replace measurements with zero; recovery is required in error variants."
+      }
+    },
+    {
+      "id": "24D-ds18Multi@1",
+      "taskKey": "onewire/ds18Multi",
+      "kind": "protocol-sensor",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "DS18B20: tri ROM identiteta i neovisna mjerenja",
+      "instructions": "Tri vanjski napajana DS18B20 dijele DQ s jednim vanjskim pull-upom 1–10 kΩ. Pretraži ROM i za svaki senzor ispisuj ROM=<16 heksadekadskih znakova> T=<broj>. Pokreni pretvorbu, pričekaj dovršetak i pročitaj svih 9 bajtova scratchpada s CRC-8. Ne veži identitet uz redoslijed pretrage. Prvo novo očitanje nakon promjene unutar 3200 ms; daljnji razmak do 3000 ms. Svaki ROM mora pratiti svoj okoliš, uključujući promjenu samo jednog senzora. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Nova očitanja prate tri neovisne osnovne pobude",
+          "maxPoints": 5
+        },
+        {
+          "id": "range",
+          "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24D.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24D.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli i ekvivalentan programski postupak.",
+          "Ekvivalentan raspored, GPIO i valjani vanjski pull-up.",
+          "Drukčiji redoslijed ROM pretrage; identitet je ROM, a ne položaj u popisu."
+        ],
+        "output": "Potpuni novi retci T=<broj> RH=<broj> za vlagu; ROM=<16 heksadekadskih znakova> T=<broj> za više DS18B20; BITA=<9|10|11|12> prije pripadnog očitanja razlučivosti.",
+        "units": {
+          "T": "°C",
+          "RH": "%RH"
+        },
+        "scenario": {
+          "stageDurationMs": 4000,
+          "responseDeadlineMs": 3200,
+          "maximumIntervalMs": 3000,
+          "stepToleranceMs": 100,
+          "temperatureTolerance": 0.065,
+          "humidityTolerance": 0.15,
+          "seededEnvironment": true,
+          "faults": []
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Separate seeded fault phases; failures never replace measurements with zero; recovery is required in error variants."
+      }
+    },
+    {
+      "id": "24D-ds18Resolution@1",
+      "taskKey": "onewire/ds18Resolution",
+      "kind": "protocol-sensor",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "DS18B20: stvarna razlučivost i dovršena pretvorba",
+      "instructions": "Na jednom DS18B20 ponavljaj postavljanje 9, 10, 11 i 12 bita. Prije pripadnog novog T=<broj> ispiši BITA=<broj> na istom ili neposredno prethodnom retku. Provjera čita stvarnu konfiguraciju i potpuni scratchpad: sama oznaka nije dovoljna. Pričekaj najmanje 93,75 / 187,5 / 375 / 750 ms ili valjan busy bit. Koraci su 0,5 / 0,25 / 0,125 / 0,0625 °C, što je razlučivost. Unutar svake pobude prikaži sva četiri načina. Prvi novi podatak unutar 4500 ms; razmak između novih podataka do 4500 ms. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Nova očitanja prate tri neovisne osnovne pobude",
+          "maxPoints": 5
+        },
+        {
+          "id": "range",
+          "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24D.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24D.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli i ekvivalentan programski postupak.",
+          "Ekvivalentan raspored, GPIO i valjani vanjski pull-up.",
+          "Drukčiji redoslijed ROM pretrage; identitet je ROM, a ne položaj u popisu."
+        ],
+        "output": "Potpuni novi retci T=<broj> RH=<broj> za vlagu; ROM=<16 heksadekadskih znakova> T=<broj> za više DS18B20; BITA=<9|10|11|12> prije pripadnog očitanja razlučivosti.",
+        "units": {
+          "T": "°C",
+          "RH": "%RH"
+        },
+        "scenario": {
+          "stageDurationMs": 6000,
+          "responseDeadlineMs": 4500,
+          "maximumIntervalMs": 4500,
+          "stepToleranceMs": 100,
+          "temperatureTolerance": 0.065,
+          "humidityTolerance": 0.15,
+          "seededEnvironment": true,
+          "faults": []
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Separate seeded fault phases; failures never replace measurements with zero; recovery is required in error variants."
+      }
+    },
+    {
+      "id": "24D-ds18Errors@1",
+      "taskKey": "onewire/ds18Errors",
+      "kind": "protocol-sensor",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "DS18B20: CRC, presence, svježina i oporavak",
+      "instructions": "Jedan vanjski napajan DS18B20. Novo mjerenje zahtijeva dovršenu pretvorbu i svih 9 bajtova s CRC-8. Ispisuj T=<broj>; prvo novo očitanje unutar 3200 ms, daljnji razmak do 3000 ms. Početni registar 85 °C i stari registar smiješ prikazati samo izričito označenima POCETNI REGISTAR / STARI REGISTAR / PRIJE DOVRSETKA. Takvi retci ne donose bodove. Provjera zadaje CRC pogrešku, odspojen DQ i oporavak: nakon 3200 ms pogrešku jasno označi nevaljano/error/CRC/nema presence bez brojčanog T=. Ne pretvaraj je u 0 °C. Tolerancija koraka izvršavanja je 100 ms. Temperatura dopušta ±0,065 °C prema kvantiziranom registru.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Nova očitanja prate tri neovisne osnovne pobude",
+          "maxPoints": 5
+        },
+        {
+          "id": "recovery",
+          "description": "Prepoznate pogreške i oporavak bez lažnog mjerenja",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24D.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24D.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi varijabli i ekvivalentan programski postupak.",
+          "Ekvivalentan raspored, GPIO i valjani vanjski pull-up.",
+          "Drukčiji redoslijed ROM pretrage; identitet je ROM, a ne položaj u popisu."
+        ],
+        "output": "Potpuni novi retci T=<broj> RH=<broj> za vlagu; ROM=<16 heksadekadskih znakova> T=<broj> za više DS18B20; BITA=<9|10|11|12> prije pripadnog očitanja razlučivosti.",
+        "units": {
+          "T": "°C",
+          "RH": "%RH"
+        },
+        "scenario": {
+          "stageDurationMs": 4500,
+          "responseDeadlineMs": 3200,
+          "maximumIntervalMs": 3000,
+          "stepToleranceMs": 100,
+          "temperatureTolerance": 0.065,
+          "humidityTolerance": 0.15,
+          "seededEnvironment": true,
+          "faults": [
+            "crc",
+            "disconnected"
+          ]
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Separate seeded fault phases; failures never replace measurements with zero; recovery is required in error variants."
+      }
     }
   ]
 }

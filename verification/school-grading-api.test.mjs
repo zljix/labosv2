@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {randomUUID,createHash} from 'node:crypto';
+import {readFileSync} from 'node:fs';
 import {schoolFixture} from './school-http-fixture.mjs';
 import {gradeJob} from '../school/grader/official.ts';
 
@@ -10,7 +11,7 @@ test('23E actual PHP/MySQL queue, isolated results, immutable binding, permissio
   const c=(await ok(teacher.client.call('create-class',{name:'4.f bodovanje',schoolYear:'2026/2027'}),201)).class;
   const csv='username;displayName\n'+[a,b].map(p=>p.user.username+';'+p.user.displayName).join('\n');
   const preview=await ok(teacher.client.call('preview-students',{classId:c.id,csv}));await ok(teacher.client.call('import-students',{classId:c.id,csv,previewToken:preview.previewToken,linkExisting:true}));
-  const profiles=(await ok(teacher.client.call('catalog'))).catalog.gradingProfiles;assert.equal(profiles.length,20);
+  const profiles=(await ok(teacher.client.call('catalog'))).catalog.gradingProfiles;assert.deepEqual(profiles,JSON.parse(readFileSync('school/grader/profiles.json','utf8')).profiles);
   const publish=async(i=0)=> (await ok(teacher.client.call('publish-task',{taskKey:profiles[i].taskKey,gradingProfile:profiles[i].id}),201)).task;
   const task=await publish(),assignment=(await ok(teacher.client.call('create-assignment',{classId:c.id,taskVersionId:task.id,target:'micropython'}),201)).assignment;
   const privateCall=(action,body)=>{const r=f.gradingCommand(action,body);assert.equal(r.status,0,r.stderr);return JSON.parse(r.stdout);};
@@ -79,7 +80,7 @@ test('23E actual PHP/MySQL queue, isolated results, immutable binding, permissio
   });
   await t.test('23G expanded profiles publish with distinct checker versions and never revise old task rubrics',async()=>{
     const catalog=(await ok(teacher.client.call('catalog'))).catalog;
-    assert.equal(catalog.gradingSummary.combinations,268);assert.equal(catalog.gradingSummary.supported,52);
+    assert.deepEqual(catalog.gradingSummary,JSON.parse(readFileSync('public/school-grading-support.json','utf8')).summary);
     const entry=catalog.entries.find(e=>e.key==='analog/lm35');assert.equal(entry.gradingSupport['s3-cpp'].maxPoints,10);
     assert.equal(task.rubric.checkerVersion,'23E.1');
     const profile=profiles.find(p=>p.id==='23G-lm35@1');

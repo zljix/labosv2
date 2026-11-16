@@ -4,8 +4,9 @@ import {existsSync,realpathSync} from 'node:fs';
 
 // Explicitly Linux-only: absence/failure is an infrastructure error, never a
 // request to execute untrusted input on the host as a fallback.
-/** @param {string} root @param {string} entry @param {{compiler?: boolean, s3Compiler?: boolean, toolchainRoot?: string, cli?: string, data?: string, bounded?: boolean}} [options] */
-export function sandboxCommand(root, entry, {compiler = false, s3Compiler = false, toolchainRoot, cli, data, bounded = false} = {}) {
+/** @param {string} root @param {string} entry @param {{compiler?: boolean, s3Compiler?: boolean, toolchainRoot?: string, cli?: string, data?: string, bounded?: boolean, cpuSeconds?: number}} [options] */
+export function sandboxCommand(root, entry, {compiler = false, s3Compiler = false, toolchainRoot, cli, data, bounded = false, cpuSeconds = 18} = {}) {
+  if(!Number.isInteger(cpuSeconds)||cpuSeconds<1||cpuSeconds>58)throw Error('Nevaljano CPU ograničenje provjeravača.');
   if (process.platform !== 'linux') throw Error('Izolirana provjera 23A zasad traži Linux; nema nesigurnog zamjenskog izvođenja.');
   const node = realpathSync(process.execPath);
   const args = ['--user', '--map-root-user', '--net', 'bwrap', '--unshare-pid', '--unshare-ipc', '--unshare-uts', '--die-with-parent', '--new-session',
@@ -38,7 +39,7 @@ export function sandboxCommand(root, entry, {compiler = false, s3Compiler = fals
   args.push('/app/child.mjs');
   // A kernel-enforced virtual-address limit complements the V8/Python heaps,
   // bounded tmpfs, output and wall-time caps. Children inherit the limits.
-  return bounded ? {command: 'prlimit', args: ['--as=2147483648', '--cpu='+(compiler||s3Compiler?85:18), '--fsize=33554432', '--', 'unshare', ...args]} : {command: 'unshare', args};
+  return bounded ? {command: 'prlimit', args: ['--as=2147483648', '--cpu='+(compiler||s3Compiler?85:cpuSeconds), '--fsize=33554432', '--', 'unshare', ...args]} : {command: 'unshare', args};
 }
 
 export function runSandbox(command, payload, timeoutMs = 10000) {
@@ -54,7 +55,8 @@ export function runSandbox(command, payload, timeoutMs = 10000) {
       if (name === 'stdout') stdout += chunk.toString(); else stderr += chunk.toString();
     });
     child.on('error', error => finish(error));
-    child.on('close', code => {
+    child.on('close', (code,signal) => {
+      if(signal==='SIGXCPU'){const error=Error('Prekoračeno je CPU ograničenje izvođenja.');error.code='EXECUTION_LIMIT';finish(error);return;}
       if (code !== 0) { finish(Error('Izolirani proces nije uspio: ' + stderr.slice(-1800))); return; }
       try { finish(null, JSON.parse(stdout)); } catch { finish(Error('Neispravan odgovor izoliranog procesa.')); }
     });

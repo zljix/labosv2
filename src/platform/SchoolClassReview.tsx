@@ -7,7 +7,7 @@ import {appAsset} from './assets';
 import {GradingReport,gradingLabel} from './SchoolGrading';
 import SchoolAttemptHistory from './SchoolAttemptHistory';
 import SchoolFeedback from './SchoolFeedback';
-import SchoolReports from './SchoolReports';
+import SchoolReports from './SchoolReportsView';
 
 const statuses:Record<string,string>={not_started:'Nije započeto',in_progress:'U radu',locked:'Zaključano',reopened:'Dorada dopuštena'};
 export default function SchoolClassReview({open}:{open:(p:Project)=>Promise<void>}){

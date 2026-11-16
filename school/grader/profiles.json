@@ -2771,6 +2771,734 @@
         },
         "faultPolicy": "Private deterministic scenario; switch reset affects program count only. IR blocking preserves source and returns to the saved receiver state."
       }
+    },
+    {
+      "id": "24F-relayContacts@1",
+      "taskKey": "actuators/relayContacts",
+      "kind": "actuator-output",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "Relej: upravljanje i stvarni COM/NO/NC krug",
+      "instructions": "Ponavljaj COM-NO 700 ms, zatim COM-NC 700 ms. U svakoj fazi pripadna LED mora stvarno provoditi struju, a druga biti ugašena. Upravljanje koristi VCC=5 V, LV=3,3 V za S3 ili 5 V za AVR te zajedničku upravljačku masu. Energetski 5 V krug ostaje zaseban i smije imati odvojenu masu. Aktivna razina može biti LOW ili HIGH uz prilagođen program. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan stvarni upravljački i energetski put do svih zadanih aktuatora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan električni izlaz i trajanje svih faza prvoga ciklusa",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Još dva potpuna ciklusa, krajevi raspona i istodobni izlazi bez sukoba timera",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24F.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24F.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi, biblioteka ili algoritam uz isti električni izlaz i objavljeni vremenski slijed.",
+          "Električno ekvivalentan raspored, drugi valjani GPIO i preuređene oznake komponenti.",
+          "Konzola i nazivi varijabli nisu uvjet; dopušten je program bez ispisa."
+        ],
+        "output": "Stvarni kontakti i struja LED-a, frekvencija i duty, servo impuls i kut te potpisani prosječni napon motora.",
+        "units": {
+          "time": "ms",
+          "pulse": "µs",
+          "frequency": "Hz",
+          "angle": "stupnjevi",
+          "voltage": "V",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 4600,
+          "cycleDurationMs": 1400,
+          "cycles": 3,
+          "startupAllowanceMs": 250,
+          "stepToleranceMs": 80,
+          "settleToleranceMs": 60,
+          "frequencyRelativeTolerance": 0.025,
+          "servoFrequencyToleranceHz": 1,
+          "pulseToleranceUs": 20,
+          "angleToleranceDeg": 4,
+          "voltageToleranceV": 0.18,
+          "motorSupplyVolts": [
+            5.6,
+            6,
+            6.8
+          ],
+          "seededEnvironment": true
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Signal and energy-path faults are checked in separate saved copies. Stop, repair and restart is allowed; no hidden demand for live recovery. No mechanical torque, RPM or coil-current model."
+      }
+    },
+    {
+      "id": "24F-activeAlarm@1",
+      "taskKey": "actuators/activeAlarm",
+      "kind": "actuator-output",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "Aktivna zujalica: DC uključenje i tišina",
+      "instructions": "Ponavljaj stalni HIGH 500 ms i LOW 500 ms na stvarnom SIG ulazu aktivnog 5 V modula. Uključeni model ima vlastiti oscilator 2300 Hz. PWM koji stalno prekida SIG nije jednak traženom DC uključenju. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan stvarni upravljački i energetski put do svih zadanih aktuatora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan električni izlaz i trajanje svih faza prvoga ciklusa",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Još dva potpuna ciklusa, krajevi raspona i istodobni izlazi bez sukoba timera",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24F.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24F.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi, biblioteka ili algoritam uz isti električni izlaz i objavljeni vremenski slijed.",
+          "Električno ekvivalentan raspored, drugi valjani GPIO i preuređene oznake komponenti.",
+          "Konzola i nazivi varijabli nisu uvjet; dopušten je program bez ispisa."
+        ],
+        "output": "Stvarni kontakti i struja LED-a, frekvencija i duty, servo impuls i kut te potpisani prosječni napon motora.",
+        "units": {
+          "time": "ms",
+          "pulse": "µs",
+          "frequency": "Hz",
+          "angle": "stupnjevi",
+          "voltage": "V",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 3400,
+          "cycleDurationMs": 1000,
+          "cycles": 3,
+          "startupAllowanceMs": 250,
+          "stepToleranceMs": 80,
+          "settleToleranceMs": 60,
+          "frequencyRelativeTolerance": 0.025,
+          "servoFrequencyToleranceHz": 1,
+          "pulseToleranceUs": 20,
+          "angleToleranceDeg": 4,
+          "voltageToleranceV": 0.18,
+          "motorSupplyVolts": [
+            5.6,
+            6,
+            6.8
+          ],
+          "seededEnvironment": true
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Signal and energy-path faults are checked in separate saved copies. Stop, repair and restart is allowed; no hidden demand for live recovery. No mechanical torque, RPM or coil-current model."
+      }
+    },
+    {
+      "id": "24F-piezoTone@1",
+      "taskKey": "actuators/piezoTone",
+      "kind": "actuator-output",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "Pasivni piezo: tri frekvencije i trajanje",
+      "instructions": "Ponavljaj 440, 880 i 1320 Hz, svaki ton 400 ms, a iza svakoga 100 ms tišine; nakon trećega dodaj još 500 ms tišine. Promatra se stvarna frekvencija i izmjenični signal na SIG-u pasivnog 5 V modula. AVR tone koristi Timer2; D3/D11 i IR nositelj ne mogu istodobno koristiti isti timer. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan stvarni upravljački i energetski put do svih zadanih aktuatora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan električni izlaz i trajanje svih faza prvoga ciklusa",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Još dva potpuna ciklusa, krajevi raspona i istodobni izlazi bez sukoba timera",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24F.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24F.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi, biblioteka ili algoritam uz isti električni izlaz i objavljeni vremenski slijed.",
+          "Električno ekvivalentan raspored, drugi valjani GPIO i preuređene oznake komponenti.",
+          "Konzola i nazivi varijabli nisu uvjet; dopušten je program bez ispisa."
+        ],
+        "output": "Stvarni kontakti i struja LED-a, frekvencija i duty, servo impuls i kut te potpisani prosječni napon motora.",
+        "units": {
+          "time": "ms",
+          "pulse": "µs",
+          "frequency": "Hz",
+          "angle": "stupnjevi",
+          "voltage": "V",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 6400,
+          "cycleDurationMs": 2000,
+          "cycles": 3,
+          "startupAllowanceMs": 250,
+          "stepToleranceMs": 80,
+          "settleToleranceMs": 60,
+          "frequencyRelativeTolerance": 0.025,
+          "servoFrequencyToleranceHz": 1,
+          "pulseToleranceUs": 20,
+          "angleToleranceDeg": 4,
+          "voltageToleranceV": 0.18,
+          "motorSupplyVolts": [
+            5.6,
+            6,
+            6.8
+          ],
+          "seededEnvironment": true
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Signal and energy-path faults are checked in separate saved copies. Stop, repair and restart is allowed; no hidden demand for live recovery. No mechanical torque, RPM or coil-current model."
+      }
+    },
+    {
+      "id": "24F-sg90Sweep@1",
+      "taskKey": "actuators/sg90Sweep",
+      "kind": "actuator-output",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "SG90: stvarni impuls, kut i krajevi raspona",
+      "instructions": "Ponavljaj kutove 0, 90 i 180 stupnjeva po 600 ms. SG90 ima zasebnih 5 V i zajedničku masu. Kalibracija modela je 1000–2000 µs, frekvencija 50 Hz. Traže se stvarni impulsi 1000, 1500 i 2000 µs, ne ispis kuta. AVR Servo koristi Timer1 i onemogućuje uobičajeni PWM na D9/D10. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan stvarni upravljački i energetski put do svih zadanih aktuatora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan električni izlaz i trajanje svih faza prvoga ciklusa",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Još dva potpuna ciklusa, krajevi raspona i istodobni izlazi bez sukoba timera",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24F.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24F.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi, biblioteka ili algoritam uz isti električni izlaz i objavljeni vremenski slijed.",
+          "Električno ekvivalentan raspored, drugi valjani GPIO i preuređene oznake komponenti.",
+          "Konzola i nazivi varijabli nisu uvjet; dopušten je program bez ispisa."
+        ],
+        "output": "Stvarni kontakti i struja LED-a, frekvencija i duty, servo impuls i kut te potpisani prosječni napon motora.",
+        "units": {
+          "time": "ms",
+          "pulse": "µs",
+          "frequency": "Hz",
+          "angle": "stupnjevi",
+          "voltage": "V",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 5800,
+          "cycleDurationMs": 1800,
+          "cycles": 3,
+          "startupAllowanceMs": 250,
+          "stepToleranceMs": 80,
+          "settleToleranceMs": 60,
+          "frequencyRelativeTolerance": 0.025,
+          "servoFrequencyToleranceHz": 1,
+          "pulseToleranceUs": 20,
+          "angleToleranceDeg": 4,
+          "voltageToleranceV": 0.18,
+          "motorSupplyVolts": [
+            5.6,
+            6,
+            6.8
+          ],
+          "seededEnvironment": true
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Signal and energy-path faults are checked in separate saved copies. Stop, repair and restart is allowed; no hidden demand for live recovery. No mechanical torque, RPM or coil-current model."
+      }
+    },
+    {
+      "id": "24F-dcDrive@1",
+      "taskKey": "actuators/dcDrive",
+      "kind": "actuator-output",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "L298N: PWM, smjer, slobodno zaustavljanje i kočenje",
+      "instructions": "Ponavljaj naprijed 25, 50 i 100 % PWM po 500 ms, EN LOW/slobodno 300 ms, natrag 50 % 600 ms pa kočenje 500 ms (oba IN jednaka, EN HIGH). L298N: spremljeni VS=6 V, VSS=5 V, pad mosta 2 V, motor 6 V, EN jumperi uklonjeni i masa zajednička. Provjeravač u zasebnoj kopiji bira VS=5,6, 6,0 ili 6,8 V; očekuje isti duty i prosječni napon (VS−2 V)×potpisani duty. Slobodno stanje je Hi-Z, a kočenje 0 V. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan stvarni upravljački i energetski put do svih zadanih aktuatora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan električni izlaz i trajanje svih faza prvoga ciklusa",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Još dva potpuna ciklusa, krajevi raspona i istodobni izlazi bez sukoba timera",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24F.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24F.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi, biblioteka ili algoritam uz isti električni izlaz i objavljeni vremenski slijed.",
+          "Električno ekvivalentan raspored, drugi valjani GPIO i preuređene oznake komponenti.",
+          "Konzola i nazivi varijabli nisu uvjet; dopušten je program bez ispisa."
+        ],
+        "output": "Stvarni kontakti i struja LED-a, frekvencija i duty, servo impuls i kut te potpisani prosječni napon motora.",
+        "units": {
+          "time": "ms",
+          "pulse": "µs",
+          "frequency": "Hz",
+          "angle": "stupnjevi",
+          "voltage": "V",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 9100,
+          "cycleDurationMs": 2900,
+          "cycles": 3,
+          "startupAllowanceMs": 250,
+          "stepToleranceMs": 80,
+          "settleToleranceMs": 60,
+          "frequencyRelativeTolerance": 0.025,
+          "servoFrequencyToleranceHz": 1,
+          "pulseToleranceUs": 20,
+          "angleToleranceDeg": 4,
+          "voltageToleranceV": 0.18,
+          "motorSupplyVolts": [
+            5.6,
+            6,
+            6.8
+          ],
+          "seededEnvironment": true
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Signal and energy-path faults are checked in separate saved copies. Stop, repair and restart is allowed; no hidden demand for live recovery. No mechanical torque, RPM or coil-current model."
+      }
+    },
+    {
+      "id": "24F-dualDrive@1",
+      "taskKey": "actuators/dualDrive",
+      "kind": "actuator-output",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "L298N: dva neovisna kanala",
+      "instructions": "Ponavljaj istodobno motor A naprijed 50 % i B natrag 75 % tijekom 800 ms; zatim A naprijed 100 % i B slobodno/ENB LOW tijekom 800 ms. Kanali se mjere odvojeno i istodobno. VS=6 V, VSS=5 V, pad mosta 2 V, motori 6 V, oba EN jumpera uklonjena. U privatnoj kopiji VS je 5,6, 6,0 ili 6,8 V; prosječni napon svakog motora mora pratiti stvarni duty i polaritet. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan stvarni upravljački i energetski put do svih zadanih aktuatora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan električni izlaz i trajanje svih faza prvoga ciklusa",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Još dva potpuna ciklusa, krajevi raspona i istodobni izlazi bez sukoba timera",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24F.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24F.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi, biblioteka ili algoritam uz isti električni izlaz i objavljeni vremenski slijed.",
+          "Električno ekvivalentan raspored, drugi valjani GPIO i preuređene oznake komponenti.",
+          "Konzola i nazivi varijabli nisu uvjet; dopušten je program bez ispisa."
+        ],
+        "output": "Stvarni kontakti i struja LED-a, frekvencija i duty, servo impuls i kut te potpisani prosječni napon motora.",
+        "units": {
+          "time": "ms",
+          "pulse": "µs",
+          "frequency": "Hz",
+          "angle": "stupnjevi",
+          "voltage": "V",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 5200,
+          "cycleDurationMs": 1600,
+          "cycles": 3,
+          "startupAllowanceMs": 250,
+          "stepToleranceMs": 80,
+          "settleToleranceMs": 60,
+          "frequencyRelativeTolerance": 0.025,
+          "servoFrequencyToleranceHz": 1,
+          "pulseToleranceUs": 20,
+          "angleToleranceDeg": 4,
+          "voltageToleranceV": 0.18,
+          "motorSupplyVolts": [
+            5.6,
+            6,
+            6.8
+          ],
+          "seededEnvironment": true
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Signal and energy-path faults are checked in separate saved copies. Stop, repair and restart is allowed; no hidden demand for live recovery. No mechanical torque, RPM or coil-current model."
+      }
+    },
+    {
+      "id": "24F-servoMotorTone@1",
+      "taskKey": "actuators/servoMotorTone",
+      "kind": "actuator-output",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "Servo, motor i ton: istodobni izlazi i timeri",
+      "instructions": "Istodobno održavaj motor A naprijed 50 %, pasivni piezo 880 Hz te SG90 naizmjenično 45 i 135 stupnjeva po 600 ms. SG90: 50 Hz, 1250/1750 µs i kalibracija 1000–2000 µs. Motor: VS=6 V, VSS=5 V, pad 2 V, 6 V motor, EN jumperi uklonjeni; privatna kopija bira VS=5,6, 6,0 ili 6,8 V. AVR valjan primjer koristi Servo/Timer1 na D8, PWM/Timer0 na D5 i tone/Timer2 na D4. PWM D9/D10 sukobljava se sa Servom, D3/D11 s tone. Na S3 se očekuju neovisni LEDC izlazi; AVR ograničenja ne prenose se na S3. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan stvarni upravljački i energetski put do svih zadanih aktuatora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Točan električni izlaz i trajanje svih faza prvoga ciklusa",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Još dva potpuna ciklusa, krajevi raspona i istodobni izlazi bez sukoba timera",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24F.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24F.1",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "Drugi nazivi, biblioteka ili algoritam uz isti električni izlaz i objavljeni vremenski slijed.",
+          "Električno ekvivalentan raspored, drugi valjani GPIO i preuređene oznake komponenti.",
+          "Konzola i nazivi varijabli nisu uvjet; dopušten je program bez ispisa."
+        ],
+        "output": "Stvarni kontakti i struja LED-a, frekvencija i duty, servo impuls i kut te potpisani prosječni napon motora.",
+        "units": {
+          "time": "ms",
+          "pulse": "µs",
+          "frequency": "Hz",
+          "angle": "stupnjevi",
+          "voltage": "V",
+          "duty": "udio 0–1"
+        },
+        "scenario": {
+          "stageDurationMs": 4000,
+          "cycleDurationMs": 1200,
+          "cycles": 3,
+          "startupAllowanceMs": 250,
+          "stepToleranceMs": 80,
+          "settleToleranceMs": 60,
+          "frequencyRelativeTolerance": 0.025,
+          "servoFrequencyToleranceHz": 1,
+          "pulseToleranceUs": 20,
+          "angleToleranceDeg": 4,
+          "voltageToleranceV": 0.18,
+          "motorSupplyVolts": [
+            5.6,
+            6,
+            6.8
+          ],
+          "seededEnvironment": true
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Signal and energy-path faults are checked in separate saved copies. Stop, repair and restart is allowed; no hidden demand for live recovery. No mechanical torque, RPM or coil-current model."
+      }
     }
   ]
 }

@@ -58,7 +58,7 @@ export function createStepperCheck(c:SimulationConfig,profile:any,seed:string){
     for(const b of bursts){
       const slice=steps.slice(offset,offset+b.count),first=slice[0],last=slice.at(-1),previous=steps[offset-1];
       const startOK=!!first&&(offset===0?first.timeMs<=s.startupAllowanceMs:
-        Math.abs(first.timeMs-previous.timeMs-(bursts[checks.length-1].holdMs+s.pulsePeriodMs))<=s.pauseToleranceMs);
+        Math.abs(first.timeMs-previous.timeMs-(bursts[checks.length-1].holdMs+s.pulsePeriodMs))<=s.pauseToleranceMs+s.pauseObservationToleranceMs);
       const protocol=slice.length===b.count&&slice.every((step,i)=>{
         const expected=ticks+b.direction*16/b.resolution*(i+1);
         return step.direction===b.direction&&step.resolution===b.resolution&&step.ticks===expected
@@ -94,7 +94,7 @@ export function createStepperCheck(c:SimulationConfig,profile:any,seed:string){
     const drive=stateAt(10,0,160,160,0,1,true),disabled=stateAt(20,0,320,160,1,1,false);
     const reset=stateAt(20,3,0,160,1,1,false),sleep=stateAt(20,6,0,160,1,0,false),wake=stateAt(25,6,80,240,0,1,false);
     const pulseGap=(after:number,before:number,expected:number)=>Number.isFinite(after)&&Number.isFinite(before)
-      &&Math.abs(after-before-expected)<=s.pauseToleranceMs;
+      &&Math.abs(after-before-expected)<=s.pauseToleranceMs+s.pauseObservationToleranceMs;
     const primary=burstOK(0,10)&&burstOK(10,10)&&steps[0].timeMs<=s.startupAllowanceMs
       &&held(drive,steps[9].timeMs,steps[10].timeMs)&&held(disabled,steps[19].timeMs,ignored[0]?.timeMs)
       &&pulseGap(steps[10].timeMs,steps[9].timeMs,700+s.pulsePeriodMs)&&noFaultBefore(steps[19].timeMs+620);

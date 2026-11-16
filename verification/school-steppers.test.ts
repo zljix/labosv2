@@ -47,6 +47,28 @@ test('24G real GPIO model accepts both pulse-period boundaries and rejects each 
     }finally{h.dispose();}
   }
 });
+test('24G execution windows include three cycles at the slow pulse and pause limits',()=>{
+  for(const variant of ['stepperBasic','stepperMicro']){
+    const p=stepperProfiles.find(p=>p.taskKey==='stepper/'+variant)!,c=compileCircuit(stepperCircuit(variant as any));
+    const o=createStepperCheck(c,p,'5'.repeat(64));let now=0;
+    const h=createCircuitHost(o.observe,{circuit:c,logicVoltage:3.3,nowUs:()=>now,manualPublish:true});
+    try{
+      for(const [pin,value]of [[2,0],[3,1],[4,0],[5,1],[6,1],[7,0],[8,0],[9,0]])h.mode(pin,1,0,value);
+      now=2000;
+      for(let cycle=0;cycle<3;cycle++)for(const [factor,bits]of (variant==='stepperBasic'?[[1,0]]:[[1,0],[2,1],[4,2],[8,3],[16,7]])){
+        h.write(7,bits&1);h.write(8,(bits>>1)&1);h.write(9,(bits>>2)&1);now+=10;
+        for(const direction of [1,0]){
+          h.write(3,direction);now+=10;
+          for(let i=0;i<(variant==='stepperBasic'?50:10*factor);i++){
+            h.write(2,1);now+=10;h.write(2,0);now+=4600;h.flush();
+          }
+          now+=(variant==='stepperBasic'?680:480)*1000;h.flush();
+        }
+      }
+      assert(now/1000<o.duration);assert.deepEqual(o.outcomes([o.record()],true),[true,true,true],variant);
+    }finally{h.dispose();}
+  }
+});
 for(const target of ['micropython','s3-cpp','uno','nano'] as UrsTarget[])test(`24G ${target}: three repetitions of all three saved sources`,{skip:selected(target),timeout:600000},async()=>{
   for(const p of stepperProfiles)for(let repetition=0;repetition<3;repetition++){
     const project=await starter(p.taskKey,target);project.files['forged-result.json']='{"points":1000,"translatorTicks":999}';

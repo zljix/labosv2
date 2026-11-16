@@ -1,7 +1,7 @@
 {
   "format": "labosv2-school-profile",
   "version": 1,
-  "stage": "24I",
+  "stage": "24J",
   "sourceBaseline": "zljix/labos@3c4a281c10282d63b2742280f69aadbc08d7ae1e",
   "webServer": "Apache 2.4 with HTTPS",
   "phpBranches": [
@@ -80,7 +80,7 @@
     "idempotentSaves": true
   },
   "grading": {
-    "checkerVersion": "24I.1",
+    "checkerVersion": "24J.1",
     "profiles": [
       "23E-button-led@1",
       "23E-analog-threshold@1",
@@ -134,7 +134,13 @@
       "24H-bmp280SPI@1",
       "24H-spiDashboard@1",
       "24I-regulator@1",
-      "24I-weather@1"
+      "24I-weather@1",
+      "24J-iliGraphics@1",
+      "24J-iliRotation@1",
+      "24J-touchRaw@1",
+      "24J-touchCalibration@1",
+      "24J-touchButton@1",
+      "24J-touchRotation@1"
     ],
     "targets": [
       "micropython",
@@ -156,12 +162,13 @@
       "24E.1",
       "24F.1",
       "24G.1",
-      "24H.1"
+      "24H.1",
+      "24I.1"
     ],
     "coverage": {
       "combinations": 268,
-      "supported": 184,
-      "unsupported": 84,
+      "supported": 208,
+      "unsupported": 60,
       "introductoryLocalOnly": 5
     },
     "executionContract": "labosv2-execution-contract@1",
@@ -177,7 +184,9 @@
     "displayWallTimeMs": 65000,
     "displayCpuSeconds": 58,
     "environmentWallTimeMs": 65000,
-    "environmentCpuSeconds": 58
+    "environmentCpuSeconds": 58,
+    "touchWallTimeMs": 65000,
+    "touchCpuSeconds": 58
   },
   "submissions": {
     "exactRevision": true,

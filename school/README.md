@@ -1,3 +1,7 @@
+## 24J — ILI9341 i dodir XPT2046
+
+Izdanje **0.14.8-beta.1** dodaje šest rubrika i 24 kombinacije, ukupno **208/268**. Grafika, rotacije, sirova očitanja, izmjerena kalibracija i tipkalo provjeravaju se preko stvarnih SPI bajtova, fizičkih TFT piksela i struje LED-ice. [Uvjeti, kriteriji i provjere 24J](../docs/stage24j-touch.md). Nema nove SQL migracije. Sačuvaj bazu, privatnu konfiguraciju i sesije; zamijeni kompletan paket, pokreni postojeći migrate i ponovno pokreni provjeravače. Stare dodjele i zaključane predaje ostaju sačuvane.
+
 ## 24I — meteorološka stanica i regulator
 
 Izdanje **0.14.7-beta.1** dodaje dvije rubrike i osam kombinacija, ukupno **184/268**. Stanica provjerava tri neovisna nova očitanja i primljene OLED piksele; regulator dodaje oba smjera histereze, granične AHT10 uzorke i stvarne servo impulse. [Opseg, kriteriji i provjere 24I](../docs/stage24i-environment.md). Nema nove SQL migracije. Sačuvaj bazu, konfiguraciju i sesije; zamijeni kompletan paket, pokreni postojeći migrate i ponovno pokreni provjeravače. Stare dodjele i zaključane predaje ostaju sačuvane.
@@ -18,13 +22,13 @@ Izdanje 0.14.4-beta.1 dodaje sedam rubrika 24F-…@1 i 28 kombinacija (ukupno 13
 
 Nema nove SQL migracije. Prije nadogradnje sačuvaj bazu i privatnu konfiguraciju. Zamijeni programski paket, zadrži sesije/konfiguraciju, pokreni postojeći migrate i ponovno pokreni Linux provjeravače. Ranije verzije rubrika i zaključane predaje ostaju izvršive uz stare uvjete. Nova objava izričito bira novu rubriku.
 
-# Labosv2 · školski paket · etapa 24I
+# Labosv2 · školski paket · etapa 24J
 
 Prethodno izdanje 0.13.8-beta.1 pripremilo je školski pilot, obrazac opažanja i razvojni pokus 30 + 1; vidi [23I](../docs/stage23i-pilot.md). Etapa 23H dodala je postignuća, izvoze, komentare i korekcije, arhiviranje, čuvanje međurevizija te privatne kopije i povrat. Postupak i provjere su u [izvješću 23H](../docs/stage23h-reports-administration.md). [Raniji zapis integracije 23F](https://github.com/zljix/labosv2/actions/runs/43738711916) ostaje povijesni dokaz. Stvarni školski pilot ostaje zasebna provjera.
 
 Etapa 23A priprema postojeći laboratorij za školski Apache/PHP/MySQL smjer i dokazuje ponovno izvršavanje izvan učenikova preglednika. Polazište je `zljix/labos@3c4a281` (0.12.9), uključujući posljednju doradu vodova. Ovaj razvoj objavljuje se u `zljix/labosv2`.
 
-**Dostupno:** simulator, postojeći projekti i izvozi, školski paket, PHP provjera preduvjeta, MySQL migracije, početni administrator, prijava/odjava, uloge, upravljanje računima i lozinkama, razredi, CSV uvoz, pozivni kodovi, potvrda učenika i verzionirane dodjele vježbi te raniji ograničeni dokaz tipkala/LED-ice, poslužiteljski pokušaji, nepromjenjive radne revizije, automatsko spremanje, usporedba sukoba i nastavnički pregled rada. **Službeno bodovanje sada pokriva 184 od 268 kombinacija.** Etapa 24E dodaje šest rubrika enkodera i IR-a; [upute i provjere](../docs/stage24e-events.md). Završetak, zaključavanje, povijest i dopuštena dorada dostupni su u 23F. Izvorni plan od 14. 11. 2026. zadržan je.
+**Dostupno:** simulator, postojeći projekti i izvozi, školski paket, PHP provjera preduvjeta, MySQL migracije, početni administrator, prijava/odjava, uloge, upravljanje računima i lozinkama, razredi, CSV uvoz, pozivni kodovi, potvrda učenika i verzionirane dodjele vježbi te raniji ograničeni dokaz tipkala/LED-ice, poslužiteljski pokušaji, nepromjenjive radne revizije, automatsko spremanje, usporedba sukoba i nastavnički pregled rada. **Službeno bodovanje sada pokriva 208 od 268 kombinacija.** Etapa 24E dodaje šest rubrika enkodera i IR-a; [upute i provjere](../docs/stage24e-events.md). Završetak, zaključavanje, povijest i dopuštena dorada dostupni su u 23F. Izvorni plan od 14. 11. 2026. zadržan je.
 
 ## Izgradnja
 
@@ -34,7 +38,7 @@ Node.js 24 LTS, `npm ci`, zatim:
 npm run build:school
 ```
 
-Nastaje `release/Labosv2_0.14.7_24I_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
+Nastaje `release/Labosv2_0.14.8_24J_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
 
 | Mapa | Namjena |
 | --- | --- |

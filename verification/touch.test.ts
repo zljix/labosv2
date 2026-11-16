@@ -60,7 +60,7 @@ test('raw 12-bit X/Y endpoints, Z1/Z2, leading null/trailing zeros and split tra
  }finally{f.h.dispose();}
 });
 test('byte-aligned pipelining returns the previous conversion while a new command starts',()=>{
- const f=fixture();try{f.input();f.set(7,0);const rx=f.xfer([0xb1,0,0xc1,0,0xd0,0,0]);f.set(7,1);assert.equal((rx[1]*256+rx[2])>>3,1000);assert.equal((rx[3]*256+rx[4])>>3,3345);assert.equal((rx[5]*256+rx[6])>>3,2058);assert.equal(f.snap().touches!.touch1.conversions,3);}finally{f.h.dispose();}
+ const f=fixture();try{f.input();f.set(7,0);const rx=f.xfer([0xb1,0,0xc1,0,0xd0,0,0]);f.set(7,1);assert.equal((rx[1]*256+rx[2])>>3,1000);assert.equal((rx[3]*256+rx[4])>>3,3345);assert.equal((rx[5]*256+rx[6])>>3,2058);assert.equal(f.snap().touches!.touch1.conversions,3);assert.deepEqual(f.snap().touchReadings!.map(r=>[r.channel,r.value]),[['z1',1000],['z2',3345],['x',2058]]);}finally{f.h.dispose();}
 });
 test('release has zero pressure score and active LOW PENIRQ follows touch and PD0',()=>{
  const f=fixture();try{assert.equal(f.h.read(2),1);f.input();assert.equal(f.h.read(2),0);assert.equal(f.read(0xb1),1000);assert.equal(f.h.read(2),1);f.read(0xd0);assert.equal(f.h.read(2),0);f.input({touchDown:false,touchX:120,touchY:160,touchPressure:50});assert.equal(f.h.read(2),1);assert.equal(f.read(0xb0)+4095-f.read(0xc0),0);}finally{f.h.dispose();}
@@ -73,7 +73,7 @@ test('missing power, ground, SCK, MOSI or CS cannot yield a valid ADC conversion
  for(const pin of ['VCC','GND','SCK','MOSI','CS']){const f=fixture(c=>{c.wires=c.wires.filter(w=>!(w.to.component==='touch1'&&w.to.pin===pin));});try{f.input();assert.equal(f.read(0xd0),8191,pin);assert.equal(f.snap().touches!.touch1.conversions,0,pin);}finally{f.h.dispose();}}
 });
 test('missing MISO yields 0xFF with diagnosis; CS HIGH does not start conversion',()=>{
- const f=fixture(c=>{c.wires=c.wires.filter(w=>!(w.to.component==='touch1'&&w.to.pin==='MISO'));});try{f.input();assert.equal(f.read(0xd0),8191);assert(f.snap().diagnostics.some(d=>/MISO/.test(d.message)));}finally{f.h.dispose();}
+ const f=fixture(c=>{c.wires=c.wires.filter(w=>!(w.to.component==='touch1'&&w.to.pin==='MISO'));});try{f.input();assert.equal(f.read(0xd0),8191);assert(f.snap().diagnostics.some(d=>/MISO/.test(d.message)));assert.deepEqual(f.snap().touchReadings,[]);}finally{f.h.dispose();}
  const g=fixture();try{g.input();assert.deepEqual(g.xfer([0xd0,0,0]),[255,255,255]);assert.equal(g.snap().touches!.touch1.conversions,0);}finally{g.h.dispose();}
 });
 test('CS deassert discards incomplete conversion data, preserving the input',()=>{

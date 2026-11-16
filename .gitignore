@@ -28,3 +28,7 @@ docs/stage24h-evidence/mysql-displays.json
 # Detaljni sintetski prihvat 24I ostaje u CI artefaktima i školskom paketu.
 docs/stage24i-evidence/environment-*.json
 docs/stage24i-evidence/mysql-environment.json
+
+# Detaljni sintetski prihvat 24J ostaje u CI artefaktima i školskom paketu.
+docs/stage24j-evidence/touch-*.json
+docs/stage24j-evidence/mysql-touch.json

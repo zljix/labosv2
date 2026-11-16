@@ -1,5 +1,5 @@
 {
-  "checkerVersion": "24I.1",
+  "checkerVersion": "24J.1",
   "profiles": [
     {
       "id": "23E-button-led@1",
@@ -4977,6 +4977,702 @@
           "format": "labosv2-environment-fonts@1",
           "sha256": "c99cfa5d3362059e313e9d9545cfa21c272622a25ab5b6fc5bc38fa5e19a16c8",
           "file": "school/grader/environment-fonts.json"
+        }
+      }
+    },
+    {
+      "id": "24J-iliGraphics@1",
+      "taskKey": "touch/iliGraphics",
+      "kind": "touch-system",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "ILI9341: boje, tekst i geometrija",
+      "instructions": "ILI9341: stvarni RGB565 SPI upisi, fizičkih 240×320 piksela, COLMOD=0x55, BL=3V3. Zadrži font 5×7 i bodovane položaje početnog primjera; tekst i slike nastaju iz primljene RAM memorije kontrolera. Dopušteni su drugi algoritmi, nazivi, valjani GPIO, oznake i električno ekvivalentan raspored. Konzolni tekst nije dokaz slike. Prikaži trake (0,0,80,48) crveno, (80,0,80,48) zeleno i (160,0,80,48) plavo; bijelo ILI9341 u (25,70), skala 4. Dodaj žuti okvir (10,125,220,180), cijan dijagonalu (11,126)–(228,303), magenta (228,126)–(11,303) i magenta piksel (239,319). Pokaži rezultat do 3500 ms, stabilno najmanje 100 ms. 3 boda stvarni spoj i upis, 5 trake/tekst, 2 okvir, dijagonale i 16-bitno adresirani krajnji piksel.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Napajani SPI put i stvarni prijenosi uređaja",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Trake i naslov u primljenim RGB565 pikselima",
+          "maxPoints": 5
+        },
+        {
+          "id": "continuation",
+          "description": "Geometrija i krajnji piksel (239,319)",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24J.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24J.1",
+        "observation": "received-SPI-RGB565-pixels-raw-ADC-channels-and-LED-current",
+        "allowedAlternatives": [
+          "Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored.",
+          "Slobodni dijelovi slike ne utječu na rezultat; bodovani položaji i font su objavljeni."
+        ],
+        "output": "SPI povratni ADC bajtovi, primljeni TFT pikseli, nova očitanja i stvarna struja LED-ice.",
+        "units": {
+          "time": "ms",
+          "screen": "pixel",
+          "raw": "12-bit ADC",
+          "relativePressure": "dimensionless",
+          "ledCurrent": "mA"
+        },
+        "scenario": {
+          "stageDurationMs": 5000,
+          "responseDeadlineMs": 3500,
+          "settleMs": 500,
+          "minimumStableMs": 100,
+          "intervalMinimumMs": 800,
+          "intervalMaximumMs": 6000,
+          "maximumIntervalMs": 600,
+          "coordinateTolerance": 1,
+          "calibrationTolerance": 3,
+          "basicStages": 1,
+          "panelCalibrations": [
+            [
+              320,
+              3720,
+              400,
+              3650
+            ],
+            [
+              450,
+              3500,
+              180,
+              3880
+            ]
+          ],
+          "specification": "Prikaži trake (0,0,80,48) crveno, (80,0,80,48) zeleno i (160,0,80,48) plavo; bijelo ILI9341 u (25,70), skala 4. Dodaj žuti okvir (10,125,220,180), cijan dijagonalu (11,126)–(228,303), magenta (228,126)–(11,303) i magenta piksel (239,319). Pokaži rezultat do 3500 ms, stabilno najmanje 100 ms. 3 boda stvarni spoj i upis, 5 trake/tekst, 2 okvir, dijagonale i 16-bitno adresirani krajnji piksel.",
+          "observationStepMs": 20
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Otvoreni SPI signal/napajanje/BL, sukob CS i pogrešno preslikavanje ispituju se u zasebnoj kopiji. Stop, popravak i novo pokretanje dopušteni su. Model ne potvrđuje šum, smicanje, fizičku točnost ni univerzalne kalibracijske konstante.",
+        "visualOracle": {
+          "format": "labosv2-display-oracles@1",
+          "sha256": "97474343a6892e9fce389cce1ff23a6257df2e956ea886bd6681d56a53227499",
+          "file": "school/grader/display-oracles.json"
+        }
+      }
+    },
+    {
+      "id": "24J-iliRotation@1",
+      "taskKey": "touch/iliRotation",
+      "kind": "touch-system",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "ILI9341: četiri rotacije i povrat",
+      "instructions": "ILI9341: stvarni RGB565 SPI upisi, fizičkih 240×320 piksela, COLMOD=0x55, BL=3V3. Zadrži font 5×7 i bodovane položaje početnog primjera; tekst i slike nastaju iz primljene RAM memorije kontrolera. Dopušteni su drugi algoritmi, nazivi, valjani GPIO, oznake i električno ekvivalentan raspored. Konzolni tekst nije dokaz slike. Ponavljaj rotacije 0,1,2,3. Svaka: crvena oznaka 24×24 logički gore lijevo, bijeli vanjski okvir i zeleni ROT n u (36,visina/2), skala 3. Početak do 3500 ms, najmanje 100 ms stabilnog prikaza, razmak početaka 800–6000 ms. Provjera traje 30000 ms. 3 boda stvarni upis; 5 slijed 0,1; 2 nastavak 2,3,0 uz ispravne fizičke kutove i dimenzije.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Napajani SPI put i stvarni prijenosi uređaja",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Prve dvije rotacije i fizički kutovi",
+          "maxPoints": 5
+        },
+        {
+          "id": "continuation",
+          "description": "Četiri rotacije i povrat na početnu",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24J.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24J.1",
+        "observation": "received-SPI-RGB565-pixels-raw-ADC-channels-and-LED-current",
+        "allowedAlternatives": [
+          "Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored.",
+          "Slobodni dijelovi slike ne utječu na rezultat; bodovani položaji i font su objavljeni."
+        ],
+        "output": "SPI povratni ADC bajtovi, primljeni TFT pikseli, nova očitanja i stvarna struja LED-ice.",
+        "units": {
+          "time": "ms",
+          "screen": "pixel",
+          "raw": "12-bit ADC",
+          "relativePressure": "dimensionless",
+          "ledCurrent": "mA"
+        },
+        "scenario": {
+          "stageDurationMs": 30000,
+          "responseDeadlineMs": 3500,
+          "settleMs": 500,
+          "minimumStableMs": 100,
+          "intervalMinimumMs": 800,
+          "intervalMaximumMs": 6000,
+          "maximumIntervalMs": 600,
+          "coordinateTolerance": 1,
+          "calibrationTolerance": 3,
+          "basicStages": 1,
+          "panelCalibrations": [
+            [
+              320,
+              3720,
+              400,
+              3650
+            ],
+            [
+              450,
+              3500,
+              180,
+              3880
+            ]
+          ],
+          "specification": "Ponavljaj rotacije 0,1,2,3. Svaka: crvena oznaka 24×24 logički gore lijevo, bijeli vanjski okvir i zeleni ROT n u (36,visina/2), skala 3. Početak do 3500 ms, najmanje 100 ms stabilnog prikaza, razmak početaka 800–6000 ms. Provjera traje 30000 ms. 3 boda stvarni upis; 5 slijed 0,1; 2 nastavak 2,3,0 uz ispravne fizičke kutove i dimenzije.",
+          "observationStepMs": 20
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Otvoreni SPI signal/napajanje/BL, sukob CS i pogrešno preslikavanje ispituju se u zasebnoj kopiji. Stop, popravak i novo pokretanje dopušteni su. Model ne potvrđuje šum, smicanje, fizičku točnost ni univerzalne kalibracijske konstante.",
+        "visualOracle": {
+          "format": "labosv2-display-oracles@1",
+          "sha256": "97474343a6892e9fce389cce1ff23a6257df2e956ea886bd6681d56a53227499",
+          "file": "school/grader/display-oracles.json"
+        }
+      }
+    },
+    {
+      "id": "24J-touchRaw@1",
+      "taskKey": "touch/touchRaw",
+      "kind": "touch-system",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "XPT2046: novi sirovi X/Y/Z1/Z2 i IRQ",
+      "instructions": "ILI9341: stvarni RGB565 SPI upisi, fizičkih 240×320 piksela, COLMOD=0x55, BL=3V3. Zadrži font 5×7 i bodovane položaje početnog primjera; tekst i slike nastaju iz primljene RAM memorije kontrolera. Dopušteni su drugi algoritmi, nazivi, valjani GPIO, oznake i električno ekvivalentan raspored. Konzolni tekst nije dokaz slike. Šest etapa po 2500 ms: otpušteno, pritisak, povlačenje/promjena Z, otpuštanje, kut, otpuštanje. Sjeme bira A=(61,83) ili (73,97), B=(177,263) ili (163,247), kut (239,0) ili (0,319). Pritisak je 50, 80 i 25 %. U svakoj etapi čitaj sva četiri 12-bitna kanala i ispisuj TOUCH RAW X=n Y=n Z1=n Z2=n IRQ=n. Standardni krajevi 200–3900/250–3850; Z1=round(20p), Z2=4095−round(15p). Bez dodira X=Y=Z1=0, Z2=4095, IRQ=1; s dodirom IRQ=0. Nakon početnih 500 ms barem dva valjana ispisa, prvi do 2300 ms, daljnji razmak najviše 600 ms. Z nije sila ni tlak u Pa. Zadrži početni naslov SIROVI DODIR/PRATI KONZOLU. 3 boda oba napajana puta i stvarno primljena četiri ADC kanala, 5 prve tri etape, 2 preostale tri.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Napajani SPI put i stvarni prijenosi uređaja",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Nova sirova očitanja kroz pritisak i povlačenje",
+          "maxPoints": 5
+        },
+        {
+          "id": "continuation",
+          "description": "Otpuštanje, kut i promjena relativnog pritiska",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24J.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24J.1",
+        "observation": "received-SPI-RGB565-pixels-raw-ADC-channels-and-LED-current",
+        "allowedAlternatives": [
+          "Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored.",
+          "Slobodni dijelovi slike ne utječu na rezultat; bodovani položaji i font su objavljeni."
+        ],
+        "output": "SPI povratni ADC bajtovi, primljeni TFT pikseli, nova očitanja i stvarna struja LED-ice.",
+        "units": {
+          "time": "ms",
+          "screen": "pixel",
+          "raw": "12-bit ADC",
+          "relativePressure": "dimensionless",
+          "ledCurrent": "mA"
+        },
+        "scenario": {
+          "stageDurationMs": 2500,
+          "responseDeadlineMs": 2300,
+          "settleMs": 500,
+          "minimumStableMs": 100,
+          "intervalMinimumMs": 800,
+          "intervalMaximumMs": 6000,
+          "maximumIntervalMs": 600,
+          "coordinateTolerance": 1,
+          "calibrationTolerance": 3,
+          "basicStages": 3,
+          "panelCalibrations": [
+            [
+              320,
+              3720,
+              400,
+              3650
+            ],
+            [
+              450,
+              3500,
+              180,
+              3880
+            ]
+          ],
+          "specification": "Šest etapa po 2500 ms: otpušteno, pritisak, povlačenje/promjena Z, otpuštanje, kut, otpuštanje. Sjeme bira A=(61,83) ili (73,97), B=(177,263) ili (163,247), kut (239,0) ili (0,319). Pritisak je 50, 80 i 25 %. U svakoj etapi čitaj sva četiri 12-bitna kanala i ispisuj TOUCH RAW X=n Y=n Z1=n Z2=n IRQ=n. Standardni krajevi 200–3900/250–3850; Z1=round(20p), Z2=4095−round(15p). Bez dodira X=Y=Z1=0, Z2=4095, IRQ=1; s dodirom IRQ=0. Nakon početnih 500 ms barem dva valjana ispisa, prvi do 2300 ms, daljnji razmak najviše 600 ms. Z nije sila ni tlak u Pa. Zadrži početni naslov SIROVI DODIR/PRATI KONZOLU. 3 boda oba napajana puta i stvarno primljena četiri ADC kanala, 5 prve tri etape, 2 preostale tri.",
+          "observationStepMs": 20
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Otvoreni SPI signal/napajanje/BL, sukob CS i pogrešno preslikavanje ispituju se u zasebnoj kopiji. Stop, popravak i novo pokretanje dopušteni su. Model ne potvrđuje šum, smicanje, fizičku točnost ni univerzalne kalibracijske konstante.",
+        "visualOracle": {
+          "format": "labosv2-display-oracles@1",
+          "sha256": "97474343a6892e9fce389cce1ff23a6257df2e956ea886bd6681d56a53227499",
+          "file": "school/grader/display-oracles.json"
+        }
+      }
+    },
+    {
+      "id": "24J-touchCalibration@1",
+      "taskKey": "touch/touchCalibration",
+      "kind": "touch-system",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "XPT2046: izmjerena kalibracija i pikseli",
+      "instructions": "ILI9341: stvarni RGB565 SPI upisi, fizičkih 240×320 piksela, COLMOD=0x55, BL=3V3. Zadrži font 5×7 i bodovane položaje početnog primjera; tekst i slike nastaju iz primljene RAM memorije kontrolera. Dopušteni su drugi algoritmi, nazivi, valjani GPIO, oznake i električno ekvivalentan raspored. Konzolni tekst nije dokaz slike. Trinaest etapa po 2500 ms: prvi križić bez dodira, pritisak (20,20), držanje, otpuštanje/drugi križić, pritisak (219,299), otpuštanje/izračun, A, povlačenje B, otpuštanje, (237,317), otpuštanje, (2,2), otpuštanje. A/B ovise o sjemenu kao kod sirovog dodira. Privatna kopija panela ima krajeve (320,3720,400,3650) ili (450,3500,180,3880); izračunaj ih iz stvarnih očitanja dvaju križića i ispiši CAL READY x0 x1 y0 y1, tolerancija ±3 ADC koraka. Ne koristi fiksnu kalibraciju. Nakon kalibracije ispisuj CAL POINT x y (±1 piksel), bijelo X x Y y u (12,115), skala 2 i žutu oznaku 5×5 sa središtem u točki. Pokaži KALIBRIRANO u (20,30), zeleno, skala 2. Otpušten dodir ne daje CAL POINT. Svaka točka nakon 500 ms ima barem dva valjana ispisa i odgovarajuće primljene piksele. 3 boda oba puta, 5 križići/otpuštanja/izmjereni krajevi i prva točka, 2 povlačenje, rubne točke i svi pripadni pikseli.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Napajani SPI put i stvarni prijenosi uređaja",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Dva križića, izmjereni krajevi i prva nova točka",
+          "maxPoints": 5
+        },
+        {
+          "id": "continuation",
+          "description": "Povlačenje, rubovi, otpuštanja i primljeni pikseli",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24J.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24J.1",
+        "observation": "received-SPI-RGB565-pixels-raw-ADC-channels-and-LED-current",
+        "allowedAlternatives": [
+          "Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored.",
+          "Slobodni dijelovi slike ne utječu na rezultat; bodovani položaji i font su objavljeni."
+        ],
+        "output": "SPI povratni ADC bajtovi, primljeni TFT pikseli, nova očitanja i stvarna struja LED-ice.",
+        "units": {
+          "time": "ms",
+          "screen": "pixel",
+          "raw": "12-bit ADC",
+          "relativePressure": "dimensionless",
+          "ledCurrent": "mA"
+        },
+        "scenario": {
+          "stageDurationMs": 2500,
+          "responseDeadlineMs": 2300,
+          "settleMs": 500,
+          "minimumStableMs": 100,
+          "intervalMinimumMs": 800,
+          "intervalMaximumMs": 6000,
+          "maximumIntervalMs": 600,
+          "coordinateTolerance": 1,
+          "calibrationTolerance": 3,
+          "basicStages": 7,
+          "panelCalibrations": [
+            [
+              320,
+              3720,
+              400,
+              3650
+            ],
+            [
+              450,
+              3500,
+              180,
+              3880
+            ]
+          ],
+          "specification": "Trinaest etapa po 2500 ms: prvi križić bez dodira, pritisak (20,20), držanje, otpuštanje/drugi križić, pritisak (219,299), otpuštanje/izračun, A, povlačenje B, otpuštanje, (237,317), otpuštanje, (2,2), otpuštanje. A/B ovise o sjemenu kao kod sirovog dodira. Privatna kopija panela ima krajeve (320,3720,400,3650) ili (450,3500,180,3880); izračunaj ih iz stvarnih očitanja dvaju križića i ispiši CAL READY x0 x1 y0 y1, tolerancija ±3 ADC koraka. Ne koristi fiksnu kalibraciju. Nakon kalibracije ispisuj CAL POINT x y (±1 piksel), bijelo X x Y y u (12,115), skala 2 i žutu oznaku 5×5 sa središtem u točki. Pokaži KALIBRIRANO u (20,30), zeleno, skala 2. Otpušten dodir ne daje CAL POINT. Svaka točka nakon 500 ms ima barem dva valjana ispisa i odgovarajuće primljene piksele. 3 boda oba puta, 5 križići/otpuštanja/izmjereni krajevi i prva točka, 2 povlačenje, rubne točke i svi pripadni pikseli.",
+          "observationStepMs": 20
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Otvoreni SPI signal/napajanje/BL, sukob CS i pogrešno preslikavanje ispituju se u zasebnoj kopiji. Stop, popravak i novo pokretanje dopušteni su. Model ne potvrđuje šum, smicanje, fizičku točnost ni univerzalne kalibracijske konstante.",
+        "visualOracle": {
+          "format": "labosv2-display-oracles@1",
+          "sha256": "97474343a6892e9fce389cce1ff23a6257df2e956ea886bd6681d56a53227499",
+          "file": "school/grader/display-oracles.json"
+        }
+      }
+    },
+    {
+      "id": "24J-touchButton@1",
+      "taskKey": "touch/touchButton",
+      "kind": "touch-system",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "XPT2046: rub novog dodira, hit-test i LED",
+      "instructions": "ILI9341: stvarni RGB565 SPI upisi, fizičkih 240×320 piksela, COLMOD=0x55, BL=3V3. Zadrži font 5×7 i bodovane položaje početnog primjera; tekst i slike nastaju iz primljene RAM memorije kontrolera. Dopušteni su drugi algoritmi, nazivi, valjani GPIO, oznake i električno ekvivalentan raspored. Konzolni tekst nije dokaz slike. Šesnaest etapa po 2500 ms: otpušteno; novi (120,160); držanje/pomak (170,170); povlačenje izvan (220,80); otpusti; novi izvan (220,80); uvuci zadržani dodir (120,160); otpusti; novi (32,122); otpusti; novi izvan (212,160); otpusti; novi (208,198); otpusti; novi izvan (120,202); otpusti. Preklopi LED samo na početku novog valjanog dodira unutar x≥30,x<210,y≥120,y<200. Držanje i ulazak izvan→unutra bez otpuštanja ne preklapaju LED. Kalibracija je standardna 200–3900/250–3850, rotacija 0; položaji su najmanje 2 piksela od ruba zbog kvantizacije. Početna LED ugašena. Do 2300 ms svake etape LED i tipkalo moraju biti ispravni i ostati takvi do kraja. Pravokutnik (30,120,180,80) je plav kad je LED ugašena, zelen kad svijetli, bijelo LED OFF/LED ON u (48,150), skala 3. 3 boda oba SPI puta i stvarna struja LED-ice, 5 prvih osam etapa, 2 svi rubni i ponovljeni pritisci. Konzolni ispis LED nije dokaz izlaza.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Napajani SPI put i stvarni prijenosi uređaja i LED struja",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Novi dodir, držanje i povlačenje uz stvarnu LED",
+          "maxPoints": 5
+        },
+        {
+          "id": "continuation",
+          "description": "Ponovljeni pritisci i položaji uz rubove tipkala",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24J.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24J.1",
+        "observation": "received-SPI-RGB565-pixels-raw-ADC-channels-and-LED-current",
+        "allowedAlternatives": [
+          "Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored.",
+          "Slobodni dijelovi slike ne utječu na rezultat; bodovani položaji i font su objavljeni."
+        ],
+        "output": "SPI povratni ADC bajtovi, primljeni TFT pikseli, nova očitanja i stvarna struja LED-ice.",
+        "units": {
+          "time": "ms",
+          "screen": "pixel",
+          "raw": "12-bit ADC",
+          "relativePressure": "dimensionless",
+          "ledCurrent": "mA"
+        },
+        "scenario": {
+          "stageDurationMs": 2500,
+          "responseDeadlineMs": 2300,
+          "settleMs": 500,
+          "minimumStableMs": 100,
+          "intervalMinimumMs": 800,
+          "intervalMaximumMs": 6000,
+          "maximumIntervalMs": 600,
+          "coordinateTolerance": 1,
+          "calibrationTolerance": 3,
+          "basicStages": 8,
+          "panelCalibrations": [
+            [
+              320,
+              3720,
+              400,
+              3650
+            ],
+            [
+              450,
+              3500,
+              180,
+              3880
+            ]
+          ],
+          "specification": "Šesnaest etapa po 2500 ms: otpušteno; novi (120,160); držanje/pomak (170,170); povlačenje izvan (220,80); otpusti; novi izvan (220,80); uvuci zadržani dodir (120,160); otpusti; novi (32,122); otpusti; novi izvan (212,160); otpusti; novi (208,198); otpusti; novi izvan (120,202); otpusti. Preklopi LED samo na početku novog valjanog dodira unutar x≥30,x<210,y≥120,y<200. Držanje i ulazak izvan→unutra bez otpuštanja ne preklapaju LED. Kalibracija je standardna 200–3900/250–3850, rotacija 0; položaji su najmanje 2 piksela od ruba zbog kvantizacije. Početna LED ugašena. Do 2300 ms svake etape LED i tipkalo moraju biti ispravni i ostati takvi do kraja. Pravokutnik (30,120,180,80) je plav kad je LED ugašena, zelen kad svijetli, bijelo LED OFF/LED ON u (48,150), skala 3. 3 boda oba SPI puta i stvarna struja LED-ice, 5 prvih osam etapa, 2 svi rubni i ponovljeni pritisci. Konzolni ispis LED nije dokaz izlaza.",
+          "observationStepMs": 20
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Otvoreni SPI signal/napajanje/BL, sukob CS i pogrešno preslikavanje ispituju se u zasebnoj kopiji. Stop, popravak i novo pokretanje dopušteni su. Model ne potvrđuje šum, smicanje, fizičku točnost ni univerzalne kalibracijske konstante.",
+        "visualOracle": {
+          "format": "labosv2-display-oracles@1",
+          "sha256": "97474343a6892e9fce389cce1ff23a6257df2e956ea886bd6681d56a53227499",
+          "file": "school/grader/display-oracles.json"
+        }
+      }
+    },
+    {
+      "id": "24J-touchRotation@1",
+      "taskKey": "touch/touchRotation",
+      "kind": "touch-system",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "XPT2046: koordinate u četiri rotacije",
+      "instructions": "ILI9341: stvarni RGB565 SPI upisi, fizičkih 240×320 piksela, COLMOD=0x55, BL=3V3. Zadrži font 5×7 i bodovane položaje početnog primjera; tekst i slike nastaju iz primljene RAM memorije kontrolera. Dopušteni su drugi algoritmi, nazivi, valjani GPIO, oznake i električno ekvivalentan raspored. Konzolni tekst nije dokaz slike. Dvanaest etapa po 2500 ms: otpušteno; novi A (rotacija 0→1); povlačenje B bez novog pritiska; otpusti; novi A (1→2); otpusti; novi A (2→3); otpusti; novi A (3→0); otpusti; novi B (0→1); otpusti. A/B ovise o sjemenu kao kod sirovog dodira. Svaki novi pritisak ispisuje točno jedan TOUCH ROT=r X=x Y=y za prethodnu rotaciju, pa nacrta sljedeću. Preslikavanje: r0=(x,y), r1=(y,239−x), r2=(239−x,319−y), r3=(319−y,x), tolerancija ±1 piksel. Zadrži standardne krajeve 200–3900/250–3850. Držanje/povlačenje/otpuštanje ne daju novu poruku. Novi zaslon: bijeli okvir, crveni kut 24×24 i cijan ROT r u (35,90), skala 3; odgovarajući fizički pikseli moraju biti stabilni barem 100 ms u svakoj etapi. 3 boda oba stvarna puta i četiri ADC kanala; 5 prve dvije nove rotacije s držanjem/otpuštanjem, 2 ostale rotacije i povrat.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Napajani SPI put i stvarni prijenosi uređaja",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Dvije rotacije, koordinate i odvajanje držanja od pritiska",
+          "maxPoints": 5
+        },
+        {
+          "id": "continuation",
+          "description": "Sve četiri rotacije, fizički kutovi i povrat",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24J.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24J.1",
+        "observation": "received-SPI-RGB565-pixels-raw-ADC-channels-and-LED-current",
+        "allowedAlternatives": [
+          "Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored.",
+          "Slobodni dijelovi slike ne utječu na rezultat; bodovani položaji i font su objavljeni."
+        ],
+        "output": "SPI povratni ADC bajtovi, primljeni TFT pikseli, nova očitanja i stvarna struja LED-ice.",
+        "units": {
+          "time": "ms",
+          "screen": "pixel",
+          "raw": "12-bit ADC",
+          "relativePressure": "dimensionless",
+          "ledCurrent": "mA"
+        },
+        "scenario": {
+          "stageDurationMs": 2500,
+          "responseDeadlineMs": 2300,
+          "settleMs": 500,
+          "minimumStableMs": 100,
+          "intervalMinimumMs": 800,
+          "intervalMaximumMs": 6000,
+          "maximumIntervalMs": 600,
+          "coordinateTolerance": 1,
+          "calibrationTolerance": 3,
+          "basicStages": 6,
+          "panelCalibrations": [
+            [
+              320,
+              3720,
+              400,
+              3650
+            ],
+            [
+              450,
+              3500,
+              180,
+              3880
+            ]
+          ],
+          "specification": "Dvanaest etapa po 2500 ms: otpušteno; novi A (rotacija 0→1); povlačenje B bez novog pritiska; otpusti; novi A (1→2); otpusti; novi A (2→3); otpusti; novi A (3→0); otpusti; novi B (0→1); otpusti. A/B ovise o sjemenu kao kod sirovog dodira. Svaki novi pritisak ispisuje točno jedan TOUCH ROT=r X=x Y=y za prethodnu rotaciju, pa nacrta sljedeću. Preslikavanje: r0=(x,y), r1=(y,239−x), r2=(239−x,319−y), r3=(319−y,x), tolerancija ±1 piksel. Zadrži standardne krajeve 200–3900/250–3850. Držanje/povlačenje/otpuštanje ne daju novu poruku. Novi zaslon: bijeli okvir, crveni kut 24×24 i cijan ROT r u (35,90), skala 3; odgovarajući fizički pikseli moraju biti stabilni barem 100 ms u svakoj etapi. 3 boda oba stvarna puta i četiri ADC kanala; 5 prve dvije nove rotacije s držanjem/otpuštanjem, 2 ostale rotacije i povrat.",
+          "observationStepMs": 20
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Otvoreni SPI signal/napajanje/BL, sukob CS i pogrešno preslikavanje ispituju se u zasebnoj kopiji. Stop, popravak i novo pokretanje dopušteni su. Model ne potvrđuje šum, smicanje, fizičku točnost ni univerzalne kalibracijske konstante.",
+        "visualOracle": {
+          "format": "labosv2-display-oracles@1",
+          "sha256": "97474343a6892e9fce389cce1ff23a6257df2e956ea886bd6681d56a53227499",
+          "file": "school/grader/display-oracles.json"
         }
       }
     }

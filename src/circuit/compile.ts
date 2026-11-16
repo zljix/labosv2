@@ -57,6 +57,7 @@ export interface SimulationFrame {
   sdCards?:Record<string,{powered:boolean;inserted:boolean;writeProtected:boolean;initialized:boolean;sectors:number;dirtyBlocks:number;reads:number;writes:number;errors:number;revision:number;state:import('./model').SDState;files:{name:string;size:number;cluster:number}[];volumeError:string;reason:string;trace:{timeUs:number;operation:string;value:number;result:string}[]}>;
   rtcDevices?:Record<string,{mainPower:boolean;battery:boolean;rtcMainPower:boolean;retained:boolean;valid:boolean;halted:boolean;writeProtected:boolean;iso:string|null;day:number;reason:string;received:number;errors:number;state:import('./model').RTCState;trace:{timeUs:number;operation:string;value?:number}[]}>;
   touches?:Record<string,{powered:boolean;down:boolean;x:number;y:number;pressure:number;irq:number|null;pd:number;raw:{x:number;y:number;z1:number;z2:number};last:{channel?:string;value?:number;command?:number};conversions:number;reason:string}>;
+  touchReadings?:{component:string;sample:number;timeMs:number;channel:string;value:number}[];
   tfts?:Record<string,{kind:'tft';width:number;height:number;powered:boolean;on:boolean;sleep:boolean;backlight:boolean;madctl:number;format:number;written:number;window:number[];pixels:number[];reason:string}>;
   spiBytes?:number;
   spiTrace?:{timeUs:number;device:string;operation:string;value:number;result:string}[];

@@ -19,7 +19,7 @@ test.after(()=>{mkdirSync('docs/stage24i-evidence',{recursive:true});writeFileSy
 test('24I publishes two contracts and preserves every previous profile',()=>{
  const r=JSON.parse(readFileSync('school/grader/profiles.json','utf8'));
  assert.deepEqual(r.profiles.slice(0,51),JSON.parse(readFileSync('verification/fixtures/24h-grading-profiles.json','utf8')).profiles);
- assert.equal(environmentProfiles.length,2);assert.equal(gradingCoverage('test').summary.supported,184);
+ assert.equal(environmentProfiles.length,2);assert.equal(gradingCoverage('test').summary.supported>=184,true);
  for(const p of environmentProfiles){assert.deepEqual(p.criteria.map(c=>c.maxPoints),[3,5,2]);for(const t of p.targets)assert.equal(gradingSupport(p.taskKey,t).profileId,p.id);}
 });
 test('24I both threshold directions include the neighbouring AHT10 codes and the quantized nominal boundary',()=>{

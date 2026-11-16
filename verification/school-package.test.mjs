@@ -7,9 +7,9 @@ import vm from 'node:vm';
 
 test('school ZIP verifies every inventory entry and keeps app, SQL and configuration out of web/', () => {
   const version = JSON.parse(readFileSync('package.json')).version;
-  const archive = unzipSync(readFileSync('release/Labosv2_' + version.split('-')[0] + '_24K_Skolski.zip'));
+  const archive = unzipSync(readFileSync('release/Labosv2_' + version.split('-')[0] + '_24L_Skolski.zip'));
   const inventory = JSON.parse(strFromU8(archive['package-inventory.json']));
-  assert.equal(inventory.stage, '24K'); assert.equal(inventory.version, version);
+  assert.equal(inventory.stage, '24L'); assert.equal(inventory.version, version);
   assert.equal(Object.keys(archive).length, inventory.files.length + 1);
   for (const file of inventory.files) {
     assert.equal(archive[file.path].byteLength, file.bytes, file.path);

@@ -18,7 +18,7 @@ test.after(()=>{mkdirSync('docs/stage24k-evidence',{recursive:true});writeFileSy
 test('24K publishes exactly the six existing URS variants and preserves all 59 previous contracts',()=>{
   const registry=JSON.parse(readFileSync('school/grader/profiles.json','utf8'));
   assert.deepEqual(registry.profiles.slice(0,59),JSON.parse(readFileSync('verification/fixtures/24j-grading-profiles.json','utf8')).profiles);
-  assert.equal(storageProfiles.length,6);assert.equal(gradingCoverage('test').summary.supported,232);
+  assert.equal(storageProfiles.length,6);assert(gradingCoverage('test').summary.supported>=232);
   for(const p of storageProfiles){assert.deepEqual(p.criteria.map(c=>c.maxPoints),[3,5,2]);for(const t of p.targets)assert.equal(gradingSupport(p.taskKey,t).profileId,p.id);}
   assert.equal(gradingSupport('storage/rtcSet','micropython').status,'unsupported');
   assert.equal(gradingSupport('storage/sdBlocks','micropython').status,'unsupported');

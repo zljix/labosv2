@@ -1,13 +1,13 @@
 {
   "format": "labosv2-grading-coverage",
   "version": 1,
-  "sourceVersion": "0.14.9-beta.1",
+  "sourceVersion": "0.14.10-beta.1",
   "summary": {
     "themes": 18,
     "variants": 67,
     "combinations": 268,
-    "supported": 232,
-    "unsupported": 36,
+    "supported": 248,
+    "unsupported": 20,
     "introductory": 5
   },
   "rows": [
@@ -11400,16 +11400,32 @@
       "fault": "Overflow primjer namjerno čeka 700 ms bez čitanja. Usporedi usrednjavanje 1 i 4 ili isključi optički kontakt pa vrati pobudu.",
       "expected": "Uzorci i procjena dolaze iz drivera i programa. Pri premalom tempu čitanja FIFO broji odbačene uzorke.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24L-opticalRegisters@1",
+        "checkerVersion": "24L.1",
+        "title": "MAX30102: registri, identitet i shutdown",
+        "instructions": "MAX30102 je sintetski optički izvor, bez medicinskog mjerenja ili izračuna SpO2. Koristi jedan napajani carrier i stvarni I2C 0x57. S3: 3V3 i GPIO8/9; Uno/Nano: 5 V carrier s prilagodbom, A4/A5. Dopušteni su drugi algoritmi, nazivi i električno ekvivalentan raspored. RED i IR su 18-bitni ADC brojevi bez fizičke jedinice. Provjeravač u privatnoj izvršnoj kopiji mijenja buduće uzorke; spremljeni projekt se ne mijenja. Tekst konzole ili učenički rezultat bez dovršenog prijenosa ne daje bodove. U najviše 2000 ms stvarno pročitaj PART_ID=0x15, resetiraj uređaj, postavi RED+IR (mode=3), 100 sirovih uzoraka/s, average=1, 18 bita, LED_PA=31 na oba kanala. Pročitaj mode i ADC konfiguraciju te ispiši MAX ID=0x15 i MAX MODE=3 CONFIG=0x27. Zatim uključi shutdown, isprazni FIFO, čekaj najmanje 500 ms i iz novog čitanja ispiši MAX SHUTDOWN FIFO=0. Dok čekaš, novi uzorci ne smiju nastajati. Jednokratni program smije završiti.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C put, pročitani identitet i stvarna konfiguracija senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Pročitani identitet, reset i stvarna RED+IR konfiguracija s točnim ispisom",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Shutdown najmanje 450 ms, bez novih uzoraka i s potvrđenim praznim FIFO-om",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-optical.test.ts"
       }
     },
     {
@@ -11433,16 +11449,32 @@
       "fault": "Overflow primjer namjerno čeka 700 ms bez čitanja. Usporedi usrednjavanje 1 i 4 ili isključi optički kontakt pa vrati pobudu.",
       "expected": "Uzorci i procjena dolaze iz drivera i programa. Pri premalom tempu čitanja FIFO broji odbačene uzorke.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24L-opticalRegisters@1",
+        "checkerVersion": "24L.1",
+        "title": "MAX30102: registri, identitet i shutdown",
+        "instructions": "MAX30102 je sintetski optički izvor, bez medicinskog mjerenja ili izračuna SpO2. Koristi jedan napajani carrier i stvarni I2C 0x57. S3: 3V3 i GPIO8/9; Uno/Nano: 5 V carrier s prilagodbom, A4/A5. Dopušteni su drugi algoritmi, nazivi i električno ekvivalentan raspored. RED i IR su 18-bitni ADC brojevi bez fizičke jedinice. Provjeravač u privatnoj izvršnoj kopiji mijenja buduće uzorke; spremljeni projekt se ne mijenja. Tekst konzole ili učenički rezultat bez dovršenog prijenosa ne daje bodove. U najviše 2000 ms stvarno pročitaj PART_ID=0x15, resetiraj uređaj, postavi RED+IR (mode=3), 100 sirovih uzoraka/s, average=1, 18 bita, LED_PA=31 na oba kanala. Pročitaj mode i ADC konfiguraciju te ispiši MAX ID=0x15 i MAX MODE=3 CONFIG=0x27. Zatim uključi shutdown, isprazni FIFO, čekaj najmanje 500 ms i iz novog čitanja ispiši MAX SHUTDOWN FIFO=0. Dok čekaš, novi uzorci ne smiju nastajati. Jednokratni program smije završiti.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C put, pročitani identitet i stvarna konfiguracija senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Pročitani identitet, reset i stvarna RED+IR konfiguracija s točnim ispisom",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Shutdown najmanje 450 ms, bez novih uzoraka i s potvrđenim praznim FIFO-om",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-optical.test.ts"
       }
     },
     {
@@ -11466,16 +11498,32 @@
       "fault": "Overflow primjer namjerno čeka 700 ms bez čitanja. Usporedi usrednjavanje 1 i 4 ili isključi optički kontakt pa vrati pobudu.",
       "expected": "Uzorci i procjena dolaze iz drivera i programa. Pri premalom tempu čitanja FIFO broji odbačene uzorke.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24L-opticalRegisters@1",
+        "checkerVersion": "24L.1",
+        "title": "MAX30102: registri, identitet i shutdown",
+        "instructions": "MAX30102 je sintetski optički izvor, bez medicinskog mjerenja ili izračuna SpO2. Koristi jedan napajani carrier i stvarni I2C 0x57. S3: 3V3 i GPIO8/9; Uno/Nano: 5 V carrier s prilagodbom, A4/A5. Dopušteni su drugi algoritmi, nazivi i električno ekvivalentan raspored. RED i IR su 18-bitni ADC brojevi bez fizičke jedinice. Provjeravač u privatnoj izvršnoj kopiji mijenja buduće uzorke; spremljeni projekt se ne mijenja. Tekst konzole ili učenički rezultat bez dovršenog prijenosa ne daje bodove. U najviše 2000 ms stvarno pročitaj PART_ID=0x15, resetiraj uređaj, postavi RED+IR (mode=3), 100 sirovih uzoraka/s, average=1, 18 bita, LED_PA=31 na oba kanala. Pročitaj mode i ADC konfiguraciju te ispiši MAX ID=0x15 i MAX MODE=3 CONFIG=0x27. Zatim uključi shutdown, isprazni FIFO, čekaj najmanje 500 ms i iz novog čitanja ispiši MAX SHUTDOWN FIFO=0. Dok čekaš, novi uzorci ne smiju nastajati. Jednokratni program smije završiti.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C put, pročitani identitet i stvarna konfiguracija senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Pročitani identitet, reset i stvarna RED+IR konfiguracija s točnim ispisom",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Shutdown najmanje 450 ms, bez novih uzoraka i s potvrđenim praznim FIFO-om",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-optical.test.ts"
       }
     },
     {
@@ -11499,16 +11547,32 @@
       "fault": "Overflow primjer namjerno čeka 700 ms bez čitanja. Usporedi usrednjavanje 1 i 4 ili isključi optički kontakt pa vrati pobudu.",
       "expected": "Uzorci i procjena dolaze iz drivera i programa. Pri premalom tempu čitanja FIFO broji odbačene uzorke.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24L-opticalRegisters@1",
+        "checkerVersion": "24L.1",
+        "title": "MAX30102: registri, identitet i shutdown",
+        "instructions": "MAX30102 je sintetski optički izvor, bez medicinskog mjerenja ili izračuna SpO2. Koristi jedan napajani carrier i stvarni I2C 0x57. S3: 3V3 i GPIO8/9; Uno/Nano: 5 V carrier s prilagodbom, A4/A5. Dopušteni su drugi algoritmi, nazivi i električno ekvivalentan raspored. RED i IR su 18-bitni ADC brojevi bez fizičke jedinice. Provjeravač u privatnoj izvršnoj kopiji mijenja buduće uzorke; spremljeni projekt se ne mijenja. Tekst konzole ili učenički rezultat bez dovršenog prijenosa ne daje bodove. U najviše 2000 ms stvarno pročitaj PART_ID=0x15, resetiraj uređaj, postavi RED+IR (mode=3), 100 sirovih uzoraka/s, average=1, 18 bita, LED_PA=31 na oba kanala. Pročitaj mode i ADC konfiguraciju te ispiši MAX ID=0x15 i MAX MODE=3 CONFIG=0x27. Zatim uključi shutdown, isprazni FIFO, čekaj najmanje 500 ms i iz novog čitanja ispiši MAX SHUTDOWN FIFO=0. Dok čekaš, novi uzorci ne smiju nastajati. Jednokratni program smije završiti.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C put, pročitani identitet i stvarna konfiguracija senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Pročitani identitet, reset i stvarna RED+IR konfiguracija s točnim ispisom",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Shutdown najmanje 450 ms, bez novih uzoraka i s potvrđenim praznim FIFO-om",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-optical.test.ts"
       }
     },
     {
@@ -11532,16 +11596,32 @@
       "fault": "Overflow primjer namjerno čeka 700 ms bez čitanja. Usporedi usrednjavanje 1 i 4 ili isključi optički kontakt pa vrati pobudu.",
       "expected": "Uzorci i procjena dolaze iz drivera i programa. Pri premalom tempu čitanja FIFO broji odbačene uzorke.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24L-opticalRaw@1",
+        "checkerVersion": "24L.1",
+        "title": "MAX30102: dovršeni RED/IR uzorci i promjena kontakta",
+        "instructions": "MAX30102 je sintetski optički izvor, bez medicinskog mjerenja ili izračuna SpO2. Koristi jedan napajani carrier i stvarni I2C 0x57. S3: 3V3 i GPIO8/9; Uno/Nano: 5 V carrier s prilagodbom, A4/A5. Dopušteni su drugi algoritmi, nazivi i električno ekvivalentan raspored. RED i IR su 18-bitni ADC brojevi bez fizičke jedinice. Provjeravač u privatnoj izvršnoj kopiji mijenja buduće uzorke; spremljeni projekt se ne mijenja. Tekst konzole ili učenički rezultat bez dovršenog prijenosa ne daje bodove. Tri etape po 2200 ms mijenjaju sintetski signal: kontakt uključen, isključen i ponovno uključen. Postavi RED+IR, 100 uzoraka/s, average=1, 18 bita i LED_PA=31. Svaki uzorak pročitaj u jednom dovršenom prijenosu šest bajtova. Od prvog pročitanog uzorka broji n=1,2,..., bez ponovnog brojanja starih FIFO podataka. Za svaki deseti ispiši RAW N=n RED=r IR=i s točnim pročitanim cijelim brojevima. U svakoj etapi treba najmanje 6 točnih izvještaja i 100 dovršenih uzoraka; razmak izvještaja najviše 350 ms, ispis najviše 150 ms nakon čitanja. Nakon početnih 200 ms mora postojati kontinuirani niz izvještaja. Model bez kontakta daje RED=425 i IR=500; stari FIFO ostaje do čitanja. Prvi interval nosi osnovni kriterij, druga dva nastavak.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C put, pročitani identitet i stvarna konfiguracija senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Novi šestobajtni uzorci, točni RED/IR brojevi i brojač u prvoj etapi",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Nastavak novih očitanja pri gubitku i povratku sintetskog kontakta",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-optical.test.ts"
       }
     },
     {
@@ -11565,16 +11645,32 @@
       "fault": "Overflow primjer namjerno čeka 700 ms bez čitanja. Usporedi usrednjavanje 1 i 4 ili isključi optički kontakt pa vrati pobudu.",
       "expected": "Uzorci i procjena dolaze iz drivera i programa. Pri premalom tempu čitanja FIFO broji odbačene uzorke.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24L-opticalRaw@1",
+        "checkerVersion": "24L.1",
+        "title": "MAX30102: dovršeni RED/IR uzorci i promjena kontakta",
+        "instructions": "MAX30102 je sintetski optički izvor, bez medicinskog mjerenja ili izračuna SpO2. Koristi jedan napajani carrier i stvarni I2C 0x57. S3: 3V3 i GPIO8/9; Uno/Nano: 5 V carrier s prilagodbom, A4/A5. Dopušteni su drugi algoritmi, nazivi i električno ekvivalentan raspored. RED i IR su 18-bitni ADC brojevi bez fizičke jedinice. Provjeravač u privatnoj izvršnoj kopiji mijenja buduće uzorke; spremljeni projekt se ne mijenja. Tekst konzole ili učenički rezultat bez dovršenog prijenosa ne daje bodove. Tri etape po 2200 ms mijenjaju sintetski signal: kontakt uključen, isključen i ponovno uključen. Postavi RED+IR, 100 uzoraka/s, average=1, 18 bita i LED_PA=31. Svaki uzorak pročitaj u jednom dovršenom prijenosu šest bajtova. Od prvog pročitanog uzorka broji n=1,2,..., bez ponovnog brojanja starih FIFO podataka. Za svaki deseti ispiši RAW N=n RED=r IR=i s točnim pročitanim cijelim brojevima. U svakoj etapi treba najmanje 6 točnih izvještaja i 100 dovršenih uzoraka; razmak izvještaja najviše 350 ms, ispis najviše 150 ms nakon čitanja. Nakon početnih 200 ms mora postojati kontinuirani niz izvještaja. Model bez kontakta daje RED=425 i IR=500; stari FIFO ostaje do čitanja. Prvi interval nosi osnovni kriterij, druga dva nastavak.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C put, pročitani identitet i stvarna konfiguracija senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Novi šestobajtni uzorci, točni RED/IR brojevi i brojač u prvoj etapi",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Nastavak novih očitanja pri gubitku i povratku sintetskog kontakta",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-optical.test.ts"
       }
     },
     {
@@ -11598,16 +11694,32 @@
       "fault": "Overflow primjer namjerno čeka 700 ms bez čitanja. Usporedi usrednjavanje 1 i 4 ili isključi optički kontakt pa vrati pobudu.",
       "expected": "Uzorci i procjena dolaze iz drivera i programa. Pri premalom tempu čitanja FIFO broji odbačene uzorke.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24L-opticalRaw@1",
+        "checkerVersion": "24L.1",
+        "title": "MAX30102: dovršeni RED/IR uzorci i promjena kontakta",
+        "instructions": "MAX30102 je sintetski optički izvor, bez medicinskog mjerenja ili izračuna SpO2. Koristi jedan napajani carrier i stvarni I2C 0x57. S3: 3V3 i GPIO8/9; Uno/Nano: 5 V carrier s prilagodbom, A4/A5. Dopušteni su drugi algoritmi, nazivi i električno ekvivalentan raspored. RED i IR su 18-bitni ADC brojevi bez fizičke jedinice. Provjeravač u privatnoj izvršnoj kopiji mijenja buduće uzorke; spremljeni projekt se ne mijenja. Tekst konzole ili učenički rezultat bez dovršenog prijenosa ne daje bodove. Tri etape po 2200 ms mijenjaju sintetski signal: kontakt uključen, isključen i ponovno uključen. Postavi RED+IR, 100 uzoraka/s, average=1, 18 bita i LED_PA=31. Svaki uzorak pročitaj u jednom dovršenom prijenosu šest bajtova. Od prvog pročitanog uzorka broji n=1,2,..., bez ponovnog brojanja starih FIFO podataka. Za svaki deseti ispiši RAW N=n RED=r IR=i s točnim pročitanim cijelim brojevima. U svakoj etapi treba najmanje 6 točnih izvještaja i 100 dovršenih uzoraka; razmak izvještaja najviše 350 ms, ispis najviše 150 ms nakon čitanja. Nakon početnih 200 ms mora postojati kontinuirani niz izvještaja. Model bez kontakta daje RED=425 i IR=500; stari FIFO ostaje do čitanja. Prvi interval nosi osnovni kriterij, druga dva nastavak.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C put, pročitani identitet i stvarna konfiguracija senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Novi šestobajtni uzorci, točni RED/IR brojevi i brojač u prvoj etapi",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Nastavak novih očitanja pri gubitku i povratku sintetskog kontakta",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-optical.test.ts"
       }
     },
     {
@@ -11631,16 +11743,32 @@
       "fault": "Overflow primjer namjerno čeka 700 ms bez čitanja. Usporedi usrednjavanje 1 i 4 ili isključi optički kontakt pa vrati pobudu.",
       "expected": "Uzorci i procjena dolaze iz drivera i programa. Pri premalom tempu čitanja FIFO broji odbačene uzorke.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24L-opticalRaw@1",
+        "checkerVersion": "24L.1",
+        "title": "MAX30102: dovršeni RED/IR uzorci i promjena kontakta",
+        "instructions": "MAX30102 je sintetski optički izvor, bez medicinskog mjerenja ili izračuna SpO2. Koristi jedan napajani carrier i stvarni I2C 0x57. S3: 3V3 i GPIO8/9; Uno/Nano: 5 V carrier s prilagodbom, A4/A5. Dopušteni su drugi algoritmi, nazivi i električno ekvivalentan raspored. RED i IR su 18-bitni ADC brojevi bez fizičke jedinice. Provjeravač u privatnoj izvršnoj kopiji mijenja buduće uzorke; spremljeni projekt se ne mijenja. Tekst konzole ili učenički rezultat bez dovršenog prijenosa ne daje bodove. Tri etape po 2200 ms mijenjaju sintetski signal: kontakt uključen, isključen i ponovno uključen. Postavi RED+IR, 100 uzoraka/s, average=1, 18 bita i LED_PA=31. Svaki uzorak pročitaj u jednom dovršenom prijenosu šest bajtova. Od prvog pročitanog uzorka broji n=1,2,..., bez ponovnog brojanja starih FIFO podataka. Za svaki deseti ispiši RAW N=n RED=r IR=i s točnim pročitanim cijelim brojevima. U svakoj etapi treba najmanje 6 točnih izvještaja i 100 dovršenih uzoraka; razmak izvještaja najviše 350 ms, ispis najviše 150 ms nakon čitanja. Nakon početnih 200 ms mora postojati kontinuirani niz izvještaja. Model bez kontakta daje RED=425 i IR=500; stari FIFO ostaje do čitanja. Prvi interval nosi osnovni kriterij, druga dva nastavak.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C put, pročitani identitet i stvarna konfiguracija senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Novi šestobajtni uzorci, točni RED/IR brojevi i brojač u prvoj etapi",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Nastavak novih očitanja pri gubitku i povratku sintetskog kontakta",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-optical.test.ts"
       }
     },
     {
@@ -11664,16 +11792,32 @@
       "fault": "Overflow primjer namjerno čeka 700 ms bez čitanja. Usporedi usrednjavanje 1 i 4 ili isključi optički kontakt pa vrati pobudu.",
       "expected": "Uzorci i procjena dolaze iz drivera i programa. Pri premalom tempu čitanja FIFO broji odbačene uzorke.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24L-opticalFrequency@1",
+        "checkerVersion": "24L.1",
+        "title": "MAX30102: frekvencija iz stvarno pročitanih uzoraka",
+        "instructions": "MAX30102 je sintetski optički izvor, bez medicinskog mjerenja ili izračuna SpO2. Koristi jedan napajani carrier i stvarni I2C 0x57. S3: 3V3 i GPIO8/9; Uno/Nano: 5 V carrier s prilagodbom, A4/A5. Dopušteni su drugi algoritmi, nazivi i električno ekvivalentan raspored. RED i IR su 18-bitni ADC brojevi bez fizičke jedinice. Provjeravač u privatnoj izvršnoj kopiji mijenja buduće uzorke; spremljeni projekt se ne mijenja. Tekst konzole ili učenički rezultat bez dovršenog prijenosa ne daje bodove. Tri etape po 10000 ms zadaju poslužiteljski odabrane cijele frekvencije iz raspona 52–78, 114–144 i 84–102 u minuti; amplituda je 5100 ili 7300, IR sredina 67000–94400, šum 0. To je sintetski signal. Postavi RED+IR, 100 uzoraka/s, average=1, 18 bita i LED_PA=31. Program sam računa frekvenciju iz novih šestobajtnih uzoraka, primjerice uklanjanjem sredine i histerezom. Ispisuj FREQ=f bpm (sintetski). Prvih 4000 ms svake etape služi stabilizaciji. Zatim najmanje 3 procjene moraju biti unutar većeg od 5/min ili 7 % zadane frekvencije, uz najmanje 500 novih uzoraka po etapi i bez gubitaka FIFO-a. Procjena mora imati novo čitanje u prethodnih 150 ms. Prva etapa nosi osnovni kriterij; sljedeće dvije potvrđuju promjenu signala. Nema gotovog BPM registra ni medicinskog rezultata.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C put, pročitani identitet i stvarna konfiguracija senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Vlastita točna procjena prve frekvencije iz novih FIFO uzoraka",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Točne procjene nakon dviju neovisnih promjena frekvencije",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-optical.test.ts"
       }
     },
     {
@@ -11697,16 +11841,32 @@
       "fault": "Overflow primjer namjerno čeka 700 ms bez čitanja. Usporedi usrednjavanje 1 i 4 ili isključi optički kontakt pa vrati pobudu.",
       "expected": "Uzorci i procjena dolaze iz drivera i programa. Pri premalom tempu čitanja FIFO broji odbačene uzorke.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24L-opticalFrequency@1",
+        "checkerVersion": "24L.1",
+        "title": "MAX30102: frekvencija iz stvarno pročitanih uzoraka",
+        "instructions": "MAX30102 je sintetski optički izvor, bez medicinskog mjerenja ili izračuna SpO2. Koristi jedan napajani carrier i stvarni I2C 0x57. S3: 3V3 i GPIO8/9; Uno/Nano: 5 V carrier s prilagodbom, A4/A5. Dopušteni su drugi algoritmi, nazivi i električno ekvivalentan raspored. RED i IR su 18-bitni ADC brojevi bez fizičke jedinice. Provjeravač u privatnoj izvršnoj kopiji mijenja buduće uzorke; spremljeni projekt se ne mijenja. Tekst konzole ili učenički rezultat bez dovršenog prijenosa ne daje bodove. Tri etape po 10000 ms zadaju poslužiteljski odabrane cijele frekvencije iz raspona 52–78, 114–144 i 84–102 u minuti; amplituda je 5100 ili 7300, IR sredina 67000–94400, šum 0. To je sintetski signal. Postavi RED+IR, 100 uzoraka/s, average=1, 18 bita i LED_PA=31. Program sam računa frekvenciju iz novih šestobajtnih uzoraka, primjerice uklanjanjem sredine i histerezom. Ispisuj FREQ=f bpm (sintetski). Prvih 4000 ms svake etape služi stabilizaciji. Zatim najmanje 3 procjene moraju biti unutar većeg od 5/min ili 7 % zadane frekvencije, uz najmanje 500 novih uzoraka po etapi i bez gubitaka FIFO-a. Procjena mora imati novo čitanje u prethodnih 150 ms. Prva etapa nosi osnovni kriterij; sljedeće dvije potvrđuju promjenu signala. Nema gotovog BPM registra ni medicinskog rezultata.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C put, pročitani identitet i stvarna konfiguracija senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Vlastita točna procjena prve frekvencije iz novih FIFO uzoraka",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Točne procjene nakon dviju neovisnih promjena frekvencije",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-optical.test.ts"
       }
     },
     {
@@ -11730,16 +11890,32 @@
       "fault": "Overflow primjer namjerno čeka 700 ms bez čitanja. Usporedi usrednjavanje 1 i 4 ili isključi optički kontakt pa vrati pobudu.",
       "expected": "Uzorci i procjena dolaze iz drivera i programa. Pri premalom tempu čitanja FIFO broji odbačene uzorke.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24L-opticalFrequency@1",
+        "checkerVersion": "24L.1",
+        "title": "MAX30102: frekvencija iz stvarno pročitanih uzoraka",
+        "instructions": "MAX30102 je sintetski optički izvor, bez medicinskog mjerenja ili izračuna SpO2. Koristi jedan napajani carrier i stvarni I2C 0x57. S3: 3V3 i GPIO8/9; Uno/Nano: 5 V carrier s prilagodbom, A4/A5. Dopušteni su drugi algoritmi, nazivi i električno ekvivalentan raspored. RED i IR su 18-bitni ADC brojevi bez fizičke jedinice. Provjeravač u privatnoj izvršnoj kopiji mijenja buduće uzorke; spremljeni projekt se ne mijenja. Tekst konzole ili učenički rezultat bez dovršenog prijenosa ne daje bodove. Tri etape po 10000 ms zadaju poslužiteljski odabrane cijele frekvencije iz raspona 52–78, 114–144 i 84–102 u minuti; amplituda je 5100 ili 7300, IR sredina 67000–94400, šum 0. To je sintetski signal. Postavi RED+IR, 100 uzoraka/s, average=1, 18 bita i LED_PA=31. Program sam računa frekvenciju iz novih šestobajtnih uzoraka, primjerice uklanjanjem sredine i histerezom. Ispisuj FREQ=f bpm (sintetski). Prvih 4000 ms svake etape služi stabilizaciji. Zatim najmanje 3 procjene moraju biti unutar većeg od 5/min ili 7 % zadane frekvencije, uz najmanje 500 novih uzoraka po etapi i bez gubitaka FIFO-a. Procjena mora imati novo čitanje u prethodnih 150 ms. Prva etapa nosi osnovni kriterij; sljedeće dvije potvrđuju promjenu signala. Nema gotovog BPM registra ni medicinskog rezultata.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C put, pročitani identitet i stvarna konfiguracija senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Vlastita točna procjena prve frekvencije iz novih FIFO uzoraka",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Točne procjene nakon dviju neovisnih promjena frekvencije",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-optical.test.ts"
       }
     },
     {
@@ -11763,16 +11939,32 @@
       "fault": "Overflow primjer namjerno čeka 700 ms bez čitanja. Usporedi usrednjavanje 1 i 4 ili isključi optički kontakt pa vrati pobudu.",
       "expected": "Uzorci i procjena dolaze iz drivera i programa. Pri premalom tempu čitanja FIFO broji odbačene uzorke.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24L-opticalFrequency@1",
+        "checkerVersion": "24L.1",
+        "title": "MAX30102: frekvencija iz stvarno pročitanih uzoraka",
+        "instructions": "MAX30102 je sintetski optički izvor, bez medicinskog mjerenja ili izračuna SpO2. Koristi jedan napajani carrier i stvarni I2C 0x57. S3: 3V3 i GPIO8/9; Uno/Nano: 5 V carrier s prilagodbom, A4/A5. Dopušteni su drugi algoritmi, nazivi i električno ekvivalentan raspored. RED i IR su 18-bitni ADC brojevi bez fizičke jedinice. Provjeravač u privatnoj izvršnoj kopiji mijenja buduće uzorke; spremljeni projekt se ne mijenja. Tekst konzole ili učenički rezultat bez dovršenog prijenosa ne daje bodove. Tri etape po 10000 ms zadaju poslužiteljski odabrane cijele frekvencije iz raspona 52–78, 114–144 i 84–102 u minuti; amplituda je 5100 ili 7300, IR sredina 67000–94400, šum 0. To je sintetski signal. Postavi RED+IR, 100 uzoraka/s, average=1, 18 bita i LED_PA=31. Program sam računa frekvenciju iz novih šestobajtnih uzoraka, primjerice uklanjanjem sredine i histerezom. Ispisuj FREQ=f bpm (sintetski). Prvih 4000 ms svake etape služi stabilizaciji. Zatim najmanje 3 procjene moraju biti unutar većeg od 5/min ili 7 % zadane frekvencije, uz najmanje 500 novih uzoraka po etapi i bez gubitaka FIFO-a. Procjena mora imati novo čitanje u prethodnih 150 ms. Prva etapa nosi osnovni kriterij; sljedeće dvije potvrđuju promjenu signala. Nema gotovog BPM registra ni medicinskog rezultata.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C put, pročitani identitet i stvarna konfiguracija senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Vlastita točna procjena prve frekvencije iz novih FIFO uzoraka",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Točne procjene nakon dviju neovisnih promjena frekvencije",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-optical.test.ts"
       }
     },
     {
@@ -11796,16 +11988,32 @@
       "fault": "Overflow primjer namjerno čeka 700 ms bez čitanja. Usporedi usrednjavanje 1 i 4 ili isključi optički kontakt pa vrati pobudu.",
       "expected": "Uzorci i procjena dolaze iz drivera i programa. Pri premalom tempu čitanja FIFO broji odbačene uzorke.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24L-opticalOverflow@1",
+        "checkerVersion": "24L.1",
+        "title": "MAX30102: pun FIFO, gubitak i stvarni oporavak",
+        "instructions": "MAX30102 je sintetski optički izvor, bez medicinskog mjerenja ili izračuna SpO2. Koristi jedan napajani carrier i stvarni I2C 0x57. S3: 3V3 i GPIO8/9; Uno/Nano: 5 V carrier s prilagodbom, A4/A5. Dopušteni su drugi algoritmi, nazivi i električno ekvivalentan raspored. RED i IR su 18-bitni ADC brojevi bez fizičke jedinice. Provjeravač u privatnoj izvršnoj kopiji mijenja buduće uzorke; spremljeni projekt se ne mijenja. Tekst konzole ili učenički rezultat bez dovršenog prijenosa ne daje bodove. Pokus traje 3200 ms. Postavi RED+IR, 100 uzoraka/s, average=1, 18 bita, LED_PA=31, bez rollovera. Ponavljaj čekanje 700 ms bez čitanja; stvarno pročitaj pokazivače i overflow te ispiši FIFO COUNT=n OVF=k. Puni FIFO ima 32 uzorka, jednaka WR/RD pokazivača i pozitivan overflow (najviše 31). Najmanje dva točna izvještaja potvrđuju osnovni kriterij. Za nastavak najmanje tri puta dovršeno pročitaj sva 32 RED+IR uzorka, očisti WR/OVF/RD jednim upisom tri nule od registra 0x04 i ispiši FIFO RECOVERED. Sljedeći ciklus mora sadržavati novonastale uzorke; ponovno čitanje stare banke nije oporavak. Tolerancija vremena opažanja je 25 ms.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C put, pročitani identitet i stvarna konfiguracija senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Stvarno pun FIFO, jednaki pokazivači i točan pozitivan broj gubitaka",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Najmanje tri pražnjenja 32 cijela uzorka, čišćenje i novi ciklus",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-optical.test.ts"
       }
     },
     {
@@ -11829,16 +12037,32 @@
       "fault": "Overflow primjer namjerno čeka 700 ms bez čitanja. Usporedi usrednjavanje 1 i 4 ili isključi optički kontakt pa vrati pobudu.",
       "expected": "Uzorci i procjena dolaze iz drivera i programa. Pri premalom tempu čitanja FIFO broji odbačene uzorke.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24L-opticalOverflow@1",
+        "checkerVersion": "24L.1",
+        "title": "MAX30102: pun FIFO, gubitak i stvarni oporavak",
+        "instructions": "MAX30102 je sintetski optički izvor, bez medicinskog mjerenja ili izračuna SpO2. Koristi jedan napajani carrier i stvarni I2C 0x57. S3: 3V3 i GPIO8/9; Uno/Nano: 5 V carrier s prilagodbom, A4/A5. Dopušteni su drugi algoritmi, nazivi i električno ekvivalentan raspored. RED i IR su 18-bitni ADC brojevi bez fizičke jedinice. Provjeravač u privatnoj izvršnoj kopiji mijenja buduće uzorke; spremljeni projekt se ne mijenja. Tekst konzole ili učenički rezultat bez dovršenog prijenosa ne daje bodove. Pokus traje 3200 ms. Postavi RED+IR, 100 uzoraka/s, average=1, 18 bita, LED_PA=31, bez rollovera. Ponavljaj čekanje 700 ms bez čitanja; stvarno pročitaj pokazivače i overflow te ispiši FIFO COUNT=n OVF=k. Puni FIFO ima 32 uzorka, jednaka WR/RD pokazivača i pozitivan overflow (najviše 31). Najmanje dva točna izvještaja potvrđuju osnovni kriterij. Za nastavak najmanje tri puta dovršeno pročitaj sva 32 RED+IR uzorka, očisti WR/OVF/RD jednim upisom tri nule od registra 0x04 i ispiši FIFO RECOVERED. Sljedeći ciklus mora sadržavati novonastale uzorke; ponovno čitanje stare banke nije oporavak. Tolerancija vremena opažanja je 25 ms.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C put, pročitani identitet i stvarna konfiguracija senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Stvarno pun FIFO, jednaki pokazivači i točan pozitivan broj gubitaka",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Najmanje tri pražnjenja 32 cijela uzorka, čišćenje i novi ciklus",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-optical.test.ts"
       }
     },
     {
@@ -11862,16 +12086,32 @@
       "fault": "Overflow primjer namjerno čeka 700 ms bez čitanja. Usporedi usrednjavanje 1 i 4 ili isključi optički kontakt pa vrati pobudu.",
       "expected": "Uzorci i procjena dolaze iz drivera i programa. Pri premalom tempu čitanja FIFO broji odbačene uzorke.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24L-opticalOverflow@1",
+        "checkerVersion": "24L.1",
+        "title": "MAX30102: pun FIFO, gubitak i stvarni oporavak",
+        "instructions": "MAX30102 je sintetski optički izvor, bez medicinskog mjerenja ili izračuna SpO2. Koristi jedan napajani carrier i stvarni I2C 0x57. S3: 3V3 i GPIO8/9; Uno/Nano: 5 V carrier s prilagodbom, A4/A5. Dopušteni su drugi algoritmi, nazivi i električno ekvivalentan raspored. RED i IR su 18-bitni ADC brojevi bez fizičke jedinice. Provjeravač u privatnoj izvršnoj kopiji mijenja buduće uzorke; spremljeni projekt se ne mijenja. Tekst konzole ili učenički rezultat bez dovršenog prijenosa ne daje bodove. Pokus traje 3200 ms. Postavi RED+IR, 100 uzoraka/s, average=1, 18 bita, LED_PA=31, bez rollovera. Ponavljaj čekanje 700 ms bez čitanja; stvarno pročitaj pokazivače i overflow te ispiši FIFO COUNT=n OVF=k. Puni FIFO ima 32 uzorka, jednaka WR/RD pokazivača i pozitivan overflow (najviše 31). Najmanje dva točna izvještaja potvrđuju osnovni kriterij. Za nastavak najmanje tri puta dovršeno pročitaj sva 32 RED+IR uzorka, očisti WR/OVF/RD jednim upisom tri nule od registra 0x04 i ispiši FIFO RECOVERED. Sljedeći ciklus mora sadržavati novonastale uzorke; ponovno čitanje stare banke nije oporavak. Tolerancija vremena opažanja je 25 ms.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C put, pročitani identitet i stvarna konfiguracija senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Stvarno pun FIFO, jednaki pokazivači i točan pozitivan broj gubitaka",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Najmanje tri pražnjenja 32 cijela uzorka, čišćenje i novi ciklus",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-optical.test.ts"
       }
     },
     {
@@ -11895,16 +12135,32 @@
       "fault": "Overflow primjer namjerno čeka 700 ms bez čitanja. Usporedi usrednjavanje 1 i 4 ili isključi optički kontakt pa vrati pobudu.",
       "expected": "Uzorci i procjena dolaze iz drivera i programa. Pri premalom tempu čitanja FIFO broji odbačene uzorke.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24L-opticalOverflow@1",
+        "checkerVersion": "24L.1",
+        "title": "MAX30102: pun FIFO, gubitak i stvarni oporavak",
+        "instructions": "MAX30102 je sintetski optički izvor, bez medicinskog mjerenja ili izračuna SpO2. Koristi jedan napajani carrier i stvarni I2C 0x57. S3: 3V3 i GPIO8/9; Uno/Nano: 5 V carrier s prilagodbom, A4/A5. Dopušteni su drugi algoritmi, nazivi i električno ekvivalentan raspored. RED i IR su 18-bitni ADC brojevi bez fizičke jedinice. Provjeravač u privatnoj izvršnoj kopiji mijenja buduće uzorke; spremljeni projekt se ne mijenja. Tekst konzole ili učenički rezultat bez dovršenog prijenosa ne daje bodove. Pokus traje 3200 ms. Postavi RED+IR, 100 uzoraka/s, average=1, 18 bita, LED_PA=31, bez rollovera. Ponavljaj čekanje 700 ms bez čitanja; stvarno pročitaj pokazivače i overflow te ispiši FIFO COUNT=n OVF=k. Puni FIFO ima 32 uzorka, jednaka WR/RD pokazivača i pozitivan overflow (najviše 31). Najmanje dva točna izvještaja potvrđuju osnovni kriterij. Za nastavak najmanje tri puta dovršeno pročitaj sva 32 RED+IR uzorka, očisti WR/OVF/RD jednim upisom tri nule od registra 0x04 i ispiši FIFO RECOVERED. Sljedeći ciklus mora sadržavati novonastale uzorke; ponovno čitanje stare banke nije oporavak. Tolerancija vremena opažanja je 25 ms.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C put, pročitani identitet i stvarna konfiguracija senzora",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Stvarno pun FIFO, jednaki pokazivači i točan pozitivan broj gubitaka",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Najmanje tri pražnjenja 32 cijela uzorka, čišćenje i novi ciklus",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-optical.test.ts"
       }
     },
     {

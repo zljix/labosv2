@@ -37,3 +37,7 @@ docs/stage24j-evidence/mysql-touch.json
 docs/stage24k-evidence/storage-*.json
 docs/stage24k-evidence/mysql-storage.json
 docs/stage24k-evidence/initial-smoke.json
+
+# Izvedeni dokazi 24L ostaju u CI artefaktima i instalacijskom paketu.
+docs/stage24l-evidence/optical-*.json
+docs/stage24l-evidence/mysql-optical.json

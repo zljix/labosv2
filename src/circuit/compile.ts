@@ -47,8 +47,8 @@ export function compileCircuit(circuit: Circuit, backend: "micropython"|"avr" = 
   };
 }
 export type SimulationConfig = ReturnType<typeof compileCircuit>;
-export interface OpticalReading {index:number;timeMs:number;readTimeMs:number;red:number;ir:number|null}
-export interface OpticalFrame {powered:boolean;mode:number;shutdown:boolean;resetting:boolean;sampleRate:number;average:number;effectiveRate:number;count:number;writePointer:number;readPointer:number;overflow:number;dropped:number;generated:number;status:number;ledRed:number;ledIR:number;resolution:number;last:OpticalReading|null;readings:OpticalReading[];reason:string}
+export interface OpticalReading {index:number;timeMs:number;readTimeMs:number;red:number;ir:number|null;transaction?:number|null}
+export interface OpticalFrame {powered:boolean;mode:number;shutdown:boolean;resetting:boolean;sampleRate:number;average:number;effectiveRate:number;count:number;writePointer:number;readPointer:number;overflow:number;dropped:number;generated:number;status:number;ledRed:number;ledIR:number;resolution:number;last:OpticalReading|null;readings:OpticalReading[];transfers?:{transaction:number;operation:string;register:number;bytes:number[];length:number;sequence:number;timeMs:number;mode:number;shutdown:boolean;count:number;generated:number;dropped:number}[];reason:string}
 export interface SimulationFrame {
   i2cLevelShifters?:Record<string,{powered:boolean;lv:number|null;hv:number|null;reason:string;channels:{name:string;lowVolts:number|null;highVolts:number|null;pulledLow:boolean;idle:boolean}[]}>;
   levelShifters?:Record<string,{powered:boolean;direction:string|null;vcca:number|null;vccb:number|null;dir:number|null;reason:string;channels:{input:string;output:string;inputVolts:number|null;outputVolts:number|null;level:number|null;reason:string}[]}>;

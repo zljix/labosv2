@@ -1,5 +1,5 @@
 {
-  "checkerVersion": "24K.1",
+  "checkerVersion": "24L.1",
   "profiles": [
     {
       "id": "23E-button-led@1",
@@ -6250,6 +6250,438 @@
           }
         },
         "faultPolicy": "Otvoreni RTC/SD/TM signal ili napajanje, neispravan program i stara učenička binarna datoteka ne mogu zamijeniti stvarni prijenos. Popravak i novo pokretanje dopušteni su. RTC baterija ne napaja MCU; FAT16/SDSC je ograničeni funkcionalni profil."
+      }
+    },
+    {
+      "id": "24L-opticalRegisters@1",
+      "taskKey": "optical/opticalRegisters",
+      "kind": "optical-system",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "MAX30102: registri, identitet i shutdown",
+      "instructions": "MAX30102 je sintetski optički izvor, bez medicinskog mjerenja ili izračuna SpO2. Koristi jedan napajani carrier i stvarni I2C 0x57. S3: 3V3 i GPIO8/9; Uno/Nano: 5 V carrier s prilagodbom, A4/A5. Dopušteni su drugi algoritmi, nazivi i električno ekvivalentan raspored. RED i IR su 18-bitni ADC brojevi bez fizičke jedinice. Provjeravač u privatnoj izvršnoj kopiji mijenja buduće uzorke; spremljeni projekt se ne mijenja. Tekst konzole ili učenički rezultat bez dovršenog prijenosa ne daje bodove. U najviše 2000 ms stvarno pročitaj PART_ID=0x15, resetiraj uređaj, postavi RED+IR (mode=3), 100 sirovih uzoraka/s, average=1, 18 bita, LED_PA=31 na oba kanala. Pročitaj mode i ADC konfiguraciju te ispiši MAX ID=0x15 i MAX MODE=3 CONFIG=0x27. Zatim uključi shutdown, isprazni FIFO, čekaj najmanje 500 ms i iz novog čitanja ispiši MAX SHUTDOWN FIFO=0. Dok čekaš, novi uzorci ne smiju nastajati. Jednokratni program smije završiti.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Napajani I2C put, pročitani identitet i stvarna konfiguracija senzora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Pročitani identitet, reset i stvarna RED+IR konfiguracija s točnim ispisom",
+          "maxPoints": 5
+        },
+        {
+          "id": "continuation",
+          "description": "Shutdown najmanje 450 ms, bez novih uzoraka i s potvrđenim praznim FIFO-om",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24L.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24L.1",
+        "observation": "completed-MAX30102-register-transfers-and-six-byte-FIFO-reads",
+        "allowedAlternatives": [
+          "Drugi algoritmi i nazivi, valjani GPIO na S3, električno ekvivalentan raspored.",
+          "Iste objavljene oznake ispisa, stvarni uzorci i jedinice; fizički I2C na Unu/Nanu ostaje A4/A5."
+        ],
+        "output": "Stvarno pročitani registri i novi šestobajtni RED+IR uzorci; program računa frekvenciju.",
+        "units": {
+          "time": "ms",
+          "samples": "18-bit ADC counts, uncalibrated",
+          "frequency": "synthetic cycles per minute"
+        },
+        "scenario": {
+          "stageDurationMs": 2000,
+          "settleMs": 0,
+          "minimumReports": 0,
+          "minimumReads": 0,
+          "maximumPrintDelayMs": 150,
+          "maximumReportIntervalMs": 350,
+          "stepToleranceMs": 25,
+          "minimumShutdownMs": 450,
+          "frequencyToleranceBpm": 5,
+          "frequencyToleranceRatio": 0.07,
+          "specification": "U najviše 2000 ms stvarno pročitaj PART_ID=0x15, resetiraj uređaj, postavi RED+IR (mode=3), 100 sirovih uzoraka/s, average=1, 18 bita, LED_PA=31 na oba kanala. Pročitaj mode i ADC konfiguraciju te ispiši MAX ID=0x15 i MAX MODE=3 CONFIG=0x27. Zatim uključi shutdown, isprazni FIFO, čekaj najmanje 500 ms i iz novog čitanja ispiši MAX SHUTDOWN FIFO=0. Dok čekaš, novi uzorci ne smiju nastajati. Jednokratni program smije završiti.",
+          "frequencyBands": [
+            [
+              52,
+              78
+            ],
+            [
+              114,
+              144
+            ],
+            [
+              84,
+              102
+            ]
+          ]
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Otvoreni SDA/SCL ili napajanje, zamijenjeni vodovi, izostanak pull-upova i pogrešna naponska domena ne daju valjana očitanja. Kvar infrastrukture i nepodržan/stari C++ artefakt ostavljaju bodove praznima. Signal je samo sintetski."
+      }
+    },
+    {
+      "id": "24L-opticalRaw@1",
+      "taskKey": "optical/opticalRaw",
+      "kind": "optical-system",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "MAX30102: dovršeni RED/IR uzorci i promjena kontakta",
+      "instructions": "MAX30102 je sintetski optički izvor, bez medicinskog mjerenja ili izračuna SpO2. Koristi jedan napajani carrier i stvarni I2C 0x57. S3: 3V3 i GPIO8/9; Uno/Nano: 5 V carrier s prilagodbom, A4/A5. Dopušteni su drugi algoritmi, nazivi i električno ekvivalentan raspored. RED i IR su 18-bitni ADC brojevi bez fizičke jedinice. Provjeravač u privatnoj izvršnoj kopiji mijenja buduće uzorke; spremljeni projekt se ne mijenja. Tekst konzole ili učenički rezultat bez dovršenog prijenosa ne daje bodove. Tri etape po 2200 ms mijenjaju sintetski signal: kontakt uključen, isključen i ponovno uključen. Postavi RED+IR, 100 uzoraka/s, average=1, 18 bita i LED_PA=31. Svaki uzorak pročitaj u jednom dovršenom prijenosu šest bajtova. Od prvog pročitanog uzorka broji n=1,2,..., bez ponovnog brojanja starih FIFO podataka. Za svaki deseti ispiši RAW N=n RED=r IR=i s točnim pročitanim cijelim brojevima. U svakoj etapi treba najmanje 6 točnih izvještaja i 100 dovršenih uzoraka; razmak izvještaja najviše 350 ms, ispis najviše 150 ms nakon čitanja. Nakon početnih 200 ms mora postojati kontinuirani niz izvještaja. Model bez kontakta daje RED=425 i IR=500; stari FIFO ostaje do čitanja. Prvi interval nosi osnovni kriterij, druga dva nastavak.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Napajani I2C put, pročitani identitet i stvarna konfiguracija senzora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Novi šestobajtni uzorci, točni RED/IR brojevi i brojač u prvoj etapi",
+          "maxPoints": 5
+        },
+        {
+          "id": "continuation",
+          "description": "Nastavak novih očitanja pri gubitku i povratku sintetskog kontakta",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24L.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24L.1",
+        "observation": "completed-MAX30102-register-transfers-and-six-byte-FIFO-reads",
+        "allowedAlternatives": [
+          "Drugi algoritmi i nazivi, valjani GPIO na S3, električno ekvivalentan raspored.",
+          "Iste objavljene oznake ispisa, stvarni uzorci i jedinice; fizički I2C na Unu/Nanu ostaje A4/A5."
+        ],
+        "output": "Stvarno pročitani registri i novi šestobajtni RED+IR uzorci; program računa frekvenciju.",
+        "units": {
+          "time": "ms",
+          "samples": "18-bit ADC counts, uncalibrated",
+          "frequency": "synthetic cycles per minute"
+        },
+        "scenario": {
+          "stageDurationMs": 2200,
+          "settleMs": 200,
+          "minimumReports": 6,
+          "minimumReads": 100,
+          "maximumPrintDelayMs": 150,
+          "maximumReportIntervalMs": 350,
+          "stepToleranceMs": 25,
+          "minimumShutdownMs": 450,
+          "frequencyToleranceBpm": 5,
+          "frequencyToleranceRatio": 0.07,
+          "specification": "Tri etape po 2200 ms mijenjaju sintetski signal: kontakt uključen, isključen i ponovno uključen. Postavi RED+IR, 100 uzoraka/s, average=1, 18 bita i LED_PA=31. Svaki uzorak pročitaj u jednom dovršenom prijenosu šest bajtova. Od prvog pročitanog uzorka broji n=1,2,..., bez ponovnog brojanja starih FIFO podataka. Za svaki deseti ispiši RAW N=n RED=r IR=i s točnim pročitanim cijelim brojevima. U svakoj etapi treba najmanje 6 točnih izvještaja i 100 dovršenih uzoraka; razmak izvještaja najviše 350 ms, ispis najviše 150 ms nakon čitanja. Nakon početnih 200 ms mora postojati kontinuirani niz izvještaja. Model bez kontakta daje RED=425 i IR=500; stari FIFO ostaje do čitanja. Prvi interval nosi osnovni kriterij, druga dva nastavak.",
+          "frequencyBands": [
+            [
+              52,
+              78
+            ],
+            [
+              114,
+              144
+            ],
+            [
+              84,
+              102
+            ]
+          ]
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Otvoreni SDA/SCL ili napajanje, zamijenjeni vodovi, izostanak pull-upova i pogrešna naponska domena ne daju valjana očitanja. Kvar infrastrukture i nepodržan/stari C++ artefakt ostavljaju bodove praznima. Signal je samo sintetski."
+      }
+    },
+    {
+      "id": "24L-opticalFrequency@1",
+      "taskKey": "optical/opticalFrequency",
+      "kind": "optical-system",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "MAX30102: frekvencija iz stvarno pročitanih uzoraka",
+      "instructions": "MAX30102 je sintetski optički izvor, bez medicinskog mjerenja ili izračuna SpO2. Koristi jedan napajani carrier i stvarni I2C 0x57. S3: 3V3 i GPIO8/9; Uno/Nano: 5 V carrier s prilagodbom, A4/A5. Dopušteni su drugi algoritmi, nazivi i električno ekvivalentan raspored. RED i IR su 18-bitni ADC brojevi bez fizičke jedinice. Provjeravač u privatnoj izvršnoj kopiji mijenja buduće uzorke; spremljeni projekt se ne mijenja. Tekst konzole ili učenički rezultat bez dovršenog prijenosa ne daje bodove. Tri etape po 10000 ms zadaju poslužiteljski odabrane cijele frekvencije iz raspona 52–78, 114–144 i 84–102 u minuti; amplituda je 5100 ili 7300, IR sredina 67000–94400, šum 0. To je sintetski signal. Postavi RED+IR, 100 uzoraka/s, average=1, 18 bita i LED_PA=31. Program sam računa frekvenciju iz novih šestobajtnih uzoraka, primjerice uklanjanjem sredine i histerezom. Ispisuj FREQ=f bpm (sintetski). Prvih 4000 ms svake etape služi stabilizaciji. Zatim najmanje 3 procjene moraju biti unutar većeg od 5/min ili 7 % zadane frekvencije, uz najmanje 500 novih uzoraka po etapi i bez gubitaka FIFO-a. Procjena mora imati novo čitanje u prethodnih 150 ms. Prva etapa nosi osnovni kriterij; sljedeće dvije potvrđuju promjenu signala. Nema gotovog BPM registra ni medicinskog rezultata.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Napajani I2C put, pročitani identitet i stvarna konfiguracija senzora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Vlastita točna procjena prve frekvencije iz novih FIFO uzoraka",
+          "maxPoints": 5
+        },
+        {
+          "id": "continuation",
+          "description": "Točne procjene nakon dviju neovisnih promjena frekvencije",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24L.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24L.1",
+        "observation": "completed-MAX30102-register-transfers-and-six-byte-FIFO-reads",
+        "allowedAlternatives": [
+          "Drugi algoritmi i nazivi, valjani GPIO na S3, električno ekvivalentan raspored.",
+          "Iste objavljene oznake ispisa, stvarni uzorci i jedinice; fizički I2C na Unu/Nanu ostaje A4/A5."
+        ],
+        "output": "Stvarno pročitani registri i novi šestobajtni RED+IR uzorci; program računa frekvenciju.",
+        "units": {
+          "time": "ms",
+          "samples": "18-bit ADC counts, uncalibrated",
+          "frequency": "synthetic cycles per minute"
+        },
+        "scenario": {
+          "stageDurationMs": 10000,
+          "settleMs": 4000,
+          "minimumReports": 3,
+          "minimumReads": 500,
+          "maximumPrintDelayMs": 150,
+          "maximumReportIntervalMs": 350,
+          "stepToleranceMs": 25,
+          "minimumShutdownMs": 450,
+          "frequencyToleranceBpm": 5,
+          "frequencyToleranceRatio": 0.07,
+          "specification": "Tri etape po 10000 ms zadaju poslužiteljski odabrane cijele frekvencije iz raspona 52–78, 114–144 i 84–102 u minuti; amplituda je 5100 ili 7300, IR sredina 67000–94400, šum 0. To je sintetski signal. Postavi RED+IR, 100 uzoraka/s, average=1, 18 bita i LED_PA=31. Program sam računa frekvenciju iz novih šestobajtnih uzoraka, primjerice uklanjanjem sredine i histerezom. Ispisuj FREQ=f bpm (sintetski). Prvih 4000 ms svake etape služi stabilizaciji. Zatim najmanje 3 procjene moraju biti unutar većeg od 5/min ili 7 % zadane frekvencije, uz najmanje 500 novih uzoraka po etapi i bez gubitaka FIFO-a. Procjena mora imati novo čitanje u prethodnih 150 ms. Prva etapa nosi osnovni kriterij; sljedeće dvije potvrđuju promjenu signala. Nema gotovog BPM registra ni medicinskog rezultata.",
+          "frequencyBands": [
+            [
+              52,
+              78
+            ],
+            [
+              114,
+              144
+            ],
+            [
+              84,
+              102
+            ]
+          ]
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Otvoreni SDA/SCL ili napajanje, zamijenjeni vodovi, izostanak pull-upova i pogrešna naponska domena ne daju valjana očitanja. Kvar infrastrukture i nepodržan/stari C++ artefakt ostavljaju bodove praznima. Signal je samo sintetski."
+      }
+    },
+    {
+      "id": "24L-opticalOverflow@1",
+      "taskKey": "optical/opticalOverflow",
+      "kind": "optical-system",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "MAX30102: pun FIFO, gubitak i stvarni oporavak",
+      "instructions": "MAX30102 je sintetski optički izvor, bez medicinskog mjerenja ili izračuna SpO2. Koristi jedan napajani carrier i stvarni I2C 0x57. S3: 3V3 i GPIO8/9; Uno/Nano: 5 V carrier s prilagodbom, A4/A5. Dopušteni su drugi algoritmi, nazivi i električno ekvivalentan raspored. RED i IR su 18-bitni ADC brojevi bez fizičke jedinice. Provjeravač u privatnoj izvršnoj kopiji mijenja buduće uzorke; spremljeni projekt se ne mijenja. Tekst konzole ili učenički rezultat bez dovršenog prijenosa ne daje bodove. Pokus traje 3200 ms. Postavi RED+IR, 100 uzoraka/s, average=1, 18 bita, LED_PA=31, bez rollovera. Ponavljaj čekanje 700 ms bez čitanja; stvarno pročitaj pokazivače i overflow te ispiši FIFO COUNT=n OVF=k. Puni FIFO ima 32 uzorka, jednaka WR/RD pokazivača i pozitivan overflow (najviše 31). Najmanje dva točna izvještaja potvrđuju osnovni kriterij. Za nastavak najmanje tri puta dovršeno pročitaj sva 32 RED+IR uzorka, očisti WR/OVF/RD jednim upisom tri nule od registra 0x04 i ispiši FIFO RECOVERED. Sljedeći ciklus mora sadržavati novonastale uzorke; ponovno čitanje stare banke nije oporavak. Tolerancija vremena opažanja je 25 ms.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Napajani I2C put, pročitani identitet i stvarna konfiguracija senzora",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Stvarno pun FIFO, jednaki pokazivači i točan pozitivan broj gubitaka",
+          "maxPoints": 5
+        },
+        {
+          "id": "continuation",
+          "description": "Najmanje tri pražnjenja 32 cijela uzorka, čišćenje i novi ciklus",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24L.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24L.1",
+        "observation": "completed-MAX30102-register-transfers-and-six-byte-FIFO-reads",
+        "allowedAlternatives": [
+          "Drugi algoritmi i nazivi, valjani GPIO na S3, električno ekvivalentan raspored.",
+          "Iste objavljene oznake ispisa, stvarni uzorci i jedinice; fizički I2C na Unu/Nanu ostaje A4/A5."
+        ],
+        "output": "Stvarno pročitani registri i novi šestobajtni RED+IR uzorci; program računa frekvenciju.",
+        "units": {
+          "time": "ms",
+          "samples": "18-bit ADC counts, uncalibrated",
+          "frequency": "synthetic cycles per minute"
+        },
+        "scenario": {
+          "stageDurationMs": 3200,
+          "settleMs": 0,
+          "minimumReports": 0,
+          "minimumReads": 0,
+          "maximumPrintDelayMs": 150,
+          "maximumReportIntervalMs": 350,
+          "stepToleranceMs": 25,
+          "minimumShutdownMs": 450,
+          "frequencyToleranceBpm": 5,
+          "frequencyToleranceRatio": 0.07,
+          "specification": "Pokus traje 3200 ms. Postavi RED+IR, 100 uzoraka/s, average=1, 18 bita, LED_PA=31, bez rollovera. Ponavljaj čekanje 700 ms bez čitanja; stvarno pročitaj pokazivače i overflow te ispiši FIFO COUNT=n OVF=k. Puni FIFO ima 32 uzorka, jednaka WR/RD pokazivača i pozitivan overflow (najviše 31). Najmanje dva točna izvještaja potvrđuju osnovni kriterij. Za nastavak najmanje tri puta dovršeno pročitaj sva 32 RED+IR uzorka, očisti WR/OVF/RD jednim upisom tri nule od registra 0x04 i ispiši FIFO RECOVERED. Sljedeći ciklus mora sadržavati novonastale uzorke; ponovno čitanje stare banke nije oporavak. Tolerancija vremena opažanja je 25 ms.",
+          "frequencyBands": [
+            [
+              52,
+              78
+            ],
+            [
+              114,
+              144
+            ],
+            [
+              84,
+              102
+            ]
+          ]
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Otvoreni SDA/SCL ili napajanje, zamijenjeni vodovi, izostanak pull-upova i pogrešna naponska domena ne daju valjana očitanja. Kvar infrastrukture i nepodržan/stari C++ artefakt ostavljaju bodove praznima. Signal je samo sintetski."
       }
     }
   ]

@@ -32,6 +32,22 @@ function model(){
  const config=(mode=3,ave=0,pw=3)=>{put(8,ave<<5);put(10,0x24|pw);put(12,31);put(13,31);put(9,mode);};
  return {d,get,put,config,at:(n:number)=>{now=n;d.update();},advance:(n:number)=>{now+=n;d.update();}};
 }
+test('24L telemetry keeps completed register/FIFO transfers, rejects failed reads and bounds the ledger',()=>{
+ const f=model();f.config();f.get(255);f.at(30);
+ f.d.onAddress(true);f.d.write(Uint8Array.of(7));f.d.end(true);f.d.onAddress(false);
+ f.d.read(5);f.d.end(false,false);assert.equal(f.d.history.length,0);
+ assert(!f.d.snapshot(true).transfers.some((t:any)=>t.register===7));
+ f.get(7,6);assert.equal(f.d.history.length,1);
+ const t=f.d.snapshot(true).transfers.find((t:any)=>t.register===7)!;
+ assert.equal(t.operation,'read');assert.equal(t.length,6);assert.deepEqual(words(Uint8Array.from(t.bytes)),[f.d.last.red,f.d.last.ir]);
+ assert.equal(t.transaction,f.d.last.transaction);
+ f.d.onAddress(true);f.d.write(Uint8Array.of(7));f.d.end(true);f.d.onAddress(false);f.d.read(6);f.d.end(false,false);
+ assert(!f.d.snapshot(true).transfers.some((t:any)=>t.transaction===f.d.last.transaction));
+ const sequence=t.sequence;f.put(9,64);f.advance(1);assert(f.d.snapshot(true).transfers.some((t:any)=>t.sequence===sequence));
+ for(let i=0;i<100;i++)f.get(255);const ledger=f.d.snapshot(true).transfers;
+ assert.equal(ledger.length,64);assert(ledger.every((t:any,i:number)=>!i||t.sequence>ledger[i-1].sequence));
+ f.d.reset(true);assert.equal(f.d.snapshot(true).transfers.length,0);
+});
 test('datasheet identity, reset pulse, read-only registers and explicit unsupported features',()=>{
  const f=model();assert.equal(f.get(255)[0],0x15);assert.equal(f.get(0)[0],1);assert.equal(f.get(0)[0],0);assert.deepEqual([...f.get(254,3)],[3,21,21]);
  for(const [r,v]of [[255,0],[9,7],[8,16],[0x11,0x21],[0x21,1],[3,2]])assert.throws(()=>f.put(r,v),/MAX30102/);

@@ -1,7 +1,7 @@
 {
   "format": "labosv2-school-profile",
   "version": 1,
-  "stage": "24K",
+  "stage": "24L",
   "sourceBaseline": "zljix/labos@3c4a281c10282d63b2742280f69aadbc08d7ae1e",
   "webServer": "Apache 2.4 with HTTPS",
   "phpBranches": [
@@ -80,7 +80,7 @@
     "idempotentSaves": true
   },
   "grading": {
-    "checkerVersion": "24K.1",
+    "checkerVersion": "24L.1",
     "profiles": [
       "23E-button-led@1",
       "23E-analog-threshold@1",
@@ -146,7 +146,11 @@
       "24K-rtcClock@1",
       "24K-sdInspect@1",
       "24K-sdFiles@1",
-      "24K-sdLogger@1"
+      "24K-sdLogger@1",
+      "24L-opticalRegisters@1",
+      "24L-opticalRaw@1",
+      "24L-opticalFrequency@1",
+      "24L-opticalOverflow@1"
     ],
     "targets": [
       "micropython",
@@ -170,12 +174,13 @@
       "24G.1",
       "24H.1",
       "24I.1",
-      "24J.1"
+      "24J.1",
+      "24K.1"
     ],
     "coverage": {
       "combinations": 268,
-      "supported": 232,
-      "unsupported": 36,
+      "supported": 248,
+      "unsupported": 20,
       "introductoryLocalOnly": 5
     },
     "executionContract": "labosv2-execution-contract@1",
@@ -195,7 +200,9 @@
     "touchWallTimeMs": 65000,
     "touchCpuSeconds": 58,
     "storageWallTimeMs": 65000,
-    "storageCpuSeconds": 58
+    "storageCpuSeconds": 58,
+    "opticalWallTimeMs": 65000,
+    "opticalCpuSeconds": 58
   },
   "submissions": {
     "exactRevision": true,

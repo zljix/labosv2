@@ -67,6 +67,8 @@ jobs:
           CREATE DATABASE labosv2_test_displays CHARACTER SET utf8mb4;
           CREATE DATABASE labosv2_test_environment CHARACTER SET utf8mb4;
           CREATE DATABASE labosv2_test_touch CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_storage CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_optical CHARACTER SET utf8mb4;
           CREATE DATABASE labosv2_test_steppers CHARACTER SET utf8mb4;
           GRANT ALL ON labosv2_test_classes.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_portal.* TO 'labosv2_ci'@'%';
@@ -85,6 +87,8 @@ jobs:
           GRANT ALL ON labosv2_test_displays.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_environment.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_touch.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_storage.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_optical.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_steppers.* TO 'labosv2_ci'@'%';
           SQL
       - name: Pripremi Linux izolaciju
@@ -206,6 +210,16 @@ jobs:
         env:
           LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_touch;charset=utf8mb4
           LAB_TEST_DB_USER: labosv2_ci
+      - name: Provjeri svih 24 RTC i SD dodjela
+        run: npm run test:school-storage-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_storage;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - name: Provjeri svih 16 optičkih dodjela
+        run: npm run test:school-optical-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_optical;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
       - run: npm run test:school-finish-ui
       - run: npm run test:school-reports
       - name: Provjeri izvještaje, korekcije, arhivu, čuvanje i povrat sigurnosne kopije
@@ -266,7 +280,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: Labosv2-24K-Dokazi
+          name: Labosv2-24L-Dokazi
           path: |
             docs/stage24ab-evidence/
             docs/stage24c-evidence/
@@ -277,12 +291,14 @@ jobs:
             docs/stage24h-evidence/
             docs/stage24i-evidence/
             docs/stage24j-evidence/
+            docs/stage24k-evidence/
+            docs/stage24l-evidence/
             docs/stage23i-evidence/
           if-no-files-found: error
           retention-days: 30
       - uses: actions/upload-artifact@v4
         with:
-          name: Labosv2-24K-Skolski-paket
+          name: Labosv2-24L-Skolski-paket
           path: release/*.zip
           if-no-files-found: error
           retention-days: 30

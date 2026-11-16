@@ -1,6 +1,8 @@
 # Labosv2 · školski laboratorij
 
-**0.14.10-beta.1 · etapa 24L · MAX30102 · 16. studenoga 2026.**
+**0.14.10-beta.1 · etapa 24L · MAX30102 · 17. studenoga 2026.**
+
+**Prihvat 24L:** [Završni prihvat i paket](https://github.com/zljix/labosv2/actions/runs/43981733195) potvrđuju 162 ciljane izvedbe, 48 neovisnih C++ prijevoda i 16 zaključanih MAX30102 dodjela. Ranije obitelji, računi, izvještaji, povrat kopije i pokus s 30 simuliranih učenika potvrđeni su na bajtno istom programu i provjeravaču. [Sažetak i podrijetlo dokaza](docs/stage24l-evidence/acceptance-summary.json).
 
 **Prihvat 24K:** [Završne provjere](https://github.com/zljix/labosv2/actions/runs/43968133436) potvrđuju sva četiri cilja, 238 ciljanih izvedbi, 72 neovisna C++ prijevoda i 24 zaključane RTC/SD dodjele kroz pravi PHP/MySQL. Prošli su ranije obitelji, pokus s 30 učenika, izvještaji i povrat sigurnosne kopije. [Sažetak dokaza](docs/stage24k-evidence/acceptance-summary.json) povezuje rezultate s isporučenim provjeravačem.
 

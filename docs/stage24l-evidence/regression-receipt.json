@@ -1,0 +1,220 @@
+{
+  "format": "labosv2-24l-regression-receipt",
+  "version": 1,
+  "sourceCommit": "29f3e134927a606146bedf981f279a83c4bccaf2",
+  "runURL": "https://github.com/zljix/labosv2/actions/runs/43978541338",
+  "allFunctionalStepsPassed": true,
+  "verifiedSteps": [
+    {
+      "number": 1,
+      "name": "Set up job",
+      "conclusion": "success"
+    },
+    {
+      "number": 2,
+      "name": "Run actions/checkout@v6",
+      "conclusion": "success"
+    },
+    {
+      "number": 3,
+      "name": "Run actions/setup-node@v6",
+      "conclusion": "success"
+    },
+    {
+      "number": 4,
+      "name": "Run npm ci",
+      "conclusion": "success"
+    },
+    {
+      "number": 5,
+      "name": "Run shivammathur/setup-php@v2",
+      "conclusion": "success"
+    },
+    {
+      "number": 6,
+      "name": "Pokreni zasebni MySQL s jednokratnim vjerodajnicama",
+      "conclusion": "success"
+    },
+    {
+      "number": 7,
+      "name": "Pripremi zasebne baze za razrede i korisnički tijek",
+      "conclusion": "success"
+    },
+    {
+      "number": 8,
+      "name": "Pripremi Linux izolaciju",
+      "conclusion": "success"
+    },
+    {
+      "number": 9,
+      "name": "Run actions/download-artifact@v4",
+      "conclusion": "success"
+    },
+    {
+      "number": 10,
+      "name": "Potvrdi četiri cilja, ponavljanja i 48 neovisnih prijevoda",
+      "conclusion": "success"
+    },
+    {
+      "number": 11,
+      "name": "Run npm run build:school",
+      "conclusion": "success"
+    },
+    {
+      "number": 12,
+      "name": "Provjeri PHP sintaksu",
+      "conclusion": "success"
+    },
+    {
+      "number": 13,
+      "name": "Run npm run test:school-pilot",
+      "conclusion": "success"
+    },
+    {
+      "number": 14,
+      "name": "Run npm run test:school-coverage",
+      "conclusion": "success"
+    },
+    {
+      "number": 15,
+      "name": "Provjeri potpuni 1-Wire prijenos i svježinu registra",
+      "conclusion": "success"
+    },
+    {
+      "number": 16,
+      "name": "Provjeri PHP/MySQL ugovore, S3 posao i zaštitu od ponovne uporabe rezultata",
+      "conclusion": "success"
+    },
+    {
+      "number": 17,
+      "name": "Provjeri nove analogne dodjele, bodove, zaključavanje i stare rubrike",
+      "conclusion": "success"
+    },
+    {
+      "number": 18,
+      "name": "Provjeri senzorske dodjele, revizije, bodove i zaključavanje",
+      "conclusion": "success"
+    },
+    {
+      "number": 19,
+      "name": "Provjeri šest događajnih dodjela, stvarne bodove i zaključane predaje",
+      "conclusion": "success"
+    },
+    {
+      "number": 20,
+      "name": "Provjeri sedam aktuatorskih dodjela, bodove i zaključane predaje",
+      "conclusion": "success"
+    },
+    {
+      "number": 21,
+      "name": "Provjeri svih 32 zaslonskih dodjela, stvarne bodove i zaključavanje",
+      "conclusion": "success"
+    },
+    {
+      "number": 22,
+      "name": "Sačuvaj koračne dodjele i stare ugovore",
+      "conclusion": "success"
+    },
+    {
+      "number": 23,
+      "name": "Provjeri svih 16 novih dodjela, bodove i zaključavanje",
+      "conclusion": "success"
+    },
+    {
+      "number": 24,
+      "name": "Regresija svih 24 RTC i SD dodjela",
+      "conclusion": "success"
+    },
+    {
+      "number": 25,
+      "name": "Regresija ranijih ILI9341 i XPT2046 dodjela",
+      "conclusion": "success"
+    },
+    {
+      "number": 26,
+      "name": "Pokus s 30 učenika, stvarnim PHP/MySQL i dva privatna provjeravača",
+      "conclusion": "success"
+    },
+    {
+      "number": 27,
+      "name": "Regresija ranije stanice i regulatora",
+      "conclusion": "success"
+    },
+    {
+      "number": 28,
+      "name": "Run npm run test:school-finish-ui",
+      "conclusion": "success"
+    },
+    {
+      "number": 29,
+      "name": "Run npm run test:school-reports",
+      "conclusion": "success"
+    },
+    {
+      "number": 30,
+      "name": "Provjeri izvještaje, korekcije, arhivu, čuvanje i povrat sigurnosne kopije",
+      "conclusion": "success"
+    },
+    {
+      "number": 31,
+      "name": "Provjeri zaključavanje, ponovljive zahtjeve i dorade",
+      "conclusion": "success"
+    },
+    {
+      "number": 32,
+      "name": "Run npm run test:school-grading-ui",
+      "conclusion": "success"
+    },
+    {
+      "number": 33,
+      "name": "Provjeri red poslova i zaštitu rezultata",
+      "conclusion": "success"
+    },
+    {
+      "number": 34,
+      "name": "Run npm run test:school-package",
+      "conclusion": "success"
+    },
+    {
+      "number": 35,
+      "name": "Run npm run test:school-catalog",
+      "conclusion": "success"
+    },
+    {
+      "number": 36,
+      "name": "Provjeri stvarni PHP i MySQL račune",
+      "conclusion": "success"
+    },
+    {
+      "number": 37,
+      "name": "Provjeri razrede, uvoz i dodijeljene vježbe",
+      "conclusion": "success"
+    },
+    {
+      "number": 38,
+      "name": "Provjeri korisnički tijek školskog portala",
+      "conclusion": "success"
+    },
+    {
+      "number": 39,
+      "name": "Run npm run test:school-sync",
+      "conclusion": "success"
+    },
+    {
+      "number": 40,
+      "name": "Provjeri revizije i istodobno spremanje",
+      "conclusion": "success"
+    },
+    {
+      "number": 41,
+      "name": "Provjeri sučelje središnjeg spremanja",
+      "conclusion": "success"
+    },
+    {
+      "number": 42,
+      "name": "Provjeri projekte, vodove i neovisno izvršavanje",
+      "conclusion": "success"
+    }
+  ],
+  "assemblyRepair": "The optical API evidence directory was corrected from stage24k-evidence to stage24l-evidence; application and checker bytes are unchanged."
+}

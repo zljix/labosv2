@@ -1,0 +1,24 @@
+{
+  "format": "labosv2-24l-acceptance",
+  "version": 1,
+  "sourceCommit": "3872d0ece3562aebd736e6f2c761a266a47d5fdb",
+  "nativeSourceCommit": "29f3e134927a606146bedf981f279a83c4bccaf2",
+  "regressionSourceCommit": "29f3e134927a606146bedf981f279a83c4bccaf2",
+  "checkerHash": "dfa31f379e8bddf884a1ba5ccf35a756c6a4f3c801d6d9931c3f6adf642d7480",
+  "coverage": {
+    "supported": 248,
+    "total": 268
+  },
+  "targets": [
+    "micropython",
+    "s3-cpp",
+    "uno",
+    "nano"
+  ],
+  "targetedExecutions": 162,
+  "independentCompilations": 48,
+  "lockedSchoolAssignments": 16,
+  "legacyPreserved": true,
+  "stageRunURL": "https://github.com/zljix/labosv2/actions/runs/43981733195",
+  "regressionRunURL": "https://github.com/zljix/labosv2/actions/runs/43978541338"
+}

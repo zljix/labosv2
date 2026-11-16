@@ -52,3 +52,11 @@ Nema nove SQL migracije. Prije nadogradnje sačuvaj bazu i privatnu konfiguracij
 Ostaju granice 65 s zidnog i 58 s CPU vremena, 90 s prevođenja, 2048 MiB adresnog prostora i 1 MiB izlaza. GitHub Pages služi simulator i prikaz podrške; školska prijava i službeno bodovanje traže PHP/MySQL i privatni Linux provjeravač. Stvarni školski pilot, Windows veza prema Linux provjeravaču, ciljni mobilni preglednici i skupno cgroup ograničenje memorije ostaju zasebni završni uvjeti.
 
 Sljedeća predviđena etapa 24M obuhvaća radio TX/RX par. Zatim ostaju digitalni i I2C pretvornici naponskih razina.
+
+## Izvedeni prihvat
+
+[Završni prihvat i instalacijski paket](https://github.com/zljix/labosv2/actions/runs/43981733195) potvrđuju 162 ciljane izvedbe, 48 neovisnih C++ prijevoda i 16 zaključanih dodjela. Svih 911 inventurnih datoteka isporučenog ZIP-a provjereno je po duljini i SHA-256 otisku. Usporedba root web manifesta i provjeravača potvrđuje iste isporučene bajtove.
+
+Nativno izvršavanje i potpuni funkcionalni koraci izvedeni su na izvoru `29f3e134927a606146bedf981f279a83c4bccaf2`. Završni prihvat na `3872d0ece3562aebd736e6f2c761a266a47d5fdb` ispravlja samo mapu API dokaza, izričito potvrđuje neizmijenjeni aplikacijski izvor, ponovno izvršava svih 16 optičkih dodjela i povezuje ih s istim otiskom provjeravača. [Sažetak](stage24l-evidence/acceptance-summary.json) i [potvrda funkcionalnih koraka](stage24l-evidence/regression-receipt.json) čuvaju oba izvora i izvorne poveznice.
+
+Dodatno je osam stvarnih pokusa frekvencije i FIFO-a prošlo iz sadržajno adresiranih web Workera na sva četiri cilja. Nije riječ o potvrdi fizičkih senzora ili ciljnog mobilnog preglednika.

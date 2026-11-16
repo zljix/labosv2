@@ -9,6 +9,9 @@ export const OPTICAL_RANGES=Object.freeze({opticalRate:[40,180],opticalAmplitude
 export class MAX30102 {
   constructor(device,now){this.device=device;this.now=now;this.reset(true);}
   reset(power=true){
+    // A software reset does not erase evidence of the completed bus transfers.
+    // Power-on starts a new device lifetime; the ledger never chooses data.
+    if(power||!this.transfers){this.transfers=[];this.transferSequence=0;this.transactionSequence=0;this.pending=null;}
     this.reg=new Uint8Array(256);this.reg[0]=power?1:0;
     this.pointer=0;this.first=true;this.count=0;this.sample=0;this.dropped=0;
     this.bank=Array(32).fill(null);this.latch=null;this.byteIndex=0;
@@ -60,12 +63,15 @@ export class MAX30102 {
   onAddress(write,freq=100000){
     if(freq>400000)reject('najviše 400 kHz.');
     this.update();this.first=true;
+    this.pending={transaction:++this.transactionSequence,operation:write?'write':'read',register:write?null:this.pointer,bytes:[],length:0};
     if(!write){this.latch=null;this.byteIndex=0;}
     return true;
   }
   writeByte(byte){
-    if(this.first){this.pointer=byte;this.first=false;return;}
-    const reg=this.pointer;this.set(reg,byte);if(reg!==7&&reg!==255)this.pointer=(reg+1)&255;
+    if(this.first){this.pointer=byte;this.first=false;if(this.pending)this.pending.register=byte;return;}
+    const reg=this.pointer;this.set(reg,byte);
+    if(this.pending){this.pending.length++;if(this.pending.bytes.length<192)this.pending.bytes.push(byte);}
+    if(reg!==7&&reg!==255)this.pointer=(reg+1)&255;
   }
   write(bytes){for(const byte of bytes)this.writeByte(byte);}
   set(reg,value){
@@ -94,14 +100,15 @@ export class MAX30102 {
   }
   readByte(){
     this.update();const reg=this.pointer;
-    if(reg===7)return this.fifoByte();
     let value;
-    if(reg===255)value=0x15;
+    if(reg===7)value=this.fifoByte();
+    else if(reg===255)value=0x15;
     else if(reg===254)value=3; // Explicit synthetic revision for this Lab profile.
     else if([0,1,2,3,4,5,6,8,9,10,12,13].includes(reg))value=this.reg[reg];
     else reject('čitanje nepodržanog registra 0x'+reg.toString(16)+'.');
     if(reg===0||reg===1)this.reg[reg]=0;
-    if(reg!==255)this.pointer=(reg+1)&255;
+    if(this.pending){this.pending.length++;if(this.pending.bytes.length<192)this.pending.bytes.push(value);}
+    if(reg!==7&&reg!==255)this.pointer=(reg+1)&255;
     return value;
   }
   fifoByte(){
@@ -117,14 +124,27 @@ export class MAX30102 {
     const value=this.byteIndex<3?this.latch.red:this.latch.ir??0;
     const byte=(value>>(16-8*(this.byteIndex%3)))&255;
     if(++this.byteIndex===(this.latch.ir===null?3:6)){
-      this.last={...this.latch,readTimeMs:this.now()};this.history.push(this.last);if(this.history.length>128)this.history.shift();this.latch=null;this.byteIndex=0;
+      this.last={...this.latch,readTimeMs:this.now(),transaction:this.pending?.transaction??null};this.history.push(this.last);if(this.history.length>128)this.history.shift();this.latch=null;this.byteIndex=0;
     }
     return byte;
   }
   read(length){return Uint8Array.from({length},()=>this.readByte());}
-  end(write=true,success=true,stop=true){if(!write&&stop){this.latch=null;this.byteIndex=0;}}
+  end(write=true,success=true,stop=true){
+    const p=this.pending;
+    // Empty polling reads are frequent; retain full/shutdown status and FIFO
+    // payloads so a batch draining 32 words cannot evict its full-FIFO proof.
+    const routine=p?.operation==='read'&&[0,4,5].includes(p.register)&&this.count!==32
+      &&!(this.reg[9]&128)&&(p.register!==5||p.bytes[0]===0);
+    if(success&&p&&p.length&&!routine){
+      this.transfers.push({...p,sequence:++this.transferSequence,timeMs:this.now(),mode:this.mode,
+        shutdown:!!(this.reg[9]&128),count:this.count,generated:this.sample,dropped:this.dropped});
+      if(this.transfers.length>64)this.transfers.shift();
+    }
+    this.pending=null;
+    if(!write&&stop){this.latch=null;this.byteIndex=0;}
+  }
   snapshot(powered){
     if(powered)this.update();
-    return {powered,mode:this.mode,shutdown:!!(this.reg[9]&128),resetting:!!(this.reg[9]&64),sampleRate:this.rate,average:this.average,effectiveRate:this.rate/this.average,count:this.count,writePointer:this.reg[4],readPointer:this.reg[6],overflow:this.reg[5],dropped:this.dropped,generated:this.sample,status:this.reg[0],ledRed:this.reg[12],ledIR:this.reg[13],resolution:15+(this.reg[10]&3),last:this.last,readings:this.history.slice(),reason:!powered?'Bez napajanja':this.reg[9]&64?'Resetiranje':this.reg[9]&128?'Shutdown':!this.active?'Konfiguriraj programom':this.count===32?'FIFO pun: novi uzorci se gube':'Sintetski RED/IR · polling'};
+    return {powered,mode:this.mode,shutdown:!!(this.reg[9]&128),resetting:!!(this.reg[9]&64),sampleRate:this.rate,average:this.average,effectiveRate:this.rate/this.average,count:this.count,writePointer:this.reg[4],readPointer:this.reg[6],overflow:this.reg[5],dropped:this.dropped,generated:this.sample,status:this.reg[0],ledRed:this.reg[12],ledIR:this.reg[13],resolution:15+(this.reg[10]&3),last:this.last,readings:this.history.slice(),transfers:this.transfers.slice(),reason:!powered?'Bez napajanja':this.reg[9]&64?'Resetiranje':this.reg[9]&128?'Shutdown':!this.active?'Konfiguriraj programom':this.count===32?'FIFO pun: novi uzorci se gube':'Sintetski RED/IR · polling'};
   }
 }

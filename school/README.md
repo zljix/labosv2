@@ -1,5 +1,7 @@
 ## 24L — MAX30102
 
+[Završni prihvat 24L](https://github.com/zljix/labosv2/actions/runs/43981733195) povezuje 162 izvedbe, 48 neovisnih C++ prijevoda i 16 zaključanih dodjela s isporučenim provjeravačem. [Sažetak i podrijetlo](../docs/stage24l-evidence/acceptance-summary.json).
+
 Izdanje **0.14.10-beta.1** dodaje četiri rubrike i 16 kombinacija, ukupno **248/268**. Registri, šestobajtni uzorci, promjene sintetskog kontakta/frekvencije i puni FIFO provjeravaju se iz stvarnih I2C prijenosa. [Uvjeti i provjere 24L](../docs/stage24l-optical.md). Nema nove SQL migracije. Sačuvaj bazu, privatnu konfiguraciju, ključ i sesije, zamijeni kompletan paket, pokreni postojeći migrate i ponovno pokreni provjeravače.
 
 ## 24K — RTC i SD

@@ -25,7 +25,10 @@ export function containsEnvironmentNumber(bytes:number[],value:string,backend:st
   for(let y=y0;y<=y0+height-f.height;y++){
     const row=Array.from({length:128},(_,x)=>{let col=0;for(let bit=0;bit<f.height;bit++)
       if(bytes[Math.floor((y+bit)/8)*128+x]&(1<<((y+bit)%8)))col|=1<<bit;return col;});
-    for(let x=0;x<=128-columns.length;x++)if(columns.every((v:number,i:number)=>row[x+i]===v))return true;
+    const numericAt=(x:number)=>x>=0&&x+f.width<=128&&Object.values(f.glyphs).some((glyph:any)=>
+      glyph.every((v:number,i:number)=>row[x+i]===v));
+    for(let x=0;x<=128-columns.length;x++)if(columns.every((v:number,i:number)=>row[x+i]===v)
+      &&!numericAt(x-f.width)&&!numericAt(x+columns.length))return true;
   }return false;
 }
 

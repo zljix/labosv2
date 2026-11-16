@@ -2,11 +2,33 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {randomUUID,createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
+import {spawnSync} from 'node:child_process';
 import {schoolFixture} from './school-http-fixture.mjs';
 import {gradeJob} from '../school/grader/official.ts';
 
 test('23E actual PHP/MySQL queue, isolated results, immutable binding, permissions and delayed completion',{timeout:180000},async t=>{
   const f=await schoolFixture(t),teacher=await f.make('grade.teacher','teacher'),other=await f.make('grade.other','teacher'),a=await f.make('grade.a'),b=await f.make('grade.b');
+  await t.test('grading retries roll back partial writes; non-transient failures are not retried and repeated conflicts remain bounded',()=>{
+    const code=String.raw`require getenv("LAB_TEST_BOOTSTRAP");
+      $p=Labos\database(Labos\configuration());
+      $p->exec("CREATE TABLE grading_retry_probe (id INT PRIMARY KEY) ENGINE=InnoDB");
+      $attempts=0;
+      Labos\gradingTransaction($p,function()use($p,&$attempts){
+        $attempts++;$p->exec("INSERT INTO grading_retry_probe VALUES(1)");
+        if($attempts<3)$p->exec("SIGNAL SQLSTATE '40001' SET MYSQL_ERRNO=1213, MESSAGE_TEXT='synthetic grading conflict'");
+      });
+      if($attempts!==3||(int)$p->query("SELECT COUNT(*) FROM grading_retry_probe")->fetchColumn()!==1||$p->inTransaction())throw new Exception('Retry duplicated a write');
+      $p->exec("DELETE FROM grading_retry_probe");$attempts=0;
+      try{Labos\gradingTransaction($p,function()use($p,&$attempts){$attempts++;$p->exec("INSERT INTO grading_retry_probe VALUES(1)");$p->exec("SIGNAL SQLSTATE '45000' SET MYSQL_ERRNO=1644");});throw new Exception('Expected permanent failure');}
+      catch(PDOException $e){if($attempts!==1)throw new Exception('Permanent failure retried');}
+      if((int)$p->query("SELECT COUNT(*) FROM grading_retry_probe")->fetchColumn()!==0)throw new Exception('Partial permanent write survived');
+      $attempts=0;
+      try{Labos\gradingTransaction($p,function()use($p,&$attempts){$attempts++;$p->exec("INSERT INTO grading_retry_probe VALUES(1)");$p->exec("SIGNAL SQLSTATE '40001' SET MYSQL_ERRNO=1213");});throw new Exception('Expected bounded conflict');}
+      catch(PDOException $e){if($attempts<2||$attempts>8)throw new Exception('Unbounded retries');}
+      if((int)$p->query("SELECT COUNT(*) FROM grading_retry_probe")->fetchColumn()!==0||$p->inTransaction())throw new Exception('Partial exhausted write survived');
+      $p->exec("DROP TABLE grading_retry_probe");echo "GRADING_RETRY_ATOMIC_OK";`;
+    const r=spawnSync(process.env.PHP_BIN||'php',['-r',code],{encoding:'utf8',env:f.env});assert.equal(r.status,0,r.stderr);assert.equal(r.stdout,'GRADING_RETRY_ATOMIC_OK');
+  });
   const ok=async(p,status=200)=>{const r=await p;assert.equal(r.status,status,r.text);return r.json;};
   const c=(await ok(teacher.client.call('create-class',{name:'4.f bodovanje',schoolYear:'2026/2027'}),201)).class;
   const csv='username;displayName\n'+[a,b].map(p=>p.user.username+';'+p.user.displayName).join('\n');

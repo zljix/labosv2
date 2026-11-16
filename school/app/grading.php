@@ -94,6 +94,20 @@ function requestGrading(\PDO $pdo, array $actor, array $body): array
     });
 }
 
+// Retry only DB-only grading writes after a full rollback. File-based restore
+// and general application transactions keep their original semantics.
+function gradingTransaction(\PDO $pdo, callable $work): mixed
+{
+    for ($attempt = 0; $attempt < 6; $attempt++) {
+        try { return transaction($pdo, $work); }
+        catch (\PDOException $error) {
+            if ($attempt === 5 || ((int)($error->errorInfo[1] ?? 0) !== 1213 && $error->getCode() !== '40001')) throw $error;
+            usleep(random_int(10000, 30000) * ($attempt + 1));
+        }
+    }
+    throw new \LogicException('Unreachable grading transaction state.');
+}
+
 // These two functions are exposed only by a private CLI, never HTTP.
 function claimGrading(\PDO $pdo): ?array
 {
@@ -101,9 +115,13 @@ function claimGrading(\PDO $pdo): ?array
     // inserts a new running entry. Two workers must not upgrade the same gap.
     // A deadlock rolls back the reservation, so only this DB-only operation
     // can be retried; file-based restore and other transactions are unchanged.
-    for ($attempt = 0; $attempt < 4; $attempt++) {
+    for ($attempt = 0; $attempt < 6; $attempt++) {
         try {
-            query($pdo, "UPDATE grading_jobs SET status='technical_error',lease_hash=NULL,lease_until=NULL,finished_at=CURRENT_TIMESTAMP(6) WHERE status='running' AND lease_until<CURRENT_TIMESTAMP(6)");
+            // Discover expired IDs without locking a status-index range. Then
+            // take each primary-key lock before changing its status, matching
+            // completion's lock order and rechecking expiry after any wait.
+            $expired = $pdo->query("SELECT id FROM grading_jobs WHERE status='running' AND lease_until<CURRENT_TIMESTAMP(6) ORDER BY id")->fetchAll(\PDO::FETCH_COLUMN);
+            foreach ($expired as $id) query($pdo, "UPDATE grading_jobs SET status='technical_error',lease_hash=NULL,lease_until=NULL,finished_at=CURRENT_TIMESTAMP(6) WHERE id=? AND status='running' AND lease_until<CURRENT_TIMESTAMP(6)", [(int)$id]);
             return transaction($pdo, function () use ($pdo) {
                 $job = $pdo->query("SELECT * FROM grading_jobs WHERE status='queued' ORDER BY id LIMIT 1 FOR UPDATE SKIP LOCKED")->fetch();
                 if (!$job) return null;
@@ -127,7 +145,7 @@ function claimGrading(\PDO $pdo): ?array
                 return $value;
             });
         } catch (\PDOException $error) {
-            if ($attempt === 3 || (($error->errorInfo[1] ?? null) !== 1213 && $error->getCode() !== '40001')) throw $error;
+            if ($attempt === 5 || ((int)($error->errorInfo[1] ?? 0) !== 1213 && $error->getCode() !== '40001')) throw $error;
             usleep(random_int(10000, 30000) * ($attempt + 1));
         }
     }
@@ -138,7 +156,7 @@ function completeGrading(\PDO $pdo, array $body): array
 {
     $id = targetId($body['jobId'] ?? null); $lease = $body['lease'] ?? null; $report = $body['report'] ?? null;
     if (!is_string($lease) || !preg_match('/^[a-f0-9]{64}$/D', $lease) || !is_array($report)) fail(422, 'report', 'Neispravan rezultat provjeravača.');
-    return transaction($pdo, function () use ($pdo, $id, $lease, $report) {
+    return gradingTransaction($pdo, function () use ($pdo, $id, $lease, $report) {
         $job = query($pdo, 'SELECT *, lease_until>CURRENT_TIMESTAMP(6) AS live FROM grading_jobs WHERE id=? FOR UPDATE', [$id])->fetch();
         if (!$job || !$job['lease_hash'] || !hash_equals($job['lease_hash'], hash('sha256',$lease))) fail(409, 'lease', 'Ta isporuka više ne pripada radniku.');
         if ($job['status'] !== 'running') return ['jobId'=>$id,'status'=>$job['status']]; // Lost completion response is safe to repeat.

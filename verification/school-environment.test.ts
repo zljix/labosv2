@@ -40,6 +40,24 @@ test('24I a console claim or sensor snapshot without a completed read cannot cre
   assert.deepEqual(check.outcomes([check.record()],true),[false,false,false]);
  }
 });
+test('24I numeric fields reject leading digits, trailing digits and an extra decimal point in every font',()=>{
+ for(const target of ['micropython','s3-cpp','avr']){
+  const f=(fonts as any)[target];
+  const render=(value:string)=>{const bytes=Array(1024).fill(0);
+   for(const [x,col]of value.split('').flatMap(c=>f.glyphs[c]).entries())for(let y=0;y<f.height;y++)if((col as number)&(1<<y))bytes[Math.floor(y/8)*128+x]|=1<<(y%8);
+   return bytes;};
+  for(const [actual,expected]of [['124.0','24.0'],['24.01','24.0'],['24.0.','24.0'],['-24.0','24.0']])
+   assert(!containsEnvironmentNumber(render(actual),expected,target,0,14),target+' '+actual);
+  assert(containsEnvironmentNumber(render('-24.0'),'-24.0',target,0,14));
+ }
+});
+test('24I a leading OLED digit cannot turn a wrong displayed value into full points',{skip:selected('micropython'),timeout:120000},async()=>{
+ for(const p of environmentProfiles){const project=await starter(p.taskKey);
+  project.files['main.py']=p.taskKey.startsWith('regulator/')?project.files['main.py'].replace('T: %.1f C','T: 1%.1f C'):
+   project.files['main.py'].replace('BMP280:%.1fhPa','BMP280:1%.1fhPa');
+  const r=await run(project,p);assert.equal(r.status,'evaluated',JSON.stringify(r));assert.equal(r.points,p.taskKey.startsWith('regulator/')?3:8,JSON.stringify(r));
+ }
+});
 for(const target of ['micropython','s3-cpp','uno','nano'] as UrsTarget[])test(`24I ${target}: three repetitions of both independent saved sources`,{skip:selected(target),timeout:600000},async()=>{
  for(const p of environmentProfiles)for(let i=0;i<3;i++){
   const project=await starter(p.taskKey,target);project.files['forged-result.json']='{"points":1000,"sample":999,"angle":90}';

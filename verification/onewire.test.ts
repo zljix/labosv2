@@ -85,6 +85,15 @@ test('24D telemetry distinguishes an initial register, a complete fresh read and
   f.select();f.write(0x44);f.scratch();const busy=f.frame().oneWireDevices.ds1.readings.at(-1);assert.equal(busy.busy,true);assert.equal(busy.sample,1);
  }finally{f.close();}
 });
+test('24D telemetry batch GPIO preserves pull-ups, floating inputs, drive levels and unavailable pins',()=>{
+ const f=fixture();try{
+  const requests=[[4,1],[6,1],[7,0],[99,0]];
+  assert.deepEqual(f.h.readMany(requests),[1,1,-1,-2]);
+  assert.deepEqual(f.h.readMany(requests),requests.map(([pin,pull])=>f.h.read(pin,pull)));
+  f.h.mode(6,1,0,0);assert.equal(f.h.readMany([[6,1]])[0],0);
+  f.h.mode(6,1,0,1);assert.equal(f.h.readMany([[6,1]])[0],1);
+ }finally{f.close();}
+});
 test('missing external pull-up, supply, ground and DQ cannot return valid data',()=>{
  for(const pin of ['VDD','GND','DQ','pull']){const f=fixture('ds18b20',c=>remove(c,pin==='pull'?'owPull':'ds1',pin==='pull'?'1':pin));try{assert(!f.reset(),pin);assert.equal(f.frame().oneWireDevices.ds1.sample,0);}finally{f.close();}}
 });
@@ -95,7 +104,7 @@ test('wrong voltage domain, duplicate ROM, ADC-only Nano and short reset are dia
  const f=fixture();try{assert(!f.reset(400));assert(f.reset());}finally{f.close();}
 });
 test('active GPIO HIGH against a 1-Wire LOW produces an output conflict',()=>{
- const f=fixture();try{assert(f.reset());f.write(0x33);f.h.mode(4,1,0,0);f.h.delayUs(3);f.h.mode(4,1,0,1);f.h.delayUs(10);assert.equal(f.h.read(4),-2);assert(f.frame().diagnostics.some((d:any)=>d.code==='onewire-output-conflict'));}finally{f.close();}
+ const f=fixture();try{assert(f.reset());f.write(0x33);f.h.mode(4,1,0,0);f.h.delayUs(3);f.h.mode(4,1,0,1);f.h.delayUs(10);assert.equal(f.h.read(4),-2);assert.equal(f.h.readMany([[4,0]])[0],-2);assert(f.frame().diagnostics.some((d:any)=>d.code==='onewire-output-conflict'));}finally{f.close();}
 });
 test('Copy and Recall Scratchpad preserve the three configuration bytes',()=>{
  const f=fixture();try{f.select();f.write(0x4e);[0x55,0x11,0x1f].forEach(f.write);f.select();f.write(0x48);assert.equal(f.rb(),0);f.h.delayUs(10000);assert.equal(f.rb(),1);f.select();f.write(0x4e);[75,70,0x7f].forEach(f.write);f.select();f.write(0xb8);assert.deepEqual(f.scratch().slice(2,5),[0x55,0x11,0x1f]);}finally{f.close();}

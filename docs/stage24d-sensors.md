@@ -37,6 +37,8 @@ Privatna pobuda posla određuje okoliše. Provjeravač izvodi spremljeni izvor u
 
 Pulsni protokoli napreduju u mikrosekundama i između poziva `sleep_ms`. Novi scenariji i oznake vremena uzimaju to napredovanje u obzir. Povijesni scenariji ranijih rubrika zadržavaju svoj izvršni put. Senzorsko promatranje uzorkuje najviše svakih 20 ms, unutar objavljene tolerancije, a protokol se i dalje izvršava punom razlučivošću.
 
+AVR vanjske ulaze uzorkuje zajedno u istom ciklusu, uz jednu provjeru električkog stanja. U pasivnom sklopu koji sadrži samo DS18B20 i otpornike nepromijenjeno stanje napajanja ne rješava se ponovno za svaki DQ impuls. Promjena napojnog GPIO-a poništava tu pohranu, a složeniji sklopovi koriste opći postupak. Time se zadržavaju stvarni impulsi i granice napajanja uz kraće izvođenje.
+
 Najdulje izvođenje novih senzorskih poslova ograničeno je na 65 s zidnog i 58 s CPU vremena. Prevođenje zadržava granicu 90 s, pa oba dijela stanu unutar postojeće 180-sekundne isporuke. Dulji virtualni scenariji i AVR simulacija mogu trajati dulje od razvojnog cilja 15 s; to nije proglašeno završenim školskim mjerenjem opterećenja. Memorijska i izlazna ograničenja te mrežna izolacija ostaju uključeni.
 
 `verification/school-sensors.test.ts` provjerava sva 28 para rubrika/cilj, ponovljiva izvođenja, alternativne izvore i rasporede, druge pobude, promjene GPIO-a, loše spojeve, pogrešne ispise, parcijalne bodove, lažne ugovore, prekratko čekanje i lažne oznake razlučivosti. Izolirano prevođenje novih C++ izvora provjerava se zasebno za S3, Uno i Nano. Bez dostupnih alata ti su testovi označeni kao preskočeni i ne smatraju se dokazom prevođenja.

@@ -74,7 +74,9 @@ export function createSensorCheck(c:SimulationConfig,profile:any,seed:string){
       const attempts=dht?(last?.timedSensors?.[devices[0].id]?.reason??''):(last?.oneWireDevices?.[devices[0].id]?.trace??[]).filter((r:any)=>r.timeUs>=start*1000);
       const attempted=dht?(stimulus.fault==='checksum'?readings.some(r=>r.timeMs>=start&&r.timeMs<end&&!r.valid):/timeout|ne odgovara/i.test(attempts)):
         Array.isArray(attempts)&&attempts.some((r:any)=>r.operation===(stimulus.fault==='crc'?'scratchpad':'reset'));
-      const signalled=after.some(l=>faultLine(l.text));
+      const signals=current.filter(l=>faultLine(l.text)),times=[start,...signals.map(l=>l.timeMs),end];
+      const signalled=signals.length>0&&signals[0].timeMs<=start+deadline&&
+        times.slice(2).every((t,j)=>t-times[j+1]<=s.maximumIntervalMs+s.stepToleranceMs);
       const noFalseMeasurement=after.every(l=>!Number.isFinite(fields(l.text).T));
       return {index:stage+1,fault:stimulus.fault,attempted,signalled,noFalseMeasurement,passed:attempted&&signalled&&noFalseMeasurement};
     }

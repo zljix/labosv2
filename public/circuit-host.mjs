@@ -209,9 +209,21 @@ export function createCircuitHost(send, config) {
   function status() { return diagnose(); }
   const timedPins=c.gpios.filter(g=>[...(c.timedSensors??[]),...(c.oneWireDevices??[])].some(d=>rootData().root(d.data)===rootData().root(g.net))).map(g=>g.pin);
   let timed,oneWire;
+  // In a passive DS18B20-only network the idle electrical solution depends on
+  // supply GPIOs, not time or DQ pulses (those pins are explicitly ignored).
+  // Reuse it only for that topology; mixed circuits keep the general solver.
+  const passiveOneWire=!!c.oneWireDevices?.length&&Object.entries(c).every(([key,value])=>
+    !Array.isArray(value)||!value.length||['nets','gpios','rails','referenceGrounds','resistors','oneWireDevices'].includes(key));
+  let oneWireIdleKey,oneWireIdleValue;
+  const oneWireIdleSolution=()=>{
+    if(!passiveOneWire)return solve(undefined,timedPins,true);
+    const key=JSON.stringify([...pins].filter(([id])=>!timedPins.includes(id)));
+    if(key!==oneWireIdleKey){oneWireIdleValue=solve(undefined,timedPins,true);oneWireIdleKey=key;}
+    return oneWireIdleValue;
+  };
   infrared=createInfrared({c,pins,gpioNet,rootData,idleSolution:()=>solve(undefined,[],false,true),clockUs});
   timed=createDHTBus({c,pins,gpioNet,rootData,idleSolution:()=>solve(undefined,timedPins,true),clockUs,logicVoltage});
-  oneWire=createOneWireBus({c,pins,gpioNet,rootData,idleSolution:()=>solve(undefined,timedPins,true),clockUs,logicVoltage});
+  oneWire=createOneWireBus({c,pins,gpioNet,rootData,idleSolution:oneWireIdleSolution,clockUs,logicVoltage});
   tm=createTM1637({c,pins,gpioNet,rootData,idleSolution:()=>solve(undefined,[],false,false,true),clockUs});
   rtc=createDS1302({c,pins,gpioNet,rootData,idleSolution:()=>solve(undefined,[],false,false,false,true),clockUs});
   const observeTimed=()=>{timed.observe();oneWire.observe();if(tm.observe())dirty=true;if(rtc.observe())dirty=true;};
@@ -332,6 +344,22 @@ export function createCircuitHost(send, config) {
     },
     write(id,value) { const p=pins.get(id);if(!p||p.mode!=='OUT')return -2;if(p.value!==value){p.value=value;dirty=true;observeTimed();queue();}return status(); },
     read(id,pull=0) {const v=readValue(id,pull);if(clockDepth||irClock)advanceUs(1);return v;},
+    // Cycle backends sample external GPIOs at one instant. Their port modes
+    // are already synchronized; diagnose and solve that electrical state once.
+    readMany(requests) {
+      for(const [id,pull]of requests){
+        if(!gpioNet.has(id))continue;
+        const p=pins.get(id);
+        if(!p){pins.set(id,{mode:'IN',pull,value:0});queue();}
+        else if(p.mode==='IN'&&p.pull!==pull){p.pull=pull;queue();}
+      }
+      const healthy=status()>=0,volts=healthy?currentSolution().volts:[];
+      return requests.map(([id])=>{
+        if(!gpioNet.has(id)||!healthy)return -2;
+        const v=volts[gpioNet.get(id)];
+        return v===null?-1:v>logicVoltage+.3||v<-.3?-2:v<=logicVoltage*.25?0:v>=logicVoltage*.75?1:-3;
+      });
+    },
     adc(id,observe=true) {
       if(!gpioNet.has(id)||(config.adcPins?!config.adcPins.includes(id):id<1||id>20))return -1;
       if(observe)adcPins.add(id);

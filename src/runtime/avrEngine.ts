@@ -76,10 +76,13 @@ export class AVREngine {
     this.cpu.addClockEvent(()=>{if(this.timedEdge!==edge)return;this.timedEdge=Infinity;this.integrate();this.host.timedStep();this.syncInputs();this.scheduleTimed();},Math.max(1,Math.ceil(edge*16-this.cpu.cycles)));
   }
   private syncInputs(){
+    const inputs:{n:number;port:AVRIOPort;bit:number;pull:number}[]=[];
     for(let n=0;n<20;n++){
       const {port,bit}=this.pin(n),state=port.pinState(bit);
-      if(state===PinState.Input||state===PinState.InputPullUp){const level=this.host.read(n,state===PinState.InputPullUp?1:0);port.setPin(bit,level===1);}
+      if(state===PinState.Input||state===PinState.InputPullUp)inputs.push({n,port,bit,pull:state===PinState.InputPullUp?1:0});
     }
+    const levels=this.host.readMany(inputs.map(p=>[p.n,p.pull]));
+    inputs.forEach((p,i)=>p.port.setPin(p.bit,levels[i]===1));
   }
   private syncAnalog(channels:number){for(let n=0;n<channels;n++){const v=this.host.adc(n+14,false);this.adc.channelValues[n]=v>=0?v/1000000:0;}}
   private service(){if(this.rx.length&&this.usart.rxEnable&&!this.usart.rxBusy){if(this.usart.writeByte(this.rx[0]))this.rx.shift();}}

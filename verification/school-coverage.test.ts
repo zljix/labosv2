@@ -47,7 +47,7 @@ test('23G real support page filters by target, family, status and text; injected
     const doc=dom.window.document,matrix=gradingCoverage('test');mountGradingCoverage(matrix,doc);
     const change=(id:string,value:string,event='change')=>{const el=doc.querySelector(id) as HTMLInputElement;el.value=value;el.dispatchEvent(new dom.window.Event(event,{bubbles:true}));};
     const count=()=>doc.querySelectorAll('#rows tr').length;
-    assert.equal(count(),338);assert.match(doc.querySelector('#summary')!.textContent!,/18/);
+    assert.equal(count(),268);assert.match(doc.querySelector('#summary')!.textContent!,/18/);
     change('#support','supported');assert.equal(count(),132);
     change('#target','s3-cpp');assert.equal(count(),33);assert.match(doc.querySelector('#result')!.textContent!,/Prikazano 33/);
     change('#support','unsupported');assert.equal(count(),34);

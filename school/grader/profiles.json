@@ -2783,7 +2783,7 @@
         "nano"
       ],
       "title": "Relej: upravljanje i stvarni COM/NO/NC krug",
-      "instructions": "Ponavljaj COM-NO 700 ms, zatim COM-NC 700 ms. U svakoj fazi pripadna LED mora stvarno provoditi struju, a druga biti ugašena. Upravljanje koristi VCC=5 V, LV=3,3 V za S3 ili 5 V za AVR te zajedničku upravljačku masu. Energetski 5 V krug ostaje zaseban i smije imati odvojenu masu. Aktivna razina može biti LOW ili HIGH uz prilagođen program. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
+      "instructions": "Ponavljaj COM-NO 700 ms, zatim COM-NC 700 ms. U svakoj fazi pripadna LED mora stvarno provoditi struju, a druga biti ugašena. Upravljanje koristi VCC=5 V, LV=3,3 V za S3 ili 5 V za AVR te zajedničku upravljačku masu. Energetski 5 V krug ostaje zaseban i smije imati odvojenu masu. Aktivna razina može biti LOW ili HIGH uz prilagođen program. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Za pasivni ton dopušten je duty veći od 15 % i manji od 85 %. Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
       "criteria": [
         {
           "id": "connection",
@@ -2838,7 +2838,9 @@
             6,
             6.8
           ],
-          "seededEnvironment": true
+          "seededEnvironment": true,
+          "toneDutyMin": 0.15,
+          "toneDutyMax": 0.85
         },
         "limits": {
           "wallTimeMs": 65000,
@@ -2887,7 +2889,7 @@
         "nano"
       ],
       "title": "Aktivna zujalica: DC uključenje i tišina",
-      "instructions": "Ponavljaj stalni HIGH 500 ms i LOW 500 ms na stvarnom SIG ulazu aktivnog 5 V modula. Uključeni model ima vlastiti oscilator 2300 Hz. PWM koji stalno prekida SIG nije jednak traženom DC uključenju. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
+      "instructions": "Ponavljaj stalni HIGH 500 ms i LOW 500 ms na stvarnom SIG ulazu aktivnog 5 V modula. Uključeni model ima vlastiti oscilator 2300 Hz. PWM koji stalno prekida SIG nije jednak traženom DC uključenju. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Za pasivni ton dopušten je duty veći od 15 % i manji od 85 %. Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
       "criteria": [
         {
           "id": "connection",
@@ -2942,7 +2944,9 @@
             6,
             6.8
           ],
-          "seededEnvironment": true
+          "seededEnvironment": true,
+          "toneDutyMin": 0.15,
+          "toneDutyMax": 0.85
         },
         "limits": {
           "wallTimeMs": 65000,
@@ -2991,7 +2995,7 @@
         "nano"
       ],
       "title": "Pasivni piezo: tri frekvencije i trajanje",
-      "instructions": "Ponavljaj 440, 880 i 1320 Hz, svaki ton 400 ms, a iza svakoga 100 ms tišine; nakon trećega dodaj još 500 ms tišine. Promatra se stvarna frekvencija i izmjenični signal na SIG-u pasivnog 5 V modula. AVR tone koristi Timer2; D3/D11 i IR nositelj ne mogu istodobno koristiti isti timer. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
+      "instructions": "Ponavljaj 440, 880 i 1320 Hz, svaki ton 400 ms, a iza svakoga 100 ms tišine; nakon trećega dodaj još 500 ms tišine. Promatra se stvarna frekvencija i izmjenični signal na SIG-u pasivnog 5 V modula. AVR tone koristi Timer2; D3/D11 i IR nositelj ne mogu istodobno koristiti isti timer. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Za pasivni ton dopušten je duty veći od 15 % i manji od 85 %. Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
       "criteria": [
         {
           "id": "connection",
@@ -3046,7 +3050,9 @@
             6,
             6.8
           ],
-          "seededEnvironment": true
+          "seededEnvironment": true,
+          "toneDutyMin": 0.15,
+          "toneDutyMax": 0.85
         },
         "limits": {
           "wallTimeMs": 65000,
@@ -3095,7 +3101,7 @@
         "nano"
       ],
       "title": "SG90: stvarni impuls, kut i krajevi raspona",
-      "instructions": "Ponavljaj kutove 0, 90 i 180 stupnjeva po 600 ms. SG90 ima zasebnih 5 V i zajedničku masu. Kalibracija modela je 1000–2000 µs, frekvencija 50 Hz. Traže se stvarni impulsi 1000, 1500 i 2000 µs, ne ispis kuta. AVR Servo koristi Timer1 i onemogućuje uobičajeni PWM na D9/D10. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
+      "instructions": "Ponavljaj kutove 0, 90 i 180 stupnjeva po 600 ms. SG90 ima zasebnih 5 V i zajedničku masu. Kalibracija modela je 1000–2000 µs, frekvencija 50 Hz. Traže se stvarni impulsi 1000, 1500 i 2000 µs, ne ispis kuta. AVR Servo koristi Timer1 i onemogućuje uobičajeni PWM na D9/D10. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Za pasivni ton dopušten je duty veći od 15 % i manji od 85 %. Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
       "criteria": [
         {
           "id": "connection",
@@ -3150,7 +3156,9 @@
             6,
             6.8
           ],
-          "seededEnvironment": true
+          "seededEnvironment": true,
+          "toneDutyMin": 0.15,
+          "toneDutyMax": 0.85
         },
         "limits": {
           "wallTimeMs": 65000,
@@ -3199,7 +3207,7 @@
         "nano"
       ],
       "title": "L298N: PWM, smjer, slobodno zaustavljanje i kočenje",
-      "instructions": "Ponavljaj naprijed 25, 50 i 100 % PWM po 500 ms, EN LOW/slobodno 300 ms, natrag 50 % 600 ms pa kočenje 500 ms (oba IN jednaka, EN HIGH). L298N: spremljeni VS=6 V, VSS=5 V, pad mosta 2 V, motor 6 V, EN jumperi uklonjeni i masa zajednička. Provjeravač u zasebnoj kopiji bira VS=5,6, 6,0 ili 6,8 V; očekuje isti duty i prosječni napon (VS−2 V)×potpisani duty. Slobodno stanje je Hi-Z, a kočenje 0 V. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
+      "instructions": "Ponavljaj naprijed 25, 50 i 100 % PWM po 500 ms, EN LOW/slobodno 300 ms, natrag 50 % 600 ms pa kočenje 500 ms (oba IN jednaka, EN HIGH). L298N: spremljeni VS=6 V, VSS=5 V, pad mosta 2 V, motor 6 V, EN jumperi uklonjeni i masa zajednička. Provjeravač u zasebnoj kopiji bira VS=5,6, 6,0 ili 6,8 V; očekuje isti duty i prosječni napon (VS−2 V)×potpisani duty. Slobodno stanje je Hi-Z, a kočenje 0 V. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Za pasivni ton dopušten je duty veći od 15 % i manji od 85 %. Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
       "criteria": [
         {
           "id": "connection",
@@ -3254,7 +3262,9 @@
             6,
             6.8
           ],
-          "seededEnvironment": true
+          "seededEnvironment": true,
+          "toneDutyMin": 0.15,
+          "toneDutyMax": 0.85
         },
         "limits": {
           "wallTimeMs": 65000,
@@ -3303,7 +3313,7 @@
         "nano"
       ],
       "title": "L298N: dva neovisna kanala",
-      "instructions": "Ponavljaj istodobno motor A naprijed 50 % i B natrag 75 % tijekom 800 ms; zatim A naprijed 100 % i B slobodno/ENB LOW tijekom 800 ms. Kanali se mjere odvojeno i istodobno. VS=6 V, VSS=5 V, pad mosta 2 V, motori 6 V, oba EN jumpera uklonjena. U privatnoj kopiji VS je 5,6, 6,0 ili 6,8 V; prosječni napon svakog motora mora pratiti stvarni duty i polaritet. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
+      "instructions": "Ponavljaj istodobno motor A naprijed 50 % i B natrag 75 % tijekom 800 ms; zatim A naprijed 100 % i B slobodno/ENB LOW tijekom 800 ms. Kanali se mjere odvojeno i istodobno. VS=6 V, VSS=5 V, pad mosta 2 V, motori 6 V, oba EN jumpera uklonjena. U privatnoj kopiji VS je 5,6, 6,0 ili 6,8 V; prosječni napon svakog motora mora pratiti stvarni duty i polaritet. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Za pasivni ton dopušten je duty veći od 15 % i manji od 85 %. Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
       "criteria": [
         {
           "id": "connection",
@@ -3358,7 +3368,9 @@
             6,
             6.8
           ],
-          "seededEnvironment": true
+          "seededEnvironment": true,
+          "toneDutyMin": 0.15,
+          "toneDutyMax": 0.85
         },
         "limits": {
           "wallTimeMs": 65000,
@@ -3407,7 +3419,7 @@
         "nano"
       ],
       "title": "Servo, motor i ton: istodobni izlazi i timeri",
-      "instructions": "Istodobno održavaj motor A naprijed 50 %, pasivni piezo 880 Hz te SG90 naizmjenično 45 i 135 stupnjeva po 600 ms. SG90: 50 Hz, 1250/1750 µs i kalibracija 1000–2000 µs. Motor: VS=6 V, VSS=5 V, pad 2 V, 6 V motor, EN jumperi uklonjeni; privatna kopija bira VS=5,6, 6,0 ili 6,8 V. AVR valjan primjer koristi Servo/Timer1 na D8, PWM/Timer0 na D5 i tone/Timer2 na D4. PWM D9/D10 sukobljava se sa Servom, D3/D11 s tone. Na S3 se očekuju neovisni LEDC izlazi; AVR ograničenja ne prenose se na S3. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
+      "instructions": "Istodobno održavaj motor A naprijed 50 %, pasivni piezo 880 Hz te SG90 naizmjenično 45 i 135 stupnjeva po 600 ms. SG90: 50 Hz, 1250/1750 µs i kalibracija 1000–2000 µs. Motor: VS=6 V, VSS=5 V, pad 2 V, 6 V motor, EN jumperi uklonjeni; privatna kopija bira VS=5,6, 6,0 ili 6,8 V. AVR valjan primjer koristi Servo/Timer1 na D8, PWM/Timer0 na D5 i tone/Timer2 na D4. PWM D9/D10 sukobljava se sa Servom, D3/D11 s tone. Na S3 se očekuju neovisni LEDC izlazi; AVR ograničenja ne prenose se na S3. Provjeravaju se tri puna ciklusa. Dopušteni početak do 250 ms, trajanje svake faze ±80 ms i smirivanje izlaza do 60 ms; frekvencija tona ±2,5 % (najmanje ±4 Hz), servo ±1 Hz / ±20 µs / ±4°, prosječni napon ±0,18 V. Python PWM je 0–65535; Arduino 0–255 (64/128/192/255 odgovara približno 25/50/75/100 %). Za pasivni ton dopušten je duty veći od 15 % i manji od 85 %. Prvih 3 boda potvrđuje upravljački i energetski put, 5 prvi cijeli slijed, a 2 još dva ispravna ciklusa. Otvoreni odgovori ostaju opisni.",
       "criteria": [
         {
           "id": "connection",
@@ -3462,7 +3474,9 @@
             6,
             6.8
           ],
-          "seededEnvironment": true
+          "seededEnvironment": true,
+          "toneDutyMin": 0.15,
+          "toneDutyMax": 0.85
         },
         "limits": {
           "wallTimeMs": 65000,

@@ -55,6 +55,25 @@ test('24F alternate MicroPython algorithms and renamed/reordered layouts accept 
   for(const p of actuatorProfiles){const r=await run(alternateActuator(await starter(p.taskKey)),p,{root},'a'.repeat(64));assert.equal(r.points,10,JSON.stringify(r));}
 });
 
+for(const target of ['micropython','s3-cpp','uno','nano'] as UrsTarget[])test(`24F ${target}: lower energy bound and independent signal/energy faults`,{
+  skip:!!process.env.LAB_ACTUATOR_TARGET&&process.env.LAB_ACTUATOR_TARGET!==target,timeout:300000},async()=>{
+  for(const p of actuatorProfiles){
+    const variant=p.taskKey.split('/')[1];
+    if(['dcDrive','dualDrive','servoMotorTone'].includes(variant)){
+      const low=await run(await starter(p.taskKey,target),p,{root},'0'.repeat(64));
+      assert.equal(low.points,10,JSON.stringify(low));assert.equal(low.samples[0].motorSupplyV,5.6);
+    }
+    if(target==='micropython')continue; // covered with exact partial scores below
+    for(const energy of [false,true]){
+      const broken=await starter(p.taskKey,target);if(broken.circuit.kind!=='editable')throw Error('editable');
+      const first=broken.circuit.components.find(c=>['relay','activeBuzzer','passiveBuzzer','sg90','l298n'].includes(c.kind))!;
+      const pin=energy?first.kind==='sg90'?'V+':first.kind==='l298n'?'VS':'VCC':first.kind==='relay'?'IN':first.kind==='l298n'?'ENA':'SIG';
+      broken.circuit.wires=broken.circuit.wires.filter(w=>!([w.from,w.to].some(e=>e.component===first.id&&e.pin===pin)));
+      assert.equal((await run(broken,p)).points,0,target+' '+variant+' '+pin);
+    }
+  }
+});
+
 test('24F every criterion has a negative, with exact 3/8/0 scores and separate signal/energy faults',{skip:!!process.env.LAB_ACTUATOR_TARGET&&process.env.LAB_ACTUATOR_TARGET!=='micropython',timeout:240000},async()=>{
   for(const p of actuatorProfiles){
     const variant=p.taskKey.split('/')[1],bad=await run(wrongActuator(await starter(p.taskKey),variant),p);

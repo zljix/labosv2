@@ -60,7 +60,7 @@ export function createActuatorCheck(c:SimulationConfig,profile:any,seed:string){
   };
   const toneAt=(e:any,hz:number)=>{
     const v=e.actuators?.buzzers?.[buzzer.id];return !!v?.powered&&(hz===0?!v.active:
-      v.active&&near(v.frequency,hz,Math.max(4,hz*s.frequencyRelativeTolerance))&&v.duty>.15&&v.duty<.85);
+      v.active&&near(v.frequency,hz,Math.max(4,hz*s.frequencyRelativeTolerance))&&v.duty>s.toneDutyMin&&v.duty<s.toneDutyMax);
   };
   const motorAt=(e:any,ch:number,duty:number|null,brake=false)=>{
     const m=motors[ch],v=m&&e.actuators?.motors?.[m.id],b=e.actuators?.bridges?.[bridge.id];

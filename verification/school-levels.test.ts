@@ -4,6 +4,7 @@ import {readFileSync,mkdirSync,writeFileSync} from 'node:fs';
 import {gradeJob} from '../school/grader/official';
 import {gradingCoverage,gradingSupport} from '../school/grader/coverage';
 import {compileCircuit} from '../src/circuit/compile';
+import {makePart,terminals} from '../src/circuit/model';
 import {createLevelCheck,validLevelConfig} from '../school/grader/levels';
 import {levelProfiles,starter,jobFor,compilerOptions,alternateLevel,wrongLevel} from './school-levels-fixture';
 import type {UrsTarget} from '../src/lessons/ursCatalog';
@@ -32,10 +33,24 @@ test('24N console claims and spare converters do not prove electrical translatio
   }
 });
 for(const target of ['micropython','s3-cpp','uno','nano'] as UrsTarget[])test(`24N ${target}: three repetitions of all four original saved sources`,{skip:selected(target),timeout:900000},async()=>{
-  for(const p of levelProfiles)for(let i=0;i<3;i++){
+  for(const p of levelProfiles){
     const project=await starter(p.taskKey,target);project.files['claimed-result.json']='{"points":1000,"levelShifters":{"fake":{"powered":true}}}';
-    const before=JSON.stringify(project),r=await run(project,p);assert.equal(r.status,'evaluated',JSON.stringify(r));assert.equal(r.points,10,JSON.stringify(r));assert.equal(JSON.stringify(project),before);
+    const before=JSON.stringify(project);let first:any;
+    for(let i=0;i<3;i++){
+      const r=await run(project,p);assert.equal(r.status,'evaluated',JSON.stringify(r));assert.equal(r.points,10,JSON.stringify(r));assert.equal(JSON.stringify(project),before);
+      if(first)assert.deepEqual(r.samples,first.samples);else first=r;
+    }
   }
+});
+test('24N a powered spare output with a weak resistor cannot credit an LED driven by another GPIO',{skip:selected('micropython'),timeout:30000},async()=>{
+  const p=levelProfiles.find(p=>p.taskKey==='levels/levelOutput')!,project=await starter(p.taskKey);
+  if(project.circuit.kind!=='editable')throw Error('editable');const c=project.circuit,board=c.components.find(p=>p.kind==='board')!;
+  c.wires.find(w=>w.id==='level_ledSignal')!.from={component:board.id,pin:terminals(board).find(t=>t.gpio===6)!.pin};
+  const resistor=makePart('resistor',700,300,'weakLink');resistor.properties.resistance=1000000;c.components.push(resistor);
+  c.wires.push({id:'weak_a',from:{component:'level1',pin:'B1'},to:{component:'weakLink',pin:'1'},color:'#000000',points:[]},
+    {id:'weak_b',from:{component:'weakLink',pin:'2'},to:{component:'r1',pin:'1'},color:'#000000',points:[]});
+  project.files['main.py']='from machine import Pin\nfrom time import sleep_ms\na=Pin(4,Pin.OUT)\nb=Pin(6,Pin.OUT)\nwhile True:\n a.on()\n b.on()\n sleep_ms(500)\n a.off()\n b.off()\n sleep_ms(500)\n';
+  compileCircuit(c);assert.equal((await run(project,p)).points,0);
 });
 for(const target of ['micropython','s3-cpp','uno','nano'] as UrsTarget[])test(`24N ${target}: all supply, ground, DIR and data interruptions lose points; repairs recover with a second seed`,{skip:selected(target),timeout:900000},async()=>{
   for(const p of levelProfiles){const original=await starter(p.taskKey,target),i2c=p.taskKey.startsWith('i2c');

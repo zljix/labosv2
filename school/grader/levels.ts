@@ -8,12 +8,18 @@ export const isLevelContract=(p:any)=>p.checkerVersion==='24N.1';
 function topology(c:SimulationConfig,v:string,backend:string){
   const s3=backend!=='avr',gpio=(n:number)=>c.gpios.some(g=>g.net===n);
   const ground=(n:number)=>c.referenceGrounds.includes(n);
-  const throughResistors=(from:number,to:number)=>{
+  const isolatedRemote=(from:number,to?:number)=>{
     const seen=new Set([from]),pending=[from];
-    while(pending.length){const n=pending.pop()!;if(n===to)return true;
+    while(pending.length){const n=pending.pop()!;
+      if(gpio(n))return false;
+      const rails=c.rails.filter(r=>r.net===n);
+      // A remote button needs its own pull-up. A remote LED must be supplied
+      // by the translator output, without a parallel GPIO or positive rail.
+      // Stop at reference rails so unrelated bias resistors are not traversed.
+      if(rails.length){if(to!==undefined&&rails.some(r=>r.volts>0))return false;continue;}
       for(const r of c.resistors){const next=r.a===n?r.b:r.b===n?r.a:null;
         if(next!==null&&!seen.has(next)){seen.add(next);pending.push(next);}}
-    }return false;
+    }return to===undefined||seen.has(to);
   };
   if(v.startsWith('i2c')){
     const d=c.i2cLevelShifters[0],device=c.i2cDevices[0];if(!d||!device)return null;
@@ -25,8 +31,8 @@ function topology(c:SimulationConfig,v:string,backend:string){
   const input=v==='levelInput',aToB=input?!s3:s3,source=aToB?d.a:d.b,destination=aToB?d.b:d.a;
   for(let channel=0;channel<2;channel++){
     const from=source[channel],to=destination[channel];
-    const path=input?button&&((button.a===from&&ground(button.b))||(button.b===from&&ground(button.a)))&&gpio(to)&&!gpio(from):
-      gpio(from)&&!gpio(to)&&throughResistors(to,led.a)&&ground(led.k);
+    const path=input?button&&((button.a===from&&ground(button.b))||(button.b===from&&ground(button.a)))&&gpio(to)&&isolatedRemote(from):
+      gpio(from)&&isolatedRemote(to,led.a)&&ground(led.k);
     if(path)return {id:d.id,channel,from,to,direction:aToB?'A → B':'B → A',inputVoltage:aToB?3.3:5,outputVoltage:aToB?5:3.3};
   }return null;
 }
@@ -36,7 +42,7 @@ export function validLevelConfig(c:SimulationConfig,v:string,backend:string){
   return c.levelShifters.length===Number(!i2c)&&c.i2cLevelShifters.length===Number(i2c)
     &&c.leds.length===Number(!i2c)&&c.buttons.length===Number(v==='levelInput')
     &&c.i2cDevices.length===Number(i2c)&&(!i2c||c.i2cDevices[0].kind===(v==='i2cBmp280'?'bmp280':'ssd1306_32'))
-    &&[c.spiDevices,c.tmDisplays,c.rtcDevices,c.analogInputs,c.timedSensors,c.oneWireDevices,c.servos,c.bridges,c.stepperDrivers,c.encoders,c.irReceivers].every(a=>a.length===0)
+    &&[c.spiDevices,c.tmDisplays,c.rtcDevices,c.analogInputs,c.timedSensors,c.oneWireDevices,c.servos,c.bridges,c.stepperDrivers,c.encoders,c.irReceivers,c.relays,c.buzzers,c.motors,c.irTransmitters,c.irRemotes].every(a=>a.length===0)
     &&!!topology(c,v,backend);
 }
 

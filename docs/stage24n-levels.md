@@ -38,3 +38,11 @@ Novo izvršavanje zadržava 65 s zidnog i 58 s CPU vremena, 2048 MiB adresnog pr
 Sačuvaj bazu, privatnu konfiguraciju, ključ i sesije. Zamijeni kompletan paket, pokreni postojeći migrate i ponovno pokreni Linux provjeravače. Nema nove SQL migracije. GitHub Pages prikazuje simulator i matricu; školska prijava, pohrana, službeni bodovi i nastavnički pregled traže PHP/MySQL instalaciju.
 
 Modeli pretvornika ostaju funkcionalni DC/GPIO i I2C profili iz etapa 22G/22H. Ovo bodovanje ne dodaje fizičku RC krivulju, najveću frekvenciju, toplinu, hot-swap, clock-stretching ili certifikaciju kupljenog modula. Stvarni školski pilot, Windows veza s Linux provjeravačem, ciljni mobilni preglednici i skupno cgroup ograničenje memorije ostaju zasebni uvjeti prihvata. Izdanje ostaje nastavna beta.
+
+## Rezultati prihvata
+
+[Završni prihvat 24N](https://github.com/zljix/labosv2/actions/runs/44052504254) potvrđuje **253 ciljane izvedbe, 48 neovisnih C++ prijevoda i 16 zaključanih školskih dodjela** na izvoru `59c0f3e33657a2061308dd936de4685f1493fef6`. Tri ponavljanja koriste istu nepromjenjivu snimku i uspoređuju potpune rezultate. Alternativni algoritmi, drugi GPIO, kanal 2, preuređeni sklopovi i oba neovisno pogrešna kriterija imaju očekivane bodove. Dodatni GPIO koji zasebno napaja LED ne može ostvariti bodove samo slabom otpornom vezom prema napajanom pretvorniku.
+
+Sve ranije obitelji, pokus s 30 simuliranih učenika, računi, razredi, istodobno spremanje, predaje, izvještaji, arhiva i povrat kopije prošli su prihvat. Isporučeni provjeravač ima isti otisak kao sva četiri ciljna prihvata i svih 16 stvarnih školskih rezultata. [Sažetak](stage24n-evidence/acceptance-summary.json), [nativni prijevodi](stage24n-evidence/ci-native-summary.json) i [izvornost paketa](stage24n-evidence/installer-integrity.json).
+
+Zasebno prolaze 32 pokretanja zapakiranih Workera: osam GPIO pokusa i osam I2C scenarija s promjenom podataka, prekidom HV-a i oporavkom. Prošlo je i osam provjera korijenskog offline paketa, osam provjera Pages podputanje te svih 60 testova modela pretvornika. Svih 205 web resursa bajtno odgovara prihvaćenom CI paketu; [lokalni zapis](stage24n-evidence/local-package-verification.json). Time nije proglašen stvarni učenički ili hardverski pilot.

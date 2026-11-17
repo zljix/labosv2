@@ -1,0 +1,39 @@
+{
+  "format": "labosv2-24n-local-package-verification",
+  "version": 1,
+  "appBuild": "fa52799db0156c46",
+  "manifestFiles": 205,
+  "manifestBytes": 16493099,
+  "everyManifestEntryVerified": true,
+  "gpioScenarios": 8,
+  "i2cScenarios": 8,
+  "packagedWorkerExecutions": 32,
+  "offlineTests": {
+    "passed": 8,
+    "failed": 0
+  },
+  "pagesTests": {
+    "passed": 8,
+    "failed": 0
+  },
+  "modelTests": {
+    "passed": 60,
+    "failed": 0
+  },
+  "legacyRegression": {
+    "passed": 33,
+    "failed": 0,
+    "skippedCompilerCases": 7
+  },
+  "schoolPackageTests": {
+    "passed": 2,
+    "failed": 0
+  },
+  "runtimeSourceCommit": "cf9e34588a7fedb6ac57b1e14d3b1958baf3b6b6",
+  "checkerSourceCommit": "59c0f3e33657a2061308dd936de4685f1493fef6",
+  "checkerTestsMicroPython": {
+    "passed": 10,
+    "failed": 0,
+    "skippedOtherTargetOrCompilerTests": 18
+  }
+}

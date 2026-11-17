@@ -2,6 +2,8 @@
 
 **0.14.12-beta.1 · etapa 24N · pretvornici razina · 17. studenoga 2026.**
 
+**Prihvat 24N:** [Završne provjere i paket](https://github.com/zljix/labosv2/actions/runs/44052504254) potvrđuju 253 ciljane izvedbe, 48 neovisnih C++ prijevoda i 16 zaključanih školskih dodjela. Prošli su svi ciljevi, ranije obitelji, 30 simuliranih učenika, izvještaji i povrat kopije. [Sažetak](docs/stage24n-evidence/acceptance-summary.json) i [izvornost instalacijskog paketa](docs/stage24n-evidence/installer-integrity.json).
+
 **Prihvat 24M:** [Završne provjere i paket](https://github.com/zljix/labosv2/actions/runs/44037558293) povezuju 60 ciljanih provjera, 24 zasebna C++ prijevoda obaju čvorova i četiri zaključane radijske dodjele s isporučenim provjeravačem. Potvrđeni su svih 16 mješovitih parova, ranije obitelji, 30 simuliranih učenika, izvještaji i povrat kopije. [Sažetak i otisak provjeravača](docs/stage24m-evidence/acceptance-summary.json).
 
 **Prihvat 24L:** [Završni prihvat i paket](https://github.com/zljix/labosv2/actions/runs/43981733195) potvrđuju 162 ciljane izvedbe, 48 neovisnih C++ prijevoda i 16 zaključanih MAX30102 dodjela. Ranije obitelji, računi, izvještaji, povrat kopije i pokus s 30 simuliranih učenika potvrđeni su na bajtno istom programu i provjeravaču. [Sažetak i podrijetlo dokaza](docs/stage24l-evidence/acceptance-summary.json).

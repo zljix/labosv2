@@ -1,0 +1,28 @@
+{
+  "format": "labosv2-24n-native-acceptance",
+  "version": 1,
+  "sourceCommit": "59c0f3e33657a2061308dd936de4685f1493fef6",
+  "records": [
+    {
+      "target": "micropython",
+      "repeatedReferences": 12,
+      "independentCompilations": 0
+    },
+    {
+      "target": "s3-cpp",
+      "repeatedReferences": 12,
+      "independentCompilations": 16
+    },
+    {
+      "target": "uno",
+      "repeatedReferences": 12,
+      "independentCompilations": 16
+    },
+    {
+      "target": "nano",
+      "repeatedReferences": 12,
+      "independentCompilations": 16
+    }
+  ],
+  "independentCompilations": 48
+}

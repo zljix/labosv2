@@ -1,5 +1,7 @@
 ## 24N — digitalni i I2C pretvornici razina
 
+[Završni prihvat 24N](https://github.com/zljix/labosv2/actions/runs/44052504254) potvrđuje 253 ciljane izvedbe, 48 neovisnih C++ prijevoda i 16 zaključanih novih dodjela. Potvrđeni su i ranije obitelji, 30 simuliranih učenika, izvještaji te povrat kopije. [Sažetak i izvorni provjereni paket](../docs/stage24n-evidence/acceptance-summary.json).
+
 Izdanje **0.14.12-beta.1** dodaje četiri rubrike i završnih 16 kombinacija: **268/268**, odnosno svih 67 URS varijanti na sva četiri cilja. Uvodne V1–V5 ostaju lokalne. Bodovi dolaze iz stvarnih odvojenih domena i DIR-a, novog BMP280 čitanja te primljenih OLED piksela. Postojeća trajanja primjera zadržana su i objavljena po cilju. [Uvjeti i nadogradnja](../docs/stage24n-levels.md).
 
 Nema nove SQL migracije. Sačuvaj bazu, privatnu konfiguraciju, ključ i sesije; zamijeni kompletan paket, pokreni postojeći migrate i ponovno pokreni Linux provjeravače. Nove rubrike izričito odaberi pri objavi nove inačice zadatka. Stare dodjele i zaključani bodovi ostaju uz svoje stare rubrike.

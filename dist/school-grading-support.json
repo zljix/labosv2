@@ -1,13 +1,13 @@
 {
   "format": "labosv2-grading-coverage",
   "version": 1,
-  "sourceVersion": "0.14.11-beta.1",
+  "sourceVersion": "0.14.12-beta.1",
   "summary": {
     "themes": 18,
     "variants": 67,
     "combinations": 268,
-    "supported": 252,
-    "unsupported": 16,
+    "supported": 268,
+    "unsupported": 0,
     "introductory": 5
   },
   "rows": [
@@ -12380,16 +12380,32 @@
       "fault": "Zaustavi program i ukloni vodič VCCB, zatim pokreni. Opažaj poruku i izostanak valjanog prijenosa. Vrati napajanje i potvrdi oporavak. Ne premošćuj A i B strane.",
       "expected": "U valjanom smjeru logičko stanje se zadržava, napon HIGH prati odredišnu domenu. Bez obaju napajanja model otpušta izlaze. GPIO pull-up na prijamnoj strani može tada držati HIGH, ali to nije dokaz prijenosa.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24N-levelInput@1",
+        "checkerVersion": "24N.1",
+        "title": "Tipkalo kroz digitalni pretvornik razina",
+        "instructions": "Tipkalo je u suprotnoj naponskoj domeni i preko SN74LVC2T45 dolazi na ulaz pločice. S3 prima B → A, Uno/Nano A → B. Udaljeni ulaz ima vanjski 10 kΩ pull-up; unutarnji pull-up pločice ne zamjenjuje ga. Jedna LED na pločici svijetli dok je tipkalo pritisnuto i gasi se pri otpuštanju. Sedam izmjeničnih stanja počinje privatno odabranim stanjem i traje po 233, 277 ili 319 ms. Rok reakcije je 50 ms uz 4 ms tolerancije, zatim LED mora ostati ispravna do nove promjene. SN74LVC2T45: A=3,3 V, B=5 V; DIR=HIGH za A → B, LOW za B → A. Oba ulaza moraju biti definirana, neiskorišteni ulaz spoji na masu.  Napajanja su 3,3 V i 5 V uz zajedničku masu. Treba stvarni zasebni pretvornik između odvojenih domena; izravni spoj ili neiskorišten pretvornik uz drugi sklop ne prolazi. Dopušteni su drugi algoritmi, nazivi, GPIO uz odgovarajući izvor, oba podatkovna kanala GPIO pretvornika, promijenjeni identiteti i električno ekvivalentan raspored. Kriteriji su 3 + 5 + 2 boda. Kvar se provjerava u zasebnoj kopiji; Stop, popravak i novo pokretanje dopušteni su. Konzolni tekst ili učenički artefakt ne mogu zamijeniti fizički put u modelu.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani pretvornik, valjan DIR i stvarni put udaljenog tipkala prema ulazu pločice",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "LED prati prva tri zadana stanja tipkala kroz pretvornik u roku 50 + 4 ms",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Četiri dodatne promjene tipkala i pravodoban povrat LED-ice",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-levels.test.ts"
       }
     },
     {
@@ -12413,16 +12429,32 @@
       "fault": "Zaustavi program i ukloni vodič VCCB, zatim pokreni. Opažaj poruku i izostanak valjanog prijenosa. Vrati napajanje i potvrdi oporavak. Ne premošćuj A i B strane.",
       "expected": "U valjanom smjeru logičko stanje se zadržava, napon HIGH prati odredišnu domenu. Bez obaju napajanja model otpušta izlaze. GPIO pull-up na prijamnoj strani može tada držati HIGH, ali to nije dokaz prijenosa.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24N-levelInput@1",
+        "checkerVersion": "24N.1",
+        "title": "Tipkalo kroz digitalni pretvornik razina",
+        "instructions": "Tipkalo je u suprotnoj naponskoj domeni i preko SN74LVC2T45 dolazi na ulaz pločice. S3 prima B → A, Uno/Nano A → B. Udaljeni ulaz ima vanjski 10 kΩ pull-up; unutarnji pull-up pločice ne zamjenjuje ga. Jedna LED na pločici svijetli dok je tipkalo pritisnuto i gasi se pri otpuštanju. Sedam izmjeničnih stanja počinje privatno odabranim stanjem i traje po 233, 277 ili 319 ms. Rok reakcije je 50 ms uz 4 ms tolerancije, zatim LED mora ostati ispravna do nove promjene. SN74LVC2T45: A=3,3 V, B=5 V; DIR=HIGH za A → B, LOW za B → A. Oba ulaza moraju biti definirana, neiskorišteni ulaz spoji na masu.  Napajanja su 3,3 V i 5 V uz zajedničku masu. Treba stvarni zasebni pretvornik između odvojenih domena; izravni spoj ili neiskorišten pretvornik uz drugi sklop ne prolazi. Dopušteni su drugi algoritmi, nazivi, GPIO uz odgovarajući izvor, oba podatkovna kanala GPIO pretvornika, promijenjeni identiteti i električno ekvivalentan raspored. Kriteriji su 3 + 5 + 2 boda. Kvar se provjerava u zasebnoj kopiji; Stop, popravak i novo pokretanje dopušteni su. Konzolni tekst ili učenički artefakt ne mogu zamijeniti fizički put u modelu.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani pretvornik, valjan DIR i stvarni put udaljenog tipkala prema ulazu pločice",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "LED prati prva tri zadana stanja tipkala kroz pretvornik u roku 50 + 4 ms",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Četiri dodatne promjene tipkala i pravodoban povrat LED-ice",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-levels.test.ts"
       }
     },
     {
@@ -12446,16 +12478,32 @@
       "fault": "Zaustavi program i ukloni vodič VCCB, zatim pokreni. Opažaj poruku i izostanak valjanog prijenosa. Vrati napajanje i potvrdi oporavak. Ne premošćuj A i B strane.",
       "expected": "U valjanom smjeru logičko stanje se zadržava, napon HIGH prati odredišnu domenu. Bez obaju napajanja model otpušta izlaze. GPIO pull-up na prijamnoj strani može tada držati HIGH, ali to nije dokaz prijenosa.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24N-levelInput@1",
+        "checkerVersion": "24N.1",
+        "title": "Tipkalo kroz digitalni pretvornik razina",
+        "instructions": "Tipkalo je u suprotnoj naponskoj domeni i preko SN74LVC2T45 dolazi na ulaz pločice. S3 prima B → A, Uno/Nano A → B. Udaljeni ulaz ima vanjski 10 kΩ pull-up; unutarnji pull-up pločice ne zamjenjuje ga. Jedna LED na pločici svijetli dok je tipkalo pritisnuto i gasi se pri otpuštanju. Sedam izmjeničnih stanja počinje privatno odabranim stanjem i traje po 233, 277 ili 319 ms. Rok reakcije je 50 ms uz 4 ms tolerancije, zatim LED mora ostati ispravna do nove promjene. SN74LVC2T45: A=3,3 V, B=5 V; DIR=HIGH za A → B, LOW za B → A. Oba ulaza moraju biti definirana, neiskorišteni ulaz spoji na masu.  Napajanja su 3,3 V i 5 V uz zajedničku masu. Treba stvarni zasebni pretvornik između odvojenih domena; izravni spoj ili neiskorišten pretvornik uz drugi sklop ne prolazi. Dopušteni su drugi algoritmi, nazivi, GPIO uz odgovarajući izvor, oba podatkovna kanala GPIO pretvornika, promijenjeni identiteti i električno ekvivalentan raspored. Kriteriji su 3 + 5 + 2 boda. Kvar se provjerava u zasebnoj kopiji; Stop, popravak i novo pokretanje dopušteni su. Konzolni tekst ili učenički artefakt ne mogu zamijeniti fizički put u modelu.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani pretvornik, valjan DIR i stvarni put udaljenog tipkala prema ulazu pločice",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "LED prati prva tri zadana stanja tipkala kroz pretvornik u roku 50 + 4 ms",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Četiri dodatne promjene tipkala i pravodoban povrat LED-ice",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-levels.test.ts"
       }
     },
     {
@@ -12479,16 +12527,32 @@
       "fault": "Zaustavi program i ukloni vodič VCCB, zatim pokreni. Opažaj poruku i izostanak valjanog prijenosa. Vrati napajanje i potvrdi oporavak. Ne premošćuj A i B strane.",
       "expected": "U valjanom smjeru logičko stanje se zadržava, napon HIGH prati odredišnu domenu. Bez obaju napajanja model otpušta izlaze. GPIO pull-up na prijamnoj strani može tada držati HIGH, ali to nije dokaz prijenosa.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24N-levelInput@1",
+        "checkerVersion": "24N.1",
+        "title": "Tipkalo kroz digitalni pretvornik razina",
+        "instructions": "Tipkalo je u suprotnoj naponskoj domeni i preko SN74LVC2T45 dolazi na ulaz pločice. S3 prima B → A, Uno/Nano A → B. Udaljeni ulaz ima vanjski 10 kΩ pull-up; unutarnji pull-up pločice ne zamjenjuje ga. Jedna LED na pločici svijetli dok je tipkalo pritisnuto i gasi se pri otpuštanju. Sedam izmjeničnih stanja počinje privatno odabranim stanjem i traje po 233, 277 ili 319 ms. Rok reakcije je 50 ms uz 4 ms tolerancije, zatim LED mora ostati ispravna do nove promjene. SN74LVC2T45: A=3,3 V, B=5 V; DIR=HIGH za A → B, LOW za B → A. Oba ulaza moraju biti definirana, neiskorišteni ulaz spoji na masu.  Napajanja su 3,3 V i 5 V uz zajedničku masu. Treba stvarni zasebni pretvornik između odvojenih domena; izravni spoj ili neiskorišten pretvornik uz drugi sklop ne prolazi. Dopušteni su drugi algoritmi, nazivi, GPIO uz odgovarajući izvor, oba podatkovna kanala GPIO pretvornika, promijenjeni identiteti i električno ekvivalentan raspored. Kriteriji su 3 + 5 + 2 boda. Kvar se provjerava u zasebnoj kopiji; Stop, popravak i novo pokretanje dopušteni su. Konzolni tekst ili učenički artefakt ne mogu zamijeniti fizički put u modelu.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani pretvornik, valjan DIR i stvarni put udaljenog tipkala prema ulazu pločice",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "LED prati prva tri zadana stanja tipkala kroz pretvornik u roku 50 + 4 ms",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Četiri dodatne promjene tipkala i pravodoban povrat LED-ice",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-levels.test.ts"
       }
     },
     {
@@ -12512,16 +12576,32 @@
       "fault": "Zaustavi program i ukloni vodič VCCB, zatim pokreni. Opažaj poruku i izostanak valjanog prijenosa. Vrati napajanje i potvrdi oporavak. Ne premošćuj A i B strane.",
       "expected": "U valjanom smjeru logičko stanje se zadržava, napon HIGH prati odredišnu domenu. Bez obaju napajanja model otpušta izlaze. GPIO pull-up na prijamnoj strani može tada držati HIGH, ali to nije dokaz prijenosa.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24N-levelOutput@1",
+        "checkerVersion": "24N.1",
+        "title": "LED kroz digitalni pretvornik razina",
+        "instructions": "GPIO kroz SN74LVC2T45 upravlja jednom udaljenom LED-icom sa serijskim otpornikom. S3 šalje A → B, Uno/Nano B → A. Ulaz ima početni 100 kΩ pull-down. Ostavi početna trajanja svojeg primjera: MicroPython 500 ms uključeno / 500 ms isključeno; S3 C++ 300/300 ms; Uno/Nano 200/200 ms. Najmanje tri potpuna ciklusa; tolerancija svakog potpunog intervala je ±24 ms. Početno nepotpuno isključenje prije prve upaljene LED-ice ne boduje se. SN74LVC2T45: A=3,3 V, B=5 V; DIR=HIGH za A → B, LOW za B → A. Oba ulaza moraju biti definirana, neiskorišteni ulaz spoji na masu.  Napajanja su 3,3 V i 5 V uz zajedničku masu. Treba stvarni zasebni pretvornik između odvojenih domena; izravni spoj ili neiskorišten pretvornik uz drugi sklop ne prolazi. Dopušteni su drugi algoritmi, nazivi, GPIO uz odgovarajući izvor, oba podatkovna kanala GPIO pretvornika, promijenjeni identiteti i električno ekvivalentan raspored. Kriteriji su 3 + 5 + 2 boda. Kvar se provjerava u zasebnoj kopiji; Stop, popravak i novo pokretanje dopušteni su. Konzolni tekst ili učenički artefakt ne mogu zamijeniti fizički put u modelu.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani GPIO pretvornik stvarno pogoni udaljenu LED kroz serijski otpornik",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Najmanje tri potpuna ciklusa stvarne struje udaljene LED-ice",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Trajanja prema cilju: MicroPython 500/500 ms, S3 C++ 300/300 ms, Uno/Nano 200/200 ms, ±24 ms",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-levels.test.ts"
       }
     },
     {
@@ -12545,16 +12625,32 @@
       "fault": "Zaustavi program i ukloni vodič VCCB, zatim pokreni. Opažaj poruku i izostanak valjanog prijenosa. Vrati napajanje i potvrdi oporavak. Ne premošćuj A i B strane.",
       "expected": "U valjanom smjeru logičko stanje se zadržava, napon HIGH prati odredišnu domenu. Bez obaju napajanja model otpušta izlaze. GPIO pull-up na prijamnoj strani može tada držati HIGH, ali to nije dokaz prijenosa.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24N-levelOutput@1",
+        "checkerVersion": "24N.1",
+        "title": "LED kroz digitalni pretvornik razina",
+        "instructions": "GPIO kroz SN74LVC2T45 upravlja jednom udaljenom LED-icom sa serijskim otpornikom. S3 šalje A → B, Uno/Nano B → A. Ulaz ima početni 100 kΩ pull-down. Ostavi početna trajanja svojeg primjera: MicroPython 500 ms uključeno / 500 ms isključeno; S3 C++ 300/300 ms; Uno/Nano 200/200 ms. Najmanje tri potpuna ciklusa; tolerancija svakog potpunog intervala je ±24 ms. Početno nepotpuno isključenje prije prve upaljene LED-ice ne boduje se. SN74LVC2T45: A=3,3 V, B=5 V; DIR=HIGH za A → B, LOW za B → A. Oba ulaza moraju biti definirana, neiskorišteni ulaz spoji na masu.  Napajanja su 3,3 V i 5 V uz zajedničku masu. Treba stvarni zasebni pretvornik između odvojenih domena; izravni spoj ili neiskorišten pretvornik uz drugi sklop ne prolazi. Dopušteni su drugi algoritmi, nazivi, GPIO uz odgovarajući izvor, oba podatkovna kanala GPIO pretvornika, promijenjeni identiteti i električno ekvivalentan raspored. Kriteriji su 3 + 5 + 2 boda. Kvar se provjerava u zasebnoj kopiji; Stop, popravak i novo pokretanje dopušteni su. Konzolni tekst ili učenički artefakt ne mogu zamijeniti fizički put u modelu.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani GPIO pretvornik stvarno pogoni udaljenu LED kroz serijski otpornik",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Najmanje tri potpuna ciklusa stvarne struje udaljene LED-ice",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Trajanja prema cilju: MicroPython 500/500 ms, S3 C++ 300/300 ms, Uno/Nano 200/200 ms, ±24 ms",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-levels.test.ts"
       }
     },
     {
@@ -12578,16 +12674,32 @@
       "fault": "Zaustavi program i ukloni vodič VCCB, zatim pokreni. Opažaj poruku i izostanak valjanog prijenosa. Vrati napajanje i potvrdi oporavak. Ne premošćuj A i B strane.",
       "expected": "U valjanom smjeru logičko stanje se zadržava, napon HIGH prati odredišnu domenu. Bez obaju napajanja model otpušta izlaze. GPIO pull-up na prijamnoj strani može tada držati HIGH, ali to nije dokaz prijenosa.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24N-levelOutput@1",
+        "checkerVersion": "24N.1",
+        "title": "LED kroz digitalni pretvornik razina",
+        "instructions": "GPIO kroz SN74LVC2T45 upravlja jednom udaljenom LED-icom sa serijskim otpornikom. S3 šalje A → B, Uno/Nano B → A. Ulaz ima početni 100 kΩ pull-down. Ostavi početna trajanja svojeg primjera: MicroPython 500 ms uključeno / 500 ms isključeno; S3 C++ 300/300 ms; Uno/Nano 200/200 ms. Najmanje tri potpuna ciklusa; tolerancija svakog potpunog intervala je ±24 ms. Početno nepotpuno isključenje prije prve upaljene LED-ice ne boduje se. SN74LVC2T45: A=3,3 V, B=5 V; DIR=HIGH za A → B, LOW za B → A. Oba ulaza moraju biti definirana, neiskorišteni ulaz spoji na masu.  Napajanja su 3,3 V i 5 V uz zajedničku masu. Treba stvarni zasebni pretvornik između odvojenih domena; izravni spoj ili neiskorišten pretvornik uz drugi sklop ne prolazi. Dopušteni su drugi algoritmi, nazivi, GPIO uz odgovarajući izvor, oba podatkovna kanala GPIO pretvornika, promijenjeni identiteti i električno ekvivalentan raspored. Kriteriji su 3 + 5 + 2 boda. Kvar se provjerava u zasebnoj kopiji; Stop, popravak i novo pokretanje dopušteni su. Konzolni tekst ili učenički artefakt ne mogu zamijeniti fizički put u modelu.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani GPIO pretvornik stvarno pogoni udaljenu LED kroz serijski otpornik",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Najmanje tri potpuna ciklusa stvarne struje udaljene LED-ice",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Trajanja prema cilju: MicroPython 500/500 ms, S3 C++ 300/300 ms, Uno/Nano 200/200 ms, ±24 ms",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-levels.test.ts"
       }
     },
     {
@@ -12611,16 +12723,32 @@
       "fault": "Zaustavi program i ukloni vodič VCCB, zatim pokreni. Opažaj poruku i izostanak valjanog prijenosa. Vrati napajanje i potvrdi oporavak. Ne premošćuj A i B strane.",
       "expected": "U valjanom smjeru logičko stanje se zadržava, napon HIGH prati odredišnu domenu. Bez obaju napajanja model otpušta izlaze. GPIO pull-up na prijamnoj strani može tada držati HIGH, ali to nije dokaz prijenosa.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24N-levelOutput@1",
+        "checkerVersion": "24N.1",
+        "title": "LED kroz digitalni pretvornik razina",
+        "instructions": "GPIO kroz SN74LVC2T45 upravlja jednom udaljenom LED-icom sa serijskim otpornikom. S3 šalje A → B, Uno/Nano B → A. Ulaz ima početni 100 kΩ pull-down. Ostavi početna trajanja svojeg primjera: MicroPython 500 ms uključeno / 500 ms isključeno; S3 C++ 300/300 ms; Uno/Nano 200/200 ms. Najmanje tri potpuna ciklusa; tolerancija svakog potpunog intervala je ±24 ms. Početno nepotpuno isključenje prije prve upaljene LED-ice ne boduje se. SN74LVC2T45: A=3,3 V, B=5 V; DIR=HIGH za A → B, LOW za B → A. Oba ulaza moraju biti definirana, neiskorišteni ulaz spoji na masu.  Napajanja su 3,3 V i 5 V uz zajedničku masu. Treba stvarni zasebni pretvornik između odvojenih domena; izravni spoj ili neiskorišten pretvornik uz drugi sklop ne prolazi. Dopušteni su drugi algoritmi, nazivi, GPIO uz odgovarajući izvor, oba podatkovna kanala GPIO pretvornika, promijenjeni identiteti i električno ekvivalentan raspored. Kriteriji su 3 + 5 + 2 boda. Kvar se provjerava u zasebnoj kopiji; Stop, popravak i novo pokretanje dopušteni su. Konzolni tekst ili učenički artefakt ne mogu zamijeniti fizički put u modelu.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani GPIO pretvornik stvarno pogoni udaljenu LED kroz serijski otpornik",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Najmanje tri potpuna ciklusa stvarne struje udaljene LED-ice",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Trajanja prema cilju: MicroPython 500/500 ms, S3 C++ 300/300 ms, Uno/Nano 200/200 ms, ±24 ms",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-levels.test.ts"
       }
     },
     {
@@ -12644,16 +12772,32 @@
       "fault": "Zaustavi program, ukloni HV vodič i ponovno pokreni. Zabilježi poruku i izostanak ACK/prijenosa. Vrati vodič, pokreni i potvrdi novo mjerenje/prikaz. Naponi HIGH sami nisu potvrda uspješnog programa.",
       "expected": "Program zadržava istu adresu i izvor, ali podaci prolaze kroz dvije odvojene naponske domene. I2C zapis potvrđuje ACK i bajtove. Bez valjanih napajanja model odbija prijenos. To nije potvrda fizičke izolacije, pojedinačnih bitova, clock-stretchinga ili fizičke brzine.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24N-i2cBmp280@1",
+        "checkerVersion": "24N.1",
+        "title": "BMP280 kroz dvije I2C naponske domene",
+        "instructions": "Preko I2C pretvornika očitavaj jedan BMP280 i ispisuj T=<broj> P=<broj>, temperaturu u °C i tlak u Pa. Tri etape po 6000 ms: privatno odabran početni okoliš, druga temperatura i tlak, povrat početnog okoliša. U svakoj treba najmanje dva nova potpuna očitanja s odgovarajućim ispisima; najdulji interval, uključujući početak i kraj etape, je 2300 ms. Zanemaruje se prvih 100 ms nakon promjene. Odstupanja su do 0,3 °C i 150 Pa. Staro mjerenje i lažni ispisi ne prolaze. I2C Lab carrier: LV=3,3 V, HV=5 V, bez DIR-a. Oba kanala istog pretvornika moraju prenijeti SDA i SCL. Svaka strana ima vlastiti pull-up. S3 je na LV, udaljeni uređaj je izričit 5 V carrier; Uno/Nano su na HV, uređaj je izvorni modul 3,3 V.  Napajanja su 3,3 V i 5 V uz zajedničku masu. Treba stvarni zasebni pretvornik između odvojenih domena; izravni spoj ili neiskorišten pretvornik uz drugi sklop ne prolazi. Dopušteni su drugi algoritmi, nazivi, GPIO uz odgovarajući izvor, oba podatkovna kanala GPIO pretvornika, promijenjeni identiteti i električno ekvivalentan raspored. Kriteriji su 3 + 5 + 2 boda. Kvar se provjerava u zasebnoj kopiji; Stop, popravak i novo pokretanje dopušteni su. Konzolni tekst ili učenički artefakt ne mogu zamijeniti fizički put u modelu.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C pretvornik, obje odvojene domene i novo dovršeno BMP280 očitanje",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Dvije promjene temperature i tlaka s novim očitanjima i točnim ispisima",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Povrat početnog okoliša uz nastavak novih očitanja i ispisa",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-levels.test.ts"
       }
     },
     {
@@ -12677,16 +12821,32 @@
       "fault": "Zaustavi program, ukloni HV vodič i ponovno pokreni. Zabilježi poruku i izostanak ACK/prijenosa. Vrati vodič, pokreni i potvrdi novo mjerenje/prikaz. Naponi HIGH sami nisu potvrda uspješnog programa.",
       "expected": "Program zadržava istu adresu i izvor, ali podaci prolaze kroz dvije odvojene naponske domene. I2C zapis potvrđuje ACK i bajtove. Bez valjanih napajanja model odbija prijenos. To nije potvrda fizičke izolacije, pojedinačnih bitova, clock-stretchinga ili fizičke brzine.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24N-i2cBmp280@1",
+        "checkerVersion": "24N.1",
+        "title": "BMP280 kroz dvije I2C naponske domene",
+        "instructions": "Preko I2C pretvornika očitavaj jedan BMP280 i ispisuj T=<broj> P=<broj>, temperaturu u °C i tlak u Pa. Tri etape po 6000 ms: privatno odabran početni okoliš, druga temperatura i tlak, povrat početnog okoliša. U svakoj treba najmanje dva nova potpuna očitanja s odgovarajućim ispisima; najdulji interval, uključujući početak i kraj etape, je 2300 ms. Zanemaruje se prvih 100 ms nakon promjene. Odstupanja su do 0,3 °C i 150 Pa. Staro mjerenje i lažni ispisi ne prolaze. I2C Lab carrier: LV=3,3 V, HV=5 V, bez DIR-a. Oba kanala istog pretvornika moraju prenijeti SDA i SCL. Svaka strana ima vlastiti pull-up. S3 je na LV, udaljeni uređaj je izričit 5 V carrier; Uno/Nano su na HV, uređaj je izvorni modul 3,3 V.  Napajanja su 3,3 V i 5 V uz zajedničku masu. Treba stvarni zasebni pretvornik između odvojenih domena; izravni spoj ili neiskorišten pretvornik uz drugi sklop ne prolazi. Dopušteni su drugi algoritmi, nazivi, GPIO uz odgovarajući izvor, oba podatkovna kanala GPIO pretvornika, promijenjeni identiteti i električno ekvivalentan raspored. Kriteriji su 3 + 5 + 2 boda. Kvar se provjerava u zasebnoj kopiji; Stop, popravak i novo pokretanje dopušteni su. Konzolni tekst ili učenički artefakt ne mogu zamijeniti fizički put u modelu.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C pretvornik, obje odvojene domene i novo dovršeno BMP280 očitanje",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Dvije promjene temperature i tlaka s novim očitanjima i točnim ispisima",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Povrat početnog okoliša uz nastavak novih očitanja i ispisa",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-levels.test.ts"
       }
     },
     {
@@ -12710,16 +12870,32 @@
       "fault": "Zaustavi program, ukloni HV vodič i ponovno pokreni. Zabilježi poruku i izostanak ACK/prijenosa. Vrati vodič, pokreni i potvrdi novo mjerenje/prikaz. Naponi HIGH sami nisu potvrda uspješnog programa.",
       "expected": "Program zadržava istu adresu i izvor, ali podaci prolaze kroz dvije odvojene naponske domene. I2C zapis potvrđuje ACK i bajtove. Bez valjanih napajanja model odbija prijenos. To nije potvrda fizičke izolacije, pojedinačnih bitova, clock-stretchinga ili fizičke brzine.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24N-i2cBmp280@1",
+        "checkerVersion": "24N.1",
+        "title": "BMP280 kroz dvije I2C naponske domene",
+        "instructions": "Preko I2C pretvornika očitavaj jedan BMP280 i ispisuj T=<broj> P=<broj>, temperaturu u °C i tlak u Pa. Tri etape po 6000 ms: privatno odabran početni okoliš, druga temperatura i tlak, povrat početnog okoliša. U svakoj treba najmanje dva nova potpuna očitanja s odgovarajućim ispisima; najdulji interval, uključujući početak i kraj etape, je 2300 ms. Zanemaruje se prvih 100 ms nakon promjene. Odstupanja su do 0,3 °C i 150 Pa. Staro mjerenje i lažni ispisi ne prolaze. I2C Lab carrier: LV=3,3 V, HV=5 V, bez DIR-a. Oba kanala istog pretvornika moraju prenijeti SDA i SCL. Svaka strana ima vlastiti pull-up. S3 je na LV, udaljeni uređaj je izričit 5 V carrier; Uno/Nano su na HV, uređaj je izvorni modul 3,3 V.  Napajanja su 3,3 V i 5 V uz zajedničku masu. Treba stvarni zasebni pretvornik između odvojenih domena; izravni spoj ili neiskorišten pretvornik uz drugi sklop ne prolazi. Dopušteni su drugi algoritmi, nazivi, GPIO uz odgovarajući izvor, oba podatkovna kanala GPIO pretvornika, promijenjeni identiteti i električno ekvivalentan raspored. Kriteriji su 3 + 5 + 2 boda. Kvar se provjerava u zasebnoj kopiji; Stop, popravak i novo pokretanje dopušteni su. Konzolni tekst ili učenički artefakt ne mogu zamijeniti fizički put u modelu.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C pretvornik, obje odvojene domene i novo dovršeno BMP280 očitanje",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Dvije promjene temperature i tlaka s novim očitanjima i točnim ispisima",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Povrat početnog okoliša uz nastavak novih očitanja i ispisa",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-levels.test.ts"
       }
     },
     {
@@ -12743,16 +12919,32 @@
       "fault": "Zaustavi program, ukloni HV vodič i ponovno pokreni. Zabilježi poruku i izostanak ACK/prijenosa. Vrati vodič, pokreni i potvrdi novo mjerenje/prikaz. Naponi HIGH sami nisu potvrda uspješnog programa.",
       "expected": "Program zadržava istu adresu i izvor, ali podaci prolaze kroz dvije odvojene naponske domene. I2C zapis potvrđuje ACK i bajtove. Bez valjanih napajanja model odbija prijenos. To nije potvrda fizičke izolacije, pojedinačnih bitova, clock-stretchinga ili fizičke brzine.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24N-i2cBmp280@1",
+        "checkerVersion": "24N.1",
+        "title": "BMP280 kroz dvije I2C naponske domene",
+        "instructions": "Preko I2C pretvornika očitavaj jedan BMP280 i ispisuj T=<broj> P=<broj>, temperaturu u °C i tlak u Pa. Tri etape po 6000 ms: privatno odabran početni okoliš, druga temperatura i tlak, povrat početnog okoliša. U svakoj treba najmanje dva nova potpuna očitanja s odgovarajućim ispisima; najdulji interval, uključujući početak i kraj etape, je 2300 ms. Zanemaruje se prvih 100 ms nakon promjene. Odstupanja su do 0,3 °C i 150 Pa. Staro mjerenje i lažni ispisi ne prolaze. I2C Lab carrier: LV=3,3 V, HV=5 V, bez DIR-a. Oba kanala istog pretvornika moraju prenijeti SDA i SCL. Svaka strana ima vlastiti pull-up. S3 je na LV, udaljeni uređaj je izričit 5 V carrier; Uno/Nano su na HV, uređaj je izvorni modul 3,3 V.  Napajanja su 3,3 V i 5 V uz zajedničku masu. Treba stvarni zasebni pretvornik između odvojenih domena; izravni spoj ili neiskorišten pretvornik uz drugi sklop ne prolazi. Dopušteni su drugi algoritmi, nazivi, GPIO uz odgovarajući izvor, oba podatkovna kanala GPIO pretvornika, promijenjeni identiteti i električno ekvivalentan raspored. Kriteriji su 3 + 5 + 2 boda. Kvar se provjerava u zasebnoj kopiji; Stop, popravak i novo pokretanje dopušteni su. Konzolni tekst ili učenički artefakt ne mogu zamijeniti fizički put u modelu.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C pretvornik, obje odvojene domene i novo dovršeno BMP280 očitanje",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Dvije promjene temperature i tlaka s novim očitanjima i točnim ispisima",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Povrat početnog okoliša uz nastavak novih očitanja i ispisa",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-levels.test.ts"
       }
     },
     {
@@ -12776,16 +12968,32 @@
       "fault": "Zaustavi program, ukloni HV vodič i ponovno pokreni. Zabilježi poruku i izostanak ACK/prijenosa. Vrati vodič, pokreni i potvrdi novo mjerenje/prikaz. Naponi HIGH sami nisu potvrda uspješnog programa.",
       "expected": "Program zadržava istu adresu i izvor, ali podaci prolaze kroz dvije odvojene naponske domene. I2C zapis potvrđuje ACK i bajtove. Bez valjanih napajanja model odbija prijenos. To nije potvrda fizičke izolacije, pojedinačnih bitova, clock-stretchinga ili fizičke brzine.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24N-i2cOled32@1",
+        "checkerVersion": "24N.1",
+        "title": "OLED128×32 kroz dvije I2C naponske domene",
+        "instructions": "OLED mora primiti tekst i brojač 0, 1, 2. MicroPython: ugrađeni framebuf font 8×8, \"OLED 128 x 32\" (0,0), \"URS laboratorij\" (0,8), \"Brojac: n\" (0,16), \"Redak 4\" (0,24). Uno/Nano: U8g2 6×10, \"OLED 128 x 32\" s osnovicom (0,8), \"Brojac: n\" (0,18), \"Zadnji redak\" (0,30). S3 C++: U8g2 6×10, \"ESP32-S3 U8g2\" s osnovicom (0,10), \"COUNT n\" (0,24), okvir (100,0,28,32). Prvi prikaz do 1800 ms, razmak početaka novih brojeva 850–1500 ms, svaki stabilan najmanje 200 ms. 5 bodova potvrđuje 0 i stalni tekst; 2 potvrđuju 1 i 2. Modul je OLED128×32 na 0x3C.  I2C Lab carrier: LV=3,3 V, HV=5 V, bez DIR-a. Oba kanala istog pretvornika moraju prenijeti SDA i SCL. Svaka strana ima vlastiti pull-up. S3 je na LV, udaljeni uređaj je izričit 5 V carrier; Uno/Nano su na HV, uređaj je izvorni modul 3,3 V.  Napajanja su 3,3 V i 5 V uz zajedničku masu. Treba stvarni zasebni pretvornik između odvojenih domena; izravni spoj ili neiskorišten pretvornik uz drugi sklop ne prolazi. Dopušteni su drugi algoritmi, nazivi, GPIO uz odgovarajući izvor, oba podatkovna kanala GPIO pretvornika, promijenjeni identiteti i električno ekvivalentan raspored. Kriteriji su 3 + 5 + 2 boda. Kvar se provjerava u zasebnoj kopiji; Stop, popravak i novo pokretanje dopušteni su. Konzolni tekst ili učenički artefakt ne mogu zamijeniti fizički put u modelu.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C pretvornik i stvarni potvrđeni prijenos do udaljenog OLED-a",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Stalni tekst i brojač 0 stvarno primljeni u OLED memoriju",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Daljnji stabilni prikazi brojeva 1 i 2 uz objavljene razmake",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-levels.test.ts"
       }
     },
     {
@@ -12809,16 +13017,32 @@
       "fault": "Zaustavi program, ukloni HV vodič i ponovno pokreni. Zabilježi poruku i izostanak ACK/prijenosa. Vrati vodič, pokreni i potvrdi novo mjerenje/prikaz. Naponi HIGH sami nisu potvrda uspješnog programa.",
       "expected": "Program zadržava istu adresu i izvor, ali podaci prolaze kroz dvije odvojene naponske domene. I2C zapis potvrđuje ACK i bajtove. Bez valjanih napajanja model odbija prijenos. To nije potvrda fizičke izolacije, pojedinačnih bitova, clock-stretchinga ili fizičke brzine.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24N-i2cOled32@1",
+        "checkerVersion": "24N.1",
+        "title": "OLED128×32 kroz dvije I2C naponske domene",
+        "instructions": "OLED mora primiti tekst i brojač 0, 1, 2. MicroPython: ugrađeni framebuf font 8×8, \"OLED 128 x 32\" (0,0), \"URS laboratorij\" (0,8), \"Brojac: n\" (0,16), \"Redak 4\" (0,24). Uno/Nano: U8g2 6×10, \"OLED 128 x 32\" s osnovicom (0,8), \"Brojac: n\" (0,18), \"Zadnji redak\" (0,30). S3 C++: U8g2 6×10, \"ESP32-S3 U8g2\" s osnovicom (0,10), \"COUNT n\" (0,24), okvir (100,0,28,32). Prvi prikaz do 1800 ms, razmak početaka novih brojeva 850–1500 ms, svaki stabilan najmanje 200 ms. 5 bodova potvrđuje 0 i stalni tekst; 2 potvrđuju 1 i 2. Modul je OLED128×32 na 0x3C.  I2C Lab carrier: LV=3,3 V, HV=5 V, bez DIR-a. Oba kanala istog pretvornika moraju prenijeti SDA i SCL. Svaka strana ima vlastiti pull-up. S3 je na LV, udaljeni uređaj je izričit 5 V carrier; Uno/Nano su na HV, uređaj je izvorni modul 3,3 V.  Napajanja su 3,3 V i 5 V uz zajedničku masu. Treba stvarni zasebni pretvornik između odvojenih domena; izravni spoj ili neiskorišten pretvornik uz drugi sklop ne prolazi. Dopušteni su drugi algoritmi, nazivi, GPIO uz odgovarajući izvor, oba podatkovna kanala GPIO pretvornika, promijenjeni identiteti i električno ekvivalentan raspored. Kriteriji su 3 + 5 + 2 boda. Kvar se provjerava u zasebnoj kopiji; Stop, popravak i novo pokretanje dopušteni su. Konzolni tekst ili učenički artefakt ne mogu zamijeniti fizički put u modelu.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C pretvornik i stvarni potvrđeni prijenos do udaljenog OLED-a",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Stalni tekst i brojač 0 stvarno primljeni u OLED memoriju",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Daljnji stabilni prikazi brojeva 1 i 2 uz objavljene razmake",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-levels.test.ts"
       }
     },
     {
@@ -12842,16 +13066,32 @@
       "fault": "Zaustavi program, ukloni HV vodič i ponovno pokreni. Zabilježi poruku i izostanak ACK/prijenosa. Vrati vodič, pokreni i potvrdi novo mjerenje/prikaz. Naponi HIGH sami nisu potvrda uspješnog programa.",
       "expected": "Program zadržava istu adresu i izvor, ali podaci prolaze kroz dvije odvojene naponske domene. I2C zapis potvrđuje ACK i bajtove. Bez valjanih napajanja model odbija prijenos. To nije potvrda fizičke izolacije, pojedinačnih bitova, clock-stretchinga ili fizičke brzine.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24N-i2cOled32@1",
+        "checkerVersion": "24N.1",
+        "title": "OLED128×32 kroz dvije I2C naponske domene",
+        "instructions": "OLED mora primiti tekst i brojač 0, 1, 2. MicroPython: ugrađeni framebuf font 8×8, \"OLED 128 x 32\" (0,0), \"URS laboratorij\" (0,8), \"Brojac: n\" (0,16), \"Redak 4\" (0,24). Uno/Nano: U8g2 6×10, \"OLED 128 x 32\" s osnovicom (0,8), \"Brojac: n\" (0,18), \"Zadnji redak\" (0,30). S3 C++: U8g2 6×10, \"ESP32-S3 U8g2\" s osnovicom (0,10), \"COUNT n\" (0,24), okvir (100,0,28,32). Prvi prikaz do 1800 ms, razmak početaka novih brojeva 850–1500 ms, svaki stabilan najmanje 200 ms. 5 bodova potvrđuje 0 i stalni tekst; 2 potvrđuju 1 i 2. Modul je OLED128×32 na 0x3C.  I2C Lab carrier: LV=3,3 V, HV=5 V, bez DIR-a. Oba kanala istog pretvornika moraju prenijeti SDA i SCL. Svaka strana ima vlastiti pull-up. S3 je na LV, udaljeni uređaj je izričit 5 V carrier; Uno/Nano su na HV, uređaj je izvorni modul 3,3 V.  Napajanja su 3,3 V i 5 V uz zajedničku masu. Treba stvarni zasebni pretvornik između odvojenih domena; izravni spoj ili neiskorišten pretvornik uz drugi sklop ne prolazi. Dopušteni su drugi algoritmi, nazivi, GPIO uz odgovarajući izvor, oba podatkovna kanala GPIO pretvornika, promijenjeni identiteti i električno ekvivalentan raspored. Kriteriji su 3 + 5 + 2 boda. Kvar se provjerava u zasebnoj kopiji; Stop, popravak i novo pokretanje dopušteni su. Konzolni tekst ili učenički artefakt ne mogu zamijeniti fizički put u modelu.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C pretvornik i stvarni potvrđeni prijenos do udaljenog OLED-a",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Stalni tekst i brojač 0 stvarno primljeni u OLED memoriju",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Daljnji stabilni prikazi brojeva 1 i 2 uz objavljene razmake",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-levels.test.ts"
       }
     },
     {
@@ -12875,16 +13115,32 @@
       "fault": "Zaustavi program, ukloni HV vodič i ponovno pokreni. Zabilježi poruku i izostanak ACK/prijenosa. Vrati vodič, pokreni i potvrdi novo mjerenje/prikaz. Naponi HIGH sami nisu potvrda uspješnog programa.",
       "expected": "Program zadržava istu adresu i izvor, ali podaci prolaze kroz dvije odvojene naponske domene. I2C zapis potvrđuje ACK i bajtove. Bez valjanih napajanja model odbija prijenos. To nije potvrda fizičke izolacije, pojedinačnih bitova, clock-stretchinga ili fizičke brzine.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24N-i2cOled32@1",
+        "checkerVersion": "24N.1",
+        "title": "OLED128×32 kroz dvije I2C naponske domene",
+        "instructions": "OLED mora primiti tekst i brojač 0, 1, 2. MicroPython: ugrađeni framebuf font 8×8, \"OLED 128 x 32\" (0,0), \"URS laboratorij\" (0,8), \"Brojac: n\" (0,16), \"Redak 4\" (0,24). Uno/Nano: U8g2 6×10, \"OLED 128 x 32\" s osnovicom (0,8), \"Brojac: n\" (0,18), \"Zadnji redak\" (0,30). S3 C++: U8g2 6×10, \"ESP32-S3 U8g2\" s osnovicom (0,10), \"COUNT n\" (0,24), okvir (100,0,28,32). Prvi prikaz do 1800 ms, razmak početaka novih brojeva 850–1500 ms, svaki stabilan najmanje 200 ms. 5 bodova potvrđuje 0 i stalni tekst; 2 potvrđuju 1 i 2. Modul je OLED128×32 na 0x3C.  I2C Lab carrier: LV=3,3 V, HV=5 V, bez DIR-a. Oba kanala istog pretvornika moraju prenijeti SDA i SCL. Svaka strana ima vlastiti pull-up. S3 je na LV, udaljeni uređaj je izričit 5 V carrier; Uno/Nano su na HV, uređaj je izvorni modul 3,3 V.  Napajanja su 3,3 V i 5 V uz zajedničku masu. Treba stvarni zasebni pretvornik između odvojenih domena; izravni spoj ili neiskorišten pretvornik uz drugi sklop ne prolazi. Dopušteni su drugi algoritmi, nazivi, GPIO uz odgovarajući izvor, oba podatkovna kanala GPIO pretvornika, promijenjeni identiteti i električno ekvivalentan raspored. Kriteriji su 3 + 5 + 2 boda. Kvar se provjerava u zasebnoj kopiji; Stop, popravak i novo pokretanje dopušteni su. Konzolni tekst ili učenički artefakt ne mogu zamijeniti fizički put u modelu.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C pretvornik i stvarni potvrđeni prijenos do udaljenog OLED-a",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Stalni tekst i brojač 0 stvarno primljeni u OLED memoriju",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Daljnji stabilni prikazi brojeva 1 i 2 uz objavljene razmake",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-levels.test.ts"
       }
     }
   ],

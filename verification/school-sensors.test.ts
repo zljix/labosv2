@@ -35,7 +35,7 @@ test('24D MicroPython alternate implementations and layouts pass different priva
 test('24D output, late-only failure and open electrical paths have distinct scores',{timeout:120000},async()=>{
   for(const p of sensorProfiles){
     const none=await run(wrongSensor(await starter(p.taskKey)),p);assert.equal(none.points,3,JSON.stringify(none));assert.deepEqual(none.criteria.map((r:any)=>r.points),[3,0,0]);
-    const late=await run(wrongSensor(await starter(p.taskKey),3*p.contract!.scenario.stageDurationMs),p);assert.equal(late.points,8,JSON.stringify(late));assert.deepEqual(late.criteria.map((r:any)=>r.points),[3,5,0]);
+    const late=await run(wrongSensor(await starter(p.taskKey),3*p.contract!.scenario.stageDurationMs!),p);assert.equal(late.points,8,JSON.stringify(late));assert.deepEqual(late.criteria.map((r:any)=>r.points),[3,5,0]);
     const broken=await starter(p.taskKey);if(broken.circuit.kind==='editable')broken.circuit.wires=broken.circuit.wires.filter(w=>![w.from.pin,w.to.pin].some(pin=>['VCC','VDD','DATA','DQ','SDA'].includes(pin)));
     assert.equal((await run(broken,p)).points,0,p.id);
     if(p.taskKey!=='weather/am2320')assert.equal((await run(movedSensor(await starter(p.taskKey)),p)).points,10,p.id);

@@ -70,6 +70,7 @@ jobs:
           CREATE DATABASE labosv2_test_storage CHARACTER SET utf8mb4;
           CREATE DATABASE labosv2_test_optical CHARACTER SET utf8mb4;
           CREATE DATABASE labosv2_test_radio CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_levels CHARACTER SET utf8mb4;
           CREATE DATABASE labosv2_test_steppers CHARACTER SET utf8mb4;
           GRANT ALL ON labosv2_test_classes.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_portal.* TO 'labosv2_ci'@'%';
@@ -91,6 +92,7 @@ jobs:
           GRANT ALL ON labosv2_test_storage.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_optical.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_radio.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_levels.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_steppers.* TO 'labosv2_ci'@'%';
           SQL
       - name: Pripremi Linux izolaciju
@@ -251,6 +253,11 @@ jobs:
         env:
           LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_grading;charset=utf8mb4
           LAB_TEST_DB_USER: labosv2_ci
+      - name: Provjeri svih 16 dodjela s pretvornicima razina
+        run: npm run test:school-levels-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_levels;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
       - run: npm run test:school-package
       - run: npm run test:school-catalog
       - name: Provjeri stvarni PHP i MySQL račune
@@ -283,11 +290,16 @@ jobs:
         run: node --import tsx --test verification/project.test.ts verification/circuit.test.ts verification/routing.test.ts verification/school.test.ts
       - name: Uključi izvedeni dokaz u školski paket
         run: node scripts/package-school.mjs
+      - name: Provjeri svih 16 dodjela s pretvornicima razina
+        run: npm run test:school-levels-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_levels;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
       - run: npm run test:school-package
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: Labosv2-24M-Dokazi
+          name: Labosv2-24N-Dokazi
           path: |
             docs/stage24ab-evidence/
             docs/stage24c-evidence/
@@ -301,12 +313,13 @@ jobs:
             docs/stage24k-evidence/
             docs/stage24l-evidence/
             docs/stage24m-evidence/
+            docs/stage24n-evidence/
             docs/stage23i-evidence/
           if-no-files-found: error
           retention-days: 30
       - uses: actions/upload-artifact@v4
         with:
-          name: Labosv2-24M-Skolski-paket
+          name: Labosv2-24N-Skolski-paket
           path: release/*.zip
           if-no-files-found: error
           retention-days: 30

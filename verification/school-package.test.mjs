@@ -7,9 +7,9 @@ import vm from 'node:vm';
 
 test('school ZIP verifies every inventory entry and keeps app, SQL and configuration out of web/', () => {
   const version = JSON.parse(readFileSync('package.json')).version;
-  const archive = unzipSync(readFileSync('release/Labosv2_' + version.split('-')[0] + '_24M_Skolski.zip'));
+  const archive = unzipSync(readFileSync('release/Labosv2_' + version.split('-')[0] + '_24N_Skolski.zip'));
   const inventory = JSON.parse(strFromU8(archive['package-inventory.json']));
-  assert.equal(inventory.stage, '24M'); assert.equal(inventory.version, version);
+  assert.equal(inventory.stage, '24N'); assert.equal(inventory.version, version);
   assert.equal(Object.keys(archive).length, inventory.files.length + 1);
   for (const file of inventory.files) {
     assert.equal(archive[file.path].byteLength, file.bytes, file.path);
@@ -20,6 +20,11 @@ test('school ZIP verifies every inventory entry and keeps app, SQL and configura
   assert(archive['checker/.build/school-grader/radio-child.mjs']);
   assert(archive['checker/public/radio-examples.json']);
   assert(archive['docs/stage24m-radio.md']);
+  assert(archive['docs/stage24n-levels.md']);
+  assert(archive['docs/stage24n-evidence/README.md']);
+  const levelRegistry=JSON.parse(strFromU8(archive['grading/profiles.json']));
+  assert.equal(levelRegistry.profiles.filter(p=>p.id.startsWith('24N-')).length,4);
+  assert.equal(JSON.parse(strFromU8(archive['profile.json'])).grading.coverage.supported,268);
   const radioRegistry=JSON.parse(strFromU8(archive['grading/profiles.json']));
   assert.equal(radioRegistry.profiles.filter(p=>p.id.startsWith('24M-')).length,1);
   assert.equal(JSON.parse(strFromU8(archive['profile.json'])).grading.radioLeaseSeconds,300);

@@ -1,5 +1,5 @@
 {
-  "checkerVersion": "24M.1",
+  "checkerVersion": "24N.1",
   "profiles": [
     {
       "id": "23E-button-led@1",
@@ -6774,6 +6774,411 @@
           }
         },
         "faultPolicy": "Neispravni SPI/CE vodovi, napajanje, nepodržan cilj, stara binarna datoteka ili lažni ispis ne zamjenjuju izvršavanje oba čvora. Kvar servisa i ograničenje resursa ostavljaju bodove praznima."
+      }
+    },
+    {
+      "id": "24N-levelInput@1",
+      "taskKey": "levels/levelInput",
+      "kind": "level-translator",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "Tipkalo kroz digitalni pretvornik razina",
+      "instructions": "Tipkalo je u suprotnoj naponskoj domeni i preko SN74LVC2T45 dolazi na ulaz pločice. S3 prima B → A, Uno/Nano A → B. Udaljeni ulaz ima vanjski 10 kΩ pull-up; unutarnji pull-up pločice ne zamjenjuje ga. Jedna LED na pločici svijetli dok je tipkalo pritisnuto i gasi se pri otpuštanju. Sedam izmjeničnih stanja počinje privatno odabranim stanjem i traje po 233, 277 ili 319 ms. Rok reakcije je 50 ms uz 4 ms tolerancije, zatim LED mora ostati ispravna do nove promjene. SN74LVC2T45: A=3,3 V, B=5 V; DIR=HIGH za A → B, LOW za B → A. Oba ulaza moraju biti definirana, neiskorišteni ulaz spoji na masu.  Napajanja su 3,3 V i 5 V uz zajedničku masu. Treba stvarni zasebni pretvornik između odvojenih domena; izravni spoj ili neiskorišten pretvornik uz drugi sklop ne prolazi. Dopušteni su drugi algoritmi, nazivi, GPIO uz odgovarajući izvor, oba podatkovna kanala GPIO pretvornika, promijenjeni identiteti i električno ekvivalentan raspored. Kriteriji su 3 + 5 + 2 boda. Kvar se provjerava u zasebnoj kopiji; Stop, popravak i novo pokretanje dopušteni su. Konzolni tekst ili učenički artefakt ne mogu zamijeniti fizički put u modelu.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Napajani pretvornik, valjan DIR i stvarni put udaljenog tipkala prema ulazu pločice",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "LED prati prva tri zadana stanja tipkala kroz pretvornik u roku 50 + 4 ms",
+          "maxPoints": 5
+        },
+        {
+          "id": "continuation",
+          "description": "Četiri dodatne promjene tipkala i pravodoban povrat LED-ice",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24N.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24N.1",
+        "observation": "translated-electrical-nets-and-completed-device-transfers",
+        "allowedAlternatives": [
+          "equivalent-electrical-layout",
+          "different-variable-names",
+          "equivalent-control-flow",
+          "different-gpio-with-matching-source",
+          "either-GPIO-data-channel",
+          "renamed-reordered-components"
+        ],
+        "scenario": {
+          "stageDurationChoicesMs": [
+            233,
+            277,
+            319
+          ],
+          "stages": 7,
+          "seededFirstState": true,
+          "seededDuration": true,
+          "responseDeadlineMs": 50,
+          "stepToleranceMs": 4,
+          "voltageToleranceV": 0.15
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Separate copies with supply, ground, direction, channel, SDA or SCL faults. Stop, repair and restart are allowed. Infrastructure failure leaves points null. No physical frequency, RC, current or thermal certification."
+      }
+    },
+    {
+      "id": "24N-levelOutput@1",
+      "taskKey": "levels/levelOutput",
+      "kind": "level-translator",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "LED kroz digitalni pretvornik razina",
+      "instructions": "GPIO kroz SN74LVC2T45 upravlja jednom udaljenom LED-icom sa serijskim otpornikom. S3 šalje A → B, Uno/Nano B → A. Ulaz ima početni 100 kΩ pull-down. Ostavi početna trajanja svojeg primjera: MicroPython 500 ms uključeno / 500 ms isključeno; S3 C++ 300/300 ms; Uno/Nano 200/200 ms. Najmanje tri potpuna ciklusa; tolerancija svakog potpunog intervala je ±24 ms. Početno nepotpuno isključenje prije prve upaljene LED-ice ne boduje se. SN74LVC2T45: A=3,3 V, B=5 V; DIR=HIGH za A → B, LOW za B → A. Oba ulaza moraju biti definirana, neiskorišteni ulaz spoji na masu.  Napajanja su 3,3 V i 5 V uz zajedničku masu. Treba stvarni zasebni pretvornik između odvojenih domena; izravni spoj ili neiskorišten pretvornik uz drugi sklop ne prolazi. Dopušteni su drugi algoritmi, nazivi, GPIO uz odgovarajući izvor, oba podatkovna kanala GPIO pretvornika, promijenjeni identiteti i električno ekvivalentan raspored. Kriteriji su 3 + 5 + 2 boda. Kvar se provjerava u zasebnoj kopiji; Stop, popravak i novo pokretanje dopušteni su. Konzolni tekst ili učenički artefakt ne mogu zamijeniti fizički put u modelu.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan napajani GPIO pretvornik stvarno pogoni udaljenu LED kroz serijski otpornik",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Najmanje tri potpuna ciklusa stvarne struje udaljene LED-ice",
+          "maxPoints": 5
+        },
+        {
+          "id": "continuation",
+          "description": "Trajanja prema cilju: MicroPython 500/500 ms, S3 C++ 300/300 ms, Uno/Nano 200/200 ms, ±24 ms",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24N.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24N.1",
+        "observation": "translated-electrical-nets-and-completed-device-transfers",
+        "allowedAlternatives": [
+          "equivalent-electrical-layout",
+          "different-variable-names",
+          "equivalent-control-flow",
+          "different-gpio-with-matching-source",
+          "either-GPIO-data-channel",
+          "renamed-reordered-components"
+        ],
+        "scenario": {
+          "stageDurationMs": 4250,
+          "minimumCompleteCycles": 3,
+          "timingToleranceMs": 24,
+          "blinkByRuntime": {
+            "micropython": {
+              "onMs": 500,
+              "offMs": 500
+            },
+            "s3-cpp": {
+              "onMs": 300,
+              "offMs": 300
+            },
+            "avr": {
+              "onMs": 200,
+              "offMs": 200
+            }
+          },
+          "voltageToleranceV": 0.15
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Separate copies with supply, ground, direction, channel, SDA or SCL faults. Stop, repair and restart are allowed. Infrastructure failure leaves points null. No physical frequency, RC, current or thermal certification."
+      }
+    },
+    {
+      "id": "24N-i2cBmp280@1",
+      "taskKey": "i2cLevels/i2cBmp280",
+      "kind": "level-translator",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "BMP280 kroz dvije I2C naponske domene",
+      "instructions": "Preko I2C pretvornika očitavaj jedan BMP280 i ispisuj T=<broj> P=<broj>, temperaturu u °C i tlak u Pa. Tri etape po 6000 ms: privatno odabran početni okoliš, druga temperatura i tlak, povrat početnog okoliša. U svakoj treba najmanje dva nova potpuna očitanja s odgovarajućim ispisima; najdulji interval, uključujući početak i kraj etape, je 2300 ms. Zanemaruje se prvih 100 ms nakon promjene. Odstupanja su do 0,3 °C i 150 Pa. Staro mjerenje i lažni ispisi ne prolaze. I2C Lab carrier: LV=3,3 V, HV=5 V, bez DIR-a. Oba kanala istog pretvornika moraju prenijeti SDA i SCL. Svaka strana ima vlastiti pull-up. S3 je na LV, udaljeni uređaj je izričit 5 V carrier; Uno/Nano su na HV, uređaj je izvorni modul 3,3 V.  Napajanja su 3,3 V i 5 V uz zajedničku masu. Treba stvarni zasebni pretvornik između odvojenih domena; izravni spoj ili neiskorišten pretvornik uz drugi sklop ne prolazi. Dopušteni su drugi algoritmi, nazivi, GPIO uz odgovarajući izvor, oba podatkovna kanala GPIO pretvornika, promijenjeni identiteti i električno ekvivalentan raspored. Kriteriji su 3 + 5 + 2 boda. Kvar se provjerava u zasebnoj kopiji; Stop, popravak i novo pokretanje dopušteni su. Konzolni tekst ili učenički artefakt ne mogu zamijeniti fizički put u modelu.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Napajani I2C pretvornik, obje odvojene domene i novo dovršeno BMP280 očitanje",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Dvije promjene temperature i tlaka s novim očitanjima i točnim ispisima",
+          "maxPoints": 5
+        },
+        {
+          "id": "continuation",
+          "description": "Povrat početnog okoliša uz nastavak novih očitanja i ispisa",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24N.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24N.1",
+        "observation": "translated-electrical-nets-and-completed-device-transfers",
+        "allowedAlternatives": [
+          "equivalent-electrical-layout",
+          "different-variable-names",
+          "equivalent-control-flow",
+          "different-gpio-with-matching-source",
+          "either-GPIO-data-channel",
+          "renamed-reordered-components"
+        ],
+        "scenario": {
+          "stageDurationMs": 6000,
+          "stages": 3,
+          "settlingMs": 100,
+          "maximumIntervalMs": 2300,
+          "temperatureToleranceC": 0.3,
+          "pressureTolerancePa": 150,
+          "seededEnvironments": {
+            "initialTemperatureC": [
+              -15,
+              25
+            ],
+            "changedTemperatureC": [
+              45,
+              70
+            ],
+            "initialPressurePa": [
+              85000,
+              91500
+            ],
+            "changedPressurePa": [
+              101000,
+              107500
+            ]
+          },
+          "returnToInitial": true,
+          "voltageToleranceV": 0.15
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Separate copies with supply, ground, direction, channel, SDA or SCL faults. Stop, repair and restart are allowed. Infrastructure failure leaves points null. No physical frequency, RC, current or thermal certification."
+      }
+    },
+    {
+      "id": "24N-i2cOled32@1",
+      "taskKey": "i2cLevels/i2cOled32",
+      "kind": "level-translator",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "OLED128×32 kroz dvije I2C naponske domene",
+      "instructions": "OLED mora primiti tekst i brojač 0, 1, 2. MicroPython: ugrađeni framebuf font 8×8, \"OLED 128 x 32\" (0,0), \"URS laboratorij\" (0,8), \"Brojac: n\" (0,16), \"Redak 4\" (0,24). Uno/Nano: U8g2 6×10, \"OLED 128 x 32\" s osnovicom (0,8), \"Brojac: n\" (0,18), \"Zadnji redak\" (0,30). S3 C++: U8g2 6×10, \"ESP32-S3 U8g2\" s osnovicom (0,10), \"COUNT n\" (0,24), okvir (100,0,28,32). Prvi prikaz do 1800 ms, razmak početaka novih brojeva 850–1500 ms, svaki stabilan najmanje 200 ms. 5 bodova potvrđuje 0 i stalni tekst; 2 potvrđuju 1 i 2. Modul je OLED128×32 na 0x3C.  I2C Lab carrier: LV=3,3 V, HV=5 V, bez DIR-a. Oba kanala istog pretvornika moraju prenijeti SDA i SCL. Svaka strana ima vlastiti pull-up. S3 je na LV, udaljeni uređaj je izričit 5 V carrier; Uno/Nano su na HV, uređaj je izvorni modul 3,3 V.  Napajanja su 3,3 V i 5 V uz zajedničku masu. Treba stvarni zasebni pretvornik između odvojenih domena; izravni spoj ili neiskorišten pretvornik uz drugi sklop ne prolazi. Dopušteni su drugi algoritmi, nazivi, GPIO uz odgovarajući izvor, oba podatkovna kanala GPIO pretvornika, promijenjeni identiteti i električno ekvivalentan raspored. Kriteriji su 3 + 5 + 2 boda. Kvar se provjerava u zasebnoj kopiji; Stop, popravak i novo pokretanje dopušteni su. Konzolni tekst ili učenički artefakt ne mogu zamijeniti fizički put u modelu.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Napajani I2C pretvornik i stvarni potvrđeni prijenos do udaljenog OLED-a",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Stalni tekst i brojač 0 stvarno primljeni u OLED memoriju",
+          "maxPoints": 5
+        },
+        {
+          "id": "continuation",
+          "description": "Daljnji stabilni prikazi brojeva 1 i 2 uz objavljene razmake",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24N.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24N.1",
+        "observation": "translated-electrical-nets-and-completed-device-transfers",
+        "allowedAlternatives": [
+          "equivalent-electrical-layout",
+          "different-variable-names",
+          "equivalent-control-flow",
+          "different-gpio-with-matching-source",
+          "either-GPIO-data-channel",
+          "renamed-reordered-components"
+        ],
+        "scenario": {
+          "stageDurationMs": 5000,
+          "startupAllowanceMs": 1800,
+          "minimumStableMs": 200,
+          "intervalMinimumMs": 850,
+          "intervalMaximumMs": 1500,
+          "sampleMaximumIntervalMs": 1800,
+          "sampleSettleMs": 100,
+          "temperatureToleranceC": 0.3,
+          "pressureTolerancePa": 150,
+          "environments": [
+            {
+              "temperature": -10,
+              "pressure": 90000
+            },
+            {
+              "temperature": 55,
+              "pressure": 107000
+            }
+          ],
+          "seededEnvironment": true,
+          "voltageToleranceV": 0.15
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Separate copies with supply, ground, direction, channel, SDA or SCL faults. Stop, repair and restart are allowed. Infrastructure failure leaves points null. No physical frequency, RC, current or thermal certification.",
+        "visualOracle": {
+          "format": "labosv2-display-oracles@1",
+          "sha256": "97474343a6892e9fce389cce1ff23a6257df2e956ea886bd6681d56a53227499",
+          "file": "school/grader/display-oracles.json"
+        }
       }
     }
   ]

@@ -45,3 +45,7 @@ docs/stage24l-evidence/mysql-optical.json
 # Izvedeni dokazi 24M ostaju u CI artefaktima i instalacijskom paketu.
 docs/stage24m-evidence/radio-*.json
 docs/stage24m-evidence/mysql-radio.json
+
+# Izvedeni dokazi 24N ostaju u CI artefaktima i instalacijskom paketu.
+docs/stage24n-evidence/levels-*.json
+docs/stage24n-evidence/mysql-levels.json

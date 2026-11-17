@@ -1,3 +1,9 @@
+## 24N — digitalni i I2C pretvornici razina
+
+Izdanje **0.14.12-beta.1** dodaje četiri rubrike i završnih 16 kombinacija: **268/268**, odnosno svih 67 URS varijanti na sva četiri cilja. Uvodne V1–V5 ostaju lokalne. Bodovi dolaze iz stvarnih odvojenih domena i DIR-a, novog BMP280 čitanja te primljenih OLED piksela. Postojeća trajanja primjera zadržana su i objavljena po cilju. [Uvjeti i nadogradnja](../docs/stage24n-levels.md).
+
+Nema nove SQL migracije. Sačuvaj bazu, privatnu konfiguraciju, ključ i sesije; zamijeni kompletan paket, pokreni postojeći migrate i ponovno pokreni Linux provjeravače. Nove rubrike izričito odaberi pri objavi nove inačice zadatka. Stare dodjele i zaključani bodovi ostaju uz svoje stare rubrike.
+
 ## 24M — NRF24L01+ i dva programa
 
 Izdanje **0.14.11-beta.1** dodaje rubriku za radio par na četiri glavna cilja: **252/268 kombinacija**. Oba izvora, oba sklopa i dovršena RX čitanja ulaze u istu provjeru. Podržani su i svi mješoviti parovi. [Uvjeti i nadogradnja](../docs/stage24m-radio.md). Nema nove SQL migracije. Zamijeni kompletan paket i ponovno pokreni provjeravače nakon sigurnosne kopije i postojećeg migrate. Samo novi radio posao ima rezervaciju 300 s.
@@ -42,13 +48,13 @@ Izdanje 0.14.4-beta.1 dodaje sedam rubrika 24F-…@1 i 28 kombinacija (ukupno 13
 
 Nema nove SQL migracije. Prije nadogradnje sačuvaj bazu i privatnu konfiguraciju. Zamijeni programski paket, zadrži sesije/konfiguraciju, pokreni postojeći migrate i ponovno pokreni Linux provjeravače. Ranije verzije rubrika i zaključane predaje ostaju izvršive uz stare uvjete. Nova objava izričito bira novu rubriku.
 
-# Labosv2 · školski paket · etapa 24M
+# Labosv2 · školski paket · etapa 24N
 
 Prethodno izdanje 0.13.8-beta.1 pripremilo je školski pilot, obrazac opažanja i razvojni pokus 30 + 1; vidi [23I](../docs/stage23i-pilot.md). Etapa 23H dodala je postignuća, izvoze, komentare i korekcije, arhiviranje, čuvanje međurevizija te privatne kopije i povrat. Postupak i provjere su u [izvješću 23H](../docs/stage23h-reports-administration.md). [Raniji zapis integracije 23F](https://github.com/zljix/labosv2/actions/runs/43738711916) ostaje povijesni dokaz. Stvarni školski pilot ostaje zasebna provjera.
 
 Etapa 23A priprema postojeći laboratorij za školski Apache/PHP/MySQL smjer i dokazuje ponovno izvršavanje izvan učenikova preglednika. Polazište je `zljix/labos@3c4a281` (0.12.9), uključujući posljednju doradu vodova. Ovaj razvoj objavljuje se u `zljix/labosv2`.
 
-**Dostupno:** simulator, postojeći projekti i izvozi, školski paket, PHP provjera preduvjeta, MySQL migracije, početni administrator, prijava/odjava, uloge, upravljanje računima i lozinkama, razredi, CSV uvoz, pozivni kodovi, potvrda učenika i verzionirane dodjele vježbi te raniji ograničeni dokaz tipkala/LED-ice, poslužiteljski pokušaji, nepromjenjive radne revizije, automatsko spremanje, usporedba sukoba i nastavnički pregled rada. **Službeno bodovanje sada pokriva 252 od 268 kombinacija.** Etapa 24E dodaje šest rubrika enkodera i IR-a; [upute i provjere](../docs/stage24e-events.md). Završetak, zaključavanje, povijest i dopuštena dorada dostupni su u 23F. Izvorni plan od 14. 11. 2026. zadržan je.
+**Dostupno:** simulator, postojeći projekti i izvozi, školski paket, PHP provjera preduvjeta, MySQL migracije, početni administrator, prijava/odjava, uloge, upravljanje računima i lozinkama, razredi, CSV uvoz, pozivni kodovi, potvrda učenika i verzionirane dodjele vježbi te raniji ograničeni dokaz tipkala/LED-ice, poslužiteljski pokušaji, nepromjenjive radne revizije, automatsko spremanje, usporedba sukoba i nastavnički pregled rada. **Službeno bodovanje sada pokriva 268 od 268 kombinacija.** Etapa 24E dodaje šest rubrika enkodera i IR-a; [upute i provjere](../docs/stage24e-events.md). Završetak, zaključavanje, povijest i dopuštena dorada dostupni su u 23F. Izvorni plan od 14. 11. 2026. zadržan je.
 
 ## Izgradnja
 
@@ -58,7 +64,7 @@ Node.js 24 LTS, `npm ci`, zatim:
 npm run build:school
 ```
 
-Nastaje `release/Labosv2_0.14.11_24M_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
+Nastaje `release/Labosv2_0.14.12_24N_Skolski.zip` i raspakirani `.build/school-package/`. Paket sadrži:
 
 | Mapa | Namjena |
 | --- | --- |

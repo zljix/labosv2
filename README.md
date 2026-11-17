@@ -1,6 +1,6 @@
 # Labosv2 · školski laboratorij
 
-**0.14.11-beta.1 · etapa 24M · NRF24L01+ par · 17. studenoga 2026.**
+**0.14.12-beta.1 · etapa 24N · pretvornici razina · 17. studenoga 2026.**
 
 **Prihvat 24M:** [Završne provjere i paket](https://github.com/zljix/labosv2/actions/runs/44037558293) povezuju 60 ciljanih provjera, 24 zasebna C++ prijevoda obaju čvorova i četiri zaključane radijske dodjele s isporučenim provjeravačem. Potvrđeni su svih 16 mješovitih parova, ranije obitelji, 30 simuliranih učenika, izvještaji i povrat kopije. [Sažetak i otisak provjeravača](docs/stage24m-evidence/acceptance-summary.json).
 
@@ -24,7 +24,14 @@ Nastavak postojećeg ESP32 MicroPython / Arduino laboratorija za školski sustav
 
 [Neovisni prihvat 24F](https://github.com/zljix/labosv2/actions/runs/43915429891) potvrđuje sva četiri cilja i 67 novih prijevoda. [Školski prihvat 24F](https://github.com/zljix/labosv2/actions/runs/43916966742) potvrđuje identičan programski izvor, PHP/MySQL, bodove, zaključavanje, 30 simuliranih učenika, izvještaje i paket.
 
-## Novo u 24M
+## Novo u 24N
+
+- Četiri nove rubrike: tipkalo i LED kroz SN74LVC2T45 te BMP280 i OLED128×32 kroz automatski I2C pretvornik.
+- **268/268 kombinacija**: svih 67 postojećih URS varijanti na MicroPythonu, S3 C++, Unu i Nanu ima verzioniranu službenu provjeru. Početne V1–V5 i dalje su zasebne lokalne provjere.
+- Stvarne odvojene naponske domene, DIR, valjan podatkovni kanal, novi senzorski prijenosi i primljena OLED memorija određuju bodove 3 + 5 + 2.
+- Postojeći programi i njihova vremena ostaju sačuvani. [Uvjeti, opseg i nadogradnja](docs/stage24n-levels.md). Nema nove SQL migracije.
+
+## Sačuvano iz 24M
 
 - Službeno bodovanje stvarnog TX/RX para: oba izvora i sklopa, SPI, radio ACK/retry i dovršeno RX čitanje.
 - **252/268 kombinacija**: 63 URS varijante na četiri glavna cilja; drugi čvor može biti bilo koji od sva četiri cilja.
@@ -179,7 +186,7 @@ Prijava, uloge, razredi, CSV uvoz, pozivni kodovi i nepromjenjive inačice zadat
 
 **386/386 ciljanih testova**, **6/6 neovisnih compiler/runtime pokusa** i **4/4 skupne HTTPS provjere**; svih 191 web resursa provjereno je bajtno na Apacheu. Stari ZIP iz 22I ponovno se otvara i izvodi. [Točne inačice, granice i otvorene provjere](docs/stage23a-school.md).
 
-Središnje spremanje dodijeljenih vježbi i nastavnički pregled sada su dostupni na školskom poslužitelju. Službeni bodovi dostupni su za 58 URS varijanti na sva četiri cilja (232 kombinacije); zaključavanje i dopuštena dorada dostupni su u 23F. Probni rezultati 23A zadržavaju oznaku `feasibility-only`. GitHub Pages služi web simulator i javni prikaz školskog izdanja; prijava zahtijeva školski PHP/MySQL poslužitelj.
+Središnje spremanje dodijeljenih vježbi i nastavnički pregled sada su dostupni na školskom poslužitelju. Službeni bodovi dostupni su za svih 67 URS varijanti na sva četiri cilja (268 kombinacija); zaključavanje i dopuštena dorada dostupni su u 23F. Probni rezultati 23A zadržavaju oznaku `feasibility-only`. GitHub Pages služi web simulator i javni prikaz školskog izdanja; prijava zahtijeva školski PHP/MySQL poslužitelj.
 
 ## Pokretanje i izgradnja
 
@@ -198,7 +205,7 @@ npm ci
 npm run build:school
 ```
 
-Školski paket: `release/Labosv2_0.14.11_24M_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-24M-Provjeren-skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
+Školski paket: `release/Labosv2_0.14.12_24N_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-24N-Provjeren-skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
 
 ```sh
 npm run build:pages
@@ -216,6 +223,8 @@ npm run test:school-package
 npm run test:school-catalog
 npm run test:school-events
 npm run test:school-events-api
+npm run test:school-levels
+npm run test:school-levels-api
 npm run test:school-sensors
 npm run test:school-sensors-api
 npm run test:school-coverage

@@ -7,9 +7,14 @@ import {gradingCoverage} from '../school/grader/coverage';
 import {starter,solution,jobFor} from './school-contract-fixture';
 import {introductoryProject} from './school-introductory-fixture';
 
+const target=process.env.LAB_MATRIX_TARGET,workers=Number(process.env.LAB_MATRIX_WORKERS??4);
+assert(!target||['micropython','s3-cpp','uno','nano'].includes(target),'Unknown matrix target');
+assert(Number.isInteger(workers)&&workers>=1&&workers<=4,'Invalid matrix worker count');
+
 test('24P current executable matrix: 268 URS combinations and five introductory expected outcomes',{timeout:1200000},async()=>{
   const coverage=gradingCoverage('24P'),results:any[]=[],allRows=[...coverage.rows,...coverage.introductory];
-  const task=process.env.LAB_MATRIX_TASK,rows=task?allRows.filter(r=>r.taskKey===task):allRows;
+  const task=process.env.LAB_MATRIX_TASK,rows=allRows.filter(r=>(!task||r.taskKey===task)&&(!target||r.target===target));
+  assert(rows.length>0,'The requested matrix partition is empty');
   let next=0;
   async function worker(){while(next<rows.length){
     const row=rows[next++],p=registry.profiles.find(p=>p.id===row.grading.profileId)!;
@@ -25,10 +30,10 @@ test('24P current executable matrix: 268 URS combinations and five introductory 
       expectedPoints,sourceCase:cppBlink?'published-500-500ms-cpp-starter':'reference-solution',status:r.status,points:r.points,checkerHash:r.checkerHash,durationMs:r.durationMs,virtualDurationMs:r.virtualDurationMs,peakRssKiB:r.peakRssKiB,...(r.points===expectedPoints?{}:{report:r})});
     console.log(`${results.length}/${rows.length} ${row.taskKey} ${row.target}: ${r.status} ${r.points} (expected ${expectedPoints})`);
   }}
-  await Promise.all(Array.from({length:4},worker));
+  await Promise.all(Array.from({length:workers},worker));
   results.sort((a,b)=>(a.taskKey+'/'+a.target).localeCompare(b.taskKey+'/'+b.target));
   mkdirSync('docs/stage24p-evidence',{recursive:true});
-  writeFileSync('docs/stage24p-evidence/'+(task?'current-matrix-recheck':'current-matrix')+'.json',JSON.stringify({format:'labosv2-current-matrix',version:1,sourceCommit:process.env.GITHUB_SHA??null,workers:4,task:task??null,results},null,2)+'\n');
+  writeFileSync('docs/stage24p-evidence/'+(task?'current-matrix-recheck':target?'current-matrix-'+target:'current-matrix')+'.json',JSON.stringify({format:'labosv2-current-matrix',version:1,sourceCommit:process.env.GITHUB_SHA??null,workers,target:target??null,task:task??null,results},null,2)+'\n');
   assert.equal(results.length,rows.length);assert.equal(new Set(results.map(r=>r.checkerHash)).size,1);
   for(const r of results)assert.equal(r.points,r.expectedPoints,JSON.stringify(r));
 });
@@ -45,7 +50,7 @@ test('24P legacy executable matrix: all 79 immutable published profiles still ex
     results.push({profileId:p.id,snapshotHash:job.snapshotHash,status:r.status,points:r.points,checkerHash:r.checkerHash,...(r.points===10?{}:{report:r})});
     console.log(`legacy ${results.length}/79 ${p.id}: ${r.status} ${r.points}`);
   }}
-  await Promise.all(Array.from({length:4},worker));
+  await Promise.all(Array.from({length:workers},worker));
   results.sort((a,b)=>a.profileId.localeCompare(b.profileId));
   mkdirSync('docs/stage24p-evidence',{recursive:true});
   writeFileSync('docs/stage24p-evidence/legacy-matrix.json',JSON.stringify({format:'labosv2-legacy-matrix',version:1,sourceCommit:process.env.GITHUB_SHA??null,results},null,2)+'\n');

@@ -47,6 +47,8 @@ Puna izvršna matrica obuhvaća 268 URS kombinacija i pet aktualnih uvodnih prim
 
 Oznake verzije, etape i opisa dolaze iz `package.json`; iz njih nastaju sučelje, API, profil i inventar paketa. Povijesni prihvati ostaju odvojeni od aktualnih uputa. GitHub Pages i školski PHP/MySQL paket imaju odvojene provjere. Razvojna grana i paket za pregled nisu završni školski prihvat.
 
+CI izvršava četiri cilja na zasebnim izvršiteljima, s jednim poslom provjeravača po izvršitelju. Skup od 273 ishoda ostaje potpun; spajanje provjerava točan skup kombinacija, isti izvor i otisak provjeravača te očekivane bodove. Školski PHP/MySQL tokovi rade odvojeno, a završni paket nastaje tek nakon uspjeha svih dijelova. Granice pojedinačnog izvođenja i svih 79 starih ugovora ostaju iste.
+
 **24P8 ostaje otvoren:** mali pilot (3–5 učenika), puni nastavni blok s razredom, stvarni školski LAN/HTTPS, resursi provjeravača, Windows i stvarni Safari/iOS trebaju opažanja na tim uređajima. Nije dopušteno zaključiti stvarnu nastavnu uporabu iz sintetskog CI prolaza.
 
 ## Uporaba i povrat

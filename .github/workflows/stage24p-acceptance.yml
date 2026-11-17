@@ -73,6 +73,52 @@ jobs:
           path: docs/stage24p-evidence/compiled-*.json
           if-no-files-found: error
           retention-days: 30
+  execution-matrix:
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [micropython, s3-cpp, uno, nano]
+    runs-on: ubuntu-22.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - name: Pripremi Linux izolaciju
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcap-dev pkg-config ninja-build
+          python3 -m pip install --user meson==1.9.1
+          git clone --quiet https://github.com/containers/bubblewrap.git "$RUNNER_TEMP/bubblewrap"
+          git -C "$RUNNER_TEMP/bubblewrap" checkout --quiet 2a76602a8c71f36c1527cf9fc3417d9149822e0c
+          "$HOME/.local/bin/meson" setup "$RUNNER_TEMP/bwrap-build" "$RUNNER_TEMP/bubblewrap" --prefix="$RUNNER_TEMP/bwrap-install" -Dman=disabled -Dselinux=disabled -Dtests=false
+          ninja -C "$RUNNER_TEMP/bwrap-build"
+          ninja -C "$RUNNER_TEMP/bwrap-build" install
+          printf '%s\n' "$RUNNER_TEMP/bwrap-install/bin" >> "$GITHUB_PATH"
+      - run: npm run build:school-grader
+      - name: Izvrši cilj na zasebnom izvršitelju bez konkurentskih AVR poslova
+        shell: bash
+        run: |
+          if [[ "${{ matrix.target }}" == "micropython" ]]; then
+            node --import tsx --test verification/school-current-matrix.test.ts
+          else
+            node --import tsx --test --test-name-pattern='current executable matrix' verification/school-current-matrix.test.ts
+          fi
+        env:
+          LAB_MATRIX_TARGET: ${{ matrix.target }}
+          LAB_MATRIX_WORKERS: '1'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Labosv2-24P-matrix-${{ matrix.target }}
+          path: |
+            docs/stage24p-evidence/current-matrix-${{ matrix.target }}.json
+            docs/stage24p-evidence/legacy-matrix.json
+          if-no-files-found: error
+          retention-days: 30
   school-acceptance:
     needs: source-compile
     runs-on: ubuntu-22.04
@@ -185,8 +231,6 @@ jobs:
         run: find school -name '*.php' -print0 | xargs -0 -n1 php -l
       - name: Provjeri 32 sjemena, interaktivne obitelji, stare izvještaje i Unicode
         run: npm run test:school-remediation && node --import tsx --test verification/school-identity-ui.test.tsx
-      - name: Izvrši svih 273 aktualnih kombinacija i 79 starih rubrika
-        run: npm run test:school-matrix
       - name: Provjeri dugi Unicode identitet i nove rubrike kroz PHP/MySQL
         run: npm run test:school-remediation-api
         env:
@@ -321,6 +365,55 @@ jobs:
           LAB_TEST_DB_USER: labosv2_ci
       - name: Provjeri projekte, vodove i neovisno izvršavanje
         run: node --import tsx --test verification/project.test.ts verification/circuit.test.ts verification/routing.test.ts verification/school.test.ts
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Labosv2-24P-Skolski-dokazi
+          path: |
+            docs/stage24ab-evidence/
+            docs/stage24c-evidence/
+            docs/stage24d-evidence/
+            docs/stage24e-evidence/
+            docs/stage24f-evidence/
+            docs/stage24g-evidence/
+            docs/stage24h-evidence/
+            docs/stage24i-evidence/
+            docs/stage24j-evidence/
+            docs/stage24k-evidence/
+            docs/stage24l-evidence/
+            docs/stage24m-evidence/
+            docs/stage24n-evidence/
+            docs/stage24o-evidence/
+            docs/stage24p-evidence/
+            docs/stage23i-evidence/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Ugasi testnu bazu
+        if: always()
+        run: docker rm --force labosv2-ci-db || true
+  package-acceptance:
+    needs: [source-compile, execution-matrix, school-acceptance]
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run build:school
+      - uses: actions/download-artifact@v4
+        with:
+          name: Labosv2-24P-Skolski-dokazi
+          path: docs/
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: Labosv2-24P-matrix-*
+          path: docs/stage24p-evidence/
+          merge-multiple: true
+      - name: Potvrdi svih 273 zasebno izvedenih kombinacija
+        run: node scripts/merge-stage24p-matrix.mjs
       - name: Poveži izvor, matricu i novi provjeravač
         run: node scripts/write-stage24p-acceptance.mjs
       - name: Uključi izvedeni dokaz u školski paket
@@ -355,6 +448,3 @@ jobs:
           path: release/*.zip
           if-no-files-found: error
           retention-days: 30
-      - name: Ugasi testnu bazu
-        if: always()
-        run: docker rm --force labosv2-ci-db || true

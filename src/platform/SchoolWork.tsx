@@ -57,7 +57,7 @@ export default function SchoolWork({project,confirm,open}:{project:Project;confi
   async function act(work:()=>Promise<void>){if(busy)return;setBusy(true);setError('');try{await work();}catch(e){setError((e as Error).message);}finally{setBusy(false);}}
   async function review(){await api.current.session(binding!.userId);const value=await api.current.request('attempt&id='+binding!.attemptId);parseProject(value.snapshot.project);setRemote(value);}
   const isLocked=state.phase==='locked';
-  return <section className={'school-sync school-sync-'+state.phase} aria-label="Spremanje školskog rada">
+  return <section id="school-work" tabIndex={-1} className={'school-sync school-sync-'+state.phase} aria-label="Spremanje školskog rada">
     <div className="school-sync-top"><strong role="status" aria-live="polite">{state.message}</strong><a href={appAsset('school.html#account')}>Školski račun</a></div>
     <p>Posljednja potvrđena revizija: {state.revision} · {schoolTime(state.savedAt)}. {state.phase==='saved'||isLocked?'Rad je sačuvan u bazi.':'Izmjene zadržavaš u ovom pregledniku; dostupni su ZIP i JSON izvoz.'}</p>
     {official?.reopening&&<p>Dorada pokušaja {official.attempt.number}: {official.reopening.reason}. Prethodna predaja #{official.reopening.submissionId} ostaje sačuvana.</p>}

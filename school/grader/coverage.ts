@@ -1,3 +1,4 @@
+import {teachingLesson,URS_GUIDE_VERSION} from '../../src/lessons/ursTeaching';
 import {ursLessons,ursTargets,variantAvailable,type UrsTarget} from '../../src/lessons/ursCatalog';
 import {lessons} from '../../src/lessons/catalog';
 import registry from './profiles.json';
@@ -28,8 +29,9 @@ export function gradingSupport(taskKey:string,target:string){
 }
 
 export function gradingCoverage(sourceVersion:string){
-  const rows=ursLessons.flatMap(lesson=>lesson.variants.flatMap(variant=>
+  const rows=ursLessons.flatMap(base=>base.variants.flatMap(variant=>
     (Object.keys(ursTargets) as UrsTarget[]).filter(target=>variantAvailable(variant,target)).map(target=>{
+      const lesson=teachingLesson(base,variant.id,URS_GUIDE_VERSION);
       const key=lesson.id+'/'+variant.id;
       if(!families[lesson.id])throw Error('Nedostaje obitelj bodovanja za temu '+lesson.id);
       const [family,familyTitle]=families[lesson.id];

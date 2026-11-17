@@ -1,3 +1,5 @@
+import {URS_GUIDE_VERSION,teachingLesson,guideVersion} from './ursTeaching';
+import {finishAdvice,investigationAdvice,schoolInvestigationAdvice} from './workflow';
 import {S3,UNO,NANO} from '../boards/profiles';
 import {newProject,parseProject,type Project} from '../project/model';
 import {basicExamples,exampleCircuit} from '../circuit/examples';
@@ -104,8 +106,9 @@ export function ursExampleHint(v:UrsVariant,p:Project):string {
  const groups=[basicExamples,environmentExamples,rtcExamples,sdExamples,opticalExamples] as Record<string,{hint:string}>[];
  return groups.find(g=>Object.hasOwn(g,v.mp))?.[v.mp].hint??'';
 }
-export function ursMarkdown(l:UrsLesson,v:UrsVariant,p:Project):string {
- return [`# URS${String(l.number).padStart(2,'0')} · ${l.title}`,`Varijanta: ${v.title}\nCilj: ${radioTargets[targetForProject(p)].label}\nProcijenjeno trajanje: ${l.minutes}`,l.goal,'## Prije početka',l.before,'## Novi pojmovi',...l.concepts.map(([term,explanation])=>`**${term}** — ${explanation}`),'## Spojevi i početni program',ursExampleHint(v,p),'Predložak je već spojen i sadrži izvršivi početni primjer. U Sastavljanju pregledaj stvarne vodiče i uvodni komentar/napomenu uz kod. Za promijenjeni C++ izvor treba novo prevođenje; početni prijevod je priložen.','## Postupak','1. Pročitaj pojmove i napomenu primjera. Pregledaj tablicu stvarnih veza i izvor/driver prije pokretanja.','2. Provjeri spojeve, pokreni i zabilježi početno stanje.',`3. ${l.change}`,`4. ${l.fault}`,'5. Vrati valjan spoj/kod i potvrdi oporavak. Upiši sva opažanja i odgovore, zaustavi izvršavanje i zabilježi pregled sadržaja.','6. Izvezi URS predaju ZIP, zatim je uvezi kao kopiju i provjeri da sadrži kod, veze i odgovore. SD/RTC snimku najprije izričito sačuvaj.','## Očekivano opažanje',l.expected,'## Pitanja',...l.questions.map((q,i)=>`${i+1}. ${q}`),'## Kriteriji nastavničkog pregleda',...l.criteria.map(c=>`- ${c}`),'## Opseg dokaza','URS opažanja i pregled sadržaja unosi korisnik. Nisu automatska provjera ponašanja ni potvrda autorstva. Nastavnik treba ponovno pokrenuti program i pregledati stvarne rezultate. Izbor nastavničkog prikaza ne provodi autentifikaciju. Postojećih pet V vježbi zadržava svoju zasebnu automatsku provjeru.'].join('\n\n')+'\n';
+export function ursMarkdown(base:UrsLesson,v:UrsVariant,p:Project):string {
+ const l=teachingLesson(base,v.id,guideVersion(p));
+ return [`# URS${String(l.number).padStart(2,'0')} · ${l.title}`,`Varijanta: ${v.title}\nCilj: ${radioTargets[targetForProject(p)].label}\nProcijenjeno trajanje: ${l.minutes}`,l.goal,'## Prije početka',l.before,'## Novi pojmovi',...l.concepts.map(([term,explanation])=>`**${term}** — ${explanation}`),'## Spojevi i početni program',ursExampleHint(v,p),'Predložak je već spojen i sadrži izvršivi početni primjer. U Sastavljanju pregledaj stvarne vodiče i uvodni komentar/napomenu uz kod. Za promijenjeni C++ izvor treba novo prevođenje; početni prijevod je priložen.','## Osnovni rad i istraživanje',investigationAdvice,schoolInvestigationAdvice,'## Postupak','1. Pročitaj pojmove i napomenu primjera. Pregledaj tablicu stvarnih veza i izvor/driver prije pokretanja.','2. Provjeri spojeve, pokreni i zabilježi početno stanje.',`3. ${l.change}`,`4. ${l.fault}`,'5. Vrati valjan spoj/kod i potvrdi oporavak. Upiši sva opažanja i odgovore, zaustavi izvršavanje i zabilježi pregled sadržaja.','6. '+finishAdvice(p)+' SD/RTC snimku najprije izričito sačuvaj.','## Očekivano opažanje',l.expected,'## Pitanja',...l.questions.map((q,i)=>`${i+1}. ${q}`),'## Kriteriji nastavničkog pregleda',...l.criteria.map(c=>`- ${c}`),'## Opseg dokaza','URS opažanja i pregled sadržaja unosi korisnik. Nisu automatska provjera ponašanja ni potvrda autorstva. Nastavnik treba ponovno pokrenuti program i pregledati stvarne rezultate. Izbor nastavničkog prikaza ne provodi autentifikaciju. Postojećih pet V vježbi zadržava svoju zasebnu automatsku provjeru.'].join('\n\n')+'\n';
 }
 async function pythonProject(key:string):Promise<Project>{
  if(key==='regulator'){const p=newProject(peripheralExample.code);p.circuit=peripheralCircuit();p.files={...await loadPeripheralDrivers(),'main.py':peripheralExample.code};return p;}
@@ -134,7 +137,7 @@ export async function createUrsProject(lessonId:string,variantId:string,target:U
  if(l.id==='levels'&&p.circuit.kind==='editable')p.circuit=levelCircuit(p.circuit,variant.id==='levelInput'?'input':'output');
  if(l.id==='i2cLevels'&&p.circuit.kind==='editable')p.circuit=i2cLevelCircuit(p.circuit);
  p.title=`URS${String(l.number).padStart(2,'0')} · ${variant.title}`;
- p.files[URS_WORK]=JSON.stringify({format:'esp32-lab-urs',version:1,lessonId:l.id,variantId:variant.id,student:'',group:'',answers:l.questions.map(()=>''),observations:{baseline:'',change:'',fault:''}},null,2);
+ p.files[URS_WORK]=JSON.stringify({format:'esp32-lab-urs',version:1,guideVersion:URS_GUIDE_VERSION,lessonId:l.id,variantId:variant.id,student:'',group:'',answers:teachingLesson(l,variant.id,URS_GUIDE_VERSION).questions.map(()=>''),observations:{baseline:'',change:'',fault:''}},null,2);
  p.files['urs-upute.md']=ursMarkdown(l,variant,p);
  return parseProject(p);
 }

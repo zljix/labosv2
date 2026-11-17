@@ -1,3 +1,6 @@
+import {investigationProject} from '../lessons/workflow';
+import ActionGroup from './ActionGroup';
+import {tabKeys} from '../platform/tabs';
 import RadioPanel from '../radio/RadioPanel';
 import {opticalExamples,opticalCircuit,type OpticalExample} from '../circuit/max30102Examples';
 import {sdExamples,sdCircuit,type SDExample} from '../circuit/sdExamples';
@@ -683,6 +686,10 @@ export default function App() {
       </header>
       <div className="toolbar">
         <div className="project-actions">
+          <button onClick={() => openDialog("lessons")} disabled={working}>
+            <Icon name="code" /> Vježbe
+          </button>
+          <ActionGroup title="Projekt">
           <button
             onClick={() => openDialog("new", "Novi projekt")}
             disabled={working}
@@ -704,13 +711,6 @@ export default function App() {
             <Icon name="folder" />
             Projekti
           </button>
-          <span className="toolbar-sep" />
-          <button onClick={()=>{runtime.stop(true);lessonCheck.cancel();openDialog("radio");}} disabled={working}>Dva čvora</button>
-          <button onClick={() => openDialog("lessons")} disabled={working}>
-            <Icon name="code" /> Vježbe
-          </button>
-          <button onClick={() => {setTeacher(true);setLabTab("lesson");setMobileTab("lab");}}>Pregled predaje</button>
-          <button onClick={()=>openDialog('class-review')} disabled={working||reviewBusy}>Pregled razreda</button>
           <button onClick={() => openDialog("import")} disabled={working}>
             <Icon name="upload" />
             Uvezi
@@ -726,6 +726,14 @@ export default function App() {
             <Icon name="history" />
             <span className="history-text">Povijest</span>
           </button>
+          </ActionGroup>
+          <ActionGroup title="Nastavnik">
+          <button onClick={() => {setTeacher(true);setLabTab("lesson");setMobileTab("lab");}}>Pregled predaje</button>
+          <button onClick={()=>openDialog('class-review')} disabled={working||reviewBusy}>Pregled razreda</button>
+          </ActionGroup>
+          <ActionGroup title="Daljnji alati">
+          <button onClick={()=>{runtime.stop(true);lessonCheck.cancel();openDialog("radio");}} disabled={working}>Dva čvora</button>
+          </ActionGroup>
         </div>
         <div className="run-actions">
           {p.language==='arduino-cpp'&&<button onClick={()=>openDialog('arduino')}>Prevedi</button>}
@@ -856,7 +864,7 @@ export default function App() {
             Nova datoteka
           </button>
           <button className="lesson-nav" onClick={()=>{setLabTab("lesson");setMobileTab("lab");}}><Icon name="code"/><b>{readWork(p)||readUrsWork(p)?"Upute, opažanja i predaja":"Nastavne vježbe · V1–5 i URS"}</b></button>
-          <div className="sidebar-section">
+          <details className="sidebar-section example-library"><summary>Primjeri i pokusi jezgre</summary>
             <div className="section-heading">ESP32-S3 · ARDUINO C++</div>
             {Object.entries(s3Examples).map(([key,e],i)=><button key={key} className="example-row" disabled={working} onClick={()=>void action(async()=>{const next=await loadS3Example(key as S3Example);runtime.stop();await ws.add(next);setLabTab('circuit');setExpandedCircuit(false);setMobileTab('lab');notify('Otvoren je S3 C++ primjer. Pokreni simulaciju.');})}><span>{i+1}</span><b>{e.title}</b></button>)}
             <div className="section-heading">ARDUINO · UNO / NANO</div>
@@ -883,7 +891,7 @@ export default function App() {
                 <Icon name="chevron" size={13} />
               </button>
             ))}
-          </div>
+          </details>
           <div className="sidebar-foot">
             <span className="micro-label">REFERENTNA PLOČICA</span>
             <button className="board-switch" aria-label="Pločica i jezik" onClick={()=>openDialog('board')}><strong>{boardProfile.title} ↗</strong><span>{languageName(p.language)} · {boardProfile.logicVoltage.toLocaleString('hr-HR')} V</span></button>
@@ -902,14 +910,15 @@ export default function App() {
             </div>
             <span className="subtle-tag">{labTab === "lesson" ? "UČENJE I PREDAJA" : labTab === "circuit" ? "SASTAVLJANJE" : "ISPITNI SKLOP"}</span>
           </div>
-          <div className="lab-view-tabs" role="tablist" aria-label="Način laboratorija">
-            <button role="tab" aria-selected={labTab === "lesson"} className={labTab === "lesson" ? "selected" : ""} onClick={()=>setLabTab("lesson")}>Vježba</button>
-            <button role="tab" aria-selected={labTab === "circuit"} className={labTab === "circuit" ? "selected" : ""} onClick={() => setLabTab("circuit")}>Sastavljanje</button>
-            <button role="tab" aria-selected={labTab === "fixture"} className={labTab === "fixture" ? "selected" : ""} onClick={() => setLabTab("fixture")}>Pokusi jezgre</button>
+          <div className="lab-view-tabs" role="tablist" aria-label="Način laboratorija" onKeyDown={tabKeys}>
+            <button role="tab" id="lab-tab-lesson" aria-controls="lab-content" tabIndex={labTab === "lesson"?0:-1} aria-selected={labTab === "lesson"} className={labTab === "lesson" ? "selected" : ""} onClick={()=>setLabTab("lesson")}>Vježba</button>
+            <button role="tab" id="lab-tab-circuit" aria-controls="lab-content" tabIndex={labTab === "circuit"?0:-1} aria-selected={labTab === "circuit"} className={labTab === "circuit" ? "selected" : ""} onClick={() => setLabTab("circuit")}>Sastavljanje</button>
+            <button role="tab" id="lab-tab-fixture" aria-controls="lab-content" tabIndex={labTab === "fixture"?0:-1} aria-selected={labTab === "fixture"} className={labTab === "fixture" ? "selected" : ""} onClick={() => setLabTab("fixture")}>Pokusi jezgre</button>
           </div>
+          <div id="lab-content" role="tabpanel" aria-labelledby={`lab-tab-${labTab}`} tabIndex={0} className="lab-tab-content">
           {labTab === 'lesson' && p.files[URS_WORK] && <UrsPanel key={p.id} project={p} change={work=>ws.change('URS odgovori i opažanja',n=>{n.files[URS_WORK]=JSON.stringify(work,null,2);})}
             busy={working||runtime.busy||lessonCheck.busy} teacher={teacher} toggleTeacher={()=>setTeacher(v=>!v)} catalog={()=>openDialog('lessons')} circuit={()=>setLabTab('circuit')} run={run} radio={()=>openDialog('radio')}
-            record={()=>void recordUrs()} submit={()=>void submitUrs()} review={(verdict,note)=>void reviewUrs(verdict,note)} importReview={reviewImport}/>}
+            investigate={()=>void action(async()=>{await ws.flush();runtime.stop();lessonCheck.cancel();await ws.add(investigationProject(p));setLabTab('lesson');notify('Otvorena je lokalna istraživačka kopija. Izvorni pokušaj ostao je u Projektima.');})} record={()=>void recordUrs()} submit={()=>void submitUrs()} review={(verdict,note)=>void reviewUrs(verdict,note)} importReview={reviewImport}/>}
           {labTab === "lesson" && !p.files[URS_WORK] && <LessonPanel project={p}
             change={work=>ws.change("Odgovori vježbe",n=>{n.files[WORK_FILE]=JSON.stringify(work,null,2);})}
             busy={lessonCheck.busy} progress={lessonCheck.progress} run={()=>{runtime.stop();void lessonCheck.run();}} cancel={lessonCheck.cancel}
@@ -1051,6 +1060,7 @@ export default function App() {
             Fiksni pokus jezgre iz etape 0. Uređivanje vlastitih spojeva otvori karticom Sastavljanje.
           </div>
           </>}
+          </div>
         </section>
         <section className="code-panel" aria-label="Editor koda">
           <div className="panel-heading">
@@ -1102,11 +1112,12 @@ export default function App() {
               </button>
             </div>
           </div>
-          <div className="file-tabs" role="tablist" aria-label="Datoteke">
+          <div className="file-tabs" role="tablist" aria-label="Datoteke" onKeyDown={tabKeys}>
             {Object.keys(p.files).map((path) => (
               <button
                 key={path}
                 role="tab"
+                id={`file-tab-${encodeURIComponent(path)}`} aria-controls="file-content" tabIndex={path===active?0:-1}
                 aria-selected={path === active}
                 className={path === active ? "active" : ""}
                 onClick={() =>
@@ -1129,6 +1140,7 @@ export default function App() {
               <Icon name="plus" size={14} />
             </button>
           </div>
+          <div id="file-content" role="tabpanel" aria-labelledby={`file-tab-${encodeURIComponent(active)}`} className="file-tab-content">
           <div className="editor-file-info">
             <span>{active}</span>
             <div>
@@ -1187,10 +1199,11 @@ export default function App() {
               : ((ursVariant?ursExampleHint(ursVariant,p):example?.hint) ??
                 (p.language==="micropython"?"Program počinje u main.py. Druge Python datoteke uvedi naredbom import.":"Program počinje u main.ino. setup() se izvodi jednom, a loop() se ponavlja. Novi izvor ponovno prevedi preko gumba Prevedi."))}
           </div>
+          </div>
         </section>
         <section className="bottom-panel" aria-label="Izlaz i informacije">
           <div className="bottom-tabs">
-            <div role="tablist" aria-label="Izlaz">
+            <div role="tablist" aria-label="Izlaz" onKeyDown={tabKeys}>
               {[
                 ["console", "Konzola"],
                 ["project", "Projekt"],
@@ -1199,6 +1212,7 @@ export default function App() {
                 <button
                   key={id}
                   role="tab"
+                  id={`output-tab-${id}`} aria-controls="output-content" tabIndex={tab===id?0:-1}
                   aria-selected={tab === id}
                   className={tab === id ? "selected" : ""}
                   onClick={() => setTab(id)}
@@ -1219,6 +1233,7 @@ export default function App() {
               )}
             </div>
           </div>
+          <div id="output-content" role="tabpanel" aria-labelledby={`output-tab-${tab}`} tabIndex={0} className="output-tab-content">
           {tab === "console" && (
             <pre
               ref={consoleRef}
@@ -1228,7 +1243,7 @@ export default function App() {
             >
               {runtime.consoleText || (
                 <span className="console-empty">
-                  <b>›</b> {!availability.available ? availability.message : p.circuit.kind === "editable" ? `Pokreni ${p.entryFile} na spojevima ovog projekta. Ulazi su iznad radne površine.` : "Konzola je spremna. Pokreni program za prikaz izlaza."}
+                  <b>›</b> {!availability.available ? availability.message : p.circuit.kind === "editable" ? `Pokreni ${p.entryFile} na spojevima ovog projekta. Ulazi su ispod radne površine.` : "Konzola je spremna. Pokreni program za prikaz izlaza."}
                 </span>
               )}
             </pre>
@@ -1274,6 +1289,7 @@ export default function App() {
               </a>
             </div>
           )}
+          </div>
         </section>
       </main>
       <footer className="app-footer">

@@ -1,6 +1,6 @@
 {
   "name": "esp32-micropython-lab",
-  "version": "0.14.14-beta.1",
+  "version": "0.14.15-beta.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -110,7 +110,8 @@
     "release:sync": "node scripts/sync-release.mjs",
     "test:school-remediation": "node --import tsx --test verification/school-input-reliability.test.ts verification/school-input-audit.test.ts verification/school-identity.test.ts verification/school-remediation-ui.test.tsx",
     "test:school-matrix": "node --import tsx --test verification/school-current-matrix.test.ts",
-    "test:school-remediation-api": "node --import tsx --test verification/school-remediation-api.test.mjs"
+    "test:school-remediation-api": "node --import tsx --test verification/school-remediation-api.test.mjs",
+    "test:usability": "node --import tsx --test verification/teaching24q.test.ts && node scripts/test-usability.mjs"
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.1",
@@ -138,8 +139,8 @@
     "vite": "8.3.8"
   },
   "labosRelease": {
-    "stage": "24P",
-    "title": "Pouzdanost provjera i povratna informacija",
+    "stage": "24Q",
+    "title": "Čitljivost sučelja i upute po varijanti",
     "acceptance": "technical-review"
   }
 }

@@ -1,6 +1,6 @@
 {
-  "version": "0.14.14-beta.1",
-  "stage": "24P",
-  "title": "Pouzdanost provjera i povratna informacija",
+  "version": "0.14.15-beta.1",
+  "stage": "24Q",
+  "title": "Čitljivost sučelja i upute po varijanti",
   "acceptance": "technical-review"
 }

@@ -1,6 +1,6 @@
 # Završni tehnički pregled 24P · 17. studenoga 2026.
 
-Programske dorade 24P1–24P7 i automatizirani tehnički prihvat su dovršeni. [CI izvođenje](https://github.com/zljix/labosv2/actions/runs/44105942453) veže dokaz uz izvor `8f9af0defd0a8f02587a10a63288624560745a34` i stvarni provjeravač `871963f61cce69f6db21f724372ed36f3536e2f71e97e2cab9a75ffe77faf36b`. Javni raspored provjera ne zamjenjuje stvarni školski pilot.
+Programske dorade 24P1–24P7 i automatizirani tehnički prihvat su dovršeni. [CI izvođenje](https://github.com/zljix/labosv2/actions/runs/44105942453) veže dokaz uz izvor `8f9af0defd0a8f02587a10a63288624560745a34` i stvarni provjeravač `871963f61cce69f6db21f724372ed36f3536e2f71e97e2cab9a75ffe77faf36b`. Automatizirane provjere ne zamjenjuju stvarni školski pilot.
 
 | Područje | Potvrđeno |
 | --- | --- |

@@ -9,4 +9,12 @@
 - `compiled-s3-cpp.json`, `compiled-uno.json`, `compiled-nano.json`: ukupno 15 svježih izoliranih prijevoda i izvršavanja ispravnih rješenja te vremenskih zamjena.
 - `mysql-remediation.json`: stvarni PHP/MySQL tijek dugih Unicode identiteta, bodova, zaključavanja, dorade i oba radio čvora.
 
-Stvarni školski pilot ostaje otvoren. Nema lažnih ili ručno upisanih prolaza za neizvršene platforme.
+## Javna objava
+
+[Labosv2 0.14.14-beta.1](https://zljix.github.io/labosv2/) objavljen je nakon uspješnog [GitHub Pages izvođenja](https://github.com/zljix/labosv2/actions/runs/44110987593).
+
+- [publication.json](publication.json): svih 205 resursa javnog manifesta provjereno je prema stvarnim bajtovima i SHA-256 sažecima; ukupno 207 javnih datoteka s manifestom i service workerom.
+- [installer-integrity.json](installer-integrity.json): provjereno je svih 957 inventarnih datoteka i 205 web resursa nepromijenjenog CI instalacijskog ZIP-a.
+- [browser-smoke.json](browser-smoke.json): stvarna nadogradnja 24O → 24P u cloud Chromeu, očuvan spremljeni projekt, spreman offline paket i uspješno izvršavanje MicroPythona, GPIO-a, vremenske stanke i framebuf-a.
+
+Stvarni školski pilot, Windows i stvarni Safari/iOS ostaju otvoreni. Nema tvrdnje da ih zamjenjuje cloud Chrome ili simulirani razred.

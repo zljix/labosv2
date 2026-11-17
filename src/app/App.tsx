@@ -1182,6 +1182,7 @@ export default function App() {
               onCursor={(row, column) => setCursor({ row, column })}
             />
           </Suspense>
+          <p id="editor-keyboard-help" className="editor-keyboard-help">Tab uvlači kôd. Za izlazak iz editora pritisni Esc, zatim Tab.</p>
           <div className="editor-status">
             <span>
               Redak {cursor.row}, stupac {cursor.column}

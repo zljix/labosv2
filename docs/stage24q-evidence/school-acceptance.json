@@ -1,0 +1,326 @@
+{
+  "runId": 44158859956,
+  "url": "https://github.com/zljix/labosv2/actions/runs/44158859956",
+  "jobs": [
+    {
+      "name": "school",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v6",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v6",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run shivammathur/setup-php@v2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Pokreni zasebni MySQL s jednokratnim vjerodajnicama",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Pripremi zasebne baze za razrede i korisnički tijek",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Pripremi Linux izolaciju",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run arduino/setup-arduino-cli@v2",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run node scripts/avr-setup.mjs",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Pripremi zaključani S3 C++ prevoditelj",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri instalaciju S3 alata u istom izoliranom procesu",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run build:school",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri PHP sintaksu",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:school-introductory",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri pet uvodnih dodjela, revizije, bodove i zaključavanje",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:school-pilot",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:school-coverage",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri potpuni 1-Wire prijenos i svježinu registra",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri PHP/MySQL ugovore, S3 posao i zaštitu od ponovne uporabe rezultata",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri ugovore, sva četiri cilja i nove neovisne prijevode",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri svih 32 ADC/PWM i analognih kombinacija te promijenjene izvore",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri nove analogne dodjele, bodove, zaključavanje i stare rubrike",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri 28 senzorskih kombinacija, CRC, oporavak i neovisne prijevode",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri senzorske dodjele, revizije, bodove i zaključavanje",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri šest događajnih dodjela, stvarne bodove i zaključane predaje",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri sedam aktuatorskih dodjela, stvarne bodove i zaključavanje",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri 12 koračnih dodjela, stvarne bodove i zaključavanje",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri 32 zaslonske i SPI dodjele",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri svih osam 24I dodjela, bodove i zaključavanje",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Pokus s 30 učenika, stvarnim PHP/MySQL i dva privatna provjeravača",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri nove rubrike i neovisne AVR prijevode",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri 24 dodjele ILI9341/dodira i zaključane predaje",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri svih 24 RTC i SD dodjela",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri svih 16 optičkih dodjela",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri četiri radio dodjele s oba čvora",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:school-finish-ui",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:school-reports",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri izvještaje, korekcije, arhivu, čuvanje i povrat sigurnosne kopije",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri zaključavanje, ponovljive zahtjeve i dorade",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri tri pilot-rubrike i neovisno AVR prevođenje",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:school-grading-ui",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri red poslova i zaštitu rezultata",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri svih 16 dodjela s pretvornicima razina",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:school-package",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:school-catalog",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri stvarni PHP i MySQL račune",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri razrede, uvoz i dodijeljene vježbe",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri korisnički tijek školskog portala",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:school-sync",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri revizije i istodobno spremanje",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri sučelje središnjeg spremanja",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Provjeri projekte, vodove i neovisno izvršavanje",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Uključi izvedeni dokaz u školski paket",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:school-package",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Ugasi testnu bazu",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v6",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v6",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "testedSource": {
+    "sha": "58e8ac0f75c2bd492ed2064cb05b82a5bd0de64d",
+    "tree": "43fb0a47486b272b2478838107fc9dcd632ec494"
+  },
+  "publishedSource": {
+    "sha": "0fc488a49ebe9e024bfe64d3b26c1ac8653af38d",
+    "tree": "43fb0a47486b272b2478838107fc9dcd632ec494"
+  }
+}

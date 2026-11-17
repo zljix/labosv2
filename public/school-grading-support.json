@@ -1,7 +1,7 @@
 {
   "format": "labosv2-grading-coverage",
   "version": 1,
-  "sourceVersion": "0.14.15-beta.1",
+  "sourceVersion": "0.14.15-beta.2",
   "introductorySummary": {
     "total": 5,
     "supported": 5,

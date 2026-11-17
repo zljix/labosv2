@@ -56,6 +56,7 @@ export default function CodeEditor(props: Props) {
               ]),
               EditorView.contentAttributes.of({
                 "aria-label": `Kôd datoteke ${props.path}`,
+                "aria-describedby": "editor-keyboard-help",
                 spellcheck: "false",
                 autocapitalize: "off",
               }),

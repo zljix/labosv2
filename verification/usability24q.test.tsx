@@ -6,6 +6,9 @@ import CircuitEditor from '../src/circuit/CircuitEditor';
 import ActionGroup from '../src/app/ActionGroup';
 import {emptyCircuit,makePart,type Circuit} from '../src/circuit/model';
 import {tabKeys} from '../src/platform/tabs';
+import {readFileSync} from 'node:fs';
+import {sdCircuit} from '../src/circuit/sdExamples';
+import {sdReadFile} from '../public/sd-card.mjs';
 
 test('24Q circuit catalog, keyboard tabs, precise movement and action disclosure work without pointer dragging',async t=>{
  const dom=new JSDOM('<!doctype html><div id="root"></div>',{url:'https://lab.test/'});
@@ -54,4 +57,35 @@ test('24Q tab keyboard helper ignores ordinary buttons and lets Tab leave the st
  let prevented=false;
  const e={currentTarget:{querySelectorAll:()=>[]},target:{},key:'Tab',preventDefault:()=>{prevented=true;}};
  tabKeys(e as any);assert.equal(prevented,false);
+});
+
+test('24Q saving SD and RTC in either order retains both stopped snapshots; an edit clears them',async t=>{
+ const dom=new JSDOM('<!doctype html><div id="root"></div>',{url:'https://lab.test/'});
+ const names=['window','document','HTMLElement','SVGElement','IS_REACT_ACT_ENVIRONMENT'] as const;
+ const prior=Object.fromEntries(names.map(k=>[k,(globalThis as any)[k]]));
+ Object.assign(globalThis,{window:dom.window,document:dom.window.document,HTMLElement:dom.window.HTMLElement,SVGElement:dom.window.SVGElement,IS_REACT_ACT_ENVIRONMENT:true});
+ const {createRoot}=await import('react-dom/client');
+ const root=createRoot(document.getElementById('root')!);t.after(async()=>{await React.act(async()=>root.unmount());Object.assign(globalThis,prior);dom.window.close();});
+ const frame=JSON.parse(readFileSync('docs/stage19b-evidence/python-sdLogger.json','utf8')).frame;
+ let saved:Circuit;
+ function Fixture(){
+  const [c,setC]=React.useState(()=>sdCircuit('sdLogger')),[simulation,setSimulation]=React.useState(frame);
+  saved=c;
+  return <CircuitEditor circuit={c} simulation={simulation} onChange={(next,_label,kind)=>{setC(next);if(kind!=='snapshot')setSimulation(undefined);}} onDemo={()=>{}} onUndo={()=>{}} onRedo={()=>{}} canUndo={false} canRedo={false} expanded={false} onExpand={()=>{}}/>;
+ }
+ const buttons=['Sačuvaj karticu u projekt','Sačuvaj snimku RTC-a'];
+ const button=(name:string)=>[...document.querySelectorAll<HTMLButtonElement>('button')].find(b=>b.textContent===name)!;
+ for(const order of [buttons,[...buttons].reverse()]){
+  await React.act(async()=>root.render(<Fixture key={order[0]}/>));
+  for(const name of order){assert.equal(button(name).disabled,false);await React.act(async()=>button(name).click());}
+  assert.deepEqual(saved!.components.find(p=>p.kind==='microSD')!.properties.sdState,frame.sdCards.sd1.state);
+  assert.match(new TextDecoder().decode(sdReadFile(saved!.components.find(p=>p.kind==='microSD')!.properties.sdState,'LOG.CSV')),/uzorak,vrijeme\n0,2026-01-01/);
+  const rtc=saved!.components.find(p=>p.kind==='ds1302')!;
+  assert.deepEqual(rtc.properties.rtcState,frame.rtcDevices[rtc.id].state);
+  const picker=document.querySelector<HTMLSelectElement>('[aria-label="Odaberi element"]')!;
+  await React.act(async()=>{picker.value='part:'+rtc.id;picker.dispatchEvent(new dom.window.Event('change',{bubbles:true}));});
+  const x=document.querySelector<HTMLInputElement>('[aria-label="Položaj X komponente"]')!;
+  await React.act(async()=>{x.value=String(rtc.x+10);x.dispatchEvent(new dom.window.FocusEvent('focusout',{bubbles:true}));});
+  assert(button(buttons[0]).disabled);assert(button(buttons[1]).disabled);
+ }
 });

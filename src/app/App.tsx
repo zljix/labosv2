@@ -925,7 +925,7 @@ export default function App() {
             submit={()=>void submitLesson()} circuit={()=>setLabTab("circuit")} catalog={()=>openDialog("lessons")}
             teacher={teacher} toggleTeacher={()=>setTeacher(v=>!v)} importReview={reviewImport}/>}
           {labTab === "circuit" && <CircuitEditor key={p.id} circuit={p.circuit} language={p.language}
-            onChange={(c, label) => { runtime.stop(); ws.change(label, n => {n.circuit = c; n.settings.example = "";}); }}
+            onChange={(c, label, kind) => { runtime.stop(kind === "snapshot"); ws.change(label, n => {n.circuit = c; n.settings.example = "";}); }}
             onDemo={() => void selectCircuitExample()}
             onUndo={()=>{runtime.stop();ws.undo();}} onRedo={()=>{runtime.stop();ws.redo();}} canUndo={!!ws.undoCount} canRedo={!!ws.redoCount}
             simulation={runtime.simulation} runtimeActive={["running","done"].includes(runtime.state)} liveInputs={runtime.liveInputs} onInput={runtime.input}

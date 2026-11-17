@@ -1,0 +1,53 @@
+{
+  "date": "2026-11-17",
+  "reviewedSourceBase": "59c3ed4931c13b45dd27fc0c02aab5357b9750dd",
+  "includesWorkingTreeFix": [
+    "src/app/App.tsx",
+    "src/circuit/CircuitEditor.tsx",
+    "src/circuit/peripheralExamples.ts"
+  ],
+  "environment": "Chromium desktop, managed development preview",
+  "viewport": {
+    "width": 1363,
+    "height": 936,
+    "devicePixelRatio": 1
+  },
+  "passed": [
+    "Light and dark themes inspected",
+    "V1, URS02, OLED32 and RTC/SD worksheets opened",
+    "Button input changes LED output and console",
+    "Project action menu visible; outside click closes it",
+    "Arrow keys switch laboratory tabs",
+    "Investigation copy and original both remain in project list",
+    "OLED32 renders live pixels in expanded circuit",
+    "RTC/SD program writes successive timestamped CSV rows",
+    "SD capture then RTC capture both remain available after fix",
+    "Exported ZIP contains both RTC state and SD blocks",
+    "Numeric X coordinate updates component; subsequent circuit edit clears previous simulation",
+    "No document-level horizontal overflow in observed desktop views"
+  ],
+  "fixedFinding": "Saving the SD image previously cleared the stopped frame and disabled RTC capture. Snapshot-only commits now preserve the last frame; ordinary circuit edits still clear it.",
+  "zipVerification": {
+    "sha256": "5951df676de48ce08ed22b259443f7484f85c4fbf1d5ff77eefdd5d1107e69d4",
+    "rtcStatePresent": true,
+    "sdDirtyBlocks": 4
+  },
+  "notPerformed": [
+    "200% browser zoom: browser-setting access unavailable",
+    "1366x768 exact viewport",
+    "Actual iPhone/Safari or Android",
+    "Screen reader",
+    "Live authenticated school-server visual flow",
+    "Real student pilot"
+  ],
+  "screenshots": [
+    "labosv2-24q-project-copy.jpg",
+    "labosv2-24q-oled.jpg",
+    "labosv2-24q-rtc-sd.jpg"
+  ],
+  "reviewedSourceHashes": {
+    "src/app/App.tsx": "beef9c0f530b15efd2c576c291644ecdaad37f045143aed4ea361b57f1b37e9b",
+    "src/circuit/CircuitEditor.tsx": "b3acd2ed2463cb8b4c8752afc10c028421a152cfef7a449b9fc0fe5800813101",
+    "src/circuit/peripheralExamples.ts": "2b418f6ae2c7eba1659633130bb647d43e108cb6f13ba0154bc7aaeb6659ea57"
+  }
+}

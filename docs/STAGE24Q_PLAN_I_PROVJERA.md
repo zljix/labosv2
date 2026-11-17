@@ -2,7 +2,7 @@
 
 Polazište: 0.14.14-beta.1 / 24P, commit `41b382bfa43612def5a8722f3a649396b54b43fa`.
 Pripremljena inačica: 0.14.15-beta.1 / 24Q, 17. studenoga 2026.
-Status: implementacija za tehnički pregled. Vizualni prihvat i stvarni učenički pilot nisu potvrđeni.
+Status: implementacija za tehnički pregled. Stolni Chromium pregled je proveden; prihvat na stvarnim mobitelima i učenički pilot nisu potvrđeni.
 
 ## Provedeni redoslijed
 
@@ -24,15 +24,21 @@ Automatizacija `.github/workflows/stage24q-usability.yml` prvo generira privatni
 
 Uvoz i validacija 273 predloška nisu nova izvedbena provjera svih 273 provjeravača. Postojeći dokazi 24P ostaju odvojeni. DOM test nije dokaz izgleda stvarnog zaslona ni potpune WCAG sukladnosti.
 
-Lokalno je potvrđeno 387 različitih automatiziranih testova u navedenim skupinama te TypeScript i produkcijske izgradnje i inventura školskog paketa. Prvotni nedostajući školski predlošci, pogrešno odabran base path offline testa i zastarjeli generirani registar riješeni su pripremom odgovarajućih ulaza; te su provjere zatim prošle. To nisu nalazi o radu s učenicima.
+Lokalno je potvrđeno 393 različitih automatiziranih testova u navedenim skupinama te TypeScript i produkcijske izgradnje i inventura školskog paketa. Prvotni nedostajući školski predlošci, pogrešno odabran base path offline testa i zastarjeli generirani registar riješeni su pripremom odgovarajućih ulaza; te su provjere zatim prošle. To nisu nalazi o radu s učenicima.
 
-## Vizualni prihvat prije objave
+## Vizualni prihvat i preostale provjere
 
-Lokalni razvojni poslužitelj radi, ali nije dostupan pregledniku za vizualni pregled (`ERR_CONNECTION_REFUSED`). Zato sljedeće točke ostaju otvorene; nisu označene kao provedene:
+Razvojni pregled uspješno je otvoren preko upravljanog pregleda. U Chromiumu na 1363×936 provjereni su obje teme, V1, URS02, OLED32 i RTC/SD, izbornik projekta, strelice za kartice, istraživačka kopija i sačuvani izvornik, pomicanje koordinatom te rad OLED-a i CSV zapisivača. Dokaz i ograničenja: `stage24q-evidence/browser-review.json`.
+
+Otkriveno je da spremanje kartice uklanja zadnju simulacijsku snimku i onemogućuje naknadno spremanje RTC-a. Ispravljeno je očuvanjem zadnjeg okvira samo pri izričitom spremanju snimke; obična promjena sklopa i dalje ga poništava. DOM regresija provjerava oba redoslijeda spremanja, a stvarno preuzeti ZIP sadrži RTC stanje i SD blokove. Opis regulatora usklađen je s uvjetima ≥28/≤26 °C.
+
+CI regresije 24E/24F sada provjeravaju trajnu pokrivenost parova zadatak/cilj uz očuvane povijesne profile; aktivni 24P profil tipkala više se ne smatra nedostatkom pokrivenosti. Zbirni dokaz 24I prepoznaje izričito označena ponavljanja i provjerava tri ponavljanja po profilu te pozitivne i negativne ishode 24 neovisna prijevoda.
+
+Preostali prihvat ne smije se poistovjetiti s provedenim stolnim pregledom:
 
 | Uvjet | Što stvarno provjeriti | Prihvat |
 |---|---|---|
-| Stolno računalo, svijetla/tamna tema | V1, URS02, OLED32, RTC/SD i složeni sklop | Tekst čitljiv, shema odmah dostupna, nema odrezanih kontrola |
+| Stolni Chromium 1363×936, obje teme | V1, URS02, OLED32, RTC/SD | Provedeno u opisanom opsegu; ostale veličine zaslona otvorene |
 | 1366×768 i povećanje prikaza 200 % | Izbornici, upute, editor, potvrda predaje | Svaka ključna radnja dostupna bez preklapanja |
 | Stvarni iPhone/Safari i Android | Uspravni/vodoravni prikaz, dodir i tipkovnica | Vidljiv status spremanja, upotrebljivi ulazi i dijalozi |
 | Samo tipkovnica i čitač zaslona | Kartice, shema, koordinate, dijalozi, povrat fokusa | Logičan redoslijed, nema zamke fokusa ni ponavljanja brojača |

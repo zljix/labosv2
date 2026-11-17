@@ -2,7 +2,7 @@ import {emptyCircuit,makePart,terminals,type Circuit,type Endpoint} from './mode
 import {runtimeAsset} from '../platform/assets';
 export const peripheralExample = {
   title:'AHT10 → OLED → servo',
-  hint:'I2C0: AHT10 na SDA8/SCL9; I2C1: OLED na SDA10/SCL11 (0x3C). Servo: GPIO4, 5 V i zajednička masa. Očitanje svake 2 s; otvara iznad 28 °C, zatvara ispod 26 °C. Mijenjaj okoliš i prati stvarne piksele te zapis mjerenja.',
+  hint:'I2C0: AHT10 na SDA8/SCL9; I2C1: OLED na SDA10/SCL11 (0x3C). Servo: GPIO4, 5 V i zajednička masa. Očitanje svake 2 s; otvara pri očitanju ≥28 °C, zatvara pri očitanju ≤26 °C. Mijenjaj okoliš i prati stvarne piksele te zapis mjerenja.',
   code:`from machine import Pin, I2C
 from time import sleep_ms
 from aht10 import AHT10

@@ -1,0 +1,29 @@
+{
+  "version": "0.14.15-beta.2",
+  "stage": "24Q",
+  "status": "published",
+  "pullRequest": "https://github.com/zljix/labosv2/pull/15",
+  "sourceCommit": "0bde124ee4ba194df87e59fc07033f04a6d101c2",
+  "sourceTree": "fbc2819b64b2af1a86273aa977f8a56421bc7095",
+  "sourceIncludes": "Root distribution and final review; this package additionally includes completed CI evidence from beta.1 and this publication status.",
+  "fullBaselineSchoolRun": 44158859956,
+  "fullBaselineConclusion": "success",
+  "beta2Ci": "Full school regression runs 44171482907 and 44172177400 still in progress at publication verification; not claimed passed.",
+  "localTargetedTests": 42,
+  "publicVersionAtPackaging": "0.14.15-beta.2",
+  "mergeCommit": "334c1149d30f12617c7066e44ebf068a6ea4c953",
+  "publishedTree": "fbc2819b64b2af1a86273aa977f8a56421bc7095",
+  "publicUrl": "https://zljix.github.io/labosv2/",
+  "pagesRun": 44172177325,
+  "pagesConclusion": "success",
+  "targetedCiRun": 44171483252,
+  "targetedCiConclusion": "success",
+  "verifiedAt": "2026-11-17T20:45:57.892024+00:00",
+  "browserVerification": {
+    "version": "0.14.15-beta.2",
+    "microPython": "pass: Worker, WASM, GPIO, sleep, framebuf",
+    "offlinePackage": "ready: 205 files, 16.0 MiB",
+    "keyboardHelp": "Esc, then Tab visible",
+    "updateNote": "First update check reported failure; ordinary reload loaded beta.2 and offline package finished successfully."
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "format": "labosv2-24o-publication",
+  "version": 1,
+  "publishedCommit": "a890f4b17af7d934488f0b400194f3a921dec571",
+  "observedAt": "2026-11-17T11:22:31.907647+00:00",
+  "liveURL": "https://zljix.github.io/labosv2/",
+  "liveVersion": "0.14.13-beta.1",
+  "liveBuild": "db6989d3534393c3",
+  "verifiedPublicFiles": 10,
+  "verifiedResources": 8,
+  "verifiedBytes": 3334971,
+  "allManifestBytesVerified": false,
+  "liveManifestBytesVerified": true,
+  "runtimeMIMEsVerified": true,
+  "serviceWorkerBytesVerified": true,
+  "rootHTMLVerified": true,
+  "publicVerificationMode": "manifest-index-service-worker-core-runtime-and-grading-resources",
+  "bulkVerificationLimitation": "The bulk network request was cancelled before network approval returned. Stable individual URLs were verified instead.",
+  "packagedWebResourcesVerified": 205,
+  "verifiedPublicRecords": [
+    {
+      "url": "/labosv2/assets/index-Bu1U4OTT.js",
+      "bytes": 986155,
+      "sha256": "6824bb0bfc19106d0a2427bee6b2678b60a3f5a0cfe61b0d9a65156846ed7dfe",
+      "mime": "application/javascript"
+    },
+    {
+      "url": "/labosv2/assets/index-qI3f0DKR.css",
+      "bytes": 66169,
+      "sha256": "93b3e8f1f4f1ef3a5a74bd867d2fc3bc29ff3edd0fb89dd655adf71796bed94a",
+      "mime": "text/css"
+    },
+    {
+      "url": "/labosv2/app/db6989d3534393c3/worker.mjs",
+      "bytes": 2564,
+      "sha256": "112131bd027448432724576116dd6b75f03815703ce21046384920a0ef30eb54",
+      "mime": "text/javascript"
+    },
+    {
+      "url": "/labosv2/app/db6989d3534393c3/runtime/micropython.mjs",
+      "bytes": 225531,
+      "sha256": "0105e219063d76cfd40c564b3a206aee49dfb5bd282e4b7574164c207f35908f",
+      "mime": "text/javascript"
+    },
+    {
+      "url": "/labosv2/app/db6989d3534393c3/runtime/micropython.wasm",
+      "bytes": 1134289,
+      "sha256": "3f638e8cacd1f00168f19a17fcae35ece9773b4b661464c8241114e00c24fcce",
+      "mime": "application/wasm"
+    },
+    {
+      "url": "/labosv2/school-grading-support.json",
+      "bytes": 847308,
+      "sha256": "06a8773e5aa7682960ede3b771f5a5d9617b7b44aa03b8a860ae5abe66535268",
+      "mime": "application/json"
+    },
+    {
+      "url": "/labosv2/school-grading.html",
+      "bytes": 5007,
+      "sha256": "6dbd8a663068c8a707a9d6007eb00e2fa54840729b93614e73a6c5278f7c678b",
+      "mime": "text/html"
+    },
+    {
+      "url": "/labosv2/index.html",
+      "bytes": 728,
+      "sha256": "e5208153bd5bc435f6daf1b5e4c417396b698c290cefdb2b1addd4fc7bde5f86",
+      "mime": "text/html"
+    },
+    {
+      "url": "/labosv2/sw.js",
+      "bytes": 32223,
+      "sha256": "dd2b0fea3ecf88e87dab2d9ff515d366654f60badd51c09e5779ed9088b087d5",
+      "mime": "application/javascript"
+    },
+    {
+      "url": "/labosv2/offline-package.json",
+      "bytes": 34997,
+      "sha256": "c52431c2b4b0437a084e1344ba0d5c4b1cfc15fa4f33cf81bb9ffadfed3e745a",
+      "mime": "application/json"
+    }
+  ],
+  "coverage": {
+    "ursSupported": 268,
+    "ursTotal": 268,
+    "introductorySupported": 5,
+    "introductoryTotal": 5
+  },
+  "acceptedSourceCommit": "98056753f710b53134b3e52a73c2d021d019bc7c",
+  "acceptanceRun": "https://github.com/zljix/labosv2/actions/runs/44068540213",
+  "pagesRun": "https://github.com/zljix/labosv2/actions/runs/44072286449",
+  "installer": {
+    "format": "labosv2-24o-installer-integrity",
+    "version": 1,
+    "filename": "Labosv2_0.14.13_24O_Objavljeno.zip",
+    "bytes": 12610133,
+    "sha256": "e1eee20f8a80f828b0fc5a8360315769f43b29b0d60135fd01ddf9d8e1a0d198",
+    "verifiedInventoryFiles": 938,
+    "verifiedWebResources": 205,
+    "checkerHash": "84f5f4a03d9b57f009bfa82d51d9ab996cdc4bff5dec273ef1a33b7757ff24ef",
+    "acceptedSourceCommit": "98056753f710b53134b3e52a73c2d021d019bc7c",
+    "acceptanceRun": "https://github.com/zljix/labosv2/actions/runs/44068540213",
+    "artifactId": 14323740458,
+    "unchangedCIInstaller": true,
+    "webBytesEqualLocalDistribution": true,
+    "legacyProfilesPreserved": 74,
+    "coverage": {
+      "ursSupported": 268,
+      "ursTotal": 268,
+      "introductorySupported": 5,
+      "introductoryTotal": 5
+    }
+  }
+}

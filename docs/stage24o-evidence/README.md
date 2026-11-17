@@ -7,3 +7,5 @@
 `mysql-introductory.json` nastaje samo stvarnim PHP/MySQL prihvatom pet zasebnih dodjela: početna revizija, stvarni bodovi, nova revizija, zaključavanje, nastavnički pregled i očuvanje starog URS ugovora.
 
 `acceptance-summary.json` povezuje CI izvor, hash provjeravača, ponavljanja i pet zaključanih dodjela. Status stvarnog školskog pilota ostaje otvoren za 24P; funkcionalne provjere nisu izvođenje nastave.
+
+[Provjera javne objave](publication.json) potvrđuje manifest verzije 0.14.13-beta.1 i deset izravno preuzetih ključnih datoteka: stranicu, offline worker, aplikaciju, stilove, MicroPython JS/WASM i prikaz bodovanja. Svih 205 web resursa provjereno je u instalacijskom paketu. Skupna mrežna provjera bila je prekinuta prije odluke o mrežnom odobrenju; zato se izravna HTTP provjera pošteno vodi kao provjera ključnih resursa.

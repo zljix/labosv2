@@ -36,7 +36,7 @@ test('24O PHP/MySQL gives five independent introductory attempts, genuine grades
     const project={...initialProject,circuit:solution.circuit,files:{...initialProject.files,...solution.files,'provjera.json':'{"points":999,"authority":"server-verified"}'}};
     const solvedWork=JSON.parse(project.files['vjezba.json']);solvedWork.student=student.user.displayName;solvedWork.group=cls.name;solvedWork.answers[0]='Moje opažanje';project.files['vjezba.json']=JSON.stringify(solvedWork);
     const payload={attemptId:opened.attempt.id,expectedRevision:1,requestKey:randomUUID(),project};
-    const saved=await ok(student.client.call('save-work',payload));assert.equal(saved.revision,2);
+    const saved=await ok(student.client.call('save-work',payload));assert.equal(saved.saved.revision,2);
     const graded=await evaluate(10);assert.equal(graded.job.revision,2);assert.equal(graded.job.rubricDigest,contractDigest(task.rubric));
     await ok(student.client.call('finish-attempt',{attemptId:opened.attempt.id,expectedRevision:2,requestKey:randomUUID()}));
     const locked=await ok(student.client.call('attempt&id='+opened.attempt.id));assert.equal(locked.attempt.grading.points,10);assert.equal(locked.assignment.task.contentHash,task.contentHash);assert.equal(locked.attempt.status,'locked');

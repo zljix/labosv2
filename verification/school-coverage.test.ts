@@ -22,7 +22,7 @@ test('23G full URS matrix has exactly one status and explicit criteria per real 
       assert(p.targets.includes(row.target));assert.equal(p.taskKey,row.taskKey);assert.deepEqual(row.grading.criteria,p.criteria);
       assert.equal(row.grading.criteria.reduce((n,c)=>n+c.maxPoints,0),10);assert(readFileSync(row.grading.evidence!));
     }else{assert.equal(row.grading.maxPoints,null);assert.equal(row.grading.profileId,null);assert.deepEqual(row.grading.criteria,[]);}
-    if(row.target==='s3-cpp'&&row.grading.status==='supported')assert.match(row.grading.profileId!,/^24[BCDEFGHIJKLMN]-/);
+    if(row.target==='s3-cpp'&&row.grading.status==='supported')assert.match(row.grading.profileId!,/^24[BCDEFGHIJKLMNP]-/);
   }
   assert.deepEqual(matrix.introductory.map(r=>r.code),['V1','V2','V3','V4','V5']);
   assert(matrix.introductory.every(r=>r.status==='supported'&&r.maxPoints===10));
@@ -38,7 +38,9 @@ test('23G generated JSON, CSV and private catalogue agree with the authoritative
   for(const entry of catalog.entries)for(const target of entry.targets){
     assert.deepEqual(entry.gradingSupport[target],(entry.set==='introductory'?matrix.introductory.find(r=>r.taskKey===entry.key):matrix.rows.find(r=>r.taskKey===entry.key&&r.target===target))!.grading);
   }
-  assert.equal(gradingSupport('gpio/button','uno').checkerVersion,'24AB.1');
+  assert.equal(gradingSupport('gpio/button','uno').profileId,'24P-button-led@2');
+  assert.equal(gradingSupport('gpio/button','uno').checkerVersion,'24P.1-button');
+  assert.equal(registry.profiles.find(p=>p.id==='24B-button-led@1')!.checkerVersion,'24AB.1');
   assert.equal(gradingSupport('analog/lm35','uno').checkerVersion,'24AB.1');
 });
 test('23G real support page filters by target, family, status and text; injected text stays text',()=>{

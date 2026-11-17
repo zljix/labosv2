@@ -1,8 +1,8 @@
 # 24Q · Čitljivost sučelja i upute po varijanti
 
 Polazište: 0.14.14-beta.1 / 24P, commit `41b382bfa43612def5a8722f3a649396b54b43fa`.
-Pripremljena inačica: 0.14.15-beta.1 / 24Q, 17. studenoga 2026.
-Status: implementacija za tehnički pregled. Stolni Chromium pregled je proveden; prihvat na stvarnim mobitelima i učenički pilot nisu potvrđeni.
+Objavljena web beta: 0.14.15-beta.1 / 24Q, 17. studenoga 2026.
+Status: web beta objavljena; ciljani 24Q CI prošao, potpuna školska regresija još traje. [Dokaz javne objave](stage24q-evidence/publication.json). Stolni Chromium pregled je proveden; prihvat na stvarnim mobitelima i učenički pilot nisu potvrđeni.
 
 ## Provedeni redoslijed
 
@@ -49,3 +49,9 @@ Preostali prihvat ne smije se poistovjetiti s provedenim stolnim pregledom:
 Prvo 3–5 učenika, zatim razred. Upotrijebiti postojeće obrasce `pilot.html` i školski pilot; ne popunjavati ih pretpostavljenim rezultatima. Učenicima najprije dati V1/V3, potom jednu odabranu URS varijantu. Zabilježiti vrijeme do pronalaska sklopa i pokretanja, broj traženih pojašnjenja, razumijevanje razlike lokalno/školsko, uspješnost stvaranja istraživačke kopije, potpunost predviđanja/opažanja/oporavka i uspješnost zaključavanja.
 
 Nastavnik zasebno ocjenjuje razumijevanje i samostalnost. Funkcionalni bodovi pripremljenog programa nisu dokaz učeničkog učenja. Nakon pilota doraditi nejasne upute i raspored prema opaženim problemima.
+
+## Javna objava 17. studenoga 2026.
+
+GitHub Pages objava prošla je iz commita `0fc488a49ebe9e024bfe64d3b26c1ac8653af38d`. U javnom Chromiumu potvrđena je nadogradnja predmemorirane 24P verzije preko „Provjeri novu verziju” i „Spremi i otvori novu verziju”; postojeći V1 projekt je očuvan, prikazana je oznaka 0.14.15-beta.1 / 24Q i offline spremnost. MicroPython program pokrenut je i zaustavljen, a radni list i lokalne završne upute su dostupni. Snimka: `stage24q-evidence/labosv2-24q-published.jpg`.
+
+Potpuna školska regresija ostaje zaseban otvoren korak. Rezultati ranijeg uspješnog izvođenja ne pripisuju se automatski posljednjem commitu. Statusi i poveznice za nastavak zabilježeni su u `publication.json`.

@@ -1,8 +1,8 @@
 # Labosv2 · školski laboratorij
 
-**0.14.15-beta.1 · etapa 24Q · sučelje i upute po varijanti · pripremljeno za pregled.**
+**0.14.15-beta.1 · etapa 24Q · sučelje i upute po varijanti · objavljena web beta.**
 
-Čitljiviji školski paneli, sklop ispred ulaznih kontrola, pretraživ katalog, istraživačka kopija i završne upute prema načinu rada. Svih 67 URS varijanti ima vlastite upute uz očuvanje ranijih odgovora. [Provedene dorade, provjere i preostali vizualni prihvat/pilot](docs/STAGE24Q_PLAN_I_PROVJERA.md). Nova verzija još nije javno objavljena.
+Čitljiviji školski paneli, sklop ispred ulaznih kontrola, pretraživ katalog, istraživačka kopija i završne upute prema načinu rada. Svih 67 URS varijanti ima vlastite upute uz očuvanje ranijih odgovora. [Provedene dorade, provjere i preostali vizualni prihvat/pilot](docs/STAGE24Q_PLAN_I_PROVJERA.md). [Web laboratorij 24Q](https://zljix.github.io/labosv2/) je objavljen. [Dokaz objave i provjera](docs/stage24q-evidence/publication.json). Prošlo je 393 lokalnih testova, ciljani 24Q CI i javna nadogradnja iz 24P uz očuvan projekt. Potpuna školska regresija još traje; web objava nije potvrda punog prihvata instalacijskog paketa ni učeničkog pilota.
 
 **Tehnički prihvat 24P:** [Završne provjere i paket](https://github.com/zljix/labosv2/actions/runs/44105942453) potvrđuju svih 273 očekivanih ishoda, 79 nepromijenjenih prethodnih rubrika i 15 novih izoliranih C++ prijevoda za S3, Uno i Nano. Prošli su PHP/MySQL tokovi dugih Unicode identiteta, zaključavanja i dorade, oba radio čvora, ranije obitelji, pokus s 30 simuliranih učenika, izvještaji i povrat sigurnosne kopije. [Sažetak i otisak provjeravača](docs/stage24p-evidence/acceptance-summary.json). Stvarni školski pilot ostaje otvoren.
 

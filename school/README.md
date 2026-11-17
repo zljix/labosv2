@@ -1,8 +1,8 @@
 # Pripremljeno izdanje · 0.14.15-beta.1 / 24Q
 
-24Q donosi čitljivije panele, istraživačku kopiju, jasniji završetak rada i upute za svih 67 URS varijanti. Lokalna tehnička provjera je provedena; vizualni prihvat i stvarni učenički pilot ostaju otvoreni. [Opseg i provjere](../docs/STAGE24Q_PLAN_I_PROVJERA.md).
+24Q donosi čitljivije panele, istraživačku kopiju, jasniji završetak rada i upute za svih 67 URS varijanti. Lokalna tehnička provjera, ciljani 24Q CI i stolni pregled su provedeni; prihvat stvarnih mobitela i učenički pilot ostaju otvoreni. [Opseg i provjere](../docs/STAGE24Q_PLAN_I_PROVJERA.md).
 
-Izgradi `npm ci` i `npm run build:school`. Novi paket je `release/Labosv2_0.14.15_24Q_Skolski.zip`. Nema SQL migracije ni novih bodovnih pragova. Nove verzije školskih zadataka preuzimaju novi katalog; već objavljene upute/rubrike i zaključane predaje ostaju na svojoj inačici. Novi radni list ima `guideVersion: 2`, dok raniji čuva izvorna pitanja. Paket još nije javno objavljena nadogradnja.
+Izgradi `npm ci` i `npm run build:school`. Novi paket je `release/Labosv2_0.14.15_24Q_Skolski.zip`. Nema SQL migracije ni novih bodovnih pragova. Nove verzije školskih zadataka preuzimaju novi katalog; već objavljene upute/rubrike i zaključane predaje ostaju na svojoj inačici. Novi radni list ima `guideVersion: 2`, dok raniji čuva izvorna pitanja. Web beta 24Q je objavljena. Potpuni CI prihvat školskog paketa još traje; nemoj status web objave smatrati potvrdom završenog školskog prihvata. [Stanje pri objavi](../docs/stage24q-evidence/publication.json).
 
 ## Prethodno prihvaćena instalacija · 24P
 

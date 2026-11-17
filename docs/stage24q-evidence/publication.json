@@ -1,0 +1,127 @@
+{
+  "version": "0.14.15-beta.1",
+  "stage": "24Q",
+  "date": "2026-11-17",
+  "scope": "Published web beta; complete school-package acceptance remains in progress.",
+  "url": "https://zljix.github.io/labosv2/",
+  "pullRequest": "https://github.com/zljix/labosv2/pull/14",
+  "sourceHead": "58e8ac0f75c2bd492ed2064cb05b82a5bd0de64d",
+  "publishedCommit": "0fc488a49ebe9e024bfe64d3b26c1ac8653af38d",
+  "publishedTree": "43fb0a47486b272b2478838107fc9dcd632ec494",
+  "pages": {
+    "runId": 44163326103,
+    "conclusion": "success",
+    "url": "https://github.com/zljix/labosv2/actions/runs/44163326103",
+    "completedAt": "2026-11-17T19:54:15Z"
+  },
+  "localTestsPassed": 393,
+  "targeted24qCiTestsPassed": 388,
+  "workflowSnapshotAtPublication": [
+    {
+      "id": 44158859956,
+      "name": "Provjeri i zapakiraj školsko izdanje",
+      "status": "in_progress",
+      "conclusion": null,
+      "url": "https://github.com/zljix/labosv2/actions/runs/44158859956"
+    },
+    {
+      "id": 44158859925,
+      "name": "Etapa 24E · neovisni prihvat sva četiri cilja",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/zljix/labosv2/actions/runs/44158859925"
+    },
+    {
+      "id": 44158859974,
+      "name": "Etapa 24G · neovisni prihvat sva četiri cilja",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/zljix/labosv2/actions/runs/44158859974"
+    },
+    {
+      "id": 44158859949,
+      "name": "Etapa 24N · neovisni prihvat sva četiri cilja",
+      "status": "in_progress",
+      "conclusion": null,
+      "url": "https://github.com/zljix/labosv2/actions/runs/44158859949"
+    },
+    {
+      "id": 44158860070,
+      "name": "Etapa 24F · neovisni prihvat sva četiri cilja",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/zljix/labosv2/actions/runs/44158860070"
+    },
+    {
+      "id": 44158859947,
+      "name": "24Q · Sučelje i metodičke upute",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/zljix/labosv2/actions/runs/44158859947"
+    },
+    {
+      "id": 44158860293,
+      "name": "Etapa 24M · neovisni prihvat sva četiri cilja",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/zljix/labosv2/actions/runs/44158860293"
+    },
+    {
+      "id": 44158860018,
+      "name": "Etapa 24I · neovisni prihvat sva četiri cilja",
+      "status": "in_progress",
+      "conclusion": null,
+      "url": "https://github.com/zljix/labosv2/actions/runs/44158860018"
+    },
+    {
+      "id": 44158859937,
+      "name": "Etapa 24J · neovisni prihvat sva četiri cilja",
+      "status": "in_progress",
+      "conclusion": null,
+      "url": "https://github.com/zljix/labosv2/actions/runs/44158859937"
+    },
+    {
+      "id": 44158859932,
+      "name": "Etapa 24K · neovisni prihvat sva četiri cilja",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/zljix/labosv2/actions/runs/44158859932"
+    },
+    {
+      "id": 44158859951,
+      "name": "Etapa 24L · neovisni prihvat sva četiri cilja",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/zljix/labosv2/actions/runs/44158859951"
+    },
+    {
+      "id": 44158859970,
+      "name": "Etapa 24H · neovisni prihvat sva četiri cilja",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/zljix/labosv2/actions/runs/44158859970"
+    }
+  ],
+  "browser": {
+    "viewport": "1363x936",
+    "browser": "Chromium",
+    "verified": [
+      "Public version badge 0.14.15-beta.1 / 24Q",
+      "Upgrade from cached 24P via Check new version and Save/open new version",
+      "Existing V1 project preserved after upgrade",
+      "Offline-ready indication",
+      "MicroPython V1 program executes and stops",
+      "V1 worksheet and mode-specific local submission instructions render"
+    ],
+    "screenshot": "labosv2-24q-published.jpg"
+  },
+  "notPerformed": [
+    "Real iPhone/Safari and Android",
+    "200% browser zoom",
+    "Screen-reader acceptance",
+    "Authenticated school-server visual review",
+    "Real student pilot"
+  ],
+  "schoolPackageAcceptance": "pending; do not infer completion from web publication",
+  "followup": "Inspect school regression run 44158859956 (PR tree) or 44163326034 (same published tree) and remaining workflows before recording full school acceptance."
+}

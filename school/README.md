@@ -1,8 +1,14 @@
+## 24O — uvodne MicroPython vježbe V1–V5
+
+Izdanje **0.14.13-beta.1** dodaje pet zasebnih školskih zadataka, svaki do 10 bodova, s revizijama i zaključavanjem. Obuhvat ostaje **268/268 URS + 5/5 uvodnih**. Učenici dobivaju izvorne uvodne predloške s nedovršenim zadatkom. Lokalna provjera služi povratnoj informaciji; službeni bodovi nastaju iz točne spremljene snimke. [Uvjeti, provjere i nadogradnja](../docs/stage24o-introductory.md).
+
+Nema nove SQL migracije. Nakon sigurnosne kopije sačuvaj konfiguraciju, ključ i sesije, zamijeni kompletan paket, pokreni postojeći migrate i ponovno pokreni Linux provjeravače. Pri objavi nove inačice odaberi odgovarajuću V rubriku. Stare dodjele ostaju sačuvane. Slijedi 24P: potpuna regresija i stvarni školski pilot.
+
 ## 24N — digitalni i I2C pretvornici razina
 
 [Završni prihvat 24N](https://github.com/zljix/labosv2/actions/runs/44052504254) potvrđuje 253 ciljane izvedbe, 48 neovisnih C++ prijevoda i 16 zaključanih novih dodjela. Potvrđeni su i ranije obitelji, 30 simuliranih učenika, izvještaji te povrat kopije. [Sažetak i izvorni provjereni paket](../docs/stage24n-evidence/acceptance-summary.json).
 
-Izdanje **0.14.12-beta.1** dodaje četiri rubrike i završnih 16 kombinacija: **268/268**, odnosno svih 67 URS varijanti na sva četiri cilja. Uvodne V1–V5 ostaju lokalne. Bodovi dolaze iz stvarnih odvojenih domena i DIR-a, novog BMP280 čitanja te primljenih OLED piksela. Postojeća trajanja primjera zadržana su i objavljena po cilju. [Uvjeti i nadogradnja](../docs/stage24n-levels.md).
+Izdanje **0.14.12-beta.1** dodaje četiri rubrike i završnih 16 kombinacija: **268/268**, odnosno svih 67 URS varijanti na sva četiri cilja. U ovoj povijesnoj etapi uvodne V1–V5 još su bile lokalne; njihove školske rubrike dodane su u 24O. Bodovi dolaze iz stvarnih odvojenih domena i DIR-a, novog BMP280 čitanja te primljenih OLED piksela. Postojeća trajanja primjera zadržana su i objavljena po cilju. [Uvjeti i nadogradnja](../docs/stage24n-levels.md).
 
 Nema nove SQL migracije. Sačuvaj bazu, privatnu konfiguraciju, ključ i sesije; zamijeni kompletan paket, pokreni postojeći migrate i ponovno pokreni Linux provjeravače. Nove rubrike izričito odaberi pri objavi nove inačice zadatka. Stare dodjele i zaključani bodovi ostaju uz svoje stare rubrike.
 

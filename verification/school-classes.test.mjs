@@ -107,8 +107,8 @@ test('23C classes, admission, immutable tasks and assignments against real PHP/M
     assert.deepEqual(results.map(r=>r.status).sort(),[201,422]);assert.equal(sql('SELECT used_count FROM class_invites WHERE id=?',[last.id])[0].used_count,1);
     assert.equal(sql("SELECT COUNT(*) AS n FROM users WHERE username IN ('race.one','race.two')")[0].n,1);
   });
-  await t.test('school catalogue uses all existing 67 variants and 268 targets without exposing template paths',async()=>{
-    const catalog=(await expect(teacher.client.call('catalog'),200)).catalog;assert.equal(catalog.entries.length,67);assert.equal(catalog.entries.reduce((n,e)=>n+e.targets.length,0),268);assert(catalog.entries.every(e=>!e.templates));
+  await t.test('school catalogue uses 67 URS variants, 268 URS targets and five introductory tasks without exposing template paths',async()=>{
+    const catalog=(await expect(teacher.client.call('catalog'),200)).catalog;assert.equal(catalog.entries.length,72);assert.equal(catalog.entries.filter(e=>e.set==='urs').reduce((n,e)=>n+e.targets.length,0),268);assert.equal(catalog.entries.filter(e=>e.set==='introductory').length,5);assert(catalog.entries.every(e=>!e.templates));
     await expect(student.client.call('catalog'),403);await expect(student.client.call('task-versions'),403);
     for(const key of ['gpio/button','gpio/adc','weather/bmp280'])assert(catalog.entries.some(e=>e.key===key));
   });

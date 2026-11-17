@@ -1,6 +1,6 @@
 # Labosv2 · školski laboratorij
 
-**0.14.12-beta.1 · etapa 24N · pretvornici razina · 17. studenoga 2026.**
+**0.14.13-beta.1 · etapa 24O · uvodne MicroPython vježbe · 17. studenoga 2026.**
 
 **Prihvat 24N:** [Završne provjere i paket](https://github.com/zljix/labosv2/actions/runs/44052504254) potvrđuju 253 ciljane izvedbe, 48 neovisnih C++ prijevoda i 16 zaključanih školskih dodjela. Prošli su svi ciljevi, ranije obitelji, 30 simuliranih učenika, izvještaji i povrat kopije. [Sažetak](docs/stage24n-evidence/acceptance-summary.json) i [izvornost instalacijskog paketa](docs/stage24n-evidence/installer-integrity.json).
 
@@ -26,10 +26,17 @@ Nastavak postojećeg ESP32 MicroPython / Arduino laboratorija za školski sustav
 
 [Neovisni prihvat 24F](https://github.com/zljix/labosv2/actions/runs/43915429891) potvrđuje sva četiri cilja i 67 novih prijevoda. [Školski prihvat 24F](https://github.com/zljix/labosv2/actions/runs/43916966742) potvrđuje identičan programski izvor, PHP/MySQL, bodove, zaključavanje, 30 simuliranih učenika, izvještaje i paket.
 
-## Novo u 24N
+## Novo u 24O
+
+- Pet zasebnih uvodnih MicroPython zadataka V1–V5 sa službenim bodovima 3 + 5 + 2, revizijama i zaključanom predajom.
+- **268/268 URS kombinacija + 5/5 uvodnih zadataka**, s odvojenim evidencijama i izvornim početnim projektima za učenika.
+- Vlastiti odaziv V2 od 300 ms; puni ADC/PWM; svježi AHT10, stvarni OLED 128×64 sa slobodnim rasporedom redaka te oba smjera histereze.
+- [Uvjeti, opseg i nadogradnja](docs/stage24o-introductory.md). Nema nove SQL migracije. Slijedi 24P, potpuna regresija i stvarni školski pilot.
+
+## Sačuvano iz 24N
 
 - Četiri nove rubrike: tipkalo i LED kroz SN74LVC2T45 te BMP280 i OLED128×32 kroz automatski I2C pretvornik.
-- **268/268 kombinacija**: svih 67 postojećih URS varijanti na MicroPythonu, S3 C++, Unu i Nanu ima verzioniranu službenu provjeru. Početne V1–V5 i dalje su zasebne lokalne provjere.
+- **268/268 kombinacija**: svih 67 postojećih URS varijanti na MicroPythonu, S3 C++, Unu i Nanu ima verzioniranu službenu provjeru. U 24N uvodne V1–V5 još su bile zasebne lokalne provjere; 24O dodaje njihove školske rubrike.
 - Stvarne odvojene naponske domene, DIR, valjan podatkovni kanal, novi senzorski prijenosi i primljena OLED memorija određuju bodove 3 + 5 + 2.
 - Postojeći programi i njihova vremena ostaju sačuvani. [Uvjeti, opseg i nadogradnja](docs/stage24n-levels.md). Nema nove SQL migracije.
 
@@ -207,7 +214,7 @@ npm ci
 npm run build:school
 ```
 
-Školski paket: `release/Labosv2_0.14.12_24N_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-24N-Provjeren-skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
+Školski paket: `release/Labosv2_0.14.13_24O_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-24O-Provjeren-skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
 
 ```sh
 npm run build:pages

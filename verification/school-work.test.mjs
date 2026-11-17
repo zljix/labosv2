@@ -76,7 +76,7 @@ test('23D actual PHP/MySQL attempts, revisions, permissions and concurrency',{ti
     await ok(f.admin.call('membership',{classId:c.id,userId:a.user.id,kind:'student',present:false}));await ok(a.client.call('attempt&id='+attemptId),403);await ok(a.client.call('save-work',payload(opened.snapshot.project)),403);
     await addStudents([a]);
   });
-  await t.test('all 268 published starter targets retain valid object fields, both radio nodes and media',async()=>{
+  await t.test('all 268 URS and five introductory starter targets retain valid object fields, both radio nodes and media',async()=>{
     const catalog=(await ok(teacher.client.call('catalog'))).catalog;let count=0;
     for(const entry of catalog.entries){
       const version=(await ok(teacher.client.call('publish-task',{taskKey:entry.key}),201)).task;
@@ -86,7 +86,7 @@ test('23D actual PHP/MySQL attempts, revisions, permissions and concurrency',{ti
         const saved=await ok(a.client.call('save-work',body));assert.equal(saved.saved.revision,2,entry.key+' '+target);
         if(start.snapshot.project.radio)assert(start.snapshot.project.radio.peer.files['main.py']||start.snapshot.project.radio.peer.files['main.ino']);++count;
       }
-    }assert.equal(count,268);
+    }assert.equal(count,273);
   });
   await t.test('repeated migration preserves all snapshots and published versions',async()=>{
     const before=f.sql('SELECT COUNT(*) AS n FROM work_snapshots')[0].n;const r=f.command('migrate');assert.equal(r.status,0,r.stderr);

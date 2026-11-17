@@ -1,6 +1,7 @@
 import {useEffect,useRef,useState} from 'react';
 import {appAsset} from './assets';
 import {parseProject,forkProject,type Project} from '../project/model';
+import {readWork,WORK_FILE} from '../lessons/catalog';
 import {readUrsWork} from '../lessons/ursWork';
 import {SchoolApi,prepareSchoolAttempt,readSchoolBinding,type SchoolBinding} from './schoolSync';
 import SchoolWork from './SchoolWork';
@@ -27,6 +28,8 @@ export function prepareSchoolAssignment(assignment:any,user:any):Project {
   p.files[SCHOOL_TASK_FILE]=JSON.stringify({format:'labosv2-assignment-copy',version:1,assignment:record},null,2);
   const work=readUrsWork(p);
   if(work){work.student=String(user.displayName).slice(0,100);work.group=String(assignment.className).slice(0,40);p.files[URS_WORK]=JSON.stringify(work,null,2);}
+  const intro=readWork(p);
+  if(intro){intro.student=String(user.displayName).slice(0,100);intro.group=String(assignment.className).slice(0,40);p.files[WORK_FILE]=JSON.stringify(intro,null,2);}
   return parseProject(p);
 }
 

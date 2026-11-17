@@ -1,0 +1,300 @@
+name: Etapa 24O · uvodne MicroPython vježbe i školski prihvat
+on:
+  push:
+    branches: [stage24o-introductory]
+  workflow_dispatch:
+concurrency:
+  group: stage24o-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  school-acceptance:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: pdo_mysql, json, session
+          coverage: none
+      - name: Pokreni zasebni MySQL s jednokratnim vjerodajnicama
+        shell: bash
+        run: |
+          set +x
+          db_root_pass="$(openssl rand -hex 24)"
+          db_app_pass="$(openssl rand -hex 24)"
+          echo "::add-mask::$db_root_pass"
+          echo "::add-mask::$db_app_pass"
+          docker run --detach --name labosv2-ci-db \
+            --publish 127.0.0.1:3306:3306 \
+            --env MYSQL_ROOT_PASSWORD="$db_root_pass" \
+            --env MYSQL_DATABASE=labosv2_test_ci \
+            --env MYSQL_USER=labosv2_ci \
+            --env MYSQL_PASSWORD="$db_app_pass" mysql:8.4.7
+          echo "LAB_TEST_DB_PASSWORD=$db_app_pass" >> "$GITHUB_ENV"
+          for attempt in $(seq 1 60); do
+            if docker exec labosv2-ci-db sh -c 'MYSQL_PWD="$MYSQL_ROOT_PASSWORD" mysqladmin ping --host=127.0.0.1 --silent' >/dev/null 2>&1; then
+              exit 0
+            fi
+            sleep 2
+          done
+          echo 'Test MySQL did not become ready.' >&2
+          exit 1
+      - name: Pripremi zasebne baze za razrede i korisnički tijek
+        run: |
+          docker exec --interactive labosv2-ci-db sh -c 'MYSQL_PWD="$MYSQL_ROOT_PASSWORD" mysql --host=127.0.0.1 --user=root' <<'SQL'
+          CREATE DATABASE labosv2_test_classes CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_portal CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_work CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_work_ui CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_grading CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_submissions CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_reports CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_restore CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_load CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_contract CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_analog CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_sensors CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_events CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_actuators CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_steppers CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_displays CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_environment CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_levels CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_introductory CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_radio CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_optical CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_storage CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_touch CHARACTER SET utf8mb4;
+          GRANT ALL ON labosv2_test_classes.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_portal.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_work.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_work_ui.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_grading.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_submissions.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_reports.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_restore.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_load.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_contract.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_analog.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_sensors.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_events.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_actuators.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_steppers.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_displays.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_environment.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_levels.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_introductory.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_radio.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_optical.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_storage.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_touch.* TO 'labosv2_ci'@'%';
+          SQL
+      - name: Pripremi Linux izolaciju
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcap-dev pkg-config ninja-build
+          python3 -m pip install --user meson==1.9.1
+          git clone --quiet https://github.com/containers/bubblewrap.git "$RUNNER_TEMP/bubblewrap"
+          git -C "$RUNNER_TEMP/bubblewrap" checkout --quiet 2a76602a8c71f36c1527cf9fc3417d9149822e0c
+          "$HOME/.local/bin/meson" setup "$RUNNER_TEMP/bwrap-build" "$RUNNER_TEMP/bubblewrap" --prefix="$RUNNER_TEMP/bwrap-install" -Dman=disabled -Dselinux=disabled -Dtests=false
+          ninja -C "$RUNNER_TEMP/bwrap-build"
+          ninja -C "$RUNNER_TEMP/bwrap-build" install
+          printf '%s\n' "$RUNNER_TEMP/bwrap-install/bin" >> "$GITHUB_PATH"
+      - run: npm run build:school
+      - name: Provjeri PHP sintaksu
+        run: find school -name '*.php' -print0 | xargs -0 -n1 php -l
+      - run: npm run test:school-introductory
+      - name: Provjeri pet uvodnih dodjela, revizije, bodove i zaključavanje
+        run: npm run test:school-introductory-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_introductory;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - run: npm run test:school-pilot
+      - run: npm run test:school-coverage
+      - name: Provjeri potpuni 1-Wire prijenos i svježinu registra
+        run: node --import tsx --test --test-name-pattern="24D telemetry|Match ROM|power cycle|missing external|active GPIO HIGH" verification/onewire.test.ts
+      - name: Provjeri PHP/MySQL ugovore, S3 posao i zaštitu od ponovne uporabe rezultata
+        run: npm run test:school-contract-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_contract;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - name: Provjeri nove analogne dodjele, bodove, zaključavanje i stare rubrike
+        run: npm run test:school-analog-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_analog;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - name: Provjeri senzorske dodjele, revizije, bodove i zaključavanje
+        run: npm run test:school-sensors-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_sensors;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - name: Provjeri šest događajnih dodjela, stvarne bodove i zaključane predaje
+        run: npm run test:school-events-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_events;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - name: Provjeri sedam aktuatorskih dodjela, bodove i zaključane predaje
+        run: npm run test:school-actuators-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_actuators;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - name: Provjeri svih 32 zaslonskih dodjela, stvarne bodove i zaključavanje
+        run: npm run test:school-displays-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_displays;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - name: Sačuvaj koračne dodjele i stare ugovore
+        run: npm run test:school-steppers-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_steppers;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - name: Provjeri svih 16 novih dodjela, bodove i zaključavanje
+        run: npm run test:school-levels-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_levels;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - name: Regresija ranije dvočvorne radijske dodjele
+        run: npm run test:school-radio-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_radio;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - name: Regresija svih 24 RTC i SD dodjela
+        run: npm run test:school-storage-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_storage;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - name: Regresija svih 16 optičkih dodjela
+        run: npm run test:school-optical-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_optical;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - name: Regresija ranijih ILI9341 i XPT2046 dodjela
+        run: npm run test:school-touch-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_touch;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - name: Pokus s 30 učenika, stvarnim PHP/MySQL i dva privatna provjeravača
+        run: npm run test:school-load
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_load;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - name: Regresija ranije stanice i regulatora
+        run: npm run test:school-environment-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_environment;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - run: npm run test:school-finish-ui
+      - run: npm run test:school-reports
+      - name: Provjeri izvještaje, korekcije, arhivu, čuvanje i povrat sigurnosne kopije
+        run: npm run test:school-reports-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_reports;charset=utf8mb4
+          LAB_TEST_RESTORE_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_restore;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - name: Provjeri zaključavanje, ponovljive zahtjeve i dorade
+        run: npm run test:school-submissions
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_submissions;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - run: npm run test:school-grading-ui
+      - name: Provjeri red poslova i zaštitu rezultata
+        run: npm run test:school-grading-api
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_grading;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - run: npm run test:school-package
+      - run: npm run test:school-catalog
+      - name: Provjeri stvarni PHP i MySQL račune
+        run: npm run test:school-accounts
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_ci;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - name: Provjeri razrede, uvoz i dodijeljene vježbe
+        run: npm run test:school-classes
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_classes;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - name: Provjeri korisnički tijek školskog portala
+        run: npm run test:school-portal
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_portal;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - run: npm run test:school-sync
+      - name: Provjeri revizije i istodobno spremanje
+        run: npm run test:school-work
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_work;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - name: Provjeri sučelje središnjeg spremanja
+        run: npm run test:school-work-ui
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_work_ui;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
+      - name: Provjeri projekte, vodove i neovisno izvršavanje
+        run: node --import tsx --test verification/project.test.ts verification/circuit.test.ts verification/routing.test.ts verification/school.test.ts
+      - name: Poveži pet zadataka, ponavljanja i isporučeni provjeravač
+        run: |
+          node --input-type=module - <<'JS'
+          import {readFileSync,writeFileSync} from 'node:fs';
+          const evidence=JSON.parse(readFileSync('docs/stage24o-evidence/introductory.json'));
+          const api=JSON.parse(readFileSync('docs/stage24o-evidence/mysql-introductory.json'));
+          if(evidence.sourceCommit!==process.env.GITHUB_SHA||api.sourceCommit!==process.env.GITHUB_SHA)throw Error('Evidence source mismatch');
+          const profiles=['24O-v1-led-time@1','24O-v2-button@1','24O-v3-adc-pwm@1','24O-v4-aht-oled@1','24O-v5-regulator@1'];
+          for(const id of profiles){
+            const groups=new Map();
+            for(const r of evidence.results.filter(r=>r.profileId===id&&r.result.points===10)){
+              const key=r.snapshotHash+':'+r.seed;groups.set(key,[...(groups.get(key)??[]),r]);
+            }
+            if(![...groups.values()].some(rows=>rows.length===3&&rows.every(r=>JSON.stringify(r.result.samples)===JSON.stringify(rows[0].result.samples))))throw Error('Missing identical repetitions '+id);
+          }
+          if(api.results.length!==5||api.results.some(r=>r.report.points!==10||!r.locked||r.revision!==2)||!api.legacyPreserved)throw Error('School acceptance incomplete');
+          const hashes=[...new Set([...evidence.results.map(r=>r.result.checkerHash),...api.results.map(r=>r.report.checkerHash)])];
+          if(hashes.length!==1||!/^[a-f0-9]{64}$/.test(hashes[0]))throw Error('Checker bytes differ');
+          const summary={format:'labosv2-24o-acceptance',version:1,sourceCommit:process.env.GITHUB_SHA,checkerHash:hashes[0],
+            coverage:{ursSupported:268,ursTotal:268,introductorySupported:5,introductoryTotal:5},target:'micropython',
+            targetedExecutions:evidence.results.length,identicalReferenceExecutions:15,lockedSchoolAssignments:5,legacyPreserved:true,
+            realSchoolPilot:'pending-24P',stageRunURL:process.env.GITHUB_SERVER_URL+'/'+process.env.GITHUB_REPOSITORY+'/actions/runs/'+process.env.GITHUB_RUN_ID};
+          writeFileSync('docs/stage24o-evidence/acceptance-summary.json',JSON.stringify(summary,null,2)+'\n');console.log(JSON.stringify(summary));
+          JS
+      - name: Uključi izvedeni dokaz u školski paket
+        run: node scripts/package-school.mjs
+      - run: npm run test:school-package
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Labosv2-24O-Zavrsni-dokazi
+          path: |
+            docs/stage24ab-evidence/
+            docs/stage24c-evidence/
+            docs/stage24d-evidence/
+            docs/stage24e-evidence/
+            docs/stage24f-evidence/
+            docs/stage24g-evidence/
+            docs/stage24h-evidence/
+            docs/stage24i-evidence/
+            docs/stage24j-evidence/
+            docs/stage24k-evidence/
+            docs/stage24l-evidence/
+            docs/stage24m-evidence/
+            docs/stage24n-evidence/
+            docs/stage24o-evidence/
+            docs/stage23i-evidence/
+          if-no-files-found: error
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Labosv2-24O-Provjeren-skolski-paket
+          path: release/*.zip
+          if-no-files-found: error
+          retention-days: 30
+      - name: Ugasi testnu bazu
+        if: always()
+        run: docker rm --force labosv2-ci-db || true

@@ -1,7 +1,12 @@
 {
   "format": "labosv2-grading-coverage",
   "version": 1,
-  "sourceVersion": "0.14.12-beta.1",
+  "sourceVersion": "0.14.13-beta.1",
+  "introductorySummary": {
+    "total": 5,
+    "supported": 5,
+    "unsupported": 0
+  },
   "summary": {
     "themes": 18,
     "variants": 67,
@@ -13148,67 +13153,212 @@
     {
       "code": "V1",
       "lessonId": "led-time",
+      "taskKey": "intro/led-time",
       "title": "LED i vrijeme",
       "target": "micropython",
-      "status": "local-only",
-      "maxPoints": null,
+      "status": "supported",
+      "maxPoints": 10,
       "criteria": [
         "LED se naizmjence uključuje i isključuje kroz najmanje tri ciklusa.",
         "Uključenje približno 250 ms, isključenje približno 750 ms; provjera dopušta kašnjenje preglednika."
       ],
-      "reason": "Početna vježba ima lokalnu povratnu informaciju. Nije objavljena kao službena školska rubrika; ne nasljeđuje bodove slične URS vježbe."
+      "grading": {
+        "status": "supported",
+        "profileId": "24O-v1-led-time@1",
+        "checkerVersion": "24O.1",
+        "title": "V1 · LED i vrijeme",
+        "instructions": "Najmanje tri puna ciklusa 250 ms uključeno / 750 ms isključeno, tolerancija ±24 ms. Početnom sklopu nedostaje vodič e8–LED A; učenik ga popravlja. Provjera izvodi spremljeni izvor i sklop u odvojenoj sesiji. Dopušteni su ekvivalentni algoritmi, drukčiji nazivi i valjani GPIO uz usklađen kod. Lokalna provjera, scenarij.json, provjera.json i odgovori ne dodjeljuju službene bodove. Svaki V zadatak ima zaseban školski pokušaj, bodove i zaključanu predaju.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Zatvoreni strujni krug LED-ice s otpornikom",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Najmanje tri puna ciklusa uključenja i isključenja",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Uključenje 250 ms i isključenje 750 ms",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-introductory.test.ts"
+      },
+      "reason": "Zaseban uvodni MicroPython zadatak sa školskim pokušajem i zaključavanjem. Lokalna provjera ne prenosi službene bodove."
     },
     {
       "code": "V2",
       "lessonId": "button",
+      "taskKey": "intro/button",
       "title": "Tipkalo kao ulaz",
       "target": "micropython",
-      "status": "local-only",
-      "maxPoints": null,
+      "status": "supported",
+      "maxPoints": 10,
       "criteria": [
         "LED je ugašena pri otpuštenom tipkalu.",
         "Dva pritiska uključuju LED, a oba otpuštanja je isključuju unutar približno 300 ms."
       ],
-      "reason": "Početna vježba ima lokalnu povratnu informaciju. Nije objavljena kao službena školska rubrika; ne nasljeđuje bodove slične URS vježbe."
+      "grading": {
+        "status": "supported",
+        "profileId": "24O-v2-button@1",
+        "checkerVersion": "24O.1",
+        "title": "V2 · Tipkalo kao ulaz",
+        "instructions": "Aktivno nisko tipkalo upravlja LED-icom: pritisnuto uključuje, otpušteno isključuje. Sedam stanja u etapama po 650 ms, odaziv do 300 ms uz toleranciju koraka 24 ms. Prvi pritisak i otpuštanje nose 5, ponavljanja 2 boda. Provjera izvodi spremljeni izvor i sklop u odvojenoj sesiji. Dopušteni su ekvivalentni algoritmi, drukčiji nazivi i valjani GPIO uz usklađen kod. Lokalna provjera, scenarij.json, provjera.json i odgovori ne dodjeljuju službene bodove. Svaki V zadatak ima zaseban školski pokušaj, bodove i zaključanu predaju.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan put tipkala i LED-ice, ulaz u načinu IN",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "LED slijedi prvo pritiskanje i otpuštanje",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "LED slijedi ponovljene pritiske i povrat",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-introductory.test.ts"
+      },
+      "reason": "Zaseban uvodni MicroPython zadatak sa školskim pokušajem i zaključavanjem. Lokalna provjera ne prenosi službene bodove."
     },
     {
       "code": "V3",
       "lessonId": "adc-pwm",
+      "taskKey": "intro/adc-pwm",
       "title": "Potenciometar i PWM",
       "target": "micropython",
-      "status": "local-only",
-      "maxPoints": null,
+      "status": "supported",
+      "maxPoints": 10,
       "criteria": [
         "Pri 0 % klizača LED je ugašena, a pri 100 % uključena.",
         "Međupoložaji 25 % i 50 % daju rastuću svjetlinu u odnosu na najveću vrijednost."
       ],
-      "reason": "Početna vježba ima lokalnu povratnu informaciju. Nije objavljena kao službena školska rubrika; ne nasljeđuje bodove slične URS vježbe."
+      "grading": {
+        "status": "supported",
+        "profileId": "24O-v3-adc-pwm@1",
+        "checkerVersion": "24O.1",
+        "title": "V3 · Potenciometar i PWM",
+        "instructions": "Stvarni PWM radni omjer prati ADC u rasponu 0–65535. Provjeravaju se položaji 0/25/50/100 %, dvije pobude iz sjemena i povrat. Odaziv do 400 ms +24 ms, odstupanje radnog omjera do 0,04. S3: 12 bita, ATTN_11DB, zasićenje 3,1 V; položaj 50 % daje približno 53,2 % PWM-a. Provjera izvodi spremljeni izvor i sklop u odvojenoj sesiji. Dopušteni su ekvivalentni algoritmi, drukčiji nazivi i valjani GPIO uz usklađen kod. Lokalna provjera, scenarij.json, provjera.json i odgovori ne dodjeljuju službene bodove. Svaki V zadatak ima zaseban školski pokušaj, bodove i zaključanu predaju.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan ADC put potenciometra te put otpornika i LED-ice",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Radni omjer prati početnu i dvije dodatne ADC pobude",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Krajevi raspona, položaji 25/50 % i povrat",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-introductory.test.ts"
+      },
+      "reason": "Zaseban uvodni MicroPython zadatak sa školskim pokušajem i zaključavanjem. Lokalna provjera ne prenosi službene bodove."
     },
     {
       "code": "V4",
       "lessonId": "aht-oled",
+      "taskKey": "intro/aht-oled",
       "title": "AHT10 i OLED",
       "target": "micropython",
-      "status": "local-only",
-      "maxPoints": null,
+      "status": "supported",
+      "maxPoints": 10,
       "criteria": [
         "AHT10 obavlja nova očitanja pri zadanim promjenama okoliša.",
         "OLED u standardnom fontu prikazuje brojke temperature i vlage s jednim decimalnim mjestom; raspored teksta i nazivi varijabli su slobodni."
       ],
-      "reason": "Početna vježba ima lokalnu povratnu informaciju. Nije objavljena kao službena školska rubrika; ne nasljeđuje bodove slične URS vježbe."
+      "grading": {
+        "status": "supported",
+        "profileId": "24O-v4-aht-oled@1",
+        "checkerVersion": "24O.1",
+        "title": "V4 · AHT10 i OLED",
+        "instructions": "Temperaturu i vlagu mijenjamo i odvojeno kroz šest etapa. Nova očitanja i prikaz najkasnije svake 2 s, tolerancija 100 ms; najmanje dva nova očitanja po etapi. OLED 128×64, standardni framebuf text() 8×8, jedno decimalno mjesto; T i RH na različitim redcima (razmak početaka najmanje 8 px) bilo gdje unutar zaslona. Brojke moraju ostati stabilne najmanje 100 ms. Konzola ili text() bez show() nisu dokaz prikaza. Provjera izvodi spremljeni izvor i sklop u odvojenoj sesiji. Dopušteni su ekvivalentni algoritmi, drukčiji nazivi i valjani GPIO uz usklađen kod. Lokalna provjera, scenarij.json, provjera.json i odgovori ne dodjeljuju službene bodove. Svaki V zadatak ima zaseban školski pokušaj, bodove i zaključanu predaju.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani put AHT10 i OLED-a, stvarno novo očitanje",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja temperature i vlage u svim promjenama",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Nove brojke T/RH u stvarnim OLED pikselima",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-introductory.test.ts"
+      },
+      "reason": "Zaseban uvodni MicroPython zadatak sa školskim pokušajem i zaključavanjem. Lokalna provjera ne prenosi službene bodove."
     },
     {
       "code": "V5",
       "lessonId": "regulator",
+      "taskKey": "intro/regulator",
       "title": "Regulator sa servom",
       "target": "micropython",
-      "status": "local-only",
-      "maxPoints": null,
+      "status": "supported",
+      "maxPoints": 10,
       "criteria": [
         "Servo slijedi slijed 0 → 90 → 90 → 0 → 0 → 90° uz nova senzorska očitanja.",
         "OLED nastavlja prikazivati temperaturu i vlagu. U području histereze čuva se prethodno stanje."
       ],
-      "reason": "Početna vježba ima lokalnu povratnu informaciju. Nije objavljena kao službena školska rubrika; ne nasljeđuje bodove slične URS vježbe."
+      "grading": {
+        "status": "supported",
+        "profileId": "24O-v5-regulator@1",
+        "checkerVersion": "24O.1",
+        "title": "V5 · Regulator sa servom",
+        "instructions": "Osnovni slijed 24→29→27→25→27→29 °C daje 0→90→90→0→0→90°. Nakon toga granični uzorci iz objavljenog ugovora ispituju oba smjera. Otvori na dekodirano T≥28, zatvori na T≤26, između pamti stanje. Prag primijeni prije zaokruživanja: nominalnih 26 AHT10 dekodira kao približno 26,000023 °C. Servo 50±2 Hz, kut ±2°. Odaziv i osvježavanje do 2 s +100 ms, najmanje dva nova očitanja po etapi. OLED 128×64, standardni text() 8×8, T/RH s jednom decimalom na različitim slobodno odabranim redcima. Stabilan prikaz najmanje 100 ms. Provjera izvodi spremljeni izvor i sklop u odvojenoj sesiji. Dopušteni su ekvivalentni algoritmi, drukčiji nazivi i valjani GPIO uz usklađen kod. Lokalna provjera, scenarij.json, provjera.json i odgovori ne dodjeljuju službene bodove. Svaki V zadatak ima zaseban školski pokušaj, bodove i zaključanu predaju.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani AHT10/OLED put i stvarni servo impulsi",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Osnovni slijed: nova očitanja, OLED i histereza",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Oba smjera, granični uzorci i završni povrat",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-introductory.test.ts"
+      },
+      "reason": "Zaseban uvodni MicroPython zadatak sa školskim pokušajem i zaključavanjem. Lokalna provjera ne prenosi službene bodove."
     }
   ]
 }

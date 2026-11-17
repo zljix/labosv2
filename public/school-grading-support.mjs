@@ -26,7 +26,7 @@ export function mountGradingCoverage(data,root=document){
   }
   $('#filters').addEventListener('submit',e=>e.preventDefault());$('#query').addEventListener('input',draw);
   for(const id of ['#family','#target','#support'])$(id).addEventListener('change',draw);
-  $('#introductory').replaceChildren(...data.introductory.map(l=>{const d=node('details');d.append(node('summary',l.code+' · '+l.title),node('p',l.reason));const ul=node('ul');for(const c of l.criteria)ul.append(node('li',c));d.append(ul);return d;}));draw();
+  $('#introductory').replaceChildren(...data.introductory.map(l=>{const d=node('details');d.append(node('summary',l.code+' · '+l.title),node('p',l.reason),node('p',l.grading?.status==='supported'?'Školsko bodovanje: '+l.grading.profileId+' · najviše '+l.maxPoints+' bodova. '+l.grading.instructions:'Službeno bodovanje nije podržano.'));const ul=node('ul');for(const c of l.criteria)ul.append(node('li',c));d.append(ul);return d;}));draw();
 }
 if(typeof document!=='undefined'&&document.querySelector('#rows')){
   try{const response=await fetch(new URL('./school-grading-support.json',import.meta.url));if(!response.ok)throw Error('http');mountGradingCoverage(await response.json());}

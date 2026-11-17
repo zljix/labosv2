@@ -1,6 +1,6 @@
 {
   "name": "esp32-micropython-lab",
-  "version": "0.14.12-beta.1",
+  "version": "0.14.13-beta.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -104,7 +104,9 @@
     "test:school-radio": "node --import tsx --test verification/school-radio.test.ts",
     "test:school-radio-api": "node --import tsx --test verification/school-radio-api.test.mjs",
     "test:school-levels": "node --import tsx --test verification/school-levels.test.ts",
-    "test:school-levels-api": "node --import tsx --test verification/school-levels-api.test.mjs"
+    "test:school-levels-api": "node --import tsx --test verification/school-levels-api.test.mjs",
+    "test:school-introductory": "node --import tsx --test verification/school-introductory.test.ts",
+    "test:school-introductory-api": "node --import tsx --test verification/school-introductory-api.test.mjs"
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.1",

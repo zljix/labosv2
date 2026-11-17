@@ -52,11 +52,12 @@ function newAttemptDocument(\stdClass $p, array $assignment, string $studentName
     unset($p->files->{'school-attempt.json'});
     $record = $assignment; unset($record['starter']);
     $p->files->{'school-assignment.json'} = json_encode(['format' => 'labosv2-assignment-copy', 'version' => 1, 'assignment' => $record], JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
-    if (isset($p->files->{'urs-vjezba.json'})) {
-        $work = json_decode($p->files->{'urs-vjezba.json'}, false, 32);
+    foreach (['urs-vjezba.json', 'vjezba.json'] as $workFile) {
+        if (!isset($p->files->{$workFile})) continue;
+        $work = json_decode($p->files->{$workFile}, false, 32);
         if ($work instanceof \stdClass) {
             $work->student = $studentName; $work->group = $assignment['className'];
-            $p->files->{'urs-vjezba.json'} = json_encode($work, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
+            $p->files->{$workFile} = json_encode($work, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
         }
     }
     return canonicalJson($p);

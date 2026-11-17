@@ -43,6 +43,8 @@ copy('docs/stage24m-radio.md', 'docs/stage24m-radio.md');
 copy('docs/stage24m-evidence', 'docs/stage24m-evidence');
 copy('docs/stage24n-levels.md', 'docs/stage24n-levels.md');
 copy('docs/stage24n-evidence', 'docs/stage24n-evidence');
+copy('docs/stage24o-introductory.md', 'docs/stage24o-introductory.md');
+copy('docs/stage24o-evidence', 'docs/stage24o-evidence');
 copy('.build/school-catalog', 'catalog');
 copy('school/README.md', 'README.md'); copy('school/profile.json', 'profile.json'); copy('LICENSE', 'LICENSE');
 copy('docs/stage23e-grading.md', 'docs/stage23e-grading.md');
@@ -68,10 +70,10 @@ function walk(directory) { for (const item of readdirSync(directory, {withFileTy
   if (item.isDirectory()) walk(path); else entries[relative(target, path).replaceAll('\\', '/')] = new Uint8Array(readFileSync(path));
 } }
 walk(target);
-const inventory = {version, stage: '24N', appBuild: manifest.build, files: Object.entries(entries).map(([path, bytes]) => ({path, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex')}))};
+const inventory = {version, stage: '24O', appBuild: manifest.build, files: Object.entries(entries).map(([path, bytes]) => ({path, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex')}))};
 entries['package-inventory.json'] = strToU8(JSON.stringify(inventory, null, 2) + '\n');
 writeFileSync(resolve(target, 'package-inventory.json'), entries['package-inventory.json']);
 mkdirSync('release', {recursive: true});
-const output = resolve('release', 'Labosv2_' + version.split('-')[0] + '_24N_Skolski.zip');
+const output = resolve('release', 'Labosv2_' + version.split('-')[0] + '_24O_Skolski.zip');
 writeFileSync(output, zipSync(entries, {level: 6}));
 console.log(output);

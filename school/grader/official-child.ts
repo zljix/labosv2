@@ -1,3 +1,4 @@
+import {isIntroductoryContract,createIntroductoryCheck} from './introductory';
 import {isLevelContract,createLevelCheck} from './levels';
 import {isOpticalContract,createOpticalCheck} from './optical';
 import {isStorageContract,createStorageCheck} from './storage';
@@ -38,8 +39,9 @@ const touchCheck=isTouchContract(profile)?createTouchCheck(config,profile,seed,b
 const storageCheck=isStorageContract(profile)?createStorageCheck(config,profile,seed):null;
 const opticalCheck=isOpticalContract(profile)?createOpticalCheck(config,profile,seed):null;
 const levelCheck=isLevelContract(profile)?createLevelCheck(config,profile,seed,backend):null;
-const extendedCheck=levelCheck??opticalCheck??storageCheck??touchCheck??environmentCheck??displayCheck??stepperCheck??actuatorCheck??eventCheck??sensorCheck??analogCheck;
-const protocolClock=!!(levelCheck?.protocolClock||opticalCheck||storageCheck||touchCheck||environmentCheck||displayCheck||sensorCheck||eventCheck||stepperCheck);
+const introductoryCheck=isIntroductoryContract(profile)?createIntroductoryCheck(config,profile,seed):null;
+const extendedCheck=introductoryCheck??levelCheck??opticalCheck??storageCheck??touchCheck??environmentCheck??displayCheck??stepperCheck??actuatorCheck??eventCheck??sensorCheck??analogCheck;
+const protocolClock=!!(introductoryCheck?.protocolClock||levelCheck?.protocolClock||opticalCheck||storageCheck||touchCheck||environmentCheck||displayCheck||sensorCheck||eventCheck||stepperCheck);
 // ADC receives a voltage, never a fabricated ADC return value. S3's 11 dB
 // transfer saturates at 3.1 V, whereas the Uno/Nano full scale is 5 V.
 const thresholdPosition=backend!=='avr'?3.1/3.3*2048/4095:512/1023;

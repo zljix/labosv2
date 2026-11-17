@@ -20,7 +20,7 @@ export function gradingSupport(taskKey:string,target:string){
     reason:'Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.',
     requirement:target==='micropython'?'Školski Linux provjeravač s izoliranim izvođenjem izvora.':
       'Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.',
-    evidence:profile.id.startsWith('24N-')?'verification/school-levels.test.ts':profile.id.startsWith('24M-')?'verification/school-radio.test.ts':profile.id.startsWith('24L-')?'verification/school-optical.test.ts':profile.id.startsWith('24K-')?'verification/school-storage.test.ts':profile.id.startsWith('24J-')?'verification/school-touch.test.ts':profile.id.startsWith('24I-')?'verification/school-environment.test.ts':profile.id.startsWith('24H-')?'verification/school-displays.test.ts':profile.id.startsWith('24G-')?'verification/school-steppers.test.ts':profile.id.startsWith('24F-')?'verification/school-actuators.test.ts':profile.id.startsWith('24E-')?'verification/school-events.test.ts':profile.id.startsWith('24D-')?'verification/school-sensors.test.ts':profile.id.startsWith('24C-')?'verification/school-analog.test.ts':profile.id.startsWith('24B-')?'verification/school-contract.test.ts':profile.id.startsWith('23E-')?'verification/school-grading.test.ts':'verification/school-grading-expanded.test.ts'}:
+    evidence:profile.id.startsWith('24O-')?'verification/school-introductory.test.ts':profile.id.startsWith('24N-')?'verification/school-levels.test.ts':profile.id.startsWith('24M-')?'verification/school-radio.test.ts':profile.id.startsWith('24L-')?'verification/school-optical.test.ts':profile.id.startsWith('24K-')?'verification/school-storage.test.ts':profile.id.startsWith('24J-')?'verification/school-touch.test.ts':profile.id.startsWith('24I-')?'verification/school-environment.test.ts':profile.id.startsWith('24H-')?'verification/school-displays.test.ts':profile.id.startsWith('24G-')?'verification/school-steppers.test.ts':profile.id.startsWith('24F-')?'verification/school-actuators.test.ts':profile.id.startsWith('24E-')?'verification/school-events.test.ts':profile.id.startsWith('24D-')?'verification/school-sensors.test.ts':profile.id.startsWith('24C-')?'verification/school-analog.test.ts':profile.id.startsWith('24B-')?'verification/school-contract.test.ts':profile.id.startsWith('23E-')?'verification/school-grading.test.ts':'verification/school-grading-expanded.test.ts'}:
     {status:'unsupported' as const,profileId:null,checkerVersion:null,title:null,instructions:null,criteria:[],maxPoints:null,
     reason:target==='s3-cpp'?'Službeni provjeravač još nema adapter za ESP32-S3 C++.':
       'Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.',
@@ -39,10 +39,14 @@ export function gradingCoverage(sourceVersion:string){
         preparationCriteria:lesson.criteria,change:lesson.change,fault:lesson.fault,expected:lesson.expected,
         grading:gradingSupport(key,target)};
     })));
-  const introductory=lessons.map(l=>({code:'V'+l.number,lessonId:l.id,title:l.title,target:'micropython',
-    status:'local-only',maxPoints:null,criteria:l.criteria,
-    reason:'Početna vježba ima lokalnu povratnu informaciju. Nije objavljena kao službena školska rubrika; ne nasljeđuje bodove slične URS vježbe.'}));
+  const introductory=lessons.map(l=>{
+    const taskKey='intro/'+l.id,grading=gradingSupport(taskKey,'micropython');
+    return {code:'V'+l.number,lessonId:l.id,taskKey,title:l.title,target:'micropython',
+      status:grading.status,maxPoints:grading.maxPoints,criteria:l.criteria,grading,
+      reason:'Zaseban uvodni MicroPython zadatak sa školskim pokušajem i zaključavanjem. Lokalna provjera ne prenosi službene bodove.'};
+  });
   return {format:'labosv2-grading-coverage',version:1,sourceVersion,
+    introductorySummary:{total:introductory.length,supported:introductory.filter(l=>l.status==='supported').length,unsupported:introductory.filter(l=>l.status!=='supported').length},
     summary:{themes:ursLessons.length,variants:ursLessons.reduce((n,l)=>n+l.variants.length,0),
       combinations:rows.length,supported:rows.filter(r=>r.grading.status==='supported').length,
       unsupported:rows.filter(r=>r.grading.status==='unsupported').length,introductory:introductory.length},rows,introductory};
@@ -55,6 +59,6 @@ export function gradingCoverageCSV(coverage:ReturnType<typeof gradingCoverage>){
     r.grading.status==='supported'?'Podržano':'Nije podržano',r.grading.profileId,r.grading.maxPoints,
     r.grading.status==='supported'?r.grading.criteria.map(c=>c.description+' ('+c.maxPoints+')').join(' | '):
       r.preparationCriteria.join(' | '),r.grading.reason+' '+r.grading.requirement]);
-  for(const l of coverage.introductory)rows.push(['Početne',l.code+' · '+l.title,'',l.target,'Samo lokalna provjera',null,null,l.criteria.join(' | '),l.reason] as any);
+  for(const l of coverage.introductory)rows.push(['Početne',l.code+' · '+l.title,'',l.target,l.status==='supported'?'Podržano':'Nije podržano',l.grading.profileId,l.maxPoints,l.grading.criteria.map(c=>c.description+' ('+c.maxPoints+')').join(' | '),l.reason+' '+l.grading.requirement] as any);
   return '\uFEFF'+[header,...rows].map(row=>row.map(quote).join(';')).join('\r\n')+'\r\n';
 }

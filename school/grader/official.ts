@@ -1,3 +1,4 @@
+import {isIntroductoryContract,validIntroductoryConfig} from './introductory';
 import {isLevelContract,validLevelConfig} from './levels';
 import {isRadioContract,gradeRadio} from './radio-official';
 import {isOpticalContract,validOpticalConfig} from './optical';
@@ -54,7 +55,7 @@ export async function gradeJob(job:any,options:{root:string;compile?:boolean;cli
   try{
     const config=compileCircuit(project.circuit as any,target==='uno'||target==='nano'?'avr':'micropython');
     const sensorKind='sensorKind' in profile?profile.sensorKind:'bmp280';
-    const valid=isLevelContract(profile)?validLevelConfig(config,profile.taskKey.split('/')[1],target==='uno'||target==='nano'?'avr':target):isOpticalContract(profile)?validOpticalConfig(config):isStorageContract(profile)?validStorageConfig(config,profile.taskKey.split('/')[1]):isTouchContract(profile)?validTouchConfig(config,profile.taskKey.split('/')[1]):isEnvironmentContract(profile)?validEnvironmentConfig(config,profile.taskKey.split('/')[1]):isDisplayContract(profile)?validDisplayConfig(config,profile.taskKey.split('/')[1]):isStepperContract(profile)?validStepperConfig(config):isActuatorContract(profile)?validActuatorConfig(config,profile.taskKey.split('/')[1]):isEventContract(profile)?validEventConfig(config,profile.taskKey.split('/')[1]):isSensorContract(profile)?validSensorConfig(config,profile.taskKey.split('/')[1]):isAnalogContract(profile)?validAnalogConfig(config,profile.taskKey.split('/')[1]):profile.kind==='sensor'?config.i2cDevices.length===1&&config.i2cDevices[0].kind===sensorKind:
+    const valid=isIntroductoryContract(profile)?validIntroductoryConfig(config,profile.taskKey.split('/')[1]):isLevelContract(profile)?validLevelConfig(config,profile.taskKey.split('/')[1],target==='uno'||target==='nano'?'avr':target):isOpticalContract(profile)?validOpticalConfig(config):isStorageContract(profile)?validStorageConfig(config,profile.taskKey.split('/')[1]):isTouchContract(profile)?validTouchConfig(config,profile.taskKey.split('/')[1]):isEnvironmentContract(profile)?validEnvironmentConfig(config,profile.taskKey.split('/')[1]):isDisplayContract(profile)?validDisplayConfig(config,profile.taskKey.split('/')[1]):isStepperContract(profile)?validStepperConfig(config):isActuatorContract(profile)?validActuatorConfig(config,profile.taskKey.split('/')[1]):isEventContract(profile)?validEventConfig(config,profile.taskKey.split('/')[1]):isSensorContract(profile)?validSensorConfig(config,profile.taskKey.split('/')[1]):isAnalogContract(profile)?validAnalogConfig(config,profile.taskKey.split('/')[1]):profile.kind==='sensor'?config.i2cDevices.length===1&&config.i2cDevices[0].kind===sensorKind:
       profile.kind==='lm35'?config.analogInputs?.length===1&&config.analogInputs[0].kind==='lm35':
       config.leds.length===1&&(profile.kind==='blink'||(profile.kind==='button'?config.buttons.length===1:config.pots.length===1));
     if(project.circuit.kind!=='editable'||!valid)
@@ -89,7 +90,7 @@ export async function gradeJob(job:any,options:{root:string;compile?:boolean;cli
         artifact=await validateArtifact(project,entry);provenance={method:'trusted-catalogue-exact-source',inputHash:wanted,hexHash:artifact.hexHash,toolchain:buildInput(project).toolchain};
       }
     }
-    const extended=isLevelContract(profile)||isOpticalContract(profile)||isStorageContract(profile)||isTouchContract(profile)||isEnvironmentContract(profile)||isDisplayContract(profile)||isSensorContract(profile)||isEventContract(profile)||isActuatorContract(profile)||isStepperContract(profile);
+    const extended=isIntroductoryContract(profile)||isLevelContract(profile)||isOpticalContract(profile)||isStorageContract(profile)||isTouchContract(profile)||isEnvironmentContract(profile)||isDisplayContract(profile)||isSensorContract(profile)||isEventContract(profile)||isActuatorContract(profile)||isStepperContract(profile);
     const report:any=await runSandbox(sandboxCommand(root,resolve(root,'.build/school-grader/official-child.mjs'),{bounded:true,...(extended?{cpuSeconds:58}:{})}),{project,artifact,profile,seed:job.seed},options.timeoutMs??(extended?65000:20000));
     return {...base,...report,provenance,durationMs:Math.round(performance.now()-started)};
   }catch(e){

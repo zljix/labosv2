@@ -19,11 +19,13 @@ test('every frozen school starter opens as a new local project with its precise 
     assert(readSchoolAssignment(copy));
     assert(!copy.files[SCHOOL_TASK_FILE].includes('"starter"'));
     assert.deepEqual(copy.circuit,starter.circuit);
-    for(const key of Object.keys(starter.files))if(key!=='urs-vjezba.json')assert.equal(copy.files[key],starter.files[key]);
+    for(const key of Object.keys(starter.files))if(!['urs-vjezba.json','vjezba.json'].includes(key))assert.equal(copy.files[key],starter.files[key]);
     if(starter.radio)assert.deepEqual(copy.radio,starter.radio);
     ++count;
   }
-  assert.equal(count,268);
+  assert.equal(count,273);
+  assert.equal(catalog.entries.filter((e:any)=>e.set==='urs').length,67);
+  assert.equal(catalog.entries.filter((e:any)=>e.set==='introductory').length,5);
 });
 
 test('imported or locally edited school metadata cannot crash the simulator or confer server authority',()=>{

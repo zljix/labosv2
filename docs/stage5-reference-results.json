@@ -7,9 +7,9 @@
       "checkerVersion": "0.2.0",
       "lessonId": "led-time",
       "lessonVersion": 1,
-      "sourceHash": "50ddb045a1467a12869e976db59dda28689f0f41091155c28f8dba3148235110",
-      "startedAt": "2026-11-13T15:57:29.012Z",
-      "finishedAt": "2026-11-13T15:57:32.653Z",
+      "sourceHash": "6a333535c1a458fe7de27dcb3b96bc4e4a6454b9fb852f3a020e14af7ccaa9a1",
+      "startedAt": "2026-11-17T10:24:24.935Z",
+      "finishedAt": "2026-11-17T10:24:28.483Z",
       "checks": [
         {
           "id": "topology",
@@ -30,14 +30,14 @@
           "title": "Trajanje uključenja",
           "passed": true,
           "expected": "250 ms; prihvaćeno 180–380 ms.",
-          "observed": "253 ms, 251 ms, 250 ms"
+          "observed": "254 ms, 255 ms, 250 ms"
         },
         {
           "id": "off-time",
           "title": "Trajanje isključenja",
           "passed": true,
           "expected": "750 ms; prihvaćeno 650–1000 ms.",
-          "observed": "761 ms, 753 ms, 752 ms"
+          "observed": "751 ms, 751 ms, 751 ms"
         }
       ],
       "console": "Treptanje: GPIO4, 250 ms ukljuceno / 750 ms iskljuceno\n"
@@ -48,9 +48,9 @@
       "checkerVersion": "0.2.0",
       "lessonId": "button",
       "lessonVersion": 1,
-      "sourceHash": "8c8ab9b58d5c0e73eefadb30ab71dfcd3a404083ebd57f461d4bb18cb5605125",
-      "startedAt": "2026-11-13T15:57:32.699Z",
-      "finishedAt": "2026-11-13T15:57:34.738Z",
+      "sourceHash": "3cee19d79e3c95e6a15f1a0f05387b38712424aefa288a0b20105cb657193bb7",
+      "startedAt": "2026-11-17T10:24:28.485Z",
+      "finishedAt": "2026-11-17T10:24:30.221Z",
       "checks": [
         {
           "id": "topology",
@@ -103,9 +103,9 @@
       "checkerVersion": "0.2.0",
       "lessonId": "adc-pwm",
       "lessonVersion": 1,
-      "sourceHash": "992529fcd7cf0e4d88e52c74692622740bfa5964f7c4733d62402fa3a162dcc8",
-      "startedAt": "2026-11-13T15:57:34.755Z",
-      "finishedAt": "2026-11-13T15:57:36.443Z",
+      "sourceHash": "84ee8c30ae3855e66295c3b5e1546f0e7ed42e61b3730ed7e4bd56d72b69e568",
+      "startedAt": "2026-11-17T10:24:30.226Z",
+      "finishedAt": "2026-11-17T10:24:31.729Z",
       "checks": [
         {
           "id": "topology",
@@ -151,9 +151,9 @@
       "checkerVersion": "0.2.0",
       "lessonId": "aht-oled",
       "lessonVersion": 1,
-      "sourceHash": "b40606a28360cc6cb2d2d1058e6ea9ecb1bda9051ac61edf887159d6dadfb257",
-      "startedAt": "2026-11-13T15:57:36.449Z",
-      "finishedAt": "2026-11-13T15:57:38.945Z",
+      "sourceHash": "b5933e054d152df7f8d048739b2c097b421512bfe8b64b4653b3b5331a136710",
+      "startedAt": "2026-11-17T10:24:31.731Z",
+      "finishedAt": "2026-11-17T10:24:34.003Z",
       "checks": [
         {
           "id": "topology",
@@ -227,9 +227,9 @@
       "checkerVersion": "0.2.0",
       "lessonId": "regulator",
       "lessonVersion": 1,
-      "sourceHash": "dda0dcffabb5ad14192ee5b4e6c7591b74fa6a89b4b188ae42039cdfa82928db",
-      "startedAt": "2026-11-13T15:57:38.954Z",
-      "finishedAt": "2026-11-13T15:57:49.829Z",
+      "sourceHash": "cc51dc847c54ca004027ba6df9ce50c2ae975e4809b89ffa4b754174616bdde5",
+      "startedAt": "2026-11-17T10:24:34.005Z",
+      "finishedAt": "2026-11-17T10:24:44.698Z",
       "checks": [
         {
           "id": "topology",

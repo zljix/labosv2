@@ -25,7 +25,8 @@ test('23G full URS matrix has exactly one status and explicit criteria per real 
     if(row.target==='s3-cpp'&&row.grading.status==='supported')assert.match(row.grading.profileId!,/^24[BCDEFGHIJKLMN]-/);
   }
   assert.deepEqual(matrix.introductory.map(r=>r.code),['V1','V2','V3','V4','V5']);
-  assert(matrix.introductory.every(r=>r.status==='local-only'&&r.maxPoints===null));
+  assert(matrix.introductory.every(r=>r.status==='supported'&&r.maxPoints===10));
+  assert.deepEqual(matrix.introductorySummary,{total:5,supported:5,unsupported:0});
   assert.equal(gradingSupport('unknown/unknown','micropython').status,'unsupported');
 });
 test('23G generated JSON, CSV and private catalogue agree with the authoritative grading registry',()=>{
@@ -35,7 +36,7 @@ test('23G generated JSON, CSV and private catalogue agree with the authoritative
   assert.equal(csv.split('\r\n').filter(Boolean).length,274);
   const catalog=JSON.parse(readFileSync('.build/school-catalog/catalog.json','utf8'));
   for(const entry of catalog.entries)for(const target of entry.targets){
-    assert.deepEqual(entry.gradingSupport[target],matrix.rows.find(r=>r.taskKey===entry.key&&r.target===target)!.grading);
+    assert.deepEqual(entry.gradingSupport[target],(entry.set==='introductory'?matrix.introductory.find(r=>r.taskKey===entry.key):matrix.rows.find(r=>r.taskKey===entry.key&&r.target===target))!.grading);
   }
   assert.equal(gradingSupport('gpio/button','uno').checkerVersion,'24AB.1');
   assert.equal(gradingSupport('analog/lm35','uno').checkerVersion,'24AB.1');

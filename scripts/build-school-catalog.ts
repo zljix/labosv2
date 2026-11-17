@@ -4,6 +4,7 @@ import {createHash} from 'node:crypto';
 import {ursLessons,ursTargets,variantAvailable,createUrsProject,type UrsTarget} from '../src/lessons/ursCatalog';
 import {parseProject,type Project} from '../src/project/model';
 import {gradingSupport,gradingCoverage} from '../school/grader/coverage';
+import {lessons,createLessonProject} from '../src/lessons/catalog';
 
 // Private, reproducible starter snapshots. PHP never trusts a client-supplied
 // lesson/rubric/template and publication copies these bytes into MySQL.
@@ -32,15 +33,28 @@ try {
       const filename=lesson.id+'-'+variant.id+'-'+target+'.json';
       writeFileSync(resolve(directory,filename),JSON.stringify(project));templates[target]=filename;
     }
-    entries.push({key,lessonId:lesson.id,variantId:variant.id,code:'URS'+String(lesson.number).padStart(2,'0'),
+    entries.push({set:'urs',key,lessonId:lesson.id,variantId:variant.id,code:'URS'+String(lesson.number).padStart(2,'0'),
       title:lesson.title,variantTitle:variant.title,minutes:lesson.minutes,goal:lesson.goal,before:lesson.before,
       concepts:lesson.concepts,change:lesson.change,fault:lesson.fault,expected:lesson.expected,
       questions:lesson.questions,criteria:lesson.criteria,targets,templates,
       gradingSupport:Object.fromEntries(targets.map(target=>[target,gradingSupport(key,target)]))});
   }
+  const drivers=Object.fromEntries(['aht10.py','ssd1306.py','servo.py'].map(n=>[n,readFileSync(resolve('public/drivers',n),'utf8')]));
+  for(const lesson of lessons){
+    const key='intro/'+lesson.id,filename='intro-'+lesson.id+'-micropython.json';
+    // Keep the original missing connection and TODOs in student starters.
+    const project=stable(createLessonProject(lesson.id,drivers),key+'/micropython');
+    writeFileSync(resolve(directory,filename),JSON.stringify(project));
+    entries.push({set:'introductory',key,lessonId:lesson.id,variantId:lesson.id,code:'V'+lesson.number,
+      title:lesson.title,variantTitle:lesson.title,minutes:lesson.minutes,goal:lesson.goal,before:lesson.before,
+      concepts:lesson.concepts.map(c=>[c.term,c.explanation]),change:lesson.steps.join('\n'),
+      fault:lesson.tips.join(' '),expected:lesson.criteria.join(' '),questions:lesson.questions,criteria:lesson.criteria,
+      targets:['micropython'],templates:{micropython:filename},gradingSupport:{micropython:gradingSupport(key,'micropython')}});
+  }
 }finally{globalThis.fetch=originalFetch;}
 writeFileSync(resolve(directory,'catalog.json'),JSON.stringify({format:'labosv2-school-catalog',version:1,
   sourceVersion:JSON.parse(readFileSync('package.json','utf8')).version,
   gradingSummary:gradingCoverage(JSON.parse(readFileSync('package.json','utf8')).version).summary,
+  introductorySummary:gradingCoverage(JSON.parse(readFileSync('package.json','utf8')).version).introductorySummary,
   targets:Object.fromEntries(Object.entries(ursTargets).map(([key,t])=>[key,t.label])),entries},null,2)+'\n');
-console.log(`Školski katalog: ${entries.length} varijanti, ${entries.reduce((n,e)=>n+e.targets.length,0)} zamrznutih predložaka.`);
+console.log('Školski katalog: 67 URS varijanti / 268 ciljeva te 5 zasebnih uvodnih MicroPython zadataka.');

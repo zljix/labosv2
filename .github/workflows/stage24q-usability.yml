@@ -1,0 +1,30 @@
+name: 24Q · Sučelje i metodičke upute
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  usability:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - name: Pripremi školske predloške prije regresija
+        run: node --import tsx scripts/build-school-catalog.ts
+      - run: node --test verification/environment-evidence.test.mjs
+      - run: npm run test:usability
+      - name: Projekti, URS izvoz, školsko spremanje i završetak
+        run: node --import tsx --test verification/project.test.ts verification/circuit.test.ts verification/urs.test.ts verification/lessons.test.ts verification/school-catalog.test.ts verification/school-sync.test.ts verification/school-finish-ui.test.tsx verification/school-remediation-ui.test.tsx
+      - run: npm run build:pages
+      - run: node --test verification/pages.test.mjs verification/school-pilot.test.mjs
+      - name: Root paket za zasebnu offline provjeru
+        run: npm run build
+      - run: npm run test:offline
+      - run: node --import tsx --test verification/school-coverage.test.ts verification/routing.test.ts

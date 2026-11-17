@@ -1,3 +1,5 @@
+import FinishGuidance from './FinishGuidance';
+import {readSchoolBinding} from '../platform/schoolSync';
 import IdentityInput from '../platform/IdentityInput';
 import {STUDENT_NAME_LIMIT,CLASS_NAME_LIMIT} from '../project/identity';
 import {appAsset} from '../platform/assets';
@@ -12,6 +14,7 @@ import {ursLessons,type UrsTarget} from './ursCatalog';
 export function LessonCatalog({open,busy,openUrs,initialTarget,reviewClass}:{open:(id:string,solution?:boolean)=>void;busy:boolean;openUrs:(lesson:string,variant:string,target:UrsTarget,peer:UrsTarget)=>void;initialTarget:UrsTarget;reviewClass:()=>void}) {
   const [collection,setCollection]=useState<'intro'|'urs'>('urs');
   return <div className="lesson-catalog">
+    <p>Prvi put u laboratoriju? Kreni od <button onClick={()=>setCollection('intro')}>V1–V5: osnove uz vođene korake</button>.</p>
     <div className="lesson-inline-actions" role="group" aria-label="Zbirka vježbi"><button aria-pressed={collection==='intro'} onClick={()=>setCollection('intro')}>Početnih pet vježbi · V1–5</button><button aria-pressed={collection==='urs'} onClick={()=>setCollection('urs')}>URS zbirka · {ursLessons.length} tema</button><button disabled={busy} onClick={reviewClass}>Pregled predaja razreda</button></div>
     {collection==='urs'?<UrsCatalog busy={busy} open={openUrs} initialTarget={initialTarget}/>:<>
     <p>Pet koraka od izlaza do regulatora. Svaka vježba otvara novi lokalni projekt s uputama i početnim kodom.</p>
@@ -44,6 +47,6 @@ export default function LessonPanel({project:p,change,busy,progress,run,cancel,s
       {r&&<><p className={`lesson-result-title ${fresh&&passed===r.checks.length?'passed':''}`}><b>{passed}/{r.checks.length}</b> pomoćnih lokalnih opažanja · {fresh?'odgovara trenutačnom kodu i sklopu':'zapis je zastario — ponovi provjeru'}</p><p className="lesson-small">{new Date(r.finishedAt).toLocaleString('hr-HR')} · Provjera {r.checkerVersion}. Lokalni zapis može se uređivati i nije ovjerena ocjena.</p><div className="lesson-results">{r.checks.map((c,i)=><details key={c.id+i} className={c.passed?'passed':'failed'} open={!c.passed}><summary>{c.passed?'✓':'!'} {c.title} · {c.passed?'prolazi':'potreban ispravak'}</summary><p><b>Očekivano:</b> {c.expected}</p><p><b>Opaženo:</b> {c.observed}</p></details>)}</div></>}
     </section>
     <section><h3>5 · Odgovori i dokazi</h3><p>Ovdje zapiši svoja opažanja. Nastavnik zasebno pregledava razumijevanje, objašnjenje i samostalnu promjenu. Funkcionalni bodovi programa ne ocjenjuju obrazloženja.</p><div className="lesson-student"><label>Ime i prezime<IdentityInput key={p.id+'-student'} onValidityChange={setStudentValid} value={work.student} limit={STUDENT_NAME_LIMIT} onChange={value=>change({...work,student:value})} autoComplete="name"/></label><label>Razred / grupa<IdentityInput key={p.id+'-group'} onValidityChange={setGroupValid} value={work.group} limit={CLASS_NAME_LIMIT} onChange={value=>change({...work,group:value})}/></label></div>{l.questions.map((q,i)=><label className="lesson-answer" key={q}>{i+1}. {q}<textarea value={work.answers[i]} maxLength={2000} rows={3} onChange={e=>change({...work,answers:work.answers.map((a,j)=>j===i?e.target.value:a)})}/></label>)}</section>
-    <section className="lesson-submit"><h3>6 · Predaja</h3><p>ZIP sadrži sklop, sve projektne datoteke, upute, odgovore i zapis provjere. Nakon izmjene koda ili sklopa ponovi provjeru. Moguće je predati i rezultat s pogreškama radi nastavnikove povratne informacije.</p><button className="primary" onClick={submit} disabled={busy||!studentValid||!groupValid}>Preuzmi ZIP za predaju</button><p className="lesson-small">Preuzeti paket sam predaj nastavniku dogovorenim putem. Aplikacija ga ne šalje i ne prikuplja popis učenika.</p></section>
+    <section className="lesson-submit"><h3>6 · Predaja</h3><p>ZIP sadrži sklop, sve projektne datoteke, upute, odgovore i zapis provjere. Nakon izmjene koda ili sklopa ponovi provjeru. Moguće je predati i rezultat s pogreškama radi nastavnikove povratne informacije.</p><button className="primary" onClick={submit} disabled={busy||!studentValid||!groupValid}>{readSchoolBinding(p)?'Preuzmi dodatnu ZIP kopiju':'Preuzmi ZIP za predaju'}</button><FinishGuidance project={p}/></section>
   </article>;
 }

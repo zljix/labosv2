@@ -1,3 +1,5 @@
+import {teachingLesson,URS_GUIDE_VERSION} from '../src/lessons/ursTeaching';
+import {investigationAdvice,schoolInvestigationAdvice} from '../src/lessons/workflow';
 import {readFileSync,writeFileSync,mkdirSync,rmSync} from 'node:fs';
 import {resolve} from 'node:path';
 import {createHash} from 'node:crypto';
@@ -25,7 +27,8 @@ function stable(p:Project,key:string):Project {
 }
 const entries=[];
 try {
-  for(const lesson of ursLessons)for(const variant of lesson.variants){
+  for(const base of ursLessons)for(const variant of base.variants){
+    const lesson=teachingLesson(base,variant.id,URS_GUIDE_VERSION);
     const targets=Object.keys(ursTargets).filter(t=>variantAvailable(variant,t as UrsTarget)) as UrsTarget[];
     const key=lesson.id+'/'+variant.id,templates:Record<string,string>={};
     for(const target of targets){
@@ -35,7 +38,7 @@ try {
     }
     entries.push({set:'urs',key,lessonId:lesson.id,variantId:variant.id,code:'URS'+String(lesson.number).padStart(2,'0'),
       title:lesson.title,variantTitle:variant.title,minutes:lesson.minutes,goal:lesson.goal,before:lesson.before,
-      concepts:lesson.concepts,change:lesson.change,fault:lesson.fault,expected:lesson.expected,
+      guideVersion:URS_GUIDE_VERSION,concepts:lesson.concepts,change:investigationAdvice+' '+schoolInvestigationAdvice+' '+lesson.change,fault:lesson.fault,expected:lesson.expected,
       questions:lesson.questions,criteria:lesson.criteria,targets,templates,
       gradingSupport:Object.fromEntries(targets.map(target=>[target,gradingSupport(key,target)]))});
   }

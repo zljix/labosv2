@@ -6,10 +6,10 @@ import {unzipSync, strFromU8} from 'fflate';
 import vm from 'node:vm';
 
 test('school ZIP verifies every inventory entry and keeps app, SQL and configuration out of web/', () => {
-  const version = JSON.parse(readFileSync('package.json')).version;
-  const archive = unzipSync(readFileSync('release/Labosv2_' + version.split('-')[0] + '_24P_Skolski.zip'));
+  const {version,labosRelease:{stage}} = JSON.parse(readFileSync('package.json'));
+  const archive = unzipSync(readFileSync('release/Labosv2_' + version.split('-')[0] + '_'+stage+'_Skolski.zip'));
   const inventory = JSON.parse(strFromU8(archive['package-inventory.json']));
-  assert.equal(inventory.stage, '24P'); assert.equal(inventory.version, version);
+  assert.equal(inventory.stage, stage); assert.equal(inventory.version, version);
   assert.equal(Object.keys(archive).length, inventory.files.length + 1);
   for (const file of inventory.files) {
     assert.equal(archive[file.path].byteLength, file.bytes, file.path);
@@ -20,6 +20,8 @@ test('school ZIP verifies every inventory entry and keeps app, SQL and configura
   assert(archive['checker/.build/school-grader/radio-child.mjs']);
   assert(archive['checker/public/radio-examples.json']);
   assert(archive['docs/stage24m-radio.md']);
+  assert(archive['docs/STAGE24Q_PLAN_I_PROVJERA.md']);
+  assert(archive['docs/stage24q-evidence/local-summary.json']);
   assert(archive['docs/stage24o-introductory.md']);
   assert(archive['docs/stage24o-evidence/README.md']);
   assert(archive['docs/stage24n-levels.md']);

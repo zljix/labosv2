@@ -18,8 +18,11 @@ test.after(()=>{mkdirSync('docs/stage24e-evidence',{recursive:true});writeFileSy
 test('24E publishes six contracts, preserves previous profiles and adds exactly 24 combinations',()=>{
   const registry=JSON.parse(readFileSync('school/grader/profiles.json','utf8'));
   assert.equal(eventProfiles.length,6);assert.deepEqual(registry.profiles.slice(0,27),JSON.parse(readFileSync('verification/fixtures/24d-grading-profiles.json','utf8')).profiles);
-  const preservedIds=new Set(registry.profiles.slice(0,33).map((p:any)=>p.id));
-  assert.equal(gradingCoverage('test').rows.filter(r=>r.grading.status==='supported'&&preservedIds.has(r.grading.profileId)).length,104);
+  // A newer version may replace the active profile without removing its task/target coverage.
+  const preservedCombinations=new Set(registry.profiles.slice(0,33).flatMap((p:any)=>p.targets.map((t:string)=>p.taskKey+'/'+t)));
+  assert.equal(preservedCombinations.size,104);
+  const supportedCombinations=new Set(gradingCoverage('test').rows.filter(r=>r.grading.status==='supported').map(r=>r.id));
+  for(const combination of preservedCombinations)assert(supportedCombinations.has(combination as string),String(combination));
   for(const p of eventProfiles){assert.equal(p.criteria.reduce((n,c)=>n+c.maxPoints,0),10);assert.equal(p.contract!.scenarioVersion,'24E.1');
     for(const t of p.targets)assert.equal(gradingSupport(p.taskKey,t).profileId,p.id);
   }

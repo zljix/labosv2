@@ -49,3 +49,17 @@
 .optical-panel{display:flex;flex-wrap:wrap;align-items:center;gap:14px;padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);margin-bottom:12px}.optical-panel>div,.optical-panel>small{flex-basis:100%}.optical-panel small{display:block;color:var(--muted);line-height:1.5}.optical-panel label{display:flex;flex:1 1 180px;flex-direction:column;gap:5px;font-size:12px}.optical-panel output{font-weight:700}.optical-panel input[type=range]{width:100%}.optical-panel .optical-check{flex-direction:row;align-items:center}.optical-wave{display:block;width:100%;max-width:720px;height:auto;margin:12px 0}.optical-measurements p{overflow-wrap:anywhere}
 
 .routing-notice{padding:9px 14px;border-top:1px solid var(--line);background:var(--surface);color:var(--text);font-size:12px;line-height:1.5}
+
+/* 24Q: the circuit is the primary workspace; catalog is an explicit action. */
+.component-library{border-bottom:1px solid var(--line);padding:8px 12px;font-size:13px}
+.component-library>summary{cursor:pointer;font-weight:650;padding:5px 0;min-height:32px}
+.component-library>label{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.component-library input{flex:1;min-width:160px;padding:8px;background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:5px}
+.component-library p{font-size:12px;color:var(--muted)}
+.component-library .component-catalog{max-height:240px;overflow:auto;padding:8px 0}
+.circuit-toolrow{position:sticky;top:0;background:var(--surface);z-index:4}
+.circuit-tools{flex-wrap:wrap}.circuit-tools button,.circuit-tabs button{min-height:36px;font-size:12px}
+.circuit-hint,.canvas-legend,.connection-form summary{font-size:12px;line-height:1.5}
+.wire-colors{flex-wrap:wrap;gap:10px}.wire-colors>span{font-size:11px}.wire-colors button{width:28px;height:28px;min-height:28px}
+.circuit-canvas:focus-within{outline:2px solid var(--teal);outline-offset:-2px}
+@media(max-width:600px){.circuit-tools button,.component-catalog button,.circuit-tabs button{min-width:44px;min-height:44px;font-size:12px}.wire-colors button{width:44px;height:44px;min-height:44px}.circuit-details input,.circuit-details select{min-height:44px}.canvas-legend{font-size:10px}.circuit-tabs{flex-wrap:wrap;gap:6px}.component-library>summary{min-height:44px}.circuit-toolrow{position:static}}

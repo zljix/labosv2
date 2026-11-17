@@ -49,6 +49,8 @@ copy('docs/stage24o-introductory.md', 'docs/stage24o-introductory.md');
 copy('docs/stage24o-evidence', 'docs/stage24o-evidence');
 copy('docs/stage24p-remediation.md', 'docs/stage24p-remediation.md');
 copy('docs/stage24p-evidence', 'docs/stage24p-evidence');
+copy('docs/STAGE24Q_PLAN_I_PROVJERA.md','docs/STAGE24Q_PLAN_I_PROVJERA.md');
+copy('docs/stage24q-evidence','docs/stage24q-evidence');
 copy('.build/school-catalog', 'catalog');
 copy('school/README.md', 'README.md'); copy('school/profile.json', 'profile.json'); copy('school/release.json','release.json'); copy('LICENSE', 'LICENSE');
 copy('docs/stage23e-grading.md', 'docs/stage23e-grading.md');

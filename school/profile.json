@@ -1,7 +1,7 @@
 {
   "format": "labosv2-school-profile",
   "version": 1,
-  "stage": "24P",
+  "stage": "24Q",
   "sourceBaseline": "zljix/labos@3c4a281c10282d63b2742280f69aadbc08d7ae1e",
   "webServer": "Apache 2.4 with HTTPS",
   "phpBranches": [
@@ -268,5 +268,5 @@
       "backup-restore"
     ]
   },
-  "sourceVersion": "0.14.14-beta.1"
+  "sourceVersion": "0.14.15-beta.1"
 }

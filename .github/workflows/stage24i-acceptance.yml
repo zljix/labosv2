@@ -170,23 +170,7 @@ jobs:
           path: docs/stage24i-evidence
           merge-multiple: true
       - name: Potvrdi četiri cilja, ponavljanja i 24 neovisnih prijevoda
-        run: |
-          node --input-type=module - <<'JS'
-          import {readFileSync,writeFileSync} from 'node:fs';
-          const records=[];
-          for(const target of ['micropython','s3-cpp','uno','nano']){
-            const e=JSON.parse(readFileSync('docs/stage24i-evidence/environment-'+target+'.json','utf8'));
-            if(e.sourceCommit!==process.env.GITHUB_SHA)throw Error('Wrong evidence source');
-            const repeated=e.results.slice(0,6);
-            if(repeated.length!==6||repeated.some(r=>r.target!==target||r.result.status!=='evaluated'||r.result.points!==10)||new Set(repeated.map(r=>r.profileId)).size!==2)throw Error('Incomplete repeated references');
-            const native=e.results.filter(r=>r.result.provenance?.method==='isolated-source-compilation');
-            if(native.length!==(target==='micropython'?0:8)||native.filter(r=>r.result.points===10).length!==(target==='micropython'?0:4)||native.filter(r=>r.result.points===3).length!==(target==='micropython'?0:2)||native.filter(r=>r.result.points===8).length!==(target==='micropython'?0:2))throw Error('Incomplete compiler evidence');
-            records.push({target,repeatedReferences:6,independentCompilations:native.length});
-          }
-          const summary={format:'labosv2-24i-native-acceptance',version:1,sourceCommit:process.env.GITHUB_SHA,records,independentCompilations:records.reduce((n,r)=>n+r.independentCompilations,0)};
-          if(summary.independentCompilations!==24)throw Error('Compiler evidence count');
-          writeFileSync('docs/stage24i-evidence/ci-native-summary.json',JSON.stringify(summary,null,2)+'\n');console.log(JSON.stringify(summary));
-          JS
+        run: node scripts/verify-environment-evidence.mjs
       - run: npm run build:school
       - name: Provjeri PHP sintaksu
         run: find school -name '*.php' -print0 | xargs -0 -n1 php -l

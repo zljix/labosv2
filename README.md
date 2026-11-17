@@ -1,8 +1,8 @@
 # Labosv2 · školski laboratorij
 
-**0.14.14-beta.1 · etapa 24P · dorada provjera i povratne informacije · tehnički CI prihvat dovršen.**
+**0.14.15-beta.1 · etapa 24Q · sučelje i upute po varijanti · pripremljeno za pregled.**
 
-Nove rubrike tipkala i regulatora, ispravljene jedinice i statusi izvještaja te jedinstveni Unicode identiteti 120/80. [Opseg, provjere, upute i otvoreni školski pilot](docs/stage24p-remediation.md). Stvarni školski pilot ostaje otvoren.
+Čitljiviji školski paneli, sklop ispred ulaznih kontrola, pretraživ katalog, istraživačka kopija i završne upute prema načinu rada. Svih 67 URS varijanti ima vlastite upute uz očuvanje ranijih odgovora. [Provedene dorade, provjere i preostali vizualni prihvat/pilot](docs/STAGE24Q_PLAN_I_PROVJERA.md). Nova verzija još nije javno objavljena.
 
 **Tehnički prihvat 24P:** [Završne provjere i paket](https://github.com/zljix/labosv2/actions/runs/44105942453) potvrđuju svih 273 očekivanih ishoda, 79 nepromijenjenih prethodnih rubrika i 15 novih izoliranih C++ prijevoda za S3, Uno i Nano. Prošli su PHP/MySQL tokovi dugih Unicode identiteta, zaključavanja i dorade, oba radio čvora, ranije obitelji, pokus s 30 simuliranih učenika, izvještaji i povrat sigurnosne kopije. [Sažetak i otisak provjeravača](docs/stage24p-evidence/acceptance-summary.json). Stvarni školski pilot ostaje otvoren.
 

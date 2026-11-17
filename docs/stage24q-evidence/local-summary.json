@@ -1,0 +1,25 @@
+{
+  "version": "0.14.15-beta.1",
+  "stage": "24Q",
+  "date": "2026-11-17",
+  "baseCommit": "41b382bfa43612def5a8722f3a649396b54b43fa",
+  "localChecks": {
+    "projectCircuitLessonsUrsSchoolSyncFinishReports": 340,
+    "newTeachingAndDom": 6,
+    "schoolCatalog": 2,
+    "coverage": 3,
+    "routing": 13,
+    "pagesAndSchoolPilotForm": 14,
+    "offline": 8,
+    "schoolPackage": 2,
+    "historicalAcceptanceFixes": 5
+  },
+  "uniqueTestsPassed": 393,
+  "typecheck": "passed",
+  "rootBuild": "passed",
+  "pagesBuild": "passed",
+  "visualAcceptance": "partial: desktop Chromium passed; see browser-review.json for scope and remaining devices",
+  "realStudentPilot": "not-performed",
+  "published": false,
+  "schoolBuild": "passed"
+}

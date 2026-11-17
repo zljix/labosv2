@@ -45,6 +45,19 @@ function readAttempt(\PDO $pdo, array $actor, mixed $value, mixed $revision = nu
             'grading' => $grading, 'project' => json_decode($snapshot['project'], false, 64, JSON_THROW_ON_ERROR)]];
 }
 
+function applyWorkIdentity(\stdClass $p, string $studentName, string $className): void
+{
+    foreach (['urs-vjezba.json', 'vjezba.json'] as $workFile) {
+        if (!isset($p->files->{$workFile})) continue;
+        $work = json_decode($p->files->{$workFile}, false, 32);
+        if ($work instanceof \stdClass) {
+            $work->student = $studentName; $work->group = $className;
+            $p->files->{$workFile} = json_encode($work, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
+        }
+    }
+    if (isset($p->radio->peer) && $p->radio->peer instanceof \stdClass) applyWorkIdentity($p->radio->peer, $studentName, $className);
+}
+
 function newAttemptDocument(\stdClass $p, array $assignment, string $studentName): string
 {
     $p->id = bin2hex(random_bytes(16)); $p->revision = 0;
@@ -52,14 +65,7 @@ function newAttemptDocument(\stdClass $p, array $assignment, string $studentName
     unset($p->files->{'school-attempt.json'});
     $record = $assignment; unset($record['starter']);
     $p->files->{'school-assignment.json'} = json_encode(['format' => 'labosv2-assignment-copy', 'version' => 1, 'assignment' => $record], JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
-    foreach (['urs-vjezba.json', 'vjezba.json'] as $workFile) {
-        if (!isset($p->files->{$workFile})) continue;
-        $work = json_decode($p->files->{$workFile}, false, 32);
-        if ($work instanceof \stdClass) {
-            $work->student = $studentName; $work->group = $assignment['className'];
-            $p->files->{$workFile} = json_encode($work, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
-        }
-    }
+    applyWorkIdentity($p, $studentName, $assignment['className']);
     return canonicalJson($p);
 }
 

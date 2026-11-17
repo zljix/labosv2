@@ -1,0 +1,4500 @@
+{
+  "format": "labosv2-historical-report-fixtures",
+  "version": 1,
+  "baselineArchiveSHA256": "e1eee20f8a80f828b0fc5a8360315769f43b29b0d60135fd01ddf9d8e1a0d198",
+  "families": 19,
+  "reports": [
+    {
+      "source": "docs/stage24k-evidence/mysql-storage.json",
+      "report": {
+        "profileId": "24K-rtcRead@1",
+        "checkerVersion": "24K.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani putovi i stvarno dovršeni prijenosi svih zadanih uređaja",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Nova BCD čitanja i ispisi prije prekida",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "continuation",
+            "description": "Gubitak komunikacije uz bateriju i nova očitanja nakon povratka",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "basic": true,
+            "advanced": true,
+            "rtcReads": 4,
+            "sdReads": 0,
+            "sdWrites": 0,
+            "screenMatches": 0,
+            "screenWrong": 0,
+            "validLines": 4,
+            "errors": 0
+          },
+          {
+            "index": 2,
+            "basic": true,
+            "advanced": true,
+            "rtcReads": 0,
+            "sdReads": 0,
+            "sdWrites": 0,
+            "screenMatches": 0,
+            "screenWrong": 0,
+            "validLines": 0,
+            "errors": 3
+          },
+          {
+            "index": 3,
+            "basic": true,
+            "advanced": true,
+            "rtcReads": 3,
+            "sdReads": 0,
+            "sdWrites": 0,
+            "screenMatches": 0,
+            "screenWrong": 0,
+            "validLines": 3,
+            "errors": 0
+          }
+        ],
+        "checkerHash": "84f5f4a03d9b57f009bfa82d51d9ab996cdc4bff5dec273ef1a33b7757ff24ef"
+      }
+    },
+    {
+      "source": "docs/stage24o-evidence/introductory.json",
+      "report": {
+        "profileId": "24O-v1-led-time@1",
+        "checkerVersion": "24O.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Zatvoreni strujni krug LED-ice s otpornikom",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Najmanje tri puna ciklusa uključenja i isključenja",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "continuation",
+            "description": "Uključenje 250 ms i isključenje 750 ms",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "edges": [
+              {
+                "timeMs": 0,
+                "on": true
+              },
+              {
+                "timeMs": 250,
+                "on": false
+              },
+              {
+                "timeMs": 1000,
+                "on": true
+              },
+              {
+                "timeMs": 1250,
+                "on": false
+              },
+              {
+                "timeMs": 2000,
+                "on": true
+              },
+              {
+                "timeMs": 2250,
+                "on": false
+              },
+              {
+                "timeMs": 3000,
+                "on": true
+              },
+              {
+                "timeMs": 3250,
+                "on": false
+              },
+              {
+                "timeMs": 4000,
+                "on": true
+              }
+            ]
+          }
+        ],
+        "checkerHash": "84f5f4a03d9b57f009bfa82d51d9ab996cdc4bff5dec273ef1a33b7757ff24ef"
+      }
+    },
+    {
+      "source": "docs/stage24o-evidence/mysql-introductory.json",
+      "report": {
+        "profileId": "24B-button-led@1",
+        "checkerVersion": "24AB.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put tipkala, mase, otpornika i LED-ice",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "LED prati pritisak i otpuštanje u svim osnovnim scenarijima",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "repeat",
+            "description": "Ponovljeni pritisci i povrat u početno stanje",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "pressed": false,
+            "expected": false,
+            "currentMa": 0,
+            "passed": true,
+            "timely": true
+          },
+          {
+            "index": 2,
+            "pressed": true,
+            "expected": true,
+            "currentMa": 4.4118,
+            "passed": true,
+            "timely": true
+          },
+          {
+            "index": 3,
+            "pressed": false,
+            "expected": false,
+            "currentMa": 0,
+            "passed": true,
+            "timely": true
+          },
+          {
+            "index": 4,
+            "pressed": true,
+            "expected": true,
+            "currentMa": 4.4118,
+            "passed": true,
+            "timely": true
+          },
+          {
+            "index": 5,
+            "pressed": false,
+            "expected": false,
+            "currentMa": 0,
+            "passed": true,
+            "timely": true
+          }
+        ],
+        "checkerHash": "84f5f4a03d9b57f009bfa82d51d9ab996cdc4bff5dec273ef1a33b7757ff24ef"
+      }
+    },
+    {
+      "source": "docs/stage24n-evidence/mysql-levels.json",
+      "report": {
+        "profileId": "24N-levelInput@1",
+        "checkerVersion": "24N.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani pretvornik, valjan DIR i stvarni put udaljenog tipkala prema ulazu pločice",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "LED prati prva tri zadana stanja tipkala kroz pretvornik u roku 50 + 4 ms",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "continuation",
+            "description": "Četiri dodatne promjene tipkala i pravodoban povrat LED-ice",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "pressed": false,
+            "passed": true,
+            "observed": 26,
+            "translatorConnected": true,
+            "translatedLevels": [
+              1
+            ],
+            "observedUntilMs": 319
+          },
+          {
+            "index": 2,
+            "pressed": true,
+            "passed": true,
+            "observed": 26,
+            "translatorConnected": true,
+            "translatedLevels": [
+              0,
+              1
+            ],
+            "observedUntilMs": 638
+          },
+          {
+            "index": 3,
+            "pressed": false,
+            "passed": true,
+            "observed": 26,
+            "translatorConnected": true,
+            "translatedLevels": [
+              0,
+              1
+            ],
+            "observedUntilMs": 957
+          },
+          {
+            "index": 4,
+            "pressed": true,
+            "passed": true,
+            "observed": 26,
+            "translatorConnected": true,
+            "translatedLevels": [
+              0,
+              1
+            ],
+            "observedUntilMs": 1276
+          },
+          {
+            "index": 5,
+            "pressed": false,
+            "passed": true,
+            "observed": 26,
+            "translatorConnected": true,
+            "translatedLevels": [
+              0,
+              1
+            ],
+            "observedUntilMs": 1595
+          },
+          {
+            "index": 6,
+            "pressed": true,
+            "passed": true,
+            "observed": 26,
+            "translatorConnected": true,
+            "translatedLevels": [
+              0,
+              1
+            ],
+            "observedUntilMs": 1914
+          },
+          {
+            "index": 7,
+            "pressed": false,
+            "passed": true,
+            "observed": 26,
+            "translatorConnected": true,
+            "translatedLevels": [
+              0,
+              1
+            ],
+            "observedUntilMs": 2233
+          }
+        ],
+        "checkerHash": "84f5f4a03d9b57f009bfa82d51d9ab996cdc4bff5dec273ef1a33b7757ff24ef"
+      }
+    },
+    {
+      "source": "docs/stage24d-evidence/mysql-sensors.json",
+      "report": {
+        "profileId": "24D-am2320@1",
+        "checkerVersion": "24D.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni put i stvarni potpuni prijenos senzora",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "range",
+            "description": "Granice, pojedinačne promjene i povrat uz očuvanu svježinu",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "recovery": false,
+            "devices": [
+              {
+                "component": "am23201",
+                "expected": {
+                  "temperature": -7.1,
+                  "humidity": 93.3
+                },
+                "firstDelayMs": 2003,
+                "maximumGapMs": 2103,
+                "completeReads": 2,
+                "freshLines": 2,
+                "timely": true,
+                "stable": true,
+                "allResolutions": true,
+                "passed": true
+              }
+            ],
+            "passed": true
+          },
+          {
+            "index": 2,
+            "recovery": false,
+            "devices": [
+              {
+                "component": "am23201",
+                "expected": {
+                  "temperature": 28.6,
+                  "humidity": 19.1
+                },
+                "firstDelayMs": 2812,
+                "maximumGapMs": 2103,
+                "completeReads": 3,
+                "freshLines": 2,
+                "timely": true,
+                "stable": true,
+                "allResolutions": true,
+                "passed": true
+              }
+            ],
+            "passed": true
+          },
+          {
+            "index": 3,
+            "recovery": false,
+            "devices": [
+              {
+                "component": "am23201",
+                "expected": {
+                  "temperature": -2.3,
+                  "humidity": 36
+                },
+                "firstDelayMs": 3621,
+                "maximumGapMs": 1879,
+                "completeReads": 2,
+                "freshLines": 1,
+                "timely": true,
+                "stable": true,
+                "allResolutions": true,
+                "passed": true
+              }
+            ],
+            "passed": true
+          },
+          {
+            "index": 4,
+            "recovery": false,
+            "devices": [
+              {
+                "component": "am23201",
+                "expected": {
+                  "temperature": -40,
+                  "humidity": 0
+                },
+                "firstDelayMs": 2327,
+                "maximumGapMs": 2103,
+                "completeReads": 3,
+                "freshLines": 2,
+                "timely": true,
+                "stable": true,
+                "allResolutions": true,
+                "passed": true
+              }
+            ],
+            "passed": true
+          },
+          {
+            "index": 5,
+            "recovery": false,
+            "devices": [
+              {
+                "component": "am23201",
+                "expected": {
+                  "temperature": 80,
+                  "humidity": 100
+                },
+                "firstDelayMs": 3136,
+                "maximumGapMs": 2103,
+                "completeReads": 3,
+                "freshLines": 2,
+                "timely": true,
+                "stable": true,
+                "allResolutions": true,
+                "passed": true
+              }
+            ],
+            "passed": true
+          },
+          {
+            "index": 6,
+            "recovery": false,
+            "devices": [
+              {
+                "component": "am23201",
+                "expected": {
+                  "temperature": -7.1,
+                  "humidity": 93.3
+                },
+                "firstDelayMs": 3945,
+                "maximumGapMs": 1555,
+                "completeReads": 2,
+                "freshLines": 1,
+                "timely": true,
+                "stable": true,
+                "allResolutions": true,
+                "passed": true
+              }
+            ],
+            "passed": true
+          }
+        ],
+        "checkerHash": "84f5f4a03d9b57f009bfa82d51d9ab996cdc4bff5dec273ef1a33b7757ff24ef"
+      }
+    },
+    {
+      "source": "docs/stage24l-evidence/mysql-optical.json",
+      "report": {
+        "profileId": "24L-opticalRegisters@1",
+        "checkerVersion": "24L.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani I2C put, pročitani identitet i stvarna konfiguracija senzora",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Pročitani identitet, reset i stvarna RED+IR konfiguracija s točnim ispisom",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "continuation",
+            "description": "Shutdown najmanje 450 ms, bez novih uzoraka i s potvrđenim praznim FIFO-om",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "basic": true,
+            "advanced": true,
+            "completeSamples": 0,
+            "shutdownMs": 500,
+            "identityReported": true,
+            "configReported": true
+          }
+        ],
+        "checkerHash": "84f5f4a03d9b57f009bfa82d51d9ab996cdc4bff5dec273ef1a33b7757ff24ef"
+      }
+    },
+    {
+      "source": "docs/stage24ab-evidence/contract-results.json",
+      "report": {
+        "profileId": "24B-analog-threshold@1",
+        "checkerVersion": "24AB.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Potenciometar napaja i dovodi promjenjiv napon na ADC; LED ima valjan put",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Digitalni izlaz je ugašen ispod i uključen iznad polovice ADC raspona",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "repeat",
+            "description": "Točan prag, rubne vrijednosti i povrat nakon promjene ulaza",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "position": 0,
+            "expected": false,
+            "currentMa": 0,
+            "passed": true,
+            "timely": true
+          },
+          {
+            "index": 2,
+            "position": 0.1200453938730061,
+            "expected": false,
+            "currentMa": 0,
+            "passed": true,
+            "timely": true
+          },
+          {
+            "index": 3,
+            "position": 0.8293386512901634,
+            "expected": true,
+            "currentMa": 4.4118,
+            "passed": true,
+            "timely": true
+          },
+          {
+            "index": 4,
+            "position": 0.4648116698116698,
+            "expected": false,
+            "currentMa": 0,
+            "passed": true,
+            "timely": true
+          },
+          {
+            "index": 5,
+            "position": 0.46981166981166983,
+            "expected": true,
+            "currentMa": 4.4118,
+            "passed": true,
+            "timely": true
+          },
+          {
+            "index": 6,
+            "position": 1,
+            "expected": true,
+            "currentMa": 4.4118,
+            "passed": true,
+            "timely": true
+          },
+          {
+            "index": 7,
+            "position": 0,
+            "expected": false,
+            "currentMa": 0,
+            "passed": true,
+            "timely": true
+          }
+        ],
+        "checkerHash": "fddc321bcb0e45f544fd5ecc69920207594e3b7fd164da10974d82ab2c2a2471"
+      }
+    },
+    {
+      "source": "docs/stage24ab-evidence/contract-results.json",
+      "report": {
+        "profileId": "24B-bmp280@1",
+        "checkerVersion": "24AB.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajanje, masa i I2C put ostvaruju novo dovršeno očitanje BMP280",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Ispis temperature i tlaka prati dvije različite pobude u zadanim tolerancijama",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "repeat",
+            "description": "Treća promjena daje novo očitanje i novi ispis, bez vraćanja starog uzorka",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "temperature": -12,
+            "pressure": 96640,
+            "passed": true,
+            "newI2cReading": true
+          },
+          {
+            "index": 2,
+            "temperature": 9.5,
+            "pressure": 98418,
+            "passed": true,
+            "newI2cReading": true
+          },
+          {
+            "index": 3,
+            "temperature": 32.4,
+            "pressure": 92440,
+            "passed": true,
+            "newI2cReading": true
+          }
+        ],
+        "checkerHash": "fddc321bcb0e45f544fd5ecc69920207594e3b7fd164da10974d82ab2c2a2471"
+      }
+    },
+    {
+      "source": "docs/stage24ab-evidence/contract-results.json",
+      "report": {
+        "profileId": "24B-led-timing@1",
+        "checkerVersion": "24AB.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "LED ima valjan zatvoren put preko serijskog otpornika i mase",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Najmanje tri potpuna ponavljanja uključenja i isključenja LED-ice",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "timing",
+            "description": "Svako potpuno uključenje traje 250 ms, a isključenje 750 ms, uz toleranciju ±24 ms",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "edges": [
+              {
+                "timeMs": 0,
+                "on": false
+              },
+              {
+                "timeMs": 0,
+                "on": true
+              },
+              {
+                "timeMs": 250,
+                "on": false
+              },
+              {
+                "timeMs": 1000,
+                "on": true
+              },
+              {
+                "timeMs": 1250,
+                "on": false
+              },
+              {
+                "timeMs": 2000,
+                "on": true
+              },
+              {
+                "timeMs": 2250,
+                "on": false
+              },
+              {
+                "timeMs": 3000,
+                "on": true
+              },
+              {
+                "timeMs": 3250,
+                "on": false
+              },
+              {
+                "timeMs": 4000,
+                "on": true
+              }
+            ]
+          }
+        ],
+        "checkerHash": "fddc321bcb0e45f544fd5ecc69920207594e3b7fd164da10974d82ab2c2a2471"
+      }
+    },
+    {
+      "source": "docs/stage24ab-evidence/contract-results.json",
+      "report": {
+        "profileId": "24B-lm35@1",
+        "checkerVersion": "24AB.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "LM35 je napajan s 5 V, ima zajedničku masu i OUT povezan s ADC ulazom",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Novi ispis T u °C prati dvije različite temperature unutar ±0,6 °C",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "repeat",
+            "description": "Treća temperatura i povrat na prvi uzorak daju nove odgovarajuće ispise",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "temperature": 5,
+            "passed": true,
+            "validAdcPath": true,
+            "freshEnough": true
+          },
+          {
+            "index": 2,
+            "temperature": 56.2,
+            "passed": true,
+            "validAdcPath": true,
+            "freshEnough": true
+          },
+          {
+            "index": 3,
+            "temperature": 94.8,
+            "passed": true,
+            "validAdcPath": true,
+            "freshEnough": true
+          },
+          {
+            "index": 4,
+            "temperature": 5,
+            "passed": true,
+            "validAdcPath": true,
+            "freshEnough": true
+          }
+        ],
+        "checkerHash": "fddc321bcb0e45f544fd5ecc69920207594e3b7fd164da10974d82ab2c2a2471"
+      }
+    },
+    {
+      "source": "docs/stage24h-evidence/mysql-displays.json",
+      "report": {
+        "profileId": "24H-oled32@1",
+        "checkerVersion": "24H.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan napajani put i stvarni prijenos do zadanih uređaja",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Osnovni sadržaj primljen u uređaj ili prva dva nova SPI mjerenja",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "continuation",
+            "description": "Napredna geometrija, daljnji prikazi ili povrat promijenjene pobude",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "variant": "oled32",
+            "basic": true,
+            "advanced": true,
+            "connected": true,
+            "overflow": false,
+            "spans": [
+              {
+                "label": 0,
+                "start": 0,
+                "end": 1000
+              },
+              {
+                "label": 1,
+                "start": 1000,
+                "end": 2000
+              },
+              {
+                "label": 2,
+                "start": 2000,
+                "end": 3000
+              }
+            ],
+            "readings": [],
+            "printedSamples": 0
+          }
+        ],
+        "checkerHash": "84f5f4a03d9b57f009bfa82d51d9ab996cdc4bff5dec273ef1a33b7757ff24ef"
+      }
+    },
+    {
+      "source": "docs/stage24c-evidence/final-compiled-results.json",
+      "report": {
+        "profileId": "24C-adc-pwm@1",
+        "checkerVersion": "24C.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Stvarni PWM radni omjer prati tri osnovne ADC pobude",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "position": 0,
+            "expected": {
+              "duty": 0
+            },
+            "observedDuty": 0,
+            "validPath": true,
+            "timely": true,
+            "passed": true
+          },
+          {
+            "index": 2,
+            "position": 15,
+            "expected": {
+              "duty": 0.1597069597069597
+            },
+            "observedDuty": 0.1568627450980392,
+            "validPath": true,
+            "timely": true,
+            "passed": true
+          },
+          {
+            "index": 3,
+            "position": 67,
+            "expected": {
+              "duty": 0.7133089133089133
+            },
+            "observedDuty": 0.7098039215686275,
+            "validPath": true,
+            "timely": true,
+            "passed": true
+          },
+          {
+            "index": 4,
+            "position": 25,
+            "expected": {
+              "duty": 0.2661782661782662
+            },
+            "observedDuty": 0.2627450980392157,
+            "validPath": true,
+            "timely": true,
+            "passed": true
+          },
+          {
+            "index": 5,
+            "position": 50,
+            "expected": {
+              "duty": 0.5323565323565324
+            },
+            "observedDuty": 0.5294117647058824,
+            "validPath": true,
+            "timely": true,
+            "passed": true
+          },
+          {
+            "index": 6,
+            "position": 100,
+            "expected": {
+              "duty": 1
+            },
+            "observedDuty": 1,
+            "validPath": true,
+            "timely": true,
+            "passed": true
+          },
+          {
+            "index": 7,
+            "position": 0,
+            "expected": {
+              "duty": 0
+            },
+            "observedDuty": 0,
+            "validPath": true,
+            "timely": true,
+            "passed": true
+          }
+        ],
+        "checkerHash": "c867f0a5c4c83af7e293fc86e813ca34f2f36b008c854d3e4bb531f1348b53c1"
+      }
+    },
+    {
+      "source": "docs/stage24c-evidence/final-compiled-results.json",
+      "report": {
+        "profileId": "24C-ntc@1",
+        "checkerVersion": "24C.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjani napajanje, masa i signalni putovi svih zadanih ulaza i izlaza",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Svježa točna očitanja prate tri neovisne osnovne pobude",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "repeat",
+            "description": "Krajevi raspona, posebne granice i povrat prema objavljenim uputama",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "temperature": 25,
+            "expected": {
+              "ADC": 2180,
+              "T": 25
+            },
+            "observed": {
+              "ADC": 2180,
+              "T": 24.99
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "stable": true,
+            "passed": true
+          },
+          {
+            "index": 2,
+            "temperature": 35,
+            "expected": {
+              "ADC": 1718,
+              "T": 35
+            },
+            "observed": {
+              "ADC": 1718,
+              "T": 35
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "stable": true,
+            "passed": true
+          },
+          {
+            "index": 3,
+            "temperature": 5.2,
+            "expected": {
+              "ADC": 3137,
+              "T": 5.2
+            },
+            "observed": {
+              "ADC": 3137,
+              "T": 5.2
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "stable": true,
+            "passed": true
+          },
+          {
+            "index": 4,
+            "temperature": -20,
+            "expected": {
+              "ADC": 3981,
+              "T": -20
+            },
+            "observed": {
+              "ADC": 3981,
+              "T": -19.98
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "stable": true,
+            "passed": true
+          },
+          {
+            "index": 5,
+            "temperature": 100,
+            "expected": {
+              "ADC": 284,
+              "T": 100
+            },
+            "observed": {
+              "ADC": 284,
+              "T": 100.03
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "stable": true,
+            "passed": true
+          },
+          {
+            "index": 6,
+            "temperature": 25,
+            "expected": {
+              "ADC": 2180,
+              "T": 25
+            },
+            "observed": {
+              "ADC": 2180,
+              "T": 24.99
+            },
+            "validPath": true,
+            "freshEnough": true,
+            "stable": true,
+            "passed": true
+          }
+        ],
+        "checkerHash": "c867f0a5c4c83af7e293fc86e813ca34f2f36b008c854d3e4bb531f1348b53c1"
+      }
+    },
+    {
+      "source": "docs/stage24e-evidence/mysql-events.json",
+      "report": {
+        "profileId": "24E-encoderRaw@1",
+        "checkerVersion": "24E.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan električni ulaz/izlaz i stvarni trag bridova",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Točan odziv na osnovne promjene smjera ili valjane NEC okvire",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "recovery",
+            "description": "SW reset i novi koraci u oba smjera",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "position": 0,
+            "count": 0,
+            "pressed": false,
+            "physicalEdges": 1,
+            "reports": 1,
+            "timely": true,
+            "truthful": true,
+            "passed": true
+          },
+          {
+            "index": 2,
+            "position": 3,
+            "count": 3,
+            "pressed": false,
+            "physicalEdges": 12,
+            "reports": 12,
+            "timely": true,
+            "truthful": true,
+            "passed": true
+          },
+          {
+            "index": 3,
+            "position": 1,
+            "count": 1,
+            "pressed": false,
+            "physicalEdges": 8,
+            "reports": 8,
+            "timely": true,
+            "truthful": true,
+            "passed": true
+          },
+          {
+            "index": 4,
+            "position": 1,
+            "count": 0,
+            "pressed": true,
+            "reset": true,
+            "physicalEdges": 1,
+            "reports": 1,
+            "timely": true,
+            "truthful": true,
+            "passed": true
+          },
+          {
+            "index": 5,
+            "position": 0,
+            "count": -1,
+            "pressed": false,
+            "physicalEdges": 5,
+            "reports": 5,
+            "timely": true,
+            "truthful": true,
+            "passed": true
+          },
+          {
+            "index": 6,
+            "position": 2,
+            "count": 1,
+            "pressed": false,
+            "physicalEdges": 8,
+            "reports": 8,
+            "timely": true,
+            "truthful": true,
+            "passed": true
+          }
+        ],
+        "checkerHash": "84f5f4a03d9b57f009bfa82d51d9ab996cdc4bff5dec273ef1a33b7757ff24ef"
+      }
+    },
+    {
+      "source": "docs/stage24j-evidence/mysql-touch.json",
+      "report": {
+        "profileId": "24J-iliGraphics@1",
+        "checkerVersion": "24J.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani SPI put i stvarni prijenosi uređaja",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Trake i naslov u primljenim RGB565 pikselima",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "continuation",
+            "description": "Geometrija i krajnji piksel (239,319)",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "input": {},
+            "basic": true,
+            "advanced": true,
+            "screenStable": true,
+            "channels": [],
+            "spans": [
+              {
+                "label": 1,
+                "start": 1965,
+                "end": 5000
+              }
+            ]
+          }
+        ],
+        "checkerHash": "84f5f4a03d9b57f009bfa82d51d9ab996cdc4bff5dec273ef1a33b7757ff24ef"
+      }
+    },
+    {
+      "source": "docs/stage24m-evidence/mysql-radio.json",
+      "report": {
+        "profileId": "24M-radio@1",
+        "checkerVersion": "24M.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani SPI i CE putovi obaju čvorova, potvrđeni dovršenim čitanjem registra",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem oba čvora."
+          },
+          {
+            "id": "response",
+            "description": "Deset stvarnih paketa, potvrda i dovršenih RX čitanja s točnim ispisima",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem oba čvora."
+          },
+          {
+            "id": "continuation",
+            "description": "Gubitak ACK-a i podataka bez duplikata; MAX_RT pri blokadi i uspjeh nakon obnove",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem oba čvora."
+          }
+        ],
+        "samples": [
+          {
+            "scenario": "normal",
+            "connection": true,
+            "passed": true,
+            "attempts": 10,
+            "retries": 0,
+            "acknowledged": 10,
+            "failed": 0,
+            "rfReceived": 10,
+            "completeReads": 10,
+            "rxValues": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "txValues": [
+              {
+                "n": 1,
+                "ack": true
+              },
+              {
+                "n": 2,
+                "ack": true
+              },
+              {
+                "n": 3,
+                "ack": true
+              },
+              {
+                "n": 4,
+                "ack": true
+              },
+              {
+                "n": 5,
+                "ack": true
+              },
+              {
+                "n": 6,
+                "ack": true
+              },
+              {
+                "n": 7,
+                "ack": true
+              },
+              {
+                "n": 8,
+                "ack": true
+              },
+              {
+                "n": 9,
+                "ack": true
+              },
+              {
+                "n": 10,
+                "ack": true
+              }
+            ],
+            "packetsCorrect": true,
+            "txCorrect": true,
+            "readCorrect": true,
+            "rxCorrect": true
+          },
+          {
+            "scenario": "ack-loss",
+            "connection": true,
+            "passed": true,
+            "attempts": 12,
+            "retries": 2,
+            "acknowledged": 10,
+            "failed": 0,
+            "rfReceived": 10,
+            "completeReads": 10,
+            "rxValues": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "txValues": [
+              {
+                "n": 1,
+                "ack": true
+              },
+              {
+                "n": 2,
+                "ack": true
+              },
+              {
+                "n": 3,
+                "ack": true
+              },
+              {
+                "n": 4,
+                "ack": true
+              },
+              {
+                "n": 5,
+                "ack": true
+              },
+              {
+                "n": 6,
+                "ack": true
+              },
+              {
+                "n": 7,
+                "ack": true
+              },
+              {
+                "n": 8,
+                "ack": true
+              },
+              {
+                "n": 9,
+                "ack": true
+              },
+              {
+                "n": 10,
+                "ack": true
+              }
+            ],
+            "packetsCorrect": true,
+            "txCorrect": true,
+            "readCorrect": true,
+            "rxCorrect": true
+          },
+          {
+            "scenario": "data-loss",
+            "connection": true,
+            "passed": true,
+            "attempts": 12,
+            "retries": 2,
+            "acknowledged": 10,
+            "failed": 0,
+            "rfReceived": 10,
+            "completeReads": 10,
+            "rxValues": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "txValues": [
+              {
+                "n": 1,
+                "ack": true
+              },
+              {
+                "n": 2,
+                "ack": true
+              },
+              {
+                "n": 3,
+                "ack": true
+              },
+              {
+                "n": 4,
+                "ack": true
+              },
+              {
+                "n": 5,
+                "ack": true
+              },
+              {
+                "n": 6,
+                "ack": true
+              },
+              {
+                "n": 7,
+                "ack": true
+              },
+              {
+                "n": 8,
+                "ack": true
+              },
+              {
+                "n": 9,
+                "ack": true
+              },
+              {
+                "n": 10,
+                "ack": true
+              }
+            ],
+            "packetsCorrect": true,
+            "txCorrect": true,
+            "readCorrect": true,
+            "rxCorrect": true
+          },
+          {
+            "scenario": "blocked",
+            "connection": true,
+            "passed": true,
+            "attempts": 40,
+            "retries": 30,
+            "acknowledged": 0,
+            "failed": 10,
+            "rfReceived": 0,
+            "completeReads": 0,
+            "rxValues": [],
+            "txValues": [
+              {
+                "n": 1,
+                "ack": false
+              },
+              {
+                "n": 2,
+                "ack": false
+              },
+              {
+                "n": 3,
+                "ack": false
+              },
+              {
+                "n": 4,
+                "ack": false
+              },
+              {
+                "n": 5,
+                "ack": false
+              },
+              {
+                "n": 6,
+                "ack": false
+              },
+              {
+                "n": 7,
+                "ack": false
+              },
+              {
+                "n": 8,
+                "ack": false
+              },
+              {
+                "n": 9,
+                "ack": false
+              },
+              {
+                "n": 10,
+                "ack": false
+              }
+            ],
+            "packetsCorrect": true,
+            "txCorrect": true,
+            "readCorrect": false,
+            "rxCorrect": false
+          },
+          {
+            "scenario": "restored",
+            "connection": true,
+            "passed": true,
+            "attempts": 10,
+            "retries": 0,
+            "acknowledged": 10,
+            "failed": 0,
+            "rfReceived": 10,
+            "completeReads": 10,
+            "rxValues": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "txValues": [
+              {
+                "n": 1,
+                "ack": true
+              },
+              {
+                "n": 2,
+                "ack": true
+              },
+              {
+                "n": 3,
+                "ack": true
+              },
+              {
+                "n": 4,
+                "ack": true
+              },
+              {
+                "n": 5,
+                "ack": true
+              },
+              {
+                "n": 6,
+                "ack": true
+              },
+              {
+                "n": 7,
+                "ack": true
+              },
+              {
+                "n": 8,
+                "ack": true
+              },
+              {
+                "n": 9,
+                "ack": true
+              },
+              {
+                "n": 10,
+                "ack": true
+              }
+            ],
+            "packetsCorrect": true,
+            "txCorrect": true,
+            "readCorrect": true,
+            "rxCorrect": true
+          }
+        ],
+        "checkerHash": "84f5f4a03d9b57f009bfa82d51d9ab996cdc4bff5dec273ef1a33b7757ff24ef"
+      }
+    },
+    {
+      "source": "docs/stage24g-evidence/mysql-steppers.json",
+      "report": {
+        "profileId": "24G-stepperBasic@1",
+        "checkerVersion": "24G.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan upravljački i energetski put, A4988 i obje zavojnice motora",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Prvi puni ciklus: 50 +50 koraka, smjer, kut i obje stanke",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "repeat",
+            "description": "Još dva potpuna ciklusa bez izgubljenih ili dodatnih impulsa",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "variant": "stepperBasic",
+            "motorSupplyV": 8,
+            "connected": true,
+            "accepted": 400,
+            "ignored": 0,
+            "faults": [],
+            "overflow": false,
+            "lostTrace": false,
+            "basic": true,
+            "advanced": true,
+            "bursts": [
+              {
+                "count": 50,
+                "direction": 1,
+                "resolution": 1,
+                "holdMs": 600,
+                "firstMs": 2.02,
+                "lastMs": 198.51,
+                "translatorTicks": 800,
+                "protocol": true,
+                "held": true,
+                "passed": true
+              },
+              {
+                "count": 50,
+                "direction": -1,
+                "resolution": 1,
+                "holdMs": 600,
+                "firstMs": 802.53,
+                "lastMs": 999.02,
+                "translatorTicks": 0,
+                "protocol": true,
+                "held": true,
+                "passed": true
+              },
+              {
+                "count": 50,
+                "direction": 1,
+                "resolution": 1,
+                "holdMs": 600,
+                "firstMs": 1603.04,
+                "lastMs": 1799.53,
+                "translatorTicks": 800,
+                "protocol": true,
+                "held": true,
+                "passed": true
+              },
+              {
+                "count": 50,
+                "direction": -1,
+                "resolution": 1,
+                "holdMs": 600,
+                "firstMs": 2403.55,
+                "lastMs": 2600.04,
+                "translatorTicks": 0,
+                "protocol": true,
+                "held": true,
+                "passed": true
+              },
+              {
+                "count": 50,
+                "direction": 1,
+                "resolution": 1,
+                "holdMs": 600,
+                "firstMs": 3204.06,
+                "lastMs": 3400.55,
+                "translatorTicks": 800,
+                "protocol": true,
+                "held": true,
+                "passed": true
+              },
+              {
+                "count": 50,
+                "direction": -1,
+                "resolution": 1,
+                "holdMs": 600,
+                "firstMs": 4004.57,
+                "lastMs": 4201.06,
+                "translatorTicks": 0,
+                "protocol": true,
+                "held": true,
+                "passed": true
+              }
+            ],
+            "lastState": {
+              "timeMs": 5802,
+              "endMs": 6200,
+              "accepted": 400,
+              "ignored": 0,
+              "rejected": 0,
+              "rising": 400,
+              "ticks": 0,
+              "driven": 0,
+              "resolution": 1,
+              "enabled": true,
+              "energized": true,
+              "certain": true,
+              "angle": 0,
+              "idealAngle": 0,
+              "enable": 0,
+              "reset": 1,
+              "sleep": 1,
+              "bits": 0
+            }
+          }
+        ],
+        "checkerHash": "84f5f4a03d9b57f009bfa82d51d9ab996cdc4bff5dec273ef1a33b7757ff24ef"
+      }
+    },
+    {
+      "source": "docs/stage24i-evidence/mysql-environment.json",
+      "report": {
+        "profileId": "24I-regulator@1",
+        "checkerVersion": "24I.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani AHT10/OLED put, novo očitanje i stvarni servo impuls",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Šest osnovnih promjena: nova očitanja, OLED i kut uz histerezu",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "continuation",
+            "description": "Granični uzorci, oba smjera histereze i završni povrat",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "expectedAngle": 0,
+            "sensors": [
+              {
+                "kind": "aht10",
+                "component": "aht1",
+                "expected": {
+                  "temperature": 24,
+                  "humidity": 35
+                },
+                "readings": [
+                  {
+                    "timeMs": 130,
+                    "component": "aht1",
+                    "temperature": 23.999977111816406,
+                    "humidity": 35.000038146972656,
+                    "pressure": null,
+                    "sample": 1
+                  },
+                  {
+                    "timeMs": 2130,
+                    "component": "aht1",
+                    "temperature": 23.999977111816406,
+                    "humidity": 35.000038146972656,
+                    "pressure": null,
+                    "sample": 2
+                  }
+                ],
+                "firstDelayMs": 130,
+                "timely": true,
+                "printed": true,
+                "passed": true
+              }
+            ],
+            "screenStable": true,
+            "screenSamples": 2,
+            "angleOK": true,
+            "angleRange": {
+              "minimum": 0,
+              "maximum": 0
+            },
+            "sensorsPassed": true,
+            "passed": true
+          },
+          {
+            "index": 2,
+            "expectedAngle": 90,
+            "sensors": [
+              {
+                "kind": "aht10",
+                "component": "aht1",
+                "expected": {
+                  "temperature": 29,
+                  "humidity": 65
+                },
+                "readings": [
+                  {
+                    "timeMs": 4130,
+                    "component": "aht1",
+                    "temperature": 29.000091552734375,
+                    "humidity": 64.99996185302734,
+                    "pressure": null,
+                    "sample": 3
+                  }
+                ],
+                "firstDelayMs": 1130,
+                "timely": true,
+                "printed": true,
+                "passed": true
+              }
+            ],
+            "screenStable": true,
+            "screenSamples": 2,
+            "angleOK": true,
+            "angleRange": {
+              "minimum": 90,
+              "maximum": 90
+            },
+            "sensorsPassed": true,
+            "passed": true
+          },
+          {
+            "index": 3,
+            "expectedAngle": 90,
+            "sensors": [
+              {
+                "kind": "aht10",
+                "component": "aht1",
+                "expected": {
+                  "temperature": 27,
+                  "humidity": 35
+                },
+                "readings": [
+                  {
+                    "timeMs": 6130,
+                    "component": "aht1",
+                    "temperature": 27.000045776367188,
+                    "humidity": 35.000038146972656,
+                    "pressure": null,
+                    "sample": 4
+                  },
+                  {
+                    "timeMs": 8130,
+                    "component": "aht1",
+                    "temperature": 27.000045776367188,
+                    "humidity": 35.000038146972656,
+                    "pressure": null,
+                    "sample": 5
+                  }
+                ],
+                "firstDelayMs": 130,
+                "timely": true,
+                "printed": true,
+                "passed": true
+              }
+            ],
+            "screenStable": true,
+            "screenSamples": 2,
+            "angleOK": true,
+            "angleRange": {
+              "minimum": 90,
+              "maximum": 90
+            },
+            "sensorsPassed": true,
+            "passed": true
+          },
+          {
+            "index": 4,
+            "expectedAngle": 0,
+            "sensors": [
+              {
+                "kind": "aht10",
+                "component": "aht1",
+                "expected": {
+                  "temperature": 25,
+                  "humidity": 65
+                },
+                "readings": [
+                  {
+                    "timeMs": 10130,
+                    "component": "aht1",
+                    "temperature": 25,
+                    "humidity": 64.99996185302734,
+                    "pressure": null,
+                    "sample": 6
+                  }
+                ],
+                "firstDelayMs": 1130,
+                "timely": true,
+                "printed": true,
+                "passed": true
+              }
+            ],
+            "screenStable": true,
+            "screenSamples": 2,
+            "angleOK": true,
+            "angleRange": {
+              "minimum": 0,
+              "maximum": 0
+            },
+            "sensorsPassed": true,
+            "passed": true
+          },
+          {
+            "index": 5,
+            "expectedAngle": 0,
+            "sensors": [
+              {
+                "kind": "aht10",
+                "component": "aht1",
+                "expected": {
+                  "temperature": 27,
+                  "humidity": 35
+                },
+                "readings": [
+                  {
+                    "timeMs": 12130,
+                    "component": "aht1",
+                    "temperature": 27.000045776367188,
+                    "humidity": 35.000038146972656,
+                    "pressure": null,
+                    "sample": 7
+                  },
+                  {
+                    "timeMs": 14130,
+                    "component": "aht1",
+                    "temperature": 27.000045776367188,
+                    "humidity": 35.000038146972656,
+                    "pressure": null,
+                    "sample": 8
+                  }
+                ],
+                "firstDelayMs": 130,
+                "timely": true,
+                "printed": true,
+                "passed": true
+              }
+            ],
+            "screenStable": true,
+            "screenSamples": 2,
+            "angleOK": true,
+            "angleRange": {
+              "minimum": 0,
+              "maximum": 0
+            },
+            "sensorsPassed": true,
+            "passed": true
+          },
+          {
+            "index": 6,
+            "expectedAngle": 90,
+            "sensors": [
+              {
+                "kind": "aht10",
+                "component": "aht1",
+                "expected": {
+                  "temperature": 29,
+                  "humidity": 65
+                },
+                "readings": [
+                  {
+                    "timeMs": 16130,
+                    "component": "aht1",
+                    "temperature": 29.000091552734375,
+                    "humidity": 64.99996185302734,
+                    "pressure": null,
+                    "sample": 9
+                  }
+                ],
+                "firstDelayMs": 1130,
+                "timely": true,
+                "printed": true,
+                "passed": true
+              }
+            ],
+            "screenStable": true,
+            "screenSamples": 2,
+            "angleOK": true,
+            "angleRange": {
+              "minimum": 90,
+              "maximum": 90
+            },
+            "sensorsPassed": true,
+            "passed": true
+          },
+          {
+            "index": 7,
+            "expectedAngle": 0,
+            "sensors": [
+              {
+                "kind": "aht10",
+                "component": "aht1",
+                "expected": {
+                  "temperature": 25.9998,
+                  "humidity": 35
+                },
+                "readings": [
+                  {
+                    "timeMs": 18130,
+                    "component": "aht1",
+                    "temperature": 25.999832153320312,
+                    "humidity": 35.000038146972656,
+                    "pressure": null,
+                    "sample": 10
+                  },
+                  {
+                    "timeMs": 20130,
+                    "component": "aht1",
+                    "temperature": 25.999832153320312,
+                    "humidity": 35.000038146972656,
+                    "pressure": null,
+                    "sample": 11
+                  }
+                ],
+                "firstDelayMs": 130,
+                "timely": true,
+                "printed": true,
+                "passed": true
+              }
+            ],
+            "screenStable": true,
+            "screenSamples": 2,
+            "angleOK": true,
+            "angleRange": {
+              "minimum": 0,
+              "maximum": 0
+            },
+            "sensorsPassed": true,
+            "passed": true
+          },
+          {
+            "index": 8,
+            "expectedAngle": 0,
+            "sensors": [
+              {
+                "kind": "aht10",
+                "component": "aht1",
+                "expected": {
+                  "temperature": 27.9998,
+                  "humidity": 65
+                },
+                "readings": [
+                  {
+                    "timeMs": 22130,
+                    "component": "aht1",
+                    "temperature": 27.9998779296875,
+                    "humidity": 64.99996185302734,
+                    "pressure": null,
+                    "sample": 12
+                  }
+                ],
+                "firstDelayMs": 1130,
+                "timely": true,
+                "printed": true,
+                "passed": true
+              }
+            ],
+            "screenStable": true,
+            "screenSamples": 2,
+            "angleOK": true,
+            "angleRange": {
+              "minimum": 0,
+              "maximum": 0
+            },
+            "sensorsPassed": true,
+            "passed": true
+          },
+          {
+            "index": 9,
+            "expectedAngle": 90,
+            "sensors": [
+              {
+                "kind": "aht10",
+                "component": "aht1",
+                "expected": {
+                  "temperature": 28,
+                  "humidity": 35
+                },
+                "readings": [
+                  {
+                    "timeMs": 24130,
+                    "component": "aht1",
+                    "temperature": 28.00006866455078,
+                    "humidity": 35.000038146972656,
+                    "pressure": null,
+                    "sample": 13
+                  },
+                  {
+                    "timeMs": 26130,
+                    "component": "aht1",
+                    "temperature": 28.00006866455078,
+                    "humidity": 35.000038146972656,
+                    "pressure": null,
+                    "sample": 14
+                  }
+                ],
+                "firstDelayMs": 130,
+                "timely": true,
+                "printed": true,
+                "passed": true
+              }
+            ],
+            "screenStable": true,
+            "screenSamples": 2,
+            "angleOK": true,
+            "angleRange": {
+              "minimum": 90,
+              "maximum": 90
+            },
+            "sensorsPassed": true,
+            "passed": true
+          },
+          {
+            "index": 10,
+            "expectedAngle": 90,
+            "sensors": [
+              {
+                "kind": "aht10",
+                "component": "aht1",
+                "expected": {
+                  "temperature": 26,
+                  "humidity": 65
+                },
+                "readings": [
+                  {
+                    "timeMs": 28130,
+                    "component": "aht1",
+                    "temperature": 26.000022888183594,
+                    "humidity": 64.99996185302734,
+                    "pressure": null,
+                    "sample": 15
+                  }
+                ],
+                "firstDelayMs": 1130,
+                "timely": true,
+                "printed": true,
+                "passed": true
+              }
+            ],
+            "screenStable": true,
+            "screenSamples": 2,
+            "angleOK": true,
+            "angleRange": {
+              "minimum": 90,
+              "maximum": 90
+            },
+            "sensorsPassed": true,
+            "passed": true
+          },
+          {
+            "index": 11,
+            "expectedAngle": 0,
+            "sensors": [
+              {
+                "kind": "aht10",
+                "component": "aht1",
+                "expected": {
+                  "temperature": 25.9998,
+                  "humidity": 35
+                },
+                "readings": [
+                  {
+                    "timeMs": 30130,
+                    "component": "aht1",
+                    "temperature": 25.999832153320312,
+                    "humidity": 35.000038146972656,
+                    "pressure": null,
+                    "sample": 16
+                  },
+                  {
+                    "timeMs": 32130,
+                    "component": "aht1",
+                    "temperature": 25.999832153320312,
+                    "humidity": 35.000038146972656,
+                    "pressure": null,
+                    "sample": 17
+                  }
+                ],
+                "firstDelayMs": 130,
+                "timely": true,
+                "printed": true,
+                "passed": true
+              }
+            ],
+            "screenStable": true,
+            "screenSamples": 2,
+            "angleOK": true,
+            "angleRange": {
+              "minimum": 0,
+              "maximum": 0
+            },
+            "sensorsPassed": true,
+            "passed": true
+          },
+          {
+            "index": 12,
+            "expectedAngle": 0,
+            "sensors": [
+              {
+                "kind": "aht10",
+                "component": "aht1",
+                "expected": {
+                  "temperature": 26.0002,
+                  "humidity": 65
+                },
+                "readings": [
+                  {
+                    "timeMs": 34130,
+                    "component": "aht1",
+                    "temperature": 26.000213623046875,
+                    "humidity": 64.99996185302734,
+                    "pressure": null,
+                    "sample": 18
+                  }
+                ],
+                "firstDelayMs": 1130,
+                "timely": true,
+                "printed": true,
+                "passed": true
+              }
+            ],
+            "screenStable": true,
+            "screenSamples": 2,
+            "angleOK": true,
+            "angleRange": {
+              "minimum": 0,
+              "maximum": 0
+            },
+            "sensorsPassed": true,
+            "passed": true
+          },
+          {
+            "index": 13,
+            "expectedAngle": 90,
+            "sensors": [
+              {
+                "kind": "aht10",
+                "component": "aht1",
+                "expected": {
+                  "temperature": 28.0002,
+                  "humidity": 35
+                },
+                "readings": [
+                  {
+                    "timeMs": 36130,
+                    "component": "aht1",
+                    "temperature": 28.000259399414062,
+                    "humidity": 35.000038146972656,
+                    "pressure": null,
+                    "sample": 19
+                  },
+                  {
+                    "timeMs": 38130,
+                    "component": "aht1",
+                    "temperature": 28.000259399414062,
+                    "humidity": 35.000038146972656,
+                    "pressure": null,
+                    "sample": 20
+                  }
+                ],
+                "firstDelayMs": 130,
+                "timely": true,
+                "printed": true,
+                "passed": true
+              }
+            ],
+            "screenStable": true,
+            "screenSamples": 2,
+            "angleOK": true,
+            "angleRange": {
+              "minimum": 90,
+              "maximum": 90
+            },
+            "sensorsPassed": true,
+            "passed": true
+          },
+          {
+            "index": 14,
+            "expectedAngle": 0,
+            "sensors": [
+              {
+                "kind": "aht10",
+                "component": "aht1",
+                "expected": {
+                  "temperature": 24,
+                  "humidity": 65
+                },
+                "readings": [
+                  {
+                    "timeMs": 40130,
+                    "component": "aht1",
+                    "temperature": 23.999977111816406,
+                    "humidity": 64.99996185302734,
+                    "pressure": null,
+                    "sample": 21
+                  }
+                ],
+                "firstDelayMs": 1130,
+                "timely": true,
+                "printed": true,
+                "passed": true
+              }
+            ],
+            "screenStable": true,
+            "screenSamples": 2,
+            "angleOK": true,
+            "angleRange": {
+              "minimum": 0,
+              "maximum": 0
+            },
+            "sensorsPassed": true,
+            "passed": true
+          }
+        ],
+        "checkerHash": "84f5f4a03d9b57f009bfa82d51d9ab996cdc4bff5dec273ef1a33b7757ff24ef"
+      }
+    },
+    {
+      "source": "docs/stage24f-evidence/mysql-actuators.json",
+      "report": {
+        "profileId": "24F-relayContacts@1",
+        "checkerVersion": "24F.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan stvarni upravljački i energetski put do svih zadanih aktuatora",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Točan električni izlaz i trajanje svih faza prvoga ciklusa",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "repeat",
+            "description": "Još dva potpuna ciklusa, krajevi raspona i istodobni izlazi bez sukoba timera",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "variant": "relayContacts",
+            "cycleMs": 1400,
+            "observations": 14,
+            "connected": true,
+            "motorSupplyV": null,
+            "transitions": [
+              {
+                "timeMs": 0,
+                "label": 0
+              },
+              {
+                "timeMs": 700,
+                "label": 1
+              },
+              {
+                "timeMs": 1400,
+                "label": 0
+              },
+              {
+                "timeMs": 2100,
+                "label": 1
+              },
+              {
+                "timeMs": 2800,
+                "label": 0
+              },
+              {
+                "timeMs": 3500,
+                "label": 1
+              },
+              {
+                "timeMs": 4200,
+                "label": 0
+              }
+            ],
+            "invalidIntervals": [],
+            "basic": true,
+            "repeated": true,
+            "overflow": false,
+            "lastElectrical": {
+              "timeMs": 4600,
+              "relays": {
+                "relay1": {
+                  "powered": true,
+                  "energized": true,
+                  "contact": "COM–NO",
+                  "reason": "Zavojnica pobuđena"
+                }
+              },
+              "buzzers": {},
+              "motors": {},
+              "servos": {},
+              "leds": {
+                "relayLED0": {
+                  "brightness": 0.927536231884063,
+                  "currentMa": 4.6377
+                },
+                "relayLED1": {
+                  "brightness": 0,
+                  "currentMa": 0
+                }
+              }
+            }
+          }
+        ],
+        "checkerHash": "84f5f4a03d9b57f009bfa82d51d9ab996cdc4bff5dec273ef1a33b7757ff24ef"
+      }
+    },
+    {
+      "source": "docs/stage24o-evidence/introductory.json",
+      "report": {
+        "profileId": "24O-v1-led-time@1",
+        "checkerVersion": "24O.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Zatvoreni strujni krug LED-ice s otpornikom",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Najmanje tri puna ciklusa uključenja i isključenja",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "continuation",
+            "description": "Uključenje 250 ms i isključenje 750 ms",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "edges": [
+              {
+                "timeMs": 0,
+                "on": true
+              },
+              {
+                "timeMs": 250,
+                "on": false
+              },
+              {
+                "timeMs": 1000,
+                "on": true
+              },
+              {
+                "timeMs": 1250,
+                "on": false
+              },
+              {
+                "timeMs": 2000,
+                "on": true
+              },
+              {
+                "timeMs": 2250,
+                "on": false
+              },
+              {
+                "timeMs": 3000,
+                "on": true
+              },
+              {
+                "timeMs": 3250,
+                "on": false
+              },
+              {
+                "timeMs": 4000,
+                "on": true
+              }
+            ]
+          }
+        ],
+        "checkerHash": "84f5f4a03d9b57f009bfa82d51d9ab996cdc4bff5dec273ef1a33b7757ff24ef"
+      }
+    },
+    {
+      "source": "docs/stage24o-evidence/introductory.json",
+      "report": {
+        "profileId": "24O-v2-button@1",
+        "checkerVersion": "24O.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan put tipkala i LED-ice, ulaz u načinu IN",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "LED slijedi prvo pritiskanje i otpuštanje",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "continuation",
+            "description": "LED slijedi ponovljene pritiske i povrat",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "pressed": false,
+            "validPath": true,
+            "timely": true,
+            "currentMa": 0,
+            "passed": true
+          },
+          {
+            "index": 2,
+            "pressed": true,
+            "validPath": true,
+            "timely": true,
+            "currentMa": 4.4118,
+            "passed": true
+          },
+          {
+            "index": 3,
+            "pressed": false,
+            "validPath": true,
+            "timely": true,
+            "currentMa": 0,
+            "passed": true
+          },
+          {
+            "index": 4,
+            "pressed": true,
+            "validPath": true,
+            "timely": true,
+            "currentMa": 4.4118,
+            "passed": true
+          },
+          {
+            "index": 5,
+            "pressed": false,
+            "validPath": true,
+            "timely": true,
+            "currentMa": 0,
+            "passed": true
+          },
+          {
+            "index": 6,
+            "pressed": true,
+            "validPath": true,
+            "timely": true,
+            "currentMa": 4.4118,
+            "passed": true
+          },
+          {
+            "index": 7,
+            "pressed": false,
+            "validPath": true,
+            "timely": true,
+            "currentMa": 0,
+            "passed": true
+          }
+        ],
+        "checkerHash": "84f5f4a03d9b57f009bfa82d51d9ab996cdc4bff5dec273ef1a33b7757ff24ef"
+      }
+    },
+    {
+      "source": "docs/stage24o-evidence/introductory.json",
+      "report": {
+        "profileId": "24O-v3-adc-pwm@1",
+        "checkerVersion": "24O.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Valjan ADC put potenciometra te put otpornika i LED-ice",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Radni omjer prati početnu i dvije dodatne ADC pobude",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "continuation",
+            "description": "Krajevi raspona, položaji 25/50 % i povrat",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "position": 0,
+            "expected": {
+              "duty": 0
+            },
+            "observedDuty": 0,
+            "validPath": true,
+            "timely": true,
+            "passed": true,
+            "positionDuty": 0,
+            "positionMatches": true
+          },
+          {
+            "index": 2,
+            "position": 15,
+            "expected": {
+              "duty": 0.1597069597069597
+            },
+            "observedDuty": 0.15970092317082474,
+            "validPath": true,
+            "timely": true,
+            "passed": true,
+            "positionDuty": 0.1597069597069597,
+            "positionMatches": true
+          },
+          {
+            "index": 3,
+            "position": 72.9,
+            "expected": {
+              "duty": 0.7760683760683761
+            },
+            "observedDuty": 0.77607385366598,
+            "validPath": true,
+            "timely": true,
+            "passed": true,
+            "positionDuty": 0.7760683760683761,
+            "positionMatches": true
+          },
+          {
+            "index": 4,
+            "position": 25,
+            "expected": {
+              "duty": 0.2661782661782662
+            },
+            "observedDuty": 0.2661783779659724,
+            "validPath": true,
+            "timely": true,
+            "passed": true,
+            "positionDuty": 0.2661782661782662,
+            "positionMatches": true
+          },
+          {
+            "index": 5,
+            "position": 50,
+            "expected": {
+              "duty": 0.5323565323565324
+            },
+            "observedDuty": 0.5323567559319448,
+            "validPath": true,
+            "timely": true,
+            "passed": true,
+            "positionDuty": 0.5323565323565324,
+            "positionMatches": true
+          },
+          {
+            "index": 6,
+            "position": 100,
+            "expected": {
+              "duty": 1
+            },
+            "observedDuty": 1,
+            "validPath": true,
+            "timely": true,
+            "passed": true,
+            "positionDuty": 1,
+            "positionMatches": true
+          },
+          {
+            "index": 7,
+            "position": 0,
+            "expected": {
+              "duty": 0
+            },
+            "observedDuty": 0,
+            "validPath": true,
+            "timely": true,
+            "passed": true,
+            "positionDuty": 0,
+            "positionMatches": true
+          }
+        ],
+        "checkerHash": "84f5f4a03d9b57f009bfa82d51d9ab996cdc4bff5dec273ef1a33b7757ff24ef"
+      }
+    },
+    {
+      "source": "docs/stage24o-evidence/introductory.json",
+      "report": {
+        "profileId": "24O-v4-aht-oled@1",
+        "checkerVersion": "24O.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani put AHT10 i OLED-a, stvarno novo očitanje",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Nova očitanja temperature i vlage u svim promjenama",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "continuation",
+            "description": "Nove brojke T/RH u stvarnim OLED pikselima",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "expected": {
+              "temperature": 18.4,
+              "humidity": 43.7
+            },
+            "readings": [
+              {
+                "timeMs": 130,
+                "component": "aht1",
+                "temperature": 18.400001525878906,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 1
+              },
+              {
+                "timeMs": 710,
+                "component": "aht1",
+                "temperature": 18.400001525878906,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 2
+              },
+              {
+                "timeMs": 1290,
+                "component": "aht1",
+                "temperature": 18.400001525878906,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 3
+              },
+              {
+                "timeMs": 1870,
+                "component": "aht1",
+                "temperature": 18.400001525878906,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 4
+              },
+              {
+                "timeMs": 2450,
+                "component": "aht1",
+                "temperature": 18.400001525878906,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 5
+              },
+              {
+                "timeMs": 3030,
+                "component": "aht1",
+                "temperature": 18.400001525878906,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 6
+              },
+              {
+                "timeMs": 3610,
+                "component": "aht1",
+                "temperature": 18.400001525878906,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 7
+              },
+              {
+                "timeMs": 4190,
+                "component": "aht1",
+                "temperature": 18.400001525878906,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 8
+              },
+              {
+                "timeMs": 4770,
+                "component": "aht1",
+                "temperature": 18.400001525878906,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 9
+              },
+              {
+                "timeMs": 5350,
+                "component": "aht1",
+                "temperature": 18.400001525878906,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 10
+              },
+              {
+                "timeMs": 5930,
+                "component": "aht1",
+                "temperature": 18.400001525878906,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 11
+              }
+            ],
+            "refreshTimes": [
+              130,
+              710,
+              1290,
+              1870,
+              2450,
+              3030,
+              3610,
+              4190,
+              4770,
+              5350,
+              5930
+            ],
+            "firstScreenDelayMs": 630,
+            "sensorOK": true,
+            "screenOK": true,
+            "angleOK": true,
+            "angleSamples": [],
+            "passed": true
+          },
+          {
+            "index": 2,
+            "expected": {
+              "temperature": 33.7,
+              "humidity": 43.7
+            },
+            "readings": [
+              {
+                "timeMs": 6510,
+                "component": "aht1",
+                "temperature": 33.699989318847656,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 12
+              },
+              {
+                "timeMs": 7090,
+                "component": "aht1",
+                "temperature": 33.699989318847656,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 13
+              },
+              {
+                "timeMs": 7670,
+                "component": "aht1",
+                "temperature": 33.699989318847656,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 14
+              },
+              {
+                "timeMs": 8250,
+                "component": "aht1",
+                "temperature": 33.699989318847656,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 15
+              },
+              {
+                "timeMs": 8830,
+                "component": "aht1",
+                "temperature": 33.699989318847656,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 16
+              },
+              {
+                "timeMs": 9410,
+                "component": "aht1",
+                "temperature": 33.699989318847656,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 17
+              },
+              {
+                "timeMs": 9990,
+                "component": "aht1",
+                "temperature": 33.699989318847656,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 18
+              },
+              {
+                "timeMs": 10570,
+                "component": "aht1",
+                "temperature": 33.699989318847656,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 19
+              },
+              {
+                "timeMs": 11150,
+                "component": "aht1",
+                "temperature": 33.699989318847656,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 20
+              },
+              {
+                "timeMs": 11730,
+                "component": "aht1",
+                "temperature": 33.699989318847656,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 21
+              }
+            ],
+            "refreshTimes": [
+              6510,
+              7090,
+              7670,
+              8250,
+              8830,
+              9410,
+              9990,
+              10570,
+              11150,
+              11730
+            ],
+            "firstScreenDelayMs": 1010,
+            "sensorOK": true,
+            "screenOK": true,
+            "angleOK": true,
+            "angleSamples": [],
+            "passed": true
+          },
+          {
+            "index": 3,
+            "expected": {
+              "temperature": 33.7,
+              "humidity": 72.4
+            },
+            "readings": [
+              {
+                "timeMs": 12310,
+                "component": "aht1",
+                "temperature": 33.699989318847656,
+                "humidity": 72.39999771118164,
+                "pressure": null,
+                "sample": 22
+              },
+              {
+                "timeMs": 12890,
+                "component": "aht1",
+                "temperature": 33.699989318847656,
+                "humidity": 72.39999771118164,
+                "pressure": null,
+                "sample": 23
+              },
+              {
+                "timeMs": 13470,
+                "component": "aht1",
+                "temperature": 33.699989318847656,
+                "humidity": 72.39999771118164,
+                "pressure": null,
+                "sample": 24
+              },
+              {
+                "timeMs": 14050,
+                "component": "aht1",
+                "temperature": 33.699989318847656,
+                "humidity": 72.39999771118164,
+                "pressure": null,
+                "sample": 25
+              },
+              {
+                "timeMs": 14630,
+                "component": "aht1",
+                "temperature": 33.699989318847656,
+                "humidity": 72.39999771118164,
+                "pressure": null,
+                "sample": 26
+              },
+              {
+                "timeMs": 15210,
+                "component": "aht1",
+                "temperature": 33.699989318847656,
+                "humidity": 72.39999771118164,
+                "pressure": null,
+                "sample": 27
+              },
+              {
+                "timeMs": 15790,
+                "component": "aht1",
+                "temperature": 33.699989318847656,
+                "humidity": 72.39999771118164,
+                "pressure": null,
+                "sample": 28
+              },
+              {
+                "timeMs": 16370,
+                "component": "aht1",
+                "temperature": 33.699989318847656,
+                "humidity": 72.39999771118164,
+                "pressure": null,
+                "sample": 29
+              },
+              {
+                "timeMs": 16950,
+                "component": "aht1",
+                "temperature": 33.699989318847656,
+                "humidity": 72.39999771118164,
+                "pressure": null,
+                "sample": 30
+              },
+              {
+                "timeMs": 17530,
+                "component": "aht1",
+                "temperature": 33.699989318847656,
+                "humidity": 72.39999771118164,
+                "pressure": null,
+                "sample": 31
+              }
+            ],
+            "refreshTimes": [
+              12310,
+              12890,
+              13470,
+              14050,
+              14630,
+              15210,
+              15790,
+              16370,
+              16950,
+              17530
+            ],
+            "firstScreenDelayMs": 810,
+            "sensorOK": true,
+            "screenOK": true,
+            "angleOK": true,
+            "angleSamples": [],
+            "passed": true
+          },
+          {
+            "index": 4,
+            "expected": {
+              "temperature": -6.2,
+              "humidity": 72.4
+            },
+            "readings": [
+              {
+                "timeMs": 18110,
+                "component": "aht1",
+                "temperature": -6.2000274658203125,
+                "humidity": 72.39999771118164,
+                "pressure": null,
+                "sample": 32
+              },
+              {
+                "timeMs": 18690,
+                "component": "aht1",
+                "temperature": -6.2000274658203125,
+                "humidity": 72.39999771118164,
+                "pressure": null,
+                "sample": 33
+              },
+              {
+                "timeMs": 19270,
+                "component": "aht1",
+                "temperature": -6.2000274658203125,
+                "humidity": 72.39999771118164,
+                "pressure": null,
+                "sample": 34
+              },
+              {
+                "timeMs": 19850,
+                "component": "aht1",
+                "temperature": -6.2000274658203125,
+                "humidity": 72.39999771118164,
+                "pressure": null,
+                "sample": 35
+              },
+              {
+                "timeMs": 20430,
+                "component": "aht1",
+                "temperature": -6.2000274658203125,
+                "humidity": 72.39999771118164,
+                "pressure": null,
+                "sample": 36
+              },
+              {
+                "timeMs": 21010,
+                "component": "aht1",
+                "temperature": -6.2000274658203125,
+                "humidity": 72.39999771118164,
+                "pressure": null,
+                "sample": 37
+              },
+              {
+                "timeMs": 21590,
+                "component": "aht1",
+                "temperature": -6.2000274658203125,
+                "humidity": 72.39999771118164,
+                "pressure": null,
+                "sample": 38
+              },
+              {
+                "timeMs": 22170,
+                "component": "aht1",
+                "temperature": -6.2000274658203125,
+                "humidity": 72.39999771118164,
+                "pressure": null,
+                "sample": 39
+              },
+              {
+                "timeMs": 22750,
+                "component": "aht1",
+                "temperature": -6.2000274658203125,
+                "humidity": 72.39999771118164,
+                "pressure": null,
+                "sample": 40
+              },
+              {
+                "timeMs": 23330,
+                "component": "aht1",
+                "temperature": -6.2000274658203125,
+                "humidity": 72.39999771118164,
+                "pressure": null,
+                "sample": 41
+              },
+              {
+                "timeMs": 23910,
+                "component": "aht1",
+                "temperature": -6.2000274658203125,
+                "humidity": 72.39999771118164,
+                "pressure": null,
+                "sample": 42
+              }
+            ],
+            "refreshTimes": [
+              18110,
+              18690,
+              19270,
+              19850,
+              20430,
+              21010,
+              21590,
+              22170,
+              22750,
+              23330,
+              23910
+            ],
+            "firstScreenDelayMs": 610,
+            "sensorOK": true,
+            "screenOK": true,
+            "angleOK": true,
+            "angleSamples": [],
+            "passed": true
+          },
+          {
+            "index": 5,
+            "expected": {
+              "temperature": -6.2,
+              "humidity": 28.6
+            },
+            "readings": [
+              {
+                "timeMs": 24490,
+                "component": "aht1",
+                "temperature": -6.2000274658203125,
+                "humidity": 28.600025177001953,
+                "pressure": null,
+                "sample": 43
+              },
+              {
+                "timeMs": 25070,
+                "component": "aht1",
+                "temperature": -6.2000274658203125,
+                "humidity": 28.600025177001953,
+                "pressure": null,
+                "sample": 44
+              },
+              {
+                "timeMs": 25650,
+                "component": "aht1",
+                "temperature": -6.2000274658203125,
+                "humidity": 28.600025177001953,
+                "pressure": null,
+                "sample": 45
+              },
+              {
+                "timeMs": 26230,
+                "component": "aht1",
+                "temperature": -6.2000274658203125,
+                "humidity": 28.600025177001953,
+                "pressure": null,
+                "sample": 46
+              },
+              {
+                "timeMs": 26810,
+                "component": "aht1",
+                "temperature": -6.2000274658203125,
+                "humidity": 28.600025177001953,
+                "pressure": null,
+                "sample": 47
+              },
+              {
+                "timeMs": 27390,
+                "component": "aht1",
+                "temperature": -6.2000274658203125,
+                "humidity": 28.600025177001953,
+                "pressure": null,
+                "sample": 48
+              },
+              {
+                "timeMs": 27970,
+                "component": "aht1",
+                "temperature": -6.2000274658203125,
+                "humidity": 28.600025177001953,
+                "pressure": null,
+                "sample": 49
+              },
+              {
+                "timeMs": 28550,
+                "component": "aht1",
+                "temperature": -6.2000274658203125,
+                "humidity": 28.600025177001953,
+                "pressure": null,
+                "sample": 50
+              },
+              {
+                "timeMs": 29130,
+                "component": "aht1",
+                "temperature": -6.2000274658203125,
+                "humidity": 28.600025177001953,
+                "pressure": null,
+                "sample": 51
+              },
+              {
+                "timeMs": 29710,
+                "component": "aht1",
+                "temperature": -6.2000274658203125,
+                "humidity": 28.600025177001953,
+                "pressure": null,
+                "sample": 52
+              }
+            ],
+            "refreshTimes": [
+              24490,
+              25070,
+              25650,
+              26230,
+              26810,
+              27390,
+              27970,
+              28550,
+              29130,
+              29710
+            ],
+            "firstScreenDelayMs": 990,
+            "sensorOK": true,
+            "screenOK": true,
+            "angleOK": true,
+            "angleSamples": [],
+            "passed": true
+          },
+          {
+            "index": 6,
+            "expected": {
+              "temperature": 18.4,
+              "humidity": 43.7
+            },
+            "readings": [
+              {
+                "timeMs": 30290,
+                "component": "aht1",
+                "temperature": 18.400001525878906,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 53
+              },
+              {
+                "timeMs": 30870,
+                "component": "aht1",
+                "temperature": 18.400001525878906,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 54
+              },
+              {
+                "timeMs": 31450,
+                "component": "aht1",
+                "temperature": 18.400001525878906,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 55
+              },
+              {
+                "timeMs": 32030,
+                "component": "aht1",
+                "temperature": 18.400001525878906,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 56
+              },
+              {
+                "timeMs": 32610,
+                "component": "aht1",
+                "temperature": 18.400001525878906,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 57
+              },
+              {
+                "timeMs": 33190,
+                "component": "aht1",
+                "temperature": 18.400001525878906,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 58
+              },
+              {
+                "timeMs": 33770,
+                "component": "aht1",
+                "temperature": 18.400001525878906,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 59
+              },
+              {
+                "timeMs": 34350,
+                "component": "aht1",
+                "temperature": 18.400001525878906,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 60
+              },
+              {
+                "timeMs": 34930,
+                "component": "aht1",
+                "temperature": 18.400001525878906,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 61
+              },
+              {
+                "timeMs": 35510,
+                "component": "aht1",
+                "temperature": 18.400001525878906,
+                "humidity": 43.70002746582031,
+                "pressure": null,
+                "sample": 62
+              }
+            ],
+            "refreshTimes": [
+              30290,
+              30870,
+              31450,
+              32030,
+              32610,
+              33190,
+              33770,
+              34350,
+              34930,
+              35510
+            ],
+            "firstScreenDelayMs": 790,
+            "sensorOK": true,
+            "screenOK": true,
+            "angleOK": true,
+            "angleSamples": [],
+            "passed": true
+          }
+        ],
+        "checkerHash": "84f5f4a03d9b57f009bfa82d51d9ab996cdc4bff5dec273ef1a33b7757ff24ef"
+      }
+    },
+    {
+      "source": "docs/stage24o-evidence/introductory.json",
+      "report": {
+        "profileId": "24O-v5-regulator@1",
+        "checkerVersion": "24O.1",
+        "status": "evaluated",
+        "points": 10,
+        "maxPoints": 10,
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani AHT10/OLED put i stvarni servo impulsi",
+            "maxPoints": 3,
+            "passed": true,
+            "points": 3,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "response",
+            "description": "Osnovni slijed: nova očitanja, OLED i histereza",
+            "maxPoints": 5,
+            "passed": true,
+            "points": 5,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          },
+          {
+            "id": "continuation",
+            "description": "Oba smjera, granični uzorci i završni povrat",
+            "maxPoints": 2,
+            "passed": true,
+            "points": 2,
+            "explanation": "Zahtjev je potvrđen neovisnim izvođenjem."
+          }
+        ],
+        "samples": [
+          {
+            "index": 1,
+            "expected": {
+              "temperature": 24,
+              "humidity": 65,
+              "angle": 0
+            },
+            "readings": [
+              {
+                "timeMs": 130,
+                "component": "aht1",
+                "temperature": 23.999977111816406,
+                "humidity": 64.99996185302734,
+                "pressure": null,
+                "sample": 1
+              },
+              {
+                "timeMs": 2130,
+                "component": "aht1",
+                "temperature": 23.999977111816406,
+                "humidity": 64.99996185302734,
+                "pressure": null,
+                "sample": 2
+              },
+              {
+                "timeMs": 4130,
+                "component": "aht1",
+                "temperature": 23.999977111816406,
+                "humidity": 64.99996185302734,
+                "pressure": null,
+                "sample": 3
+              }
+            ],
+            "refreshTimes": [
+              130,
+              2130,
+              4130
+            ],
+            "firstScreenDelayMs": 2050,
+            "sensorOK": true,
+            "screenOK": true,
+            "angleOK": true,
+            "angleSamples": [
+              {
+                "timeMs": 2130,
+                "angle": 0,
+                "passed": true
+              },
+              {
+                "timeMs": 4050,
+                "angle": 0,
+                "passed": true
+              },
+              {
+                "timeMs": 4130,
+                "angle": 0,
+                "passed": true
+              }
+            ],
+            "passed": true
+          },
+          {
+            "index": 2,
+            "expected": {
+              "temperature": 29,
+              "humidity": 35,
+              "angle": 90
+            },
+            "readings": [
+              {
+                "timeMs": 6130,
+                "component": "aht1",
+                "temperature": 29.000091552734375,
+                "humidity": 35.000038146972656,
+                "pressure": null,
+                "sample": 4
+              },
+              {
+                "timeMs": 8130,
+                "component": "aht1",
+                "temperature": 29.000091552734375,
+                "humidity": 35.000038146972656,
+                "pressure": null,
+                "sample": 5
+              },
+              {
+                "timeMs": 10130,
+                "component": "aht1",
+                "temperature": 29.000091552734375,
+                "humidity": 35.000038146972656,
+                "pressure": null,
+                "sample": 6
+              }
+            ],
+            "refreshTimes": [
+              6130,
+              8130,
+              10130
+            ],
+            "firstScreenDelayMs": 2050,
+            "sensorOK": true,
+            "screenOK": true,
+            "angleOK": true,
+            "angleSamples": [
+              {
+                "timeMs": 8130,
+                "angle": 90,
+                "passed": true
+              },
+              {
+                "timeMs": 10050,
+                "angle": 90,
+                "passed": true
+              },
+              {
+                "timeMs": 10130,
+                "angle": 90,
+                "passed": true
+              }
+            ],
+            "passed": true
+          },
+          {
+            "index": 3,
+            "expected": {
+              "temperature": 27,
+              "humidity": 65,
+              "angle": 90
+            },
+            "readings": [
+              {
+                "timeMs": 12130,
+                "component": "aht1",
+                "temperature": 27.000045776367188,
+                "humidity": 64.99996185302734,
+                "pressure": null,
+                "sample": 7
+              },
+              {
+                "timeMs": 14130,
+                "component": "aht1",
+                "temperature": 27.000045776367188,
+                "humidity": 64.99996185302734,
+                "pressure": null,
+                "sample": 8
+              },
+              {
+                "timeMs": 16130,
+                "component": "aht1",
+                "temperature": 27.000045776367188,
+                "humidity": 64.99996185302734,
+                "pressure": null,
+                "sample": 9
+              }
+            ],
+            "refreshTimes": [
+              12130,
+              14130,
+              16130
+            ],
+            "firstScreenDelayMs": 2050,
+            "sensorOK": true,
+            "screenOK": true,
+            "angleOK": true,
+            "angleSamples": [
+              {
+                "timeMs": 14130,
+                "angle": 90,
+                "passed": true
+              },
+              {
+                "timeMs": 16050,
+                "angle": 90,
+                "passed": true
+              },
+              {
+                "timeMs": 16130,
+                "angle": 90,
+                "passed": true
+              }
+            ],
+            "passed": true
+          },
+          {
+            "index": 4,
+            "expected": {
+              "temperature": 25,
+              "humidity": 35,
+              "angle": 0
+            },
+            "readings": [
+              {
+                "timeMs": 18130,
+                "component": "aht1",
+                "temperature": 25,
+                "humidity": 35.000038146972656,
+                "pressure": null,
+                "sample": 10
+              },
+              {
+                "timeMs": 20130,
+                "component": "aht1",
+                "temperature": 25,
+                "humidity": 35.000038146972656,
+                "pressure": null,
+                "sample": 11
+              },
+              {
+                "timeMs": 22130,
+                "component": "aht1",
+                "temperature": 25,
+                "humidity": 35.000038146972656,
+                "pressure": null,
+                "sample": 12
+              }
+            ],
+            "refreshTimes": [
+              18130,
+              20130,
+              22130
+            ],
+            "firstScreenDelayMs": 2050,
+            "sensorOK": true,
+            "screenOK": true,
+            "angleOK": true,
+            "angleSamples": [
+              {
+                "timeMs": 20130,
+                "angle": 0,
+                "passed": true
+              },
+              {
+                "timeMs": 22050,
+                "angle": 0,
+                "passed": true
+              },
+              {
+                "timeMs": 22130,
+                "angle": 0,
+                "passed": true
+              }
+            ],
+            "passed": true
+          },
+          {
+            "index": 5,
+            "expected": {
+              "temperature": 27,
+              "humidity": 65,
+              "angle": 0
+            },
+            "readings": [
+              {
+                "timeMs": 24130,
+                "component": "aht1",
+                "temperature": 27.000045776367188,
+                "humidity": 64.99996185302734,
+                "pressure": null,
+                "sample": 13
+              },
+              {
+                "timeMs": 26130,
+                "component": "aht1",
+                "temperature": 27.000045776367188,
+                "humidity": 64.99996185302734,
+                "pressure": null,
+                "sample": 14
+              },
+              {
+                "timeMs": 28130,
+                "component": "aht1",
+                "temperature": 27.000045776367188,
+                "humidity": 64.99996185302734,
+                "pressure": null,
+                "sample": 15
+              }
+            ],
+            "refreshTimes": [
+              24130,
+              26130,
+              28130
+            ],
+            "firstScreenDelayMs": 2050,
+            "sensorOK": true,
+            "screenOK": true,
+            "angleOK": true,
+            "angleSamples": [
+              {
+                "timeMs": 26130,
+                "angle": 0,
+                "passed": true
+              },
+              {
+                "timeMs": 28050,
+                "angle": 0,
+                "passed": true
+              },
+              {
+                "timeMs": 28130,
+                "angle": 0,
+                "passed": true
+              }
+            ],
+            "passed": true
+          },
+          {
+            "index": 6,
+            "expected": {
+              "temperature": 29,
+              "humidity": 35,
+              "angle": 90
+            },
+            "readings": [
+              {
+                "timeMs": 30130,
+                "component": "aht1",
+                "temperature": 29.000091552734375,
+                "humidity": 35.000038146972656,
+                "pressure": null,
+                "sample": 16
+              },
+              {
+                "timeMs": 32130,
+                "component": "aht1",
+                "temperature": 29.000091552734375,
+                "humidity": 35.000038146972656,
+                "pressure": null,
+                "sample": 17
+              },
+              {
+                "timeMs": 34130,
+                "component": "aht1",
+                "temperature": 29.000091552734375,
+                "humidity": 35.000038146972656,
+                "pressure": null,
+                "sample": 18
+              }
+            ],
+            "refreshTimes": [
+              30130,
+              32130,
+              34130
+            ],
+            "firstScreenDelayMs": 2050,
+            "sensorOK": true,
+            "screenOK": true,
+            "angleOK": true,
+            "angleSamples": [
+              {
+                "timeMs": 32130,
+                "angle": 90,
+                "passed": true
+              },
+              {
+                "timeMs": 34050,
+                "angle": 90,
+                "passed": true
+              },
+              {
+                "timeMs": 34130,
+                "angle": 90,
+                "passed": true
+              }
+            ],
+            "passed": true
+          },
+          {
+            "index": 7,
+            "expected": {
+              "temperature": 25.9998,
+              "humidity": 65,
+              "angle": 0
+            },
+            "readings": [
+              {
+                "timeMs": 36130,
+                "component": "aht1",
+                "temperature": 25.999832153320312,
+                "humidity": 64.99996185302734,
+                "pressure": null,
+                "sample": 19
+              },
+              {
+                "timeMs": 38130,
+                "component": "aht1",
+                "temperature": 25.999832153320312,
+                "humidity": 64.99996185302734,
+                "pressure": null,
+                "sample": 20
+              },
+              {
+                "timeMs": 40130,
+                "component": "aht1",
+                "temperature": 25.999832153320312,
+                "humidity": 64.99996185302734,
+                "pressure": null,
+                "sample": 21
+              }
+            ],
+            "refreshTimes": [
+              36130,
+              38130,
+              40130
+            ],
+            "firstScreenDelayMs": 2050,
+            "sensorOK": true,
+            "screenOK": true,
+            "angleOK": true,
+            "angleSamples": [
+              {
+                "timeMs": 38130,
+                "angle": 0,
+                "passed": true
+              },
+              {
+                "timeMs": 40050,
+                "angle": 0,
+                "passed": true
+              },
+              {
+                "timeMs": 40130,
+                "angle": 0,
+                "passed": true
+              }
+            ],
+            "passed": true
+          },
+          {
+            "index": 8,
+            "expected": {
+              "temperature": 27.9998,
+              "humidity": 35,
+              "angle": 0
+            },
+            "readings": [
+              {
+                "timeMs": 42130,
+                "component": "aht1",
+                "temperature": 27.9998779296875,
+                "humidity": 35.000038146972656,
+                "pressure": null,
+                "sample": 22
+              },
+              {
+                "timeMs": 44130,
+                "component": "aht1",
+                "temperature": 27.9998779296875,
+                "humidity": 35.000038146972656,
+                "pressure": null,
+                "sample": 23
+              },
+              {
+                "timeMs": 46130,
+                "component": "aht1",
+                "temperature": 27.9998779296875,
+                "humidity": 35.000038146972656,
+                "pressure": null,
+                "sample": 24
+              }
+            ],
+            "refreshTimes": [
+              42130,
+              44130,
+              46130
+            ],
+            "firstScreenDelayMs": 2050,
+            "sensorOK": true,
+            "screenOK": true,
+            "angleOK": true,
+            "angleSamples": [
+              {
+                "timeMs": 44130,
+                "angle": 0,
+                "passed": true
+              },
+              {
+                "timeMs": 46050,
+                "angle": 0,
+                "passed": true
+              },
+              {
+                "timeMs": 46130,
+                "angle": 0,
+                "passed": true
+              }
+            ],
+            "passed": true
+          },
+          {
+            "index": 9,
+            "expected": {
+              "temperature": 28,
+              "humidity": 65,
+              "angle": 90
+            },
+            "readings": [
+              {
+                "timeMs": 48130,
+                "component": "aht1",
+                "temperature": 28.00006866455078,
+                "humidity": 64.99996185302734,
+                "pressure": null,
+                "sample": 25
+              },
+              {
+                "timeMs": 50130,
+                "component": "aht1",
+                "temperature": 28.00006866455078,
+                "humidity": 64.99996185302734,
+                "pressure": null,
+                "sample": 26
+              },
+              {
+                "timeMs": 52130,
+                "component": "aht1",
+                "temperature": 28.00006866455078,
+                "humidity": 64.99996185302734,
+                "pressure": null,
+                "sample": 27
+              }
+            ],
+            "refreshTimes": [
+              48130,
+              50130,
+              52130
+            ],
+            "firstScreenDelayMs": 2050,
+            "sensorOK": true,
+            "screenOK": true,
+            "angleOK": true,
+            "angleSamples": [
+              {
+                "timeMs": 50130,
+                "angle": 90,
+                "passed": true
+              },
+              {
+                "timeMs": 52050,
+                "angle": 90,
+                "passed": true
+              },
+              {
+                "timeMs": 52130,
+                "angle": 90,
+                "passed": true
+              }
+            ],
+            "passed": true
+          },
+          {
+            "index": 10,
+            "expected": {
+              "temperature": 26,
+              "humidity": 35,
+              "angle": 90
+            },
+            "readings": [
+              {
+                "timeMs": 54130,
+                "component": "aht1",
+                "temperature": 26.000022888183594,
+                "humidity": 35.000038146972656,
+                "pressure": null,
+                "sample": 28
+              },
+              {
+                "timeMs": 56130,
+                "component": "aht1",
+                "temperature": 26.000022888183594,
+                "humidity": 35.000038146972656,
+                "pressure": null,
+                "sample": 29
+              },
+              {
+                "timeMs": 58130,
+                "component": "aht1",
+                "temperature": 26.000022888183594,
+                "humidity": 35.000038146972656,
+                "pressure": null,
+                "sample": 30
+              }
+            ],
+            "refreshTimes": [
+              54130,
+              56130,
+              58130
+            ],
+            "firstScreenDelayMs": 2050,
+            "sensorOK": true,
+            "screenOK": true,
+            "angleOK": true,
+            "angleSamples": [
+              {
+                "timeMs": 56130,
+                "angle": 90,
+                "passed": true
+              },
+              {
+                "timeMs": 58050,
+                "angle": 90,
+                "passed": true
+              },
+              {
+                "timeMs": 58130,
+                "angle": 90,
+                "passed": true
+              }
+            ],
+            "passed": true
+          },
+          {
+            "index": 11,
+            "expected": {
+              "temperature": 25.9998,
+              "humidity": 65,
+              "angle": 0
+            },
+            "readings": [
+              {
+                "timeMs": 60130,
+                "component": "aht1",
+                "temperature": 25.999832153320312,
+                "humidity": 64.99996185302734,
+                "pressure": null,
+                "sample": 31
+              },
+              {
+                "timeMs": 62130,
+                "component": "aht1",
+                "temperature": 25.999832153320312,
+                "humidity": 64.99996185302734,
+                "pressure": null,
+                "sample": 32
+              },
+              {
+                "timeMs": 64130,
+                "component": "aht1",
+                "temperature": 25.999832153320312,
+                "humidity": 64.99996185302734,
+                "pressure": null,
+                "sample": 33
+              }
+            ],
+            "refreshTimes": [
+              60130,
+              62130,
+              64130
+            ],
+            "firstScreenDelayMs": 2050,
+            "sensorOK": true,
+            "screenOK": true,
+            "angleOK": true,
+            "angleSamples": [
+              {
+                "timeMs": 62130,
+                "angle": 0,
+                "passed": true
+              },
+              {
+                "timeMs": 64050,
+                "angle": 0,
+                "passed": true
+              },
+              {
+                "timeMs": 64130,
+                "angle": 0,
+                "passed": true
+              }
+            ],
+            "passed": true
+          },
+          {
+            "index": 12,
+            "expected": {
+              "temperature": 26.0002,
+              "humidity": 35,
+              "angle": 0
+            },
+            "readings": [
+              {
+                "timeMs": 66130,
+                "component": "aht1",
+                "temperature": 26.000213623046875,
+                "humidity": 35.000038146972656,
+                "pressure": null,
+                "sample": 34
+              },
+              {
+                "timeMs": 68130,
+                "component": "aht1",
+                "temperature": 26.000213623046875,
+                "humidity": 35.000038146972656,
+                "pressure": null,
+                "sample": 35
+              },
+              {
+                "timeMs": 70130,
+                "component": "aht1",
+                "temperature": 26.000213623046875,
+                "humidity": 35.000038146972656,
+                "pressure": null,
+                "sample": 36
+              }
+            ],
+            "refreshTimes": [
+              66130,
+              68130,
+              70130
+            ],
+            "firstScreenDelayMs": 2050,
+            "sensorOK": true,
+            "screenOK": true,
+            "angleOK": true,
+            "angleSamples": [
+              {
+                "timeMs": 68130,
+                "angle": 0,
+                "passed": true
+              },
+              {
+                "timeMs": 70050,
+                "angle": 0,
+                "passed": true
+              },
+              {
+                "timeMs": 70130,
+                "angle": 0,
+                "passed": true
+              }
+            ],
+            "passed": true
+          },
+          {
+            "index": 13,
+            "expected": {
+              "temperature": 28.0002,
+              "humidity": 65,
+              "angle": 90
+            },
+            "readings": [
+              {
+                "timeMs": 72130,
+                "component": "aht1",
+                "temperature": 28.000259399414062,
+                "humidity": 64.99996185302734,
+                "pressure": null,
+                "sample": 37
+              },
+              {
+                "timeMs": 74130,
+                "component": "aht1",
+                "temperature": 28.000259399414062,
+                "humidity": 64.99996185302734,
+                "pressure": null,
+                "sample": 38
+              },
+              {
+                "timeMs": 76130,
+                "component": "aht1",
+                "temperature": 28.000259399414062,
+                "humidity": 64.99996185302734,
+                "pressure": null,
+                "sample": 39
+              }
+            ],
+            "refreshTimes": [
+              72130,
+              74130,
+              76130
+            ],
+            "firstScreenDelayMs": 2050,
+            "sensorOK": true,
+            "screenOK": true,
+            "angleOK": true,
+            "angleSamples": [
+              {
+                "timeMs": 74130,
+                "angle": 90,
+                "passed": true
+              },
+              {
+                "timeMs": 76050,
+                "angle": 90,
+                "passed": true
+              },
+              {
+                "timeMs": 76130,
+                "angle": 90,
+                "passed": true
+              }
+            ],
+            "passed": true
+          },
+          {
+            "index": 14,
+            "expected": {
+              "temperature": 24,
+              "humidity": 35,
+              "angle": 0
+            },
+            "readings": [
+              {
+                "timeMs": 78130,
+                "component": "aht1",
+                "temperature": 23.999977111816406,
+                "humidity": 35.000038146972656,
+                "pressure": null,
+                "sample": 40
+              },
+              {
+                "timeMs": 80130,
+                "component": "aht1",
+                "temperature": 23.999977111816406,
+                "humidity": 35.000038146972656,
+                "pressure": null,
+                "sample": 41
+              },
+              {
+                "timeMs": 82130,
+                "component": "aht1",
+                "temperature": 23.999977111816406,
+                "humidity": 35.000038146972656,
+                "pressure": null,
+                "sample": 42
+              }
+            ],
+            "refreshTimes": [
+              78130,
+              80130,
+              82130
+            ],
+            "firstScreenDelayMs": 2050,
+            "sensorOK": true,
+            "screenOK": true,
+            "angleOK": true,
+            "angleSamples": [
+              {
+                "timeMs": 80130,
+                "angle": 0,
+                "passed": true
+              },
+              {
+                "timeMs": 82050,
+                "angle": 0,
+                "passed": true
+              },
+              {
+                "timeMs": 82130,
+                "angle": 0,
+                "passed": true
+              }
+            ],
+            "passed": true
+          }
+        ],
+        "checkerHash": "84f5f4a03d9b57f009bfa82d51d9ab996cdc4bff5dec273ef1a33b7757ff24ef"
+      }
+    }
+  ]
+}

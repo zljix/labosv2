@@ -4,6 +4,8 @@ import {createHash} from 'node:crypto';
 import {zipSync, strToU8} from 'fflate';
 
 const root = process.cwd(), version = JSON.parse(readFileSync('package.json', 'utf8')).version;
+const release=JSON.parse(readFileSync('school/release.json','utf8')),stage=release.stage;
+if(release.version!==version)throw Error('Najprije uskladi izdanje: npm run release:sync');
 const manifest = JSON.parse(readFileSync('dist/offline-package.json', 'utf8'));
 if (manifest.base !== '/' || manifest.version !== version) throw Error('Školski paket zahtijeva aktualnu korijensku izgradnju (npm run build).');
 for (const entry of manifest.files) {
@@ -45,8 +47,10 @@ copy('docs/stage24n-levels.md', 'docs/stage24n-levels.md');
 copy('docs/stage24n-evidence', 'docs/stage24n-evidence');
 copy('docs/stage24o-introductory.md', 'docs/stage24o-introductory.md');
 copy('docs/stage24o-evidence', 'docs/stage24o-evidence');
+copy('docs/stage24p-remediation.md', 'docs/stage24p-remediation.md');
+copy('docs/stage24p-evidence', 'docs/stage24p-evidence');
 copy('.build/school-catalog', 'catalog');
-copy('school/README.md', 'README.md'); copy('school/profile.json', 'profile.json'); copy('LICENSE', 'LICENSE');
+copy('school/README.md', 'README.md'); copy('school/profile.json', 'profile.json'); copy('school/release.json','release.json'); copy('LICENSE', 'LICENSE');
 copy('docs/stage23e-grading.md', 'docs/stage23e-grading.md');
 copy('docs/stage23e-evidence', 'docs/stage23e-evidence');
 copy('docs/stage23f-submissions.md', 'docs/stage23f-submissions.md');
@@ -70,10 +74,10 @@ function walk(directory) { for (const item of readdirSync(directory, {withFileTy
   if (item.isDirectory()) walk(path); else entries[relative(target, path).replaceAll('\\', '/')] = new Uint8Array(readFileSync(path));
 } }
 walk(target);
-const inventory = {version, stage: '24O', appBuild: manifest.build, files: Object.entries(entries).map(([path, bytes]) => ({path, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex')}))};
+const inventory = {version, stage, appBuild: manifest.build, files: Object.entries(entries).map(([path, bytes]) => ({path, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex')}))};
 entries['package-inventory.json'] = strToU8(JSON.stringify(inventory, null, 2) + '\n');
 writeFileSync(resolve(target, 'package-inventory.json'), entries['package-inventory.json']);
 mkdirSync('release', {recursive: true});
-const output = resolve('release', 'Labosv2_' + version.split('-')[0] + '_24O_Skolski.zip');
+const output = resolve('release', 'Labosv2_' + version.split('-')[0] + '_'+stage+'_Skolski.zip');
 writeFileSync(output, zipSync(entries, {level: 6}));
 console.log(output);

@@ -23,6 +23,7 @@ export default function SchoolFeedback({attemptId,revision,staff=false,archived=
     finally{if(tick===epoch.current)setBusy(false);}
   }
   return <section className="school-feedback" aria-label="Povratna informacija nastavnika">
+    {staff&&<p>Pregled razumijevanja zabilježi komentarom: učenikovo objašnjenje, samostalna promjena i demonstracija. Javna rješenja služe vježbanju. Za samostalnu provjeru novog funkcionalnog zahtjeva objavi odgovarajuću novu rubriku; tekstna napomena ne mijenja automatski provjeravač.</p>}
     <button disabled={busy} onClick={()=>void load()}>Komentari i povijest korekcija / osvježi</button>
     {loaded&&<><p>Zapisi pripadaju reviziji {revision}. Izvorni automatski rezultat i raniji zapisi ostaju sačuvani.</p>
       {!reviews.length&&<p>Za ovu reviziju još nema komentara.</p>}

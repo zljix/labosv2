@@ -1,7 +1,7 @@
 {
   "format": "labosv2-school-profile",
   "version": 1,
-  "stage": "24O",
+  "stage": "24P",
   "sourceBaseline": "zljix/labos@3c4a281c10282d63b2742280f69aadbc08d7ae1e",
   "webServer": "Apache 2.4 with HTTPS",
   "phpBranches": [
@@ -80,7 +80,6 @@
     "idempotentSaves": true
   },
   "grading": {
-    "checkerVersion": "24O.1",
     "profiles": [
       "23E-button-led@1",
       "23E-analog-threshold@1",
@@ -160,7 +159,11 @@
       "24O-v2-button@1",
       "24O-v3-adc-pwm@1",
       "24O-v4-aht-oled@1",
-      "24O-v5-regulator@1"
+      "24O-v5-regulator@1",
+      "24P-v2-button@2",
+      "24P-button-led@2",
+      "24P-v5-regulator@2",
+      "24P-regulator@2"
     ],
     "targets": [
       "micropython",
@@ -188,7 +191,11 @@
       "24K.1",
       "24L.1",
       "24M.1",
-      "24N.1"
+      "24N.1",
+      "24O.1",
+      "24P.1-introductory",
+      "24P.1-button",
+      "24P.1-environment"
     ],
     "coverage": {
       "combinations": 268,
@@ -224,7 +231,8 @@
     "levelWallTimeMs": 65000,
     "levelCpuSeconds": 58,
     "introductoryWallTimeMs": 65000,
-    "introductoryCpuSeconds": 58
+    "introductoryCpuSeconds": 58,
+    "checkerVersionPolicy": "per-published-rubric"
   },
   "submissions": {
     "exactRevision": true,
@@ -259,5 +267,6 @@
       "aggregate-cgroup-memory",
       "backup-restore"
     ]
-  }
+  },
+  "sourceVersion": "0.14.14-beta.1"
 }

@@ -35,7 +35,7 @@ test('unavailable S3 routes, unknown IDs and malformed work are rejected without
  await assert.rejects(()=>createUrsProject('ir','unknown','s3-cpp'),/nije podržan/);
  await assert.rejects(()=>createUrsProject('radio','wrong','uno'),/nije podržan/);
  const p=await createUrsProject('gpio','blink','micropython');
- for(const edit of [(w:any)=>w.version=2,(w:any)=>w.answers.push('x'),(w:any)=>w.observations.fault=3,(w:any)=>w.student='x'.repeat(101),(w:any)=>w.snapshot={sourceHash:'no',recordedAt:'bad'}]){const q=clone(p),w=readUrsWork(q)!;edit(w);q.files[URS_WORK]=JSON.stringify(w);assert.equal(readUrsWork(q),undefined);}
+ for(const edit of [(w:any)=>w.version=2,(w:any)=>w.answers.push('x'),(w:any)=>w.observations.fault=3,(w:any)=>w.student='x'.repeat(121),(w:any)=>w.snapshot={sourceHash:'no',recordedAt:'bad'}]){const q=clone(p),w=readUrsWork(q)!;edit(w);q.files[URS_WORK]=JSON.stringify(w);assert.equal(readUrsWork(q),undefined);}
 });
 async function completed(target:UrsTarget='micropython'){
  const p=await createUrsProject('gpio','blink',target),w=readUrsWork(p)!;w.student='Probni Učenik';w.group='4.f';w.answers=w.answers.map(()=>'Opaženi rezultat i obrazloženje');w.observations={baseline:'LED mijenja stanje.',change:'Promijenjena trajanja.',fault:'Odspojeno, ugašeno; vraćeno, ponovno radi.'};p.files[URS_WORK]=JSON.stringify(w);p.files[URS_WORK]=JSON.stringify(await recordUrsSnapshot(p));return p;

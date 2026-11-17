@@ -61,7 +61,7 @@ export default function SchoolWork({project,confirm,open}:{project:Project;confi
     <div className="school-sync-top"><strong role="status" aria-live="polite">{state.message}</strong><a href={appAsset('school.html#account')}>Školski račun</a></div>
     <p>Posljednja potvrđena revizija: {state.revision} · {schoolTime(state.savedAt)}. {state.phase==='saved'||isLocked?'Rad je sačuvan u bazi.':'Izmjene zadržavaš u ovom pregledniku; dostupni su ZIP i JSON izvoz.'}</p>
     {official?.reopening&&<p>Dorada pokušaja {official.attempt.number}: {official.reopening.reason}. Prethodna predaja #{official.reopening.submissionId} ostaje sačuvana.</p>}
-    <SchoolGrading binding={binding} revision={state.revision} saved={state.phase==='saved'||isLocked}/>
+    <SchoolGrading binding={binding} revision={state.revision} saved={state.phase==='saved'||isLocked} rubric={official?.assignment?.task?.rubric}/>
     {isLocked&&official?.submission&&<section className="school-locked-submission" aria-label="Zaključana predaja">
       <h4>Predaja #{official.submission.id} · pokušaj {official.attempt.number??1}</h4><p>Potvrđeno {schoolTime(official.submission.submittedAt)} · revizija {official.submission.revision}. Sadržaj je zaključan. Za izmjene nastavnik dopušta novi pokušaj.</p>
       <SchoolSnapshot project={parseProject(official.snapshot.project)} label="Sadržaj zaključane predaje"/>

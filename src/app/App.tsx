@@ -60,7 +60,7 @@ import {buildInput,buildFile,validateArtifact} from '../../public/arduino-contra
 import {s3Examples,loadS3Example,type S3Example} from '../runtime/s3Examples';
 import {useArduinoCompiler} from '../runtime/useArduinoCompiler';
 import {cachedBuild} from '../runtime/arduinoBuild';
-import {APP_VERSION} from '../platform/assets';
+import {APP_VERSION,APP_STAGE,APP_RELEASE_TITLE} from '../platform/assets';
 const CodeEditor = lazy(() => import("./CodeEditor"));
 const ClassReviewPanel = lazy(() => import('../lessons/ClassReviewPanel'));
 
@@ -678,7 +678,7 @@ export default function App() {
           >
             <Icon name={s.theme === "light" ? "moon" : "sun"} />
           </button>
-          <a className="stage-tag" href={appAsset('school.html')} title="Školsko izdanje · A4988 i koračni motor">v{APP_VERSION} · 24G</a>
+          <a className="stage-tag" href={appAsset('school.html')} title={'Školsko izdanje · '+APP_RELEASE_TITLE}>v{APP_VERSION} · {APP_STAGE}</a>
         </div>
       </header>
       <div className="toolbar">

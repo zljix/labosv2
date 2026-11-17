@@ -1,6 +1,7 @@
 import {clone,parseProject,type Project} from '../project/model';
 import {exportZip} from '../project/archive';
 import {getUrsLesson,URS_WORK,URS_DOCUMENTS,ursMarkdown} from './ursCatalog';
+import {identityText,STUDENT_NAME_LIMIT,CLASS_NAME_LIMIT} from '../project/identity';
 
 export interface UrsWork {
  format:'esp32-lab-urs';version:1;lessonId:string;variantId:string;student:string;group:string;answers:string[];
@@ -13,7 +14,7 @@ const validStamp=(v:any,key:string)=>v&&typeof v[key]==='string'&&/^[a-f0-9]{64}
 export function readUrsWork(p:Project):UrsWork|undefined {
  try{
   const w=JSON.parse(p.files[URS_WORK]??'null'),l=getUrsLesson(w?.lessonId);
-  if(!l||!l.variants.some(v=>v.id===w.variantId)||w.format!=='esp32-lab-urs'||w.version!==1||!isText(w.student,100)||!isText(w.group,40)||!Array.isArray(w.answers)||w.answers.length!==l.questions.length||w.answers.some((a:unknown)=>!isText(a,2000))||!w.observations||['baseline','change','fault'].some(k=>!isText(w.observations[k],3000)))return;
+  if(!l||!l.variants.some(v=>v.id===w.variantId)||w.format!=='esp32-lab-urs'||w.version!==1||!identityText(w.student,STUDENT_NAME_LIMIT)||!identityText(w.group,CLASS_NAME_LIMIT)||!Array.isArray(w.answers)||w.answers.length!==l.questions.length||w.answers.some((a:unknown)=>!isText(a,2000))||!w.observations||['baseline','change','fault'].some(k=>!isText(w.observations[k],3000)))return;
   if(w.snapshot&&!validStamp(w.snapshot,'sourceHash'))return;
   if(w.review&&(!validStamp(w.review,'contentHash')||!['revise','reviewed'].includes(w.review.verdict)||!isText(w.review.note,3000)))return;
   return {format:'esp32-lab-urs',version:1,lessonId:l.id,variantId:w.variantId,student:w.student,group:w.group,answers:[...w.answers],observations:{baseline:w.observations.baseline,change:w.observations.change,fault:w.observations.fault},...(w.snapshot?{snapshot:{sourceHash:w.snapshot.sourceHash,recordedAt:w.snapshot.recordedAt}}:{}),...(w.review?{review:{contentHash:w.review.contentHash,recordedAt:w.review.recordedAt,verdict:w.review.verdict,note:w.review.note}}:{})};

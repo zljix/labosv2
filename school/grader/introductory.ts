@@ -2,8 +2,9 @@ import type {SimulationConfig} from '../../src/circuit/compile';
 import {createAnalogCheck,validAnalogConfig} from './analog';
 import {ahtTemperature,regulatorAngles,validEnvironmentConfig} from './environment';
 import fonts from './environment-fonts.json';
+import {buttonSchedule,regulatorTemperatures} from './input-scenarios';
 
-export const isIntroductoryContract=(p:any)=>p.checkerVersion==='24O.1';
+export const isIntroductoryContract=(p:any)=>['24O.1','24P.1-introductory','24P.1-button'].includes(p.checkerVersion);
 export function validIntroductoryConfig(c:SimulationConfig,v:string){
   if(v==='adc-pwm')return validAnalogConfig(c,'adc');
   if(v==='regulator')return validEnvironmentConfig(c,'regulator');
@@ -41,24 +42,35 @@ export function createIntroductoryCheck(c:SimulationConfig,p:any,seed:string){
   }
   if(v==='led-time'||v==='button'){
     const led=c.leds[0],button=c.buttons[0],frames:any[]=[],edges:any[]=[];
-    const stimuli=v==='led-time'?[{}]:[false,true,false,true,false,true,false].map(pressed=>({pressed}));
+    const seeded=v==='button'&&s.seededInput===true;
+    const stimuli:any[]=v==='led-time'?[{}]:seeded?buttonSchedule(seed,s.minimumStageMs,s.maximumStageMs):[false,true,false,true,false,true,false].map(pressed=>({pressed}));
+    let buttonIndex=0,buttonTimely=false,buttonSettled=0,buttonStable=true;
     const gpio=(net:number)=>c.gpios.find(g=>g.net===net),ground=(net:number)=>c.referenceGrounds.includes(net);
     const inputPin=button&&(ground(button.a)?gpio(button.b):ground(button.b)?gpio(button.a):undefined);
-    return {stimuli,duration,protocolClock:false,inputs:(value:any)=>button?[{component:button.id,...value}]:[],
+    return {stimuli,duration,...(seeded?{durations:stimuli.map(v=>v.durationMs)}:{}),protocolClock:false,inputs:(value:any)=>button?[{component:button.id,pressed:value.pressed}]:[],
       observe:(e:any)=>{if(e.type!=='simulation')return;const current=e.leds?.[led.id]?.currentMa;
-        if(v==='button'){frames.push(e);if(frames.length>3000)frames.shift();}
+        if(v==='button'){
+          if(seeded){
+            const q=stimuli[buttonIndex];if(!q||e.timeMs<q.startMs||e.timeMs>=q.startMs+q.durationMs)return;
+            const matches=Number.isFinite(current)&&(q.pressed?current>.5:current<.05);
+            if(e.timeMs<=q.startMs+s.responseDeadlineMs+s.stepToleranceMs)buttonTimely ||= matches;
+            else {buttonSettled++;buttonStable &&= matches;}
+          }else {frames.push(e);if(frames.length>3000)frames.shift();}
+        }
         else if(Number.isFinite(current)&&(current>.5||current<.05)){
           const on=current>.5;if(edges.at(-1)?.on!==on&&edges.length<1000)edges.push({timeMs:e.timeMs,on});
         }},
       record:(index:number,last:any)=>{
         if(v==='led-time')return {index:1,edges};
-        const start=index*duration,end=start+duration,expected=(stimuli[index] as any).pressed;
+        const start=seeded?stimuli[index].startMs:index*duration,end=start+(seeded?stimuli[index].durationMs:duration),expected=stimuli[index].pressed;
         const matches=(e:any)=>{const current=e.leds?.[led.id]?.currentMa;return Number.isFinite(current)&&(expected?current>.5:current<.05);};
         const rows=frames.filter(e=>e.timeMs>=start&&e.timeMs<end),deadline=start+s.responseDeadlineMs+s.stepToleranceMs;
-        const timely=rows.some(e=>e.timeMs<=deadline&&matches(e)),settled=rows.filter(e=>e.timeMs>deadline);
+        const timely=seeded?buttonTimely:rows.some(e=>e.timeMs<=deadline&&matches(e)),settled=rows.filter(e=>e.timeMs>deadline);
         const validPath=!!inputPin&&last?.gpios?.[inputPin.pin]?.mode==='IN';
-        frames.length=0;return {index:index+1,pressed:expected,validPath,timely,currentMa:last?.leds?.[led.id]?.currentMa??null,
-          passed:validPath&&timely&&settled.length>0&&settled.every(matches)};
+        const passed=validPath&&timely&&(seeded?buttonSettled>0&&buttonStable:settled.length>0&&settled.every(matches));
+        buttonIndex++;buttonTimely=false;buttonSettled=0;buttonStable=true;
+        frames.length=0;return {index:index+1,pressed:expected,...(seeded?{startMs:start,durationMs:end-start,responseDeadlineMs:s.responseDeadlineMs,stepToleranceMs:s.stepToleranceMs}:{}),validPath,timely,currentMa:last?.leds?.[led.id]?.currentMa??null,
+          passed};
       },
       outcomes:(samples:any[],wiring:boolean)=>{
         if(v==='button'){
@@ -73,10 +85,11 @@ export function createIntroductoryCheck(c:SimulationConfig,p:any,seed:string){
   }
   const regulator=v==='regulator',sensor=c.i2cDevices.find(d=>d.kind==='aht10')!,panel=c.i2cDevices.find(d=>d.kind==='ssd1306')!,servo=c.servos[0];
   const flip=parseInt(seed.slice(0,8),16)%2,first=flip?18.4:21.3,second=flip?33.7:31.8;
-  const environments=regulator?s.temperatures.map((temperature:number,i:number)=>({temperature,humidity:s.humidities[(i+flip)%s.humidities.length]})):
+  const temperatures=regulator&&s.seededInput?regulatorTemperatures(seed,s.temperatures.slice(s.basicStages)):s.temperatures;
+  const environments=regulator?temperatures.map((temperature:number,i:number)=>({temperature,humidity:s.humidities[(i+flip)%s.humidities.length]})):
     [{temperature:first,humidity:43.7},{temperature:second,humidity:43.7},{temperature:second,humidity:72.4},
       {temperature:-6.2,humidity:72.4},{temperature:-6.2,humidity:28.6},{temperature:first,humidity:43.7}];
-  const angles=regulator?regulatorAngles(s.temperatures,s.lowerThresholdC,s.upperThresholdC):[];
+  const angles=regulator?regulatorAngles(temperatures,s.lowerThresholdC,s.upperThresholdC):[];
   const stimuli=environments.map((e:any,i:number)=>({...e,...(regulator?{angle:angles[i]}:{})}));
   let stage=0,readings:any[]=[],refreshTimes:number[]=[],seen=new Set<string>(),connected=false,displayPath=false,servoPath=false;
   let screenKey='',screenMatch=false,screenStart:number|null=null,screenStable=false,firstScreen:number|null=null,lastObservation=-Infinity,angleSamples:any[]=[];

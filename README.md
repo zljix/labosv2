@@ -1,6 +1,10 @@
 # Labosv2 · školski laboratorij
 
-**0.14.13-beta.1 · etapa 24O · uvodne MicroPython vježbe · 17. studenoga 2026.**
+**0.14.14-beta.1 · etapa 24P · dorada provjera i povratne informacije · kandidat za tehnički pregled.**
+
+Nove rubrike tipkala i regulatora, ispravljene jedinice i statusi izvještaja te jedinstveni Unicode identiteti 120/80. [Opseg, provjere, upute i otvoreni školski pilot](docs/stage24p-remediation.md). Stvarni školski prihvat još nije potvrđen.
+
+## Povijest prihvata
 
 **Prihvat 24O:** [Završne provjere i paket](https://github.com/zljix/labosv2/actions/runs/44068540213) prošli su svih 53 koraka. Potvrđeno je 56 ciljanih izvedbi, 15 ponovljenih referentnih izvedbi, pet zasebnih zaključanih V dodjela te očuvanje svih 74 prethodnih rubrika. Prošle su ranije obitelji, 30 simuliranih učenika, izvještaji i povrat sigurnosne kopije. [Sažetak](docs/stage24o-evidence/acceptance-summary.json) i [izvornost instalacijskog paketa](docs/stage24o-evidence/installer-integrity.json).
 
@@ -28,7 +32,7 @@ Nastavak postojećeg ESP32 MicroPython / Arduino laboratorija za školski sustav
 
 [Neovisni prihvat 24F](https://github.com/zljix/labosv2/actions/runs/43915429891) potvrđuje sva četiri cilja i 67 novih prijevoda. [Školski prihvat 24F](https://github.com/zljix/labosv2/actions/runs/43916966742) potvrđuje identičan programski izvor, PHP/MySQL, bodove, zaključavanje, 30 simuliranih učenika, izvještaje i paket.
 
-## Novo u 24O
+## Sačuvano iz 24O
 
 - Pet zasebnih uvodnih MicroPython zadataka V1–V5 sa službenim bodovima 3 + 5 + 2, revizijama i zaključanom predajom.
 - **268/268 URS kombinacija + 5/5 uvodnih zadataka**, s odvojenim evidencijama i izvornim početnim projektima za učenika.
@@ -216,7 +220,7 @@ npm ci
 npm run build:school
 ```
 
-Školski paket: `release/Labosv2_0.14.13_24O_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-24O-Provjeren-skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
+Školski paket: `release/Labosv2_0.14.14_24P_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-24P-Paket-za-pregled**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
 
 ```sh
 npm run build:pages

@@ -1,7 +1,8 @@
 import type {SimulationConfig} from '../../src/circuit/compile';
 import fonts from './environment-fonts.json';
+import {regulatorTemperatures} from './input-scenarios';
 
-export const isEnvironmentContract=(p:any)=>p.checkerVersion==='24I.1';
+export const isEnvironmentContract=(p:any)=>['24I.1','24P.1-environment'].includes(p.checkerVersion);
 export function validEnvironmentConfig(c:SimulationConfig,v:string){
   const expected=(v==='regulator'?['aht10','ssd1306']:['bmp180','bmp280','am2320','ssd1306']).sort();
   return JSON.stringify(c.i2cDevices.map(d=>d.kind).sort())===JSON.stringify(expected)
@@ -39,7 +40,7 @@ export function createEnvironmentCheck(c:SimulationConfig,p:any,seed:string,back
   const flip=parseInt(seed.slice(0,8),16)%2;
   let stimuli:any[];
   if(regulator){
-    const temperatures=s.temperatures,angles=regulatorAngles(temperatures,s.lowerThresholdC,s.upperThresholdC);
+    const temperatures=s.seededInput?regulatorTemperatures(seed,s.temperatures.slice(s.basicStages)):s.temperatures,angles=regulatorAngles(temperatures,s.lowerThresholdC,s.upperThresholdC);
     stimuli=temperatures.map((temperature:number,i:number)=>({values:[{temperature,humidity:s.humidities[(i+flip)%s.humidities.length]}],angle:angles[i]}));
   }else{
     const environments=s.environments,first=structuredClone(environments[flip]),second=structuredClone(environments[1-flip]);

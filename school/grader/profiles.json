@@ -7581,6 +7581,408 @@
           "file": "school/grader/environment-fonts.json"
         }
       }
+    },
+    {
+      "id": "24P-v2-button@2",
+      "taskKey": "intro/button",
+      "kind": "introductory",
+      "targets": [
+        "micropython"
+      ],
+      "title": "V2 · Tipkalo kao ulaz",
+      "instructions": "Aktivno nisko tipkalo upravlja LED-icom: pritisnuto uključuje, otpušteno isključuje. Poslužiteljsko sjeme bira početno stanje i trajanja devet etapa: 720–1150 ms, uz dva dulja držanja od 1440–2300 ms i uzastopne iste razine. Odaziv do 300 ms uz toleranciju koraka 24 ms; izlaz mora ostati ispravan do kraja svake etape. Prve tri etape nose 5, preostale 2 boda. Nazivi varijabli i oblik algoritma nisu uvjet. Provjera izvršava spremljeni izvor i sklop. Dopušteni su drugi valjani GPIO-i uz odgovarajući kod i električno ekvivalentan raspored. Stari pokušaji ostaju vezani uz svoju objavljenu rubriku.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan put tipkala i LED-ice, ulaz u načinu IN",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "LED prati oba početna stanja i zadržavanje ulaza",
+          "maxPoints": 5
+        },
+        {
+          "id": "continuation",
+          "description": "LED prati daljnje promjene i dulja držanja tipkala",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24P.1-introductory",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24P.1-button",
+        "observation": "saved-source-electrical-signals-fresh-AHT10-received-OLED-pixels-servo-pulses",
+        "allowedAlternatives": [
+          "Ekvivalentan algoritam, nazivi, valjani GPIO uz odgovarajući kod i električno ekvivalentan raspored.",
+          "V4/V5: slobodan raspored T/RH na različitim redcima OLED-a 128×64, standardni text() font 8×8."
+        ],
+        "output": "Nova očitanja po identitetu senzora, primljeni OLED pikseli i stvarni servo impulsi.",
+        "units": {
+          "time": "ms",
+          "temperature": "°C",
+          "humidity": "% RH",
+          "pressure": "Pa",
+          "screenPressure": "hPa",
+          "angle": "deg"
+        },
+        "scenario": {
+          "stageDurationMs": 650,
+          "responseDeadlineMs": 300,
+          "stepToleranceMs": 24,
+          "specification": "Aktivno nisko tipkalo upravlja LED-icom: pritisnuto uključuje, otpušteno isključuje. Poslužiteljsko sjeme bira početno stanje i trajanja devet etapa: 720–1150 ms, uz dva dulja držanja od 1440–2300 ms i uzastopne iste razine. Odaziv do 300 ms uz toleranciju koraka 24 ms; izlaz mora ostati ispravan do kraja svake etape. Prve tri etape nose 5, preostale 2 boda. Nazivi varijabli i oblik algoritma nisu uvjet.",
+          "seededInput": true,
+          "minimumStageMs": 720,
+          "maximumStageMs": 1150
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          }
+        },
+        "faultPolicy": "Kvar, popravak i novo pokretanje u zasebnoj kopiji. Lokalni provjera.json, odgovori i uvezeni bodovi ne određuju službeni rezultat. Tehnička pogreška ostavlja bodove null."
+      }
+    },
+    {
+      "id": "24P-button-led@2",
+      "taskKey": "gpio/button",
+      "kind": "button",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "tipkalo upravlja LED-icom · ugovor 24AB",
+      "instructions": "Aktivno nisko tipkalo upravlja LED-icom. Poslužiteljsko sjeme bira početno stanje i trajanja devet etapa: 250–650 ms, uz dva dulja držanja od 500–1300 ms i ponovljene iste razine. Odaziv do 50 ms uz toleranciju koraka 4 ms; izlaz mora ostati ispravan do kraja etape. Prve tri etape nose 5, preostale 2 boda. Dopušteni su ekvivalentni algoritmi, drugi valjani GPIO-i i električno ekvivalentan raspored. Provjera izvodi spremljeni izvor; prethodne dodjele ostaju na izvornoj rubrici.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Valjan električni put tipkala, mase, otpornika i LED-ice",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "LED prati pritisak i otpuštanje u svim osnovnim scenarijima",
+          "maxPoints": 5
+        },
+        {
+          "id": "repeat",
+          "description": "Ponovljeni pritisci i povrat u početno stanje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24P.1-button",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24P.1-button-URS",
+        "observation": "saved-source-and-electrical-model",
+        "allowedAlternatives": [
+          "equivalent-electrical-layout",
+          "different-variable-names",
+          "equivalent-control-flow",
+          "different-gpio-with-matching-source"
+        ],
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "limits": {
+          "wallTimeMs": 20000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4
+        },
+        "faultPolicy": "Separate scenario copy; infrastructure failure leaves points null. No extra restart recovery required.",
+        "scenario": {
+          "kind": "button",
+          "stageDurationMs": 250,
+          "pressed": [
+            false,
+            true,
+            false,
+            true,
+            false
+          ],
+          "responseDeadlineMs": 50,
+          "stepToleranceMs": 4,
+          "seededInput": true,
+          "minimumStageMs": 250,
+          "maximumStageMs": 650,
+          "specification": "Aktivno nisko tipkalo upravlja LED-icom. Poslužiteljsko sjeme bira početno stanje i trajanja devet etapa: 250–650 ms, uz dva dulja držanja od 500–1300 ms i ponovljene iste razine. Odaziv do 50 ms uz toleranciju koraka 4 ms; izlaz mora ostati ispravan do kraja etape. Prve tri etape nose 5, preostale 2 boda."
+        }
+      }
+    },
+    {
+      "id": "24P-v5-regulator@2",
+      "taskKey": "intro/regulator",
+      "kind": "introductory",
+      "targets": [
+        "micropython"
+      ],
+      "title": "V5 · Regulator sa servom",
+      "instructions": "Poslužiteljsko sjeme bira početno toplo/hladno stanje, temperaturu ispod praga (18–25 °C), između pragova (26,3–27,7 °C), iznad praga (29–35 °C) te redoslijed osam graničnih pobuda. Prvih šest etapa ispituje oba smjera histereze; nastavak svih osam graničnih vrijednosti iz ugovora u promjenjivom redoslijedu. Otvori na dekodirano T≥28, zatvori na T≤26, između pamti stanje. Prag primijeni prije zaokruživanja: nominalnih 26 AHT10 dekodira kao približno 26,000023 °C. Servo 50±2 Hz, kut ±2°. Odaziv i osvježavanje do 2 s +100 ms, najmanje dva nova očitanja po etapi. OLED 128×64, standardni text() 8×8, T/RH s jednom decimalom na različitim slobodno odabranim redcima. Stabilan prikaz najmanje 100 ms. Izvodi se spremljeni izvor i sklop. Stara rubrika zadržava izvorni ugovor i rezultate.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Napajani AHT10/OLED put i stvarni servo impulsi",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Osnovni slijed: nova očitanja, OLED i histereza",
+          "maxPoints": 5
+        },
+        {
+          "id": "continuation",
+          "description": "Sve granične pobude u promjenjivom redoslijedu i oba smjera histereze",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24P.1-introductory",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24P.1-regulator",
+        "observation": "saved-source-electrical-signals-fresh-AHT10-received-OLED-pixels-servo-pulses",
+        "allowedAlternatives": [
+          "Ekvivalentan algoritam, nazivi, valjani GPIO uz odgovarajući kod i električno ekvivalentan raspored.",
+          "V4/V5: slobodan raspored T/RH na različitim redcima OLED-a 128×64, standardni text() font 8×8."
+        ],
+        "output": "Nova očitanja po identitetu senzora, primljeni OLED pikseli i stvarni servo impulsi.",
+        "units": {
+          "time": "ms",
+          "temperature": "°C",
+          "humidity": "% RH",
+          "pressure": "Pa",
+          "screenPressure": "hPa",
+          "angle": "deg"
+        },
+        "scenario": {
+          "stageDurationMs": 6000,
+          "basicStages": 6,
+          "lowerThresholdC": 26,
+          "upperThresholdC": 28,
+          "temperatures": [
+            24,
+            29,
+            27,
+            25,
+            27,
+            29,
+            25.9998,
+            27.9998,
+            28,
+            26,
+            25.9998,
+            26.0002,
+            28.0002,
+            24
+          ],
+          "humidities": [
+            35,
+            65
+          ],
+          "responseDeadlineMs": 2100,
+          "maximumIntervalMs": 2100,
+          "sampleSettleMs": 100,
+          "minimumFreshReads": 2,
+          "minimumStableMs": 100,
+          "observationStepMs": 50,
+          "temperatureToleranceC": 0.3,
+          "humidityTolerance": 0.2,
+          "servoAngleToleranceDeg": 2,
+          "servoFrequencyToleranceHz": 2,
+          "specification": "Poslužiteljsko sjeme bira početno toplo/hladno stanje, temperaturu ispod praga (18–25 °C), između pragova (26,3–27,7 °C), iznad praga (29–35 °C) te redoslijed osam graničnih pobuda. Prvih šest etapa ispituje oba smjera histereze; nastavak svih osam graničnih vrijednosti iz ugovora u promjenjivom redoslijedu. Otvori na dekodirano T≥28, zatvori na T≤26, između pamti stanje. Prag primijeni prije zaokruživanja: nominalnih 26 AHT10 dekodira kao približno 26,000023 °C. Servo 50±2 Hz, kut ±2°. Odaziv i osvježavanje do 2 s +100 ms, najmanje dva nova očitanja po etapi. OLED 128×64, standardni text() 8×8, T/RH s jednom decimalom na različitim slobodno odabranim redcima. Stabilan prikaz najmanje 100 ms.",
+          "seededInput": true
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          }
+        },
+        "faultPolicy": "Kvar, popravak i novo pokretanje u zasebnoj kopiji. Lokalni provjera.json, odgovori i uvezeni bodovi ne određuju službeni rezultat. Tehnička pogreška ostavlja bodove null.",
+        "visualOracle": {
+          "format": "labosv2-environment-fonts@1",
+          "sha256": "c99cfa5d3362059e313e9d9545cfa21c272622a25ab5b6fc5bc38fa5e19a16c8",
+          "file": "school/grader/environment-fonts.json"
+        }
+      }
+    },
+    {
+      "id": "24P-regulator@2",
+      "taskKey": "regulator/regulator",
+      "kind": "environment-system",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "AHT10 → OLED → servo: histereza i svježi podaci",
+      "instructions": "Poslužiteljsko sjeme bira početno toplo/hladno stanje, temperaturu ispod praga (18–25 °C), između pragova (26,3–27,7 °C), iznad praga (29–35 °C) te redoslijed osam graničnih pobuda. Prvih šest etapa ispituje oba smjera histereze; nastavak svih osam graničnih vrijednosti iz ugovora u promjenjivom redoslijedu. Otvaraj na dekodirano T≥28, zatvaraj na T≤26, između čuvaj stanje. AHT10 kodira round((T+50)·2^20/200); nominalnih 26 daje oko 26,000023 °C pa ostaje prethodno stanje do nižeg predstavljivog uzorka. Prag primijeni prije zaokruživanja za prikaz. Prvo novo očitanje do 2300 ms, daljnji razmak do 2400 ms. Kut ±2°, 50±2 Hz; nakon 2300 ms mora ostati ispravan. OLED T u pojasu y=0..13; RH y=14..27 (S3 C++ y=16..23); MicroPython font visine 8 koristi y=0..7 i y=14..21. Prikaz novog para stabilan najmanje 100 ms u svakoj etapi. Kriteriji: 3 boda stvarni napajani put do AHT10, OLED-a i serva; 5 osnovni slijed sa svježim T/RH, pikselima i kutom; 2 cijeli nastavak s oba smjera i granicama. Izvodi se spremljeni izvor i sklop. Stara rubrika zadržava izvorni ugovor i rezultate.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Napajani AHT10/OLED put, novo očitanje i stvarni servo impuls",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Šest osnovnih promjena: nova očitanja, OLED i kut uz histerezu",
+          "maxPoints": 5
+        },
+        {
+          "id": "continuation",
+          "description": "Sve granične pobude u promjenjivom redoslijedu i oba smjera histereze",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24P.1-environment",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24P.1-regulator",
+        "observation": "independent-fresh-I2C-measurements-received-OLED-pixels-and-servo-pulses",
+        "allowedAlternatives": [
+          "Drugi algoritam, nazivi, valjani GPIO i električno ekvivalentan raspored.",
+          "Pomak teksta unutar objavljenog pojasa uz font početnog primjera.",
+          "Slobodni dijelovi slike i konzola regulatora ne utječu na rezultat."
+        ],
+        "output": "Nova očitanja po identitetu senzora, primljeni OLED pikseli i stvarni servo impulsi.",
+        "units": {
+          "time": "ms",
+          "temperature": "°C",
+          "humidity": "% RH",
+          "pressure": "Pa",
+          "screenPressure": "hPa",
+          "angle": "deg"
+        },
+        "scenario": {
+          "stageDurationMs": 3000,
+          "responseDeadlineMs": 2300,
+          "maximumIntervalMs": 2400,
+          "sampleSettleMs": 100,
+          "minimumStableMs": 100,
+          "observationStepMs": 50,
+          "temperatureToleranceC": 0.3,
+          "humidityTolerance": 0.2,
+          "pressureTolerancePa": 150,
+          "servoAngleToleranceDeg": 2,
+          "servoFrequencyToleranceHz": 2,
+          "basicStages": 6,
+          "lowerThresholdC": 26,
+          "upperThresholdC": 28,
+          "temperatures": [
+            24,
+            29,
+            27,
+            25,
+            27,
+            29,
+            25.9998,
+            27.9998,
+            28,
+            26,
+            25.9998,
+            26.0002,
+            28.0002,
+            24
+          ],
+          "humidities": [
+            35,
+            65
+          ],
+          "specification": "Poslužiteljsko sjeme bira početno toplo/hladno stanje, temperaturu ispod praga (18–25 °C), između pragova (26,3–27,7 °C), iznad praga (29–35 °C) te redoslijed osam graničnih pobuda. Prvih šest etapa ispituje oba smjera histereze; nastavak svih osam graničnih vrijednosti iz ugovora u promjenjivom redoslijedu. Otvaraj na dekodirano T≥28, zatvaraj na T≤26, između čuvaj stanje. AHT10 kodira round((T+50)·2^20/200); nominalnih 26 daje oko 26,000023 °C pa ostaje prethodno stanje do nižeg predstavljivog uzorka. Prag primijeni prije zaokruživanja za prikaz. Prvo novo očitanje do 2300 ms, daljnji razmak do 2400 ms. Kut ±2°, 50±2 Hz; nakon 2300 ms mora ostati ispravan. OLED T u pojasu y=0..13; RH y=14..27 (S3 C++ y=16..23); MicroPython font visine 8 koristi y=0..7 i y=14..21. Prikaz novog para stabilan najmanje 100 ms u svakoj etapi. Kriteriji: 3 boda stvarni napajani put do AHT10, OLED-a i serva; 5 osnovni slijed sa svježim T/RH, pikselima i kutom; 2 cijeli nastavak s oba smjera i granicama.",
+          "minimumFreshReads": 1,
+          "seededInput": true
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Prekid SDA/SCL ili napajanja pojedinog uređaja, pogrešna adresa i servo signal ispituju se u zasebnoj kopiji. Stop, popravak i novo pokretanje dopušteni su. Model ne potvrđuje fizičku točnost, šum, struju i moment serva.",
+        "visualOracle": {
+          "format": "labosv2-environment-fonts@1",
+          "sha256": "c99cfa5d3362059e313e9d9545cfa21c272622a25ab5b6fc5bc38fa5e19a16c8",
+          "file": "school/grader/environment-fonts.json"
+        }
+      }
     }
   ]
 }

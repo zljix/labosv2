@@ -1,3 +1,13 @@
+# Aktualna instalacija · 0.14.14-beta.1 / 24P
+
+Kandidat za tehnički pregled. Stvarni školski pilot ostaje otvoren. [Izmjene, četiri nove rubrike, uputa učeniku/nastavniku i postupak povrata](../docs/stage24p-remediation.md).
+
+Iz jednog izvora izgradi `npm ci` i `npm run build:school`. Paket je `release/Labosv2_0.14.14_24P_Skolski.zip`. Apache poslužuje samo njegov `web/`; aplikacija, ključevi i konfiguracija ostaju privatni. Koristi postojeći Apache/PHP/MySQL profil i Linux provjeravač. Nema nove SQL migracije. Prije nadogradnje sačuvaj bazu, konfiguraciju, ključ i paket; testni oporavak obavi u zasebnoj praznoj bazi. Tehnička provjera kandidata ne potvrđuje Windows ni stvarni Safari/iOS. Detaljne zajedničke instalacijske korake vidi niže u odjeljcima za pripremu poslužitelja.
+
+Za novu dodjelu tipkala/regulatora izričito objavi novu 24P rubriku. Stare dodjele i zaključani radovi ostaju na starim profilima s poznatim ograničenjem vremenskih ulaza. Nakon rada pod novom rubrikom povrat zahtijeva provjeravač koji je razumije; ne prepisuj jednostavno stariji ZIP.
+
+# Povijest izdanja
+
 ## 24O — uvodne MicroPython vježbe V1–V5
 
 [Završni prihvat 24O](https://github.com/zljix/labosv2/actions/runs/44068540213) potvrđuje 56 ciljanih izvedbi, pet zaključanih uvodnih dodjela, ranije obitelji, pokus s 30 simuliranih učenika, izvještaje i povrat kopije. [Sažetak i otisak provjeravača](../docs/stage24o-evidence/acceptance-summary.json). Provjereno je svih 938 datoteka inventure i 205 web resursa; ZIP je neizmijenjen izlaz prihvaćenog CI-ja.

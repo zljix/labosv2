@@ -18,7 +18,7 @@ test('24O preserves all 74 published URS profiles, 268 combinations and five ori
   assert.deepEqual(matrix.introductorySummary,{total:5,supported:5,unsupported:0});
   const catalog=JSON.parse(readFileSync('.build/school-catalog/catalog.json','utf8'));
   for(const p of introductoryProfiles){assert.deepEqual(p.targets,['micropython']);assert.deepEqual(p.criteria.map(c=>c.maxPoints),[3,5,2]);
-    assert.equal(gradingSupport(p.taskKey,'micropython').profileId,p.id);assert.equal(gradingSupport(p.taskKey,'uno').status,'unsupported');
+    assert(registry.profiles.some((row:any)=>row.id===p.id));assert.equal(gradingSupport(p.taskKey,'uno').status,'unsupported');
     const entry=catalog.entries.find((e:any)=>e.key===p.taskKey),starter=JSON.parse(readFileSync('.build/school-catalog/'+entry.templates.micropython,'utf8'));
     const original=introductoryProject(id(p),false);assert.deepEqual(starter.circuit,original.circuit);assert.deepEqual(starter.files,original.files);assert.equal(entry.set,'introductory');
   }
@@ -66,7 +66,9 @@ test('24O V4 requires different rows, complete values, fresh sensor reads and re
 });
 test('24O V2 keeps its published 300ms deadline independent from the older URS 50ms task',async()=>{
   const p=introductoryProfiles[1],slow=introductoryProject('button');slow.files['main.py']=slow.files['main.py'].replace('sleep_ms(20)','sleep_ms(500)');
-  assert.equal((await run(slow,p)).points,3);assert.equal(gradingSupport('gpio/button','micropython').checkerVersion,'24AB.1');
+  assert.equal((await run(slow,p)).points,3);
+  const registry=JSON.parse(readFileSync('school/grader/profiles.json','utf8'));
+  assert.equal(registry.profiles.find((p:any)=>p.id==='24B-button-led@1').contract.scenario.responseDeadlineMs,50);
 });
 test('24O V3 preserves the introductory OFF-at-zero and ON-at-hundred slider direction',async()=>{
   const project=introductoryProject('adc-pwm');if(project.circuit.kind!=='editable')throw Error('editable');

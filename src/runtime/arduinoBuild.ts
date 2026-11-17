@@ -1,6 +1,7 @@
 import {sha256} from '../../public/avr-contract.mjs';
 import {buildFile,inputHash,validateArtifact,buildInput,memoryDescription} from '../../public/arduino-contract.mjs';
 import {clone,parseProject,type Project} from '../project/model';
+import {identityText,STUDENT_NAME_LIMIT,CLASS_NAME_LIMIT} from '../project/identity';
 const CACHE='esp32-lab-avr-cache-v2';
 type StorageLike=Pick<Storage,'getItem'|'setItem'|'removeItem'>;
 export interface BuildDiagnostic {file:string;line:number;column:number;severity:string;message:string}
@@ -13,11 +14,11 @@ export async function cachedBuild(project:Project,storage?:StorageLike){
 }
 export function clearBuildCache(storage?:StorageLike){(storage??localStorage).removeItem(CACHE);}
 export function readArduinoWork(p:Project){
-  try{const v=JSON.parse(p.files['arduino-predaja.json']);if(v?.format==='esp32-lab-arduino-submission'&&v.version===1)return {student:String(v.student??'').slice(0,100),group:String(v.group??'').slice(0,40),observations:String(v.observations??'').slice(0,4000)};}catch{}
+  try{const v=JSON.parse(p.files['arduino-predaja.json']);if(v?.format==='esp32-lab-arduino-submission'&&v.version===1&&identityText(v.student,STUDENT_NAME_LIMIT)&&identityText(v.group,CLASS_NAME_LIMIT))return {student:v.student as string,group:v.group as string,observations:String(v.observations??'').slice(0,4000)};}catch{}
   return {student:'',group:'',observations:''};
 }
 export async function arduinoSubmission(project:Project,work:{student:string;group:string;observations:string},consoleText:string){
-  if(!work.student.trim()||work.student.trim().length>100||!work.group.trim()||work.group.trim().length>40)throw Error('Upiši ime i prezime te razred/grupu.');
+  if(!work.student.trim()||!identityText(work.student.trim(),STUDENT_NAME_LIMIT)||!work.group.trim()||!identityText(work.group.trim(),CLASS_NAME_LIMIT))throw Error('Upiši ime i prezime do 120 znakova te razred/grupu do 80 znakova.');
   if(!work.observations.trim()||work.observations.length>4000)throw Error('Zapiši što program radi i što si provjerio.');
   const p=clone(parseProject(project)),artifact=await validateArtifact(p,JSON.parse(p.files[buildFile(p)]??'null'));
   const sourceCircuitHash=await sha256(JSON.stringify({input:buildInput(p),circuit:p.circuit}));

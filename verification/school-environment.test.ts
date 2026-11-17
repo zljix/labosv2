@@ -20,7 +20,7 @@ test('24I publishes two contracts and preserves every previous profile',()=>{
  const r=JSON.parse(readFileSync('school/grader/profiles.json','utf8'));
  assert.deepEqual(r.profiles.slice(0,51),JSON.parse(readFileSync('verification/fixtures/24h-grading-profiles.json','utf8')).profiles);
  assert.equal(environmentProfiles.length,2);assert.equal(gradingCoverage('test').summary.supported>=184,true);
- for(const p of environmentProfiles){assert.deepEqual(p.criteria.map(c=>c.maxPoints),[3,5,2]);for(const t of p.targets)assert.equal(gradingSupport(p.taskKey,t).profileId,p.id);}
+ for(const p of environmentProfiles){assert.deepEqual(p.criteria.map(c=>c.maxPoints),[3,5,2]);for(const t of p.targets)assert(r.profiles.some((row:any)=>row.id===p.id&&row.targets.includes(t)));}
 });
 test('24I both threshold directions include the neighbouring AHT10 codes and the quantized nominal boundary',()=>{
  assert(ahtTemperature(26)>26);assert(ahtTemperature(25.9998)<26);assert(ahtTemperature(27.9998)<28);assert(ahtTemperature(28)>=28);

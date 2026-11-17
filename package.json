@@ -1,11 +1,11 @@
 {
   "name": "esp32-micropython-lab",
-  "version": "0.14.13-beta.1",
+  "version": "0.14.14-beta.1",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "build": "node --import tsx scripts/build-school-coverage.ts && node --import tsx scripts/build-urs-exports.ts && tsc --noEmit && vite build",
+    "build": "node scripts/sync-release.mjs && node --import tsx scripts/build-school-coverage.ts && node --import tsx scripts/build-urs-exports.ts && tsc --noEmit && vite build",
     "test": "node --import tsx --test verification/project.test.ts verification/circuit.test.ts",
     "test:runtime": "node verification/run.mjs && node verification/stage1-runtime.mjs",
     "test:simulation": "node --import tsx --test verification/simulation.test.ts",
@@ -56,7 +56,7 @@
     "test:routing": "node --import tsx --test verification/routing.test.ts",
     "test:pages": "node --test verification/pages.test.mjs",
     "build:school-grader": "node scripts/build-school-grader.mjs",
-    "build:school": "node scripts/build-school.mjs",
+    "build:school": "node scripts/sync-release.mjs && node scripts/build-school.mjs",
     "school:proof": "node scripts/school-proof.mjs",
     "test:school": "node --import tsx --test verification/school.test.ts",
     "test:school-accounts": "node --test verification/school-accounts.test.mjs",
@@ -106,7 +106,11 @@
     "test:school-levels": "node --import tsx --test verification/school-levels.test.ts",
     "test:school-levels-api": "node --import tsx --test verification/school-levels-api.test.mjs",
     "test:school-introductory": "node --import tsx --test verification/school-introductory.test.ts",
-    "test:school-introductory-api": "node --import tsx --test verification/school-introductory-api.test.mjs"
+    "test:school-introductory-api": "node --import tsx --test verification/school-introductory-api.test.mjs",
+    "release:sync": "node scripts/sync-release.mjs",
+    "test:school-remediation": "node --import tsx --test verification/school-input-reliability.test.ts verification/school-input-audit.test.ts verification/school-identity.test.ts verification/school-remediation-ui.test.tsx",
+    "test:school-matrix": "node --import tsx --test verification/school-current-matrix.test.ts",
+    "test:school-remediation-api": "node --import tsx --test verification/school-remediation-api.test.mjs"
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.1",
@@ -132,5 +136,10 @@
     "tsx": "^4.20.0",
     "typescript": "7.0.2",
     "vite": "8.3.8"
+  },
+  "labosRelease": {
+    "stage": "24P",
+    "title": "Pouzdanost provjera i povratna informacija",
+    "acceptance": "technical-review"
   }
 }

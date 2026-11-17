@@ -51,6 +51,9 @@ const stimuli:any[]=extendedCheck?.stimuli??(kind==='button'?[false,true,false,t
   [0,1,2].map(()=>({temperature:Math.round((-12+random()*55)*10)/10,pressure:Math.round(85000+random()*18000)})));
 if(kind==='lm35')stimuli.push({...stimuli[0]});
 const duration=extendedCheck?.duration??(kind==='sensor'?5000:kind==='blink'?4250:kind==='lm35'?1000:250),samples:any[]=[],edges:{timeMs:number;on:boolean}[]=[];
+const durations:number[]=(extendedCheck as any)?.durations??stimuli.map(()=>duration);
+let totalMs=0;const stageEnds=durations.map(ms=>totalMs+=ms);
+const stageEnd=(i:number)=>stageEnds[i];
 let last:any,consoleText='',programError:string|null=null,stage=0,clockUs=0;
 let deadlineCurrent:number|null=null,stableAfterDeadline=true;
 const expectedLED=(s:any)=>kind==='button'?s.pressed:s.position>=thresholdPosition;
@@ -129,8 +132,8 @@ if(backend==='s3-cpp'){
   let engine:any,lastObservation=-Infinity;
   const clock={now:0,async sleep(us:number){
     const target=clock.now+Math.max(1,us);
-    while(stage<stimuli.length&&target>=(stage+1)*duration*1000){
-      clock.now=clockUs=(stage+1)*duration*1000;engine.snapshot();record();stage++;
+    while(stage<stimuli.length&&target>=stageEnd(stage)*1000){
+      clock.now=clockUs=stageEnd(stage)*1000;engine.snapshot();record();stage++;
       if(stage===stimuli.length){engine.stop();return;}
       applyStimulus(engine,stimuli[stage]);
     }
@@ -148,7 +151,7 @@ if(backend==='s3-cpp'){
   try{for(stage=0;stage<stimuli.length;stage++){
     applyStimulus(engine,stimuli[stage]);
     const step=levelCheck?.protocolClock||opticalCheck||sensorCheck||environmentCheck||touchCheck||storageCheck?20:4;
-    for(let tick=0;tick<duration/step;tick++){engine.runCycles(16000*(levelCheck?Math.min(step,duration-tick*step):step));engine.frame();}
+    for(let tick=0;tick<durations[stage]/step;tick++){engine.runCycles(16000*(levelCheck||(extendedCheck as any)?.durations?Math.min(step,durations[stage]-tick*step):step));engine.frame();}
     record();
   }}catch(e){programError=(e as Error).message.slice(0,500);}finally{engine.dispose();}
 }else{
@@ -164,8 +167,8 @@ if(backend==='s3-cpp'){
     // rubrics: changing the sleep-only clock would misdate conversions/prints.
     const offset=protocolClock?host.ticksUs()-clockUs:0;
     const target=clockUs+offset+Math.max(.05,ms)*1000;
-    while(stage<stimuli.length&&target>=(stage+1)*duration*1000){
-      clockUs=(stage+1)*duration*1000-offset;host.flush();record();stage++;
+    while(stage<stimuli.length&&target>=stageEnd(stage)*1000){
+      clockUs=stageEnd(stage)*1000-offset;host.flush();record();stage++;
       if(stage===stimuli.length){complete();return;}
       applyStimulus(host,stimuli[stage]);
     }
@@ -210,5 +213,5 @@ const outcomes=extendedCheck?extendedCheck.outcomes(samples,wiring):kind==='butt
 const criteria=profile.criteria.map((c:any,i:number)=>({...c,passed:!!outcomes[i],points:outcomes[i]?c.maxPoints:0,
   explanation:outcomes[i]?'Zahtjev je potvrđen neovisnim izvođenjem.':'Zahtjev nije potvrđen u svim pripadnim scenarijima.'}));
 process.stdout.write(JSON.stringify({status:programError?'program_error':'evaluated',points:criteria.reduce((s:number,c:any)=>s+c.points,0),maxPoints:10,criteria,samples,
-  message:programError??'Provjerena je točna spremljena snimka.',virtualDurationMs:duration*stimuli.length,peakRssKiB:process.resourceUsage().maxRSS}));
+  message:programError??'Provjerena je točna spremljena snimka.',virtualDurationMs:totalMs,peakRssKiB:process.resourceUsage().maxRSS}));
 process.exit(0);

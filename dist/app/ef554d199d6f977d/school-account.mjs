@@ -1,5 +1,8 @@
 import {createSchoolPortal} from './school-classes.mjs';
 const $ = selector => document.querySelector(selector);
+for(const input of document.querySelectorAll('[data-unicode-limit]')){
+  input.addEventListener('input',()=>{const max=Number(input.dataset.unicodeLimit);input.setCustomValidity(Array.from(input.value).length>max?'Dopušteno je do '+max+' Unicode znakova.':'');});
+}
 const roles = {student: 'Učenik', teacher: 'Nastavnik', admin: 'Administrator'};
 let token = '', user = null, users = [], busy = false;
 const message = (text, error = false) => { for (const element of [$('#account-message'), $('#school-message')]) { element.textContent = text; element.classList.toggle('error', error); } };

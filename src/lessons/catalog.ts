@@ -1,3 +1,4 @@
+import {identityText,STUDENT_NAME_LIMIT,CLASS_NAME_LIMIT} from '../project/identity';
 import { basicExamples, exampleCircuit } from '../circuit/examples';
 import { peripheralCircuit, peripheralExample } from '../circuit/peripheralExamples';
 import { newProject, type Project } from '../project/model';
@@ -30,6 +31,7 @@ export const lessons: Lesson[] = [
       {term:'GPIO izlaz',explanation:'Program na priključku postavlja 0 ili 1, u ovom modelu približno 0 V ili 3,3 V. Broj 4 u Pin(4) znači GPIO4, a ne četvrti fizički priključak.'},
       {term:'LED i otpornik',explanation:'LED provodi od anode A prema katodi K. Serijski otpornik ograničava struju; sam GPIO bez zatvorene veze prema masi ne može upaliti LED.'},
       {term:'Period i čekanje',explanation:'sleep_ms(250) čeka 250 milisekundi. Period je zbroj trajanja uključenja i isključenja: 250 + 750 = 1000 ms. Čekanje ne mijenja već postavljeno stanje pina.'},
+      {term:'Frekvencija',explanation:'Frekvencija f govori koliko se punih ciklusa ponovi u sekundi: f = 1/T, gdje period T izražavamo u sekundama. Za T = 1000 ms = 1 s vrijedi f = 1/1 = 1 Hz. Za T = 500 ms = 0,5 s vrijedi f = 2 Hz.'},
     ], connections:ledConnections,
     guided:'led.on()\nsleep_ms(500)  # stanje ostaje ukljuceno tijekom cekanja\nled.off()\nsleep_ms(500)',
     steps:[
@@ -110,7 +112,7 @@ export function readWork(p:Project):LessonWork|undefined {
   try {
     const v=JSON.parse(p.files[WORK_FILE]??'null'), l=getLesson(v?.lessonId);
     if(!l||v.format!=='esp32-lab-work'||v.version!==1||v.lessonVersion!==LESSON_VERSION||
-      typeof v.student!=='string'||v.student.length>100||typeof v.group!=='string'||v.group.length>40||
+      !identityText(v.student,STUDENT_NAME_LIMIT)||!identityText(v.group,CLASS_NAME_LIMIT)||
       !Array.isArray(v.answers)||v.answers.length!==l.questions.length||v.answers.some((x:unknown)=>typeof x!=='string'||x.length>2000)) return;
     return {format:'esp32-lab-work',version:1,lessonId:l.id,lessonVersion:1,student:v.student,group:v.group,answers:[...v.answers]};
   } catch { return; }

@@ -8,8 +8,8 @@
       "lessonId": "led-time",
       "lessonVersion": 1,
       "sourceHash": "6a333535c1a458fe7de27dcb3b96bc4e4a6454b9fb852f3a020e14af7ccaa9a1",
-      "startedAt": "2026-11-17T10:24:24.935Z",
-      "finishedAt": "2026-11-17T10:24:28.483Z",
+      "startedAt": "2026-11-17T12:44:09.054Z",
+      "finishedAt": "2026-11-17T12:44:12.878Z",
       "checks": [
         {
           "id": "topology",
@@ -30,14 +30,14 @@
           "title": "Trajanje uključenja",
           "passed": true,
           "expected": "250 ms; prihvaćeno 180–380 ms.",
-          "observed": "254 ms, 255 ms, 250 ms"
+          "observed": "256 ms, 252 ms, 260 ms"
         },
         {
           "id": "off-time",
           "title": "Trajanje isključenja",
           "passed": true,
           "expected": "750 ms; prihvaćeno 650–1000 ms.",
-          "observed": "751 ms, 751 ms, 751 ms"
+          "observed": "751 ms, 757 ms, 750 ms"
         }
       ],
       "console": "Treptanje: GPIO4, 250 ms ukljuceno / 750 ms iskljuceno\n"
@@ -49,8 +49,8 @@
       "lessonId": "button",
       "lessonVersion": 1,
       "sourceHash": "3cee19d79e3c95e6a15f1a0f05387b38712424aefa288a0b20105cb657193bb7",
-      "startedAt": "2026-11-17T10:24:28.485Z",
-      "finishedAt": "2026-11-17T10:24:30.221Z",
+      "startedAt": "2026-11-17T12:44:12.882Z",
+      "finishedAt": "2026-11-17T12:44:14.820Z",
       "checks": [
         {
           "id": "topology",
@@ -104,8 +104,8 @@
       "lessonId": "adc-pwm",
       "lessonVersion": 1,
       "sourceHash": "84ee8c30ae3855e66295c3b5e1546f0e7ed42e61b3730ed7e4bd56d72b69e568",
-      "startedAt": "2026-11-17T10:24:30.226Z",
-      "finishedAt": "2026-11-17T10:24:31.729Z",
+      "startedAt": "2026-11-17T12:44:14.821Z",
+      "finishedAt": "2026-11-17T12:44:16.397Z",
       "checks": [
         {
           "id": "topology",
@@ -152,8 +152,8 @@
       "lessonId": "aht-oled",
       "lessonVersion": 1,
       "sourceHash": "b5933e054d152df7f8d048739b2c097b421512bfe8b64b4653b3b5331a136710",
-      "startedAt": "2026-11-17T10:24:31.731Z",
-      "finishedAt": "2026-11-17T10:24:34.003Z",
+      "startedAt": "2026-11-17T12:44:16.400Z",
+      "finishedAt": "2026-11-17T12:44:18.871Z",
       "checks": [
         {
           "id": "topology",
@@ -228,8 +228,8 @@
       "lessonId": "regulator",
       "lessonVersion": 1,
       "sourceHash": "cc51dc847c54ca004027ba6df9ce50c2ae975e4809b89ffa4b754174616bdde5",
-      "startedAt": "2026-11-17T10:24:34.005Z",
-      "finishedAt": "2026-11-17T10:24:44.698Z",
+      "startedAt": "2026-11-17T12:44:18.874Z",
+      "finishedAt": "2026-11-17T12:44:29.804Z",
       "checks": [
         {
           "id": "topology",

@@ -1,8 +1,8 @@
 # Aktualna instalacija · 0.14.14-beta.1 / 24P
 
-Kandidat za tehnički pregled. Stvarni školski pilot ostaje otvoren. [Izmjene, četiri nove rubrike, uputa učeniku/nastavniku i postupak povrata](../docs/stage24p-remediation.md).
+[Tehnički CI prihvat 24P](https://github.com/zljix/labosv2/actions/runs/44105942453) uspješno je dovršen. Stvarni školski pilot ostaje otvoren. [Izmjene, četiri nove rubrike, uputa učeniku/nastavniku i postupak povrata](../docs/stage24p-remediation.md).
 
-Iz jednog izvora izgradi `npm ci` i `npm run build:school`. Paket je `release/Labosv2_0.14.14_24P_Skolski.zip`. Apache poslužuje samo njegov `web/`; aplikacija, ključevi i konfiguracija ostaju privatni. Koristi postojeći Apache/PHP/MySQL profil i Linux provjeravač. Nema nove SQL migracije. Prije nadogradnje sačuvaj bazu, konfiguraciju, ključ i paket; testni oporavak obavi u zasebnoj praznoj bazi. Tehnička provjera kandidata ne potvrđuje Windows ni stvarni Safari/iOS. Detaljne zajedničke instalacijske korake vidi niže u odjeljcima za pripremu poslužitelja.
+Iz jednog izvora izgradi `npm ci` i `npm run build:school`. Paket je `release/Labosv2_0.14.14_24P_Skolski.zip`. Apache poslužuje samo njegov `web/`; aplikacija, ključevi i konfiguracija ostaju privatni. Koristi postojeći Apache/PHP/MySQL profil i Linux provjeravač. Nema nove SQL migracije. Prije nadogradnje sačuvaj bazu, konfiguraciju, ključ i paket; testni oporavak obavi u zasebnoj praznoj bazi. Tehnički CI prihvat ne potvrđuje ciljnu uporabu na Windowsu ni stvarni Safari/iOS. Detaljne zajedničke instalacijske korake vidi niže u odjeljcima za pripremu poslužitelja.
 
 Za novu dodjelu tipkala/regulatora izričito objavi novu 24P rubriku. Stare dodjele i zaključani radovi ostaju na starim profilima s poznatim ograničenjem vremenskih ulaza. Nakon rada pod novom rubrikom povrat zahtijeva provjeravač koji je razumije; ne prepisuj jednostavno stariji ZIP.
 

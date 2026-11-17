@@ -1,8 +1,10 @@
 # Labosv2 · školski laboratorij
 
-**0.14.14-beta.1 · etapa 24P · dorada provjera i povratne informacije · kandidat za tehnički pregled.**
+**0.14.14-beta.1 · etapa 24P · dorada provjera i povratne informacije · tehnički CI prihvat dovršen.**
 
-Nove rubrike tipkala i regulatora, ispravljene jedinice i statusi izvještaja te jedinstveni Unicode identiteti 120/80. [Opseg, provjere, upute i otvoreni školski pilot](docs/stage24p-remediation.md). Stvarni školski prihvat još nije potvrđen.
+Nove rubrike tipkala i regulatora, ispravljene jedinice i statusi izvještaja te jedinstveni Unicode identiteti 120/80. [Opseg, provjere, upute i otvoreni školski pilot](docs/stage24p-remediation.md). Stvarni školski pilot ostaje otvoren.
+
+**Tehnički prihvat 24P:** [Završne provjere i paket](https://github.com/zljix/labosv2/actions/runs/44105942453) potvrđuju svih 273 očekivanih ishoda, 79 nepromijenjenih prethodnih rubrika i 15 novih izoliranih C++ prijevoda za S3, Uno i Nano. Prošli su PHP/MySQL tokovi dugih Unicode identiteta, zaključavanja i dorade, oba radio čvora, ranije obitelji, pokus s 30 simuliranih učenika, izvještaji i povrat sigurnosne kopije. [Sažetak i otisak provjeravača](docs/stage24p-evidence/acceptance-summary.json). Stvarni školski pilot ostaje otvoren.
 
 ## Povijest prihvata
 
@@ -37,7 +39,7 @@ Nastavak postojećeg ESP32 MicroPython / Arduino laboratorija za školski sustav
 - Pet zasebnih uvodnih MicroPython zadataka V1–V5 sa službenim bodovima 3 + 5 + 2, revizijama i zaključanom predajom.
 - **268/268 URS kombinacija + 5/5 uvodnih zadataka**, s odvojenim evidencijama i izvornim početnim projektima za učenika.
 - Vlastiti odaziv V2 od 300 ms; puni ADC/PWM; svježi AHT10, stvarni OLED 128×64 sa slobodnim rasporedom redaka te oba smjera histereze.
-- [Uvjeti, opseg i nadogradnja](docs/stage24o-introductory.md). Nema nove SQL migracije. Slijedi 24P, potpuna regresija i stvarni školski pilot.
+- [Uvjeti, opseg i nadogradnja](docs/stage24o-introductory.md). Nema nove SQL migracije. Tehnička regresija 24P je dovršena; stvarni školski pilot ostaje otvoren.
 
 ## Sačuvano iz 24N
 

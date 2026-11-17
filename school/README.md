@@ -2,6 +2,8 @@
 
 Izdanje **0.14.11-beta.1** dodaje rubriku za radio par na četiri glavna cilja: **252/268 kombinacija**. Oba izvora, oba sklopa i dovršena RX čitanja ulaze u istu provjeru. Podržani su i svi mješoviti parovi. [Uvjeti i nadogradnja](../docs/stage24m-radio.md). Nema nove SQL migracije. Zamijeni kompletan paket i ponovno pokreni provjeravače nakon sigurnosne kopije i postojećeg migrate. Samo novi radio posao ima rezervaciju 300 s.
 
+[Završni prihvat 24M](https://github.com/zljix/labosv2/actions/runs/44037558293) povezuje 60 ciljanih provjera, 24 zasebna C++ prijevoda i četiri zaključane školske dodjele. Prošle su ranije obitelji, pokus s 30 simuliranih učenika, izvještaji i povrat sigurnosne kopije. [Sažetak i podrijetlo](../docs/stage24m-evidence/acceptance-summary.json).
+
 ## 24L — MAX30102
 
 [Završni prihvat 24L](https://github.com/zljix/labosv2/actions/runs/43981733195) povezuje 162 izvedbe, 48 neovisnih C++ prijevoda i 16 zaključanih dodjela s isporučenim provjeravačem. [Sažetak i podrijetlo](../docs/stage24l-evidence/acceptance-summary.json).

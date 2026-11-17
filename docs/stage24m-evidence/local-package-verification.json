@@ -1,0 +1,62 @@
+{
+  "format": "labosv2-24m-local-package-verification",
+  "version": 1,
+  "sourceCommit": "8bc0b74b0f6a96cee6c6ccdbc6b1bcb58241df5d",
+  "observedAt": "2026-11-17T07:25:50.541222+00:00",
+  "rootBuild": "839b7756e14a4b6c",
+  "pagesBuild": "9bdcc82118caa210",
+  "rootOfflineTests": 8,
+  "pagesPrefixTests": 8,
+  "packagedWorkerPairs": [
+    {
+      "a": "micropython",
+      "b": "uno",
+      "status": "pass",
+      "build": "839b7756e14a4b6c",
+      "observedMs": 1433.535945,
+      "stopMs": 3.6413649999999507
+    },
+    {
+      "a": "nano",
+      "b": "micropython",
+      "status": "pass",
+      "build": "839b7756e14a4b6c",
+      "observedMs": 1438.6960390000002,
+      "stopMs": 3.8042700000000877
+    },
+    {
+      "a": "s3-cpp",
+      "b": "nano",
+      "status": "pass",
+      "build": "839b7756e14a4b6c",
+      "observedMs": 1228.9844750000002,
+      "stopMs": 1.8757400000004054
+    },
+    {
+      "a": "uno",
+      "b": "s3-cpp",
+      "status": "pass",
+      "build": "839b7756e14a4b6c",
+      "observedMs": 1211.4780099999998,
+      "stopMs": 1.9100570000000516
+    },
+    {
+      "a": "micropython",
+      "b": "micropython",
+      "status": "pass",
+      "build": "839b7756e14a4b6c",
+      "observedMs": 819.34616,
+      "stopMs": 5.096717000000353
+    },
+    {
+      "a": "s3-cpp",
+      "b": "s3-cpp",
+      "status": "pass",
+      "build": "839b7756e14a4b6c",
+      "observedMs": 551.7324360000002,
+      "stopMs": 1.7359349999996994
+    }
+  ],
+  "lostFirstAck": true,
+  "completeUniqueRxPacketsPerPair": 10
+}

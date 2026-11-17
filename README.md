@@ -2,6 +2,8 @@
 
 **0.14.11-beta.1 · etapa 24M · NRF24L01+ par · 17. studenoga 2026.**
 
+**Prihvat 24M:** [Završne provjere i paket](https://github.com/zljix/labosv2/actions/runs/44037558293) povezuju 60 ciljanih provjera, 24 zasebna C++ prijevoda obaju čvorova i četiri zaključane radijske dodjele s isporučenim provjeravačem. Potvrđeni su svih 16 mješovitih parova, ranije obitelji, 30 simuliranih učenika, izvještaji i povrat kopije. [Sažetak i otisak provjeravača](docs/stage24m-evidence/acceptance-summary.json).
+
 **Prihvat 24L:** [Završni prihvat i paket](https://github.com/zljix/labosv2/actions/runs/43981733195) potvrđuju 162 ciljane izvedbe, 48 neovisnih C++ prijevoda i 16 zaključanih MAX30102 dodjela. Ranije obitelji, računi, izvještaji, povrat kopije i pokus s 30 simuliranih učenika potvrđeni su na bajtno istom programu i provjeravaču. [Sažetak i podrijetlo dokaza](docs/stage24l-evidence/acceptance-summary.json).
 
 **Prihvat 24K:** [Završne provjere](https://github.com/zljix/labosv2/actions/runs/43968133436) potvrđuju sva četiri cilja, 238 ciljanih izvedbi, 72 neovisna C++ prijevoda i 24 zaključane RTC/SD dodjele kroz pravi PHP/MySQL. Prošli su ranije obitelji, pokus s 30 učenika, izvještaji i povrat sigurnosne kopije. [Sažetak dokaza](docs/stage24k-evidence/acceptance-summary.json) povezuje rezultate s isporučenim provjeravačem.

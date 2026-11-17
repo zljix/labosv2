@@ -1,13 +1,13 @@
 {
   "format": "labosv2-grading-coverage",
   "version": 1,
-  "sourceVersion": "0.14.10-beta.1",
+  "sourceVersion": "0.14.11-beta.1",
   "summary": {
     "themes": 18,
     "variants": 67,
     "combinations": 268,
-    "supported": 248,
-    "unsupported": 20,
+    "supported": 252,
+    "unsupported": 16,
     "introductory": 5
   },
   "rows": [
@@ -12184,16 +12184,32 @@
       "fault": "U Dva čvora blokiraj vezu i ponovno pokreni par. Zabilježi retry/MAX_RT, zatim odblokiraj i ponovi. Ne mijenjaj obje adrese odjednom.",
       "expected": "Izgubljeni prvi ACK daje 11 pokušaja i deset RX čitanja bez dvostrukog RX 1. Podržani su po jedan radio i osnovni GPIO po čvoru.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24M-radio@1",
+        "checkerVersion": "24M.1",
+        "title": "NRF24L01+: TX, ACK, dovršeni RX i oporavak",
+        "instructions": "Predaj oba izvora i oba sklopa. A šalje pakete 1–10, svaki od osam bajtova: prvi je broj, ostali nule. Koristi statički payload, CRC16, auto-ACK i najmanje dva ponavljanja. B stvarno čita svih osam bajtova i za svaki paket jednom ispisuje RX n. A nakon dovršenog pokušaja ispisuje TX n ACK ili TX n MAX_RT. Zadrži početnu stanku 20 ms i razmak slanja oko 100 ms; svih deset paketa dovrši unutar 1600 ms. Svaki scenarij počinje novim izvršavanjem spremljenog para: normalna veza; gubitak prvog jednog ili dvaju ACK-ova; gubitak jednog ili dvaju podatkovnih pokušaja; blokirana veza; obnovljena veza. Broj gubitaka bira poslužiteljsko sjeme. ACK nije dokaz da je program B pročitao podatak. Pri izgubljenom ACK-u ne smije biti dvostrukog RX n. Pri blokadi svih deset pokušaja mora završiti s MAX_RT, bez RX podataka; nakon ponovnog pokretanja na obnovljenoj vezi ponovno prolazi svih deset. Dopušteni su drugi algoritmi, nazivi, rasporedi, valjani GPIO i mješoviti podržani ciljevi. Treba po jedan napajani NRF24L01+ Lab carrier na svakom čvoru. S3 koristi 3,3 V, Uno/Nano izričiti 5 V carrier s prilagodbom logike. Konzolni tekst bez stvarnog prijenosa i dovršenog RX čitanja ne daje bodove.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani SPI i CE putovi obaju čvorova, potvrđeni dovršenim čitanjem registra",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Deset stvarnih paketa, potvrda i dovršenih RX čitanja s točnim ispisima",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Gubitak ACK-a i podataka bez duplikata; MAX_RT pri blokadi i uspjeh nakon obnove",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Školski Linux provjeravač s izoliranim izvođenjem izvora.",
+        "evidence": "verification/school-radio.test.ts"
       }
     },
     {
@@ -12217,16 +12233,32 @@
       "fault": "U Dva čvora blokiraj vezu i ponovno pokreni par. Zabilježi retry/MAX_RT, zatim odblokiraj i ponovi. Ne mijenjaj obje adrese odjednom.",
       "expected": "Izgubljeni prvi ACK daje 11 pokušaja i deset RX čitanja bez dvostrukog RX 1. Podržani su po jedan radio i osnovni GPIO po čvoru.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Službeni provjeravač još nema adapter za ESP32-S3 C++.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24M-radio@1",
+        "checkerVersion": "24M.1",
+        "title": "NRF24L01+: TX, ACK, dovršeni RX i oporavak",
+        "instructions": "Predaj oba izvora i oba sklopa. A šalje pakete 1–10, svaki od osam bajtova: prvi je broj, ostali nule. Koristi statički payload, CRC16, auto-ACK i najmanje dva ponavljanja. B stvarno čita svih osam bajtova i za svaki paket jednom ispisuje RX n. A nakon dovršenog pokušaja ispisuje TX n ACK ili TX n MAX_RT. Zadrži početnu stanku 20 ms i razmak slanja oko 100 ms; svih deset paketa dovrši unutar 1600 ms. Svaki scenarij počinje novim izvršavanjem spremljenog para: normalna veza; gubitak prvog jednog ili dvaju ACK-ova; gubitak jednog ili dvaju podatkovnih pokušaja; blokirana veza; obnovljena veza. Broj gubitaka bira poslužiteljsko sjeme. ACK nije dokaz da je program B pročitao podatak. Pri izgubljenom ACK-u ne smije biti dvostrukog RX n. Pri blokadi svih deset pokušaja mora završiti s MAX_RT, bez RX podataka; nakon ponovnog pokretanja na obnovljenoj vezi ponovno prolazi svih deset. Dopušteni su drugi algoritmi, nazivi, rasporedi, valjani GPIO i mješoviti podržani ciljevi. Treba po jedan napajani NRF24L01+ Lab carrier na svakom čvoru. S3 koristi 3,3 V, Uno/Nano izričiti 5 V carrier s prilagodbom logike. Konzolni tekst bez stvarnog prijenosa i dovršenog RX čitanja ne daje bodove.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani SPI i CE putovi obaju čvorova, potvrđeni dovršenim čitanjem registra",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Deset stvarnih paketa, potvrda i dovršenih RX čitanja s točnim ispisima",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Gubitak ACK-a i podataka bez duplikata; MAX_RT pri blokadi i uspjeh nakon obnove",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-radio.test.ts"
       }
     },
     {
@@ -12250,16 +12282,32 @@
       "fault": "U Dva čvora blokiraj vezu i ponovno pokreni par. Zabilježi retry/MAX_RT, zatim odblokiraj i ponovi. Ne mijenjaj obje adrese odjednom.",
       "expected": "Izgubljeni prvi ACK daje 11 pokušaja i deset RX čitanja bez dvostrukog RX 1. Podržani su po jedan radio i osnovni GPIO po čvoru.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24M-radio@1",
+        "checkerVersion": "24M.1",
+        "title": "NRF24L01+: TX, ACK, dovršeni RX i oporavak",
+        "instructions": "Predaj oba izvora i oba sklopa. A šalje pakete 1–10, svaki od osam bajtova: prvi je broj, ostali nule. Koristi statički payload, CRC16, auto-ACK i najmanje dva ponavljanja. B stvarno čita svih osam bajtova i za svaki paket jednom ispisuje RX n. A nakon dovršenog pokušaja ispisuje TX n ACK ili TX n MAX_RT. Zadrži početnu stanku 20 ms i razmak slanja oko 100 ms; svih deset paketa dovrši unutar 1600 ms. Svaki scenarij počinje novim izvršavanjem spremljenog para: normalna veza; gubitak prvog jednog ili dvaju ACK-ova; gubitak jednog ili dvaju podatkovnih pokušaja; blokirana veza; obnovljena veza. Broj gubitaka bira poslužiteljsko sjeme. ACK nije dokaz da je program B pročitao podatak. Pri izgubljenom ACK-u ne smije biti dvostrukog RX n. Pri blokadi svih deset pokušaja mora završiti s MAX_RT, bez RX podataka; nakon ponovnog pokretanja na obnovljenoj vezi ponovno prolazi svih deset. Dopušteni su drugi algoritmi, nazivi, rasporedi, valjani GPIO i mješoviti podržani ciljevi. Treba po jedan napajani NRF24L01+ Lab carrier na svakom čvoru. S3 koristi 3,3 V, Uno/Nano izričiti 5 V carrier s prilagodbom logike. Konzolni tekst bez stvarnog prijenosa i dovršenog RX čitanja ne daje bodove.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani SPI i CE putovi obaju čvorova, potvrđeni dovršenim čitanjem registra",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Deset stvarnih paketa, potvrda i dovršenih RX čitanja s točnim ispisima",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Gubitak ACK-a i podataka bez duplikata; MAX_RT pri blokadi i uspjeh nakon obnove",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-radio.test.ts"
       }
     },
     {
@@ -12283,16 +12331,32 @@
       "fault": "U Dva čvora blokiraj vezu i ponovno pokreni par. Zabilježi retry/MAX_RT, zatim odblokiraj i ponovi. Ne mijenjaj obje adrese odjednom.",
       "expected": "Izgubljeni prvi ACK daje 11 pokušaja i deset RX čitanja bez dvostrukog RX 1. Podržani su po jedan radio i osnovni GPIO po čvoru.",
       "grading": {
-        "status": "unsupported",
-        "profileId": null,
-        "checkerVersion": null,
-        "title": null,
-        "instructions": null,
-        "criteria": [],
-        "maxPoints": null,
-        "reason": "Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.",
-        "requirement": "Simulator i pripremni kriteriji ostaju dostupni. Službeni bodovi nisu dodijeljeni.",
-        "evidence": null
+        "status": "supported",
+        "profileId": "24M-radio@1",
+        "checkerVersion": "24M.1",
+        "title": "NRF24L01+: TX, ACK, dovršeni RX i oporavak",
+        "instructions": "Predaj oba izvora i oba sklopa. A šalje pakete 1–10, svaki od osam bajtova: prvi je broj, ostali nule. Koristi statički payload, CRC16, auto-ACK i najmanje dva ponavljanja. B stvarno čita svih osam bajtova i za svaki paket jednom ispisuje RX n. A nakon dovršenog pokušaja ispisuje TX n ACK ili TX n MAX_RT. Zadrži početnu stanku 20 ms i razmak slanja oko 100 ms; svih deset paketa dovrši unutar 1600 ms. Svaki scenarij počinje novim izvršavanjem spremljenog para: normalna veza; gubitak prvog jednog ili dvaju ACK-ova; gubitak jednog ili dvaju podatkovnih pokušaja; blokirana veza; obnovljena veza. Broj gubitaka bira poslužiteljsko sjeme. ACK nije dokaz da je program B pročitao podatak. Pri izgubljenom ACK-u ne smije biti dvostrukog RX n. Pri blokadi svih deset pokušaja mora završiti s MAX_RT, bez RX podataka; nakon ponovnog pokretanja na obnovljenoj vezi ponovno prolazi svih deset. Dopušteni su drugi algoritmi, nazivi, rasporedi, valjani GPIO i mješoviti podržani ciljevi. Treba po jedan napajani NRF24L01+ Lab carrier na svakom čvoru. S3 koristi 3,3 V, Uno/Nano izričiti 5 V carrier s prilagodbom logike. Konzolni tekst bez stvarnog prijenosa i dovršenog RX čitanja ne daje bodove.",
+        "criteria": [
+          {
+            "id": "connection",
+            "description": "Napajani SPI i CE putovi obaju čvorova, potvrđeni dovršenim čitanjem registra",
+            "maxPoints": 3
+          },
+          {
+            "id": "response",
+            "description": "Deset stvarnih paketa, potvrda i dovršenih RX čitanja s točnim ispisima",
+            "maxPoints": 5
+          },
+          {
+            "id": "continuation",
+            "description": "Gubitak ACK-a i podataka bez duplikata; MAX_RT pri blokadi i uspjeh nakon obnove",
+            "maxPoints": 2
+          }
+        ],
+        "maxPoints": 10,
+        "reason": "Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.",
+        "requirement": "Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.",
+        "evidence": "verification/school-radio.test.ts"
       }
     },
     {

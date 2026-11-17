@@ -35,3 +35,9 @@ PHP/MySQL prihvat provjerava četiri dodjele, rezervaciju od 300 s, ugovore, poh
 Pri nadogradnji sačuvaj bazu, privatnu konfiguraciju, ključ i sesije; zamijeni kompletan paket, pokreni postojeći migrate i ponovno pokreni Linux provjeravače. GitHub Pages služi simulator i prikaz podrške; prijava i službeno bodovanje koriste školsku PHP/MySQL instalaciju.
 
 Sljedeća etapa 24N obuhvaća digitalne i I2C pretvornike razina. Preostaju četiri varijante i 16 kombinacija. Stvarni školski pilot, ciljni mobilni preglednici, Windows veza s Linux provjeravačem i skupno cgroup ograničenje memorije ostaju zasebni uvjeti.
+
+## Rezultati prihvata
+
+[Završni prihvat 24M](https://github.com/zljix/labosv2/actions/runs/44037558293) povezuje 60 ciljanih provjera, 24 neovisna C++ prijevoda i četiri zaključane dodjele kroz pravi PHP/MySQL s jednim otiskom isporučenog provjeravača. Potvrđeni su svih 16 mješovitih parova, neovisno pogrešni kriteriji, prekidi i popravci, potpuni RX prijenosi te ograničenje neustupajućeg programa. Ranije obitelji, razredi, računi, pohrana, izvještaji, povrat kopije i pokus s 30 simuliranih učenika prošli su regresiju. [Sažetak dokaza](stage24m-evidence/acceptance-summary.json) i [izvornost instalacijskog paketa](stage24m-evidence/installer-integrity.json).
+
+Zasebno je iz stvarno zapakiranog Workera potvrđeno šest mješovitih i jednakih parova s jednim izgubljenim ACK-om, uz deset jedinstvenih prijema. Prošlo je osam provjera korijenskog offline paketa i osam provjera Pages podputanje; [lokalni zapis](stage24m-evidence/local-package-verification.json).

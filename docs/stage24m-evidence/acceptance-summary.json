@@ -1,0 +1,21 @@
+{
+  "format": "labosv2-24m-acceptance",
+  "version": 1,
+  "sourceCommit": "8bc0b74b0f6a96cee6c6ccdbc6b1bcb58241df5d",
+  "checkerHash": "e23cedfbde746b61e286765e220f0b6fe893422efad5fbbea70b62a83ae29cf6",
+  "coverage": {
+    "supported": 252,
+    "total": 268
+  },
+  "targets": [
+    "micropython",
+    "s3-cpp",
+    "uno",
+    "nano"
+  ],
+  "targetedExecutions": 60,
+  "independentCompilations": 24,
+  "lockedSchoolAssignments": 4,
+  "legacyPreserved": true,
+  "stageRunURL": "https://github.com/zljix/labosv2/actions/runs/44037558293"
+}

@@ -1,0 +1,16 @@
+{
+  "format": "labosv2-24m-installer-integrity",
+  "version": 1,
+  "sourceCommit": "8bc0b74b0f6a96cee6c6ccdbc6b1bcb58241df5d",
+  "runURL": "https://github.com/zljix/labosv2/actions/runs/44037558293",
+  "filename": "Labosv2_0.14.11_24M_Objavljeno.zip",
+  "sha256": "65f741354c43cf88d38db74d11892e95370dee6e580cab6df6a6f826f3d1efda",
+  "verifiedInventoryFiles": 919,
+  "allInventoryBytesVerified": true,
+  "checkerHash": "e23cedfbde746b61e286765e220f0b6fe893422efad5fbbea70b62a83ae29cf6",
+  "unchangedCIInstaller": true,
+  "webManifestIdenticalToPreparedRootDistribution": true,
+  "artifactId": 14308259062,
+  "outerArtifactSha256": "ececc0ae71d610ca8e41f7f276ec5e267a0088c5291325b275296f823ecad09d",
+  "artifactDigestVerified": true
+}

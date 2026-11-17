@@ -11,9 +11,9 @@ import type {UrsTarget} from '../src/lessons/ursCatalog';
 
 const root=process.cwd(),evidence:any[]=[];
 const selected=(t:string)=>!!process.env.LAB_ENVIRONMENT_TARGET&&process.env.LAB_ENVIRONMENT_TARGET!==t;
-async function run(project:any,p:any,options:any={root},seed='5'.repeat(64)){
+async function run(project:any,p:any,options:any={root},seed='5'.repeat(64),referenceRepetition?:number){
  const job=jobFor(project,p,seed),result=await gradeJob(job,options);
- evidence.push({profileId:p.id,target:job.target,snapshotHash:job.snapshotHash,contractHash:job.contractHash,seed,result});return result;
+ evidence.push({referenceRepetition,profileId:p.id,target:job.target,snapshotHash:job.snapshotHash,contractHash:job.contractHash,seed,result});return result;
 }
 test.after(()=>{mkdirSync('docs/stage24i-evidence',{recursive:true});writeFileSync('docs/stage24i-evidence/environment-'+(process.env.LAB_ENVIRONMENT_TARGET??'all')+'.json',JSON.stringify({format:'labosv2-environment-evidence',version:1,sourceCommit:process.env.GITHUB_SHA??null,results:evidence},null,2)+'\n');});
 test('24I publishes two contracts and preserves every previous profile',()=>{
@@ -59,9 +59,11 @@ test('24I a leading OLED digit cannot turn a wrong displayed value into full poi
  }
 });
 for(const target of ['micropython','s3-cpp','uno','nano'] as UrsTarget[])test(`24I ${target}: three repetitions of both independent saved sources`,{skip:selected(target),timeout:600000},async()=>{
- for(const p of environmentProfiles)for(let i=0;i<3;i++){
+ for(const p of environmentProfiles){
   const project=await starter(p.taskKey,target);project.files['forged-result.json']='{"points":1000,"sample":999,"angle":90}';
-  const r=await run(project,p);assert.equal(r.status,'evaluated',JSON.stringify(r));assert.equal(r.points,10,JSON.stringify(r));
+  for(let i=0;i<3;i++){
+   const r=await run(structuredClone(project),p,{root},'5'.repeat(64),i+1);assert.equal(r.status,'evaluated',JSON.stringify(r));assert.equal(r.points,10,JSON.stringify(r));
+  }
  }
 });
 for(const target of ['micropython','s3-cpp','uno','nano'] as UrsTarget[])test(`24I ${target}: each sensor/panel/servo path, wrong address, repair and reversed environments`,{skip:selected(target),timeout:600000},async()=>{

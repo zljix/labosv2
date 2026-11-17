@@ -7,9 +7,9 @@ import vm from 'node:vm';
 
 test('school ZIP verifies every inventory entry and keeps app, SQL and configuration out of web/', () => {
   const version = JSON.parse(readFileSync('package.json')).version;
-  const archive = unzipSync(readFileSync('release/Labosv2_' + version.split('-')[0] + '_24L_Skolski.zip'));
+  const archive = unzipSync(readFileSync('release/Labosv2_' + version.split('-')[0] + '_24M_Skolski.zip'));
   const inventory = JSON.parse(strFromU8(archive['package-inventory.json']));
-  assert.equal(inventory.stage, '24L'); assert.equal(inventory.version, version);
+  assert.equal(inventory.stage, '24M'); assert.equal(inventory.version, version);
   assert.equal(Object.keys(archive).length, inventory.files.length + 1);
   for (const file of inventory.files) {
     assert.equal(archive[file.path].byteLength, file.bytes, file.path);
@@ -17,6 +17,12 @@ test('school ZIP verifies every inventory entry and keeps app, SQL and configura
   }
   for (const path of ['app/bootstrap.php', 'migrations/001_accounts.sql', 'migrations/002_class_access.sql', 'tools/console.php', 'web/api/index.php', 'web/school-account.mjs', 'web/school-classes.mjs', 'migrations/003_classes_tasks.sql', 'catalog/catalog.json']) assert(archive[path], path);
   assert.deepEqual(Object.keys(archive).filter(path => path.startsWith('config/')), ['config/config.example.php']);
+  assert(archive['checker/.build/school-grader/radio-child.mjs']);
+  assert(archive['checker/public/radio-examples.json']);
+  assert(archive['docs/stage24m-radio.md']);
+  const radioRegistry=JSON.parse(strFromU8(archive['grading/profiles.json']));
+  assert.equal(radioRegistry.profiles.filter(p=>p.id.startsWith('24M-')).length,1);
+  assert.equal(JSON.parse(strFromU8(archive['profile.json'])).grading.radioLeaseSeconds,300);
   for(const path of ['checker/scripts/s3-compile.mjs','checker/runtime/arduino-s3/core.cpp','checker/school/grader/s3-compile-child.mjs','docs/stage24ab-contract.md'])assert(archive[path],path);
   for(const path of ['docs/stage24c-analog.md','docs/stage24c-evidence/README.md'])assert(archive[path],path);
   assert(archive['docs/stage24i-environment.md']);assert(archive['docs/stage24i-evidence/README.md']);

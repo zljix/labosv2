@@ -19,6 +19,14 @@ function pair(){
 }
 function send(a:any){a.begin();a.byte(160);for(const n of [42,1,2,3,4,5,6,7])a.byte(n);a.end();a.setCE(true);}
 function read(r:any,n=8){r.begin();r.byte(97);const out=Array.from({length:n},()=>r.byte(0));r.end();return out;}
+test('24M completed RX telemetry requires all payload bytes and CS completion',()=>{
+ const {clock,a,b}=pair();send(a);advance(clock,10000);
+ b.begin();b.byte(97);for(let i=0;i<8;i++)b.byte(0);
+ assert.equal(b.readings.length,0);b.end();assert.equal(b.readings.length,1);
+ assert.deepEqual(b.readings[0].bytes,[42,1,2,3,4,5,6,7]);assert.equal(b.readings[0].from,'A');
+ a.setCE(false);a.set(7,112);send(a);advance(clock,20000);read(b,1);assert.equal(b.readings.length,1);
+ for(let i=0;i<100;i++){b.begin();b.byte(5);b.byte(0);b.end();}assert.equal(b.transfers.length,64);
+});
 test('NRF24: reset, one-byte status and FIFO status have independent known values',()=>{const c=new RadioClock(),r=new NRF24('A',new RadioMedium(c));assert.equal(r.status,14);assert.equal(r.get(23),17);assert.equal(r.get(5),2);assert.equal(r.get(3),3);r.begin();assert.equal(r.byte(255),14);r.end();});
 test('NRF24: static packet crosses SPI FIFO; ACK sets TX_DS and removes TX entry',()=>{const {clock,a,b,medium}=pair();send(a);advance(clock,10000);assert.equal(a.get(7)&48,32);assert.equal(a.get(23)&16,16);assert.equal(b.get(7)&64,64);assert.deepEqual(read(b),[42,1,2,3,4,5,6,7]);assert.equal(b.get(23)&1,1);assert.deepEqual(medium.trace.map((e:any)=>e.kind),['tx','rx','ack']);assert.equal(medium.trace[1].timeUs,6277);assert.equal(medium.trace[2].timeUs,6480);});
 for(const [label,modify]of [['channel',(b:any)=>b.set(5,77)],['address',(b:any)=>b.set(10,90,0)],['length',(b:any)=>b.set(17,7)],['rate',(b:any)=>b.set(6,14)],['CRC',(b:any)=>b.set(0,10)]]as const){

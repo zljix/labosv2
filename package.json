@@ -1,6 +1,6 @@
 {
   "name": "esp32-micropython-lab",
-  "version": "0.14.10-beta.1",
+  "version": "0.14.11-beta.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -100,7 +100,9 @@
     "test:school-storage": "node --import tsx --test verification/school-storage.test.ts",
     "test:school-storage-api": "node --import tsx --test verification/school-storage-api.test.mjs",
     "test:school-optical": "node --import tsx --test verification/school-optical.test.ts",
-    "test:school-optical-api": "node --import tsx --test verification/school-optical-api.test.mjs"
+    "test:school-optical-api": "node --import tsx --test verification/school-optical-api.test.mjs",
+    "test:school-radio": "node --import tsx --test verification/school-radio.test.ts",
+    "test:school-radio-api": "node --import tsx --test verification/school-radio-api.test.mjs"
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.1",

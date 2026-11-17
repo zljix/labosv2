@@ -1,3 +1,4 @@
+import {isRadioContract,gradeRadio} from './radio-official';
 import {isOpticalContract,validOpticalConfig} from './optical';
 import {isStorageContract,validStorageConfig} from './storage';
 import {isTouchContract,validTouchConfig} from './touch';
@@ -30,8 +31,8 @@ export async function gradeJob(job:any,options:{root:string;compile?:boolean;cli
   // console transcript, score or binary from a browser chooses this report.
   const checker=createHash('sha256');
   try{
-    for(const file of ['official.mjs','official-child.mjs'])checker.update(await readFile(resolve(root,'.build/school-grader',file)));
-    for(const file of ['machine.py','runtime/micropython.mjs','runtime/micropython.wasm','avr-examples.json','s3-examples.json','s3-core-lock.mjs'])checker.update(await readFile(resolve(root,'public',file)));
+    for(const file of ['official.mjs','official-child.mjs','radio-child.mjs'])checker.update(await readFile(resolve(root,'.build/school-grader',file)));
+    for(const file of ['machine.py','runtime/micropython.mjs','runtime/micropython.wasm','avr-examples.json','s3-examples.json','s3-core-lock.mjs','radio-examples.json'])checker.update(await readFile(resolve(root,'public',file)));
     for(const file of ['scripts/avr-compile.mjs','scripts/s3-compile.mjs','school/grader/compile-child.mjs','school/grader/s3-compile-child.mjs','vendor/arduino/lock.json'])checker.update(await readFile(resolve(root,file)));
   }catch{return {...base,checkerHash:digest('unavailable-checker:'+registry.checkerVersion),status:'technical_error',message:'Provjeravač nije potpuno instaliran. Bodovi nisu dodijeljeni.'};}
   base.checkerHash=checker.digest('hex');
@@ -47,6 +48,7 @@ export async function gradeJob(job:any,options:{root:string;compile?:boolean;cli
   let project;
   try{project=parseProject(JSON.parse(job.projectJson));}catch{return failProgram('Snimka nema valjanu strukturu projekta.');}
   const target=project.language==='micropython'&&project.board.id===S3?'micropython':project.language==='arduino-cpp'&&project.board.id===S3?'s3-cpp':project.language==='arduino-cpp'&&project.board.id===UNO?'uno':project.language==='arduino-cpp'&&project.board.id===NANO?'nano':null;
+  if(target===job.target&&isRadioContract(profile))return gradeRadio(project,profile,job.seed,base,options);
   if(target!==job.target||project.radio)return {...base,status:'unsupported',message:'Ovaj cilj još nema službenu provjeru.'};
   try{
     const config=compileCircuit(project.circuit as any,target==='uno'||target==='nano'?'avr':'micropython');

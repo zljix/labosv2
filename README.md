@@ -1,6 +1,6 @@
 # Labosv2 · školski laboratorij
 
-**0.14.10-beta.1 · etapa 24L · MAX30102 · 17. studenoga 2026.**
+**0.14.11-beta.1 · etapa 24M · NRF24L01+ par · 17. studenoga 2026.**
 
 **Prihvat 24L:** [Završni prihvat i paket](https://github.com/zljix/labosv2/actions/runs/43981733195) potvrđuju 162 ciljane izvedbe, 48 neovisnih C++ prijevoda i 16 zaključanih MAX30102 dodjela. Ranije obitelji, računi, izvještaji, povrat kopije i pokus s 30 simuliranih učenika potvrđeni su na bajtno istom programu i provjeravaču. [Sažetak i podrijetlo dokaza](docs/stage24l-evidence/acceptance-summary.json).
 
@@ -22,7 +22,14 @@ Nastavak postojećeg ESP32 MicroPython / Arduino laboratorija za školski sustav
 
 [Neovisni prihvat 24F](https://github.com/zljix/labosv2/actions/runs/43915429891) potvrđuje sva četiri cilja i 67 novih prijevoda. [Školski prihvat 24F](https://github.com/zljix/labosv2/actions/runs/43916966742) potvrđuje identičan programski izvor, PHP/MySQL, bodove, zaključavanje, 30 simuliranih učenika, izvještaje i paket.
 
-## Novo u 24L
+## Novo u 24M
+
+- Službeno bodovanje stvarnog TX/RX para: oba izvora i sklopa, SPI, radio ACK/retry i dovršeno RX čitanje.
+- **252/268 kombinacija**: 63 URS varijante na četiri glavna cilja; drugi čvor može biti bilo koji od sva četiri cilja.
+- Normalna veza, izgubljeni ACK i podatkovni pokušaji, blokada/MAX_RT te obnovljeni pokus. Kriteriji 3 + 5 + 2 boda.
+- [Uvjeti, opseg i nadogradnja](docs/stage24m-radio.md). Nema nove SQL migracije; radio posao ima rezervaciju od 300 s za prevođenje oba čvora.
+
+## Sačuvano iz 24L
 
 - Četiri rubrike za registre i shutdown, sirove RED/IR uzorke, frekvenciju sintetskog signala te pun FIFO i oporavak.
 - **248/268 kombinacija**, odnosno 62 URS varijante na sva četiri cilja; svih 65 ranijih rubrika ostaje neizmijenjeno.
@@ -189,7 +196,7 @@ npm ci
 npm run build:school
 ```
 
-Školski paket: `release/Labosv2_0.14.10_24L_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-24L-Provjeren-skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
+Školski paket: `release/Labosv2_0.14.11_24M_Skolski.zip`. GitHub Actions objavljuje ga kao artefakt **Labosv2-24M-Provjeren-skolski-paket**. Apache smije posluživati samo `web/` iz tog paketa. [Linux, Windows, privatna konfiguracija, migracije i početni administrator](school/README.md).
 
 ```sh
 npm run build:pages

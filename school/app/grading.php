@@ -126,7 +126,8 @@ function claimGrading(\PDO $pdo): ?array
                 $job = $pdo->query("SELECT * FROM grading_jobs WHERE status='queued' ORDER BY id LIMIT 1 FOR UPDATE SKIP LOCKED")->fetch();
                 if (!$job) return null;
                 $lease = bin2hex(random_bytes(32));
-                query($pdo, "UPDATE grading_jobs SET status='running',lease_hash=?,lease_until=CURRENT_TIMESTAMP(6)+INTERVAL 180 SECOND,deliveries=deliveries+1 WHERE id=?", [hash('sha256', $lease),$job['id']]);
+                $leaseSeconds = $job['checker_version'] === '24M.1' ? 300 : 180;
+                query($pdo, "UPDATE grading_jobs SET status='running',lease_hash=?,lease_until=TIMESTAMPADD(SECOND,?,CURRENT_TIMESTAMP(6)),deliveries=deliveries+1 WHERE id=?", [hash('sha256', $lease),$leaseSeconds,$job['id']]);
                 $snapshot = query($pdo, 'SELECT project FROM work_snapshots WHERE attempt_id=? AND revision=?', [$job['attempt_id'],$job['revision']])->fetchColumn();
                 // MySQL's JSON serializer may reorder keys and add whitespace. Rebuild
                 // the exact canonical representation used when the snapshot was saved.
@@ -136,6 +137,7 @@ function claimGrading(\PDO $pdo): ?array
                 $value = ['format'=>'labosv2-grading-job','version'=>1,'jobId'=>(int)$job['id'],'attemptId'=>(int)$job['attempt_id'],'revision'=>(int)$job['revision'],
                     'lease'=>$lease,'checkerVersion'=>$job['checker_version'],'profileId'=>$job['profile_id'],'rubricHash'=>$job['rubric_hash'],
                     'snapshotHash'=>$job['snapshot_hash'],'seed'=>$job['stimulus_seed'],'projectJson'=>$snapshot,'rubric'=>$context['rubric'],'target'=>$context['target']];
+                if ($job['checker_version'] === '24M.1') $value['leaseSeconds'] = 300;
                 if (isset($context['rubric']['contract'])) {
                     $value['version']=2;
                     $value['taskKey']=$context['rubric']['taskKey'];

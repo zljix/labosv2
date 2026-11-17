@@ -1,5 +1,5 @@
 {
-  "checkerVersion": "24L.1",
+  "checkerVersion": "24M.1",
   "profiles": [
     {
       "id": "23E-button-led@1",
@@ -6682,6 +6682,98 @@
           }
         },
         "faultPolicy": "Otvoreni SDA/SCL ili napajanje, zamijenjeni vodovi, izostanak pull-upova i pogrešna naponska domena ne daju valjana očitanja. Kvar infrastrukture i nepodržan/stari C++ artefakt ostavljaju bodove praznima. Signal je samo sintetski."
+      }
+    },
+    {
+      "id": "24M-radio@1",
+      "taskKey": "radio/radio",
+      "kind": "radio-pair",
+      "targets": [
+        "micropython",
+        "s3-cpp",
+        "uno",
+        "nano"
+      ],
+      "title": "NRF24L01+: TX, ACK, dovršeni RX i oporavak",
+      "instructions": "Predaj oba izvora i oba sklopa. A šalje pakete 1–10, svaki od osam bajtova: prvi je broj, ostali nule. Koristi statički payload, CRC16, auto-ACK i najmanje dva ponavljanja. B stvarno čita svih osam bajtova i za svaki paket jednom ispisuje RX n. A nakon dovršenog pokušaja ispisuje TX n ACK ili TX n MAX_RT. Zadrži početnu stanku 20 ms i razmak slanja oko 100 ms; svih deset paketa dovrši unutar 1600 ms. Svaki scenarij počinje novim izvršavanjem spremljenog para: normalna veza; gubitak prvog jednog ili dvaju ACK-ova; gubitak jednog ili dvaju podatkovnih pokušaja; blokirana veza; obnovljena veza. Broj gubitaka bira poslužiteljsko sjeme. ACK nije dokaz da je program B pročitao podatak. Pri izgubljenom ACK-u ne smije biti dvostrukog RX n. Pri blokadi svih deset pokušaja mora završiti s MAX_RT, bez RX podataka; nakon ponovnog pokretanja na obnovljenoj vezi ponovno prolazi svih deset. Dopušteni su drugi algoritmi, nazivi, rasporedi, valjani GPIO i mješoviti podržani ciljevi. Treba po jedan napajani NRF24L01+ Lab carrier na svakom čvoru. S3 koristi 3,3 V, Uno/Nano izričiti 5 V carrier s prilagodbom logike. Konzolni tekst bez stvarnog prijenosa i dovršenog RX čitanja ne daje bodove.",
+      "criteria": [
+        {
+          "id": "connection",
+          "description": "Napajani SPI i CE putovi obaju čvorova, potvrđeni dovršenim čitanjem registra",
+          "maxPoints": 3
+        },
+        {
+          "id": "response",
+          "description": "Deset stvarnih paketa, potvrda i dovršenih RX čitanja s točnim ispisima",
+          "maxPoints": 5
+        },
+        {
+          "id": "continuation",
+          "description": "Gubitak ACK-a i podataka bez duplikata; MAX_RT pri blokadi i uspjeh nakon obnove",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "24M.1",
+      "contract": {
+        "format": "labosv2-execution-contract",
+        "version": 1,
+        "scenarioVersion": "24M.1",
+        "observation": "two-isolated-saved-programs-completed-SPI-payloads-radio-ACK-retry-and-completed-RX-read",
+        "allowedAlternatives": [
+          "Drugi algoritmi i nazivi, valjani GPIO i električno ekvivalentan raspored.",
+          "Svaki čvor može koristiti MicroPython, S3 C++, Uno ili Nano; rezultat je vezan uz oba izvora i sklopa."
+        ],
+        "output": "TX n ACK/MAX_RT i RX n povezani s stvarnim paketima i dovršenim SPI čitanjima.",
+        "units": {
+          "time": "us virtual paired clock",
+          "payload": "8 bytes"
+        },
+        "scenario": {
+          "durationUs": 1600000,
+          "packets": 10,
+          "dropCounts": [
+            1,
+            2
+          ],
+          "specification": "Predaj oba izvora i oba sklopa. A šalje pakete 1–10, svaki od osam bajtova: prvi je broj, ostali nule. Koristi statički payload, CRC16, auto-ACK i najmanje dva ponavljanja. B stvarno čita svih osam bajtova i za svaki paket jednom ispisuje RX n. A nakon dovršenog pokušaja ispisuje TX n ACK ili TX n MAX_RT. Zadrži početnu stanku 20 ms i razmak slanja oko 100 ms; svih deset paketa dovrši unutar 1600 ms. Svaki scenarij počinje novim izvršavanjem spremljenog para: normalna veza; gubitak prvog jednog ili dvaju ACK-ova; gubitak jednog ili dvaju podatkovnih pokušaja; blokirana veza; obnovljena veza. Broj gubitaka bira poslužiteljsko sjeme. ACK nije dokaz da je program B pročitao podatak. Pri izgubljenom ACK-u ne smije biti dvostrukog RX n. Pri blokadi svih deset pokušaja mora završiti s MAX_RT, bez RX podataka; nakon ponovnog pokretanja na obnovljenoj vezi ponovno prolazi svih deset. Dopušteni su drugi algoritmi, nazivi, rasporedi, valjani GPIO i mješoviti podržani ciljevi. Treba po jedan napajani NRF24L01+ Lab carrier na svakom čvoru. S3 koristi 3,3 V, Uno/Nano izričiti 5 V carrier s prilagodbom logike. Konzolni tekst bez stvarnog prijenosa i dovršenog RX čitanja ne daje bodove.",
+          "stageDurationMs": 1600
+        },
+        "limits": {
+          "wallTimeMs": 65000,
+          "compileWallTimeMs": 90000,
+          "addressSpaceMiB": 2048,
+          "outputBytes": 1048576,
+          "snapshotBytes": 4194304,
+          "v8HeapMiB": 96,
+          "pythonHeapMiB": 4,
+          "cpuSeconds": 58,
+          "compileNodes": 2,
+          "leaseSeconds": 300
+        },
+        "runtimes": {
+          "micropython": {
+            "id": "micropython-wasm",
+            "version": 1
+          },
+          "s3-cpp": {
+            "id": "arduino-s3-wasm",
+            "version": 1,
+            "compiler": "clang@19.1.7",
+            "optimizer": "binaryen@120",
+            "memoryBytes": 2097152
+          },
+          "uno": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          },
+          "nano": {
+            "id": "arduino-avr",
+            "version": 1,
+            "core": "arduino:avr@1.8.6"
+          }
+        },
+        "faultPolicy": "Neispravni SPI/CE vodovi, napajanje, nepodržan cilj, stara binarna datoteka ili lažni ispis ne zamjenjuju izvršavanje oba čvora. Kvar servisa i ograničenje resursa ostavljaju bodove praznima."
       }
     }
   ]

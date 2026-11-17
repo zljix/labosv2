@@ -13,7 +13,7 @@ let moduleSerial=0;
 const allowed=new Set(['board','nrf24','led','resistor','button','potentiometer','breadboard']);
 /** Nodes share one event queue. AVR advances atomic instructions; functional
  * S3 yields on each imported API and MicroPython yields at sleep calls. */
-export async function createRadioExperiment(projects:Project[],send:(e:any)=>void,options:{runtimeBase:string;machine:string}){
+export async function createRadioExperiment(projects:Project[],send:(e:any)=>void,options:{runtimeBase:string;machine:string;harden?:boolean}){
  if(projects.length!==2)throw Error('Radijska mreža zahtijeva točno dva čvora.');
  const clock=new RadioClock(),medium=new RadioMedium(clock),nodes:any[]=[],cpus:any[]=[];
  let stopped=false,error:Error|undefined;
@@ -39,6 +39,7 @@ export async function createRadioExperiment(projects:Project[],send:(e:any)=>voi
     // MicroPython's normal runtime stays untouched outside this experiment.
     // Positive sleep_us rounds up to milliseconds in this cooperative profile.
     Object.assign(state.host,{delayUs:()=>false,waitMs:()=>{},scheduleSleep:(wake:()=>void,ms:number)=>clock.after(Math.max(1,ms*1000),wake)});
+    if(options.harden)(globalThis as any).proxy_js_ref[0]=Object.freeze(Object.create(null));
     state.mp._module.labHost=state.host;state.mp.FS.writeFile('/machine.py',options.machine);
     for(const [path,text]of Object.entries(snapshot.files)){
      const parts=path.split('/');parts.pop();let dir='';for(const part of parts){dir+='/'+part;if(!state.mp.FS.analyzePath(dir).exists)state.mp.FS.mkdir(dir);}state.mp.FS.writeFile('/'+path,text);
@@ -46,6 +47,7 @@ export async function createRadioExperiment(projects:Project[],send:(e:any)=>voi
     state.mp.FS.writeFile('/main.py',snapshot.source);
    }
   }
+  if(options.harden)Date.now=()=>Math.floor(clock.now/1000);
   const fail=(id:RadioNode,e:unknown)=>{if(stopped)return;error=e instanceof Error?e:Error(String(e));const state=nodes.find(n=>n.id===id);if(state?.text){emit(id,{type:'console',text:state.text});error.message+='\n'+state.text.slice(-2000);state.text='';}emit(id,{type:'error',message:error.message});};
   for(const node of nodes){
    if(node.mp){emit(node.id,{type:'ready'});void node.mp.runPython("exec(compile(open('/main.py').read(), 'main.py', 'exec'))").then(()=>{node.done=true;emit(node.id,{type:'done'});},(e:unknown)=>fail(node.id,e));}

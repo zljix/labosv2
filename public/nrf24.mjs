@@ -48,8 +48,8 @@ export class RadioMedium {
   snapshot(){return {timeUs:this.clock.now,attempts:this.attempts,delivered:this.delivered,blocked:this.blocked,dropData:this.dropData,dropAck:this.dropAck,trace:this.trace.slice()};}
 }
 export class NRF24 {
-  constructor(id,medium){this.id=id;this.medium=medium;medium.attach(this);this.powered=false;this.epoch=0;this.reset();}
-  reset(){this.reg=new Uint8Array(32);this.reg.set([8,63,3,3,3,2,14,14]);this.txAddress=[231,231,231,231,231];this.rxAddresses=[[231,231,231,231,231],[194,194,194,194,194],[195],[196],[197],[198]];this.tx=[];this.rx=[];this.flags=0;this.arc=0;this.plos=0;this.ce=false;this.ceAt=0;this.readyAt=Infinity;this.rxAt=Infinity;this.job=null;this.received=0;this.sent=0;this.failed=0;this.lastPacket=new Map();this.lastDuplicate=false;this.epoch++;this.begin();}
+  constructor(id,medium){this.id=id;this.medium=medium;medium.attach(this);this.powered=false;this.epoch=0;this.transfers=[];this.readings=[];this.transferSequence=0;this.reset();}
+  reset(){this.transfers=[];this.readings=[];this.transferSequence=0;this.reg=new Uint8Array(32);this.reg.set([8,63,3,3,3,2,14,14]);this.txAddress=[231,231,231,231,231];this.rxAddresses=[[231,231,231,231,231],[194,194,194,194,194],[195],[196],[197],[198]];this.tx=[];this.rx=[];this.flags=0;this.arc=0;this.plos=0;this.ce=false;this.ceAt=0;this.readyAt=Infinity;this.rxAt=Infinity;this.job=null;this.received=0;this.sent=0;this.failed=0;this.lastPacket=new Map();this.lastDuplicate=false;this.epoch++;this.begin();}
   get width(){return (this.reg[3]&3)+2;}
   get rate(){return this.reg[6]&32?.25:this.reg[6]&8?2:1;}
   get crc(){return (this.reg[0]&8)||this.reg[1]?(this.reg[0]&4?2:1):0;}
@@ -60,7 +60,7 @@ export class NRF24 {
   setCE(high){high=!!high;if(high===this.ce)return;this.ce=high;this.epoch++;if(high){this.ceAt=this.now;if(this.reg[0]&1)this.rxAt=Math.max(this.now,this.readyAt)+130;else{const epoch=this.epoch;this.medium.clock.after(10,()=>{if(this.ce&&this.epoch===epoch)this.start();});}}}
   start(){if(this.job||!this.powered||this.reg[0]&1||!(this.reg[0]&2)||this.now<this.readyAt||this.flags&16||!this.tx.length||!this.ce)return;const job={id:++this.medium.sequence,bytes:this.tx[0].slice(),attempt:0};this.job=job;this.medium.clock.after(130,()=>this.medium.attempt(this,job));}
   match(p){if(!this.powered||!this.ce||!(this.reg[0]&1)||!(this.reg[0]&2)||this.now<this.rxAt||this.job||this.reg[5]!==p.channel||this.rate!==p.rate||this.crc!==p.crc||this.width!==p.width)return -1;for(let i=0;i<6;i++)if((this.reg[2]&(1<<i))&&this.reg[17+i]===p.bytes.length&&equal(this.address(i),p.address))return i;return -1;}
-  receive(p,pipe,from){const key=from+':'+pipe,duplicate=this.lastPacket.get(key)===p.id;this.lastDuplicate=duplicate;if(duplicate)return true;if(this.rx.length===3)return false;this.rx.push({bytes:p.bytes.slice(),pipe});this.flags|=64;this.received++;this.lastPacket.set(key,p.id);return true;}
+  receive(p,pipe,from){const key=from+':'+pipe,duplicate=this.lastPacket.get(key)===p.id;this.lastDuplicate=duplicate;if(duplicate)return true;if(this.rx.length===3)return false;this.rx.push({bytes:p.bytes.slice(),pipe,packetId:p.id,from});this.flags|=64;this.received++;this.lastPacket.set(key,p.id);return true;}
   complete(job,ok){if(this.job!==job)return;this.job=null;if(ok){this.flags|=32;this.tx.shift();this.sent++;if(this.ce)this.start();}else{this.flags|=16;this.plos=Math.min(15,this.plos+1);this.failed++;}}
   get(reg,index=0){if(reg===7)return this.status;if(reg===8)return this.plos*16+this.arc;if(reg===9)return 0;if(reg===23)return (this.tx.length===3?32:0)|(this.tx.length?0:16)|(this.rx.length===3?2:0)|(this.rx.length?0:1);if(reg===16)return this.txAddress[index]??0;if(reg>=10&&reg<=15)return this.rxAddresses[reg-10][index]??0;return this.reg[reg]??0;}
   set(reg,value,index=0){
@@ -76,18 +76,30 @@ export class NRF24 {
     if(reg===0){if(!(old&2)&&(value&2))this.readyAt=this.now+1500;if(!(value&2)){this.readyAt=Infinity;this.job=null;}this.rxAt=Infinity;}
     this.epoch++;
   }
-  begin(){this.command=null;this.index=0;this.upload=[];this.readTouched=false;}
-  end(){if(this.command===160&&this.upload.length){if(this.tx.length<3)this.tx.push(this.upload.slice());if(this.ce)this.start();}if(this.command===97&&this.readTouched)this.rx.shift();this.begin();}
+  begin(){this.command=null;this.index=0;this.upload=[];this.output=[];this.firstStatus=0;this.readTouched=false;}
+  end(){
+    const packet=this.rx[0],sequence=++this.transferSequence;
+    if(this.command===160&&this.upload.length){if(this.tx.length<3)this.tx.push(this.upload.slice());if(this.ce)this.start();}
+    if(this.command===97&&this.readTouched){
+      if(packet&&this.index>=packet.bytes.length){this.readings.push({sequence,timeUs:this.now,packetId:packet.packetId,from:packet.from,pipe:packet.pipe,bytes:packet.bytes.slice()});if(this.readings.length>64)this.readings.shift();}
+      this.rx.shift();
+    }
+    if(this.index&&(this.command===5||this.command===97||this.command===160||this.firstStatus&48)){
+      this.transfers.push({sequence,timeUs:this.now,command:this.command,length:this.index,status:this.firstStatus,bytes:this.output.slice(),uploaded:this.upload.slice()});if(this.transfers.length>64)this.transfers.shift();
+    }
+    this.begin();
+  }
+  returned(value){if(this.output.length<32)this.output.push(value);return value;}
   byte(value){
-    if(this.command===null){const status=this.status;this.command=value;
+    if(this.command===null){const status=this.status;this.firstStatus=status;this.command=value;
       if(value===225){this.tx=[];this.job=null;}else if(value===226)this.rx=[];
       else if(!((value<=31)||(value>=32&&value<=63)||[97,160,255].includes(value)))throw Error('NRF24: SPI naredba 0x'+value.toString(16)+' nije u statičkom profilu.');return status;}
     const i=this.index++;
-    if(this.command<=31)return this.get(this.command,i);
+    if(this.command<=31)return this.returned(this.get(this.command,i));
     if(this.command>=32&&this.command<=63){this.set(this.command&31,value,i);return this.status;}
-    if(this.command===97){this.readTouched=true;return this.rx[0]?.bytes[i]??0;}
+    if(this.command===97){this.readTouched=true;return this.returned(this.rx[0]?.bytes[i]??0);}
     if(this.command===160){if(i>=32)throw Error('NRF24: payload ima najviše 32 bajta.');this.upload.push(value);}
     return this.status;
   }
-  snapshot(){return {powered:this.powered,ce:this.ce,channel:this.reg[5],rateMbps:this.rate,crcBytes:this.crc,addressWidth:this.width,status:this.status,txFifo:this.tx.length,rxFifo:this.rx.length,retries:this.arc,lost:this.plos,received:this.received,sent:this.sent,failed:this.failed,mode:!(this.reg[0]&2)?'power-down':this.reg[0]&1?'RX':'TX'};}
+  snapshot(){return {transfers:this.transfers.slice(),readings:this.readings.slice(),powered:this.powered,ce:this.ce,channel:this.reg[5],rateMbps:this.rate,crcBytes:this.crc,addressWidth:this.width,status:this.status,txFifo:this.tx.length,rxFifo:this.rx.length,retries:this.arc,lost:this.plos,received:this.received,sent:this.sent,failed:this.failed,mode:!(this.reg[0]&2)?'power-down':this.reg[0]&1?'RX':'TX'};}
 }

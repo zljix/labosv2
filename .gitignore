@@ -41,3 +41,7 @@ docs/stage24k-evidence/initial-smoke.json
 # Izvedeni dokazi 24L ostaju u CI artefaktima i instalacijskom paketu.
 docs/stage24l-evidence/optical-*.json
 docs/stage24l-evidence/mysql-optical.json
+
+# Izvedeni dokazi 24M ostaju u CI artefaktima i instalacijskom paketu.
+docs/stage24m-evidence/radio-*.json
+docs/stage24m-evidence/mysql-radio.json

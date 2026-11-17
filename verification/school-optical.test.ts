@@ -18,7 +18,7 @@ test.after(()=>{mkdirSync('docs/stage24l-evidence',{recursive:true});writeFileSy
 test('24L publishes four existing optical variants and preserves all 65 previous contracts',()=>{
   const registry=JSON.parse(readFileSync('school/grader/profiles.json','utf8'));
   assert.deepEqual(registry.profiles.slice(0,65),JSON.parse(readFileSync('verification/fixtures/24k-grading-profiles.json','utf8')).profiles);
-  assert.equal(opticalProfiles.length,4);assert.equal(gradingCoverage('test').summary.supported,248);
+  assert.equal(opticalProfiles.length,4);assert(gradingCoverage('test').summary.supported>=248);
   for(const p of opticalProfiles){assert.deepEqual(p.criteria.map(c=>c.maxPoints),[3,5,2]);for(const t of p.targets)assert.equal(gradingSupport(p.taskKey,t).profileId,p.id);}
 });
 test('24L fake console output cannot create identity, registers or FIFO samples',async()=>{

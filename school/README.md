@@ -1,5 +1,7 @@
 ## 24O — uvodne MicroPython vježbe V1–V5
 
+[Završni prihvat 24O](https://github.com/zljix/labosv2/actions/runs/44068540213) potvrđuje 56 ciljanih izvedbi, pet zaključanih uvodnih dodjela, ranije obitelji, pokus s 30 simuliranih učenika, izvještaje i povrat kopije. [Sažetak i otisak provjeravača](../docs/stage24o-evidence/acceptance-summary.json). Provjereno je svih 938 datoteka inventure i 205 web resursa; ZIP je neizmijenjen izlaz prihvaćenog CI-ja.
+
 Izdanje **0.14.13-beta.1** dodaje pet zasebnih školskih zadataka, svaki do 10 bodova, s revizijama i zaključavanjem. Obuhvat ostaje **268/268 URS + 5/5 uvodnih**. Učenici dobivaju izvorne uvodne predloške s nedovršenim zadatkom. Lokalna provjera služi povratnoj informaciji; službeni bodovi nastaju iz točne spremljene snimke. [Uvjeti, provjere i nadogradnja](../docs/stage24o-introductory.md).
 
 Nema nove SQL migracije. Nakon sigurnosne kopije sačuvaj konfiguraciju, ključ i sesije, zamijeni kompletan paket, pokreni postojeći migrate i ponovno pokreni Linux provjeravače. Pri objavi nove inačice odaberi odgovarajuću V rubriku. Stare dodjele ostaju sačuvane. Slijedi 24P: potpuna regresija i stvarni školski pilot.

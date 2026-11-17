@@ -2,6 +2,8 @@
 
 **0.14.13-beta.1 · etapa 24O · uvodne MicroPython vježbe · 17. studenoga 2026.**
 
+**Prihvat 24O:** [Završne provjere i paket](https://github.com/zljix/labosv2/actions/runs/44068540213) prošli su svih 53 koraka. Potvrđeno je 56 ciljanih izvedbi, 15 ponovljenih referentnih izvedbi, pet zasebnih zaključanih V dodjela te očuvanje svih 74 prethodnih rubrika. Prošle su ranije obitelji, 30 simuliranih učenika, izvještaji i povrat sigurnosne kopije. [Sažetak](docs/stage24o-evidence/acceptance-summary.json) i [izvornost instalacijskog paketa](docs/stage24o-evidence/installer-integrity.json).
+
 **Prihvat 24N:** [Završne provjere i paket](https://github.com/zljix/labosv2/actions/runs/44052504254) potvrđuju 253 ciljane izvedbe, 48 neovisnih C++ prijevoda i 16 zaključanih školskih dodjela. Prošli su svi ciljevi, ranije obitelji, 30 simuliranih učenika, izvještaji i povrat kopije. [Sažetak](docs/stage24n-evidence/acceptance-summary.json) i [izvornost instalacijskog paketa](docs/stage24n-evidence/installer-integrity.json).
 
 **Prihvat 24M:** [Završne provjere i paket](https://github.com/zljix/labosv2/actions/runs/44037558293) povezuju 60 ciljanih provjera, 24 zasebna C++ prijevoda obaju čvorova i četiri zaključane radijske dodjele s isporučenim provjeravačem. Potvrđeni su svih 16 mješovitih parova, ranije obitelji, 30 simuliranih učenika, izvještaji i povrat kopije. [Sažetak i otisak provjeravača](docs/stage24m-evidence/acceptance-summary.json).

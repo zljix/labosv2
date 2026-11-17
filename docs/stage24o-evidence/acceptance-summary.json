@@ -1,0 +1,19 @@
+{
+  "format": "labosv2-24o-acceptance",
+  "version": 1,
+  "sourceCommit": "98056753f710b53134b3e52a73c2d021d019bc7c",
+  "checkerHash": "84f5f4a03d9b57f009bfa82d51d9ab996cdc4bff5dec273ef1a33b7757ff24ef",
+  "coverage": {
+    "ursSupported": 268,
+    "ursTotal": 268,
+    "introductorySupported": 5,
+    "introductoryTotal": 5
+  },
+  "target": "micropython",
+  "targetedExecutions": 56,
+  "identicalReferenceExecutions": 15,
+  "lockedSchoolAssignments": 5,
+  "legacyPreserved": true,
+  "realSchoolPilot": "pending-24P",
+  "stageRunURL": "https://github.com/zljix/labosv2/actions/runs/44068540213"
+}

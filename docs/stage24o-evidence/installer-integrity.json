@@ -1,0 +1,22 @@
+{
+  "format": "labosv2-24o-installer-integrity",
+  "version": 1,
+  "filename": "Labosv2_0.14.13_24O_Objavljeno.zip",
+  "bytes": 12610133,
+  "sha256": "e1eee20f8a80f828b0fc5a8360315769f43b29b0d60135fd01ddf9d8e1a0d198",
+  "verifiedInventoryFiles": 938,
+  "verifiedWebResources": 205,
+  "checkerHash": "84f5f4a03d9b57f009bfa82d51d9ab996cdc4bff5dec273ef1a33b7757ff24ef",
+  "acceptedSourceCommit": "98056753f710b53134b3e52a73c2d021d019bc7c",
+  "acceptanceRun": "https://github.com/zljix/labosv2/actions/runs/44068540213",
+  "artifactId": 14323740458,
+  "unchangedCIInstaller": true,
+  "webBytesEqualLocalDistribution": true,
+  "legacyProfilesPreserved": 74,
+  "coverage": {
+    "ursSupported": 268,
+    "ursTotal": 268,
+    "introductorySupported": 5,
+    "introductoryTotal": 5
+  }
+}

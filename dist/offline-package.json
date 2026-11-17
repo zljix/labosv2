@@ -1,6 +1,6 @@
 {
-  "build": "fa52799db0156c46",
-  "version": "0.14.12-beta.1",
+  "build": "4b208b44d6c2ab59",
+  "version": "0.14.13-beta.1",
   "base": "/",
   "files": [
     {
@@ -19,387 +19,387 @@
       "bytes": 7595
     },
     {
-      "url": "/app/fa52799db0156c46/actuators.mjs",
+      "url": "/app/4b208b44d6c2ab59/actuators.mjs",
       "sha256": "435146cd09d40d9d3e4089253a43e589bef8a8686171943d362421d28a9c9219",
       "bytes": 6237
     },
     {
-      "url": "/app/fa52799db0156c46/analog-inputs.mjs",
+      "url": "/app/4b208b44d6c2ab59/analog-inputs.mjs",
       "sha256": "dc9b56c0ab75369ad11f7e491e0d5f4b890918636210fc35ab00ebf4c4b62308",
       "bytes": 3682
     },
     {
-      "url": "/app/fa52799db0156c46/app.mjs",
+      "url": "/app/4b208b44d6c2ab59/app.mjs",
       "sha256": "73d2ef6af87662751dd28b3b8cc1d7c0119ce4e4807a92ad3f1b963568f607b6",
       "bytes": 7595
     },
     {
-      "url": "/app/fa52799db0156c46/arduino-contract.mjs",
+      "url": "/app/4b208b44d6c2ab59/arduino-contract.mjs",
       "sha256": "c55d06d8ccb7ac9da75d89117194cdd707419f3b27ec76aa808474b1dfaa79a2",
       "bytes": 762
     },
     {
-      "url": "/app/fa52799db0156c46/avr-contract.mjs",
+      "url": "/app/4b208b44d6c2ab59/avr-contract.mjs",
       "sha256": "bed69b2facfeabbe139739ee6daa745054d95bf018a8a6cdf625e3418cb29b7b",
       "bytes": 8615
     },
     {
-      "url": "/app/fa52799db0156c46/avr-examples.json",
+      "url": "/app/4b208b44d6c2ab59/avr-examples.json",
       "sha256": "6a5eecfcb8bde92bde7199d99143a4f17728612666e7ababed12a02ec7bcc9c9",
       "bytes": 2727980
     },
     {
-      "url": "/app/fa52799db0156c46/circuit-host.mjs",
+      "url": "/app/4b208b44d6c2ab59/circuit-host.mjs",
       "sha256": "794d3ccdd1a7597d77a9e923b6f6b63e7cdaf0f7a47b0ef958139628d9d4c620",
       "bytes": 32066
     },
     {
-      "url": "/app/fa52799db0156c46/dht-bus.mjs",
+      "url": "/app/4b208b44d6c2ab59/dht-bus.mjs",
       "sha256": "cd6289016d59e32092ccadbc487757db6509af170424a4f1f4513ff261eefa28",
       "bytes": 5464
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/_onewire.py",
+      "url": "/app/4b208b44d6c2ab59/drivers/_onewire.py",
       "sha256": "36b0ba7dd361b30bf1e5c1c28f8f96703f94b8dcd2b9ac21d8ed52ab00d8c3c6",
       "bytes": 1435
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/aht10.py",
+      "url": "/app/4b208b44d6c2ab59/drivers/aht10.py",
       "sha256": "7350e85ce96b1cfcea4d331751ac417b56e3c93a59d021985e1cc9132d1204b5",
       "bytes": 1383
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/dht.py",
+      "url": "/app/4b208b44d6c2ab59/drivers/dht.py",
       "sha256": "2aff84bb314c8785b08bd87420e8baa8d6cf14724c953c8a69b9315fb047ec91",
       "bytes": 1094
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/ds18x20.py",
+      "url": "/app/4b208b44d6c2ab59/drivers/ds18x20.py",
       "sha256": "f55f41095a9047dd52c377b13ff5c07534b065f01e79361defef13ad09f092fc",
       "bytes": 1453
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/lab_bmp280_spi.h",
+      "url": "/app/4b208b44d6c2ab59/drivers/lab_bmp280_spi.h",
       "sha256": "4f2cc629c8e43cc494e4e0322a8129c2d5cd22a72f14b920c5d7fab4014be51c",
       "bytes": 2103
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/lab_bmp280_spi.py",
+      "url": "/app/4b208b44d6c2ab59/drivers/lab_bmp280_spi.py",
       "sha256": "1b59e3a1783f5fd98fa1036b9701f32989c77e57f9c04e168a3052b06917d70f",
       "bytes": 781
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/lab_ds1302.py",
+      "url": "/app/4b208b44d6c2ab59/drivers/lab_ds1302.py",
       "sha256": "a5a845977848d2c912e9cbbde18f173e551d56b0296e0ba353c0017456cd07ca",
       "bytes": 4135
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/lab_encoder.py",
+      "url": "/app/4b208b44d6c2ab59/drivers/lab_encoder.py",
       "sha256": "7a0f7d92efd8b78879bcb9079f01b56a569d5b80122cf70d6ef49385cb147b31",
       "bytes": 2017
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/lab_fat16.py",
+      "url": "/app/4b208b44d6c2ab59/drivers/lab_fat16.py",
       "sha256": "a011285b671216abaf6cd7ade7f787d195c91d57b3939d7d46ff7befd77bcbbe",
       "bytes": 9195
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/lab_i2c_sensors.py",
+      "url": "/app/4b208b44d6c2ab59/drivers/lab_i2c_sensors.py",
       "sha256": "e604febe801f59b3053d0b26bb88fcb44bf325d91da0808150e9dfe3be364310",
       "bytes": 5109
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/lab_ili9341.h",
+      "url": "/app/4b208b44d6c2ab59/drivers/lab_ili9341.h",
       "sha256": "c77b5b95145f864588efb19524ef00bd193eb9f9531d7c0e600968aba9096dd4",
       "bytes": 3961
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/lab_ili9341.py",
+      "url": "/app/4b208b44d6c2ab59/drivers/lab_ili9341.py",
       "sha256": "b50d9c7710312e4ec5694dc4e53609a89958d7231c953417fb95635b40ac2293",
       "bytes": 4822
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/lab_ir.py",
+      "url": "/app/4b208b44d6c2ab59/drivers/lab_ir.py",
       "sha256": "1193749f56beb24d95580d7d2ab9134b18f361e5460010b05aa6016616372f1e",
       "bytes": 4266
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/lab_max30102.h",
+      "url": "/app/4b208b44d6c2ab59/drivers/lab_max30102.h",
       "sha256": "138c4857d7e5e80f743741a44dcfa169b039ef32afbeb4f9843c3de47199f074",
       "bytes": 1945
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/lab_max30102.py",
+      "url": "/app/4b208b44d6c2ab59/drivers/lab_max30102.py",
       "sha256": "4047b905647b4fa306496af3c3c4529c0b4217532e20abd4a5edfab07240e5db",
       "bytes": 2377
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/lab_s3_nec.h",
+      "url": "/app/4b208b44d6c2ab59/drivers/lab_s3_nec.h",
       "sha256": "22198e1c5d807bf0b968785e27f4ad0081a09b620d1c747512255b326ffa2629",
       "bytes": 3426
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/lab_sd.h",
+      "url": "/app/4b208b44d6c2ab59/drivers/lab_sd.h",
       "sha256": "04fef018b7f3317d1bf9abe979cbc440d5725146983fb84e38dc8030d2986b6a",
       "bytes": 7133
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/lab_sdcard.py",
+      "url": "/app/4b208b44d6c2ab59/drivers/lab_sdcard.py",
       "sha256": "ac87d56ba8e51ac0c8ea071bbcd8dc91cd4990084aec80a8e30498cec2b6ebaf",
       "bytes": 4666
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/lab_st7735.h",
+      "url": "/app/4b208b44d6c2ab59/drivers/lab_st7735.h",
       "sha256": "988700ae9bf4282c8d5253ea56eea5a62e4f62c37d74a31d42ecb770a46b4235",
       "bytes": 3737
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/lab_st7735.py",
+      "url": "/app/4b208b44d6c2ab59/drivers/lab_st7735.py",
       "sha256": "1cf45cc53d75709df320a1e48825141c1f180e5bf56c0253cccf473e93db70c8",
       "bytes": 4629
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/lab_tm1637.py",
+      "url": "/app/4b208b44d6c2ab59/drivers/lab_tm1637.py",
       "sha256": "d34af94ff7b629ee2fbe7c1ed0692ce0f5c8f5ea99be09c70653187ecb72b59e",
       "bytes": 3013
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/lab_xpt2046.h",
+      "url": "/app/4b208b44d6c2ab59/drivers/lab_xpt2046.h",
       "sha256": "db23a3a7e39d8bbbc1f8bca83d25b47959bc02e58c38100c74422890b4b42fde",
       "bytes": 1639
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/lab_xpt2046.py",
+      "url": "/app/4b208b44d6c2ab59/drivers/lab_xpt2046.py",
       "sha256": "7ed5a37cdddf83bdf55482c1cfc5489e454d0c778d6b6a4456b0f5bb71f0fdd4",
       "bytes": 2228
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/lcd1602.py",
+      "url": "/app/4b208b44d6c2ab59/drivers/lcd1602.py",
       "sha256": "cf946f1e28b780a7310b587fe9c73959e5c12f8680e1ea30604c99b3355790f8",
       "bytes": 2665
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/onewire.py",
+      "url": "/app/4b208b44d6c2ab59/drivers/onewire.py",
       "sha256": "11f05fe2f3fc294590da5a17e160573ba0d98f1c3f9f27612479c734db71808b",
       "bytes": 2395
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/provenance.json",
+      "url": "/app/4b208b44d6c2ab59/drivers/provenance.json",
       "sha256": "ca874768996e8918f0961e38c67251d0696e87532037fd42f90b55af7020b0bd",
       "bytes": 7913
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/servo.py",
+      "url": "/app/4b208b44d6c2ab59/drivers/servo.py",
       "sha256": "41d09d148a034ef3014a0ac7f0535391270820f90f7393253831f1b4eaddded0",
       "bytes": 770
     },
     {
-      "url": "/app/fa52799db0156c46/drivers/ssd1306.py",
+      "url": "/app/4b208b44d6c2ab59/drivers/ssd1306.py",
       "sha256": "b9f5331c75297774bced61bdfd12c37d4363336d064d7cf58967c88d807efbe5",
       "bytes": 4922
     },
     {
-      "url": "/app/fa52799db0156c46/environment-sensors.mjs",
+      "url": "/app/4b208b44d6c2ab59/environment-sensors.mjs",
       "sha256": "ac13efffc7df8780a6bfaa8a52009b525bd8aff7426b309a6a0883fed700c8fe",
       "bytes": 11050
     },
     {
-      "url": "/app/fa52799db0156c46/examples.mjs",
+      "url": "/app/4b208b44d6c2ab59/examples.mjs",
       "sha256": "c5f1443515c33bcdc9aa4294bdd7ade632aa1d0bd85210202fc83a5490df54ae",
       "bytes": 2366
     },
     {
-      "url": "/app/fa52799db0156c46/host.mjs",
+      "url": "/app/4b208b44d6c2ab59/host.mjs",
       "sha256": "a34f281d2b301286c00b67d8cf5bc51c40011adb3671deee22dec343fb241f5d",
       "bytes": 3055
     },
     {
-      "url": "/app/fa52799db0156c46/i2c-host.mjs",
+      "url": "/app/4b208b44d6c2ab59/i2c-host.mjs",
       "sha256": "e01aa19ad31c8363cb8e9f143aab57cdd4b6b79b1093ad76f3d2b328d2ecd17e",
       "bytes": 13708
     },
     {
-      "url": "/app/fa52799db0156c46/i2c-level-shifter.mjs",
+      "url": "/app/4b208b44d6c2ab59/i2c-level-shifter.mjs",
       "sha256": "ba9fe5b1066cb3bdb402812db877c51ea878a3a4f8b8fd5ce537a0dab8f75bf1",
       "bytes": 2578
     },
     {
-      "url": "/app/fa52799db0156c46/ili9341.mjs",
+      "url": "/app/4b208b44d6c2ab59/ili9341.mjs",
       "sha256": "1e0f8658b76545f505b6650d0c96d396fd7bae3bba57331f7c5e7627d15dd896",
       "bytes": 4004
     },
     {
-      "url": "/app/fa52799db0156c46/infrared.mjs",
+      "url": "/app/4b208b44d6c2ab59/infrared.mjs",
       "sha256": "755bbd28af890e7203d1919cd9349dc1a68592c9f1774b94edf1171de709b9b0",
       "bytes": 7464
     },
     {
-      "url": "/app/fa52799db0156c46/lcd1602.mjs",
+      "url": "/app/4b208b44d6c2ab59/lcd1602.mjs",
       "sha256": "4da4e9e3635c097037f74cea05ad9762b827e95eefeed2f6e65fd85f1b6048d4",
       "bytes": 4855
     },
     {
-      "url": "/app/fa52799db0156c46/level-shifter.mjs",
+      "url": "/app/4b208b44d6c2ab59/level-shifter.mjs",
       "sha256": "9ff452857ff84c998264813a01df5289964c5cbac08a7ec20a8effc24d6a28fe",
       "bytes": 2231
     },
     {
-      "url": "/app/fa52799db0156c46/machine.py",
+      "url": "/app/4b208b44d6c2ab59/machine.py",
       "sha256": "b5f9371299fae07275b7549588c5eba86f592c30c1e89717c2a075151c616661",
       "bytes": 15196
     },
     {
-      "url": "/app/fa52799db0156c46/max30102.mjs",
+      "url": "/app/4b208b44d6c2ab59/max30102.mjs",
       "sha256": "7ae6b6e326c6f0a080f3e1828a105aa8731e7e8c7844b878939b4afd1d0d2b79",
       "bytes": 9239
     },
     {
-      "url": "/app/fa52799db0156c46/nrf24.mjs",
+      "url": "/app/4b208b44d6c2ab59/nrf24.mjs",
       "sha256": "4e2e334f9e6b12e6242f8d118a184194e1f92fcaf01dd507bb09ff3ad46c8e46",
       "bytes": 10511
     },
     {
-      "url": "/app/fa52799db0156c46/onewire-bus.mjs",
+      "url": "/app/4b208b44d6c2ab59/onewire-bus.mjs",
       "sha256": "545106544cafc4745863c67f3085887e56ee4084947f2d155d9a5428ee2a0dff",
       "bytes": 10375
     },
     {
-      "url": "/app/fa52799db0156c46/peripherals.mjs",
+      "url": "/app/4b208b44d6c2ab59/peripherals.mjs",
       "sha256": "2c2d065663a6dfe7bea11bb064f1d8427a718ccc49db778e16890a1ad146e9fd",
       "bytes": 7263
     },
     {
-      "url": "/app/fa52799db0156c46/pilot-form.mjs",
+      "url": "/app/4b208b44d6c2ab59/pilot-form.mjs",
       "sha256": "a4076e84e951868d6830cd32a111933248de79a9bccdc79f3e1f4febbc99539a",
       "bytes": 2781
     },
     {
-      "url": "/app/fa52799db0156c46/pilot-record.mjs",
+      "url": "/app/4b208b44d6c2ab59/pilot-record.mjs",
       "sha256": "d77cabd1b067521a74c2bde36948a1bbd6bbf1dd1db9788102c5a7e579a10fcb",
       "bytes": 4684
     },
     {
-      "url": "/app/fa52799db0156c46/quadrature-inputs.mjs",
+      "url": "/app/4b208b44d6c2ab59/quadrature-inputs.mjs",
       "sha256": "4981f6a49fdcbbfe77f43b6a4dab41f4698aa926e1b394084147e9abec2d9228",
       "bytes": 5236
     },
     {
-      "url": "/app/fa52799db0156c46/radio-clock.mjs",
+      "url": "/app/4b208b44d6c2ab59/radio-clock.mjs",
       "sha256": "d5a216076b71a2fb0651509246edc7e5394a23ca264ed826590da1dbf8b7f787",
       "bytes": 769
     },
     {
-      "url": "/app/fa52799db0156c46/radio-examples.json",
+      "url": "/app/4b208b44d6c2ab59/radio-examples.json",
       "sha256": "5cdcb51cb8b68304d7deec44e62d54e0821b4546731eb41b3f3ade855915730b",
       "bytes": 96580
     },
     {
-      "url": "/app/fa52799db0156c46/rtc-ds1302.mjs",
+      "url": "/app/4b208b44d6c2ab59/rtc-ds1302.mjs",
       "sha256": "d1df9f2d7789ec99ee519d226a22a60c48929175bafab74d57c10c09297f131f",
       "bytes": 9710
     },
     {
-      "url": "/app/fa52799db0156c46/runtime/micropython.mjs",
+      "url": "/app/4b208b44d6c2ab59/runtime/micropython.mjs",
       "sha256": "0105e219063d76cfd40c564b3a206aee49dfb5bd282e4b7574164c207f35908f",
       "bytes": 225531
     },
     {
-      "url": "/app/fa52799db0156c46/runtime/micropython.wasm",
+      "url": "/app/4b208b44d6c2ab59/runtime/micropython.wasm",
       "sha256": "3f638e8cacd1f00168f19a17fcae35ece9773b4b661464c8241114e00c24fcce",
       "bytes": 1134289
     },
     {
-      "url": "/app/fa52799db0156c46/s3-contract.mjs",
+      "url": "/app/4b208b44d6c2ab59/s3-contract.mjs",
       "sha256": "cf12cd5e65fcc51eadfc2ac8ac3f84b85442f593926fc658f55a2d26747a1a3e",
       "bytes": 6002
     },
     {
-      "url": "/app/fa52799db0156c46/s3-core-lock.mjs",
+      "url": "/app/4b208b44d6c2ab59/s3-core-lock.mjs",
       "sha256": "b6ce5ce30ce6dbb7f45b74a4d313b88df709fca06df0735a7f18fd3fd4c5de3e",
       "bytes": 1239
     },
     {
-      "url": "/app/fa52799db0156c46/s3-engine.mjs",
+      "url": "/app/4b208b44d6c2ab59/s3-engine.mjs",
       "sha256": "c709e349b2718965933ab556c510454e210b37c603a21286caec7d7913db0f55",
       "bytes": 6965
     },
     {
-      "url": "/app/fa52799db0156c46/s3-examples.json",
+      "url": "/app/4b208b44d6c2ab59/s3-examples.json",
       "sha256": "f7449339e44b6576da6593bfa693acc799d386ea374bd6ae517ca7b2efdfe969",
       "bytes": 1444176
     },
     {
-      "url": "/app/fa52799db0156c46/s3-worker.mjs",
+      "url": "/app/4b208b44d6c2ab59/s3-worker.mjs",
       "sha256": "04c48c2aa4667fde02868c0e3907299dda7e16bb6d8cc4a7a1277c140998af3d",
       "bytes": 625
     },
     {
-      "url": "/app/fa52799db0156c46/school-account.mjs",
+      "url": "/app/4b208b44d6c2ab59/school-account.mjs",
       "sha256": "4e163d335db8365c3f20b4496d3f238fee972e77ecfb58e20a29a898d192816a",
       "bytes": 7741
     },
     {
-      "url": "/app/fa52799db0156c46/school-check.mjs",
+      "url": "/app/4b208b44d6c2ab59/school-check.mjs",
       "sha256": "91cffb080644f01fd56c6b3fa14f894f6092877882e38ea98208e8794c5047e9",
       "bytes": 1866
     },
     {
-      "url": "/app/fa52799db0156c46/school-classes.mjs",
+      "url": "/app/4b208b44d6c2ab59/school-classes.mjs",
       "sha256": "026344d0565e6e49a46dcaa96b024184a69cfc89ae1b6bab976790be60acc893",
       "bytes": 17209
     },
     {
-      "url": "/app/fa52799db0156c46/school-grading-support.mjs",
-      "sha256": "0e7fb01bbf7c9f885c8fe8fc93b80f2bf6fc87cd35554163b692ebe36916b896",
-      "bytes": 3507
+      "url": "/app/4b208b44d6c2ab59/school-grading-support.mjs",
+      "sha256": "5437546ed532947a00b07307cb140959105a56f94e6bc2bd5a2f91867ace84cc",
+      "bytes": 3693
     },
     {
-      "url": "/app/fa52799db0156c46/school-pilot-form.mjs",
+      "url": "/app/4b208b44d6c2ab59/school-pilot-form.mjs",
       "sha256": "69f63c5041cbf7ece726e39bacb362a7f014066dc828e6aae68e90484c6cf8eb",
       "bytes": 5177
     },
     {
-      "url": "/app/fa52799db0156c46/school-pilot-record.mjs",
+      "url": "/app/4b208b44d6c2ab59/school-pilot-record.mjs",
       "sha256": "87cf5975d7787c55bb8016df22ba5d9475e277f77bc11f10605dec009d75e990",
       "bytes": 6740
     },
     {
-      "url": "/app/fa52799db0156c46/sd-card.mjs",
+      "url": "/app/4b208b44d6c2ab59/sd-card.mjs",
       "sha256": "5c93b47fb40878d4bf4aeb1e3b44c5e18c7c5e95e8e017f35ca42675e363870e",
       "bytes": 8860
     },
     {
-      "url": "/app/fa52799db0156c46/session.mjs",
+      "url": "/app/4b208b44d6c2ab59/session.mjs",
       "sha256": "34ab7d0f12c9da77c66c665cb851ef17eafc583730a242cbc48c77c68ba4917e",
       "bytes": 2041
     },
     {
-      "url": "/app/fa52799db0156c46/spi-devices.mjs",
+      "url": "/app/4b208b44d6c2ab59/spi-devices.mjs",
       "sha256": "121225f88f741e37d84cbbf8b4239a8c215b2defe7560710d181210aa95fe25c",
       "bytes": 13158
     },
     {
-      "url": "/app/fa52799db0156c46/stepper.mjs",
+      "url": "/app/4b208b44d6c2ab59/stepper.mjs",
       "sha256": "c98f7087aecf51ed81750fb0707e80c5e638d0766330759ed7c168fcfc5f7cc5",
       "bytes": 8521
     },
     {
-      "url": "/app/fa52799db0156c46/suite.mjs",
+      "url": "/app/4b208b44d6c2ab59/suite.mjs",
       "sha256": "d0f4648479e4d6ce154769f635c07cc69e1edd61655aa76b0d9e010977e337aa",
       "bytes": 7832
     },
     {
-      "url": "/app/fa52799db0156c46/tm1637.mjs",
+      "url": "/app/4b208b44d6c2ab59/tm1637.mjs",
       "sha256": "2109a7a49a7c3014f9ab9b4aed4d2d0af2c44636e80d078dbbcac68462958b1c",
       "bytes": 5180
     },
     {
-      "url": "/app/fa52799db0156c46/worker.mjs",
+      "url": "/app/4b208b44d6c2ab59/worker.mjs",
       "sha256": "112131bd027448432724576116dd6b75f03815703ce21046384920a0ef30eb54",
       "bytes": 2564
     },
     {
-      "url": "/app/fa52799db0156c46/xpt2046.mjs",
+      "url": "/app/4b208b44d6c2ab59/xpt2046.mjs",
       "sha256": "c9228227d9d187bb507d15bc26e20c974e37c883ef05c89e18bda100690cd5ca",
       "bytes": 2652
     },
@@ -419,13 +419,13 @@
       "bytes": 2855
     },
     {
-      "url": "/assets/ClassReviewPanel-Dp0cYb7M.js",
-      "sha256": "ec70a63503e4397f3be043e9752d8e6c7a6573b4587c247e406d7247a46e0de7",
+      "url": "/assets/ClassReviewPanel-erZGQ-TD.js",
+      "sha256": "550ae95f7a063785a383a1426f207656c96968536211e99aca60f74fb41fb73f",
       "bytes": 32287
     },
     {
-      "url": "/assets/CodeEditor-COa9vIv-.js",
-      "sha256": "8c9a751540177e827e7321c3b300154594ac4f257d3cd816ee933042f242c569",
+      "url": "/assets/CodeEditor-yPzg1cg4.js",
+      "sha256": "79163e552861730eb69d764e8bf1027e2ddeae364a3e8302b3a9e1cee838fbca",
       "bytes": 568596
     },
     {
@@ -434,9 +434,9 @@
       "bytes": 184856
     },
     {
-      "url": "/assets/index-D4JEkQVP.js",
-      "sha256": "925f4646b32697140bd34007c0827dae4d1d3cfca355a0a3e525cc00da99e3bb",
-      "bytes": 985965
+      "url": "/assets/index-3kuQ7h_Q.js",
+      "sha256": "069ede9e5f4d2c91b1ba2d0489c6001a8e568ad4032cfb7265d2fd0b08416710",
+      "bytes": 986104
     },
     {
       "url": "/assets/index-qI3f0DKR.css",
@@ -630,7 +630,7 @@
     },
     {
       "url": "/guide.html",
-      "sha256": "062cdd8500a721e7c11fd649c89d92aa84b288c1a365108561303e217aeb5b89",
+      "sha256": "b3195f734825934dd6e1aee0f13d8bb959cea430dda0067a43fbcfc412177670",
       "bytes": 49781
     },
     {
@@ -670,7 +670,7 @@
     },
     {
       "url": "/index.html",
-      "sha256": "21e0c40c6b6ea6a075759045585024000ef24fe0a9f558c029fe5399def4d148",
+      "sha256": "79b0ffb52adc0ea430e702bfdbb7f1783dd408b4fd2d7bce67acbd75bdf4f1ad",
       "bytes": 688
     },
     {
@@ -785,7 +785,7 @@
     },
     {
       "url": "/pilot.html",
-      "sha256": "a8b0d905fdc24a09e4004a40844d860998c9c970b2200ded24b2afbe47886971",
+      "sha256": "afb911dce8ff64d260462d8d8ee99b53679253dd4177c58150994638b1d85751",
       "bytes": 15192
     },
     {
@@ -870,23 +870,23 @@
     },
     {
       "url": "/school-grading-support.csv",
-      "sha256": "191bfff2db2873ed7a38ff9285cf2bde2b250dc1a7a2aabc5edf1aa18c647141",
-      "bytes": 139316
+      "sha256": "2119343ea8298878bccdc0f3f22d266956cdd81cae1b535827f32bc4b04380cb",
+      "bytes": 139519
     },
     {
       "url": "/school-grading-support.json",
-      "sha256": "c60bd2e19ed2ca6c2871d0ffcda7f8cf0782840e13422f79150687f1f025d335",
-      "bytes": 839024
+      "sha256": "06a8773e5aa7682960ede3b771f5a5d9617b7b44aa03b8a860ae5abe66535268",
+      "bytes": 847308
     },
     {
       "url": "/school-grading-support.mjs",
-      "sha256": "0e7fb01bbf7c9f885c8fe8fc93b80f2bf6fc87cd35554163b692ebe36916b896",
-      "bytes": 3507
+      "sha256": "5437546ed532947a00b07307cb140959105a56f94e6bc2bd5a2f91867ace84cc",
+      "bytes": 3693
     },
     {
       "url": "/school-grading.html",
-      "sha256": "8eade53e897e4c9e495931ba05e6cda7fdc037ab8438ee2fcd2908d9c7d4c0a1",
-      "bytes": 4928
+      "sha256": "6dbd8a663068c8a707a9d6007eb00e2fa54840729b93614e73a6c5278f7c678b",
+      "bytes": 5007
     },
     {
       "url": "/school-pilot-form.mjs",
@@ -900,13 +900,13 @@
     },
     {
       "url": "/school-pilot.html",
-      "sha256": "14aeeede682c10339c8d92689c283c723c13ead05beff9518f0f721c70bc48c4",
-      "bytes": 6779
+      "sha256": "47c8f3c9eb6aa93bb69b51cee366112d0a3fb1f7a35fbbfa7e30a832156535d1",
+      "bytes": 6826
     },
     {
       "url": "/school.html",
-      "sha256": "694f8ef28c9a853c0a8ef3cdf5f5c1710672cd86df15531ffedc5ae35c99dc13",
-      "bytes": 17902
+      "sha256": "86cc807e7830dcae9161a7eefe9011c5581c2e59918cd9b34913555353e90981",
+      "bytes": 17906
     },
     {
       "url": "/sd-card.mjs",
@@ -945,7 +945,7 @@
     },
     {
       "url": "/urs-catalog-summary.json",
-      "sha256": "1a8602f85cf5a0f025e4e85095c190533f39e1cc850bdcb10ef7f10d2ace05e0",
+      "sha256": "3c24f4d1b354d55b3f376042d61f59b51e9e67dc5cc204da53af0b1fc8ca384f",
       "bytes": 406
     },
     {

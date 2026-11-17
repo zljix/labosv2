@@ -24,6 +24,8 @@ V5 osnovni slijed 24→29→27→25→27→29 daje 0→90→90→0→0→90°. G
 
 Službeni rezultat dolazi samo iz izoliranog izvođenja spremljene snimke. `provjera.json`, `scenarij.json`, uvezeni bodovi i odgovori ne prenose bodove u bazu. Svaka vježba ima vlastiti pokušaj, neovisne nepromjenjive revizije i zaključanu predaju. Otvoreni odgovori ostaju za nastavnički pregled. Ekvivalentan algoritam, nazivi, GPIO uz usklađen kod i električno ekvivalentan raspored dopušteni su.
 
+[Završni prihvat 24O](https://github.com/zljix/labosv2/actions/runs/44068540213) prošao je svih 53 koraka, uključujući 56 ciljanih izvedbi i pet zasebnih zaključanih uvodnih dodjela. Provjereni ZIP sadrži 938 datoteka inventure i isti provjeravač kao dokazi.
+
 ## Nadogradnja i provjere
 
 Nakon sigurnosne kopije sačuvaj privatnu konfiguraciju, ključ i sesije. Zamijeni kompletan školski paket, pokreni postojeći `migrate` i ponovno pokreni Linux provjeravače. Nastavnik objavljuje novu inačicu V zadatka s njegovom rubrikom i dodjeljuje je razredu. Postojeće dodjele, zaključani rezultati i stare rubrike ostaju uz svoju inačicu.

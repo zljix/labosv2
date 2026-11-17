@@ -7866,7 +7866,7 @@
         "nano"
       ],
       "title": "AHT10 → OLED → servo: histereza i svježi podaci",
-      "instructions": "Poslužiteljsko sjeme bira početno toplo/hladno stanje, temperaturu ispod praga (18–25 °C), između pragova (26,3–27,7 °C), iznad praga (29–35 °C) te redoslijed osam graničnih pobuda. Prvih šest etapa ispituje oba smjera histereze; nastavak svih osam graničnih vrijednosti iz ugovora u promjenjivom redoslijedu. Otvaraj na dekodirano T≥28, zatvaraj na T≤26, između čuvaj stanje. AHT10 kodira round((T+50)·2^20/200); nominalnih 26 daje oko 26,000023 °C pa ostaje prethodno stanje do nižeg predstavljivog uzorka. Prag primijeni prije zaokruživanja za prikaz. Prvo novo očitanje do 2300 ms, daljnji razmak do 2400 ms. Kut ±2°, 50±2 Hz; nakon 2300 ms mora ostati ispravan. OLED T u pojasu y=0..13; RH y=14..27 (S3 C++ y=16..23); MicroPython font visine 8 koristi y=0..7 i y=14..21. Prikaz novog para stabilan najmanje 100 ms u svakoj etapi. Kriteriji: 3 boda stvarni napajani put do AHT10, OLED-a i serva; 5 osnovni slijed sa svježim T/RH, pikselima i kutom; 2 cijeli nastavak s oba smjera i granicama. Izvodi se spremljeni izvor i sklop. Stara rubrika zadržava izvorni ugovor i rezultate.",
+      "instructions": "Svih 14 etapa traje po 2500 ms. Poslužiteljsko sjeme bira početno toplo/hladno stanje, temperaturu ispod praga (18–25 °C), između pragova (26,3–27,7 °C), iznad praga (29–35 °C) te redoslijed osam graničnih pobuda. Prvih šest etapa ispituje oba smjera histereze; nastavak svih osam graničnih vrijednosti iz ugovora u promjenjivom redoslijedu. Otvaraj na dekodirano T≥28, zatvaraj na T≤26, između čuvaj stanje. AHT10 kodira round((T+50)·2^20/200); nominalnih 26 daje oko 26,000023 °C pa ostaje prethodno stanje do nižeg predstavljivog uzorka. Prag primijeni prije zaokruživanja za prikaz. Prvo novo očitanje do 2300 ms, daljnji razmak do 2400 ms. Kut ±2°, 50±2 Hz; nakon 2300 ms mora ostati ispravan. OLED T u pojasu y=0..13; RH y=14..27 (S3 C++ y=16..23); MicroPython font visine 8 koristi y=0..7 i y=14..21. Prikaz novog para stabilan najmanje 100 ms u svakoj etapi. Kriteriji: 3 boda stvarni napajani put do AHT10, OLED-a i serva; 5 osnovni slijed sa svježim T/RH, pikselima i kutom; 2 cijeli nastavak s oba smjera i granicama. Izvodi se spremljeni izvor i sklop. Stara rubrika zadržava izvorni ugovor i rezultate.",
       "criteria": [
         {
           "id": "connection",
@@ -7905,7 +7905,7 @@
           "angle": "deg"
         },
         "scenario": {
-          "stageDurationMs": 3000,
+          "stageDurationMs": 2500,
           "responseDeadlineMs": 2300,
           "maximumIntervalMs": 2400,
           "sampleSettleMs": 100,
@@ -7939,7 +7939,7 @@
             35,
             65
           ],
-          "specification": "Poslužiteljsko sjeme bira početno toplo/hladno stanje, temperaturu ispod praga (18–25 °C), između pragova (26,3–27,7 °C), iznad praga (29–35 °C) te redoslijed osam graničnih pobuda. Prvih šest etapa ispituje oba smjera histereze; nastavak svih osam graničnih vrijednosti iz ugovora u promjenjivom redoslijedu. Otvaraj na dekodirano T≥28, zatvaraj na T≤26, između čuvaj stanje. AHT10 kodira round((T+50)·2^20/200); nominalnih 26 daje oko 26,000023 °C pa ostaje prethodno stanje do nižeg predstavljivog uzorka. Prag primijeni prije zaokruživanja za prikaz. Prvo novo očitanje do 2300 ms, daljnji razmak do 2400 ms. Kut ±2°, 50±2 Hz; nakon 2300 ms mora ostati ispravan. OLED T u pojasu y=0..13; RH y=14..27 (S3 C++ y=16..23); MicroPython font visine 8 koristi y=0..7 i y=14..21. Prikaz novog para stabilan najmanje 100 ms u svakoj etapi. Kriteriji: 3 boda stvarni napajani put do AHT10, OLED-a i serva; 5 osnovni slijed sa svježim T/RH, pikselima i kutom; 2 cijeli nastavak s oba smjera i granicama.",
+          "specification": "Svih 14 etapa traje po 2500 ms. Poslužiteljsko sjeme bira početno toplo/hladno stanje, temperaturu ispod praga (18–25 °C), između pragova (26,3–27,7 °C), iznad praga (29–35 °C) te redoslijed osam graničnih pobuda. Prvih šest etapa ispituje oba smjera histereze; nastavak svih osam graničnih vrijednosti iz ugovora u promjenjivom redoslijedu. Otvaraj na dekodirano T≥28, zatvaraj na T≤26, između čuvaj stanje. AHT10 kodira round((T+50)·2^20/200); nominalnih 26 daje oko 26,000023 °C pa ostaje prethodno stanje do nižeg predstavljivog uzorka. Prag primijeni prije zaokruživanja za prikaz. Prvo novo očitanje do 2300 ms, daljnji razmak do 2400 ms. Kut ±2°, 50±2 Hz; nakon 2300 ms mora ostati ispravan. OLED T u pojasu y=0..13; RH y=14..27 (S3 C++ y=16..23); MicroPython font visine 8 koristi y=0..7 i y=14..21. Prikaz novog para stabilan najmanje 100 ms u svakoj etapi. Kriteriji: 3 boda stvarni napajani put do AHT10, OLED-a i serva; 5 osnovni slijed sa svježim T/RH, pikselima i kutom; 2 cijeli nastavak s oba smjera i granicama.",
           "minimumFreshReads": 1,
           "seededInput": true
         },

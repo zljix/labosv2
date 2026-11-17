@@ -17,6 +17,8 @@ Neovisni pregled potvrdio je isti vremenski propust u URS tipkalu te regulatorim
 
 Svih 79 prethodnih profila ostaje strukturno identično snimci `verification/fixtures/24o-grading-profiles.json`. Prethodna dodjela, snimka, rezultat i zaključana predaja ostaju na izvornoj rubrici. Novi izbor u katalogu ne mijenja stare dodjele. Ograničenje stare provjere prikazuje se uz rezultat; nastavnički komentar ili obrazložena korekcija ostavljaju postojeću povijest.
 
+Novi URS regulator izvodi svih 14 pobuda u etapama po 2500 ms (ukupno 35000 ms). Rok odaziva ostaje 2300 ms, stabilan OLED prikaz najmanje 100 ms i iste granice izolacije. Prvi CI prihvat prekinuo je Uno/Nano reference s duljim scenarijem; skraćivanje zadržava sve pobude i oba smjera histereze. Stari URS profil zadržava svojih 3000 ms, a V5 svojih 6000 ms.
+
 V2 regresija koristi 32 unaprijed zabilježena sjemena, tri neovisna ispravna rješenja (uključujući period očitanja 300 ms i drugi GPIO), vremenski program iz recenzije, stalni izlaz, obrnutu logiku, zadržavanje prvog pritiska i prestanak praćenja. Provjeravaju se prekid signala, masa, oporavak i ponovljivost. Agregiranje opažanja ne odbacuje rani odaziv zbog vrlo brzog učeničkog očitanja.
 
 Širi pregled obuhvaća ADC/PWM, senzore, enkoder, IR, dodir, regulatore i radio. Ciljane negativne primjere prati `verification/school-input-audit.test.ts`. To je provjera konkretnih pogrešnih algoritama, ne dokaz da nije moguće napisati nijedan drugi pogrešan program.

@@ -12,12 +12,16 @@ test('24P PHP/MySQL preserves long Unicode identities, seeded version bindings, 
  const f=await schoolFixture(t),results=[];
  const ok=async(p,status=200)=>{const r=await p;assert.equal(r.status,status,r.text);return r.json;};
  const teacher=await f.make('remediation.teacher','teacher');
+ let cls;
  for(const char of ['Ž','😀']){
   for(const length of [100,101,120,121])await ok(f.admin.call('create-user',{username:'length.'+char.codePointAt(0)+'.'+length,role:'student',displayName:char.repeat(length),temporaryPassword:f.temporary}),length<=120?201:422);
-  for(const length of [40,41,80,81])await ok(teacher.client.call('create-class',{name:char.repeat(length),schoolYear:'2026/2027'}),length<=80?201:422);
+  for(const length of [40,41,80,81]){
+   const created=await ok(teacher.client.call('create-class',{name:char.repeat(length),schoolYear:'2026/2027'}),length<=80?201:422);
+   if(char==='Ž'&&length===80)cls=created.class;
+  }
  }
  const student=await f.make('remediation.student','student','😀'.repeat(120));
- const cls=(await ok(teacher.client.call('create-class',{name:'Ž'.repeat(80),schoolYear:'2026/2027'}),201)).class;
+ assert(cls,'The successful 80-character class must be reused rather than created twice.');
  const csv='username;displayName\n'+student.user.username+';'+student.user.displayName;
  const preview=await ok(teacher.client.call('preview-students',{classId:cls.id,csv}));await ok(teacher.client.call('import-students',{classId:cls.id,csv,previewToken:preview.previewToken,linkExisting:true}));
  const publish=async(key,id)=>(await ok(teacher.client.call('publish-task',{taskKey:key,gradingProfile:id}),201)).task;

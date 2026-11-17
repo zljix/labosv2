@@ -6,3 +6,4 @@ Izvršni zapisi radio-*.json vežu oba izvora, sklopove, cilj, ugovor i stvarne 
 - [Četiri cilja i 24 neovisna prijevoda](ci-native-summary.json)
 - [Inventura izvornog CI instalacijskog paketa](installer-integrity.json)
 - [Zapakirani Worker i offline provjere](local-package-verification.json)
+- [Potvrđena javna objava i svih 205 resursa](publication.json)

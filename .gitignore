@@ -49,3 +49,7 @@ docs/stage24m-evidence/mysql-radio.json
 # Izvedeni dokazi 24N ostaju u CI artefaktima i instalacijskom paketu.
 docs/stage24n-evidence/levels-*.json
 docs/stage24n-evidence/mysql-levels.json
+
+# Izvedeni dokazi 24O ostaju u CI artefaktima i instalacijskom paketu.
+docs/stage24o-evidence/introductory.json
+docs/stage24o-evidence/mysql-introductory.json

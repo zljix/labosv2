@@ -27,7 +27,18 @@ export function introductoryNumberRows(bytes:number[],value:string):number[]{
 
 export function createIntroductoryCheck(c:SimulationConfig,p:any,seed:string){
   const v=p.taskKey.split('/')[1],s=p.contract.scenario,duration=s.stageDurationMs;
-  if(v==='adc-pwm')return {...createAnalogCheck(c,{...p,taskKey:'gpio/adc'},seed,false),protocolClock:false};
+  if(v==='adc-pwm'){
+    const analog=createAnalogCheck(c,{...p,taskKey:'gpio/adc'},seed,false);
+    return {...analog,protocolClock:false,record:(index:number,last:any,lines:any[])=>{
+      const result=analog.record(index,last,lines),position=analog.stimuli[index].position;
+      // Introductory instructions require OFF at slider 0% and ON at 100%.
+      // Reversed supply terminals are not an equivalent mapping here. The
+      // separate URS ADC contract keeps its existing electrical alternatives.
+      const positionDuty=Math.round(Math.min(1,position*3.3/100/3.1)*4095)/4095;
+      const positionMatches=Number.isFinite(result.observedDuty)&&Math.abs(result.observedDuty-positionDuty)<=s.pwmTolerance;
+      return {...result,positionDuty,positionMatches,passed:result.passed&&positionMatches};
+    }};
+  }
   if(v==='led-time'||v==='button'){
     const led=c.leds[0],button=c.buttons[0],frames:any[]=[],edges:any[]=[];
     const stimuli=v==='led-time'?[{}]:[false,true,false,true,false,true,false].map(pressed=>({pressed}));

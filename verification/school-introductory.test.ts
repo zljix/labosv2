@@ -68,6 +68,13 @@ test('24O V2 keeps its published 300ms deadline independent from the older URS 5
   const p=introductoryProfiles[1],slow=introductoryProject('button');slow.files['main.py']=slow.files['main.py'].replace('sleep_ms(20)','sleep_ms(500)');
   assert.equal((await run(slow,p)).points,3);assert.equal(gradingSupport('gpio/button','micropython').checkerVersion,'24AB.1');
 });
+test('24O V3 preserves the introductory OFF-at-zero and ON-at-hundred slider direction',async()=>{
+  const project=introductoryProject('adc-pwm');if(project.circuit.kind!=='editable')throw Error('editable');
+  const pot=project.circuit.components.find(c=>c.kind==='potentiometer')!;
+  for(const w of project.circuit.wires)for(const e of [w.from,w.to])if(e.component===pot.id&&['1','3'].includes(e.pin))e.pin=e.pin==='1'?'3':'1';
+  const r=await run(project,introductoryProfiles[2]);assert.equal(r.points,3,JSON.stringify(r));
+  assert(r.samples.find((s:any)=>s.position===0)?.observedDuty>.9);assert.equal(r.criteria[1].points,0);assert.equal(r.criteria[2].points,0);
+});
 test('24O jobs bind the exact version, task, rubric, runtime and immutable snapshot',async()=>{
   const p=introductoryProfiles[0],job=jobFor(introductoryProject(id(p)),p);
   for(const patch of [{snapshotHash:'0'.repeat(64)},{contractHash:'0'.repeat(64)},{checkerVersion:'24N.1'},{taskKey:'gpio/blink'},{target:'s3-cpp'},{rubric:{...job.rubric,instructions:'changed'}}]){

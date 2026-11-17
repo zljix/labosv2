@@ -12,7 +12,7 @@ Izdanje 0.14.13-beta.1 dodaje zasebne školske dodjele i rubrike V1–V5. Ostaje
 | V4 AHT10/OLED | Napajani putovi, nova T/RH očitanja, stvarni osvježeni OLED pikseli | 3 + 5 + 2 |
 | V5 Regulator | AHT10/OLED/servo putovi, osnovna histereza, oba smjera i granični dekodirani uzorci | 3 + 5 + 2 |
 
-Svaki profil ima vlastiti `intro/...` ključ i `24O-v...@1` identitet, objavljeni ugovor, samo cilj MicroPython i najviše 10 bodova. S3 ADC koristi 12-bitnu kvantizaciju, 11 dB i zasićenje 3,1 V; sredina klizača nije točno 50 % PWM-a. V3 odaziv je do 400 ms uz 24 ms tolerancije, odstupanje radnog omjera do 0,04.
+Svaki profil ima vlastiti `intro/...` ključ i `24O-v...@1` identitet, objavljeni ugovor, samo cilj MicroPython i najviše 10 bodova. S3 ADC koristi 12-bitnu kvantizaciju, 11 dB i zasićenje 3,1 V; sredina klizača nije točno 50 % PWM-a. V3 zadržava smjer početne upute: pri 0 % klizača LED je ugašena, pri 100 % uključena, a međupoložaji daju rastući PWM. Obrnuti krajevi potenciometra koji obrću taj odziv ne dobivaju funkcionalne bodove; zasebni URS ADC ugovor ostaje sačuvan. V3 odaziv je do 400 ms uz 24 ms tolerancije, odstupanje radnog omjera do 0,04.
 
 V4/V5 koriste OLED 128×64, standardni framebuf text() 8×8 i jednu decimalu. Položaji brojki slobodni su na različitim redcima, uz razmak početaka najmanje 8 px i potpuno vidljive brojke. Prvo novo očitanje/prikaz do 2 s uz 100 ms tolerancije; razmaci očitanja i poslanih slika do 2100 ms. Najmanje dva nova očitanja i dva osvježavanja po etapi od 6000 ms. Slika mora biti stabilna najmanje 100 ms. Konzola, neodaslana memorija slike, samo dio broja ili zajednički redak nisu dovoljan dokaz.
 

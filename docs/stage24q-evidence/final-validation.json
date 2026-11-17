@@ -1,0 +1,77 @@
+{
+  "version": "0.14.15-beta.2",
+  "date": "2026-11-17",
+  "baselineFullSchoolAcceptance": "school-acceptance.json",
+  "unchangedFromTestedBaseline": [
+    "src/platform",
+    "src/lessons",
+    "src/runtime",
+    "src/circuit",
+    "src/project",
+    "school/api",
+    "school/app",
+    "school/grader",
+    "school/migrations"
+  ],
+  "finalChanges": [
+    "Visible History menu label at narrow widths",
+    "Editor keyboard exit hint and aria-describedby",
+    "Release metadata, documentation and rebuilt outputs"
+  ],
+  "targetedTests": {
+    "pages": 8,
+    "teaching": 3,
+    "usability": 3,
+    "schoolSyncAndFinishAndReports": 18,
+    "offlineAndPackage": 10,
+    "total": 42,
+    "failed": 0,
+    "skipped": 0
+  },
+  "browser": {
+    "zoom200Percent": {
+      "cssViewport": [
+        681,
+        468
+      ],
+      "physicalViewport": [
+        1363,
+        936
+      ],
+      "checked": [
+        "exercise chooser",
+        "V1 instructions",
+        "answer input",
+        "submission reachability",
+        "no document horizontal overflow"
+      ]
+    },
+    "syntheticFrames": [
+      [
+        1366,
+        768
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        768,
+        390
+      ]
+    ],
+    "keyboard": [
+      "Escape closes menus and dialogs",
+      "Home and arrows select tabs",
+      "Escape then Tab moves from code editor to Console tab"
+    ],
+    "fixedFinding": "History label was hidden below 1100px; label is now visible in the project menu"
+  },
+  "notPerformed": [
+    "Real iPhone/Safari and Android",
+    "Screen reader",
+    "Authenticated school portal visual test",
+    "Real student pilot",
+    "Physical hardware"
+  ]
+}

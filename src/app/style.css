@@ -1594,9 +1594,6 @@ p {
   .project-actions button {
     padding: 6px 7px;
   }
-  .history-text {
-    display: none;
-  }
   .runtime-status {
     margin-right: 0;
     font-size: 9px;
@@ -2099,3 +2096,5 @@ p {
 @media(max-width:600px){.lab-tab-content{min-height:auto}}
 
 @media(min-width:601px) and (max-width:900px){.topbar{height:auto;min-height:63px;flex-wrap:wrap;gap:8px}.project-actions{flex-wrap:wrap}}
+
+.editor-keyboard-help{margin:0;padding:8px 12px;font-size:12px;line-height:1.45;color:var(--text);border-top:1px solid var(--line);background:var(--surface)}

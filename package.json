@@ -1,6 +1,6 @@
 {
   "name": "esp32-micropython-lab",
-  "version": "0.14.15-beta.1",
+  "version": "0.14.15-beta.2",
   "private": true,
   "type": "module",
   "scripts": {

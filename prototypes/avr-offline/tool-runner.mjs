@@ -1,7 +1,7 @@
-export function isolatedToolRunner(createWorker,loadBinary) {
+export function isolatedToolRunner(createWorker,loadAssets) {
   return async (name,args,output,{files,progress,diagnostics,timings})=>{
     progress(name);
-    const binary=loadBinary?await loadBinary(name):undefined;
+    const assets=loadAssets?await loadAssets(name):{};
     return new Promise((resolve,reject)=>{
     let worker;try{worker=createWorker();}catch(error){reject(error);return;}
     let finished=false;
@@ -17,7 +17,7 @@ export function isolatedToolRunner(createWorker,loadBinary) {
     worker.onerror=event=>finish(Error(event.message||'Radni proces alata nije dostupan.'));
     worker.onmessage=({data})=>data.type==='result'?finish(null,data):finish(Error(data.message||'Neispravan odgovor alata.'));
     // Project buffers are small; keep originals for the following stages.
-    try{worker.postMessage({name,args,output,files:[...files],binary},binary?[binary]:[]);}catch(error){finish(error);}
+    try{worker.postMessage({name,args,output,files:[...files],assets},Object.values(assets));}catch(error){finish(error);}
   });
   };
 }

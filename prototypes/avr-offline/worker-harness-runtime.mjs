@@ -18,7 +18,7 @@ class BrowserWorker {
   this.worker.on('message',data=>{if(data.type==='audit')parentPort.postMessage(data);else this.onmessage?.({data});});
   this.worker.on('error',e=>this.onerror?.({message:e.message}));
  }
- postMessage(message){this.worker.postMessage(message);}
+ postMessage(message,transfer){this.worker.postMessage(message,transfer);}
  terminate(){return this.worker.terminate();}
 }
 const scope={console,performance,crypto,structuredClone,WebAssembly,TextEncoder,TextDecoder,Uint8Array,ArrayBuffer,DataView,URL:BrowserURL,Blob:BrowserBlob,Response,CompressionStream,DecompressionStream,atob,btoa,setTimeout,clearTimeout,
@@ -33,7 +33,7 @@ const scope={console,performance,crypto,structuredClone,WebAssembly,TextEncoder,
   if(message.type!=='read-package-file'){parentPort.postMessage(message,transfer);return;}
   const {name,id}=message;parentPort.postMessage({type:'audit',name,entry:'window'});
   void read(root+'/toolchain/'+name+'.gz').then(compressed=>{
-   const raw=gunzipSync(compressed);if(corrupt==='wasm')raw[0]^=1;
+   const raw=gunzipSync(compressed);if((corrupt==='wasm'&&name.endsWith('.wasm'))||(corrupt===true&&name==='cc1plus.js'))raw[0]^=1;
    return verifyBytes(name,raw.buffer.slice(raw.byteOffset,raw.byteOffset+raw.byteLength));
   }).then(bytes=>scope.onmessage({data:{type:'package-file',id,bytes}}),error=>scope.onmessage({data:{type:'package-file',id,error:error.message}}));
  }

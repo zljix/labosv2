@@ -1,7 +1,7 @@
 import {compile} from './compiler.mjs';
 import {isolatedToolRunner} from './tool-runner.mjs';
 import {simulate} from './simulation';
-import {FILES} from './package.mjs';
+import {FILES,SDK_FILE} from './package.mjs';
 
 let fileSequence=0;
 const pendingFiles=new Map<number,{resolve:(bytes:ArrayBuffer)=>void,reject:(error:Error)=>void}>();
@@ -10,7 +10,10 @@ const readInWindow=(name:string)=>new Promise<ArrayBuffer>((resolve,reject)=>{
 });
 
 async function compileLocal(input:any) {
-  const runner=isolatedToolRunner(()=>new Worker(new URL('tool-worker.js',self.location.href)),(name:string)=>Object.hasOwn(FILES,name+'.wasm')?readInWindow(name+'.wasm'):undefined);
+  const runner=isolatedToolRunner(()=>new Worker(new URL('tool-worker.js',self.location.href)),async(name:string)=>{
+    const names=[name+'.js',...(Object.hasOwn(FILES,name+'.wasm')?[name+'.wasm']:[]),...(['cc1','cc1plus','avr-ld'].includes(name)?[SDK_FILE]:[])];
+    const assets:Record<string,ArrayBuffer>={};for(const file of names)assets[file]=await readInWindow(file);return assets;
+  });
   return compile(input,{sdk:new Map(),runner,progress:(tool:string)=>postMessage({type:'progress',tool})});
 }
 let busy=false;

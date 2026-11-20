@@ -18,7 +18,7 @@ test('built Worker compiles Nano in disposable tool threads without loading the 
  const h=harness();try {
   const input={board:'nano',files:{'main.ino':'void setup(){Serial.begin(9600);Serial.println("WORKER_936");}\nvoid loop(){delay(100);}'}};
   const message=await h.send({type:'compile',input});assert.equal(message.type,'compiled',message.message);
-  assert(h.reads.length);assert(h.reads.every(r=>r.entry===(r.name.endsWith('.wasm')?'window':'tool-worker.js')));
+  assert(h.reads.length);assert(h.reads.every(r=>r.entry==='window'));
   assert(!h.reads.some(r=>r.name==='cc1.js'||r.name==='cc1.wasm'));
   const run=await h.send({type:'simulate',input,result:message.result});assert.equal(run.type,'simulated',run.message);assert.match(run.result.serial,/WORKER_936/);
   const stale=await h.send({type:'simulate',input:{...input,board:'uno'},result:message.result});assert.equal(stale.type,'error');assert.match(stale.message,/promijenjeni/);

@@ -1,0 +1,10 @@
+{
+  "result": "identical manifest and all package digests after a full rebuild of both cores",
+  "packageHash": "432c0f5357f4909a814c6d58d9bb8989a8173d0039379172c71457bf38e353d1",
+  "sdkFile": "sdk-uno-nano-435296c135cdb664.bin",
+  "sdk": {
+    "bytes": 7546505,
+    "sha256": "435296c135cdb6643a6215b5e1a5ae83511222556b3b6d71b38cd38890f37db9"
+  },
+  "scope": "Same Node/Linux environment, GCC WASM and GNU ar. Not cross-host reproducibility or a GCC rebuild."
+}

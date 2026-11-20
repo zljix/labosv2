@@ -1,0 +1,49 @@
+✔ legacy builds stay valid; library version and bytes enter the exact input hash (22.477638ms)
+✔ unknown libraries, duplicate names, wrong versions and invalid source paths fail (0.905215ms)
+✔ browser cache validates artifacts and never reuses stale or corrupted data (5.280694ms)
+✔ structured diagnostics retain source, line, column, warnings and notes (1.196354ms)
+✔ pairing accepts only loopback links with a session code (0.469158ms)
+✔ Arduino submission preserves a stopped reopenable full project, work and exact build (22.1666ms)
+✔ Arduino IDE export describes pinned libraries and preserves all C++ sources (1.847206ms)
+﹣ real blank arduino.uno-r3.atmega328p project, multiple files and pinned Bounce2 compile and execute (0.122344ms) # SKIP
+﹣ real blank arduino.nano-classic.atmega328p project, multiple files and pinned Bounce2 compile and execute (0.110737ms) # SKIP
+﹣ real compiler rejects an unselected library and locates an error in src/ (0.166341ms) # SKIP
+﹣ local bridge enforces authentication/origin and hash cache for a real compile (0.056064ms) # SKIP
+✔ local bridge rejects overlapping compiles and invalid source paths (75.646794ms)
+✔ 44 physical headers, duplicate power pins and reserved PSRAM pins (27.21896ms)
+✔ breadboard groups, channel, columns, rails and split at 15/16 (9.602753ms)
+✔ wire deletion changes connectivity without a cached netlist (3.71934ms)
+✔ crossing and overlapping paths never create electrical joints (1.186119ms)
+✔ power short through breadboard is detected and clears after disconnection (14.650956ms)
+✔ button permanently joins each side and bridges both sides only while pressed (5.510431ms)
+✔ resistor, LED and potentiometer terminals remain separate nets (0.678383ms)
+✔ overvoltage, reserved pins, shared GPIO and contradictory known drivers (2.137354ms)
+✔ LED requires series resistor; bypassed resistor is detected (2.033557ms)
+✔ reference lesson passes; removing rail bridge exposes open path (29.514463ms)
+✔ rotation and movement preserve identity, connectivity and attached wire endpoint (5.007812ms)
+✔ malformed endpoints, IDs, component kinds, properties and coordinates reject (9.09709ms)
+✔ schema 1 fixture migrates without loss; future versions reject (1.812433ms)
+✔ ZIP and JSON preserve complete circuit; rejected input cannot mutate current project (16.935492ms)
+✔ autosave, reopening and immutable history preserve complete circuit (46.66079ms)
+✔ 200 routed wires and maximum bend count round-trip beyond old manifest cap (54.501579ms)
+✔ ZIP and JSON preserve Unicode, helper files and settings (16.479084ms)
+✔ labosv2 opens separate storage and imports a legacy project without editing the original (37.778424ms)
+✔ labosv2 recovery neither reads nor clears the previous laboratory recovery (0.900578ms)
+✔ labosv2 Arduino cache leaves the earlier laboratory cache intact (14.862495ms)
+✔ future schemas and unknown board profiles are rejected (1.400863ms)
+✔ entrypoint, settings and circuit scope are validated (0.774027ms)
+✔ traversal, scripts, internal overrides and case collisions are rejected (0.628337ms)
+✔ file and decompressed archive sizes are bounded (8.153376ms)
+✔ ZIP manifest must match files; truncated packages are rejected (2.46047ms)
+✔ editing preserves immutable runtime snapshot (1.208152ms)
+✔ IndexedDB survives reopening with multiple projects, settings and history (18.852452ms)
+✔ atomic revisions protect against concurrent tab writes (4.693288ms)
+✔ bounded history restoration creates a new revision (47.347384ms)
+ℹ tests 41
+ℹ suites 0
+ℹ pass 37
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 4
+ℹ todo 0
+ℹ duration_ms 902.762778

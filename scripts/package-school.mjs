@@ -17,6 +17,8 @@ rmSync(target, {recursive: true, force: true}); mkdirSync(target, {recursive: tr
 function copy(from, to) { mkdirSync(dirname(resolve(target, to)), {recursive: true}); cpSync(from, resolve(target, to), {recursive: true}); }
 copy('dist', 'web'); copy('school/api', 'web/api'); copy('school/apache/web.htaccess', 'web/.htaccess');
 copy('school/config/config.example.php', 'config/config.example.php'); copy('school/bin', 'tools'); copy('school/apache/labosv2.conf.example', 'apache/labosv2.conf.example');
+copy('school/apache/labos-compiler.service.example','apache/labos-compiler.service.example');
+copy('docs/STAGE25A_SKOLSKI_PREVODITELJ.md','docs/STAGE25A_SKOLSKI_PREVODITELJ.md');
 copy('school/app', 'app'); copy('school/migrations', 'migrations');
 copy('school/grader/profiles.json', 'grading/profiles.json');
 copy('docs/stage24ab-contract.md', 'docs/stage24ab-contract.md');
@@ -81,6 +83,6 @@ const inventory = {version, stage, appBuild: manifest.build, files: Object.entri
 entries['package-inventory.json'] = strToU8(JSON.stringify(inventory, null, 2) + '\n');
 writeFileSync(resolve(target, 'package-inventory.json'), entries['package-inventory.json']);
 mkdirSync('release', {recursive: true});
-const output = resolve('release', 'Labosv2_' + version.split('-')[0] + '_'+stage+'_Skolski.zip');
+const output = resolve('release', 'Labos_' + version.split('-')[0] + '_'+stage+'_Skolski.zip');
 writeFileSync(output, zipSync(entries, {level: 6}));
 console.log(output);

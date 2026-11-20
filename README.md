@@ -1,38 +1,76 @@
-# Labosv2 · školski laboratorij
+> **0.16.0-beta.1 — Arduino offline (eksperimentalno):** glavno sučelje može
+> prevesti novi Uno/Nano program bez mreže nakon jednokratne pripreme paketa.
+> Izvori i licence dostupni su u dijalogu prevoditelja. Školsko bodovanje i
+> ESP32-S3 C++ ostaju na postojećem postupku. Pilot fizičkih uređaja nije potvrđen.
+> Distribucija: [objašnjenje](prototypes/avr-offline/DISTRIBUTION.md).
+
+# Novo izdanje: 0.15.7-beta.1 · 25H
+
+Pretraživanje svih datoteka projekta, preglednije pomoćne datoteke i zatvaranje otvorenih kartica bez brisanja sadržaja. Sačuvana je navigacija tipkovnicom, pristup svim datotekama i format izvoza. [Opseg i provjere](docs/STAGE25H_DATOTEKE_I_KARTICE.md).
+
+## Prethodno izdanje 0.15.6-beta.1 · 25G
+
+Električne postavke komponenti odvojene od sklopivog položaja, čitljivije kontrole i pripadajuća dijagnostika. [Opseg i provjere](docs/STAGE25G_SVOJSTVA_KOMPONENTI.md).
+
+## Prethodno izdanje 0.15.5-beta.1 · 25F
+
+Manji offline paket uz provjerenu jednakost dijeljenih datoteka. [Opseg i provjere](docs/STAGE25F_MANJI_OFFLINE_PAKET.md).
+
+## Prethodno izdanje 0.15.4-beta.1 · 25E
+
+Pregled offline paketa, sigurno uklanjanje zastarjelih verzija i zaseban oporavak od ograničenja prostora. Aktivna i nova preuzeta verzija te paketi otvorenih kartica ostaju zaštićeni; učenički projekti ne brišu se. [Opseg i provjere](docs/STAGE25E_OFFLINE_PROSTOR.md).
+
+## Prethodno izdanje 0.15.3-beta.1 · 25D
+
+Napredak provjere offline paketa, konkretne poruke pogrešaka i ograničeno ponavljanje neuspjelog preuzimanja uz obveznu SHA-256 provjeru. [Opseg i provjere](docs/STAGE25D_OFFLINE.md).
+
+## Prethodno izdanje 0.15.2-beta.1 · 25C
+
+Čitljiviji sklop i kôd, prelamanje redaka i poboljšano dodavanje komponenti. [Opseg i provjere](docs/STAGE25C_CITLJIVOST.md).
+
+## Prethodno izdanje 0.15.1-beta.1 · 25B
+
+Prilagodljiv raspored sklopa i kôda, upute uz rad, sklopiv izlaz, pregled varijante prije otvaranja i sažeti školski statusi. [Opseg i provjere uređenja](docs/STAGE25B_RADNI_PROSTOR.md).
+
+## Prethodno izdanje 0.15.0-beta.1 · 25A
+
+Školski C++ prevoditelj za Uno, Nano i ESP32-S3, dostupan u repozitoriju **labos**. Upute: [STAGE25A_SKOLSKI_PREVODITELJ.md](docs/STAGE25A_SKOLSKI_PREVODITELJ.md). Školsko prevođenje zahtijeva konfiguriranu PHP/MySQL instalaciju i Linux radni proces; GitHub Pages ostaje statički laboratorij.
+
+## Arhiva školskog laboratorija (24Q i ranije)
 
 **0.14.15-beta.1 · etapa 24Q · sučelje i upute po varijanti · objavljena web beta.**
 
-Čitljiviji školski paneli, sklop ispred ulaznih kontrola, pretraživ katalog, istraživačka kopija i završne upute prema načinu rada. Svih 67 URS varijanti ima vlastite upute uz očuvanje ranijih odgovora. [Provedene dorade, provjere i preostali vizualni prihvat/pilot](docs/STAGE24Q_PLAN_I_PROVJERA.md). [Web laboratorij 24Q](https://zljix.github.io/labosv2/) je objavljen. [Dokaz objave i provjera](docs/stage24q-evidence/publication.json). Prošlo je 393 lokalnih testova, ciljani 24Q CI i javna nadogradnja iz 24P uz očuvan projekt. Potpuna školska regresija još traje; web objava nije potvrda punog prihvata instalacijskog paketa ni učeničkog pilota.
+Čitljiviji školski paneli, sklop ispred ulaznih kontrola, pretraživ katalog, istraživačka kopija i završne upute prema načinu rada. Svih 67 URS varijanti ima vlastite upute uz očuvanje ranijih odgovora. [Provedene dorade, provjere i preostali vizualni prihvat/pilot](docs/STAGE24Q_PLAN_I_PROVJERA.md). [Web laboratorij 24Q](https://zljix.github.io/labos/) je objavljen. [Dokaz objave i provjera](docs/stage24q-evidence/publication.json). Prošlo je 393 lokalnih testova, ciljani 24Q CI i javna nadogradnja iz 24P uz očuvan projekt. Potpuna školska regresija još traje; web objava nije potvrda punog prihvata instalacijskog paketa ni učeničkog pilota.
 
-**Tehnički prihvat 24P:** [Završne provjere i paket](https://github.com/zljix/labosv2/actions/runs/44105942453) potvrđuju svih 273 očekivanih ishoda, 79 nepromijenjenih prethodnih rubrika i 15 novih izoliranih C++ prijevoda za S3, Uno i Nano. Prošli su PHP/MySQL tokovi dugih Unicode identiteta, zaključavanja i dorade, oba radio čvora, ranije obitelji, pokus s 30 simuliranih učenika, izvještaji i povrat sigurnosne kopije. [Sažetak i otisak provjeravača](docs/stage24p-evidence/acceptance-summary.json). Stvarni školski pilot ostaje otvoren.
+**Tehnički prihvat 24P:** [Završne provjere i paket](https://github.com/zljix/labos/actions/runs/44105942453) potvrđuju svih 273 očekivanih ishoda, 79 nepromijenjenih prethodnih rubrika i 15 novih izoliranih C++ prijevoda za S3, Uno i Nano. Prošli su PHP/MySQL tokovi dugih Unicode identiteta, zaključavanja i dorade, oba radio čvora, ranije obitelji, pokus s 30 simuliranih učenika, izvještaji i povrat sigurnosne kopije. [Sažetak i otisak provjeravača](docs/stage24p-evidence/acceptance-summary.json). Stvarni školski pilot ostaje otvoren.
 
 ## Povijest prihvata
 
-**Prihvat 24O:** [Završne provjere i paket](https://github.com/zljix/labosv2/actions/runs/44068540213) prošli su svih 53 koraka. Potvrđeno je 56 ciljanih izvedbi, 15 ponovljenih referentnih izvedbi, pet zasebnih zaključanih V dodjela te očuvanje svih 74 prethodnih rubrika. Prošle su ranije obitelji, 30 simuliranih učenika, izvještaji i povrat sigurnosne kopije. [Sažetak](docs/stage24o-evidence/acceptance-summary.json) i [izvornost instalacijskog paketa](docs/stage24o-evidence/installer-integrity.json).
+**Prihvat 24O:** [Završne provjere i paket](https://github.com/zljix/labos/actions/runs/44068540213) prošli su svih 53 koraka. Potvrđeno je 56 ciljanih izvedbi, 15 ponovljenih referentnih izvedbi, pet zasebnih zaključanih V dodjela te očuvanje svih 74 prethodnih rubrika. Prošle su ranije obitelji, 30 simuliranih učenika, izvještaji i povrat sigurnosne kopije. [Sažetak](docs/stage24o-evidence/acceptance-summary.json) i [izvornost instalacijskog paketa](docs/stage24o-evidence/installer-integrity.json).
 
-**Prihvat 24N:** [Završne provjere i paket](https://github.com/zljix/labosv2/actions/runs/44052504254) potvrđuju 253 ciljane izvedbe, 48 neovisnih C++ prijevoda i 16 zaključanih školskih dodjela. Prošli su svi ciljevi, ranije obitelji, 30 simuliranih učenika, izvještaji i povrat kopije. [Sažetak](docs/stage24n-evidence/acceptance-summary.json) i [izvornost instalacijskog paketa](docs/stage24n-evidence/installer-integrity.json).
+**Prihvat 24N:** [Završne provjere i paket](https://github.com/zljix/labos/actions/runs/44052504254) potvrđuju 253 ciljane izvedbe, 48 neovisnih C++ prijevoda i 16 zaključanih školskih dodjela. Prošli su svi ciljevi, ranije obitelji, 30 simuliranih učenika, izvještaji i povrat kopije. [Sažetak](docs/stage24n-evidence/acceptance-summary.json) i [izvornost instalacijskog paketa](docs/stage24n-evidence/installer-integrity.json).
 
-**Prihvat 24M:** [Završne provjere i paket](https://github.com/zljix/labosv2/actions/runs/44037558293) povezuju 60 ciljanih provjera, 24 zasebna C++ prijevoda obaju čvorova i četiri zaključane radijske dodjele s isporučenim provjeravačem. Potvrđeni su svih 16 mješovitih parova, ranije obitelji, 30 simuliranih učenika, izvještaji i povrat kopije. [Sažetak i otisak provjeravača](docs/stage24m-evidence/acceptance-summary.json).
+**Prihvat 24M:** [Završne provjere i paket](https://github.com/zljix/labos/actions/runs/44037558293) povezuju 60 ciljanih provjera, 24 zasebna C++ prijevoda obaju čvorova i četiri zaključane radijske dodjele s isporučenim provjeravačem. Potvrđeni su svih 16 mješovitih parova, ranije obitelji, 30 simuliranih učenika, izvještaji i povrat kopije. [Sažetak i otisak provjeravača](docs/stage24m-evidence/acceptance-summary.json).
 
-**Prihvat 24L:** [Završni prihvat i paket](https://github.com/zljix/labosv2/actions/runs/43981733195) potvrđuju 162 ciljane izvedbe, 48 neovisnih C++ prijevoda i 16 zaključanih MAX30102 dodjela. Ranije obitelji, računi, izvještaji, povrat kopije i pokus s 30 simuliranih učenika potvrđeni su na bajtno istom programu i provjeravaču. [Sažetak i podrijetlo dokaza](docs/stage24l-evidence/acceptance-summary.json).
+**Prihvat 24L:** [Završni prihvat i paket](https://github.com/zljix/labos/actions/runs/43981733195) potvrđuju 162 ciljane izvedbe, 48 neovisnih C++ prijevoda i 16 zaključanih MAX30102 dodjela. Ranije obitelji, računi, izvještaji, povrat kopije i pokus s 30 simuliranih učenika potvrđeni su na bajtno istom programu i provjeravaču. [Sažetak i podrijetlo dokaza](docs/stage24l-evidence/acceptance-summary.json).
 
-**Prihvat 24K:** [Završne provjere](https://github.com/zljix/labosv2/actions/runs/43968133436) potvrđuju sva četiri cilja, 238 ciljanih izvedbi, 72 neovisna C++ prijevoda i 24 zaključane RTC/SD dodjele kroz pravi PHP/MySQL. Prošli su ranije obitelji, pokus s 30 učenika, izvještaji i povrat sigurnosne kopije. [Sažetak dokaza](docs/stage24k-evidence/acceptance-summary.json) povezuje rezultate s isporučenim provjeravačem.
+**Prihvat 24K:** [Završne provjere](https://github.com/zljix/labos/actions/runs/43968133436) potvrđuju sva četiri cilja, 238 ciljanih izvedbi, 72 neovisna C++ prijevoda i 24 zaključane RTC/SD dodjele kroz pravi PHP/MySQL. Prošli su ranije obitelji, pokus s 30 učenika, izvještaji i povrat sigurnosne kopije. [Sažetak dokaza](docs/stage24k-evidence/acceptance-summary.json) povezuje rezultate s isporučenim provjeravačem.
 
-**Prihvat 24J:** [Završne provjere](https://github.com/zljix/labosv2/actions/runs/43959526722) potvrđuju sva četiri cilja, 234 ciljane izvedbe, 72 neovisna C++ prijevoda i 24 stvarne školske dodjele, zaključavanje te očuvanje ranijih predaja. Isti provjeravač isporučen je u školskom paketu. [Sažetak dokaza](docs/stage24j-evidence/acceptance-summary.json).
+**Prihvat 24J:** [Završne provjere](https://github.com/zljix/labos/actions/runs/43959526722) potvrđuju sva četiri cilja, 234 ciljane izvedbe, 72 neovisna C++ prijevoda i 24 stvarne školske dodjele, zaključavanje te očuvanje ranijih predaja. Isti provjeravač isporučen je u školskom paketu. [Sažetak dokaza](docs/stage24j-evidence/acceptance-summary.json).
 
-**Prihvat 24I:** [Završne provjere](https://github.com/zljix/labosv2/actions/runs/43949417346) povezuju sva četiri cilja i 24 neovisna C++ prijevoda s konačnim provjeravačem: osam službenih dodjela, ispravne cijele OLED brojke, dva vala po 30 predaja bez dvostrukih rezultata, izvještaji i povrat sigurnosne kopije. [Sažetak dokaza](docs/stage24i-evidence/acceptance-summary.json).
+**Prihvat 24I:** [Završne provjere](https://github.com/zljix/labos/actions/runs/43949417346) povezuju sva četiri cilja i 24 neovisna C++ prijevoda s konačnim provjeravačem: osam službenih dodjela, ispravne cijele OLED brojke, dva vala po 30 predaja bez dvostrukih rezultata, izvještaji i povrat sigurnosne kopije. [Sažetak dokaza](docs/stage24i-evidence/acceptance-summary.json).
 
-**Prihvat 24H:** [GitHub Actions](https://github.com/zljix/labosv2/actions/runs/43937992501) potvrđuje sva četiri cilja, 96 neovisnih C++ prijevoda, 32 zaključane dodjele, PHP/MySQL, izvještaje, povrat kopije i pokus s 30 simuliranih učenika. Programske datoteke provjeravača bajtno odgovaraju prihvaćenoj izgradnji.
+**Prihvat 24H:** [GitHub Actions](https://github.com/zljix/labos/actions/runs/43937992501) potvrđuje sva četiri cilja, 96 neovisnih C++ prijevoda, 32 zaključane dodjele, PHP/MySQL, izvještaje, povrat kopije i pokus s 30 simuliranih učenika. Programske datoteke provjeravača bajtno odgovaraju prihvaćenoj izgradnji.
 
-[Završni prihvat 24G](https://github.com/zljix/labosv2/actions/runs/43925558604) potvrđuje sva četiri cilja, 36 neovisnih C++ prijevoda, 12 zaključanih dodjela, pravi PHP/MySQL, izvještaje, povrat kopije i pokus s 30 simuliranih učenika. Provjereno je svih 880 datoteka iz inventure paketa; programski izvor odgovara prihvatu.
+[Završni prihvat 24G](https://github.com/zljix/labos/actions/runs/43925558604) potvrđuje sva četiri cilja, 36 neovisnih C++ prijevoda, 12 zaključanih dodjela, pravi PHP/MySQL, izvještaje, povrat kopije i pokus s 30 simuliranih učenika. Provjereno je svih 880 datoteka iz inventure paketa; programski izvor odgovara prihvatu.
 
-Prethodna 23F PHP/MySQL integracija prošla je u [GitHub Actionsu](https://github.com/zljix/labosv2/actions/runs/43738711916). Provjere izvještaja i administracije vode se zasebno u [izvješću 23H](docs/stage23h-reports-administration.md).
+Prethodna 23F PHP/MySQL integracija prošla je u [GitHub Actionsu](https://github.com/zljix/labos/actions/runs/43738711916). Provjere izvještaja i administracije vode se zasebno u [izvješću 23H](docs/stage23h-reports-administration.md).
 
 Nastavak postojećeg ESP32 MicroPython / Arduino laboratorija za školski sustav s PHP-om i stvarnim MySQL-om. Polazište je [labos 0.12.9](https://github.com/zljix/labos/tree/3c4a281c10282d63b2742280f69aadbc08d7ae1e), uključujući posljednje dorade vodova.
 
-[Web laboratorij](https://zljix.github.io/labosv2/) · [Školski račun](https://zljix.github.io/labosv2/school.html#account) · [Upute za instalaciju](school/README.md) · [Bodovanje i dokazi 23E](docs/stage23e-grading.md)
+[Web laboratorij](https://zljix.github.io/labos/) · [Školski račun](https://zljix.github.io/labos/school.html#account) · [Upute za instalaciju](school/README.md) · [Bodovanje i dokazi 23E](docs/stage23e-grading.md)
 
-[Neovisni prihvat 24F](https://github.com/zljix/labosv2/actions/runs/43915429891) potvrđuje sva četiri cilja i 67 novih prijevoda. [Školski prihvat 24F](https://github.com/zljix/labosv2/actions/runs/43916966742) potvrđuje identičan programski izvor, PHP/MySQL, bodove, zaključavanje, 30 simuliranih učenika, izvještaje i paket.
+[Neovisni prihvat 24F](https://github.com/zljix/labos/actions/runs/43915429891) potvrđuje sva četiri cilja i 67 novih prijevoda. [Školski prihvat 24F](https://github.com/zljix/labos/actions/runs/43916966742) potvrđuje identičan programski izvor, PHP/MySQL, bodove, zaključavanje, 30 simuliranih učenika, izvještaje i paket.
 
 ## Sačuvano iz 24O
 
@@ -137,7 +175,7 @@ Osam rubrika za puni ADC/PWM, NTC, TEMT6000, joystick, plamen, zvuk, LM35/NTC i 
 
 ## Sačuvano iz 23I
 
-- [Obrazac školskog pilota](https://zljix.github.io/labosv2/school-pilot.html): 14 provjera, mjerenja, JSON izvoz i siguran nastavak zapisa.
+- [Obrazac školskog pilota](https://zljix.github.io/labos/school-pilot.html): 14 provjera, mjerenja, JSON izvoz i siguran nastavak zapisa.
 - Razvojni pokus s 30 učenika i jednim nastavnikom: tri vala po 30 spremanja, pregled svakih 5 s, drugo računalo, zastarjela revizija i 30 zaključanih predaja.
 - Dva privatna provjeravača neovisno izvršavaju završne snimke; bodovi, izvori i hashovi uspoređuju se s nastavničkim pregledom i izvozom.
 - Usklađene oznake izdanja i ispravljena HTTPS provjera koja je još očekivala 23B.
@@ -154,7 +192,7 @@ Osam rubrika za puni ADC/PWM, NTC, TEMT6000, joystick, plamen, zvuk, LM35/NTC i 
 
 ## Sačuvano iz 23G
 
-- [Pregled podrške bodovanja](https://zljix.github.io/labosv2/school-grading.html) s pretragom i filtrima po obitelji, cilju i statusu te CSV/JSON registrom svih **268 kombinacija**.
+- [Pregled podrške bodovanja](https://zljix.github.io/labos/school-grading.html) s pretragom i filtrima po obitelji, cilju i statusu te CSV/JSON registrom svih **268 kombinacija**.
 - **18 podržanih kombinacija**: šest rubrika na MicroPython S3, Uno i Nano. Dodane su LED 250/750 ms, LM35 i BMP180; ranije tri rubrike ostaju sačuvane.
 - Preostalih **250 kombinacija** ima jasno objašnjenje nepodržanog službenog bodovanja i pripremne kriterije. V1–V5 vode se zasebno s lokalnim provjerama.
 - Katalog pri objavi prikazuje podršku za svaki cilj. Dodijeljena vježba pokazuje je li službena provjera stvarno uključena.

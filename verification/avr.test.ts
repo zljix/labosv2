@@ -110,12 +110,13 @@ test('force Stop terminates a real busy Worker and rejects its delayed messages;
  });
 test('production offline package includes AVR examples, toolkit and a runnable compiled Worker',async()=>{
   const manifest=JSON.parse(readFileSync('dist/offline-package.json','utf8'));
-  const asset=manifest.files.find((f:any)=>/^\/assets\/avrWorker-.*\.js$/.test(f.url));assert(asset);
-  assert(manifest.files.some((f:any)=>f.url===`/app/${manifest.build}/avr-examples.json`));
-  assert(manifest.files.some((f:any)=>f.url==='/arduino-development-bridge.zip'));
+  const base=manifest.base??'/';
+  const asset=manifest.files.find((f:any)=>f.url.startsWith(base)&&/^assets\/avrWorker-[^/]+\.js$/.test(f.url.slice(base.length)));assert(asset);
+  assert(manifest.files.some((f:any)=>f.url===`${base}app/${manifest.build}/avr-examples.json`));
+  assert(manifest.files.some((f:any)=>f.url===base+'arduino-development-bridge.zip'));
   for(const board of [UNO,NANO] as const){
     const p=arduinoExampleProject('adc',board),events:any[]=[];
-    const worker=new Worker(new URL('./avr-built-worker.mjs',import.meta.url),{workerData:{path:pathToFileURL(resolve('dist'+asset.url)).href}});
+    const worker=new Worker(new URL('./avr-built-worker.mjs',import.meta.url),{workerData:{path:pathToFileURL(resolve('dist',asset.url.slice(base.length))).href}});
     try{
       const done=new Promise<void>((ok,bad)=>{const timer=setTimeout(()=>bad(Error('Production AVR timeout')),5000);worker.on('error',e=>{clearTimeout(timer);bad(e);});worker.on('message',e=>{events.push(e);if(e.type==='error'){clearTimeout(timer);bad(Error(e.message));}if(e.type==='console'&&text(events).includes('ADC=512 PWM=128')){clearTimeout(timer);ok();}});});
       worker.postMessage({type:'run',session:7,hex:artifacts[board].adc.hex,circuit:compileCircuit(p.circuit as any,'avr'),adcChannels:board===NANO?8:6});await done;

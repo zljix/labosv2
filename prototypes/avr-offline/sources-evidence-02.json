@@ -1,0 +1,132 @@
+{
+  "recipeCommit": "58a15c764b5f0b3b8ac9134ec040a552c35b59ce",
+  "release": "avr-gcc-15.2.0-pcbkit-4",
+  "recipeFiles": [
+    {
+      "name": "build.sh",
+      "url": "https://raw.githubusercontent.com/pcbkit-io/toolchain/58a15c764b5f0b3b8ac9134ec040a552c35b59ce/avr/build.sh",
+      "sha256": "c5c36903409f2db9088ff82880389c50452c17666e9254096adf519f0bbff53f"
+    },
+    {
+      "name": "Dockerfile",
+      "url": "https://raw.githubusercontent.com/pcbkit-io/toolchain/58a15c764b5f0b3b8ac9134ec040a552c35b59ce/avr/Dockerfile",
+      "sha256": "69aaea3c12f454df7615542d587e4b178599e62c4925710431eb84f9eab9b17d"
+    }
+  ],
+  "records": [
+    {
+      "name": "gcc-15.2.0.tar.xz",
+      "sourceURL": "https://ftp.gnu.org/gnu/gcc/gcc-15.2.0/gcc-15.2.0.tar.xz",
+      "sha256": "438fd996826b0c82485a29da03a72d71d6e3541a83ec702df4271f6fe025d24e",
+      "bytes": 101056276
+    },
+    {
+      "name": "binutils-2.45.tar.xz",
+      "sourceURL": "https://ftp.gnu.org/gnu/binutils/binutils-2.45.tar.xz",
+      "sha256": "c50c0e7f9cb188980e2cc97e4537626b1672441815587f1eab69d2a1bfbef5d2",
+      "bytes": 27868232
+    },
+    {
+      "name": "gmp-6.3.0.tar.xz",
+      "sourceURL": "https://ftp.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz",
+      "sha256": "a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898",
+      "bytes": 2094196
+    },
+    {
+      "name": "mpfr-4.2.1.tar.xz",
+      "sourceURL": "https://ftp.gnu.org/gnu/mpfr/mpfr-4.2.1.tar.xz",
+      "sha256": "277807353a6726978996945af13e52829e3abd7a9a5b7fb2793894e18f1fcbb2",
+      "bytes": 1493608
+    },
+    {
+      "name": "mpc-1.3.1.tar.gz",
+      "sourceURL": "https://ftp.gnu.org/gnu/mpc/mpc-1.3.1.tar.gz",
+      "sha256": "ab642492f5cf882b74aa0cb730cd410a81edcdbec895183ce930e706c1c759b8",
+      "bytes": 773573
+    },
+    {
+      "name": "avr-libc-2.2.1.tar.bz2",
+      "sourceURL": "https://github.com/avrdudes/avr-libc/releases/download/avr-libc-2_2_1-release/avr-libc-2.2.1.tar.bz2",
+      "sha256": "006a6306cbbc938c3bdb583ac54f93fe7d7c8cf97f9cde91f91c6fb0273ab465",
+      "bytes": 8404725
+    },
+    {
+      "name": "ArduinoCore-avr-1.8.8.tar.gz",
+      "sourceURL": "https://github.com/arduino/ArduinoCore-avr/archive/refs/tags/1.8.8.tar.gz",
+      "sha256": "e37de8a50ccf3a6a43aee2d482c066519ec05fb7fff63f57fd9daf0fd238b808",
+      "bytes": 7945284
+    },
+    {
+      "name": "ATTinyCore-1.5.2.tar.gz",
+      "sourceURL": "https://github.com/SpenceKonde/ATTinyCore/archive/refs/tags/1.5.2.tar.gz",
+      "sha256": "e3b94d9fc5776e1fdcb48c4fe045fa89a268f35758bc54ed63fabbd66ef5d36d",
+      "bytes": 20420559
+    },
+    {
+      "name": "Servo-1.3.0.tar.gz",
+      "sourceURL": "https://github.com/arduino-libraries/Servo/archive/refs/tags/1.3.0.tar.gz",
+      "sha256": "7b829d24f9165e9d2689d157568f066f290cbe41734a9384b9a06250a69e7993",
+      "bytes": 110807
+    },
+    {
+      "name": "LiquidCrystal-1.0.7.tar.gz",
+      "sourceURL": "https://github.com/arduino-libraries/LiquidCrystal/archive/refs/tags/1.0.7.tar.gz",
+      "sha256": "3641e8f4175ee8c66bbbc7e93961cd8ef333b9cd3689aa83c2512a23ba68200c",
+      "bytes": 7995
+    },
+    {
+      "name": "Adafruit-GFX-Library-1.13.0.tar.gz",
+      "sourceURL": "https://github.com/adafruit/Adafruit-GFX-Library/archive/refs/tags/1.13.0.tar.gz",
+      "sha256": "8ab038fb445d99f320feb9d463c7afe4cd91475fd8ea9c4047be444aacbb3b29",
+      "bytes": 327779
+    },
+    {
+      "name": "Adafruit_SSD1306-2.5.17.tar.gz",
+      "sourceURL": "https://github.com/adafruit/Adafruit_SSD1306/archive/refs/tags/2.5.17.tar.gz",
+      "sha256": "5228d4d2e915f6a4aa15b681bcd27a9f848627f7542283dd3cb3b76445a32ef9",
+      "bytes": 25946
+    },
+    {
+      "name": "Adafruit_SHT31-2.2.2.tar.gz",
+      "sourceURL": "https://github.com/adafruit/Adafruit_SHT31/archive/refs/tags/2.2.2.tar.gz",
+      "sha256": "fd32c2eaa484e391627d83594e104727d9f09d4da289d895a65533afaa5ebab8",
+      "bytes": 438821
+    },
+    {
+      "name": "Adafruit_BusIO-1.17.4.tar.gz",
+      "sourceURL": "https://github.com/adafruit/Adafruit_BusIO/archive/refs/tags/1.17.4.tar.gz",
+      "sha256": "59efa3acd5466e381c1b0313d5f0e824832db1bb24e4e328667e12b7d235d56d",
+      "bytes": 22830
+    },
+    {
+      "name": "Adafruit_NeoPixel-1.15.5.tar.gz",
+      "sourceURL": "https://github.com/adafruit/Adafruit_NeoPixel/archive/refs/tags/1.15.5.tar.gz",
+      "sha256": "3aa189a5a397a13539fcb58ff297ab9dc4a4faf45115e48afd533f1337cb0f3b",
+      "bytes": 60637
+    },
+    {
+      "name": "arduino-core-0.7.3.tar.gz",
+      "sourceURL": "https://github.com/Sensirion/arduino-core/archive/refs/tags/0.7.3.tar.gz",
+      "sha256": "64854932b97a95f811fcba97251cd8c54c87811bf31f965bc82b11cc2b9ccbe4",
+      "bytes": 15074
+    },
+    {
+      "name": "arduino-i2c-scd4x-1.1.0.tar.gz",
+      "sourceURL": "https://github.com/Sensirion/arduino-i2c-scd4x/archive/refs/tags/1.1.0.tar.gz",
+      "sha256": "1df71fcf9e1d93f3e4b53cad6db9876fb4228ca90d3d9f2febb4d6da634e876b",
+      "bytes": 1991072
+    },
+    {
+      "name": "LedControl-1.0.6.tar.gz",
+      "sourceURL": "https://github.com/wayoda/LedControl/archive/refs/tags/1.0.6.tar.gz",
+      "sha256": "50c8d1f5c96ee5c40e77cc5f62f46ac7560e64cfcf574faee33744bfb6e9f119",
+      "bytes": 6075
+    },
+    {
+      "name": "ctags-5.8-arduino11.tar.gz",
+      "sourceURL": "https://github.com/arduino/ctags/archive/refs/tags/5.8-arduino11.tar.gz",
+      "sha256": "86ca843c62aecb9bc531a73d9b6cef33179bd885b1bf8df9e0c7e9761aa9794d",
+      "bytes": 489712
+    }
+  ]
+}

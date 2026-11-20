@@ -1,0 +1,207 @@
+{
+  "runtime": "v24.22.3",
+  "platform": "linux",
+  "scope": "Node WebAssembly compiler + unchanged Labos AVREngine; not browser offline proof",
+  "cases": [
+    {
+      "board": "uno",
+      "example": "blink",
+      "elapsedMs": 594,
+      "flashBytes": 2766,
+      "staticRamBytes": 216,
+      "hexHash": "7fcc897114b5a695cc2f5640b5ad169805b92e34f6db37774f3dd99a22645e2a",
+      "serial": "Moj offline program\r\nON 0\r\nOFF 199\r\nON 400\r\nOFF 600\r\nON 800\r\nOFF 1000\r\n",
+      "timings": [
+        {
+          "tool": "cc1plus",
+          "ms": 413
+        },
+        {
+          "tool": "avr-as",
+          "ms": 62
+        },
+        {
+          "tool": "avr-ld",
+          "ms": 71
+        },
+        {
+          "tool": "objcopy",
+          "ms": 39
+        }
+      ]
+    },
+    {
+      "board": "uno",
+      "example": "multi",
+      "elapsedMs": 805,
+      "flashBytes": 2372,
+      "staticRamBytes": 198,
+      "hexHash": "e70da139ce1fca208656da7008db894f341e4fd69676b79a29b3b59be53b4068",
+      "serial": "REZULTAT=42\r\n",
+      "timings": [
+        {
+          "tool": "cc1plus",
+          "ms": 421
+        },
+        {
+          "tool": "avr-as",
+          "ms": 53
+        },
+        {
+          "tool": "cc1plus",
+          "ms": 208
+        },
+        {
+          "tool": "avr-as",
+          "ms": 25
+        },
+        {
+          "tool": "avr-ld",
+          "ms": 52
+        },
+        {
+          "tool": "objcopy",
+          "ms": 31
+        }
+      ]
+    },
+    {
+      "board": "uno",
+      "example": "c",
+      "elapsedMs": 1109,
+      "flashBytes": 2350,
+      "staticRamBytes": 188,
+      "hexHash": "34d062452fcb2932544e10b0b3c02f210fe29f616c60b3b742bab87c67551ef2",
+      "serial": "42\r\n",
+      "timings": [
+        {
+          "tool": "cc1plus",
+          "ms": 342
+        },
+        {
+          "tool": "avr-as",
+          "ms": 159
+        },
+        {
+          "tool": "cc1",
+          "ms": 496
+        },
+        {
+          "tool": "avr-as",
+          "ms": 27
+        },
+        {
+          "tool": "avr-ld",
+          "ms": 47
+        },
+        {
+          "tool": "objcopy",
+          "ms": 28
+        }
+      ]
+    },
+    {
+      "board": "nano",
+      "example": "blink",
+      "elapsedMs": 532,
+      "flashBytes": 2766,
+      "staticRamBytes": 216,
+      "hexHash": "7fcc897114b5a695cc2f5640b5ad169805b92e34f6db37774f3dd99a22645e2a",
+      "serial": "Moj offline program\r\nON 0\r\nOFF 199\r\nON 400\r\nOFF 600\r\nON 800\r\nOFF 1000\r\n",
+      "timings": [
+        {
+          "tool": "cc1plus",
+          "ms": 363
+        },
+        {
+          "tool": "avr-as",
+          "ms": 73
+        },
+        {
+          "tool": "avr-ld",
+          "ms": 60
+        },
+        {
+          "tool": "objcopy",
+          "ms": 22
+        }
+      ]
+    },
+    {
+      "board": "nano",
+      "example": "multi",
+      "elapsedMs": 748,
+      "flashBytes": 2372,
+      "staticRamBytes": 198,
+      "hexHash": "e70da139ce1fca208656da7008db894f341e4fd69676b79a29b3b59be53b4068",
+      "serial": "REZULTAT=42\r\n",
+      "timings": [
+        {
+          "tool": "cc1plus",
+          "ms": 412
+        },
+        {
+          "tool": "avr-as",
+          "ms": 39
+        },
+        {
+          "tool": "cc1plus",
+          "ms": 196
+        },
+        {
+          "tool": "avr-as",
+          "ms": 15
+        },
+        {
+          "tool": "avr-ld",
+          "ms": 42
+        },
+        {
+          "tool": "objcopy",
+          "ms": 33
+        }
+      ]
+    },
+    {
+      "board": "nano",
+      "example": "c",
+      "elapsedMs": 1348,
+      "flashBytes": 2350,
+      "staticRamBytes": 188,
+      "hexHash": "34d062452fcb2932544e10b0b3c02f210fe29f616c60b3b742bab87c67551ef2",
+      "serial": "42\r\n",
+      "timings": [
+        {
+          "tool": "cc1plus",
+          "ms": 484
+        },
+        {
+          "tool": "avr-as",
+          "ms": 149
+        },
+        {
+          "tool": "cc1",
+          "ms": 444
+        },
+        {
+          "tool": "avr-as",
+          "ms": 28
+        },
+        {
+          "tool": "avr-ld",
+          "ms": 55
+        },
+        {
+          "tool": "objcopy",
+          "ms": 162
+        }
+      ]
+    }
+  ],
+  "changedSource": {
+    "elapsedMs": 530,
+    "hexHash": "3985b2bcc3bd32d18ab0178510f33f5982dd518ca46d5abb514e9708262b537d",
+    "serial": "UNIQUE_7391\r\nON 0\r\nOFF 72\r\nON 146\r\nOFF 219\r\nON 292\r\nOFF 365\r\nON 439\r\nOFF 512\r\nON 585\r\nOFF 658\r\nON 732\r\nOFF 804\r\nON 878\r\nOFF 951\r\nON 1025\r\nOFF 1097\r\nON 1171\r\n",
+    "networkFetch": "throws if called"
+  }
+}

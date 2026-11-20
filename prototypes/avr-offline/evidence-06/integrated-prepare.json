@@ -1,0 +1,123 @@
+{
+  "phase": "prepare",
+  "success": true,
+  "checks": [
+    "Normal project import, separate package preparation, compile and live AVR simulation in main Labos UI"
+  ],
+  "errors": [],
+  "namespace": "net:[4026531840]",
+  "saved": {
+    "format": "esp32-micropython-lab",
+    "schemaVersion": 3,
+    "id": "a2aed317-05a0-4802-8726-4790f083fc38",
+    "title": "Arduino · treptanje i millis() — uvezeno",
+    "createdAt": "2026-11-20T00:32:06.096Z",
+    "updatedAt": "2026-11-20T00:32:06.096Z",
+    "revision": 0,
+    "board": {
+      "id": "arduino.uno-r3.atmega328p",
+      "profileVersion": "0.1.0"
+    },
+    "language": "arduino-cpp",
+    "runtimeProfile": {
+      "id": "arduino-avr",
+      "version": 1
+    },
+    "entryFile": "main.ino",
+    "nodeId": "main",
+    "target": {
+      "fqbn": "arduino:avr:uno"
+    },
+    "files": {
+      "main.ino": "void setup(){Serial.begin(9600);Serial.println(\"INTEGRATED_FIXTURE\");pinMode(13,OUTPUT);digitalWrite(13,HIGH);}\nvoid loop(){delay(100);}"
+    },
+    "circuit": {
+      "kind": "editable",
+      "modelVersion": 1,
+      "components": [
+        {
+          "id": "board",
+          "kind": "board",
+          "label": "Uno R3",
+          "x": 50,
+          "y": 60,
+          "rotation": 0,
+          "properties": {
+            "boardProfileId": "arduino.uno-r3.atmega328p"
+          }
+        },
+        {
+          "id": "r1",
+          "kind": "resistor",
+          "label": "Otpornik",
+          "x": 560,
+          "y": 90,
+          "rotation": 0,
+          "properties": {
+            "resistance": 680
+          }
+        },
+        {
+          "id": "led1",
+          "kind": "led",
+          "label": "LED",
+          "x": 770,
+          "y": 90,
+          "rotation": 0,
+          "properties": {
+            "color": "red"
+          }
+        }
+      ],
+      "wires": [
+        {
+          "id": "w0",
+          "from": {
+            "component": "board",
+            "pin": "D9"
+          },
+          "to": {
+            "component": "r1",
+            "pin": "1"
+          },
+          "color": "#087f8c",
+          "points": []
+        },
+        {
+          "id": "w1",
+          "from": {
+            "component": "r1",
+            "pin": "2"
+          },
+          "to": {
+            "component": "led1",
+            "pin": "A"
+          },
+          "color": "#087f8c",
+          "points": []
+        },
+        {
+          "id": "w2",
+          "from": {
+            "component": "led1",
+            "pin": "K"
+          },
+          "to": {
+            "component": "board",
+            "pin": "GND"
+          },
+          "color": "#087f8c",
+          "points": []
+        }
+      ]
+    },
+    "settings": {
+      "activeFile": "main.ino",
+      "theme": "light",
+      "fontSize": 16,
+      "powered": true,
+      "swapped": false,
+      "example": "avr-blink"
+    }
+  }
+}

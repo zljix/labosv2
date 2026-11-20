@@ -27,5 +27,5 @@ try{
   // CompileError is emitted only after the pinned tools/core/libraries pass.
   // Missing tools or a version/core mismatch remain infrastructure failures.
   const infrastructure=/unable to execute command|doesn't exist|error while loading shared libraries|LLVM ERROR|ENOENT|EACCES|Cannot allocate memory|bad_alloc|timed out/.test(error.message);
-  process.stdout.write(JSON.stringify({status:error.name==='CompileError'&&!infrastructure?'compile_error':'technical_error',diagnostic:String(error.message).slice(-2000)}));
+  process.stdout.write(JSON.stringify({status:error.name==='CompileError'&&!infrastructure?'compile_error':'technical_error',message:infrastructure?'Prevoditelj nije dostupan.':String(error.message).slice(-16000),diagnostics:infrastructure?[]:(error.diagnostics??[])}));
 }

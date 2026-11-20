@@ -1,0 +1,59 @@
+{
+  "method": "UI interaction; preview server stopped, network still enabled",
+  "packageStatus": "Aplikacija i prevoditelj dostupni su iz spremljenog paketa.",
+  "storage": "Zauzeto na ovoj adresi: 20.0 MiB · kvota: 10260.0 MiB. Paket se čuva komprimiran.",
+  "cases": [
+    {
+      "board": "uno",
+      "example": "multi",
+      "serial": "REZULTAT=42\r\n",
+      "diagnostics": "Vrijeme: 1673 ms\nFlash: 2372 B\nStatički SRAM: 198 B\nHEX SHA-256: e70da139ce1fca208656da7008db894f341e4fd69676b79a29b3b59be53b4068\n\nBez pogrešaka."
+    },
+    {
+      "board": "uno",
+      "example": "c",
+      "serial": "42\r\n",
+      "diagnostics": "Vrijeme: 2067 ms\nFlash: 2350 B\nStatički SRAM: 188 B\nHEX SHA-256: 34d062452fcb2932544e10b0b3c02f210fe29f616c60b3b742bab87c67551ef2\n\nBez pogrešaka."
+    },
+    {
+      "board": "nano",
+      "example": "multi",
+      "serial": "REZULTAT=42\r\n",
+      "diagnostics": "Vrijeme: 1809 ms\nFlash: 2372 B\nStatički SRAM: 198 B\nHEX SHA-256: e70da139ce1fca208656da7008db894f341e4fd69676b79a29b3b59be53b4068\n\nBez pogrešaka."
+    },
+    {
+      "board": "nano",
+      "example": "c",
+      "serial": "42\r\n",
+      "diagnostics": "Vrijeme: 1823 ms\nFlash: 2350 B\nStatički SRAM: 188 B\nHEX SHA-256: 34d062452fcb2932544e10b0b3c02f210fe29f616c60b3b742bab87c67551ef2\n\nBez pogrešaka."
+    }
+  ],
+  "finalSerial": "NANO_PONOVNO_7391\r\nON 0\r\nOFF 72\r\nON 146\r\nOFF 219\r\nON 292\r\nOFF 365\r\nON 439\r\nOFF 512\r\nON 585\r\nOFF 658\r\nON 732\r\nOFF 804\r\nON 878\r\nOFF 951\r\nON 1025\r\nOFF 1097\r\nON 1171\r\n",
+  "finalDiagnostics": "Vrijeme: 1183 ms\nFlash: 2764 B\nStatički SRAM: 214 B\nHEX SHA-256: 61ff96d23551a83a8ff55e192d6f43b8177d559d300723072037fc4c156624b6\n\nBez pogrešaka.",
+  "checks": [
+    "resume after quota failure without deleting caches",
+    "Uno new interval 73 ms and unique Serial text with preview server stopped",
+    "Uno and Nano separate C/C++ code compiled and simulated",
+    "syntax error main.ino:2 prevents running",
+    "cancel stops work",
+    "edit during compilation cancels work",
+    "new tab reopened with server stopped; source and compiler preserved",
+    "Chromium Exit and managed browser reopened; source, Nano selection and compressed package preserved; newly edited 61 ms program compiled and simulated with preview server stopped"
+  ],
+  "notVerified": [
+    "full network isolation",
+    "physical mobiles",
+    "school i5-6600"
+  ],
+  "restart": {
+    "date": "2026-11-19",
+    "method": "Chromium menu Exit, no windows, controlled browser reopened with original saved app; preview server stopped throughout; network still enabled",
+    "board": "nano",
+    "previousSourcePreserved": true,
+    "previousBoardPreserved": true,
+    "packageStatus": "Aplikacija i prevoditelj dostupni su iz spremljenog paketa.",
+    "serial": "NAKON_RESTARTA_6193\r\nON 0\r\nOFF 60\r\nON 121\r\nOFF 183\r\nON 244\r\nOFF 306\r\nON 366\r\nOFF 428\r\nON 489\r\nOFF 550\r\nON 612\r\nOFF 672\r\nON 734\r\nOFF 795\r\nON 857\r\nOFF 918\r\nON 978\r\nOFF 1040\r\nON 1101\r\nOFF 1163\r\n",
+    "diagnostics": "Vrijeme: 1072 ms\nFlash: 2742 B\nStatički SRAM: 216 B\nHEX SHA-256: 9d6d5bb3737f525829c257355e8d96cc2fb101b8ff9dbceaffc4a59bc61559b2\n\nBez pogrešaka.",
+    "networkIsolationVerified": false
+  }
+}

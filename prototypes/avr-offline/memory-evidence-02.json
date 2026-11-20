@@ -1,0 +1,52 @@
+{
+  "scope": "One Node process, Nano multi-file compile; not browser peak RSS. Linear memories sampled at tool completion, not continuous high-water tracking.",
+  "runtime": "v24.22.3",
+  "packageHash": "432c0f5357f4909a814c6d58d9bb8989a8173d0039379172c71457bf38e353d1",
+  "observations": [
+    {
+      "tool": "cc1plus",
+      "linearMemoryBytes": [
+        67108864
+      ]
+    },
+    {
+      "tool": "avr-as",
+      "linearMemoryBytes": [
+        17039360
+      ]
+    },
+    {
+      "tool": "cc1plus",
+      "linearMemoryBytes": [
+        67108864
+      ]
+    },
+    {
+      "tool": "avr-as",
+      "linearMemoryBytes": [
+        17039360
+      ]
+    },
+    {
+      "tool": "avr-ld",
+      "linearMemoryBytes": [
+        17170432
+      ]
+    },
+    {
+      "tool": "objcopy",
+      "linearMemoryBytes": [
+        16973824
+      ]
+    }
+  ],
+  "elapsedMs": 1627,
+  "nodeMaxRSSKiB": 479040,
+  "nodeMemoryAtEnd": {
+    "rss": 409231360,
+    "heapTotal": 31223808,
+    "heapUsed": 11956952,
+    "external": 36176872,
+    "arrayBuffers": 15308061
+  }
+}

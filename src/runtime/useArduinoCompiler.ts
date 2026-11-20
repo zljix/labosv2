@@ -1,3 +1,4 @@
+import {SchoolCompilerClient,type CompileContext} from '../platform/schoolCompiler';
 import {useEffect,useRef,useState} from 'react';
 import {AVR_TOOLCHAIN} from '../../public/avr-contract.mjs';
 import {buildInput,validateArtifact} from '../../public/arduino-contract.mjs';
@@ -10,6 +11,10 @@ export function compilerLink(text:string){
   return u;
 }
 export function useArduinoCompiler(){
+  const school=useRef(new SchoolCompilerClient());
+  const [capabilities,setCapabilities]=useState<any>({targets:{}}),[schoolStatus,setSchoolStatus]=useState(''),[mode,setMode]=useState<'school'|'local'>('school');
+  async function refreshSchool(){try{setCapabilities(await school.current.capabilities());}catch{setCapabilities({targets:{},message:'Školsko prevođenje koristi prijavljeni račun na školskoj adresi.'});}}
+  useEffect(()=>{void refreshSchool();},[]);
   const [connection,setConnection]=useState('disconnected'),[message,setMessage]=useState('Lokalni prevoditelj nije povezan.');
   const s3Ready=useRef(false),popup=useRef<Window|null>(null),origin=useRef(''),pending=useRef<{id:string;resolve:(v:any)=>void;reject:(e:Error)=>void;timer:ReturnType<typeof setTimeout>}|null>(null),connecting=useRef<ReturnType<typeof setTimeout>|null>(null),state=useRef(connection);state.current=connection;
   function reject(message:string){const p=pending.current;if(p){clearTimeout(p.timer);pending.current=null;p.reject(Error(message));}}
@@ -42,7 +47,7 @@ export function useArduinoCompiler(){
     setConnection('connecting');setMessage('Čekanje lokalnog prevoditelja…');
     connecting.current=setTimeout(()=>{if(state.current!=='connected'){setConnection('disconnected');setMessage('Veza nije potvrđena. Provjeri da lokalni prevoditelj radi na ovom računalu.');}},15000);
   }
-  async function compile(project:Project):Promise<{artifact:any;cached:boolean}>{
+  async function compileLocal(project:Project):Promise<{artifact:any;cached:boolean}>{
     if(state.current!=='connected'||!popup.current||popup.current.closed)throw Error('Najprije poveži lokalni prevoditelj.');
     if(project.runtimeProfile.id==='arduino-s3-wasm'&&!s3Ready.current)throw Error('Povezani most nema aktualni S3 profil. Preuzmi novi paket lokalnog prevoditelja.');
     if(pending.current)throw Error('Prevođenje je već u tijeku.');
@@ -53,7 +58,8 @@ export function useArduinoCompiler(){
     });
     await validateArtifact(project,result.artifact);return result;
   }
-  function cancel(){const p=pending.current;if(p){popup.current?.postMessage({channel:'esp32-lab-compiler',type:'cancel',id:p.id},origin.current);reject('Prevođenje je otkazano.');}}
-  return {connection,message,connect,disconnect,compile,cancel};
+  async function compile(project:Project,context?:CompileContext){if(mode==='school'){const info=await school.current.capabilities();setCapabilities(info);if(info.targets?.[project.board.id]?.ready)return school.current.compile(project,context,setSchoolStatus);throw Error(info.targets?.[project.board.id]?.message??'Školski prevoditelj nije spreman. Odaberi lokalni prevoditelj ili provjeri školsku prijavu.');}return compileLocal(project);}
+  function cancel(){void school.current.cancel();const p=pending.current;if(p){popup.current?.postMessage({channel:'esp32-lab-compiler',type:'cancel',id:p.id},origin.current);reject('Prevođenje je otkazano.');}}
+  return {connection,message,connect,disconnect,compile,cancel,capabilities,schoolStatus,refreshSchool,mode,setMode};
 }
 export type ArduinoCompiler=ReturnType<typeof useArduinoCompiler>;

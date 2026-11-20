@@ -190,7 +190,7 @@ export function newProject(
     settings: {
       activeFile: entryFile,
       theme: "light",
-      fontSize: 14,
+      fontSize: 16,
       powered: true,
       swapped: false,
       example: "",

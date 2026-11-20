@@ -11,6 +11,7 @@ interface Props {
   value: string;
   theme: "light" | "dark";
   fontSize: number;
+  wrapLines?: boolean;
   onChange: (v: string) => void;
   onRun: () => void;
   onSave: () => void;
@@ -23,6 +24,7 @@ export default function CodeEditor(props: Props) {
     latest = useRef(props),
     theme = useRef(new Compartment()),
     font = useRef(new Compartment()),
+    wrapping = useRef(new Compartment()),
     states = useRef(new Map<string, EditorState>()),
     replacing = useRef(false);
   latest.current = props;
@@ -60,6 +62,7 @@ export default function CodeEditor(props: Props) {
                 spellcheck: "false",
                 autocapitalize: "off",
               }),
+              wrapping.current.of(props.wrapLines ? EditorView.lineWrapping : []),
               theme.current.of(props.theme === "dark" ? oneDark : []),
               font.current.of(
                 EditorView.theme({ "&": { fontSize: `${props.fontSize}px` } }),
@@ -98,13 +101,14 @@ export default function CodeEditor(props: Props) {
   useEffect(() => {
     view.current?.dispatch({
       effects: [
+        wrapping.current.reconfigure(props.wrapLines ? EditorView.lineWrapping : []),
         theme.current.reconfigure(props.theme === "dark" ? oneDark : []),
         font.current.reconfigure(
           EditorView.theme({ "&": { fontSize: `${props.fontSize}px` } }),
         ),
       ],
     });
-  }, [props.theme, props.fontSize, props.path]);
+  }, [props.theme, props.fontSize, props.wrapLines, props.path]);
   useEffect(()=>{
     const editor=view.current,at=props.reveal;if(!editor||!at)return;
     const line=editor.state.doc.line(Math.min(Math.max(1,at.line),editor.state.doc.lines)),pos=Math.min(line.to,line.from+Math.max(0,at.column-1));

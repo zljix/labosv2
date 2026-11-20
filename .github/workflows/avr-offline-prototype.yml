@@ -1,0 +1,83 @@
+name: AVR prototip — potpuna mrežna izolacija
+
+on:
+  push:
+    branches: ['prototype/arduino-offline-avr']
+    paths:
+      - 'prototypes/avr-offline/**'
+      - '.github/workflows/avr-offline-prototype.yml'
+      - 'vendor/arduino/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'src/**'
+      - 'verification/offline-avr.test.ts'
+      - 'verification/compiler-ui.test.tsx'
+      - 'scripts/offline-plugin.mjs'
+      - 'vite.config.ts'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: avr-offline-prototype-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  isolated-browser:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm ci --prefix prototypes/avr-offline/ci
+      - name: Pripremi testni Chromium
+        run: prototypes/avr-offline/ci/node_modules/.bin/playwright install --with-deps chromium
+      - run: npm run prototype:avr:build
+      - name: Potvrdi ponovljivost SDK-a i biblioteka
+        run: git diff --exit-code -- prototypes/avr-offline/runtime-manifest.json prototypes/avr-offline/packed-manifest.json prototypes/avr-offline/core-build-manifest.json prototypes/avr-offline/library-build-manifest.json
+      - name: Provjeri jezgre, paket i dokaz izolacije
+        run: |
+          npm run prototype:avr:test
+          npm run prototype:avr:worker
+          npm run prototype:avr:package
+          node --test prototypes/avr-offline/network-proof.test.mjs
+          node --import tsx --test prototypes/avr-offline/project-bridge.test.ts
+          node --import tsx --test prototypes/avr-offline/libraries.test.ts
+      - name: Spremi paket i zatvori preglednik
+        run: node prototypes/avr-offline/isolated-browser-test.mjs prepare
+      - name: Novi izvori i restart bez mrežnih sučelja
+        shell: bash
+        run: |
+          test_runner_user="$(id -un)"
+          test_node_path="$(command -v node)"
+          sudo unshare --net -- runuser -u "$test_runner_user" -- "$test_node_path" prototypes/avr-offline/isolated-browser-test.mjs isolated
+      - name: Provjeri integraciju u glavno sučelje
+        run: |
+          npm run prototype:avr:integration-test
+          npm run test:compiler-ui
+          LAB_BASE_PATH=/avr-integrated/ npm run prototype:avr:integrated
+          node prototypes/avr-offline/integrated-browser-test.mjs prepare
+      - name: Glavni Labos i restart bez mreže
+        shell: bash
+        run: |
+          test_runner_user="$(id -un)"
+          test_node_path="$(command -v node)"
+          sudo unshare --net -- runuser -u "$test_runner_user" -- "$test_node_path" prototypes/avr-offline/integrated-browser-test.mjs isolated
+      - name: Spremi samo rezultate provjere
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: AVR-offline-proof-${{ github.sha }}
+          path: |
+            .build/avr-isolated-evidence/
+            .build/avr-integrated-evidence/
+            .build/avr-prototype-node-evidence.json
+            .build/avr-library-evidence.json
+          retention-days: 30

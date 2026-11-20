@@ -8,6 +8,8 @@ return [
         'user' => 'labosv2_app',
         'password' => getenv('LAB_DB_PASSWORD') ?: '',
     ],
+    // Enable after tools/compiler-worker.mjs --probe reports ready targets.
+    'interactive_compile' => ['enabled' => false],
     'timezone' => 'Europe/Zagreb',
     // Pruning is CLI-only and affects archived years. Dry-run is the default.
     'retention' => ['revision_days' => 90, 'keep_latest' => 10],

@@ -2,10 +2,16 @@ import { useEffect, useState } from 'react';
 import { APP_BUILD, APP_BASE, appAsset } from './assets';
 
 export interface PackageStatus { ready: boolean; build: string; version: string; count: number; bytes: number }
+export interface StorageStatus { total: number; removable: number; removed: number; blocked: string }
 export interface OfflineState {
   phase: 'development' | 'unavailable' | 'preparing' | 'ready' | 'error';
   message: string; online: boolean; update: boolean; checking: boolean;
   package?: PackageStatus;
+  downloading?: boolean;
+  progress?: { completed: number; total: number; version: string };
+  downloadError?: string;
+  downloadErrorCode?: string;
+  storageNotice?: string;
 }
 export function workerMessage<T>(worker: ServiceWorker, type: string, timeout = 6000): Promise<T> {
   return new Promise((resolve, reject) => {
@@ -15,7 +21,8 @@ export function workerMessage<T>(worker: ServiceWorker, type: string, timeout = 
       clearTimeout(timer); channel.port1.close();
       if (data?.error) reject(Error(data.error)); else resolve(data as T);
     };
-    worker.postMessage({ type }, [channel.port2]);
+    try { worker.postMessage({ type }, [channel.port2]); }
+    catch (error) { clearTimeout(timer); channel.port1.close(); reject(error); }
   });
 }
 let registration: ServiceWorkerRegistration | undefined;
@@ -47,16 +54,29 @@ async function start() {
     if (reloadRequested) { reloadRequested = false; location.reload(); }
     else void inspect();
   });
+  navigator.serviceWorker.addEventListener('message', event => {
+    const source = event.source as ServiceWorker | null, data = event.data;
+    if (source?.scriptURL !== new URL(appAsset('sw.js'), location.href).href) return;
+    if (data?.type === 'LAB_CLIENT_BUILD') { event.ports[0]?.postMessage({ build: APP_BUILD }); return; }
+    if (data?.type === 'LAB_PACKAGE_PROGRESS' && Number.isInteger(data.completed) && Number.isInteger(data.total) && data.total > 0 && data.completed >= 0 && data.completed <= data.total && typeof data.version === 'string') {
+      publish({ downloading: true, progress: { completed: data.completed, total: data.total, version: data.version }, downloadError: undefined, downloadErrorCode: undefined });
+    }
+    if (data?.type === 'LAB_PACKAGE_ERROR' && typeof data.message === 'string') publish({ downloading: false, progress: undefined, downloadError: data.message, downloadErrorCode: data.code });
+    if (data?.type === 'LAB_PACKAGE_READY') publish({ downloading: false, progress: undefined, downloadError: undefined, downloadErrorCode: undefined });
+    if (data?.type === 'LAB_STORAGE_CLEANED' && Number.isInteger(data.removed) && data.removed > 0) publish({ storageNotice: `Uklonjeno zastarjelih paketa: ${data.removed}. Spremanje nove verzije pokušava se ponovno.` });
+  });
   try {
     registration = await navigator.serviceWorker.register(appAsset('sw.js'), { scope: APP_BASE, updateViaCache: 'none' });
     const watch = () => {
       const installing = registration?.installing;
       if (!installing) return;
+      publish({ downloading: true, downloadError: undefined, downloadErrorCode: undefined, progress: undefined, storageNotice: undefined });
       if (!registration?.active) publish({ phase: 'preparing', message: 'Preuzimanje i provjera offline paketa…' });
       installing.addEventListener('statechange', () => {
-        if (installing.state === 'installed') publish({ update: !!registration?.waiting && !!registration?.active });
+        if (installing.state === 'installed') publish({ update: !!registration?.waiting && !!registration?.active, downloading: false, progress: undefined });
         if (installing.state === 'activated') void inspect();
         if (installing.state === 'redundant') {
+          publish({ downloading: false, progress: undefined });
           if (!registration?.active) publish({ phase: 'error', message: 'Offline paket nije preuzet u cijelosti. Provjeri vezu i ponovi preuzimanje.' });
           else publish({ message: 'Nova verzija nije pripremljena. Trenutačni paket ostaje dostupan.' });
         }
@@ -88,8 +108,14 @@ export function useOffline() {
         }
         await inspect();
       }
-    } catch { publish({ message: 'Provjera nove verzije nije uspjela. Za preuzimanje je potrebna mrežna veza.' }); }
+    } catch (error) { publish({ message: 'Provjera ili priprema nove verzije nije uspjela. ' + (error as Error).message }); }
     finally { publish({ checking: false }); }
+  }, storage: async (clean = false): Promise<StorageStatus> => {
+    if (snapshot.downloading || registration?.installing) throw Error('Pričekaj završetak preuzimanja pa ponovno provjeri prostor.');
+    const worker = registration?.waiting ?? registration?.active;
+    if (!worker) throw Error('Offline služba još nije dostupna. Otvori laboratorij uz mrežu pa ponovi provjeru.');
+    try { return await workerMessage<StorageStatus>(worker, clean ? 'LAB_CLEAN_STORAGE' : 'LAB_STORAGE', 8000); }
+    catch (error) { throw Error((error as Error).message + ' Ako je otvorena starija verzija, sačuvaj rad, zatvori druge kartice i ponovno otvori laboratorij uz mrežu.'); }
   }, activate: async () => {
     if (!registration?.waiting) throw Error('Nova verzija još nije potpuno preuzeta.');
     reloadRequested = true;

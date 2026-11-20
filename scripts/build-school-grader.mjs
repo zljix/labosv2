@@ -6,3 +6,5 @@ await build({
   define: {__APP_BASE__: '"/"', __APP_BUILD__: '"school-proof"'},
 });
 console.log('Neovisna provjera 23A: izgrađeni ograničeni izvršni adapteri.');
+
+await build({entryPoints:['school/compiler/runner.mjs'],outfile:'.build/school-grader/runner.mjs',bundle:true,platform:'node',format:'esm',target:'node24'});

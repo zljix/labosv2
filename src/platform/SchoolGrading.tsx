@@ -25,7 +25,7 @@ export function GradingReport({grading}:{grading:any}){
     {observations.length>0&&<details><summary>Opažanja po scenarijima</summary><ul>{observations.map((s,i)=><li key={i}>{s.title}: {s.status==='passed'?'potvrđen':s.status==='failed'?'nije potvrđen':'zabilježena opažanja'}<ul>{s.details.map((line,j)=><li key={j}>{line}</li>)}</ul></li>)}</ul></details>}
   </div>;
 }
-export default function SchoolGrading({binding,revision,saved,rubric}:{binding:SchoolBinding;revision:number;saved:boolean;rubric?:any}){
+export default function SchoolGrading({binding,revision,saved,rubric,expanded=true}:{expanded?:boolean;binding:SchoolBinding;revision:number;saved:boolean;rubric?:any}){
   const api=useRef(new SchoolApi()),[grading,setGrading]=useState<any>(),[error,setError]=useState(''),[busy,setBusy]=useState(false);
   useEffect(()=>{
     let cancelled=false,running=false;
@@ -41,14 +41,14 @@ export default function SchoolGrading({binding,revision,saved,rubric}:{binding:S
     return()=>{cancelled=true;clearInterval(timer);document.removeEventListener('visibilitychange',visible);};
   },[binding.attemptId,binding.userId,binding.origin,revision]);
   return <section className="school-grading" aria-label="Moji službeni bodovi"><h4>Moji bodovi</h4>
-    {rubric&&<details className="school-published-contract" open><summary>Objavljeni službeni uvjeti ove dodjele · {rubric.profileId??'opisna rubrika'}</summary><p>{rubric.instructions}</p>{Array.isArray(rubric.criteria)&&<ul>{rubric.criteria.map((c:any)=><li key={c.id}>{c.description} · {c.maxPoints} bodova</li>)}</ul>}</details>}
-    <div role="status" aria-live="polite"><GradingReport grading={grading}/></div>
+    {rubric&&<details className="school-published-contract" hidden={!expanded}><summary>Objavljeni službeni uvjeti ove dodjele · {rubric.profileId??'opisna rubrika'}</summary><p>{rubric.instructions}</p>{Array.isArray(rubric.criteria)&&<ul>{rubric.criteria.map((c:any)=><li key={c.id}>{c.description} · {c.maxPoints} bodova</li>)}</ul>}</details>}
+    <div role="status" aria-live="polite">{expanded?<GradingReport grading={grading}/>:<p><strong>{gradingLabel(grading)}</strong>{grading?.revision?` · spremljena revizija ${grading.revision}`:''}</p>}</div>
     {!saved&&<p>Ovo je rezultat prethodno spremljene revizije. Lokalne izmjene još nemaju potvrđene bodove.</p>}
     {error&&<p role="alert">{error}</p>}
-    {grading&&!['not_enabled','unsupported'].includes(grading.status)&&<button disabled={busy||!saved||['queued','running'].includes(grading.status)} onClick={()=>{
+    {expanded&&grading&&!['not_enabled','unsupported'].includes(grading.status)&&<button disabled={busy||!saved||['queued','running'].includes(grading.status)} onClick={()=>{
       setBusy(true);setError('');void(async()=>{try{await api.current.session(binding.userId);const value=await api.current.request('request-grade',{attemptId:binding.attemptId,expectedRevision:revision,requestKey:crypto.randomUUID()});setGrading(value.grading);}catch(e){setError((e as Error).message);}finally{setBusy(false);}})();
     }}>Provjeri spremljenu reviziju / ponovi</button>}
-    <p className="lesson-small">Bodove potvrđuje školski poslužitelj za prikazanu reviziju. Završetak zaključava sadržaj; provjera može završiti naknadno.</p>
-    <SchoolFeedback attemptId={binding.attemptId} revision={revision}/>
+    <p hidden={!expanded} className="lesson-small">Bodove potvrđuje školski poslužitelj za prikazanu reviziju. Završetak zaključava sadržaj; provjera može završiti naknadno.</p>
+    <div hidden={!expanded}><SchoolFeedback attemptId={binding.attemptId} revision={revision}/></div>
   </section>;
 }

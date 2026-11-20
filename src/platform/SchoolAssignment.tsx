@@ -33,7 +33,7 @@ export function prepareSchoolAssignment(assignment:any,user:any):Project {
   return parseProject(p);
 }
 
-export default function SchoolAssignment({project,open,confirm}:{project:Project;open:(p:Project)=>Promise<void>;confirm:(binding:SchoolBinding)=>void}) {
+export default function SchoolAssignment({project,open,confirm,expanded=true,onExpand}:{expanded?:boolean;onExpand?:()=>void;project:Project;open:(p:Project)=>Promise<void>;confirm:(binding:SchoolBinding)=>void}) {
   const once=useRef(false),[status,setStatus]=useState('');
   useEffect(()=>{
     if(once.current)return;once.current=true;
@@ -54,8 +54,8 @@ export default function SchoolAssignment({project,open,confirm}:{project:Project
   },[]);
   const a=readSchoolAssignment(project);
   const d=a?.task?.definition,r=a?.task?.rubric;
-  return <><SchoolWork key={project.id} project={project} open={open} confirm={confirm}/>{status&&<div className="notice" role="status">{status} <a href={appAsset('school.html#account')}>Školski račun i vježbe</a></div>}
-    {d&&typeof d.title==='string'&&Array.isArray(r?.criteria)&&<details className="school-task-notice"><summary>Školska kopija · {String(a.className)} · {String(d.code)} · inačica {String(a.task.version)}</summary>
+  return <><SchoolWork expanded={expanded} onExpand={onExpand} key={project.id} project={project} open={open} confirm={confirm}/>{status&&<div className="notice" role="status">{status} <a href={appAsset('school.html#account')}>Školski račun i vježbe</a></div>}
+    {d&&typeof d.title==='string'&&Array.isArray(r?.criteria)&&<details className="school-task-notice" hidden={!expanded}><summary>Školska kopija · {String(a.className)} · {String(d.code)} · inačica {String(a.task.version)}</summary>
       <p>{String(d.goal)}</p>{r.instructions&&<p><b>{String(r.title)}:</b> {String(r.instructions)}</p>}<p><b>Prije početka:</b> {String(d.before)}</p>
       {d.teacherNotes&&<p><b>Uputa nastavnika:</b> {String(d.teacherNotes)}</p>}
       <p><b>Promjena:</b> {String(d.change)}</p><p><b>Kvar i oporavak:</b> {String(d.fault)}</p>

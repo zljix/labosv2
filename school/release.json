@@ -1,6 +1,6 @@
 {
-  "version": "0.14.15-beta.2",
-  "stage": "24Q",
-  "title": "Čitljivost sučelja i upute po varijanti",
-  "acceptance": "technical-review"
+  "version": "0.16.0-beta.1",
+  "stage": "26A",
+  "title": "Arduino offline u pregledniku",
+  "acceptance": "technical-preview"
 }

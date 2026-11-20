@@ -1,0 +1,22 @@
+.project-file-browser{min-width:0}
+.file-search{display:grid;gap:6px;margin:12px;font-size:14px;color:var(--text)}
+.file-search input{width:100%;min-width:0;font:inherit;min-height:36px;padding:8px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--text)}
+.file-search-count,.file-group-help,.file-search-empty{font-size:14px;line-height:1.5;color:var(--muted);padding:0 12px 10px}
+.project-file-browser .file-list{max-height:none;overflow:visible}
+.file-group h3,.project-file-browser .file-group summary{font-size:14px;line-height:1.4;padding:10px 12px;font-weight:650;color:var(--text)}
+.project-file-browser .file-row{font-size:14px;height:auto;min-height:38px;padding:8px 12px;gap:8px;text-align:left}
+.project-file-browser .file-row small{color:var(--muted);letter-spacing:0}
+.project-file-browser .file-type,.file-tabs-bar .file-type{color:var(--muted)}
+.project-file-browser .file-row.selected{color:var(--text);border-left-color:var(--teal)}
+.file-tabs-bar{display:flex;min-width:0;flex-shrink:0;border-bottom:1px solid var(--line);background:var(--raised)}
+.file-tabs-bar .file-tabs{height:auto;min-height:44px;min-width:0;flex:1;border:0}
+.file-tab{display:flex;flex:0 0 auto;max-width:100%;min-width:0;border-right:1px solid var(--line);border-bottom:2px solid transparent}
+.file-tab.active{border-bottom-color:var(--teal);background:var(--surface)}
+.file-tab button{background:transparent;border:0;border-radius:0;color:var(--muted);font-size:14px;min-height:42px}
+.file-tab.active button{color:var(--text)}
+.file-tab [role=tab]{min-width:0;gap:8px;padding:8px 12px}
+.file-tab [role=tab]>span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:240px}
+.file-tab .close-file-tab{flex-shrink:0;min-width:32px;padding:6px;font-size:20px}
+.file-tabs-bar>.new-tab{flex-shrink:0;min-width:44px;border:0;border-radius:0;background:var(--raised);color:var(--text);font-size:22px}
+.file-tab button:focus-visible{outline:2px solid var(--teal);outline-offset:-3px}
+@media(pointer:coarse){.file-tab .close-file-tab{min-width:44px}.project-file-browser .file-row,.file-tab button,.file-search input{min-height:44px}}

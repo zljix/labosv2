@@ -1,3 +1,7 @@
+# Novo izdanje: 0.15.0-beta.1 · 25A
+
+Školski C++ prevoditelj za Uno, Nano i ESP32-S3, dostupan u repozitoriju **labos**. Upute: [STAGE25A_SKOLSKI_PREVODITELJ.md](../docs/STAGE25A_SKOLSKI_PREVODITELJ.md). Školsko prevođenje zahtijeva konfiguriranu PHP/MySQL instalaciju i Linux radni proces; GitHub Pages ostaje statički laboratorij.
+
 # Pripremljeno izdanje · 0.14.15-beta.1 / 24Q
 
 24Q donosi čitljivije panele, istraživačku kopiju, jasniji završetak rada i upute za svih 67 URS varijanti. Lokalna tehnička provjera, ciljani 24Q CI i stolni pregled su provedeni; prihvat stvarnih mobitela i učenički pilot ostaju otvoreni. [Opseg i provjere](../docs/STAGE24Q_PLAN_I_PROVJERA.md).

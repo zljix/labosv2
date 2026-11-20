@@ -7,7 +7,7 @@ import vm from 'node:vm';
 
 test('school ZIP verifies every inventory entry and keeps app, SQL and configuration out of web/', () => {
   const {version,labosRelease:{stage}} = JSON.parse(readFileSync('package.json'));
-  const archive = unzipSync(readFileSync('release/Labosv2_' + version.split('-')[0] + '_'+stage+'_Skolski.zip'));
+  const archive = unzipSync(readFileSync('release/Labos_' + version.split('-')[0] + '_'+stage+'_Skolski.zip'));
   const inventory = JSON.parse(strFromU8(archive['package-inventory.json']));
   assert.equal(inventory.stage, stage); assert.equal(inventory.version, version);
   assert.equal(Object.keys(archive).length, inventory.files.length + 1);
@@ -18,6 +18,7 @@ test('school ZIP verifies every inventory entry and keeps app, SQL and configura
   for (const path of ['app/bootstrap.php', 'migrations/001_accounts.sql', 'migrations/002_class_access.sql', 'tools/console.php', 'web/api/index.php', 'web/school-account.mjs', 'web/school-classes.mjs', 'migrations/003_classes_tasks.sql', 'catalog/catalog.json']) assert(archive[path], path);
   assert.deepEqual(Object.keys(archive).filter(path => path.startsWith('config/')), ['config/config.example.php']);
   assert(archive['checker/.build/school-grader/radio-child.mjs']);
+  for(const path of ['migrations/008_interactive_compile.sql','app/compilation.php','tools/compilation.php','tools/compiler-worker.mjs','checker/.build/school-grader/runner.mjs','apache/labos-compiler.service.example','docs/STAGE25A_SKOLSKI_PREVODITELJ.md'])assert(archive[path],path);
   assert(archive['checker/public/radio-examples.json']);
   assert(archive['docs/stage24m-radio.md']);
   assert(archive['docs/STAGE24Q_PLAN_I_PROVJERA.md']);

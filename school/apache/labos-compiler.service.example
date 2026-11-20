@@ -1,0 +1,22 @@
+[Unit]
+Description=Labos interactive school compiler
+After=network.target mysql.service
+[Service]
+Type=simple
+User=labos
+Group=labos
+WorkingDirectory=/srv/labos
+EnvironmentFile=/srv/labos-private/compiler.env
+ExecStart=/usr/bin/node /srv/labos/tools/compiler-worker.mjs
+Restart=on-failure
+RestartSec=5
+KillMode=control-group
+TimeoutStopSec=15
+MemoryMax=2G
+CPUQuota=100%
+TasksMax=64
+UMask=0077
+# The compiler's bwrap/user namespace needs the existing grading sandbox policy.
+# Do not add RestrictNamespaces=true or a different userns policy here.
+[Install]
+WantedBy=multi-user.target

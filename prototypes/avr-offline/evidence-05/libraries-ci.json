@@ -1,0 +1,482 @@
+{
+  "packageHash": "e5ca9eb29a44c68fcbebe6160d339edc12a13b77d013af8c4c5573c9f2315924",
+  "scope": "Node WASM compilation and Labos AVR simulation; separate browser acceptance required",
+  "cases": [
+    {
+      "board": "uno",
+      "key": "aht10",
+      "libraries": [
+        {
+          "name": "LabAHT10",
+          "version": "1.0.0",
+          "digest": "5e70d85bd5f32a4b5f6bdc05e5062b7d9a4f5b74bf8ca9d6dc943db634627d6d"
+        }
+      ],
+      "elapsedMs": 1240,
+      "flashBytes": 7648,
+      "staticRamBytes": 421,
+      "hexHash": "8ac4b2bcaeb9c215f8e12c797fdbe920c9e49c8a08e2c09392c920eeb468d918",
+      "serial": "AHT10 spreman\r\nT=24.00 C RH=50.00\r\nT=24.00 C RH=50.00\r\n"
+    },
+    {
+      "board": "uno",
+      "key": "servo",
+      "libraries": [
+        {
+          "name": "Servo",
+          "version": "1.2.2",
+          "digest": "6e5e44591f1790f0d1196f83d4a2537fbbe8b782bba249a55b6d2db251c43aa4"
+        }
+      ],
+      "elapsedMs": 1056,
+      "flashBytes": 4154,
+      "staticRamBytes": 229,
+      "hexHash": "3a2f569094c413d1213cee027c635d6228f883b083be96773fc1e66813c329c3",
+      "serial": "Servo=0\r\nServo=90\r\nServo=180\r\nServo=0\r\nServo=90\r\n"
+    },
+    {
+      "board": "uno",
+      "key": "oled",
+      "libraries": [
+        {
+          "name": "U8g2",
+          "version": "2.37.1",
+          "digest": "5f8b4535f5c7837f82569ede8d7381b614ba80455982c59e4ca4e7fc17d43e0b"
+        }
+      ],
+      "elapsedMs": 3859,
+      "flashBytes": 12072,
+      "staticRamBytes": 657,
+      "hexHash": "3b26de854f8c34dd7c07faa76c1f19e15ebd9fd1f2f00c92f3e7fc7bdff5fe6d",
+      "serial": ""
+    },
+    {
+      "board": "uno",
+      "key": "regulator",
+      "libraries": [
+        {
+          "name": "LabAHT10",
+          "version": "1.0.0",
+          "digest": "5e70d85bd5f32a4b5f6bdc05e5062b7d9a4f5b74bf8ca9d6dc943db634627d6d"
+        },
+        {
+          "name": "Servo",
+          "version": "1.2.2",
+          "digest": "6e5e44591f1790f0d1196f83d4a2537fbbe8b782bba249a55b6d2db251c43aa4"
+        },
+        {
+          "name": "U8g2",
+          "version": "2.37.1",
+          "digest": "5f8b4535f5c7837f82569ede8d7381b614ba80455982c59e4ca4e7fc17d43e0b"
+        }
+      ],
+      "elapsedMs": 4109,
+      "flashBytes": 18644,
+      "staticRamBytes": 892,
+      "hexHash": "1dc46c51401a41ad1d4285e5c50a9d6cd5379398e03bc0c833d1af1b0fba3ac8",
+      "serial": "Regulator spreman\r\nT=24.00 RH=50.00 Servo=0\r\n"
+    },
+    {
+      "board": "uno",
+      "key": "bmp180",
+      "libraries": [
+        {
+          "name": "LabI2CSensors",
+          "version": "1.0.0",
+          "digest": "2e40e9a6f13867627ca9e451460107fd6cec8fbe533c447fe850b83f853af266"
+        }
+      ],
+      "elapsedMs": 1068,
+      "flashBytes": 8638,
+      "staticRamBytes": 469,
+      "hexHash": "ccfe9fe6aa2a7937a7e0f002d28ad8821a6dd87a507bb0855cfcb0b8643a63f6",
+      "serial": "BMP180 T=24.00 P=101324\r\nBMP180 T=24.00 P=101324\r\n"
+    },
+    {
+      "board": "uno",
+      "key": "bmp280",
+      "libraries": [
+        {
+          "name": "LabI2CSensors",
+          "version": "1.0.0",
+          "digest": "2e40e9a6f13867627ca9e451460107fd6cec8fbe533c447fe850b83f853af266"
+        }
+      ],
+      "elapsedMs": 1069,
+      "flashBytes": 9942,
+      "staticRamBytes": 470,
+      "hexHash": "8ac768a5579de421c292156dd10552d63ff8b997d3b0df98aac6e93c0d60cc49",
+      "serial": "BMP280 T=24.00 P=101325\r\nBMP280 T=24.00 P=101325\r\n"
+    },
+    {
+      "board": "uno",
+      "key": "am2320",
+      "libraries": [
+        {
+          "name": "LabI2CSensors",
+          "version": "1.0.0",
+          "digest": "2e40e9a6f13867627ca9e451460107fd6cec8fbe533c447fe850b83f853af266"
+        }
+      ],
+      "elapsedMs": 1025,
+      "flashBytes": 7518,
+      "staticRamBytes": 421,
+      "hexHash": "d57b92d029d659e024b37ded313aadd9e18cf308c8cd2e563a2d9104c114c6b8",
+      "serial": "AM2320 T=24.00 RH=50.00\r\n"
+    },
+    {
+      "board": "uno",
+      "key": "oled32",
+      "libraries": [
+        {
+          "name": "U8g2_12832",
+          "version": "2.37.1",
+          "digest": "4ab66ed86f578895534ddb16bccd02fb848dc56c2a1a338422d9b14ec5db3e2c"
+        }
+      ],
+      "elapsedMs": 3842,
+      "flashBytes": 13158,
+      "staticRamBytes": 821,
+      "hexHash": "40670dab8bfaccee68ad241b1305441c2bdd9db3dda9584e4fbf2195b2b2d4df",
+      "serial": "OLED32 brojac=0\r\nOLED32 brojac=1\r\nOLED32 brojac=2\r\n"
+    },
+    {
+      "board": "uno",
+      "key": "lcd1602",
+      "libraries": [
+        {
+          "name": "LabLCD1602",
+          "version": "1.0.0",
+          "digest": "8f751ab9da944db90f2ac6b3690ee3d304128cf6e922e6d2e0510d0c04b90195"
+        }
+      ],
+      "elapsedMs": 1270,
+      "flashBytes": 5798,
+      "staticRamBytes": 441,
+      "hexHash": "400768e4d8e54e3db30cb210b55d41d8126075f7c5db72f51842eb6a486db95f",
+      "serial": "LCD spreman: b=svjetlo d=prikaz\r\nLCD1602 brojac=0\r\nLCD1602 brojac=1\r\nLCD1602 brojac=2\r\n"
+    },
+    {
+      "board": "uno",
+      "key": "lcdWeather",
+      "libraries": [
+        {
+          "name": "LabI2CSensors",
+          "version": "1.0.0",
+          "digest": "2e40e9a6f13867627ca9e451460107fd6cec8fbe533c447fe850b83f853af266"
+        },
+        {
+          "name": "LabLCD1602",
+          "version": "1.0.0",
+          "digest": "8f751ab9da944db90f2ac6b3690ee3d304128cf6e922e6d2e0510d0c04b90195"
+        }
+      ],
+      "elapsedMs": 1155,
+      "flashBytes": 10810,
+      "staticRamBytes": 489,
+      "hexHash": "63d7ceb3007d6aadb3525a229e76633192333f3ac1e1ea78a5987c3395c12aab",
+      "serial": "LCD T=24.00 P=101325\r\nLCD T=24.00 P=101325\r\nLCD T=24.00 P=101325\r\n"
+    },
+    {
+      "board": "uno",
+      "key": "dht11",
+      "libraries": [
+        {
+          "name": "DHT",
+          "version": "1.4.6",
+          "digest": "f61633314452c3e38de431b91a15c26bf7d9051a1cf9bcd0593ee410081f3d36"
+        }
+      ],
+      "elapsedMs": 1026,
+      "flashBytes": 5894,
+      "staticRamBytes": 219,
+      "hexHash": "5dfd506ac1adab866dc73a536e7c7d7cd1658a99327218376d2c5c51d894284b",
+      "serial": "DHT11 T=25.0 C RH=50.0\r\n"
+    },
+    {
+      "board": "uno",
+      "key": "dht22",
+      "libraries": [
+        {
+          "name": "DHT",
+          "version": "1.4.6",
+          "digest": "f61633314452c3e38de431b91a15c26bf7d9051a1cf9bcd0593ee410081f3d36"
+        }
+      ],
+      "elapsedMs": 991,
+      "flashBytes": 5894,
+      "staticRamBytes": 219,
+      "hexHash": "efa59b8f5237ca675d311e1d9cd9f60cd14bacc2112911c8bdd87f236b7d2aee",
+      "serial": "DHT22 T=25.0 C RH=50.0\r\n"
+    },
+    {
+      "board": "uno",
+      "key": "ds18b20",
+      "libraries": [
+        {
+          "name": "DallasTemperature",
+          "version": "4.0.6",
+          "digest": "bcdf73e9dbd7dda3ad3e91c2340b335cbf6ccea6c1cab53f10c7fea675d75323"
+        },
+        {
+          "name": "OneWire",
+          "version": "2.3.8",
+          "digest": "d53be1dcf8b7e07f5b0d3120509ee5808d241bfd8cd2edcb4d22c70fa61611d0"
+        }
+      ],
+      "elapsedMs": 1246,
+      "flashBytes": 8098,
+      "staticRamBytes": 251,
+      "hexHash": "bf437a52509bade596daca93b780190e5fad6fab0a053bd270659959e0c1609a",
+      "serial": "ROM=2823112390012548 T=25.0000 C\r\nROM=2823112390012548 T=25.0000 C\r\n"
+    },
+    {
+      "board": "uno",
+      "key": "bmp280SPI",
+      "libraries": [],
+      "elapsedMs": 1927,
+      "flashBytes": 7686,
+      "staticRamBytes": 254,
+      "hexHash": "0caf79f1f25451bbc927a98df4bd1d2d847472c6e6a754ab40c75ddeb4f91cbb",
+      "serial": "BMP280 SPI T=24.00 P=101325 Pa\r\nBMP280 SPI T=24.00 P=101325 Pa\r\nBMP280 SPI T=24.00 P=101325 Pa\r\n"
+    },
+    {
+      "board": "nano",
+      "key": "aht10",
+      "libraries": [
+        {
+          "name": "LabAHT10",
+          "version": "1.0.0",
+          "digest": "5e70d85bd5f32a4b5f6bdc05e5062b7d9a4f5b74bf8ca9d6dc943db634627d6d"
+        }
+      ],
+      "elapsedMs": 1039,
+      "flashBytes": 7648,
+      "staticRamBytes": 421,
+      "hexHash": "8ac4b2bcaeb9c215f8e12c797fdbe920c9e49c8a08e2c09392c920eeb468d918",
+      "serial": "AHT10 spreman\r\nT=24.00 C RH=50.00\r\nT=24.00 C RH=50.00\r\n"
+    },
+    {
+      "board": "nano",
+      "key": "servo",
+      "libraries": [
+        {
+          "name": "Servo",
+          "version": "1.2.2",
+          "digest": "6e5e44591f1790f0d1196f83d4a2537fbbe8b782bba249a55b6d2db251c43aa4"
+        }
+      ],
+      "elapsedMs": 988,
+      "flashBytes": 4154,
+      "staticRamBytes": 229,
+      "hexHash": "3a2f569094c413d1213cee027c635d6228f883b083be96773fc1e66813c329c3",
+      "serial": "Servo=0\r\nServo=90\r\nServo=180\r\nServo=0\r\nServo=90\r\n"
+    },
+    {
+      "board": "nano",
+      "key": "oled",
+      "libraries": [
+        {
+          "name": "U8g2",
+          "version": "2.37.1",
+          "digest": "5f8b4535f5c7837f82569ede8d7381b614ba80455982c59e4ca4e7fc17d43e0b"
+        }
+      ],
+      "elapsedMs": 3805,
+      "flashBytes": 12072,
+      "staticRamBytes": 657,
+      "hexHash": "3b26de854f8c34dd7c07faa76c1f19e15ebd9fd1f2f00c92f3e7fc7bdff5fe6d",
+      "serial": ""
+    },
+    {
+      "board": "nano",
+      "key": "regulator",
+      "libraries": [
+        {
+          "name": "LabAHT10",
+          "version": "1.0.0",
+          "digest": "5e70d85bd5f32a4b5f6bdc05e5062b7d9a4f5b74bf8ca9d6dc943db634627d6d"
+        },
+        {
+          "name": "Servo",
+          "version": "1.2.2",
+          "digest": "6e5e44591f1790f0d1196f83d4a2537fbbe8b782bba249a55b6d2db251c43aa4"
+        },
+        {
+          "name": "U8g2",
+          "version": "2.37.1",
+          "digest": "5f8b4535f5c7837f82569ede8d7381b614ba80455982c59e4ca4e7fc17d43e0b"
+        }
+      ],
+      "elapsedMs": 4077,
+      "flashBytes": 18644,
+      "staticRamBytes": 892,
+      "hexHash": "1dc46c51401a41ad1d4285e5c50a9d6cd5379398e03bc0c833d1af1b0fba3ac8",
+      "serial": "Regulator spreman\r\nT=24.00 RH=50.00 Servo=0\r\n"
+    },
+    {
+      "board": "nano",
+      "key": "bmp180",
+      "libraries": [
+        {
+          "name": "LabI2CSensors",
+          "version": "1.0.0",
+          "digest": "2e40e9a6f13867627ca9e451460107fd6cec8fbe533c447fe850b83f853af266"
+        }
+      ],
+      "elapsedMs": 1013,
+      "flashBytes": 8638,
+      "staticRamBytes": 469,
+      "hexHash": "ccfe9fe6aa2a7937a7e0f002d28ad8821a6dd87a507bb0855cfcb0b8643a63f6",
+      "serial": "BMP180 T=24.00 P=101324\r\nBMP180 T=24.00 P=101324\r\n"
+    },
+    {
+      "board": "nano",
+      "key": "bmp280",
+      "libraries": [
+        {
+          "name": "LabI2CSensors",
+          "version": "1.0.0",
+          "digest": "2e40e9a6f13867627ca9e451460107fd6cec8fbe533c447fe850b83f853af266"
+        }
+      ],
+      "elapsedMs": 1040,
+      "flashBytes": 9942,
+      "staticRamBytes": 470,
+      "hexHash": "8ac768a5579de421c292156dd10552d63ff8b997d3b0df98aac6e93c0d60cc49",
+      "serial": "BMP280 T=24.00 P=101325\r\nBMP280 T=24.00 P=101325\r\n"
+    },
+    {
+      "board": "nano",
+      "key": "am2320",
+      "libraries": [
+        {
+          "name": "LabI2CSensors",
+          "version": "1.0.0",
+          "digest": "2e40e9a6f13867627ca9e451460107fd6cec8fbe533c447fe850b83f853af266"
+        }
+      ],
+      "elapsedMs": 1002,
+      "flashBytes": 7518,
+      "staticRamBytes": 421,
+      "hexHash": "d57b92d029d659e024b37ded313aadd9e18cf308c8cd2e563a2d9104c114c6b8",
+      "serial": "AM2320 T=24.00 RH=50.00\r\n"
+    },
+    {
+      "board": "nano",
+      "key": "oled32",
+      "libraries": [
+        {
+          "name": "U8g2_12832",
+          "version": "2.37.1",
+          "digest": "4ab66ed86f578895534ddb16bccd02fb848dc56c2a1a338422d9b14ec5db3e2c"
+        }
+      ],
+      "elapsedMs": 3794,
+      "flashBytes": 13158,
+      "staticRamBytes": 821,
+      "hexHash": "40670dab8bfaccee68ad241b1305441c2bdd9db3dda9584e4fbf2195b2b2d4df",
+      "serial": "OLED32 brojac=0\r\nOLED32 brojac=1\r\nOLED32 brojac=2\r\n"
+    },
+    {
+      "board": "nano",
+      "key": "lcd1602",
+      "libraries": [
+        {
+          "name": "LabLCD1602",
+          "version": "1.0.0",
+          "digest": "8f751ab9da944db90f2ac6b3690ee3d304128cf6e922e6d2e0510d0c04b90195"
+        }
+      ],
+      "elapsedMs": 1218,
+      "flashBytes": 5798,
+      "staticRamBytes": 441,
+      "hexHash": "400768e4d8e54e3db30cb210b55d41d8126075f7c5db72f51842eb6a486db95f",
+      "serial": "LCD spreman: b=svjetlo d=prikaz\r\nLCD1602 brojac=0\r\nLCD1602 brojac=1\r\nLCD1602 brojac=2\r\n"
+    },
+    {
+      "board": "nano",
+      "key": "lcdWeather",
+      "libraries": [
+        {
+          "name": "LabI2CSensors",
+          "version": "1.0.0",
+          "digest": "2e40e9a6f13867627ca9e451460107fd6cec8fbe533c447fe850b83f853af266"
+        },
+        {
+          "name": "LabLCD1602",
+          "version": "1.0.0",
+          "digest": "8f751ab9da944db90f2ac6b3690ee3d304128cf6e922e6d2e0510d0c04b90195"
+        }
+      ],
+      "elapsedMs": 1153,
+      "flashBytes": 10810,
+      "staticRamBytes": 489,
+      "hexHash": "63d7ceb3007d6aadb3525a229e76633192333f3ac1e1ea78a5987c3395c12aab",
+      "serial": "LCD T=24.00 P=101325\r\nLCD T=24.00 P=101325\r\nLCD T=24.00 P=101325\r\n"
+    },
+    {
+      "board": "nano",
+      "key": "dht11",
+      "libraries": [
+        {
+          "name": "DHT",
+          "version": "1.4.6",
+          "digest": "f61633314452c3e38de431b91a15c26bf7d9051a1cf9bcd0593ee410081f3d36"
+        }
+      ],
+      "elapsedMs": 1009,
+      "flashBytes": 5894,
+      "staticRamBytes": 219,
+      "hexHash": "5dfd506ac1adab866dc73a536e7c7d7cd1658a99327218376d2c5c51d894284b",
+      "serial": "DHT11 T=25.0 C RH=50.0\r\n"
+    },
+    {
+      "board": "nano",
+      "key": "dht22",
+      "libraries": [
+        {
+          "name": "DHT",
+          "version": "1.4.6",
+          "digest": "f61633314452c3e38de431b91a15c26bf7d9051a1cf9bcd0593ee410081f3d36"
+        }
+      ],
+      "elapsedMs": 1048,
+      "flashBytes": 5894,
+      "staticRamBytes": 219,
+      "hexHash": "efa59b8f5237ca675d311e1d9cd9f60cd14bacc2112911c8bdd87f236b7d2aee",
+      "serial": "DHT22 T=25.0 C RH=50.0\r\n"
+    },
+    {
+      "board": "nano",
+      "key": "ds18b20",
+      "libraries": [
+        {
+          "name": "DallasTemperature",
+          "version": "4.0.6",
+          "digest": "bcdf73e9dbd7dda3ad3e91c2340b335cbf6ccea6c1cab53f10c7fea675d75323"
+        },
+        {
+          "name": "OneWire",
+          "version": "2.3.8",
+          "digest": "d53be1dcf8b7e07f5b0d3120509ee5808d241bfd8cd2edcb4d22c70fa61611d0"
+        }
+      ],
+      "elapsedMs": 1208,
+      "flashBytes": 8098,
+      "staticRamBytes": 251,
+      "hexHash": "bf437a52509bade596daca93b780190e5fad6fab0a053bd270659959e0c1609a",
+      "serial": "ROM=2823112390012548 T=25.0000 C\r\nROM=2823112390012548 T=25.0000 C\r\n"
+    },
+    {
+      "board": "nano",
+      "key": "bmp280SPI",
+      "libraries": [],
+      "elapsedMs": 1861,
+      "flashBytes": 7686,
+      "staticRamBytes": 254,
+      "hexHash": "0caf79f1f25451bbc927a98df4bd1d2d847472c6e6a754ab40c75ddeb4f91cbb",
+      "serial": "BMP280 SPI T=24.00 P=101325 Pa\r\nBMP280 SPI T=24.00 P=101325 Pa\r\nBMP280 SPI T=24.00 P=101325 Pa\r\n"
+    }
+  ]
+}

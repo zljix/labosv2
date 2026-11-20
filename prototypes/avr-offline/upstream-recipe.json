@@ -1,0 +1,15 @@
+{
+  "commit": "58a15c764b5f0b3b8ac9134ec040a552c35b59ce",
+  "files": [
+    {
+      "name": "build.sh",
+      "url": "https://raw.githubusercontent.com/pcbkit-io/toolchain/58a15c764b5f0b3b8ac9134ec040a552c35b59ce/avr/build.sh",
+      "sha256": "c5c36903409f2db9088ff82880389c50452c17666e9254096adf519f0bbff53f"
+    },
+    {
+      "name": "Dockerfile",
+      "url": "https://raw.githubusercontent.com/pcbkit-io/toolchain/58a15c764b5f0b3b8ac9134ec040a552c35b59ce/avr/Dockerfile",
+      "sha256": "69aaea3c12f454df7615542d587e4b178599e62c4925710431eb84f9eab9b17d"
+    }
+  ]
+}

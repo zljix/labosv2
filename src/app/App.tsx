@@ -1,5 +1,6 @@
 import {investigationProject} from '../lessons/workflow';
 import ActionGroup from './ActionGroup';
+import {ProjectFiles, FileTabs, fileTabId} from './ProjectFiles';
 import {tabKeys} from '../platform/tabs';
 import RadioPanel from '../radio/RadioPanel';
 import {opticalExamples,opticalCircuit,type OpticalExample} from '../circuit/max30102Examples';
@@ -13,6 +14,7 @@ import {
   lazy,
   Suspense,
   type FormEvent,
+  type CSSProperties,
   type ReactNode,
 } from "react";
 import { examples } from "../../public/examples.mjs";
@@ -61,6 +63,8 @@ import {UNO} from '../boards/profiles';
 import {AVR_BUILD_FILE,AVR_LIBRARY_FILE,validArduinoPath} from '../../public/avr-contract.mjs';
 import {buildInput,buildFile,validateArtifact} from '../../public/arduino-contract.mjs';
 import {s3Examples,loadS3Example,type S3Example} from '../runtime/s3Examples';
+import OfflineAvrPanel from '../runtime/OfflineAvrPanel';
+import {OFFLINE_AVR,prefersOffline,loadOffline,preferStandard,importIntegratedProject,saveOffline} from '../runtime/offlineAvr';
 import {useArduinoCompiler} from '../runtime/useArduinoCompiler';
 import {cachedBuild} from '../runtime/arduinoBuild';
 import {APP_VERSION,APP_STAGE,APP_RELEASE_TITLE} from '../platform/assets';
@@ -325,6 +329,14 @@ export default function App() {
   const ws = useWorkspace(notify),
     p = ws.project,
     runtime = useRuntime();
+  const [filesOpen,setFilesOpen]=useState(false),[workOpen,setWorkOpen]=useState(false),[codeExpanded,setCodeExpanded]=useState(false);
+  const [outputOpen,setOutputOpen]=useState(false),[outputHeight,setOutputHeight]=useState(180),[split,setSplit]=useState(50);
+  const workspaceRef=useRef<HTMLElement>(null);
+  const [wrapLines,setWrapLines]=useState(false);
+  useEffect(()=>{setOutputOpen(false);setCodeExpanded(false);},[p?.id]);
+  useEffect(()=>{if(runtime.state==='error'){setOutputOpen(true);setTab('console');}},[runtime.state]);
+  useEffect(()=>{if(labTab==='lesson'){setFilesOpen(false);setExpandedCircuit(false);setCodeExpanded(false);}},[labTab]);
+  const showInstructions=()=>{setLabTab('lesson');setFilesOpen(false);setMobileTab('lesson');setExpandedCircuit(false);setCodeExpanded(false);};
   const [teacher,setTeacher] = useState(false);
   const [reviewSession,setReviewSession]=useState<ReviewSession>(emptyReviewSession),[reviewBusy,setReviewBusy]=useState(false);
   const reviewBusyRef=useRef(false);reviewBusyRef.current=reviewBusy;
@@ -376,6 +388,15 @@ export default function App() {
       setWorking(false);
     }
   }
+  function closeSidePanel(panel: 'files'|'lesson') {
+    if(panel==='files')setFilesOpen(false);else setLabTab('circuit');
+    setMobileTab('lab');
+    requestAnimationFrame(()=>{
+      const trigger=document.querySelector<HTMLButtonElement>(`button[aria-controls="${panel==='files'?'project-files':'lesson-instructions'}"]`);
+      if(trigger?.getClientRects().length)trigger.focus();
+      else document.querySelector<HTMLButtonElement>('.mobile-tabs button[aria-pressed="true"]')?.focus();
+    });
+  }
   function openDialog(next: Dialog, value = "") {
     setFormError("");
     if(next === "new"){setNewBoard(p?.board.id??S3);setNewLanguage(p?.language??'micropython');}
@@ -400,12 +421,12 @@ export default function App() {
     await action(async () => {
       if (file.size > LIMITS.archiveBytes)
         throw Error("Najveća veličina paketa je 2 MiB.");
-      const next = importProject(
-        new Uint8Array(await file.arrayBuffer()),
-        file.name,
-      );
+      const bytes=new Uint8Array(await file.arrayBuffer());
+      const imported=OFFLINE_AVR?await importIntegratedProject(bytes,file.name):{project:importProject(bytes,file.name),result:null};
+      const next=imported.project,copy=forkProject(next);
       runtime.stop();
-      await ws.add(forkProject(next));
+      await ws.add(copy);
+      if(OFFLINE_AVR&&imported.result)await saveOffline(copy,imported.result);
       setDialog(null);
       setLabTab(readWork(next)||next.files[URS_WORK]?"lesson":"circuit");setMobileTab("lab");
       notify("Projekt je uvezen kao zasebna kopija. Program nije pokrenut.");
@@ -490,7 +511,7 @@ export default function App() {
       const drivers=lesson.number>=4?await loadPeripheralDrivers():{};
       const next=createLessonProject(id,drivers,solution);
       runtime.stop();lessonCheck.cancel();await ws.add(next);
-      setDialog(null);setTeacher(solution);setLabTab("lesson");setMobileTab("lab");setExpandedCircuit(false);
+      setDialog(null);setTeacher(solution);setLabTab("lesson");setMobileTab("lesson");setExpandedCircuit(false);
       notify(solution?"Otvoren je zaseban nastavnički uzorak.":"Otvorena je vježba. Počni čitanjem novih pojmova i uputa.");
     });
   }
@@ -502,7 +523,7 @@ export default function App() {
     await action(async()=>{
       const next=await createUrsProject(lesson,variant,target,peer);
       await ws.flush();runtime.stop();lessonCheck.cancel();await ws.add(next);
-      setDialog(null);setTeacher(false);setLabTab('lesson');setMobileTab('lab');setExpandedCircuit(false);
+      setDialog(null);setTeacher(false);setLabTab('lesson');setMobileTab('lesson');setExpandedCircuit(false);
       notify('Otvorena je URS vježba. Pročitaj pojmove, pregledaj spojeve i početni program.');
     });
   }
@@ -522,7 +543,7 @@ export default function App() {
   function reviewImport(){setTeacher(true);openDialog("import");}
   async function openClassSubmission(project:Parameters<typeof forkProject>[0]){
     await ws.flush();runtime.stop(true);lessonCheck.cancel();
-    await ws.add(forkProject(project));setTeacher(true);setDialog(null);setLabTab('lesson');setMobileTab('lab');setExpandedCircuit(false);
+    await ws.add(forkProject(project));setTeacher(true);setDialog(null);setLabTab('lesson');setMobileTab('lesson');setExpandedCircuit(false);
     notify('Otvorena je zaustavljena kopija predaje. Za nastavak bilješki otvori Pregled razreda.');
   }
   async function updateApplication() {
@@ -619,27 +640,28 @@ export default function App() {
   const s = p.settings,
     active = s.activeFile,
     example = s.example.startsWith("optical-") ? opticalExamples[s.example.slice(8) as OpticalExample] : s.example.startsWith("sd-") ? sdExamples[s.example.slice(3) as SDExample] : s.example.startsWith("rtc-") ? rtcExamples[s.example.slice(4) as RTCExample] : s.example.startsWith("s3-") ? s3Examples[s.example.slice(3) as S3Example] : s.example.startsWith("avr-") ? arduinoExamples[s.example.slice(4) as ArduinoExample] : s.example.startsWith("env-") ? environmentExamples[s.example.slice(4) as EnvironmentExample] : s.example === "peripheral-regulator" ? peripheralExample : s.example.startsWith("basic-") ? basicExamples[s.example.slice(6) as BasicExample] : (examples as Record<string, { hint: string }>)[s.example];
-  const run = async () => {
+  const run = async (reset=false) => {
     if(p?.radio){runtime.stop(true);openDialog("radio");return;}
     const ticket=++runTicket.current;
     setTab("console");
+    setOutputOpen(true);
     if(!availability.available){notify(availability.message);return;}
     if(lessonCheck.busy)return;
     if(p.language==='arduino-cpp'){
-      try{const snapshot=clone(p),raw=snapshot.files[buildFile(snapshot)];let a:any=null;try{if(raw)a=await validateArtifact(snapshot,JSON.parse(raw));}catch{}if(!a){a=await cachedBuild(snapshot);if(!a)throw Error('Najprije prevedi program.');snapshot.files[buildFile(snapshot)]=JSON.stringify(a);}if(ticket!==runTicket.current||liveProject.current?.id!==snapshot.id||liveProject.current?.revision!==snapshot.revision)return;void runtime.run(snapshot);}
+      try{const snapshot=clone(p);if(OFFLINE_AVR&&prefersOffline(snapshot)){const artifact=await loadOffline(snapshot);if(ticket!==runTicket.current||liveProject.current?.id!==snapshot.id||liveProject.current?.revision!==snapshot.revision)return;void runtime.run(snapshot,reset,artifact);return;}const raw=snapshot.files[buildFile(snapshot)];let a:any=null;try{if(raw)a=await validateArtifact(snapshot,JSON.parse(raw));}catch{}if(!a){a=await cachedBuild(snapshot);if(!a)throw Error('Najprije prevedi program.');snapshot.files[buildFile(snapshot)]=JSON.stringify(a);}if(ticket!==runTicket.current||liveProject.current?.id!==snapshot.id||liveProject.current?.revision!==snapshot.revision)return;void runtime.run(snapshot,reset);}
       catch{openDialog('arduino');notify('Prevedi aktualni izvor prije pokretanja.');}
-    }else void runtime.run(clone(p));
+    }else void runtime.run(clone(p),reset);
   };
   return (
     <div className="app-shell">
       <a className="skip-link" href="#workspace">Prijeđi na radno područje</a>
       <header className="topbar">
-        <a href={appAsset('')} className="brand" aria-label="ESP32 MicroPython Lab">
+        <a href={appAsset('')} className="brand" aria-label="Labos · početna stranica">
           <span className="brand-icon">
             <Icon name="chip" size={23} />
           </span>
           <span>
-            ESP32 <b>Lab</b>
+            <b>Labos</b>
             <small>MICROPYTHON · ARDUINO</small>
           </span>
         </a>
@@ -681,7 +703,7 @@ export default function App() {
           >
             <Icon name={s.theme === "light" ? "moon" : "sun"} />
           </button>
-          <a className="stage-tag" href={appAsset('school.html')} title={'Školsko izdanje · '+APP_RELEASE_TITLE}>v{APP_VERSION} · {APP_STAGE}</a>
+          <a className="stage-tag" href={appAsset('school.html')} title={'Školsko izdanje · '+APP_RELEASE_TITLE}>v{APP_VERSION}</a>
         </div>
       </header>
       <div className="toolbar">
@@ -689,6 +711,9 @@ export default function App() {
           <button onClick={() => openDialog("lessons")} disabled={working}>
             <Icon name="code" /> Vježbe
           </button>
+          <button className="desktop-panel-action" aria-expanded={filesOpen} aria-controls="project-files" onClick={()=>{setFilesOpen(v=>!v);setLabTab('circuit');setMobileTab(filesOpen?'lab':'files');}}>Datoteke</button>
+          {(readWork(p)||readUrsWork(p))&&<button className="desktop-panel-action" aria-expanded={labTab==='lesson'} aria-controls="lesson-instructions" onClick={()=>labTab==='lesson'?(setLabTab('circuit'),setMobileTab('lab')):showInstructions()}>Upute</button>}
+          <button aria-expanded={workOpen} aria-controls="my-work" onClick={()=>setWorkOpen(v=>!v)}>Moj rad</button>
           <ActionGroup title="Projekt">
           <button
             onClick={() => openDialog("new", "Novi projekt")}
@@ -726,22 +751,21 @@ export default function App() {
             <Icon name="history" />
             <span className="history-text">Povijest</span>
           </button>
-          </ActionGroup>
-          <ActionGroup title="Nastavnik">
-          <button onClick={() => {setTeacher(true);setLabTab("lesson");setMobileTab("lab");}}>Pregled predaje</button>
-          <button onClick={()=>openDialog('class-review')} disabled={working||reviewBusy}>Pregled razreda</button>
-          </ActionGroup>
-          <ActionGroup title="Daljnji alati">
           <button onClick={()=>{runtime.stop(true);lessonCheck.cancel();openDialog("radio");}} disabled={working}>Dva čvora</button>
           </ActionGroup>
+          <ActionGroup title="Nastavnik">
+          <button onClick={() => {setTeacher(true);showInstructions();}}>Pregled predaje</button>
+          <button onClick={()=>openDialog('class-review')} disabled={working||reviewBusy}>Pregled razreda</button>
+          </ActionGroup>
+
         </div>
         <div className="run-actions">
           {p.language==='arduino-cpp'&&<button onClick={()=>openDialog('arduino')}>Prevedi</button>}
-          <span className={`runtime-status ${runtime.state}`}>
+          <button className={`runtime-status ${runtime.state}`} onClick={()=>{setTab('console');setOutputOpen(true);setMobileTab('output');}} aria-label={'Otvori izlaz: '+runLabels[runtime.state]}>
             <span className="dot" />
             {runLabels[runtime.state]}
-          </span>
-          <button className="run-button" onClick={run} disabled={runtime.busy || lessonCheck.busy || !availability.available} title={availability.message}>
+          </button>
+          <button className="run-button" onClick={()=>void run()} disabled={runtime.busy || lessonCheck.busy || !availability.available} title={availability.message}>
             <Icon name="play" size={16} />
             Pokreni
           </button>
@@ -756,7 +780,7 @@ export default function App() {
           </button>
           <button
             className="icon-button"
-            onClick={() => {if(p.radio){runtime.stop(true);openDialog("radio");}else if(!lessonCheck.busy)void runtime.run(clone(p), true);}}
+            onClick={() => {if(p.radio){runtime.stop(true);openDialog("radio");}else if(!lessonCheck.busy)void run(true);}}
             disabled={lessonCheck.busy || !availability.available}
             title="Resetiraj i pokreni u čistom okruženju"
             aria-label="Resetiraj program"
@@ -765,7 +789,7 @@ export default function App() {
           </button>
         </div>
       </div>
-      {p.language==='arduino-cpp'&&<div className="target-strip" role="status"><span><b>{boardProfile.title} · Arduino C/C++</b> — {p.board.id===S3?'funkcionalni WASM':'AVR simulacija'} · {compiler.connection==='connected'?'lokalni prevoditelj povezan':'novi izvor: poveži lokalni prevoditelj u prozoru Prevedi'}.</span>{p.board.id!==S3&&<span className={`avr-indicator ${runtime.simulation?.gpios[13]?.level===1?'on':''}`}><i/>LED L · D13</span>}<button onClick={()=>openDialog('arduino')}>Prevođenje i program</button><button onClick={()=>openDialog('matrix')}>Matrica podrške</button></div>}
+      {p.language==='arduino-cpp'&&<div className="target-strip" role="status"><span><b>{boardProfile.title} · Arduino C/C++</b> — {p.board.id===S3?'funkcionalni WASM':'AVR simulacija'} · {OFFLINE_AVR&&prefersOffline(p)?'offline prototip u pregledniku':compiler.mode==='school'&&compiler.capabilities.targets?.[p.board.id]?.ready?'školski prevoditelj spreman':compiler.connection==='connected'?'lokalni prevoditelj povezan':'odaberi prevoditelj u prozoru Prevedi'}.</span>{p.board.id!==S3&&<span className={`avr-indicator ${runtime.simulation?.gpios[13]?.level===1?'on':''}`}><i/>LED L · D13</span>}<button onClick={()=>openDialog('arduino')}>Prevođenje i program</button><button onClick={()=>openDialog('matrix')}>Matrica podrške</button></div>}
       {(offline.update || !offline.online) && <div className="offline-strip" role="status"><span>{offline.update ? 'Nova verzija je pripremljena. Projekt spremi prije ažuriranja.' : offline.phase === 'ready' ? 'Radiš bez mreže. Projekti se spremaju u ovom pregledniku.' : 'Nema mreže; offline paket još nije potvrđen. Sačuvaj ZIP projekta.'}</span><button onClick={() => openDialog('system')}>Otvori status</button></div>}
       <input
         ref={importRef}
@@ -777,11 +801,16 @@ export default function App() {
           e.target.value = "";
         }}
       />
-      <SchoolAssignment project={p} confirm={binding=>{if(binding.status==='locked'){runtime.stop();lessonCheck.cancel();}ws.change('Potvrda školskog spremanja',next=>{if(next.id===p.id)next.files['school-attempt.json']=JSON.stringify(binding);},false);}} open={async next=>{
+      <SchoolAssignment expanded={workOpen} onExpand={()=>setWorkOpen(true)} project={p} confirm={binding=>{if(binding.status==='locked'){runtime.stop();lessonCheck.cancel();}ws.change('Potvrda školskog spremanja',next=>{if(next.id===p.id)next.files['school-attempt.json']=JSON.stringify(binding);},false);}} open={async next=>{
         setWorking(true);
-        try{await ws.flush();runtime.stop();lessonCheck.cancel();await ws.add(next);setLabTab('lesson');setMobileTab('lab');setExpandedCircuit(false);setTeacher(false);notify('Otvorena je školska vježba. Provjeri stanje spremanja iznad radnog područja.');}
+        try{await ws.flush();runtime.stop();lessonCheck.cancel();await ws.add(next);setLabTab('lesson');setMobileTab('lesson');setExpandedCircuit(false);setTeacher(false);notify('Otvorena je školska vježba. Provjeri stanje spremanja iznad radnog područja.');}
         finally{setWorking(false);}
       }}/>
+      {!readSchoolBinding(p)&&<section id="my-work" className="local-work" hidden={!workOpen} aria-label="Moj lokalni rad">
+        <div><h2>Moj rad · lokalni projekt</h2><p>{saveLabels[ws.status]}. ZIP sadrži sve datoteke, sklop i unesene odgovore. Izvoz nije službena školska predaja.</p></div>
+        <button onClick={()=>void action(ws.flush)}>Spremi sada</button><button onClick={()=>exportProject()}>Izvezi rad ZIP</button>
+        {(readWork(p)||readUrsWork(p))&&<button onClick={showInstructions}>Odgovori i završetak vježbe</button>}
+      </section>}
       {ws.error && (
         <div className="error-banner" role="alert">
           <span>{ws.error}</span>
@@ -801,22 +830,29 @@ export default function App() {
       <nav className="mobile-tabs" aria-label="Područja radnog okruženja">
         {[
           ["files", "Datoteke"],
-          ["lab", "Laboratorij"],
+          ["lesson", "Upute"],
+          ["lab", "Sklop"],
           ["code", "Kôd"],
+          ["output", "Izlaz"],
         ].map(([id, title]) => (
           <button
             key={id}
             className={mobileTab === id ? "selected" : ""}
-            onClick={() => setMobileTab(id)}
+            aria-pressed={mobileTab===id}
+            onClick={() => {setMobileTab(id);if(id==='lesson')showInstructions();if(id==='files')setFilesOpen(true);if(id==='output')setOutputOpen(true);}}
           >
             {title}
           </button>
         ))}
       </nav>
-      <main id="workspace" tabIndex={-1} inert={readSchoolBinding(p)?.status==='locked'} hidden={readSchoolBinding(p)?.status==='locked'} className={`workspace ${readSchoolBinding(p)?.status==='locked'?'school-locked-workspace':''} ${labTab === "lesson" ? "lesson-focus" : ""} show-${mobileTab} ${labTab === "circuit" && expandedCircuit ? "circuit-focus" : ""}`}>
-        <aside className="sidebar">
+      <main ref={workspaceRef} id="workspace" tabIndex={-1} inert={readSchoolBinding(p)?.status==='locked'} hidden={readSchoolBinding(p)?.status==='locked'}
+        style={{'--split-left':split+'fr','--split-right':(100-split)+'fr','--output-height':(outputOpen?outputHeight:44)+'px'} as CSSProperties}
+        className={`workspace ${filesOpen?'files-open':''} ${labTab==='lesson'?'instructions-open':''} show-${mobileTab} ${expandedCircuit?'circuit-focus':''} ${codeExpanded?'code-focus':''} ${outputOpen?'output-open':'output-closed'}`}>
+
+        <aside id="project-files" className="sidebar" aria-label="Datoteke projekta">
           <div className="section-heading">
-            PROJEKT
+            DATOTEKE
+            <button onClick={()=>closeSidePanel("files")} aria-label="Sklopi datoteke">×</button>
             <button
               className="icon-button"
               onClick={() => openDialog("files", p.language==="micropython"?"pomoc.py":"pomoc.h")}
@@ -830,32 +866,10 @@ export default function App() {
             <strong title={p.title}>{p.title}</strong>
             <span>{Object.keys(p.files).length}</span>
           </div>
-          <div className="file-list">
-            {Object.keys(p.files)
-              .sort((a, b) =>
-                a === p.entryFile ? -1 : b === p.entryFile ? 1 : a.localeCompare(b),
-              )
-              .map((path) => (
-                <button
-                  key={path}
-                  className={`file-row ${path === active ? "selected" : ""}`}
-                  onClick={() => {
-                    ws.change("Odabrana datoteka", (n) => {
-                      n.settings.activeFile = path;
-                    });
-                    setMobileTab("code");
-                  }}
-                >
-                  <span
-                    className={`file-type ${path.endsWith(".py") ? "python" : ""}`}
-                  >
-                    {path.endsWith(".py") ? "py" : "{ }"}
-                  </span>
-                  <span title={path}>{path}</span>
-                  {path === p.entryFile && <small>ULAZ</small>}
-                </button>
-              ))}
-          </div>
+          <ProjectFiles key={p.id} files={p.files} active={active} entryFile={p.entryFile} onSelect={path => {
+            ws.change('Odabrana datoteka', n => {n.settings.activeFile = path;});
+            setMobileTab('code');
+          }}/>
           <button
             className="add-file"
             onClick={() => openDialog("files", p.language==="micropython"?"pomoc.py":"pomoc.h")}
@@ -863,7 +877,7 @@ export default function App() {
             <Icon name="plus" size={14} />
             Nova datoteka
           </button>
-          <button className="lesson-nav" onClick={()=>{setLabTab("lesson");setMobileTab("lab");}}><Icon name="code"/><b>{readWork(p)||readUrsWork(p)?"Upute, opažanja i predaja":"Nastavne vježbe · V1–5 i URS"}</b></button>
+
           <details className="sidebar-section example-library"><summary>Primjeri i pokusi jezgre</summary>
             <div className="section-heading">ESP32-S3 · ARDUINO C++</div>
             {Object.entries(s3Examples).map(([key,e],i)=><button key={key} className="example-row" disabled={working} onClick={()=>void action(async()=>{const next=await loadS3Example(key as S3Example);runtime.stop();await ws.add(next);setLabTab('circuit');setExpandedCircuit(false);setMobileTab('lab');notify('Otvoren je S3 C++ primjer. Pokreni simulaciju.');})}><span>{i+1}</span><b>{e.title}</b></button>)}
@@ -902,34 +916,37 @@ export default function App() {
             </a>
           </div>
         </aside>
+        <aside id="lesson-instructions" className="instructions-panel" aria-label="Upute za vježbu">
+          <div className="panel-heading"><h2>Upute za vježbu</h2><button onClick={()=>closeSidePanel("lesson")} aria-label="Sklopi upute">×</button></div>
+          {p.files[URS_WORK] && <UrsPanel key={p.id} project={p} change={work=>ws.change('URS odgovori i opažanja',n=>{n.files[URS_WORK]=JSON.stringify(work,null,2);})}
+            busy={working||runtime.busy||lessonCheck.busy} teacher={teacher} toggleTeacher={()=>setTeacher(v=>!v)} catalog={()=>openDialog('lessons')} circuit={()=>{setLabTab('circuit');setMobileTab('lab');}} run={run} radio={()=>openDialog('radio')}
+            investigate={()=>void action(async()=>{await ws.flush();runtime.stop();lessonCheck.cancel();await ws.add(investigationProject(p));setLabTab('lesson');notify('Otvorena je lokalna istraživačka kopija. Izvorni pokušaj ostao je u Projektima.');})} record={()=>void recordUrs()} submit={()=>void submitUrs()} review={(verdict,note)=>void reviewUrs(verdict,note)} importReview={reviewImport}/>}
+          {!p.files[URS_WORK] && <LessonPanel project={p}
+            change={work=>ws.change("Odgovori vježbe",n=>{n.files[WORK_FILE]=JSON.stringify(work,null,2);})}
+            busy={lessonCheck.busy} progress={lessonCheck.progress} run={()=>{runtime.stop();void lessonCheck.run();}} cancel={lessonCheck.cancel}
+            submit={()=>void submitLesson()} circuit={()=>{setLabTab('circuit');setMobileTab('lab');}} catalog={()=>openDialog("lessons")}
+            teacher={teacher} toggleTeacher={()=>setTeacher(v=>!v)} importReview={reviewImport}/>}
+        </aside>
         <section className="lab-panel" aria-label="Laboratorij">
           <div className="panel-heading">
             <div>
               <Icon name="chip" size={17} />
-              <h1>Laboratorij</h1>
+              <h1>Sklop</h1>
             </div>
-            <span className="subtle-tag">{labTab === "lesson" ? "UČENJE I PREDAJA" : labTab === "circuit" ? "SASTAVLJANJE" : "ISPITNI SKLOP"}</span>
+            <span className="subtle-tag">{labTab === "lesson" ? "UČENJE I PREDAJA" : labTab !== "fixture" ? "SASTAVLJANJE" : "ISPITNI SKLOP"}</span>
           </div>
           <div className="lab-view-tabs" role="tablist" aria-label="Način laboratorija" onKeyDown={tabKeys}>
-            <button role="tab" id="lab-tab-lesson" aria-controls="lab-content" tabIndex={labTab === "lesson"?0:-1} aria-selected={labTab === "lesson"} className={labTab === "lesson" ? "selected" : ""} onClick={()=>setLabTab("lesson")}>Vježba</button>
-            <button role="tab" id="lab-tab-circuit" aria-controls="lab-content" tabIndex={labTab === "circuit"?0:-1} aria-selected={labTab === "circuit"} className={labTab === "circuit" ? "selected" : ""} onClick={() => setLabTab("circuit")}>Sastavljanje</button>
+
+            <button role="tab" id="lab-tab-circuit" aria-controls="lab-content" tabIndex={labTab !== "fixture"?0:-1} aria-selected={labTab !== "fixture"} className={labTab !== "fixture" ? "selected" : ""} onClick={() => setLabTab("circuit")}>Sastavljanje</button>
             <button role="tab" id="lab-tab-fixture" aria-controls="lab-content" tabIndex={labTab === "fixture"?0:-1} aria-selected={labTab === "fixture"} className={labTab === "fixture" ? "selected" : ""} onClick={() => setLabTab("fixture")}>Pokusi jezgre</button>
           </div>
-          <div id="lab-content" role="tabpanel" aria-labelledby={`lab-tab-${labTab}`} tabIndex={0} className="lab-tab-content">
-          {labTab === 'lesson' && p.files[URS_WORK] && <UrsPanel key={p.id} project={p} change={work=>ws.change('URS odgovori i opažanja',n=>{n.files[URS_WORK]=JSON.stringify(work,null,2);})}
-            busy={working||runtime.busy||lessonCheck.busy} teacher={teacher} toggleTeacher={()=>setTeacher(v=>!v)} catalog={()=>openDialog('lessons')} circuit={()=>setLabTab('circuit')} run={run} radio={()=>openDialog('radio')}
-            investigate={()=>void action(async()=>{await ws.flush();runtime.stop();lessonCheck.cancel();await ws.add(investigationProject(p));setLabTab('lesson');notify('Otvorena je lokalna istraživačka kopija. Izvorni pokušaj ostao je u Projektima.');})} record={()=>void recordUrs()} submit={()=>void submitUrs()} review={(verdict,note)=>void reviewUrs(verdict,note)} importReview={reviewImport}/>}
-          {labTab === "lesson" && !p.files[URS_WORK] && <LessonPanel project={p}
-            change={work=>ws.change("Odgovori vježbe",n=>{n.files[WORK_FILE]=JSON.stringify(work,null,2);})}
-            busy={lessonCheck.busy} progress={lessonCheck.progress} run={()=>{runtime.stop();void lessonCheck.run();}} cancel={lessonCheck.cancel}
-            submit={()=>void submitLesson()} circuit={()=>setLabTab("circuit")} catalog={()=>openDialog("lessons")}
-            teacher={teacher} toggleTeacher={()=>setTeacher(v=>!v)} importReview={reviewImport}/>}
-          {labTab === "circuit" && <CircuitEditor key={p.id} circuit={p.circuit} language={p.language}
+          <div id="lab-content" role="tabpanel" aria-labelledby={`lab-tab-${labTab==='fixture'?'fixture':'circuit'}`} tabIndex={0} className="lab-tab-content">
+          <div className="circuit-view" hidden={labTab==='fixture'}><CircuitEditor key={p.id} circuit={p.circuit} language={p.language}
             onChange={(c, label, kind) => { runtime.stop(kind === "snapshot"); ws.change(label, n => {n.circuit = c; n.settings.example = "";}); }}
             onDemo={() => void selectCircuitExample()}
             onUndo={()=>{runtime.stop();ws.undo();}} onRedo={()=>{runtime.stop();ws.redo();}} canUndo={!!ws.undoCount} canRedo={!!ws.redoCount}
             simulation={runtime.simulation} runtimeActive={["running","done"].includes(runtime.state)} liveInputs={runtime.liveInputs} onInput={runtime.input}
-            expanded={expandedCircuit} onExpand={() => {setExpandedCircuit(v=>!v); if(window.innerWidth<=600)setMobileTab("code");}} />}
+            expanded={expandedCircuit} onExpand={() => {setExpandedCircuit(v=>!v);setCodeExpanded(false);setMobileTab("lab");}} /></div>
           {labTab === "fixture" && p.circuit.kind !== "stage0-fixture" && <div className="assembly-start"><h2>Pokusi s MicroPythonom</h2><p>Odaberi jedan od primjera 01–05 u popisu „Pokusi jezgre”. Svaki otvara zaseban projekt s fiksnim ispitnim spojem.</p><button onClick={() => void selectExample("button")}>Otvori pokus s tipkalom</button><small>Nacrtani sklop izvodi se na kartici Sastavljanje.</small></div>}
           {labTab === "fixture" && p.circuit.kind === "stage0-fixture" && <>
           <div className="lab-canvas">
@@ -1062,13 +1079,20 @@ export default function App() {
           </>}
           </div>
         </section>
+        <div className="workspace-divider" role="separator" tabIndex={0} aria-label="Širina sklopa" aria-orientation="vertical" aria-valuemin={30} aria-valuemax={70} aria-valuenow={split}
+          onKeyDown={e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();setSplit(v=>e.key==='Home'?30:e.key==='End'?70:Math.max(30,Math.min(70,v+(e.key==='ArrowRight'?5:-5))));}}}
+          onPointerDown={e=>{e.currentTarget.setPointerCapture(e.pointerId);}}
+          onPointerMove={e=>{if(!e.currentTarget.hasPointerCapture(e.pointerId))return;const lab=workspaceRef.current?.querySelector('.lab-panel')?.getBoundingClientRect(),code=workspaceRef.current?.querySelector('.code-panel')?.getBoundingClientRect();if(lab&&code)setSplit(Math.max(30,Math.min(70,Math.round((e.clientX-lab.left)/(code.right-lab.left)*100))));}}
+          onPointerUp={e=>{if(e.currentTarget.hasPointerCapture(e.pointerId))e.currentTarget.releasePointerCapture(e.pointerId);}}/>
         <section className="code-panel" aria-label="Editor koda">
           <div className="panel-heading">
             <div>
               <Icon name="code" size={17} />
-              <h2>Editor</h2>
+              <h2>Kôd</h2>
             </div>
             <div className="editor-tools">
+              <button className="wrap-lines" aria-pressed={wrapLines} onClick={()=>setWrapLines(v=>!v)} title="Prikaži dugi redak u više vizualnih redaka, bez promjene koda">Prelomi retke</button>
+              <button onClick={()=>{setCodeExpanded(v=>!v);setExpandedCircuit(false);}}>{codeExpanded?'Sklop uz kôd':'Proširi kôd'}</button>
               <button
                 className="icon-button"
                 disabled={!ws.undoCount}
@@ -1112,35 +1136,10 @@ export default function App() {
               </button>
             </div>
           </div>
-          <div className="file-tabs" role="tablist" aria-label="Datoteke" onKeyDown={tabKeys}>
-            {Object.keys(p.files).map((path) => (
-              <button
-                key={path}
-                role="tab"
-                id={`file-tab-${encodeURIComponent(path)}`} aria-controls="file-content" tabIndex={path===active?0:-1}
-                aria-selected={path === active}
-                className={path === active ? "active" : ""}
-                onClick={() =>
-                  ws.change("Odabrana datoteka", (n) => {
-                    n.settings.activeFile = path;
-                  })
-                }
-              >
-                <span className="file-type python">
-                  {path.endsWith(".py") ? "py" : "{ }"}
-                </span>
-                {path}
-              </button>
-            ))}
-            <button
-              className="new-tab"
-              onClick={() => openDialog("files", p.language==="micropython"?"pomoc.py":"pomoc.h")}
-              aria-label="Dodaj datoteku"
-            >
-              <Icon name="plus" size={14} />
-            </button>
-          </div>
-          <div id="file-content" role="tabpanel" aria-labelledby={`file-tab-${encodeURIComponent(active)}`} className="file-tab-content">
+          <FileTabs key={p.id} files={p.files} active={active}
+            onSelect={path => ws.change('Odabrana datoteka', n => {n.settings.activeFile = path;})}
+            onCreate={() => openDialog('files', p.language === 'micropython' ? 'pomoc.py' : 'pomoc.h')}/>
+          <div id="file-content" role="tabpanel" aria-labelledby={fileTabId(active)} className="file-tab-content">
           <div className="editor-file-info">
             <span>{active}</span>
             <div>
@@ -1171,6 +1170,7 @@ export default function App() {
               value={p.files[active]}
               theme={s.theme}
               fontSize={s.fontSize}
+              wrapLines={wrapLines}
               reveal={reveal?.path===active?reveal:undefined}
               onChange={(v) =>
                 ws.change(`Uređivanje ${active}`, (n) => {
@@ -1203,11 +1203,14 @@ export default function App() {
           </div>
         </section>
         <section className="bottom-panel" aria-label="Izlaz i informacije">
+          <div className="output-resizer" hidden={!outputOpen} role="separator" tabIndex={0} aria-label="Visina izlaza" aria-orientation="horizontal" aria-valuemin={120} aria-valuemax={360} aria-valuenow={outputHeight}
+            onKeyDown={e=>{if(['ArrowUp','ArrowDown','Home','End'].includes(e.key)){e.preventDefault();setOutputHeight(h=>e.key==='Home'?120:e.key==='End'?360:Math.max(120,Math.min(360,h+(e.key==='ArrowUp'?20:-20))));}}}
+            onPointerDown={e=>e.currentTarget.setPointerCapture(e.pointerId)} onPointerMove={e=>{if(e.currentTarget.hasPointerCapture(e.pointerId)){const bottom=e.currentTarget.parentElement!.getBoundingClientRect().bottom;setOutputHeight(Math.max(120,Math.min(360,Math.round(bottom-e.clientY))));}}} onPointerUp={e=>e.currentTarget.releasePointerCapture(e.pointerId)}/>
           <div className="bottom-tabs">
             <div role="tablist" aria-label="Izlaz" onKeyDown={tabKeys}>
               {[
-                ["console", "Konzola"],
-                ["project", "Projekt"],
+                ["console", "Izlaz programa"],
+                ["project", "Podaci projekta"],
                 ["support", "Podrška"],
               ].map(([id, title]) => (
                 <button
@@ -1216,7 +1219,7 @@ export default function App() {
                   id={`output-tab-${id}`} aria-controls="output-content" tabIndex={tab===id?0:-1}
                   aria-selected={tab === id}
                   className={tab === id ? "selected" : ""}
-                  onClick={() => setTab(id)}
+                  onClick={() => {setTab(id);setOutputOpen(true);}}
                 >
                   {id === "console" && <Icon name="terminal" size={15} />}
                   <span>{title}</span>
@@ -1224,6 +1227,8 @@ export default function App() {
               ))}
             </div>
             <div className="console-tools">
+              {runtime.state==='error'&&<strong role="alert">Pogreška programa</strong>}
+              <button aria-expanded={outputOpen} aria-controls="output-content" onClick={()=>setOutputOpen(v=>!v)}>{outputOpen?'Sklopi izlaz':'Proširi izlaz'}</button>
               {tab === "console" && (
                 <>
                   <span>{p.language==='micropython'?'MicroPython 1.29.0':p.board.id===S3?'ESP32-S3 C++ · Serial':'Arduino AVR · UART'}</span>
@@ -1234,7 +1239,7 @@ export default function App() {
               )}
             </div>
           </div>
-          <div id="output-content" role="tabpanel" aria-labelledby={`output-tab-${tab}`} tabIndex={0} className="output-tab-content">
+          <div hidden={!outputOpen} id="output-content" role="tabpanel" aria-labelledby={`output-tab-${tab}`} tabIndex={0} className="output-tab-content">
           {tab === "console" && (
             <pre
               ref={consoleRef}
@@ -1339,12 +1344,13 @@ export default function App() {
             }[dialog]
           }
           close={() => {if(dialog==='class-review'&&reviewBusyRef.current)return;setDialog(null);}}
-          large={dialog==='class-review'}
+          large={dialog==='class-review'||dialog==='lessons'}
           wide={dialog === 'class-review' || dialog === "radio" || dialog === "arduino" || dialog === "board" || dialog === "matrix" || dialog === "new" || dialog === "projects" || dialog === "history" || dialog === "lessons" || dialog === 'system'}
         >
           {dialog==='class-review'&&<Suspense fallback={<p className="dialog-form">Učitavanje pregleda predaja…</p>}><ClassReviewPanel session={reviewSession} change={setReviewSession} busy={reviewBusy} setBusy={setReviewBusy} current={p} open={openClassSubmission}/></Suspense>}
           {dialog==='radio'&&<RadioPanel key={p.id} project={p} compiler={compiler} change={ws.change} save={ws.flush} create={async next=>{await ws.flush();runtime.stop();lessonCheck.cancel();await ws.add(next);}}/>}
-          {dialog==='arduino'&&<ArduinoBuildPanel key={p.id} project={p} compiler={compiler} consoleText={runtime.runRevision===p.revision?runtime.consoleText:''} setLibraries={text=>{runtime.stop();ws.change('Odabrane Arduino biblioteke',n=>{n.files[AVR_LIBRARY_FILE]=text;});}} goTo={d=>{if(!Object.hasOwn(p.files,d.file))return;ws.change('Otvorena datoteka pogreške',n=>{n.settings.activeFile=d.file;});setReveal({path:d.file,line:d.line,column:d.column,token:Date.now()});setDialog(null);setMobileTab('code');}} importBuild={(text,input)=>{runtime.stop();const saved=ws.change('Preveden Arduino program',n=>{if(JSON.stringify(buildInput(n))!==input)throw Error('Projekt se promijenio tijekom prevođenja. Ponovi prevođenje.');n.files[buildFile(n)]=text;});if(!saved)throw Error('Rezultat nije spremljen u projekt. Provjeri veličinu i datoteke projekta.');notify('Prevedeni program spremljen je u projekt.');}}/>}
+          {dialog==='arduino'&&OFFLINE_AVR&&p.runtimeProfile.id==='arduino-avr'&&!p.radio&&<OfflineAvrPanel key={'offline-'+p.id} project={p} stop={()=>runtime.stop()} run={()=>{setDialog(null);void run();}}/>}
+          {dialog==='arduino'&&<ArduinoBuildPanel offline={OFFLINE_AVR&&p.runtimeProfile.id==='arduino-avr'&&!p.radio} key={p.id} project={p} compiler={compiler} consoleText={runtime.runRevision===p.revision?runtime.consoleText:''} setLibraries={text=>{runtime.stop();ws.change('Odabrane Arduino biblioteke',n=>{n.files[AVR_LIBRARY_FILE]=text;});}} goTo={d=>{if(!Object.hasOwn(p.files,d.file))return;ws.change('Otvorena datoteka pogreške',n=>{n.settings.activeFile=d.file;});setReveal({path:d.file,line:d.line,column:d.column,token:Date.now()});setDialog(null);setMobileTab('code');}} importBuild={(text,input)=>{runtime.stop();const live=liveProject.current;if(!live||live.id!==p.id||JSON.stringify(buildInput(live))!==input)throw Error('Projekt je promijenjen.');if(readSchoolBinding(live)){if(readSchoolBinding(live)?.status==='locked')throw Error('Predaja je zaključana.');notify('Prijevod je spreman za pokretanje; školska revizija ostaje ista.');return;}const saved=ws.change('Preveden Arduino program',n=>{if(JSON.stringify(buildInput(n))!==input)throw Error('Projekt se promijenio tijekom prevođenja. Ponovi prevođenje.');n.files[buildFile(n)]=text;});if(!saved)throw Error('Rezultat nije spremljen u projekt. Provjeri veličinu i datoteke projekta.');preferStandard(live);notify('Prevedeni program spremljen je u projekt.');}}/>}
           {dialog === 'board' &&<BoardChangePanel project={p} busy={working} error={formError} create={(id,language)=>{setWorking(true);setFormError('');void (async()=>{try{const derived=deriveProject(p,id,language);await ws.flush();runtime.stop();lessonCheck.cancel();await ws.add(derived);setDialog(null);setLabTab('circuit');setMobileTab('lab');notify('Otvorena je izvedena kopija s novom pločicom.');}catch(e){setFormError((e as Error).message);}finally{setWorking(false);}})();}}/>}
           {dialog === 'matrix'&&<SupportMatrix board={p.board.id} language={p.language}/>}
           {dialog === "lessons" && <LessonCatalog open={(id,solution)=>void selectLesson(id,solution)} openUrs={(lesson,variant,target,peer)=>void selectUrs(lesson,variant,target,peer)} initialTarget={targetForProject(p)} busy={working} reviewClass={()=>openDialog('class-review')}/>}

@@ -1,0 +1,53 @@
+{
+  "method": "Supported browser UI on existing persistent profile; preview server stopped before new Uno/Nano programs. No cache clearing.",
+  "scope": "Server unavailable; navigator.onLine remained true. Not proof of complete network isolation or browser-process restart for prototype 02.",
+  "upgrade": {
+    "from": "prototype 01",
+    "to": "prototype 02",
+    "previousSource": "NAKON_RESTARTA_6193",
+    "previousBoard": "nano",
+    "sourceAndBoardPreserved": true,
+    "packagePrepared": true,
+    "cacheCleared": false,
+    "storageAfterMiB": 22.7
+  },
+  "cases": [
+    {
+      "board": "nano",
+      "sourceMarker": "NAKON_RESTARTA_6193",
+      "elapsedMs": 1043,
+      "flashBytes": 2742,
+      "staticRamBytes": 216,
+      "hexHash": "9d6d5bb3737f525829c257355e8d96cc2fb101b8ff9dbceaffc4a59bc61559b2",
+      "transitions": 19
+    },
+    {
+      "board": "uno",
+      "sourceMarker": "UNO_JEZGRA_02_83",
+      "analogInputsAssert": 6,
+      "elapsedMs": 928,
+      "flashBytes": 2378,
+      "staticRamBytes": 204,
+      "hexHash": "eaabd5715c0c4e9aeecee52f998ef83a2e53e0905cf9c868867e1479046a1c5d",
+      "transitions": 14,
+      "sourceEditedAfterServerStopped": true
+    },
+    {
+      "board": "nano",
+      "sourceMarker": "NANO_JEZGRA_02_97",
+      "analogInputsAssert": 8,
+      "elapsedMs": 1055,
+      "flashBytes": 2380,
+      "staticRamBytes": 206,
+      "hexHash": "41a7013a121549dc4183beb9e68ce46c3afb529e125a4227ae54b03f1d6938be",
+      "transitions": 12,
+      "sourceEditedAfterServerStopped": true,
+      "afterTabCloseReopen": true
+    }
+  ],
+  "tabReopen": {
+    "serverStopped": true,
+    "sourceAndBoardPreserved": true,
+    "packageReady": true
+  }
+}

@@ -6,7 +6,7 @@ import {createServer} from 'node:net';
 import {randomBytes} from 'node:crypto';
 import {setTimeout as delay} from 'node:timers/promises';
 
-export async function schoolFixture(t) {
+export async function schoolFixture(t, options = {}) {
   const php=process.env.PHP_BIN||'php',dsn=process.env.LAB_TEST_DB_DSN||'';
   assert.match(dsn,/^mysql:host=[^;]+;port=\d+;dbname=labosv2_test_[a-z0-9_]+;charset=utf8mb4$/,'Use a separate, empty labosv2_test_* MySQL 8.4 database.');
   assert(process.env.LAB_TEST_DB_USER);
@@ -14,7 +14,7 @@ export async function schoolFixture(t) {
   cpSync(resolve('.build/school-package'),pkg,{recursive:true});mkdirSync(join(root,'sessions'),{mode:0o700});
   const socket=createServer();await new Promise(done=>socket.listen(0,'127.0.0.1',done));const port=socket.address().port;await new Promise(done=>socket.close(done));
   const origin='http://127.0.0.1:'+port;
-  const config={database:{dsn,user:process.env.LAB_TEST_DB_USER,password:process.env.LAB_TEST_DB_PASSWORD??''},app:{origin,key:randomBytes(32).toString('hex'),session_directory:join(root,'sessions'),allow_insecure_localhost:true}};
+  const config={interactive_compile:{enabled:options.compiler===true},database:{dsn,user:process.env.LAB_TEST_DB_USER,password:process.env.LAB_TEST_DB_PASSWORD??''},app:{origin,key:randomBytes(32).toString('hex'),session_directory:join(root,'sessions'),allow_insecure_localhost:true}};
   writeFileSync(join(root,'private.json'),JSON.stringify(config),{mode:0o600});
   const configPath=join(root,'config.php');writeFileSync(configPath,'<?php return json_decode(file_get_contents(__DIR__ . "/private.json"),true,32,JSON_THROW_ON_ERROR);',{mode:0o600});
   const env={...process.env,LAB_SCHOOL_CONFIG:configPath,LAB_TEST_BOOTSTRAP:join(pkg,'app/bootstrap.php')};

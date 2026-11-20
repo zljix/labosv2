@@ -8,5 +8,5 @@ try {
   process.stdout.write(JSON.stringify({status: 'compiled', artifact}));
 } catch (error) {
   const infrastructure = /Error initializing instance|not found|ENOENT|EACCES|Potreban je Arduino|Prvo instaliraj|Neodgovarajući AVR/.test(error.message);
-  process.stdout.write(JSON.stringify({status: error.name === 'CompileError' && !infrastructure ? 'compile_error' : 'technical_error', message: error.message}));
+  process.stdout.write(JSON.stringify({status: error.name === 'CompileError' && !infrastructure ? 'compile_error' : 'technical_error', message: infrastructure ? 'Prevoditelj nije dostupan.' : error.message, diagnostics: infrastructure ? [] : (error.diagnostics??[])}));
 }

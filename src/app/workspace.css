@@ -1,0 +1,73 @@
+/* Layout ownership: panel geometry lives here; component styles own their contents. */
+[hidden]{display:none!important}
+.workspace{--side-width:0px;margin:12px 16px 0;display:grid;grid-template-columns:var(--side-width) minmax(0,var(--split-left)) 8px minmax(0,var(--split-right));grid-template-rows:minmax(320px,calc(100dvh - 200px - var(--output-height))) var(--output-height);gap:10px 0;flex:1;min-width:0;min-height:0}
+.workspace.files-open{--side-width:240px}
+.workspace.instructions-open{--side-width:340px}
+.workspace>.sidebar,.workspace>.instructions-panel{grid-column:1;grid-row:1/3;min-width:0;min-height:0;overflow:auto;margin-right:12px;display:none}
+.workspace.files-open>.sidebar,.workspace.instructions-open>.instructions-panel{display:flex}
+.instructions-panel{flex-direction:column;border:1px solid var(--line);border-radius:9px;background:var(--surface)}
+.instructions-panel>.panel-heading{flex-shrink:0}
+.instructions-panel .lesson-content{padding:16px;font-size:15px}
+.instructions-panel .lesson-title{flex-wrap:wrap}
+.instructions-panel .lesson-title h2{font-size:22px}
+.instructions-panel .lesson-student{grid-template-columns:1fr}
+.workspace>.lab-panel{grid-column:2;grid-row:1;min-height:0;overflow:auto}
+.workspace>.code-panel{grid-column:4;grid-row:1;min-height:0;overflow:hidden}
+.workspace>.bottom-panel{grid-column:2/5;grid-row:2;min-height:0;position:relative}
+.workspace-divider{grid-column:3;grid-row:1;cursor:col-resize;touch-action:none;border-radius:4px;background:transparent}
+.workspace-divider:hover,.workspace-divider:focus-visible{background:var(--teal-light);outline:2px solid var(--teal);outline-offset:-2px}
+.workspace.circuit-focus,.workspace.code-focus{grid-template-columns:var(--side-width) minmax(0,1fr)}
+.workspace.circuit-focus>.code-panel,.workspace.code-focus>.lab-panel,.workspace.circuit-focus>.workspace-divider,.workspace.code-focus>.workspace-divider{display:none}
+.workspace.code-focus>.code-panel{grid-column:2}
+.workspace.circuit-focus>.bottom-panel,.workspace.code-focus>.bottom-panel{grid-column:2}
+.circuit-view{display:flex;flex-direction:column;flex:1;min-width:0}
+.circuit-view>.circuit-editor{min-height:0}
+.circuit-canvas,.circuit-focus .circuit-canvas{height:clamp(260px,36vh,480px);min-height:260px;flex-shrink:0}
+.lab-panel>.panel-heading,.lab-panel>.lab-view-tabs,.code-panel>.panel-heading,.code-panel>.file-tabs{flex-shrink:0}
+.lab-tab-content{overflow:auto}
+.code-panel .panel-heading{height:auto;min-height:45px;padding:8px 12px;flex-wrap:wrap}.editor-tools{flex-wrap:wrap;justify-content:flex-end}
+.wrap-lines[aria-pressed="true"]{background:var(--teal-light);color:var(--teal);border-color:var(--teal)}
+.panel-heading h1,.panel-heading h2{font-size:15px}.project-actions>button{font-size:14px}
+.file-group>summary{cursor:pointer;font-size:13px;font-weight:650;padding:10px 12px;color:var(--muted)}
+.file-group{min-width:0}
+.file-tabs{flex-shrink:0;overflow-x:auto;overflow-y:hidden}
+.editor-mount{min-height:100px;flex:1;overflow:hidden}
+.editor-mount .cm-editor{height:100%;min-height:0;max-height:none}
+.editor-hint{min-height:0;max-height:92px;overflow:auto}
+.output-resizer{position:absolute;top:0;left:0;right:0;height:6px;cursor:row-resize;touch-action:none;z-index:1}
+.output-resizer:focus-visible,.output-resizer:hover{background:var(--teal)}
+.output-open .bottom-tabs{margin-top:6px}
+.bottom-tabs{height:42px;min-height:42px;gap:8px}
+.bottom-tabs>div:first-child{gap:16px;min-width:0;overflow:auto}
+.bottom-tabs button{white-space:nowrap}
+.console-tools{gap:8px;flex-shrink:0}
+.console-tools>span{display:none}
+.console-tools>strong{font-size:13px;color:var(--danger)}
+.local-work{margin:8px 16px 0;padding:14px 16px;border:1px solid var(--line);border-radius:8px;background:var(--surface);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.local-work>div{flex:1 1 300px}.local-work h2{font-size:16px}.local-work p{font-size:14px;line-height:1.5;margin-top:6px}
+.school-sync{padding:12px 16px;margin:8px 16px 0}
+.school-work-details{margin-top:12px}.school-sync-top>div{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.school-sync-top strong{font-size:14px}.school-sync-locked{border-left:5px solid var(--teal)}
+@media(max-width:1100px){
+ .workspace.instructions-open,.workspace.files-open{--side-width:0px;position:relative}
+ .workspace.instructions-open>.instructions-panel,.workspace.files-open>.sidebar{position:absolute;inset:0 auto 0 0;width:min(420px,90vw);z-index:20;box-shadow:var(--shadow);margin:0}
+ .toolbar{flex-wrap:wrap;gap:8px}.project-actions{flex-wrap:wrap}.topbar{height:auto;min-height:68px;flex-wrap:wrap;padding:12px 16px;gap:10px}.header-actions{gap:8px}
+}
+@media(max-width:760px){
+ .topbar .brand small,.header-divider,.stage-tag{display:none}.topbar{padding:10px 12px}.brand{font-size:20px}.project-title{font-size:14px;max-width:calc(100vw - 140px);max-height:none}.save-state{font-size:12px;max-width:none}.header-actions{margin-left:auto}.header-actions .icon-button{width:36px}
+ .desktop-panel-action{display:none!important}
+ .toolbar{padding:10px 12px;gap:8px}.project-actions{justify-content:flex-start;gap:4px;width:100%}.project-actions button,.project-actions summary,.run-actions button{font-size:14px;min-height:44px}.project-actions>button,.project-actions>.action-group>summary{padding:6px}.run-actions{width:100%;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:8px;justify-content:flex-end;margin:0}.run-actions .runtime-status{margin-right:auto;font-size:12px}.stop-button span{display:inline}
+ .mobile-tabs{position:sticky;top:0;z-index:25;display:flex;margin:4px 12px 0;gap:2px;padding:3px;border:1px solid var(--line);border-radius:8px;background:var(--raised)}.mobile-tabs button{flex:1;min-width:0;width:auto;font-size:13px;min-height:44px;padding:5px}.mobile-tabs button.selected{background:var(--surface);color:var(--teal)}
+ .workspace,.workspace.circuit-focus,.workspace.code-focus{display:flex;flex-direction:column;margin:10px 12px 0;gap:10px;min-height:440px}
+ .workspace>.sidebar,.workspace>.instructions-panel,.workspace>.lab-panel,.workspace>.code-panel,.workspace>.bottom-panel,.workspace>.workspace-divider{display:none!important}
+ .workspace.show-files>.sidebar,.workspace.show-lesson>.instructions-panel,.workspace.show-lab>.lab-panel,.workspace.show-code>.code-panel,.workspace.show-output>.bottom-panel{display:flex!important;position:static;width:100%;margin:0;max-height:none;box-shadow:none}
+ .workspace.show-code>.code-panel{height:560px;min-height:400px}.workspace.show-output>.bottom-panel{min-height:360px}.workspace.show-lesson>.instructions-panel{max-height:none}.instructions-panel .lesson-content{overflow:visible}.workspace>.sidebar{min-height:440px}
+ .circuit-tools button>span{display:inline}.circuit-toolrow .circuit-tools{flex-wrap:wrap}.circuit-tools button:last-child[aria-expanded]{display:none}
+ .workspace>.lab-panel{min-height:440px}.lab-tab-content{overflow:visible;min-height:0}.circuit-canvas,.circuit-focus .circuit-canvas{height:330px;min-height:300px}
+ .bottom-tabs{flex-wrap:wrap;height:auto;min-height:90px;padding:8px}.bottom-tabs>div:first-child{width:100%;min-height:36px;gap:12px}.console-tools{margin-left:auto}.output-resizer{display:none}.editor-hint{max-height:110px}
+ .panel-heading{padding:0 10px}.editor-tools{gap:3px}.editor-tools button{padding:5px}.editor-status{height:auto;min-height:30px;flex-wrap:wrap}.school-sync,.local-work{margin:8px 12px}.school-sync-top{align-items:flex-start}.school-sync-top>div{width:100%}
+}
+@media(pointer:coarse){button,summary,select{min-height:44px}.circuit-tools button{min-width:44px;min-height:44px}.circuit-tools{flex-wrap:wrap}.circuit-toolrow{gap:6px}}
+
+.modal.review-wide{width:min(1080px,calc(100vw - 28px));max-width:1080px}
+.advanced-position{flex-basis:100%}.advanced-position summary{cursor:pointer;font-size:13px}

@@ -1,6 +1,6 @@
 {
   "name": "esp32-micropython-lab",
-  "version": "0.14.15-beta.2",
+  "version": "0.16.0-beta.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -111,7 +111,24 @@
     "test:school-remediation": "node --import tsx --test verification/school-input-reliability.test.ts verification/school-input-audit.test.ts verification/school-identity.test.ts verification/school-remediation-ui.test.tsx",
     "test:school-matrix": "node --import tsx --test verification/school-current-matrix.test.ts",
     "test:school-remediation-api": "node --import tsx --test verification/school-remediation-api.test.mjs",
-    "test:usability": "node --import tsx --test verification/teaching24q.test.ts && node scripts/test-usability.mjs"
+    "test:usability": "node --import tsx --test verification/teaching24q.test.ts && node scripts/test-usability.mjs",
+    "test:school-compiler": "node --import tsx --test verification/school-compiler.test.ts",
+    "test:school-compiler-api": "node --import tsx --test verification/school-compiler-api.test.mjs",
+    "test:compiler-ui": "node scripts/test-compiler-ui.mjs",
+    "test:workspace": "node --import tsx scripts/build-school-catalog.ts && node scripts/test-workspace.mjs",
+    "test:offline-ui": "node scripts/test-offline-ui.mjs",
+    "test:offline-storage": "node --test verification/offline-storage.test.mjs",
+    "prototype:avr:build": "node prototypes/avr-offline/build.mjs",
+    "prototype:avr:test": "node --import tsx --test prototypes/avr-offline/compiler.test.mjs",
+    "prototype:avr:browser": "node prototypes/avr-offline/browser-test.mjs",
+    "prototype:avr:worker": "node --test prototypes/avr-offline/worker-harness.test.mjs",
+    "prototype:avr:package": "node --test prototypes/avr-offline/package.test.mjs",
+    "prototype:avr:sources": "node prototypes/avr-offline/prepare-sources.mjs",
+    "prototype:avr:memory": "node prototypes/avr-offline/measure-memory.mjs",
+    "prototype:avr:libraries": "node --import tsx --test prototypes/avr-offline/libraries.test.ts",
+    "prototype:avr:integrated": "LAB_OFFLINE_AVR=1 npm run build",
+    "prototype:avr:integration-test": "node --import tsx --test verification/offline-avr.test.ts",
+    "prototype:avr:prepare-release": "node prototypes/avr-offline/prepare-release.mjs"
   },
   "dependencies": {
     "@codemirror/commands": "^6.8.1",
@@ -139,8 +156,8 @@
     "vite": "8.3.8"
   },
   "labosRelease": {
-    "stage": "24Q",
-    "title": "Čitljivost sučelja i upute po varijanti",
-    "acceptance": "technical-review"
+    "stage": "26A",
+    "title": "Arduino offline u pregledniku",
+    "acceptance": "technical-preview"
   }
 }

@@ -10,3 +10,8 @@ profile.grading.compatibleCheckerVersions=[...new Set(registry.profiles.map(p=>p
 delete profile.grading.checkerVersion;
 profile.grading.checkerVersionPolicy='per-published-rubric';
 writeFileSync('school/profile.json',JSON.stringify(profile,null,2)+'\n');
+
+const escapeHtml=value=>String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
+const portal=readFileSync('public/school.html','utf8');
+if(!portal.includes('data-labos-release'))throw Error('Nedostaje oznaka izdanja na školskoj stranici.');
+writeFileSync('public/school.html',portal.replace(/(<span class="stage" data-labos-release>)[^<]*(<\/span>)/,(_,a,b)=>a+'v'+escapeHtml(release.version)+' · '+escapeHtml(release.title)+b));

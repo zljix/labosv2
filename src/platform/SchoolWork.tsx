@@ -10,7 +10,7 @@ import {SchoolApi,SchoolSynchronizer,readSchoolBinding,prepareSchoolAttempt,deta
 
 export const schoolTime=(value?:string)=>value&&Number.isFinite(Date.parse(value))?new Intl.DateTimeFormat('hr-HR',{dateStyle:'short',timeStyle:'medium',timeZone:'Europe/Zagreb'}).format(new Date(value))+' (Zagreb)':'Vrijeme prethodne potvrde nije dostupno';
 
-export default function SchoolWork({project,confirm,open}:{project:Project;confirm:(binding:SchoolBinding)=>void;open:(p:Project)=>Promise<void>}){
+export default function SchoolWork({project,confirm,open,expanded=true,onExpand}:{expanded?:boolean;onExpand?:()=>void;project:Project;confirm:(binding:SchoolBinding)=>void;open:(p:Project)=>Promise<void>}){
   const binding=readSchoolBinding(project),current=useRef(project);current.current=project;
   const callbacks=useRef({confirm,open});callbacks.current={confirm,open};
   const initializeRef=useRef<(()=>Promise<void>)|undefined>(undefined);
@@ -56,12 +56,14 @@ export default function SchoolWork({project,confirm,open}:{project:Project;confi
   if(!binding)return null;
   async function act(work:()=>Promise<void>){if(busy)return;setBusy(true);setError('');try{await work();}catch(e){setError((e as Error).message);}finally{setBusy(false);}}
   async function review(){await api.current.session(binding!.userId);const value=await api.current.request('attempt&id='+binding!.attemptId);parseProject(value.snapshot.project);setRemote(value);}
+  const showDetails=expanded||['error','conflict','locked'].includes(state.phase)||!!error||!!remote;
   const isLocked=state.phase==='locked';
   return <section id="school-work" tabIndex={-1} className={'school-sync school-sync-'+state.phase} aria-label="Spremanje školskog rada">
-    <div className="school-sync-top"><strong role="status" aria-live="polite">{state.message}</strong><a href={appAsset('school.html#account')}>Školski račun</a></div>
+    <div className="school-sync-top"><strong role="status" aria-live="polite">{state.message}</strong><div><button onClick={onExpand} hidden={showDetails}>Moj rad · podrobnosti</button><a href={appAsset('school.html#account')}>Školski račun</a></div></div>
     <p>Posljednja potvrđena revizija: {state.revision} · {schoolTime(state.savedAt)}. {state.phase==='saved'||isLocked?'Rad je sačuvan u bazi.':'Izmjene zadržavaš u ovom pregledniku; dostupni su ZIP i JSON izvoz.'}</p>
     {official?.reopening&&<p>Dorada pokušaja {official.attempt.number}: {official.reopening.reason}. Prethodna predaja #{official.reopening.submissionId} ostaje sačuvana.</p>}
-    <SchoolGrading binding={binding} revision={state.revision} saved={state.phase==='saved'||isLocked} rubric={official?.assignment?.task?.rubric}/>
+    <SchoolGrading expanded={showDetails} binding={binding} revision={state.revision} saved={state.phase==='saved'||isLocked} rubric={official?.assignment?.task?.rubric}/>
+    <div id="my-work" className="school-work-details" hidden={!showDetails}>
     {isLocked&&official?.submission&&<section className="school-locked-submission" aria-label="Zaključana predaja">
       <h4>Predaja #{official.submission.id} · pokušaj {official.attempt.number??1}</h4><p>Potvrđeno {schoolTime(official.submission.submittedAt)} · revizija {official.submission.revision}. Sadržaj je zaključan. Za izmjene nastavnik dopušta novi pokušaj.</p>
       <SchoolSnapshot project={parseProject(official.snapshot.project)} label="Sadržaj zaključane predaje"/>
@@ -84,5 +86,6 @@ export default function SchoolWork({project,confirm,open}:{project:Project;confi
         {state.phase==='conflict'&&remote.attempt.status==='in_progress'&&<button disabled={busy||!engine.current} onClick={()=>void act(async()=>{await engine.current!.useLocalAfterReview(remote);setRemote(undefined);})}>Nakon pregleda spremi moju lokalnu verziju</button>}
         <button onClick={()=>setRemote(undefined)}>Zatvori usporedbu</button></div>
     </details>}
+    </div>
   </section>;
 }

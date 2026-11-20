@@ -42,12 +42,15 @@ export function sandboxCommand(root, entry, {compiler = false, s3Compiler = fals
   return bounded ? {command: 'prlimit', args: ['--as=2147483648', '--cpu='+(compiler||s3Compiler?85:cpuSeconds), '--fsize=33554432', '--', 'unshare', ...args]} : {command: 'unshare', args};
 }
 
-export function runSandbox(command, payload, timeoutMs = 10000) {
+export function runSandbox(command, payload, timeoutMs = 10000, signal) {
   return new Promise((accept, reject) => {
+    if(signal?.aborted){reject(Error('Prevođenje je otkazano.'));return;}
     const child = spawn(command.command, command.args, {stdio: ['pipe', 'pipe', 'pipe'], env: {PATH: process.env.PATH}, detached: true});
     let stdout = '', stderr = '', bytes = 0, settled = false;
     const stop = () => { try { process.kill(-child.pid, 'SIGKILL'); } catch { child.kill('SIGKILL'); } };
-    const finish = (error, value) => { if (settled) return; settled = true; clearTimeout(timer); error ? reject(error) : accept(value); };
+    const finish = (error, value) => { if (settled) return; settled = true; clearTimeout(timer); signal?.removeEventListener('abort', abort); error ? reject(error) : accept(value); };
+    const abort=()=>{stop();finish(Error('Prevođenje je otkazano.'));};
+    signal?.addEventListener('abort',abort,{once:true});
     const timer = setTimeout(() => { stop(); const error = Error('Isteklo je ograničenje izvođenja.'); error.code = 'EXECUTION_LIMIT'; finish(error); }, timeoutMs);
     for (const [stream, name] of [[child.stdout, 'stdout'], [child.stderr, 'stderr']]) stream.on('data', chunk => {
       bytes += chunk.length;

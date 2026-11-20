@@ -1,0 +1,25 @@
+✔ real WASM tools compile Uno/Nano, separate C++ and separate C (8746.642184ms)
+✔ board variants expose 6/8 analog inputs and compile user interrupt routines (2044.824277ms)
+✔ static SRAM and Flash overflows cannot produce a runnable result (1033.848882ms)
+✔ changed source generates new HEX and new behavior without any network API (1097.378398ms)
+✔ syntax and link errors are failures with useful locations (728.429561ms)
+✔ all inputs and identities bind to the result; unsafe paths are rejected (7.321732ms)
+✔ isolated namespace with loopback down is accepted (0.872887ms)
+✔ same namespace, active loopback, or external interfaces cannot pass as isolated (1.597981ms)
+{"initialBytes":38528794,"finalBytes":15672956,"onlyDownloaded":"sdk-uno-nano-2059a3d43a6c88fc.bin.gz","deletes":0}
+✔ partial raw package converts in place and resumes under 50 MiB without deleting caches (4629.8872ms)
+✔ compressed corruption and expanded payload limits are rejected (17.02096ms)
+✔ interrupted SDK upgrade preserves old package and resumes without downloading shared tools (1741.813786ms)
+✔ real Labos projects compile and simulate their own circuit for Uno and Nano (2641.700315ms)
+✔ unsupported targets, libraries, extra ino, src paths and two-node projects fail without mutation (3.572107ms)
+✔ project round trip preserves ancillary files and rejects invalid imports and oversized edits (4.53578ms)
+✔ built browser Worker loads verified scripts without fetch and runs new code (4922.270301ms)
+✔ built Worker refuses corrupted cached JavaScript before execution (190.887289ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 29132.610822

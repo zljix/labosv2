@@ -1,0 +1,1441 @@
+{
+  "version": "0.15.2-beta.1",
+  "build": "63813ed0e00f4247",
+  "results": [
+    {
+      "url": "/labos/actuators.mjs",
+      "ok": true,
+      "bytes": 6237,
+      "expected": 6237,
+      "redirect": false
+    },
+    {
+      "url": "/labos/analog-inputs.mjs",
+      "ok": true,
+      "bytes": 3682,
+      "expected": 3682,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app.mjs",
+      "ok": true,
+      "bytes": 7595,
+      "expected": 7595,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/actuators.mjs",
+      "ok": true,
+      "bytes": 6237,
+      "expected": 6237,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/analog-inputs.mjs",
+      "ok": true,
+      "bytes": 3682,
+      "expected": 3682,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/app.mjs",
+      "ok": true,
+      "bytes": 7595,
+      "expected": 7595,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/arduino-contract.mjs",
+      "ok": true,
+      "bytes": 762,
+      "expected": 762,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/avr-contract.mjs",
+      "ok": true,
+      "bytes": 8615,
+      "expected": 8615,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/avr-examples.json",
+      "ok": true,
+      "bytes": 2727980,
+      "expected": 2727980,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/circuit-host.mjs",
+      "ok": true,
+      "bytes": 32066,
+      "expected": 32066,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/dht-bus.mjs",
+      "ok": true,
+      "bytes": 5464,
+      "expected": 5464,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/_onewire.py",
+      "ok": true,
+      "bytes": 1435,
+      "expected": 1435,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/aht10.py",
+      "ok": true,
+      "bytes": 1383,
+      "expected": 1383,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/dht.py",
+      "ok": true,
+      "bytes": 1094,
+      "expected": 1094,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/ds18x20.py",
+      "ok": true,
+      "bytes": 1453,
+      "expected": 1453,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/lab_bmp280_spi.h",
+      "ok": true,
+      "bytes": 2103,
+      "expected": 2103,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/lab_bmp280_spi.py",
+      "ok": true,
+      "bytes": 781,
+      "expected": 781,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/lab_ds1302.py",
+      "ok": true,
+      "bytes": 4135,
+      "expected": 4135,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/lab_encoder.py",
+      "ok": true,
+      "bytes": 2017,
+      "expected": 2017,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/lab_fat16.py",
+      "ok": true,
+      "bytes": 9195,
+      "expected": 9195,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/lab_i2c_sensors.py",
+      "ok": true,
+      "bytes": 5109,
+      "expected": 5109,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/lab_ili9341.h",
+      "ok": true,
+      "bytes": 3961,
+      "expected": 3961,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/lab_ili9341.py",
+      "ok": true,
+      "bytes": 4822,
+      "expected": 4822,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/lab_ir.py",
+      "ok": true,
+      "bytes": 4266,
+      "expected": 4266,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/lab_max30102.h",
+      "ok": true,
+      "bytes": 1945,
+      "expected": 1945,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/lab_max30102.py",
+      "ok": true,
+      "bytes": 2377,
+      "expected": 2377,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/lab_s3_nec.h",
+      "ok": true,
+      "bytes": 3426,
+      "expected": 3426,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/lab_sd.h",
+      "ok": true,
+      "bytes": 7133,
+      "expected": 7133,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/lab_sdcard.py",
+      "ok": true,
+      "bytes": 4666,
+      "expected": 4666,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/lab_st7735.h",
+      "ok": true,
+      "bytes": 3737,
+      "expected": 3737,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/lab_st7735.py",
+      "ok": true,
+      "bytes": 4629,
+      "expected": 4629,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/lab_tm1637.py",
+      "ok": true,
+      "bytes": 3013,
+      "expected": 3013,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/lab_xpt2046.h",
+      "ok": true,
+      "bytes": 1639,
+      "expected": 1639,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/lab_xpt2046.py",
+      "ok": true,
+      "bytes": 2228,
+      "expected": 2228,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/lcd1602.py",
+      "ok": true,
+      "bytes": 2665,
+      "expected": 2665,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/onewire.py",
+      "ok": true,
+      "bytes": 2395,
+      "expected": 2395,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/provenance.json",
+      "ok": true,
+      "bytes": 7913,
+      "expected": 7913,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/servo.py",
+      "ok": true,
+      "bytes": 770,
+      "expected": 770,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/drivers/ssd1306.py",
+      "ok": true,
+      "bytes": 4922,
+      "expected": 4922,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/environment-sensors.mjs",
+      "ok": true,
+      "bytes": 11050,
+      "expected": 11050,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/examples.mjs",
+      "ok": true,
+      "bytes": 2366,
+      "expected": 2366,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/host.mjs",
+      "ok": true,
+      "bytes": 3055,
+      "expected": 3055,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/i2c-host.mjs",
+      "ok": true,
+      "bytes": 13708,
+      "expected": 13708,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/i2c-level-shifter.mjs",
+      "ok": true,
+      "bytes": 2578,
+      "expected": 2578,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/ili9341.mjs",
+      "ok": true,
+      "bytes": 4004,
+      "expected": 4004,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/infrared.mjs",
+      "ok": true,
+      "bytes": 7464,
+      "expected": 7464,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/lcd1602.mjs",
+      "ok": true,
+      "bytes": 4855,
+      "expected": 4855,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/level-shifter.mjs",
+      "ok": true,
+      "bytes": 2231,
+      "expected": 2231,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/machine.py",
+      "ok": true,
+      "bytes": 15196,
+      "expected": 15196,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/max30102.mjs",
+      "ok": true,
+      "bytes": 9239,
+      "expected": 9239,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/nrf24.mjs",
+      "ok": true,
+      "bytes": 10511,
+      "expected": 10511,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/onewire-bus.mjs",
+      "ok": true,
+      "bytes": 10375,
+      "expected": 10375,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/peripherals.mjs",
+      "ok": true,
+      "bytes": 7263,
+      "expected": 7263,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/pilot-form.mjs",
+      "ok": true,
+      "bytes": 2781,
+      "expected": 2781,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/pilot-record.mjs",
+      "ok": true,
+      "bytes": 4684,
+      "expected": 4684,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/quadrature-inputs.mjs",
+      "ok": true,
+      "bytes": 5236,
+      "expected": 5236,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/radio-clock.mjs",
+      "ok": true,
+      "bytes": 769,
+      "expected": 769,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/radio-examples.json",
+      "ok": true,
+      "bytes": 96580,
+      "expected": 96580,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/rtc-ds1302.mjs",
+      "ok": true,
+      "bytes": 9710,
+      "expected": 9710,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/runtime/micropython.mjs",
+      "ok": true,
+      "bytes": 225531,
+      "expected": 225531,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/runtime/micropython.wasm",
+      "ok": true,
+      "bytes": 1134289,
+      "expected": 1134289,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/s3-contract.mjs",
+      "ok": true,
+      "bytes": 6002,
+      "expected": 6002,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/s3-core-lock.mjs",
+      "ok": true,
+      "bytes": 1239,
+      "expected": 1239,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/s3-engine.mjs",
+      "ok": true,
+      "bytes": 6965,
+      "expected": 6965,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/s3-examples.json",
+      "ok": true,
+      "bytes": 1444176,
+      "expected": 1444176,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/s3-worker.mjs",
+      "ok": true,
+      "bytes": 625,
+      "expected": 625,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/school-account.mjs",
+      "ok": true,
+      "bytes": 8008,
+      "expected": 8008,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/school-check.mjs",
+      "ok": true,
+      "bytes": 1866,
+      "expected": 1866,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/school-classes.mjs",
+      "ok": true,
+      "bytes": 17209,
+      "expected": 17209,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/school-grading-support.mjs",
+      "ok": true,
+      "bytes": 3693,
+      "expected": 3693,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/school-pilot-form.mjs",
+      "ok": true,
+      "bytes": 5177,
+      "expected": 5177,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/school-pilot-record.mjs",
+      "ok": true,
+      "bytes": 6740,
+      "expected": 6740,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/sd-card.mjs",
+      "ok": true,
+      "bytes": 8860,
+      "expected": 8860,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/session.mjs",
+      "ok": true,
+      "bytes": 2041,
+      "expected": 2041,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/spi-devices.mjs",
+      "ok": true,
+      "bytes": 13158,
+      "expected": 13158,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/stepper.mjs",
+      "ok": true,
+      "bytes": 8521,
+      "expected": 8521,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/suite.mjs",
+      "ok": true,
+      "bytes": 7832,
+      "expected": 7832,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/tm1637.mjs",
+      "ok": true,
+      "bytes": 5180,
+      "expected": 5180,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/worker.mjs",
+      "ok": true,
+      "bytes": 2564,
+      "expected": 2564,
+      "redirect": false
+    },
+    {
+      "url": "/labos/app/63813ed0e00f4247/xpt2046.mjs",
+      "ok": true,
+      "bytes": 2652,
+      "expected": 2652,
+      "redirect": false
+    },
+    {
+      "url": "/labos/arduino-contract.mjs",
+      "ok": true,
+      "bytes": 762,
+      "expected": 762,
+      "redirect": false
+    },
+    {
+      "url": "/labos/arduino-development-bridge.zip",
+      "ok": true,
+      "bytes": 624965,
+      "expected": 624965,
+      "redirect": false
+    },
+    {
+      "url": "/labos/assets/ClassReviewPanel-5di3Amb3.js",
+      "ok": true,
+      "bytes": 32293,
+      "expected": 32293,
+      "redirect": false
+    },
+    {
+      "url": "/labos/assets/ClassReviewPanel-CfM1iDYP.css",
+      "ok": true,
+      "bytes": 2855,
+      "expected": 2855,
+      "redirect": false
+    },
+    {
+      "url": "/labos/assets/CodeEditor-BpN5B-ll.js",
+      "ok": true,
+      "bytes": 568770,
+      "expected": 568770,
+      "redirect": false
+    },
+    {
+      "url": "/labos/assets/avrWorker-C3uDPEHH.js",
+      "ok": true,
+      "bytes": 184856,
+      "expected": 184856,
+      "redirect": false
+    },
+    {
+      "url": "/labos/assets/index-CWb4Dg_n.css",
+      "ok": true,
+      "bytes": 76499,
+      "expected": 76499,
+      "redirect": false
+    },
+    {
+      "url": "/labos/assets/index-Dau7bZZw.js",
+      "ok": true,
+      "bytes": 1284988,
+      "expected": 1284988,
+      "redirect": false
+    },
+    {
+      "url": "/labos/assets/worker-CSNVAPWk.js",
+      "ok": true,
+      "bytes": 300996,
+      "expected": 300996,
+      "redirect": false
+    },
+    {
+      "url": "/labos/avr-contract.mjs",
+      "ok": true,
+      "bytes": 8615,
+      "expected": 8615,
+      "redirect": false
+    },
+    {
+      "url": "/labos/avr-examples.json",
+      "ok": true,
+      "bytes": 2727980,
+      "expected": 2727980,
+      "redirect": false
+    },
+    {
+      "url": "/labos/circuit-host.mjs",
+      "ok": true,
+      "bytes": 32066,
+      "expected": 32066,
+      "redirect": false
+    },
+    {
+      "url": "/labos/dht-bus.mjs",
+      "ok": true,
+      "bytes": 5464,
+      "expected": 5464,
+      "redirect": false
+    },
+    {
+      "url": "/labos/diagnostics.html",
+      "ok": true,
+      "bytes": 7340,
+      "expected": 7340,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/_onewire.py",
+      "ok": true,
+      "bytes": 1435,
+      "expected": 1435,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/aht10.py",
+      "ok": true,
+      "bytes": 1383,
+      "expected": 1383,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/dht.py",
+      "ok": true,
+      "bytes": 1094,
+      "expected": 1094,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/ds18x20.py",
+      "ok": true,
+      "bytes": 1453,
+      "expected": 1453,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/lab_bmp280_spi.h",
+      "ok": true,
+      "bytes": 2103,
+      "expected": 2103,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/lab_bmp280_spi.py",
+      "ok": true,
+      "bytes": 781,
+      "expected": 781,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/lab_ds1302.py",
+      "ok": true,
+      "bytes": 4135,
+      "expected": 4135,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/lab_encoder.py",
+      "ok": true,
+      "bytes": 2017,
+      "expected": 2017,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/lab_fat16.py",
+      "ok": true,
+      "bytes": 9195,
+      "expected": 9195,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/lab_i2c_sensors.py",
+      "ok": true,
+      "bytes": 5109,
+      "expected": 5109,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/lab_ili9341.h",
+      "ok": true,
+      "bytes": 3961,
+      "expected": 3961,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/lab_ili9341.py",
+      "ok": true,
+      "bytes": 4822,
+      "expected": 4822,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/lab_ir.py",
+      "ok": true,
+      "bytes": 4266,
+      "expected": 4266,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/lab_max30102.h",
+      "ok": true,
+      "bytes": 1945,
+      "expected": 1945,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/lab_max30102.py",
+      "ok": true,
+      "bytes": 2377,
+      "expected": 2377,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/lab_s3_nec.h",
+      "ok": true,
+      "bytes": 3426,
+      "expected": 3426,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/lab_sd.h",
+      "ok": true,
+      "bytes": 7133,
+      "expected": 7133,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/lab_sdcard.py",
+      "ok": true,
+      "bytes": 4666,
+      "expected": 4666,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/lab_st7735.h",
+      "ok": true,
+      "bytes": 3737,
+      "expected": 3737,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/lab_st7735.py",
+      "ok": true,
+      "bytes": 4629,
+      "expected": 4629,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/lab_tm1637.py",
+      "ok": true,
+      "bytes": 3013,
+      "expected": 3013,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/lab_xpt2046.h",
+      "ok": true,
+      "bytes": 1639,
+      "expected": 1639,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/lab_xpt2046.py",
+      "ok": true,
+      "bytes": 2228,
+      "expected": 2228,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/lcd1602.py",
+      "ok": true,
+      "bytes": 2665,
+      "expected": 2665,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/onewire.py",
+      "ok": true,
+      "bytes": 2395,
+      "expected": 2395,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/provenance.json",
+      "ok": true,
+      "bytes": 7913,
+      "expected": 7913,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/servo.py",
+      "ok": true,
+      "bytes": 770,
+      "expected": 770,
+      "redirect": false
+    },
+    {
+      "url": "/labos/drivers/ssd1306.py",
+      "ok": true,
+      "bytes": 4922,
+      "expected": 4922,
+      "redirect": false
+    },
+    {
+      "url": "/labos/environment-sensors.mjs",
+      "ok": true,
+      "bytes": 11050,
+      "expected": 11050,
+      "redirect": false
+    },
+    {
+      "url": "/labos/examples.mjs",
+      "ok": true,
+      "bytes": 2366,
+      "expected": 2366,
+      "redirect": false
+    },
+    {
+      "url": "/labos/fonts.css",
+      "ok": true,
+      "bytes": 70,
+      "expected": 70,
+      "redirect": false
+    },
+    {
+      "url": "/labos/guide.html",
+      "ok": true,
+      "bytes": 51451,
+      "expected": 51451,
+      "redirect": false
+    },
+    {
+      "url": "/labos/host.mjs",
+      "ok": true,
+      "bytes": 3055,
+      "expected": 3055,
+      "redirect": false
+    },
+    {
+      "url": "/labos/i2c-host.mjs",
+      "ok": true,
+      "bytes": 13708,
+      "expected": 13708,
+      "redirect": false
+    },
+    {
+      "url": "/labos/i2c-level-shifter.mjs",
+      "ok": true,
+      "bytes": 2578,
+      "expected": 2578,
+      "redirect": false
+    },
+    {
+      "url": "/labos/icon.svg",
+      "ok": true,
+      "bytes": 237,
+      "expected": 237,
+      "redirect": false
+    },
+    {
+      "url": "/labos/icons/lab-192.png",
+      "ok": true,
+      "bytes": 4506,
+      "expected": 4506,
+      "redirect": false
+    },
+    {
+      "url": "/labos/icons/lab-512.png",
+      "ok": true,
+      "bytes": 3591,
+      "expected": 3591,
+      "redirect": false
+    },
+    {
+      "url": "/labos/ili9341.mjs",
+      "ok": true,
+      "bytes": 4004,
+      "expected": 4004,
+      "redirect": false
+    },
+    {
+      "url": "/labos/index.html",
+      "ok": true,
+      "bytes": 718,
+      "expected": 718,
+      "redirect": false
+    },
+    {
+      "url": "/labos/infrared.mjs",
+      "ok": true,
+      "bytes": 7464,
+      "expected": 7464,
+      "redirect": false
+    },
+    {
+      "url": "/labos/lcd1602.mjs",
+      "ok": true,
+      "bytes": 4855,
+      "expected": 4855,
+      "redirect": false
+    },
+    {
+      "url": "/labos/level-shifter.mjs",
+      "ok": true,
+      "bytes": 2231,
+      "expected": 2231,
+      "redirect": false
+    },
+    {
+      "url": "/labos/licenses/Bounce2-LICENSE.txt",
+      "ok": true,
+      "bytes": 1083,
+      "expected": 1083,
+      "redirect": false
+    },
+    {
+      "url": "/labos/licenses/DHT-LICENSE.txt",
+      "ok": true,
+      "bytes": 1064,
+      "expected": 1064,
+      "redirect": false
+    },
+    {
+      "url": "/labos/licenses/DallasTemperature-LICENSE.txt",
+      "ok": true,
+      "bytes": 1070,
+      "expected": 1070,
+      "redirect": false
+    },
+    {
+      "url": "/labos/licenses/Emscripten-LICENSE.txt",
+      "ok": true,
+      "bytes": 5093,
+      "expected": 5093,
+      "redirect": false
+    },
+    {
+      "url": "/labos/licenses/Lab-MIT.txt",
+      "ok": true,
+      "bytes": 1091,
+      "expected": 1091,
+      "redirect": false
+    },
+    {
+      "url": "/labos/licenses/MicroPython-MIT.txt",
+      "ok": true,
+      "bytes": 3419,
+      "expected": 3419,
+      "redirect": false
+    },
+    {
+      "url": "/labos/licenses/OneWire-LICENSE.txt",
+      "ok": true,
+      "bytes": 6797,
+      "expected": 6797,
+      "redirect": false
+    },
+    {
+      "url": "/labos/licenses/THIRD-PARTY.txt",
+      "ok": true,
+      "bytes": 349415,
+      "expected": 349415,
+      "redirect": false
+    },
+    {
+      "url": "/labos/licenses/compiler-rt-LICENSE.txt",
+      "ok": true,
+      "bytes": 16708,
+      "expected": 16708,
+      "redirect": false
+    },
+    {
+      "url": "/labos/licenses/micropython-lib-LICENSE.txt",
+      "ok": true,
+      "bytes": 14363,
+      "expected": 14363,
+      "redirect": false
+    },
+    {
+      "url": "/labos/licenses/musl-COPYRIGHT.txt",
+      "ok": true,
+      "bytes": 6204,
+      "expected": 6204,
+      "redirect": false
+    },
+    {
+      "url": "/labos/machine.py",
+      "ok": true,
+      "bytes": 15196,
+      "expected": 15196,
+      "redirect": false
+    },
+    {
+      "url": "/labos/manifest.webmanifest",
+      "ok": true,
+      "bytes": 738,
+      "expected": 738,
+      "redirect": false
+    },
+    {
+      "url": "/labos/max30102.mjs",
+      "ok": true,
+      "bytes": 9239,
+      "expected": 9239,
+      "redirect": false
+    },
+    {
+      "url": "/labos/nrf24.mjs",
+      "ok": true,
+      "bytes": 10511,
+      "expected": 10511,
+      "redirect": false
+    },
+    {
+      "url": "/labos/onewire-bus.mjs",
+      "ok": true,
+      "bytes": 10375,
+      "expected": 10375,
+      "redirect": false
+    },
+    {
+      "url": "/labos/peripherals.mjs",
+      "ok": true,
+      "bytes": 7263,
+      "expected": 7263,
+      "redirect": false
+    },
+    {
+      "url": "/labos/pilot-form.mjs",
+      "ok": true,
+      "bytes": 2781,
+      "expected": 2781,
+      "redirect": false
+    },
+    {
+      "url": "/labos/pilot-record.mjs",
+      "ok": true,
+      "bytes": 4684,
+      "expected": 4684,
+      "redirect": false
+    },
+    {
+      "url": "/labos/pilot.html",
+      "ok": true,
+      "bytes": 15201,
+      "expected": 15201,
+      "redirect": false
+    },
+    {
+      "url": "/labos/quadrature-inputs.mjs",
+      "ok": true,
+      "bytes": 5236,
+      "expected": 5236,
+      "redirect": false
+    },
+    {
+      "url": "/labos/radio-clock.mjs",
+      "ok": true,
+      "bytes": 769,
+      "expected": 769,
+      "redirect": false
+    },
+    {
+      "url": "/labos/radio-examples.json",
+      "ok": true,
+      "bytes": 96580,
+      "expected": 96580,
+      "redirect": false
+    },
+    {
+      "url": "/labos/report.css",
+      "ok": true,
+      "bytes": 1681,
+      "expected": 1681,
+      "redirect": false
+    },
+    {
+      "url": "/labos/report.html",
+      "ok": true,
+      "bytes": 7562,
+      "expected": 7562,
+      "redirect": false
+    },
+    {
+      "url": "/labos/rtc-ds1302.mjs",
+      "ok": true,
+      "bytes": 9710,
+      "expected": 9710,
+      "redirect": false
+    },
+    {
+      "url": "/labos/runtime/micropython.mjs",
+      "ok": true,
+      "bytes": 225531,
+      "expected": 225531,
+      "redirect": false
+    },
+    {
+      "url": "/labos/runtime/micropython.wasm",
+      "ok": true,
+      "bytes": 1134289,
+      "expected": 1134289,
+      "redirect": false
+    },
+    {
+      "url": "/labos/s3-contract.mjs",
+      "ok": true,
+      "bytes": 6002,
+      "expected": 6002,
+      "redirect": false
+    },
+    {
+      "url": "/labos/s3-core-lock.mjs",
+      "ok": true,
+      "bytes": 1239,
+      "expected": 1239,
+      "redirect": false
+    },
+    {
+      "url": "/labos/s3-engine.mjs",
+      "ok": true,
+      "bytes": 6965,
+      "expected": 6965,
+      "redirect": false
+    },
+    {
+      "url": "/labos/s3-examples.json",
+      "ok": true,
+      "bytes": 1444176,
+      "expected": 1444176,
+      "redirect": false
+    },
+    {
+      "url": "/labos/s3-worker.mjs",
+      "ok": true,
+      "bytes": 625,
+      "expected": 625,
+      "redirect": false
+    },
+    {
+      "url": "/labos/school-account.mjs",
+      "ok": true,
+      "bytes": 8008,
+      "expected": 8008,
+      "redirect": false
+    },
+    {
+      "url": "/labos/school-check.mjs",
+      "ok": true,
+      "bytes": 1866,
+      "expected": 1866,
+      "redirect": false
+    },
+    {
+      "url": "/labos/school-classes.mjs",
+      "ok": true,
+      "bytes": 17209,
+      "expected": 17209,
+      "redirect": false
+    },
+    {
+      "url": "/labos/school-grading-support.csv",
+      "ok": true,
+      "bytes": 139618,
+      "expected": 139618,
+      "redirect": false
+    },
+    {
+      "url": "/labos/school-grading-support.json",
+      "ok": true,
+      "bytes": 858894,
+      "expected": 858894,
+      "redirect": false
+    },
+    {
+      "url": "/labos/school-grading-support.mjs",
+      "ok": true,
+      "bytes": 3693,
+      "expected": 3693,
+      "redirect": false
+    },
+    {
+      "url": "/labos/school-grading.html",
+      "ok": true,
+      "bytes": 5007,
+      "expected": 5007,
+      "redirect": false
+    },
+    {
+      "url": "/labos/school-pilot-form.mjs",
+      "ok": true,
+      "bytes": 5177,
+      "expected": 5177,
+      "redirect": false
+    },
+    {
+      "url": "/labos/school-pilot-record.mjs",
+      "ok": true,
+      "bytes": 6740,
+      "expected": 6740,
+      "redirect": false
+    },
+    {
+      "url": "/labos/school-pilot.html",
+      "ok": true,
+      "bytes": 6826,
+      "expected": 6826,
+      "redirect": false
+    },
+    {
+      "url": "/labos/school.html",
+      "ok": true,
+      "bytes": 17973,
+      "expected": 17973,
+      "redirect": false
+    },
+    {
+      "url": "/labos/sd-card.mjs",
+      "ok": true,
+      "bytes": 8860,
+      "expected": 8860,
+      "redirect": false
+    },
+    {
+      "url": "/labos/session.mjs",
+      "ok": true,
+      "bytes": 2041,
+      "expected": 2041,
+      "redirect": false
+    },
+    {
+      "url": "/labos/spi-devices.mjs",
+      "ok": true,
+      "bytes": 13158,
+      "expected": 13158,
+      "redirect": false
+    },
+    {
+      "url": "/labos/stepper.mjs",
+      "ok": true,
+      "bytes": 8521,
+      "expected": 8521,
+      "redirect": false
+    },
+    {
+      "url": "/labos/style.css",
+      "ok": true,
+      "bytes": 16214,
+      "expected": 16214,
+      "redirect": false
+    },
+    {
+      "url": "/labos/suite.mjs",
+      "ok": true,
+      "bytes": 7832,
+      "expected": 7832,
+      "redirect": false
+    },
+    {
+      "url": "/labos/tm1637.mjs",
+      "ok": true,
+      "bytes": 5180,
+      "expected": 5180,
+      "redirect": false
+    },
+    {
+      "url": "/labos/urs-catalog-summary.json",
+      "ok": true,
+      "bytes": 405,
+      "expected": 405,
+      "redirect": false
+    },
+    {
+      "url": "/labos/urs-podrska.csv",
+      "ok": true,
+      "bytes": 82239,
+      "expected": 82239,
+      "redirect": false
+    },
+    {
+      "url": "/labos/verification/board-profile.json",
+      "ok": true,
+      "bytes": 3185,
+      "expected": 3185,
+      "redirect": false
+    },
+    {
+      "url": "/labos/verification/reproducibility-stage12a.json",
+      "ok": true,
+      "bytes": 457,
+      "expected": 457,
+      "redirect": false
+    },
+    {
+      "url": "/labos/verification/reproducibility-stage3.json",
+      "ok": true,
+      "bytes": 457,
+      "expected": 457,
+      "redirect": false
+    },
+    {
+      "url": "/labos/verification/reproducibility-stage4.json",
+      "ok": true,
+      "bytes": 457,
+      "expected": 457,
+      "redirect": false
+    },
+    {
+      "url": "/labos/verification/reproducibility.json",
+      "ok": true,
+      "bytes": 453,
+      "expected": 453,
+      "redirect": false
+    },
+    {
+      "url": "/labos/verification/results-chromium.json",
+      "ok": true,
+      "bytes": 2854,
+      "expected": 2854,
+      "redirect": false
+    },
+    {
+      "url": "/labos/verification/results-node.json",
+      "ok": true,
+      "bytes": 2628,
+      "expected": 2628,
+      "redirect": false
+    },
+    {
+      "url": "/labos/verification/results-stage1-chromium.json",
+      "ok": true,
+      "bytes": 2853,
+      "expected": 2853,
+      "redirect": false
+    },
+    {
+      "url": "/labos/verification/results-stage1-runtime.json",
+      "ok": true,
+      "bytes": 506,
+      "expected": 506,
+      "redirect": false
+    },
+    {
+      "url": "/labos/verification/s3-native-exports.json",
+      "ok": true,
+      "bytes": 54839,
+      "expected": 54839,
+      "redirect": false
+    },
+    {
+      "url": "/labos/verification/stage1-browser-checks.json",
+      "ok": true,
+      "bytes": 1345,
+      "expected": 1345,
+      "redirect": false
+    },
+    {
+      "url": "/labos/verification/stage3-browser-checks.json",
+      "ok": true,
+      "bytes": 4208,
+      "expected": 4208,
+      "redirect": false
+    },
+    {
+      "url": "/labos/verification/stage4-browser-checks.json",
+      "ok": true,
+      "bytes": 2134,
+      "expected": 2134,
+      "redirect": false
+    },
+    {
+      "url": "/labos/worker.mjs",
+      "ok": true,
+      "bytes": 2564,
+      "expected": 2564,
+      "redirect": false
+    },
+    {
+      "url": "/labos/xpt2046.mjs",
+      "ok": true,
+      "bytes": 2652,
+      "expected": 2652,
+      "redirect": false
+    }
+  ]
+}

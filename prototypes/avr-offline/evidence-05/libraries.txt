@@ -1,0 +1,45 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> esp32-micropython-lab@0.15.7-beta.1 prototype:avr:libraries
+> node --import tsx --test prototypes/avr-offline/libraries.test.ts
+
+▶ all locked libraries compile real Uno/Nano lessons and drive their own circuits without fetch
+  ✔ uno: aht10 (2210.260356ms)
+  ✔ uno: servo (1943.464788ms)
+  ✔ uno: oled (9237.783929ms)
+  ✔ uno: regulator (7990.503034ms)
+  ✔ uno: bmp180 (2233.989857ms)
+  ✔ uno: bmp280 (2202.011323ms)
+  ✔ uno: am2320 (2122.183184ms)
+  ✔ uno: oled32 (5260.345244ms)
+  ✔ uno: lcd1602 (2333.181024ms)
+  ✔ uno: lcdWeather (1990.297946ms)
+  ✔ uno: dht11 (2156.989124ms)
+  ✔ uno: dht22 (1991.394977ms)
+  ✔ uno: ds18b20 (4073.348778ms)
+  ✔ uno: bmp280SPI (2440.046456ms)
+  ✔ nano: aht10 (1904.269796ms)
+  ✔ nano: servo (2011.538046ms)
+  ✔ nano: oled (7498.947542ms)
+  ✔ nano: regulator (7290.842922ms)
+  ✔ nano: bmp180 (1962.507317ms)
+  ✔ nano: bmp280 (1895.816884ms)
+  ✔ nano: am2320 (1850.707559ms)
+  ✔ nano: oled32 (4942.160046ms)
+  ✔ nano: lcd1602 (1850.713561ms)
+  ✔ nano: lcdWeather (2150.888498ms)
+  ✔ nano: dht11 (2059.312703ms)
+  ✔ nano: dht22 (1885.202274ms)
+  ✔ nano: ds18b20 (3708.323777ms)
+  ✔ nano: bmp280SPI (2205.814891ms)
+✔ all locked libraries compile real Uno/Nano lessons and drive their own circuits without fetch (91417.909075ms)
+✔ Bounce2 and EEPROM compile from the package; selection changes invalidate results and preserve projects (2247.345922ms)
+✔ library versions, digests, dependencies and exclusive OLED packages are enforced (158.981901ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 94539.997937

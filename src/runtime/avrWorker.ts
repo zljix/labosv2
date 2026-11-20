@@ -1,3 +1,4 @@
+import {AVREEPROM,EEPROMMemoryBackend} from 'avr8js';
 import {AVREngine} from './avrEngine';
 let engine:AVREngine|undefined,session=0,timer:ReturnType<typeof setTimeout>|undefined,lastFrame=0;
 const send=(event:any)=>postMessage({...event,session});
@@ -10,7 +11,7 @@ onmessage=({data})=>{
   try {
     if(data.type==='run'){
       if(timer)clearTimeout(timer);engine?.dispose();session=data.session;
-      engine=new AVREngine(data.hex,data.circuit,send,data.adcChannels,data.staticRamBytes);lastFrame=0;send({type:'ready'});step();
+      engine=new AVREngine(data.hex,data.circuit,send,data.adcChannels,data.staticRamBytes);if(data.prototypeEEPROM)new AVREEPROM(engine.cpu,new EEPROMMemoryBackend(1024));lastFrame=0;send({type:'ready'});step();
     }else if(data.type==='input'&&data.session===session)engine?.input(data);
   }catch(e){fail(e);}
 };

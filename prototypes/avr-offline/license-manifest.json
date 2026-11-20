@@ -1,0 +1,13 @@
+{
+  "release": "avr-gcc-15.2.0-pcbkit-4",
+  "files": {
+    "NOTICE.json": {
+      "bytes": 1066,
+      "sha256": "48fa583b3b925d04ba1a091498d28fbb8768dae84bddc985fd441a0c93010b6f"
+    },
+    "licenses.tar.gz": {
+      "bytes": 149920,
+      "sha256": "8afae9cb76c5b4ac7063bcec2d235fb27cd034e42f8d62c7f3d1a09ba1f559bc"
+    }
+  }
+}

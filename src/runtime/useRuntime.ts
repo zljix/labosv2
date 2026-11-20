@@ -1,3 +1,6 @@
+import {OFFLINE_AVR,offlineInput} from './offlineAvr';
+import {validateResult} from '../../prototypes/avr-offline/compiler.mjs';
+import {projectWithBuild} from './arduinoBuild';
 import {SDSessionMemory} from './sdState';
 import {RTCSessionMemory} from './rtcState';
 import { useEffect, useRef, useState } from "react";
@@ -28,13 +31,18 @@ export function useRuntime() {
     void session.current?.stop(); session.current = undefined;
     setState("stopped"); if(!keepResults)setSimulation(undefined);setLiveInputs({});
   }
-  async function run(p: Project, reset = false) {
+  async function run(p: Project, reset = false, offlineArtifact?: unknown) {
     const ticket = ++launch.current;
     void session.current?.stop(); session.current = undefined;
     if (reset) { pressed.current = false; setButton(false); }
     setState("loading");setConsole("");setLed(false);setFrame([]);setSimulation(undefined);setLiveInputs({});setRunRevision(p.revision);
     try {
-      const snapshot = prepareRun(p);
+      const prototype=offlineArtifact!==undefined;
+      if(prototype&&!OFFLINE_AVR)throw Error('Offline prototip nije uključen u ovoj izgradnji.');
+      if(OFFLINE_AVR&&prototype)await validateResult(offlineInput(p),offlineArtifact);
+      const ready=OFFLINE_AVR&&prototype?p:await projectWithBuild(p);
+      if(ticket!==launch.current)return;
+      const snapshot = prepareRun(ready);
       setLiveInputs({...rtcMemory.current.prepare(p,snapshot.circuit),...sdMemory.current.prepare(p,snapshot.circuit)});
       const observe=(event:any)=>{
         if(ticket!==launch.current)return;
@@ -47,6 +55,13 @@ export function useRuntime() {
         if(event.type==='error'){append(event.message+'\n');setState('error');void session.current?.stop();}
       };
       if(snapshot.project.language==='arduino-cpp'){
+        if(OFFLINE_AVR&&prototype){
+          const artifact=await validateResult(offlineInput(snapshot.project),offlineArtifact);
+          if(ticket!==launch.current)return;
+          append(`Offline AVR prototip · Flash ${artifact.flashBytes} B · statički SRAM ${artifact.staticRamBytes} B\n`);
+          session.current=new AVRSession(()=>new Worker(new URL('./avrWorker.ts',import.meta.url),{type:'module'}),artifact.hex,snapshot.circuit!,AVR_TARGETS[snapshot.project.board.id as keyof typeof AVR_TARGETS].adc,observe,artifact.staticRamBytes,true);
+          return;
+        }
         const raw=snapshot.project.files[buildFile(snapshot.project)];
         if(!raw)throw Error('Najprije prevedi program gumbom Prevedi ili otvori provjereni Arduino primjer.');
         const artifact=await validateArtifact(snapshot.project,JSON.parse(raw));

@@ -3,7 +3,7 @@ import { readdirSync, readFileSync, writeFileSync, mkdirSync, copyFileSync, stat
 import { resolve, relative, dirname } from 'node:path';
 
 function filesUnder(root) {
-  return readdirSync(root, { withFileTypes: true }).flatMap(entry => {
+  return readdirSync(root, { withFileTypes: true }).filter(entry=>!['node_modules','.git'].includes(entry.name)).flatMap(entry => {
     const path = resolve(root, entry.name);
     return entry.isDirectory() ? filesUnder(path) : [path];
   }).sort();
@@ -12,15 +12,15 @@ export function normalizeBase(value = '/') {
   if (!/^\/(?:[A-Za-z0-9_-]+\/)*[A-Za-z0-9_-]*$/.test(value)) throw Error('LAB_BASE_PATH mora biti apsolutna putanja, npr. /labos/.');
   return value.endsWith('/') ? value : value + '/';
 }
-export function sourceBuild(root, base = '/') {
-  const paths = ['src', 'boards', 'public', 'scripts'].flatMap(name => filesUnder(resolve(root, name)));
+export function sourceBuild(root, base = '/', extra = []) {
+  const paths = ['src', 'boards', 'public', 'scripts', ...extra].flatMap(name => filesUnder(resolve(root, name)));
   paths.push(...['package.json', 'package-lock.json', 'vite.config.ts', 'index.html'].map(name => resolve(root, name)));
   const hash = createHash('sha256');
   for (const path of paths.sort()) hash.update(relative(root, path)).update('\0').update(readFileSync(path)).update('\0');
   if (base !== '/') hash.update('base\0').update(base);
   return hash.digest('hex').slice(0, 16);
 }
-export function offlinePlugin(root, build, version, base = '/') {
+export function offlinePlugin(root, build, version, base = '/', offlinePrototype = false) {
   return {
     name: 'lab-offline-package',
     apply: 'build',
@@ -46,11 +46,20 @@ export function offlinePlugin(root, build, version, base = '/') {
         for (const icon of manifest.icons) icon.src = base + icon.src.replace(/^\//, '');
         writeFileSync(path, JSON.stringify(manifest, null, 2) + '\n');
       }
-      const files = filesUnder(dist).filter(path => !['sw.js', 'offline-package.json'].includes(relative(dist, path))).map(path => ({
+      const files = filesUnder(dist).filter(path => !['sw.js', 'offline-package.json'].includes(relative(dist, path)) && !(offlinePrototype && relative(dist,path).replaceAll('\\','/').startsWith('offline-avr/toolchain/'))).map(path => ({
         url: base + relative(dist, path).replaceAll('\\', '/'),
         sha256: createHash('sha256').update(readFileSync(path)).digest('hex'),
         bytes: statSync(path).size,
       }));
+      // Only collapse release copies onto their byte-identical stable counterpart.
+      // Different paths/types are never grouped just because their bytes match.
+      const byUrl = new Map(files.map(file => [file.url, file]));
+      for (const file of files) {
+        const prefix = base + 'app/' + build + '/';
+        if (!file.url.startsWith(prefix)) continue;
+        const original = byUrl.get(base + file.url.slice(prefix.length));
+        if (original && original.sha256 === file.sha256 && original.bytes === file.bytes) file.cacheUrl = original.url;
+      }
       const config = { build, version, base, files };
       writeFileSync(resolve(dist, 'offline-package.json'), JSON.stringify(config, null, 2) + '\n');
       const template = readFileSync(resolve(root, 'scripts/service-worker.js'), 'utf8');

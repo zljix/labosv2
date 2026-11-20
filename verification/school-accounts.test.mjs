@@ -50,7 +50,7 @@ test('23B accounts against real PHP and a disposable restricted MySQL database',
   }
 
   await t.test('migrations are repeatable and never recreate accounts', () => {
-    const first = consoleCommand('migrate'); assert.equal(first.status, 0, first.stderr); assert.equal(JSON.parse(first.stdout).migrations.length, 7);
+    const first = consoleCommand('migrate'); assert.equal(first.status, 0, first.stderr); assert.equal(JSON.parse(first.stdout).migrations.length, 8);
     assert(JSON.parse(first.stdout).migrations.every(item => item.status === 'applied'));
     const second = consoleCommand('migrate'); assert.equal(second.status, 0, second.stderr); assert(JSON.parse(second.stdout).migrations.every(item => item.status === 'already_applied'));
   });

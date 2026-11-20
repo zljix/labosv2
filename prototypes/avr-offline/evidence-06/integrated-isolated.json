@@ -1,0 +1,32 @@
+{
+  "phase": "isolated",
+  "success": true,
+  "checks": [
+    "New source edited, compiled and run in normal editor/console in OS network isolation",
+    "Syntax error blocks old result through both offline button and main Run button",
+    "Exported prototype bundle reimported into main app, validated and executed without auto-run",
+    "Full browser restart in isolation, persisted output executed, another new source compiled and run",
+    "390 px and desktop compiler dialog checked; unrelated storage preserved"
+  ],
+  "errors": [],
+  "namespace": "net:[4026532257]",
+  "links": [
+    {
+      "ifindex": 1,
+      "ifname": "lo",
+      "flags": [
+        "LOOPBACK"
+      ],
+      "mtu": 65536,
+      "qdisc": "noop",
+      "operstate": "DOWN",
+      "linkmode": "DEFAULT",
+      "group": "default",
+      "txqlen": 1000,
+      "link_type": "loopback",
+      "address": "00:00:00:00:00:00",
+      "broadcast": "00:00:00:00:00:00"
+    }
+  ],
+  "browser": "151.0.7922.34"
+}

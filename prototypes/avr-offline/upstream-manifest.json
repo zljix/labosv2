@@ -1,0 +1,41 @@
+{
+  "id": "avr-gcc-15.2.0-pcbkit-4",
+  "files": {
+    "cc1.js": {
+      "bytes": 120061,
+      "sha256": "7056343b513a08383036f24343421dba164b9c3f276c6c756ab4e724793dffd0"
+    },
+    "cc1.wasm": {
+      "bytes": 17099337,
+      "sha256": "99bb2d58f7144e8e4db403dd61a242b42c04f3f651dfaa2fc489a9d33903a1e9"
+    },
+    "cc1plus.js": {
+      "bytes": 127477,
+      "sha256": "7822d4b725b9a9d2f5bd762c4c2b8f16a27ba8e5f6091d5c3f33f8762c34a798"
+    },
+    "cc1plus.wasm": {
+      "bytes": 18558493,
+      "sha256": "24f256cc1e0a7385ef20ef16a5ec23531bc3d287dbb2accca1ad7c5e8554f1c7"
+    },
+    "avr-as.js": {
+      "bytes": 756054,
+      "sha256": "f2a8cb8a2fdc154218e409c6fa1f479ea13da22a23c1eeab91a983e7bdb3bc78"
+    },
+    "avr-ld.js": {
+      "bytes": 1173924,
+      "sha256": "a30ba2b9f21076732b3adbe961b7afd53359c4a0e094fd1081b5929b4b3b4db3"
+    },
+    "objcopy.js": {
+      "bytes": 693440,
+      "sha256": "18cff8f62f630b7fcb2714521c26d9070754957a108f0e85b04a61e6d373a97d"
+    },
+    "ctags.js": {
+      "bytes": 500502,
+      "sha256": "a8bf42833f0a5ea4cdbac2d831f1ce535b42c8ad8169994bb2e5c4613cd86ad5"
+    },
+    "sdk.bin": {
+      "bytes": 24890531,
+      "sha256": "457ad6f18818f873810233611f0b8209786276d9c09340227bff794e31fb6c45"
+    }
+  }
+}

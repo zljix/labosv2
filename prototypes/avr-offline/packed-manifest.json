@@ -1,0 +1,26 @@
+{
+  "cc1.js": {
+    "bytes": 28107
+  },
+  "cc1.wasm": {
+    "bytes": 5928672
+  },
+  "cc1plus.js": {
+    "bytes": 29560
+  },
+  "cc1plus.wasm": {
+    "bytes": 6543791
+  },
+  "avr-as.js": {
+    "bytes": 314132
+  },
+  "avr-ld.js": {
+    "bytes": 430978
+  },
+  "objcopy.js": {
+    "bytes": 286705
+  },
+  "sdk-uno-nano-2059a3d43a6c88fc.bin": {
+    "bytes": 2094333
+  }
+}

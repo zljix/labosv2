@@ -20,7 +20,10 @@ await mkdir(reports,{recursive:true});
 const evidence={phase,engine,success:false,checks:[],errors:[],namespace:await readlink('/proc/self/ns/net')};
 let context,page,server;
 async function open(){
- context=await browserType.launchPersistentContext(profile,{headless:true,offline:phase==='isolated',viewport:{width:1440,height:1100},args:launchArgs});
+ // WebKit's emulated offline mode rejects even cache-only SW responses
+ // (microsoft/playwright#42775). OS network isolation is checked before open
+ // and remains mandatory for both engines; no server runs in this phase.
+ context=await browserType.launchPersistentContext(profile,{headless:true,offline:phase==='isolated'&&engine==='chromium',viewport:{width:1440,height:1100},args:launchArgs});
  evidence.browser=context.browser()?.version();page=await context.newPage();page.on('pageerror',e=>evidence.errors.push(e.message));
  const response=await page.goto(origin,{waitUntil:'domcontentloaded'});
  if(phase==='isolated')assert(response.fromServiceWorker(),'Labos navigation must use persisted app package');

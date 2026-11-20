@@ -1,4 +1,4 @@
-name: Diagnose WebKit startup
+name: Diagnose WebKit offline restart
 on:
   push:
     branches: [diagnostic/mobile-webkit]
@@ -15,9 +15,13 @@ jobs:
           node-version: '24'
       - run: npm ci --prefix prototypes/avr-offline/ci
       - run: prototypes/avr-offline/ci/node_modules/.bin/playwright install --with-deps webkit
-      - run: node prototypes/avr-offline/webkit-diagnostic.mjs
+      - run: node prototypes/avr-offline/webkit-diagnostic.mjs prepare
+      - run: |
+          runner_name="$(id -un)"
+          node_path="$(command -v node)"
+          sudo unshare --net -- runuser -u "$runner_name" -- "$node_path" prototypes/avr-offline/webkit-diagnostic.mjs isolated
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: webkit-startup
+          name: webkit-offline-restart
           path: .build/webkit-diagnostic/

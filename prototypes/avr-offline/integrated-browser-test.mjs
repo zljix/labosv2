@@ -14,7 +14,7 @@ const browserType=browsers[engine],launchArgs=engine==='chromium'?['--no-sandbox
 const phase=process.argv[2];assert(['prepare','isolated'].includes(phase));
 const root=resolve('dist'),profile=resolve('.build/avr-integrated-profile'+(engine==='webkit'?'-webkit':'')),reports=resolve('.build/avr-integrated-evidence'+(engine==='webkit'?'-webkit':''));
 const currentManifest=JSON.parse(await readFile(root+'/offline-package.json','utf8'));
-const prefix=currentManifest.base,origin='http://127.0.0.1:4190'+prefix;
+const prefix=currentManifest.base,origin='http://127.0.0.1:4173'+prefix;
 let serveRoot=root;
 await mkdir(reports,{recursive:true});
 const evidence={phase,engine,success:false,checks:[],errors:[],namespace:await readlink('/proc/self/ns/net')};
@@ -65,7 +65,7 @@ try{
    const rel=pathname.slice(prefix.length)||'index.html',path=resolve(serveRoot,rel);if(!path.startsWith(serveRoot+'/')){res.writeHead(403).end();return;}
    const data=await readFile(path),type={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.json':'application/json','.wasm':'application/wasm','.svg':'image/svg+xml'}[extname(path)]||'application/octet-stream';
    res.writeHead(200,{'Content-Type':type,'Cache-Control':'no-store'}).end(data);
-  }catch{res.writeHead(404).end();}});await new Promise(r=>server.listen(4190,'127.0.0.1',r));
+  }catch{res.writeHead(404).end();}});await new Promise(r=>server.listen(4173,'127.0.0.1',r));
   // First install can be the deployed baseline. Use the same origin and profile
   // across the upgrade; do not clear any storage or replace the saved project.
   if(process.env.LAB_UPGRADE_BASELINE)serveRoot=resolve(process.env.LAB_UPGRADE_BASELINE);

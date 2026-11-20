@@ -1,0 +1,323 @@
+{
+  "version": "0.16.0-beta.2",
+  "build": "3b12f1b1dbd75c83",
+  "commit": "178d00f9889e87002fbe3f2678ec239e0c12406d",
+  "run": 44666662390,
+  "buildResult": "success",
+  "deployResult": "success",
+  "tests": {
+    "passed": 116,
+    "failed": 0,
+    "skippedLocalCli": 4
+  },
+  "acceptance": [
+    {
+      "engine": "chromium",
+      "phase": "prepare",
+      "success": true,
+      "checks": [
+        "Deployed baseline upgraded through normal Save and open new version button; existing project content, active project and unrelated caches preserved",
+        "Cancel responds during compilation; stale result stays disabled; a subsequent fresh compilation succeeds",
+        "Normal project import, separate package preparation, compile and live AVR simulation in main Labos UI"
+      ],
+      "upgrade": {
+        "from": {
+          "version": "0.16.0-beta.1",
+          "build": "4abe6bca6d24bb89"
+        },
+        "to": {
+          "version": "0.16.0-beta.2",
+          "build": "3b12f1b1dbd75c83"
+        },
+        "preservedProjects": 2,
+        "cacheCleared": false
+      },
+      "responsiveness": [
+        {
+          "last": 4632.100000000093,
+          "ticks": 51,
+          "maxGap": 114.70000000006985,
+          "statuses": [
+            {
+              "at": 3223.3000000000466,
+              "status": "Prevođenje je otkazano."
+            },
+            {
+              "at": 3257.100000000093,
+              "status": "Prevođenje u pregledniku…"
+            },
+            {
+              "at": 3285.9000000000233,
+              "status": "Prevođenje C++ izvora…"
+            },
+            {
+              "at": 4082.5,
+              "status": "Sastavljanje strojnog koda…"
+            },
+            {
+              "at": 4234.900000000023,
+              "status": "Povezivanje programa i biblioteka…"
+            },
+            {
+              "at": 4482.100000000093,
+              "status": "Priprema izvršnog programa…"
+            },
+            {
+              "at": 4632.100000000093,
+              "status": "Prevedeno · Flash 2360 B · statički SRAM 206 B. Rezultat je spremljen za ponovno otvaranje."
+            }
+          ]
+        }
+      ],
+      "namespace": "net:[4026531840]"
+    },
+    {
+      "engine": "chromium",
+      "phase": "isolated",
+      "success": true,
+      "checks": [
+        "New source edited, compiled and run in normal editor/console in OS network isolation",
+        "Syntax error blocks old result through both offline button and main Run button",
+        "Exported prototype bundle reimported into main app, validated and executed without auto-run",
+        "Full browser restart in isolation, persisted output executed, another new source compiled and run",
+        "390 px and desktop compiler dialog checked; unrelated storage preserved"
+      ],
+      "responsiveness": [
+        {
+          "last": 3495.3000000000466,
+          "ticks": 55,
+          "maxGap": 118.20000000006985,
+          "statuses": [
+            {
+              "at": 1958.3000000000466,
+              "status": "Paket je spremljen. Možeš prevoditi bez mreže."
+            },
+            {
+              "at": 2042.8000000000466,
+              "status": "Prevođenje u pregledniku…"
+            },
+            {
+              "at": 2087.0999999999767,
+              "status": "Prevođenje C++ izvora…"
+            },
+            {
+              "at": 2886.8000000000466,
+              "status": "Sastavljanje strojnog koda…"
+            },
+            {
+              "at": 3009.3000000000466,
+              "status": "Povezivanje programa i biblioteka…"
+            },
+            {
+              "at": 3383.20000000007,
+              "status": "Priprema izvršnog programa…"
+            }
+          ]
+        },
+        {
+          "last": 3977.4000000000233,
+          "ticks": 54,
+          "maxGap": 120.20000000006985,
+          "statuses": [
+            {
+              "at": 2502.5,
+              "status": "Paket je spremljen. Možeš prevoditi bez mreže."
+            },
+            {
+              "at": 2578.20000000007,
+              "status": "Prevođenje u pregledniku…"
+            },
+            {
+              "at": 2604.20000000007,
+              "status": "Prevođenje C++ izvora…"
+            },
+            {
+              "at": 3482.5,
+              "status": "Sastavljanje strojnog koda…"
+            },
+            {
+              "at": 3632.8000000000466,
+              "status": "Povezivanje programa i biblioteka…"
+            },
+            {
+              "at": 3854.100000000093,
+              "status": "Priprema izvršnog programa…"
+            }
+          ]
+        }
+      ],
+      "browser": "151.0.7922.34",
+      "namespace": "net:[4026532249]",
+      "links": [
+        {
+          "ifindex": 1,
+          "ifname": "lo",
+          "flags": [
+            "LOOPBACK"
+          ],
+          "mtu": 65536,
+          "qdisc": "noop",
+          "operstate": "DOWN",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "loopback",
+          "address": "00:00:00:00:00:00",
+          "broadcast": "00:00:00:00:00:00"
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "phase": "prepare",
+      "success": true,
+      "checks": [
+        "Deployed baseline upgraded through normal Save and open new version button; existing project content, active project and unrelated caches preserved",
+        "Cancel responds during compilation; stale result stays disabled; a subsequent fresh compilation succeeds",
+        "Normal project import, separate package preparation, compile and live AVR simulation in main Labos UI"
+      ],
+      "upgrade": {
+        "from": {
+          "version": "0.16.0-beta.1",
+          "build": "4abe6bca6d24bb89"
+        },
+        "to": {
+          "version": "0.16.0-beta.2",
+          "build": "3b12f1b1dbd75c83"
+        },
+        "preservedProjects": 2,
+        "cacheCleared": false
+      },
+      "responsiveness": [
+        {
+          "last": 5191,
+          "ticks": 57,
+          "maxGap": 172,
+          "statuses": [
+            {
+              "at": 3390,
+              "status": "Prevođenje je otkazano."
+            },
+            {
+              "at": 3478,
+              "status": "Prevođenje u pregledniku…"
+            },
+            {
+              "at": 3528,
+              "status": "Prevođenje C++ izvora…"
+            },
+            {
+              "at": 4683,
+              "status": "Sastavljanje strojnog koda…"
+            },
+            {
+              "at": 4795,
+              "status": "Povezivanje programa i biblioteka…"
+            },
+            {
+              "at": 5080,
+              "status": "Priprema izvršnog programa…"
+            }
+          ]
+        }
+      ],
+      "namespace": "net:[4026531840]"
+    },
+    {
+      "engine": "webkit",
+      "phase": "isolated",
+      "success": true,
+      "checks": [
+        "New source edited, compiled and run in normal editor/console in OS network isolation",
+        "Syntax error blocks old result through both offline button and main Run button",
+        "Exported prototype bundle reimported into main app, validated and executed without auto-run",
+        "Full browser restart in isolation, persisted output executed, another new source compiled and run",
+        "390 px and desktop compiler dialog checked; unrelated storage preserved"
+      ],
+      "responsiveness": [
+        {
+          "last": 4609,
+          "ticks": 62,
+          "maxGap": 202,
+          "statuses": [
+            {
+              "at": 2592,
+              "status": "Paket je spremljen. Možeš prevoditi bez mreže."
+            },
+            {
+              "at": 2694,
+              "status": "Prevođenje u pregledniku…"
+            },
+            {
+              "at": 2719,
+              "status": "Prevođenje C++ izvora…"
+            },
+            {
+              "at": 4065,
+              "status": "Sastavljanje strojnog koda…"
+            },
+            {
+              "at": 4191,
+              "status": "Povezivanje programa i biblioteka…"
+            },
+            {
+              "at": 4497,
+              "status": "Priprema izvršnog programa…"
+            }
+          ]
+        },
+        {
+          "last": 5524,
+          "ticks": 60,
+          "maxGap": 172,
+          "statuses": [
+            {
+              "at": 3638,
+              "status": "Paket je spremljen. Možeš prevoditi bez mreže."
+            },
+            {
+              "at": 3739,
+              "status": "Prevođenje u pregledniku…"
+            },
+            {
+              "at": 3764,
+              "status": "Prevođenje C++ izvora…"
+            },
+            {
+              "at": 4960,
+              "status": "Sastavljanje strojnog koda…"
+            },
+            {
+              "at": 5072,
+              "status": "Povezivanje programa i biblioteka…"
+            },
+            {
+              "at": 5412,
+              "status": "Priprema izvršnog programa…"
+            }
+          ]
+        }
+      ],
+      "browser": "26.5",
+      "namespace": "net:[4026532249]",
+      "links": [
+        {
+          "ifindex": 1,
+          "ifname": "lo",
+          "flags": [
+            "LOOPBACK"
+          ],
+          "mtu": 65536,
+          "qdisc": "noop",
+          "operstate": "DOWN",
+          "linkmode": "DEFAULT",
+          "group": "default",
+          "txqlen": 1000,
+          "link_type": "loopback",
+          "address": "00:00:00:00:00:00",
+          "broadcast": "00:00:00:00:00:00"
+        }
+      ]
+    }
+  ]
+}

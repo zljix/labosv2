@@ -1,0 +1,23 @@
+name: Diagnose WebKit startup
+on:
+  push:
+    branches: [diagnostic/mobile-webkit]
+permissions:
+  contents: read
+jobs:
+  webkit:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - run: npm ci --prefix prototypes/avr-offline/ci
+      - run: prototypes/avr-offline/ci/node_modules/.bin/playwright install --with-deps webkit
+      - run: node prototypes/avr-offline/webkit-diagnostic.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: webkit-startup
+          path: .build/webkit-diagnostic/

@@ -35,7 +35,7 @@ async function panel(){await page.getByRole('button',{name:'Prevedi',exact:true}
 async function compile(){
  const button=page.getByRole('button',{name:'Prevedi u pregledniku',exact:true});await button.waitFor();
  await page.waitForFunction(()=>[...document.querySelectorAll('button')].some(b=>b.textContent==='Prevedi u pregledniku'&&!b.disabled));
- await page.evaluate(()=>{globalThis.__compilePulse={last:performance.now(),ticks:0,maxGap:0};globalThis.__compilePulseTimer=setInterval(()=>{const p=globalThis.__compilePulse,now=performance.now();p.maxGap=Math.max(p.maxGap,now-p.last);p.last=now;p.ticks++;},25);});
+ await page.evaluate(()=>{globalThis.__compilePulse={last:performance.now(),ticks:0,maxGap:0,statuses:[]};globalThis.__compilePulseTimer=setInterval(()=>{const p=globalThis.__compilePulse,now=performance.now();p.maxGap=Math.max(p.maxGap,now-p.last);p.last=now;p.ticks++;const status=document.querySelector('[data-testid="offline-avr-status"]')?.textContent;if(status!==p.statuses.at(-1)?.status)p.statuses.push({at:now,status});},25);});
  await button.click();await page.waitForFunction(()=>document.querySelector('[data-testid="offline-avr-status"]')?.textContent.startsWith('Prevedeno'),null,{timeout:65000});
  const pulse=await page.evaluate(()=>{clearInterval(globalThis.__compilePulseTimer);return globalThis.__compilePulse;});
  assert(pulse.ticks>0,'UI event loop must keep running during compilation');assert(pulse.maxGap<2000,'UI blocked during compile: '+pulse.maxGap);(evidence.responsiveness??=[]).push(pulse);
@@ -145,6 +145,8 @@ try{
  }
  assert.deepEqual(evidence.errors,[]);evidence.success=true;
 }catch(e){evidence.error=e.stack;process.exitCode=1;console.error(e);}finally{
+ if(page&&!evidence.success)evidence.compileTrace=await page.evaluate(()=>globalThis.__compilePulse??null).catch(()=>null);
  if(page&&!evidence.success)await page.screenshot({path:reports+'/'+phase+'-failure.png',fullPage:true}).catch(()=>{});
- await close();if(server)await new Promise(r=>server.close(r));await writeFile(reports+'/'+phase+'.json',JSON.stringify(evidence,null,2));console.log(JSON.stringify(evidence));
+ await writeFile(reports+'/'+phase+'.json',JSON.stringify(evidence,null,2));console.log(JSON.stringify(evidence));
+ await close();if(server)await new Promise(r=>server.close(r));
 }

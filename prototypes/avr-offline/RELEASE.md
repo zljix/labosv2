@@ -2,6 +2,8 @@
 
 Prijavljeno je zamrzavanje kartice pri prevođenju za Nano u Chromeu na iPhoneu. Točan uzrok na uređaju nije reproduciran. Dorada zamjenjuje zajedničko učitavanje svih alata pojedinačnim radnim procesima, gasi svaki nakon koraka i u njegov datotečni sustav zapisuje samo potrebne ulaze. Prevoditelj C učitava se samo uz C datoteku. Prikazuju se faza i proteklo vrijeme; ostaju prekid i granica 60 sekundi.
 
+Čitanje i provjera spremljenih datoteka alata odvijaju se u prozoru aplikacije. Provjereni ArrayBufferi prenose se radnim procesima bez kopiranja; samo prevođenje i dalje radi u odvojenom procesu. Time se izbjegavaju ponovljena čitanja CacheStoragea iz kratkotrajnih procesa, na kojima je u WebKit provjeri zabilježen zastoj. Ne učitavaju se svi alati unaprijed.
+
 CI dodatno provjerava WebKit na Linuxu, odziv sučelja, prekid te uspješan ponovni pokušaj. WebKit na Linuxu i uski prikaz nisu potvrda stvarnog iPhonea. Potvrda fizičkog uređaja ostaje otvorena; ne treba brisati projekte ni predmemoriju.
 
 ---

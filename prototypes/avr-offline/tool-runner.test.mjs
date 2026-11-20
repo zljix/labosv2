@@ -28,3 +28,11 @@ test('tool input selection omits unused libraries, object files and board varian
  assert.deepEqual([...link.keys()],['/sysroot/arduino/boards/nano/libcore.a']);
  assert.deepEqual([...toolFiles('avr-as',['-o','/project/unit0.o','/project/unit0.s'],all,all).keys()],['/project/unit0.s']);
 });
+test('tool starts only after verified binary is ready and receives its transferred ownership',async()=>{
+ let deliver,created=0,payload,transfers,worker;
+ const runner=isolatedToolRunner(()=>{created++;worker={postMessage(data,transfer){payload=data;transfers=transfer;},terminate(){}};return worker;},()=>new Promise(resolve=>{deliver=resolve;}));
+ const binary=new ArrayBuffer(8),state={files:new Map(),progress(){},diagnostics:[],timings:[]};
+ const pending=runner('cc1plus',[],'/project/a.s',state);assert.equal(created,0);deliver({tool:binary});await Promise.resolve();assert.equal(created,1);
+ assert.equal(payload.assets.tool,binary);assert.deepEqual(transfers,[binary]);
+ worker.onmessage({data:{type:'result',result:new Uint8Array([1]),diagnostics:[],timing:{tool:'cc1plus',ms:1}}});await pending;
+});

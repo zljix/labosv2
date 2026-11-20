@@ -42,8 +42,8 @@ test('unsupported and school-bound projects rejected before worker launch',()=>{
  const s3=structuredClone(p);s3.board.id=S3;assert.throws(()=>offlineInput(s3));
 });
 class FakeWorker {
- onmessage:any;onerror:any;terminated=false;messages:any[]=[];
- postMessage(m:any){this.messages.push(m);}terminate(){this.terminated=true;}
+ onmessage:any;onerror:any;terminated=false;messages:any[]=[];transfers:any[]=[];
+ postMessage(m:any,transfer?:any){this.messages.push(m);this.transfers.push(transfer);}terminate(){this.terminated=true;}
  send(data:any){this.onmessage({data});}
 }
 test('cancel terminates worker, rejects job, ignores late output; next compile validates result',async()=>{
@@ -58,6 +58,18 @@ test('timeout and worker errors release the task',async()=>{
  await assert.rejects(task.compile(p),/60 sekundi/);assert(w.terminated);
  const w2=new FakeWorker(),task2=new OfflineCompileTask(()=>w2 as unknown as Worker);
  const promise=task2.compile(p);w2.onerror({message:'broken worker'});await assert.rejects(promise,/broken worker/);assert(w2.terminated);
+});
+test('verified package bytes transfer to worker; cancellation suppresses a late package response',async()=>{
+ const w=new FakeWorker(),bytes=new ArrayBuffer(4),names:string[]=[];
+ const task=new OfflineCompileTask(()=>w as unknown as Worker,60000,async name=>{names.push(name);return bytes;});
+ const pending=task.compile(p);w.send({type:'read-package-file',id:7,name:'cc1plus.wasm'});await new Promise(resolve=>setTimeout(resolve,0));
+ assert.deepEqual(names,['cc1plus.wasm']);assert.equal(w.messages[1].type,'package-file');assert.equal(w.messages[1].id,7);assert.equal(w.messages[1].bytes,bytes);assert.deepEqual(w.transfers[1],[bytes]);
+ w.send({type:'compiled',result});await pending;
+ const late=new FakeWorker();let complete!:(bytes:ArrayBuffer)=>void;
+ const cancelledTask=new OfflineCompileTask(()=>late as unknown as Worker,60000,()=>new Promise(resolve=>{complete=resolve;}));
+ const cancelled=cancelledTask.compile(p);const rejected=assert.rejects(cancelled,/otkazano/);
+ late.send({type:'read-package-file',id:8,name:'cc1plus.wasm'});cancelledTask.cancel();complete(new ArrayBuffer(4));await rejected;await new Promise(resolve=>setTimeout(resolve,0));
+ assert(late.terminated);assert.equal(late.messages.length,1);
 });
 test('package paths match page and classic worker under nested application prefix',()=>{
  assert.equal(assetURL('cc1.js','https://host.test/labos/offline-avr/'),'https://host.test/labos/offline-avr/toolchain/cc1.js');

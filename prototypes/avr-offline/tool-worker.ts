@@ -1,5 +1,5 @@
 import {runTool,unpackSDK} from './compiler.mjs';
-import {readPackageFile,FILES,SDK_FILE} from './package.mjs';
+import {FILES,SDK_FILE} from './package.mjs';
 import {toolFiles} from './tool-files.mjs';
 
 // One tool, one disposable realm. The parent terminates it before starting
@@ -8,10 +8,14 @@ self.onmessage=async({data})=>{
   try {
     const {name,args,output}=data;
     if(!['cc1','cc1plus','avr-as','avr-ld','objcopy'].includes(name))throw Error('Nepoznat alat.');
-    const sdk=['cc1','cc1plus','avr-ld'].includes(name)?unpackSDK(await readPackageFile(SDK_FILE)):new Map();
+    const read=(file:string)=>{const bytes=data.assets?.[file];if(!(bytes instanceof ArrayBuffer))throw Error('Nedostaje provjerena datoteka: '+file);return bytes;};
+    const sdk=['cc1','cc1plus','avr-ld'].includes(name)?unpackSDK(read(SDK_FILE)):new Map();
     const files=toolFiles(name,args,sdk,new Map(data.files));
-    const script=await readPackageFile(name+'.js');
-    const binary=Object.hasOwn(FILES,name+'.wasm')?await readPackageFile(name+'.wasm'):undefined;
+    const script=read(name+'.js');
+    // The window reads and verifies cached tool files, then transfers
+    // ownership here. This avoids WebKit's stalled worker-side cache read.
+    const binary=Object.hasOwn(FILES,name+'.wasm')?read(name+'.wasm'):undefined;
+    if(Object.hasOwn(FILES,name+'.wasm')&&!(binary instanceof ArrayBuffer))throw Error('Nedostaje provjereni WASM alat.');
     const url=URL.createObjectURL(new Blob([script],{type:'text/javascript'}));
     let create:any;
     try {(self as any).importScripts(url);create=(self as any)[name==='cc1'||name==='cc1plus'?'createModule':'Module'];}

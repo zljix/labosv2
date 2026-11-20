@@ -1,4 +1,4 @@
-import {installPackage,packageStatus,PACKED_BYTES} from './package.mjs';
+import {installPackage,packageStatus,readPackageFile,PACKED_BYTES} from './package.mjs';
 import {validateResult,normalizeInput} from './compiler.mjs';
 import {LIBRARIES,normalizeLibraries} from './libraries.mjs';
 import {EXAMPLES} from './examples.mjs';
@@ -65,6 +65,11 @@ async function runJob(type) {
   worker.onerror=e=>fail(e.message || 'Pogreška radnog procesa.');
   worker.onmessage=async({data})=>{
     if(id!==job)return;
+    if(data.type==='read-package-file'){
+      try{const bytes=await readPackageFile(data.name,location.href);if(id===job&&worker)worker.postMessage({type:'package-file',id:data.id,bytes},[bytes]);}
+      catch(error){if(id===job&&worker)worker.postMessage({type:'package-file',id:data.id,error:String(error?.message??error)});}
+      return;
+    }
     if(data.type==='progress'){$('status').textContent='Prevodim: '+data.tool;return;}
     if(data.type==='error'){fail(data.message);return;}
     try{

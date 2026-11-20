@@ -3,6 +3,7 @@
 > Izvori i licence dostupni su u dijalogu prevoditelja. Školsko bodovanje i
 > ESP32-S3 C++ ostaju na postojećem postupku. Pilot fizičkih uređaja nije potvrđen.
 > Prevođenje sada učitava samo potreban alat u zaseban kratkotrajni proces.
+> Datoteke se provjeravaju prije prijenosa u radni proces, bez dodatnog kopiranja.
 > Sučelje prikazuje korak i trajanje; Chrome na fizičkom iPhoneu još zahtijeva ponovnu provjeru.
 > Distribucija: [objašnjenje](prototypes/avr-offline/DISTRIBUTION.md).
 

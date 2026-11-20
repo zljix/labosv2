@@ -24,7 +24,7 @@ async function open(){
  // (microsoft/playwright#42775). OS network isolation is checked before open
  // and remains mandatory for both engines; no server runs in this phase.
  context=await browserType.launchPersistentContext(profile,{headless:true,offline:phase==='isolated'&&engine==='chromium',viewport:{width:1440,height:1100},args:launchArgs});
- evidence.browser=context.browser()?.version();page=await context.newPage();page.on('pageerror',e=>evidence.errors.push(e.message));
+ evidence.browser=context.browser()?.version();page=await context.newPage();page.on('console',m=>{if(m.text().startsWith('AVR_DIAG')){(evidence.workerTrace??=[]).push(m.text());console.log(m.text());}});page.on('pageerror',e=>evidence.errors.push(e.message));
  const response=await page.goto(origin,{waitUntil:'domcontentloaded'});
  if(phase==='isolated')assert(response.fromServiceWorker(),'Labos navigation must use persisted app package');
  await page.getByRole('button',{name:'Prevedi',exact:true}).waitFor({timeout:30000});
@@ -72,7 +72,7 @@ try{
   // First install can be the deployed baseline. Use the same origin and profile
   // across the upgrade; do not clear any storage or replace the saved project.
   if(process.env.LAB_UPGRADE_BASELINE)serveRoot=resolve(process.env.LAB_UPGRADE_BASELINE);
-  context=await browserType.launchPersistentContext(profile,{headless:true,viewport:{width:1440,height:1100},args:launchArgs});page=await context.newPage();page.on('pageerror',e=>evidence.errors.push(e.message));
+  context=await browserType.launchPersistentContext(profile,{headless:true,viewport:{width:1440,height:1100},args:launchArgs});page=await context.newPage();page.on('console',m=>{if(m.text().startsWith('AVR_DIAG')){(evidence.workerTrace??=[]).push(m.text());console.log(m.text());}});page.on('pageerror',e=>evidence.errors.push(e.message));
   await page.goto(origin);await page.locator('input[accept=".zip,.json"]').waitFor({state:'attached'});
   await page.locator('input[accept=".zip,.json"]').setInputFiles({name:'integrated.json',mimeType:'application/json',buffer:await readFile(engine==='webkit'?'.build/avr-integrated-nano-fixture.json':'.build/avr-integrated-fixture.json')});
   await page.waitForFunction(()=>document.querySelector('.cm-content')?.textContent.includes('INTEGRATED_FIXTURE'));
@@ -86,7 +86,7 @@ try{
    await page.evaluate(async()=>{localStorage.setItem('upgrade-sentinel','preserve');const c=await caches.open('upgrade-sentinel');await c.put('/upgrade-sentinel',new Response('preserve'));});
    await close();serveRoot=root;
    context=await browserType.launchPersistentContext(profile,{headless:true,viewport:{width:1440,height:1100},args:launchArgs});
-   page=await context.newPage();page.on('pageerror',e=>evidence.errors.push(e.message));await page.goto(origin);
+   page=await context.newPage();page.on('console',m=>{if(m.text().startsWith('AVR_DIAG')){(evidence.workerTrace??=[]).push(m.text());console.log(m.text());}});page.on('pageerror',e=>evidence.errors.push(e.message));await page.goto(origin);
    await page.evaluate(async()=>{await (await navigator.serviceWorker.getRegistration()).update();});
    await page.waitForFunction(async()=>!!(await navigator.serviceWorker.getRegistration())?.waiting,null,{timeout:120000});
    await page.getByRole('button',{name:'Status aplikacije i offline rad',exact:true}).click();

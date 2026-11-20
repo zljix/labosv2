@@ -13,7 +13,7 @@ export function isolatedToolRunner(createWorker) {
       diagnostics.push(...data.diagnostics);timings.push(data.timing);resolve(bytes);
     };
     worker.onerror=event=>finish(Error(event.message||'Radni proces alata nije dostupan.'));
-    worker.onmessage=({data})=>data.type==='result'?finish(null,data):finish(Error(data.message||'Neispravan odgovor alata.'));
+    worker.onmessage=({data})=>data.type==='debug'?console.info('AVR_DIAG',name,data.step):data.type==='result'?finish(null,data):finish(Error(data.message||'Neispravan odgovor alata.'));
     // Project buffers are small; keep originals for the following stages.
     try{worker.postMessage({name,args,output,files:[...files]});}catch(error){finish(error);}
   });

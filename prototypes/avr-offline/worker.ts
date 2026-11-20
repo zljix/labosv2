@@ -1,3 +1,4 @@
+console.info('AVR_DIAG parent-start');
 import {compile} from './compiler.mjs';
 import {isolatedToolRunner} from './tool-runner.mjs';
 import {simulate} from './simulation';

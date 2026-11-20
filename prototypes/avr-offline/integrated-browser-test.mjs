@@ -81,7 +81,7 @@ try{
    page=await context.newPage();page.on('pageerror',e=>evidence.errors.push(e.message));await page.goto(origin);
    await page.evaluate(async()=>{await (await navigator.serviceWorker.getRegistration()).update();});
    await page.waitForFunction(async()=>!!(await navigator.serviceWorker.getRegistration())?.waiting,null,{timeout:120000});
-   await page.locator('.system-trigger').click();
+   await page.getByRole('button',{name:'Status aplikacije i offline rad',exact:true}).click();
    await page.getByRole('button',{name:'Spremi i otvori novu verziju',exact:true}).waitFor({timeout:120000});
    await Promise.all([page.waitForEvent('domcontentloaded'),page.getByRole('button',{name:'Spremi i otvori novu verziju',exact:true}).click()]);
    await page.getByRole('button',{name:'Prevedi',exact:true}).waitFor({timeout:30000});

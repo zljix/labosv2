@@ -1,6 +1,7 @@
 import test from 'node:test';
+import {prepareNodeTools} from '../prototypes/avr-offline/node-tools.mjs';
 import assert from 'node:assert/strict';
-import {readFile,copyFile,writeFile} from 'node:fs/promises';
+import {readFile,writeFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {createRequire} from 'node:module';
 import {arduinoExampleProject} from '../src/runtime/arduinoExamples';
@@ -11,7 +12,7 @@ import {OfflineCompileTask,offlineInput,offlineIdentity,beginOffline,saveOffline
 import {validateArtifact,libraryManifest,AVR_LIBRARIES} from '../public/avr-contract.mjs';
 import {assetURL} from '../prototypes/avr-offline/package.mjs';
 const dir=resolve('.build/avr-toolchain'),require=createRequire(import.meta.url);
-for(const name of ['cc1','cc1plus','avr-as','avr-ld','objcopy'])await copyFile(dir+'/'+name+'.js',dir+'/'+name+'.cjs');
+await prepareNodeTools(dir);
 const sdk=unpackSDK(await readFile(dir+'/'+runtime.sdkFile));
 const p=arduinoExampleProject('blink',UNO);
 p.files['main.ino']='void setup(){Serial.begin(9600);Serial.println("INTEGRATED_FIXTURE");pinMode(13,OUTPUT);digitalWrite(13,HIGH);}\nvoid loop(){delay(100);}';

@@ -1,6 +1,7 @@
 import test from 'node:test';
+import {prepareNodeTools} from './node-tools.mjs';
 import assert from 'node:assert/strict';
-import {readFile,writeFile,copyFile} from 'node:fs/promises';
+import {readFile,writeFile} from 'node:fs/promises';
 import {createRequire} from 'node:module';
 import {resolve} from 'node:path';
 import {arduinoExampleProject} from '../../src/runtime/arduinoExamples';
@@ -11,7 +12,7 @@ import {projectInput,updateProject,projectBundle,readProject} from './project-br
 import {simulate} from './simulation';
 import runtime from './runtime-manifest.json' with {type:'json'};
 const dir=resolve('.build/avr-toolchain'),require=createRequire(import.meta.url);
-for(const name of ['cc1','cc1plus','avr-as','avr-ld','objcopy'])await copyFile(dir+'/'+name+'.js',dir+'/'+name+'.cjs');
+await prepareNodeTools(dir);
 const sdk=unpackSDK(await readFile(dir+'/'+runtime.sdkFile)),factory=async(name:string)=>require(dir+'/'+name+'.cjs');
 const inputLabel=(board:string,key:string)=>`${board===UNO?'uno':'nano'}: ${key}`;
 const cases=[

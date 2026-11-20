@@ -1,6 +1,7 @@
 import test from 'node:test';
+import {prepareNodeTools} from './node-tools.mjs';
 import assert from 'node:assert/strict';
-import {readFile,copyFile,writeFile} from 'node:fs/promises';
+import {readFile,writeFile} from 'node:fs/promises';
 import {createRequire} from 'node:module';
 import {resolve} from 'node:path';
 import {compile,normalizeInput,fingerprint,unpackSDK,validateResult} from './compiler.mjs';
@@ -8,7 +9,7 @@ import {EXAMPLES} from './examples.mjs';
 import {simulate} from './simulation.ts';
 import runtime from './runtime-manifest.json' with {type:'json'};
 const dir=resolve('.build/avr-toolchain'), require=createRequire(import.meta.url);
-for(const name of ['cc1','cc1plus','avr-as','avr-ld','objcopy'])await copyFile(dir+'/'+name+'.js',dir+'/'+name+'.cjs');
+await prepareNodeTools(dir);
 const sdk=unpackSDK(await readFile(dir+'/'+runtime.sdkFile));
 const factory=async name=>require(dir+'/'+name+'.cjs');
 test('real WASM tools compile Uno/Nano, separate C++ and separate C',async()=>{

@@ -1,6 +1,7 @@
 import test from 'node:test';
+import {prepareNodeTools} from './node-tools.mjs';
 import assert from 'node:assert/strict';
-import {readFile,copyFile,writeFile} from 'node:fs/promises';
+import {readFile,writeFile} from 'node:fs/promises';
 import {createRequire} from 'node:module';
 import {resolve} from 'node:path';
 import {newProject,parseProject,clone} from '../../src/project/model';
@@ -13,7 +14,7 @@ import {simulate} from './simulation';
 import runtime from './runtime-manifest.json' with {type:'json'};
 
 const dir=resolve('.build/avr-toolchain'),require=createRequire(import.meta.url);
-for(const name of ['cc1','cc1plus','avr-as','avr-ld','objcopy'])await copyFile(dir+'/'+name+'.js',dir+'/'+name+'.cjs');
+await prepareNodeTools(dir);
 const sdk=unpackSDK(await readFile(dir+'/'+runtime.sdkFile)),factory=async(name:string)=>require(dir+'/'+name+'.cjs');
 const source='void setup(){pinMode(9,OUTPUT);digitalWrite(9,HIGH);Serial.begin(9600);Serial.println("PROJECT_BRIDGE");} void loop(){}';
 function fixture(board:typeof UNO|typeof NANO=UNO){const p=arduinoExampleProject('blink',board);p.files['main.ino']=source;p.files['biljeske.md']='Čuvaj učenikova opažanja.';p.files['avr-build.json']='{"old":"keep unchanged"}';return p;}

@@ -1,6 +1,8 @@
-export function isolatedToolRunner(createWorker) {
-  return (name,args,output,{files,progress,diagnostics,timings})=>new Promise((resolve,reject)=>{
+export function isolatedToolRunner(createWorker,loadBinary) {
+  return async (name,args,output,{files,progress,diagnostics,timings})=>{
     progress(name);
+    const binary=loadBinary?await loadBinary(name):undefined;
+    return new Promise((resolve,reject)=>{
     let worker;try{worker=createWorker();}catch(error){reject(error);return;}
     let finished=false;
     const finish=async(error,data)=>{
@@ -13,8 +15,9 @@ export function isolatedToolRunner(createWorker) {
       diagnostics.push(...data.diagnostics);timings.push(data.timing);resolve(bytes);
     };
     worker.onerror=event=>finish(Error(event.message||'Radni proces alata nije dostupan.'));
-    worker.onmessage=({data})=>data.type==='debug'?console.info('AVR_DIAG',name,data.step):data.type==='result'?finish(null,data):finish(Error(data.message||'Neispravan odgovor alata.'));
+    worker.onmessage=({data})=>data.type==='result'?finish(null,data):finish(Error(data.message||'Neispravan odgovor alata.'));
     // Project buffers are small; keep originals for the following stages.
-    try{worker.postMessage({name,args,output,files:[...files]});}catch(error){finish(error);}
+    try{worker.postMessage({name,args,output,files:[...files],binary},binary?[binary]:[]);}catch(error){finish(error);}
   });
+  };
 }

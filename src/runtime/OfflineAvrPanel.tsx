@@ -1,14 +1,14 @@
 import {useEffect,useRef,useState} from 'react';
 import type {Project} from '../project/model';
 import {appAsset} from '../platform/assets';
-import {installPackage,packageStatus,PACKED_BYTES} from '../../prototypes/avr-offline/package.mjs';
+import {installPackage,packageStatus,readPackageFile,PACKED_BYTES} from '../../prototypes/avr-offline/package.mjs';
 import {OfflineCompileTask,offlineIdentity,beginOffline,saveOffline,loadOffline,prefersOffline} from './offlineAvr';
 import {download,safeFilename} from '../project/archive';
 import {projectBundle} from '../../prototypes/avr-offline/project-bridge';
 
 export default function OfflineAvrPanel({project,stop,run}:{project:Project;stop:()=>void;run:()=>void}){
   const base=new URL(appAsset('offline-avr/'),location.href).href;
-  const task=useRef(new OfflineCompileTask(()=>new Worker(base+'worker.js')));
+  const task=useRef(new OfflineCompileTask(()=>new Worker(base+'worker.js'),60000,name=>readPackageFile(name,base)));
   const live=useRef(project);live.current=project;
   const epoch=useRef(0),mounted=useRef(true);
   const [busy,setBusy]=useState(false),[preparing,setPreparing]=useState(false),[ready,setReady]=useState(false),[valid,setValid]=useState(false);

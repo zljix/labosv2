@@ -3,6 +3,8 @@ import {Worker as NodeWorker,parentPort,workerData} from 'node:worker_threads';
 import vm from 'node:vm';
 import {readFile,readFileSync} from 'node:fs';
 import {promisify} from 'node:util';
+import {gunzipSync} from 'node:zlib';
+import {verifyBytes} from './package.mjs';
 const read=promisify(readFile),{root,entry,corrupt}=workerData;
 const blobs=new Map();let sequence=0;
 class BrowserBlob extends Blob {constructor(parts,options){super(parts,options);this.parts=parts;}}
@@ -24,10 +26,17 @@ const scope={console,performance,crypto,structuredClone,WebAssembly,TextEncoder,
  fetch:()=>{throw Error('Network fetch forbidden in Worker harness');},
  caches:{open:async()=>({match:async url=>{
   const name=new URL(url).pathname.split('/').pop();parentPort.postMessage({type:'audit',name,entry});
-  if(corrupt&&name==='cc1plus.js')return new Response('corrupted');
+  if(corrupt===true&&name==='cc1plus.js')return new Response('corrupted');
   return new Response(await read(root+'/toolchain/'+name+'.gz'),{headers:{'X-Labos-Compression':'gzip'}});
  }})},
- postMessage:(message,transfer)=>parentPort.postMessage(message,transfer)
+ postMessage:(message,transfer)=>{
+  if(message.type!=='read-package-file'){parentPort.postMessage(message,transfer);return;}
+  const {name,id}=message;parentPort.postMessage({type:'audit',name,entry:'window'});
+  void read(root+'/toolchain/'+name+'.gz').then(compressed=>{
+   const raw=gunzipSync(compressed);if(corrupt==='wasm')raw[0]^=1;
+   return verifyBytes(name,raw.buffer.slice(raw.byteOffset,raw.byteOffset+raw.byteLength));
+  }).then(bytes=>scope.onmessage({data:{type:'package-file',id,bytes}}),error=>scope.onmessage({data:{type:'package-file',id,error:error.message}}));
+ }
 };
 scope.self=scope;const context=vm.createContext(scope);
 scope.importScripts=url=>{

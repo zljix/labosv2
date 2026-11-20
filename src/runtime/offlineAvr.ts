@@ -35,7 +35,7 @@ export async function loadOffline(project:Project,storage?:Store){
 }
 export class OfflineCompileTask {
   private cancelPending?:()=>void;
-  constructor(private factory:()=>Worker,private timeoutMs=60000){}
+  constructor(private factory:()=>Worker,private timeoutMs=60000,private readPackageFile?:(name:string)=>Promise<ArrayBuffer>){}
   cancel(){this.cancelPending?.();}
   compile(project:Project,progress:(tool:string)=>void=()=>{}):Promise<any>{
     this.cancel();const input=offlineInput(project);
@@ -53,7 +53,14 @@ export class OfflineCompileTask {
       worker.onerror=e=>finish(Error(e.message||'Radni proces prevoditelja nije dostupan.'));
       worker.onmessage=({data})=>{
         if(finished)return;
-        if(data.type==='progress')progress(String(data.tool));
+        if(data.type==='read-package-file'){
+          const read=this.readPackageFile;
+          if(!read){finish(Error('Čitač paketa nije dostupan.'));return;}
+          void read(String(data.name)).then(bytes=>{
+            if(!finished)try{worker.postMessage({type:'package-file',id:data.id,bytes},[bytes]);}catch(e){finish(e as Error);}
+          },error=>{if(!finished)try{worker.postMessage({type:'package-file',id:data.id,error:String(error?.message??error)});}catch(e){finish(e as Error);}});
+        }
+        else if(data.type==='progress')progress(String(data.tool));
         else if(data.type==='error')finish(Error(String(data.message)));
         else if(data.type==='compiled')void validateResult(input,data.result).then(()=>finish(undefined,data.result),e=>finish(e));
       };

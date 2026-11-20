@@ -24,12 +24,14 @@ jobs:
           LAB_BASE_PATH: /labosv2/
           LAB_OFFLINE_AVR: '1'
       - run: node prototypes/avr-offline/integrated-browser-test.mjs prepare
+        timeout-minutes: 3
         env:
           LAB_BROWSER_ENGINE: webkit
       - run: |
           runner_name="$(id -un)"
           node_path="$(command -v node)"
           sudo unshare --net -- runuser -u "$runner_name" -- env LAB_BROWSER_ENGINE=webkit "$node_path" prototypes/avr-offline/integrated-browser-test.mjs isolated
+        timeout-minutes: 3
       - uses: actions/upload-artifact@v4
         if: always()
         with:

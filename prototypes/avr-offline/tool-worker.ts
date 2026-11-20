@@ -6,7 +6,7 @@ import {toolFiles} from './tool-files.mjs';
 // the next step, releasing the WASM instance and compiled JS together.
 self.onmessage=async({data})=>{
   try {
-    const {name,args,output}=data;const debug=step=>postMessage({type:'debug',step});debug('start');
+    const {name,args,output}=data;const debug=(step:string)=>postMessage({type:'debug',step});debug('start');
     if(!['cc1','cc1plus','avr-as','avr-ld','objcopy'].includes(name))throw Error('Nepoznat alat.');
     debug('sdk-read');const sdk=['cc1','cc1plus','avr-ld'].includes(name)?unpackSDK(await readPackageFile(SDK_FILE)):new Map();
     debug('sdk-ready');const files=toolFiles(name,args,sdk,new Map(data.files));

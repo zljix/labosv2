@@ -14,13 +14,16 @@ const browserType=browsers[engine],launchArgs=engine==='chromium'?['--no-sandbox
 const phase=process.argv[2];assert(['prepare','isolated'].includes(phase));
 const root=resolve('dist'),profile=resolve('.build/avr-integrated-profile'+(engine==='webkit'?'-webkit':'')),reports=resolve('.build/avr-integrated-evidence'+(engine==='webkit'?'-webkit':''));
 const currentManifest=JSON.parse(await readFile(root+'/offline-package.json','utf8'));
-const prefix=currentManifest.base,origin='http://127.0.0.1:4190'+prefix;
+const prefix=currentManifest.base,origin='http://127.0.0.1:4173'+prefix;
 let serveRoot=root;
 await mkdir(reports,{recursive:true});
 const evidence={phase,engine,success:false,checks:[],errors:[],namespace:await readlink('/proc/self/ns/net')};
 let context,page,server;
 async function open(){
- context=await browserType.launchPersistentContext(profile,{headless:true,offline:phase==='isolated',viewport:{width:1440,height:1100},args:launchArgs});
+ // WebKit's emulated offline mode rejects even cache-only SW responses
+ // (microsoft/playwright#42775). OS network isolation is checked before open
+ // and remains mandatory for both engines; no server runs in this phase.
+ context=await browserType.launchPersistentContext(profile,{headless:true,offline:phase==='isolated'&&engine==='chromium',viewport:{width:1440,height:1100},args:launchArgs});
  evidence.browser=context.browser()?.version();page=await context.newPage();page.on('pageerror',e=>evidence.errors.push(e.message));
  const response=await page.goto(origin,{waitUntil:'domcontentloaded'});
  if(phase==='isolated')assert(response.fromServiceWorker(),'Labos navigation must use persisted app package');
@@ -32,7 +35,7 @@ async function panel(){await page.getByRole('button',{name:'Prevedi',exact:true}
 async function compile(){
  const button=page.getByRole('button',{name:'Prevedi u pregledniku',exact:true});await button.waitFor();
  await page.waitForFunction(()=>[...document.querySelectorAll('button')].some(b=>b.textContent==='Prevedi u pregledniku'&&!b.disabled));
- await page.evaluate(()=>{globalThis.__compilePulse={last:performance.now(),ticks:0,maxGap:0};globalThis.__compilePulseTimer=setInterval(()=>{const p=globalThis.__compilePulse,now=performance.now();p.maxGap=Math.max(p.maxGap,now-p.last);p.last=now;p.ticks++;},25);});
+ await page.evaluate(()=>{globalThis.__compilePulse={last:performance.now(),ticks:0,maxGap:0,statuses:[]};globalThis.__compilePulseTimer=setInterval(()=>{const p=globalThis.__compilePulse,now=performance.now();p.maxGap=Math.max(p.maxGap,now-p.last);p.last=now;p.ticks++;const status=document.querySelector('[data-testid="offline-avr-status"]')?.textContent;if(status!==p.statuses.at(-1)?.status)p.statuses.push({at:now,status});},25);});
  await button.click();await page.waitForFunction(()=>document.querySelector('[data-testid="offline-avr-status"]')?.textContent.startsWith('Prevedeno'),null,{timeout:65000});
  const pulse=await page.evaluate(()=>{clearInterval(globalThis.__compilePulseTimer);return globalThis.__compilePulse;});
  assert(pulse.ticks>0,'UI event loop must keep running during compilation');assert(pulse.maxGap<2000,'UI blocked during compile: '+pulse.maxGap);(evidence.responsiveness??=[]).push(pulse);
@@ -65,7 +68,7 @@ try{
    const rel=pathname.slice(prefix.length)||'index.html',path=resolve(serveRoot,rel);if(!path.startsWith(serveRoot+'/')){res.writeHead(403).end();return;}
    const data=await readFile(path),type={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.css':'text/css','.json':'application/json','.wasm':'application/wasm','.svg':'image/svg+xml'}[extname(path)]||'application/octet-stream';
    res.writeHead(200,{'Content-Type':type,'Cache-Control':'no-store'}).end(data);
-  }catch{res.writeHead(404).end();}});await new Promise(r=>server.listen(4190,'127.0.0.1',r));
+  }catch{res.writeHead(404).end();}});await new Promise(r=>server.listen(4173,'127.0.0.1',r));
   // First install can be the deployed baseline. Use the same origin and profile
   // across the upgrade; do not clear any storage or replace the saved project.
   if(process.env.LAB_UPGRADE_BASELINE)serveRoot=resolve(process.env.LAB_UPGRADE_BASELINE);
@@ -142,6 +145,7 @@ try{
  }
  assert.deepEqual(evidence.errors,[]);evidence.success=true;
 }catch(e){evidence.error=e.stack;process.exitCode=1;console.error(e);}finally{
+ if(page&&!evidence.success)evidence.compileTrace=await page.evaluate(()=>globalThis.__compilePulse??null).catch(()=>null);
  if(page&&!evidence.success)await page.screenshot({path:reports+'/'+phase+'-failure.png',fullPage:true}).catch(()=>{});
  await close();if(server)await new Promise(r=>server.close(r));await writeFile(reports+'/'+phase+'.json',JSON.stringify(evidence,null,2));console.log(JSON.stringify(evidence));
 }

@@ -1,4 +1,4 @@
-name: Diagnose WebKit offline restart
+name: Diagnose WebKit compiler offline
 on:
   push:
     branches: [diagnostic/mobile-webkit]
@@ -7,21 +7,31 @@ permissions:
 jobs:
   webkit:
     runs-on: ubuntu-22.04
-    timeout-minutes: 8
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with:
           node-version: '24'
+          cache: npm
+      - run: npm ci
       - run: npm ci --prefix prototypes/avr-offline/ci
       - run: prototypes/avr-offline/ci/node_modules/.bin/playwright install --with-deps webkit
-      - run: node prototypes/avr-offline/webkit-diagnostic.mjs prepare
+      - run: node prototypes/avr-offline/quick-compiler-diagnostic.mjs
+      - run: node --import tsx --test verification/offline-avr.test.ts
+      - run: npm run build:pages
+        env:
+          LAB_BASE_PATH: /labosv2/
+          LAB_OFFLINE_AVR: '1'
+      - run: node prototypes/avr-offline/integrated-browser-test.mjs prepare
+        env:
+          LAB_BROWSER_ENGINE: webkit
       - run: |
           runner_name="$(id -un)"
           node_path="$(command -v node)"
-          sudo unshare --net -- runuser -u "$runner_name" -- "$node_path" prototypes/avr-offline/webkit-diagnostic.mjs isolated
+          sudo unshare --net -- runuser -u "$runner_name" -- env LAB_BROWSER_ENGINE=webkit "$node_path" prototypes/avr-offline/integrated-browser-test.mjs isolated
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: webkit-offline-restart
-          path: .build/webkit-diagnostic/
+          name: webkit-compiler-diagnostic
+          path: .build/avr-integrated-evidence-webkit/

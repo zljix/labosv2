@@ -1,0 +1,5 @@
+import {readFile,writeFile,mkdir} from 'node:fs/promises';import {createHash} from 'node:crypto';import {gunzipSync} from 'node:zlib';import assert from 'node:assert/strict';
+const runtime=JSON.parse(await readFile('prototypes/avr-offline/runtime-manifest.json','utf8'));
+await mkdir('.build/avr-offline/toolchain',{recursive:true});await mkdir('.build/avr-toolchain',{recursive:true});
+await Promise.all(Object.entries(runtime.files).map(async([name,expected])=>{const r=await fetch('https://zljix.github.io/labosv2/offline-avr/toolchain/'+name+'.gz');assert(r.ok,name+': '+r.status);const compressed=Buffer.from(await r.arrayBuffer()),raw=gunzipSync(compressed);assert.equal(raw.length,expected.bytes);assert.equal(createHash('sha256').update(raw).digest('hex'),expected.sha256);await writeFile('.build/avr-toolchain/'+name,raw);await writeFile('.build/avr-offline/toolchain/'+name+'.gz',compressed);}));
+await writeFile('.build/avr-offline/toolchain/manifest.json',JSON.stringify(runtime));console.log('Reused and verified every byte of the unchanged published compiler package',runtime.packageHash);

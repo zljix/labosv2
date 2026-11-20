@@ -23,5 +23,6 @@ test('published compiler has matching corresponding source and pinned upstream d
  }
  const app=JSON.parse(readFileSync('dist/offline-package.json'));
  assert(app.files.some(f=>f.url===app.base+'compiler-sources.html'));
+ assert(app.files.some(f=>f.url===app.base+'offline-avr/tool-worker.js'),'disposable tool worker must be available after an offline restart');
  assert(!app.files.some(f=>f.url.includes('/toolchain/')),'source and compiler archives are not auto-downloaded in app cache');
 });

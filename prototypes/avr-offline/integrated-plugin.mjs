@@ -8,5 +8,6 @@ export function integratedAvrPlugin(root){
     if(manifest.packageHash!==expected.packageHash)throw Error('Prvo izgradi aktualni offline AVR paket.');
     await mkdir(out,{recursive:true});await cp(source+'/toolchain',out+'/toolchain',{recursive:true});
     await build({entryPoints:[root+'/prototypes/avr-offline/worker.ts'],bundle:true,platform:'browser',target:'es2022',format:'iife',outfile:out+'/worker.js'});
+    await build({entryPoints:[root+'/prototypes/avr-offline/tool-worker.ts'],bundle:true,platform:'browser',target:'es2022',format:'iife',outfile:out+'/tool-worker.js'});
   }};
 }

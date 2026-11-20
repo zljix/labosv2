@@ -71,3 +71,11 @@ export async function readPackage(base=self.location.href) {
   }
   return files;
 }
+// A tool process reads only its own verified bytes; never unpack both C and
+// C++ compilers just to translate one sketch.
+export async function readPackageFile(name,base=self.location.href) {
+  if(!Object.hasOwn(FILES,name))throw Error('Nepoznata datoteka paketa.');
+  const response=await (await caches.open(CACHE)).match(assetURL(name,base));
+  if(!response)throw Error('Nedostaje offline paket. Pripremi prevoditelj dok si na mreži.');
+  return decodeResponse(name,response);
+}

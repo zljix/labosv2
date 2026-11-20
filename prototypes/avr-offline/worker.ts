@@ -1,24 +1,10 @@
-import {compile, unpackSDK} from './compiler.mjs';
-import {readPackage,SDK_FILE} from './package.mjs';
+import {compile} from './compiler.mjs';
+import {isolatedToolRunner} from './tool-runner.mjs';
 import {simulate} from './simulation';
 
 async function compileLocal(input:any) {
-  const bytes=await readPackage(), factories=new Map();
-  const factory=async(name:string)=> {
-    if(!factories.has(name)) {
-      const url=URL.createObjectURL(new Blob([bytes.get(name+'.js')!],{type:'text/javascript'}));
-      try {
-        // Pinned, hash-verified upstream scripts. These scripts never fetch WASM:
-        // cc1/cc1plus receive wasmBinary; binutils contain their WASM inline.
-        (self as any).importScripts(url);
-        const create=(self as any)[name==='cc1'||name==='cc1plus'?'createModule':'Module'];
-        if(typeof create!=='function')throw Error('Nedostaje tvornica: '+name);
-        factories.set(name,(options:any)=>create({...options,...(bytes.has(name+'.wasm')?{wasmBinary:bytes.get(name+'.wasm')}:{})}));
-      } finally { URL.revokeObjectURL(url); }
-    }
-    return factories.get(name);
-  };
-  return compile(input,{sdk:unpackSDK(bytes.get(SDK_FILE)),factory,progress:(tool:string)=>postMessage({type:'progress',tool})});
+  const runner=isolatedToolRunner(()=>new Worker(new URL('tool-worker.js',self.location.href)));
+  return compile(input,{sdk:new Map(),runner,progress:(tool:string)=>postMessage({type:'progress',tool})});
 }
 let busy=false;
 self.onmessage=async({data})=>{

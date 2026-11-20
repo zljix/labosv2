@@ -13,6 +13,8 @@ export default function OfflineAvrPanel({project,stop,run}:{project:Project;stop
   const epoch=useRef(0),mounted=useRef(true);
   const [busy,setBusy]=useState(false),[preparing,setPreparing]=useState(false),[ready,setReady]=useState(false),[valid,setValid]=useState(false);
   const [status,setStatus]=useState('Provjera offline paketa…');
+  const [elapsed,setElapsed]=useState(0);
+  useEffect(()=>{if(!busy)return;const start=Date.now();setElapsed(0);const timer=setInterval(()=>setElapsed(Math.floor((Date.now()-start)/1000)),1000);return()=>clearInterval(timer);},[busy]);
   let identity='',unsupported='';try{identity=offlineIdentity(project);}catch(e){unsupported=(e as Error).message;}
   useEffect(()=>{mounted.current=true;void packageStatus(()=>{},base).then(()=>{if(mounted.current){setReady(true);setStatus('Paket je spremljen. Možeš prevoditi bez mreže.');}},()=>{if(mounted.current)setStatus('Jednom pripremi paket dok si na mreži.');});return()=>{mounted.current=false;epoch.current++;task.current.cancel();};},[]);
   useEffect(()=>{
@@ -29,7 +31,8 @@ export default function OfflineAvrPanel({project,stop,run}:{project:Project;stop
     stop();const snapshot=structuredClone(live.current),key=offlineIdentity(snapshot),ticket=++epoch.current;
     beginOffline(snapshot);setBusy(true);setValid(false);setStatus('Prevođenje u pregledniku…');
     try{
-      const result=await task.current.compile(snapshot,()=>{if(ticket===epoch.current&&mounted.current)setStatus('Prevođenje u pregledniku…');});
+      const phases:Record<string,string>={cc1plus:'Prevođenje C++ izvora',cc1:'Prevođenje C izvora','avr-as':'Sastavljanje strojnog koda','avr-ld':'Povezivanje programa i biblioteka',objcopy:'Priprema izvršnog programa'};
+      const result=await task.current.compile(snapshot,tool=>{if(ticket===epoch.current&&mounted.current)setStatus((phases[tool]??'Priprema prevoditelja')+'…');});
       if(!mounted.current||ticket!==epoch.current||offlineIdentity(live.current)!==key)return;
       const persisted=await saveOffline(snapshot,result);
       if(!mounted.current||ticket!==epoch.current||offlineIdentity(live.current)!==key)return;
@@ -45,6 +48,7 @@ export default function OfflineAvrPanel({project,stop,run}:{project:Project;stop
     <p><a href={appAsset('compiler-sources.html')} target="_blank" rel="noopener">Izvori i licence prevoditelja</a></p>
     {unsupported&&<p role="alert">{unsupported}</p>}
     <pre role="status" className="compiler-log" data-testid="offline-avr-status">{status}</pre>
+    {busy&&<p role="status">Prevođenje traje {elapsed} s. Možeš ga prekinuti bez promjene izvornog koda.</p>}
     <div className="build-actions">
       <button disabled={preparing||busy} onClick={()=>void prepare()}>{preparing?'Spremanje paketa…':ready?'Provjeri i dopuni paket':'Pripremi offline prevoditelj'}</button>
       <button disabled={!ready||busy||preparing||!!unsupported} onClick={()=>void compile()}>Prevedi u pregledniku</button>

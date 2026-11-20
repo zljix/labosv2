@@ -1,3 +1,11 @@
+# Dopuna 0.16.0-beta.2 — memorija i odziv prevoditelja
+
+Prijavljeno je zamrzavanje kartice pri prevođenju za Nano u Chromeu na iPhoneu. Točan uzrok na uređaju nije reproduciran. Dorada zamjenjuje zajedničko učitavanje svih alata pojedinačnim radnim procesima, gasi svaki nakon koraka i u njegov datotečni sustav zapisuje samo potrebne ulaze. Prevoditelj C učitava se samo uz C datoteku. Prikazuju se faza i proteklo vrijeme; ostaju prekid i granica 60 sekundi.
+
+CI dodatno provjerava WebKit na Linuxu, odziv sučelja, prekid te uspješan ponovni pokušaj. WebKit na Linuxu i uski prikaz nisu potvrda stvarnog iPhonea. Potvrda fizičkog uređaja ostaje otvorena; ne treba brisati projekte ni predmemoriju.
+
+---
+
 # Labos 0.16.0-beta.1 — eksperimentalni Arduino offline
 
 Odredište: `zljix/labosv2`, https://zljix.github.io/labosv2/.

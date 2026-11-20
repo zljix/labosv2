@@ -1,7 +1,9 @@
-> **0.16.0-beta.1 — Arduino offline (eksperimentalno):** glavno sučelje može
+> **0.16.0-beta.2 — Arduino offline (eksperimentalno):** glavno sučelje može
 > prevesti novi Uno/Nano program bez mreže nakon jednokratne pripreme paketa.
 > Izvori i licence dostupni su u dijalogu prevoditelja. Školsko bodovanje i
 > ESP32-S3 C++ ostaju na postojećem postupku. Pilot fizičkih uređaja nije potvrđen.
+> Prevođenje sada učitava samo potreban alat u zaseban kratkotrajni proces.
+> Sučelje prikazuje korak i trajanje; Chrome na fizičkom iPhoneu još zahtijeva ponovnu provjeru.
 > Distribucija: [objašnjenje](prototypes/avr-offline/DISTRIBUTION.md).
 
 # Novo izdanje: 0.15.7-beta.1 · 25H

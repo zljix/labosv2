@@ -8,17 +8,19 @@ import {randomUUID} from 'node:crypto';
 import {spawnSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 import {validateIsolation} from './network-proof.mjs';
-const {chromium}=createRequire(import.meta.url)('./ci/node_modules/playwright');
+const browsers=createRequire(import.meta.url)('./ci/node_modules/playwright');
+const engine=process.env.LAB_BROWSER_ENGINE||'chromium';assert(['chromium','webkit'].includes(engine));
+const browserType=browsers[engine],launchArgs=engine==='chromium'?['--no-sandbox']:[];
 const phase=process.argv[2];assert(['prepare','isolated'].includes(phase));
-const root=resolve('dist'),profile=resolve('.build/avr-integrated-profile'),reports=resolve('.build/avr-integrated-evidence');
+const root=resolve('dist'),profile=resolve('.build/avr-integrated-profile'+(engine==='webkit'?'-webkit':'')),reports=resolve('.build/avr-integrated-evidence'+(engine==='webkit'?'-webkit':''));
 const currentManifest=JSON.parse(await readFile(root+'/offline-package.json','utf8'));
 const prefix=currentManifest.base,origin='http://127.0.0.1:4190'+prefix;
 let serveRoot=root;
 await mkdir(reports,{recursive:true});
-const evidence={phase,success:false,checks:[],errors:[],namespace:await readlink('/proc/self/ns/net')};
+const evidence={phase,engine,success:false,checks:[],errors:[],namespace:await readlink('/proc/self/ns/net')};
 let context,page,server;
 async function open(){
- context=await chromium.launchPersistentContext(profile,{headless:true,offline:phase==='isolated',viewport:{width:1440,height:1100},args:['--no-sandbox']});
+ context=await browserType.launchPersistentContext(profile,{headless:true,offline:phase==='isolated',viewport:{width:1440,height:1100},args:launchArgs});
  evidence.browser=context.browser()?.version();page=await context.newPage();page.on('pageerror',e=>evidence.errors.push(e.message));
  const response=await page.goto(origin,{waitUntil:'domcontentloaded'});
  if(phase==='isolated')assert(response.fromServiceWorker(),'Labos navigation must use persisted app package');
@@ -30,7 +32,10 @@ async function panel(){await page.getByRole('button',{name:'Prevedi',exact:true}
 async function compile(){
  const button=page.getByRole('button',{name:'Prevedi u pregledniku',exact:true});await button.waitFor();
  await page.waitForFunction(()=>[...document.querySelectorAll('button')].some(b=>b.textContent==='Prevedi u pregledniku'&&!b.disabled));
+ await page.evaluate(()=>{globalThis.__compilePulse={last:performance.now(),ticks:0,maxGap:0};globalThis.__compilePulseTimer=setInterval(()=>{const p=globalThis.__compilePulse,now=performance.now();p.maxGap=Math.max(p.maxGap,now-p.last);p.last=now;p.ticks++;},25);});
  await button.click();await page.waitForFunction(()=>document.querySelector('[data-testid="offline-avr-status"]')?.textContent.startsWith('Prevedeno'),null,{timeout:65000});
+ const pulse=await page.evaluate(()=>{clearInterval(globalThis.__compilePulseTimer);return globalThis.__compilePulse;});
+ assert(pulse.ticks>0,'UI event loop must keep running during compilation');assert(pulse.maxGap<2000,'UI blocked during compile: '+pulse.maxGap);(evidence.responsiveness??=[]).push(pulse);
 }
 async function run(marker){
  await page.getByRole('button',{name:'Pokreni offline rezultat',exact:true}).click();
@@ -64,9 +69,9 @@ try{
   // First install can be the deployed baseline. Use the same origin and profile
   // across the upgrade; do not clear any storage or replace the saved project.
   if(process.env.LAB_UPGRADE_BASELINE)serveRoot=resolve(process.env.LAB_UPGRADE_BASELINE);
-  context=await chromium.launchPersistentContext(profile,{headless:true,viewport:{width:1440,height:1100},args:['--no-sandbox']});page=await context.newPage();page.on('pageerror',e=>evidence.errors.push(e.message));
+  context=await browserType.launchPersistentContext(profile,{headless:true,viewport:{width:1440,height:1100},args:launchArgs});page=await context.newPage();page.on('pageerror',e=>evidence.errors.push(e.message));
   await page.goto(origin);await page.locator('input[accept=".zip,.json"]').waitFor({state:'attached'});
-  await page.locator('input[accept=".zip,.json"]').setInputFiles({name:'integrated.json',mimeType:'application/json',buffer:await readFile('.build/avr-integrated-fixture.json')});
+  await page.locator('input[accept=".zip,.json"]').setInputFiles({name:'integrated.json',mimeType:'application/json',buffer:await readFile(engine==='webkit'?'.build/avr-integrated-nano-fixture.json':'.build/avr-integrated-fixture.json')});
   await page.waitForFunction(()=>document.querySelector('.cm-content')?.textContent.includes('INTEGRATED_FIXTURE'));
   await page.getByRole('button',{name:'Prevedi',exact:true}).waitFor();
   await page.waitForFunction(()=>!!navigator.serviceWorker.controller,null,{timeout:120000});
@@ -77,7 +82,7 @@ try{
    assert.equal(baseline.base,prefix);assert.notEqual(baseline.build,currentManifest.build);
    await page.evaluate(async()=>{localStorage.setItem('upgrade-sentinel','preserve');const c=await caches.open('upgrade-sentinel');await c.put('/upgrade-sentinel',new Response('preserve'));});
    await close();serveRoot=root;
-   context=await chromium.launchPersistentContext(profile,{headless:true,viewport:{width:1440,height:1100},args:['--no-sandbox']});
+   context=await browserType.launchPersistentContext(profile,{headless:true,viewport:{width:1440,height:1100},args:launchArgs});
    page=await context.newPage();page.on('pageerror',e=>evidence.errors.push(e.message));await page.goto(origin);
    await page.evaluate(async()=>{await (await navigator.serviceWorker.getRegistration()).update();});
    await page.waitForFunction(async()=>!!(await navigator.serviceWorker.getRegistration())?.waiting,null,{timeout:120000});
@@ -92,7 +97,13 @@ try{
    evidence.upgrade={from:{version:baseline.version,build:baseline.build},to:{version:currentManifest.version,build:currentManifest.build},preservedProjects:before.length,cacheCleared:false};
    evidence.checks.push('Deployed baseline upgraded through normal Save and open new version button; existing project content, active project and unrelated caches preserved');
   }
-  await panel();await page.getByRole('button',{name:'Pripremi offline prevoditelj',exact:true}).click();await compile();await run('INTEGRATED_FIXTURE');
+  await panel();await page.getByRole('button',{name:'Pripremi offline prevoditelj',exact:true}).click();
+  await page.getByRole('button',{name:'Prevedi u pregledniku',exact:true}).click();
+  await page.getByRole('button',{name:'Prekini offline prevođenje',exact:true}).click();
+  await page.getByTestId('offline-avr-status').filter({hasText:'otkazano'}).waitFor();
+  assert(await page.getByRole('button',{name:'Pokreni offline rezultat',exact:true}).isDisabled());
+  evidence.checks.push('Cancel responds during compilation; stale result stays disabled; a subsequent fresh compilation succeeds');
+  await compile();await run('INTEGRATED_FIXTURE');
   evidence.saved=await savedProject();
   await page.evaluate(async()=>{localStorage.setItem('integrated-sentinel','preserve');const c=await caches.open('integrated-sentinel');await c.put('/sentinel',new Response('preserve'));});
   evidence.checks.push('Normal project import, separate package preparation, compile and live AVR simulation in main Labos UI');

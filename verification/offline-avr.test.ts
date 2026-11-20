@@ -17,6 +17,8 @@ const p=arduinoExampleProject('blink',UNO);
 p.files['main.ino']='void setup(){Serial.begin(9600);Serial.println("INTEGRATED_FIXTURE");pinMode(13,OUTPUT);digitalWrite(13,HIGH);}\nvoid loop(){delay(100);}';
 const result=await compile(offlineInput(p),{sdk,factory:async(name:string)=>require(dir+'/'+name+'.cjs')});
 await writeFile('.build/avr-integrated-fixture.json',JSON.stringify(p));
+const nanoFixture=arduinoExampleProject('blink',NANO);nanoFixture.files['main.ino']=p.files['main.ino'];
+await writeFile('.build/avr-integrated-nano-fixture.json',JSON.stringify(nanoFixture));
 function store(){const m=new Map<string,string>();return {getItem:(k:string)=>m.get(k)??null,setItem:(k:string,v:string)=>{m.set(k,v);}};}
 test('integrated result is bound to source, board and libraries, never accepted as CLI',async()=>{
  const s=store();beginOffline(p,s);assert(prefersOffline(p,s));await assert.rejects(()=>loadOffline(p,s));

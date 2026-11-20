@@ -30,7 +30,7 @@ jobs:
       - run: npm ci
       - run: npm ci --prefix prototypes/avr-offline/ci
       - name: Pripremi Chromium za prihvat
-        run: prototypes/avr-offline/ci/node_modules/.bin/playwright install --with-deps chromium
+        run: prototypes/avr-offline/ci/node_modules/.bin/playwright install --with-deps chromium webkit
       - name: Izgradi offline prevoditelj i pripadajuće izvore
         run: npm run prototype:avr:build
       - name: Provjeri dostupnost zaključanih izvora i recepata
@@ -53,15 +53,17 @@ jobs:
         run: node --test verification/pages.test.mjs
       - name: Provjeri prevoditelj, projekte i simulaciju
         run: |
-          node --import tsx --test prototypes/avr-offline/compiler.test.mjs prototypes/avr-offline/worker-harness.test.mjs prototypes/avr-offline/package.test.mjs prototypes/avr-offline/network-proof.test.mjs prototypes/avr-offline/project-bridge.test.ts prototypes/avr-offline/libraries.test.ts prototypes/avr-offline/release-check.test.mjs prototypes/avr-offline/distribution.test.mjs verification/offline-avr.test.ts verification/project.test.ts verification/circuit.test.ts verification/arduino.test.ts verification/avr.test.ts
+          node --import tsx --test prototypes/avr-offline/compiler.test.mjs prototypes/avr-offline/tool-runner.test.mjs prototypes/avr-offline/worker-harness.test.mjs prototypes/avr-offline/package.test.mjs prototypes/avr-offline/network-proof.test.mjs prototypes/avr-offline/project-bridge.test.ts prototypes/avr-offline/libraries.test.ts prototypes/avr-offline/release-check.test.mjs prototypes/avr-offline/distribution.test.mjs verification/offline-avr.test.ts verification/project.test.ts verification/circuit.test.ts verification/arduino.test.ts verification/avr.test.ts
           npm run test:compiler-ui
       - name: Izgradi prethodno objavljeni labosv2 za provjeru nadogradnje
         run: |
-          git fetch --depth=1 origin e5e65297ef23a5cd18497f956f1d3a702add7afe
-          git worktree add --detach .build/upgrade-baseline e5e65297ef23a5cd18497f956f1d3a702add7afe
+          git fetch --depth=1 origin 7a0de962f7a453c097b4afbd9d17ae592bec6064
+          git worktree add --detach .build/upgrade-baseline 7a0de962f7a453c097b4afbd9d17ae592bec6064
           npm ci --prefix .build/upgrade-baseline
+          mkdir -p .build/upgrade-baseline/.build
+          cp -a .build/avr-offline .build/upgrade-baseline/.build/
           cd .build/upgrade-baseline
-          LAB_BASE_PATH=/labosv2/ npm run build:pages
+          LAB_OFFLINE_AVR=1 LAB_BASE_PATH=/labosv2/ npm run build:pages
       - name: Nadogradi postojeći profil bez brisanja predmemorije
         run: node prototypes/avr-offline/integrated-browser-test.mjs prepare
         env:
@@ -71,13 +73,24 @@ jobs:
           test_runner_user="$(id -un)"
           test_node_path="$(command -v node)"
           sudo unshare --net -- runuser -u "$test_runner_user" -- "$test_node_path" prototypes/avr-offline/integrated-browser-test.mjs isolated
+      - name: Provjeri WebKit nadogradnju i prevođenje
+        run: node prototypes/avr-offline/integrated-browser-test.mjs prepare
+        env:
+          LAB_BROWSER_ENGINE: webkit
+          LAB_UPGRADE_BASELINE: .build/upgrade-baseline/dist
+      - name: Provjeri WebKit bez mreže i nakon restarta
+        run: |
+          test_runner_user="$(id -un)"
+          test_node_path="$(command -v node)"
+          sudo unshare --net -- runuser -u "$test_runner_user" -- env LAB_BROWSER_ENGINE=webkit "$test_node_path" prototypes/avr-offline/integrated-browser-test.mjs isolated
       - name: Sačuvaj dokaze prihvata
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Labos-0.16.0-beta.1-acceptance
+          name: Labos-0.16.0-beta.2-acceptance
           path: |
             .build/avr-integrated-evidence/
+            .build/avr-integrated-evidence-webkit/
             .build/avr-prototype-node-evidence.json
             .build/avr-library-evidence.json
           retention-days: 30

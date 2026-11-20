@@ -1,4 +1,5 @@
 import {normalizeLibraries,libraryPaths} from './libraries.mjs';
+import {toolFiles} from './tool-files.mjs';
 import runtime from './runtime-manifest.json' with {type:'json'};
 import {parseHex, sha256} from '../../public/avr-contract.mjs';
 
@@ -50,7 +51,7 @@ export async function runTool(name,args,output,{files,factory,progress=()=>{},di
     progress(name); const t = performance.now(); const messages=[];
     const create = await factory(name);
     const options = {arguments:args.slice(), print:x=>messages.push(String(x)), printErr:x=>messages.push(String(x)),
-      preRun:[m=>{writeFiles(m.FS,files);m.FS.mkdirTree(output.slice(0,output.lastIndexOf("/")));}], noInitialRun:name==='cc1'||name==='cc1plus'};
+      preRun:[m=>{writeFiles(m.FS,toolFiles(name,args,files,files));m.FS.mkdirTree(output.slice(0,output.lastIndexOf("/")));}], noInitialRun:name==='cc1'||name==='cc1plus'};
     const module = await create(options);
     const status = options.noInitialRun ? module.callMain(args.slice()) : undefined;
     diagnostics.push(...messages);
@@ -71,14 +72,14 @@ export function compilerFlags(board) {
 
 // Each invocation gets a fresh Emscripten instance and virtual filesystem.
 // There is no server compiler and no precompiled sketch lookup.
-export async function compile(input, {sdk, factory, progress=()=>{}}) {
+export async function compile(input, {sdk, factory, runner=runTool, progress=()=>{}}) {
   input = normalizeInput(input);
   const started = performance.now(), target = TARGETS[input.board];
   const inputHash = await fingerprint(input), diagnostics = [], timings = [];
   const files = new Map(sdk);
   for (const [path,content] of Object.entries(input.files)) files.set('/project/'+path,encoder.encode(content));
   files.set('/project/sketch.cpp',encoder.encode('#include <Arduino.h>\n#line 1 "main.ino"\n'+input.files['main.ino']));
-  const tool=(name,args,output)=>runTool(name,args,output,{files,factory,progress,diagnostics,timings});
+  const tool=(name,args,output)=>runner(name,args,output,{files,factory,progress,diagnostics,timings});
   const libraries=libraryPaths(input.board,input.libraries);
   const common=[...compilerFlags(input.board),...libraries.includes];
   const sources=['sketch.cpp',...Object.keys(input.files).filter(p=>/\.(cpp|c)$/.test(p))], objects=[];

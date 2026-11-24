@@ -1,0 +1,19 @@
+{
+  "name": "s3-offline",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "node --import tsx build.ts",
+    "test": "npm run build && node --test compiler.test.mjs && node --import tsx library-test.ts"
+  },
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@yowasp/clang": "21.1.4-3",
+    "binaryen": "120.0.0"
+  },
+  "private": true,
+  "devDependencies": {
+    "esbuild": "0.25.12",
+    "tsx": "4.20.6"
+  }
+}

@@ -44,11 +44,17 @@ jobs:
       - run: node --test verification/offline-storage.test.mjs
       - name: Provjeri raspored vodiča
         run: npm run test:routing
+      - name: Izgradi i provjeri ESP32-S3 prevoditelj i biblioteke
+        working-directory: prototypes/s3-offline
+        run: |
+          npm ci
+          npm test
       - name: Izgradi laboratorij za putanju repozitorija
         run: npm run build:pages
         env:
           LAB_BASE_PATH: /${{ github.event.repository.name }}/
           LAB_OFFLINE_AVR: '1'
+          LAB_OFFLINE_S3: '1'
       - name: Provjeri resurse i offline rad na podputanji
         run: node --test verification/pages.test.mjs
       - name: Provjeri prevoditelj, projekte i simulaciju

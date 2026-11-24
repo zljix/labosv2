@@ -60,7 +60,8 @@ export function offlinePlugin(root, build, version, base = '/', offlinePrototype
         const original = byUrl.get(base + file.url.slice(prefix.length));
         if (original && original.sha256 === file.sha256 && original.bytes === file.bytes) file.cacheUrl = original.url;
       }
-      const config = { build, version, base, files };
+      const optionalS3 = files.filter(file => file.url.startsWith(base + 'app/' + build + '/offline-s3/'));
+      const config = { build, version, base, files: files.filter(file => !optionalS3.includes(file)), ...(optionalS3.length ? {optionalS3} : {}) };
       writeFileSync(resolve(dist, 'offline-package.json'), JSON.stringify(config, null, 2) + '\n');
       const template = readFileSync(resolve(root, 'scripts/service-worker.js'), 'utf8');
       writeFileSync(resolve(dist, 'sw.js'), template.replace('/* LAB_PACKAGE */', JSON.stringify(config)));

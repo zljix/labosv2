@@ -22,6 +22,12 @@ export function buildInput(p){
  const libraries=selectedLibraries(p);
  return {format:'esp32-lab-s3-input',version:1,boardId:S3_BOARD,boardProfile:p.board.profileVersion,fqbn:S3_FQBN,entryFile:'main.ino',toolchain:libraries.length?{...S3_TOOLCHAIN,libraries}:S3_TOOLCHAIN,files};
 }
+export function browserInput(project, version=3) {
+ const input = buildInput(project);
+ if (version===2 && (Object.keys(input.files).length !== 1 || input.toolchain.libraries.length))
+   throw Error('S3 prevoditelj u pregledniku podržava main.ino bez dodatnih datoteka i biblioteka.');
+ return {...input, toolchain: {...input.toolchain, compiler: 'yowasp-clang@21.1.4-3', ...(version===3 ? {libraryPack:1} : {})}};
+}
 export const inputHash=p=>sha256(JSON.stringify(buildInput(p)));
 export const S3_IMPORTS=Object.freeze(['lab_gpio_mode','lab_gpio_write','lab_gpio_read','lab_adc','lab_pwm','lab_clock','lab_delay','lab_fault','lab_serial','lab_i2c_config','lab_i2c_tx','lab_i2c_rx','lab_spi_config','lab_spi_transfer','lab_spi_bytes','lab_pulse','sqrt','pow','log','exp','sin','cos','floor','ceil','round','fabs']);
 export function wasmBytes(base64){
@@ -44,10 +50,10 @@ export function validateModule(bytes){
  return module;
 }
 export async function validateArtifact(project,value){
- if(value?.format!=='esp32-lab-s3-build'||value.version!==1)throw Error('Odaberi ESP32-S3 WASM .json rezultat prevoditelja.');
- const input=buildInput(project);
+ if(value?.format!=='esp32-lab-s3-build'||![1,2,3].includes(value.version))throw Error('Odaberi ESP32-S3 WASM .json rezultat prevoditelja.');
+ const input=value.version===1?buildInput(project):browserInput(project,value.version);
  if(value.boardId!==input.boardId||value.boardProfile!==input.boardProfile||value.fqbn!==input.fqbn||JSON.stringify(value.toolchain)!==JSON.stringify(input.toolchain))throw Error('Prevedeni program pripada drugom cilju, bibliotekama ili alatnom lancu.');
- if(value.inputHash!==await inputHash(project))throw Error('Izvor je promijenjen. Ponovno prevedi ovaj projekt; stari program nije pokrenut.');
+ if(value.inputHash!==await sha256(JSON.stringify(input)))throw Error('Izvor je promijenjen. Ponovno prevedi ovaj projekt; stari program nije pokrenut.');
  const bytes=wasmBytes(value.wasm);if(value.wasmHash!==await sha256(bytes)||value.wasmBytes!==bytes.length||value.memoryBytes!==2097152)throw Error('WASM program ili njegovi metapodaci izmijenjeni su ili oštećeni.');
  validateModule(bytes);return value;
 }

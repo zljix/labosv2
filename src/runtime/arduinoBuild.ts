@@ -9,10 +9,10 @@ export interface BuildDiagnostic {file:string;line:number;column:number;severity
 export async function rememberBuild(project:Project,artifact:any,storage?:StorageLike){
   await validateArtifact(project,artifact);
   if(!storage){const input=await inputHash(project);memoryBuilds.delete(input);memoryBuilds.set(input,artifact);while(memoryBuilds.size>6)memoryBuilds.delete(memoryBuilds.keys().next().value!);}
-  try{storage??=localStorage;let rows:any[]=[];try{rows=JSON.parse(storage.getItem(CACHE)??'[]');if(!Array.isArray(rows))rows=[];}catch{}const hash=await inputHash(project);rows=rows.filter(x=>x?.inputHash!==hash);rows.push(artifact);storage.setItem(CACHE,JSON.stringify(rows.slice(-6)));}catch{/* A full browser cache does not invalidate a compiled project. */}
+  try{storage??=localStorage;let rows:any[]=[];try{rows=JSON.parse(storage.getItem(CACHE)??'[]');if(!Array.isArray(rows))rows=[];}catch{}const hash=await inputHash(project);rows=rows.filter(x=>(x?.projectHash??x?.inputHash)!==hash);rows.push(artifact.inputHash===hash?artifact:{...artifact,projectHash:hash});storage.setItem(CACHE,JSON.stringify(rows.slice(-6)));}catch{/* A full browser cache does not invalidate a compiled project. */}
 }
 export async function cachedBuild(project:Project,storage?:StorageLike){
-  try{const hash=await inputHash(project);if(!storage&&memoryBuilds.has(hash))return await validateArtifact(project,memoryBuilds.get(hash));storage??=localStorage;const rows=JSON.parse(storage.getItem(CACHE)??'[]');if(!Array.isArray(rows))return null;const a=rows.find(x=>x?.inputHash===hash);return a?await validateArtifact(project,a):null;}catch{return null;}
+  try{const hash=await inputHash(project);if(!storage&&memoryBuilds.has(hash))return await validateArtifact(project,memoryBuilds.get(hash));storage??=localStorage;const rows=JSON.parse(storage.getItem(CACHE)??'[]');if(!Array.isArray(rows))return null;const a=rows.find(x=>(x?.projectHash??x?.inputHash)===hash);return a?await validateArtifact(project,a):null;}catch{return null;}
 }
 export function clearBuildCache(storage?:StorageLike){memoryBuilds.clear();(storage??localStorage).removeItem(CACHE);}
 export function readArduinoWork(p:Project){

@@ -5,12 +5,14 @@ import {STUDENT_NAME_LIMIT,CLASS_NAME_LIMIT} from '../project/identity';
 import {appAsset} from '../platform/assets';
 import {useEffect,useRef,useState} from 'react';
 import type {Project} from '../project/model';
-import {AVR_LIBRARIES,libraryManifest} from '../../public/avr-contract.mjs';
+import {AVR_LIBRARIES,libraryManifest,parseDiagnostics} from '../../public/avr-contract.mjs';
 import {buildFile,buildInput,validateArtifact,selectedLibraries,memoryDescription} from '../../public/arduino-contract.mjs';
 import {S3_LIBRARY_NAMES} from '../../public/s3-contract.mjs';
 import {download,safeFilename,exportZip} from '../project/archive';
 import {arduinoSubmission,cachedBuild,rememberBuild,clearBuildCache,readArduinoWork,projectWithBuild,type BuildDiagnostic} from './arduinoBuild';
 import type {ArduinoCompiler} from './useArduinoCompiler';
+import {compileBrowserS3,s3Package,type S3PackageProgress} from './offlineS3';
+import {browserInput} from '../../public/s3-contract.mjs';
 import './arduino.css';
 
 export function ArduinoBuildPanel({project,importBuild,compiler,setLibraries,goTo,consoleText,compileContext,offline=false}:{project:Project;importBuild:(text:string,input:string)=>void;compiler:ArduinoCompiler;setLibraries:(text:string)=>void;goTo:(d:BuildDiagnostic)=>void;consoleText:string;compileContext?:CompileContext;offline?:boolean}){
@@ -31,7 +33,7 @@ export function ArduinoBuildPanel({project,importBuild,compiler,setLibraries,goT
     importBuild(JSON.stringify(a),expected);await rememberBuild(snapshot,a);setValid(true);setMessages(a.messages??[]);setLog(a.diagnostics??'');
   }
   async function compile(){
-    setBusy(true);setValid(false);setMessages([]);setLog('');setStatus('Prevođenje programa…');const snapshot=structuredClone(current.current);
+    setBrowserDiagnostics(false);setBusy(true);setValid(false);setMessages([]);setLog('');setStatus('Prevođenje programa…');const snapshot=structuredClone(current.current);
     try{let saved:any=null;try{saved=await validateArtifact(snapshot,JSON.parse(snapshot.files[buildFile(snapshot)]??'null'));}catch{}saved??=await cachedBuild(snapshot);const result=saved?{artifact:saved,cached:true}:await compiler.compile(snapshot,compileContext);await accept(snapshot,result.artifact);if(mounted.current)setStatus(result.cached?'Učitan je provjereni rezultat istog izvora, cilja i biblioteka. Zatvori prozor pa pokreni program.':'Program je preveden i spremljen. Zatvori prozor pa pokreni program.');}
     catch(e){if(mounted.current){const ds=(e as Error&{diagnostics?:BuildDiagnostic[]}).diagnostics??[];setStatus(ds.length?'Prevođenje nije uspjelo. Otvori označeni redak, ispravi kôd pa ponovi.':(e as Error).message);setMessages(ds);setLog((e as Error).message);setValid(false);}}
     finally{if(mounted.current)setBusy(false);}
@@ -44,11 +46,65 @@ export function ArduinoBuildPanel({project,importBuild,compiler,setLibraries,goT
   let libraries:ReturnType<typeof selectedLibraries>=[],libraryError='';try{libraries=selectedLibraries(project);}catch(e){libraryError=(e as Error).message;}
   const s3=project.runtimeProfile.id==='arduino-s3-wasm';
   const sourceMessages=messages.filter(d=>Object.hasOwn(project.files,d.file)||d.severity==='error'),externalCount=messages.length-sourceMessages.length;
+  const browserS3=typeof __OFFLINE_S3__!=='undefined' && __OFFLINE_S3__ && s3;
+  const browserJob=useRef<AbortController|null>(null);
+  const [browserDiagnostics,setBrowserDiagnostics]=useState(false);
+  const [packageReady,setPackageReady]=useState(false),[browserStatus,setBrowserStatus]=useState('');
+  const [packageProgress,setPackageProgress]=useState<S3PackageProgress|null>(null);
+  useEffect(()=>{
+    if(!browserS3)return;
+    let live=true;
+    const check=()=>{void s3Package(false,state=>{if(live)setPackageProgress(state);}).then(ready=>{if(live)setPackageReady(ready);}).catch(()=>{});};
+    check();navigator.serviceWorker?.addEventListener('controllerchange',check);
+    return()=>{live=false;browserJob.current?.abort();navigator.serviceWorker?.removeEventListener('controllerchange',check);};
+  },[browserS3]);
+  let unsupported='';
+  if(browserS3)try{browserInput(project);}catch(error){unsupported=(error as Error).message;}
+  async function browserAction(prepare:boolean){
+    const snapshot=structuredClone(current.current),job=new AbortController();
+    browserJob.current=job;setBusy(true);
+    if(!prepare){setMessages([]);setLog('');setBrowserDiagnostics(false);}
+    setBrowserStatus(prepare?'Spremanje i provjera S3 paketa…':'Prevođenje u pregledniku…');
+    try{
+      if(prepare){
+        const ready=await s3Package(true,state=>{if(mounted.current)setPackageProgress(state);});
+        if(!ready)throw Error('Spremanje S3 paketa nije dovršeno.');
+        if(mounted.current){setPackageReady(true);setBrowserStatus('S3 paket je spreman za offline rad.');}
+      }else{
+        const artifact=await compileBrowserS3(snapshot,job.signal,message=>{if(mounted.current)setBrowserStatus(message);});
+        job.signal.throwIfAborted();
+        await accept(snapshot,artifact);
+        if(mounted.current)setBrowserStatus('Prevedeno. Zatvori prozor i odaberi Pokreni.');
+      }
+    }catch(error){
+      if(mounted.current){
+        const message=(error as Error).message;
+        const ds=prepare?[]:parseDiagnostics(message);
+        setBrowserStatus(ds.length?'Prevođenje nije uspjelo. Odaberi redak za ispravak.':message);
+        if(!prepare){setBrowserDiagnostics(true);setMessages(ds);setLog(message);setValid(false);}
+      }
+    }
+    finally{browserJob.current=null;if(mounted.current)setBusy(false);}
+  }
   async function submit(){
     setBusy(true);try{const snapshot=current.current,p=await arduinoSubmission(await projectWithBuild(snapshot),work,consoleText);if(current.current.revision!==snapshot.revision||current.current.id!==snapshot.id)throw Error('Projekt je promijenjen. Ponovi pripremu predaje.');download(safeFilename(p.title)+'_predaja.zip',exportZip(p),'application/zip');setStatus('ZIP za predaju sadrži izvor, sklop, prevedeni program, tvoje podatke, opažanja i serijski zapis.');}catch(e){setStatus((e as Error).message);}finally{setBusy(false);}
   }
+  const diagnosticList=sourceMessages.length>0&&<section className="build-messages" aria-label="Poruke prevoditelja"><h3>Poruke prevoditelja</h3>{sourceMessages.map((d,i)=><div key={i}><button disabled={!Object.hasOwn(project.files,d.file)} onClick={()=>goTo(d)}>{d.file}:{d.line}:{d.column}</button> <b>{d.severity==='warning'?'Upozorenje':d.severity==='note'?'Napomena':'Pogreška'}</b>: {d.message}</div>)}</section>;
   return <div className="arduino-build">
-    <details open={!offline}><summary hidden={!offline}>Školski i lokalni prevoditelj</summary>
+    {browserS3&&<section className="compiler-connect" aria-label="ESP32-S3 u pregledniku">
+      <h3>ESP32-S3 u pregledniku</h3>
+      <p>Spremi prevoditelj i biblioteke za rad bez mreže. Nakon nadogradnje Labos provjerava spremljene datoteke i preuzima samo one koje nedostaju ili su se promijenile. Uz main.ino možeš dodati druge .ino datoteke, C/C++ datoteke i zaglavlja. Biblioteke odaberi ispod.</p>
+      <p role="status">{unsupported || browserStatus || (packageReady?'S3 paket je spreman za offline rad.':'S3 paket još nije pripremljen.')}</p>
+      {browserDiagnostics&&diagnosticList}
+      {!packageReady&&packageProgress&&packageProgress.totalBytes>0&&<div className="s3-package-progress">
+        <progress aria-label="Spremljeni dio S3 paketa" max={packageProgress.totalBytes} value={packageProgress.bytes}/>
+        <small>Spremljeno {packageProgress.completed}/{packageProgress.total} datoteka · {(packageProgress.bytes/1048576).toFixed(1)} / {(packageProgress.totalBytes/1048576).toFixed(1)} MiB</small>
+      </div>}
+      {!packageReady&&<button disabled={busy} onClick={()=>void browserAction(true)}>{packageProgress?.completed?'Nastavi spremanje S3 paketa':'Spremi S3 paket'}</button>}
+      <button className="primary" disabled={busy||!packageReady||!!unsupported||readSchoolBinding(compileContext?.parent??project)?.status==='locked'} onClick={()=>void browserAction(false)}>Prevedi u pregledniku</button>
+      {busy&&browserJob.current&&packageReady&&<button onClick={()=>browserJob.current?.abort()}>Prekini prevođenje</button>}
+    </section>}
+    <details open={!offline&&!browserS3}><summary hidden={!offline&&!browserS3}>Školski i lokalni prevoditelj</summary>
     <p className={valid?'build-valid':'build-pending'} role="status">{status}</p>
     <section className="compiler-connect">
       <h3>Gdje se program prevodi?</h3>
@@ -76,7 +132,7 @@ export function ArduinoBuildPanel({project,importBuild,compiler,setLibraries,goT
       <p className="build-small">{s3?<>S3 koristi vlastiti funkcionalni API; dostupne su samo ovdje navedene provjerene biblioteke. DHT 1.4.6, OneWire 2.3.8 / DallasTemperature 4.0.6 i U8g2 2.37.1 sada imaju provjerene primjere. Odaberi U8g2 ili U8g2_12832 prema zaslonu; priložen je font 6×10. S3 U8g2 koristi HW I2C (Wire); SW I2C nije deklariran. DS18B20 zahtijeva obje biblioteke i vanjski pull-up na 3,3 V. AVR Servo i ESP32 Wi-Fi/FreeRTOS ostaju nepodržani. Pripremljeni S3 primjeri rade i bez lokalnog prevoditelja.</>:<>Bounce2 je provjerena za Uno/Nano GPIO i vrijeme. Model tipkala daje idealne promjene stanja; mehaničko poskakivanje kontakata nije simulirano. LabAHT10, U8g2 i Servo sada imaju primjere za Uno/Nano. U8g2 zadržava profil 128 × 64. Za 128 × 32 odaberi U8g2_12832 umjesto U8g2; priložen je font 6×10. LabLCD1602 koristi potvrđeno PCF8574 mapiranje i 100 kHz. DS18B20 koristi OneWire 2.3.8 i DallasTemperature 4.0.6; odaberi obje biblioteke. Preuzmi novi paket prevoditelja ako koristiš raniju etapu.</>}</p>
       <p>Za više datoteka dodaj <code>pomoc.h</code> i <code>{offline?'pomoc.cpp':'src/pomoc.cpp'}</code> gumbom + uz kartice editora. Uključi header s <code>#include "pomoc.h"</code>. {offline?<>U offline prototipu dodatne C/C++ datoteke stavi u korijen, uz <code>main.ino</code>; podmape još nisu podržane.</>:<>Datoteke u <code>src/</code> prevode se zajedno s <code>main.ino</code>.</>}</p>
     </details>
-    {sourceMessages.length>0&&<section className="build-messages" aria-label="Poruke prevoditelja"><h3>Poruke prevoditelja</h3>{sourceMessages.map((d,i)=><div key={i}><button disabled={!Object.hasOwn(project.files,d.file)} onClick={()=>goTo(d)}>{d.file}:{d.line}:{d.column}</button> <b>{d.severity==='warning'?'Upozorenje':d.severity==='note'?'Napomena':'Pogreška'}</b>: {d.message}</div>)}</section>}
+    {!browserDiagnostics&&diagnosticList}
     {externalCount>0&&<p className="build-small">Poruke iz Arduino corea ili biblioteka: {externalCount}. Dostupne su u cijelom zapisu prevođenja.</p>}
     {!!log&&<details><summary>Cijeli zapis prevođenja</summary><pre className="compiler-log">{log}</pre></details>}
     <details><summary>Ručni uvoz i izvoz</summary><div className="build-actions"><button disabled={busy} onClick={()=>download(safeFilename(project.title)+'.json',JSON.stringify(project,null,2),'application/json')}>Preuzmi projekt JSON</button><button disabled={busy} onClick={()=>file.current?.click()}>Uvezi prevedeni program</button></div><input ref={file} type="file" accept=".json" hidden onChange={e=>{void load(e.target.files?.[0]);e.target.value='';}}/><p>I dalje možeš koristiti <code>{s3?'node scripts/s3-compile.mjs projekt.json rezultat.s3.json':'node scripts/avr-compile.mjs projekt.json rezultat.avr.json'}</code> i ručno uvesti rezultat.</p></details>

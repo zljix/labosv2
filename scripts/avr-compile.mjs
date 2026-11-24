@@ -13,13 +13,8 @@ const vendor=resolve(dirname(fileURLToPath(import.meta.url)),'../vendor/arduino'
 export class CompileError extends Error {
   constructor(message,diagnostics=[]){super(message);this.name='CompileError';this.diagnostics=diagnostics;}
 }
-export function parseDiagnostics(text) {
-  return text.split(/\r?\n/).flatMap(line=>{
-    const m=line.match(/^(.+?):(\d+)(?::(\d+))?:\s*(fatal error|error|warning|note):\s*(.*)$/);
-    if(!m)return [];
-    return [{file:m[1].replaceAll('\\','/'),line:Number(m[2]),column:Number(m[3]??1),severity:m[4].includes('error')?'error':m[4],message:m[5]}];
-  }).slice(0,50);
-}
+export {parseDiagnostics} from '../public/avr-contract.mjs';
+import {parseDiagnostics} from '../public/avr-contract.mjs';
 export async function verifyLibraryFiles(base,pinned) {
   async function list(prefix='') {
     const entries=await readdir(join(base,prefix),{withFileTypes:true}),paths=[];

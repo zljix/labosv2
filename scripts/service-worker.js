@@ -83,7 +83,15 @@ async function report(type, detail = {}) {
     }
   } catch { /* The page may already have closed. */ }
 }
-async function verifiedResponse(file) {
+async function verifiedBytes(response, file) {
+  const bytes = await response.arrayBuffer();
+  if (bytes.byteLength !== file.bytes) throw Error('Sadržaj ne odgovara očekivanoj verziji.');
+  const digest = await crypto.subtle.digest('SHA-256', bytes);
+  const hash = Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2, '0')).join('');
+  if (hash !== file.sha256) throw Error('Sadržaj ne odgovara očekivanoj verziji.');
+  return bytes;
+}
+async function verifiedResponse(file, buffered = false) {
   let failure;
   for (let attempt = 0; attempt < 2; attempt++) {
     const url = new URL(key(file.url));
@@ -93,10 +101,8 @@ async function verifiedResponse(file) {
     try {
       const response = await fetch(url.href, { cache: 'reload', credentials: 'same-origin', redirect: 'error' });
       if (!response.ok || response.redirected || (response.url && response.url !== url.href)) throw Error('Datoteka nije dostupna (HTTP ' + response.status + ').');
-      const bytes = await response.clone().arrayBuffer();
-      const hash = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', bytes)), b => b.toString(16).padStart(2, '0')).join('');
-      if (hash !== file.sha256 || bytes.byteLength !== file.bytes) throw Error('Sadržaj ne odgovara očekivanoj verziji.');
-      return response;
+      const bytes = await verifiedBytes(buffered ? response : response.clone(), file);
+      return buffered ? new Response(bytes, {headers:{'Content-Type':response.headers.get('Content-Type') || 'application/octet-stream'}}) : response;
     } catch (error) { failure = error; }
   }
   throw Error(file.url + ': ' + String(failure?.message ?? failure));
@@ -176,8 +182,74 @@ async function status() {
   const ready = keys.has(MARKER) && storedFiles.every(file => keys.has(file.url));
   return { ready, build: PACKAGE.build, version: PACKAGE.version, count: PACKAGE.files.length, bytes };
 }
+let s3Preparation;
+const s3Listeners = new Set();
+async function s3Status() {
+  const files = PACKAGE.optionalS3 || [];
+  const appReady = (await status()).ready;
+  const keys = appReady ? await (await caches.open(CACHE)).keys() : [];
+  const paths = new Set(keys.map(request => new URL(request.url).pathname));
+  const saved = files.filter(file => paths.has(file.url));
+  return {
+    ready: appReady && files.length > 0 && saved.length === files.length,
+    completed: saved.length, total: files.length,
+    bytes: saved.reduce((sum,file) => sum + file.bytes,0),
+    totalBytes: files.reduce((sum,file) => sum + file.bytes,0)
+  };
+}
+async function previousS3Response(file, names) {
+  const prefix = BASE + 'app/' + PACKAGE.build + '/offline-s3/';
+  if (!file.url.startsWith(prefix)) return;
+  for (const name of names) {
+    const priorPath = BASE + 'app/' + name.slice(PREFIX.length) + '/offline-s3/' + file.url.slice(prefix.length);
+    try {
+      const response = await caches.match(key(priorPath), { cacheName: name });
+      if (response?.ok) {
+        const bytes = await verifiedBytes(response, file);
+        const type = file.url.endsWith('.wasm') ? 'application/wasm'
+          : /\.m?js$/.test(file.url) ? 'text/javascript' : 'application/octet-stream';
+        return new Response(bytes, { headers: { 'Content-Type': type } });
+      }
+    } catch { /* A missing or incompatible copy falls through to the next release or network. */ }
+  }
+}
+async function prepareS3() {
+  if (!PACKAGE.optionalS3?.length) throw Error('Ovo izdanje nema S3 paket.');
+  await prepare();
+  const cache = await caches.open(CACHE);
+  const state = await s3Status();
+  const previous = (await caches.keys()).filter(name => ownCache(name) && name !== CACHE).reverse();
+  for (const file of PACKAGE.optionalS3) {
+    if (await cache.match(key(file.url))) continue;
+    for (const notify of s3Listeners) notify({progress:{...state,file:file.url.split('/').pop()}});
+    const response = await previousS3Response(file,previous) ?? await verifiedResponse(file,true);
+    try { await cache.put(key(file.url),response); }
+    catch (error) {
+      if (error.name === 'QuotaExceededError' || /quota/i.test(String(error)))
+        throw Error('Nema dovoljno prostora za S3 paket. Oslobodi prostor pa nastavi spremanje.');
+      throw error;
+    }
+    state.completed++;
+    state.bytes += file.bytes;
+  }
+  return s3Status();
+}
 self.addEventListener('message', event => {
   const reply = value => event.ports[0]?.postMessage(value);
+  if (['LAB_S3_STATUS','LAB_S3_PREPARE'].includes(event.data?.type)) {
+    if (!event.source?.id || !ownClient(event.source) || event.data.build !== PACKAGE.build) {
+      reply({error:'Ponovno otvori aktualnu verziju Labosa.'}); return;
+    }
+    const preparing = event.data.type === 'LAB_S3_PREPARE';
+    if (preparing) {
+      s3Listeners.add(reply);
+      s3Preparation ??= prepareS3().finally(() => { s3Preparation = undefined; });
+    }
+    event.waitUntil((preparing ? s3Preparation : s3Status())
+      .then(state => reply({state,ready:state.ready}))
+      .catch(error => reply({error:String(error.message || error)}))
+      .finally(() => s3Listeners.delete(reply)));
+  }
   if (event.data?.type === 'LAB_STATUS') event.waitUntil(status().then(reply).catch(error => reply({ error: String(error) })));
   if (event.data?.type === 'LAB_STORAGE' || event.data?.type === 'LAB_CLEAN_STORAGE') event.waitUntil((async () => {
     if (!event.source?.id || !ownClient(event.source)) { reply({ error: 'Zahtjev mora doći iz otvorenog laboratorija.' }); return; }

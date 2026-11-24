@@ -84,7 +84,7 @@ function edgeCost(a:Point,b:Point,hitsObstacle:(a:Point,b:Point)=>boolean,used:S
   if(Math.abs(a.x-b.x)<EPS&&Math.abs(s.a.x-s.b.x)<EPS){const gap=Math.abs(a.x-s.a.x);if(gap>EPS&&gap<LANE-EPS&&Math.min(Math.max(a.y,b.y),Math.max(s.a.y,s.b.y))-Math.max(Math.min(a.y,b.y),Math.min(s.a.y,s.b.y))>EPS){if(separate&&gap<TRACE_CLEARANCE-EPS)return INF;cost+=(LANE-gap)*120;}}
  }return cost;
 }
-class Heap {
+export class RoutingQueue {
  values:{id:number;score:number}[]=[];
  push(id:number,score:number){const a=this.values;let i=a.length;a.push({id,score});while(i){const p=(i-1)>>1;if(a[p].score<=score)break;a[i]=a[p];i=p;}a[i]={id,score};}
  pop(){const a=this.values,first=a[0],last=a.pop()!;if(a.length){let i=0;while(i*2+1<a.length){let child=i*2+1;if(child+1<a.length&&a[child+1].score<a[child].score)child++;if(a[child].score>=last.score)break;a[i]=a[child];i=child;}a[i]=last;}return first;}
@@ -110,7 +110,7 @@ function route(start:Point,end:Point,rects:Rect[],used:Segment[],wire:Wire,map:M
  if(best&&bestCost<manhattan(start,end)+500)return best;
  const width=xv.length,height=yv.length,count=width*height;
  const origin=yv.indexOf(start.y)*width+xv.indexOf(start.x),target=yv.indexOf(end.y)*width+xv.indexOf(end.x);
- const costs=new Float64Array(count*3).fill(INF),previous=new Int32Array(count*3).fill(-1),heap=new Heap(),cache=new Map<string,number>();
+ const costs=new Float64Array(count*3).fill(INF),previous=new Int32Array(count*3).fill(-1),heap=new RoutingQueue(),cache=new Map<string,number>();
  costs[origin*3]=0;heap.push(origin*3,manhattan(start,end));
  let iterations=0,finish=-1;
  while(heap.values.length&&iterations++<45000){
@@ -220,6 +220,7 @@ export function routedPath(points:Point[],crossings:Point[]=[]):string {
 
 export function layoutBounds(c:Circuit,layout:WireLayout) {
  const corners=c.components.flatMap(p=>{const r=partBounds(p);return [{x:r.left,y:r.top},{x:r.right,y:r.bottom}];}),points=[...corners,...[...layout.paths.values()].flat()];
- const x=Math.min(0,...points.map(p=>p.x))-45,y=Math.min(0,...points.map(p=>p.y))-45;
- return {x,y,width:Math.max(1250,...points.map(p=>p.x))+60-x,height:Math.max(730,...points.map(p=>p.y))+70-y};
+ const left=Math.min(...points.map(p=>p.x))-48,top=Math.min(...points.map(p=>p.y))-52;
+ const right=Math.max(...points.map(p=>p.x))+48,bottom=Math.max(...points.map(p=>p.y))+42;
+ return {x:left,y:top,width:right-left,height:bottom-top};
 }

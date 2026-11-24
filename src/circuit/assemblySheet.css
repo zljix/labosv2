@@ -1,0 +1,26 @@
+.assembly-sheet{margin:0;color:var(--text);background:var(--surface);border-bottom:1px solid var(--line);min-width:0}
+.sheet-heading,.sheet-key,.drawing-switch{display:flex;align-items:center;flex-wrap:wrap;gap:.55rem}
+.sheet-heading{justify-content:space-between;padding:.55rem .9rem;border-bottom:1px solid var(--line)}
+.sheet-heading strong{font-size:.88rem}.sheet-heading>div{display:flex;gap:.25rem}
+.sheet-heading button,.drawing-switch button{font:inherit;font-size:.82rem;min-height:32px;padding:.3rem .6rem}
+.sheet-scroll{overflow:auto;max-height:clamp(350px,61vh,760px);background:#fff;overscroll-behavior:contain}
+.sheet-scroll>svg{min-width:100%;height:auto;display:block;font-family:system-ui,sans-serif;color:#1f3949;--text:#1f3949}
+.sheet-scroll:focus-visible{outline:2px solid var(--teal);outline-offset:-2px}
+.assembly-wire{cursor:pointer}.mount-caption{fill:#244153;font-size:14px;font-weight:650;stroke:white;stroke-width:3px;paint-order:stroke}
+.assembly-sheet figcaption{border-top:1px solid var(--line);padding:.6rem .9rem}
+.sheet-key{column-gap:1rem;font-size:.82rem;font-weight:650}.sheet-key span{display:inline-flex;align-items:center;gap:.35rem}
+.sheet-key i,.sheet-connections td i{width:16px;height:4px;border-radius:3px;display:inline-block}
+.assembly-sheet figcaption p,.sheet-connections p{font-size:.82rem;color:var(--muted);line-height:1.5;margin:.25rem 0 0}
+.sheet-connections{border-top:1px solid var(--line);padding:.45rem .9rem;font-size:.85rem}
+.sheet-connections summary{font-weight:650;cursor:pointer;padding:.25rem 0}.sheet-connections table{width:100%;border-collapse:collapse;margin:.5rem 0}
+.sheet-connections th,.sheet-connections td{padding:.35rem;text-align:left;border-bottom:1px solid var(--line);overflow-wrap:anywhere}
+.sheet-connections td b{white-space:nowrap;color:var(--teal)}.sheet-connections tr.chosen{background:var(--teal-light)}
+.sheet-connections td button{padding:.25rem .4rem;display:inline-flex;align-items:center;gap:.35rem;font-size:.8rem}
+.sheet-connections dl{margin:.55rem 0}.sheet-connections dl div{display:flex;align-items:baseline;gap:.75rem;flex-wrap:wrap}.sheet-connections dt{font-weight:650}.sheet-connections dd{margin:0}
+.drawing-switch{padding:.5rem .8rem;border-bottom:1px solid var(--line);background:var(--raised)}
+.drawing-switch button[aria-pressed=true]{background:var(--teal-light);color:var(--teal);border-color:var(--teal)}
+@media(max-width:600px){.sheet-scroll{max-height:55vh}.sheet-heading button,.drawing-switch button,.sheet-connections td button{min-height:44px}.sheet-connections td{font-size:.8rem}}
+.drawing-switch .sheet-expand{margin-left:auto}
+.assembly-loading{padding:1rem;margin:0;color:var(--muted)}
+.sheet-key button{display:inline-flex;align-items:center;gap:.35rem;min-height:32px;padding:.15rem .35rem;font:inherit;border:1px solid transparent;background:transparent;color:var(--text)}.sheet-key button[aria-pressed=true]{border-color:var(--teal);background:var(--teal-light)}
+@media(max-width:600px){.sheet-key button{min-height:44px}}

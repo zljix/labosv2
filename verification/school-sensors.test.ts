@@ -52,7 +52,7 @@ test('24D refuses forged contracts, cached snapshots and numerical transcripts w
 });
 test('24D resolution needs actual configuration; stale conversion and false fault values lose points',{timeout:45000},async()=>{
   const resolution=sensorProfiles.find(p=>p.taskKey==='onewire/ds18Resolution')!,p=await starter(resolution.taskKey);
-  p.files['main.py']=p.files['main.py'].replace('((bita-9)<<5)|0x1F','0x7F');assert.equal((await run(p,resolution)).points,3);
+  p.files['main.py']=p.files['main.py'].replace('((bita - 9) << 5) | 0x1F','0x7F');assert.equal((await run(p,resolution)).points,3);
   const multi=sensorProfiles.find(p=>p.taskKey==='onewire/ds18Multi')!,old=await starter(multi.taskKey);
   old.files['main.py']=old.files['main.py'].replace('sleep_ms(750)','sleep_ms(10)');assert((await run(old,multi)).points<10);
   for(const profile of sensorProfiles.filter(p=>p.taskKey.endsWith('Errors'))){const source=await starter(profile.taskKey);

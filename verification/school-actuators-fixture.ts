@@ -26,12 +26,12 @@ export function wrongActuator(p:Project,variant:string,lateOnly=false){
       p.files[file].replace(/void loop\(\)\s*\{/,`void loop(){if(millis()>=${cycle}){delay(100);return;}`);
   }else{
     const replacements:Record<string,[string,string][]>={
-      relayContacts:py?[['relej.value(0)','relej.value(1)']]:[['digitalWrite(7, LOW)','digitalWrite(7, HIGH)'],['digitalWrite(6,LOW)','digitalWrite(6,HIGH)']],
-      activeAlarm:py?[['zujalica.value(1)','zujalica.value(0)']]:[['digitalWrite(4, HIGH)','digitalWrite(4, LOW)'],['digitalWrite(7,HIGH)','digitalWrite(7,LOW)']],
-      piezoTone:py?[['(440, 880, 1320)','(660, 660, 660)']]:[['{440, 880, 1320}','{660, 660, 660}'],['{440,880,1320}','{660,660,660}']],
-      sg90Sweep:py?[['(0, 90, 180)','(45, 45, 45)']]:[['{0, 90, 180}','{45, 45, 45}'],['int pulse=1000+angle*1000/180','int pulse=1250']],
-      dcDrive:py?[['(16384, 32768, 65535)','(8192, 8192, 8192)']]:[['{64, 128, 255}','{32, 32, 32}'],['{64,128,255}','{32,32,32}']],
-      dualDrive:py?[['enb.duty_u16(49151)','enb.duty_u16(32768)']]:[['analogWrite(ENB, 192)','analogWrite(ENB, 128)'],['analogWrite(ENB,192)','analogWrite(ENB,128)']],
+      relayContacts:py?[['relej.value(0)','relej.value(1)']]:[['digitalWrite(7, LOW)','digitalWrite(7, HIGH)'],['digitalWrite(6, LOW)','digitalWrite(6, HIGH)']],
+      activeAlarm:py?[['zujalica.value(1)','zujalica.value(0)']]:[['digitalWrite(4, HIGH)','digitalWrite(4, LOW)'],['digitalWrite(7, HIGH)','digitalWrite(7, LOW)']],
+      piezoTone:py?[['(440, 880, 1320)','(660, 660, 660)']]:[['{440, 880, 1320}','{660, 660, 660}']],
+      sg90Sweep:py?[['(0, 90, 180)','(45, 45, 45)']]:[['{0, 90, 180}','{45, 45, 45}'],['int pulse = 1000 + angle * 1000 / 180','int pulse=1250']],
+      dcDrive:py?[['(16384, 32768, 65535)','(8192, 8192, 8192)']]:[['{64, 128, 255}','{32, 32, 32}']],
+      dualDrive:py?[['enb.duty_u16(49151)','enb.duty_u16(32768)']]:[['analogWrite(ENB, 192)','analogWrite(ENB, 128)']],
       servoMotorTone:py?[['freq=880','freq=660']]:[['tone(4, 880)','tone(4, 660)'],['postaviTon(880)','postaviTon(660)']],
     };
     for(const [a,b]of replacements[variant])p.files[file]=p.files[file].replaceAll(a,b);

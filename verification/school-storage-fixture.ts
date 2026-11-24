@@ -10,7 +10,7 @@ export function alternateStorage(p:Project,v:string){
   const from=v.startsWith('rtc')?(s3?6:4):10,to=v.startsWith('rtc')?9:3;
   code=py?code.replace(`Pin(${from})`,`Pin(${to})`):code.replace(`sat(${from},`,`sat(${to},`).replace('LabSD sd(10)','LabSD sd(3)');
   // S3 SPI.begin's CS argument also names the remapped pin.
-  if(!py&&v.startsWith('sd'))code=code.replace('SPI.begin(12,13,11,10)','SPI.begin(12,13,11,3)');
+  if(!py&&v.startsWith('sd'))code=code.replace('SPI.begin(12, 13, 11, 10)','SPI.begin(12,13,11,3)');
   p.files[file]=code;
   if(p.circuit.kind==='editable'){
     const b=p.circuit.components.find(c=>c.kind==='board')!,old=terminals(b).find(t=>t.gpio===from)!.pin,next=terminals(b).find(t=>t.gpio===to)!.pin;
@@ -29,18 +29,18 @@ export function wrongStorage(p:Project,v:string,advanced=false){
   }
   if(v==='rtcMemory'){
     if(advanced){const needle=py?'sat.write_protect(False)':'sat.writeProtect(false);',at=code.lastIndexOf(needle);code=code.slice(0,at)+code.slice(at).replace(needle,py?'sat.write_protect(True)':'sat.writeProtect(true);');}
-    else code=code.replace('prethodno + 1','prethodno + 2').replace('before+1','before+2');
+    else code=code.replace('prethodno + 1','prethodno + 2').replace('before + 1','before+2');
   }
   if(v==='rtcClock'){
     if(py){code='from time import ticks_ms\n'+code;code=code.replace('h * 100 + m',advanced?'h * 100 + m + (1 if ticks_ms() >= 6400 else 0)':'h * 100 + m + 1');}
-    else code=code.replace('d.hour*100+d.minute',advanced?'d.hour*100+d.minute+(millis()>=6400?1:0)':'d.hour*100+d.minute+1');
+    else code=code.replace('d.hour * 100 + d.minute',advanced?'d.hour * 100 + d.minute+(millis()>=6400?1:0)':'d.hour * 100 + d.minute+1');
   }
   if(v==='sdInspect')code=advanced?code.replace('SD FILES','IGNORED FILES').replace('SD FAT16 MOUNT=','IGNORED MOUNT='):code.replace('SIGNATURE=','WRONG SIGNATURE=');
   if(v==='sdFiles')code=advanced?code.replace('SD FILE BYTES=','IGNORED BYTES='):code.replaceAll('Pozdrav iz FAT16 preko SPI!','Pogresan podatak preko SPI!');
   if(v==='sdLogger'){
     if(advanced)code=py?code.replace('f.write(redak)','f.write(redak) if uzorak < 2 else None'):
-      code.replace('LabDS1302::DateTime d;if(!sat.datetime(d))','if(uzorak>=2){delay(1000);return;}LabDS1302::DateTime d;if(!sat.datetime(d))');
-    else code=code.replace('uzorak = 0','uzorak = 1').replace('unsigned uzorak=0','unsigned uzorak=1');
+      code.replace('LabDS1302::DateTime d;','if(uzorak>=2){delay(1000);return;}LabDS1302::DateTime d;');
+    else code=code.replace('uzorak = 0','uzorak = 1');
   }
   if(code===p.files[file])throw Error('Negative did not change '+v+' '+p.board.id+' '+advanced);
   p.files[file]=code;return p;

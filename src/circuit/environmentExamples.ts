@@ -46,18 +46,6 @@ export function environmentCircuit(key:EnvironmentExample,board:BoardId=S3):Circ
   }
   return c;
 }
-const pySingle=(key:'bmp180'|'bmp280'|'am2320')=>`from machine import Pin, I2C
-from time import sleep_ms
-from lab_i2c_sensors import ${key.toUpperCase()}
-
-# SDA su podaci, SCL je takt. Adresa nije GPIO broj.
-bus = I2C(0, sda=Pin(8), scl=Pin(9), freq=100000)
-senzor = ${key.toUpperCase()}(bus)
-while True:
-    temperatura, vrijednost = senzor.read()
-    print("${key.toUpperCase()} T=%.2f ${key==='am2320'?'RH=%.2f':'P=%.0f Pa'}" % (temperatura, vrijednost))
-    sleep_ms(2100)
-`;
 export const environmentExamples={
   ...touchExamples,
   ...iliExamples,
@@ -71,10 +59,63 @@ export const environmentExamples={
   ...dhtExamples,
   ...displayExamples,
   ...analogExamples,
-  bmp180:{title:'BMP180 · temperatura i tlak',hint:intros.bmp180,code:pySingle('bmp180')},
-  bmp280:{title:'BMP280 · registri i repeated-start',hint:intros.bmp280,code:pySingle('bmp280')},
-  am2320:{title:'AM2320 · buđenje i CRC16',hint:intros.am2320,code:pySingle('am2320')},
-  weather:{title:'Meteorološka stanica · četiri I2C uređaja',hint:intros.weather,code:`from machine import Pin, I2C
+  bmp180:{title:'BMP180 · temperatura i tlak',hint:intros.bmp180,code:`# Očitaj temperaturu i tlak na BMP180. Promijeni tlak u modelu i usporedi
+# dva uzastopna ispisa.
+
+from machine import Pin, I2C
+from time import sleep_ms
+from lab_i2c_sensors import BMP180
+
+# SDA su podaci, SCL je takt. Adresa nije GPIO broj.
+bus = I2C(0, sda=Pin(8), scl=Pin(9), freq=100000)
+senzor = BMP180(bus)
+
+while True:
+    # Upravljački program primjenjuje tvorničke koeficijente senzora na
+    # sirove podatke. Tlak dobivaš u paskalima.
+    temperatura, tlak = senzor.read()
+    print("BMP180 T=%.2f P=%.0f Pa" % (temperatura, tlak))
+    sleep_ms(2100)
+`},
+  bmp280:{title:'BMP280 · registri i repeated-start',hint:intros.bmp280,code:`# Prati kako BMP280 preko sabirnice I2C vraća temperaturu i tlak.
+
+from machine import Pin, I2C
+from time import sleep_ms
+from lab_i2c_sensors import BMP280
+
+# SDA su podaci, SCL je takt. Adresa nije GPIO broj.
+bus = I2C(0, sda=Pin(8), scl=Pin(9), freq=100000)
+senzor = BMP280(bus)
+
+while True:
+    # Za svako očitanje pokreće se pretvorba. Za usporedbu s meteorološkim
+    # izvješćem podijeli tlak u Pa sa 100 i dobivaš hPa.
+    temperatura, tlak = senzor.read()
+    print("BMP280 T=%.2f P=%.0f Pa" % (temperatura, tlak))
+    sleep_ms(2100)
+`},
+  am2320:{title:'AM2320 · buđenje i CRC16',hint:intros.am2320,code:`# Promijeni relativnu vlažnost pa prati u kojem će se ciklusu pojaviti nova
+# vrijednost.
+
+from machine import Pin, I2C
+from time import sleep_ms
+from lab_i2c_sensors import AM2320
+
+# SDA su podaci, SCL je takt. Adresa nije GPIO broj.
+bus = I2C(0, sda=Pin(8), scl=Pin(9), freq=100000)
+senzor = AM2320(bus)
+
+while True:
+    # AM2320 nakon buđenja vraća prethodno spremljeni uzorak. Provjera
+    # kontrolnog zbroja otkriva pogrešku prijenosa.
+    temperatura, vlaga = senzor.read()
+    print("AM2320 T=%.2f RH=%.2f" % (temperatura, vlaga))
+    sleep_ms(2100)
+`},
+  weather:{title:'Meteorološka stanica · četiri I2C uređaja',hint:intros.weather,code:`# Postavi isti okoliš senzorima i usporedi njihove rezultate. Dva senzora
+# mjere tlak, a AM2320 daje relativnu vlažnost.
+
+from machine import Pin, I2C
 from time import sleep_ms
 from lab_i2c_sensors import BMP180, BMP280, AM2320
 from ssd1306 import SSD1306_I2C
@@ -84,13 +125,19 @@ bmp180 = BMP180(bus)
 bmp280 = BMP280(bus, address=0x76)
 am2320 = AM2320(bus)
 oled = SSD1306_I2C(128, 64, bus)
+
 while True:
+    # Svaki uređaj na zajedničkoj sabirnici I2C ima svoju adresu. Uz
+    # očitanje zadrži oznaku senzora od kojeg je stiglo.
     t180, p180 = bmp180.read()
     t280, p280 = bmp280.read()
     temperatura, vlaga = am2320.read()
+
+    # Tlak je očitan u Pa. Za prikaz u hPa vrijedi 100 Pa = 1 hPa.
+    # Vrijednosti tlaka i vlage imaju različite jedinice.
     oled.fill(0)
-    oled.text("BMP180:%.1fhPa" % (p180/100), 0, 0)
-    oled.text("BMP280:%.1fhPa" % (p280/100), 0, 14)
+    oled.text("BMP180:%.1fhPa" % (p180 / 100), 0, 0)
+    oled.text("BMP280:%.1fhPa" % (p280 / 100), 0, 14)
     oled.text("AM2320 %.1f C" % temperatura, 0, 28)
     oled.text("RH %.1f %%" % vlaga, 0, 42)
     oled.show()
@@ -108,54 +155,162 @@ export async function loadEnvironmentDrivers(key:EnvironmentExample){
   const names=key in touchExamples?['lab_ili9341.py','lab_xpt2046.py']:key in iliExamples?(key==='iliDashboard'?['lab_ili9341.py','lab_bmp280_spi.py','lab_i2c_sensors.py']:['lab_ili9341.py']):key in spiExamples?(key==='bmp280SPI'?['lab_bmp280_spi.py','lab_i2c_sensors.py']:key==='spiDashboard'?['lab_st7735.py','lab_bmp280_spi.py','lab_i2c_sensors.py']:['lab_st7735.py']):key in actuatorExamples?['servo.py']:key in tmExamples?['lab_tm1637.py']:key in irExamples?['lab_ir.py']:key in encoderExamples?['lab_encoder.py']:key in oneWireExamples?[...oneWireDriverNames]:key in dhtExamples?['dht.py']:key==='oled32'?['ssd1306.py']:key==='lcd1602'?['lcd1602.py']:key==='lcdWeather'?['lcd1602.py','lab_i2c_sensors.py']:key==='weather'?['lab_i2c_sensors.py','ssd1306.py']:['lab_i2c_sensors.py'];
   return Object.fromEntries(await Promise.all(names.map(async name=>{const r=await fetch(runtimeAsset('drivers/'+name));if(!r.ok)throw Error('Nedostaje upravljačka datoteka '+name);return [name,await r.text()];})));
 }
-const cppSingle=(key:'bmp180'|'bmp280'|'am2320')=>`#include <LabI2CSensors.h>
-Lab${key.toUpperCase()} senzor;
+export const arduinoEnvironmentExamples={
+  bmp180:{title:'Arduino · '+environmentExamples.bmp180.title,hint:intros.bmp180+' Modul s prilagodbom na 5 V, SDA=A4, SCL=A5, VCC=5 V i GND.',libraries:['LabI2CSensors'],code:`// Očitaj temperaturu i tlak na BMP180. Promijeni tlak u modelu i usporedi
+// dva uzastopna ispisa.
+
+#include <LabI2CSensors.h>
+LabBMP180 senzor;
+
 void setup() {
   Serial.begin(9600);
-  if (!senzor.begin()) Serial.println(F("${key.toUpperCase()}: provjeri spoj"));
+  if (!senzor.begin()) {
+    Serial.println(F("BMP180: provjeri spoj"));
+  }
 }
+
 void loop() {
   float temperatura, vrijednost;
+
+  // Upravljački program primjenjuje tvorničke koeficijente senzora na
+  // sirove podatke. Tlak dobivaš u paskalima.
   if (senzor.read(temperatura, vrijednost)) {
-    Serial.print(F("${key.toUpperCase()} T=")); Serial.print(temperatura, 2);
-    Serial.print(F("${key==='am2320'?' RH=':' P='}")); Serial.println(vrijednost, ${key==='am2320'?2:0});
-  } else Serial.println(F("${key.toUpperCase()}: nema valjanog mjerenja"));
+    Serial.print(F("BMP180 T="));
+    Serial.print(temperatura, 2);
+    Serial.print(F(" P="));
+    Serial.println(vrijednost, 0);
+  } else {
+    Serial.println(F("BMP180: nema valjanog mjerenja"));
+  }
   delay(2100);
 }
-`;
-export const arduinoEnvironmentExamples={
-  bmp180:{title:'Arduino · '+environmentExamples.bmp180.title,hint:intros.bmp180+' Modul s prilagodbom na 5 V, SDA=A4, SCL=A5, VCC=5 V i GND.',libraries:['LabI2CSensors'],code:cppSingle('bmp180')},
-  bmp280:{title:'Arduino · '+environmentExamples.bmp280.title,hint:intros.bmp280+' Modul s prilagodbom na 5 V, SDA=A4, SCL=A5, VCC=5 V i GND.',libraries:['LabI2CSensors'],code:cppSingle('bmp280')},
-  am2320:{title:'Arduino · '+environmentExamples.am2320.title,hint:intros.am2320+' Modul s prilagodbom na 5 V, SDA=A4, SCL=A5, VCC=5 V i GND.',libraries:['LabI2CSensors'],code:cppSingle('am2320')},
-  weather:{title:'Arduino · meteorološka stanica',hint:intros.weather+' Svi su moduli izričito profili s prilagodbom razina na 5 V. SDA=A4, SCL=A5; U8g2 koristi stranice od 128 B.',libraries:['LabI2CSensors','U8g2'],code:`#include <LabI2CSensors.h>
+`},
+  bmp280:{title:'Arduino · '+environmentExamples.bmp280.title,hint:intros.bmp280+' Modul s prilagodbom na 5 V, SDA=A4, SCL=A5, VCC=5 V i GND.',libraries:['LabI2CSensors'],code:`// Prati kako BMP280 preko sabirnice I2C vraća temperaturu i tlak.
+
+#include <LabI2CSensors.h>
+LabBMP280 senzor;
+
+void setup() {
+  Serial.begin(9600);
+  if (!senzor.begin()) {
+    Serial.println(F("BMP280: provjeri spoj"));
+  }
+}
+
+void loop() {
+  float temperatura, vrijednost;
+
+  // Za svako očitanje pokreće se pretvorba. Za usporedbu s meteorološkim
+  // izvješćem podijeli tlak u Pa sa 100 i dobivaš hPa.
+  if (senzor.read(temperatura, vrijednost)) {
+    Serial.print(F("BMP280 T="));
+    Serial.print(temperatura, 2);
+    Serial.print(F(" P="));
+    Serial.println(vrijednost, 0);
+  } else {
+    Serial.println(F("BMP280: nema valjanog mjerenja"));
+  }
+  delay(2100);
+}
+`},
+  am2320:{title:'Arduino · '+environmentExamples.am2320.title,hint:intros.am2320+' Modul s prilagodbom na 5 V, SDA=A4, SCL=A5, VCC=5 V i GND.',libraries:['LabI2CSensors'],code:`// Promijeni relativnu vlažnost pa prati u kojem će se ciklusu pojaviti nova
+// vrijednost.
+
+#include <LabI2CSensors.h>
+LabAM2320 senzor;
+
+void setup() {
+  Serial.begin(9600);
+  if (!senzor.begin()) {
+    Serial.println(F("AM2320: provjeri spoj"));
+  }
+}
+
+void loop() {
+  float temperatura, vrijednost;
+
+  // AM2320 nakon buđenja vraća prethodno spremljeni uzorak. Provjera
+  // kontrolnog zbroja otkriva pogrešku prijenosa.
+  if (senzor.read(temperatura, vrijednost)) {
+    Serial.print(F("AM2320 T="));
+    Serial.print(temperatura, 2);
+    Serial.print(F(" RH="));
+    Serial.println(vrijednost, 2);
+  } else {
+    Serial.println(F("AM2320: nema valjanog mjerenja"));
+  }
+  delay(2100);
+}
+`},
+  weather:{title:'Arduino · meteorološka stanica',hint:intros.weather+' Svi su moduli izričito profili s prilagodbom razina na 5 V. SDA=A4, SCL=A5; U8g2 koristi stranice od 128 B.',libraries:['LabI2CSensors','U8g2'],code:`// Postavi isti okoliš senzorima i usporedi njihove rezultate. Dva senzora
+// mjere tlak, a AM2320 daje relativnu vlažnost.
+
+#include <LabI2CSensors.h>
 #include <U8g2lib.h>
 LabBMP180 bmp180;
 LabBMP280 bmp280;
 LabAM2320 am2320;
 // _1_ koristi stranicu od 128 B, cijela slika je u memoriji OLED kontrolera.
 U8G2_SSD1306_128X64_NONAME_1_HW_I2C oled(U8G2_R0, U8X8_PIN_NONE);
+
 void setup() {
   Serial.begin(9600);
-  if (!bmp180.begin()) Serial.println(F("BMP180: provjeri spoj"));
-  if (!bmp280.begin()) Serial.println(F("BMP280: provjeri spoj"));
+  if (!bmp180.begin()) {
+    Serial.println(F("BMP180: provjeri spoj"));
+  }
+  if (!bmp280.begin()) {
+    Serial.println(F("BMP280: provjeri spoj"));
+  }
   am2320.begin();
-  oled.begin(); oled.setFont(u8g2_font_6x10_tf);
+  oled.begin();
+  oled.setFont(u8g2_font_6x10_tf);
 }
+
 void loop() {
   float t180, p180, t280, p280, temperatura, vlaga;
-  if (!bmp180.read(t180,p180) || !bmp280.read(t280,p280) || !am2320.read(temperatura,vlaga)) {
-    Serial.println(F("Stanica: provjeri spoj, adresu i CRC")); delay(2100); return;
+
+  // Svaki uređaj na zajedničkoj sabirnici I2C ima svoju adresu. Uz očitanje
+  // zadrži oznaku senzora od kojeg je stiglo.
+  if (!bmp180.read(t180, p180) || !bmp280.read(t280, p280) ||
+      !am2320.read(temperatura, vlaga)) {
+    Serial.println(F("Stanica: provjeri spoj, adresu i CRC"));
+    delay(2100);
+    return;
   }
+
+  // Tlak je očitan u Pa. Za prikaz u hPa vrijedi 100 Pa = 1 hPa.
+  // Vrijednosti tlaka i vlage imaju različite jedinice.
   oled.firstPage();
   do {
-    oled.setCursor(0,12); oled.print(F("BMP180 ")); oled.print(p180/100,1); oled.print(F(" hPa"));
-    oled.setCursor(0,26); oled.print(F("BMP280 ")); oled.print(p280/100,1); oled.print(F(" hPa"));
-    oled.setCursor(0,40); oled.print(F("AM2320 ")); oled.print(temperatura,1); oled.print(F(" C"));
-    oled.setCursor(0,54); oled.print(F("RH ")); oled.print(vlaga,1); oled.print(F(" %"));
-  } while(oled.nextPage());
-  Serial.print(F("BMP180 T=")); Serial.print(t180,2); Serial.print(F(" P=")); Serial.println(p180,0);
-  Serial.print(F("BMP280 T=")); Serial.print(t280,2); Serial.print(F(" P=")); Serial.println(p280,0);
-  Serial.print(F("AM2320 T=")); Serial.print(temperatura,2); Serial.print(F(" RH=")); Serial.println(vlaga,2);
+    oled.setCursor(0, 12);
+    oled.print(F("BMP180 "));
+    oled.print(p180 / 100, 1);
+    oled.print(F(" hPa"));
+    oled.setCursor(0, 26);
+    oled.print(F("BMP280 "));
+    oled.print(p280 / 100, 1);
+    oled.print(F(" hPa"));
+    oled.setCursor(0, 40);
+    oled.print(F("AM2320 "));
+    oled.print(temperatura, 1);
+    oled.print(F(" C"));
+    oled.setCursor(0, 54);
+    oled.print(F("RH "));
+    oled.print(vlaga, 1);
+    oled.print(F(" %"));
+  } while (oled.nextPage());
+  Serial.print(F("BMP180 T="));
+  Serial.print(t180, 2);
+  Serial.print(F(" P="));
+  Serial.println(p180, 0);
+  Serial.print(F("BMP280 T="));
+  Serial.print(t280, 2);
+  Serial.print(F(" P="));
+  Serial.println(p280, 0);
+  Serial.print(F("AM2320 T="));
+  Serial.print(temperatura, 2);
+  Serial.print(F(" RH="));
+  Serial.println(vlaga, 2);
   delay(2100);
 }
 `},

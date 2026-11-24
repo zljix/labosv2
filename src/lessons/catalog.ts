@@ -1,6 +1,6 @@
 import {identityText,STUDENT_NAME_LIMIT,CLASS_NAME_LIMIT} from '../project/identity';
-import { basicExamples, exampleCircuit } from '../circuit/examples';
-import { peripheralCircuit, peripheralExample } from '../circuit/peripheralExamples';
+import { basicExamples, exampleCircuit, pwmProgram } from '../circuit/examples';
+import { peripheralCircuit, regulatorProgram } from '../circuit/peripheralExamples';
 import { newProject, type Project } from '../project/model';
 import type { Circuit } from '../circuit/model';
 
@@ -33,7 +33,7 @@ export const lessons: Lesson[] = [
       {term:'Period i čekanje',explanation:'sleep_ms(250) čeka 250 milisekundi. Period je zbroj trajanja uključenja i isključenja: 250 + 750 = 1000 ms. Čekanje ne mijenja već postavljeno stanje pina.'},
       {term:'Frekvencija',explanation:'Frekvencija f govori koliko se punih ciklusa ponovi u sekundi: f = 1/T, gdje period T izražavamo u sekundama. Za T = 1000 ms = 1 s vrijedi f = 1/1 = 1 Hz. Za T = 500 ms = 0,5 s vrijedi f = 2 Hz.'},
     ], connections:ledConnections,
-    guided:'led.on()\nsleep_ms(500)  # stanje ostaje ukljuceno tijekom cekanja\nled.off()\nsleep_ms(500)',
+    guided:'led.on()\nsleep_ms(500)  # LED svijetli tijekom prvog čekanja\nled.off()\nsleep_ms(500)',
     steps:[
       'U Sastavljanju pronađi LED i otpornik. Nedostaje veza između breadboarda e8 i LED A. Alatom Vodič poveži ta dva priključka ili koristi „Veza iz popisa”.',
       'Otvori Provjeru spojeva, zatim Pokreni. Početni program trepće 500 ms / 500 ms. Zaustavi program prije izmjene sklopa.',
@@ -53,7 +53,7 @@ export const lessons: Lesson[] = [
       {term:'PULL_UP',explanation:'Slabi unutarnji otpornik povlači otvoreni ulaz prema 3,3 V, pa value() vraća 1. Tipkalo ga pritiskom spaja na GND, pa vraća 0.'},
       {term:'Aktivno niska logika',explanation:'Pritisnuto znači 0, stoga uvjet glasi tipkalo.value() == 0. Kontakti A1–A2 uvijek su spojeni; B1–B2 također. Pritisak povezuje strane A i B.'},
     ], connections:[...ledConnections,['Tipkalo A1 / B1','GPIO5 / GND; u programu Pin(5, Pin.IN, Pin.PULL_UP).']],
-    guided:'tipkalo = Pin(5, Pin.IN, Pin.PULL_UP)\npritisnuto = tipkalo.value() == 0\n# led.value(True) ukljucuje, led.value(False) iskljucuje.',
+    guided:'tipkalo = Pin(5, Pin.IN, Pin.PULL_UP)\npritisnuto = tipkalo.value() == 0\n# led.value(True) uključuje, a led.value(False) isključuje.',
     steps:['Pokreni početni kôd i u Sastavljanju mijenjaj stanje tipkala. U konzoli poveži očitano 0/1 sa stanjem tipkala.','Unutar petlje dopuni naredbu koja uključuje LED samo pri value() == 0. Zadrži kratko čekanje od 20 ms.','Isprobaj najmanje dva pritiska i otpuštanja, a zatim Provjeri rad.','Zaustavi program, privremeno odspoji signal tipkala, pokreni i objasni opažanje. Vrati vodič i ponovi provjeru prije predaje.'],
     questions:['Zašto otvoreno tipkalo uz PULL_UP daje 1, a pritisnuto 0?','Zapiši LED stanje za otvoreno i pritisnuto tipkalo te opažanje nakon odspajanja signalnog vodiča.'],
     criteria:['LED je ugašena pri otpuštenom tipkalu.','Dva pritiska uključuju LED, a oba otpuštanja je isključuju unutar približno 300 ms.'],
@@ -69,7 +69,7 @@ export const lessons: Lesson[] = [
       {term:'PWM',explanation:'Izlaz brzo izmjenjuje 0 i 1. Radni omjer je udio vremena uključenja; duty_u16(0) znači 0 %, a duty_u16(65535) 100 %. Frekvencija od 1000 Hz nije svjetlina.'},
       {term:'Primjer pretvorbe',explanation:'Na 50 % klizača napon je približno 3,3 × 0,5 = 1,65 V. Uz zasićenje ADC-a na 3,1 V udio je 1,65 / 3,1 ≈ 0,532. Zato read_u16 daje približno 1,65 / 3,1 × 65535 ≈ 34882, a jednak duty_u16 oko 53,2 %. Kvantizacija može malo promijeniti broj.'},
     ], connections:[...ledConnections,['Potenciometar 1 / 2 / 3','3V3 / GPIO1 (ADC) / GND.']],
-    guided:'adc = ADC(Pin(1), atten=ADC.ATTN_11DB)\nled = PWM(Pin(4), freq=1000, duty_u16=0)\nvrijednost = adc.read_u16()\n# Jednaki rasponi 0–65535 omogucuju izravno zadavanje duty_u16.',
+    guided:'adc = ADC(Pin(1), atten=ADC.ATTN_11DB)\nled = PWM(Pin(4), freq=1000, duty_u16=0)\nvrijednost = adc.read_u16()\n# Jednaki rasponi 0–65535 omogućuju izravno zadavanje duty_u16.',
     steps:['Pokreni kôd i mijenjaj položaj potenciometra 0 / 25 / 50 / 100 %. Prati ADC u konzoli.','Dopuni petlju tako da očitanje određuje led.duty_u16(...). Svjetlina treba rasti postupno.','Provjeri rad pa u Mjerenjima usporedi PWM pri 50 % i 100 % klizača.','Objasni zašto sredina klizača daje oko 53 % PWM-a u ovom modelu, a ne točno 50 %.'],
     questions:['Opiši put informacije od klizača preko ADC-a do LED-ice.','Navedi opaženi radni omjer pri 0, 50 i 100 % klizača. Zašto 50 % položaja nije točno 50 % PWM-a?'],
     criteria:['Pri 0 % klizača LED je ugašena, a pri 100 % uključena.','Međupoložaji 25 % i 50 % daju rastuću svjetlinu u odnosu na najveću vrijednost.'],
@@ -99,7 +99,7 @@ export const lessons: Lesson[] = [
       {term:'Histereza',explanation:'Između pragova ne mijenjamo stanje. Nakon otvaranja na 29 °C pri 27 °C ostaje otvoreno; nakon zatvaranja na 25 °C pri 27 °C ostaje zatvoreno.'},
       {term:'Servo impuls',explanation:'Profil koristi 50 Hz (period 20 ms), a širina impulsa 500–2500 µs određuje 0–180°. Servo.angle(90) daje približno 1500 µs. Model prikazuje zadani položaj, bez momenta ili gibanja pod opterećenjem.'},
     ], connections:[...i2cConnections,['Servo V+ / GND / SIG','5V / zajednička GND / GPIO4. Fizički servo zahtijeva odgovarajuće napajanje; ovaj spoj nije proračun struje motora.']],
-    guided:'if temperatura >= 28:\n    otvoreno = True\nelif temperatura <= 26:\n    otvoreno = False\n# Izmedju pragova ne dodaj else koji brise prethodno stanje.\nservo.angle(90 if otvoreno else 0)',
+    guided:'if temperatura >= 28:\n    otvoreno = True\nelif temperatura <= 26:\n    otvoreno = False\n# Između pragova sačuvaj stanje. Izostavi else koji briše prethodno stanje.\nservo.angle(90 if otvoreno else 0)',
     steps:['Pokreni početni regulator s jednim pragom od 28 °C. Isprobaj 29 → 27 → 25 °C i primijeti kada se zatvara.','Promijeni donji prag zatvaranja na 26 °C. Očuvaj varijablu stanja između iteracija i oba brojčana prikaza OLED-a.','Ručno provjeri slijed 24 → 29 → 27 → 25 → 27 → 29 °C. Očekivani kutovi su 0 → 90 → 90 → 0 → 0 → 90°.','Provjeri rad, odgovori na pitanja i izvezi predaju. Paket uključuje sklop, kôd, upravljačke datoteke, upute, odgovore i zapis provjere.'],
     questions:['Objasni zašto pri 27 °C regulator može imati dva različita ispravna stanja.','Zapiši kutove za slijed 24 → 29 → 27 → 25 → 27 → 29 °C i usporedi ih s očekivanjima.','Koje veličine virtualni servo ne modelira i što treba provjeriti prije rada s fizičkim motorom?'],
     criteria:['Servo slijedi slijed 0 → 90 → 90 → 0 → 0 → 90° uz nova senzorska očitanja.','OLED nastavlja prikazivati temperaturu i vlagu. U području histereze čuva se prethodno stanje.'],
@@ -136,40 +136,63 @@ export function lessonCircuit(id:string, solution=false):Circuit {
   if(l.number===4){c.components=c.components.filter(p=>p.kind!=='servo');c.wires=c.wires.filter(w=>w.from.component!=='servo1'&&w.to.component!=='servo1');}
   return c;
 }
-const sensorCode = (solution:boolean) => `from machine import Pin, I2C
+const sensorCode = (solution:boolean) => `# Očitaj temperaturu i relativnu vlagu u istom mjerenju. Prati koje
+# vrijednosti šalješ u konzolu, a koje ispisuješ na OLED-u.
+
+from machine import Pin, I2C
 from time import sleep_ms
 from aht10 import AHT10
 from ssd1306 import SSD1306_I2C
 
-senzor = AHT10(I2C(0, sda=Pin(8), scl=Pin(9), freq=100000))
-zaslon = SSD1306_I2C(128, 64, I2C(1, sda=Pin(10), scl=Pin(11)), addr=0x3C)
+# Senzor i zaslon u ovoj vježbi imaju odvojene parove vodova SDA i SCL.
+sabirnica_senzora = I2C(0, sda=Pin(8), scl=Pin(9), freq=100000)
+sabirnica_zaslona = I2C(1, sda=Pin(10), scl=Pin(11))
+senzor = AHT10(sabirnica_senzora)
+zaslon = SSD1306_I2C(128, 64, sabirnica_zaslona, addr=0x3C)
+
 while True:
     temperatura, vlaga = senzor.read()
+
+    # Obriši prethodnu sliku i pripremi novi tekst u memoriji.
+    # Oznaka %.1f prikazuje jednu decimalu. Druga koordinata bira redak.
     zaslon.fill(0)
     zaslon.text("T: %.1f C" % temperatura, 0, 0)
-    ${solution?'zaslon.text("RH: %.1f %%" % vlaga, 0, 16)':'# TODO: prikazi relativnu vlagu s jednim decimalnim mjestom'}
+    ${solution
+      ? 'zaslon.text("RH: %.1f %%" % vlaga, 0, 16)'
+      : '# TODO: prikaži relativnu vlagu na drugom retku s jednom decimalom.'}
+
+    # Prenesi sliku na zaslon pa usporedi prikaz s brojkama u konzoli.
     zaslon.show()
     print(temperatura, vlaga)
     sleep_ms(500)
 `;
 export function lessonCode(id:string, solution=false):string {
   switch(id){
-    case 'led-time':return solution?basicExamples.blink.code.replace('sleep_ms(500)','sleep_ms(250)').replace('sleep_ms(500)','sleep_ms(750)').replace('500 ms ukljuceno / iskljuceno','250 ms ukljuceno / 750 ms iskljuceno'):basicExamples.blink.code;
-    case 'button':return solution?basicExamples.button.code:`from machine import Pin
+    case 'led-time': return solution
+      ? basicExamples.blink.code.replace('sleep_ms(500)','sleep_ms(250)').replace('sleep_ms(500)','sleep_ms(750)').replace('500 ms ukljuceno / iskljuceno','250 ms ukljuceno / 750 ms iskljuceno')
+      : basicExamples.blink.code;
+    case 'button': return solution ? basicExamples.button.code : `# Očitaj tipkalo i pogledaj vrijednost u konzoli. Zatim dopuni označeni dio
+# koji treba upravljati LED-icom.
+
+from machine import Pin
 from time import sleep_ms
 
 led = Pin(4, Pin.OUT, value=0)
+
+# Unutarnji otpornik drži otvoreni ulaz na 1. Pritiskom tipkala ulaz se
+# spaja na masu pa program očitava 0.
 tipkalo = Pin(5, Pin.IN, Pin.PULL_UP)
+
 while True:
     vrijednost = tipkalo.value()
-    # TODO: led.value(...) ukljucuje LED samo kada je ulaz 0
+    # TODO: led.value(...) uključuje LED samo kada je ulaz 0
     print("Ulaz:", vrijednost)
     sleep_ms(20)
 `;
-    case 'adc-pwm':return solution?basicExamples.pwm.code:basicExamples.pwm.code.replace('led.duty_u16(vrijednost)','# TODO: prenesi ocitanje u led.duty_u16(...)');
-    case 'aht-oled':return sensorCode(solution);
-    case 'regulator':return solution?peripheralExample.code:peripheralExample.code.replace('PRAG_ZATVARANJA = 26','PRAG_ZATVARANJA = 28  # TODO: zaseban donji prag za histerezu');
-    default:throw Error('Nepoznata vježba.');
+    case 'adc-pwm': return pwmProgram(!solution);
+    case 'aht-oled': return sensorCode(solution);
+    case 'regulator': return regulatorProgram(!solution);
+    default: throw Error('Nepoznata vježba.');
   }
 }
 export function lessonMarkdown(l:Lesson){

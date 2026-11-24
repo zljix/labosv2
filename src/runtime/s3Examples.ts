@@ -24,40 +24,349 @@ import {s3ControlExamples,attachS3ControlExample} from './s3ControlExamples';
 import {s3ProtocolExamples,attachS3ProtocolExample} from './s3ProtocolExamples';
 import {s3CompletionExamples,attachS3CompletionExample} from './s3CompletionExamples';
 export const s3Examples={
- blink:{title:'S3 C++ · treptanje i millis()',hint:'GPIO4 → 330 Ω → LED → GND. Stvarni C++ program poziva digitalWrite i delay; millis prati funkcionalno virtualno vrijeme. Nema ugrađene LED L na D13.',code:`void setup(){pinMode(4,OUTPUT);Serial.begin(9600);}
-void loop(){digitalWrite(4,HIGH);Serial.print("S3 LED=1 ms=");Serial.println(millis());delay(300);digitalWrite(4,LOW);Serial.print("S3 LED=0 ms=");Serial.println(millis());delay(300);}
+ blink:{title:'S3 C++ · treptanje i millis()',hint:'GPIO4 → 330 Ω → LED → GND. Stvarni C++ program poziva digitalWrite i delay; millis prati funkcionalno virtualno vrijeme. Nema ugrađene LED L na D13.',code:`// Usporedi trajanje svijetle i tamne faze LED-ice. Promijeni samo jedno
+// čekanje pa ponovno pokreni program.
+
+// Pločica pri pokretanju jednom izvodi setup(). Nakon toga redom ponavlja
+// naredbe u funkciji loop().
+void setup() {
+  pinMode(4, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Izlaz ostaje uključen tijekom prvog čekanja i isključen tijekom drugog.
+  // Zbroj tih vremena daje period treptanja.
+  digitalWrite(4, HIGH);
+  Serial.print("S3 LED=1 ms=");
+  Serial.println(millis());
+  delay(300);
+  digitalWrite(4, LOW);
+  Serial.print("S3 LED=0 ms=");
+  Serial.println(millis());
+  delay(300);
+}
 `},
- button:{title:'S3 C++ · tipkalo i serijski unos',hint:'GPIO5 je INPUT_PULLUP, tipkalo ga spaja na GND. GPIO4 upravlja LED-icom. Serijski pošalji 1, 0 ili b za povratak tipkalu. Novi ulaz djeluje i tijekom delay() poziva.',code:`int daljinski=-1,prethodno=-1;
-void setup(){Serial.begin(9600);pinMode(5,INPUT_PULLUP);pinMode(4,OUTPUT);Serial.println("S3 READY 1/0/b");}
-void loop(){if(Serial.available()){char c=Serial.read();if(c=='1')daljinski=1;if(c=='0')daljinski=0;if(c=='b')daljinski=-1;}int state=daljinski<0?digitalRead(5)==LOW:daljinski;digitalWrite(4,state);if(state!=prethodno){Serial.print("S3 LED=");Serial.println(state);prethodno=state;}delay(20);}
+ button:{title:'S3 C++ · tipkalo i serijski unos',hint:'GPIO5 je INPUT_PULLUP, tipkalo ga spaja na GND. GPIO4 upravlja LED-icom. Serijski pošalji 1, 0 ili b za povratak tipkalu. Novi ulaz djeluje i tijekom delay() poziva.',code:`// Pritisni pa otpusti tipkalo i prati kada se upali LED-ica.
+
+int daljinski = -1, prethodno = -1;
+
+// Pločica pri pokretanju jednom izvodi setup(). Nakon toga redom ponavlja
+// naredbe u funkciji loop().
+void setup() {
+  Serial.begin(9600);
+
+  // Unutarnji otpornik drži otvoreni ulaz na 1. Pritiskom tipkala ulaz se
+  // spaja na masu pa program očitava 0.
+  pinMode(5, INPUT_PULLUP);
+  pinMode(4, OUTPUT);
+  Serial.println("S3 READY 1/0/b");
+}
+
+void loop() {
+  // Znak '1' ili '0' preuzima upravljanje LED-icom. Znak 'b' vraća
+  // upravljanje tipkalu.
+  if (Serial.available()) {
+    char c = Serial.read();
+    if (c == '1') {
+      daljinski = 1;
+    }
+    if (c == '0') {
+      daljinski = 0;
+    }
+    if (c == 'b') {
+      daljinski = -1;
+    }
+  }
+
+  // Kad je spremljena vrijednost −1, čitaj fizičko tipkalo. Inače
+  // upotrijebi zadnje stanje odabrano serijskom naredbom.
+  int state = daljinski;
+  if (daljinski < 0) {
+    state = digitalRead(5) == LOW;
+  }
+  digitalWrite(4, state);
+
+  // Zapamti prikazano stanje. Tako jedan dugi pritisak daje samo jednu
+  // poruku o promjeni.
+  if (state != prethodno) {
+    Serial.print("S3 LED=");
+    Serial.println(state);
+    prethodno = state;
+  }
+  delay(20);
+}
 `},
- adc:{title:'S3 C++ · ADC i PWM',hint:'Potenciometar je na 3V3/GND, klizač na GPIO1. Linearni ADC: 12 bita, 11 dB, zasićenje 3,1 V. Vrijednost 0–4095 mapira se na PWM 0–255 na GPIO4. Ovo nije hardverska kalibracija ADC-a.',code:`void setup(){Serial.begin(9600);analogReadResolution(12);analogSetPinAttenuation(1,ADC_11db);}
-void loop(){int value=analogRead(1);int duty=map(value,0,4095,0,255);analogWrite(4,duty);Serial.print("S3 ADC=");Serial.print(value);Serial.print(" PWM=");Serial.println(duty);delay(100);}
+ adc:{title:'S3 C++ · ADC i PWM',hint:'Potenciometar je na 3V3/GND, klizač na GPIO1. Linearni ADC: 12 bita, 11 dB, zasićenje 3,1 V. Vrijednost 0–4095 mapira se na PWM 0–255 na GPIO4. Ovo nije hardverska kalibracija ADC-a.',code:`// Okreni potenciometar od jednog kraja do drugoga. Prati kako broj iz
+// analogno-digitalnog pretvornika (ADC) određuje svjetlinu LED-ice.
+
+// Pločica pri pokretanju jednom izvodi setup(). Nakon toga redom ponavlja
+// naredbe u funkciji loop().
+void setup() {
+  Serial.begin(9600);
+  analogReadResolution(12);
+  analogSetPinAttenuation(1, ADC_11db);
+}
+
+void loop() {
+  int value = analogRead(1);
+
+  // Ovdje je ADC namješten na 12 bita (0–4095). Preslikaj taj raspon na
+  // 0–255 za PWM izlaz na GPIO4.
+  int duty = map(value, 0, 4095, 0, 255);
+
+  // PWM brzo uključuje i isključuje izlaz. Veća vrijednost produljuje
+  // uključeni dio svakog perioda.
+  analogWrite(4, duty);
+  Serial.print("S3 ADC=");
+  Serial.print(value);
+  Serial.print(" PWM=");
+  Serial.println(duty);
+  delay(100);
+}
 `},
- regulator:{title:'S3 C++ · AHT10 → OLED → servo',hint:'Wire: AHT10 SDA8/SCL9; Wire1: OLED SDA10/SCL11. LabAHT10 čita stvarne I2C podatke. Vidljivi mali OLED driver šalje piksele. LEDC na GPIO4 stvara 50 Hz servo impuls 500–2500 µs: otvara na 28 °C, zatvara na 26 °C.',code:`#include <Wire.h>
+ regulator:{title:'S3 C++ · AHT10 → OLED → servo',hint:'Wire: AHT10 SDA8/SCL9; Wire1: OLED SDA10/SCL11. LabAHT10 čita stvarne I2C podatke. Vidljivi mali OLED driver šalje piksele. LEDC na GPIO4 stvara 50 Hz servo impuls 500–2500 µs: otvara na 28 °C, zatvara na 26 °C.',code:`// Zagrij senzor pa ga ohladi. Prati temperaturu, položaj serva i
+// vrijednosti na zaslonu.
+
+#include <Wire.h>
 #include <LabAHT10.h>
 #include "lab_oled.h"
-LabAHT10 sensor;LabOLED oled(Wire1);bool opened=false;
-void setup(){Serial.begin(9600);Wire.begin(8,9,100000);Wire1.begin(10,11,400000);if(!sensor.begin())Serial.println("AHT ERROR");oled.begin();if(!ledcAttach(4,50,14))Serial.println("PWM ERROR");}
-void loop(){float t,h;if(!sensor.read(t,h)){Serial.println("AHT READ ERROR");delay(1000);return;}if(t>=28)opened=true;else if(t<=26)opened=false;int pulse=opened?1500:500;ledcWrite(4,(uint32_t)pulse*16383/20000);oled.clear();oled.setCursor(0,0);oled.print("T:");oled.print(t,1);oled.print(" C");oled.setCursor(0,16);oled.print("RH:");oled.print(h,1);oled.print("%");oled.bar(h);oled.show();Serial.print("S3 T=");Serial.print(t);Serial.print(" RH=");Serial.print(h);Serial.print(" SERVO=");Serial.println(opened?90:0);delay(1900);}
+LabAHT10 sensor;
+LabOLED oled(Wire1);
+bool opened = false;
+
+void setup() {
+  Serial.begin(9600);
+  Wire.begin(8, 9, 100000);
+  Wire1.begin(10, 11, 400000);
+  if (!sensor.begin()) {
+    Serial.println("AHT ERROR");
+  }
+  oled.begin();
+  if (!ledcAttach(4, 50, 14)) {
+    Serial.println("PWM ERROR");
+  }
+}
+
+void loop() {
+  float t, h;
+  if (!sensor.read(t, h)) {
+    Serial.println("AHT READ ERROR");
+    delay(1000);
+    return;
+  }
+
+  // Gornji prag otvara, a donji zatvara. Između pragova zadržava se stanje
+  // iz prethodnog mjerenja.
+  if (t >= 28) {
+    opened = true;
+  } else if (t <= 26) {
+    opened = false;
+  }
+  int pulse = opened ? 1500 : 500;
+  ledcWrite(4, (uint32_t)pulse * 16383 / 20000);
+
+  // Prikaži očitanje korišteno za ovu odluku. Na zaslonu i servu možeš
+  // istodobno pratiti njezin učinak.
+  oled.clear();
+  oled.setCursor(0, 0);
+  oled.print("T:");
+  oled.print(t, 1);
+  oled.print(" C");
+  oled.setCursor(0, 16);
+  oled.print("RH:");
+  oled.print(h, 1);
+  oled.print("%");
+  oled.bar(h);
+  oled.show();
+  Serial.print("S3 T=");
+  Serial.print(t);
+  Serial.print(" RH=");
+  Serial.print(h);
+  Serial.print(" SERVO=");
+  Serial.println(opened ? 90 : 0);
+  delay(1900);
+}
 `},
- sensors:{title:'S3 C++ · BMP180, BMP280 i AM2320',hint:'Zajednički Wire na GPIO8/9. Tri stvarna drivera LabI2CSensors čitaju registre, kalibraciju i CRC. OLED 0x3C prikazuje BMP280 T/P kroz vidljivi driver. AM2320 namjerno vraća prethodni uzorak; razmak 2 s.',code:`#include <Wire.h>
+ sensors:{title:'S3 C++ · BMP180, BMP280 i AM2320',hint:'Zajednički Wire na GPIO8/9. Tri stvarna drivera LabI2CSensors čitaju registre, kalibraciju i CRC. OLED 0x3C prikazuje BMP280 T/P kroz vidljivi driver. AM2320 namjerno vraća prethodni uzorak; razmak 2 s.',code:`// Postavi isti okoliš senzorima i usporedi njihove rezultate. Dva senzora
+// mjere tlak, a AM2320 daje relativnu vlažnost.
+
+#include <Wire.h>
 #include <LabI2CSensors.h>
 #include "lab_oled.h"
-LabBMP180 a;LabBMP280 b;LabAM2320 c;LabOLED oled(Wire);
-void setup(){Serial.begin(9600);Wire.begin(8,9,100000);a.begin();b.begin();c.begin();oled.begin();}
-void loop(){float t,p,h;if(a.read(t,p)){Serial.print("BMP180 ");Serial.print(t);Serial.print(" ");Serial.println(p);}if(b.read(t,p)){Serial.print("BMP280 ");Serial.print(t);Serial.print(" ");Serial.println(p);oled.clear();oled.setCursor(0,0);oled.print("T:");oled.print(t,1);oled.setCursor(0,16);oled.print("P:");oled.print(p/100,1);oled.show();}if(c.read(t,h)){Serial.print("AM2320 ");Serial.print(t);Serial.print(" ");Serial.println(h);}delay(2000);}
+LabBMP180 bmp180;
+LabBMP280 bmp280;
+LabAM2320 am2320;
+LabOLED oled(Wire);
+
+void setup() {
+  Serial.begin(9600);
+  Wire.begin(8, 9, 100000);
+  bmp180.begin();
+  bmp280.begin();
+  am2320.begin();
+  oled.begin();
+}
+
+void loop() {
+  float temperatura, tlak, vlaga;
+
+  // Svaki uređaj na zajedničkoj sabirnici I2C ima svoju adresu. Uz očitanje
+  // zadrži oznaku senzora od kojeg je stiglo.
+  if (bmp180.read(temperatura, tlak)) {
+    Serial.print("BMP180 ");
+    Serial.print(temperatura);
+    Serial.print(" ");
+    Serial.println(tlak);
+  }
+  if (bmp280.read(temperatura, tlak)) {
+    Serial.print("BMP280 ");
+    Serial.print(temperatura);
+    Serial.print(" ");
+    Serial.println(tlak);
+
+    // Tlak je očitan u Pa. Za prikaz u hPa vrijedi 100 Pa = 1 hPa.
+    // Vrijednosti tlaka i vlage imaju različite jedinice.
+    oled.clear();
+    oled.setCursor(0, 0);
+    oled.print("T:");
+    oled.print(temperatura, 1);
+    oled.setCursor(0, 16);
+    oled.print("P:");
+    oled.print(tlak / 100, 1);
+    oled.show();
+  }
+  if (am2320.read(temperatura, vlaga)) {
+    Serial.print("AM2320 ");
+    Serial.print(temperatura);
+    Serial.print(" ");
+    Serial.println(vlaga);
+  }
+  delay(2000);
+}
 `},
- servo:{title:'S3 C++ · SG90 i LEDC impuls',hint:'GPIO6, zasebni izvor 5 V i zajednička masa. Profil 1000–2000 µs daje 0–180°. LEDC API radi po priključku (Arduino-ESP32 3.x stil); Servo AVR biblioteka ovdje nije podržana.',code:`void setup(){Serial.begin(9600);if(!ledcAttach(6,50,14))Serial.println("LEDC ERROR");}
-void loop(){for(int angle=0;angle<=180;angle+=90){int pulse=1000+angle*1000/180;ledcWrite(6,(uint32_t)pulse*16383/20000);Serial.print("S3 SG90=");Serial.println(angle);delay(600);}}
+ servo:{title:'S3 C++ · SG90 i LEDC impuls',hint:'GPIO6, zasebni izvor 5 V i zajednička masa. Profil 1000–2000 µs daje 0–180°. LEDC API radi po priključku (Arduino-ESP32 3.x stil); Servo AVR biblioteka ovdje nije podržana.',code:`// Usporedi tri zadana položaja serva. Prati promjenu impulsa dok se kut
+// povećava.
+
+void setup() {
+  Serial.begin(9600);
+  if (!ledcAttach(6, 50, 14)) {
+    Serial.println("LEDC ERROR");
+  }
+}
+
+void loop() {
+  // Kut određuje širina impulsa unutar ponavljajućeg perioda. Granice
+  // impulsa određene su kalibracijom ovog primjera.
+  for (int angle = 0; angle <= 180; angle += 90) {
+    int pulse = 1000 + angle * 1000 / 180;
+    ledcWrite(6, (uint32_t)pulse * 16383 / 20000);
+    Serial.print("S3 SG90=");
+    Serial.println(angle);
+    delay(600);
+  }
+}
 `},
- lcd:{title:'S3 C++ · LCD1602 i vlastiti znak',hint:'LabLCD1602 i Wire koriste GPIO8/9, 100 kHz. VCC=5 V, LV=3V3; potreban je izričiti profil backpacka s prilagodbom. Tekst i CGRAM nastaju iz PCF8574 prijenosa.',code:`#include <Wire.h>
+ lcd:{title:'S3 C++ · LCD1602 i vlastiti znak',hint:'LabLCD1602 i Wire koriste GPIO8/9, 100 kHz. VCC=5 V, LV=3V3; potreban je izričiti profil backpacka s prilagodbom. Tekst i CGRAM nastaju iz PCF8574 prijenosa.',code:`// Prikaži vlastiti znak u prvom retku LCD-a i prati brojač u drugom.
+
+#include <Wire.h>
 #include <LabLCD1602.h>
-LabLCD1602 lcd;unsigned count=0;
-void setup(){Serial.begin(9600);Wire.begin(8,9,100000);if(!lcd.begin())Serial.println("LCD ERROR");const uint8_t smile[8]={0,10,10,0,17,14,0,0};lcd.createChar(0,smile);lcd.setCursor(0,0);lcd.print("S3 C++ LAB ");lcd.write((uint8_t)0);}
-void loop(){lcd.setCursor(0,1);lcd.print("COUNT ");lcd.print(count);lcd.print("     ");Serial.println(count++);delay(1000);}
+LabLCD1602 lcd;
+unsigned count = 0;
+
+void setup() {
+  Serial.begin(9600);
+  Wire.begin(8, 9, 100000);
+  if (!lcd.begin()) {
+    Serial.println("LCD ERROR");
+  }
+  const uint8_t smile[8] = {0, 10, 10, 0, 17, 14, 0, 0};
+
+  // Svaki broj u uzorku opisuje jedan red piksela znaka. Spremljenom znaku
+  // poslije pristupaš preko njegova broja.
+  lcd.createChar(0, smile);
+  lcd.setCursor(0, 0);
+  lcd.print("S3 C++ LAB ");
+  lcd.write((uint8_t)0);
+}
+
+void loop() {
+  lcd.setCursor(0, 1);
+  lcd.print("COUNT ");
+  lcd.print(count);
+  lcd.print("     ");
+  Serial.println(count++);
+  delay(1000);
+}
 `},
- touch:{title:'S3 C++ · TFT dodir upravlja LED-icom',hint:'ILI9341 i XPT2046 dijele SCK12/MOSI11/MISO13; CS10 i CS7 su zasebni. Program čita 12-bitni dodir, kalibrira X/Y i tek nakon hit-testa uključuje GPIO4. BL=3V3; kratki dodir može promaknuti polling petlji.',code:arduinoTouchExamples.touchButton.code.replace('void beginDevices(){','void beginDevices(){\n SPI.begin(12,13,11);').replaceAll('pinMode(6,OUTPUT)','pinMode(4,OUTPUT)').replaceAll('digitalWrite(6,','digitalWrite(4,')},
+ touch:{title:'S3 C++ · TFT dodir upravlja LED-icom',hint:'ILI9341 i XPT2046 dijele SCK12/MOSI11/MISO13; CS10 i CS7 su zasebni. Program čita 12-bitni dodir, kalibrira X/Y i tek nakon hit-testa uključuje GPIO4. BL=3V3; kratki dodir može promaknuti polling petlji.',code:`// Dodirni nacrtano tipkalo, zadrži dodir pa ga otpusti. Zatim dodirni izvan
+// njegova okvira.
+
+#include <SPI.h>
+#include "lab_ili9341.h"
+#include "lab_xpt2046.h"
+LabILI9341 tft(10, 9, 8);
+LabXPT2046 touch(7);
+
+void beginDevices() {
+  SPI.begin(12, 13, 11);
+  digitalWrite(10, HIGH);
+  pinMode(10, OUTPUT);
+  digitalWrite(7, HIGH);
+  pinMode(7, OUTPUT);
+  pinMode(2, INPUT);
+  Serial.begin(9600);
+  touch.begin();
+  tft.begin();
+}
+
+const uint8_t ROTATION = 0; // Uskladi TFT i programsko mapiranje dodira.
+const int16_t X0 = 200, X1 = 3900, Y0 = 250, Y1 = 3850;
+bool state = false, wasDown = false;
+
+void drawButton() {
+  tft.fillRect(30, 120, 180, 80, state ? 0x07e0 : 0x001f);
+  tft.setCursor(48, 150);
+  tft.setTextSize(3);
+  tft.setTextColor(0xffff);
+  tft.print(state ? F("LED ON") : F("LED OFF"));
+}
+
+void setup() {
+  pinMode(4, OUTPUT);
+  digitalWrite(4, LOW);
+  beginDevices();
+  tft.setRotation(ROTATION);
+  tft.fillScreen(0);
+  tft.setCursor(10, 30);
+  tft.setTextSize(2);
+  tft.print(F("DODIRNO TIPKALO"));
+  drawButton();
+  Serial.println(F("TOUCH BUTTON READY"));
+}
+
+void loop() {
+  LabXPT2046::Point p;
+  bool down = touch.point(p, ROTATION, X0, X1, Y0, Y1);
+
+  // Stanje LED-ice mijenja se na početku novog dodira unutar pravokutnika.
+  // Držanje prsta kroz više prolazaka petlje daje jedno preklapanje.
+  if (down && !wasDown && p.x >= 30 && p.x < 210 && p.y >= 120 &&
+      p.y < 200) {
+    state = !state;
+    digitalWrite(4, state);
+    drawButton();
+    Serial.print(F("TOUCH LED="));
+    Serial.print(state);
+    Serial.print(F(" X="));
+    Serial.print(p.x);
+    Serial.print(F(" Y="));
+    Serial.println(p.y);
+  }
+  wasDown = down;
+  delay(20);
+}
+`},
  ...s3LibraryExamples,
  ...s3AnalogExamples,
  ...s3ControlExamples,

@@ -10,28 +10,48 @@ export function tmCircuit(_key:TMExample='tmCounter',board:BoardId=S3):Circuit{
  return c;
 }
 const intro='TM1637 četveroznamenkasti profil s dvotočkom: VCC=5 V, GND, LV=3,3 V za ESP32 / 5 V za Uno/Nano, CLK=GPIO4 / D2, DIO=GPIO5 / D3. LV pripada uključenom idealnom dvosmjernom prilagodniku; nije peti izvod golog TM1637 modula. Dvije 10 kΩ pull-up grane su na LV. Prijenos je LSB prvi s devetim ACK taktom, bez I2C adrese. DIO otpusti za ACK. Bitovi 0–6 su a–g, bit 7 druge znamenke je dvotočka; ostali decimalni zarezi nisu ožičeni. ';
-const pyStart=`from machine import Pin
+const pythonTmSetup = `from machine import Pin
 from time import sleep_ms
 from lab_tm1637 import TM1637
+
 prikaz = TM1637(Pin(4), Pin(5))
 prikaz.brightness(7)
 `;
+
 export const tmExamples={
- tmSegments:{title:'TM1637 · segmenti i CLK/DIO',hint:intro+' Svakih 500 ms pali jedan bit na svim znamenkama. U Mjerenjima usporedi 0x40, 0xC0, podatke i ACK. C0–C3 su vidljive znamenke; čip ima i nevidljive C4/C5.',code:pyStart+`while True:
+ tmSegments:{title:'TM1637 · segmenti i CLK/DIO',hint:intro+' Svakih 500 ms pali jedan bit na svim znamenkama. U Mjerenjima usporedi 0x40, 0xC0, podatke i ACK. C0–C3 su vidljive znamenke; čip ima i nevidljive C4/C5.',code:`# Poveži svaki bit poslanog bajta s dijelom znamenke koji se pali na prikazu
+# TM1637.
+
+${pythonTmSetup}
+while True:
     for bit in range(8):
+        # Pomak broja 1 ulijevo odabire samo jedan bit. Gledaj koji segment
+        # zasvijetli kad se položaj tog bita promijeni.
         prikaz.segments([1 << bit] * 4)
         print("TM SEGMENT bit=%d" % bit)
         sleep_ms(500)
 `},
- tmCounter:{title:'TM1637 · brojač i negativni brojevi',hint:intro+' Program pretvara broj u segmentne bajtove. Brojač počinje od −3, bez vodećih nula. Dopušteno −999 do 9999; prikaz nije običan tekstni zaslon.',code:pyStart+`broj = -3
+ tmCounter:{title:'TM1637 · brojač i negativni brojevi',hint:intro+' Program pretvara broj u segmentne bajtove. Brojač počinje od −3, bez vodećih nula. Dopušteno −999 do 9999; prikaz nije običan tekstni zaslon.',code:`# Prati četveroznamenkasti prikaz dok brojač iz negativnih brojeva prolazi
+# kroz nulu.
+
+${pythonTmSetup}broj = -3
+
 while True:
+    # Biblioteka pretvara svaku znamenku u uzorak svjetlećih segmenata.
+    # Minus također zauzima jedno mjesto.
     prikaz.number(broj)
     print("TM COUNT=%d" % broj)
     broj = -3 if broj == 9999 else broj + 1
     sleep_ms(500)
 `},
- tmClock:{title:'TM1637 · minute, sekunde i dvotočka',hint:intro+' Demonstracijsko programsko brojilo počinje na 12:34; nije RTC ni stvarno vrijeme. Vodeće nule čuvaju dvije znamenke minuta i sekundi, a dvotočka se mijenja svakih 500 ms.',code:pyStart+`sekunde = 12 * 60 + 34
+ tmClock:{title:'TM1637 · minute, sekunde i dvotočka',hint:intro+' Demonstracijsko programsko brojilo počinje na 12:34; nije RTC ni stvarno vrijeme. Vodeće nule čuvaju dvije znamenke minuta i sekundi, a dvotočka se mijenja svakih 500 ms.',code:`# Promatraj kako se proteklo vrijeme pretvara u prikaz minuta i sekundi,
+# počevši od 12:34.
+
+${pythonTmSetup}sekunde = 12 * 60 + 34
+
 while True:
+    # Cjelobrojno dijeljenje ukupnih sekundi sa 60 daje minute, a ostatak
+    # sekunde. Dvotočka razdvaja ta dva dijela.
     broj = (sekunde // 60) * 100 + sekunde % 60
     prikaz.number(broj, colon=True, leading_zero=True)
     print("TM CLOCK=%02d:%02d" % (sekunde // 60, sekunde % 60))
@@ -40,8 +60,13 @@ while True:
     sleep_ms(500)
     sekunde = (sekunde + 1) % 3600
 `},
- tmBrightness:{title:'TM1637 · osam svjetlina i gašenje',hint:intro+' Svjetlina 0 daje 1/16, nije gašenje. Osam radnih omjera: 1, 2, 4, 10, 11, 12, 13, 14 / 16. OFF skriva prikaz uz sačuvane bajtove; clear zapisuje nule. Prikaz svjetline je relativan, bez fotometrije.',code:pyStart+`prikaz.number(1234, colon=True)
+ tmBrightness:{title:'TM1637 · osam svjetlina i gašenje',hint:intro+' Svjetlina 0 daje 1/16, nije gašenje. Osam radnih omjera: 1, 2, 4, 10, 11, 12, 13, 14 / 16. OFF skriva prikaz uz sačuvane bajtove; clear zapisuje nule. Prikaz svjetline je relativan, bez fotometrije.',code:`# Usporedi najnižu svjetlinu TM1637 s potpunim gašenjem prikaza.
+
+${pythonTmSetup}prikaz.number(1234, colon=True)
+
 while True:
+    # Nulta postavka još uvijek nakratko pali segmente. Zasebna naredba za
+    # gašenje skriva sliku i čuva zapisane znamenke.
     for svjetlina in range(8):
         prikaz.brightness(svjetlina)
         print("TM BRIGHTNESS=%d" % svjetlina)
@@ -86,60 +111,98 @@ public:
  bool clear(){const uint8_t data[4]={};return segments(data);}
 };
 `;
-const cppStart=`#include "lab_tm1637.h"
-// CLK=D2, DIO=D3. VCC i LV na 5 V, GND zajednicki.
+const arduinoTmSetup = `#include "lab_tm1637.h"
+// CLK=D2, DIO=D3. VCC i LV na 5 V, GND zajednički.
 LabTM1637 prikaz(2, 3);
 
 void setup() {
   Serial.begin(9600);
   prikaz.begin();
-  if (!prikaz.brightness(7)) Serial.println(F("TM ACK ERROR"));
+  if (!prikaz.brightness(7)) {
+    Serial.println(F("TM ACK ERROR"));
+  }
 }
+
 `;
+
 export const arduinoTMExamples={
- tmSegments:{title:'Arduino · '+tmExamples.tmSegments.title,hint:tmExamples.tmSegments.hint,code:cppStart+`
-void loop() {
+ tmSegments:{title:'Arduino · '+tmExamples.tmSegments.title,hint:tmExamples.tmSegments.hint,code:`// Poveži svaki bit poslanog bajta s dijelom znamenke koji se pali na
+// prikazu TM1637.
+
+${arduinoTmSetup}void loop() {
   // Bitovi 0–6 pale a–g; bit 7 druge znamenke pali dvotocku.
   for (uint8_t bit = 0; bit < 8; bit++) {
     uint8_t data[4];
-    for (uint8_t i = 0; i < 4; i++) data[i] = 1 << bit;
-    if (!prikaz.segments(data)) Serial.println(F("TM ACK ERROR"));
-    Serial.print(F("TM SEGMENT bit=")); Serial.println(bit);
+    for (uint8_t i = 0; i < 4; i++) {
+      // Pomak broja 1 ulijevo odabire samo jedan bit. Gledaj koji segment
+      // zasvijetli kad se položaj tog bita promijeni.
+      data[i] = 1 << bit;
+    }
+    if (!prikaz.segments(data)) {
+      Serial.println(F("TM ACK ERROR"));
+    }
+    Serial.print(F("TM SEGMENT bit="));
+    Serial.println(bit);
     delay(500);
   }
 }
 `},
- tmCounter:{title:'Arduino · '+tmExamples.tmCounter.title,hint:tmExamples.tmCounter.hint,code:cppStart+`
-int broj = -3;
+ tmCounter:{title:'Arduino · '+tmExamples.tmCounter.title,hint:tmExamples.tmCounter.hint,code:`// Prati četveroznamenkasti prikaz dok brojač iz negativnih brojeva prolazi
+// kroz nulu.
+
+${arduinoTmSetup}int broj = -3;
+
 void loop() {
   // number pretvara broj u segmentne bajtove i salje ih kroz GPIO.
-  if (!prikaz.number(broj)) Serial.println(F("TM ACK ERROR"));
-  Serial.print(F("TM COUNT=")); Serial.println(broj);
+
+  // Biblioteka pretvara svaku znamenku u uzorak svjetlećih segmenata. Minus
+  // također zauzima jedno mjesto.
+  if (!prikaz.number(broj)) {
+    Serial.println(F("TM ACK ERROR"));
+  }
+  Serial.print(F("TM COUNT="));
+  Serial.println(broj);
   broj = broj == 9999 ? -3 : broj + 1;
   delay(500);
 }
 `},
- tmClock:{title:'Arduino · '+tmExamples.tmClock.title,hint:tmExamples.tmClock.hint,code:cppStart+`
-// Programsko brojilo, nije RTC niti stvarno vrijeme.
+ tmClock:{title:'Arduino · '+tmExamples.tmClock.title,hint:tmExamples.tmClock.hint,code:`// Promatraj kako se proteklo vrijeme pretvara u prikaz minuta i sekundi,
+// počevši od 12:34.
+
+${arduinoTmSetup}// Programsko brojilo, nije RTC niti stvarno vrijeme.
 unsigned int sekunde = 12 * 60 + 34;
+
 void loop() {
+  // Cjelobrojno dijeljenje ukupnih sekundi sa 60 daje minute, a ostatak
+  // sekunde. Dvotočka razdvaja ta dva dijela.
   unsigned int broj = (sekunde / 60) * 100 + sekunde % 60;
-  if (!prikaz.number(broj, true, true)) Serial.println(F("TM ACK ERROR"));
-  Serial.print(F("TM CLOCK=")); Serial.print(sekunde / 60);
-  Serial.print(':'); Serial.println(sekunde % 60);
+  if (!prikaz.number(broj, true, true)) {
+    Serial.println(F("TM ACK ERROR"));
+  }
+  Serial.print(F("TM CLOCK="));
+  Serial.print(sekunde / 60);
+  Serial.print(':');
+  Serial.println(sekunde % 60);
   delay(500);
   prikaz.number(broj, false, true); // ista vrijednost, dvotocka ugasena
   delay(500);
   sekunde = (sekunde + 1) % 3600;
 }
 `},
- tmBrightness:{title:'Arduino · '+tmExamples.tmBrightness.title,hint:tmExamples.tmBrightness.hint,code:cppStart+`
-void loop() {
+ tmBrightness:{title:'Arduino · '+tmExamples.tmBrightness.title,hint:tmExamples.tmBrightness.hint,code:`// Usporedi najnižu svjetlinu TM1637 s potpunim gašenjem prikaza.
+
+${arduinoTmSetup}void loop() {
   prikaz.number(1234, true);
+
+  // Nulta postavka još uvijek nakratko pali segmente. Zasebna naredba za
+  // gašenje skriva sliku i čuva zapisane znamenke.
   for (uint8_t b = 0; b < 8; b++) {
     // Razina 0 je najmanja svjetlina; nije gasenje.
-    if (!prikaz.brightness(b)) Serial.println(F("TM ACK ERROR"));
-    Serial.print(F("TM BRIGHTNESS=")); Serial.println(b);
+    if (!prikaz.brightness(b)) {
+      Serial.println(F("TM ACK ERROR"));
+    }
+    Serial.print(F("TM BRIGHTNESS="));
+    Serial.println(b);
     delay(500);
   }
   prikaz.brightness(7, false); // OFF cuva memoriju segmenata

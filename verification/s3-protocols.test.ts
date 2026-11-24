@@ -137,19 +137,19 @@ test('edited driver and source reject the previous build',async()=>{
  for(const key of ['irNEC','tftGraphics','bmp280SPI']as const){const p=s3ExampleProject(key),header=Object.keys(p.files).find(n=>n.endsWith('.h'))!;p.files[header]+='\n// edited\n';await assert.rejects(()=>validateArtifact(p,artifacts[key]),/hash|izvor|odgovara/i);}
 });
 test('actual compiler changes TFT pixels from modified source and rejects missing NEC header',async()=>{
- const p=s3ExampleProject('tftGraphics');p.files['main.ino']=p.files['main.ino'].replace('42,26,0xf800','42,26,0x001f');const a=await compileS3(p);
+ const p=s3ExampleProject('tftGraphics');p.files['main.ino']=p.files['main.ino'].replace('42, 26, 0xf800','42,26,0x001f');const a=await compileS3(p);
  const r=await run('tftGraphics',{edit:q=>{q.files['main.ino']=p.files['main.ino'];},artifact:a});assert.equal(r.error,'');assert.equal(r.frame.tfts.tft1.pixels[0],31);assert.notEqual(a.inputHash,artifacts.tftGraphics.inputHash);
  const q=s3ExampleProject('irNEC');delete q.files['lab_s3_nec.h'];await assert.rejects(()=>compileS3(q),/lab_s3_nec.h.*not found/s);
 });
 test('actual compiler demonstrates that slow caller polling misses a full IR frame',async()=>{
- const q=s3ExampleProject('irNEC');q.files['main.ino']=q.files['main.ino'].replace('if(ir.read(a,cmd,repeat))','delay(500);if(ir.read(a,cmd,repeat))');const b=await compileS3(q);
+ const q=s3ExampleProject('irNEC');q.files['main.ino']=q.files['main.ino'].replace('if (ir.read(a, cmd, repeat))','delay(500);if (ir.read(a, cmd, repeat))');const b=await compileS3(q);
  const lost=await run('irNEC',{loops:4,artifact:b,edit:n=>n.files['main.ino']=q.files['main.ino'],setup:e=>press(e,1)});
  assert.equal(lost.error,'');assert(!lost.text.includes('S3 NEC A='));assert.equal(lost.frame.infrared.irRemote.presses,1);
 });
 test('orphan repeats and repeats older than 150 ms do not create a new command',async()=>{
  for(const [wait,expected]of [[100,0],[200,1]]as const){
   const p=s3ExampleProject('irNEC');
-  p.files['main.ino']=p.files['main.ino'].replace('void loop(){','bool first=true;\nvoid loop(){'+(wait===100?'if(first){first=false;delay(100);}':''))
+  p.files['main.ino']=p.files['main.ino'].replace('void loop() {','bool first=true;\nvoid loop(){'+(wait===100?'if(first){first=false;delay(100);}':''))
    .replace('delay(1);',wait===200?'delay(200);':'delay(1);');
   const a=await compileS3(p);const r=await run('irNEC',{loops:wait===100?80:5,artifact:a,edit:q=>q.files['main.ino']=p.files['main.ino'],setup:e=>press(e,1,69,700)});
   assert.equal(r.error,'');assert.equal((r.text.match(/S3 NEC A=/g)??[]).length,expected,r.text);

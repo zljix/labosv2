@@ -47,7 +47,7 @@ test('23E wrong code, threshold boundary, stale sensor and disconnected I2C do n
   const r=await gradeJob(jobFor(button),{root});assert.equal(r.status,'evaluated');assert.equal(r.points,3);assert.equal(r.criteria[1].points,0);
   const analog=await projectFor('gpio/adc');analog.files['main.py']=pyThreshold.replace('>=32768','>32776');
   const a=await gradeJob(jobFor(analog,1),{root});assert.equal(a.points,8,JSON.stringify(a));assert.equal(a.criteria[2].points,0);
-  const sensor=await projectFor('weather/bmp280');sensor.files['main.py']=sensor.files['main.py'].replace('    temperatura, vrijednost = senzor.read()','    temperatura, vrijednost = 24, 101325');
+  const sensor=await projectFor('weather/bmp280');sensor.files['main.py']=sensor.files['main.py'].replace('    temperatura, tlak = senzor.read()','    temperatura, tlak = 24, 101325');
   const s=await gradeJob(jobFor(sensor,2),{root});assert.equal(s.points,0,JSON.stringify(s));
   const disconnected=await projectFor('weather/bmp280');if(disconnected.circuit.kind==='editable')disconnected.circuit.wires=disconnected.circuit.wires.filter(w=>w.from.pin!=='SDA'&&w.to.pin!=='SDA');
   const d=await gradeJob(jobFor(disconnected,2),{root});assert.equal(d.points,0,JSON.stringify(d));

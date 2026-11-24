@@ -1,16 +1,17 @@
 import {emptyCircuit,makePart,terminals,type Circuit,type Endpoint} from './model';
 import {runtimeAsset} from '../platform/assets';
-export const peripheralExample = {
-  title:'AHT10 → OLED → servo',
-  hint:'I2C0: AHT10 na SDA8/SCL9; I2C1: OLED na SDA10/SCL11 (0x3C). Servo: GPIO4, 5 V i zajednička masa. Očitanje svake 2 s; otvara pri očitanju ≥28 °C, zatvara pri očitanju ≤26 °C. Mijenjaj okoliš i prati stvarne piksele te zapis mjerenja.',
-  code:`from machine import Pin, I2C
+export function regulatorProgram(starter = false) {
+  return `# Zagrij senzor pa ga ohladi. Prati temperaturu, položaj serva i vrijednosti
+# na zaslonu.
+
+from machine import Pin, I2C
 from time import sleep_ms
 from aht10 import AHT10
 from ssd1306 import SSD1306_I2C
 from servo import Servo
 
-# SDA su podaci, SCL je takt. Adresa identificira uredjaj na sabirnici.
-# AHT10 ima zasebnu sabirnicu prema uputi proizvodjaca.
+# SDA su podaci, SCL je takt. Adresa identificira uređaj na sabirnici.
+# AHT10 ima zasebnu sabirnicu prema uputi proizvođača.
 senzor_bus = I2C(0, sda=Pin(8), scl=Pin(9), freq=100000)
 zaslon_bus = I2C(1, sda=Pin(10), scl=Pin(11), freq=400000)
 print("I2C0:", [hex(a) for a in senzor_bus.scan()])
@@ -19,18 +20,25 @@ senzor = AHT10(senzor_bus)
 zaslon = SSD1306_I2C(128, 64, zaslon_bus, addr=0x3C)
 servo = Servo(4)
 
-# Dva praga (histereza) sprjecavaju stalno otvaranje/zatvaranje oko granice.
 PRAG_OTVARANJA = 28
-PRAG_ZATVARANJA = 26
+PRAG_ZATVARANJA = ${starter ? '28  # TODO: odaberi zaseban donji prag.' : '26'}
 otvoreno = False
+
 while True:
     temperatura, vlaga = senzor.read()
+
+${starter
+    ? '    # U početnom pokusu oba su praga ista. Prati servo pri 29, 27 i 25 °C.'
+    : '    # Između dvaju različitih pragova zadržava se prethodno stanje serva.'}
     if temperatura >= PRAG_OTVARANJA:
         otvoreno = True
     elif temperatura <= PRAG_ZATVARANJA:
         otvoreno = False
     kut = 90 if otvoreno else 0
     servo.angle(kut)
+
+    # Prikaži očitanje korišteno za ovu odluku. Na zaslonu i servu možeš
+    # istodobno pratiti njezin učinak.
     zaslon.fill(0)
     zaslon.text("T: %.1f C" % temperatura, 0, 0)
     zaslon.text("RH: %.1f %%" % vlaga, 0, 14)
@@ -40,8 +48,14 @@ while True:
     zaslon.fill_rect(2, 57, int(vlaga * 124 / 100), 5, 1)
     zaslon.show()  # framebuf -> I2C upis -> pikseli OLED-a
     print("T=%.2f C, RH=%.2f %%, servo=%d deg" % (temperatura, vlaga, kut))
-    sleep_ms(1920)  # oko 2 s izmedju mjerenja, ukljucujuci 80 ms pretvorbe
-`,
+    sleep_ms(1920)  # oko 2 s između mjerenja, uključujući 80 ms pretvorbe
+`;
+}
+
+export const peripheralExample = {
+  title:'AHT10 → OLED → servo',
+  hint:'I2C0: AHT10 na SDA8/SCL9; I2C1: OLED na SDA10/SCL11 (0x3C). Servo: GPIO4, 5 V i zajednička masa. Očitanje svake 2 s; otvara pri očitanju ≥28 °C, zatvara pri očitanju ≤26 °C. Mijenjaj okoliš i prati stvarne piksele te zapis mjerenja.',
+  code: regulatorProgram(),
 };
 export const peripheralDriverNames=['aht10.py','ssd1306.py','servo.py'] as const;
 export async function loadPeripheralDrivers():Promise<Record<string,string>> {

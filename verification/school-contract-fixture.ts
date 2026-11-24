@@ -33,7 +33,7 @@ export function solution(p:Project,profile:any,alternate=false){
     else if(profile.kind==='blink')p.files[file]=p.files[file].replace('led.value(1)','led.on()').replace('led.value(0)','led.off()').replace('delay(250)','delay(125);delay(125)').replace('sleep_ms(250)','sleep_ms(125)\n sleep_ms(125)');
     else if(profile.kind==='lm35')p.files[file]=py?'from machine import Pin,ADC\nfrom time import sleep_ms\na=ADC(Pin(1),atten=ADC.ATTN_11DB)\nwhile True:\n print("T=%.2f"%(a.read()*310/4095))\n sleep_ms(200)\n':
       `void setup(){Serial.begin(9600);${s3?'analogReadResolution(12);analogSetPinAttenuation(1,ADC_11db);':''}}void loop(){float t=analogRead(${adc})*${s3?'310.0f/4095':'500.0f/1023'};Serial.print("T=");Serial.println(t,2);delay(200);}\n`;
-    else p.files[file]=p.files[file].replaceAll('temperatura','izmjereno').replaceAll('vrijednost','tlak').replaceAll('2100','2000');
+    else p.files[file]=p.files[file].replaceAll('temperatura','izmjereno').replaceAll('tlak','pritisak').replaceAll('2100','2000');
     if(p.circuit.kind==='editable')for(const part of p.circuit.components){part.x+=30;part.y+=20;}
   }
   return p;

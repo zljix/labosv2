@@ -13,64 +13,138 @@ export function radioCircuit(board:BoardId):Circuit{
  for(const [pin,source]of [['VCC',s3?'3V3':'5V'],['GND','GND'],['SCK',s3?'GPIO12':'D13'],['MOSI',s3?'GPIO11':'D11'],['MISO',s3?'GPIO13':'D12'],['CS',s3?'GPIO10':'D10'],['CE',s3?'GPIO4':'D7']])connect(b,terminals(c.components[0]).find(t=>t.label===source)!.pin,'radio',pin,pin==='VCC'?'#d04b46':pin==='GND'?'#334155':'#087f8c');
  return c;
 }
-export function radioNodeProject(target:RadioTarget,role:'tx'|'rx'):Project{
- const t=radioTargets[target],s3=t.board===S3,py=t.language==='micropython';
- const code=py?`# Čvor ${role==='tx'?'A — odašiljač':'B — prijamnik'}. Paket ima 8 bajtova.
-from machine import Pin, SPI
+const pythonRadioSetup = `from machine import Pin, SPI
 from time import sleep_ms
 from lab_nrf24 import LabNRF24
 
 # CS odabire SPI uređaj; CE bira prijam/slanje radija.
-spi = SPI(1, baudrate=1000000, polarity=0, phase=0,
-          sck=Pin(12), mosi=Pin(11), miso=Pin(13))
-radio = LabNRF24(spi, Pin(10, Pin.OUT, value=1),
-                 Pin(4, Pin.OUT, value=0), channel=76, address=b"URS01")
-${role==='rx'?`radio.listen()
-print("RX spreman")
-while True:
-    data = radio.receive()
-    if data is not None:
-        print("RX", data[0])
-    sleep_ms(1)
-`:`# Pričekaj da se oba radija inicijaliziraju.
+spi = SPI(
+    1,
+    baudrate=1000000,
+    polarity=0,
+    phase=0,
+    sck=Pin(12),
+    mosi=Pin(11),
+    miso=Pin(13),
+)
+radio = LabNRF24(
+    spi,
+    Pin(10, Pin.OUT, value=1),
+    Pin(4, Pin.OUT, value=0),
+    channel=76,
+    address=b"URS01",
+)
+`;
+
+const pythonRadioPrograms = {
+  tx: `# Pošalji deset numeriranih radijskih paketa. Usporedi broj svakog paketa s
+# ispisom prijamnika.
+
+# Čvor A — odašiljač. Paket ima 8 bajtova.
+${pythonRadioSetup}# Pričekaj da se oba radija inicijaliziraju.
 sleep_ms(20)
 for number in range(1, 11):
+    # Prvi bajt nosi redni broj paketa. Oba čvora moraju upotrebljavati isti
+    # kanal i adresu.
     packet = bytes([number, 0, 0, 0, 0, 0, 0, 0])
+
+    # ACK znači da je stigla potvrda prijma. MAX_RT označava da potvrda nije
+    # stigla ni nakon dopuštenih ponavljanja.
     ok = radio.send(packet)
     print("TX", number, "ACK" if ok else "MAX_RT")
     sleep_ms(100)
 print("Slanje dovrseno")
-`}`:`// Čvor ${role==='tx'?'A — odašiljač':'B — prijamnik'}; vidljivi SPI driver ostaje uz izvor.
-#include "lab_nrf24.h"
-LabNRF24 radio(10, ${s3?4:7});
-const uint8_t address[5] = {'U', 'R', 'S', '0', '1'};
-${role==='tx'?'uint8_t number = 1;\n':''}
-void setup() {
-    Serial.begin(9600);
-    ${s3?'SPI.begin(12, 13, 11, 10); // SCK, MISO, MOSI, CS':'SPI.begin(); // Uno/Nano: SCK=D13, MISO=D12, MOSI=D11'}
-    if (!radio.begin(76, address)) {
-        Serial.println("NRF24 SPI pogreska");
-        while (true) delay(100);
+`,
+  rx: `# Postavi radijski čvor u prijam i očitaj redni broj svakog primljenog
+# paketa.
+
+# Čvor B — prijamnik. Paket ima 8 bajtova.
+${pythonRadioSetup}radio.listen()
+print("RX spreman")
+
+while True:
+    # Provjeri je li stigao paket prije čitanja prvog bajta. Njegov broj
+    # usporedi s brojem koji ispisuje odašiljač.
+    data = radio.receive()
+    if data is not None:
+        print("RX", data[0])
+    sleep_ms(1)
+`,
+};
+
+function arduinoRadioProgram(role: 'tx' | 'rx', s3: boolean) {
+  const cePin = s3 ? 4 : 7;
+  const spi = s3 ? 'SPI.begin(12, 13, 11, 10); // SCK, MISO, MOSI, CS'
+                 : 'SPI.begin(); // Uno/Nano: SCK=D13, MISO=D12, MOSI=D11';
+  const setup = `  Serial.begin(9600);
+  ${spi}
+  if (!radio.begin(76, address)) {
+    Serial.println("NRF24 SPI pogreska");
+    while (true) {
+      delay(100);
     }
-    ${role==='rx'?'radio.listen();\n    Serial.println("RX spreman");':'delay(20); // drugi čvor treba pripremiti prijam'}
+  }
+`;
+  if (role === 'tx') return `// Pošalji deset numeriranih radijskih paketa. Usporedi broj svakog paketa s
+// ispisom prijamnika.
+
+// Čvor A — odašiljač; vidljivi SPI driver ostaje uz izvor.
+#include "lab_nrf24.h"
+LabNRF24 radio(10, ${cePin});
+const uint8_t address[5] = {'U', 'R', 'S', '0', '1'};
+uint8_t number = 1;
+
+void setup() {
+${setup}  delay(20); // drugi čvor treba pripremiti prijam
 }
 
 void loop() {
-${role==='rx'?`    uint8_t data[8];
-    if (radio.receive(data)) {
-        Serial.print("RX "); Serial.println(data[0]);
-    }
-    delay(1);
-`:`    if (number <= 10) {
-        uint8_t packet[8] = {number, 0, 0, 0, 0, 0, 0, 0};
-        bool ok = radio.send(packet);
-        Serial.print("TX "); Serial.print(number);
-        Serial.println(ok ? " ACK" : " MAX_RT");
-        ++number;
-    }
-    delay(100);
-`}}
+  if (number <= 10) {
+    // Prvi bajt nosi redni broj paketa. Oba čvora moraju upotrebljavati
+    // isti kanal i adresu.
+    uint8_t packet[8] = {number, 0, 0, 0, 0, 0, 0, 0};
+
+    // ACK znači da je stigla potvrda prijma. MAX_RT označava da potvrda
+    // nije stigla ni nakon dopuštenih ponavljanja.
+    bool ok = radio.send(packet);
+    Serial.print("TX ");
+    Serial.print(number);
+    Serial.println(ok ? " ACK" : " MAX_RT");
+    ++number;
+  }
+  delay(100);
+}
 `;
+  return `// Postavi radijski čvor u prijam i očitaj redni broj svakog primljenog
+// paketa.
+
+// Čvor B — prijamnik; vidljivi SPI driver ostaje uz izvor.
+#include "lab_nrf24.h"
+LabNRF24 radio(10, ${cePin});
+const uint8_t address[5] = {'U', 'R', 'S', '0', '1'};
+
+void setup() {
+${setup}  radio.listen();
+  Serial.println("RX spreman");
+}
+
+void loop() {
+  uint8_t data[8];
+
+  // Provjeri je li stigao paket prije čitanja prvog bajta. Njegov broj
+  // usporedi s brojem koji ispisuje odašiljač.
+  if (radio.receive(data)) {
+    Serial.print("RX ");
+    Serial.println(data[0]);
+  }
+  delay(1);
+}
+`;
+}
+
+export function radioNodeProject(target:RadioTarget,role:'tx'|'rx'):Project{
+ const t=radioTargets[target],s3=t.board===S3,py=t.language==='micropython';
+ const code = py ? pythonRadioPrograms[role] : arduinoRadioProgram(role, s3);
  const p=newProject(code,'NRF24 · '+(role==='tx'?'odašiljač':'prijamnik'),t.board,t.language);p.circuit=radioCircuit(t.board);p.files[py?'lab_nrf24.py':'lab_nrf24.h']=py?pythonNRF24:cppNRF24;p.settings.example='radio-'+role;return p;
 }
 export async function loadRadioPair(a:RadioTarget,b:RadioTarget){

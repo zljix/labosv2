@@ -15,23 +15,35 @@ export function spiCircuit(key:SPIExample,board:BoardId=S3):Circuit{
  return c;
 }
 const hint='SPI prenosi bajtove: SCK=takt, MOSI=pločica→uređaj, MISO=uređaj→pločica, CS LOW=odabir. Svaki uređaj ima zaseban CS. ESP32: SCK12/MOSI11/MISO13; Uno/Nano: D13/D11/D12. TFT: CS10/DC9/RESET8; BMP280: CS7. BL uvijek 3V3. 5 V carrier izričito uključuje regulator i prilagodbu SPI razina; provjeri fizičku izvedbu.';
-const pyStart=`from machine import Pin, SPI
+const pythonSpiSetup = `from machine import Pin, SPI
 from time import sleep_ms
 
 # CS se postavlja HIGH prije inicijalizacije zajedničke sabirnice.
 tft_cs = Pin(10, Pin.OUT, value=1)
 sensor_cs = Pin(7, Pin.OUT, value=1)
-bus = SPI(1, baudrate=1000000, polarity=0, phase=0,
-          sck=Pin(12), mosi=Pin(11), miso=Pin(13))
-`;
-const pyTFT=`from lab_st7735 import ST7735
+bus = SPI(
+    1,
+    baudrate=1000000,
+    polarity=0,
+    phase=0,
+    sck=Pin(12),
+    mosi=Pin(11),
+    miso=Pin(13),
+)
+from lab_st7735 import ST7735
+
 tft = ST7735(bus, tft_cs, Pin(9), Pin(8))
 `;
-const pySensor=`from lab_bmp280_spi import BMP280SPI
-sensor = BMP280SPI(bus, sensor_cs)
-`;
-const graphics=`tft.fill(0x0000)
-tft.fill_rect(0, 0, 42, 26, 0xf800)   # RGB565: crvena
+
+export const spiExamples={
+ tftGraphics:{title:'ST7735 · boje, tekst i geometrija',hint:hint+' RGB565 koristi 16 bita po pikselu; tekst rasterizira vidljivi driver 5×7, bez pune slike u RAM-u pločice.',code:`# Promijeni boju prve trake i poveži koordinate naredbi s oblicima na
+# zaslonu ST7735.
+
+${pythonSpiSetup}tft.fill(0x0000)
+
+# Prvi par brojeva određuje početni piksel, a drugi širinu i visinu. Boja
+# RGB565 koristi 5 bitova za crvenu, 6 za zelenu i 5 za plavu.
+tft.fill_rect(0, 0, 42, 26, 0xf800)  # RGB565: crvena
 tft.fill_rect(42, 0, 43, 26, 0x07e0)  # zelena
 tft.fill_rect(85, 0, 43, 26, 0x001f)  # plava
 tft.text("SPI TFT", 10, 38, 0xffff, 2)
@@ -39,13 +51,17 @@ tft.rect(4, 65, 120, 58, 0xffe0)
 tft.line(5, 66, 122, 121, 0x07ff)
 tft.line(122, 66, 5, 121, 0xf81f)
 print("TFT GRAPHICS READY")
+
 while True:
     sleep_ms(100)
-`;
-export const spiExamples={
- tftGraphics:{title:'ST7735 · boje, tekst i geometrija',hint:hint+' RGB565 koristi 16 bita po pikselu; tekst rasterizira vidljivi driver 5×7, bez pune slike u RAM-u pločice.',code:pyStart+pyTFT+graphics},
- tftRotation:{title:'ST7735 · četiri rotacije',hint:hint+' Rotacija mijenja MADCTL i pomake panela, zatim se šalju novi pikseli. Crvena oznaka označava logički gornji lijevi kut. Promijeni pomake u driveru za pokus odrezane slike.',code:pyStart+pyTFT+`while True:
+`},
+ tftRotation:{title:'ST7735 · četiri rotacije',hint:hint+' Rotacija mijenja MADCTL i pomake panela, zatim se šalju novi pikseli. Crvena oznaka označava logički gornji lijevi kut. Promijeni pomake u driveru za pokus odrezane slike.',code:`# Prati crveni kut dok ST7735 redom prikazuje četiri orijentacije.
+
+${pythonSpiSetup}
+while True:
     for rotation in range(4):
+        # Promjena orijentacije mijenja kojem fizičkom kutu odgovara logička
+        # koordinata (0, 0).
         tft.rotation(rotation)
         tft.fill(0)
         tft.fill_rect(0, 0, 18, 18, 0xf800)
@@ -54,60 +70,202 @@ export const spiExamples={
         print("TFT ROT=%d" % rotation)
         sleep_ms(900)
 `},
- bmp280SPI:{title:'BMP280 · mjerenje preko SPI-ja',hint:hint+' Driver čita ID 0x58, 24 kalibracijska bajta, pokreće forced pretvorbu i računa temperaturu/tlak iz sirovih registara. SPI nema ACK; odspojeni MISO daje 0xFF.',code:pyStart+pySensor+`while True:
+ bmp280SPI:{title:'BMP280 · mjerenje preko SPI-ja',hint:hint+' Driver čita ID 0x58, 24 kalibracijska bajta, pokreće forced pretvorbu i računa temperaturu/tlak iz sirovih registara. SPI nema ACK; odspojeni MISO daje 0xFF.',code:`# Očitaj temperaturu i tlak BMP280 preko SPI-ja pa promijeni jednu od tih
+# veličina u modelu.
+
+from machine import Pin, SPI
+from time import sleep_ms
+
+# CS se postavlja HIGH prije inicijalizacije zajedničke sabirnice.
+tft_cs = Pin(10, Pin.OUT, value=1)
+sensor_cs = Pin(7, Pin.OUT, value=1)
+bus = SPI(
+    1,
+    baudrate=1000000,
+    polarity=0,
+    phase=0,
+    sck=Pin(12),
+    mosi=Pin(11),
+    miso=Pin(13),
+)
+from lab_bmp280_spi import BMP280SPI
+
+sensor = BMP280SPI(bus, sensor_cs)
+
+while True:
+    # Signal CS odabire senzor. Naredbe i adrese idu prema senzoru vodom
+    # MOSI, a očitani podaci vraćaju se vodom MISO.
     temperature, pressure = sensor.read()
     print("BMP280 SPI T=%.2f P=%.0f Pa" % (temperature, pressure))
     sleep_ms(1000)
 `},
- spiDashboard:{title:'SPI · BMP280 i TFT na istoj sabirnici',hint:hint+' Ista SCK/MOSI mreža, zasebni CS10/CS7 i MISO samo za BMP280. Klizači okoliša mijenjaju sljedeće mjerenje; tekst na zaslonu nastaje iz očitanih registara.',code:pyStart+pyTFT+pySensor+`tft.fill(0)
+ spiDashboard:{title:'SPI · BMP280 i TFT na istoj sabirnici',hint:hint+' Ista SCK/MOSI mreža, zasebni CS10/CS7 i MISO samo za BMP280. Klizači okoliša mijenjaju sljedeće mjerenje; tekst na zaslonu nastaje iz očitanih registara.',code:`# Promijeni tlak na BMP280 i usporedi broj u konzoli s novim prikazom na
+# ST7735.
+
+${pythonSpiSetup}from lab_bmp280_spi import BMP280SPI
+
+sensor = BMP280SPI(bus, sensor_cs)
+tft.fill(0)
 tft.text("SPI STANICA", 7, 10, 0x07ff)
+
 while True:
+    # Senzor i zaslon dijele sabirnicu SPI. Različiti signali CS omogućuju
+    # da program prvo čita senzor, a potom upisuje na zaslon.
     temperature, pressure = sensor.read()
     tft.fill_rect(0, 35, 128, 64, 0)
     tft.text("%.1f C" % temperature, 8, 40, 0xffe0, 2)
-    tft.text("%.1f HPA" % (pressure/100), 8, 74, 0x07e0)
+    tft.text("%.1f HPA" % (pressure / 100), 8, 74, 0x07e0)
     print("SPI DASH T=%.2f P=%.0f Pa" % (temperature, pressure))
     sleep_ms(1000)
 `},
-} as const;
-const cppStart=`#include <SPI.h>
-// Pin brojevi su D oznake Uno/Nano, nisu fizički redni brojevi.
-`;
-const cppTFT=`#include "lab_st7735.h"
-LabST7735 tft(10,9,8);
-`;
-const cppSensor=`#include "lab_bmp280_spi.h"
-LabBMP280SPI sensor(7);
-`;
+} satisfies Record<SPIExample, {title:string; hint:string; code:string}>;
 export const arduinoSPIExamples={
- tftGraphics:{...spiExamples.tftGraphics,title:'Arduino · '+spiExamples.tftGraphics.title,code:cppStart+cppTFT+`void setup(){
- Serial.begin(9600);tft.begin();tft.fillScreen(0);
- tft.fillRect(0,0,42,26,0xf800);tft.fillRect(42,0,43,26,0x07e0);tft.fillRect(85,0,43,26,0x001f);
- tft.setCursor(10,38);tft.setTextSize(2);tft.print(F("SPI TFT"));
- tft.drawRect(4,65,120,58,0xffe0);tft.drawLine(5,66,122,121,0x07ff);tft.drawLine(122,66,5,121,0xf81f);
- Serial.println(F("TFT GRAPHICS READY"));
+ tftGraphics:{...spiExamples.tftGraphics,title:'Arduino · '+spiExamples.tftGraphics.title,code:`// Promijeni boju prve trake i poveži koordinate naredbi s oblicima na
+// zaslonu ST7735.
+
+#include <SPI.h>
+// Pin brojevi su D oznake Uno/Nano, nisu fizički redni brojevi.
+#include "lab_st7735.h"
+LabST7735 tft(10, 9, 8);
+
+void setup() {
+  Serial.begin(9600);
+  tft.begin();
+  tft.fillScreen(0);
+
+  // Prvi par brojeva određuje početni piksel, a drugi širinu i visinu. Boja
+  // RGB565 koristi 5 bitova za crvenu, 6 za zelenu i 5 za plavu.
+  tft.fillRect(0, 0, 42, 26, 0xf800);
+  tft.fillRect(42, 0, 43, 26, 0x07e0);
+  tft.fillRect(85, 0, 43, 26, 0x001f);
+  tft.setCursor(10, 38);
+  tft.setTextSize(2);
+  tft.print(F("SPI TFT"));
+  tft.drawRect(4, 65, 120, 58, 0xffe0);
+  tft.drawLine(5, 66, 122, 121, 0x07ff);
+  tft.drawLine(122, 66, 5, 121, 0xf81f);
+  Serial.println(F("TFT GRAPHICS READY"));
 }
-void loop(){delay(100);}
-`},
- tftRotation:{...spiExamples.tftRotation,title:'Arduino · '+spiExamples.tftRotation.title,code:cppStart+cppTFT+`void setup(){Serial.begin(9600);tft.begin();}
-void loop(){for(byte r=0;r<4;r++){
- tft.setRotation(r);tft.fillScreen(0);tft.fillRect(0,0,18,18,0xf800);tft.drawRect(0,0,128,128,0xffff);
- tft.setCursor(30,48);tft.setTextColor(0x07e0);tft.setTextSize(2);tft.print(F("ROT "));tft.print(r);
- Serial.print(F("TFT ROT="));Serial.println(r);delay(900);
-}}
-`},
- bmp280SPI:{...spiExamples.bmp280SPI,title:'Arduino · '+spiExamples.bmp280SPI.title,code:cppStart+cppSensor+`void setup(){Serial.begin(9600);if(!sensor.begin()){Serial.println(F("BMP280 SPI ID/SPOJ ERROR"));while(true)delay(100);}}
-void loop(){float t,p;if(sensor.read(t,p)){Serial.print(F("BMP280 SPI T="));Serial.print(t,2);Serial.print(F(" P="));Serial.print(p,0);Serial.println(F(" Pa"));}delay(1000);}
-`},
- spiDashboard:{...spiExamples.spiDashboard,title:'Arduino · '+spiExamples.spiDashboard.title,code:cppStart+cppTFT+cppSensor+`void setup(){
- Serial.begin(9600);digitalWrite(7,HIGH);pinMode(7,OUTPUT);tft.begin();
- if(!sensor.begin()){Serial.println(F("BMP280 SPI ID/SPOJ ERROR"));while(true)delay(100);}
- tft.fillScreen(0);tft.setCursor(7,10);tft.setTextColor(0x07ff);tft.print(F("SPI STANICA"));
+
+void loop() {
+  delay(100);
 }
-void loop(){float t,p;if(sensor.read(t,p)){
- tft.fillRect(0,35,128,64,0);tft.setCursor(8,40);tft.setTextColor(0xffe0);tft.setTextSize(2);tft.print(t,1);tft.print(F(" C"));
- tft.setCursor(8,74);tft.setTextColor(0x07e0);tft.setTextSize(1);tft.print(p/100,1);tft.print(F(" HPA"));
- Serial.print(F("SPI DASH T="));Serial.print(t,2);Serial.print(F(" P="));Serial.print(p,0);Serial.println(F(" Pa"));
-}delay(1000);}
+`},
+ tftRotation:{...spiExamples.tftRotation,title:'Arduino · '+spiExamples.tftRotation.title,code:`// Prati crveni kut dok ST7735 redom prikazuje četiri orijentacije.
+
+#include <SPI.h>
+// Pin brojevi su D oznake Uno/Nano, nisu fizički redni brojevi.
+#include "lab_st7735.h"
+LabST7735 tft(10, 9, 8);
+
+void setup() {
+  Serial.begin(9600);
+  tft.begin();
+}
+
+void loop() {
+  for (byte r = 0; r < 4; r++) {
+    // Promjena orijentacije mijenja kojem fizičkom kutu odgovara logička
+    // koordinata (0, 0).
+    tft.setRotation(r);
+    tft.fillScreen(0);
+    tft.fillRect(0, 0, 18, 18, 0xf800);
+    tft.drawRect(0, 0, 128, 128, 0xffff);
+    tft.setCursor(30, 48);
+    tft.setTextColor(0x07e0);
+    tft.setTextSize(2);
+    tft.print(F("ROT "));
+    tft.print(r);
+    Serial.print(F("TFT ROT="));
+    Serial.println(r);
+    delay(900);
+  }
+}
+`},
+ bmp280SPI:{...spiExamples.bmp280SPI,title:'Arduino · '+spiExamples.bmp280SPI.title,code:`// Očitaj temperaturu i tlak BMP280 preko SPI-ja pa promijeni jednu od tih
+// veličina u modelu.
+
+#include <SPI.h>
+// Pin brojevi su D oznake Uno/Nano, nisu fizički redni brojevi.
+#include "lab_bmp280_spi.h"
+LabBMP280SPI sensor(7);
+
+void setup() {
+  Serial.begin(9600);
+  if (!sensor.begin()) {
+    Serial.println(F("BMP280 SPI ID/SPOJ ERROR"));
+    while (true) {
+      delay(100);
+    }
+  }
+}
+
+void loop() {
+  float t, p;
+
+  // Signal CS odabire senzor. Naredbe i adrese idu prema senzoru vodom
+  // MOSI, a očitani podaci vraćaju se vodom MISO.
+  if (sensor.read(t, p)) {
+    Serial.print(F("BMP280 SPI T="));
+    Serial.print(t, 2);
+    Serial.print(F(" P="));
+    Serial.print(p, 0);
+    Serial.println(F(" Pa"));
+  }
+  delay(1000);
+}
+`},
+ spiDashboard:{...spiExamples.spiDashboard,title:'Arduino · '+spiExamples.spiDashboard.title,code:`// Promijeni tlak na BMP280 i usporedi broj u konzoli s novim prikazom na
+// ST7735.
+
+#include <SPI.h>
+// Pin brojevi su D oznake Uno/Nano, nisu fizički redni brojevi.
+#include "lab_st7735.h"
+LabST7735 tft(10, 9, 8);
+#include "lab_bmp280_spi.h"
+LabBMP280SPI sensor(7);
+
+void setup() {
+  Serial.begin(9600);
+  digitalWrite(7, HIGH);
+  pinMode(7, OUTPUT);
+  tft.begin();
+  if (!sensor.begin()) {
+    Serial.println(F("BMP280 SPI ID/SPOJ ERROR"));
+    while (true) {
+      delay(100);
+    }
+  }
+  tft.fillScreen(0);
+  tft.setCursor(7, 10);
+  tft.setTextColor(0x07ff);
+  tft.print(F("SPI STANICA"));
+}
+
+void loop() {
+  float t, p;
+
+  // Senzor i zaslon dijele sabirnicu SPI. Različiti signali CS omogućuju da
+  // program prvo čita senzor, a potom upisuje na zaslon.
+  if (sensor.read(t, p)) {
+    tft.fillRect(0, 35, 128, 64, 0);
+    tft.setCursor(8, 40);
+    tft.setTextColor(0xffe0);
+    tft.setTextSize(2);
+    tft.print(t, 1);
+    tft.print(F(" C"));
+    tft.setCursor(8, 74);
+    tft.setTextColor(0x07e0);
+    tft.setTextSize(1);
+    tft.print(p / 100, 1);
+    tft.print(F(" HPA"));
+    Serial.print(F("SPI DASH T="));
+    Serial.print(t, 2);
+    Serial.print(F(" P="));
+    Serial.print(p, 0);
+    Serial.println(F(" Pa"));
+  }
+  delay(1000);
+}
 `},
 } as const;

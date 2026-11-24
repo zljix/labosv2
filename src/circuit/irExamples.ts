@@ -19,13 +19,21 @@ export function irCircuit(key:IRExample,board:BoardId=S3):Circuit{
  return c;
 }
 const intro='IR prijamnik: VCC=3,3 V za ESP32 / 5 V za Uno/Nano, GND zajednički, OUT=GPIO4 / D2. OUT je aktivno LOW i ima 30 kΩ pull-up. Standardni NEC šalje 8-bitnu adresu, njezin inverz, naredbu i njezin inverz, LSB prvi. Zaglavlje 9 ms + 4,5 ms; bitovi 562,5 µs + 562,5/1687,5 µs. Repeat ne nosi novu naredbu. Optička skupina je virtualna putanja, nije NEC adresa.';
-const pyStart=`from machine import Pin
+const pythonIrSetup = `from machine import Pin
 from time import sleep_ms
 from lab_ir import NECReceiver
+
 ir = NECReceiver(Pin(4, Pin.IN))
 `;
+
 export const irExamples={
- irPulses:{title:'IR · vremenski niz NEC impulsa',hint:intro+' Pokreni pa pošalji kratki pritisak. lab_ir.py mjeri LOW/HIGH trajanja kroz GPIO i ispisuje cijeli niz. Python čeka uvodni impuls u ograničenom prozoru od 12 ms virtualnog vremena; između poziva predaje izvođenje pregledniku. Primjer ne prima 38 kHz nositelj na GPIO; prijamnik ga demodulira.',code:pyStart+`print("IR READY: kratki pritisak -> impulsi u us")
+ irPulses:{title:'IR · vremenski niz NEC impulsa',hint:intro+' Pokreni pa pošalji kratki pritisak. lab_ir.py mjeri LOW/HIGH trajanja kroz GPIO i ispisuje cijeli niz. Python čeka uvodni impuls u ograničenom prozoru od 12 ms virtualnog vremena; između poziva predaje izvođenje pregledniku. Primjer ne prima 38 kHz nositelj na GPIO; prijamnik ga demodulira.',code:`# Kratko pritisni tipku virtualnog daljinskog upravljača i usporedi trajanja
+# impulsa infracrvenog prijamnika.
+
+${pythonIrSetup}print("IR READY: kratki pritisak -> impulsi u us")
+
+# Prijamnik daje nisku razinu tijekom impulsa. Dekoder iz trajanja impulsa i
+# razmaka prepoznaje dijelove NEC poruke.
 while True:
     try:
         rezultat = ir.read()
@@ -36,7 +44,13 @@ while True:
         print(greska)
     sleep_ms(1)
 `},
- irNEC:{title:'IR · NEC adresa, naredba i repeat',hint:intro+' Dugi pritisak šalje posebni repeat svakih 110 ms od početka okvira. Dekoder prihvaća repeat samo do 150 ms nakon valjanog okvira/ponavljanja. Nevaljan inverz ili vrijeme odbacuju naredbu. Extended NEC, NEC2 i ostali protokoli nisu podržani. Arduino prijamni pretinac čuva posljednji nepročitani okvir; overruns broji prepisane okvire ako program ne čita dovoljno često.',code:pyStart+`print("IR READY")
+ irNEC:{title:'IR · NEC adresa, naredba i repeat',hint:intro+' Dugi pritisak šalje posebni repeat svakih 110 ms od početka okvira. Dekoder prihvaća repeat samo do 150 ms nakon valjanog okvira/ponavljanja. Nevaljan inverz ili vrijeme odbacuju naredbu. Extended NEC, NEC2 i ostali protokoli nisu podržani. Arduino prijamni pretinac čuva posljednji nepročitani okvir; overruns broji prepisane okvire ako program ne čita dovoljno često.',code:`# Kratko pritisni pa zadrži istu tipku daljinskog upravljača. Usporedi
+# adresu, naredbu i oznaku ponavljanja.
+
+${pythonIrSetup}print("IR READY")
+
+# Prvi okvir nosi adresu i naredbu. Oznaka ponavljanja povezuje držanje
+# tipke s prethodno prihvaćenom naredbom.
 while True:
     try:
         rezultat = ir.read()
@@ -46,10 +60,17 @@ while True:
         print(greska)
     sleep_ms(1)
 `},
- irLED:{title:'IR → LED · kratki i dugi pritisak',hint:intro+' LED preko 680 Ω na GPIO7 / D9. Program prihvaća samo adresu 0. POWER=69 uključuje/isključuje samo novi okvir; PLUS=70 i MINUS=21 mijenjaju PWM za 10 %, uključujući repeat. Promijeni adresu daljinskog da vidiš filtriranje.',code:pyStart+`from machine import PWM
+ irLED:{title:'IR → LED · kratki i dugi pritisak',hint:intro+' LED preko 680 Ω na GPIO7 / D9. Program prihvaća samo adresu 0. POWER=69 uključuje/isključuje samo novi okvir; PLUS=70 i MINUS=21 mijenjaju PWM za 10 %, uključujući repeat. Promijeni adresu daljinskog da vidiš filtriranje.',code:`# Uključi LED tipkom za napajanje, a zatim provjeri učinak kratkog i dugog
+# pritiska na tipke za svjetlinu.
+
+${pythonIrSetup}from machine import PWM
+
 led = PWM(Pin(7), freq=1000, duty_u16=0)
 svjetlina = 0
 print("IR READY LED=0")
+
+# Odluka koristi i broj naredbe i vrstu okvira. Tako držanje tipke za
+# napajanje ne uključuje i isključuje LED uzastopno.
 while True:
     try:
         rezultat = ir.read()
@@ -68,13 +89,20 @@ while True:
         print(greska)
     sleep_ms(1)
 `},
- irTransmit:{title:'IR · predajnik 38 kHz i upareni prijamnik',hint:intro+' Predajnik s ugrađenim pogonom: SIG=GPIO5 / D3, VCC i GND. U Mjerenjima vidi izlaz uparenog prijamnika. Python šalje blokirajući, zato ovaj primjer pokazuje prijenos i kontaktni trag, bez istodobnog Python dekodiranja. Arduino koristi INT0 za prijam uz stvarni Timer2 nositelj na D3; zauzima Timer2, tone() i PWM D3/D11. Drugi program/čvor slijedi u etapi 21.',code:`from machine import Pin
+ irTransmit:{title:'IR · predajnik 38 kHz i upareni prijamnik',hint:intro+' Predajnik s ugrađenim pogonom: SIG=GPIO5 / D3, VCC i GND. U Mjerenjima vidi izlaz uparenog prijamnika. Python šalje blokirajući, zato ovaj primjer pokazuje prijenos i kontaktni trag, bez istodobnog Python dekodiranja. Arduino koristi INT0 za prijam uz stvarni Timer2 nositelj na D3; zauzima Timer2, tone() i PWM D3/D11. Drugi program/čvor slijedi u etapi 21.',code:`# Prati kako odašiljač naizmjenično šalje dvije NEC naredbe. Promatraj izlaz
+# uparenog prijamnika.
+
+from machine import Pin
 from time import sleep_ms
 from lab_ir import NECTransmitter
+
 predajnik = NECTransmitter(Pin(5))
 naredba = 69
 print("IR TX READY: promatraj Mjerenja")
+
 while True:
+    # Nosilac od približno 38 kHz prenosi impulse. Raspored skupina impulsa
+    # određuje koju će naredbu prijamnik dekodirati.
     predajnik.send(0, naredba)
     print("IR TX A=0 C=%d; trag OUT vidi u Mjerenjima" % naredba)
     naredba = 70 if naredba == 69 else 69
@@ -136,26 +164,150 @@ public:
  }
 };
 `;
-const cppStart=`#include "lab_nec.h"
+const arduinoIrSetup = `#include "lab_nec.h"
 LabNEC ir;
-void irEdge(){ir.edge(digitalRead(2));}
-void initIR(){pinMode(2,INPUT);attachInterrupt(digitalPinToInterrupt(2),irEdge,CHANGE);}
+
+void irEdge() {
+  ir.edge(digitalRead(2));
+}
+
+void initIR() {
+  pinMode(2, INPUT);
+  attachInterrupt(digitalPinToInterrupt(2), irEdge, CHANGE);
+}
+
 `;
-const cppPrint=`Serial.print(F("NEC A="));Serial.print(a);Serial.print(F(" C="));Serial.print(cmd);Serial.print(F(" R="));Serial.println(repeat?1:0);`;
+
 export const arduinoIRExamples={
- irPulses:{title:'Arduino · '+irExamples.irPulses.title,hint:irExamples.irPulses.hint+' lab_nec.h koristi INT0 CHANGE i micros(); ispisuje trajanje uvoda te posljednjeg bitnog impulsa i razmaka.',code:cppStart+`void setup(){Serial.begin(9600);initIR();Serial.println(F("IR READY"));}
-void loop(){uint8_t a,cmd;bool repeat;if(ir.read(a,cmd,repeat)){${cppPrint}Serial.print(F("PULSE LEADER="));Serial.print(ir.leaderUs);Serial.print(F(" MARK="));Serial.print(ir.bitMarkUs);Serial.print(F(" SPACE="));Serial.println(ir.bitSpaceUs);}delay(1);}
+ irPulses:{title:'Arduino · '+irExamples.irPulses.title,hint:irExamples.irPulses.hint+' lab_nec.h koristi INT0 CHANGE i micros(); ispisuje trajanje uvoda te posljednjeg bitnog impulsa i razmaka.',code:`// Kratko pritisni tipku virtualnog daljinskog upravljača i usporedi
+// trajanja impulsa infracrvenog prijamnika.
+
+${arduinoIrSetup}void setup() {
+  Serial.begin(9600);
+  initIR();
+  Serial.println(F("IR READY"));
+}
+
+// Prijamnik daje nisku razinu tijekom impulsa. Dekoder iz trajanja impulsa
+// i razmaka prepoznaje dijelove NEC poruke.
+void loop() {
+  uint8_t a, cmd;
+  bool repeat;
+  if (ir.read(a, cmd, repeat)) {
+    Serial.print(F("NEC A="));
+    Serial.print(a);
+    Serial.print(F(" C="));
+    Serial.print(cmd);
+    Serial.print(F(" R="));
+    Serial.println(repeat ? 1 : 0);
+    Serial.print(F("PULSE LEADER="));
+    Serial.print(ir.leaderUs);
+    Serial.print(F(" MARK="));
+    Serial.print(ir.bitMarkUs);
+    Serial.print(F(" SPACE="));
+    Serial.println(ir.bitSpaceUs);
+  }
+  delay(1);
+}
 `},
- irNEC:{title:'Arduino · '+irExamples.irNEC.title,hint:irExamples.irNEC.hint+' Prijam je INT0 CHANGE bez zauzimanja timera; dekoder je vidljiv u lab_nec.h.',code:cppStart+`uint16_t errors=0;
-void setup(){Serial.begin(9600);initIR();Serial.println(F("IR READY"));}
-void loop(){uint8_t a,cmd;bool repeat;if(ir.read(a,cmd,repeat)){${cppPrint}}if(ir.errors!=errors){errors=ir.errors;Serial.print(F("NEC ERROR="));Serial.println(errors);}delay(1);}
+ irNEC:{title:'Arduino · '+irExamples.irNEC.title,hint:irExamples.irNEC.hint+' Prijam je INT0 CHANGE bez zauzimanja timera; dekoder je vidljiv u lab_nec.h.',code:`// Kratko pritisni pa zadrži istu tipku daljinskog upravljača. Usporedi
+// adresu, naredbu i oznaku ponavljanja.
+
+${arduinoIrSetup}uint16_t errors = 0;
+
+void setup() {
+  Serial.begin(9600);
+  initIR();
+  Serial.println(F("IR READY"));
+}
+
+// Prvi okvir nosi adresu i naredbu. Oznaka ponavljanja povezuje držanje
+// tipke s prethodno prihvaćenom naredbom.
+void loop() {
+  uint8_t a, cmd;
+  bool repeat;
+  if (ir.read(a, cmd, repeat)) {
+    Serial.print(F("NEC A="));
+    Serial.print(a);
+    Serial.print(F(" C="));
+    Serial.print(cmd);
+    Serial.print(F(" R="));
+    Serial.println(repeat ? 1 : 0);
+  }
+  if (ir.errors != errors) {
+    errors = ir.errors;
+    Serial.print(F("NEC ERROR="));
+    Serial.println(errors);
+  }
+  delay(1);
+}
 `},
- irLED:{title:'Arduino · '+irExamples.irLED.title,hint:irExamples.irLED.hint+' Prijam koristi INT0, LED PWM koristi Timer1 na D9.',code:cppStart+`int brightness=0;
-void setup(){Serial.begin(9600);initIR();pinMode(9,OUTPUT);analogWrite(9,0);Serial.println(F("IR READY LED=0"));}
-void loop(){uint8_t a,cmd;bool repeat;if(ir.read(a,cmd,repeat)&&a==0){if(cmd==69&&!repeat)brightness=brightness?0:50;else if(cmd==70)brightness=min(100,brightness+10);else if(cmd==21)brightness=max(0,brightness-10);analogWrite(9,(long)brightness*255/100);Serial.print(F("LED="));Serial.print(brightness);Serial.print(F(" R="));Serial.println(repeat?1:0);}delay(1);}
+ irLED:{title:'Arduino · '+irExamples.irLED.title,hint:irExamples.irLED.hint+' Prijam koristi INT0, LED PWM koristi Timer1 na D9.',code:`// Uključi LED tipkom za napajanje, a zatim provjeri učinak kratkog i dugog
+// pritiska na tipke za svjetlinu.
+
+${arduinoIrSetup}int brightness = 0;
+
+void setup() {
+  Serial.begin(9600);
+  initIR();
+  pinMode(9, OUTPUT);
+  analogWrite(9, 0);
+  Serial.println(F("IR READY LED=0"));
+}
+
+// Odluka koristi i broj naredbe i vrstu okvira. Tako držanje tipke za
+// napajanje ne uključuje i isključuje LED uzastopno.
+void loop() {
+  uint8_t a, cmd;
+  bool repeat;
+  if (ir.read(a, cmd, repeat) && a == 0) {
+    if (cmd == 69 && !repeat) {
+      brightness = brightness ? 0 : 50;
+    } else if (cmd == 70) {
+      brightness = min(100, brightness + 10);
+    } else if (cmd == 21) {
+      brightness = max(0, brightness - 10);
+    }
+    analogWrite(9, (long)brightness * 255 / 100);
+    Serial.print(F("LED="));
+    Serial.print(brightness);
+    Serial.print(F(" R="));
+    Serial.println(repeat ? 1 : 0);
+  }
+  delay(1);
+}
 `},
- irTransmit:{title:'Arduino · '+irExamples.irTransmit.title,hint:irExamples.irTransmit.hint,code:cppStart+`uint8_t command=69;
-void setup(){Serial.begin(9600);initIR();LabNECSender::begin();Serial.println(F("IR TX READY"));}
-void loop(){LabNECSender::send(0,command);delay(5);uint8_t a,cmd;bool repeat;if(ir.read(a,cmd,repeat)){${cppPrint}}else Serial.println(F("IR RX: provjeri napajanje, OUT i opticku skupinu"));command=command==69?70:69;delay(1000);}
+ irTransmit:{title:'Arduino · '+irExamples.irTransmit.title,hint:irExamples.irTransmit.hint,code:`// Prati kako odašiljač naizmjenično šalje dvije NEC naredbe. Promatraj
+// izlaz uparenog prijamnika.
+
+${arduinoIrSetup}uint8_t command = 69;
+
+void setup() {
+  Serial.begin(9600);
+  initIR();
+  LabNECSender::begin();
+  Serial.println(F("IR TX READY"));
+}
+
+void loop() {
+  // Nosilac od približno 38 kHz prenosi impulse. Raspored skupina impulsa
+  // određuje koju će naredbu prijamnik dekodirati.
+  LabNECSender::send(0, command);
+  delay(5);
+  uint8_t a, cmd;
+  bool repeat;
+  if (ir.read(a, cmd, repeat)) {
+    Serial.print(F("NEC A="));
+    Serial.print(a);
+    Serial.print(F(" C="));
+    Serial.print(cmd);
+    Serial.print(F(" R="));
+    Serial.println(repeat ? 1 : 0);
+  } else {
+    Serial.println(F("IR RX: provjeri napajanje, OUT i opticku skupinu"));
+  }
+  command = command == 69 ? 70 : 69;
+  delay(1000);
+}
 `},
 } as const;

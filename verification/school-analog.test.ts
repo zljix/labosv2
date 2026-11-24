@@ -44,7 +44,7 @@ test('24C ADC/PWM rejects the earlier digital threshold and wrong full-scale vol
   const p=analogProfiles[0],threshold=await starter(p.taskKey);
   threshold.files['main.py']='from machine import Pin,ADC\nfrom time import sleep_ms\na=ADC(Pin(1),atten=ADC.ATTN_11DB)\nl=Pin(4,Pin.OUT)\nwhile True:\n l.value(a.read()>=2048)\n sleep_ms(20)\n';
   const r=await run(threshold,p);assert.equal(r.points,3,JSON.stringify(r));
-  const wrong=await starter('analog/temt6000');wrong.files['main.py']=wrong.files['main.py'].replace('a.read_uv()/1000000','a.read()*3.3/4095');
+  const wrong=await starter('analog/temt6000');wrong.files['main.py']=wrong.files['main.py'].replace('a.read_uv() / 1000000','a.read()*3.3/4095');
   assert.equal((await run(wrong,analogProfiles.find(p=>p.taskKey==='analog/temt6000')!)).points,3);
   for(const p of analogProfiles)assert.equal((await run(moveAnalogGPIO(await starter(p.taskKey)),p)).points,10,p.id);
 });

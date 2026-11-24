@@ -26,50 +26,112 @@ import {arduinoEnvironmentExamples,environmentCircuit,type EnvironmentExample} f
 import {runtimeAsset} from '../platform/assets';
 import {arduinoDisplayExamples,displayCircuit,type DisplayExample} from '../circuit/displayExamples';
 export const arduinoExamples={
-  blink:{title:'Arduino · treptanje i millis()',hint:'D9 → 680 Ω → LED → GND. delay(200) i millis() koriste stvarni AVR Timer0. Program pokreće i ugrađenu LED L na D13.',code:`// D9 je oznaka priključka, a ne deveti fizički kontakt.
+  blink:{title:'Arduino · treptanje i millis()',hint:'D9 → 680 Ω → LED → GND. delay(200) i millis() koriste stvarni AVR Timer0. Program pokreće i ugrađenu LED L na D13.',code:`// Usporedi trajanje svijetle i tamne faze LED-ice. Promijeni samo jedno
+// čekanje pa ponovno pokreni program.
+
+// D9 je oznaka priključka, a ne deveti fizički kontakt.
+
+// Pločica pri pokretanju jednom izvodi setup(). Nakon toga redom ponavlja
+// naredbe u funkciji loop().
 void setup() {
   pinMode(9, OUTPUT);
   pinMode(LED_BUILTIN, OUTPUT);
   Serial.begin(9600);
 }
+
 void loop() {
-  digitalWrite(9, HIGH); digitalWrite(LED_BUILTIN, HIGH);
-  Serial.print("LED=1 ms="); Serial.println(millis());
+  // Izlaz ostaje uključen tijekom prvog čekanja i isključen tijekom drugog.
+  // Zbroj tih vremena daje period treptanja.
+  digitalWrite(9, HIGH);
+  digitalWrite(LED_BUILTIN, HIGH);
+  Serial.print("LED=1 ms=");
+  Serial.println(millis());
   delay(200);
-  digitalWrite(9, LOW); digitalWrite(LED_BUILTIN, LOW);
-  Serial.print("LED=0 ms="); Serial.println(millis());
+  digitalWrite(9, LOW);
+  digitalWrite(LED_BUILTIN, LOW);
+  Serial.print("LED=0 ms=");
+  Serial.println(millis());
   delay(200);
 }
 `},
-  button:{title:'Arduino · tipkalo i serijski unos',hint:'D2 koristi INPUT_PULLUP. Pritisak ga spaja na GND i pali LED na D9. Serijski pošalji 1 za uključivanje, 0 za isključivanje ili b za ponovno upravljanje tipkalom.',code:`// Serijski monitor radi pri brzini koju zada Serial.begin().
+  button:{title:'Arduino · tipkalo i serijski unos',hint:'D2 koristi INPUT_PULLUP. Pritisak ga spaja na GND i pali LED na D9. Serijski pošalji 1 za uključivanje, 0 za isključivanje ili b za ponovno upravljanje tipkalom.',code:`// Pritisni pa otpusti tipkalo i prati kada se upali LED-ica.
+
+// Serijski monitor radi pri brzini koju zada Serial.begin().
 int daljinski = -1;
 int prethodno = -1;
+
+// Pločica pri pokretanju jednom izvodi setup(). Nakon toga redom ponavlja
+// naredbe u funkciji loop().
 void setup() {
-  pinMode(2, INPUT_PULLUP); pinMode(9, OUTPUT);
+  // Unutarnji otpornik drži otvoreni ulaz na 1. Pritiskom tipkala ulaz se
+  // spaja na masu pa program očitava 0.
+  pinMode(2, INPUT_PULLUP);
+  pinMode(9, OUTPUT);
   Serial.begin(9600);
   Serial.println("Spremno: 1 / 0 / b");
 }
+
 void loop() {
+  // Znak '1' ili '0' preuzima upravljanje LED-icom. Znak 'b' vraća
+  // upravljanje tipkalu.
   if (Serial.available()) {
     char znak = Serial.read();
-    if (znak == '1') daljinski = 1;
-    if (znak == '0') daljinski = 0;
-    if (znak == 'b') daljinski = -1;
-    Serial.print("RX="); Serial.println(znak);
+    if (znak == '1') {
+      daljinski = 1;
+    }
+    if (znak == '0') {
+      daljinski = 0;
+    }
+    if (znak == 'b') {
+      daljinski = -1;
+    }
+    Serial.print("RX=");
+    Serial.println(znak);
   }
-  int stanje = daljinski < 0 ? digitalRead(2) == LOW : daljinski;
+
+  // Kad je spremljena vrijednost −1, čitaj fizičko tipkalo. Inače
+  // upotrijebi zadnje stanje odabrano serijskom naredbom.
+  int stanje = daljinski;
+  if (daljinski < 0) {
+    stanje = digitalRead(2) == LOW;
+  }
+
   digitalWrite(9, stanje);
-  if (stanje != prethodno) { Serial.print("LED="); Serial.println(stanje); prethodno = stanje; }
+
+  // Zapamti prikazano stanje. Tako jedan dugi pritisak daje samo jednu
+  // poruku o promjeni.
+  if (stanje != prethodno) {
+    Serial.print("LED=");
+    Serial.println(stanje);
+    prethodno = stanje;
+  }
   delay(10);
 }
 `},
-  adc:{title:'Arduino · ADC regulira PWM',hint:'Potenciometar: 1 na 5 V, 3 na GND, klizač 2 na A0. analogRead vraća 0–1023, a analogWrite na D9 prima 0–255. Svjetlina proizlazi iz impulsa Timer1.',code:`void setup() { pinMode(9, OUTPUT); Serial.begin(9600); }
+  adc:{title:'Arduino · ADC regulira PWM',hint:'Potenciometar: 1 na 5 V, 3 na GND, klizač 2 na A0. analogRead vraća 0–1023, a analogWrite na D9 prima 0–255. Svjetlina proizlazi iz impulsa Timer1.',code:`// Okreni potenciometar od jednog kraja do drugoga. Prati kako broj iz
+// analogno-digitalnog pretvornika (ADC) određuje svjetlinu LED-ice.
+
+// Pločica pri pokretanju jednom izvodi setup(). Nakon toga redom ponavlja
+// naredbe u funkciji loop().
+void setup() {
+  pinMode(9, OUTPUT);
+  Serial.begin(9600);
+}
+
 void loop() {
   int vrijednost = analogRead(A0);
+
+  // AVR čita A0 u rasponu 0–1023. Cjelobrojno dijeljenje s 4 svodi taj broj
+  // na raspon 0–255 za izlaz D9.
   int pwm = vrijednost / 4;
+
+  // PWM brzo uključuje i isključuje izlaz. Veća vrijednost produljuje
+  // uključeni dio svakog perioda.
   analogWrite(9, pwm);
-  Serial.print("ADC="); Serial.print(vrijednost);
-  Serial.print(" PWM="); Serial.println(pwm);
+  Serial.print("ADC=");
+  Serial.print(vrijednost);
+  Serial.print(" PWM=");
+  Serial.println(pwm);
   delay(100);
 }
 `},

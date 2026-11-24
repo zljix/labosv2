@@ -56,7 +56,7 @@ test('23G negative programs and physical connections cannot earn full points',{t
   const r=await gradeJob(jobFor(s,lm35),{root});assert.equal(r.points,0,JSON.stringify(r));
   const slow=await starter(lm35.taskKey);slow.files['main.py']=slow.files['main.py'].replace('sleep_ms(300)','sleep_ms(600)');
   assert.notEqual((await gradeJob(jobFor(slow,lm35),{root})).points,10);
-  const bmp=newProfiles[2],sensor=await starter(bmp.taskKey);sensor.files['main.py']=sensor.files['main.py'].replace('temperatura, vrijednost = senzor.read()','temperatura, vrijednost = 25, 100000');
+  const bmp=newProfiles[2],sensor=await starter(bmp.taskKey);sensor.files['main.py']=sensor.files['main.py'].replace('temperatura, tlak = senzor.read()','temperatura, tlak = 25, 100000');
   assert.equal((await gradeJob(jobFor(sensor,bmp),{root})).points,0);
   const stale=await starter(bmp.taskKey);stale.files['main.py']=stale.files['main.py'].replace('sleep_ms(2100)','sleep_ms(4000)');
   assert.notEqual((await gradeJob(jobFor(stale,bmp),{root})).points,10);

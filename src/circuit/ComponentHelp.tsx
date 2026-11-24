@@ -1,3 +1,5 @@
+import {arduinoPeripheralExamples} from '../runtime/arduinoPeripheralExamples';
+import {arduinoEnvironmentExamples} from './environmentExamples';
 import {S3,type BoardId,type Language} from '../boards/profiles';
 import {CATALOG,ANALOG_KINDS,type Kind} from './model';
 const help:Record<Kind,{explanation:string;code?:string}>={
@@ -25,17 +27,54 @@ const help:Record<Kind,{explanation:string;code?:string}>={
  irRemote:{explanation:CATALOG.irRemote.description+" Pokreni program pa u Živim ulazima zadaj kratki ili dugi pritisak. U mirovanju uređuj početnu adresu i naredbu."},
  irTransmitter:{explanation:CATALOG.irTransmitter.description+" Otvori primjer predajnika. GPIO5 koristi PWM 38 kHz; prijamnik na GPIO4 ima zaseban izlazni trag. Blokirajući Python predajnik u ovom primjeru nema istodobno dekodiranje."},
  ky040:{explanation:CATALOG.ky040.description+" Otvori primjer CLK/DT, zatim brojač s lab_encoder.py. Driver je vidljiva datoteka projekta. Polling nema IRQ ovisnost i ne može nadoknaditi propuštene bridove."},
- board:{explanation:'GPIO broj čitaj s oznake priključka. Napajanje 3V3 i 5V nisu GPIO-i; GND je zajednička referentna masa. GPIO35–37 rezervirani su u profilu N16R8.',code:'from machine import Pin\nizlaz = Pin(4, Pin.OUT, value=0)'},
+ board:{explanation:'GPIO broj čitaj s oznake priključka. Napajanje 3V3 i 5V nisu GPIO-i; GND je zajednička referentna masa. GPIO35–37 rezervirani su u profilu N16R8.',code:`from machine import Pin
+
+# Početna nula drži izlaz isključenim dok ga program ne uključi.
+izlaz = Pin(4, Pin.OUT, value=0)`},
  breadboard:{explanation:'Komponente samo položene preko crteža nisu povezane. Dodaj vodič od izvoda do točne rupe. Klik na rupu ističe cijelu povezanu skupinu; u Mrežama možeš pročitati sve njezine priključke.'},
  resistor:{explanation:'Otpornik je dio strujnog puta, nema programsku naredbu. Za LED stavi 330 Ω u seriju; veći otpor daje manju struju. Ne prespajaj ga paralelnim vodičem.'},
- led:{explanation:'Spoji izlaz preko otpornika na A, a K na GND. on/off su stalna stanja; PWM za svjetlinu obrađuje radni omjer, a ne samo frekvenciju.',code:'led = Pin(4, Pin.OUT)\nled.on()\n# led.off() gasi LED'},
- button:{explanation:'Pin.IN prima stanje. PULL_UP drži otvoren ulaz na 1, pritisak prema masi daje 0. U simulaciji nema odskakivanja kontakta.',code:'tipkalo = Pin(5, Pin.IN, Pin.PULL_UP)\npritisnuto = tipkalo.value() == 0'},
- potentiometer:{explanation:'1 na 3V3, 3 na GND, klizač 2 na ADC GPIO1–20. read_u16 vraća 0–65535; u ovom modelu ATTN_11DB zasićuje oko 3,1 V.',code:'from machine import Pin, ADC\nadc = ADC(Pin(1), atten=ADC.ATTN_11DB)\nbroj = adc.read_u16()'},
- aht10:{explanation:'Za mjerenje dodaj aht10.py u projekt ili otvori V4/V5. Dvije izlazne vrijednosti su temperatura u °C i relativna vlaga u %. Model traži zasebnu I2C sabirnicu.',code:'from machine import Pin, I2C\nfrom aht10 import AHT10\nsenzor = AHT10(I2C(0, sda=Pin(8), scl=Pin(9)))\ntemperatura, vlaga = senzor.read()'},
+ led:{explanation:'Spoji izlaz preko otpornika na A, a K na GND. on/off su stalna stanja; PWM za svjetlinu obrađuje radni omjer, a ne samo frekvenciju.',code:`from machine import Pin
+from time import sleep_ms
+
+led = Pin(4, Pin.OUT)
+led.on()
+sleep_ms(500)  # LED svijetli pola sekunde.
+led.off()`},
+ button:{explanation:'Pin.IN prima stanje. PULL_UP drži otvoren ulaz na 1, pritisak prema masi daje 0. U simulaciji nema odskakivanja kontakta.',code:`from machine import Pin
+
+tipkalo = Pin(5, Pin.IN, Pin.PULL_UP)
+
+# Pritisnuto tipkalo povezuje GPIO5 s masom.
+pritisnuto = tipkalo.value() == 0
+print("Pritisnuto" if pritisnuto else "Otpušteno")`},
+ potentiometer:{explanation:'1 na 3V3, 3 na GND, klizač 2 na ADC GPIO1–20. read_u16 vraća 0–65535; u ovom modelu ATTN_11DB zasićuje oko 3,1 V.',code:`from machine import Pin, ADC
+
+adc = ADC(Pin(1), atten=ADC.ATTN_11DB)
+broj = adc.read_u16()
+print(broj)  # Položaj klizača prikazan u rasponu od 0 do 65 535.`},
+ aht10:{explanation:'Za mjerenje dodaj aht10.py u projekt ili otvori V4/V5. Dvije izlazne vrijednosti su temperatura u °C i relativna vlaga u %. Model traži zasebnu I2C sabirnicu.',code:`from machine import Pin, I2C
+from aht10 import AHT10
+
+sabirnica = I2C(0, sda=Pin(8), scl=Pin(9), freq=100000)
+senzor = AHT10(sabirnica)
+
+# Jednim čitanjem dobivamo dvije vrijednosti, uvijek istim redom.
+temperatura, vlaga = senzor.read()
+print("Temperatura:", temperatura, "°C")
+print("Relativna vlaga:", vlaga, "%")`},
  bmp180:{explanation:'BMP180 mjeri temperaturu i tlak u Pa. Otvori primjer BMP180: datoteka lab_i2c_sensors.py čita kalibracijske koeficijente i sirove registre pa izračunava rezultat. SDA=GPIO8, SCL=GPIO9, VCC=3V3, GND; adresa 0x77. Pretvorbe temperature i tlaka su odvojene.'},
  bmp280:{explanation:'BMP280 je zaseban senzor tlaka i temperature. Adresa 0x76 ili 0x77 mora odgovarati programu. Otvori njegov primjer s lab_i2c_sensors.py: repeated-start čita registre, forced način pokreće pretvorbu. Za SPI spojeve odaberi zasebnu komponentu BMP280 SPI i pripadajući primjer; ovaj profil koristi I2C.'},
  am2320:{explanation:'AM2320 koristi 0x5C i najviše 100 kHz. Prvo pričekaj 2 s, probudi ga praznim upisom (očekivani NACK), pričekaj pa pošalji 03 00 04. Driver provjerava zaglavlje i CRC16; vraćen je prethodni uzorak. Dva uzastopna očitanja s razmakom od barem 2 s daju novi okoliš. Otvori pripremljeni primjer.'},
- ssd1306:{explanation:'Dodaj ssd1306.py ili otvori V4/V5. Tekst najprije mijenja memoriju slike. fill(0) uklanja stare brojke, show() šalje novu sliku preko I2C-a.',code:'from ssd1306 import SSD1306_I2C\n# bus je I2C sa SDA/SCL odgovarajucih GPIO-a\noled = SSD1306_I2C(128, 64, bus, addr=0x3C)\noled.fill(0)\noled.text("Pozdrav", 0, 0)\noled.show()'},
+ ssd1306:{explanation:'Dodaj ssd1306.py ili otvori V4/V5. Tekst najprije mijenja memoriju slike. fill(0) uklanja stare brojke, show() šalje novu sliku preko I2C-a.',code:`from machine import Pin, I2C
+from ssd1306 import SSD1306_I2C
+
+# U vježbama V4 i V5 zaslon ima svoju sabirnicu.
+sabirnica = I2C(1, sda=Pin(10), scl=Pin(11))
+oled = SSD1306_I2C(128, 64, sabirnica, addr=0x3C)
+
+oled.fill(0)
+oled.text("Pozdrav", 0, 0)
+oled.show()  # Tek sada nova je slika vidljiva na zaslonu.`},
  ssd1306_32:{explanation:'Otvori primjer OLED 128 × 32. Odaberi SSD1306_I2C(128, 32, bus); visina i COM konfiguracija razlikuju se od 128 × 64. show() šalje 512 bajtova vidljive slike.'},
  lcd1602:{explanation:'Otvori primjer LCD1602. Datoteka lcd1602.py šalje 4-bitnu inicijalizaciju pa DDRAM i CGRAM naredbe. VCC=5 V, LV=3V3 uz dvosmjerni pretvornik na ESP32; LV=5 V na Arduinu. SDA/SCL su podaci/takt, 100 kHz. P0=RS, P1=RW, P2=E, P3=BL, P4–P7=D4–D7. PCF8574 adresa 0x20–0x27 mora odgovarati programu. Tekst koristi ASCII, vlastiti znak 0–7 ima 8 redaka od 5 točaka.'},
  lm35:{explanation:CATALOG.lm35.description+" Otvori pripremljeni primjer: program iz napona računa rezultat; početne vrijednosti mijenjaj prije ili tijekom rada."},
@@ -47,13 +86,49 @@ const help:Record<Kind,{explanation:string;code?:string}>={
  ds18b20:{explanation:CATALOG.ds18b20.description+" Otvori primjer DS18B20: onewire.py pronalazi ROM, ds18x20.py provjerava scratchpad CRC i računa temperaturu; _onewire.py stvara GPIO vremenske slotove. Razlučivost mijenjaj programom. ROM ostaje sačuvan u projektu."},
  dht11:{explanation:CATALOG.dht11.description+' Otvori primjer DHT11. dht.py provjerava zbroj petog bajta; pogreška se prikazuje bez prihvaćanja mjerenja.'},
  dht22:{explanation:CATALOG.dht22.description+' Otvori primjer DHT22. Promijeni temperaturu na negativnu i uključi pokus kontrolnog zbroja u Živim ulazima.'},
- servo:{explanation:'servo.py pretvara kut u PWM impuls prema idealiziranom profilu. GPIO signal koristi logiku 3,3 V, a V+ napajanje 5 V. Stvarni motor treba odgovarajuće napajanje i provjeru raspona.',code:'from servo import Servo\nservo = Servo(4)\nservo.angle(90)'},
+ servo:{explanation:'servo.py pretvara kut u PWM impuls prema idealiziranom profilu. GPIO signal koristi logiku 3,3 V, a V+ napajanje 5 V. Stvarni motor treba odgovarajuće napajanje i provjeru raspona.',code:`from servo import Servo
+
+# Argument 4 označuje signalni GPIO. Kut zadaj u stupnjevima.
+motor = Servo(4)
+motor.angle(90)`},
 };
 export default function ComponentHelp({kind,language='micropython',boardId}:{kind:Kind;language?:Language;boardId?:BoardId}){
  const arduino:Partial<Record<Kind,{explanation:string;code?:string}>>={
-  led:{explanation:'Izlaz D4 spoji preko serijskog otpornika na LED A, a K na GND. Izvor se prevodi u AVR program koji upravlja simuliranim GPIO-om.',code:'void setup() { pinMode(4, OUTPUT); }\nvoid loop() {\n  digitalWrite(4, HIGH); delay(500);\n  digitalWrite(4, LOW); delay(500);\n}'},
-  button:{explanation:'INPUT_PULLUP drži otvoren ulaz na HIGH. Tipkalo spojeno prema masi pri pritisku daje LOW.',code:'pinMode(2, INPUT_PULLUP);\nbool pritisnuto = digitalRead(2) == LOW;'},
-  potentiometer:{explanation:'Krajeve 1 i 3 spoji na 5 V i GND, a klizač 2 na A0. Uno/Nano imaju 10-bitni ADC; A6/A7 na Nanu služe samo kao analogni ulazi.',code:'int broj = analogRead(A0); // 0–1023 pri zadanoj referenci'},
+  led:{explanation:'Izlaz D4 spoji preko serijskog otpornika na LED A, a K na GND. Izvor se prevodi u AVR program koji upravlja simuliranim GPIO-om.',code:`const int pinLED = 4;
+
+void setup() {
+  pinMode(pinLED, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(pinLED, HIGH);
+  delay(500);
+  digitalWrite(pinLED, LOW);
+  delay(500);  // Cijeli ciklus traje 500 + 500 = 1000 ms.
+}`},
+  button:{explanation:'INPUT_PULLUP drži otvoren ulaz na HIGH. Tipkalo spojeno prema masi pri pritisku daje LOW.',code:`const int pinTipkala = 2;
+
+void setup() {
+  pinMode(pinTipkala, INPUT_PULLUP);
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Pritiskom se D2 spoji na masu. U konzoli promatraj promjenu.
+  bool pritisnuto = digitalRead(pinTipkala) == LOW;
+  Serial.println(pritisnuto ? "Pritisnuto" : "Otpusteno");
+  delay(100);
+}`},
+  potentiometer:{explanation:'Krajeve 1 i 3 spoji na 5 V i GND, a klizač 2 na A0. Uno/Nano imaju 10-bitni ADC; A6/A7 na Nanu služe samo kao analogni ulazi.',code:`void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  // Okreći potenciometar i prati očitanje od 0 do 1023.
+  int ocitanje = analogRead(A0);
+  Serial.println(ocitanje);
+  delay(100);
+}`},
  };
  for(const k of ['i2cLevelShifter','levelShifter','a4988','stepperMotor','powerSupply','sg90','relay','activeBuzzer','passiveBuzzer','l298n','motor130']as const)arduino[k]=help[k];
  for(const k of ['dht11','dht22']as const)arduino[k]={explanation:help[k].explanation+' Arduino: VCC=5 V, GND, DATA=D2 i vanjski 4,7 kΩ DATA–5 V. Adafruit DHT 1.4.6 čita stvarne GPIO impulse. Biblioteka obično vraća spremljen rezultat unutar 2 s; force=true izvodi novi prijenos. Pogrešan prijenos daje NaN.'};
@@ -61,12 +136,41 @@ export default function ComponentHelp({kind,language='micropython',boardId}:{kin
  arduino.ky040={explanation:CATALOG.ky040.description+" Uno/Nano: CLK=D2, DT=D3, SW=D4; INPUT za A/B, INPUT_PULLUP za SW. Primjer sadrži vlastiti Gray dekoder u C++ i stvarni prevedeni program; vanjska biblioteka nije potrebna."};
  arduino.ds18b20={explanation:CATALOG.ds18b20.description+" Uno/Nano: DQ=D2, VDD/pull-up=5 V. OneWire 2.3.8 pretražuje ROM i prenosi bitove; DallasTemperature 4.0.6 provjerava CRC i čeka pretvorbu. DEVICE_DISCONNECTED_C (−127) označava nevaljano očitanje, nije izmjerena temperatura. Inačica 4.0.6 odbacuje i graničnih −55 °C te uzorak +85 °C/0C. Pripremljeni primjer za te dvije vrijednosti ponovno čita scratchpad, provjerava CRC i izričito označava sirovi registar; čekanje pretvorbe i dalje je obvezno. U Prevedi odaberi obje biblioteke ili otvori pripremljeni primjer."};
  arduino.tm1637={explanation:CATALOG.tm1637.description+" Uno/Nano: CLK=D2, DIO=D3, VCC=LV=5 V i GND. Otvori pripremljeni primjer; lab_tm1637.h je vidljiv izvor bez dodatne biblioteke, timer se ne zauzima. Metode vraćaju false ako nedostaje ACK."};
- arduino.aht10={explanation:'Za Uno/Nano odaberi modul s prilagodbom na 5 V. VCC=5 V, GND zajednička masa, SDA=A4, SCL=A5. LabAHT10 stvarno šalje I2C naredbe, čeka pretvorbu i dekodira šest bajtova. Senzor ima zasebnu sabirnicu. Otvori Arduino AHT10 primjer.',code:'#include <LabAHT10.h>\nLabAHT10 senzor;\n// setup(): senzor.begin();\nfloat temperatura, vlaga;\nbool uspjelo = senzor.read(temperatura, vlaga);'};
+ arduino.aht10={explanation:'Za Uno/Nano odaberi modul s prilagodbom na 5 V. VCC=5 V, GND zajednička masa, SDA=A4, SCL=A5. LabAHT10 stvarno šalje I2C naredbe, čeka pretvorbu i dekodira šest bajtova. Senzor ima zasebnu sabirnicu. Otvori Arduino AHT10 primjer.',code:arduinoPeripheralExamples.aht10.code};
  arduino.ssd1306_32={explanation:'U8g2_12832 2.37.1: konstruktor U8G2_SSD1306_128X32_UNIVISION_1_HW_I2C, font 6×10 i 128 B stranice. SDA=A4, SCL=A5, modul OLED s prilagodbom na 5 V. Odaberi ovaj paket umjesto U8g2; isti upstream s dodatnim profilom 32.'};
  arduino.lcd1602={explanation:help.lcd1602.explanation+' Biblioteka LabLCD1602 1.0.0 koristi Wire; begin(), setCursor(), print(), createChar() i backlight(). Primjer sadrži provjeren prevedeni program.'};
- arduino.ssd1306={explanation:'OLED s prilagodbom na 5 V: SDA=D6, SCL=D7. U8g2 _1_ koristi 128 B međuspremnika. firstPage() započinje sliku, a do/while(nextPage()) šalje sve stranice. Priložen je font 6×10; ostali fontovi nisu uključeni.',code:'#include <U8g2lib.h>\nU8G2_SSD1306_128X64_NONAME_1_SW_I2C oled(U8G2_R0, 7, 6, U8X8_PIN_NONE);\n// setup(): oled.begin(); oled.setFont(u8g2_font_6x10_tf);\n// loop(): firstPage(); crtanje; nextPage();'};
- arduino.servo={explanation:'V+=5 V, GND zajednička masa, SIG=D9. Servo biblioteka upravlja Timerom1 i GPIO impulsima; nije potreban hardware PWM izlaz. attach(9,500,2500) usklađuje raspon s idealiziranim modelom. D9/D10 analogWrite dijeli Timer1 i nije dostupan dok Servo koristi taj timer.',code:'#include <Servo.h>\nServo motor;\n// setup(): motor.attach(9, 500, 2500);\nmotor.write(90);'};
- for(const kind of ['bmp180','bmp280','am2320']as const)arduino[kind]={explanation:help[kind].explanation+' Na Uno/Nano odaberi profil modula s prilagodbom na 5 V: VCC=5 V, GND, SDA=A4, SCL=A5. U Prevedi odaberi LabI2CSensors 1.0.0 ili otvori Arduino primjer s već prevedenim programom.',code:'#include <LabI2CSensors.h>\n// LabBMP180 / LabBMP280 / LabAM2320\n// read() vraća uspjeh; tlak je u Pa.'};
+ arduino.ssd1306={explanation:'OLED s prilagodbom na 5 V: SDA=D6, SCL=D7. U8g2 _1_ koristi 128 B međuspremnika. firstPage() započinje sliku, a do/while(nextPage()) šalje sve stranice. Priložen je font 6×10; ostali fontovi nisu uključeni.',code:`#include <U8g2lib.h>
+
+// U konstruktoru prvo navedi SCL (D7), zatim SDA (D6).
+U8G2_SSD1306_128X64_NONAME_1_SW_I2C oled(
+    U8G2_R0, 7, 6, U8X8_PIN_NONE);
+
+void setup() {
+  oled.begin();
+  oled.setFont(u8g2_font_6x10_tf);
+  oled.firstPage();
+  do {
+    oled.drawStr(0, 12, "Pozdrav");
+  } while (oled.nextPage());  // Pošalji sve stranice iste slike.
+}
+
+void loop() {
+  // Tekst ostaje prikazan dok ne pošaljemo novu sliku.
+}`};
+ arduino.servo={explanation:'V+=5 V, GND zajednička masa, SIG=D9. Servo biblioteka upravlja Timerom1 i GPIO impulsima; nije potreban hardware PWM izlaz. attach(9,500,2500) usklađuje raspon s idealiziranim modelom. D9/D10 analogWrite dijeli Timer1 i nije dostupan dok Servo koristi taj timer.',code:`#include <Servo.h>
+
+Servo motor;
+
+void setup() {
+  // Signal je na D9. Granice trajanja impulsa zadane su u mikrosekundama.
+  motor.attach(9, 500, 2500);
+  motor.write(90);
+}
+
+void loop() {
+  // Biblioteka nastavlja slati impulse za zadani kut.
+}`};
+ for(const kind of ['bmp180','bmp280','am2320']as const)arduino[kind]={explanation:help[kind].explanation+' Na Uno/Nano odaberi profil modula s prilagodbom na 5 V: VCC=5 V, GND, SDA=A4, SCL=A5. U Prevedi odaberi LabI2CSensors 1.0.0 ili otvori Arduino primjer s već prevedenim programom.',code:arduinoEnvironmentExamples[kind].code};
  for(const k of ANALOG_KINDS)arduino[k]={explanation:help[k].explanation+' Uno/Nano: AO/OUT na A0 (joystick VRX=A0, VRY=A1, SW=D2 uz INPUT_PULLUP); digitalni DO na D2. DEFAULT ADC referenca je 5 V i raspon 0–1023. Pripremljeni program ima valjan prevedeni artefakt.'};
  const s3:Partial<Record<Kind,{explanation:string;code?:string}>>={
   tm1637:{explanation:CATALOG.tm1637.description+' S3 C++: CLK4/DIO5, VCC=5 V, LV=3V3 i GND. lab_tm1637.h šalje LSB bajtove i deveti ACK takt. Zasebni primjeri pokazuju segmentne bitove i programsko brojilo MM:SS; ono nije DS1302 RTC.'},

@@ -98,66 +98,147 @@ export const cppS3ST7735=cppST7735
   'uint8_t block[256];for(int i=0;i<256;i+=2){block[i]=color>>8;block[i+1]=color&255;}while(n){uint32_t take=min((uint32_t)128,(uint32_t)n);SPI.writeBytes(block,take*2);n-=take;}');
 
 const irHint='S3: IR VCC=3V3, GND, OUT=GPIO4 (aktivno LOW, 30 kΩ pull-up). Vidljivi lab_s3_nec.h mjeri GPIO bridove uz čekanje 25 µs između očitanja: standardni NEC 8-bit, inverzni bajtovi, repeat do 150 ms. read() traži početak u 12 ms, a započeti okvir prati do kraja, najviše 100 ms. Program s dugim delay() može propustiti okvir. Nema attachInterrupt(), AVR INT0/Timer2 ni opće IRremote podrške.';
-const irStart=`#include "lab_s3_nec.h"
-LabS3NEC ir(4);
-`;
-const printFrame=`Serial.print("S3 NEC A=");Serial.print(a);Serial.print(" C=");Serial.print(cmd);Serial.print(" R=");Serial.println(repeat?1:0);`;
 const spiHint='S3 SPI: SCK12/MOSI11/MISO13, TFT CS10/DC9/RESET8, BMP280 CS7. VCC/logika/BL=3V3, GND zajednički. CS se najprije postavlja HIGH. SPI.begin(12,13,11) zadaje stvarne GPIO-e. ST7735 je postojeći 128×128 Lab green-tab profil (RGB565, pomaci i četiri rotacije); driver ima 256 B blok bez punog framebuffera. BMP280 čita ID/kalibraciju i računa forced uzorak. SPI nema ACK.';
 const spiCode=(key:SPIExample)=>arduinoSPIExamples[key].code
  .replace('// Pin brojevi su D oznake Uno/Nano, nisu fizički redni brojevi.',
-  '// S3 GPIO: SCK12/MOSI11/MISO13. Svaki uredjaj ima zaseban CS.')
- .replace('Serial.begin(9600);','Serial.begin(9600);\n // Odabiri su neaktivni prije pokretanja zajednicke sabirnice.\n digitalWrite(10,HIGH);pinMode(10,OUTPUT);digitalWrite(7,HIGH);pinMode(7,OUTPUT);\n SPI.begin(12,13,11);');
+  '// S3 GPIO: SCK12/MOSI11/MISO13. Svaki uređaj ima zaseban CS.')
+ .replace('Serial.begin(9600);','Serial.begin(9600);\n  // Odabiri su neaktivni prije pokretanja zajednicke sabirnice.\n  digitalWrite(10, HIGH);\n  pinMode(10, OUTPUT);\n  digitalWrite(7, HIGH);\n  pinMode(7, OUTPUT);\n  SPI.begin(12, 13, 11);');
 
 export const s3ProtocolExamples={
- irPulses:{title:'S3 C++ · IR NEC trajanja impulsa',hint:irHint+' Ispisuje izmjereni uvod, posljednji bitni impuls i razmak; to nije ispis svih impulsa okvira.',code:irStart+`void setup(){Serial.begin(9600);ir.begin();Serial.println("S3 IR READY");}
-void loop(){
- uint8_t a,cmd;bool repeat;
- if(ir.read(a,cmd,repeat)){
-  ${printFrame}
-  Serial.print("S3 PULSE LEADER=");Serial.print(ir.leaderUs);
-  Serial.print(" MARK=");Serial.print(ir.bitMarkUs);
-  Serial.print(" SPACE=");Serial.println(ir.bitSpaceUs);
- }
- delay(1);
+ irPulses:{title:'S3 C++ · IR NEC trajanja impulsa',hint:irHint+' Ispisuje izmjereni uvod, posljednji bitni impuls i razmak; to nije ispis svih impulsa okvira.',code:`// Kratko pritisni tipku virtualnog daljinskog upravljača i usporedi
+// trajanja impulsa infracrvenog prijamnika.
+
+#include "lab_s3_nec.h"
+LabS3NEC ir(4);
+
+void setup() {
+  Serial.begin(9600);
+  ir.begin();
+  Serial.println("S3 IR READY");
+}
+
+// Prijamnik daje nisku razinu tijekom impulsa. Dekoder iz trajanja impulsa
+// i razmaka prepoznaje dijelove NEC poruke.
+void loop() {
+  uint8_t a, cmd;
+  bool repeat;
+  if (ir.read(a, cmd, repeat)) {
+    Serial.print("S3 NEC A=");
+    Serial.print(a);
+    Serial.print(" C=");
+    Serial.print(cmd);
+    Serial.print(" R=");
+    Serial.println(repeat ? 1 : 0);
+    Serial.print("S3 PULSE LEADER=");
+    Serial.print(ir.leaderUs);
+    Serial.print(" MARK=");
+    Serial.print(ir.bitMarkUs);
+    Serial.print(" SPACE=");
+    Serial.println(ir.bitSpaceUs);
+  }
+  delay(1);
 }
 `},
- irNEC:{title:'S3 C++ · NEC adresa, naredba i repeat',hint:irHint+' Nevaljani inverzi/vremena povećavaju errors i brišu povijest ponavljanja; novi valjani okvir obnavlja prijam.',code:irStart+`uint16_t errors=0;
-void setup(){Serial.begin(9600);ir.begin();Serial.println("S3 IR READY");}
-void loop(){
- uint8_t a,cmd;bool repeat;
- if(ir.read(a,cmd,repeat)){${printFrame}}
- if(ir.errors!=errors){errors=ir.errors;Serial.print("S3 NEC ERROR=");Serial.println(errors);}
- delay(1);
+ irNEC:{title:'S3 C++ · NEC adresa, naredba i repeat',hint:irHint+' Nevaljani inverzi/vremena povećavaju errors i brišu povijest ponavljanja; novi valjani okvir obnavlja prijam.',code:`// Kratko pritisni pa zadrži istu tipku daljinskog upravljača. Usporedi
+// adresu, naredbu i oznaku ponavljanja.
+
+#include "lab_s3_nec.h"
+LabS3NEC ir(4);
+uint16_t errors = 0;
+
+void setup() {
+  Serial.begin(9600);
+  ir.begin();
+  Serial.println("S3 IR READY");
+}
+
+// Prvi okvir nosi adresu i naredbu. Oznaka ponavljanja povezuje držanje
+// tipke s prethodno prihvaćenom naredbom.
+void loop() {
+  uint8_t a, cmd;
+  bool repeat;
+  if (ir.read(a, cmd, repeat)) {
+    Serial.print("S3 NEC A=");
+    Serial.print(a);
+    Serial.print(" C=");
+    Serial.print(cmd);
+    Serial.print(" R=");
+    Serial.println(repeat ? 1 : 0);
+  }
+  if (ir.errors != errors) {
+    errors = ir.errors;
+    Serial.print("S3 NEC ERROR=");
+    Serial.println(errors);
+  }
+  delay(1);
 }
 `},
- irLED:{title:'S3 C++ · IR upravlja PWM LED-icom',hint:irHint+' LED preko 680 Ω na GPIO7. Adresa 0: POWER69 preklapa samo novi okvir, PLUS70/MINUS21 mijenjaju svjetlinu za 10 % i pri repeat. analogWrite koristi zaseban LEDC izlaz.',code:irStart+`int brightness=0;
-void setup(){Serial.begin(9600);ir.begin();analogWrite(7,0);Serial.println("S3 IR READY LED=0");}
-void loop(){
- uint8_t a,cmd;bool repeat;
- if(ir.read(a,cmd,repeat)&&a==0){
-  if(cmd==69&&!repeat)brightness=brightness?0:50;
-  else if(cmd==70)brightness=min(100,brightness+10);
-  else if(cmd==21)brightness=max(0,brightness-10);
-  else {delay(1);return;} // Nepoznata naredba ne mijenja izlaz.
-  analogWrite(7,(long)brightness*255/100);
-  Serial.print("S3 LED=");Serial.print(brightness);
-  Serial.print(" R=");Serial.println(repeat?1:0);
- }
- delay(1);
+ irLED:{title:'S3 C++ · IR upravlja PWM LED-icom',hint:irHint+' LED preko 680 Ω na GPIO7. Adresa 0: POWER69 preklapa samo novi okvir, PLUS70/MINUS21 mijenjaju svjetlinu za 10 % i pri repeat. analogWrite koristi zaseban LEDC izlaz.',code:`// Uključi LED tipkom za napajanje, a zatim provjeri učinak kratkog i dugog
+// pritiska na tipke za svjetlinu.
+
+#include "lab_s3_nec.h"
+LabS3NEC ir(4);
+int brightness = 0;
+
+void setup() {
+  Serial.begin(9600);
+  ir.begin();
+  analogWrite(7, 0);
+  Serial.println("S3 IR READY LED=0");
+}
+
+// Odluka koristi i broj naredbe i vrstu okvira. Tako držanje tipke za
+// napajanje ne uključuje i isključuje LED uzastopno.
+void loop() {
+  uint8_t a, cmd;
+  bool repeat;
+  if (ir.read(a, cmd, repeat) && a == 0) {
+    if (cmd == 69 && !repeat) {
+      brightness = brightness ? 0 : 50;
+    } else if (cmd == 70) {
+      brightness = min(100, brightness + 10);
+    } else if (cmd == 21) {
+      brightness = max(0, brightness - 10);
+    } else {
+      delay(1);
+      return;
+    } // Nepoznata naredba ne mijenja izlaz.
+    analogWrite(7, (long)brightness * 255 / 100);
+    Serial.print("S3 LED=");
+    Serial.print(brightness);
+    Serial.print(" R=");
+    Serial.println(repeat ? 1 : 0);
+  }
+  delay(1);
 }
 `},
- irTransmit:{title:'S3 C++ · IR predajnik LEDC 38 kHz',hint:irHint+' Predajnik SIG=GPIO5, VCC=3V3 i GND. LEDC daje 38000 Hz, 85/255 duty. Šalje naredbe 69/70 i po dva repeat okvira, s počecima približno svakih 110 ms. Blokirajući predajnik pokazuje trag uparenog OUT u Mjerenjima; isti program ne dekodira vlastito slanje.',code:`#include "lab_s3_nec.h"
+ irTransmit:{title:'S3 C++ · IR predajnik LEDC 38 kHz',hint:irHint+' Predajnik SIG=GPIO5, VCC=3V3 i GND. LEDC daje 38000 Hz, 85/255 duty. Šalje naredbe 69/70 i po dva repeat okvira, s počecima približno svakih 110 ms. Blokirajući predajnik pokazuje trag uparenog OUT u Mjerenjima; isti program ne dekodira vlastito slanje.',code:`// Prati kako odašiljač naizmjenično šalje dvije NEC naredbe. Promatraj
+// izlaz uparenog prijamnika.
+
+#include "lab_s3_nec.h"
 LabS3NECSender tx(5);
-uint8_t command=69;
-void setup(){
- Serial.begin(9600);
- if(!tx.begin()){Serial.println("S3 IR LEDC ERROR");while(true)delay(100);}
- Serial.println("S3 IR TX READY");
+uint8_t command = 69;
+
+void setup() {
+  Serial.begin(9600);
+  if (!tx.begin()) {
+    Serial.println("S3 IR LEDC ERROR");
+    while (true) {
+      delay(100);
+    }
+  }
+  Serial.println("S3 IR TX READY");
 }
-void loop(){
- tx.send(0,command,2);
- Serial.print("S3 IR TX A=0 C=");Serial.print(command);Serial.println(" REPEATS=2");
- command=command==69?70:69;delay(1000);
+
+void loop() {
+  // Nosilac od približno 38 kHz prenosi impulse. Raspored skupina impulsa
+  // određuje koju će naredbu prijamnik dekodirati.
+  tx.send(0, command, 2);
+  Serial.print("S3 IR TX A=0 C=");
+  Serial.print(command);
+  Serial.println(" REPEATS=2");
+  command = command == 69 ? 70 : 69;
+  delay(1000);
 }
 `},
  tftGraphics:{title:'S3 C++ · ST7735 boje, tekst i geometrija',hint:spiHint+' Promijeni RGB565 bajtove ili tekst i ponovno prevedi; konzolna poruka ne crta sliku.',code:spiCode('tftGraphics')},

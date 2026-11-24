@@ -29,7 +29,7 @@ test('24P fresh isolated C++ compilation: independent correct algorithms and tim
   if(id==='24P-regulator@2'){
    const wrong=await starter(p.taskKey,target),s3=target==='s3-cpp',code=wrong.files['main.ino'];
    const values='0,90,90,0,0,90,0,0,90,90,0,0,90,0';
-   wrong.files['main.ino']=s3?code.replace('int pulse=opened?1500:500;',`static const int scripted[]={${values}};int stage=millis()/3000;int pulse=scripted[stage<14?stage:13]?1500:500;`):
+   wrong.files['main.ino']=s3?code.replace('int pulse = opened ? 1500 : 500;',`static const int scripted[]={${values}};int stage=millis()/3000;int pulse=scripted[stage<14?stage:13]?1500:500;`):
     code.replace('int kut = otvoreno ? 90 : 0;',`static const int scripted[]={${values}};int stage=millis()/3000;int kut=scripted[stage<14?stage:13];`);
    assert.notEqual(wrong.files['main.ino'],code);await check('timer-ignores-temperature',wrong,p,3);
   }

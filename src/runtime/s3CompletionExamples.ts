@@ -12,19 +12,19 @@ export const cppS3ILI9341=cppILI9341.replace('#include <avr/pgmspace.h>','#inclu
  'uint8_t block[256];for(int i=0;i<256;i+=2){block[i]=color>>8;block[i+1]=color&255;}while(n){uint32_t take=min((uint32_t)128,n);SPI.writeBytes(block,take*2);n-=take;}');
 const i2c=(key:'bmp180'|'bmp280'|'am2320')=>arduinoEnvironmentExamples[key].code
  .replace('#include <LabI2CSensors.h>','#include <Wire.h>\n#include <LabI2CSensors.h>')
- .replace('Serial.begin(9600);','Serial.begin(9600);Wire.begin(8,9,100000);');
+ .replace('Serial.begin(9600);','Serial.begin(9600);\n  Wire.begin(8, 9, 100000);');
 const tm=(key:'tmSegments'|'tmClock')=>arduinoTMExamples[key].code
- .replace('// CLK=D2, DIO=D3. VCC i LV na 5 V, GND zajednicki.','// S3: CLK=GPIO4, DIO=GPIO5, VCC=5 V, LV=3V3 i zajednicki GND.')
+ .replace('// CLK=D2, DIO=D3. VCC i LV na 5 V, GND zajednički.','// S3: CLK=GPIO4, DIO=GPIO5, VCC=5 V, LV=3V3 i zajednički GND.')
  .replace('LabTM1637 prikaz(2, 3);','LabTM1637 prikaz(4, 5);');
 const ili=(key:'iliGraphics'|'iliRotation')=>arduinoILIExamples[key].code
  .replace('// D oznake Uno/Nano. Slika je u RAM-u kontrolera, ne u 2 KB MCU SRAM-a.','// S3 GPIO: SCK12/MOSI11/MISO13, CS10/DC9/RESET8; BL=3V3.')
- .replace('Serial.begin(9600);','Serial.begin(9600);digitalWrite(10,HIGH);pinMode(10,OUTPUT);SPI.begin(12,13,11);');
+ .replace('Serial.begin(9600);','Serial.begin(9600);\n  digitalWrite(10, HIGH);\n  pinMode(10, OUTPUT);\n  SPI.begin(12, 13, 11);');
 const touch=(key:'touchRaw'|'touchCalibration'|'touchRotation')=>arduinoTouchExamples[key].code
  // Espressif Arduino.h includes math.h, whose global y0/y1 functions would
  // collide with the original AVR calibration variables. Keep both exports
  // and simulation on the same explicitly named calibration source.
  .replace(/\b[xy][01]\b/g,name=>'cal'+name.toUpperCase())
- .replace('void beginDevices(){','void beginDevices(){\n // S3: izriciti SPI pinovi; oba CS HIGH prije inicijalizacije.\n digitalWrite(10,HIGH);pinMode(10,OUTPUT);digitalWrite(7,HIGH);pinMode(7,OUTPUT);\n SPI.begin(12,13,11);');
+ .replace('void beginDevices() {','void beginDevices() {\n  // S3: izriciti SPI pinovi; oba CS HIGH prije inicijalizacije.\n  digitalWrite(10, HIGH);\n  pinMode(10, OUTPUT);\n  digitalWrite(7, HIGH);\n  pinMode(7, OUTPUT);\n  SPI.begin(12, 13, 11);');
 const touchHint='S3: ILI9341 i XPT2046 dijele SCK12/MOSI11/MISO13, zasebni CS10/7, TFT DC9/RESET8, opcionalni IRQ2. VCC/logika/BL=3V3 i zajednički GND. Vidljivi driveri primaju 12-bitne X/Y/Z1/Z2 podatke kroz SPI; kalibracija i rotacija računaju se u programu. Z nije sila. Lab krajevi 200–3900/250–3850 nisu univerzalna fizička kalibracija. ';
 export const s3CompletionExamples={
  bmp180:{title:'S3 C++ · BMP180 pojedinačno',hint:'GPIO8/9, VCC=3V3 i GND. LabI2CSensors čita BMP180 kalibraciju i odvojene pretvorbe, zatim računa °C/Pa. Wire.begin ima izričite pinove. Nevaljan prijenos ne ispisuje lažno mjerenje.',code:i2c('bmp180')},

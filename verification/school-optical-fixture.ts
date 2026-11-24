@@ -8,7 +8,7 @@ export function alternateOptical(p:Project){
   let code=p.files[file].replaceAll('senzor','uredaj');
   code=py?code.replaceAll('while True:','while 1:').replaceAll('0.02 *','0.025 *').replace('sleep_ms(700)','sleep_ms(350)\n    sleep_ms(350)'):
     code.replaceAll('.02f *','.025f *').replace('delay(700)','delay(350); delay(350)');
-  if(s3)code=code.replace('sda=Pin(8), scl=Pin(9)','sda=Pin(6), scl=Pin(7)').replace('Wire.begin(8,9,100000)','Wire.begin(6,7,100000)');
+  if(s3)code=code.replace('sda=Pin(8), scl=Pin(9)','sda=Pin(6), scl=Pin(7)').replace('Wire.begin(8, 9, 100000)','Wire.begin(6,7,100000)');
   p.files[file]=code;
   if(p.circuit.kind==='editable'){
     const board=p.circuit.components.find(c=>c.kind==='board')!;

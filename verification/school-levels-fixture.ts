@@ -15,8 +15,8 @@ export function alternateLevel(p:Project,v:string){
     const duration=py?500:s3?300:200;
     code=py?`from machine import Pin\nimport time\nl=Pin(6,Pin.OUT)\nwhile 1:\n l.value(1)\n time.sleep_ms(${duration/2})\n time.sleep_ms(${duration/2})\n l.value(0)\n time.sleep_ms(${duration})\n`:
       `void setup(){pinMode(6,OUTPUT);}void loop(){digitalWrite(6,1);delay(${duration/2});delay(${duration/2});digitalWrite(6,0);delay(${duration});}\n`;
-  }else if(v==='i2cBmp280')code=code.replaceAll('temperatura','toplina').replaceAll('vrijednost','pritisak').replaceAll('2100','2000');
-  if(v.startsWith('i2c')&&s3)code=code.replace('sda=Pin(8), scl=Pin(9)','sda=Pin(6), scl=Pin(7)').replace('Wire.begin(8,9,100000)','Wire.begin(6,7,100000)');
+  }else if(v==='i2cBmp280')code=code.replaceAll('temperatura','toplina').replaceAll('tlak','pritisak').replaceAll('2100','2000');
+  if(v.startsWith('i2c')&&s3)code=code.replace('sda=Pin(8), scl=Pin(9)','sda=Pin(6), scl=Pin(7)').replace('Wire.begin(8, 9, 100000)','Wire.begin(6,7,100000)');
   p.files[file]=code;
   if(p.circuit.kind==='editable'){
     const board=p.circuit.components.find(c=>c.kind==='board')!;
@@ -49,7 +49,7 @@ export function wrongLevel(p:Project,v:string,advanced=false){
   if(v==='i2cBmp280'){
     if(advanced)code=py?'from time import ticks_ms\n_saved_print=print\ndef print(*args):\n    if ticks_ms()<12000: _saved_print(*args)\n'+code:
       code.replaceAll('Serial.print(','if(millis()<12000)Serial.print(').replaceAll('Serial.println(','if(millis()<12000)Serial.println(');
-    else code=py?code.replace('(temperatura, vrijednost)','(temperatura+5, vrijednost)'):code.replace('Serial.print(temperatura, 2)','Serial.print(temperatura+5, 2)');
+    else code=py?code.replace('(temperatura, tlak)','(temperatura+5, tlak)'):code.replace('Serial.print(temperatura, 2)','Serial.print(temperatura+5, 2)');
   }
   if(code===p.files[file])throw Error('Negative fixture did not change '+v+' '+p.board.id+' '+advanced);
   p.files[file]=code;return p;

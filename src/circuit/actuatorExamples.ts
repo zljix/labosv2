@@ -35,26 +35,45 @@ export function actuatorCircuit(key:ActuatorExample,board:BoardId=S3):Circuit{
 }
 const servoHint='SG90 ima zaseban 5 V izvor i zajedničku masu. Modelni raspon 1000–2000 µs odgovara 0–180°; kalibracija je svojstvo profila, nije jamstvo fizičkog hoda. Impulse mjeri simulator, kut ne preuzima iz varijable programa.';
 const dcHint='L298N: VS=6 V iz zasebnog izvora, VSS=5 V, GND zajednički; regulator 5V-EN i oba EN jumpera uklonjeni. IN1/IN2 biraju smjer, ENA nosi PWM. EN LOW znači slobodno zaustavljanje; jednaki IN uz EN HIGH koče. Stalni pad mosta 2 V daje oko 4 V na motoru pri 100 %. Relativni pokazatelj |U|/6 V nije RPM.';
-const pyDC=`from machine import Pin, PWM
+const pythonActuatorSetup = `from machine import Pin, PWM
 from time import sleep_ms
+
 a1, a2 = Pin(8, Pin.OUT, value=0), Pin(9, Pin.OUT, value=0)
 b1, b2 = Pin(10, Pin.OUT, value=0), Pin(11, Pin.OUT, value=0)
-ena, enb = PWM(Pin(4), freq=1000, duty_u16=0), PWM(Pin(5), freq=1000, duty_u16=0)
+ena, enb = PWM(Pin(4), freq=1000, duty_u16=0), PWM(
+    Pin(5), freq=1000, duty_u16=0
+)
+
 `;
+
 export const actuatorExamples={
- sg90Sweep:{title:'SG90 · kalibracija i impuls',hint:servoHint,code:`from servo import Servo
+ sg90Sweep:{title:'SG90 · kalibracija i impuls',hint:servoHint,code:`# Prati zadane položaje 0°, 90° i 180° i usporedi ih sa širinom upravljačkog
+# impulsa serva.
+
+from servo import Servo
 from time import sleep_ms
+
 servo = Servo(6, min_us=1000, max_us=2000)
+
 while True:
+    # U ovom profilu impuls od 1000 µs daje 0°, a 2000 µs daje 180°. Sredini
+    # hoda odgovara 1500 µs.
     for kut in (0, 90, 180):
         servo.angle(kut)
         print("SG90 ANGLE=%d" % kut)
         sleep_ms(600)
 `},
- relayContacts:{title:'Relej · COM, NO i NC',hint:'VCC=5 V, LV=3,3 V / 5 V, IN=GPIO6 / D7; aktivan LOW. COM–NC svijetli bez pobude, COM–NO uz pobudu. Kontakti preklapaju zasebni 5 V krug s dva LED-a i otpornicima 680 Ω; njegova masa smije ostati odvojena. Promijeni aktivnu razinu u svojstvima pa prilagodi kod.',code:`from machine import Pin
+ relayContacts:{title:'Relej · COM, NO i NC',hint:'VCC=5 V, LV=3,3 V / 5 V, IN=GPIO6 / D7; aktivan LOW. COM–NC svijetli bez pobude, COM–NO uz pobudu. Kontakti preklapaju zasebni 5 V krug s dva LED-a i otpornicima 680 Ω; njegova masa smije ostati odvojena. Promijeni aktivnu razinu u svojstvima pa prilagodi kod.',code:`# Promatraj dvije LED-ice dok relej prebacuje zajednički kontakt COM iz
+# jedne grane u drugu.
+
+from machine import Pin
 from time import sleep_ms
+
 # Najprije zadaj neaktivnu razinu HIGH.
 relej = Pin(6, Pin.OUT, value=1)
+
+# Bez pobude COM je spojen na normalno zatvoreni kontakt NC. Nakon pobude
+# spaja se na normalno otvoreni kontakt NO.
 while True:
     relej.value(0)
     print("RELAY ON -> COM-NO")
@@ -63,9 +82,16 @@ while True:
     print("RELAY OFF -> COM-NC")
     sleep_ms(700)
 `},
- activeAlarm:{title:'Aktivna zujalica · uključeno i isključeno',hint:'Generički modul s pogonom: VCC=5 V, GND, SIG=GPIO7 / D4. Stalni HIGH uključuje ugrađeni 2300 Hz oscilator; ovo nije potvrđeni SFM-20B. Ton prvo promatraj, zatim po želji uključi slušanje.',code:`from machine import Pin
+ activeAlarm:{title:'Aktivna zujalica · uključeno i isključeno',hint:'Generički modul s pogonom: VCC=5 V, GND, SIG=GPIO7 / D4. Stalni HIGH uključuje ugrađeni 2300 Hz oscilator; ovo nije potvrđeni SFM-20B. Ton prvo promatraj, zatim po želji uključi slušanje.',code:`# Uključi pa isključi aktivnu zujalicu i usporedi trajanje zvuka s trajanjem
+# stanke.
+
+from machine import Pin
 from time import sleep_ms
+
 zujalica = Pin(7, Pin.OUT, value=0)
+
+# Aktivna zujalica sama stvara ton. Digitalnim izlazom zadaješ kada se ton
+# čuje.
 while True:
     zujalica.value(1)
     print("ACTIVE ON")
@@ -74,10 +100,17 @@ while True:
     print("ACTIVE OFF")
     sleep_ms(500)
 `},
- piezoTone:{title:'Pasivni piezo · frekvencija i trajanje',hint:'Piezo s ugrađenim pogonom, VCC=5 V, SIG=GPIO7 / D4. PWM ili tone stvara izmjenični signal. DC je tih. Arduino tone koristi Timer2: ne kombiniraj ga s IR nositeljem ili PWM D3/D11. Zvuk je opcionalan; mjerenja daju frekvenciju i stanje.',code:`from machine import Pin, PWM
+ piezoTone:{title:'Pasivni piezo · frekvencija i trajanje',hint:'Piezo s ugrađenim pogonom, VCC=5 V, SIG=GPIO7 / D4. PWM ili tone stvara izmjenični signal. DC je tih. Arduino tone koristi Timer2: ne kombiniraj ga s IR nositeljem ili PWM D3/D11. Zvuk je opcionalan; mjerenja daju frekvenciju i stanje.',code:`# Usporedi tri tona pasivne zujalice i pronađi dio programa koji određuje
+# njihovu visinu.
+
+from machine import Pin, PWM
 from time import sleep_ms
+
 piezo = PWM(Pin(7), freq=440, duty_u16=0)
+
 while True:
+    # Frekvencija govori koliko se puta signal ponavlja u sekundi.
+    # Udvostručenje s 440 na 880 Hz daje ton za oktavu viši.
     for hz in (440, 880, 1320):
         piezo.freq(hz)
         piezo.duty_u16(32768)
@@ -88,13 +121,21 @@ while True:
     print("TONE OFF")
     sleep_ms(500)
 `},
- dcDrive:{title:'DC motor · smjer, PWM i kočenje',hint:dcHint,code:pyDC+`while True:
+ dcDrive:{title:'DC motor · smjer, PWM i kočenje',hint:dcHint,code:`# Usporedi rad motora u jednom i drugom smjeru, slobodno zaustavljanje i
+# kočenje.
+
+${pythonActuatorSetup}# Ulazi IN1 i IN2 biraju smjer napona na motoru. PWM na ENA određuje koliki
+# je dio vremena most uključen.
+while True:
     for duty in (16384, 32768, 65535):
         a1.value(1)
         a2.value(0)
         ena.duty_u16(duty)
         print("MOTOR FORWARD PWM=%d" % duty)
         sleep_ms(500)
+
+    # Isključen most dopušta slobodno zaustavljanje. Za električno kočenje
+    # most mora biti uključen, a oba ulaza smjera jednaka.
     ena.duty_u16(0)
     print("MOTOR COAST")
     sleep_ms(300)
@@ -109,7 +150,12 @@ while True:
     print("MOTOR BRAKE")
     sleep_ms(500)
 `},
- dualDrive:{title:'L298N · dva neovisna motora',hint:dcHint+' Drugi motor: IN3/IN4 i ENB. Motor A i B imaju neovisan smjer i radni omjer.',code:pyDC+`while True:
+ dualDrive:{title:'L298N · dva neovisna motora',hint:dcHint+' Drugi motor: IN3/IN4 i ENB. Motor A i B imaju neovisan smjer i radni omjer.',code:`# Prati motore A i B zasebno. Usporedi smjer i radni omjer kad program
+# promijeni zadane izlaze.
+
+${pythonActuatorSetup}# Svaki kanal mosta ima vlastite ulaze smjera i svoj signal za omogućavanje.
+# Zato se jedan motor može zaustaviti dok drugi radi.
+while True:
     a1.value(1)
     a2.value(0)
     b1.value(0)
@@ -123,12 +169,27 @@ while True:
     print("DUAL A=+100 B=COAST")
     sleep_ms(800)
 `},
- servoMotorTone:{title:'Servo + motor + ton · raspodjela timera',hint:servoHint+' '+dcHint+' Uno/Nano: Servo Timer1 na D8, motor PWM Timer0 na D5, tone Timer2 na D4; motor D9/D10 uz Servo ili D3/D11 uz tone nije valjan izbor PWM-a. IR prijam bez timera može koegzistirati, IR predajnik koristi Timer2 i sukobljava se s tone.',code:pyDC+`from servo import Servo
+ servoMotorTone:{title:'Servo + motor + ton · raspodjela timera',hint:servoHint+' '+dcHint+' Uno/Nano: Servo Timer1 na D8, motor PWM Timer0 na D5, tone Timer2 na D4; motor D9/D10 uz Servo ili D3/D11 uz tone nije valjan izbor PWM-a. IR prijam bez timera može koegzistirati, IR predajnik koristi Timer2 i sukobljava se s tone.',code:`# Prati što se mijenja na servu dok motor i pasivna zujalica nastavljaju
+# raditi.
+
+from machine import Pin, PWM
+from time import sleep_ms
+
+a1, a2 = Pin(8, Pin.OUT, value=0), Pin(9, Pin.OUT, value=0)
+b1, b2 = Pin(10, Pin.OUT, value=0), Pin(11, Pin.OUT, value=0)
+ena, enb = PWM(Pin(4), freq=1000, duty_u16=0), PWM(
+    Pin(5), freq=1000, duty_u16=0
+)
+from servo import Servo
+
 servo = Servo(6, min_us=1000, max_us=2000)
 piezo = PWM(Pin(7), freq=880, duty_u16=32768)
 a1.value(1)
 a2.value(0)
 ena.duty_u16(32768)
+
+# Servo prima zadani položaj, motor radni omjer, a zujalica frekvenciju.
+# Odvojeni izlazi omogućuju istodobno upravljanje.
 while True:
     for kut in (45, 135):
         servo.angle(kut)
@@ -136,19 +197,11 @@ while True:
         sleep_ms(600)
 `},
 } as const;
-const cppMotorSetup=`const byte ENA = 5, ENB = 6;
-const byte IN1 = 7, IN2 = 12, IN3 = 10, IN4 = 11;
-
-void pripremiPogon() {
-  const byte pinovi[6] = {ENA, ENB, IN1, IN2, IN3, IN4};
-  for (byte i = 0; i < 6; i++) pinMode(pinovi[i], OUTPUT);
-  // EN jumperi su uklonjeni. VSS=5 V, VS=6 V, GND zajednicki.
-  analogWrite(ENA, 0);
-  analogWrite(ENB, 0);
-}
-`;
 export const arduinoActuatorExamples={
- sg90Sweep:{...actuatorExamples.sg90Sweep,title:'Arduino · '+actuatorExamples.sg90Sweep.title,code:`#include <Servo.h>
+ sg90Sweep:{...actuatorExamples.sg90Sweep,title:'Arduino · '+actuatorExamples.sg90Sweep.title,code:`// Prati zadane položaje 0°, 90° i 180° i usporedi ih sa širinom
+// upravljačkog impulsa serva.
+
+#include <Servo.h>
 Servo servo;
 
 void setup() {
@@ -159,23 +212,31 @@ void setup() {
 }
 
 void loop() {
+  // U ovom profilu impuls od 1000 µs daje 0°, a 2000 µs daje 180°. Sredini
+  // hoda odgovara 1500 µs.
   const int kutovi[3] = {0, 90, 180};
   for (byte i = 0; i < 3; i++) {
     servo.write(kutovi[i]);
-    Serial.print(F("SG90 ANGLE=")); Serial.println(kutovi[i]);
+    Serial.print(F("SG90 ANGLE="));
+    Serial.println(kutovi[i]);
     delay(600);
   }
 }
 `},
- relayContacts:{...actuatorExamples.relayContacts,title:'Arduino · '+actuatorExamples.relayContacts.title,code:`void setup() {
+ relayContacts:{...actuatorExamples.relayContacts,title:'Arduino · '+actuatorExamples.relayContacts.title,code:`// Promatraj dvije LED-ice dok relej prebacuje zajednički kontakt COM iz
+// jedne grane u drugu.
+
+void setup() {
   // Prvo zadaj HIGH, pa ukljuci izlaz: aktivno LOW pocinje bez pobude.
   digitalWrite(7, HIGH);
   pinMode(7, OUTPUT);
   Serial.begin(9600);
 }
 
+// Bez pobude COM je spojen na normalno zatvoreni kontakt NC. Nakon pobude
+// spaja se na normalno otvoreni kontakt NO.
 void loop() {
-  digitalWrite(7, LOW);  // pobuda zavojnice: COM se spaja na NO
+  digitalWrite(7, LOW); // pobuda zavojnice: COM se spaja na NO
   Serial.println(F("RELAY ON -> COM-NO"));
   delay(700);
   digitalWrite(7, HIGH); // bez pobude: COM se vraca na NC
@@ -183,11 +244,16 @@ void loop() {
   delay(700);
 }
 `},
- activeAlarm:{...actuatorExamples.activeAlarm,title:'Arduino · '+actuatorExamples.activeAlarm.title,code:`void setup() {
+ activeAlarm:{...actuatorExamples.activeAlarm,title:'Arduino · '+actuatorExamples.activeAlarm.title,code:`// Uključi pa isključi aktivnu zujalicu i usporedi trajanje zvuka s
+// trajanjem stanke.
+
+void setup() {
   pinMode(4, OUTPUT);
   Serial.begin(9600);
 }
 
+// Aktivna zujalica sama stvara ton. Digitalnim izlazom zadaješ kada se ton
+// čuje.
 void loop() {
   // Aktivni modul ima vlastiti oscilator; dovoljan je stalni HIGH.
   digitalWrite(4, HIGH);
@@ -198,82 +264,148 @@ void loop() {
   delay(500);
 }
 `},
- piezoTone:{...actuatorExamples.piezoTone,title:'Arduino · '+actuatorExamples.piezoTone.title,code:`void setup() {
+ piezoTone:{...actuatorExamples.piezoTone,title:'Arduino · '+actuatorExamples.piezoTone.title,code:`// Usporedi tri tona pasivne zujalice i pronađi dio programa koji određuje
+// njihovu visinu.
+
+void setup() {
   pinMode(4, OUTPUT);
   Serial.begin(9600);
 }
 
+// Frekvencija govori koliko se puta signal ponavlja u sekundi.
+// Udvostručenje s 440 na 880 Hz daje ton za oktavu viši.
 void loop() {
   const unsigned int note[3] = {440, 880, 1320};
   for (byte i = 0; i < 3; i++) {
     // Timer2 stvara signal. Ne koristi PWM D3/D11 ili IR nositelj.
     tone(4, note[i], 400); // frekvencija Hz, trajanje ms
-    Serial.print(F("TONE=")); Serial.println(note[i]);
-    delay(500);           // nakon tona ostaje 100 ms tisine
+    Serial.print(F("TONE="));
+    Serial.println(note[i]);
+    delay(500); // nakon tona ostaje 100 ms tisine
   }
   noTone(4);
   Serial.println(F("TONE OFF"));
   delay(500);
 }
 `},
- dcDrive:{...actuatorExamples.dcDrive,title:'Arduino · '+actuatorExamples.dcDrive.title,code:cppMotorSetup+`
+ dcDrive:{...actuatorExamples.dcDrive,title:'Arduino · '+actuatorExamples.dcDrive.title,code:`// Usporedi rad motora u jednom i drugom smjeru, slobodno zaustavljanje i
+// kočenje.
+
+const byte ENA = 5, ENB = 6;
+const byte IN1 = 7, IN2 = 12, IN3 = 10, IN4 = 11;
+
+void pripremiPogon() {
+  const byte pinovi[6] = {ENA, ENB, IN1, IN2, IN3, IN4};
+  for (byte i = 0; i < 6; i++) {
+    pinMode(pinovi[i], OUTPUT);
+  }
+  // EN jumperi su uklonjeni. VSS=5 V, VS=6 V, GND zajednički.
+
+  // Isključen most dopušta slobodno zaustavljanje. Za električno kočenje
+  // most mora biti uključen, a oba ulaza smjera jednaka.
+  analogWrite(ENA, 0);
+  analogWrite(ENB, 0);
+}
+
 void setup() {
   pripremiPogon();
   Serial.begin(9600);
 }
 
+// Ulazi IN1 i IN2 biraju smjer napona na motoru. PWM na ENA određuje koliki
+// je dio vremena most uključen.
 void loop() {
   const byte pwm[3] = {64, 128, 255};
   for (byte i = 0; i < 3; i++) {
-    digitalWrite(IN1, HIGH); digitalWrite(IN2, LOW);
+    digitalWrite(IN1, HIGH);
+    digitalWrite(IN2, LOW);
     analogWrite(ENA, pwm[i]); // 0-255; smjer odredjuju IN1 i IN2
-    Serial.print(F("MOTOR FORWARD PWM=")); Serial.println(pwm[i]);
+    Serial.print(F("MOTOR FORWARD PWM="));
+    Serial.println(pwm[i]);
     delay(500);
   }
-  analogWrite(ENA, 0);  // izlazi visoke impedancije, slobodno zaustavljanje
+  analogWrite(ENA, 0); // izlazi visoke impedancije, slobodno zaustavljanje
   Serial.println(F("MOTOR COAST"));
   delay(300);
-  digitalWrite(IN1, LOW); digitalWrite(IN2, HIGH);
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
   analogWrite(ENA, 128);
   Serial.println(F("MOTOR REVERSE"));
   delay(600);
-  digitalWrite(IN1, LOW); digitalWrite(IN2, LOW);
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
   analogWrite(ENA, 255); // jednaki IN uz EN HIGH: kocenje
   Serial.println(F("MOTOR BRAKE"));
   delay(500);
 }
 `},
- dualDrive:{...actuatorExamples.dualDrive,title:'Arduino · '+actuatorExamples.dualDrive.title,code:cppMotorSetup+`
+ dualDrive:{...actuatorExamples.dualDrive,title:'Arduino · '+actuatorExamples.dualDrive.title,code:`// Prati motore A i B zasebno. Usporedi smjer i radni omjer kad program
+// promijeni zadane izlaze.
+
+const byte ENA = 5, ENB = 6;
+const byte IN1 = 7, IN2 = 12, IN3 = 10, IN4 = 11;
+
+void pripremiPogon() {
+  const byte pinovi[6] = {ENA, ENB, IN1, IN2, IN3, IN4};
+  for (byte i = 0; i < 6; i++) {
+    pinMode(pinovi[i], OUTPUT);
+  }
+  // EN jumperi su uklonjeni. VSS=5 V, VS=6 V, GND zajednički.
+  analogWrite(ENA, 0);
+  analogWrite(ENB, 0);
+}
+
 void setup() {
   pripremiPogon();
   Serial.begin(9600);
 }
 
+// Svaki kanal mosta ima vlastite ulaze smjera i svoj signal za
+// omogućavanje. Zato se jedan motor može zaustaviti dok drugi radi.
 void loop() {
-  digitalWrite(IN1, HIGH); digitalWrite(IN2, LOW);
-  digitalWrite(IN3, LOW); digitalWrite(IN4, HIGH);
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
   analogWrite(ENA, 128); // A: pozitivan smjer, oko 50 % PWM
   analogWrite(ENB, 192); // B: negativan smjer, oko 75 % PWM
   Serial.println(F("DUAL A=+50 B=-75"));
   delay(800);
   analogWrite(ENA, 255);
-  analogWrite(ENB, 0);   // B je slobodan, A i dalje radi
+  analogWrite(ENB, 0); // B je slobodan, A i dalje radi
   Serial.println(F("DUAL A=+100 B=COAST"));
   delay(800);
 }
 `},
- servoMotorTone:{...actuatorExamples.servoMotorTone,title:'Arduino · '+actuatorExamples.servoMotorTone.title,code:`#include <Servo.h>
+ servoMotorTone:{...actuatorExamples.servoMotorTone,title:'Arduino · '+actuatorExamples.servoMotorTone.title,code:`// Prati što se mijenja na servu dok motor i pasivna zujalica nastavljaju
+// raditi.
+
+#include <Servo.h>
 Servo servo;
-`+cppMotorSetup+`
+const byte ENA = 5, ENB = 6;
+const byte IN1 = 7, IN2 = 12, IN3 = 10, IN4 = 11;
+
+void pripremiPogon() {
+  const byte pinovi[6] = {ENA, ENB, IN1, IN2, IN3, IN4};
+  for (byte i = 0; i < 6; i++) {
+    pinMode(pinovi[i], OUTPUT);
+  }
+  // EN jumperi su uklonjeni. VSS=5 V, VS=6 V, GND zajednički.
+  analogWrite(ENA, 0);
+  analogWrite(ENB, 0);
+}
+
 void setup() {
   pripremiPogon();
   Serial.begin(9600);
   servo.attach(8, 1000, 2000); // Timer1; SIG ne treba hardverski PWM pin
   digitalWrite(IN1, HIGH);
-  analogWrite(ENA, 128);      // D5 je Timer0, ne sukobljava se sa Servom
-  tone(4, 880);              // Timer2; izbjegavaj PWM D3/D11 i IR nositelj
+  analogWrite(ENA, 128); // D5 je Timer0, ne sukobljava se sa Servom
+  tone(4, 880);          // Timer2; izbjegavaj PWM D3/D11 i IR nositelj
 }
 
+// Servo prima zadani položaj, motor radni omjer, a zujalica frekvenciju.
+// Odvojeni izlazi omogućuju istodobno upravljanje.
 void loop() {
   servo.write(45);
   Serial.println(F("COMBINED ANGLE=45 MOTOR=50 TONE=880"));

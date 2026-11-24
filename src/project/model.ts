@@ -166,7 +166,20 @@ export function parseProject(input: unknown, depth=0): Project {
     },
   };
 }
-export const initialCode=(language:Language)=>language==="micropython"?'print("Pozdrav iz MicroPythona!")\n':'// Arduino C/C++ · program počinje funkcijom setup().\nvoid setup() {\n    // Ovdje postavi priključke.\n}\n\nvoid loop() {\n    // Ovdje piši naredbe koje se ponavljaju.\n}\n';
+export const initialCode = (language: Language) => language === "micropython"
+  ? `# Pokreni program i pronađi poruku u konzoli. Zatim izmijeni tekst
+# između navodnika i ponovno ga pokreni.
+print("Pozdrav iz MicroPythona!")
+`
+  : `// Pločica najprije izvodi setup(), a zatim stalno ponavlja loop().
+void setup() {
+  // Ovdje jednom postavi koji su priključci ulazi, a koji izlazi.
+}
+
+void loop() {
+  // Ovdje očitaj ulaz i odredi što će se dogoditi na izlazu.
+}
+`;
 export function boardMetadata(id:BoardId,language:Language=getBoard(id).languages[0]):Project["board"] {const profile=getBoard(id);return {id,profileVersion:profile.version,...(language==='micropython'&&profile.firmware?{firmware:profile.firmware}:{})};}
 export function newProject(
   code: string | undefined = undefined,

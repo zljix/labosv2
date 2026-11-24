@@ -441,7 +441,7 @@ export default function App() {
         next = newProject(e.code, e.title);
       next.settings.example = key;
       next.circuit = {kind:"stage0-fixture",components:[],wires:[]};
-      setLabTab("fixture"); setMobileTab("lab");
+      setLabTab("circuit"); setMobileTab("lab");
       await ws.add(next);
       notify("Otvoren je novi projekt iz primjera.");
     });
@@ -652,6 +652,12 @@ export default function App() {
       catch{openDialog('arduino');notify('Prevedi aktualni izvor prije pokretanja.');}
     }else void runtime.run(clone(p),reset);
   };
+  const circuitEditor = <CircuitEditor key={p.id} circuit={p.circuit} language={p.language}
+            onChange={(c, label, kind) => { runtime.stop(kind === "snapshot"); ws.change(label, n => {n.circuit = c; n.settings.example = "";}); }}
+            onDemo={() => void selectCircuitExample()}
+            onUndo={()=>{runtime.stop();ws.undo();}} onRedo={()=>{runtime.stop();ws.redo();}} canUndo={!!ws.undoCount} canRedo={!!ws.redoCount}
+            simulation={runtime.simulation} runtimeActive={["running","done"].includes(runtime.state)} liveInputs={runtime.liveInputs} onInput={runtime.input}
+            expanded={expandedCircuit} onExpand={() => {setExpandedCircuit(v=>!v);setCodeExpanded(false);setMobileTab("lab");}} />;
   return (
     <div className="app-shell">
       <a className="skip-link" href="#workspace">Prijeđi na radno područje</a>
@@ -789,7 +795,7 @@ export default function App() {
           </button>
         </div>
       </div>
-      {p.language==='arduino-cpp'&&<div className="target-strip" role="status"><span><b>{boardProfile.title} · Arduino C/C++</b> — {p.board.id===S3?'funkcionalni WASM':'AVR simulacija'} · {OFFLINE_AVR&&prefersOffline(p)?'offline prototip u pregledniku':compiler.mode==='school'&&compiler.capabilities.targets?.[p.board.id]?.ready?'školski prevoditelj spreman':compiler.connection==='connected'?'lokalni prevoditelj povezan':'odaberi prevoditelj u prozoru Prevedi'}.</span>{p.board.id!==S3&&<span className={`avr-indicator ${runtime.simulation?.gpios[13]?.level===1?'on':''}`}><i/>LED L · D13</span>}<button onClick={()=>openDialog('arduino')}>Prevođenje i program</button><button onClick={()=>openDialog('matrix')}>Matrica podrške</button></div>}
+      {p.language==='arduino-cpp'&&<div className="target-strip" role="status"><span><b>{boardProfile.title} · Arduino C/C++</b> — {p.board.id===S3?'funkcionalni WASM':'AVR simulacija'} · {OFFLINE_AVR&&prefersOffline(p)?'offline prototip u pregledniku':compiler.mode==='school'&&compiler.capabilities.targets?.[p.board.id]?.ready?'školski prevoditelj spreman':compiler.connection==='connected'?'lokalni prevoditelj povezan':'odaberi prevoditelj u prozoru Prevedi'}.</span>{p.board.id!==S3&&<span className={`avr-indicator ${runtime.simulation?.gpios[13]?.level===1?'on':''}`}><i/>LED L · D13</span>}</div>}
       {(offline.update || !offline.online) && <div className="offline-strip" role="status"><span>{offline.update ? 'Nova verzija je pripremljena. Projekt spremi prije ažuriranja.' : offline.phase === 'ready' ? 'Radiš bez mreže. Projekti se spremaju u ovom pregledniku.' : 'Nema mreže; offline paket još nije potvrđen. Sačuvaj ZIP projekta.'}</span><button onClick={() => openDialog('system')}>Otvori status</button></div>}
       <input
         ref={importRef}
@@ -933,22 +939,12 @@ export default function App() {
               <Icon name="chip" size={17} />
               <h1>Sklop</h1>
             </div>
-            <span className="subtle-tag">{labTab === "lesson" ? "UČENJE I PREDAJA" : labTab !== "fixture" ? "SASTAVLJANJE" : "ISPITNI SKLOP"}</span>
+            <span className="subtle-tag">{labTab === "lesson" ? "UČENJE I PREDAJA" : p.circuit.kind !== "stage0-fixture" ? "SASTAVLJANJE" : "ISPITNI SKLOP"}</span>
           </div>
-          <div className="lab-view-tabs" role="tablist" aria-label="Način laboratorija" onKeyDown={tabKeys}>
+          <div className="lab-tab-content">
+          {p.circuit.kind==="editable"&&<div className="circuit-view">{circuitEditor}</div>}
 
-            <button role="tab" id="lab-tab-circuit" aria-controls="lab-content" tabIndex={labTab !== "fixture"?0:-1} aria-selected={labTab !== "fixture"} className={labTab !== "fixture" ? "selected" : ""} onClick={() => setLabTab("circuit")}>Sastavljanje</button>
-            <button role="tab" id="lab-tab-fixture" aria-controls="lab-content" tabIndex={labTab === "fixture"?0:-1} aria-selected={labTab === "fixture"} className={labTab === "fixture" ? "selected" : ""} onClick={() => setLabTab("fixture")}>Pokusi jezgre</button>
-          </div>
-          <div id="lab-content" role="tabpanel" aria-labelledby={`lab-tab-${labTab==='fixture'?'fixture':'circuit'}`} tabIndex={0} className="lab-tab-content">
-          <div className="circuit-view" hidden={labTab==='fixture'}><CircuitEditor key={p.id} circuit={p.circuit} language={p.language}
-            onChange={(c, label, kind) => { runtime.stop(kind === "snapshot"); ws.change(label, n => {n.circuit = c; n.settings.example = "";}); }}
-            onDemo={() => void selectCircuitExample()}
-            onUndo={()=>{runtime.stop();ws.undo();}} onRedo={()=>{runtime.stop();ws.redo();}} canUndo={!!ws.undoCount} canRedo={!!ws.redoCount}
-            simulation={runtime.simulation} runtimeActive={["running","done"].includes(runtime.state)} liveInputs={runtime.liveInputs} onInput={runtime.input}
-            expanded={expandedCircuit} onExpand={() => {setExpandedCircuit(v=>!v);setCodeExpanded(false);setMobileTab("lab");}} /></div>
-          {labTab === "fixture" && p.circuit.kind !== "stage0-fixture" && <div className="assembly-start"><h2>Pokusi s MicroPythonom</h2><p>Odaberi jedan od primjera 01–05 u popisu „Pokusi jezgre”. Svaki otvara zaseban projekt s fiksnim ispitnim spojem.</p><button onClick={() => void selectExample("button")}>Otvori pokus s tipkalom</button><small>Nacrtani sklop izvodi se na kartici Sastavljanje.</small></div>}
-          {labTab === "fixture" && p.circuit.kind === "stage0-fixture" && <>
+          {p.circuit.kind === "stage0-fixture" && <>
           <div className="lab-canvas">
             <div className="canvas-label">
               <span className="dot" />
@@ -1074,8 +1070,9 @@ export default function App() {
             <Frame bytes={runtime.frame} />
           </div>
           <div className="scope-note">
-            Fiksni pokus jezgre iz etape 0. Uređivanje vlastitih spojeva otvori karticom Sastavljanje.
+            Fiksni pokus jezgre iz etape 0.
           </div>
+          <details><summary>Uredi vlastiti sklop</summary>{circuitEditor}</details>
           </>}
           </div>
         </section>

@@ -41,8 +41,9 @@ const s3Pins:BoardPin[]=Object.entries(s3.headers).flatMap(([header,labels])=>la
 }));
 const unoTop=['SCL','SDA','AREF','GND','D13','D12','D11','D10','D9','D8','D7','D6','D5','D4','D3','D2','D1','D0'];
 const unoBottom=['NC','IOREF','RST','3V3','5V','GND2','GND3','VIN','A0','A1','A2','A3','A4','A5'];
-const nanoLeft=['D1','D0','RST','GND','D2','D3','D4','D5','D6','D7','D8','D9','D10','D11','D12'];
-const nanoRight=['VIN','GND2','RST2','5V','A0','A1','A2','A3','A4','A5','A6','A7','AREF','3V3','D13'];
+// Viewed from the component side, USB at the top (Arduino A000005 full pinout).
+const nanoLeft=['D12','D11','D10','D9','D8','D7','D6','D5','D4','D3','D2','GND','RST','D0','D1'];
+const nanoRight=['D13','3V3','AREF','A0','A1','A2','A3','A4','A5','A6','A7','5V','RST2','GND2','VIN'];
 export const BOARDS:Record<BoardId,BoardProfile>={
   [S3]:{id:S3,version:'0.0.1',title:'ESP32-S3 DevKitC-1',short:'ESP32-S3',description:'v1.1 · N16R8 · 44 priključka · 3,3 V logika',logicVoltage:3.3,width:200,height:540,languages:['micropython','arduino-cpp'],pins:s3Pins,links:[['J1.1','J1.2'],['J1.22','J3.1','J3.21','J3.22']],adc:{bits:12,reference:3.3,fullScale:3.1},pwmPins:s3.simulation.supportedGpio,firmware:'ESP32_GENERIC_S3/spiram-oct@1.29.0',sources:[s3.source]},
   [UNO]:{id:UNO,version:'0.1.0',title:'Arduino Uno R3',short:'Uno R3',description:'ATmega328P · 16 MHz · 5 V logika · 2 KiB SRAM',logicVoltage:5,width:430,height:300,languages:['arduino-cpp'],
@@ -50,7 +51,7 @@ export const BOARDS:Record<BoardId,BoardProfile>={
     links:[['GND','GND2','GND3'],['5V','IOREF'],['SDA','A4'],['SCL','A5']],adc:{bits:10,reference:5,fullScale:5},pwmPins:pwm,clockHz:16000000,sramBytes:2048,fqbn:'arduino:avr:uno',sources:['https://docs.arduino.cc/hardware/uno-rev3/','https://content.arduino.cc/assets/A000066-full-pinout.pdf']},
   [NANO]:{id:NANO,version:'0.1.0',title:'Arduino Nano classic',short:'Nano classic',description:'ATmega328P · 16 MHz · 5 V logika · A6/A7 samo analogno',logicVoltage:5,width:180,height:400,languages:['arduino-cpp'],
     pins:[...nanoLeft.map((id,i)=>avrPin(id,0,60+i*20)),...nanoRight.map((id,i)=>avrPin(id,180,60+i*20))],
-    links:[['GND','GND2'],['RST','RST2']],adc:{bits:10,reference:5,fullScale:5},pwmPins:pwm,clockHz:16000000,sramBytes:2048,fqbn:'arduino:avr:nano:cpu=atmega328',sources:['https://docs.arduino.cc/hardware/nano/','https://www.arduino.cc/en/uploads/Main/ArduinoNanoManual23.pdf']},
+    links:[['GND','GND2'],['RST','RST2']],adc:{bits:10,reference:5,fullScale:5},pwmPins:pwm,clockHz:16000000,sramBytes:2048,fqbn:'arduino:avr:nano:cpu=atmega328',sources:['https://docs.arduino.cc/hardware/nano/','https://docs.arduino.cc/resources/pinouts/A000005-full-pinout.pdf','https://www.arduino.cc/en/uploads/Main/ArduinoNanoManual23.pdf']},
 };
 export function isBoardId(id:unknown):id is BoardId {return typeof id==='string'&&Object.hasOwn(BOARDS,id);}
 export function getBoard(id:unknown):BoardProfile {if(!isBoardId(id))throw Error('Profil pločice nije podržan.');return BOARDS[id];}

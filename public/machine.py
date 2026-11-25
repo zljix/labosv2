@@ -360,10 +360,11 @@ def dht_readinto(pin, buf):
     view[0] = 0  # validate writability before changing the GPIO
     pin.init(Pin.IN, Pin.PULL_UP)
     sleep_ms(1)
-    pin.init(Pin.OUT, value=0)
-    sleep_ms(18)  # valid start for both supported DHT profiles
     state = disable_irq()
     try:
+        # Time the start pulse on the same virtual clock as the 40 data bits.
+        pin.init(Pin.OUT, value=0)
+        sleep_us(19000)
         pin.init(Pin.IN, Pin.PULL_UP)
         sleep_us(30)
         if time_pulse_us(pin, 0, 1000) < 0 or time_pulse_us(pin, 1, 1000) < 0:

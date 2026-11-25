@@ -71,11 +71,12 @@ const specs={
 ${pythonSingleAnalogSetup}while True:
     ocitanje = a.read()
 
-    # Napon je ovdje u mikrovoltima. Budući da 1 °C odgovara naponu od 10
-    # 000 µV, dijeljenjem dobivaš temperaturu u °C.
+    # LM35 daje 10 mV po stupnju Celzija.
+    # Očitanje u mikrovoltima zato dijelimo s 10 000.
     napon_uv = a.read_uv()
     temperatura = napon_uv / 10000
-    print("LM35 ADC=%d T=%.2f" % (ocitanje, temperatura))
+    napon_v = napon_uv / 1000000
+    print("LM35 ADC=%d T=%.2f C U=%.3f V" % (ocitanje, temperatura, napon_v))
     sleep_ms(300)
 `,cpp:`// Usporedi izlazni napon LM35 s temperaturom. Pri 25 °C očekuj približno
 // 0,25 V.

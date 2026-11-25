@@ -39,9 +39,7 @@ while True:
  rtcSet:{title:'DS1302 · postavljanje i prijestupna godina',hint:intro+'Program pri svakom pokretanju namjerno postavlja 28. 2. 2028. u 23:59:58 (dan 2 = ponedjeljak), zatim pokazuje prijelaz na 29. veljače. To prepisuje zadržano vrijeme. Za nastavak sata koristi primjer čitanja ili ukloni set_datetime().'+policy,code:`# Postavi vrijeme neposredno prije ponoći i promatraj prijelaz na 29.
 # veljače 2028.
 
-${pythonRtcSetup}# Postavlja se jednom na pocetku programa, ne u svakoj iteraciji.
-
-# Vrijeme se postavlja jednom na početku. Ponovljeni upis u svakoj petlji
+${pythonRtcSetup}# Vrijeme se postavlja jednom na početku. Ponovljeni upis u svakoj petlji
 # stalno bi vraćao sat na početnu vrijednost.
 sat.set_datetime(2028, 2, 28, 2, 23, 59, 58)
 

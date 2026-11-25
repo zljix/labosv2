@@ -169,7 +169,7 @@ while True:
 export function lessonCode(id:string, solution=false):string {
   switch(id){
     case 'led-time': return solution
-      ? basicExamples.blink.code.replace('sleep_ms(500)','sleep_ms(250)').replace('sleep_ms(500)','sleep_ms(750)').replace('500 ms ukljuceno / iskljuceno','250 ms ukljuceno / 750 ms iskljuceno')
+      ? basicExamples.blink.code.replace('sleep_ms(500)','sleep_ms(250)').replace('sleep_ms(500)','sleep_ms(750)')
       : basicExamples.blink.code;
     case 'button': return solution ? basicExamples.button.code : `# Očitaj tipkalo i pogledaj vrijednost u konzoli. Zatim dopuni označeni dio
 # koji treba upravljati LED-icom.

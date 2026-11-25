@@ -84,10 +84,13 @@ while True:
 
     # Redci se broje od nule. Pri novom ispisu popuni i slobodna mjesta da
     # ne ostanu znakovi prethodne vrijednosti.
+    tlak_hpa = tlak / 100
+    redak_t = "T: %.1f C" % temperatura
+    redak_p = "P: %.1f hPa" % tlak_hpa
     lcd.move_to(0, 0)
-    lcd.putstr((("T: %.1f C" % temperatura) + " " * 16)[:16])
+    lcd.putstr((redak_t + " " * 16)[:16])
     lcd.move_to(0, 1)
-    lcd.putstr((("P: %.1f hPa" % (tlak / 100)) + " " * 16)[:16])
+    lcd.putstr((redak_p + " " * 16)[:16])
     print("LCD T=%.2f P=%.0f Pa" % (temperatura, tlak))
     sleep_ms(1000)
 `},

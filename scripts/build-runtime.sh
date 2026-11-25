@@ -24,7 +24,12 @@ python3 "$project_dir/scripts/patch-runtime.py" "$mp_dir"
 make -C "$mp_dir/ports/webassembly" VARIANT=lab clean
 make -C "$mp_dir/ports/webassembly" VARIANT=lab -j"${LAB_BUILD_JOBS:-4}"
 mkdir -p "$project_dir/public/runtime" "$project_dir/public/licenses"
-cp "$mp_dir/ports/webassembly/build-lab/micropython.mjs" "$mp_dir/ports/webassembly/build-lab/micropython.wasm" "$project_dir/public/runtime/"
+cp "$mp_dir/ports/webassembly/build-lab/micropython.mjs" "$project_dir/public/runtime/"
+# Asyncify leaves thousands of temporary locals in the bytecode interpreter.
+# Reuse non-overlapping locals so nested Python calls fit a mobile worker stack.
+npm exec --yes --package=binaryen@120.0.0 -- wasm-opt \
+    "$mp_dir/ports/webassembly/build-lab/micropython.wasm" --all-features --coalesce-locals \
+    -o "$project_dir/public/runtime/micropython.wasm"
 python3 "$project_dir/scripts/patch-radio-runtime.py"
 cp "$mp_dir/LICENSE" "$project_dir/public/licenses/MicroPython-MIT.txt"
 cp "$sdk_dir/upstream/emscripten/LICENSE" "$project_dir/public/licenses/Emscripten-LICENSE.txt"

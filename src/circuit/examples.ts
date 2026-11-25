@@ -20,12 +20,11 @@ while True:
       ? '# TODO: zadaj radni omjer LED-ice prema upravo očitanoj vrijednosti.'
       : 'led.duty_u16(vrijednost)'}
 
-    # Za ispis pretvori isti broj u postotak. Na polovini raspona dobiješ
-    # približno 50 %.
-    postotak = vrijednost * 100 // 65535
-    if postotak != prethodno:
+    # Kada se promijeni očitanje, očitaj i radni omjer postavljen na izlazu.
+    if vrijednost != prethodno:
+        postotak = led.duty_u16() * 100 // 65535
         print("ADC:", vrijednost, "PWM:", postotak, "%")
-        prethodno = postotak
+        prethodno = vrijednost
     sleep_ms(30)
 `;
 }
@@ -42,7 +41,7 @@ from time import sleep_ms
 
 # GPIO je broj signala, a ne redni broj priključka na pločici.
 led = Pin(4, Pin.OUT, value=0)
-print("Treptanje: GPIO4, 500 ms ukljuceno / iskljuceno")
+print("Treptanje: GPIO4")
 
 while True:
     # Izlaz ostaje uključen tijekom prvog čekanja i isključen tijekom

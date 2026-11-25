@@ -58,7 +58,7 @@ while True:
     print("TOUCH RAW X=%d Y=%d Z1=%d Z2=%d IRQ=%d" % (x, y, z1, z2, irq()))
     sleep_ms(100)
 `},
- touchCalibration:{title:'XPT2046 · kalibracija u dvije točke',hint:hint+' Program traži gornji lijevi pa donji desni križić. Drži dodir dok se križić ne promijeni, zatim otpusti. Iz dva očitana para računa krajeve, ispisuje ih i prikazuje kalibrirane koordinate. Nakon novog Run kalibriraš ponovno. Dvije točke pretpostavljaju poravnate osi; ne rješavaju zakretanje/smicanje stvarnog panela.',code:`# Dodirni prvu označenu točku, otpusti je pa dodirni drugu. Nakon toga
+ touchCalibration:{title:'XPT2046 · kalibracija u dvije točke',hint:hint+' Program traži gornji lijevi pa donji desni križić. Dodirni prvi križić pa otpusti dodir. Kad se pojavi drugi križić, dodirni ga i ponovno otpusti. Iz dva očitana para računa krajeve, ispisuje ih i prikazuje kalibrirane koordinate. Nakon novog Run kalibriraš ponovno. Dvije točke pretpostavljaju poravnate osi; ne rješavaju zakretanje/smicanje stvarnog panela.',code:`# Dodirni prvu označenu točku, otpusti je pa dodirni drugu. Nakon toga
 # provjeri položaj u sredini zaslona.
 
 ${pythonTouchSetup}

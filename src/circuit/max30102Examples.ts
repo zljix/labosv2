@@ -100,7 +100,7 @@ while True:
                 zadnji, spreman = n, False
     sleep_ms(2)
 `},
- opticalOverflow:{title:'MAX30102 · 4. pun FIFO i gubitak uzoraka',hint:intro+'Pri 100 uzoraka/s FIFO se napuni za približno 0,32 s. Program namjerno čeka 700 ms bez čitanja: novih 32 uzorka ne može primiti, a overflow broji odbačene do 31. Jednaki WR/RD mogu značiti prazan ili pun FIFO, pa driver čita i A_FULL/overflow. Čitanje prvog bajta uzorka pomiče RD i briše overflow. Potom FIFO prazni i nastavlja. Povećaj usrednjavanje s 1 na 4: izlazna brzina pada na 25 uzoraka/s i treba 1,28 s da se FIFO napuni.'+policy,code:`# Namjerno zakasni s čitanjem pa provjeri koliko je uzoraka stalo u red FIFO
+ opticalOverflow:{title:'MAX30102 · 4. pun FIFO i gubitak uzoraka',hint:intro+'Pri 100 uzoraka/s FIFO se napuni za približno 0,32 s. Program namjerno čeka 700 ms bez čitanja: od približno 70 pristiglih uzoraka prva 32 stanu u prazan FIFO. Oko 38 se odbaci, a brojač preljeva zaustavlja se na 31. Jednaki WR/RD mogu značiti prazan ili pun FIFO, pa driver čita i A_FULL/overflow. Čitanje prvog bajta uzorka pomiče RD i briše overflow. Potom FIFO prazni i nastavlja. Povećaj usrednjavanje s 1 na 4: izlazna brzina pada na 25 uzoraka/s i treba 1,28 s da se FIFO napuni.'+policy,code:`# Namjerno zakasni s čitanjem pa provjeri koliko je uzoraka stalo u red FIFO
 # i je li dio izgubljen.
 
 ${pythonOpticalSetup}senzor.configure(average=1)

@@ -57,7 +57,15 @@ try {
   }
   for await(const item of schoolCollections()){
     if(item.starter){const {filename,project,key}=item.starter;writeFileSync(resolve(directory,filename),JSON.stringify(stable(project,key)));}
-    if(item.entry)entries.push(item.entry);
+    if(item.entry){
+      const entry=item.entry;
+      const support=Object.fromEntries(entry.targets.map(target=>[target,{
+        ...gradingSupport(entry.key,target),
+        reason:'Nastavnik pregledava učenički Word i program iz zaključane predaje.',
+        requirement:'Bodove dodjeljuje nastavnik prema kriterijima dodjele.'
+      }]));
+      entries.push({...entry,gradingSupport:support});
+    }
   }
 }finally{globalThis.fetch=originalFetch;}
 writeFileSync(resolve(directory,'catalog.json'),JSON.stringify({format:'labosv2-school-catalog',version:1,

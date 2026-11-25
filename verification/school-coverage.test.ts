@@ -36,6 +36,12 @@ test('23G generated JSON, CSV and private catalogue agree with the authoritative
   assert.equal(csv.split('\r\n').filter(Boolean).length,274);
   const catalog=JSON.parse(readFileSync('.build/school-catalog/catalog.json','utf8'));
   for(const entry of catalog.entries)for(const target of entry.targets){
+    if(['iot','us'].includes(entry.set)){
+      const support=entry.gradingSupport[target];
+      assert.equal(support.status,'unsupported');assert.equal(support.profileId,null);assert.equal(support.maxPoints,null);
+      assert.match(support.reason,/Nastavnik/);
+      continue;
+    }
     assert.deepEqual(entry.gradingSupport[target],(entry.set==='introductory'?matrix.introductory.find(r=>r.taskKey===entry.key):matrix.rows.find(r=>r.taskKey===entry.key&&r.target===target))!.grading);
   }
   assert.equal(gradingSupport('gpio/button','uno').profileId,'24P-button-led@2');

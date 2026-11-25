@@ -22,7 +22,7 @@ jobs:
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '8.4'
-          extensions: pdo_mysql, json, session
+          extensions: pdo_mysql, json, session, zip
           coverage: none
       - name: Pokreni zasebni MySQL s jednokratnim vjerodajnicama
         shell: bash
@@ -51,6 +51,7 @@ jobs:
         run: |
           docker exec --interactive labosv2-ci-db sh -c 'MYSQL_PWD="$MYSQL_ROOT_PASSWORD" mysql --host=127.0.0.1 --user=root' <<'SQL'
           CREATE DATABASE labosv2_test_classes CHARACTER SET utf8mb4;
+          CREATE DATABASE labosv2_test_collections CHARACTER SET utf8mb4;
           CREATE DATABASE labosv2_test_portal CHARACTER SET utf8mb4;
           CREATE DATABASE labosv2_test_work CHARACTER SET utf8mb4;
           CREATE DATABASE labosv2_test_work_ui CHARACTER SET utf8mb4;
@@ -74,6 +75,7 @@ jobs:
           CREATE DATABASE labosv2_test_introductory CHARACTER SET utf8mb4;
           CREATE DATABASE labosv2_test_steppers CHARACTER SET utf8mb4;
           GRANT ALL ON labosv2_test_classes.* TO 'labosv2_ci'@'%';
+          GRANT ALL ON labosv2_test_collections.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_portal.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_work.* TO 'labosv2_ci'@'%';
           GRANT ALL ON labosv2_test_work_ui.* TO 'labosv2_ci'@'%';
@@ -146,6 +148,11 @@ jobs:
           LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_introductory;charset=utf8mb4
           LAB_TEST_DB_USER: labosv2_ci
       - run: npm run test:school-pilot
+      - name: Provjeri predaju Worda za IoT i US te očuvanje ranijih pokušaja
+        run: node --test verification/school-collection-submissions.test.mjs
+        env:
+          LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_collections;charset=utf8mb4
+          LAB_TEST_DB_USER: labosv2_ci
       - run: npm run test:school-coverage
       - name: Provjeri potpuni 1-Wire prijenos i svježinu registra
         run: node --import tsx --test --test-name-pattern="24D telemetry|Match ROM|power cycle|missing external|active GPIO HIGH" verification/onewire.test.ts

@@ -12,12 +12,23 @@ import './lessons.css';
 import {UrsCatalog} from './UrsPanel';
 import {ursLessons,type UrsTarget} from './ursCatalog';
 
-export function LessonCatalog({open,busy,openUrs,initialTarget,reviewClass}:{open:(id:string,solution?:boolean)=>void;busy:boolean;openUrs:(lesson:string,variant:string,target:UrsTarget,peer:UrsTarget)=>void;initialTarget:UrsTarget;reviewClass:()=>void}) {
-  const [collection,setCollection]=useState<'intro'|'urs'>('urs');
+import type {RunnableId} from './IotUsPilot';
+import {IotUsCatalog, tracks, type Collection, type Track} from './IotUsCatalog';
+
+export function LessonCatalog({open,busy,openUrs,initialTarget,reviewClass,initialCollection,initialExercise,openPilot}:{initialCollection?:Collection;initialExercise?:RunnableId;openPilot:(track:Track,exercise:RunnableId)=>void;open:(id:string,solution?:boolean)=>void;busy:boolean;openUrs:(lesson:string,variant:string,target:UrsTarget,peer:UrsTarget)=>void;initialTarget:UrsTarget;reviewClass:()=>void}) {
+  const [collection,showCollection]=useState<Collection>(() => {
+    if(initialCollection)return initialCollection;
+    try {const saved=localStorage.getItem('labos.katalog.zbirka');if(saved==='iot'||saved==='us'||saved==='intro')return saved;}catch{}
+    return 'urs';
+  });
+  function setCollection(next:Collection) {
+    showCollection(next);
+    try{localStorage.setItem('labos.katalog.zbirka',next)}catch{}
+  }
   return <div className="lesson-catalog">
     <p>Prvi put u laboratoriju? Kreni od <button onClick={()=>setCollection('intro')}>V1–V5: osnove uz vođene korake</button>.</p>
-    <div className="lesson-inline-actions" role="group" aria-label="Zbirka vježbi"><button aria-pressed={collection==='intro'} onClick={()=>setCollection('intro')}>Početnih pet vježbi · V1–5</button><button aria-pressed={collection==='urs'} onClick={()=>setCollection('urs')}>URS zbirka · {ursLessons.length} tema</button></div>
-    {collection==='urs'?<UrsCatalog busy={busy} open={openUrs} initialTarget={initialTarget}/>:<>
+    <div className="lesson-inline-actions" role="group" aria-label="Zbirka vježbi"><button aria-pressed={collection==='intro'} onClick={()=>setCollection('intro')}>Početnih pet vježbi · V1–5</button><button aria-pressed={collection==='urs'} onClick={()=>setCollection('urs')}>URS zbirka · {ursLessons.length} tema</button>{(['iot','us'] as const).map(track=><button key={track} aria-pressed={collection===track} onClick={()=>setCollection(track)}>{tracks[track]}</button>)}</div>
+    {collection==='iot'||collection==='us'?<IotUsCatalog key={collection} track={collection} busy={busy} open={openPilot} initialExercise={initialCollection===collection?initialExercise:undefined}/>:collection==='urs'?<UrsCatalog busy={busy} open={openUrs} initialTarget={initialTarget}/>:<>
     <p>Pet koraka od izlaza do regulatora. Svaka vježba otvara novi lokalni projekt s uputama i početnim kodom.</p>
     <div className="lesson-cards">{lessons.map(l=><button className="lesson-card" key={l.id} onClick={()=>open(l.id)} disabled={busy}>
       <span className="lesson-number">{String(l.number).padStart(2,'0')}</span><span><strong>{l.title}</strong><small>{l.goal}</small><em>{l.minutes} · upute, zadatak i provjera</em></span><span aria-hidden="true">›</span>

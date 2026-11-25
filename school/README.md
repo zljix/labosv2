@@ -1,4 +1,14 @@
-# Novo izdanje: 0.15.0-beta.1 · 25A
+# Školska predaja za zbirke IoT i US
+
+Nastavnik na stranici `school.html` odabere razred, objavi inačicu vježbe iz zbirke i dodijeli MicroPython ili Arduino. Učenik otvori dodjelu, preuzme odgovarajući radni list, upiše opažanja i priloži dokaze. Program izmijenjen u Thonnyju ili Arduino IDE-u može učitati u projekt prije zaključavanja. Pri završetku učenik prilaže popunjeni Word do 12 MiB ili izričito označava da dokazi nedostaju. Na fotografijama i u Wordu treba prethodno ukloniti lozinke, ključeve i druge privatne podatke.
+
+U pregledu razreda nastavnik odabere vježbu, učenika i zaključanu reviziju. Može preuzeti upravo predani dokument, komentirati dokaze i otvoriti novi pokušaj za dopunu. Bodove za rad na opremi dodjeljuje prema objavljenim kriterijima.
+
+**Postojeća instalacija.** Sačuvaj sigurnosnu kopiju baze i privatne konfiguracije. Raspakiraj novo izdanje u zasebnu mapu. Zadrži postojeću konfiguraciju i ključ. Iz korijena novog paketa pokreni `php tools/console.php migrate /putanja/do/config.php`, a zatim `php tools/preflight.php /putanja/do/config.php`. Migracija 009 dodaje pohranu predanih dokumenata. Apache treba posluživati samo mapu `web/`. Za prvu instalaciju slijedi upute za profil školskog poslužitelja u nastavku.
+
+**Pokus u učionici.** Na dvije postaje dodijeli IoT V1.4 u MicroPythonu i US V3.1 u Arduinu. Na svakoj provjeri program na stvarnoj pločici, zapiši opažanje u pripadni Word i predaj ga. Na nastavničkom računalu otvori obje predaje, vrati jednu na dopunu i usporedi prvu i ponovljenu predaju. Zabilježi model pločice, preglednik, trajanje i korak na kojem je učeniku trebala pomoć.
+
+## Prethodno izdanje 0.15.0-beta.1 · 25A
 
 Školski C++ prevoditelj za Uno, Nano i ESP32-S3, dostupan u repozitoriju **labos**. Upute: [STAGE25A_SKOLSKI_PREVODITELJ.md](../docs/STAGE25A_SKOLSKI_PREVODITELJ.md). Školsko prevođenje zahtijeva konfiguriranu PHP/MySQL instalaciju i Linux radni proces; GitHub Pages ostaje statički laboratorij.
 
@@ -112,7 +122,7 @@ Za GitHub Pages koristi `npm run build:pages`. Zadana putanja je `/labosv2/`, a 
 
 ## Preduvjeti za poslužitelj
 
-Apache 2.4, podržani PHP 8.4 ili 8.5 s aktualnim zakrpama i proširenjima `pdo_mysql`, `json`, `session`; stvarni **MySQL 8.4 LTS**, InnoDB i utf8mb4. Točne instalirane zakrpe bilježi inventura. Node 24 i izolirani Linux servis trebaju samo računalu koje izvršava provjere, ne učeničkim uređajima.
+Apache 2.4, podržani PHP 8.4 ili 8.5 s aktualnim zakrpama i proširenjima `pdo_mysql`, `json`, `session` i `zip`; stvarni **MySQL 8.4 LTS**, InnoDB i utf8mb4. Točne instalirane zakrpe bilježi inventura. Node 24 i izolirani Linux servis trebaju samo računalu koje izvršava provjere, ne učeničkim uređajima.
 
 XAMPP isporučuje MariaDB. Za ovaj projekt odabrana je zasebna instalacija stvarnog MySQL-a; oznaka MySQL u XAMPP upravljačkoj ploči nije dovoljan dokaz. Provjera odbija MariaDB. Ako se koristi XAMPP, Apache/PHP moraju također zadovoljiti odabrani profil; stariji ugrađeni PHP ne prihvaća se prešutno.
 

@@ -92,3 +92,5 @@ require __DIR__ . '/reports.php';
 require __DIR__ . '/administration.php';
 
 require __DIR__ . '/compilation.php';
+
+require __DIR__ . '/collection_documents.php';

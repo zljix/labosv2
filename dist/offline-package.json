@@ -1,6 +1,6 @@
 {
-  "build": "738436555a0ca46b",
-  "version": "0.14.15-beta.2",
+  "build": "af256cf6b86e9c75",
+  "version": "0.16.0-beta.3",
   "base": "/",
   "files": [
     {
@@ -19,389 +19,742 @@
       "bytes": 7595
     },
     {
-      "url": "/app/738436555a0ca46b/actuators.mjs",
+      "url": "/app/af256cf6b86e9c75/actuators.mjs",
       "sha256": "435146cd09d40d9d3e4089253a43e589bef8a8686171943d362421d28a9c9219",
-      "bytes": 6237
+      "bytes": 6237,
+      "cacheUrl": "/actuators.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/analog-inputs.mjs",
+      "url": "/app/af256cf6b86e9c75/analog-inputs.mjs",
       "sha256": "dc9b56c0ab75369ad11f7e491e0d5f4b890918636210fc35ab00ebf4c4b62308",
-      "bytes": 3682
+      "bytes": 3682,
+      "cacheUrl": "/analog-inputs.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/app.mjs",
+      "url": "/app/af256cf6b86e9c75/app.mjs",
       "sha256": "73d2ef6af87662751dd28b3b8cc1d7c0119ce4e4807a92ad3f1b963568f607b6",
-      "bytes": 7595
+      "bytes": 7595,
+      "cacheUrl": "/app.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/arduino-contract.mjs",
+      "url": "/app/af256cf6b86e9c75/arduino-contract.mjs",
       "sha256": "c55d06d8ccb7ac9da75d89117194cdd707419f3b27ec76aa808474b1dfaa79a2",
-      "bytes": 762
+      "bytes": 762,
+      "cacheUrl": "/arduino-contract.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/avr-contract.mjs",
-      "sha256": "bed69b2facfeabbe139739ee6daa745054d95bf018a8a6cdf625e3418cb29b7b",
-      "bytes": 8615
+      "url": "/app/af256cf6b86e9c75/avr-contract.mjs",
+      "sha256": "da5991e2bb0d1d9e2a3f6b9662c3f41a7e9295c1c0e79f13ecbec52ad1c03ab4",
+      "bytes": 8985,
+      "cacheUrl": "/avr-contract.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/avr-examples.json",
-      "sha256": "6a5eecfcb8bde92bde7199d99143a4f17728612666e7ababed12a02ec7bcc9c9",
-      "bytes": 2727980
+      "url": "/app/af256cf6b86e9c75/avr-examples.json",
+      "sha256": "3c2a4a33f05037f370e78b3b4e1a6fd5591cc1ffe9c8afe9df8fc47898d567f1",
+      "bytes": 2727980,
+      "cacheUrl": "/avr-examples.json"
     },
     {
-      "url": "/app/738436555a0ca46b/circuit-host.mjs",
+      "url": "/app/af256cf6b86e9c75/circuit-host.mjs",
       "sha256": "794d3ccdd1a7597d77a9e923b6f6b63e7cdaf0f7a47b0ef958139628d9d4c620",
-      "bytes": 32066
+      "bytes": 32066,
+      "cacheUrl": "/circuit-host.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/dht-bus.mjs",
+      "url": "/app/af256cf6b86e9c75/dht-bus.mjs",
       "sha256": "cd6289016d59e32092ccadbc487757db6509af170424a4f1f4513ff261eefa28",
-      "bytes": 5464
+      "bytes": 5464,
+      "cacheUrl": "/dht-bus.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/_onewire.py",
+      "url": "/app/af256cf6b86e9c75/drivers/_onewire.py",
       "sha256": "36b0ba7dd361b30bf1e5c1c28f8f96703f94b8dcd2b9ac21d8ed52ab00d8c3c6",
-      "bytes": 1435
+      "bytes": 1435,
+      "cacheUrl": "/drivers/_onewire.py"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/aht10.py",
+      "url": "/app/af256cf6b86e9c75/drivers/aht10.py",
       "sha256": "7350e85ce96b1cfcea4d331751ac417b56e3c93a59d021985e1cc9132d1204b5",
-      "bytes": 1383
+      "bytes": 1383,
+      "cacheUrl": "/drivers/aht10.py"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/dht.py",
+      "url": "/app/af256cf6b86e9c75/drivers/dht.py",
       "sha256": "2aff84bb314c8785b08bd87420e8baa8d6cf14724c953c8a69b9315fb047ec91",
-      "bytes": 1094
+      "bytes": 1094,
+      "cacheUrl": "/drivers/dht.py"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/ds18x20.py",
+      "url": "/app/af256cf6b86e9c75/drivers/ds18x20.py",
       "sha256": "f55f41095a9047dd52c377b13ff5c07534b065f01e79361defef13ad09f092fc",
-      "bytes": 1453
+      "bytes": 1453,
+      "cacheUrl": "/drivers/ds18x20.py"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/lab_bmp280_spi.h",
+      "url": "/app/af256cf6b86e9c75/drivers/lab_bmp280_spi.h",
       "sha256": "4f2cc629c8e43cc494e4e0322a8129c2d5cd22a72f14b920c5d7fab4014be51c",
-      "bytes": 2103
+      "bytes": 2103,
+      "cacheUrl": "/drivers/lab_bmp280_spi.h"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/lab_bmp280_spi.py",
+      "url": "/app/af256cf6b86e9c75/drivers/lab_bmp280_spi.py",
       "sha256": "1b59e3a1783f5fd98fa1036b9701f32989c77e57f9c04e168a3052b06917d70f",
-      "bytes": 781
+      "bytes": 781,
+      "cacheUrl": "/drivers/lab_bmp280_spi.py"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/lab_ds1302.py",
+      "url": "/app/af256cf6b86e9c75/drivers/lab_ds1302.py",
       "sha256": "a5a845977848d2c912e9cbbde18f173e551d56b0296e0ba353c0017456cd07ca",
-      "bytes": 4135
+      "bytes": 4135,
+      "cacheUrl": "/drivers/lab_ds1302.py"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/lab_encoder.py",
+      "url": "/app/af256cf6b86e9c75/drivers/lab_encoder.py",
       "sha256": "7a0f7d92efd8b78879bcb9079f01b56a569d5b80122cf70d6ef49385cb147b31",
-      "bytes": 2017
+      "bytes": 2017,
+      "cacheUrl": "/drivers/lab_encoder.py"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/lab_fat16.py",
+      "url": "/app/af256cf6b86e9c75/drivers/lab_fat16.py",
       "sha256": "a011285b671216abaf6cd7ade7f787d195c91d57b3939d7d46ff7befd77bcbbe",
-      "bytes": 9195
+      "bytes": 9195,
+      "cacheUrl": "/drivers/lab_fat16.py"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/lab_i2c_sensors.py",
+      "url": "/app/af256cf6b86e9c75/drivers/lab_i2c_sensors.py",
       "sha256": "e604febe801f59b3053d0b26bb88fcb44bf325d91da0808150e9dfe3be364310",
-      "bytes": 5109
+      "bytes": 5109,
+      "cacheUrl": "/drivers/lab_i2c_sensors.py"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/lab_ili9341.h",
+      "url": "/app/af256cf6b86e9c75/drivers/lab_ili9341.h",
       "sha256": "c77b5b95145f864588efb19524ef00bd193eb9f9531d7c0e600968aba9096dd4",
-      "bytes": 3961
+      "bytes": 3961,
+      "cacheUrl": "/drivers/lab_ili9341.h"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/lab_ili9341.py",
+      "url": "/app/af256cf6b86e9c75/drivers/lab_ili9341.py",
       "sha256": "b50d9c7710312e4ec5694dc4e53609a89958d7231c953417fb95635b40ac2293",
-      "bytes": 4822
+      "bytes": 4822,
+      "cacheUrl": "/drivers/lab_ili9341.py"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/lab_ir.py",
+      "url": "/app/af256cf6b86e9c75/drivers/lab_ir.py",
       "sha256": "1193749f56beb24d95580d7d2ab9134b18f361e5460010b05aa6016616372f1e",
-      "bytes": 4266
+      "bytes": 4266,
+      "cacheUrl": "/drivers/lab_ir.py"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/lab_max30102.h",
+      "url": "/app/af256cf6b86e9c75/drivers/lab_max30102.h",
       "sha256": "138c4857d7e5e80f743741a44dcfa169b039ef32afbeb4f9843c3de47199f074",
-      "bytes": 1945
+      "bytes": 1945,
+      "cacheUrl": "/drivers/lab_max30102.h"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/lab_max30102.py",
+      "url": "/app/af256cf6b86e9c75/drivers/lab_max30102.py",
       "sha256": "4047b905647b4fa306496af3c3c4529c0b4217532e20abd4a5edfab07240e5db",
-      "bytes": 2377
+      "bytes": 2377,
+      "cacheUrl": "/drivers/lab_max30102.py"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/lab_s3_nec.h",
+      "url": "/app/af256cf6b86e9c75/drivers/lab_s3_nec.h",
       "sha256": "22198e1c5d807bf0b968785e27f4ad0081a09b620d1c747512255b326ffa2629",
-      "bytes": 3426
+      "bytes": 3426,
+      "cacheUrl": "/drivers/lab_s3_nec.h"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/lab_sd.h",
+      "url": "/app/af256cf6b86e9c75/drivers/lab_sd.h",
       "sha256": "04fef018b7f3317d1bf9abe979cbc440d5725146983fb84e38dc8030d2986b6a",
-      "bytes": 7133
+      "bytes": 7133,
+      "cacheUrl": "/drivers/lab_sd.h"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/lab_sdcard.py",
+      "url": "/app/af256cf6b86e9c75/drivers/lab_sdcard.py",
       "sha256": "ac87d56ba8e51ac0c8ea071bbcd8dc91cd4990084aec80a8e30498cec2b6ebaf",
-      "bytes": 4666
+      "bytes": 4666,
+      "cacheUrl": "/drivers/lab_sdcard.py"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/lab_st7735.h",
+      "url": "/app/af256cf6b86e9c75/drivers/lab_st7735.h",
       "sha256": "988700ae9bf4282c8d5253ea56eea5a62e4f62c37d74a31d42ecb770a46b4235",
-      "bytes": 3737
+      "bytes": 3737,
+      "cacheUrl": "/drivers/lab_st7735.h"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/lab_st7735.py",
+      "url": "/app/af256cf6b86e9c75/drivers/lab_st7735.py",
       "sha256": "1cf45cc53d75709df320a1e48825141c1f180e5bf56c0253cccf473e93db70c8",
-      "bytes": 4629
+      "bytes": 4629,
+      "cacheUrl": "/drivers/lab_st7735.py"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/lab_tm1637.py",
+      "url": "/app/af256cf6b86e9c75/drivers/lab_tm1637.py",
       "sha256": "d34af94ff7b629ee2fbe7c1ed0692ce0f5c8f5ea99be09c70653187ecb72b59e",
-      "bytes": 3013
+      "bytes": 3013,
+      "cacheUrl": "/drivers/lab_tm1637.py"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/lab_xpt2046.h",
+      "url": "/app/af256cf6b86e9c75/drivers/lab_xpt2046.h",
       "sha256": "db23a3a7e39d8bbbc1f8bca83d25b47959bc02e58c38100c74422890b4b42fde",
-      "bytes": 1639
+      "bytes": 1639,
+      "cacheUrl": "/drivers/lab_xpt2046.h"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/lab_xpt2046.py",
+      "url": "/app/af256cf6b86e9c75/drivers/lab_xpt2046.py",
       "sha256": "7ed5a37cdddf83bdf55482c1cfc5489e454d0c778d6b6a4456b0f5bb71f0fdd4",
-      "bytes": 2228
+      "bytes": 2228,
+      "cacheUrl": "/drivers/lab_xpt2046.py"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/lcd1602.py",
+      "url": "/app/af256cf6b86e9c75/drivers/lcd1602.py",
       "sha256": "cf946f1e28b780a7310b587fe9c73959e5c12f8680e1ea30604c99b3355790f8",
-      "bytes": 2665
+      "bytes": 2665,
+      "cacheUrl": "/drivers/lcd1602.py"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/onewire.py",
+      "url": "/app/af256cf6b86e9c75/drivers/onewire.py",
       "sha256": "11f05fe2f3fc294590da5a17e160573ba0d98f1c3f9f27612479c734db71808b",
-      "bytes": 2395
+      "bytes": 2395,
+      "cacheUrl": "/drivers/onewire.py"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/provenance.json",
+      "url": "/app/af256cf6b86e9c75/drivers/provenance.json",
       "sha256": "ca874768996e8918f0961e38c67251d0696e87532037fd42f90b55af7020b0bd",
-      "bytes": 7913
+      "bytes": 7913,
+      "cacheUrl": "/drivers/provenance.json"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/servo.py",
+      "url": "/app/af256cf6b86e9c75/drivers/servo.py",
       "sha256": "41d09d148a034ef3014a0ac7f0535391270820f90f7393253831f1b4eaddded0",
-      "bytes": 770
+      "bytes": 770,
+      "cacheUrl": "/drivers/servo.py"
     },
     {
-      "url": "/app/738436555a0ca46b/drivers/ssd1306.py",
+      "url": "/app/af256cf6b86e9c75/drivers/ssd1306.py",
       "sha256": "b9f5331c75297774bced61bdfd12c37d4363336d064d7cf58967c88d807efbe5",
-      "bytes": 4922
+      "bytes": 4922,
+      "cacheUrl": "/drivers/ssd1306.py"
     },
     {
-      "url": "/app/738436555a0ca46b/environment-sensors.mjs",
+      "url": "/app/af256cf6b86e9c75/environment-sensors.mjs",
       "sha256": "ac13efffc7df8780a6bfaa8a52009b525bd8aff7426b309a6a0883fed700c8fe",
-      "bytes": 11050
+      "bytes": 11050,
+      "cacheUrl": "/environment-sensors.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/examples.mjs",
-      "sha256": "c5f1443515c33bcdc9aa4294bdd7ade632aa1d0bd85210202fc83a5490df54ae",
-      "bytes": 2366
+      "url": "/app/af256cf6b86e9c75/examples.mjs",
+      "sha256": "72f0bc338d7adb620838b4f5b669e6146db763a7751d9021124e37b7cf061370",
+      "bytes": 3594,
+      "cacheUrl": "/examples.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/host.mjs",
+      "url": "/app/af256cf6b86e9c75/host.mjs",
       "sha256": "a34f281d2b301286c00b67d8cf5bc51c40011adb3671deee22dec343fb241f5d",
-      "bytes": 3055
+      "bytes": 3055,
+      "cacheUrl": "/host.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/i2c-host.mjs",
+      "url": "/app/af256cf6b86e9c75/i2c-host.mjs",
       "sha256": "e01aa19ad31c8363cb8e9f143aab57cdd4b6b79b1093ad76f3d2b328d2ecd17e",
-      "bytes": 13708
+      "bytes": 13708,
+      "cacheUrl": "/i2c-host.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/i2c-level-shifter.mjs",
+      "url": "/app/af256cf6b86e9c75/i2c-level-shifter.mjs",
       "sha256": "ba9fe5b1066cb3bdb402812db877c51ea878a3a4f8b8fd5ce537a0dab8f75bf1",
-      "bytes": 2578
+      "bytes": 2578,
+      "cacheUrl": "/i2c-level-shifter.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/ili9341.mjs",
+      "url": "/app/af256cf6b86e9c75/ili9341.mjs",
       "sha256": "1e0f8658b76545f505b6650d0c96d396fd7bae3bba57331f7c5e7627d15dd896",
-      "bytes": 4004
+      "bytes": 4004,
+      "cacheUrl": "/ili9341.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/infrared.mjs",
+      "url": "/app/af256cf6b86e9c75/infrared.mjs",
       "sha256": "755bbd28af890e7203d1919cd9349dc1a68592c9f1774b94edf1171de709b9b0",
-      "bytes": 7464
+      "bytes": 7464,
+      "cacheUrl": "/infrared.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/lcd1602.mjs",
+      "url": "/app/af256cf6b86e9c75/lcd1602.mjs",
       "sha256": "4da4e9e3635c097037f74cea05ad9762b827e95eefeed2f6e65fd85f1b6048d4",
-      "bytes": 4855
+      "bytes": 4855,
+      "cacheUrl": "/lcd1602.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/level-shifter.mjs",
+      "url": "/app/af256cf6b86e9c75/level-shifter.mjs",
       "sha256": "9ff452857ff84c998264813a01df5289964c5cbac08a7ec20a8effc24d6a28fe",
-      "bytes": 2231
+      "bytes": 2231,
+      "cacheUrl": "/level-shifter.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/machine.py",
-      "sha256": "b5f9371299fae07275b7549588c5eba86f592c30c1e89717c2a075151c616661",
-      "bytes": 15196
+      "url": "/app/af256cf6b86e9c75/machine.py",
+      "sha256": "701e884160decd9078d5c727d01f92d0529e7ed5a787d759ba16db18b35d1b4a",
+      "bytes": 15238,
+      "cacheUrl": "/machine.py"
     },
     {
-      "url": "/app/738436555a0ca46b/max30102.mjs",
+      "url": "/app/af256cf6b86e9c75/max30102.mjs",
       "sha256": "7ae6b6e326c6f0a080f3e1828a105aa8731e7e8c7844b878939b4afd1d0d2b79",
-      "bytes": 9239
+      "bytes": 9239,
+      "cacheUrl": "/max30102.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/nrf24.mjs",
+      "url": "/app/af256cf6b86e9c75/nrf24.mjs",
       "sha256": "4e2e334f9e6b12e6242f8d118a184194e1f92fcaf01dd507bb09ff3ad46c8e46",
-      "bytes": 10511
+      "bytes": 10511,
+      "cacheUrl": "/nrf24.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/onewire-bus.mjs",
+      "url": "/app/af256cf6b86e9c75/onewire-bus.mjs",
       "sha256": "545106544cafc4745863c67f3085887e56ee4084947f2d155d9a5428ee2a0dff",
-      "bytes": 10375
+      "bytes": 10375,
+      "cacheUrl": "/onewire-bus.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/peripherals.mjs",
+      "url": "/app/af256cf6b86e9c75/peripherals.mjs",
       "sha256": "2c2d065663a6dfe7bea11bb064f1d8427a718ccc49db778e16890a1ad146e9fd",
-      "bytes": 7263
+      "bytes": 7263,
+      "cacheUrl": "/peripherals.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/pilot-form.mjs",
+      "url": "/app/af256cf6b86e9c75/pilot-form.mjs",
       "sha256": "a4076e84e951868d6830cd32a111933248de79a9bccdc79f3e1f4febbc99539a",
-      "bytes": 2781
+      "bytes": 2781,
+      "cacheUrl": "/pilot-form.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/pilot-record.mjs",
+      "url": "/app/af256cf6b86e9c75/pilot-record.mjs",
       "sha256": "d77cabd1b067521a74c2bde36948a1bbd6bbf1dd1db9788102c5a7e579a10fcb",
-      "bytes": 4684
+      "bytes": 4684,
+      "cacheUrl": "/pilot-record.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/quadrature-inputs.mjs",
+      "url": "/app/af256cf6b86e9c75/quadrature-inputs.mjs",
       "sha256": "4981f6a49fdcbbfe77f43b6a4dab41f4698aa926e1b394084147e9abec2d9228",
-      "bytes": 5236
+      "bytes": 5236,
+      "cacheUrl": "/quadrature-inputs.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/radio-clock.mjs",
+      "url": "/app/af256cf6b86e9c75/radio-clock.mjs",
       "sha256": "d5a216076b71a2fb0651509246edc7e5394a23ca264ed826590da1dbf8b7f787",
-      "bytes": 769
+      "bytes": 769,
+      "cacheUrl": "/radio-clock.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/radio-examples.json",
-      "sha256": "5cdcb51cb8b68304d7deec44e62d54e0821b4546731eb41b3f3ade855915730b",
-      "bytes": 96580
+      "url": "/app/af256cf6b86e9c75/radio-examples.json",
+      "sha256": "517014776b015a325706a6ca1485c0ce177df0ff9aedc9e81f18867a52c4fb8a",
+      "bytes": 96580,
+      "cacheUrl": "/radio-examples.json"
     },
     {
-      "url": "/app/738436555a0ca46b/rtc-ds1302.mjs",
+      "url": "/app/af256cf6b86e9c75/rtc-ds1302.mjs",
       "sha256": "d1df9f2d7789ec99ee519d226a22a60c48929175bafab74d57c10c09297f131f",
-      "bytes": 9710
+      "bytes": 9710,
+      "cacheUrl": "/rtc-ds1302.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/runtime/micropython.mjs",
+      "url": "/app/af256cf6b86e9c75/runtime/micropython.mjs",
       "sha256": "0105e219063d76cfd40c564b3a206aee49dfb5bd282e4b7574164c207f35908f",
-      "bytes": 225531
+      "bytes": 225531,
+      "cacheUrl": "/runtime/micropython.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/runtime/micropython.wasm",
-      "sha256": "3f638e8cacd1f00168f19a17fcae35ece9773b4b661464c8241114e00c24fcce",
-      "bytes": 1134289
+      "url": "/app/af256cf6b86e9c75/runtime/micropython.wasm",
+      "sha256": "0a5c32e1079dce5fc096729cdd2e55bd0ba6c11190e42c9a96c2939200887da5",
+      "bytes": 996046,
+      "cacheUrl": "/runtime/micropython.wasm"
     },
     {
-      "url": "/app/738436555a0ca46b/s3-contract.mjs",
-      "sha256": "cf12cd5e65fcc51eadfc2ac8ac3f84b85442f593926fc658f55a2d26747a1a3e",
-      "bytes": 6002
+      "url": "/app/af256cf6b86e9c75/s3-contract.mjs",
+      "sha256": "5a7fd448c5a33e42063c2e96c34161558524b64db461d14d403b40e8886759d1",
+      "bytes": 6500,
+      "cacheUrl": "/s3-contract.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/s3-core-lock.mjs",
+      "url": "/app/af256cf6b86e9c75/s3-core-lock.mjs",
       "sha256": "b6ce5ce30ce6dbb7f45b74a4d313b88df709fca06df0735a7f18fd3fd4c5de3e",
-      "bytes": 1239
+      "bytes": 1239,
+      "cacheUrl": "/s3-core-lock.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/s3-engine.mjs",
+      "url": "/app/af256cf6b86e9c75/s3-engine.mjs",
       "sha256": "c709e349b2718965933ab556c510454e210b37c603a21286caec7d7913db0f55",
-      "bytes": 6965
+      "bytes": 6965,
+      "cacheUrl": "/s3-engine.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/s3-examples.json",
-      "sha256": "f7449339e44b6576da6593bfa693acc799d386ea374bd6ae517ca7b2efdfe969",
-      "bytes": 1444176
+      "url": "/app/af256cf6b86e9c75/s3-examples.json",
+      "sha256": "401863e154bdf1fef7e3403e3f51ce74599e75b44b08be7e2faf708c71cc6482",
+      "bytes": 1443762,
+      "cacheUrl": "/s3-examples.json"
     },
     {
-      "url": "/app/738436555a0ca46b/s3-worker.mjs",
+      "url": "/app/af256cf6b86e9c75/s3-worker.mjs",
       "sha256": "04c48c2aa4667fde02868c0e3907299dda7e16bb6d8cc4a7a1277c140998af3d",
-      "bytes": 625
+      "bytes": 625,
+      "cacheUrl": "/s3-worker.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/school-account.mjs",
+      "url": "/app/af256cf6b86e9c75/school-account.mjs",
       "sha256": "83d2ac228d0544b3f3504a60271e6c24a3620ec917b212a6f8aaa8f5d291431c",
-      "bytes": 8008
+      "bytes": 8008,
+      "cacheUrl": "/school-account.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/school-check.mjs",
+      "url": "/app/af256cf6b86e9c75/school-check.mjs",
       "sha256": "91cffb080644f01fd56c6b3fa14f894f6092877882e38ea98208e8794c5047e9",
-      "bytes": 1866
+      "bytes": 1866,
+      "cacheUrl": "/school-check.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/school-classes.mjs",
-      "sha256": "026344d0565e6e49a46dcaa96b024184a69cfc89ae1b6bab976790be60acc893",
-      "bytes": 17209
+      "url": "/app/af256cf6b86e9c75/school-classes.mjs",
+      "sha256": "12c9a1b03ffe0c3ddfa0c0f4342a6ae253c56d5684d87743fa43afa5f33d4db3",
+      "bytes": 17209,
+      "cacheUrl": "/school-classes.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/school-grading-support.mjs",
+      "url": "/app/af256cf6b86e9c75/school-grading-support.mjs",
       "sha256": "5437546ed532947a00b07307cb140959105a56f94e6bc2bd5a2f91867ace84cc",
-      "bytes": 3693
+      "bytes": 3693,
+      "cacheUrl": "/school-grading-support.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/school-pilot-form.mjs",
+      "url": "/app/af256cf6b86e9c75/school-pilot-form.mjs",
       "sha256": "69f63c5041cbf7ece726e39bacb362a7f014066dc828e6aae68e90484c6cf8eb",
-      "bytes": 5177
+      "bytes": 5177,
+      "cacheUrl": "/school-pilot-form.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/school-pilot-record.mjs",
+      "url": "/app/af256cf6b86e9c75/school-pilot-record.mjs",
       "sha256": "87cf5975d7787c55bb8016df22ba5d9475e277f77bc11f10605dec009d75e990",
-      "bytes": 6740
+      "bytes": 6740,
+      "cacheUrl": "/school-pilot-record.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/sd-card.mjs",
+      "url": "/app/af256cf6b86e9c75/sd-card.mjs",
       "sha256": "5c93b47fb40878d4bf4aeb1e3b44c5e18c7c5e95e8e017f35ca42675e363870e",
-      "bytes": 8860
+      "bytes": 8860,
+      "cacheUrl": "/sd-card.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/session.mjs",
+      "url": "/app/af256cf6b86e9c75/session.mjs",
       "sha256": "34ab7d0f12c9da77c66c665cb851ef17eafc583730a242cbc48c77c68ba4917e",
-      "bytes": 2041
+      "bytes": 2041,
+      "cacheUrl": "/session.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/spi-devices.mjs",
+      "url": "/app/af256cf6b86e9c75/spi-devices.mjs",
       "sha256": "121225f88f741e37d84cbbf8b4239a8c215b2defe7560710d181210aa95fe25c",
-      "bytes": 13158
+      "bytes": 13158,
+      "cacheUrl": "/spi-devices.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/stepper.mjs",
+      "url": "/app/af256cf6b86e9c75/stepper.mjs",
       "sha256": "c98f7087aecf51ed81750fb0707e80c5e638d0766330759ed7c168fcfc5f7cc5",
-      "bytes": 8521
+      "bytes": 8521,
+      "cacheUrl": "/stepper.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/suite.mjs",
+      "url": "/app/af256cf6b86e9c75/suite.mjs",
       "sha256": "d0f4648479e4d6ce154769f635c07cc69e1edd61655aa76b0d9e010977e337aa",
-      "bytes": 7832
+      "bytes": 7832,
+      "cacheUrl": "/suite.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/tm1637.mjs",
+      "url": "/app/af256cf6b86e9c75/tm1637.mjs",
       "sha256": "2109a7a49a7c3014f9ab9b4aed4d2d0af2c44636e80d078dbbcac68462958b1c",
-      "bytes": 5180
+      "bytes": 5180,
+      "cacheUrl": "/tm1637.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/worker.mjs",
+      "url": "/app/af256cf6b86e9c75/worker.mjs",
       "sha256": "112131bd027448432724576116dd6b75f03815703ce21046384920a0ef30eb54",
-      "bytes": 2564
+      "bytes": 2564,
+      "cacheUrl": "/worker.mjs"
     },
     {
-      "url": "/app/738436555a0ca46b/xpt2046.mjs",
+      "url": "/app/af256cf6b86e9c75/xpt2046.mjs",
       "sha256": "c9228227d9d187bb507d15bc26e20c974e37c883ef05c89e18bda100690cd5ca",
-      "bytes": 2652
+      "bytes": 2652,
+      "cacheUrl": "/xpt2046.mjs"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/P0/01_Poruka.py",
+      "sha256": "b83431cd8f2ae11acbbcd3ebee21949675bb497f24f3e0ac9e31467ac0f1ddec",
+      "bytes": 1132,
+      "cacheUrl": "/zbirke/P0/01_Poruka.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V1_1/MicroPython/01_Model.py",
+      "sha256": "a1d44d1350ab6d21bbc95843e0df8fe04a22b71f992920efda82a4260b4bf6c4",
+      "bytes": 12375,
+      "cacheUrl": "/zbirke/V1_1/MicroPython/01_Model.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V1_10/MicroPython/01_DS18B20.py",
+      "sha256": "affd4b84925d47d79583de3eaa264b8e51914bd6a8afa2a334f3f4dfdaf10f38",
+      "bytes": 3112,
+      "cacheUrl": "/zbirke/V1_10/MicroPython/01_DS18B20.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V1_10/MicroPython/02_AHT10.py",
+      "sha256": "b390f8108bac6d1a185f4e567c6ffec9f18d3c1b01abeb10bef0bef4d26dd544",
+      "bytes": 4662,
+      "cacheUrl": "/zbirke/V1_10/MicroPython/02_AHT10.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V1_10/MicroPython/03_DHT.py",
+      "sha256": "1c4503a89b64c348743d0e79c40d80a30f9e5be9e09bffb6331756444f8df58d",
+      "bytes": 1464,
+      "cacheUrl": "/zbirke/V1_10/MicroPython/03_DHT.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V1_2/MicroPython/01_LED.py",
+      "sha256": "47a2da87933fd5b148532e010b6ae14b9b2737e49f95f6818d87cd6c026ba2a7",
+      "bytes": 1734,
+      "cacheUrl": "/zbirke/V1_2/MicroPython/01_LED.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V1_3/MicroPython/01_LED.py",
+      "sha256": "eb556df40ee4dd7f9ec9c63d1b88fd33881b7da11d8164e906a5cd7075563d62",
+      "bytes": 1741,
+      "cacheUrl": "/zbirke/V1_3/MicroPython/01_LED.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V1_4/01_Senzor.py",
+      "sha256": "cb4ea13c069aef464dd7af55442a002fa8ea43698cf7bc2a3214bd0224df651f",
+      "bytes": 3117,
+      "cacheUrl": "/zbirke/V1_4/01_Senzor.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V1_5/MicroPython/01_Svjetlost.py",
+      "sha256": "230b36a3cac928200df3c6a32348cb36bcc4c6e812154e304122599d0af91d8c",
+      "bytes": 1339,
+      "cacheUrl": "/zbirke/V1_5/MicroPython/01_Svjetlost.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V1_5/MicroPython/02_Temperatura.py",
+      "sha256": "5081c0c59a74089634da8e51a55291fc11138ff9a2c9dae961ae85d4262c278f",
+      "bytes": 3113,
+      "cacheUrl": "/zbirke/V1_5/MicroPython/02_Temperatura.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V1_6/MicroPython/01_LED.py",
+      "sha256": "090eb79c18ed7db2e0c44951304f5a05d90f49b66ddb57b7a6728145a547af5b",
+      "bytes": 1740,
+      "cacheUrl": "/zbirke/V1_6/MicroPython/01_LED.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V1_6/MicroPython/02_Servo.py",
+      "sha256": "46d56a3b3198df380eed68d48791d16edf8a9f0535efa46d46c2701263ba0b37",
+      "bytes": 2512,
+      "cacheUrl": "/zbirke/V1_6/MicroPython/02_Servo.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V1_7/MicroPython/01_Senzor.py",
+      "sha256": "f0c4dfdffd02475508c91e8337211e260aa62f83d8b1a45b5dbaf3c960ced5e6",
+      "bytes": 3113,
+      "cacheUrl": "/zbirke/V1_7/MicroPython/01_Senzor.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V1_8/MicroPython/01_Servo.py",
+      "sha256": "1d7d4fa01834d914c42b80837aa901c8c1e402904f40944d0eb9082d70e30adc",
+      "bytes": 2524,
+      "cacheUrl": "/zbirke/V1_8/MicroPython/01_Servo.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V1_9/MicroPython/01_Model.py",
+      "sha256": "c428769c787681880e0e337a52b0edaa2a839a11a21c334181f66790aedad41c",
+      "bytes": 12561,
+      "cacheUrl": "/zbirke/V1_9/MicroPython/01_Model.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V2_1/01_HTTP.py",
+      "sha256": "5256dd669b564c24025519341f9e70a13bcf6ffcc81d5d9a53864e9135a7915a",
+      "bytes": 30576,
+      "cacheUrl": "/zbirke/V2_1/01_HTTP.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V2_2/MicroPython/01_HTTP.py",
+      "sha256": "eaf8bb68699afe4a41ae251aa622272ab3055fb13092c5436439a27747857e26",
+      "bytes": 30600,
+      "cacheUrl": "/zbirke/V2_2/MicroPython/01_HTTP.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V2_3/MicroPython/01_HTTP.py",
+      "sha256": "fd39ee178e7e8533510b272a349c5018b07c0c40ec6be6145a84fa2aca3593d9",
+      "bytes": 30563,
+      "cacheUrl": "/zbirke/V2_3/MicroPython/01_HTTP.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V2_3/MicroPython/02_MQTT.py",
+      "sha256": "5464ce73ac160b7c4e74edc4a0ee1a1a68454595274669845bec4c0b272b95a6",
+      "bytes": 37408,
+      "cacheUrl": "/zbirke/V2_3/MicroPython/02_MQTT.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V2_4/MicroPython/01_MQTT.py",
+      "sha256": "197dfa1f29424aceeb693525349efcfa94260bb040e3ac8c9d826e9199ab012f",
+      "bytes": 37522,
+      "cacheUrl": "/zbirke/V2_4/MicroPython/01_MQTT.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V2_5/MicroPython/01_MQTT.py",
+      "sha256": "942c6fa8b165e57d3f8d92c495aca9ba77de215e2d4e9aac3d53b514ffef5b5a",
+      "bytes": 37480,
+      "cacheUrl": "/zbirke/V2_5/MicroPython/01_MQTT.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V2_6/MicroPython/01_MQTT.py",
+      "sha256": "96cee9c7326926dee02d91b68d497e64ed056bbb5c14c15158a215c2113b1834",
+      "bytes": 37617,
+      "cacheUrl": "/zbirke/V2_6/MicroPython/01_MQTT.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V2_S/MicroPython/01_MQTT.py",
+      "sha256": "4e0d5c0802ee931c9f310d29c7419b2abebd4f61fb8cbd9261c904a650e86a72",
+      "bytes": 37516,
+      "cacheUrl": "/zbirke/V2_S/MicroPython/01_MQTT.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V3_1/01_Pinovi.py",
+      "sha256": "f808c76c33c4b5be7eab3fedba21bfbc77d09023b2d29f54159f57758cce813f",
+      "bytes": 1010,
+      "cacheUrl": "/zbirke/V3_1/01_Pinovi.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V3_2/MicroPython/01_Servo.py",
+      "sha256": "ad8421ef5c38d817fd75b9c71b1db96836fac81a5b64a2b227d6746a962bdf7e",
+      "bytes": 2519,
+      "cacheUrl": "/zbirke/V3_2/MicroPython/01_Servo.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V3_3/MicroPython/01_Model.py",
+      "sha256": "5e8c2603345510a51c141d88442d4dfdca0f06562c5926b703c8c8d7c26bc33f",
+      "bytes": 17793,
+      "cacheUrl": "/zbirke/V3_3/MicroPython/01_Model.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V3_4/MicroPython/01_Senzor.py",
+      "sha256": "2b5d759a6bff3e25df4b5fc5c013f02656c89d80bffb08f8fe80a2d998ba7b02",
+      "bytes": 3104,
+      "cacheUrl": "/zbirke/V3_4/MicroPython/01_Senzor.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V3_4/MicroPython/02_LED.py",
+      "sha256": "5be24c7898bee5f2ce5a785dd49992f483e29c67d0e81bbe45e11a15e1e6a140",
+      "bytes": 1735,
+      "cacheUrl": "/zbirke/V3_4/MicroPython/02_LED.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V3_4/MicroPython/03_Servo.py",
+      "sha256": "045411a69008ba842295b8f2d4a1ac06e8d7c1588fe08cc18894f05a04048233",
+      "bytes": 2507,
+      "cacheUrl": "/zbirke/V3_4/MicroPython/03_Servo.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V3_4/MicroPython/04_Model.py",
+      "sha256": "1d6be22122f3bbeb2fbd972ded0ff7b3809fa1f6cef7134b11c084d0b84c1fa8",
+      "bytes": 17790,
+      "cacheUrl": "/zbirke/V3_4/MicroPython/04_Model.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V3_5/MicroPython/01_Model.py",
+      "sha256": "956ae37914f86598f57cb6014f9264756a957db27122c738d4d466e161385a37",
+      "bytes": 17800,
+      "cacheUrl": "/zbirke/V3_5/MicroPython/01_Model.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V3_6/MicroPython/01_Model.py",
+      "sha256": "a17d9bdfd6caeb7bf1941ce4dc83f27bc61531d6fedc191f5faafec22b62ff2a",
+      "bytes": 17798,
+      "cacheUrl": "/zbirke/V3_6/MicroPython/01_Model.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V3_7/MicroPython/01_Model.py",
+      "sha256": "4415dba669b7900717d6e1c8c4afb0a28fb52004446ffda308ad0dd2c4318a35",
+      "bytes": 17808,
+      "cacheUrl": "/zbirke/V3_7/MicroPython/01_Model.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V4_1/MicroPython/01_Funkcije.py",
+      "sha256": "d90ccc5db01fbef25c77e6051425cdca88585035d5cc8226893f0d51c6ede74d",
+      "bytes": 1466,
+      "cacheUrl": "/zbirke/V4_1/MicroPython/01_Funkcije.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V4_1/MicroPython/02_Odluka.py",
+      "sha256": "547b6d86f695081794e32acb0d3288176a642e0790d87bd58623ea415e39da22",
+      "bytes": 1750,
+      "cacheUrl": "/zbirke/V4_1/MicroPython/02_Odluka.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V4_1/MicroPython/03_Model.py",
+      "sha256": "407dd4c8b25f5f6d48ee19986f7e83983e0525ce81fbcc3bc17ac3635c152b30",
+      "bytes": 11012,
+      "cacheUrl": "/zbirke/V4_1/MicroPython/03_Model.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V4_2/MicroPython/00_Provjera.py",
+      "sha256": "de8fb9ced4e4064ab2bcc4666c7278c3bed5c670ab09381514458b6742084e74",
+      "bytes": 3500,
+      "cacheUrl": "/zbirke/V4_2/MicroPython/00_Provjera.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V4_2/MicroPython/01_Modul.py",
+      "sha256": "f1c6e982be295b865743b2f6cce6eda53c6cfa98d55a81bc737d477211f519b4",
+      "bytes": 2057,
+      "cacheUrl": "/zbirke/V4_2/MicroPython/01_Modul.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V4_2/MicroPython/lab_podrska.py",
+      "sha256": "e0a73d54e9ab32b6caae5b38f8b413cb8eac285e5ac7c1c9835540fa984d3141",
+      "bytes": 6919,
+      "cacheUrl": "/zbirke/V4_2/MicroPython/lab_podrska.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V4_2/MicroPython/vent_model_ucenik.py",
+      "sha256": "cecbe6f32654715a45bb846963bc70ec2fe9c1edd4b1cdb869289f9e3d6a892e",
+      "bytes": 5918,
+      "cacheUrl": "/zbirke/V4_2/MicroPython/vent_model_ucenik.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V4_3/MicroPython/01_Automatski.py",
+      "sha256": "9eadbf84be206627062aa5c78fb18034afafd16123fbd99081e4230eb3878c55",
+      "bytes": 2034,
+      "cacheUrl": "/zbirke/V4_3/MicroPython/01_Automatski.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V4_3/MicroPython/02_Raspored.py",
+      "sha256": "f64cd66d829bf47921618de9446b3c9d764432a98313aeded83c1d3219691b39",
+      "bytes": 2247,
+      "cacheUrl": "/zbirke/V4_3/MicroPython/02_Raspored.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V4_3/lab_podrska_sim.py",
+      "sha256": "e85cda526c52ea04182d6f90fae3e3312e0349615675f20e33ef4ff9538b185c",
+      "bytes": 7134,
+      "cacheUrl": "/zbirke/V4_3/lab_podrska_sim.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V4_4/MicroPython/01_Mreza.py",
+      "sha256": "ab45606d66280b19526b85da8b9ad1f4e2f47ca8d940c10f1064750a3a5aa199",
+      "bytes": 34132,
+      "cacheUrl": "/zbirke/V4_4/MicroPython/01_Mreza.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V4_5/MicroPython/01_Integracija.py",
+      "sha256": "71393f670288314cc24e326e2b1eadf994183c8593d5f6c971ffcaebad67b709",
+      "bytes": 35166,
+      "cacheUrl": "/zbirke/V4_5/MicroPython/01_Integracija.py"
+    },
+    {
+      "url": "/app/af256cf6b86e9c75/zbirke/V4_6/MicroPython/01_Integracija.py",
+      "sha256": "9d36b317631e8b0edc34af505f9058ccef884483b760a5f182902e3797be377f",
+      "bytes": 39189,
+      "cacheUrl": "/zbirke/V4_6/MicroPython/01_Integracija.py"
     },
     {
       "url": "/arduino-contract.mjs",
@@ -414,54 +767,64 @@
       "bytes": 624965
     },
     {
+      "url": "/assets/ClassReviewPanel-C09vUcBA.js",
+      "sha256": "e45e51f4d73b351f6565416b67670dafeaa29dfe096fde2dc15410fe19516ba7",
+      "bytes": 32324
+    },
+    {
       "url": "/assets/ClassReviewPanel-CfM1iDYP.css",
       "sha256": "3c3f134e01829f2b4db3f91b754cb7ed05b3d6d083e8113cc6e7b2af698f7cbd",
       "bytes": 2855
     },
     {
-      "url": "/assets/ClassReviewPanel-DW7OEnEj.js",
-      "sha256": "be0fc4e709eee6b3a5405066c7056929e1c6a3154cb806b47eac377f9b06fa72",
-      "bytes": 32293
+      "url": "/assets/CodeEditor-DPCADJ9t.js",
+      "sha256": "bfbd79c5ab18164a2f08399913a4f98ae81a39264bde7800aa110d76a72128fe",
+      "bytes": 568770
     },
     {
-      "url": "/assets/CodeEditor-Dj3km0Qa.js",
-      "sha256": "073e20a14f1a6b5a98685c9da6f6f5a62d24b2bf1e8731c46b6ef3efbd1da018",
-      "bytes": 568638
+      "url": "/assets/assemblyWorker-DDl71ZIU.js",
+      "sha256": "fd7305f966920d6ce8f9f76fba02886d3a63d2ece5623e6fd3ccbee4bb37b9ed",
+      "bytes": 43907
     },
     {
-      "url": "/assets/avrWorker-C3uDPEHH.js",
-      "sha256": "59f4057bec1a08beaa53fecc7643d5517069af382a19d79593eecdff6473c609",
-      "bytes": 184856
+      "url": "/assets/avrWorker-cOzv5pAe.js",
+      "sha256": "5cd1505af366c6353e6b306c76a2b58749f7cc3eb9bc7c14539f6ba574a9c3ab",
+      "bytes": 186453
     },
     {
-      "url": "/assets/index-B8fzylXx.js",
-      "sha256": "c727a4581d408904f4c27ada5ed71c5403df68dcd90c65ea88438359f41cc932",
-      "bytes": 1270517
+      "url": "/assets/index-BV6VU9s6.js",
+      "sha256": "ab74cba371d526b65496f97ef9d7a9598ec236c8e1e7b3431c69b42b45b5cb7f",
+      "bytes": 1421238
     },
     {
-      "url": "/assets/index-Jz2Fz_ew.css",
-      "sha256": "ad904ae6d66351ed58c2bfbd450858e02c8428969016d7ef297480c018c0101e",
-      "bytes": 69860
+      "url": "/assets/index-BvGLNFn-.css",
+      "sha256": "b44000626c64562deb2693f14d4f7cc799f9baa233184908256b9e353e733676",
+      "bytes": 82539
     },
     {
-      "url": "/assets/worker-z4FOv-9x.js",
-      "sha256": "fcaadeb060d7795893756df60534efb3e61aa079339c70ae39e26d51956c2b06",
-      "bytes": 301012
+      "url": "/assets/worker-BL1ri9Y9.js",
+      "sha256": "8cce79446dca99d49edea459af29029e2fd5c61df84dea40c3831523fb3f64e2",
+      "bytes": 301795
     },
     {
       "url": "/avr-contract.mjs",
-      "sha256": "bed69b2facfeabbe139739ee6daa745054d95bf018a8a6cdf625e3418cb29b7b",
-      "bytes": 8615
+      "sha256": "da5991e2bb0d1d9e2a3f6b9662c3f41a7e9295c1c0e79f13ecbec52ad1c03ab4",
+      "bytes": 8985
     },
     {
       "url": "/avr-examples.json",
-      "sha256": "6a5eecfcb8bde92bde7199d99143a4f17728612666e7ababed12a02ec7bcc9c9",
+      "sha256": "3c2a4a33f05037f370e78b3b4e1a6fd5591cc1ffe9c8afe9df8fc47898d567f1",
       "bytes": 2727980
     },
     {
       "url": "/circuit-host.mjs",
       "sha256": "794d3ccdd1a7597d77a9e923b6f6b63e7cdaf0f7a47b0ef958139628d9d4c620",
       "bytes": 32066
+    },
+    {
+      "url": "/compiler-sources.html",
+      "sha256": "f7327c97bb2d0e3356161cd2886394e4f6f340219166282c04e5ef0a9aee2d2b",
+      "bytes": 9221
     },
     {
       "url": "/dht-bus.mjs",
@@ -620,8 +983,8 @@
     },
     {
       "url": "/examples.mjs",
-      "sha256": "c5f1443515c33bcdc9aa4294bdd7ade632aa1d0bd85210202fc83a5490df54ae",
-      "bytes": 2366
+      "sha256": "72f0bc338d7adb620838b4f5b669e6146db763a7751d9021124e37b7cf061370",
+      "bytes": 3594
     },
     {
       "url": "/fonts.css",
@@ -630,8 +993,8 @@
     },
     {
       "url": "/guide.html",
-      "sha256": "4beffdb50f1f72542d9ac1c84af76112ecf7c7ee641fee59fa9e844df250a4d7",
-      "bytes": 50944
+      "sha256": "1a4f42796fc8c91bd24b214b8835aedb6c6a56b9f3a89e4b2f40e95b536f4b08",
+      "bytes": 53293
     },
     {
       "url": "/host.mjs",
@@ -670,7 +1033,7 @@
     },
     {
       "url": "/index.html",
-      "sha256": "6aff4ef7b3e86c6850e74a1d2062b6fe65797b882964fffd2ceec02ef613fb85",
+      "sha256": "8607f727f0eccd1431d3f646eee0317714c7a7025002565cc82b61cf61a312a9",
       "bytes": 688
     },
     {
@@ -745,8 +1108,8 @@
     },
     {
       "url": "/machine.py",
-      "sha256": "b5f9371299fae07275b7549588c5eba86f592c30c1e89717c2a075151c616661",
-      "bytes": 15196
+      "sha256": "701e884160decd9078d5c727d01f92d0529e7ed5a787d759ba16db18b35d1b4a",
+      "bytes": 15238
     },
     {
       "url": "/manifest.webmanifest",
@@ -785,8 +1148,8 @@
     },
     {
       "url": "/pilot.html",
-      "sha256": "ef8e34bd3392aee6677b5d259685402c176c4aa2d37d778bff58460ae89c23a5",
-      "bytes": 15192
+      "sha256": "1354b0d6e3fa86a2356dc0b73ca490f893b1a0ed3ea67ac0baf9979a114fd697",
+      "bytes": 15189
     },
     {
       "url": "/quadrature-inputs.mjs",
@@ -800,7 +1163,7 @@
     },
     {
       "url": "/radio-examples.json",
-      "sha256": "5cdcb51cb8b68304d7deec44e62d54e0821b4546731eb41b3f3ade855915730b",
+      "sha256": "517014776b015a325706a6ca1485c0ce177df0ff9aedc9e81f18867a52c4fb8a",
       "bytes": 96580
     },
     {
@@ -825,13 +1188,13 @@
     },
     {
       "url": "/runtime/micropython.wasm",
-      "sha256": "3f638e8cacd1f00168f19a17fcae35ece9773b4b661464c8241114e00c24fcce",
-      "bytes": 1134289
+      "sha256": "0a5c32e1079dce5fc096729cdd2e55bd0ba6c11190e42c9a96c2939200887da5",
+      "bytes": 996046
     },
     {
       "url": "/s3-contract.mjs",
-      "sha256": "cf12cd5e65fcc51eadfc2ac8ac3f84b85442f593926fc658f55a2d26747a1a3e",
-      "bytes": 6002
+      "sha256": "5a7fd448c5a33e42063c2e96c34161558524b64db461d14d403b40e8886759d1",
+      "bytes": 6500
     },
     {
       "url": "/s3-core-lock.mjs",
@@ -845,8 +1208,8 @@
     },
     {
       "url": "/s3-examples.json",
-      "sha256": "f7449339e44b6576da6593bfa693acc799d386ea374bd6ae517ca7b2efdfe969",
-      "bytes": 1444176
+      "sha256": "401863e154bdf1fef7e3403e3f51ce74599e75b44b08be7e2faf708c71cc6482",
+      "bytes": 1443762
     },
     {
       "url": "/s3-worker.mjs",
@@ -865,7 +1228,7 @@
     },
     {
       "url": "/school-classes.mjs",
-      "sha256": "026344d0565e6e49a46dcaa96b024184a69cfc89ae1b6bab976790be60acc893",
+      "sha256": "12c9a1b03ffe0c3ddfa0c0f4342a6ae253c56d5684d87743fa43afa5f33d4db3",
       "bytes": 17209
     },
     {
@@ -875,8 +1238,8 @@
     },
     {
       "url": "/school-grading-support.json",
-      "sha256": "a2c504e66d7695e4c79698a2e6b6684f61610e5ce911141a41c88c61cb5381ac",
-      "bytes": 858895
+      "sha256": "ca18e0e5b5b0a9c5f62719e1ac808f55611878e3d3a011aaa8bc7605eaac8417",
+      "bytes": 858894
     },
     {
       "url": "/school-grading-support.mjs",
@@ -905,8 +1268,8 @@
     },
     {
       "url": "/school.html",
-      "sha256": "923ae399ee3050ffa486b0ac086c4da8c28d1a416feacab2d6703f1688c4f380",
-      "bytes": 17933
+      "sha256": "8dc6e743f0abf1ac59d1c65ac04e3623cab1fb1672e32432ba59ad29d6191903",
+      "bytes": 17999
     },
     {
       "url": "/sd-card.mjs",
@@ -945,8 +1308,8 @@
     },
     {
       "url": "/urs-catalog-summary.json",
-      "sha256": "d4e23e3c86c5e261e6c848cf89cf364caa4aef8bcf72af0dbcebfcf14066ec24",
-      "bytes": 406
+      "sha256": "d2bf557659ef4a737d3101953919d0117e9f278bd3a2a7795057f8ad85351e5a",
+      "bytes": 405
     },
     {
       "url": "/urs-podrska.csv",
@@ -1027,6 +1390,1241 @@
       "url": "/xpt2046.mjs",
       "sha256": "c9228227d9d187bb507d15bc26e20c974e37c883ef05c89e18bda100690cd5ca",
       "bytes": 2652
+    },
+    {
+      "url": "/zbirke/Arduino_biblioteke_pilot.zip",
+      "sha256": "a2f11e0a9370811e5df64154c0bce260642e9e2d918842508ddf7dab5cc2806e",
+      "bytes": 586990
+    },
+    {
+      "url": "/zbirke/P0/01_Poruka.ino",
+      "sha256": "09473def128aa3cb287ae01fabde0781ba290aaf7784f147e051b90ae29fbb5c",
+      "bytes": 947
+    },
+    {
+      "url": "/zbirke/P0/01_Poruka.py",
+      "sha256": "b83431cd8f2ae11acbbcd3ebee21949675bb497f24f3e0ac9e31467ac0f1ddec",
+      "bytes": 1132
+    },
+    {
+      "url": "/zbirke/P0/Arduino.json",
+      "sha256": "0523236639bd2e6e00b82cd7f2fecc97521d48e957bcc9bc8cfd490bcdeb1226",
+      "bytes": 2173
+    },
+    {
+      "url": "/zbirke/P0/LV_P0_Arduino_v14.docx",
+      "sha256": "2c9e0917741e3129e751d79239382cc256408685bcf86c3a23eb840b629b7cee",
+      "bytes": 919089
+    },
+    {
+      "url": "/zbirke/P0/LV_P0_MicroPython_v14.docx",
+      "sha256": "02ce5a978cc644140392e3e0ba5cc906a06dee0d63064bca131c253fc9a75d49",
+      "bytes": 405769
+    },
+    {
+      "url": "/zbirke/P0/MicroPython.json",
+      "sha256": "80b689f431c85d9aa99a124003491cc930a1f18776be7e28d6010826e75392e0",
+      "bytes": 2161
+    },
+    {
+      "url": "/zbirke/Popis_vjezbi_IoT_US.csv",
+      "sha256": "2cb5e826b40108347b73bcd17216898a39f440150c61c4f795903a419bbc6ac9",
+      "bytes": 53817
+    },
+    {
+      "url": "/zbirke/V1_1/Arduino.json",
+      "sha256": "53de5675429b1df8c0e671b684113bdfe31eed5db13f5b514029003f1f6d3324",
+      "bytes": 2569
+    },
+    {
+      "url": "/zbirke/V1_1/Arduino/01_Model/01_Model.ino",
+      "sha256": "24cb875055053f1f0fc8d1061db88e404cb23516783796dd8ddfcace88ac01b7",
+      "bytes": 18471
+    },
+    {
+      "url": "/zbirke/V1_1/LV_V1_1_Arduino_v14.docx",
+      "sha256": "abdffe5829156a4ad1cde63c51fc7dc453823b6d44f835fb901c856a112f792e",
+      "bytes": 255001
+    },
+    {
+      "url": "/zbirke/V1_1/LV_V1_1_MicroPython_v14.docx",
+      "sha256": "6e09cb27cf488db8240473f3e764f6d83baa7d11d58e3984da64ff48625341a9",
+      "bytes": 255004
+    },
+    {
+      "url": "/zbirke/V1_1/MicroPython.json",
+      "sha256": "55efae09df0368f78cb6267f6656e27b67bf464adaaaedec428e52cb9f1b618b",
+      "bytes": 2567
+    },
+    {
+      "url": "/zbirke/V1_1/MicroPython/01_Model.py",
+      "sha256": "a1d44d1350ab6d21bbc95843e0df8fe04a22b71f992920efda82a4260b4bf6c4",
+      "bytes": 12375
+    },
+    {
+      "url": "/zbirke/V1_10/Arduino.json",
+      "sha256": "51e26d05b414dc00189ca00f20bcd5091108d3cafb4ca7bbf0e569479f3869ec",
+      "bytes": 4200
+    },
+    {
+      "url": "/zbirke/V1_10/Arduino/01_DS18B20/01_DS18B20.ino",
+      "sha256": "547d5832a0e43818b29324ded7c17fbd4917245478fed77f9f5d567b4be15e43",
+      "bytes": 3928
+    },
+    {
+      "url": "/zbirke/V1_10/Arduino/02_AHT10/02_AHT10.ino",
+      "sha256": "4231d344abe4311b1b90890559d3185b6b899aaaf4e58f6892b4ff32a448fa0e",
+      "bytes": 3736
+    },
+    {
+      "url": "/zbirke/V1_10/Arduino/03_DHT/03_DHT.ino",
+      "sha256": "e86a064a83dd5de14da24514f267dcbedaf9fe13400b084166bd80175edab137",
+      "bytes": 2475
+    },
+    {
+      "url": "/zbirke/V1_10/LV_V1_10_Arduino_v14.docx",
+      "sha256": "b0840ee9ba69474d66389afa085a099ff2614e8d559b127cb88601efc646251e",
+      "bytes": 347230
+    },
+    {
+      "url": "/zbirke/V1_10/LV_V1_10_MicroPython_v14.docx",
+      "sha256": "c2042548e8edfcdca9f858ecd41bdbd6a456a8982fbf92fa942eab76bf4656ce",
+      "bytes": 347219
+    },
+    {
+      "url": "/zbirke/V1_10/MicroPython.json",
+      "sha256": "ec8e0537c997a8629a3ac91b0525192b170b624d07e0820bb26f65d61e793016",
+      "bytes": 4132
+    },
+    {
+      "url": "/zbirke/V1_10/MicroPython/01_DS18B20.py",
+      "sha256": "affd4b84925d47d79583de3eaa264b8e51914bd6a8afa2a334f3f4dfdaf10f38",
+      "bytes": 3112
+    },
+    {
+      "url": "/zbirke/V1_10/MicroPython/02_AHT10.py",
+      "sha256": "b390f8108bac6d1a185f4e567c6ffec9f18d3c1b01abeb10bef0bef4d26dd544",
+      "bytes": 4662
+    },
+    {
+      "url": "/zbirke/V1_10/MicroPython/03_DHT.py",
+      "sha256": "1c4503a89b64c348743d0e79c40d80a30f9e5be9e09bffb6331756444f8df58d",
+      "bytes": 1464
+    },
+    {
+      "url": "/zbirke/V1_2/Arduino.json",
+      "sha256": "2e14c66fb31f195a8e7f7dff240d6481c4ec8ee53f6dae3327d3d12eaa9710ba",
+      "bytes": 2993
+    },
+    {
+      "url": "/zbirke/V1_2/Arduino/01_LED/01_LED.ino",
+      "sha256": "7572318101f0d99c7062869282e926eaacde1a337973fc0eeab52a29f52fe55d",
+      "bytes": 2714
+    },
+    {
+      "url": "/zbirke/V1_2/LV_V1_2_Arduino_v14.docx",
+      "sha256": "890975c33553aca89361307e873b981efa9d7e0a7caed53a6b90fbe755fd4694",
+      "bytes": 613936
+    },
+    {
+      "url": "/zbirke/V1_2/LV_V1_2_MicroPython_v14.docx",
+      "sha256": "bf938927873911553a9a88bf47efcbb13e2e4a8f11d042207de23c8bb9ea1caf",
+      "bytes": 675002
+    },
+    {
+      "url": "/zbirke/V1_2/MicroPython.json",
+      "sha256": "8eb1880a5a7c6187eac6c67408afe43b5a526a5d1b036f4b356f63b408574a1b",
+      "bytes": 2984
+    },
+    {
+      "url": "/zbirke/V1_2/MicroPython/01_LED.py",
+      "sha256": "47a2da87933fd5b148532e010b6ae14b9b2737e49f95f6818d87cd6c026ba2a7",
+      "bytes": 1734
+    },
+    {
+      "url": "/zbirke/V1_3/Arduino.json",
+      "sha256": "ae5f5ca58ef3f5777f6d27089f5aae9e5c3a2f7e98b7458fcbb455ad6e072452",
+      "bytes": 3005
+    },
+    {
+      "url": "/zbirke/V1_3/Arduino/01_LED/01_LED.ino",
+      "sha256": "aacfcde814289a6b827c599f62b3f810cc4648f7792d6fdbef784dbad0e14068",
+      "bytes": 2721
+    },
+    {
+      "url": "/zbirke/V1_3/LV_V1_3_Arduino_v14.docx",
+      "sha256": "0e4211839ec3a2898506b4004fa99d01e5976c97fe4b120d390a3c73ee4d965f",
+      "bytes": 742588
+    },
+    {
+      "url": "/zbirke/V1_3/LV_V1_3_MicroPython_v14.docx",
+      "sha256": "9da4a56f7f866a7fb4745253ac7ad8b03611a27f2807c5486eeabbfa808e9dbd",
+      "bytes": 746274
+    },
+    {
+      "url": "/zbirke/V1_3/MicroPython.json",
+      "sha256": "f6f47d936382b7d62d2ca183e53599b8abe3b46ccf65105c912ce9bf0a8ba2cf",
+      "bytes": 2999
+    },
+    {
+      "url": "/zbirke/V1_3/MicroPython/01_LED.py",
+      "sha256": "eb556df40ee4dd7f9ec9c63d1b88fd33881b7da11d8164e906a5cd7075563d62",
+      "bytes": 1741
+    },
+    {
+      "url": "/zbirke/V1_4/01_Senzor.ino",
+      "sha256": "0b4ec7ec4f3e2c8077645530c6414610e2c1a4e997326c7af12d3d3f11094a89",
+      "bytes": 3933
+    },
+    {
+      "url": "/zbirke/V1_4/01_Senzor.py",
+      "sha256": "cb4ea13c069aef464dd7af55442a002fa8ea43698cf7bc2a3214bd0224df651f",
+      "bytes": 3117
+    },
+    {
+      "url": "/zbirke/V1_4/Arduino.json",
+      "sha256": "c40615784df6be96de2a75e8b7ecf872cf05d2bd09ef5d3449cef44b9bc1a4ef",
+      "bytes": 2974
+    },
+    {
+      "url": "/zbirke/V1_4/LV_V1_4_Arduino_v14.docx",
+      "sha256": "61bdf7f9777452daaa766637f7392bc98ad4de79cc4aa0c38249fd78ab400624",
+      "bytes": 124072
+    },
+    {
+      "url": "/zbirke/V1_4/LV_V1_4_MicroPython_v14.docx",
+      "sha256": "7884c5b2a20cf4e70eafd84d2697a261799bfa110c94ce0729fc8dbab4a939ab",
+      "bytes": 124070
+    },
+    {
+      "url": "/zbirke/V1_4/MicroPython.json",
+      "sha256": "44846fb87bec7cb1bceb50a330c8f80ece5f4c6fdcc8dc4ec927ae71b6fe5e94",
+      "bytes": 2965
+    },
+    {
+      "url": "/zbirke/V1_4/Shema.png",
+      "sha256": "b518780d184b95906fbfc8fc32335bb89e644bb25628a47bc103e4688afdec28",
+      "bytes": 107157
+    },
+    {
+      "url": "/zbirke/V1_5/Arduino.json",
+      "sha256": "a39a872e5066bf1f6da0cc2c2d68cd47ad7005606d433312977de11a5727bbef",
+      "bytes": 3802
+    },
+    {
+      "url": "/zbirke/V1_5/Arduino/01_Svjetlost/01_Svjetlost.ino",
+      "sha256": "2bbfd18aac33e2964b8d28b3ddb60a5d5b8a723fe6886e3de6c253d61333c25e",
+      "bytes": 2222
+    },
+    {
+      "url": "/zbirke/V1_5/Arduino/02_Temperatura/02_Temperatura.ino",
+      "sha256": "a2906f8085d0b72f4f9c2b51ac95686d1725e23d6d6ea32e717c2ad6dc2dd1c2",
+      "bytes": 3929
+    },
+    {
+      "url": "/zbirke/V1_5/LV_V1_5_Arduino_v14.docx",
+      "sha256": "af57012afa95b372cdf7409050633606b327be5726c6e39d10b7bd18835e188c",
+      "bytes": 226036
+    },
+    {
+      "url": "/zbirke/V1_5/LV_V1_5_MicroPython_v14.docx",
+      "sha256": "b49f9402e708666b2997a883428c2ade2c79552e47fceff16b8641f5f200320d",
+      "bytes": 226030
+    },
+    {
+      "url": "/zbirke/V1_5/MicroPython.json",
+      "sha256": "493b83480f039b6463f343170af767695439de705a676b768388f8b35ec5341b",
+      "bytes": 3733
+    },
+    {
+      "url": "/zbirke/V1_5/MicroPython/01_Svjetlost.py",
+      "sha256": "230b36a3cac928200df3c6a32348cb36bcc4c6e812154e304122599d0af91d8c",
+      "bytes": 1339
+    },
+    {
+      "url": "/zbirke/V1_5/MicroPython/02_Temperatura.py",
+      "sha256": "5081c0c59a74089634da8e51a55291fc11138ff9a2c9dae961ae85d4262c278f",
+      "bytes": 3113
+    },
+    {
+      "url": "/zbirke/V1_6/Arduino.json",
+      "sha256": "fe4672c170a37e74f569efc2a342e0d46c7d288f657c3ef7ec53de94c68f6150",
+      "bytes": 3575
+    },
+    {
+      "url": "/zbirke/V1_6/Arduino/01_LED/01_LED.ino",
+      "sha256": "f156632e8a120aab94b438da682fef9d40dc21c8069dd0324eaa4233ee8de99a",
+      "bytes": 2720
+    },
+    {
+      "url": "/zbirke/V1_6/Arduino/02_Servo/02_Servo.ino",
+      "sha256": "e69c77504ea765c4969f4ee2a4be02793aa519b54d56333e758de0186b8e9c04",
+      "bytes": 5494
+    },
+    {
+      "url": "/zbirke/V1_6/LV_V1_6_Arduino_v14.docx",
+      "sha256": "e14ff24f9c4a87c092a88034eb6b52d4ed0b912713b1db6f78ca49e335f407f8",
+      "bytes": 202308
+    },
+    {
+      "url": "/zbirke/V1_6/LV_V1_6_MicroPython_v14.docx",
+      "sha256": "8739477fecadaea0f5476455aebe99df3b0d1f0f4dc779adfaa87fb8ff20c974",
+      "bytes": 202303
+    },
+    {
+      "url": "/zbirke/V1_6/MicroPython.json",
+      "sha256": "5a2d7d4deca556465baba79f73766f74c6bbf613df8ca5a214a0b3a4a4cd471c",
+      "bytes": 3541
+    },
+    {
+      "url": "/zbirke/V1_6/MicroPython/01_LED.py",
+      "sha256": "090eb79c18ed7db2e0c44951304f5a05d90f49b66ddb57b7a6728145a547af5b",
+      "bytes": 1740
+    },
+    {
+      "url": "/zbirke/V1_6/MicroPython/02_Servo.py",
+      "sha256": "46d56a3b3198df380eed68d48791d16edf8a9f0535efa46d46c2701263ba0b37",
+      "bytes": 2512
+    },
+    {
+      "url": "/zbirke/V1_7/Arduino.json",
+      "sha256": "dbd27341ad228dd196f870b7cd460a0970d1a08e73b1e83dadc51477ddfdeffb",
+      "bytes": 3519
+    },
+    {
+      "url": "/zbirke/V1_7/Arduino/01_Senzor/01_Senzor.ino",
+      "sha256": "9455c18cb2c72ab63ca5455918a1bf2d0b88d0affe67a1872a6864fde4f6ba31",
+      "bytes": 3929
+    },
+    {
+      "url": "/zbirke/V1_7/LV_V1_7_Arduino_v14.docx",
+      "sha256": "05be6cbe16fc51f27c5fc9c2882b5be1336fca55ab11611bdd7b6f722af46326",
+      "bytes": 124407
+    },
+    {
+      "url": "/zbirke/V1_7/LV_V1_7_MicroPython_v14.docx",
+      "sha256": "077761ea2fa708dfeb46da6869513bf59cec0099add92316b3b0604426eda047",
+      "bytes": 124406
+    },
+    {
+      "url": "/zbirke/V1_7/MicroPython.json",
+      "sha256": "217a2dc252f52ef2b2843b91895c5fed6ea8e3411725ec9f636280fc3a4f6357",
+      "bytes": 3504
+    },
+    {
+      "url": "/zbirke/V1_7/MicroPython/01_Senzor.py",
+      "sha256": "f0c4dfdffd02475508c91e8337211e260aa62f83d8b1a45b5dbaf3c960ced5e6",
+      "bytes": 3113
+    },
+    {
+      "url": "/zbirke/V1_8/Arduino.json",
+      "sha256": "cfb9a04e2e1079180868646f5e9519ed90f2d116df3acb0f5acb7795b6196513",
+      "bytes": 3467
+    },
+    {
+      "url": "/zbirke/V1_8/Arduino/01_Servo/01_Servo.ino",
+      "sha256": "de080c29630ed90bc16279932932c5346abb6cc1375a5208011d27d401164bb4",
+      "bytes": 5506
+    },
+    {
+      "url": "/zbirke/V1_8/LV_V1_8_Arduino_v14.docx",
+      "sha256": "9c636da91ccaab46b93ba83260db09acea48180fa266a5a36f0f1b194f88e66a",
+      "bytes": 164957
+    },
+    {
+      "url": "/zbirke/V1_8/LV_V1_8_MicroPython_v14.docx",
+      "sha256": "085aad1d0ea9834bc79a13ea5bc0be3e5b55069089018918c8ba88049f41794a",
+      "bytes": 164955
+    },
+    {
+      "url": "/zbirke/V1_8/MicroPython.json",
+      "sha256": "565aa2348361e0ef753ab935a609765af869c9c31d651f7cb3ab76f57fa67a74",
+      "bytes": 3455
+    },
+    {
+      "url": "/zbirke/V1_8/MicroPython/01_Servo.py",
+      "sha256": "1d7d4fa01834d914c42b80837aa901c8c1e402904f40944d0eb9082d70e30adc",
+      "bytes": 2524
+    },
+    {
+      "url": "/zbirke/V1_9/Arduino.json",
+      "sha256": "67278903e652669c9b4a7494f1e057a5fadf5e2ba09cd466ba4691379b93e5e8",
+      "bytes": 3381
+    },
+    {
+      "url": "/zbirke/V1_9/Arduino/01_Model/01_Model.ino",
+      "sha256": "7f6413be59c23bb26f69fcc9ee744c51d0551a82423eb6f45b2dd8a16ffeabe0",
+      "bytes": 18794
+    },
+    {
+      "url": "/zbirke/V1_9/LV_V1_9_Arduino_v14.docx",
+      "sha256": "11e21ab1b5ad98ca3d129a9a95568f6a113b7a7b964eeaacf9d9763601d75a42",
+      "bytes": 255454
+    },
+    {
+      "url": "/zbirke/V1_9/LV_V1_9_MicroPython_v14.docx",
+      "sha256": "63b029a88e44fc861c676d222faf2c30c9a5c7f23c7a0767c1498b9730a7b7c1",
+      "bytes": 255454
+    },
+    {
+      "url": "/zbirke/V1_9/MicroPython.json",
+      "sha256": "2fcc3a0f19da23e2f15474b55a14b8b9631d66bb2701f8ba3dd75c5172506401",
+      "bytes": 3369
+    },
+    {
+      "url": "/zbirke/V1_9/MicroPython/01_Model.py",
+      "sha256": "c428769c787681880e0e337a52b0edaa2a839a11a21c334181f66790aedad41c",
+      "bytes": 12561
+    },
+    {
+      "url": "/zbirke/V2_1/01_HTTP.ino",
+      "sha256": "83217d7b7d1068cdf0280cde058907f1a3bd4abb9e59edb472607c8c52edf480",
+      "bytes": 27085
+    },
+    {
+      "url": "/zbirke/V2_1/01_HTTP.py",
+      "sha256": "5256dd669b564c24025519341f9e70a13bcf6ffcc81d5d9a53864e9135a7915a",
+      "bytes": 30576
+    },
+    {
+      "url": "/zbirke/V2_1/Arduino.json",
+      "sha256": "873a3ad8ba65d7b395edbf806c83fdbb821d63932c8f671de439d8b47de488be",
+      "bytes": 3201
+    },
+    {
+      "url": "/zbirke/V2_1/HTTP_Arduino.zip",
+      "sha256": "fc834b2d2b88bc8d9b26e23fffc98608b3f1c0c8e1f137d2b78a0877dcf5a32d",
+      "bytes": 6132
+    },
+    {
+      "url": "/zbirke/V2_1/HTTP_MicroPython.zip",
+      "sha256": "5d354be15077edf9243c6850840ecfd3e187ea3efa1a1884e6ff9eeebee8f208",
+      "bytes": 6213
+    },
+    {
+      "url": "/zbirke/V2_1/LV_V2_1_Arduino_v14.docx",
+      "sha256": "e8d0bd59fde24cd0af18b99422f78a3758d39a8caeb67df3d67d172f0fc4902b",
+      "bytes": 255496
+    },
+    {
+      "url": "/zbirke/V2_1/LV_V2_1_MicroPython_v14.docx",
+      "sha256": "851577edcc078c6d3480863795e20fddb1c67b752208bb3ad4e0fb70c099231a",
+      "bytes": 255546
+    },
+    {
+      "url": "/zbirke/V2_1/MicroPython.json",
+      "sha256": "9f5be351ca1bbf09d70eab99551e6b6364dc952555ac4a52729b2cf3a2af9842",
+      "bytes": 3237
+    },
+    {
+      "url": "/zbirke/V2_1/Shema.png",
+      "sha256": "9bb14a4cab6f1d8e3f1c87d68e38d4d54cd9ba816f1527eba582e25d502f8ae6",
+      "bytes": 275392
+    },
+    {
+      "url": "/zbirke/V2_2/Arduino.json",
+      "sha256": "6a1960954c6fa81a9a4e7b31f8c09ee834e67c7c0f204d3b46aed49170ea2760",
+      "bytes": 3242
+    },
+    {
+      "url": "/zbirke/V2_2/Arduino/01_HTTP/01_HTTP.ino",
+      "sha256": "724b8111734e7b84637bde2658b859ec8b0f7c52349cad73490e92c16e79c716",
+      "bytes": 27165
+    },
+    {
+      "url": "/zbirke/V2_2/LV_V2_2_Arduino_v14.docx",
+      "sha256": "20e11991494f029811ef79a306cc79172aa6eb665062b21f9b2391530c8e1a3e",
+      "bytes": 255516
+    },
+    {
+      "url": "/zbirke/V2_2/LV_V2_2_MicroPython_v14.docx",
+      "sha256": "3b12e79fc13834913c27652967f62f82e213d12f174bd8bf82687b3445ff8d0f",
+      "bytes": 255506
+    },
+    {
+      "url": "/zbirke/V2_2/MicroPython.json",
+      "sha256": "cfd9de1ef25eccafe801ebd410b19f69fe9678e39c96c17e7107da0bd85fef3a",
+      "bytes": 3216
+    },
+    {
+      "url": "/zbirke/V2_2/MicroPython/01_HTTP.py",
+      "sha256": "eaf8bb68699afe4a41ae251aa622272ab3055fb13092c5436439a27747857e26",
+      "bytes": 30600
+    },
+    {
+      "url": "/zbirke/V2_3/Arduino.json",
+      "sha256": "c20d075d86fce1cb96a078b0f9b5bd78f1ee0fc6007586f75df9e8abce877528",
+      "bytes": 3509
+    },
+    {
+      "url": "/zbirke/V2_3/Arduino/01_HTTP/01_HTTP.ino",
+      "sha256": "4e5298efbd084be38102c6029119241566434f41b7612991c0f029c41134ef27",
+      "bytes": 27072
+    },
+    {
+      "url": "/zbirke/V2_3/Arduino/02_MQTT/02_MQTT.ino",
+      "sha256": "fe7f076c077fd9e847c9219295c2be07316b1d85294099b67ac15a14dae74b2d",
+      "bytes": 27835
+    },
+    {
+      "url": "/zbirke/V2_3/LV_V2_3_Arduino_v14.docx",
+      "sha256": "b581da0c31fe7fa100e42892c3080dc904a2d670fa79ca97da5b4967c23a5b4c",
+      "bytes": 255073
+    },
+    {
+      "url": "/zbirke/V2_3/LV_V2_3_MicroPython_v14.docx",
+      "sha256": "1545479b4f581353e43e16f2e334011dcecc9ad582fbdf76cc5ab1571eb2ca93",
+      "bytes": 255093
+    },
+    {
+      "url": "/zbirke/V2_3/MicroPython.json",
+      "sha256": "1226f3e71c3931b6ca9cb884d19901031a6b143804a62ed8ba129beb0586e858",
+      "bytes": 3507
+    },
+    {
+      "url": "/zbirke/V2_3/MicroPython/01_HTTP.py",
+      "sha256": "fd39ee178e7e8533510b272a349c5018b07c0c40ec6be6145a84fa2aca3593d9",
+      "bytes": 30563
+    },
+    {
+      "url": "/zbirke/V2_3/MicroPython/02_MQTT.py",
+      "sha256": "5464ce73ac160b7c4e74edc4a0ee1a1a68454595274669845bec4c0b272b95a6",
+      "bytes": 37408
+    },
+    {
+      "url": "/zbirke/V2_4/Arduino.json",
+      "sha256": "9a2de6195d14c4170e785072041f33acdbcb46f14a652a2d2635a25c3aa5267e",
+      "bytes": 3779
+    },
+    {
+      "url": "/zbirke/V2_4/Arduino/01_MQTT/01_MQTT.ino",
+      "sha256": "dd0ff1cb7af61acb06f4f9625e84d5234bd7bce1d4a91ca67a3962c8cf2df069",
+      "bytes": 27921
+    },
+    {
+      "url": "/zbirke/V2_4/LV_V2_4_Arduino_v14.docx",
+      "sha256": "1eb9dd42cf20aede214854c8f328d0533a178692283a6c7f270fa5a123afcad7",
+      "bytes": 255854
+    },
+    {
+      "url": "/zbirke/V2_4/LV_V2_4_MicroPython_v14.docx",
+      "sha256": "db6fcb7ef2bea8fba1da70998a523c0a744bae8c3a418d54c5bde471ced50ca9",
+      "bytes": 255828
+    },
+    {
+      "url": "/zbirke/V2_4/MicroPython.json",
+      "sha256": "00bfb3b797666f1dd40ba7b7f6802441d99a34e96f3ca5bfafc7154452241c41",
+      "bytes": 3697
+    },
+    {
+      "url": "/zbirke/V2_4/MicroPython/01_MQTT.py",
+      "sha256": "197dfa1f29424aceeb693525349efcfa94260bb040e3ac8c9d826e9199ab012f",
+      "bytes": 37522
+    },
+    {
+      "url": "/zbirke/V2_5/Arduino.json",
+      "sha256": "b8254b2c2dd4e95a0f170ee7383ea3e66d07bff38c132f9b118be16834b7598b",
+      "bytes": 3393
+    },
+    {
+      "url": "/zbirke/V2_5/Arduino/01_MQTT/01_MQTT.ino",
+      "sha256": "df7ae373f2be3ba13954874fe7ae1bded68ad2a3217cab5188fdadf98534da61",
+      "bytes": 28149
+    },
+    {
+      "url": "/zbirke/V2_5/LV_V2_5_Arduino_v14.docx",
+      "sha256": "2cc80923da9b728d46a0f7b462dc72f88b147751f1474f168aae4fbd5195679e",
+      "bytes": 289775
+    },
+    {
+      "url": "/zbirke/V2_5/LV_V2_5_MicroPython_v14.docx",
+      "sha256": "fb83ac21d66b3ac5ba39fab805e21853ecfa64a82fce26d414ba08c08ef2d763",
+      "bytes": 289752
+    },
+    {
+      "url": "/zbirke/V2_5/MicroPython.json",
+      "sha256": "9eb8fa8375fccf16b3e49b0c6421ec89c59cfe450c47ebd4db0ed9e7cef95459",
+      "bytes": 3311
+    },
+    {
+      "url": "/zbirke/V2_5/MicroPython/01_MQTT.py",
+      "sha256": "942c6fa8b165e57d3f8d92c495aca9ba77de215e2d4e9aac3d53b514ffef5b5a",
+      "bytes": 37480
+    },
+    {
+      "url": "/zbirke/V2_6/Arduino.json",
+      "sha256": "bd69f95bf10a35e174ae042f99c280e47159e6a5651cffdf7e46f7941a73c86d",
+      "bytes": 3458
+    },
+    {
+      "url": "/zbirke/V2_6/Arduino/01_MQTT/01_MQTT.ino",
+      "sha256": "cdc289e25f3a5371149c81ea2634f13b1630d058136c15da76cee6b2f51c18fa",
+      "bytes": 28212
+    },
+    {
+      "url": "/zbirke/V2_6/LV_V2_6_Arduino_v14.docx",
+      "sha256": "2fe88c2f82c82ff7dd40d9a99ee751762f407b161e6eb5f29e12fa7bbafed535",
+      "bytes": 289758
+    },
+    {
+      "url": "/zbirke/V2_6/LV_V2_6_MicroPython_v14.docx",
+      "sha256": "7a26ebd0e8e92e8dccdfc9e264ead0cc303bbb0bb6422d235382d7097af779de",
+      "bytes": 289735
+    },
+    {
+      "url": "/zbirke/V2_6/MicroPython.json",
+      "sha256": "60a4cc1eadcb6e60a7c73e3a04d25e5373ff0ad82114f18b88d36bc3b9e29ad4",
+      "bytes": 3376
+    },
+    {
+      "url": "/zbirke/V2_6/MicroPython/01_MQTT.py",
+      "sha256": "96cee9c7326926dee02d91b68d497e64ed056bbb5c14c15158a215c2113b1834",
+      "bytes": 37617
+    },
+    {
+      "url": "/zbirke/V2_S/Arduino.json",
+      "sha256": "5a6e1c5bfb15a5539045d8614c93de9983afa389b29e63392c790dd941237e3e",
+      "bytes": 3806
+    },
+    {
+      "url": "/zbirke/V2_S/Arduino/01_MQTT/01_MQTT.ino",
+      "sha256": "428aaf2ddc8b2b4b552e82dadd4b8c121a7e118a9e7bd641c7a3cf984a0103c6",
+      "bytes": 27910
+    },
+    {
+      "url": "/zbirke/V2_S/LV_V2_S_Arduino_v14.docx",
+      "sha256": "26561a50909c5b7506220ff518ef81c667dc6d18f463b1210a6a37d3dc76ec50",
+      "bytes": 255745
+    },
+    {
+      "url": "/zbirke/V2_S/LV_V2_S_MicroPython_v14.docx",
+      "sha256": "9df84e7d0307034faaff8b1c78635fa8f97f9d2183103754255adb6eaf2fa8a7",
+      "bytes": 255742
+    },
+    {
+      "url": "/zbirke/V2_S/MicroPython.json",
+      "sha256": "a09c14b60fef8490cb38a7398e8be8d7fd2288fe64213fd976a6c4866963489a",
+      "bytes": 3797
+    },
+    {
+      "url": "/zbirke/V2_S/MicroPython/01_MQTT.py",
+      "sha256": "4e0d5c0802ee931c9f310d29c7419b2abebd4f61fb8cbd9261c904a650e86a72",
+      "bytes": 37516
+    },
+    {
+      "url": "/zbirke/V3_1/01_Pinovi.ino",
+      "sha256": "c6995e91c7e1d7dd8266cafc47a236ead4456674185b02f58959e6676be57ef4",
+      "bytes": 1022
+    },
+    {
+      "url": "/zbirke/V3_1/01_Pinovi.py",
+      "sha256": "f808c76c33c4b5be7eab3fedba21bfbc77d09023b2d29f54159f57758cce813f",
+      "bytes": 1010
+    },
+    {
+      "url": "/zbirke/V3_1/Arduino.json",
+      "sha256": "28bc34f7823c9f7e7faef3382dcaec0b43a5052228156add2b0fc5ce30165127",
+      "bytes": 2693
+    },
+    {
+      "url": "/zbirke/V3_1/LV_V3_1_Arduino_v14.docx",
+      "sha256": "921f54c097e5aea172f0dad81fa35bd4bed8cf3a87a9a2545dde29508bbee511",
+      "bytes": 39462
+    },
+    {
+      "url": "/zbirke/V3_1/LV_V3_1_MicroPython_v14.docx",
+      "sha256": "50ce31a90da2b2a71070c8144d05f18d4d01d292e44a142f1dae7c8306a684f4",
+      "bytes": 39465
+    },
+    {
+      "url": "/zbirke/V3_1/MicroPython.json",
+      "sha256": "5fdcd7277e6cf962a6f61441523da983f6b1f98847fbf9bbf7344d3030271a23",
+      "bytes": 2681
+    },
+    {
+      "url": "/zbirke/V3_2/Arduino.json",
+      "sha256": "57efda2579e7549dbef2a23d4c49a5233f93ba49de6e4c9239e2ce511f9678f0",
+      "bytes": 3496
+    },
+    {
+      "url": "/zbirke/V3_2/Arduino/01_Servo/01_Servo.ino",
+      "sha256": "6569c13f1de5e6923458f5be85fa74034fe7ef12aef7dc7cf8ec450eea81a455",
+      "bytes": 5501
+    },
+    {
+      "url": "/zbirke/V3_2/LV_V3_2_Arduino_v14.docx",
+      "sha256": "ff082807e27212b4902d6744e57125f12bae390ca96f879b2ec3c195b547a71e",
+      "bytes": 164878
+    },
+    {
+      "url": "/zbirke/V3_2/LV_V3_2_MicroPython_v14.docx",
+      "sha256": "750fd7d635a5caa961f39603f69441a3ea92f906f7dbb1647f91ba32a88416fd",
+      "bytes": 164877
+    },
+    {
+      "url": "/zbirke/V3_2/MicroPython.json",
+      "sha256": "7e3cf565780190c285b075a56312c928e1f0a6238ab94ba8cb4571434fe04bef",
+      "bytes": 3485
+    },
+    {
+      "url": "/zbirke/V3_2/MicroPython/01_Servo.py",
+      "sha256": "ad8421ef5c38d817fd75b9c71b1db96836fac81a5b64a2b227d6746a962bdf7e",
+      "bytes": 2519
+    },
+    {
+      "url": "/zbirke/V3_3/Arduino.json",
+      "sha256": "da0c9e70f44e19366a6166fca2146cefd52f4c22a7bbe222c733bebd3216184e",
+      "bytes": 2957
+    },
+    {
+      "url": "/zbirke/V3_3/Arduino/01_Model/01_Model.ino",
+      "sha256": "60401d2400badc9ffd11b7638386ad8017191ecdf1638b1fdcea885e2b3302de",
+      "bytes": 18729
+    },
+    {
+      "url": "/zbirke/V3_3/LV_V3_3_Arduino_v14.docx",
+      "sha256": "099d93ed0a6c3d66fdcfefb7d792e9518281135f3888c04e7cb0742460c6cfa7",
+      "bytes": 255394
+    },
+    {
+      "url": "/zbirke/V3_3/LV_V3_3_MicroPython_v14.docx",
+      "sha256": "bae01b7f6f166330eda8315b06983fd36f7334341820c7a964867bbe58dab0e8",
+      "bytes": 255399
+    },
+    {
+      "url": "/zbirke/V3_3/MicroPython.json",
+      "sha256": "1d5bc7488f65167315842fcd1fd855606db78a2aa9ae28340d5632f568ffea68",
+      "bytes": 2942
+    },
+    {
+      "url": "/zbirke/V3_3/MicroPython/01_Model.py",
+      "sha256": "5e8c2603345510a51c141d88442d4dfdca0f06562c5926b703c8c8d7c26bc33f",
+      "bytes": 17793
+    },
+    {
+      "url": "/zbirke/V3_4/Arduino.json",
+      "sha256": "91f1ca6b60d2ef1056045449614a9b2c801e2424f9b2282226d3cfda073e8406",
+      "bytes": 5592
+    },
+    {
+      "url": "/zbirke/V3_4/Arduino/01_Senzor/01_Senzor.ino",
+      "sha256": "3eb4b4d9e4e78fc6e0cec7571bac3e71c908f50edf4483ee4e6bfa2de75c60ae",
+      "bytes": 3920
+    },
+    {
+      "url": "/zbirke/V3_4/Arduino/02_LED/02_LED.ino",
+      "sha256": "a7af2163387cc1edfec059beef6dc11c056ef3b730f1184f1476dd0c89322bb7",
+      "bytes": 2715
+    },
+    {
+      "url": "/zbirke/V3_4/Arduino/03_Servo/03_Servo.ino",
+      "sha256": "b1bb308b856fb113d0c2309b2902cc3909943203e51284c0ddc2141daa9895bb",
+      "bytes": 5489
+    },
+    {
+      "url": "/zbirke/V3_4/Arduino/04_Model/04_Model.ino",
+      "sha256": "d40d07fc7e14c2a6ddeccb753015f8cbed5f385097d98d240f144fa7419dde74",
+      "bytes": 18726
+    },
+    {
+      "url": "/zbirke/V3_4/LV_V3_4_Arduino_v14.docx",
+      "sha256": "460127c8828b64ce080b5d1d2fdaddf281d857ca2afbeab4bfc584626fe59484",
+      "bytes": 638262
+    },
+    {
+      "url": "/zbirke/V3_4/LV_V3_4_MicroPython_v14.docx",
+      "sha256": "324f9b768898cfa5d6391f7e0e58506d01410c0b2f779f17b9baff5fe67864db",
+      "bytes": 638258
+    },
+    {
+      "url": "/zbirke/V3_4/MicroPython.json",
+      "sha256": "ff9c1feea9fd26be9aee7f464ed371debfec0114da81b04ed30b9cc041e97eab",
+      "bytes": 5500
+    },
+    {
+      "url": "/zbirke/V3_4/MicroPython/01_Senzor.py",
+      "sha256": "2b5d759a6bff3e25df4b5fc5c013f02656c89d80bffb08f8fe80a2d998ba7b02",
+      "bytes": 3104
+    },
+    {
+      "url": "/zbirke/V3_4/MicroPython/02_LED.py",
+      "sha256": "5be24c7898bee5f2ce5a785dd49992f483e29c67d0e81bbe45e11a15e1e6a140",
+      "bytes": 1735
+    },
+    {
+      "url": "/zbirke/V3_4/MicroPython/03_Servo.py",
+      "sha256": "045411a69008ba842295b8f2d4a1ac06e8d7c1588fe08cc18894f05a04048233",
+      "bytes": 2507
+    },
+    {
+      "url": "/zbirke/V3_4/MicroPython/04_Model.py",
+      "sha256": "1d6be22122f3bbeb2fbd972ded0ff7b3809fa1f6cef7134b11c084d0b84c1fa8",
+      "bytes": 17790
+    },
+    {
+      "url": "/zbirke/V3_5/Arduino.json",
+      "sha256": "a8a0a5ce4c8243502bfbae014aaa792b5737bfec72c781bc2f6b4f5be5439981",
+      "bytes": 3200
+    },
+    {
+      "url": "/zbirke/V3_5/Arduino/01_Model/01_Model.ino",
+      "sha256": "a98b6b45ec8af46490674906b300270a84038dc9d7302614290061061b336444",
+      "bytes": 18736
+    },
+    {
+      "url": "/zbirke/V3_5/LV_V3_5_Arduino_v14.docx",
+      "sha256": "7bfa4d884801fa4cea5f43cdd9cccaa8bb85e6fe0351957d6995c691eace73ae",
+      "bytes": 255522
+    },
+    {
+      "url": "/zbirke/V3_5/LV_V3_5_MicroPython_v14.docx",
+      "sha256": "fd67df94b01953934b31368184a131d9e7df99a15efb7cba46e88ff39dd0699f",
+      "bytes": 255518
+    },
+    {
+      "url": "/zbirke/V3_5/MicroPython.json",
+      "sha256": "e45c671f71166ddeaf0d009e2bc3e94ceebf8c18de14eb2a502bc60687d5a489",
+      "bytes": 3184
+    },
+    {
+      "url": "/zbirke/V3_5/MicroPython/01_Model.py",
+      "sha256": "956ae37914f86598f57cb6014f9264756a957db27122c738d4d466e161385a37",
+      "bytes": 17800
+    },
+    {
+      "url": "/zbirke/V3_6/Arduino.json",
+      "sha256": "5058ee737e24e3cd5ec5d8d69df80700c6369758a8a1ea16ba6b436055a256a6",
+      "bytes": 3085
+    },
+    {
+      "url": "/zbirke/V3_6/Arduino/01_Model/01_Model.ino",
+      "sha256": "dd64266ac83f824db190f5c27a616753328d609b435e08d0f2c637c39a349702",
+      "bytes": 18734
+    },
+    {
+      "url": "/zbirke/V3_6/LV_V3_6_Arduino_v14.docx",
+      "sha256": "5c0a8e1fda6a3337378670902f4df970f6a440e847a9b2123b0479b65c7c6ea2",
+      "bytes": 255296
+    },
+    {
+      "url": "/zbirke/V3_6/LV_V3_6_MicroPython_v14.docx",
+      "sha256": "79e6e5ef34984a5b28036ef3d9579211c9f4e74cba1c0aa505a582c18725c962",
+      "bytes": 255282
+    },
+    {
+      "url": "/zbirke/V3_6/MicroPython.json",
+      "sha256": "a44d10b1de818b617c29fdc0186f1692f3f59b8e90fadc23d4cb4e3c767406a9",
+      "bytes": 3062
+    },
+    {
+      "url": "/zbirke/V3_6/MicroPython/01_Model.py",
+      "sha256": "a17d9bdfd6caeb7bf1941ce4dc83f27bc61531d6fedc191f5faafec22b62ff2a",
+      "bytes": 17798
+    },
+    {
+      "url": "/zbirke/V3_7/Arduino.json",
+      "sha256": "6b7465316fff85259deddd6dce9f359fad5d437948f2e8ec540ed8f3d795c9e8",
+      "bytes": 3283
+    },
+    {
+      "url": "/zbirke/V3_7/Arduino/01_Model/01_Model.ino",
+      "sha256": "674902c8645c864f0d1c3ceedd2ae4d7e57687966bc88bcb9ad908c673e12bc8",
+      "bytes": 18744
+    },
+    {
+      "url": "/zbirke/V3_7/LV_V3_7_Arduino_v14.docx",
+      "sha256": "5eb35e0bf6553777f839ead146c12b8b0c7eaf8a92f33b882d8437dcd1457953",
+      "bytes": 255455
+    },
+    {
+      "url": "/zbirke/V3_7/LV_V3_7_MicroPython_v14.docx",
+      "sha256": "66f0adf991271282ed2d2e1d269d56b0e4566840bba1d8a042a98cdacc7041ea",
+      "bytes": 255454
+    },
+    {
+      "url": "/zbirke/V3_7/MicroPython.json",
+      "sha256": "b963a7752ce55a48898974e4f5e2ec60ad304654657993148086d97bbf2cbd16",
+      "bytes": 3271
+    },
+    {
+      "url": "/zbirke/V3_7/MicroPython/01_Model.py",
+      "sha256": "4415dba669b7900717d6e1c8c4afb0a28fb52004446ffda308ad0dd2c4318a35",
+      "bytes": 17808
+    },
+    {
+      "url": "/zbirke/V4_1/Arduino.json",
+      "sha256": "1a9fbdb6acf1a5056f98b384ba54a611d436f941a547a87686beff5f9cca73e6",
+      "bytes": 3425
+    },
+    {
+      "url": "/zbirke/V4_1/Arduino/01_Funkcije/01_Funkcije.ino",
+      "sha256": "aa888c064772d36702d27655ceacd5f5fdd9e4084cdd446a4f7f77793e60c33e",
+      "bytes": 3441
+    },
+    {
+      "url": "/zbirke/V4_1/Arduino/02_Odluka/02_Odluka.ino",
+      "sha256": "d39b73cb1c93c69c9a4fb08a0735db365986a1679d35c8d8ce945665ea311439",
+      "bytes": 1390
+    },
+    {
+      "url": "/zbirke/V4_1/Arduino/03_Model/03_Model.ino",
+      "sha256": "63e1b834781834e3b4e0cb1abc23e4f44a95616e1f3ef93da5296e4143000bba",
+      "bytes": 9943
+    },
+    {
+      "url": "/zbirke/V4_1/LV_V4_1_Arduino_v14.docx",
+      "sha256": "07f0f14cbd32acbec046abc0591e6019772e5c9440adad5be33e6804376a47ed",
+      "bytes": 129463
+    },
+    {
+      "url": "/zbirke/V4_1/LV_V4_1_MicroPython_v14.docx",
+      "sha256": "d825cc2dd041888f9cd978a764a6aca6aa3c6ee86fdbbf2e7bfcc5fa594e3b67",
+      "bytes": 129409
+    },
+    {
+      "url": "/zbirke/V4_1/MicroPython.json",
+      "sha256": "dc21a4776071dca05d8be4782f848b5ab40d448e4904d9e0b9c6449f339d82be",
+      "bytes": 3260
+    },
+    {
+      "url": "/zbirke/V4_1/MicroPython/01_Funkcije.py",
+      "sha256": "d90ccc5db01fbef25c77e6051425cdca88585035d5cc8226893f0d51c6ede74d",
+      "bytes": 1466
+    },
+    {
+      "url": "/zbirke/V4_1/MicroPython/02_Odluka.py",
+      "sha256": "547b6d86f695081794e32acb0d3288176a642e0790d87bd58623ea415e39da22",
+      "bytes": 1750
+    },
+    {
+      "url": "/zbirke/V4_1/MicroPython/03_Model.py",
+      "sha256": "407dd4c8b25f5f6d48ee19986f7e83983e0525ce81fbcc3bc17ac3635c152b30",
+      "bytes": 11012
+    },
+    {
+      "url": "/zbirke/V4_2/Arduino.json",
+      "sha256": "ac45de31d4598e49fc0825c5d612b5ba6c77b8dc9906778f4e714645c66fb788",
+      "bytes": 4562
+    },
+    {
+      "url": "/zbirke/V4_2/Arduino/00_Provjera/00_Provjera.ino",
+      "sha256": "ca0f393869ef066b7306c0a4cb8644748231ef35ac73487164e526d8ec278a35",
+      "bytes": 4517
+    },
+    {
+      "url": "/zbirke/V4_2/Arduino/01_Modul/01_Modul.ino",
+      "sha256": "b60a927b3d1fce0921a8eb4b73867fc2d82958284d0199f806d170165c69c930",
+      "bytes": 2811
+    },
+    {
+      "url": "/zbirke/V4_2/Arduino/UPUTE_BIBLIOTEKA.txt",
+      "sha256": "afe9bc07adfe72049062460409ae23480258dfaa43e285316fd486a1ccb7dfca",
+      "bytes": 4249
+    },
+    {
+      "url": "/zbirke/V4_2/Arduino/VentModelUcenik/LabHardware.h",
+      "sha256": "fb7a02ffc0bc8796fb9f631251fdf86627ef9834770442f32b58fd23a7b96f77",
+      "bytes": 5042
+    },
+    {
+      "url": "/zbirke/V4_2/Arduino/VentModelUcenik/VentModelUcenik.cpp",
+      "sha256": "2875b6b26cbe6b7019517c4dfe946720a906805cc8a807baa2d220fff9444f63",
+      "bytes": 3708
+    },
+    {
+      "url": "/zbirke/V4_2/Arduino/VentModelUcenik/VentModelUcenik.h",
+      "sha256": "bae3745fd776efd2e7b19f8fdf354a187f09ecc3fb0adb6c57d967af3aa63e2e",
+      "bytes": 4198
+    },
+    {
+      "url": "/zbirke/V4_2/LV_V4_2_Arduino_v14.docx",
+      "sha256": "c8cfbe72d615fdef57b8ce877eac82f72bf6bea83ec2df78588d66aaa1ad1a12",
+      "bytes": 255947
+    },
+    {
+      "url": "/zbirke/V4_2/LV_V4_2_MicroPython_v14.docx",
+      "sha256": "50ac00148cb772d4eeff3424ec869674bbec68ac4d34980c1ae94295b5fa2204",
+      "bytes": 255893
+    },
+    {
+      "url": "/zbirke/V4_2/MicroPython.json",
+      "sha256": "16dd6765c3d9c1ca059f98558e4dcfeef0f5d1ebed4685d3012eebb93f2c71b5",
+      "bytes": 4309
+    },
+    {
+      "url": "/zbirke/V4_2/MicroPython/00_Provjera.py",
+      "sha256": "de8fb9ced4e4064ab2bcc4666c7278c3bed5c670ab09381514458b6742084e74",
+      "bytes": 3500
+    },
+    {
+      "url": "/zbirke/V4_2/MicroPython/01_Modul.py",
+      "sha256": "f1c6e982be295b865743b2f6cce6eda53c6cfa98d55a81bc737d477211f519b4",
+      "bytes": 2057
+    },
+    {
+      "url": "/zbirke/V4_2/MicroPython/UPUTE_BIBLIOTEKA.txt",
+      "sha256": "4e57efb8c44a22135adcbe01a192fc9e96c01e75a6496692b0ded89f6dee9fd3",
+      "bytes": 4136
+    },
+    {
+      "url": "/zbirke/V4_2/MicroPython/lab_podrska.py",
+      "sha256": "e0a73d54e9ab32b6caae5b38f8b413cb8eac285e5ac7c1c9835540fa984d3141",
+      "bytes": 6919
+    },
+    {
+      "url": "/zbirke/V4_2/MicroPython/vent_model_ucenik.py",
+      "sha256": "cecbe6f32654715a45bb846963bc70ec2fe9c1edd4b1cdb869289f9e3d6a892e",
+      "bytes": 5918
+    },
+    {
+      "url": "/zbirke/V4_3/Arduino.json",
+      "sha256": "fa0d9f6eda94c68261e5d54b3f3999e4b8de433054a1d97d32ac755e548012ef",
+      "bytes": 4261
+    },
+    {
+      "url": "/zbirke/V4_3/Arduino/01_Automatski/01_Automatski.ino",
+      "sha256": "76af393231cabce3584e1b1dae2af9e53ca8dab13f85a5706f8e99b20666cefd",
+      "bytes": 2788
+    },
+    {
+      "url": "/zbirke/V4_3/Arduino/02_Raspored/02_Raspored.ino",
+      "sha256": "fed453dc7f932338ad8938624073e42da86dafb1156f04e5b79a02a6974f3074",
+      "bytes": 2994
+    },
+    {
+      "url": "/zbirke/V4_3/Arduino/UPUTE_BIBLIOTEKA.txt",
+      "sha256": "7f2161a9fcce7b7c70f996452460537abdfcc9d210f3a01703cde7c1cc9a036b",
+      "bytes": 4282
+    },
+    {
+      "url": "/zbirke/V4_3/LV_V4_3_Arduino_v14.docx",
+      "sha256": "691326a8e14859ac1ef876ac076c46dab8d885f9f4b0eccb988d7e775cf51b15",
+      "bytes": 255876
+    },
+    {
+      "url": "/zbirke/V4_3/LV_V4_3_MicroPython_v14.docx",
+      "sha256": "2769613dc9218439f9036bbba8f2961889edb015f1d926b57ac9bc2fff0ed440",
+      "bytes": 255818
+    },
+    {
+      "url": "/zbirke/V4_3/MicroPython.json",
+      "sha256": "bec7788388b7da2bc5533a819d3db14cebc2d04b1180b7874a91a99dedcc20e3",
+      "bytes": 4085
+    },
+    {
+      "url": "/zbirke/V4_3/MicroPython/01_Automatski.py",
+      "sha256": "9eadbf84be206627062aa5c78fb18034afafd16123fbd99081e4230eb3878c55",
+      "bytes": 2034
+    },
+    {
+      "url": "/zbirke/V4_3/MicroPython/02_Raspored.py",
+      "sha256": "f64cd66d829bf47921618de9446b3c9d764432a98313aeded83c1d3219691b39",
+      "bytes": 2247
+    },
+    {
+      "url": "/zbirke/V4_3/MicroPython/UPUTE_BIBLIOTEKA.txt",
+      "sha256": "45054db46fd4a549907c51f2da03f8bfb22b69bde9c1630d668c5da5e4c819be",
+      "bytes": 4169
+    },
+    {
+      "url": "/zbirke/V4_3/lab_podrska_sim.py",
+      "sha256": "e85cda526c52ea04182d6f90fae3e3312e0349615675f20e33ef4ff9538b185c",
+      "bytes": 7134
+    },
+    {
+      "url": "/zbirke/V4_4/Arduino.json",
+      "sha256": "227c3921282b6c36d4025bcaa2f4c187c144d43a8e5711094c0229ed008a8780",
+      "bytes": 4132
+    },
+    {
+      "url": "/zbirke/V4_4/Arduino/01_Mreza/01_Mreza.ino",
+      "sha256": "fd0b8150d5e198016541d3bcf5c678c65b54112ba883286849fea3a938f932fb",
+      "bytes": 46825
+    },
+    {
+      "url": "/zbirke/V4_4/LV_V4_4_Arduino_v14.docx",
+      "sha256": "505fe765e91ecba5d580a101cd67b41e25d72324319b0413a7ac288d8fbd5c92",
+      "bytes": 255816
+    },
+    {
+      "url": "/zbirke/V4_4/LV_V4_4_MicroPython_v14.docx",
+      "sha256": "d1078195d1db392c7cfd1007173528f538f34e3c5d78871ad0103fb8b206cad8",
+      "bytes": 255778
+    },
+    {
+      "url": "/zbirke/V4_4/MicroPython.json",
+      "sha256": "1d3b3b1934687fef4609e9a57b16951d694709c6b62acee26319f318a0f9374e",
+      "bytes": 4049
+    },
+    {
+      "url": "/zbirke/V4_4/MicroPython/01_Mreza.py",
+      "sha256": "ab45606d66280b19526b85da8b9ad1f4e2f47ca8d940c10f1064750a3a5aa199",
+      "bytes": 34132
+    },
+    {
+      "url": "/zbirke/V4_5/Arduino.json",
+      "sha256": "d5773ea12ac46e655c468c7c6bb578c8362e0bfe49f767c5ef75df5384c486a9",
+      "bytes": 3728
+    },
+    {
+      "url": "/zbirke/V4_5/Arduino/01_Integracija/01_Integracija.ino",
+      "sha256": "41bee83aa2f69ff8629e54211b1a379f4d958aecde2bbcb31bd627ba06a5b739",
+      "bytes": 46752
+    },
+    {
+      "url": "/zbirke/V4_5/LV_V4_5_Arduino_v14.docx",
+      "sha256": "ff597225956c1972d00553a2c0fe41903a63352e54fe5067503ab29005b06816",
+      "bytes": 289870
+    },
+    {
+      "url": "/zbirke/V4_5/LV_V4_5_MicroPython_v14.docx",
+      "sha256": "7e58cc4fbae9f9e70275278a7f42281785959fc55073711c5987774fef7dfa31",
+      "bytes": 289828
+    },
+    {
+      "url": "/zbirke/V4_5/MicroPython.json",
+      "sha256": "f5fc35e7bd239f89c6d32f15696a4daa8e5bb4808e9c48de6d2a0fa4768e6fd5",
+      "bytes": 3611
+    },
+    {
+      "url": "/zbirke/V4_5/MicroPython/01_Integracija.py",
+      "sha256": "71393f670288314cc24e326e2b1eadf994183c8593d5f6c971ffcaebad67b709",
+      "bytes": 35166
+    },
+    {
+      "url": "/zbirke/V4_6/Arduino.json",
+      "sha256": "86ad6ba58ce91382f86040f096bf169251e16f135924345444f81bf137ec0950",
+      "bytes": 3861
+    },
+    {
+      "url": "/zbirke/V4_6/Arduino/01_Integracija/01_Integracija.ino",
+      "sha256": "0a9e3790984acc9dbd67985e3bb9855f8bf0573774f6521e42f0dfe699fa428a",
+      "bytes": 46841
+    },
+    {
+      "url": "/zbirke/V4_6/LV_V4_6_Arduino_v14.docx",
+      "sha256": "c9336dd1e85248fef6d1a19713bae0835b3d2c57a447f81e4c0bbbe297bf557e",
+      "bytes": 289830
+    },
+    {
+      "url": "/zbirke/V4_6/LV_V4_6_MicroPython_v14.docx",
+      "sha256": "07ba6c7d1395fa2173c2dc8b190cf0bb0eabbf1acf021f19ab473bb63b124986",
+      "bytes": 289780
+    },
+    {
+      "url": "/zbirke/V4_6/MicroPython.json",
+      "sha256": "007df2d9d8d812c5e42eb75bbe2cf2eb7ac30ad138d89be684d5d7e4f41b9c46",
+      "bytes": 3744
+    },
+    {
+      "url": "/zbirke/V4_6/MicroPython/01_Integracija.py",
+      "sha256": "9d36b317631e8b0edc34af505f9058ccef884483b760a5f182902e3797be377f",
+      "bytes": 39189
+    },
+    {
+      "url": "/zbirke/prilozi/16d0585e369b13568168.png",
+      "sha256": "16d0585e369b13568168da290bd390cee9035451a411b81418525e48b32f9e5a",
+      "bytes": 122265
+    },
+    {
+      "url": "/zbirke/prilozi/24c2047784b59bbac4eb.png",
+      "sha256": "24c2047784b59bbac4eb6a92641e12e9fd0f8410374a15252904f9acaaf9a577",
+      "bytes": 177006
+    },
+    {
+      "url": "/zbirke/prilozi/3381fa24449b3b30c7d1.png",
+      "sha256": "3381fa24449b3b30c7d1f94a093668724c0b428a60c4328e96d27f415da5b79d",
+      "bytes": 91044
+    },
+    {
+      "url": "/zbirke/prilozi/3fe9c2b0f41d581813f1.png",
+      "sha256": "3fe9c2b0f41d581813f1d615a3069f38acf368fdaf837a48dd86707c019e19f1",
+      "bytes": 153543
+    },
+    {
+      "url": "/zbirke/prilozi/4ee7c7f25823d52cd5d6.png",
+      "sha256": "4ee7c7f25823d52cd5d64aee7e1d7e50759449e8fe8dbca3b9d08289a3420898",
+      "bytes": 267712
+    },
+    {
+      "url": "/zbirke/prilozi/55cf9d41289509893914.png",
+      "sha256": "55cf9d4128950989391453f5c353fdec98f2ca98f8960cc75e39a9bb06daf929",
+      "bytes": 129814
+    },
+    {
+      "url": "/zbirke/prilozi/86c4c45f92919c65ecae.png",
+      "sha256": "86c4c45f92919c65ecaebb98de113dfdb2aa2aadee7796e762a670b8b19b267a",
+      "bytes": 134768
+    },
+    {
+      "url": "/zbirke/prilozi/87ebb9f3db85777a7045.png",
+      "sha256": "87ebb9f3db85777a704596ba646c3d024e32aa67ebbb93e24eaa8991d9b19543",
+      "bytes": 262808
+    },
+    {
+      "url": "/zbirke/prilozi/93d6beaf94e2e5f79f60.png",
+      "sha256": "93d6beaf94e2e5f79f60e075a03c246a3a03553391166e952a743ca89cabfb19",
+      "bytes": 48298
+    },
+    {
+      "url": "/zbirke/prilozi/9bb14a4cab6f1d8e3f1c.png",
+      "sha256": "9bb14a4cab6f1d8e3f1c87d68e38d4d54cd9ba816f1527eba582e25d502f8ae6",
+      "bytes": 275392
+    },
+    {
+      "url": "/zbirke/prilozi/Arduino_C2.zip",
+      "sha256": "8640ba706e14b92db8572a66304f11e270d59d0765ae302d43ac1d42661afbf8",
+      "bytes": 16237
+    },
+    {
+      "url": "/zbirke/prilozi/Arduino_C4.zip",
+      "sha256": "df0b296a97d450ef57874c57f40ba6ab26509f99e8418c18141b7d5125bb9308",
+      "bytes": 9100
+    },
+    {
+      "url": "/zbirke/prilozi/Arduino_biblioteke.zip",
+      "sha256": "20dd45f89a405bf9495a508c19068f78dcf4884486a89723911430859c6e03c9",
+      "bytes": 2809395
+    },
+    {
+      "url": "/zbirke/prilozi/MicroPython_C2_HTTP.zip",
+      "sha256": "8d0c5f7d99c08c0ba2fc58f972b75017c04a52056cb4206288f59a1463c097a3",
+      "bytes": 6213
+    },
+    {
+      "url": "/zbirke/prilozi/MicroPython_C2_MQTT.zip",
+      "sha256": "a675764173d0f8f92b052bb9a421c1942d1942591a425d263ed61a949a1c5efa",
+      "bytes": 17503
+    },
+    {
+      "url": "/zbirke/prilozi/MicroPython_C4.zip",
+      "sha256": "c8f4c5722e8772340b92e13dfe8402159691be2ee89e55f870eff3001dd63dbe",
+      "bytes": 8015
+    },
+    {
+      "url": "/zbirke/prilozi/b0d3d9230b1abee1a1a2.png",
+      "sha256": "b0d3d9230b1abee1a1a298f0bb14f949a5fed5fc15047c9ed63e16135bf36d96",
+      "bytes": 153611
+    },
+    {
+      "url": "/zbirke/prilozi/b518780d184b95906fbf.png",
+      "sha256": "b518780d184b95906fbfc8fc32335bb89e644bb25628a47bc103e4688afdec28",
+      "bytes": 107157
+    },
+    {
+      "url": "/zbirke/prilozi/bb2680a95d8c03673183.png",
+      "sha256": "bb2680a95d8c03673183e6c0d0594a2be7d443f1e6f2771b3c8658885837cd6b",
+      "bytes": 318912
+    },
+    {
+      "url": "/zbirke/prilozi/e3a032f91ce9c0a64a45.png",
+      "sha256": "e3a032f91ce9c0a64a45202d25738c9eff2eb39284859992c1593d4b0d7631c8",
+      "bytes": 102888
+    },
+    {
+      "url": "/zbirke/prilozi/efeb273aab22d2131572.png",
+      "sha256": "efeb273aab22d213157207b655a4b7aaaee8e07aeedbb3f83bbbc8d163dec585",
+      "bytes": 108998
     }
   ]
 }

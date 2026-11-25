@@ -30,6 +30,7 @@ try {
         'catalog' => 'GET', 'task-versions' => 'GET', 'publish-task' => 'POST', 'assignments' => 'GET', 'assignment' => 'GET', 'create-assignment' => 'POST', 'assignment-availability' => 'POST', 'begin-attempt' => 'POST', 'save-work' => 'POST', 'attempt' => 'GET', 'attempt-revisions' => 'GET', 'class-work' => 'GET'];
     $routes['compiler-capabilities']='GET'; $routes['compile']='POST'; $routes['compile-status']='GET'; $routes['cancel-compile']='POST';
     $routes['finish-attempt'] = 'POST';
+    $routes['submission-word'] = 'GET';
     $routes['reopen-attempt'] = 'POST';
     $routes['attempt-history'] = 'GET';
     $routes['request-grade'] = 'POST';
@@ -47,6 +48,7 @@ try {
         Labos\csrf($config);
         if (strtolower(trim(explode(';', $_SERVER['CONTENT_TYPE'] ?? '')[0])) !== 'application/json') Labos\fail(415, 'content_type', 'Pošalji JSON zahtjev.');
         $limit = in_array($action, ['preview-students', 'import-students'], true) ? 65536 : (in_array($action, ['save-work','compile'], true) ? 3200000 : ($action === 'publish-task' ? 24576 : ($action === 'review-work' ? 16384 : 8192)));
+        if ($action === 'finish-attempt') $limit=16800000;
         if ((int)($_SERVER['CONTENT_LENGTH'] ?? 0) > $limit) Labos\fail(413, 'body_size', 'Zahtjev je prevelik.');
         $raw = file_get_contents('php://input', false, null, 0, $limit + 1);
         if (strlen($raw) > $limit) Labos\fail(413, 'body_size', 'Zahtjev je prevelik.');
@@ -70,6 +72,7 @@ try {
         respond(201, ['request' => Labos\requestClass($pdo, $config, null, $body)]);
     }
     $actor = Labos\readyUser($pdo);
+    if ($action === 'submission-word') Labos\downloadSubmittedWord($pdo,$actor,$_GET['id']??null,$_GET['revision']??null);
     if ($action === 'compiler-capabilities') respond(200, Labos\compilerCapabilities($pdo,$config,$actor));
     if ($action === 'compile') respond(200, ['job'=>Labos\requestCompile($pdo,$config,$actor,$body)]);
     if ($action === 'compile-status') respond(200, ['job'=>Labos\readCompile($pdo,$actor,$_GET['id']??null)]);

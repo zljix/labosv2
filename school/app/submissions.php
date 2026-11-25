@@ -12,7 +12,11 @@ function submissionValue(array $row, ?array $grading = null): array
 function attemptSubmission(\PDO $pdo, int $id): ?array
 {
     $s = query($pdo, 'SELECT * FROM school_submissions WHERE attempt_id=?', [$id])->fetch();
-    return $s ? submissionValue($s, snapshotGrading($pdo, $id, (int)$s['revision'])) : null;
+    if (!$s) return null;
+    $value=submissionValue($s,snapshotGrading($pdo,$id,(int)$s['revision']));
+    $doc=query($pdo,'SELECT filename AS name,sha256,byte_count AS bytes FROM collection_documents WHERE submission_id=?',[$s['id']])->fetch();
+    $value['word']=$doc ?: null;
+    return $value;
 }
 
 function attemptReopening(\PDO $pdo, int $id): ?array
@@ -40,7 +44,8 @@ function finishAttempt(\PDO $pdo, array $actor, array $body): array
     $prior = accessibleAttempt($pdo, $actor, $body['attemptId'] ?? null);
     if ($actor['role'] !== 'student' || (int)$prior['student_id'] !== (int)$actor['id']) fail(403, 'forbidden', 'Samo učenik završava vlastiti rad.');
     [$revision, $key] = submissionRequest($body);
-    return transaction($pdo, function () use ($pdo, $actor, $prior, $revision, $key) {
+    $doc=submittedWord($body,readAssignment($pdo,$actor,$prior['assignment_id']));
+    return transaction($pdo, function () use ($pdo, $actor, $prior, $revision, $key, $doc) {
         // Same lock order as autosave: account, class, attempt. Both actions
         // serialize on this row; a late save cannot change a sealed snapshot.
         $actor = lockActor($pdo, $actor); schoolClass($pdo, $actor, $prior['class_id'], false, true);
@@ -50,6 +55,10 @@ function finishAttempt(\PDO $pdo, array $actor, array $body): array
         $same = query($pdo, 'SELECT * FROM school_submissions WHERE attempt_id=? FOR UPDATE', [$row['id']])->fetch();
         if ($same) {
             if ((int)$same['revision'] !== $revision) fail(409, 'revision_conflict', 'Predaja je već zaključana uz drugu reviziju. Pregledaj potvrđenu predaju.');
+            if (collectionAssignment($assignment)) {
+                $stored=query($pdo,'SELECT sha256 FROM collection_documents WHERE submission_id=?',[$same['id']])->fetchColumn();
+                if (($stored ?: null)!==($doc['sha256'] ?? null)) fail(409,'word_conflict','Revizija je već zaključana s drugim odabirom priloga. Otvori predanu verziju.');
+            }
             // Two tabs may use different keys for the same revision. There is
             // exactly one submission, also after a lost HTTP response.
             return readAttempt($pdo, $actor, $row['id']);
@@ -60,6 +69,7 @@ function finishAttempt(\PDO $pdo, array $actor, array $body): array
         query($pdo, 'INSERT INTO school_submissions (attempt_id,revision,request_key,snapshot_hash,task_version_id,rubric_hash) VALUES (?,?,?,?,?,?)',
             [$row['id'], $revision, $key, $hash, $assignment['task']['id'], $assignment['task']['contentHash']]);
         $submissionId = (int)$pdo->lastInsertId();
+        if ($doc) query($pdo,'INSERT INTO collection_documents (submission_id,filename,sha256,byte_count,document) VALUES (?,?,?,?,?)',[$submissionId,$doc['name'],$doc['sha256'],strlen($doc['bytes']),$doc['bytes']]);
         query($pdo, "UPDATE school_attempts SET status='locked' WHERE id=?", [$row['id']]);
         enqueueGrading($pdo, (int)$row['id'], $revision, 'finish-' . hash('sha256', $key));
         audit($pdo, (int)$actor['id'], (int)$actor['id'], 'attempt.submitted', ['attemptId' => (int)$row['id'], 'submissionId' => $submissionId, 'revision' => $revision, 'contentHash' => $hash]);

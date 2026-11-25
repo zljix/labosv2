@@ -23,7 +23,7 @@ test('every frozen school starter opens as a new local project with its precise 
     if(starter.radio)assert.deepEqual(copy.radio,starter.radio);
     ++count;
   }
-  assert.equal(count,273);
+  assert.equal(count,371);
   assert.equal(catalog.entries.filter((e:any)=>e.set==='urs').length,67);
   assert.equal(catalog.entries.filter((e:any)=>e.set==='introductory').length,5);
 });

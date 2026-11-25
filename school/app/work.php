@@ -142,6 +142,10 @@ function saveAttempt(\PDO $pdo, array $actor, array $body): array
     $p = $body['project'] ?? null;
     $initial = json_decode(query($pdo, 'SELECT project FROM work_snapshots WHERE attempt_id=? AND revision=1', [$prior['id']])->fetchColumn(), false, 64, JSON_THROW_ON_ERROR);
     validateWorkProject($p, $initial);
+    if (isset($initial->files->{'zbirka.json'})) {
+        foreach (['zbirka.json','school-assignment.json'] as $field)
+            if (($p->files->{$field} ?? null) !== $initial->files->{$field}) fail(422,'collection_identity','Spremi sadržaj unutar dodijeljene zbirke i izvedbe.');
+    }
     unset($p->files->{'school-attempt.json'});
     $document = canonicalJson($p); $hash = hash('sha256', $document);
     if (strlen($document) > 3145728) fail(413, 'project_size', 'Snimka projekta prelazi 3 MiB.');

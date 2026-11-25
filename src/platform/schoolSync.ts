@@ -1,3 +1,4 @@
+import {cleanCollectionSources} from './collectionPrivacy';
 import {clone,parseProject,type Project} from '../project/model';
 import {appAsset} from './assets';
 
@@ -6,7 +7,7 @@ export interface SchoolBinding {
   format:'labosv2-school-attempt';version:1;origin:string;userId:number;attemptId:number;assignmentId:number;
   projectId:string;revision:number;fingerprint:string;savedAt?:string;status?:'in_progress'|'locked';
 }
-export interface SchoolSubmission {id:number;attemptId:number;revision:number;contentHash:string;taskVersionId:number;rubricHash:string;submittedAt:string;grading:any}
+export interface SchoolSubmission {word?:{name:string;sha256:string;bytes:number}|null;id:number;attemptId:number;revision:number;contentHash:string;taskVersionId:number;rubricHash:string;submittedAt:string;grading:any}
 export interface SchoolWorkState {
   attempt:{id:number;assignmentId:number;studentId:number;revision:number;status:string;number?:number;savedAt:string;grading?:any};
   assignment:any;student:{id:number;username:string;displayName:string};
@@ -21,7 +22,7 @@ export class SchoolApi {
   constructor(private transport:typeof fetch=(...args)=>fetch(...args)){}
   async request(action:string,body?:unknown):Promise<any>{
     const response=await this.transport(appAsset('api/index.php?action='+action),{method:body===undefined?'GET':'POST',credentials:'same-origin',cache:'no-store',
-      headers:body===undefined?{}:{'Content-Type':'application/json','X-CSRF-Token':this.token},body:body===undefined?undefined:JSON.stringify(body),signal:AbortSignal.timeout(15000)});
+      headers:body===undefined?{}:{'Content-Type':'application/json','X-CSRF-Token':this.token},body:body===undefined?undefined:JSON.stringify(body),signal:AbortSignal.timeout(action==='finish-attempt'?120000:15000)});
     let data:any;try{data=await response.json();}catch{throw new SchoolApiError('Školski servis nije dostupan na ovoj adresi.',response.status,'unavailable');}
     if(data?.application!=='labosv2')throw new SchoolApiError('Otvori adresu školskog poslužitelja.',response.status,'unavailable');
     if(data.csrfToken)this.token=data.csrfToken;
@@ -50,10 +51,10 @@ export function readSchoolBinding(p:Project):SchoolBinding|undefined {
   }catch{return;}
 }
 export function schoolSnapshot(p:Project,b:SchoolBinding):Project {
-  const next=clone(p);next.id=b.projectId;delete next.files[SCHOOL_BINDING_FILE];return parseProject(next);
+  const next=clone(p);next.id=b.projectId;delete next.files[SCHOOL_BINDING_FILE];cleanCollectionSources(next);return parseProject(next);
 }
 export async function schoolFingerprint(p:Project):Promise<string>{
-  const next:any=clone(p);delete next.files[SCHOOL_BINDING_FILE];delete next.id;delete next.updatedAt;delete next.revision;
+  const next:any=clone(p);cleanCollectionSources(next);delete next.files[SCHOOL_BINDING_FILE];delete next.id;delete next.updatedAt;delete next.revision;
   const stable=(value:any):any=>Array.isArray(value)?value.map(stable):value&&typeof value==='object'?Object.fromEntries(Object.keys(value).sort().map(k=>[k,stable(value[k])])):value;
   const hash=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify(stable(next))));
   return Array.from(new Uint8Array(hash),b=>b.toString(16).padStart(2,'0')).join('');

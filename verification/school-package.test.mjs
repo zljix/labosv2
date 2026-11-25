@@ -15,7 +15,7 @@ test('school ZIP verifies every inventory entry and keeps app, SQL and configura
     assert.equal(archive[file.path].byteLength, file.bytes, file.path);
     assert.equal(createHash('sha256').update(archive[file.path]).digest('hex'), file.sha256, file.path);
   }
-  for (const path of ['app/bootstrap.php', 'migrations/001_accounts.sql', 'migrations/002_class_access.sql', 'tools/console.php', 'web/api/index.php', 'web/school-account.mjs', 'web/school-classes.mjs', 'migrations/003_classes_tasks.sql', 'catalog/catalog.json']) assert(archive[path], path);
+  for (const path of ['app/bootstrap.php', 'migrations/009_collection_documents.sql', 'app/collection_documents.php', 'migrations/001_accounts.sql', 'migrations/002_class_access.sql', 'tools/console.php', 'web/api/index.php', 'web/school-account.mjs', 'web/school-classes.mjs', 'migrations/003_classes_tasks.sql', 'catalog/catalog.json']) assert(archive[path], path);
   assert.deepEqual(Object.keys(archive).filter(path => path.startsWith('config/')), ['config/config.example.php']);
   assert(archive['checker/.build/school-grader/radio-child.mjs']);
   for(const path of ['migrations/008_interactive_compile.sql','app/compilation.php','tools/compilation.php','tools/compiler-worker.mjs','checker/.build/school-grader/runner.mjs','apache/labos-compiler.service.example','docs/STAGE25A_SKOLSKI_PREVODITELJ.md'])assert(archive[path],path);

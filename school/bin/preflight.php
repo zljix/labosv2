@@ -10,7 +10,7 @@ $add = static function (string $id, bool $pass, string $message) use (&$checks):
 };
 $configPath = $argv[1] ?? (getenv('LAB_SCHOOL_CONFIG') ?: '');
 $add('php', PHP_VERSION_ID >= 80400 && PHP_VERSION_ID < 80600, 'PHP ' . PHP_VERSION . '; profil 8.4 ili 8.5 s aktualnim sigurnosnim zakrpama.');
-foreach (['pdo_mysql', 'json', 'session'] as $extension) {
+foreach (['pdo_mysql', 'json', 'session', 'zip'] as $extension) {
     $add($extension, extension_loaded($extension), 'PHP proširenje ' . $extension);
 }
 $config = null;

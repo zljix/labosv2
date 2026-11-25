@@ -1,3 +1,9 @@
+# Labos 0.16.0-beta.3 · zbirke IoT i US
+
+U izborniku **Vježbe** odaberi **Internet stvari** (24 vježbe) ili **Ugradbeni sustavi** (25 vježbi), pa MicroPython ili Arduino. Uz vježbu možeš preuzeti pripadajući učenički Word i početne datoteke. [Otvori Labos](https://zljix.github.io/labosv2/)
+
+Za dodjelu razredu i zaključavanje predaje instaliraj školski paket na poslužitelj s PHP-om i MySQL-om. Učenik prilaže popunjeni Word ili označava da dokazi nedostaju. Nastavnik može pregledati predanu reviziju i otvoriti novi pokušaj za dopunu. Pri nadogradnji postojeće instalacije primijeni migraciju 009. [Preuzmi školski ZIP](https://zljix.github.io/labosv2/paketi/Labos_IoT_US_skolska_predaja.zip) · [Upute za instalaciju](school/README.md)
+
 > **0.16.0-beta.2 — Arduino offline (eksperimentalno):** glavno sučelje može
 > prevesti novi Uno/Nano program bez mreže nakon jednokratne pripreme paketa.
 > Izvori i licence dostupni su u dijalogu prevoditelja. Školsko bodovanje i

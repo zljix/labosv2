@@ -1,3 +1,4 @@
+import {WordReceipt} from './CollectionSubmission';
 import {useEffect,useRef,useState} from 'react';
 import {parseProject,type Project} from '../project/model';
 import {SchoolApi,detachedSchoolProject,type SchoolWorkState} from './schoolSync';
@@ -103,7 +104,7 @@ export default function SchoolClassReview({open}:{open:(p:Project)=>Promise<void
         <details><summary>Objavljene upute i kriteriji ove dodjele</summary><p>{detail.assignment.task.definition.goal}</p><p>{detail.assignment.task.definition.teacherNotes}</p><ul>{detail.assignment.task.rubric.criteria.map((c:any)=><li key={c.id}>{c.description}{c.maxPoints===null?'':' · najviše '+c.maxPoints+' bodova'}</li>)}</ul></details>
         <GradingReport grading={detail.snapshot.grading}/>
         <SchoolFeedback key={detail.attempt.id+':'+detail.snapshot.revision} attemptId={detail.attempt.id} revision={detail.snapshot.revision} staff archived={detail.assignment.archived} changed={()=>{void inspect(detail.attempt.id,detail.snapshot.revision);}}/>
-        <SchoolSnapshot project={parseProject(detail.snapshot.project)} label="Posljednja odabrana snimka"/>
+        <WordReceipt work={detail}/><SchoolSnapshot project={parseProject(detail.snapshot.project)} label="Posljednja odabrana snimka"/>
         {detail.submission&&!detail.assignment.archived&&<div className="school-reopen"><label>Razlog dopuštanja dorade<textarea value={reason} maxLength={1000} onInput={e=>setReason(e.currentTarget.value)}/></label>
           <button disabled={busy||!reason.trim()||!!reopenMessage} onClick={()=>void reopen()}>Dopusti doradu kao novi pokušaj</button>{reopenMessage&&<p role="status">{reopenMessage}</p>}</div>}
         {detail.submission&&!detail.assignment.archived&&<details><summary>Odabir predaje za izvještaje</summary><p>Zadano se koristi posljednja zaključana predaja. Drugu možeš odabrati uz razlog; raniji odabir ostaje u evidenciji.</p><label>Razlog odabira<textarea value={selectionReason} maxLength={1000} onChange={e=>setSelectionReason(e.target.value)}/></label><button disabled={busy||!selectionReason.trim()} onClick={()=>void selectAssessment()}>Koristi ovu zaključanu predaju</button><button disabled={busy||!selectionReason.trim()} onClick={()=>void selectAssessment(true)}>Vrati posljednju zaključanu predaju</button></details>}

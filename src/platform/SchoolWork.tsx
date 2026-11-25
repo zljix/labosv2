@@ -1,3 +1,4 @@
+import {WordReceipt} from './CollectionSubmission';
 import {useEffect,useRef,useState} from 'react';
 import type {Project} from '../project/model';
 import {parseProject} from '../project/model';
@@ -66,7 +67,7 @@ export default function SchoolWork({project,confirm,open,expanded=true,onExpand}
     <div id="my-work" className="school-work-details" hidden={!showDetails}>
     {isLocked&&official?.submission&&<section className="school-locked-submission" aria-label="Zaključana predaja">
       <h4>Predaja #{official.submission.id} · pokušaj {official.attempt.number??1}</h4><p>Potvrđeno {schoolTime(official.submission.submittedAt)} · revizija {official.submission.revision}. Sadržaj je zaključan. Za izmjene nastavnik dopušta novi pokušaj.</p>
-      <SchoolSnapshot project={parseProject(official.snapshot.project)} label="Sadržaj zaključane predaje"/>
+      <WordReceipt work={official}/><SchoolSnapshot project={parseProject(official.snapshot.project)} label="Sadržaj zaključane predaje"/>
       <button disabled={busy} onClick={()=>void act(async()=>{await api.current.session(binding.userId);const next=await api.current.request('begin-attempt',{assignmentId:binding.assignmentId});
         if(next.attempt.id===binding.attemptId){setOfficial(next);setError('Nastavnik još nije dopustio novi pokušaj.');return;}await callbacks.current.open(await prepareSchoolAttempt(next));})}>Provjeri dopuštenu doradu / otvori najnoviji pokušaj</button>
     </section>}

@@ -113,11 +113,11 @@ export function createSchoolPortal({request,getUser,run,message,reloadUsers}) {
     const result=await request('classes');if(tick!==epoch)return;classes=result.classes;
     if(staff()){
       const selected=$('#class-select').value;
-      options($('#class-select'),classes.map(c=>[c.id,c.name+' · '+c.schoolYear]),'Odaberi razred',selected||classes[0]?.id);
       if(!catalog)catalog=(await request('catalog')).catalog;if(tick!==epoch)return;
       options($('#task-key'),catalog.entries.map(e=>[e.key,e.code+' · '+e.title+' · '+e.variantTitle]),'Odaberi vježbu',$('#task-key').value);
       versions=(await request('task-versions')).versions;if(tick!==epoch)return;
       options($('#assignment-version'),versions.map(v=>[v.id,v.definition.code+' · '+v.definition.variantTitle+' · v'+v.version]),'Odaberi objavljenu inačicu',$('#assignment-version').value);
+      options($('#class-select'),classes.map(c=>[c.id,c.name+' · '+c.schoolYear]),'Odaberi razred',selected||classes[0]?.id);
       drawVersion();await openClass();
     }else{
       $('#student-classes').textContent=classes.length?'Moji razredi: '+classes.map(c=>c.name+' ('+c.schoolYear+')').join(', '):'Još nema potvrđenog članstva u razredu.';

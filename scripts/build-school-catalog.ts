@@ -1,3 +1,4 @@
+import {schoolCollections} from './collection-school-starters';
 import {teachingLesson,URS_GUIDE_VERSION} from '../src/lessons/ursTeaching';
 import {investigationAdvice,schoolInvestigationAdvice} from '../src/lessons/workflow';
 import {readFileSync,writeFileSync,mkdirSync,rmSync} from 'node:fs';
@@ -14,7 +15,7 @@ const directory=resolve('.build/school-catalog');
 rmSync(directory,{recursive:true,force:true});mkdirSync(directory,{recursive:true});
 const originalFetch=globalThis.fetch;
 globalThis.fetch=async(input:any)=>{
-  const path=String(input).replace(/^\/app\/[^/]+\//,'');
+  const path=String(input).replace(/^\/app\/[^/]+\//,'').replace(/^\/zbirke\//,'zbirke/');
   if(path.startsWith('/')||path.includes('..'))throw Error('Nedopušten resurs školskog predloška.');
   return new Response(readFileSync(resolve('public',path)));
 };
@@ -54,10 +55,14 @@ try {
       fault:lesson.tips.join(' '),expected:lesson.criteria.join(' '),questions:lesson.questions,criteria:lesson.criteria,
       targets:['micropython'],templates:{micropython:filename},gradingSupport:{micropython:gradingSupport(key,'micropython')}});
   }
+  for await(const item of schoolCollections()){
+    if(item.starter){const {filename,project,key}=item.starter;writeFileSync(resolve(directory,filename),JSON.stringify(stable(project,key)));}
+    if(item.entry)entries.push(item.entry);
+  }
 }finally{globalThis.fetch=originalFetch;}
 writeFileSync(resolve(directory,'catalog.json'),JSON.stringify({format:'labosv2-school-catalog',version:1,
   sourceVersion:JSON.parse(readFileSync('package.json','utf8')).version,
   gradingSummary:gradingCoverage(JSON.parse(readFileSync('package.json','utf8')).version).summary,
   introductorySummary:gradingCoverage(JSON.parse(readFileSync('package.json','utf8')).version).introductorySummary,
   targets:Object.fromEntries(Object.entries(ursTargets).map(([key,t])=>[key,t.label])),entries},null,2)+'\n');
-console.log('Školski katalog: 67 URS varijanti / 268 ciljeva te 5 zasebnih uvodnih MicroPython zadataka.');
+console.log('Školski katalog: 67 URS varijanti / 268 ciljeva te 5 uvodnih, 24 IoT i 25 US zadataka.');

@@ -100,10 +100,20 @@ jobs:
             .build/avr-prototype-node-evidence.json
             .build/avr-library-evidence.json
           retention-days: 30
+      - name: Pripremi školski ZIP za javno preuzimanje
+        run: |
+          mkdir -p .build
+          mv dist .build/pages-public
+          npm run build:school
+          mkdir -p .build/pages-public/paketi
+          packages=(release/*_Skolski.zip)
+          test "${#packages[@]}" -eq 1
+          unzip -tq "${packages[0]}"
+          cp "${packages[0]}" .build/pages-public/paketi/Labos_IoT_US_skolska_predaja.zip
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
-          path: dist
+          path: .build/pages-public
   deploy:
     needs: build
     runs-on: ubuntu-latest

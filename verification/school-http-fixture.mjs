@@ -33,6 +33,7 @@ export async function schoolFixture(t, options = {}) {
   assert(ready,'PHP API did not start: '+log);
   function client(){let cookie='',csrf='';return {
     async call(action,body){const response=await fetch(origin+'/api/index.php?action='+action,{method:body===undefined?'GET':'POST',headers:{Cookie:cookie,...(body===undefined?{}:{'Content-Type':'application/json','X-CSRF-Token':csrf,Origin:origin})},body:body===undefined?undefined:JSON.stringify(body)});const set=response.headers.getSetCookie();if(set.length)cookie=set.at(-1).split(';')[0];const text=await response.text();let json;try{json=JSON.parse(text);}catch{assert.fail('Non-JSON API: '+text.slice(0,100));}if(json.csrfToken)csrf=json.csrfToken;return {status:response.status,json,text};},
+    async download(action){const r=await fetch(origin+'/api/index.php?action='+action,{headers:{Cookie:cookie}});return {status:r.status,bytes:Buffer.from(await r.arrayBuffer())};},
     async login(username,pass){await this.call('session');return this.call('login',{username,password:pass});}
   };}
   const admin=client();assert.equal((await admin.login('admin.test',adminPassword)).status,200);

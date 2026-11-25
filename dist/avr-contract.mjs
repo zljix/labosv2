@@ -80,3 +80,11 @@ export async function validateArtifact(project,value) {
   if(value.flashBytes!==loaded.extent||!Number.isSafeInteger(value.staticRamBytes)||value.staticRamBytes<0||value.staticRamBytes>2048)throw Error('Neispravni podaci o Flash/SRAM memoriji.');
   return value;
 }
+
+export function parseDiagnostics(text) {
+  return text.split(/\r?\n/).flatMap(line=>{
+    const m=line.match(/^(.+?):(\d+)(?::(\d+))?:\s*(fatal error|error|warning|note):\s*(.*)$/);
+    if(!m)return [];
+    return [{file:m[1].replaceAll('\\','/'),line:Number(m[2]),column:Number(m[3]??1),severity:m[4].includes('error')?'error':m[4],message:m[5]}];
+  }).slice(0,50);
+}

@@ -40,6 +40,11 @@ import { basicExamples, exampleCircuit, type BasicExample } from "../circuit/exa
 import {environmentExamples,environmentCircuit,loadEnvironmentDrivers,type EnvironmentExample} from "../circuit/environmentExamples";
 import {peripheralExample,peripheralCircuit,loadPeripheralDrivers} from "../circuit/peripheralExamples";
 import LessonPanel, {LessonCatalog} from "../lessons/LessonPanel";
+import {P0Instructions, collectionWork, tracks, workFile, type Track} from '../lessons/IotUsCatalog';
+import {CollectionProgram, extraProjects, ledCircuit, libraryFiles, type ExtraProject} from '../lessons/CollectionProgram';
+import courseTitles from '../lessons/iotUsTitles.json';
+import {collectionAsset,CollectionMaterials,type ExerciseId} from '../lessons/CollectionMaterials';
+import {TemperatureWork, programUrl, type RunnableId} from '../lessons/IotUsPilot';
 import UrsPanel from '../lessons/UrsPanel';
 import {emptyReviewSession,type ReviewSession} from '../lessons/classReview';
 import {createUrsProject,targetForProject,getUrsLesson,ursExampleHint,URS_WORK,type UrsTarget} from '../lessons/ursCatalog';
@@ -50,7 +55,9 @@ import {exportSubmission} from "../lessons/submission";
 import {useOffline} from '../platform/offline';
 import SystemPanel from '../platform/SystemPanel';
 import SchoolAccountLink from '../platform/SchoolAccountLink';
-import SchoolAssignment from '../platform/SchoolAssignment';
+import {StationSources} from '../platform/StationSources';
+import {LocalEvidence,isCollectionTask} from '../platform/CollectionSubmission';
+import SchoolAssignment,{readSchoolAssignment} from '../platform/SchoolAssignment';
 import {readSchoolBinding} from '../platform/schoolSync';
 import {BOARDS,S3,getBoard,languageName,type BoardId,type Language} from '../boards/profiles';
 import {BoardFields,BoardChangePanel,SupportMatrix} from '../boards/BoardPanels';
@@ -428,7 +435,9 @@ export default function App() {
       await ws.add(copy);
       if(OFFLINE_AVR&&imported.result)await saveOffline(copy,imported.result);
       setDialog(null);
-      setLabTab(readWork(next)||next.files[URS_WORK]?"lesson":"circuit");setMobileTab("lab");
+      const importedCollection = collectionWork(next);
+      setLabTab(readWork(next)||next.files[URS_WORK]||importedCollection?"lesson":"circuit");
+      setMobileTab(importedCollection?"lesson":"lab");
       notify("Projekt je uvezen kao zasebna kopija. Program nije pokrenut.");
     });
   }
@@ -502,6 +511,42 @@ export default function App() {
       next.files={...files,"main.py":peripheralExample.code};next.circuit=peripheralCircuit();next.settings.example="peripheral-regulator";
       runtime.stop();await ws.add(next);setLabTab("circuit");setExpandedCircuit(false);setMobileTab("lab");
       notify("Otvoren je primjer s upravljačkim datotekama. Pokreni i mijenjaj temperaturu ili vlagu.");
+    });
+  }
+  async function selectPilot(track: Track, exercise: RunnableId) {
+    await action(async () => {
+      await ws.flush();
+      const previous = (await ws.list()).find(row => {
+        const work = collectionWork(row.document);
+        return work?.track === track && work.exercise === exercise && !readSchoolBinding(row.document);
+      });
+      runtime.stop();
+      lessonCheck.cancel();
+      if (previous) {
+        await ws.open(previous.id);
+      } else {
+        let code = 'import provjera';
+        if (exercise !== 'V4.3') {
+          const url = exercise==='V1.2'||exercise==='V1.3' ? collectionAsset(exercise.replace('.','_')+'/MicroPython/01_LED.py') : programUrl(exercise,'MicroPython');
+          const response=await fetch(url);
+          if(!response.ok) throw Error('Početni program za '+exercise+' nije dostupan.');
+          code=await response.text();
+        }
+        const next = newProject(code, tracks[track] + ' · ' + exercise + ' · MicroPython', S3, 'micropython');
+        if(exercise==='V4.3') Object.assign(next.files,await libraryFiles());
+        if(exercise==='V1.2'||exercise==='V1.3')next.circuit=ledCircuit();
+        if (exercise === 'V1.4') {
+          next.circuit = environmentCircuit('ds18b20');
+          Object.assign(next.files, await loadEnvironmentDrivers('ds18b20'));
+        }
+        next.files[workFile] = JSON.stringify({track, exercise, edition: 'MicroPython', instructions: 'v14'});
+        await ws.add(next);
+      }
+      setDialog(null);
+      setTeacher(false);
+      setLabTab('lesson');
+      setMobileTab('lesson');
+      setExpandedCircuit(false);
     });
   }
   async function selectLesson(id:string,solution=false){
@@ -637,6 +682,9 @@ export default function App() {
     );
   const boardProfile=getBoard(p.board.id),availability=runtimeAvailability(p.board.id,p.language);
   const ursWork=readUrsWork(p),ursVariant=ursWork&&getUrsLesson(ursWork.lessonId)?.variants.find(v=>v.id===ursWork.variantId);
+  const collection = collectionWork(p);
+  const assigned=readSchoolAssignment(p)?.task?.definition;
+  const course=isCollectionTask(assigned) && Object.hasOwn(courseTitles,assigned.lessonId)?assigned:undefined;
   const s = p.settings,
     active = s.activeFile,
     example = s.example.startsWith("optical-") ? opticalExamples[s.example.slice(8) as OpticalExample] : s.example.startsWith("sd-") ? sdExamples[s.example.slice(3) as SDExample] : s.example.startsWith("rtc-") ? rtcExamples[s.example.slice(4) as RTCExample] : s.example.startsWith("s3-") ? s3Examples[s.example.slice(3) as S3Example] : s.example.startsWith("avr-") ? arduinoExamples[s.example.slice(4) as ArduinoExample] : s.example.startsWith("env-") ? environmentExamples[s.example.slice(4) as EnvironmentExample] : s.example === "peripheral-regulator" ? peripheralExample : s.example.startsWith("basic-") ? basicExamples[s.example.slice(6) as BasicExample] : (examples as Record<string, { hint: string }>)[s.example];
@@ -652,6 +700,11 @@ export default function App() {
       catch{openDialog('arduino');notify('Prevedi aktualni izvor prije pokretanja.');}
     }else void runtime.run(clone(p),reset);
   };
+  function editCollectionProgram(file?: string) {
+    ws.change('Otvoren main.py', next=>{next.settings.activeFile=typeof file==='string'?file:next.entryFile;});
+    setLabTab('circuit');
+    setMobileTab('code');
+  }
   const circuitEditor = <CircuitEditor key={p.id} circuit={p.circuit} language={p.language}
             onChange={(c, label, kind) => { runtime.stop(kind === "snapshot"); ws.change(label, n => {n.circuit = c; n.settings.example = "";}); }}
             onDemo={() => void selectCircuitExample()}
@@ -718,7 +771,8 @@ export default function App() {
             <Icon name="code" /> Vježbe
           </button>
           <button className="desktop-panel-action" aria-expanded={filesOpen} aria-controls="project-files" onClick={()=>{setFilesOpen(v=>!v);setLabTab('circuit');setMobileTab(filesOpen?'lab':'files');}}>Datoteke</button>
-          {(readWork(p)||readUrsWork(p))&&<button className="desktop-panel-action" aria-expanded={labTab==='lesson'} aria-controls="lesson-instructions" onClick={()=>labTab==='lesson'?(setLabTab('circuit'),setMobileTab('lab')):showInstructions()}>Upute</button>}
+          {collection&&<LocalEvidence project={p}/>}
+        {(readWork(p)||readUrsWork(p)||collection||course)&&<button className="desktop-panel-action" aria-expanded={labTab==='lesson'} aria-controls="lesson-instructions" onClick={()=>labTab==='lesson'?(setLabTab('circuit'),setMobileTab('lab')):showInstructions()}>Upute</button>}
           <button aria-expanded={workOpen} aria-controls="my-work" onClick={()=>setWorkOpen(v=>!v)}>Moj rad</button>
           <ActionGroup title="Projekt">
           <button
@@ -815,7 +869,8 @@ export default function App() {
       {!readSchoolBinding(p)&&<section id="my-work" className="local-work" hidden={!workOpen} aria-label="Moj lokalni rad">
         <div><h2>Moj rad · lokalni projekt</h2><p>{saveLabels[ws.status]}. ZIP sadrži sve datoteke, sklop i unesene odgovore. Izvoz nije službena školska predaja.</p></div>
         <button onClick={()=>void action(ws.flush)}>Spremi sada</button><button onClick={()=>exportProject()}>Izvezi rad ZIP</button>
-        {(readWork(p)||readUrsWork(p))&&<button onClick={showInstructions}>Odgovori i završetak vježbe</button>}
+        {collection&&<LocalEvidence project={p}/>}
+        {(readWork(p)||readUrsWork(p)||collection||course)&&<button onClick={showInstructions}>Odgovori i završetak vježbe</button>}
       </section>}
       {ws.error && (
         <div className="error-banner" role="alert">
@@ -927,7 +982,20 @@ export default function App() {
           {p.files[URS_WORK] && <UrsPanel key={p.id} project={p} change={work=>ws.change('URS odgovori i opažanja',n=>{n.files[URS_WORK]=JSON.stringify(work,null,2);})}
             busy={working||runtime.busy||lessonCheck.busy} teacher={teacher} toggleTeacher={()=>setTeacher(v=>!v)} catalog={()=>openDialog('lessons')} circuit={()=>{setLabTab('circuit');setMobileTab('lab');}} run={run} radio={()=>openDialog('radio')}
             investigate={()=>void action(async()=>{await ws.flush();runtime.stop();lessonCheck.cancel();await ws.add(investigationProject(p));setLabTab('lesson');notify('Otvorena je lokalna istraživačka kopija. Izvorni pokušaj ostao je u Projektima.');})} record={()=>void recordUrs()} submit={()=>void submitUrs()} review={(verdict,note)=>void reviewUrs(verdict,note)} importReview={reviewImport}/>}
-          {!p.files[URS_WORK] && <LessonPanel project={p}
+          {collection?.exercise === 'P0' && <P0Instructions track={collection.track} project={p} catalog={()=>openDialog('lessons')}
+            run={()=>{void run();setMobileTab('output');}} edit={editCollectionProgram}/>}
+          {collection?.exercise === 'V1.4' && <TemperatureWork project={p} output={runtime.consoleText}
+            saveNotes={notes=>ws.change('Bilješke iz mjerenja', next=>{next.files['mjerenje.txt']=notes;})}
+            run={()=>void run()} edit={editCollectionProgram} catalog={()=>openDialog('lessons')}/>}
+          {collection && extraProjects.includes(collection.exercise as ExtraProject) && <CollectionProgram id={collection.exercise as ExtraProject}
+            entry={p.files[p.entryFile]} edit={editCollectionProgram} run={()=>{void run();setMobileTab('output')}} catalog={()=>openDialog('lessons')}
+            choose={name=>{runtime.stop();ws.change('Odabir programa iz zajedničke biblioteke',next=>{next.files[next.entryFile]='import '+name;});}}/>}
+          {course && <article className="lesson-content"><h2>{course.lessonId} · {course.variantTitle}</h2>
+            <p>Školska dodjela · {p.language==='micropython'?'MicroPython':'Arduino/C++'}. Za fizički pokus koristi pripadajući komplet. Uredi Word, a u izborniku Moj rad priloži ga pri zaključavanju.</p>
+            <CollectionMaterials key={course.key+p.language} id={course.lessonId as ExerciseId} edition={p.language==='micropython'?'MicroPython':'Arduino'} pilot={false} usPreparation={course.set==='us'&&course.lessonId==='V3.7'}/>
+            <StationSources key={p.id} project={p} replace={(name,code)=>{runtime.stop();ws.change('Učitan izvor sa školske postaje',next=>{if(next.id===p.id)next.files[name]=code;});}}/>
+            <LocalEvidence project={p}/></article>}
+          {!course && !collection && !p.files[URS_WORK] && <LessonPanel project={p}
             change={work=>ws.change("Odgovori vježbe",n=>{n.files[WORK_FILE]=JSON.stringify(work,null,2);})}
             busy={lessonCheck.busy} progress={lessonCheck.progress} run={()=>{runtime.stop();void lessonCheck.run();}} cancel={lessonCheck.cancel}
             submit={()=>void submitLesson()} circuit={()=>{setLabTab('circuit');setMobileTab('lab');}} catalog={()=>openDialog("lessons")}
@@ -1322,7 +1390,7 @@ export default function App() {
         <Modal
           title={
             {
-              'class-review':'URS · pregled predaja razreda',
+              'class-review':'Pregled predaja razreda',
               radio:"NRF24L01+ · dva programska čvora",
               new: "Novi projekt",
               board: "Pločica i jezik",
@@ -1337,7 +1405,7 @@ export default function App() {
               help: "Dobro došao u ESP32 Lab",
               system: "Status aplikacije i offline rad",
               import: "Uvezi projekt ili učeničku predaju",
-              lessons: "Nastavne vježbe · početni niz i URS zbirka",
+              lessons: "Katalog nastavnih vježbi",
             }[dialog]
           }
           close={() => {if(dialog==='class-review'&&reviewBusyRef.current)return;setDialog(null);}}
@@ -1350,7 +1418,7 @@ export default function App() {
           {dialog==='arduino'&&<ArduinoBuildPanel offline={OFFLINE_AVR&&p.runtimeProfile.id==='arduino-avr'&&!p.radio} key={p.id} project={p} compiler={compiler} consoleText={runtime.runRevision===p.revision?runtime.consoleText:''} setLibraries={text=>{runtime.stop();ws.change('Odabrane Arduino biblioteke',n=>{n.files[AVR_LIBRARY_FILE]=text;});}} goTo={d=>{if(!Object.hasOwn(p.files,d.file))return;ws.change('Otvorena datoteka pogreške',n=>{n.settings.activeFile=d.file;});setReveal({path:d.file,line:d.line,column:d.column,token:Date.now()});setDialog(null);setMobileTab('code');}} importBuild={(text,input)=>{runtime.stop();const live=liveProject.current;if(!live||live.id!==p.id||JSON.stringify(buildInput(live))!==input)throw Error('Projekt je promijenjen.');if(readSchoolBinding(live)){if(readSchoolBinding(live)?.status==='locked')throw Error('Predaja je zaključana.');notify('Prijevod je spreman za pokretanje; školska revizija ostaje ista.');return;}const saved=ws.change('Preveden Arduino program',n=>{if(JSON.stringify(buildInput(n))!==input)throw Error('Projekt se promijenio tijekom prevođenja. Ponovi prevođenje.');n.files[buildFile(n)]=text;});if(!saved)throw Error('Rezultat nije spremljen u projekt. Provjeri veličinu i datoteke projekta.');preferStandard(live);notify('Prevedeni program spremljen je u projekt.');}}/>}
           {dialog === 'board' &&<BoardChangePanel project={p} busy={working} error={formError} create={(id,language)=>{setWorking(true);setFormError('');void (async()=>{try{const derived=deriveProject(p,id,language);await ws.flush();runtime.stop();lessonCheck.cancel();await ws.add(derived);setDialog(null);setLabTab('circuit');setMobileTab('lab');notify('Otvorena je izvedena kopija s novom pločicom.');}catch(e){setFormError((e as Error).message);}finally{setWorking(false);}})();}}/>}
           {dialog === 'matrix'&&<SupportMatrix board={p.board.id} language={p.language}/>}
-          {dialog === "lessons" && <LessonCatalog open={(id,solution)=>void selectLesson(id,solution)} openUrs={(lesson,variant,target,peer)=>void selectUrs(lesson,variant,target,peer)} initialTarget={targetForProject(p)} busy={working} reviewClass={()=>openDialog('class-review')}/>}
+          {dialog === "lessons" && <LessonCatalog initialCollection={collection?.track} initialExercise={collection?.exercise} openPilot={(track,exercise)=>void selectPilot(track,exercise)} open={(id,solution)=>void selectLesson(id,solution)} openUrs={(lesson,variant,target,peer)=>void selectUrs(lesson,variant,target,peer)} initialTarget={targetForProject(p)} busy={working} reviewClass={()=>openDialog('class-review')}/>}
           {dialog === 'system' && <SystemPanel offline={offline} busy={runtime.busy || lessonCheck.busy || working} saveStatus={saveLabels[ws.status]} update={updateApplication}/>}
           {[
             "new",

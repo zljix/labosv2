@@ -1,0 +1,71 @@
+NASTAVAK V4.2 - ISTA BIBLIOTEKA
+
+VLASTITA BIBLIOTEKA U POSTOJECIM V4.2 I V4.3
+Dorada 22. 10. 2026. | J - obvezna jezgra
+
+Tvoj rad: S1 provjera i korekcija senzorskog podatka; S2 odabir
+dopustenog impulsa; S3 provjera i primjena cilja. Predlozak namjerno
+nije dovrsen. Mjerni ciklus, povezivanje senzora i hardverski pogoni
+su pripremljena potpora. Autorstvo se procjenjuje prema tvojoj
+implementaciji i objasnjenju, a ne prema upisanoj oznaci autora.
+
+PRIPREMA I DATOTEKE
+U lokalnoj mapi V4_2 otvori vent_model_ucenik.py i dovrsi S1-S3.
+lab_podrska.py sadrzi gotov mjerni i hardverski okvir. Nju ne prepisuj.
+U Thonnyju odaberi odgovarajuci MicroPython ESP32 interpreter i prikljucak.
+Spremi oba modula u korijen datotecnog sustava uređaja pod imenima
+vent_model_ucenik.py i lab_podrska.py. Modul se ne sprema kao main.py.
+Samo odabrani glavni ili testni program sprema se kao main.py.
+V4.3 nema novu kopiju modula: A i B rabe istu spremljenu implementaciju
+pozivom import vent_model_ucenik as vm. Nakon izmjene modula ponovno
+ga spremi na uređaj i napravi Ctrl+D ili RESET; obican ponovljeni import
+moze zadrzati vec ucitani modul. Ako import ne uspije, provjeri tocna
+imena, korijen uređaja i import sys; print(sys.path).
+
+UGOVORI ZA DOPUNU S1-S3
+S1 prima sirovu temperaturu i korekciju. Odbija nekonacne brojeve,
+sirovu vrijednost izvan -55 do 125 stupnjeva C (ukljucujuci -127)
+i korigirani rezultat izvan istog raspona. Korekciju dodaje jednom.
+0 stupnjeva C je valjano. Vraca (True, broj) pri uspjehu, a (False, None) pri odbijanju. None nije temperatura. bool i tekst nisu brojcani senzorski ulaz.
+Testovi: 24.8 + 0.5 daje 25.3; 0 + 0 daje 0; NaN i 125 + 0.5 se odbijaju.
+
+S2 prima cilj i konfiguraciju. Za programski test koristi odobrene
+probne vrijednosti min=1100, max=1700, closed=1200, open=1600 mikrosekundi.
+To nisu preporuke za fizicki servo. CLOSED odabire closed, OPEN odabire
+open; nepoznat cilj i nevaljane granice odbijaju se bez GPIO poziva.
+select_pulse vraca odabrani cijeli impuls ili None. Cilj mora biti upravo bool: False je CLOSED, True je OPEN; brojevi 1 i 9 nisu dopusten tip.
+
+S3 najprije provjerava spremnost. Nespreman model vraca NOT_READY,
+neovisno o cilju. Spreman model odbija cilj izvan dopustenog skupa
+s BAD_TARGET, bez promjene LED-a, impulsa ili spremljenog cilja.
+Kod prihvata postavlja izlaz i spremljeni cilj te vraca ACCEPTED.
+Ako je servo iskljucen, LED i cilj i dalje rade; impulsi se ne salju.
+S3: koristi self._ready, self._config, self._io i self._target_open. Kad je servo omogucen provjeri select_pulse. Pri prihvatu pozovi self._io.apply_target(target_open).
+
+NAKON VLASTITE DOPUNE
+Nakon dopune i pregleda postavi DOVRSENO=True, prenesi modul pa 00_Provjera.py spremi na uređaj kao main.py i resetiraj. Ocekivano je 35 PASS. Potom kao main.py spremi 01_Modul.py; zadano ostaje CONFIG source="SIM".
+Tek nakon prolaska svih testova i pregleda nastavnika prijeđi na
+stvarni DS18B20 i LED. Servo je zadano iskljucen. Stvarni pokus
+predaje dva nova valjana ocitanja i opazanje LED-a. Programski test
+ne potvrđuje elektricni spoj niti fizicki polozaj.
+
+PONOVNA UPORABA U V4.3
+Prag 27/26 je projektno pravilo u programu A, a ne dio biblioteke.
+Provjeri 27 -> 28 -> 27 u A. B trosi događaje OPEN nakon 3 s i CLOSE
+nakon 7 s od inicijalizacije. Neuporabljiv podatak ima prednost i
+postavlja CLOSED. Odbijeni događaj ne izvrsava se nakon oporavka.
+U biblioteci promijeni oznaku inacice iz 1.0.0 u 1.0.1 na jednome
+mjestu. Oba programa moraju ispisati isti izvor i novu inacicu nakon
+ponovnog prevođenja ili ucitavanja. Ponovi 00_Provjera. Promjena
+oznake dokazuje izbor izvora; ispravnost dokazuju zasebne provjere.
+
+PREDAJA
+Predaj svoj izvor biblioteke, pripremljenu potporu, oba glavna programa,
+testne ispise i Word s dokazima. Kratki opis sucelja navodi autora,
+inacicu, datoteke, ovisnosti te ulaze, rezultate i ucinke S1-S3.
+Sacuvaj pocetna ocekivanja i stvarne rezultate. Nastavnicko referentno
+rjesenje sluzi nastavniku; nije zamjena za tvoj rad.
+
+TEORIJSKA PODLOGA
+Udžbenik v22: 4.2.2, 4.2.7, 4.2.8 i 4.3.6. Radna v15: RL4.2 i RL4.3.
+Nema nove teme ni dodatne laboratorijske vjezbe. V4.2 i V4.3 ostaju J.

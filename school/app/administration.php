@@ -66,7 +66,7 @@ function backupTables(): array
 {
     // Dependency order is also the restore order. Resources, both radio nodes
     // and SD initial media are embedded in the project/task JSON in these rows.
-    return ['users','login_limits','school_classes','class_students','class_teachers','class_invites','class_join_requests','school_tasks','task_versions','class_assignments','school_attempts','work_snapshots','grading_jobs','school_submissions','attempt_reopenings','school_year_archives','work_reviews','assessment_selections','audit_events'];
+    return ['users','login_limits','school_classes','class_students','class_teachers','class_invites','class_join_requests','school_tasks','task_versions','class_assignments','school_attempts','work_snapshots','grading_jobs','school_submissions','collection_documents','attempt_reopenings','school_year_archives','work_reviews','assessment_selections','audit_events'];
 }
 
 function backupSchema(\PDO $pdo): array

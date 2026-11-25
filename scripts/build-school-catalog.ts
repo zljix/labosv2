@@ -15,7 +15,7 @@ const directory=resolve('.build/school-catalog');
 rmSync(directory,{recursive:true,force:true});mkdirSync(directory,{recursive:true});
 const originalFetch=globalThis.fetch;
 globalThis.fetch=async(input:any)=>{
-  const path=String(input).replace(/^\/app\/[^/]+\//,'').replace(/^\/zbirke\//,'zbirke/');
+  const path=String(input).replace(/^\/app\/[^/]+\//,'').replace(/^\/(zbirke|pokusi)\//,'$1/');
   if(path.startsWith('/')||path.includes('..'))throw Error('Nedopušten resurs školskog predloška.');
   return new Response(readFileSync(resolve('public',path)));
 };

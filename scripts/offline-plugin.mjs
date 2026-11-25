@@ -30,7 +30,7 @@ export function offlinePlugin(root, build, version, base = '/', offlinePrototype
       // uses release URLs so an open older page cannot mix interpreter versions.
       for (const path of filesUnder(resolve(root, 'public'))) {
         const name = relative(resolve(root, 'public'), path).replaceAll('\\', '/');
-        if (!['avr-examples.json','s3-examples.json','radio-examples.json'].includes(name) && !name.endsWith('.mjs') && !name.endsWith('.py') && !name.startsWith('runtime/') && !name.startsWith('drivers/')) continue;
+        if (!['avr-examples.json','s3-examples.json','radio-examples.json'].includes(name) && !name.endsWith('.mjs') && !name.endsWith('.py') && !name.startsWith('runtime/') && !name.startsWith('pokusi/') && !name.startsWith('drivers/')) continue;
         const output = resolve(dist, 'app', build, name);
         mkdirSync(dirname(output), { recursive: true });
         copyFileSync(path, output);

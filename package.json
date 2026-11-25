@@ -62,7 +62,7 @@
     "test:school-accounts": "node --test verification/school-accounts.test.mjs",
     "test:school-package": "node --test verification/school-package.test.mjs",
     "test:school-classes": "node --test verification/school-classes.test.mjs",
-    "test:school-catalog": "node --import tsx --test verification/school-catalog.test.ts",
+    "test:school-catalog": "node --import tsx --test verification/school-catalog.test.ts verification/collection-simulation.test.ts",
     "test:school-portal": "node --test verification/school-portal.test.mjs",
     "test:school-work": "node --import tsx --test verification/school-work.test.mjs",
     "test:school-sync": "node --import tsx --test verification/school-sync.test.ts",

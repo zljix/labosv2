@@ -21,6 +21,7 @@ export function useRuntime() {
     [frame, setFrame] = useState<number[]>([]),
     [simulation, setSimulation] = useState<SimulationFrame>(),
     [liveInputs, setLiveInputs] = useState<Record<string, LiveInput>>({}),
+    [runProjectId,setRunProjectId] = useState<string>(),
     [runRevision, setRunRevision] = useState<number>();
   const sdMemory=useRef(new SDSessionMemory());
   const rtcMemory=useRef(new RTCSessionMemory());
@@ -35,7 +36,7 @@ export function useRuntime() {
     const ticket = ++launch.current;
     void session.current?.stop(); session.current = undefined;
     if (reset) { pressed.current = false; setButton(false); }
-    setState("loading");setConsole("");setLed(false);setFrame([]);setSimulation(undefined);setLiveInputs({});setRunRevision(p.revision);
+    setState("loading");setConsole("");setLed(false);setFrame([]);setSimulation(undefined);setLiveInputs({});setRunRevision(p.revision);setRunProjectId(p.id);
     try {
       const prototype=offlineArtifact!==undefined;
       if(prototype&&!OFFLINE_AVR)throw Error('Offline prototip nije uključen u ovoj izgradnji.');
@@ -95,5 +96,5 @@ export function useRuntime() {
     session.current.input({component,...values});
   }
   useEffect(() => () => {++launch.current;void session.current?.stop();},[]);
-  return {state,busy:state === "loading" || state === "running",consoleText,led,button,frame,simulation,liveInputs,runRevision,run,stop,toggleButton,input,sendSerial:(serial:string)=>session.current?.input({serial}),clear:()=>setConsole("")};
+  return {state,busy:state === "loading" || state === "running",consoleText,led,button,frame,simulation,liveInputs,runProjectId,runRevision,run,stop,toggleButton,input,sendSerial:(serial:string)=>session.current?.input({serial}),clear:()=>setConsole("")};
 }

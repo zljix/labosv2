@@ -1,5 +1,7 @@
 import {CollectionDownload} from './CollectionDownload';
 import {CollectionMaterials, type ExerciseId} from './CollectionMaterials';
+import {practices} from './collectionPlans';
+import type {PracticeKey} from './collectionSimulation';
 import {extraProjects} from './CollectionProgram';
 import {useState} from 'react';
 import {appAsset} from '../platform/assets';
@@ -31,13 +33,13 @@ export function sequence(track: Track) {
   return [...chapter(1), ...(track === 'iot' ? chapter(2) : [...chapter(3), 'V2.S' as const]), ...chapter(4)];
 }
 
-export function IotUsCatalog({track, busy, open, initialExercise}: {track: Track; busy: boolean; initialExercise?:RunnableId; open: (track: Track, exercise:RunnableId) => void}) {
+export function IotUsCatalog({track, busy, open, simulate, initialEdition, initialExercise}: {simulate:(key:PracticeKey)=>void;initialEdition?:Edition;track: Track; busy: boolean; initialExercise?:ExerciseId; open: (track: Track, exercise:RunnableId) => void}) {
   const order = sequence(track);
   const available: ExerciseId[] = ['P0',...order];
   const key = 'labos.zbirka.v14.' + track;
   function prior(field:string) { try{return localStorage.getItem(key+'.'+field)}catch{return null} }
   function remember(field:string,value:string) { try{localStorage.setItem(key+'.'+field,value)}catch{} }
-  const [edition, setEdition] = useState<Edition>(initialExercise ? 'MicroPython' : prior('edition')==='Arduino'?'Arduino':'MicroPython');
+  const [edition, setEdition] = useState<Edition>(initialEdition ?? (prior('edition')==='Arduino'?'Arduino':'MicroPython'));
   const [id,setId] = useState<ExerciseId>(() => {
     const saved=prior('exercise') as ExerciseId;
     return initialExercise ?? (available.includes(saved)?saved:'P0');
@@ -50,6 +52,9 @@ export function IotUsCatalog({track, busy, open, initialExercise}: {track: Track
     </select></label>
     <label>Vježba <select value={id} onChange={e=>{setId(e.target.value as ExerciseId);remember('exercise',e.target.value)}}>{available.map(code=><option key={code} value={code}>{code} · {titles[code]}</option>)}</select></label></div>
     <h4>{id} · {titles[id]}</h4>
+    <p>{practices[id].task}</p>
+    <button className="primary" disabled={busy} onClick={()=>simulate({track,exercise:id,edition})}>Otvori vježbu i simulaciju</button>
+    <details><summary>Radni list, programi za školsku postaju i dodatne upute</summary>
     {id==='P0' ? <>
     <p>Učitaj program, promijeni poruku i nakon ponovnog pokretanja prepoznaj vlastiti ispis. Za uvod je predviđen jedan sat VPUP-a u temi 1.1.</p>
     {edition === 'MicroPython' ? <>
@@ -67,6 +72,7 @@ export function IotUsCatalog({track, busy, open, initialExercise}: {track: Track
     </> : (id==='V1.4'||id==='V2.1'||id==='V3.1') && <PilotCard key={id} id={id} edition={edition} busy={busy} open={()=>open(track,'V1.4')}/>}
     {edition==='MicroPython' && (id==='V1.2'||id==='V1.3'||id==='V4.2'||id==='V4.3') &&
       <button className="primary" disabled={busy} onClick={()=>open(track,id==='V4.2'?'V4.3':id)}>{id.startsWith('V4')?'Otvori zajednički projekt V4.2 i V4.3':'Otvori ili nastavi '+id+' · MicroPython'}</button>}
+    </details>
     <CollectionMaterials key={id+edition} id={id} edition={edition} pilot={pilot} usPreparation={track==='us'&&id==='V3.7'}/>
     <details className="catalog-technical"><summary>Redoslijed zbirke · {order.length + 1} vježbi</summary>
       <p>P0 je uključen u temu 1.1. Putanja ima 65 sati VPUP-a i 75 sati UTR-a, uz 60 sati samostalnih aktivnosti učenika.</p>

@@ -103,7 +103,7 @@ jobs:
       - name: Pripremi školski ZIP za javno preuzimanje
         run: |
           mkdir -p .build
-          mv dist .build/pages-public
+          cp -a dist .build/pages-public
           npm run build:school
           mkdir -p .build/pages-public/paketi
           packages=(release/*_Skolski.zip)

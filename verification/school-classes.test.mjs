@@ -108,7 +108,7 @@ test('23C classes, admission, immutable tasks and assignments against real PHP/M
     assert.equal(sql("SELECT COUNT(*) AS n FROM users WHERE username IN ('race.one','race.two')")[0].n,1);
   });
   await t.test('school catalogue uses 67 URS variants, 268 URS targets and five introductory tasks without exposing template paths',async()=>{
-    const catalog=(await expect(teacher.client.call('catalog'),200)).catalog;assert.equal(catalog.entries.length,121);assert.equal(catalog.entries.filter(e=>e.set==='urs').reduce((n,e)=>n+e.targets.length,0),268);assert.equal(catalog.entries.filter(e=>e.set==='introductory').length,5);assert(catalog.entries.every(e=>!e.templates));
+    const catalog=(await expect(teacher.client.call('catalog'),200)).catalog;assert.equal(catalog.entries.length,138);assert.equal(catalog.entries.filter(e=>e.set==='urs-lv').length,17);assert.equal(catalog.entries.filter(e=>e.set==='urs').reduce((n,e)=>n+e.targets.length,0),268);assert.equal(catalog.entries.filter(e=>e.set==='introductory').length,5);assert(catalog.entries.every(e=>!e.templates));
     await expect(student.client.call('catalog'),403);await expect(student.client.call('task-versions'),403);
     for(const key of ['gpio/button','gpio/adc','weather/bmp280'])assert(catalog.entries.some(e=>e.key===key));
   });

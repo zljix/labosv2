@@ -6,7 +6,7 @@ import type {Project} from '../project/model';
 import {cleanCollectionSources} from './collectionPrivacy';
 import type {SchoolWorkState} from './schoolSync';
 
-export const isCollectionTask=(definition:any)=>definition?.set==='iot'||definition?.set==='us';
+export const isCollectionTask=(definition:any)=>definition?.set==='iot'||definition?.set==='us'||definition?.set==='urs-lv';
 
 export function WordReceipt({work}:{work:SchoolWorkState}){
   const submitted=work.submission;

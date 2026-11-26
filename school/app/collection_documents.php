@@ -4,7 +4,7 @@ namespace Labos;
 
 function collectionAssignment(array $assignment): bool
 {
-    return in_array($assignment['task']['definition']['set'] ?? null, ['iot','us'], true);
+    return in_array($assignment['task']['definition']['set'] ?? null, ['iot','us','urs-lv'], true);
 }
 
 function submittedWord(array $body, array $assignment): ?array

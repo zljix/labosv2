@@ -41,7 +41,7 @@
     "test:sd": "node --import tsx --test verification/sd.test.ts",
     "test:radio": "node --import tsx --test verification/radio.test.ts",
     "radio:examples": "node --import tsx scripts/build-radio-examples.ts",
-    "test:urs": "node --import tsx --test verification/urs.test.ts",
+    "test:urs": "node --import tsx --test verification/urs.test.ts verification/urs-lab.test.ts",
     "urs:exports": "node --import tsx scripts/build-urs-exports.ts",
     "test:s3-controls": "node --import tsx --test verification/s3-controls.test.ts",
     "test:s3-protocols": "node --import tsx --test verification/s3-protocols.test.ts",

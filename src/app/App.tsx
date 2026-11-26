@@ -40,6 +40,8 @@ import { basicExamples, exampleCircuit, type BasicExample } from "../circuit/exa
 import {environmentExamples,environmentCircuit,loadEnvironmentDrivers,type EnvironmentExample} from "../circuit/environmentExamples";
 import {peripheralExample,peripheralCircuit,loadPeripheralDrivers} from "../circuit/peripheralExamples";
 import LessonPanel, {LessonCatalog} from "../lessons/LessonPanel";
+import {UrsLabPanel} from '../lessons/UrsLabPanel';
+import {createUrsLab, labForProject, type LabId} from '../lessons/ursLab';
 import {PracticePanel} from '../lessons/PracticePanel';
 import {createPractice,readPractice,type PracticeKey} from '../lessons/collectionSimulation';
 import {P0Instructions, collectionWork, tracks, workFile, type Track} from '../lessons/IotUsCatalog';
@@ -437,7 +439,7 @@ export default function App() {
       await ws.add(copy);
       if(OFFLINE_AVR&&imported.result)await saveOffline(copy,imported.result);
       setDialog(null);
-      const importedCollection = readPractice(next) ?? collectionWork(next);
+      const importedCollection = labForProject(next) ?? readPractice(next) ?? collectionWork(next);
       setLabTab(readWork(next)||next.files[URS_WORK]||importedCollection?"lesson":"circuit");
       setMobileTab(importedCollection?"lesson":"lab");
       notify("Projekt je uvezen kao zasebna kopija. Program nije pokrenut.");
@@ -513,6 +515,17 @@ export default function App() {
       next.files={...files,"main.py":peripheralExample.code};next.circuit=peripheralCircuit();next.settings.example="peripheral-regulator";
       runtime.stop();await ws.add(next);setLabTab("circuit");setExpandedCircuit(false);setMobileTab("lab");
       notify("Otvoren je primjer s upravljačkim datotekama. Pokreni i mijenjaj temperaturu ili vlagu.");
+    });
+  }
+  async function selectUrsLab(id:LabId) {
+    await action(async () => {
+      await ws.flush();
+      const previous = (await ws.list()).find(row => labForProject(row.document) === id && !readSchoolBinding(row.document));
+      const next = previous ? undefined : await createUrsLab(id);
+      runtime.stop(); runtime.clear(); lessonCheck.cancel();
+      if (previous) await ws.open(previous.id);
+      else if (next) await ws.add(next);
+      setTeacher(false); setDialog(null); showInstructions();
     });
   }
   async function selectPractice(key:PracticeKey) {
@@ -709,6 +722,7 @@ export default function App() {
     );
   const boardProfile=getBoard(p.board.id),availability=runtimeAvailability(p.board.id,p.language);
   const ursWork=readUrsWork(p),ursVariant=ursWork&&getUrsLesson(ursWork.lessonId)?.variants.find(v=>v.id===ursWork.variantId);
+  const lab = labForProject(p);
   const practice = readPractice(p);
   const collection = practice ? undefined : collectionWork(p);
   const assigned=readSchoolAssignment(p)?.task?.definition;
@@ -799,8 +813,8 @@ export default function App() {
             <Icon name="code" /> Vježbe
           </button>
           <button className="desktop-panel-action" aria-expanded={filesOpen} aria-controls="project-files" onClick={()=>{setFilesOpen(v=>!v);setLabTab('circuit');setMobileTab(filesOpen?'lab':'files');}}>Datoteke</button>
-          {(collection||practice)&&<LocalEvidence project={p}/>}
-        {(readWork(p)||readUrsWork(p)||collection||course||practice)&&<button className="desktop-panel-action" aria-expanded={labTab==='lesson'} aria-controls="lesson-instructions" onClick={()=>labTab==='lesson'?(setLabTab('circuit'),setMobileTab('lab')):showInstructions()}>Upute</button>}
+          {(collection||practice||lab)&&<LocalEvidence project={p}/>}
+        {(readWork(p)||readUrsWork(p)||collection||course||practice||lab)&&<button className="desktop-panel-action" aria-expanded={labTab==='lesson'} aria-controls="lesson-instructions" onClick={()=>labTab==='lesson'?(setLabTab('circuit'),setMobileTab('lab')):showInstructions()}>Upute</button>}
           <button aria-expanded={workOpen} aria-controls="my-work" onClick={()=>setWorkOpen(v=>!v)}>Moj rad</button>
           <ActionGroup title="Projekt">
           <button
@@ -897,8 +911,8 @@ export default function App() {
       {!readSchoolBinding(p)&&<section id="my-work" className="local-work" hidden={!workOpen} aria-label="Moj lokalni rad">
         <div><h2>Moj rad · lokalni projekt</h2><p>{saveLabels[ws.status]}. ZIP sadrži sve datoteke, sklop i unesene odgovore. Izvoz nije službena školska predaja.</p></div>
         <button onClick={()=>void action(ws.flush)}>Spremi sada</button><button onClick={()=>exportProject()}>Izvezi rad ZIP</button>
-        {(collection||practice)&&<LocalEvidence project={p}/>}
-        {(readWork(p)||readUrsWork(p)||collection||course||practice)&&<button onClick={showInstructions}>Odgovori i završetak vježbe</button>}
+        {(collection||practice||lab)&&<LocalEvidence project={p}/>}
+        {(readWork(p)||readUrsWork(p)||collection||course||practice||lab)&&<button onClick={showInstructions}>Odgovori i završetak vježbe</button>}
       </section>}
       {ws.error && (
         <div className="error-banner" role="alert">
@@ -1010,6 +1024,10 @@ export default function App() {
           {p.files[URS_WORK] && <UrsPanel key={p.id} project={p} change={work=>ws.change('URS odgovori i opažanja',n=>{n.files[URS_WORK]=JSON.stringify(work,null,2);})}
             busy={working||runtime.busy||lessonCheck.busy} teacher={teacher} toggleTeacher={()=>setTeacher(v=>!v)} catalog={()=>openDialog('lessons')} circuit={()=>{setLabTab('circuit');setMobileTab('lab');}} run={run} radio={()=>openDialog('radio')}
             investigate={()=>void action(async()=>{await ws.flush();runtime.stop();lessonCheck.cancel();await ws.add(investigationProject(p));setLabTab('lesson');notify('Otvorena je lokalna istraživačka kopija. Izvorni pokušaj ostao je u Projektima.');})} record={()=>void recordUrs()} submit={()=>void submitUrs()} review={(verdict,note)=>void reviewUrs(verdict,note)} importReview={reviewImport}/>}
+          {lab && <UrsLabPanel key={p.id} coils={runtime.runProjectId===p.id?runtime.simulation?.avr?.coils:undefined} id={lab} project={p} run={()=>{void run();setMobileTab('output');}}
+            circuit={()=>{setExpandedCircuit(false);setLabTab('circuit');setMobileTab('lab');}}
+            compile={()=>openDialog('arduino')} edit={editCollectionProgram} catalog={()=>openDialog('lessons')}
+            change={(label,files)=>ws.change(label,next=>{Object.assign(next.files,files);})}/>}
           {practice && <PracticePanel key={p.id} lesson={practice} project={p} consoleText={runtime.runProjectId===p.id?runtime.consoleText:''}
             run={()=>{void run();setMobileTab('output');}} circuit={()=>{setExpandedCircuit(false);setLabTab('circuit');setMobileTab('lab');}}
             edit={editCollectionProgram} catalog={()=>openDialog('lessons')} save={(name,text)=>ws.change('Zapis pokusa',doc=>{doc.files[name]=text;})}/>}
@@ -1027,7 +1045,7 @@ export default function App() {
             <CollectionMaterials key={course.key+p.language} id={course.lessonId as ExerciseId} edition={p.language==='micropython'?'MicroPython':'Arduino'} pilot={false} usPreparation={course.set==='us'&&course.lessonId==='V3.7'}/>
             <StationSources key={p.id} project={p} replace={(name,code)=>{runtime.stop();ws.change('Učitan izvor sa školske postaje',next=>{if(next.id===p.id)next.files[name]=code;});}}/>
             <LocalEvidence project={p}/></article>}
-          {!course && !practice && !collection && !p.files[URS_WORK] && <LessonPanel project={p}
+          {!lab && !course && !practice && !collection && !p.files[URS_WORK] && <LessonPanel project={p}
             change={work=>ws.change("Odgovori vježbe",n=>{n.files[WORK_FILE]=JSON.stringify(work,null,2);})}
             busy={lessonCheck.busy} progress={lessonCheck.progress} run={()=>{runtime.stop();void lessonCheck.run();}} cancel={lessonCheck.cancel}
             submit={()=>void submitLesson()} circuit={()=>{setLabTab('circuit');setMobileTab('lab');}} catalog={()=>openDialog("lessons")}
@@ -1450,7 +1468,7 @@ export default function App() {
           {dialog==='arduino'&&<ArduinoBuildPanel offline={OFFLINE_AVR&&p.runtimeProfile.id==='arduino-avr'&&!p.radio} key={p.id} project={p} compiler={compiler} consoleText={runtime.runRevision===p.revision?runtime.consoleText:''} setLibraries={text=>{runtime.stop();ws.change('Odabrane Arduino biblioteke',n=>{n.files[AVR_LIBRARY_FILE]=text;});}} goTo={d=>{if(!Object.hasOwn(p.files,d.file))return;ws.change('Otvorena datoteka pogreške',n=>{n.settings.activeFile=d.file;});setReveal({path:d.file,line:d.line,column:d.column,token:Date.now()});setDialog(null);setMobileTab('code');}} importBuild={(text,input)=>{runtime.stop();const live=liveProject.current;if(!live||live.id!==p.id||JSON.stringify(buildInput(live))!==input)throw Error('Projekt je promijenjen.');if(readSchoolBinding(live)){if(readSchoolBinding(live)?.status==='locked')throw Error('Predaja je zaključana.');notify('Prijevod je spreman za pokretanje; školska revizija ostaje ista.');return;}const saved=ws.change('Preveden Arduino program',n=>{if(JSON.stringify(buildInput(n))!==input)throw Error('Projekt se promijenio tijekom prevođenja. Ponovi prevođenje.');n.files[buildFile(n)]=text;});if(!saved)throw Error('Rezultat nije spremljen u projekt. Provjeri veličinu i datoteke projekta.');preferStandard(live);notify('Prevedeni program spremljen je u projekt.');}}/>}
           {dialog === 'board' &&<BoardChangePanel project={p} busy={working} error={formError} create={(id,language)=>{setWorking(true);setFormError('');void (async()=>{try{const derived=deriveProject(p,id,language);await ws.flush();runtime.stop();lessonCheck.cancel();await ws.add(derived);setDialog(null);setLabTab('circuit');setMobileTab('lab');notify('Otvorena je izvedena kopija s novom pločicom.');}catch(e){setFormError((e as Error).message);}finally{setWorking(false);}})();}}/>}
           {dialog === 'matrix'&&<SupportMatrix board={p.board.id} language={p.language}/>}
-          {dialog === "lessons" && <LessonCatalog initialCollection={practice?.track??collection?.track} initialExercise={practice?.exercise??collection?.exercise} initialEdition={practice?.edition??(collection?'MicroPython':undefined)} simulate={key=>void selectPractice(key)} openPilot={(track,exercise)=>void selectPilot(track,exercise)} open={(id,solution)=>void selectLesson(id,solution)} openUrs={(lesson,variant,target,peer)=>void selectUrs(lesson,variant,target,peer)} initialTarget={targetForProject(p)} busy={working} reviewClass={()=>openDialog('class-review')}/>}
+          {dialog === "lessons" && <LessonCatalog openLab={id=>void selectUrsLab(id)} initialLab={lab} initialCollection={lab?'urs-lv':practice?.track??collection?.track} initialExercise={practice?.exercise??collection?.exercise} initialEdition={practice?.edition??(collection?'MicroPython':undefined)} simulate={key=>void selectPractice(key)} openPilot={(track,exercise)=>void selectPilot(track,exercise)} open={(id,solution)=>void selectLesson(id,solution)} openUrs={(lesson,variant,target,peer)=>void selectUrs(lesson,variant,target,peer)} initialTarget={targetForProject(p)} busy={working} reviewClass={()=>openDialog('class-review')}/>}
           {dialog === 'system' && <SystemPanel offline={offline} busy={runtime.busy || lessonCheck.busy || working} saveStatus={saveLabels[ws.status]} update={updateApplication}/>}
           {[
             "new",

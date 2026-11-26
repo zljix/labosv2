@@ -12,7 +12,7 @@ import {PilotCard, programUrl, type RunnableId, type Edition} from './IotUsPilot
 
 export const tracks = {iot: 'Internet stvari', us: 'Ugradbeni sustavi'} as const;
 export type Track = keyof typeof tracks;
-export type Collection = Track | 'urs' | 'intro';
+export type Collection = Track | 'urs' | 'urs-lv' | 'intro';
 const asset = (name: string) => appAsset('zbirke/P0/' + name);
 const word = (edition: 'Arduino' | 'MicroPython') => asset('LV_P0_' + edition + '_v14.docx');
 export const workFile = 'zbirka.json';

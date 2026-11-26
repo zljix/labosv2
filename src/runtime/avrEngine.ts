@@ -1,3 +1,4 @@
+import {CoilSequence, phaseIndicators} from './coilSequence';
 import {CPU,avrInstruction,AVRIOPort,PinState,portBConfig,portCConfig,portDConfig,AVRTimer,timer0Config,timer1Config,timer2Config,AVRADC,adcConfig,AVRUSART,usart0Config,AVRTWI,twiConfig,AVRSPI,spiConfig} from 'avr8js';
 import {createCircuitHost} from '../../public/circuit-host.mjs';
 import {parseHex} from '../../public/avr-contract.mjs';
@@ -10,6 +11,7 @@ export class AVREngine {
   readonly cpu:CPU;readonly ports:AVRIOPort[];readonly adc:AVRADC;readonly usart:AVRUSART;readonly twi:AVRTWI;readonly spi:AVRSPI;
   readonly host:ReturnType<typeof createCircuitHost>;
   private hasLeds=false;private softwareI2C:AVRSoftwareI2C;private staticEnd=0;private lowestSP=2303;
+  private coilSequence?:CoilSequence;
   private timedEdge=Infinity;
   private syncing=false;private previousCycle=0;private frameCycle=0;private frameStart=0;
   private ledArea:Record<string,number>={};private highArea=new Float64Array(20);
@@ -19,6 +21,7 @@ export class AVREngine {
   constructor(hex:string,config:SimulationConfig,private emit:(event:any)=>void,adcChannels=6,staticRamBytes=0,options:Record<string,any>={}){
     const loaded=parseHex(hex);this.cpu=new CPU(new Uint16Array(loaded.bytes.buffer),2048);
     this.staticEnd=256+staticRamBytes;this.hasLeds=!!config.leds.length;
+    if(phaseIndicators.every(id=>config.leds.some(led=>led.id===id))) this.coilSequence=new CoilSequence();
     this.ports=[new AVRIOPort(this.cpu,portDConfig),new AVRIOPort(this.cpu,portBConfig),new AVRIOPort(this.cpu,portCConfig)];
     new AVRTimer(this.cpu,timer0Config);new AVRTimer(this.cpu,timer1Config);new AVRTimer(this.cpu,timer2Config);
     this.host=createCircuitHost((event:any)=>this.hostEvent(event),{circuit:config,logicVoltage:5,adcPins:Array.from({length:adcChannels},(_,i)=>i+14),manualPublish:true,nowUs:()=>this.cpu.cycles/16,...options});
@@ -51,7 +54,11 @@ export class AVREngine {
   private trace(kind:string,operation:string,value?:number,result?:string){this.busTrace.push({kind,operation,value,result,timeUs:this.cpu.cycles/16});if(this.busTrace.length>100)this.busTrace.shift();}
   private integrate(){
     const cycles=this.cpu.cycles-this.previousCycle;if(!cycles)return;
-    if(this.hasLeds)for(const [id,current]of Object.entries(this.host.sample().currents))this.ledArea[id]=(this.ledArea[id]??0)+(current as number)*cycles;
+    if(this.hasLeds) {
+      const currents=this.host.sample().currents as Record<string,number>;
+      this.coilSequence?.sample(currents,cycles);
+      for(const [id,current] of Object.entries(currents))this.ledArea[id]=(this.ledArea[id]??0)+current*cycles;
+    }
     for(let n=0;n<20;n++)if(this.edges.get(n)?.level)this.highArea[n]+=cycles;
     this.previousCycle=this.cpu.cycles;
   }
@@ -113,6 +120,10 @@ export class AVREngine {
       }
     }
     event.avr={cycles:this.cpu.cycles,clockHz:AVR_HZ,uartBaud:this.usart.baudRate,rxPending:this.rx.length,busTrace:this.busTrace.slice(),memory:{staticBytes:this.staticEnd-256,lowestSP:this.lowestSP,minFreeToStatic:Math.max(0,this.lowestSP-this.staticEnd+1)}};
+    if(this.coilSequence){
+      const {commands,steps,errors}=this.coilSequence;
+      event.avr.coils={commands,steps,errors};
+    }
     this.emit(event);
   }
   frame(){this.integrate();this.frameCycle=this.cpu.cycles;this.host.flush();this.flushSerial();this.frameStart=this.cpu.cycles;this.ledArea={};this.highArea.fill(0);}

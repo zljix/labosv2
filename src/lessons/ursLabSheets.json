@@ -1,0 +1,469 @@
+{
+  "LV01": {
+    "title": "Upoznavanje kompleta i prvo pokretanje Arduino Nano pločice",
+    "goals": [
+      "prepoznati Arduino Nano, USB priključak, digitalne priključke i ugrađenu LED diodu",
+      "odabrati ispravnu pločicu i serijski priključak u Arduino IDE-u",
+      "prenijeti program i provjeriti komunikaciju preko serijskog monitora"
+    ],
+    "theory": [
+      "Mikroupravljač izvršava program spremljen u svojoj memoriji. Funkcija setup() izvodi se jednom nakon uključivanja, a loop() se zatim ponavlja sve dok pločica ima napajanje.",
+      "Ugrađena LED dioda na Nano pločici najčešće je povezana s priključkom D13. Oznaka LED_BUILTIN u programu odabire taj priključak bez pamćenja njegova broja."
+    ],
+    "tasks": [
+      "Promijeni PAUSE_MS s 500 na 200, ponovno prenesi program i zapiši kako se promijenilo treperenje.",
+      "Samostalno napiši loop() u kojem LED dvaput kratko zatreperi (200 ms uključena i 200 ms isključena), a zatim ostane isključena 1000 ms.",
+      "Uvedi konstantu BROJ_TREPTAJA = 3. Napiši for-petlju koja LED uključi i isključi zadani broj puta, a nakon petlje napravi stanku od 1000 ms."
+    ],
+    "word": "LV01_Upoznavanje_kompleta_i_Arduino_Nano.docx",
+    "files": [
+      "LV01_Nano_LED.ino"
+    ],
+    "questions": [
+      "Koja je uloga funkcije setup(), a koja funkcije loop()?",
+      "Zašto je prije prijenosa programa potrebno odabrati serijski priključak?",
+      "Koliko približno traje jedan cijeli ciklus kada je PAUSE_MS jednak 500?",
+      "Što znači poruka o pogrešci pri prijenosu programa, a što pogreška pri prevođenju programa?"
+    ]
+  },
+  "LV02": {
+    "title": "Prikaz podataka na OLED zaslonu 0,91 inča",
+    "goals": [
+      "povezati I2C zaslon s Arduino Nano pločicom",
+      "prikazati tekst i promjenjivu vrijednost",
+      "prepoznati ulogu linija SDA i SCL"
+    ],
+    "theory": [
+      "I2C koristi dvije signalne linije: SDA prenosi podatke, a SCL takt. Na Arduino Nano pločici SDA je A4, a SCL A5.",
+      "OLED modul najčešće ima adresu 0x3C. Upravljački program prvo crta sadržaj u memoriji, a naredba display.display() šalje taj sadržaj na zaslon."
+    ],
+    "tasks": [
+      "Promijeni tekst URS - OLED u svoje ime i u sljedećem retku prikaži oznaku razreda 4.f.",
+      "Napiši uvjet koji svake parne sekunde prikazuje znak * u gornjem desnom kutu zaslona, a tijekom neparne sekunde znak ne prikazuje.",
+      "Na dnu zaslona nacrtaj okvir i traku napretka sekunde 0-59. Duljinu ispune izračunaj funkcijom map(), a prikaz osvježavaj bez titranja."
+    ],
+    "word": "LV02_OLED_zaslon.docx",
+    "files": [
+      "LV02_OLED_SSD1306.ino"
+    ],
+    "questions": [
+      "Koje priključke Nano pločice koristi I2C?",
+      "Što označava adresa 0x3C?",
+      "Zašto je potrebna naredba display.clearDisplay()?",
+      "Što bi se dogodilo kada bi se izostavila naredba display.display()?"
+    ]
+  },
+  "LV03": {
+    "title": "LM35 i Dallas DS18B20",
+    "goals": [
+      "Povezati i očitati oba senzora temperature.",
+      "Pretvoriti napon LM35 u temperaturu i razlikovati analogno od digitalnog mjerenja.",
+      "Zabilježiti razliku očitanja bez proglašavanja jednoga senzora referentnim."
+    ],
+    "theory": [
+      "LM35 daje analogni napon približno 10 mV za svaki °C. Pri 25 °C očekujemo oko 0,250 V. Nano pretvara taj napon u 10-bitni broj 0–1023. Korak pretvorbe je približno VREF/1024; zato program koristi U ≈ ADC·VREF/1024 i T ≈ U·100. Pri VREF = 5 V jedan korak odgovara približno 0,49 °C. Prosjek može ublažiti kolebanje, ali ne uklanja pogrešku senzora ili referentnog napona.",
+      "DS18B20 ima vlastiti pretvornik i šalje digitalni rezultat protokolom 1-Wire. Uz signal DQ koristi napajanje i masu. Otpornik 4,7 kΩ povezuje DQ s 5 V. Ovdje se ne koristi parazitno napajanje. Pretvorba na 12 bita može trajati do 750 ms; funkcija requestTemperatures() u početnom programu čeka završetak."
+    ],
+    "tasks": [
+      "Uz valjano očitanje DS18B20 izračunaj i ispiši razliku LM35 − DS18B20. Za pogrešku DS18B20 ispiši GRESKA bez računanja razlike.",
+      "Samostalno dopuni program minimumom i maksimumom za oba senzora. Početne vrijednosti postavi tek nakon prvog valjanog mjerenja.",
+      "Za deset očitanja izračunaj zaseban prosjek svakog senzora. Za DS18B20 broji samo valjana očitanja; ako nema nijednog, ne dijeli nulom."
+    ],
+    "word": "LV03_LM35_i_Dallas_DS18B20.docx",
+    "files": [
+      "LV03_LM35_DS18B20.ino"
+    ],
+    "questions": [
+      "1. Zašto isti raspored izvoda ne vrijedi za LM35 i DS18B20?",
+      "2. Zašto program koristi 1024 kao broj koraka pretvorbe?",
+      "3. Zašto veći broj decimala ne dokazuje veću točnost?",
+      "4. Što se događa s izračunom LM35 ako je VREF pogrešan?"
+    ]
+  },
+  "LV04": {
+    "title": "DHT11 i DHT22",
+    "goals": [
+      "Povezati i očitati oba DHT senzora.",
+      "Usporediti temperaturu i relativnu vlažnost u istim uvjetima.",
+      "Obraditi nevaljano mjerenje odvojeno za svaki senzor."
+    ],
+    "theory": [
+      "Oba senzora mjere temperaturu i relativnu vlažnost, ali nisu zamjenjivi u programu bez promjene oznake tipa. DHT11 je na D4, a DHT22 na D5. Njihove podatkovne vodove ne spajamo zajedno. DHT komunikacija jednom žicom nije Dallasov 1-Wire protokol.",
+      "Relativna vlažnost RH izražava omjer trenutačne količine vodene pare i zasićenja pri istoj temperaturi. Zato promjena temperature može promijeniti RH bez dodavanja vode. Knjižnica nevaljano očitanje označuje NaN. U ovoj vježbi između ciklusa čekamo tri sekunde; uzastopni pozivi za temperaturu i vlagu istog senzora koriste isto mjerenje."
+    ],
+    "tasks": [
+      "Izračunaj T11 − T22 i RH11 − RH22 samo kad su oba odgovarajuća očitanja valjana. U ispisu razlikuj °C i postotne bodove RH.",
+      "Dodaj zasebne brojače nevaljanih mjerenja za DHT11 i DHT22. Brojač drugog senzora ne smije rasti zbog pogreške prvoga.",
+      "Iz deset ciklusa izračunaj četiri prosjeka: dvije temperature i dvije vlažnosti. Uz svaki navedi broj valjanih mjerenja."
+    ],
+    "word": "LV04_DHT11_i_DHT22.docx",
+    "files": [
+      "LV04_DHT11_DHT22.ino"
+    ],
+    "questions": [
+      "1. Zašto DHT11 i DHT22 imaju odvojene signalne vodove?",
+      "2. Zašto se mjerenje ne ponavlja svake milisekunde?",
+      "3. Kako NaN treba utjecati na prosjek?",
+      "4. Je li razlika od 5 postotnih bodova RH isto što i relativna razlika od 5 %?"
+    ]
+  },
+  "LV05": {
+    "title": "AHT10 i usporedba svih pet senzora",
+    "goals": [
+      "Dodati AHT10 preko I2C sučelja.",
+      "U jednom pokusu očitati LM35, DS18B20, DHT11, DHT22 i AHT10.",
+      "Izraditi usporedbu svih pet temperatura i triju mjerenja vlažnosti."
+    ],
+    "theory": [
+      "AHT10 mjeri temperaturu i relativnu vlažnost te šalje rezultat na I2C adresi 0x38. Koristi SDA i SCL. U ovoj izvedbi AHT10 napajamo s 3,3 V, a između njegovih vodova i 5 V Nano pločice koristimo dvosmjerni pretvornik logičkih razina. Pretvornik ne zamjenjuje izvor napajanja.",
+      "Svi senzori ostaju priključeni. Program ih očitava redom u istom ciklusu, pa mjerenja nisu strogo istodobna. LM35 i DS18B20 ne mjere vlažnost. Polja temperature[0]…temperature[4] i valjano[0]…valjano[4] imaju stalni redoslijed naveden u programu. ERR označuje nedostajući ili neprihvatljiv podatak; ne zamjenjuje se nulom.",
+      "Usporedba pet senzora nije umjeravanje. Zajednički prosjek nije zajamčeno stvarna temperatura, a najveće odstupanje samo pokazuje koji rezultat treba dodatno provjeriti."
+    ],
+    "tasks": [
+      "Uz svaki redak ispiši broj valjanih temperaturnih mjerenja od 0 do 5. Za sve valjane temperature odredi najmanju i najveću vrijednost te njihov raspon.",
+      "Prikupi deset ciklusa. Za svaki od pet senzora izračunaj njegov prosjek, uz zaseban zbroj i broj valjanih očitanja. Jednako učini za sve tri vlažnosti. Ne dijeli nulom.",
+      "Za svaki od pet temperaturnih prosjeka izračunaj odstupanje od prosjeka dostupnih temperaturnih prosjeka. U izvještaju objasni zašto to nije pogreška prema etalonu. Ako nedostaje senzor, ispravi izvedbu i ponovi seriju."
+    ],
+    "word": "LV05_AHT10_i_usporedba_svih_pet_senzora.docx",
+    "files": [
+      "LV05_LM35_DS18B20_DHT11_DHT22_AHT10.ino"
+    ],
+    "questions": [
+      "1. Koji od pet senzora daju analogni, a koji digitalni signal?",
+      "2. Zašto u tablici nisu pet stupaca relativne vlažnosti?",
+      "3. Zašto ERR ne zamjenjujemo nulom?",
+      "4. Što bi bilo potrebno da usporedba postane umjeravanje?"
+    ]
+  },
+  "LV06": {
+    "title": "Servo motor i zadavanje položaja",
+    "goals": [
+      "Povezati servo i odvojeno pogonsko napajanje.",
+      "Preslikati položaj potenciometra u dopušteni kut.",
+      "Uočiti razliku između upravljačkog signala i energije za motor."
+    ],
+    "theory": [
+      "Potenciometar daje naponski signal A0. Program funkcijom map() pretvara broj 0–1023 u zadani kut 20–160°. Naredba servo.write() zadaje položaj; ona ne mjeri stvarni kut osovine. Servo ima vlastitu unutarnju povratnu vezu.",
+      "Signal D9 ne napaja motor. Crveni vod serva ide na vanjski 5 V izvor, a masa izvora mora biti spojena s masom Nano pločice. Pozitivni izlaz vanjskog izvora ne spajamo na Nano 5V, koji je u ovoj vježbi napajan USB-om."
+    ],
+    "tasks": [
+      "Promijeni raspon na 30–150° i provjeri oba kraja i sredinu.",
+      "Dodaj prethodniKut. Pozovi servo.write() samo kada se novi kut razlikuje za najmanje 2°; prvi položaj ipak mora biti zadan.",
+      "Dodaj postupno približavanje zadanom kutu po 1° svakih 20 ms uz millis(). Potenciometar se mora nastaviti očitavati tijekom kretanja."
+    ],
+    "word": "LV06_Servo_motor_i_zadavanje_polozaja.docx",
+    "files": [
+      "LV06_Servo_SG90_Potenciometar.ino"
+    ],
+    "questions": [
+      "1. Zašto se mase moraju povezati?",
+      "2. Zašto ne povezujemo pozitivne izlaze dvaju izvora?",
+      "3. Je li zadani kut dokaz izmjerenoga kuta?",
+      "4. Kako se kratki upravljački impulsi serva razlikuju od PWM upravljanja napajanjem DC motora?"
+    ]
+  },
+  "LV07": {
+    "title": "Relej i prikaz stanja na TFT zaslonu",
+    "goals": [
+      "Razlikovati aktuator od pokaznog elementa.",
+      "Uključiti relej tipkom i prikazati njegovo stanje na TFT-u.",
+      "Spriječiti višestruku promjenu zbog poskakivanja kontakta."
+    ],
+    "theory": [
+      "Relej je izvršni element, a TFT prikazuje stanje. Ovdje relejni kontakti ostaju prazni: provjerava se upravljačka funkcija pomoću pokazivača modula i klika. Modul active LOW uključuje se niskom logičkom razinom; program to određuje konstantom RELEJ_AKTIVAN_NA_LOW.",
+      "TFT koristi SPI: D11 prenosi podatke, D13 takt, a CS, DC i RST određuju izbor i način rada zaslona. VCC ovog modula je 5 V, a BL 3,3 V. To ne dokazuje da su signalni ulazi 5 V tolerantni; njihovu kompatibilnost mora provjeriti nastavnik.",
+      "Tipka s INPUT_PULLUP daje LOW pri pritisku. Program prihvaća promjenu tek nakon 30 ms stabilnog stanja. Držanje tipke nije niz novih pritisaka."
+    ],
+    "tasks": [
+      "Promijeni boje i dodaj svoje inicijale, uz zadržavanje jasnih poruka UKLJUCEN i ISKLJUCEN.",
+      "Dodaj brojač promjena stanja i prikaži ga na TFT-u. Broji promjenu, ne prolazak kroz loop().",
+      "Dodaj automatsko isključivanje nakon pet sekundi pomoću millis(). Ažuriraj relej, tekst, boju i brojač istim događajem."
+    ],
+    "word": "LV07_Relej_i_prikaz_stanja_na_TFT_zaslonu.docx",
+    "files": [
+      "LV07_Relej_TFT_ST7735.ino"
+    ],
+    "questions": [
+      "1. Koji dio sklopa izvršava radnju, a koji je prikazuje?",
+      "2. Zašto VCC 5 V ne dokazuje kompatibilnost svih signalnih pinova?",
+      "3. Što znači active LOW?",
+      "4. Zašto se brojač ne povećava pri svakom prolasku petlje?"
+    ]
+  },
+  "LV08": {
+    "title": "Nadzor temperature tlaka i modela razine",
+    "goals": [
+      "Očitati temperaturu i atmosferski tlak BMP180 senzora.",
+      "U nadzoru razlikovati stvarno mjerenje od zadanog modela razine.",
+      "Prikazati podatke na OLED-u i obraditi nedostajući senzor."
+    ],
+    "theory": [
+      "BMP180 mjeri tlak zraka i vlastitu temperaturu. Tlak dobivamo u Pa, a dijeljenjem sa 100 pretvaramo ga u hPa. Senzor nije hidrostatska sonda i ne smije se potapati. Program zajedničkom sabirnicom pristupa BMP180 na 0x77 i OLED-u na 0x3C.",
+      "U kompletu nije potvrđen senzor razine. Zato potenciometar ovdje zadaje MODEL razine 0–100 %, što se izričito prikazuje na zaslonu. To nije mjerenje količine vode. Nadzor prikazuje stanje, ali nema izvršni element koji bi mijenjao proces."
+    ],
+    "tasks": [
+      "Dodaj oznaku NISKA RAZINA za model ispod 20 % i VISOKA RAZINA iznad 80 %; između prikaži NORMALNO.",
+      "Spremi prvo valjano mjerenje tlaka i uz svako sljedeće ispiši odstupanje u hPa. Ne postavljaj referencu iz nevaljanog podatka.",
+      "Na OLED-u izmjenjuj stranicu svih veličina i stranicu s min/maks tlakom. Pomoću millis() odvoji interval mjerenja od intervala izmjene stranice."
+    ],
+    "word": "LV08_Nadzor_temperature_tlaka_i_modela_razine.docx",
+    "files": [
+      "LV08_BMP180_OLED_Potenciometar.ino"
+    ],
+    "questions": [
+      "1. Koji podatci su izmjereni, a koji zadani modelom?",
+      "2. Zašto BMP180 ne uranjamo u tekućinu?",
+      "3. Zašto 100000 Pa odgovara 1000 hPa?",
+      "4. Koji bi se stvarni senzor mogao dodati za nadzor razine i kako bi se to razlikovalo od potenciometra?"
+    ]
+  },
+  "LV09": {
+    "title": "Automatsko upravljanje rasvjetom",
+    "goals": [
+      "Očitati TEMT6000 i odrediti pragove prema stvarnim uvjetima.",
+      "Uključiti model rasvjete pri zatamnjenju.",
+      "Objasniti zašto dva praga sprječavaju titranje."
+    ],
+    "theory": [
+      "TEMT6000 modul pretvara svjetlost u analogni signal. U uobičajenoj izvedbi veća osvijetljenost daje veći ADC broj; to prvo provjeri mjerenjem. Sirovi broj nije vrijednost u luksima bez poznavanja sklopa i umjeravanja.",
+      "Za uključivanje u mraku i isključivanje na svjetlu koristimo različite pragove PRAG_MRAKA i PRAG_SVJETLA, pri čemu je PRAG_MRAKA < PRAG_SVJETLA. Između njih program pamti prethodno stanje. Relej predstavlja rasvjetu, ali na njegovim kontaktima nema priključene svjetiljke."
+    ],
+    "tasks": [
+      "Prilagodi oba praga izmjerenim uvjetima i obrazloži izbor razmaka.",
+      "Uvedi prosjek pet uzastopnih ADC očitanja te njime upravljaj relejem.",
+      "Za uključivanje zahtijevaj da zatamnjenje traje neprekidno dvije sekunde. Ako se uvjet prekine, vrijeme se računa iznova. Koristi millis()."
+    ],
+    "word": "LV09_Automatsko_upravljanje_rasvjetom.docx",
+    "files": [
+      "LV09_TEMT6000_Relej.ino"
+    ],
+    "questions": [
+      "1. Zašto ADC broj nije automatski broj luksa?",
+      "2. Što program radi između dvaju pragova?",
+      "3. Zašto jedan prag može izazvati titranje?",
+      "4. Koja je razlika između usrednjavanja i vremenskog uvjeta?"
+    ]
+  },
+  "LV10": {
+    "title": "IR daljinsko upravljanje relejem",
+    "goals": [
+      "Očitati adresu i naredbe vlastitog daljinskog upravljača.",
+      "Povezati dvije tipke s izričitim uključivanjem i isključivanjem.",
+      "Zanemariti nepoznate i ponovljene okvire."
+    ],
+    "theory": [
+      "IR prijamnik pretvara moduliranu infracrvenu svjetlost u digitalni signal. Knjižnica dekodira protokol, adresu uređaja i naredbu tipke. Vrijednosti se ne preuzimaju naslijepo iz tuđeg primjera: učenik ih snima sa svojeg daljinskog.",
+      "U početnom programu KODOVI_SPREMNI je false: tipke se samo ispisuju, a relej ostaje isključen. Nakon upisa provjerenih kodova učenik dopušta upravljanje. Posebne naredbe ON i OFF daju predvidljivije ponašanje od prebacivanja stanja pri svakom okviru. Držanje tipke često stvara ponovljene okvire."
+    ],
+    "tasks": [
+      "Omogući samo dvije potvrđene naredbe vlastitog daljinskog. Dodaj ispis stanja releja nakon obrade.",
+      "Dodaj brojač stvarnih promjena stanja. Nepoznata tipka, ponavljanje i ON dok je već uključen ne povećavaju brojač.",
+      "Dodaj automatsko isključivanje pet sekundi nakon prihvaćene naredbe ON. Nova valjana ON naredba obnavlja vrijeme; koristi millis()."
+    ],
+    "word": "LV10_IR_daljinsko_upravljanje_relejem.docx",
+    "files": [
+      "LV10_IR_Relej.ino"
+    ],
+    "questions": [
+      "1. Koja je razlika između adrese i naredbe?",
+      "2. Zašto je KODOVI_SPREMNI početno false?",
+      "3. Zašto je važna naredba IrReceiver.resume()?",
+      "4. Zašto gubitak IR signala nije isto što i naredba OFF?"
+    ]
+  },
+  "LV11": {
+    "title": "Dvopoložajna regulacija modela razine",
+    "goals": [
+      "Primijeniti dva praga i pamćenje stanja izlaza.",
+      "Razlikovati zadani model od stvarne regulacijske petlje.",
+      "Provjeriti rubne vrijednosti i oba smjera promjene ulaza."
+    ],
+    "theory": [
+      "Relej predstavlja pumpu koja puni spremnik: uključi se na razini ≤ 30 %, isključi na razini ≥ 70 %, a između zadrži prethodno stanje. Razmak 40 postotnih bodova je pojas histereze.",
+      "Potenciometar ručno zadaje model razine. Relej ne utječe na njega, pa fizička povratna veza u ovoj izvedbi nije zatvorena. U stvarnom spremniku pumpa bi mijenjala razinu, senzor bi je mjerio, a regulator bi odlučivao prema novom mjerenju."
+    ],
+    "tasks": [
+      "Promijeni pragove na 25 % i 75 %. Provjeri točno na pragovima i neposredno s obje strane.",
+      "Broji stvarna uključivanja pumpe. Držanje razine ispod donjeg praga nije novo uključivanje u svakom ciklusu.",
+      "Uvedi vremensko ograničenje: ako je pumpa neprekidno uključena dulje od pet sekundi, isključi je i zadrži stanje KVAR do reseta pločice."
+    ],
+    "word": "LV11_Dvopolozajna_regulacija_modela_razine.docx",
+    "files": [
+      "LV11_Potenciometar_Relej.ino"
+    ],
+    "questions": [
+      "1. Što sustav pamti između pragova?",
+      "2. Zašto se isti ulaz može povezati s dva izlazna stanja?",
+      "3. Koji dio stvarne povratne veze ovdje nedostaje?",
+      "4. Zašto kvar ne treba poništiti čim ulaz ponovno izgleda povoljno?"
+    ]
+  },
+  "LV12": {
+    "title": "Sekvencijsko upravljanje s odbrojavanjem",
+    "goals": [
+      "Pratiti stanja SPREMNO, RAD i GOTOVO.",
+      "Mjeriti proteklo vrijeme bez dugoga delay().",
+      "Izmijeniti prijelaze stanja i sačuvati preostalo vrijeme."
+    ],
+    "theory": [
+      "Automat ima jasno imenovana stanja. Pritisak tipke u SPREMNO ili GOTOVO pokreće deset sekundi rada; u stanju RAD početni program zanemaruje novi START. Po isteku vremena izlaz se isključuje i stanje prelazi u GOTOVO.",
+      "Razlika sada − pocetakRada daje proteklo vrijeme. unsigned long i oduzimanje omogućuju rad i preko preljeva millis() za ovako kratke intervale. Uklanjanje poskakivanja kontakta izdvojeno je u novaTipkaPritisnuta(), koja vraća true samo za novi stabilni pritisak."
+    ],
+    "tasks": [
+      "Postavi trajanje na pet sekundi i ispiši naziv stanja samo kada se stanje promijeni.",
+      "Iz P1 napravi inačicu u kojoj pritisak tijekom rada prekida ciklus, vraća SPREMNO, gasi relej i prikazuje 0000.",
+      "Ponovno kreni od P1. Dodaj PAUZA: pritisak zaustavlja i nastavlja odbrojavanje bez gubitka preostalog vremena. U PAUZA relej mora biti isključen."
+    ],
+    "word": "LV12_Sekvencijsko_upravljanje_s_odbrojavanjem.docx",
+    "files": [
+      "LV12_TM1637_Relej.ino"
+    ],
+    "questions": [
+      "1. Zašto RAD ne prihvaća svaki START kao novi ciklus?",
+      "2. Zašto delay(10000) otežava prihvat tipke?",
+      "3. Koju vremensku vrijednost treba sačuvati pri pauzi?",
+      "4. Zašto su P2 i P3 odvojene inačice?"
+    ]
+  },
+  "LV13": {
+    "title": "Regulacija temperature s DS18B20",
+    "goals": [
+      "Povezati mjerenje, zadanu vrijednost i odluku o grijanju.",
+      "Primijeniti uključive pragove histereze.",
+      "Isključiti izlaz pri nevaljanom očitanju."
+    ],
+    "theory": [
+      "Potenciometar određuje zadanu temperaturu SP od 15 do 35 °C. Ako je T ≤ SP − H, izlaz grijanja uključuje se; ako je T ≥ SP + H, isključuje se. Između pragova stanje ostaje isto. Za H = 0,5 °C puna širina histereze iznosi 1 °C.",
+      "DS18B20 pretvorba pokreće se bez čekanja. Program provjerava je li prošlo 750 ms, tek zatim čita rezultat i pokreće novu pretvorbu. Nedostajući senzor ili temperatura izvan radnog raspona ove školske vježbe 0–60 °C isključuje izlaz.",
+      "Relej predstavlja grijač, ali ne zagrijava senzor jer su kontakti prazni. Ovo je provjera regulatorske logike uz stvarno mjerenje, a ne eksperimentalno zatvorena toplinska petlja."
+    ],
+    "tasks": [
+      "Promijeni H na 1,0 °C. Izračunaj novu širinu pojasa i provjeri ponašanje na oba praga.",
+      "Dodaj ispis proteklog vremena i broj uključenja. Vrijeme očitanja ažuriraj tek kada je dobiveno novo valjano mjerenje.",
+      "Dodaj zaključavanje nakon pogreške senzora: izlaz ostaje ugašen i nakon povratka očitanja, sve do reseta. Izričito prikaži ZAKLJUCANO."
+    ],
+    "word": "LV13_Regulacija_temperature_s_DS18B20.docx",
+    "files": [
+      "LV13_DS18B20_Potenciometar_Relej.ino"
+    ],
+    "questions": [
+      "1. Zašto je širina histereze 2H, a ne H?",
+      "2. Što se događa točno na granici SP − H?",
+      "3. Zašto očitanje −127 °C ne smije uključiti grijanje?",
+      "4. Koji bi uvjeti bili potrebni za stvarno zatvorenu toplinsku petlju?"
+    ]
+  },
+  "LV14": {
+    "title": "PWM upravljanje DC motorom i prekid",
+    "goals": [
+      "Sigurno povezati L298N i odvojeno napajanje DC motora.",
+      "Promijeniti PWM i opažati promjenu vrtnje.",
+      "Prihvatiti vanjski događaj prekidom i zaustaviti izlaz."
+    ],
+    "theory": [
+      "PWM mijenja udio vremena uključenog pogona. Vrijednost 0 znači isključen izlaz, a 255 najveći udio u 8-bitnom analogWrite(). L298N dovodi energiju motoru; digitalni pin to ne radi. Pad napona na L298N smanjuje napon raspoloživ motoru.",
+      "Bez senzora brzine ne mjerimo okretaje i ne zatvaramo regulacijsku petlju. Ovdje izvodimo otvoreno upravljanje i opažamo vrtnju. Za pravu regulaciju brzine trebalo bi mjeriti brzinu i korigirati PWM prema razlici od zadane vrijednosti.",
+      "Tipka na D2 izaziva prekid. Kratka prekidna rutina postavlja zastavicu; loop() je sigurno preuzima i gasi izlaz. Programski STOP je nastavna demonstracija, a nije certificirani sigurnosni sklop."
+    ],
+    "tasks": [
+      "Za ADC ispod 200 zadaj PWM 0, a raspon 200–1023 preslikaj u PWM 80–200. Usporedi opažanja s početnim programom.",
+      "Dodaj postupno povećavanje PWM-a najviše za 5 svakih 50 ms. STOP mora odmah zatražiti nulu, bez postupnog spuštanja.",
+      "Dodaj prekidni pogon: dvije sekunde rada i jednu sekundu mirovanja pomoću millis(). STOP mora djelovati u oba dijela ciklusa."
+    ],
+    "word": "LV14_PWM_upravljanje_DC_motorom_i_prekid.docx",
+    "files": [
+      "LV14_DC_motor_L298N.ino"
+    ],
+    "questions": [
+      "1. Zašto PWM vrijednost nije izmjerena brzina vrtnje?",
+      "2. Zašto su potrebni odvojeni izvori i zajednička masa?",
+      "3. Zašto u prekidnoj rutini nema ispisa ni delay()?",
+      "4. Što treba dodati za stvarnu regulaciju brzine sa zatvorenom petljom?"
+    ]
+  },
+  "LV15": {
+    "title": "Koračni motor 28BYJ 48 i ULN2003",
+    "goals": [
+      "Povezati 28BYJ-48 5 V s ULN2003 i odvojenim napajanjem.",
+      "Pratiti slijed pobude četiriju ulaza i broj polukoraka.",
+      "Promijeniti broj koraka i smjer bez prespajanja motora."
+    ],
+    "theory": [
+      "28BYJ-48 je koračni motor s reduktorom. ULN2003 uključuje struju namota prema četirima signalima IN1–IN4. Nano daje signale, a motor dobiva energiju iz zasebnog 5 V izvora. Motor se priključuje svojim petopolnim konektorom na pločicu.",
+      "Program izmjenjuje osam uzoraka pobude: jedan namot, dva susjedna namota, zatim sljedeći namot. To je polukoračni slijed. BROJ_KORAKA = 512 znači 512 promjena u tom slijedu, a ne 512 stupnjeva. Broj polukoraka po okretaju izlazne osovine ovisi o reduktoru konkretne izvedbe.",
+      "Na kraju se sva četiri izlaza gase. Time se smanjuje grijanje, ali motor više ne osigurava aktivno držanje položaja. Broj poslanih koraka nije izmjeren položaj; pod opterećenjem su mogući izgubljeni koraci i zazor reduktora."
+    ],
+    "tasks": [
+      "Promijeni BROJ_KORAKA s 512 na 256. Usporedi dva pomaka i obrazloži očekivani odnos kutova.",
+      "Dodaj promjenu smjera nakon završenog pomaka. Za obrnuti slijed koristi faza = (faza + 7) % 8. Izvedi jednak broj koraka u oba smjera.",
+      "Novi pritisak tijekom kretanja neka prekine pomak i ugasi sva četiri izlaza. Ispiši broj poslanih polukoraka. Sljedeći pritisak pokreće nov zadani pomak."
+    ],
+    "word": "LV15_Koracni_motor_28BYJ_48_i_ULN2003.docx",
+    "files": [
+      "LV15_28BYJ48_ULN2003.ino"
+    ],
+    "questions": [
+      "1. Zašto se motor priključuje na ULN2003, a ne izravno na Nano?",
+      "2. Što u programu predstavlja jedan redak polja slijedPobude?",
+      "3. Zašto broj koraka nije neposredno broj stupnjeva?",
+      "4. Koja je posljedica gašenja namota na kraju pomaka?"
+    ]
+  },
+  "LV15B": {
+    "title": "Dodatna izvedba s NEMA 17 i A4988",
+    "goals": [
+      "Razlikovati naredbu STEP, smjer DIR i dopuštenje EN.",
+      "Povezati broj impulsa s očekivanim pomakom.",
+      "Objasniti zašto broj poslanih koraka nije dokaz stvarnog položaja."
+    ],
+    "theory": [
+      "Svaki impuls STEP traži jedan korak ili mikrokorak, ovisno o MS1–MS3. U ovoj vježbi svi su MS ulazi na GND, pa je odabran puni korak. DIR određuje smjer. EN je aktivan na LOW; HIGH isključuje pogon zavojnica.",
+      "Kut izračunavamo kao broj impulsa / broj punih koraka po okretaju · 360°. Broj koraka po okretaju uzima se iz dokumentacije stvarnog motora. Preskakanje koraka pri prevelikom opterećenju nije vidljivo iz samog broja impulsa.",
+      "Dostupni su NEMA 17 motori i A4988. NEMA 17 označuje mehanički format, a ne jedinstvenu struju, napon ili kut koraka. Nastavnik za konkretan motor određuje strujno ograničenje, označuje parove zavojnica i priprema napajanje. Učenik ne podešava struju tijekom rada."
+    ],
+    "tasks": [
+      "Postavi broj impulsa za četvrtinu okretaja prema stvarnom motoru. Ako broj nije cijeli, navedi zaokruživanje i očekivani kut.",
+      "Između dvaju završenih pomaka promijeni DIR pa izvedi isti broj koraka unatrag. Smjer ne mijenjaj usred impulsa.",
+      "Dodaj mogućnost prekida pokreta novim pritiskom tipke. Zapiši koliko je impulsa poslano do prekida; jasno razlikuj taj broj od izmjerenog položaja."
+    ],
+    "word": "LV15B_NEMA17_A4988_dodatna_izvedba.docx",
+    "files": [
+      "LV15B_NEMA17_A4988.ino"
+    ],
+    "questions": [
+      "1. Koje su različite uloge STEP i DIR?",
+      "2. Zašto motor ne smijemo prespajati pod naponom?",
+      "3. Što se mijenja u računu kuta pri mikrokoračanju?",
+      "4. Zašto povratak istog broja impulsa ne jamči isti položaj?"
+    ]
+  },
+  "LV16": {
+    "title": "PLC upravljanje motorom u simulatoru",
+    "goals": [
+      "Pratiti ciklus očitanja ulaza, programa i postavljanja izlaza.",
+      "Izvesti START, STOP i zaštitno dopuštenje.",
+      "Spriječiti automatski ponovni start nakon povratka dopuštenja."
+    ],
+    "theory": [
+      "PLC ciklički obrađuje ulaze, izvršava program i postavlja izlaze. Ovdje logičke varijable u simulatoru predstavljaju tipkala i izlaz motora. ST je tekstni jezik za PLC; operator := pridružuje vrijednost, AND znači logičko I, NOT negaciju, a IF određuje uvjetno izvršavanje.",
+      "Start je true dok je tipka pritisnuta. StopOK i ProtectionOK su true kada je rad dopušten. FALSE bilo kojeg dopuštenja odmah gasi Motor u sljedećem ciklusu. StartEdge je novi pritisak, a StartOld pamti stanje iz prethodnog ciklusa. Nakon povratka dopuštenja potreban je otpust i novi pritisak START-a.",
+      "Ovo je simulacija programske logike. Nema stvarnog motora, ožičenja kontaktora ni sigurnosnog PLC-a. Stvarna strojna zaštita ne može se dokazati samo ovom tablicom logičkih vrijednosti."
+    ],
+    "tasks": [
+      "Dodaj varijablu Ready koja je true samo kada su oba dopuštenja prisutna i motor ne radi. Provjeri sva četiri spoja dopuštenja.",
+      "Dodaj TON od dvije sekunde prije uključenja. Zahtjev rada pamti zasebno, a nestanak bilo kojeg dopuštenja mora poništiti zahtjev i vrijeme; novi start traži novi pritisak.",
+      "Dodaj FaultLatched za prekid ProtectionOK i zasebni Reset. Reset prihvati samo uz oba dopuštenja i otpušten Start; reset ne smije sam pokrenuti motor."
+    ],
+    "word": "LV16_PLC_upravljanje_motorom_u_simulatoru.docx",
+    "files": [
+      "LV16_deklaracije.txt",
+      "LV16_program.st"
+    ],
+    "questions": [
+      "1. Zašto TRUE za StopOK znači da je rad dopušten?",
+      "2. Koja je razlika između Start i StartEdge?",
+      "3. Zašto se nakon reseta zaštite zahtijeva novi START?",
+      "4. Što ova simulacija ne provjerava na stvarnom stroju?"
+    ]
+  }
+}

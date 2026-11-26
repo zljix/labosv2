@@ -1,3 +1,4 @@
+import {createUrsLab, labIds, labTitle, ursLabSheets} from '../src/lessons/ursLab';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {createPractice} from '../src/lessons/collectionSimulation';
@@ -34,5 +35,27 @@ export async function* schoolCollections() {
     yield {entry:{set:track,key,lessonId:id,variantId:track,code:id,title:titles[id as keyof typeof titles],variantTitle:tracks[track],
       guideVersion:'v14',wordHashes:words,goal:sheet.goal,before:sheet.hours,change:practices[id as keyof typeof titles].change,fault:'',
       expected:'Predaj dopunjeni Word i izvor za svoju izvedbu.',concepts:[],questions:[practices[id as keyof typeof titles].question],criteria:['Postupak i tehnička ispravnost','Praktični dokazi iz učeničkog Worda','Objašnjenje opažanja i zaključak'],targets:Object.keys(templates),templates}};
+  }
+  yield* schoolUrsLabs();
+}
+
+async function* schoolUrsLabs() {
+  for (const id of labIds) {
+    const sheet = ursLabSheets[id];
+    const key = 'urs-lv/' + id;
+    const plc = id === 'LV16', target = plc ? 'micropython' : 'nano';
+    const filename = 'urs-lv-' + id + '-' + target + '.json';
+    const project = await createUrsLab(id);
+    yield {starter:{filename,project,key:key + '/' + target}};
+    const word = readFileSync('public/zbirke/urs-lv/' + id + '/' + sheet.word);
+    yield {entry:{
+      set:'urs-lv', key, lessonId:id, variantId:'urs-lv', code:id, title:sheet.title,
+      variantTitle:labTitle + ' · P1–P3', guideVersion:'v7', wordHashes:{[target]:createHash('sha256').update(word).digest('hex')},
+      goal:sheet.goals[0], before:plc ? 'Structured Text · model PLC-a u Labosu i CODESYS na postaji.' : 'Arduino Nano classic · 90 min.',
+      change:sheet.tasks.map((task,i) => 'P' + (i + 1) + ' · ' + task).join('\n'), fault:'',
+      expected:'Predaj Word s cijelim programom i opažanjima iza svakog podzadatka.',
+      concepts:[], questions:sheet.questions, criteria:sheet.tasks.map((task,i) => 'P' + (i + 1) + ' · ' + task),
+      targets:[target], templates:{[target]:filename}
+    }};
   }
 }

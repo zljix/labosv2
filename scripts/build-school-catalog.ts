@@ -73,4 +73,4 @@ writeFileSync(resolve(directory,'catalog.json'),JSON.stringify({format:'labosv2-
   gradingSummary:gradingCoverage(JSON.parse(readFileSync('package.json','utf8')).version).summary,
   introductorySummary:gradingCoverage(JSON.parse(readFileSync('package.json','utf8')).version).introductorySummary,
   targets:Object.fromEntries(Object.entries(ursTargets).map(([key,t])=>[key,t.label])),entries},null,2)+'\n');
-console.log('Školski katalog: 67 URS varijanti / 268 ciljeva te 5 uvodnih, 24 IoT i 25 US zadataka.');
+console.log('Školski katalog: 67 URS varijanti / 268 ciljeva te 5 uvodnih, 24 IoT, 25 US i 17 URS laboratorijskih vježbi (s LV15B).');

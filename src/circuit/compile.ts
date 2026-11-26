@@ -79,7 +79,7 @@ export interface SimulationFrame {
   oneWireDevices?:Record<string,{powered:boolean;rom:string;temperature:number;resolution:number;busy:boolean;sample:number;scratchpad:number[];reason:string;fault:string;trace:{timeUs:number;operation:string;value?:number}[];readings?:{timeUs:number;sample:number;busy:boolean;convertedAtUs:number;resolution:number;temperature:number;valid:boolean}[]}>;
   timedSensors?:Record<string,{powered:boolean;sample:number;temperature:number;humidity:number;bytes:number[];reason:string;transmitting:boolean;fault:string;trace:{atUs:number;durationUs:number;level:number}[]}>;
   analogInputs?:Record<string,{powered:boolean;active?:boolean;volts:Record<string,number|null>;resistance?:number}>;
-  avr?:{memory?:{staticBytes:number;lowestSP:number;minFreeToStatic:number};cycles:number;clockHz:number;uartBaud:number;rxPending:number;busTrace:{kind:string;operation:string;value?:number;result?:string;timeUs:number}[]};
+  avr?:{coils?:{commands:number;steps:number;errors:number};memory?:{staticBytes:number;lowestSP:number;minFreeToStatic:number};cycles:number;clockHz:number;uartBaud:number;rxPending:number;busTrace:{kind:string;operation:string;value?:number;result?:string;timeUs:number}[]};
   timeMs: number;
   leds: Record<string, {brightness:number;currentMa:number}>;
   nets: Record<string, number | null>;

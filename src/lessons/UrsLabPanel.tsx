@@ -91,7 +91,7 @@ export function UrsLabPanel({id, project, run, circuit, edit, catalog, change, c
     return stationCode(project.files[key(level,0)]);
   }
   return <article className="lesson-content urs-content" aria-label={id + ' laboratorijska vježba'}>
-    <div className="lesson-title"><div><span className="lesson-kicker">{labTitle} · 90 min</span><h2>{id} · {sheet.title}</h2></div><button onClick={catalog}>Moja zbirka</button></div>
+    <div className="lesson-title"><div><span className="lesson-kicker">{labTitle} · 90 min</span><h2>{id} · {sheet.title}</h2></div><button onClick={catalog}>Sve URS vježbe</button></div>
     <p className="lesson-goal">{sheet.goals[0]}</p>
     <details><summary>Priprema i pojmovi</summary>{sheet.theory.map((p,i) => <p key={i}>{p}</p>)}</details>
     <section><h3>Početni program i pokus</h3><p>{trial[id]}</p>

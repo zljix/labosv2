@@ -1,8 +1,8 @@
-# Labos 0.16.0-beta.3 · zbirke IoT i US
+# Labos 0.16.0-beta.3 · Zbirka i laboratorijske vježbe
 
-U izborniku **Vježbe** odaberi **Internet stvari** (24 vježbe) ili **Ugradbeni sustavi** (25 vježbi), pa MicroPython ili Arduino. Uz vježbu možeš preuzeti pripadajući učenički Word i početne datoteke. [Otvori Labos](https://zljix.github.io/labosv2/)
+U izborniku **Vježbe → Zbirka** pretraži sve ugrađene projekte po nazivu, temi, pločici i jeziku. Za rad redom po predmetu odaberi **Internet stvari** (24 vježbe) ili **Ugradbeni sustavi** (25 vježbi), pa MicroPython ili Arduino. Uz vježbu možeš preuzeti pripadajući učenički Word i početne datoteke. [Otvori Labos](https://zljix.github.io/labosv2/)
 
-U istom izborniku **URS laboratorijske vježbe · P1–P3** otvaraju izvorne radne listove LV01–LV16 i dodatnu LV15B. Svaka vježba povezuje početni program, simulaciju i tri izmjene koda. Učenik sprema svaku inačicu zasebno i kopira je u Word. LV16 koristi Structured Text, s virtualnim ulazima i izlazom motora.
+U istom izborniku **URS** otvara izvorne radne listove LV01–LV16 i dodatnu LV15B. Svaka vježba povezuje početni program, simulaciju i tri izmjene koda. Učenik sprema svaku inačicu zasebno i kopira je u Word. LV16 koristi Structured Text, s virtualnim ulazima i izlazom motora.
 
 Za dodjelu razredu i zaključavanje predaje instaliraj školski paket na poslužitelj s PHP-om i MySQL-om. Učenik prilaže popunjeni Word ili označava da dokazi nedostaju. Nastavnik može pregledati predanu reviziju i otvoriti novi pokušaj za dopunu. Pri nadogradnji postojeće instalacije primijeni migraciju 009. [Preuzmi školski ZIP](https://zljix.github.io/labosv2/paketi/Labos_IoT_US_skolska_predaja.zip) · [Upute za instalaciju](school/README.md)
 

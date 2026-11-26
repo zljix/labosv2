@@ -9,30 +9,46 @@ import type { Project } from '../project/model';
 import { getLesson, lessons, readWork, type LessonWork } from './catalog';
 import { readResult, sourceHash } from './verify';
 import './lessons.css';
-import {UrsCatalog} from './UrsPanel';
-import {ursLessons,type UrsTarget} from './ursCatalog';
+import {ProjectCatalog, type ProjectActions} from './ProjectCatalog';
+import type {UrsTarget} from './ursCatalog';
 
 import {UrsLabCatalog} from './UrsLabPanel';
-import {labTitle, type LabId} from './ursLab';
+import type {LabId} from './ursLab';
 import type {PracticeKey} from './collectionSimulation';
 import type {ExerciseId} from './collectionPlans';
 import type {Edition,RunnableId} from './IotUsPilot';
 import {IotUsCatalog, tracks, type Collection, type Track} from './IotUsCatalog';
 
-export function LessonCatalog({open,busy,openUrs,initialTarget,reviewClass,initialCollection,initialExercise,initialEdition,simulate,openPilot,openLab,initialLab}:{openLab?:(id:LabId)=>void;initialLab?:LabId;initialCollection?:Collection;simulate:(key:PracticeKey)=>void;initialEdition?:Edition;initialExercise?:ExerciseId;openPilot:(track:Track,exercise:RunnableId)=>void;open:(id:string,solution?:boolean)=>void;busy:boolean;openUrs:(lesson:string,variant:string,target:UrsTarget,peer:UrsTarget)=>void;initialTarget:UrsTarget;reviewClass:()=>void}) {
+interface CatalogProps extends ProjectActions {
+  busy:boolean; initialTarget:UrsTarget; initialLab?:LabId; initialCollection?:Collection;
+  initialExercise?:ExerciseId; initialEdition?:Edition; openPilot:(track:Track,exercise:RunnableId)=>void;
+}
+export function LessonCatalog({open,busy,openUrs,openStandalone,initialTarget,initialCollection,initialExercise,initialEdition,simulate,openPilot,openLab,initialLab}:CatalogProps) {
+  const [materials,setMaterials] = useState<PracticeKey>();
   const [collection,showCollection]=useState<Collection>(() => {
     if(initialCollection)return initialCollection;
     try {const saved=localStorage.getItem('labos.katalog.zbirka');if(saved==='iot'||saved==='us'||saved==='intro'||saved==='urs-lv')return saved;}catch{}
     return 'urs';
   });
-  function setCollection(next:Collection) {
+  function setCollection(next:Collection, selectedMaterials?:PracticeKey) {
+    setMaterials(selectedMaterials);
     showCollection(next);
     try{localStorage.setItem('labos.katalog.zbirka',next)}catch{}
   }
   return <div className="lesson-catalog">
-    <p>Prvi put u laboratoriju? Kreni od <button onClick={()=>setCollection('intro')}>V1–V5: osnove uz vođene korake</button>.</p>
-    <div className="lesson-inline-actions" role="group" aria-label="Zbirka vježbi"><button aria-pressed={collection==='intro'} onClick={()=>setCollection('intro')}>Početnih pet vježbi · V1–5</button><button aria-pressed={collection==='urs'} onClick={()=>setCollection('urs')}>URS zbirka · {ursLessons.length} tema</button><button aria-pressed={collection==='urs-lv'} onClick={()=>setCollection('urs-lv')}>{labTitle} · P1–P3</button>{(['iot','us'] as const).map(track=><button key={track} aria-pressed={collection===track} onClick={()=>setCollection(track)}>{tracks[track]}</button>)}</div>
-    {collection==='urs-lv' && openLab ? <UrsLabCatalog initial={initialLab} open={openLab} busy={busy}/>:collection==='iot'||collection==='us'?<IotUsCatalog key={collection} track={collection} busy={busy} open={openPilot} simulate={simulate} initialEdition={initialCollection===collection?initialEdition:undefined} initialExercise={initialCollection===collection?initialExercise:undefined}/>:collection==='urs'?<UrsCatalog busy={busy} open={openUrs} initialTarget={initialTarget}/>:<>
+    <div className="lesson-inline-actions" role="group" aria-label="Katalozi projekata i vježbi">
+      <button aria-pressed={collection==='urs'} onClick={()=>setCollection('urs')}>Zbirka</button>
+      <button aria-pressed={collection==='urs-lv'} onClick={()=>setCollection('urs-lv')}>URS</button>
+      {(['iot','us'] as const).map(track=><button key={track} aria-pressed={collection===track} onClick={()=>setCollection(track)}>{tracks[track]}</button>)}
+      <button aria-pressed={collection==='intro'} onClick={()=>setCollection('intro')}>Početnih pet vježbi · V1–5</button>
+    </div>
+    {collection==='urs-lv' ? <UrsLabCatalog initial={initialLab} open={openLab} busy={busy}/>
+      : collection==='iot'||collection==='us' ? <IotUsCatalog key={collection} track={collection} busy={busy} open={openPilot}
+        simulate={simulate} initialEdition={materials?.track===collection?materials.edition:initialCollection===collection?initialEdition:undefined}
+        initialExercise={materials?.track===collection?materials.exercise:initialCollection===collection?initialExercise:undefined}/>
+      : collection==='urs' ? <ProjectCatalog busy={busy} initialTarget={initialTarget} open={open} openUrs={openUrs}
+        openLab={openLab} openStandalone={openStandalone} simulate={simulate}
+        courseMaterials={key=>setCollection(key.track,key)}/> : <>
     <p>Pet koraka od izlaza do regulatora. Svaka vježba otvara novi lokalni projekt s uputama i početnim kodom.</p>
     <div className="lesson-cards">{lessons.map(l=><button className="lesson-card" key={l.id} onClick={()=>open(l.id)} disabled={busy}>
       <span className="lesson-number">{String(l.number).padStart(2,'0')}</span><span><strong>{l.title}</strong><small>{l.goal}</small><em>{l.minutes} · upute, zadatak i provjera</em></span><span aria-hidden="true">›</span>
@@ -49,7 +65,7 @@ export default function LessonPanel({project:p,change,busy,progress,run,cancel,s
   const work=readWork(p),l=work&&getLesson(work.lessonId),r=readResult(p);
   const [fresh,setFresh]=useState(false),[studentValid,setStudentValid]=useState(true),[groupValid,setGroupValid]=useState(true);
   useEffect(()=>{let active=true;setFresh(false);if(r)void sourceHash(p).then(h=>{if(active)setFresh(h===r.sourceHash);}).catch(()=>{});return()=>{active=false;};},[p]);
-  if(!work||!l)return <div className="lesson-empty"><span className="lesson-kicker">UČENJE KROZ POKUS</span><h2>Odaberi nastavnu vježbu.</h2><p>Upute uvode svaki novi pojam prije primjene. Početnih pet vježbi ima automatsku provjeru programa; URS zbirka dodaje vođene pokuse i ručna opažanja.</p><button className="primary" onClick={catalog}>Otvori katalog vježbi</button>{teacher&&<button onClick={importReview}>Uvezi predaju za pregled</button>}{p.files['vjezba.json']&&<p role="alert">Podaci vježbe nisu podržani ili su neispravni. Kôd i sklop možeš pregledati u Sastavljanju.</p>}</div>;
+  if(!work||!l)return <div className="lesson-empty"><span className="lesson-kicker">UČENJE KROZ POKUS</span><h2>Odaberi nastavnu vježbu.</h2><p>Upute uvode svaki novi pojam prije primjene. U Zbirci možeš odabrati projekt po temi i pločici. Za laboratorijske vježbe s tri podzadatka izmjene koda odaberi URS.</p><button className="primary" onClick={catalog}>Otvori katalog vježbi</button>{teacher&&<button onClick={importReview}>Uvezi predaju za pregled</button>}{p.files['vjezba.json']&&<p role="alert">Podaci vježbe nisu podržani ili su neispravni. Kôd i sklop možeš pregledati u Sastavljanju.</p>}</div>;
   const passed=r?.checks.filter(c=>c.passed).length??0;
   return <article className="lesson-content" aria-label={`Vježba ${l.number}: ${l.title}`}>
     <div className="lesson-title"><div><span className="lesson-kicker">VJEŽBA {l.number} / 5 · {l.minutes}</span><h2>{l.title}</h2></div><button onClick={catalog}>Sve vježbe</button></div>

@@ -11,7 +11,7 @@ import {ursLabCircuit} from './ursLabCircuit';
 export {sheets as ursLabSheets};
 export type LabId = keyof typeof sheets;
 export const labIds = Object.keys(sheets) as LabId[];
-export const labTitle = 'URS laboratorijske vježbe';
+export const labTitle = 'URS';
 export const levelNames = ['Lakši', 'Srednji', 'Napredni'] as const;
 export const plcFiles = ['deklaracije.txt', 'program.txt'];
 export const labAsset = (path:string) => appAsset('zbirke/urs-lv/' + path);

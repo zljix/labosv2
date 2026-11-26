@@ -118,3 +118,78 @@ test('25B compact school work preserves points and revision, automatically expos
  assert(![...document.querySelectorAll('button')].some(b=>b.textContent==='Završi i zaključaj vježbu'));
 
 });
+
+test('Zbirka includes every prepared route and native example on precisely its supported boards', async t=>{
+  const {projects,findProjects,createStandalone}=await import('../src/lessons/catalogProjects');
+  const {arduinoExamples}=await import('../src/runtime/arduinoExamples');
+  const {s3Examples}=await import('../src/runtime/s3Examples');
+  const {ursLessons}=await import('../src/lessons/ursCatalog');
+  const {labIds}=await import('../src/lessons/ursLab');
+  const {examples}=await import('../public/examples.mjs');
+  const {parseProject}=await import('../src/project/model');
+  const {NANO,UNO,S3}=await import('../src/boards/profiles');
+  assert.equal(new Set(projects.map(p=>p.key)).size,projects.length);
+  assert.deepEqual(findProjects('','lab','all').map(p=>p.key),labIds.map(id=>'lab/'+id));
+  assert.equal(findProjects('','iot','all').length,24);
+  assert.equal(findProjects('','us','all').length,25);
+  assert.equal(findProjects('','intro','all').length,5);
+  assert.deepEqual(findProjects('','core','all').map(p=>p.key),Object.keys(examples).map(id=>'core/'+id));
+  assert.deepEqual(findProjects('','guided','all').map(p=>p.key),ursLessons.flatMap(l=>l.variants.map(v=>'guided/'+l.id+'/'+v.id)));
+  for(const [target,registry] of [['uno',arduinoExamples],['nano',arduinoExamples],['s3-cpp',s3Examples]] as const) {
+    const keys=findProjects('','examples',target).filter(p=>p.route.kind==='example').map(p=>p.key).sort();
+    assert.deepEqual(keys,Object.keys(registry).map(id=>'example/'+id).sort());
+  }
+  assert(findProjects('radijska cvorova','examples','all').some(p=>p.key==='radio'));
+  assert.deepEqual(findProjects('','all','plc').map(p=>p.key),['lab/LV16']);
+  const oldFetch=globalThis.fetch;
+  t.after(()=>{globalThis.fetch=oldFetch;});
+  globalThis.fetch=async input=>new Response(readFileSync('public'+String(input).replace(/^\/app\/development\//,'/')));
+  for(const item of findProjects('','examples','micropython')) {
+    if(item.route.kind!=='example') continue;
+    const p=parseProject(await createStandalone('example',item.route.id,'micropython','uno'));
+    assert.equal(p.board.id,S3);assert.equal(p.language,'micropython');assert.equal(p.circuit.kind,'editable');
+    assert(p.files[p.entryFile]?.trim());assert(!p.files['urs-vjezba.json']);assert(p.settings.example.endsWith('-'+item.route.id));
+  }
+  for(const [key,target,board] of [['sdBlocks','uno',UNO],['rtcSet','nano',NANO],['sdBlocks','s3-cpp',S3]] as const) {
+    const p=parseProject(await createStandalone('example',key,target,'uno'));
+    assert.equal(p.board.id,board);assert.equal(p.language,'arduino-cpp');
+    assert(p.files[target==='s3-cpp'?'s3-build.json':'avr-build.json']);
+  }
+  assert.equal((await createStandalone('core','button','micropython','uno')).circuit.kind,'stage0-fixture');
+  const pair=await createStandalone('radio','radio','micropython','nano');
+  assert.equal(pair.board.id,S3);assert.equal(pair.radio?.peer.board.id,NANO);
+  await assert.rejects(createStandalone('example','ds18b20','s3-cpp','uno'));
+});
+
+test('Zbirka and URS launch the selected projects and open course materials for the selected edition',async t=>{
+  const {LessonCatalog}=await import('../src/lessons/LessonPanel');
+  const {root,dom}=await environment(t), calls:unknown[][]=[];
+  const actions=(kind:string)=>(...args:unknown[])=>calls.push([kind,...args]);
+  await act(async()=>root.render(<LessonCatalog initialTarget="micropython" busy={false} open={actions('intro')}
+    openUrs={actions('guided')} openLab={actions('lab')} simulate={actions('practice')}
+    openStandalone={actions('standalone')} openPilot={actions('station')}/>));
+  const button=(name:string)=>[...document.querySelectorAll('button')].find(b=>b.textContent===name)!;
+  const select=(name:string)=>[...document.querySelectorAll('label')].find(l=>l.firstChild?.textContent===name)!.querySelector('select')!;
+  async function choose(label:string,value:string) {
+    await act(async()=>{const s=select(label);s.value=value;assert.equal(s.value,value);s.dispatchEvent(new dom.window.Event('change',{bubbles:true}));});
+  }
+  const click=async(name:string)=>act(async()=>button(name).click());
+  assert.equal(button('Zbirka').getAttribute('aria-pressed'),'true');
+  await choose('Skupina','examples');await choose('Projekt','example/rtcSet');await choose('Izvedba projekta','nano');
+  assert.equal(calls.length,0);await click('Otvori projekt');
+  assert.deepEqual(calls.pop(),['standalone','example','rtcSet','nano','uno']);
+  await choose('Projekt','radio');await choose('Pločica čvora A','s3-cpp');await choose('Pločica čvora B','micropython');
+  await click('Otvori projekt');assert.deepEqual(calls.pop(),['standalone','radio','radio','s3-cpp','micropython']);
+  await choose('Skupina','all');await choose('Pločica i jezik','plc');
+  assert.deepEqual([...select('Projekt').options].map(o=>o.value),['lab/LV16']);
+  await click('Otvori projekt');assert.deepEqual(calls.pop(),['lab','LV16']);
+  await choose('Skupina','iot');assert.equal(document.querySelector('.project-catalog button.primary'),null);
+  await click('Ukloni filtre');await choose('Skupina','us');await choose('Projekt','us/V4.3');await choose('Izvedba projekta','s3-cpp');
+  await click('Otvori projekt');assert.deepEqual(calls.pop(),['practice',{track:'us',exercise:'V4.3',edition:'Arduino'}]);
+  await click('Radni list i programi za postaju');
+  assert.equal(document.querySelector('.lesson-catalog h4')?.textContent?.startsWith('V4.3'),true);
+  assert.equal(document.querySelector<HTMLSelectElement>('.urs-catalog select')?.value,'Arduino');
+  await click('URS');assert.equal(document.querySelector('.urs-lab-catalog h3')?.textContent,'URS');
+  assert.equal(document.querySelectorAll('.urs-lab-catalog select option').length,17);
+  assert.equal(document.querySelectorAll('.urs-lab-catalog details ol li').length,3);
+});

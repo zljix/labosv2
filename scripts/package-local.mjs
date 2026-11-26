@@ -56,7 +56,8 @@ hot-swap modela ili jamstva fizicke frekvencije. Nije SPI/DHT/1-Wire adapter.
 Bez valjanih napajanja model odbija prijenos; to nije fizicka potvrda izolacije.
 
 URS17 zadrzava zasebni SN74LVC2T45 GPIO profil sa zajednickim DIR-om.
-Vjezbe -> URS zbirka: ${catalogue.lessons} tema, ${catalogue.variants} varijanti.
+Vjezbe -> Zbirka -> Pregled vodjenih pokusa po temama: ${catalogue.lessons} tema, ${catalogue.variants} varijanti.
+Vjezbe -> URS: laboratorijske vjezbe s tri podzadatka P1, P2 i P3.
 ${catalogue.targets.map(t=>t.label+': '+t.count+'/'+catalogue.variants).join('; ')}.
 Ukupno ${catalogue.total} kombinacija; matrica ima ${catalogue.components} stavki x 4 cilja.
 Upute uvode pojmove prije pokusa. Izvedi promjenu, kvar i oporavak; upisi

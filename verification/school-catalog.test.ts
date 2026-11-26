@@ -4,6 +4,7 @@ import {readFileSync} from 'node:fs';
 import {parseProject} from '../src/project/model';
 import {prepareSchoolAssignment,readSchoolAssignment,SCHOOL_TASK_FILE} from '../src/platform/SchoolAssignment';
 import {targetForProject} from '../src/lessons/ursCatalog';
+import {labIds} from '../src/lessons/ursLab';
 import {exportZip,importProject} from '../src/project/archive';
 
 test('every frozen school starter opens as a new local project with its precise target and immutable task metadata',()=>{
@@ -23,7 +24,10 @@ test('every frozen school starter opens as a new local project with its precise 
     if(starter.radio)assert.deepEqual(copy.radio,starter.radio);
     ++count;
   }
-  assert.equal(count,371);
+  const labs=catalog.entries.filter((e:{set:string})=>e.set==='urs-lv');
+  assert.deepEqual(labs.map((e:{lessonId:string})=>e.lessonId),labIds);
+  assert(labs.every((e:{variantTitle:string})=>e.variantTitle==='URS · P1–P3'));
+  assert.equal(count,371+labIds.length);
   assert.equal(catalog.entries.filter((e:any)=>e.set==='urs').length,67);
   assert.equal(catalog.entries.filter((e:any)=>e.set==='introductory').length,5);
 });

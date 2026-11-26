@@ -3,10 +3,10 @@ import ActionGroup from './ActionGroup';
 import {ProjectFiles, FileTabs, fileTabId} from './ProjectFiles';
 import {tabKeys} from '../platform/tabs';
 import RadioPanel from '../radio/RadioPanel';
-import {opticalExamples,opticalCircuit,type OpticalExample} from '../circuit/max30102Examples';
-import {sdExamples,sdCircuit,type SDExample} from '../circuit/sdExamples';
-import {runtimeAsset, appAsset } from '../platform/assets';
-import {rtcExamples,rtcCircuit,type RTCExample} from '../circuit/rtcExamples';
+import {opticalExamples,type OpticalExample} from '../circuit/max30102Examples';
+import {sdExamples,type SDExample} from '../circuit/sdExamples';
+import {appAsset } from '../platform/assets';
+import {rtcExamples,type RTCExample} from '../circuit/rtcExamples';
 import {
   useEffect,
   useRef,
@@ -36,9 +36,9 @@ import type { Stored } from "../project/storage";
 import { useWorkspace } from "./useWorkspace";
 import { useRuntime } from "../runtime/useRuntime";
 import CircuitEditor from "../circuit/CircuitEditor";
-import { basicExamples, exampleCircuit, type BasicExample } from "../circuit/examples";
+import { basicExamples, type BasicExample } from "../circuit/examples";
 import {environmentExamples,environmentCircuit,loadEnvironmentDrivers,type EnvironmentExample} from "../circuit/environmentExamples";
-import {peripheralExample,peripheralCircuit,loadPeripheralDrivers} from "../circuit/peripheralExamples";
+import {peripheralExample,loadPeripheralDrivers} from "../circuit/peripheralExamples";
 import LessonPanel, {LessonCatalog} from "../lessons/LessonPanel";
 import {UrsLabPanel} from '../lessons/UrsLabPanel';
 import {createUrsLab, labForProject, type LabId} from '../lessons/ursLab';
@@ -69,11 +69,12 @@ import {deriveProject} from '../project/derive';
 import {runtimeAvailability} from '../runtime/profiles';
 import {exportSketch} from '../project/sketch';
 import {ArduinoBuildPanel,ArduinoSerial} from '../runtime/ArduinoPanel';
-import {arduinoExamples,loadArduinoExample,type ArduinoExample} from '../runtime/arduinoExamples';
-import {UNO} from '../boards/profiles';
+import {arduinoExamples,type ArduinoExample} from '../runtime/arduinoExamples';
+import {NANO} from '../boards/profiles';
+import {createStandalone, type StandaloneKind} from '../lessons/catalogProjects';
 import {AVR_BUILD_FILE,AVR_LIBRARY_FILE,validArduinoPath} from '../../public/avr-contract.mjs';
 import {buildInput,buildFile,validateArtifact} from '../../public/arduino-contract.mjs';
-import {s3Examples,loadS3Example,type S3Example} from '../runtime/s3Examples';
+import {s3Examples,type S3Example} from '../runtime/s3Examples';
 import OfflineAvrPanel from '../runtime/OfflineAvrPanel';
 import {OFFLINE_AVR,prefersOffline,loadOffline,preferStandard,importIntegratedProject,saveOffline} from '../runtime/offlineAvr';
 import {useArduinoCompiler} from '../runtime/useArduinoCompiler';
@@ -445,76 +446,15 @@ export default function App() {
       notify("Projekt je uvezen kao zasebna kopija. Program nije pokrenut.");
     });
   }
-  async function selectExample(key: string) {
+  async function selectStandalone(kind:StandaloneKind, id:string, target:UrsTarget, peer:UrsTarget='uno') {
     await action(async () => {
-      runtime.stop();
-      const e = (examples as Record<string, { title: string; code: string }>)[
-          key
-        ],
-        next = newProject(e.code, e.title);
-      next.settings.example = key;
-      next.circuit = {kind:"stage0-fixture",components:[],wires:[]};
-      setLabTab("circuit"); setMobileTab("lab");
+      const next = await createStandalone(kind,id,target,peer);
+      await ws.flush();
+      runtime.stop(); runtime.clear(); lessonCheck.cancel();
       await ws.add(next);
-      notify("Otvoren je novi projekt iz primjera.");
-    });
-  }
-  async function selectCircuitExample(key:BasicExample = "button") {
-    await action(async () => {
-      runtime.stop();
-      const e=basicExamples[key], next = newProject(e.code,e.title);
-      next.settings.example="basic-"+key;
-      next.circuit=exampleCircuit(key);
-      await ws.add(next);
-      setLabTab("circuit");setExpandedCircuit(false);setMobileTab("lab");
-      notify("Otvoren je primjer. Pokreni program i promijeni ulaz ili kôd.");
-    });
-  }
-  async function selectArduinoExample(key:ArduinoExample){
-    await action(async()=>{
-      const next=await loadArduinoExample(key,p?.board.id===S3?UNO:p?.board.id??UNO);
-      runtime.stop();await ws.add(next);setLabTab('circuit');setExpandedCircuit(false);setMobileTab('lab');
-      notify('Otvoren je Arduino primjer s prevedenim programom. Pokreni simulaciju.');
-    });
-  }
-  async function selectEnvironmentExample(key:EnvironmentExample){
-    await action(async()=>{
-      const e=environmentExamples[key],files=await loadEnvironmentDrivers(key),next=newProject(e.code,e.title);
-      next.files={...files,"main.py":e.code};next.circuit=environmentCircuit(key);next.settings.example="env-"+key;
-      runtime.stop();await ws.add(next);setLabTab("circuit");setExpandedCircuit(false);setMobileTab("lab");
-      notify("Otvoren je primjer s upravljačkim datotekama. Pokreni i promijeni okoliš.");
-    });
-  }
-  async function selectSDExample(key:SDExample){
-    await action(async()=>{
-      const e=sdExamples[key],next=newProject(e.code,e.title);
-      for(const name of ['lab_sdcard.py','lab_fat16.py',...(key==='sdLogger'?['lab_ds1302.py']:[])]){const r=await fetch(runtimeAsset('drivers/'+name));if(!r.ok)throw Error('Ne mogu učitati SD driver.');next.files[name]=await r.text();}
-      next.circuit=sdCircuit(key);next.settings.example='sd-'+key;runtime.stop();await ws.add(next);setLabTab('circuit');setExpandedCircuit(false);setMobileTab('lab');notify('Otvoren je microSD primjer s vidljivim SPI i FAT16 izvorima.');
-    });
-  }
-  async function selectOpticalExample(key:OpticalExample){
-    await action(async()=>{
-      const e=opticalExamples[key],next=newProject(e.code,e.title),r=await fetch(runtimeAsset('drivers/lab_max30102.py'));
-      if(!r.ok)throw Error('Ne mogu učitati MAX30102 driver.');
-      next.files={'main.py':e.code,'lab_max30102.py':await r.text()};next.circuit=opticalCircuit(key);next.settings.example='optical-'+key;
-      runtime.stop();await ws.add(next);setLabTab('circuit');setExpandedCircuit(false);setMobileTab('lab');notify('Otvoren je MAX30102 primjer s vidljivim I2C driverom.');
-    });
-  }
-  async function selectRTCExample(key:RTCExample){
-    await action(async()=>{
-      const e=rtcExamples[key],next=newProject(e.code,e.title),r=await fetch(runtimeAsset('drivers/lab_ds1302.py'));if(!r.ok)throw Error('Ne mogu učitati DS1302 driver.');
-      next.files={'main.py':e.code,'lab_ds1302.py':await r.text()};
-      if(key==='rtcClock'){const tm=await fetch(runtimeAsset('drivers/lab_tm1637.py'));if(!tm.ok)throw Error('Ne mogu učitati TM1637 driver.');next.files['lab_tm1637.py']=await tm.text();}
-      next.circuit=rtcCircuit(key);next.settings.example='rtc-'+key;runtime.stop();await ws.add(next);setLabTab('circuit');setExpandedCircuit(false);setMobileTab('lab');
-      notify('Otvoren je DS1302 primjer s vidljivim GPIO driverom.');
-    });
-  }
-  async function selectPeripheralExample(){
-    await action(async()=>{
-      const files=await loadPeripheralDrivers(),next=newProject(peripheralExample.code,peripheralExample.title);
-      next.files={...files,"main.py":peripheralExample.code};next.circuit=peripheralCircuit();next.settings.example="peripheral-regulator";
-      runtime.stop();await ws.add(next);setLabTab("circuit");setExpandedCircuit(false);setMobileTab("lab");
-      notify("Otvoren je primjer s upravljačkim datotekama. Pokreni i mijenjaj temperaturu ili vlagu.");
+      setDialog(kind==='radio'?'radio':null);
+      setTeacher(false); setLabTab('circuit'); setExpandedCircuit(false); setMobileTab('lab');
+      notify('Otvoren je projekt ' + next.title + '.');
     });
   }
   async function selectUrsLab(id:LabId) {
@@ -609,7 +549,7 @@ export default function App() {
       const next=await createUrsProject(lesson,variant,target,peer);
       await ws.flush();runtime.stop();lessonCheck.cancel();await ws.add(next);
       setDialog(null);setTeacher(false);setLabTab('lesson');setMobileTab('lesson');setExpandedCircuit(false);
-      notify('Otvorena je URS vježba. Pročitaj pojmove, pregledaj spojeve i početni program.');
+      notify('Otvoren je vođeni pokus. Pročitaj pojmove, pregledaj spojeve i početni program.');
     });
   }
   async function recordUrs(){
@@ -749,7 +689,7 @@ export default function App() {
   }
   const circuitEditor = <CircuitEditor key={p.id} circuit={p.circuit} language={p.language}
             onChange={(c, label, kind) => { runtime.stop(kind === "snapshot"); ws.change(label, n => {n.circuit = c; n.settings.example = "";}); }}
-            onDemo={() => void selectCircuitExample()}
+            onDemo={() => void selectStandalone('example','button','micropython')}
             onUndo={()=>{runtime.stop();ws.undo();}} onRedo={()=>{runtime.stop();ws.redo();}} canUndo={!!ws.undoCount} canRedo={!!ws.redoCount}
             simulation={runtime.simulation} runtimeActive={["running","done"].includes(runtime.state)} liveInputs={runtime.liveInputs} onInput={runtime.input}
             expanded={expandedCircuit} onExpand={() => {setExpandedCircuit(v=>!v);setCodeExpanded(false);setMobileTab("lab");}} />;
@@ -983,17 +923,17 @@ export default function App() {
 
           <details className="sidebar-section example-library"><summary>Primjeri i pokusi jezgre</summary>
             <div className="section-heading">ESP32-S3 · ARDUINO C++</div>
-            {Object.entries(s3Examples).map(([key,e],i)=><button key={key} className="example-row" disabled={working} onClick={()=>void action(async()=>{const next=await loadS3Example(key as S3Example);runtime.stop();await ws.add(next);setLabTab('circuit');setExpandedCircuit(false);setMobileTab('lab');notify('Otvoren je S3 C++ primjer. Pokreni simulaciju.');})}><span>{i+1}</span><b>{e.title}</b></button>)}
+            {Object.entries(s3Examples).map(([key,e],i)=><button key={key} className="example-row" disabled={working} onClick={()=>void selectStandalone('example',key,'s3-cpp')}><span>{i+1}</span><b>{e.title}</b></button>)}
             <div className="section-heading">ARDUINO · UNO / NANO</div>
-            {Object.entries(arduinoExamples).map(([key,e],i)=><button key={key} className="example-row" disabled={working} onClick={()=>void selectArduinoExample(key as ArduinoExample)}><span>{i+1}</span><b>{e.title}</b></button>)}
+            {Object.entries(arduinoExamples).map(([key,e],i)=><button key={key} className="example-row" disabled={working} onClick={()=>void selectStandalone('example',key,p.board.id===NANO?'nano':'uno')}><span>{i+1}</span><b>{e.title}</b></button>)}
             <div className="section-heading">ESP32 · MICROPYTHON PRIMJERI</div>
-            {Object.entries(opticalExamples).map(([key,e])=><button key={key} className="example-row" disabled={working} onClick={()=>void selectOpticalExample(key as OpticalExample)}><span>◉</span><b>{e.title}</b></button>)}
-            {Object.entries(sdExamples).map(([key,e])=><button key={key} className="example-row" disabled={working} onClick={()=>void selectSDExample(key as SDExample)}><span>▣</span><b>{e.title}</b></button>)}
-            {Object.entries(rtcExamples).map(([key,e])=><button key={key} className="example-row" disabled={working} onClick={()=>void selectRTCExample(key as RTCExample)}><span>◷</span><b>{e.title}</b></button>)}
-            <button className="example-row" disabled={working} onClick={()=>void selectPeripheralExample()}><span>4</span><b>{peripheralExample.title}</b></button>
-            {Object.entries(environmentExamples).map(([key,e],i)=><button key={key} className="example-row" disabled={working} onClick={()=>void selectEnvironmentExample(key as EnvironmentExample)}><span>{i+5}</span><b>{e.title}</b></button>)}
+            {Object.entries(opticalExamples).map(([key,e])=><button key={key} className="example-row" disabled={working} onClick={()=>void selectStandalone('example',key,'micropython')}><span>◉</span><b>{e.title}</b></button>)}
+            {Object.entries(sdExamples).map(([key,e])=><button key={key} className="example-row" disabled={working} onClick={()=>void selectStandalone('example',key,'micropython')}><span>▣</span><b>{e.title}</b></button>)}
+            {Object.entries(rtcExamples).map(([key,e])=><button key={key} className="example-row" disabled={working} onClick={()=>void selectStandalone('example',key,'micropython')}><span>◷</span><b>{e.title}</b></button>)}
+            <button className="example-row" disabled={working} onClick={()=>void selectStandalone('example','regulator','micropython')}><span>4</span><b>{peripheralExample.title}</b></button>
+            {Object.entries(environmentExamples).map(([key,e],i)=><button key={key} className="example-row" disabled={working} onClick={()=>void selectStandalone('example',key,'micropython')}><span>{i+5}</span><b>{e.title}</b></button>)}
             <div className="section-heading">OSNOVNI SIMULATOR</div>
-            {Object.entries(basicExamples).map(([key,e],i)=><button key={key} className="example-row" disabled={working} onClick={()=>void selectCircuitExample(key as BasicExample)}><span>{i+1}</span><b>{e.title}</b></button>)}
+            {Object.entries(basicExamples).map(([key,e],i)=><button key={key} className="example-row" disabled={working} onClick={()=>void selectStandalone('example',key,'micropython')}><span>{i+1}</span><b>{e.title}</b></button>)}
             <div className="section-heading">POKUSI JEZGRE</div>
             <p>Svaki primjer otvara novi projekt.</p>
             {Object.entries(examples).map(([key, value], i) => (
@@ -1001,7 +941,7 @@ export default function App() {
                 key={key}
                 className="example-row"
                 disabled={working}
-                onClick={() => void selectExample(key)}
+                onClick={() => void selectStandalone('core',key,'micropython')}
               >
                 <span>{String(i + 1).padStart(2, "0")}</span>
                 <b>{value.title}</b>
@@ -1468,7 +1408,7 @@ export default function App() {
           {dialog==='arduino'&&<ArduinoBuildPanel offline={OFFLINE_AVR&&p.runtimeProfile.id==='arduino-avr'&&!p.radio} key={p.id} project={p} compiler={compiler} consoleText={runtime.runRevision===p.revision?runtime.consoleText:''} setLibraries={text=>{runtime.stop();ws.change('Odabrane Arduino biblioteke',n=>{n.files[AVR_LIBRARY_FILE]=text;});}} goTo={d=>{if(!Object.hasOwn(p.files,d.file))return;ws.change('Otvorena datoteka pogreške',n=>{n.settings.activeFile=d.file;});setReveal({path:d.file,line:d.line,column:d.column,token:Date.now()});setDialog(null);setMobileTab('code');}} importBuild={(text,input)=>{runtime.stop();const live=liveProject.current;if(!live||live.id!==p.id||JSON.stringify(buildInput(live))!==input)throw Error('Projekt je promijenjen.');if(readSchoolBinding(live)){if(readSchoolBinding(live)?.status==='locked')throw Error('Predaja je zaključana.');notify('Prijevod je spreman za pokretanje; školska revizija ostaje ista.');return;}const saved=ws.change('Preveden Arduino program',n=>{if(JSON.stringify(buildInput(n))!==input)throw Error('Projekt se promijenio tijekom prevođenja. Ponovi prevođenje.');n.files[buildFile(n)]=text;});if(!saved)throw Error('Rezultat nije spremljen u projekt. Provjeri veličinu i datoteke projekta.');preferStandard(live);notify('Prevedeni program spremljen je u projekt.');}}/>}
           {dialog === 'board' &&<BoardChangePanel project={p} busy={working} error={formError} create={(id,language)=>{setWorking(true);setFormError('');void (async()=>{try{const derived=deriveProject(p,id,language);await ws.flush();runtime.stop();lessonCheck.cancel();await ws.add(derived);setDialog(null);setLabTab('circuit');setMobileTab('lab');notify('Otvorena je izvedena kopija s novom pločicom.');}catch(e){setFormError((e as Error).message);}finally{setWorking(false);}})();}}/>}
           {dialog === 'matrix'&&<SupportMatrix board={p.board.id} language={p.language}/>}
-          {dialog === "lessons" && <LessonCatalog openLab={id=>void selectUrsLab(id)} initialLab={lab} initialCollection={lab?'urs-lv':practice?.track??collection?.track} initialExercise={practice?.exercise??collection?.exercise} initialEdition={practice?.edition??(collection?'MicroPython':undefined)} simulate={key=>void selectPractice(key)} openPilot={(track,exercise)=>void selectPilot(track,exercise)} open={(id,solution)=>void selectLesson(id,solution)} openUrs={(lesson,variant,target,peer)=>void selectUrs(lesson,variant,target,peer)} initialTarget={targetForProject(p)} busy={working} reviewClass={()=>openDialog('class-review')}/>}
+          {dialog === "lessons" && <LessonCatalog openStandalone={selectStandalone} openLab={id=>void selectUrsLab(id)} initialLab={lab} initialCollection={lab?'urs-lv':practice?.track??collection?.track} initialExercise={practice?.exercise??collection?.exercise} initialEdition={practice?.edition??(collection?'MicroPython':undefined)} simulate={key=>void selectPractice(key)} openPilot={(track,exercise)=>void selectPilot(track,exercise)} open={(id,solution)=>void selectLesson(id,solution)} openUrs={(lesson,variant,target,peer)=>void selectUrs(lesson,variant,target,peer)} initialTarget={targetForProject(p)} busy={working}/>}
           {dialog === 'system' && <SystemPanel offline={offline} busy={runtime.busy || lessonCheck.busy || working} saveStatus={saveLabels[ws.status]} update={updateApplication}/>}
           {[
             "new",
@@ -1656,7 +1596,7 @@ export default function App() {
                 <li>Klikni Pokreni i mijenjaj ulaze. U primjeru AHT10 promijeni temperaturu iznad 28 °C; sljedeće očitanje (svake 2 s) mijenja OLED i servo. Ispod 26 °C servo se vraća. Kartica Mjerenja sadrži očitanja, CSV izvoz i I2C zapis.</li>
                 <li>AHT10 koristi I2C0 na GPIO8/9, OLED I2C1 na GPIO10/11. VCC oba modula ide na 3V3; servo na 5 V i zajedničku masu. Pull-up otpornici od 4,7 kΩ uključeni su u modele modula i mogu se isključiti u svojstvima.</li>
                 <li>Upravljačke datoteke senzora, ssd1306.py, lcd1602.py i servo.py dio su odgovarajućih primjera. Primjenjuju se pri novom pokretanju kao i main.py. Promjena sklopa zaustavlja program; Reset vraća spremljeni početni okoliš.</li>
-                <li>Gumb Vježbe otvara pet postupnih zadataka. Na kartici Vježba pročitaj pojmove, sastavi i programiraj, pokreni Provjeri rad, unesi opažanja i preuzmi ZIP za predaju.</li>
+                <li>U izborniku Vježbe odaberi Zbirka za sve projekte ili URS za laboratorijske vježbe s tri izmjene koda. Za prvi rad s pločicom odaberi Početnih pet vježbi.</li>
                 <li>Pregled predaje omogućuje nastavniku da uveze paket i ponovi provjeru. Uvezeni lokalni zapis nije ovjerena ocjena; pregledaj i učenikova obrazloženja.</li>
               </ol>
               <p>

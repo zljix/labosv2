@@ -17,3 +17,6 @@
 .urs-lab-catalog select { max-width: 100%; }
 .urs-lab-task { border-left: 3px solid var(--line, #cfdae0); padding: .1rem 0 .6rem .85rem; }
 .urs-lab-task textarea { width: 100%; box-sizing: border-box; }
+.project-catalog select{width:100%}.project-catalog label{min-width:0}.project-catalog h3{margin-top:0}
+.project-catalog .variant-preview{margin:16px 0;padding:16px}.project-catalog .lesson-kicker{display:block;margin-bottom:6px}
+.project-targets{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:12px 0}.project-targets label{flex:1 1 180px}

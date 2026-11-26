@@ -19,6 +19,12 @@ let serveRoot=root;
 await mkdir(reports,{recursive:true});
 const evidence={phase,engine,success:false,checks:[],errors:[],namespace:await readlink('/proc/self/ns/net')};
 let context,page,server;
+async function dismissStartMenu(){
+ const menu=page.getByRole('dialog',{name:'Početni izbornik'});
+ await menu.waitFor();
+ for(const label of ['Uvod','Nastavne putanje','Zbirka'])assert(await menu.getByRole('button',{name:new RegExp('^'+label)}).isVisible());
+ await menu.getByRole('button',{name:'Zatvori prozor'}).click();
+}
 async function open(){
  // WebKit's emulated offline mode rejects even cache-only SW responses
  // (microsoft/playwright#42775). OS network isolation is checked before open
@@ -26,6 +32,7 @@ async function open(){
  context=await browserType.launchPersistentContext(profile,{headless:true,offline:phase==='isolated'&&engine==='chromium',viewport:{width:1440,height:1100},args:launchArgs});
  evidence.browser=context.browser()?.version();page=await context.newPage();page.on('pageerror',e=>evidence.errors.push(e.message));
  const response=await page.goto(origin,{waitUntil:'domcontentloaded'});
+ await dismissStartMenu();
  if(phase==='isolated')assert(response.fromServiceWorker(),'Labos navigation must use persisted app package');
  await page.getByRole('button',{name:'Prevedi',exact:true}).waitFor({timeout:30000});
  await page.waitForFunction(()=>!!navigator.serviceWorker.controller,null,{timeout:120000});
@@ -74,6 +81,7 @@ try{
   if(process.env.LAB_UPGRADE_BASELINE)serveRoot=resolve(process.env.LAB_UPGRADE_BASELINE);
   context=await browserType.launchPersistentContext(profile,{headless:true,viewport:{width:1440,height:1100},args:launchArgs});page=await context.newPage();page.on('pageerror',e=>evidence.errors.push(e.message));
   await page.goto(origin);await page.locator('input[accept=".zip,.json"]').waitFor({state:'attached'});
+  if(!process.env.LAB_UPGRADE_BASELINE)await dismissStartMenu();
   await page.locator('input[accept=".zip,.json"]').setInputFiles({name:'integrated.json',mimeType:'application/json',buffer:await readFile(engine==='webkit'?'.build/avr-integrated-nano-fixture.json':'.build/avr-integrated-fixture.json')});
   await page.waitForFunction(()=>document.querySelector('.cm-content')?.textContent.includes('INTEGRATED_FIXTURE'));
   await page.getByRole('button',{name:'Prevedi',exact:true}).waitFor();
@@ -92,6 +100,7 @@ try{
    await page.getByRole('button',{name:'Status aplikacije i offline rad',exact:true}).click();
    await page.getByRole('button',{name:'Spremi i otvori novu verziju',exact:true}).waitFor({timeout:120000});
    await Promise.all([page.waitForEvent('domcontentloaded'),page.getByRole('button',{name:'Spremi i otvori novu verziju',exact:true}).click()]);
+   await dismissStartMenu();
    await page.getByRole('button',{name:'Prevedi',exact:true}).waitFor({timeout:30000});
    await page.waitForFunction(version=>document.body.innerText.includes(version),currentManifest.version,{timeout:30000});
    assert.equal((await savedProject()).id,active);assert.deepEqual(await projectContents(),before);

@@ -75,7 +75,14 @@ function plc(level: number) {
           : true)
   };
 }
-export function labScenario(id: LabId, n: number, p: Project, seed: number, label = '') {
+export function labScenario(
+  id: LabId,
+  n: number,
+  p: Project,
+  seed: number,
+  label = '',
+  stopWhileRunning = false
+) {
   if (id === 'LV16') return plc(n);
   if (['LV03', 'LV04', 'LV05'].includes(id)) return sensorLab(id, n, seed);
   if (id === 'LV01')
@@ -388,7 +395,8 @@ export function labScenario(id: LabId, n: number, p: Project, seed: number, labe
               pot(600, 100),
               pot(1700, 100),
               pot(950, 100),
-              pot(1750, 100),
+              pot(2000, 100),
+              pot(stopWhileRunning ? 1200 : 200, 100),
               key(180, true, 2),
               pot(1600, 100)
             ];
@@ -401,7 +409,15 @@ export function labScenario(id: LabId, n: number, p: Project, seed: number, labe
           return (
             d[0] < 2 && d[1] >= 15 && d[1] <= 35 && d[2] > d[1] + 15 && d[2] <= 75 && d[3] < 2 && d[4] < 2
           );
-        return d[1] > 20 && d[2] < 2 && d[3] > 20 && d[4] < 2 && d[5] < 2 && d[6] < 2;
+        return (
+          d[1] > 20 &&
+          d[2] < 2 &&
+          d[3] > 20 &&
+          d[4] < 2 &&
+          (stopWhileRunning ? d[5] > 20 : d[5] < 2) &&
+          d[6] < 2 &&
+          d[7] < 2
+        );
       }
     };
   }

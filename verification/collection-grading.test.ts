@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { hasText } from '../src/grading/screen';
+import oledFont from '../src/grading/oledFont.json';
 import registry from '../school/grader/profiles.json';
 import { gradingCoverage } from '../school/grader/coverage';
 import { gradeJob } from '../school/grader/official';
@@ -22,6 +24,31 @@ function starter(set: string, id: string, target = 'micropython'): Project {
 async function official(key: string, p: Project) {
   return gradeJob(jobFor(p, collectionProfile(key)), { root: process.cwd() });
 }
+
+test('OLED text recognises adjacent rows printed at the worksheet line spacing', () => {
+  const width = 128,
+    height = 32;
+  const pixels = new Uint8Array(width * height);
+  for (const [row, text] of ['MIN 992', 'MAX 1008'].entries()) {
+    [...text].forEach((character, index) => {
+      const glyph = oledFont[character as keyof typeof oledFont];
+      glyph.forEach((column, x) => {
+        for (let y = 0; y < 10; y++) {
+          if (column & (1 << y)) pixels[(row * 8 + y) * width + index * 6 + x] = 1;
+        }
+      });
+    });
+  }
+  const screen = {
+    width,
+    height,
+    pixel: (x: number, y: number) => pixels[y * width + x],
+    font: oledFont,
+    glyphHeight: 10
+  };
+  for (const text of ['MIN', '992', 'MAX', '1008']) assert(hasText(screen, text), text);
+  assert.equal(hasText(screen, '1009'), false);
+});
 
 test('every published collection/target has its own current executable rubric and sums to ten', () => {
   const matrix = gradingCoverage('test');
@@ -159,6 +186,39 @@ test(
     assert.deepEqual(
       r.criteria?.map((c: any) => c.points),
       [3, 3, 4],
+      JSON.stringify(r)
+    );
+  }
+);
+
+test(
+  'Nano motor duty cycle stops during running and idle phases',
+  {
+    skip: !process.env.LAB_ARDUINO_CLI,
+    timeout: 150000
+  },
+  async () => {
+    const p = starter('urs-lv', 'LV14', 'nano');
+    p.files['P3-program.txt'] = p.files[p.entryFile].replace(
+      '  if (pwm > 0)',
+      [
+        '  static unsigned long start = 0;',
+        '  static bool inCycle = false;',
+        '  if (pwm > 0 && !inCycle) start = millis();',
+        '  inCycle = pwm > 0;',
+        '  if ((millis() - start) % 3000 >= 2000) pwm = 0;',
+        '  if (pwm > 0)'
+      ].join('\n')
+    );
+    const r = await gradeJob(jobFor(p, collectionProfile('urs-lv/LV14')), {
+      root: process.cwd(),
+      compile: true,
+      cli: process.env.LAB_ARDUINO_CLI,
+      data: process.cwd() + '/avr-env/data'
+    });
+    assert.deepEqual(
+      r.criteria?.map((c: any) => c.points),
+      [0, 0, 4],
       JSON.stringify(r)
     );
   }

@@ -18,7 +18,13 @@ export async function runTrial(
     ? labScenario(id as LabId, trial.index + 1, trial.project, seed, trial.label)
     : practiceScenario(id as ExerciseId, trial.index === 1, trial.project, trial.inputs, seed, checkB);
   const stages = await replay(trial.project, artifact, plan.steps, resources);
-  return plan.check(stages)
+  let passed = plan.check(stages);
+  if (passed && lab && id === 'LV14' && trial.index === 2) {
+    // STOP latches until reset. Restart the same program to test the second phase.
+    const activeStop = labScenario('LV14', 3, trial.project, seed, trial.label, true);
+    passed = activeStop.check(await replay(trial.project, artifact, activeStop.steps, resources));
+  }
+  return passed
     ? success
     : {
         passed: false,

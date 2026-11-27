@@ -41,7 +41,7 @@ export function hasText(d: Screen | undefined, text: string, area?: [number, num
   const glyphs = [...text].map((c) => d.font[c]);
   if (glyphs.some((g) => !g)) return false;
   for (const scale of [1, 2]) {
-    const points = glyphs.flatMap((g, i) =>
+    const grid = glyphs.flatMap((g, i) =>
       g.flatMap((bits, col) =>
         Array.from({ length: d.glyphHeight }, (_, row) => ({
           x: (i * 6 + col) * scale,
@@ -50,12 +50,18 @@ export function hasText(d: Screen | undefined, text: string, area?: [number, num
         }))
       )
     );
-    const first = points.find((p) => p.ink),
-      empty = points.find((p) => !p.ink);
-    if (!first || !empty) continue;
-    const xMax = Math.max(...points.map((p) => p.x)),
-      yMax = Math.max(...points.filter((p) => p.ink).map((p) => p.y));
-    for (let y = top; y + yMax < bottom; y++)
+    const inkPoints = grid.filter((point) => point.ink);
+    if (!inkPoints.length) continue;
+    const yMin = Math.min(...inkPoints.map((point) => point.y));
+    const yMax = Math.max(...inkPoints.map((point) => point.y));
+    // Print::println advances eight pixels. A neighbouring row may occupy
+    // blank padding above or below this font's visible seven-pixel capitals.
+    const points = grid.filter((point) => point.y >= yMin && point.y <= yMax);
+    const first = inkPoints[0];
+    const empty = points.find((point) => !point.ink);
+    if (!empty) continue;
+    const xMax = Math.max(...points.map((point) => point.x));
+    for (let y = top - yMin; y + yMax < bottom; y++)
       for (let x = left; x + xMax < right; x++) {
         const ink = d.pixel(x + first.x, y + first.y),
           background = d.pixel(x + empty.x, y + empty.y);

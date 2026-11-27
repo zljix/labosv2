@@ -1,5 +1,5 @@
 {
-  "build": "df60dea1b4a764de",
+  "build": "dd6f8cef164202fd",
   "version": "0.16.0-beta.4",
   "base": "/",
   "files": [
@@ -19,1003 +19,1003 @@
       "bytes": 7595
     },
     {
-      "url": "/app/df60dea1b4a764de/actuators.mjs",
+      "url": "/app/dd6f8cef164202fd/actuators.mjs",
       "sha256": "435146cd09d40d9d3e4089253a43e589bef8a8686171943d362421d28a9c9219",
       "bytes": 6237,
       "cacheUrl": "/actuators.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/analog-inputs.mjs",
+      "url": "/app/dd6f8cef164202fd/analog-inputs.mjs",
       "sha256": "dc9b56c0ab75369ad11f7e491e0d5f4b890918636210fc35ab00ebf4c4b62308",
       "bytes": 3682,
       "cacheUrl": "/analog-inputs.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/app.mjs",
+      "url": "/app/dd6f8cef164202fd/app.mjs",
       "sha256": "73d2ef6af87662751dd28b3b8cc1d7c0119ce4e4807a92ad3f1b963568f607b6",
       "bytes": 7595,
       "cacheUrl": "/app.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/arduino-contract.mjs",
+      "url": "/app/dd6f8cef164202fd/arduino-contract.mjs",
       "sha256": "c55d06d8ccb7ac9da75d89117194cdd707419f3b27ec76aa808474b1dfaa79a2",
       "bytes": 762,
       "cacheUrl": "/arduino-contract.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/avr-contract.mjs",
+      "url": "/app/dd6f8cef164202fd/avr-contract.mjs",
       "sha256": "da5991e2bb0d1d9e2a3f6b9662c3f41a7e9295c1c0e79f13ecbec52ad1c03ab4",
       "bytes": 8985,
       "cacheUrl": "/avr-contract.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/avr-examples.json",
+      "url": "/app/dd6f8cef164202fd/avr-examples.json",
       "sha256": "3c2a4a33f05037f370e78b3b4e1a6fd5591cc1ffe9c8afe9df8fc47898d567f1",
       "bytes": 2727980,
       "cacheUrl": "/avr-examples.json"
     },
     {
-      "url": "/app/df60dea1b4a764de/circuit-host.mjs",
+      "url": "/app/dd6f8cef164202fd/circuit-host.mjs",
       "sha256": "794d3ccdd1a7597d77a9e923b6f6b63e7cdaf0f7a47b0ef958139628d9d4c620",
       "bytes": 32066,
       "cacheUrl": "/circuit-host.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/dht-bus.mjs",
+      "url": "/app/dd6f8cef164202fd/dht-bus.mjs",
       "sha256": "cd6289016d59e32092ccadbc487757db6509af170424a4f1f4513ff261eefa28",
       "bytes": 5464,
       "cacheUrl": "/dht-bus.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/_onewire.py",
+      "url": "/app/dd6f8cef164202fd/drivers/_onewire.py",
       "sha256": "36b0ba7dd361b30bf1e5c1c28f8f96703f94b8dcd2b9ac21d8ed52ab00d8c3c6",
       "bytes": 1435,
       "cacheUrl": "/drivers/_onewire.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/aht10.py",
+      "url": "/app/dd6f8cef164202fd/drivers/aht10.py",
       "sha256": "7350e85ce96b1cfcea4d331751ac417b56e3c93a59d021985e1cc9132d1204b5",
       "bytes": 1383,
       "cacheUrl": "/drivers/aht10.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/dht.py",
+      "url": "/app/dd6f8cef164202fd/drivers/dht.py",
       "sha256": "2aff84bb314c8785b08bd87420e8baa8d6cf14724c953c8a69b9315fb047ec91",
       "bytes": 1094,
       "cacheUrl": "/drivers/dht.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/ds18x20.py",
+      "url": "/app/dd6f8cef164202fd/drivers/ds18x20.py",
       "sha256": "f55f41095a9047dd52c377b13ff5c07534b065f01e79361defef13ad09f092fc",
       "bytes": 1453,
       "cacheUrl": "/drivers/ds18x20.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/lab_bmp280_spi.h",
+      "url": "/app/dd6f8cef164202fd/drivers/lab_bmp280_spi.h",
       "sha256": "4f2cc629c8e43cc494e4e0322a8129c2d5cd22a72f14b920c5d7fab4014be51c",
       "bytes": 2103,
       "cacheUrl": "/drivers/lab_bmp280_spi.h"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/lab_bmp280_spi.py",
+      "url": "/app/dd6f8cef164202fd/drivers/lab_bmp280_spi.py",
       "sha256": "1b59e3a1783f5fd98fa1036b9701f32989c77e57f9c04e168a3052b06917d70f",
       "bytes": 781,
       "cacheUrl": "/drivers/lab_bmp280_spi.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/lab_ds1302.py",
+      "url": "/app/dd6f8cef164202fd/drivers/lab_ds1302.py",
       "sha256": "a5a845977848d2c912e9cbbde18f173e551d56b0296e0ba353c0017456cd07ca",
       "bytes": 4135,
       "cacheUrl": "/drivers/lab_ds1302.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/lab_encoder.py",
+      "url": "/app/dd6f8cef164202fd/drivers/lab_encoder.py",
       "sha256": "7a0f7d92efd8b78879bcb9079f01b56a569d5b80122cf70d6ef49385cb147b31",
       "bytes": 2017,
       "cacheUrl": "/drivers/lab_encoder.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/lab_fat16.py",
+      "url": "/app/dd6f8cef164202fd/drivers/lab_fat16.py",
       "sha256": "a011285b671216abaf6cd7ade7f787d195c91d57b3939d7d46ff7befd77bcbbe",
       "bytes": 9195,
       "cacheUrl": "/drivers/lab_fat16.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/lab_i2c_sensors.py",
+      "url": "/app/dd6f8cef164202fd/drivers/lab_i2c_sensors.py",
       "sha256": "e604febe801f59b3053d0b26bb88fcb44bf325d91da0808150e9dfe3be364310",
       "bytes": 5109,
       "cacheUrl": "/drivers/lab_i2c_sensors.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/lab_ili9341.h",
+      "url": "/app/dd6f8cef164202fd/drivers/lab_ili9341.h",
       "sha256": "c77b5b95145f864588efb19524ef00bd193eb9f9531d7c0e600968aba9096dd4",
       "bytes": 3961,
       "cacheUrl": "/drivers/lab_ili9341.h"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/lab_ili9341.py",
+      "url": "/app/dd6f8cef164202fd/drivers/lab_ili9341.py",
       "sha256": "b50d9c7710312e4ec5694dc4e53609a89958d7231c953417fb95635b40ac2293",
       "bytes": 4822,
       "cacheUrl": "/drivers/lab_ili9341.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/lab_ir.py",
+      "url": "/app/dd6f8cef164202fd/drivers/lab_ir.py",
       "sha256": "1193749f56beb24d95580d7d2ab9134b18f361e5460010b05aa6016616372f1e",
       "bytes": 4266,
       "cacheUrl": "/drivers/lab_ir.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/lab_max30102.h",
+      "url": "/app/dd6f8cef164202fd/drivers/lab_max30102.h",
       "sha256": "138c4857d7e5e80f743741a44dcfa169b039ef32afbeb4f9843c3de47199f074",
       "bytes": 1945,
       "cacheUrl": "/drivers/lab_max30102.h"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/lab_max30102.py",
+      "url": "/app/dd6f8cef164202fd/drivers/lab_max30102.py",
       "sha256": "4047b905647b4fa306496af3c3c4529c0b4217532e20abd4a5edfab07240e5db",
       "bytes": 2377,
       "cacheUrl": "/drivers/lab_max30102.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/lab_s3_nec.h",
+      "url": "/app/dd6f8cef164202fd/drivers/lab_s3_nec.h",
       "sha256": "22198e1c5d807bf0b968785e27f4ad0081a09b620d1c747512255b326ffa2629",
       "bytes": 3426,
       "cacheUrl": "/drivers/lab_s3_nec.h"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/lab_sd.h",
+      "url": "/app/dd6f8cef164202fd/drivers/lab_sd.h",
       "sha256": "04fef018b7f3317d1bf9abe979cbc440d5725146983fb84e38dc8030d2986b6a",
       "bytes": 7133,
       "cacheUrl": "/drivers/lab_sd.h"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/lab_sdcard.py",
+      "url": "/app/dd6f8cef164202fd/drivers/lab_sdcard.py",
       "sha256": "ac87d56ba8e51ac0c8ea071bbcd8dc91cd4990084aec80a8e30498cec2b6ebaf",
       "bytes": 4666,
       "cacheUrl": "/drivers/lab_sdcard.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/lab_st7735.h",
+      "url": "/app/dd6f8cef164202fd/drivers/lab_st7735.h",
       "sha256": "988700ae9bf4282c8d5253ea56eea5a62e4f62c37d74a31d42ecb770a46b4235",
       "bytes": 3737,
       "cacheUrl": "/drivers/lab_st7735.h"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/lab_st7735.py",
+      "url": "/app/dd6f8cef164202fd/drivers/lab_st7735.py",
       "sha256": "1cf45cc53d75709df320a1e48825141c1f180e5bf56c0253cccf473e93db70c8",
       "bytes": 4629,
       "cacheUrl": "/drivers/lab_st7735.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/lab_tm1637.py",
+      "url": "/app/dd6f8cef164202fd/drivers/lab_tm1637.py",
       "sha256": "d34af94ff7b629ee2fbe7c1ed0692ce0f5c8f5ea99be09c70653187ecb72b59e",
       "bytes": 3013,
       "cacheUrl": "/drivers/lab_tm1637.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/lab_xpt2046.h",
+      "url": "/app/dd6f8cef164202fd/drivers/lab_xpt2046.h",
       "sha256": "db23a3a7e39d8bbbc1f8bca83d25b47959bc02e58c38100c74422890b4b42fde",
       "bytes": 1639,
       "cacheUrl": "/drivers/lab_xpt2046.h"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/lab_xpt2046.py",
+      "url": "/app/dd6f8cef164202fd/drivers/lab_xpt2046.py",
       "sha256": "7ed5a37cdddf83bdf55482c1cfc5489e454d0c778d6b6a4456b0f5bb71f0fdd4",
       "bytes": 2228,
       "cacheUrl": "/drivers/lab_xpt2046.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/lcd1602.py",
+      "url": "/app/dd6f8cef164202fd/drivers/lcd1602.py",
       "sha256": "cf946f1e28b780a7310b587fe9c73959e5c12f8680e1ea30604c99b3355790f8",
       "bytes": 2665,
       "cacheUrl": "/drivers/lcd1602.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/onewire.py",
+      "url": "/app/dd6f8cef164202fd/drivers/onewire.py",
       "sha256": "11f05fe2f3fc294590da5a17e160573ba0d98f1c3f9f27612479c734db71808b",
       "bytes": 2395,
       "cacheUrl": "/drivers/onewire.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/provenance.json",
+      "url": "/app/dd6f8cef164202fd/drivers/provenance.json",
       "sha256": "ca874768996e8918f0961e38c67251d0696e87532037fd42f90b55af7020b0bd",
       "bytes": 7913,
       "cacheUrl": "/drivers/provenance.json"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/servo.py",
+      "url": "/app/dd6f8cef164202fd/drivers/servo.py",
       "sha256": "41d09d148a034ef3014a0ac7f0535391270820f90f7393253831f1b4eaddded0",
       "bytes": 770,
       "cacheUrl": "/drivers/servo.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/drivers/ssd1306.py",
+      "url": "/app/dd6f8cef164202fd/drivers/ssd1306.py",
       "sha256": "b9f5331c75297774bced61bdfd12c37d4363336d064d7cf58967c88d807efbe5",
       "bytes": 4922,
       "cacheUrl": "/drivers/ssd1306.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/environment-sensors.mjs",
+      "url": "/app/dd6f8cef164202fd/environment-sensors.mjs",
       "sha256": "ac13efffc7df8780a6bfaa8a52009b525bd8aff7426b309a6a0883fed700c8fe",
       "bytes": 11050,
       "cacheUrl": "/environment-sensors.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/examples.mjs",
+      "url": "/app/dd6f8cef164202fd/examples.mjs",
       "sha256": "72f0bc338d7adb620838b4f5b669e6146db763a7751d9021124e37b7cf061370",
       "bytes": 3594,
       "cacheUrl": "/examples.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/host.mjs",
+      "url": "/app/dd6f8cef164202fd/host.mjs",
       "sha256": "a34f281d2b301286c00b67d8cf5bc51c40011adb3671deee22dec343fb241f5d",
       "bytes": 3055,
       "cacheUrl": "/host.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/i2c-host.mjs",
+      "url": "/app/dd6f8cef164202fd/i2c-host.mjs",
       "sha256": "e01aa19ad31c8363cb8e9f143aab57cdd4b6b79b1093ad76f3d2b328d2ecd17e",
       "bytes": 13708,
       "cacheUrl": "/i2c-host.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/i2c-level-shifter.mjs",
+      "url": "/app/dd6f8cef164202fd/i2c-level-shifter.mjs",
       "sha256": "ba9fe5b1066cb3bdb402812db877c51ea878a3a4f8b8fd5ce537a0dab8f75bf1",
       "bytes": 2578,
       "cacheUrl": "/i2c-level-shifter.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/ili9341.mjs",
+      "url": "/app/dd6f8cef164202fd/ili9341.mjs",
       "sha256": "1e0f8658b76545f505b6650d0c96d396fd7bae3bba57331f7c5e7627d15dd896",
       "bytes": 4004,
       "cacheUrl": "/ili9341.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/infrared.mjs",
+      "url": "/app/dd6f8cef164202fd/infrared.mjs",
       "sha256": "755bbd28af890e7203d1919cd9349dc1a68592c9f1774b94edf1171de709b9b0",
       "bytes": 7464,
       "cacheUrl": "/infrared.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/lcd1602.mjs",
+      "url": "/app/dd6f8cef164202fd/lcd1602.mjs",
       "sha256": "4da4e9e3635c097037f74cea05ad9762b827e95eefeed2f6e65fd85f1b6048d4",
       "bytes": 4855,
       "cacheUrl": "/lcd1602.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/level-shifter.mjs",
+      "url": "/app/dd6f8cef164202fd/level-shifter.mjs",
       "sha256": "9ff452857ff84c998264813a01df5289964c5cbac08a7ec20a8effc24d6a28fe",
       "bytes": 2231,
       "cacheUrl": "/level-shifter.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/machine.py",
+      "url": "/app/dd6f8cef164202fd/machine.py",
       "sha256": "701e884160decd9078d5c727d01f92d0529e7ed5a787d759ba16db18b35d1b4a",
       "bytes": 15238,
       "cacheUrl": "/machine.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/max30102.mjs",
+      "url": "/app/dd6f8cef164202fd/max30102.mjs",
       "sha256": "7ae6b6e326c6f0a080f3e1828a105aa8731e7e8c7844b878939b4afd1d0d2b79",
       "bytes": 9239,
       "cacheUrl": "/max30102.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/nrf24.mjs",
+      "url": "/app/dd6f8cef164202fd/nrf24.mjs",
       "sha256": "4e2e334f9e6b12e6242f8d118a184194e1f92fcaf01dd507bb09ff3ad46c8e46",
       "bytes": 10511,
       "cacheUrl": "/nrf24.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/onewire-bus.mjs",
+      "url": "/app/dd6f8cef164202fd/onewire-bus.mjs",
       "sha256": "545106544cafc4745863c67f3085887e56ee4084947f2d155d9a5428ee2a0dff",
       "bytes": 10375,
       "cacheUrl": "/onewire-bus.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/peripherals.mjs",
+      "url": "/app/dd6f8cef164202fd/peripherals.mjs",
       "sha256": "2c2d065663a6dfe7bea11bb064f1d8427a718ccc49db778e16890a1ad146e9fd",
       "bytes": 7263,
       "cacheUrl": "/peripherals.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/pilot-form.mjs",
+      "url": "/app/dd6f8cef164202fd/pilot-form.mjs",
       "sha256": "a4076e84e951868d6830cd32a111933248de79a9bccdc79f3e1f4febbc99539a",
       "bytes": 2781,
       "cacheUrl": "/pilot-form.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/pilot-record.mjs",
+      "url": "/app/dd6f8cef164202fd/pilot-record.mjs",
       "sha256": "d77cabd1b067521a74c2bde36948a1bbd6bbf1dd1db9788102c5a7e579a10fcb",
       "bytes": 4684,
       "cacheUrl": "/pilot-record.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/alarm/main.ino",
+      "url": "/app/dd6f8cef164202fd/pokusi/alarm/main.ino",
       "sha256": "0309597c77590f9ec7ca30476a157800bd48234dfe2267c8f4d41a95ef648956",
       "bytes": 1032,
       "cacheUrl": "/pokusi/alarm/main.ino"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/alarm/main.py",
+      "url": "/app/dd6f8cef164202fd/pokusi/alarm/main.py",
       "sha256": "30870d7dee774af5288bf4f7a2735cd6921f8bfc89d7fc0e44468f0705995517",
       "bytes": 901,
       "cacheUrl": "/pokusi/alarm/main.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/alarm/pocetni.json",
+      "url": "/app/dd6f8cef164202fd/pokusi/alarm/pocetni.json",
       "sha256": "87f5a3549fd28785641cb21cf20eb1cbadfdafe8240aef401e9ec9289f03f0c4",
       "bytes": 24638,
       "cacheUrl": "/pokusi/alarm/pocetni.json"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/blink/main.ino",
+      "url": "/app/dd6f8cef164202fd/pokusi/blink/main.ino",
       "sha256": "07965f4dca3142859710d22c3369980f5cbaacdc823b34b246731f3705315512",
       "bytes": 337,
       "cacheUrl": "/pokusi/blink/main.ino"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/blink/main.py",
+      "url": "/app/dd6f8cef164202fd/pokusi/blink/main.py",
       "sha256": "f0b0b95d835c69cf98a698b72395d5a28a63a5fa0dc0718f87ea06932f5b587e",
       "bytes": 249,
       "cacheUrl": "/pokusi/blink/main.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/blink/pocetni.json",
+      "url": "/app/dd6f8cef164202fd/pokusi/blink/pocetni.json",
       "sha256": "3c21b9a0692df094f9881fc8dec94ab465929f08c1a320aec4faa7e7a8b809d5",
       "bytes": 5250,
       "cacheUrl": "/pokusi/blink/pocetni.json"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/calibration/main.ino",
+      "url": "/app/dd6f8cef164202fd/pokusi/calibration/main.ino",
       "sha256": "d0437419ff17db04a8753f317b8b2825aa4c8edc46e3042695a1daa851f4d4c0",
       "bytes": 757,
       "cacheUrl": "/pokusi/calibration/main.ino"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/calibration/main.py",
+      "url": "/app/dd6f8cef164202fd/pokusi/calibration/main.py",
       "sha256": "eb65607e5702f98947c858ac6a8496f9afd4994cc360dc52ab28669919c10c22",
       "bytes": 518,
       "cacheUrl": "/pokusi/calibration/main.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/calibration/pocetni.json",
+      "url": "/app/dd6f8cef164202fd/pokusi/calibration/pocetni.json",
       "sha256": "76d13eeb76c9029bdeddb7716c6711a13bec2c54b477da22ea4e1681fa64b4a3",
       "bytes": 22526,
       "cacheUrl": "/pokusi/calibration/pocetni.json"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/common/ulazi.h",
+      "url": "/app/dd6f8cef164202fd/pokusi/common/ulazi.h",
       "sha256": "0503b1effdc2de4a71f73c3923093333f34ce98db9c537b7e69fb69eb16bd5e6",
       "bytes": 264,
       "cacheUrl": "/pokusi/common/ulazi.h"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/common/ulazi.py",
+      "url": "/app/dd6f8cef164202fd/pokusi/common/ulazi.py",
       "sha256": "1e11d0133db47209b832e9b2de41a9bfcb48424f5dcd1bf153be0ce41dcb8208",
       "bytes": 428,
       "cacheUrl": "/pokusi/common/ulazi.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/common/ventil.h",
+      "url": "/app/dd6f8cef164202fd/pokusi/common/ventil.h",
       "sha256": "eb6b248a7ceed15de6eb312e725693271a77adcdaa26e954b45464bedede675f",
       "bytes": 404,
       "cacheUrl": "/pokusi/common/ventil.h"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/common/ventil.py",
+      "url": "/app/dd6f8cef164202fd/pokusi/common/ventil.py",
       "sha256": "d376db41cd6ae89ac612ebc3f1df017edb9d24a6056874063060a457bb35533f",
       "bytes": 356,
       "cacheUrl": "/pokusi/common/ventil.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/compare/main.ino",
+      "url": "/app/dd6f8cef164202fd/pokusi/compare/main.ino",
       "sha256": "a164d34cd1c3ca24cf25e0bb37db6c7e3ce920bed4fddd893afaab7a37fcb645",
       "bytes": 838,
       "cacheUrl": "/pokusi/compare/main.ino"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/compare/main.py",
+      "url": "/app/dd6f8cef164202fd/pokusi/compare/main.py",
       "sha256": "14ebb383887efd8cbaf643ac2f73097c1e5c7bcb71c159ec8bcfca951d4f8d83",
       "bytes": 597,
       "cacheUrl": "/pokusi/compare/main.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/compare/pocetni.json",
+      "url": "/app/dd6f8cef164202fd/pokusi/compare/pocetni.json",
       "sha256": "170288144fa1a1edf2323ea37f65ac6cf2c70cfe2bb9a3a3f278874a0122f0d0",
       "bytes": 25495,
       "cacheUrl": "/pokusi/compare/pocetni.json"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/console/main.ino",
+      "url": "/app/dd6f8cef164202fd/pokusi/console/main.ino",
       "sha256": "c179b987795a7eb030b3e0daa98acac57b476e206a024b33655abb3040150296",
       "bytes": 180,
       "cacheUrl": "/pokusi/console/main.ino"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/console/main.py",
+      "url": "/app/dd6f8cef164202fd/pokusi/console/main.py",
       "sha256": "22c68d496e8e92934a39aecda6a6da76e6637d4a82939e7c1328da1395117332",
       "bytes": 132,
       "cacheUrl": "/pokusi/console/main.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/console/pocetni.json",
+      "url": "/app/dd6f8cef164202fd/pokusi/console/pocetni.json",
       "sha256": "812653eb692d54c3a5e52f1daf9c131e803053e1f7a8e29dd626a1a3dae1a1c0",
       "bytes": 4350,
       "cacheUrl": "/pokusi/console/pocetni.json"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/library/main.ino",
+      "url": "/app/dd6f8cef164202fd/pokusi/library/main.ino",
       "sha256": "0977c3b80b1adcefa277bfa13037d072bd7d1ab8182694811219d36d14e3a5ac",
       "bytes": 1045,
       "cacheUrl": "/pokusi/library/main.ino"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/library/main.py",
+      "url": "/app/dd6f8cef164202fd/pokusi/library/main.py",
       "sha256": "6a45b385925d8a7a6ff14c4eb922d33791ff283a21bf4ddea60c105598fd9e63",
       "bytes": 972,
       "cacheUrl": "/pokusi/library/main.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/library/pocetni.json",
+      "url": "/app/dd6f8cef164202fd/pokusi/library/pocetni.json",
       "sha256": "c0690704ae8c662435e73f8a7e3c5dc302c1db39264d6c4874b976df074d42ab",
       "bytes": 23518,
       "cacheUrl": "/pokusi/library/pocetni.json"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/light/main.ino",
+      "url": "/app/dd6f8cef164202fd/pokusi/light/main.ino",
       "sha256": "796363502c4fea483c7cea7672e7787e8cd58a10d98a7f21fc30037b4b1e1b68",
       "bytes": 338,
       "cacheUrl": "/pokusi/light/main.ino"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/light/main.py",
+      "url": "/app/dd6f8cef164202fd/pokusi/light/main.py",
       "sha256": "5b8d6e12211bf6c2a44288964c1a4a2f24e7bd0452a22461dd26bf085373a774",
       "bytes": 305,
       "cacheUrl": "/pokusi/light/main.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/light/pocetni.json",
+      "url": "/app/dd6f8cef164202fd/pokusi/light/pocetni.json",
       "sha256": "c0249dbf14100459f15f32f839dd8a6f93ae8e7fba79d459dbb6f14d6d0e99a6",
       "bytes": 6726,
       "cacheUrl": "/pokusi/light/pocetni.json"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/model/main.ino",
+      "url": "/app/dd6f8cef164202fd/pokusi/model/main.ino",
       "sha256": "973cefcdb55547ffc031ab746e6ecd847a9f97944483a6030d19328046ba58c4",
       "bytes": 752,
       "cacheUrl": "/pokusi/model/main.ino"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/model/main.py",
+      "url": "/app/dd6f8cef164202fd/pokusi/model/main.py",
       "sha256": "6541019c9d9249d06613f3b1af05cec97ba90af6444eaaef4854e203a4a563a7",
       "bytes": 640,
       "cacheUrl": "/pokusi/model/main.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/model/pocetni.json",
+      "url": "/app/dd6f8cef164202fd/pokusi/model/pocetni.json",
       "sha256": "d549a92e9d00ea643cc1eb100c3279c24dbdcd4679debc120e1170f211dac814",
       "bytes": 23298,
       "cacheUrl": "/pokusi/model/pocetni.json"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/network/main.ino",
+      "url": "/app/dd6f8cef164202fd/pokusi/network/main.ino",
       "sha256": "2d7c7f456b7e591668d53daaa53faf1f81991fa85b73dc7eaf1c6b134670767d",
       "bytes": 2487,
       "cacheUrl": "/pokusi/network/main.ino"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/network/main.py",
+      "url": "/app/dd6f8cef164202fd/pokusi/network/main.py",
       "sha256": "a6b743aee72d8526736dcb2f34b1a75077b93e34d1a08f7b23025d188e0844a6",
       "bytes": 2090,
       "cacheUrl": "/pokusi/network/main.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/network/pocetni-mqtt.json",
+      "url": "/app/dd6f8cef164202fd/pokusi/network/pocetni-mqtt.json",
       "sha256": "47b5e47b7e08ac3d7efce89619893d064d6ae997c982e520257a838ca0de3e11",
       "bytes": 26298,
       "cacheUrl": "/pokusi/network/pocetni-mqtt.json"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/network/pocetni-tcp.json",
+      "url": "/app/dd6f8cef164202fd/pokusi/network/pocetni-tcp.json",
       "sha256": "55c114e9d70cd27df6c78dd34515d036ac86ca322aa93bce60a536afd9919b7b",
       "bytes": 26278,
       "cacheUrl": "/pokusi/network/pocetni-tcp.json"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/network/pocetni.json",
+      "url": "/app/dd6f8cef164202fd/pokusi/network/pocetni.json",
       "sha256": "cfa55ac2190db96e148bad7eb99179292345394c712987c7d3442d64ba4738b3",
       "bytes": 26298,
       "cacheUrl": "/pokusi/network/pocetni.json"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/pwm/main.ino",
+      "url": "/app/dd6f8cef164202fd/pokusi/pwm/main.ino",
       "sha256": "06b37e6c26aa81ca4d10ae1e008013e04473f54d56df904c7f3b684f3347d4ea",
       "bytes": 585,
       "cacheUrl": "/pokusi/pwm/main.ino"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/pwm/main.py",
+      "url": "/app/dd6f8cef164202fd/pokusi/pwm/main.py",
       "sha256": "1ef84f0289c7b442ee6473601e8bf6d4c182ac42cd14d7867d79f9eb9e160f94",
       "bytes": 563,
       "cacheUrl": "/pokusi/pwm/main.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/pwm/pocetni.json",
+      "url": "/app/dd6f8cef164202fd/pokusi/pwm/pocetni.json",
       "sha256": "a7dea26ae7e78035862bb17aeb7df5f5216975cdf7f3fb897f175d44a13bbcf4",
       "bytes": 6998,
       "cacheUrl": "/pokusi/pwm/pocetni.json"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/servo/main.ino",
+      "url": "/app/dd6f8cef164202fd/pokusi/servo/main.ino",
       "sha256": "18376511aea912bdd5bdd3d8f50fadac15791bc77a9828f99e786f00a1b3e97c",
       "bytes": 374,
       "cacheUrl": "/pokusi/servo/main.ino"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/servo/main.py",
+      "url": "/app/dd6f8cef164202fd/pokusi/servo/main.py",
       "sha256": "de25fb654061f9e1dd14477cc54603d34a12b65c7f457b5eb8ef448b415a3781",
       "bytes": 373,
       "cacheUrl": "/pokusi/servo/main.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/servo/pocetni.json",
+      "url": "/app/dd6f8cef164202fd/pokusi/servo/pocetni.json",
       "sha256": "827edef3f298fec1a85dab651b9be0fe2b8e10f722ec224a9184e79d18cb1d3b",
       "bytes": 6682,
       "cacheUrl": "/pokusi/servo/pocetni.json"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/temperature/main.ino",
+      "url": "/app/dd6f8cef164202fd/pokusi/temperature/main.ino",
       "sha256": "67056a6134b7834ccfa2a8ce12ad810281aaa1c67cb2808b8b852400ae3cf665",
       "bytes": 565,
       "cacheUrl": "/pokusi/temperature/main.ino"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/temperature/main.py",
+      "url": "/app/dd6f8cef164202fd/pokusi/temperature/main.py",
       "sha256": "4d05e6ece0dbb279f2190b73b2a178b05be381b8bcebb9c05405e946a63860fc",
       "bytes": 393,
       "cacheUrl": "/pokusi/temperature/main.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/pokusi/temperature/pocetni.json",
+      "url": "/app/dd6f8cef164202fd/pokusi/temperature/pocetni.json",
       "sha256": "66a80d35c225b91c2f34f154a2cbbbe643c2764da465a069fab31f38b5300960",
       "bytes": 22150,
       "cacheUrl": "/pokusi/temperature/pocetni.json"
     },
     {
-      "url": "/app/df60dea1b4a764de/quadrature-inputs.mjs",
+      "url": "/app/dd6f8cef164202fd/quadrature-inputs.mjs",
       "sha256": "4981f6a49fdcbbfe77f43b6a4dab41f4698aa926e1b394084147e9abec2d9228",
       "bytes": 5236,
       "cacheUrl": "/quadrature-inputs.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/radio-clock.mjs",
+      "url": "/app/dd6f8cef164202fd/radio-clock.mjs",
       "sha256": "d5a216076b71a2fb0651509246edc7e5394a23ca264ed826590da1dbf8b7f787",
       "bytes": 769,
       "cacheUrl": "/radio-clock.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/radio-examples.json",
+      "url": "/app/dd6f8cef164202fd/radio-examples.json",
       "sha256": "517014776b015a325706a6ca1485c0ce177df0ff9aedc9e81f18867a52c4fb8a",
       "bytes": 96580,
       "cacheUrl": "/radio-examples.json"
     },
     {
-      "url": "/app/df60dea1b4a764de/rtc-ds1302.mjs",
+      "url": "/app/dd6f8cef164202fd/rtc-ds1302.mjs",
       "sha256": "d1df9f2d7789ec99ee519d226a22a60c48929175bafab74d57c10c09297f131f",
       "bytes": 9710,
       "cacheUrl": "/rtc-ds1302.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/runtime/micropython.mjs",
+      "url": "/app/dd6f8cef164202fd/runtime/micropython.mjs",
       "sha256": "0105e219063d76cfd40c564b3a206aee49dfb5bd282e4b7574164c207f35908f",
       "bytes": 225531,
       "cacheUrl": "/runtime/micropython.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/runtime/micropython.wasm",
+      "url": "/app/dd6f8cef164202fd/runtime/micropython.wasm",
       "sha256": "0a5c32e1079dce5fc096729cdd2e55bd0ba6c11190e42c9a96c2939200887da5",
       "bytes": 996046,
       "cacheUrl": "/runtime/micropython.wasm"
     },
     {
-      "url": "/app/df60dea1b4a764de/s3-contract.mjs",
+      "url": "/app/dd6f8cef164202fd/s3-contract.mjs",
       "sha256": "5a7fd448c5a33e42063c2e96c34161558524b64db461d14d403b40e8886759d1",
       "bytes": 6500,
       "cacheUrl": "/s3-contract.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/s3-core-lock.mjs",
+      "url": "/app/dd6f8cef164202fd/s3-core-lock.mjs",
       "sha256": "b6ce5ce30ce6dbb7f45b74a4d313b88df709fca06df0735a7f18fd3fd4c5de3e",
       "bytes": 1239,
       "cacheUrl": "/s3-core-lock.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/s3-engine.mjs",
+      "url": "/app/dd6f8cef164202fd/s3-engine.mjs",
       "sha256": "c709e349b2718965933ab556c510454e210b37c603a21286caec7d7913db0f55",
       "bytes": 6965,
       "cacheUrl": "/s3-engine.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/s3-examples.json",
+      "url": "/app/dd6f8cef164202fd/s3-examples.json",
       "sha256": "401863e154bdf1fef7e3403e3f51ce74599e75b44b08be7e2faf708c71cc6482",
       "bytes": 1443762,
       "cacheUrl": "/s3-examples.json"
     },
     {
-      "url": "/app/df60dea1b4a764de/s3-worker.mjs",
+      "url": "/app/dd6f8cef164202fd/s3-worker.mjs",
       "sha256": "04c48c2aa4667fde02868c0e3907299dda7e16bb6d8cc4a7a1277c140998af3d",
       "bytes": 625,
       "cacheUrl": "/s3-worker.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/school-account.mjs",
+      "url": "/app/dd6f8cef164202fd/school-account.mjs",
       "sha256": "83d2ac228d0544b3f3504a60271e6c24a3620ec917b212a6f8aaa8f5d291431c",
       "bytes": 8008,
       "cacheUrl": "/school-account.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/school-check.mjs",
+      "url": "/app/dd6f8cef164202fd/school-check.mjs",
       "sha256": "91cffb080644f01fd56c6b3fa14f894f6092877882e38ea98208e8794c5047e9",
       "bytes": 1866,
       "cacheUrl": "/school-check.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/school-classes.mjs",
+      "url": "/app/dd6f8cef164202fd/school-classes.mjs",
       "sha256": "ed470bfca7d0287d00f5f1577bdb5c8c1adec7f3e7f3973fb8268f64a8813a02",
       "bytes": 17827,
       "cacheUrl": "/school-classes.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/school-grading-support.mjs",
+      "url": "/app/dd6f8cef164202fd/school-grading-support.mjs",
       "sha256": "08a36a6d5377c2b593147e9100ca93bc9285e2487541ff8d3f294b6f070eeeff",
       "bytes": 3729,
       "cacheUrl": "/school-grading-support.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/school-pilot-form.mjs",
+      "url": "/app/dd6f8cef164202fd/school-pilot-form.mjs",
       "sha256": "69f63c5041cbf7ece726e39bacb362a7f014066dc828e6aae68e90484c6cf8eb",
       "bytes": 5177,
       "cacheUrl": "/school-pilot-form.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/school-pilot-record.mjs",
+      "url": "/app/dd6f8cef164202fd/school-pilot-record.mjs",
       "sha256": "87cf5975d7787c55bb8016df22ba5d9475e277f77bc11f10605dec009d75e990",
       "bytes": 6740,
       "cacheUrl": "/school-pilot-record.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/sd-card.mjs",
+      "url": "/app/dd6f8cef164202fd/sd-card.mjs",
       "sha256": "5c93b47fb40878d4bf4aeb1e3b44c5e18c7c5e95e8e017f35ca42675e363870e",
       "bytes": 8860,
       "cacheUrl": "/sd-card.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/session.mjs",
+      "url": "/app/dd6f8cef164202fd/session.mjs",
       "sha256": "34ab7d0f12c9da77c66c665cb851ef17eafc583730a242cbc48c77c68ba4917e",
       "bytes": 2041,
       "cacheUrl": "/session.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/spi-devices.mjs",
+      "url": "/app/dd6f8cef164202fd/spi-devices.mjs",
       "sha256": "121225f88f741e37d84cbbf8b4239a8c215b2defe7560710d181210aa95fe25c",
       "bytes": 13158,
       "cacheUrl": "/spi-devices.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/stepper.mjs",
+      "url": "/app/dd6f8cef164202fd/stepper.mjs",
       "sha256": "c98f7087aecf51ed81750fb0707e80c5e638d0766330759ed7c168fcfc5f7cc5",
       "bytes": 8521,
       "cacheUrl": "/stepper.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/suite.mjs",
+      "url": "/app/dd6f8cef164202fd/suite.mjs",
       "sha256": "d0f4648479e4d6ce154769f635c07cc69e1edd61655aa76b0d9e010977e337aa",
       "bytes": 7832,
       "cacheUrl": "/suite.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/tm1637.mjs",
+      "url": "/app/dd6f8cef164202fd/tm1637.mjs",
       "sha256": "2109a7a49a7c3014f9ab9b4aed4d2d0af2c44636e80d078dbbcac68462958b1c",
       "bytes": 5180,
       "cacheUrl": "/tm1637.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/worker.mjs",
+      "url": "/app/dd6f8cef164202fd/worker.mjs",
       "sha256": "112131bd027448432724576116dd6b75f03815703ce21046384920a0ef30eb54",
       "bytes": 2564,
       "cacheUrl": "/worker.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/xpt2046.mjs",
+      "url": "/app/dd6f8cef164202fd/xpt2046.mjs",
       "sha256": "c9228227d9d187bb507d15bc26e20c974e37c883ef05c89e18bda100690cd5ca",
       "bytes": 2652,
       "cacheUrl": "/xpt2046.mjs"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/P0/01_Poruka.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/P0/01_Poruka.py",
       "sha256": "b83431cd8f2ae11acbbcd3ebee21949675bb497f24f3e0ac9e31467ac0f1ddec",
       "bytes": 1132,
       "cacheUrl": "/zbirke/P0/01_Poruka.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V1_1/MicroPython/01_Model.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V1_1/MicroPython/01_Model.py",
       "sha256": "a1d44d1350ab6d21bbc95843e0df8fe04a22b71f992920efda82a4260b4bf6c4",
       "bytes": 12375,
       "cacheUrl": "/zbirke/V1_1/MicroPython/01_Model.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V1_10/MicroPython/01_DS18B20.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V1_10/MicroPython/01_DS18B20.py",
       "sha256": "affd4b84925d47d79583de3eaa264b8e51914bd6a8afa2a334f3f4dfdaf10f38",
       "bytes": 3112,
       "cacheUrl": "/zbirke/V1_10/MicroPython/01_DS18B20.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V1_10/MicroPython/02_AHT10.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V1_10/MicroPython/02_AHT10.py",
       "sha256": "b390f8108bac6d1a185f4e567c6ffec9f18d3c1b01abeb10bef0bef4d26dd544",
       "bytes": 4662,
       "cacheUrl": "/zbirke/V1_10/MicroPython/02_AHT10.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V1_10/MicroPython/03_DHT.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V1_10/MicroPython/03_DHT.py",
       "sha256": "1c4503a89b64c348743d0e79c40d80a30f9e5be9e09bffb6331756444f8df58d",
       "bytes": 1464,
       "cacheUrl": "/zbirke/V1_10/MicroPython/03_DHT.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V1_2/MicroPython/01_LED.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V1_2/MicroPython/01_LED.py",
       "sha256": "47a2da87933fd5b148532e010b6ae14b9b2737e49f95f6818d87cd6c026ba2a7",
       "bytes": 1734,
       "cacheUrl": "/zbirke/V1_2/MicroPython/01_LED.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V1_3/MicroPython/01_LED.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V1_3/MicroPython/01_LED.py",
       "sha256": "eb556df40ee4dd7f9ec9c63d1b88fd33881b7da11d8164e906a5cd7075563d62",
       "bytes": 1741,
       "cacheUrl": "/zbirke/V1_3/MicroPython/01_LED.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V1_4/01_Senzor.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V1_4/01_Senzor.py",
       "sha256": "cb4ea13c069aef464dd7af55442a002fa8ea43698cf7bc2a3214bd0224df651f",
       "bytes": 3117,
       "cacheUrl": "/zbirke/V1_4/01_Senzor.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V1_5/MicroPython/01_Svjetlost.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V1_5/MicroPython/01_Svjetlost.py",
       "sha256": "230b36a3cac928200df3c6a32348cb36bcc4c6e812154e304122599d0af91d8c",
       "bytes": 1339,
       "cacheUrl": "/zbirke/V1_5/MicroPython/01_Svjetlost.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V1_5/MicroPython/02_Temperatura.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V1_5/MicroPython/02_Temperatura.py",
       "sha256": "5081c0c59a74089634da8e51a55291fc11138ff9a2c9dae961ae85d4262c278f",
       "bytes": 3113,
       "cacheUrl": "/zbirke/V1_5/MicroPython/02_Temperatura.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V1_6/MicroPython/01_LED.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V1_6/MicroPython/01_LED.py",
       "sha256": "090eb79c18ed7db2e0c44951304f5a05d90f49b66ddb57b7a6728145a547af5b",
       "bytes": 1740,
       "cacheUrl": "/zbirke/V1_6/MicroPython/01_LED.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V1_6/MicroPython/02_Servo.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V1_6/MicroPython/02_Servo.py",
       "sha256": "46d56a3b3198df380eed68d48791d16edf8a9f0535efa46d46c2701263ba0b37",
       "bytes": 2512,
       "cacheUrl": "/zbirke/V1_6/MicroPython/02_Servo.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V1_7/MicroPython/01_Senzor.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V1_7/MicroPython/01_Senzor.py",
       "sha256": "f0c4dfdffd02475508c91e8337211e260aa62f83d8b1a45b5dbaf3c960ced5e6",
       "bytes": 3113,
       "cacheUrl": "/zbirke/V1_7/MicroPython/01_Senzor.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V1_8/MicroPython/01_Servo.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V1_8/MicroPython/01_Servo.py",
       "sha256": "1d7d4fa01834d914c42b80837aa901c8c1e402904f40944d0eb9082d70e30adc",
       "bytes": 2524,
       "cacheUrl": "/zbirke/V1_8/MicroPython/01_Servo.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V1_9/MicroPython/01_Model.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V1_9/MicroPython/01_Model.py",
       "sha256": "c428769c787681880e0e337a52b0edaa2a839a11a21c334181f66790aedad41c",
       "bytes": 12561,
       "cacheUrl": "/zbirke/V1_9/MicroPython/01_Model.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V2_1/01_HTTP.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V2_1/01_HTTP.py",
       "sha256": "5256dd669b564c24025519341f9e70a13bcf6ffcc81d5d9a53864e9135a7915a",
       "bytes": 30576,
       "cacheUrl": "/zbirke/V2_1/01_HTTP.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V2_2/MicroPython/01_HTTP.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V2_2/MicroPython/01_HTTP.py",
       "sha256": "eaf8bb68699afe4a41ae251aa622272ab3055fb13092c5436439a27747857e26",
       "bytes": 30600,
       "cacheUrl": "/zbirke/V2_2/MicroPython/01_HTTP.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V2_3/MicroPython/01_HTTP.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V2_3/MicroPython/01_HTTP.py",
       "sha256": "fd39ee178e7e8533510b272a349c5018b07c0c40ec6be6145a84fa2aca3593d9",
       "bytes": 30563,
       "cacheUrl": "/zbirke/V2_3/MicroPython/01_HTTP.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V2_3/MicroPython/02_MQTT.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V2_3/MicroPython/02_MQTT.py",
       "sha256": "5464ce73ac160b7c4e74edc4a0ee1a1a68454595274669845bec4c0b272b95a6",
       "bytes": 37408,
       "cacheUrl": "/zbirke/V2_3/MicroPython/02_MQTT.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V2_4/MicroPython/01_MQTT.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V2_4/MicroPython/01_MQTT.py",
       "sha256": "197dfa1f29424aceeb693525349efcfa94260bb040e3ac8c9d826e9199ab012f",
       "bytes": 37522,
       "cacheUrl": "/zbirke/V2_4/MicroPython/01_MQTT.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V2_5/MicroPython/01_MQTT.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V2_5/MicroPython/01_MQTT.py",
       "sha256": "942c6fa8b165e57d3f8d92c495aca9ba77de215e2d4e9aac3d53b514ffef5b5a",
       "bytes": 37480,
       "cacheUrl": "/zbirke/V2_5/MicroPython/01_MQTT.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V2_6/MicroPython/01_MQTT.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V2_6/MicroPython/01_MQTT.py",
       "sha256": "96cee9c7326926dee02d91b68d497e64ed056bbb5c14c15158a215c2113b1834",
       "bytes": 37617,
       "cacheUrl": "/zbirke/V2_6/MicroPython/01_MQTT.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V2_S/MicroPython/01_MQTT.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V2_S/MicroPython/01_MQTT.py",
       "sha256": "4e0d5c0802ee931c9f310d29c7419b2abebd4f61fb8cbd9261c904a650e86a72",
       "bytes": 37516,
       "cacheUrl": "/zbirke/V2_S/MicroPython/01_MQTT.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V3_1/01_Pinovi.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V3_1/01_Pinovi.py",
       "sha256": "f808c76c33c4b5be7eab3fedba21bfbc77d09023b2d29f54159f57758cce813f",
       "bytes": 1010,
       "cacheUrl": "/zbirke/V3_1/01_Pinovi.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V3_2/MicroPython/01_Servo.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V3_2/MicroPython/01_Servo.py",
       "sha256": "ad8421ef5c38d817fd75b9c71b1db96836fac81a5b64a2b227d6746a962bdf7e",
       "bytes": 2519,
       "cacheUrl": "/zbirke/V3_2/MicroPython/01_Servo.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V3_3/MicroPython/01_Model.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V3_3/MicroPython/01_Model.py",
       "sha256": "5e8c2603345510a51c141d88442d4dfdca0f06562c5926b703c8c8d7c26bc33f",
       "bytes": 17793,
       "cacheUrl": "/zbirke/V3_3/MicroPython/01_Model.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V3_4/MicroPython/01_Senzor.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V3_4/MicroPython/01_Senzor.py",
       "sha256": "2b5d759a6bff3e25df4b5fc5c013f02656c89d80bffb08f8fe80a2d998ba7b02",
       "bytes": 3104,
       "cacheUrl": "/zbirke/V3_4/MicroPython/01_Senzor.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V3_4/MicroPython/02_LED.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V3_4/MicroPython/02_LED.py",
       "sha256": "5be24c7898bee5f2ce5a785dd49992f483e29c67d0e81bbe45e11a15e1e6a140",
       "bytes": 1735,
       "cacheUrl": "/zbirke/V3_4/MicroPython/02_LED.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V3_4/MicroPython/03_Servo.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V3_4/MicroPython/03_Servo.py",
       "sha256": "045411a69008ba842295b8f2d4a1ac06e8d7c1588fe08cc18894f05a04048233",
       "bytes": 2507,
       "cacheUrl": "/zbirke/V3_4/MicroPython/03_Servo.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V3_4/MicroPython/04_Model.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V3_4/MicroPython/04_Model.py",
       "sha256": "1d6be22122f3bbeb2fbd972ded0ff7b3809fa1f6cef7134b11c084d0b84c1fa8",
       "bytes": 17790,
       "cacheUrl": "/zbirke/V3_4/MicroPython/04_Model.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V3_5/MicroPython/01_Model.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V3_5/MicroPython/01_Model.py",
       "sha256": "956ae37914f86598f57cb6014f9264756a957db27122c738d4d466e161385a37",
       "bytes": 17800,
       "cacheUrl": "/zbirke/V3_5/MicroPython/01_Model.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V3_6/MicroPython/01_Model.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V3_6/MicroPython/01_Model.py",
       "sha256": "a17d9bdfd6caeb7bf1941ce4dc83f27bc61531d6fedc191f5faafec22b62ff2a",
       "bytes": 17798,
       "cacheUrl": "/zbirke/V3_6/MicroPython/01_Model.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V3_7/MicroPython/01_Model.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V3_7/MicroPython/01_Model.py",
       "sha256": "4415dba669b7900717d6e1c8c4afb0a28fb52004446ffda308ad0dd2c4318a35",
       "bytes": 17808,
       "cacheUrl": "/zbirke/V3_7/MicroPython/01_Model.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V4_1/MicroPython/01_Funkcije.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V4_1/MicroPython/01_Funkcije.py",
       "sha256": "d90ccc5db01fbef25c77e6051425cdca88585035d5cc8226893f0d51c6ede74d",
       "bytes": 1466,
       "cacheUrl": "/zbirke/V4_1/MicroPython/01_Funkcije.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V4_1/MicroPython/02_Odluka.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V4_1/MicroPython/02_Odluka.py",
       "sha256": "547b6d86f695081794e32acb0d3288176a642e0790d87bd58623ea415e39da22",
       "bytes": 1750,
       "cacheUrl": "/zbirke/V4_1/MicroPython/02_Odluka.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V4_1/MicroPython/03_Model.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V4_1/MicroPython/03_Model.py",
       "sha256": "407dd4c8b25f5f6d48ee19986f7e83983e0525ce81fbcc3bc17ac3635c152b30",
       "bytes": 11012,
       "cacheUrl": "/zbirke/V4_1/MicroPython/03_Model.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V4_2/MicroPython/00_Provjera.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V4_2/MicroPython/00_Provjera.py",
       "sha256": "de8fb9ced4e4064ab2bcc4666c7278c3bed5c670ab09381514458b6742084e74",
       "bytes": 3500,
       "cacheUrl": "/zbirke/V4_2/MicroPython/00_Provjera.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V4_2/MicroPython/01_Modul.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V4_2/MicroPython/01_Modul.py",
       "sha256": "f1c6e982be295b865743b2f6cce6eda53c6cfa98d55a81bc737d477211f519b4",
       "bytes": 2057,
       "cacheUrl": "/zbirke/V4_2/MicroPython/01_Modul.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V4_2/MicroPython/lab_podrska.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V4_2/MicroPython/lab_podrska.py",
       "sha256": "e0a73d54e9ab32b6caae5b38f8b413cb8eac285e5ac7c1c9835540fa984d3141",
       "bytes": 6919,
       "cacheUrl": "/zbirke/V4_2/MicroPython/lab_podrska.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V4_2/MicroPython/vent_model_ucenik.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V4_2/MicroPython/vent_model_ucenik.py",
       "sha256": "cecbe6f32654715a45bb846963bc70ec2fe9c1edd4b1cdb869289f9e3d6a892e",
       "bytes": 5918,
       "cacheUrl": "/zbirke/V4_2/MicroPython/vent_model_ucenik.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V4_3/MicroPython/01_Automatski.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V4_3/MicroPython/01_Automatski.py",
       "sha256": "9eadbf84be206627062aa5c78fb18034afafd16123fbd99081e4230eb3878c55",
       "bytes": 2034,
       "cacheUrl": "/zbirke/V4_3/MicroPython/01_Automatski.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V4_3/MicroPython/02_Raspored.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V4_3/MicroPython/02_Raspored.py",
       "sha256": "f64cd66d829bf47921618de9446b3c9d764432a98313aeded83c1d3219691b39",
       "bytes": 2247,
       "cacheUrl": "/zbirke/V4_3/MicroPython/02_Raspored.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V4_3/lab_podrska_sim.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V4_3/lab_podrska_sim.py",
       "sha256": "e85cda526c52ea04182d6f90fae3e3312e0349615675f20e33ef4ff9538b185c",
       "bytes": 7134,
       "cacheUrl": "/zbirke/V4_3/lab_podrska_sim.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V4_4/MicroPython/01_Mreza.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V4_4/MicroPython/01_Mreza.py",
       "sha256": "ab45606d66280b19526b85da8b9ad1f4e2f47ca8d940c10f1064750a3a5aa199",
       "bytes": 34132,
       "cacheUrl": "/zbirke/V4_4/MicroPython/01_Mreza.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V4_5/MicroPython/01_Integracija.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V4_5/MicroPython/01_Integracija.py",
       "sha256": "71393f670288314cc24e326e2b1eadf994183c8593d5f6c971ffcaebad67b709",
       "bytes": 35166,
       "cacheUrl": "/zbirke/V4_5/MicroPython/01_Integracija.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/V4_6/MicroPython/01_Integracija.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/V4_6/MicroPython/01_Integracija.py",
       "sha256": "9d36b317631e8b0edc34af505f9058ccef884483b760a5f182902e3797be377f",
       "bytes": 39189,
       "cacheUrl": "/zbirke/V4_6/MicroPython/01_Integracija.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/urs-lv/podrska/plc.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/urs-lv/podrska/plc.py",
       "sha256": "d26e6e19ab4bdc65b0af17d9224161fdf6841a21607474dc7764629dfffb78e6",
       "bytes": 1219,
       "cacheUrl": "/zbirke/urs-lv/podrska/plc.py"
     },
     {
-      "url": "/app/df60dea1b4a764de/zbirke/urs-lv/podrska/plc_st.py",
+      "url": "/app/dd6f8cef164202fd/zbirke/urs-lv/podrska/plc_st.py",
       "sha256": "06aef1bded12eb24ddac22324a7b656b39f313f4fadcfad9bc38e43906a1241d",
       "bytes": 10028,
       "cacheUrl": "/zbirke/urs-lv/podrska/plc_st.py"
@@ -1036,13 +1036,13 @@
       "bytes": 2855
     },
     {
-      "url": "/assets/ClassReviewPanel-Cu47Ht3L.js",
-      "sha256": "22c02bb688a2c5c7ec678b880e29b8a8e13f2f40863ebe4417a5ab61acda2211",
+      "url": "/assets/ClassReviewPanel-D8bqVaid.js",
+      "sha256": "8baf9ef2ffd2a1edf09d656709fbae041a731cb2d6848637468aba0c2ec08651",
       "bytes": 32400
     },
     {
-      "url": "/assets/CodeEditor-Dw24g9CQ.js",
-      "sha256": "248c49db9c7de3d708c3de0774af7493ff66f4701b83fcf5d223b2b09e05d40a",
+      "url": "/assets/CodeEditor-CbmmfhmK.js",
+      "sha256": "449aa070f287db7ece361206c0986edc1f253de0523dac1c98ab07d532089b3e",
       "bytes": 568770
     },
     {
@@ -1056,8 +1056,8 @@
       "bytes": 187222
     },
     {
-      "url": "/assets/index-9wRnucb9.js",
-      "sha256": "8540b3535bc2699c39b7292c54f78b15f3b41e07b2519a8d831b3df3160a0652",
+      "url": "/assets/index-BRyLmjah.js",
+      "sha256": "5681ea3f685f333269a7c1ee5bd75fe89f3c1ca57b462f6032f21fb032f5e0a5",
       "bytes": 1583457
     },
     {
@@ -1066,9 +1066,9 @@
       "bytes": 83068
     },
     {
-      "url": "/assets/trialWorker-BjnhO1NZ.js",
-      "sha256": "f059337f81f62a334657c1d29cb86f6a57255188993490b77a527480673679e9",
-      "bytes": 306989
+      "url": "/assets/trialWorker-C2C97jyl.js",
+      "sha256": "4e9fba789ec64f608128c6ea76d42da3799c627a8fdb47a62e1729d03f93d199",
+      "bytes": 307229
     },
     {
       "url": "/assets/worker-BJHftLjq.js",
@@ -1302,7 +1302,7 @@
     },
     {
       "url": "/index.html",
-      "sha256": "1d00bd3d397a8eabc0952d3d14541f2a026568d24dc1b9289767cfd95a2cb1b5",
+      "sha256": "af10f0a71fa7844274a0f3075fa0524616efa23055d4c723f44ae3619a9277b7",
       "bytes": 688
     },
     {

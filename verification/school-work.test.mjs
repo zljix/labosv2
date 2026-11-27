@@ -76,17 +76,20 @@ test('23D actual PHP/MySQL attempts, revisions, permissions and concurrency',{ti
     await ok(f.admin.call('membership',{classId:c.id,userId:a.user.id,kind:'student',present:false}));await ok(a.client.call('attempt&id='+attemptId),403);await ok(a.client.call('save-work',payload(opened.snapshot.project)),403);
     await addStudents([a]);
   });
-  await t.test('all 371 URS, introductory, IoT and US targets open and save their project and media',async()=>{
-    const catalog=(await ok(teacher.client.call('catalog'))).catalog;let count=0;
+  await t.test('every school target opens and saves its project and media',async()=>{
+    const catalog=(await ok(teacher.client.call('catalog'))).catalog;
+    const savedBySet={};
     for(const entry of catalog.entries){
       const version=(await ok(teacher.client.call('publish-task',{taskKey:entry.key}),201)).task;
       for(const target of entry.targets){
         const item=(await ok(teacher.client.call('create-assignment',{classId:c.id,taskVersionId:version.id,target}),201)).assignment;
         const start=await ok(a.client.call('begin-attempt',{assignmentId:item.id}));assert.deepEqual(parseProject(start.snapshot.project),start.snapshot.project,entry.key+' '+target);const body={attemptId:start.attempt.id,expectedRevision:1,requestKey:randomUUID(),project:start.snapshot.project};
         const saved=await ok(a.client.call('save-work',body));assert.equal(saved.saved.revision,2,entry.key+' '+target);
-        if(start.snapshot.project.radio)assert(start.snapshot.project.radio.peer.files['main.py']||start.snapshot.project.radio.peer.files['main.ino']);++count;
+        if(start.snapshot.project.radio)assert(start.snapshot.project.radio.peer.files['main.py']||start.snapshot.project.radio.peer.files['main.ino']);
+        savedBySet[entry.set]=(savedBySet[entry.set]??0)+1;
       }
-    }assert.equal(count,371);
+    }
+    assert.deepEqual(savedBySet,{introductory:5,urs:268,iot:48,us:50,'urs-lv':17});
   });
   await t.test('repeated migration preserves all snapshots and published versions',async()=>{
     const before=f.sql('SELECT COUNT(*) AS n FROM work_snapshots')[0].n;const r=f.command('migrate');assert.equal(r.status,0,r.stderr);

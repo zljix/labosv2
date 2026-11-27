@@ -27,7 +27,8 @@ function gradingDigest(mixed $value): string
 
 function gradingContext(\PDO $pdo, int $attemptId): array
 {
-    $r = query($pdo, 'SELECT a.target, v.rubric, v.content_hash AS rubric_hash FROM school_attempts w JOIN class_assignments a ON a.id=w.assignment_id JOIN task_versions v ON v.id=a.task_version_id WHERE w.id=?', [$attemptId])->fetch();
+    $r = query($pdo, 'SELECT a.target, JSON_EXTRACT(v.definition, \'$.gradeScale\') AS grade_scale, v.rubric, v.content_hash AS rubric_hash FROM school_attempts w JOIN class_assignments a ON a.id=w.assignment_id JOIN task_versions v ON v.id=a.task_version_id WHERE w.id=?', [$attemptId])->fetch();
+    $r['scale'] = json_decode($r['grade_scale'] ?? 'null', true);
     $r['rubric'] = json_decode($r['rubric'], true, 32, JSON_THROW_ON_ERROR); return $r;
 }
 
@@ -43,7 +44,14 @@ function jobSummary(?array $job, array $context, int $revision): array
         if ($job['report'] !== null) $value['report'] = json_decode($job['report'], true, 32, JSON_THROW_ON_ERROR);
         if (in_array($job['status'], ['evaluated', 'program_error'], true)) $value['points'] = $value['report']['points'];
     }
+    if (isset($context['scale'])) $value['gradeScale'] = $context['scale'];
     return $value;
+}
+
+function gradeFromPoints(mixed $points, mixed $max, ?array $scale): ?int
+{
+    if (!is_numeric($points) || !is_numeric($max) || $max <= 0 || !$scale) return null;
+    return 1 + count(array_filter($scale, fn($min) => 100 * $points >= $min * $max));
 }
 
 function snapshotGrading(\PDO $pdo, int $attemptId, int $revision, ?array $context = null): array
@@ -126,7 +134,7 @@ function claimGrading(\PDO $pdo): ?array
                 $job = $pdo->query("SELECT * FROM grading_jobs WHERE status='queued' ORDER BY id LIMIT 1 FOR UPDATE SKIP LOCKED")->fetch();
                 if (!$job) return null;
                 $lease = bin2hex(random_bytes(32));
-                $leaseSeconds = $job['checker_version'] === '24M.1' ? 300 : 180;
+                $leaseSeconds = match ($job['checker_version']) { '26C.1' => 540, '24M.1' => 300, default => 180 };
                 query($pdo, "UPDATE grading_jobs SET status='running',lease_hash=?,lease_until=TIMESTAMPADD(SECOND,?,CURRENT_TIMESTAMP(6)),deliveries=deliveries+1 WHERE id=?", [hash('sha256', $lease),$leaseSeconds,$job['id']]);
                 $snapshot = query($pdo, 'SELECT project FROM work_snapshots WHERE attempt_id=? AND revision=?', [$job['attempt_id'],$job['revision']])->fetchColumn();
                 // MySQL's JSON serializer may reorder keys and add whitespace. Rebuild
@@ -137,7 +145,7 @@ function claimGrading(\PDO $pdo): ?array
                 $value = ['format'=>'labosv2-grading-job','version'=>1,'jobId'=>(int)$job['id'],'attemptId'=>(int)$job['attempt_id'],'revision'=>(int)$job['revision'],
                     'lease'=>$lease,'checkerVersion'=>$job['checker_version'],'profileId'=>$job['profile_id'],'rubricHash'=>$job['rubric_hash'],
                     'snapshotHash'=>$job['snapshot_hash'],'seed'=>$job['stimulus_seed'],'projectJson'=>$snapshot,'rubric'=>$context['rubric'],'target'=>$context['target']];
-                if ($job['checker_version'] === '24M.1') $value['leaseSeconds'] = 300;
+                if ($leaseSeconds !== 180) $value['leaseSeconds'] = $leaseSeconds;
                 if (isset($context['rubric']['contract'])) {
                     $value['version']=2;
                     $value['taskKey']=$context['rubric']['taskKey'];

@@ -59,11 +59,7 @@ try {
     if(item.starter){const {filename,project,key}=item.starter;writeFileSync(resolve(directory,filename),JSON.stringify(stable(project,key)));}
     if(item.entry){
       const entry=item.entry;
-      const support=Object.fromEntries(entry.targets.map(target=>[target,{
-        ...gradingSupport(entry.key,target),
-        reason:'Nastavnik pregledava učenički Word i program iz zaključane predaje.',
-        requirement:'Bodove dodjeljuje nastavnik prema kriterijima dodjele.'
-      }]));
+      const support=Object.fromEntries(entry.targets.map(target=>[target,gradingSupport(entry.key,target)]));
       entries.push({...entry,gradingSupport:support});
     }
   }

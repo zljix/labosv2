@@ -1,4 +1,8 @@
-# Labos 0.16.0-beta.3 · Zbirka i laboratorijske vježbe
+# Labos 0.16.0-beta.4 · Automatsko ocjenjivanje vježbi
+
+Školski katalog ima 138 vježbi i varijanti u 388 izvedbi. Pri objavi nove vježbe nastavniku se odabire automatska provjera. Učeniku se uz rezultat prikazuju ostvareni bodovi po kriteriju i ocjena od 1 do 5. Najmanje 50 %, 65 %, 80 % i 90 % redom daju ocjene 2, 3, 4 i 5. Nastavnik može promijeniti pragove pri objavi.
+
+U putanjama IoT i US zabilježi početni pokus (3 boda), izmijenjeni pokus (5 bodova) i odgovor na pitanje (2 boda). U laboratorijskim vježbama URS zasebno spremi programe P1, P2 i P3 (3, 3 i 4 boda). Gumb **Provjeri spremljene pokuse** daje probnu ocjenu. U školskoj dodjeli servis samostalno provjerava spremljenu reviziju. [Pregled kriterija po vježbi](https://zljix.github.io/labosv2/school-grading.html)
 
 U izborniku **Vježbe → Zbirka** pretraži sve ugrađene projekte po nazivu, temi, pločici i jeziku. Za rad redom po predmetu odaberi **Internet stvari** (24 vježbe) ili **Ugradbeni sustavi** (25 vježbi), pa MicroPython ili Arduino. Uz vježbu možeš preuzeti pripadajući učenički Word i početne datoteke. [Otvori Labos](https://zljix.github.io/labosv2/)
 

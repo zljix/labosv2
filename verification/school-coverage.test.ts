@@ -33,16 +33,11 @@ test('23G generated JSON, CSV and private catalogue agree with the authoritative
   const version=JSON.parse(readFileSync('package.json','utf8')).version,matrix=gradingCoverage(version);
   assert.deepEqual(JSON.parse(readFileSync('public/school-grading-support.json','utf8')),matrix);
   const csv=gradingCoverageCSV(matrix);assert.equal(readFileSync('public/school-grading-support.csv','utf8'),csv);
-  assert.equal(csv.split('\r\n').filter(Boolean).length,274);
+  assert.equal(csv.split('\r\n').filter(Boolean).length,389);
   const catalog=JSON.parse(readFileSync('.build/school-catalog/catalog.json','utf8'));
   for(const entry of catalog.entries)for(const target of entry.targets){
-    if(['iot','us'].includes(entry.set)){
-      const support=entry.gradingSupport[target];
-      assert.equal(support.status,'unsupported');assert.equal(support.profileId,null);assert.equal(support.maxPoints,null);
-      assert.match(support.reason,/Nastavnik/);
-      continue;
-    }
-    assert.deepEqual(entry.gradingSupport[target],(entry.set==='introductory'?matrix.introductory.find(r=>r.taskKey===entry.key):matrix.rows.find(r=>r.taskKey===entry.key&&r.target===target))!.grading);
+    const row=[...matrix.introductory,...matrix.rows,...matrix.collections].find(r=>r.taskKey===entry.key&&r.target===target);
+    assert(row);assert.deepEqual(entry.gradingSupport[target],row.grading);
   }
   assert.equal(gradingSupport('gpio/button','uno').profileId,'24P-button-led@2');
   assert.equal(gradingSupport('gpio/button','uno').checkerVersion,'24P.1-button');
@@ -56,9 +51,9 @@ test('23G real support page filters by target, family, status and text; injected
     const doc=dom.window.document,matrix=gradingCoverage('test');mountGradingCoverage(matrix,doc);
     const change=(id:string,value:string,event='change')=>{const el=doc.querySelector(id) as HTMLInputElement;el.value=value;el.dispatchEvent(new dom.window.Event(event,{bubbles:true}));};
     const count=()=>doc.querySelectorAll('#rows tr').length;
-    assert.equal(count(),268);assert.match(doc.querySelector('#summary')!.textContent!,/18/);
-    change('#support','supported');assert.equal(count(),268);
-    change('#target','s3-cpp');assert.equal(count(),67);assert.match(doc.querySelector('#result')!.textContent!,/Prikazano 67/);
+    assert.equal(count(),383);assert.match(doc.querySelector('#summary')!.textContent!,/388/);
+    change('#support','supported');assert.equal(count(),383);
+    change('#target','s3-cpp');assert.equal(count(),116);assert.match(doc.querySelector('#result')!.textContent!,/Prikazano 116/);
     change('#support','unsupported');assert.equal(count(),0);
     change('#target','micropython');change('#support','supported');change('#query','LM35','input');assert.equal(count(),2);
     assert.match(doc.querySelector('#rows')!.textContent!,/24B-lm35@1/);

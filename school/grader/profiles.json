@@ -7983,6 +7983,3238 @@
           "file": "school/grader/environment-fonts.json"
         }
       }
+    },
+    {
+      "id": "26C-iot-P0@1",
+      "taskKey": "iot/P0",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Ista početna poruka ponavlja se svake sekunde.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Spremi vlastitu poruku s novim razmakom od 200 do 4000 ms, različitim od 1000 ms.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Koliko poruka nakon prve stiže tijekom 6 s uz razmak 2000 ms?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/P0",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Ista početna poruka ponavlja se svake sekunde.",
+          "Spremi vlastitu poruku s novim razmakom od 200 do 4000 ms, različitim od 1000 ms.",
+          "Koliko poruka nakon prve stiže tijekom 6 s uz razmak 2000 ms?",
+          "2",
+          "3",
+          "6"
+        ]
+      }
+    },
+    {
+      "id": "26C-iot-V1.1@1",
+      "taskKey": "iot/V1.1",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Model zatvara na 25 °C i otvara na 28 °C.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Zabilježi izmijenjeni pokus na 26,5 °C. Provjera tom ulazu prilazi iz oba smjera.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Kakav je cilj na 26,5 °C ako je prethodno bilo 28 °C?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/V1.1",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Model zatvara na 25 °C i otvara na 28 °C.",
+          "Zabilježi izmijenjeni pokus na 26,5 °C. Provjera tom ulazu prilazi iz oba smjera.",
+          "Kakav je cilj na 26,5 °C ako je prethodno bilo 28 °C?",
+          "Ostaje otvoren",
+          "Zatvara se",
+          "Ovisi samo o napajanju"
+        ]
+      }
+    },
+    {
+      "id": "26C-iot-V1.2@1",
+      "taskKey": "iot/V1.2",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "LED i ispis izmjenjuju oba stanja.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Zabilježi pokus s prekinutim povratnim vodom LED-a dok se program izvodi. Potom obnovi vezu.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Što pri prekinutom povratnom vodu i dalje možeš opažati?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/V1.2",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "LED i ispis izmjenjuju oba stanja.",
+          "Zabilježi pokus s prekinutim povratnim vodom LED-a dok se program izvodi. Potom obnovi vezu.",
+          "Što pri prekinutom povratnom vodu i dalje možeš opažati?",
+          "Struju kroz LED",
+          "Svjetlo LED-a",
+          "Izmjenu poruka u konzoli"
+        ]
+      }
+    },
+    {
+      "id": "26C-iot-V1.3@1",
+      "taskKey": "iot/V1.3",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Obje faze treptanja traju oko 500 ms.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Zabilježi pokus nakon obnove spoja s obje faze od 1000 ms.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Koliki je period ako svaka faza traje 1000 ms?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/V1.3",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Obje faze treptanja traju oko 500 ms.",
+          "Zabilježi pokus nakon obnove spoja s obje faze od 1000 ms.",
+          "Koliki je period ako svaka faza traje 1000 ms?",
+          "500 ms",
+          "1000 ms",
+          "2000 ms"
+        ]
+      }
+    },
+    {
+      "id": "26C-iot-V1.4@1",
+      "taskKey": "iot/V1.4",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Najmanje pet svježih uzoraka stiže svakih 2000 ms.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Zabilježi pet novih uzoraka s razmakom 3000 ms.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Koji podatak razlikuje dva uzorka iste temperature?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/V1.4",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Najmanje pet svježih uzoraka stiže svakih 2000 ms.",
+          "Zabilježi pet novih uzoraka s razmakom 3000 ms.",
+          "Koji podatak razlikuje dva uzorka iste temperature?",
+          "Ista vrijednost temperature",
+          "Novi redni broj i vrijeme",
+          "Naziv senzora"
+        ]
+      }
+    },
+    {
+      "id": "26C-iot-V1.5@1",
+      "taskKey": "iot/V1.5",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "LED reagira na promjenu osvjetljenja s 30 na 500 lx.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Za provjeru odaberi novi prag između očitanja pri 30 i 140 lx. LED svijetli na 30 lx i gasi se već na 140 lx.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Kako odabrati prag iz dvaju udaljenih mjerenja?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/V1.5",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "LED reagira na promjenu osvjetljenja s 30 na 500 lx.",
+          "Za provjeru odaberi novi prag između očitanja pri 30 i 140 lx. LED svijetli na 30 lx i gasi se već na 140 lx.",
+          "Kako odabrati prag iz dvaju udaljenih mjerenja?",
+          "Između tih očitanja",
+          "Iznad oba očitanja",
+          "Uvijek na nuli"
+        ]
+      }
+    },
+    {
+      "id": "26C-iot-V1.6@1",
+      "taskKey": "iot/V1.6",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Servo izmjenjuje 30° i 90°, a LED radne omjere 15 % i 75 %.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Za drugi položaj postavi 120°, a za njegovu svjetlinu 50 %. Zabilježi obje izmjene.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Koja promjena izravno određuje kut virtualnog serva?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/V1.6",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Servo izmjenjuje 30° i 90°, a LED radne omjere 15 % i 75 %.",
+          "Za drugi položaj postavi 120°, a za njegovu svjetlinu 50 %. Zabilježi obje izmjene.",
+          "Koja promjena izravno određuje kut virtualnog serva?",
+          "Svjetlina LED-a",
+          "Interval ispisa",
+          "Trajanje upravljačkog impulsa"
+        ]
+      }
+    },
+    {
+      "id": "26C-iot-V1.7@1",
+      "taskKey": "iot/V1.7",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Početno korigirano očitanje jednako je sirovom.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Zabilježi program s korekcijom +1 °C za očitanje 24 °C uz referencu 25 °C. Provjera mijenja ulaz.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Kolika je korekcija ako je referenca 22 °C, a senzor očitava 23 °C?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/V1.7",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Početno korigirano očitanje jednako je sirovom.",
+          "Zabilježi program s korekcijom +1 °C za očitanje 24 °C uz referencu 25 °C. Provjera mijenja ulaz.",
+          "Kolika je korekcija ako je referenca 22 °C, a senzor očitava 23 °C?",
+          "+1 °C",
+          "−1 °C",
+          "0 °C"
+        ]
+      }
+    },
+    {
+      "id": "26C-iot-V1.8@1",
+      "taskKey": "iot/V1.8",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Servo prati dvije zadane širine impulsa za 30° i 90°.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Za završni pokus promijeni drugi kut na 150°.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Koliki impuls u ovom modelu zadaje srednji položaj od 90°?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/V1.8",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Servo prati dvije zadane širine impulsa za 30° i 90°.",
+          "Za završni pokus promijeni drugi kut na 150°.",
+          "Koliki impuls u ovom modelu zadaje srednji položaj od 90°?",
+          "1000 µs",
+          "2000 µs",
+          "1500 µs"
+        ]
+      }
+    },
+    {
+      "id": "26C-iot-V1.9@1",
+      "taskKey": "iot/V1.9",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Oba izlaza slijede valjanu temperaturu.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Na senzoru odaberi Pokus pogreške → Odspojen DQ. Zabilježi pokus dok konzola javlja pogrešku, zatim vrati uredan prijenos.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Što treba prikazati ako očitanje nije uspjelo?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/V1.9",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Oba izlaza slijede valjanu temperaturu.",
+          "Na senzoru odaberi Pokus pogreške → Odspojen DQ. Zabilježi pokus dok konzola javlja pogrešku, zatim vrati uredan prijenos.",
+          "Što treba prikazati ako očitanje nije uspjelo?",
+          "Oznaku pogreške",
+          "Temperaturu 0 °C",
+          "Prethodni uzorak kao novi"
+        ]
+      }
+    },
+    {
+      "id": "26C-iot-V1.10@1",
+      "taskKey": "iot/V1.10",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Senzori pokazuju jednaku temperaturu uz isti zadani ulaz.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Zabilježi pokus kada se temperature senzora razlikuju za 1 °C. Provjera ponavlja usporedbu i obrće predznak.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "DS18B20 daje 24 °C, a DHT22 daje 25 °C. Koliko je prva vrijednost minus druga?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/V1.10",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Senzori pokazuju jednaku temperaturu uz isti zadani ulaz.",
+          "Zabilježi pokus kada se temperature senzora razlikuju za 1 °C. Provjera ponavlja usporedbu i obrće predznak.",
+          "DS18B20 daje 24 °C, a DHT22 daje 25 °C. Koliko je prva vrijednost minus druga?",
+          "+1 °C",
+          "−1 °C",
+          "49 °C"
+        ]
+      }
+    },
+    {
+      "id": "26C-iot-V2.1@1",
+      "taskKey": "iot/V2.1",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "HTTP model potvrđuje prvu naredbu OPEN i otvara servo.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Zamijeni prvu radnju s CLOSE. Potvrda i stvarni cilj trebaju se promijeniti.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Što mora povezivati naredbu s njezinom potvrdom?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/V2.1",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "HTTP model potvrđuje prvu naredbu OPEN i otvara servo.",
+          "Zamijeni prvu radnju s CLOSE. Potvrda i stvarni cilj trebaju se promijeniti.",
+          "Što mora povezivati naredbu s njezinom potvrdom?",
+          "Ista temperatura",
+          "Isti broj retka u Wordu",
+          "Isti identifikator naredbe"
+        ]
+      }
+    },
+    {
+      "id": "26C-iot-V2.2@1",
+      "taskKey": "iot/V2.2",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Dva uzastopna mrežna uzorka razmaknuta su 2000 ms.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Zabilježi mrežne uzorke s razmakom 3000 ms prije vraćanja početnog intervala.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Što neposredno mijenja učestalost slanja mjerenja?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/V2.2",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Dva uzastopna mrežna uzorka razmaknuta su 2000 ms.",
+          "Zabilježi mrežne uzorke s razmakom 3000 ms prije vraćanja početnog intervala.",
+          "Što neposredno mijenja učestalost slanja mjerenja?",
+          "INTERVAL_MS",
+          "Prag otvaranja",
+          "Broj prethodne naredbe"
+        ]
+      }
+    },
+    {
+      "id": "26C-iot-V2.3@1",
+      "taskKey": "iot/V2.3",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "HTTP zahtjev povezan je s potvrdom naredbe.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Zabilježi pokus s protokolom MQTT i istim brojem naredbe.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Kako se MQTT poruke usmjeravaju primateljima?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/V2.3",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "HTTP zahtjev povezan je s potvrdom naredbe.",
+          "Zabilježi pokus s protokolom MQTT i istim brojem naredbe.",
+          "Kako se MQTT poruke usmjeravaju primateljima?",
+          "Prema broju uzorka",
+          "Prema temi",
+          "Prema izmjerenoj temperaturi"
+        ]
+      }
+    },
+    {
+      "id": "26C-iot-V2.S@1",
+      "taskKey": "iot/V2.S",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Lokalni zapis razlikuje valjanu, ponovljenu, zastarjelu i nepoznatu naredbu.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Za provjeru u drugoj poruci zadaj novi broj 2 i radnju CLOSE. Mora biti prihvaćena i zatvoriti servo.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Što se događa s ciljem kod odbijene naredbe u ručnom načinu?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/V2.S",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Lokalni zapis razlikuje valjanu, ponovljenu, zastarjelu i nepoznatu naredbu.",
+          "Za provjeru u drugoj poruci zadaj novi broj 2 i radnju CLOSE. Mora biti prihvaćena i zatvoriti servo.",
+          "Što se događa s ciljem kod odbijene naredbe u ručnom načinu?",
+          "Uvijek se zatvara",
+          "Uvijek se otvara",
+          "Zadržava dotadašnji cilj"
+        ]
+      }
+    },
+    {
+      "id": "26C-iot-V2.4@1",
+      "taskKey": "iot/V2.4",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Model tijekom rada prolazi kroz prekid i ponovnu dostavu.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Dodaj još jedan uzastopni OFFLINE. Mjerenja se nastavljaju kroz oba koraka.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Što tijekom prekida veze lokalni uređaj i dalje može raditi?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/V2.4",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Model tijekom rada prolazi kroz prekid i ponovnu dostavu.",
+          "Dodaj još jedan uzastopni OFFLINE. Mjerenja se nastavljaju kroz oba koraka.",
+          "Što tijekom prekida veze lokalni uređaj i dalje može raditi?",
+          "Mjeriti temperaturu",
+          "Primati nove udaljene naredbe",
+          "Potvrditi novu dostavu mreži"
+        ]
+      }
+    },
+    {
+      "id": "26C-iot-V2.5@1",
+      "taskKey": "iot/V2.5",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Alarm se uključuje pri 31 °C i gasi pri 27 °C.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Zabilježi 29 °C. Provjera ispituje alarm pri dolasku odozgo i odozdo.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Nakon 31 °C slijedi 29 °C uz prag gašenja 28 °C. Što pokazuje alarm?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/V2.5",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Alarm se uključuje pri 31 °C i gasi pri 27 °C.",
+          "Zabilježi 29 °C. Provjera ispituje alarm pri dolasku odozgo i odozdo.",
+          "Nakon 31 °C slijedi 29 °C uz prag gašenja 28 °C. Što pokazuje alarm?",
+          "Isključen",
+          "Uključen",
+          "Pogrešku senzora"
+        ]
+      }
+    },
+    {
+      "id": "26C-iot-V2.6@1",
+      "taskKey": "iot/V2.6",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Lokalno mjerenje, cilj i potvrda vidljivi su u istom ciklusu poruka.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Zabilježi pokus uz temperaturu iznad 30 °C. Tijekom prekida provjeravaju se alarm i samostalni cilj.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Što mora nastaviti raditi bez udaljenog nadzora?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/V2.6",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Lokalno mjerenje, cilj i potvrda vidljivi su u istom ciklusu poruka.",
+          "Zabilježi pokus uz temperaturu iznad 30 °C. Tijekom prekida provjeravaju se alarm i samostalni cilj.",
+          "Što mora nastaviti raditi bez udaljenog nadzora?",
+          "Prijenos MQTT potvrda",
+          "Osvježavanje udaljene aplikacije",
+          "Lokalna regulacija i alarm"
+        ]
+      }
+    },
+    {
+      "id": "26C-iot-V4.1@1",
+      "taskKey": "iot/V4.1",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Funkcija u biblioteci otvara na 27 °C.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Za provjeru u biblioteci pomakni prag otvaranja na 28 °C. Zadrži prag zatvaranja 26 °C.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Koji rezultat očekuješ između dvaju pragova?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/V4.1",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Funkcija u biblioteci otvara na 27 °C.",
+          "Za provjeru u biblioteci pomakni prag otvaranja na 28 °C. Zadrži prag zatvaranja 26 °C.",
+          "Koji rezultat očekuješ između dvaju pragova?",
+          "Uvijek OPEN",
+          "Prethodno stanje",
+          "Uvijek CLOSE"
+        ]
+      }
+    },
+    {
+      "id": "26C-iot-V4.2@1",
+      "taskKey": "iot/V4.2",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Program A koristi zajedničku odluku s početnim pragom.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "U biblioteci postavi prag 28 °C. Za drugi pokus odaberi PROGRAM B sa zadanim nizom. Provjera pokreće B i početni A s novom bibliotekom.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Gdje treba održavati pravilo kojeg se koriste oba programa?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/V4.2",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Program A koristi zajedničku odluku s početnim pragom.",
+          "U biblioteci postavi prag 28 °C. Za drugi pokus odaberi PROGRAM B sa zadanim nizom. Provjera pokreće B i početni A s novom bibliotekom.",
+          "Gdje treba održavati pravilo kojeg se koriste oba programa?",
+          "U trećoj kopiji glavnog programa",
+          "U svakoj petlji zasebno",
+          "U zajedničkoj biblioteci"
+        ]
+      }
+    },
+    {
+      "id": "26C-iot-V4.3@1",
+      "taskKey": "iot/V4.3",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Program A očitava ulaz i obrađuje ga zajedničkom funkcijom.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "U biblioteci postavi prag 28 °C i zabilježi PROGRAM B sa zadanim nizom. Provjera pokreće B i početni A s novom bibliotekom.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Što programu B daje ponovljivost?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/V4.3",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Program A očitava ulaz i obrađuje ga zajedničkom funkcijom.",
+          "U biblioteci postavi prag 28 °C i zabilježi PROGRAM B sa zadanim nizom. Provjera pokreće B i početni A s novom bibliotekom.",
+          "Što programu B daje ponovljivost?",
+          "Unaprijed zadani niz ulaza",
+          "Nova slučajna temperatura",
+          "Promjena napajanja"
+        ]
+      }
+    },
+    {
+      "id": "26C-iot-V4.4@1",
+      "taskKey": "iot/V4.4",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "TCP model uzorkuje i dok čeka odgovor.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Dodaj drugi uzastopni korak WAIT. Oba trebaju imati novi uzorak, a zatim mora stići potvrda.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Što pokazuje da čekanje odgovora nije zaustavilo mjerenje?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/V4.4",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "TCP model uzorkuje i dok čeka odgovor.",
+          "Dodaj drugi uzastopni korak WAIT. Oba trebaju imati novi uzorak, a zatim mora stići potvrda.",
+          "Što pokazuje da čekanje odgovora nije zaustavilo mjerenje?",
+          "Jednak broj naredbe",
+          "Novi redni brojevi uzoraka tijekom čekanja",
+          "Isti zapis dvaput"
+        ]
+      }
+    },
+    {
+      "id": "26C-iot-V4.5@1",
+      "taskKey": "iot/V4.5",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Otvaranje i alarm reagiraju na svoje pragove.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Zabilježi 28 °C nakon niže temperature. Provjera ispituje različite kombinacije dvaju izlaza.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Pri zagrijavanju od 25 na 28 °C, uz pragove 27 i 30 °C, koji je izlaz aktivan?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/V4.5",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Otvaranje i alarm reagiraju na svoje pragove.",
+          "Zabilježi 28 °C nakon niže temperature. Provjera ispituje različite kombinacije dvaju izlaza.",
+          "Pri zagrijavanju od 25 na 28 °C, uz pragove 27 i 30 °C, koji je izlaz aktivan?",
+          "Samo alarm",
+          "Oba izlaza",
+          "Samo otvor"
+        ]
+      }
+    },
+    {
+      "id": "26C-iot-V4.6@1",
+      "taskKey": "iot/V4.6",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Početni alarm reagira na prag od 30 °C.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Za provjeru promijeni samo prag uključivanja alarma na 32 °C.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Što pri pomaku samo praga alarma ostaje jednako?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "iot/V4.6",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Početni alarm reagira na prag od 30 °C.",
+          "Za provjeru promijeni samo prag uključivanja alarma na 32 °C.",
+          "Što pri pomaku samo praga alarma ostaje jednako?",
+          "Temperatura otvaranja",
+          "Temperatura uključivanja alarma",
+          "Broj aktivnih alarma pri svakoj temperaturi"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-P0@1",
+      "taskKey": "us/P0",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Ista početna poruka ponavlja se svake sekunde.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Spremi vlastitu poruku s novim razmakom od 200 do 4000 ms, različitim od 1000 ms.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Koliko poruka nakon prve stiže tijekom 6 s uz razmak 2000 ms?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/P0",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Ista početna poruka ponavlja se svake sekunde.",
+          "Spremi vlastitu poruku s novim razmakom od 200 do 4000 ms, različitim od 1000 ms.",
+          "Koliko poruka nakon prve stiže tijekom 6 s uz razmak 2000 ms?",
+          "2",
+          "3",
+          "6"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V1.1@1",
+      "taskKey": "us/V1.1",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Model zatvara na 25 °C i otvara na 28 °C.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Zabilježi izmijenjeni pokus na 26,5 °C. Provjera tom ulazu prilazi iz oba smjera.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Kakav je cilj na 26,5 °C ako je prethodno bilo 28 °C?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V1.1",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Model zatvara na 25 °C i otvara na 28 °C.",
+          "Zabilježi izmijenjeni pokus na 26,5 °C. Provjera tom ulazu prilazi iz oba smjera.",
+          "Kakav je cilj na 26,5 °C ako je prethodno bilo 28 °C?",
+          "Ostaje otvoren",
+          "Zatvara se",
+          "Ovisi samo o napajanju"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V1.2@1",
+      "taskKey": "us/V1.2",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "LED i ispis izmjenjuju oba stanja.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Zabilježi pokus s prekinutim povratnim vodom LED-a dok se program izvodi. Potom obnovi vezu.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Što pri prekinutom povratnom vodu i dalje možeš opažati?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V1.2",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "LED i ispis izmjenjuju oba stanja.",
+          "Zabilježi pokus s prekinutim povratnim vodom LED-a dok se program izvodi. Potom obnovi vezu.",
+          "Što pri prekinutom povratnom vodu i dalje možeš opažati?",
+          "Struju kroz LED",
+          "Svjetlo LED-a",
+          "Izmjenu poruka u konzoli"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V1.3@1",
+      "taskKey": "us/V1.3",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Obje faze treptanja traju oko 500 ms.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Zabilježi pokus nakon obnove spoja s obje faze od 1000 ms.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Koliki je period ako svaka faza traje 1000 ms?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V1.3",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Obje faze treptanja traju oko 500 ms.",
+          "Zabilježi pokus nakon obnove spoja s obje faze od 1000 ms.",
+          "Koliki je period ako svaka faza traje 1000 ms?",
+          "500 ms",
+          "1000 ms",
+          "2000 ms"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V1.4@1",
+      "taskKey": "us/V1.4",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Najmanje pet svježih uzoraka stiže svakih 2000 ms.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Zabilježi pet novih uzoraka s razmakom 3000 ms.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Koji podatak razlikuje dva uzorka iste temperature?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V1.4",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Najmanje pet svježih uzoraka stiže svakih 2000 ms.",
+          "Zabilježi pet novih uzoraka s razmakom 3000 ms.",
+          "Koji podatak razlikuje dva uzorka iste temperature?",
+          "Ista vrijednost temperature",
+          "Novi redni broj i vrijeme",
+          "Naziv senzora"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V1.5@1",
+      "taskKey": "us/V1.5",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "LED reagira na promjenu osvjetljenja s 30 na 500 lx.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Za provjeru odaberi novi prag između očitanja pri 30 i 140 lx. LED svijetli na 30 lx i gasi se već na 140 lx.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Kako odabrati prag iz dvaju udaljenih mjerenja?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V1.5",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "LED reagira na promjenu osvjetljenja s 30 na 500 lx.",
+          "Za provjeru odaberi novi prag između očitanja pri 30 i 140 lx. LED svijetli na 30 lx i gasi se već na 140 lx.",
+          "Kako odabrati prag iz dvaju udaljenih mjerenja?",
+          "Između tih očitanja",
+          "Iznad oba očitanja",
+          "Uvijek na nuli"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V1.6@1",
+      "taskKey": "us/V1.6",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Servo izmjenjuje 30° i 90°, a LED radne omjere 15 % i 75 %.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Za drugi položaj postavi 120°, a za njegovu svjetlinu 50 %. Zabilježi obje izmjene.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Koja promjena izravno određuje kut virtualnog serva?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V1.6",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Servo izmjenjuje 30° i 90°, a LED radne omjere 15 % i 75 %.",
+          "Za drugi položaj postavi 120°, a za njegovu svjetlinu 50 %. Zabilježi obje izmjene.",
+          "Koja promjena izravno određuje kut virtualnog serva?",
+          "Svjetlina LED-a",
+          "Interval ispisa",
+          "Trajanje upravljačkog impulsa"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V1.7@1",
+      "taskKey": "us/V1.7",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Početno korigirano očitanje jednako je sirovom.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Zabilježi program s korekcijom +1 °C za očitanje 24 °C uz referencu 25 °C. Provjera mijenja ulaz.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Kolika je korekcija ako je referenca 22 °C, a senzor očitava 23 °C?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V1.7",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Početno korigirano očitanje jednako je sirovom.",
+          "Zabilježi program s korekcijom +1 °C za očitanje 24 °C uz referencu 25 °C. Provjera mijenja ulaz.",
+          "Kolika je korekcija ako je referenca 22 °C, a senzor očitava 23 °C?",
+          "+1 °C",
+          "−1 °C",
+          "0 °C"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V1.8@1",
+      "taskKey": "us/V1.8",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Servo prati dvije zadane širine impulsa za 30° i 90°.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Za završni pokus promijeni drugi kut na 150°.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Koliki impuls u ovom modelu zadaje srednji položaj od 90°?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V1.8",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Servo prati dvije zadane širine impulsa za 30° i 90°.",
+          "Za završni pokus promijeni drugi kut na 150°.",
+          "Koliki impuls u ovom modelu zadaje srednji položaj od 90°?",
+          "1000 µs",
+          "2000 µs",
+          "1500 µs"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V1.9@1",
+      "taskKey": "us/V1.9",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Oba izlaza slijede valjanu temperaturu.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Na senzoru odaberi Pokus pogreške → Odspojen DQ. Zabilježi pokus dok konzola javlja pogrešku, zatim vrati uredan prijenos.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Što treba prikazati ako očitanje nije uspjelo?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V1.9",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Oba izlaza slijede valjanu temperaturu.",
+          "Na senzoru odaberi Pokus pogreške → Odspojen DQ. Zabilježi pokus dok konzola javlja pogrešku, zatim vrati uredan prijenos.",
+          "Što treba prikazati ako očitanje nije uspjelo?",
+          "Oznaku pogreške",
+          "Temperaturu 0 °C",
+          "Prethodni uzorak kao novi"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V1.10@1",
+      "taskKey": "us/V1.10",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Senzori pokazuju jednaku temperaturu uz isti zadani ulaz.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Zabilježi pokus kada se temperature senzora razlikuju za 1 °C. Provjera ponavlja usporedbu i obrće predznak.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "DS18B20 daje 24 °C, a DHT22 daje 25 °C. Koliko je prva vrijednost minus druga?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V1.10",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Senzori pokazuju jednaku temperaturu uz isti zadani ulaz.",
+          "Zabilježi pokus kada se temperature senzora razlikuju za 1 °C. Provjera ponavlja usporedbu i obrće predznak.",
+          "DS18B20 daje 24 °C, a DHT22 daje 25 °C. Koliko je prva vrijednost minus druga?",
+          "+1 °C",
+          "−1 °C",
+          "49 °C"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V3.1@1",
+      "taskKey": "us/V3.1",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Na valjanu temperaturu odgovaraju LED i servo na sklopu.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Zabilježi simulaciju sklopljenog modela na 28 °C.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Čemu služi zajednička masa izvora i pločice?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V3.1",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Na valjanu temperaturu odgovaraju LED i servo na sklopu.",
+          "Zabilježi simulaciju sklopljenog modela na 28 °C.",
+          "Čemu služi zajednička masa izvora i pločice?",
+          "Daje zajedničku referencu signala",
+          "Određuje prag otvaranja",
+          "Zamjenjuje signalni vod serva"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V3.2@1",
+      "taskKey": "us/V3.2",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Servo na zasebnom napajanju postiže početna dva položaja.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Zabilježi drugi cilj od 150° prije vraćanja početne vrijednosti.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Koji vod prenosi naredbu položaja?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V3.2",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Servo na zasebnom napajanju postiže početna dva položaja.",
+          "Zabilježi drugi cilj od 150° prije vraćanja početne vrijednosti.",
+          "Koji vod prenosi naredbu položaja?",
+          "V+",
+          "SIG",
+          "GND"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V3.3@1",
+      "taskKey": "us/V3.3",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Valjano očitanje upravlja LED-om i servom.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Za provjeru odaberi granu DQ. U izborniku senzora Pokus pogreške odaberi Odspojen DQ i zabilježi pokus prije popravka.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Koje opažanje upućuje na prekid grane senzora?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V3.3",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Valjano očitanje upravlja LED-om i servom.",
+          "Za provjeru odaberi granu DQ. U izborniku senzora Pokus pogreške odaberi Odspojen DQ i zabilježi pokus prije popravka.",
+          "Koje opažanje upućuje na prekid grane senzora?",
+          "Samo se zaslon zatamni",
+          "Servo izgubi napajanje",
+          "Nema valjanog novog očitanja"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V3.4@1",
+      "taskKey": "us/V3.4",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Pri promjeni temperature rade obje izlazne grane.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Zabilježi odspojeni signal serva uz ispravan senzor i LED, zatim obnovi spoj.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Ako LED prati temperaturu, a servo nema impulse, koju granu prvo provjeriti?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V3.4",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Pri promjeni temperature rade obje izlazne grane.",
+          "Zabilježi odspojeni signal serva uz ispravan senzor i LED, zatim obnovi spoj.",
+          "Ako LED prati temperaturu, a servo nema impulse, koju granu prvo provjeriti?",
+          "Signal serva",
+          "Podatkovni vod senzora",
+          "Serijski monitor"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V3.5@1",
+      "taskKey": "us/V3.5",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Regulator otvara na 27 °C i zatvara na 26 °C.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Zabilježi pokus s popravljenom vezom i temperaturom 25 °C. Provjera izaziva prekid i oporavak na toj inačici.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Koji je dokaz oporavka senzora?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V3.5",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Regulator otvara na 27 °C i zatvara na 26 °C.",
+          "Zabilježi pokus s popravljenom vezom i temperaturom 25 °C. Provjera izaziva prekid i oporavak na toj inačici.",
+          "Koji je dokaz oporavka senzora?",
+          "Nestao je prethodni redak",
+          "Novo valjano očitanje i odgovarajući izlaz",
+          "Ponovljen stari uzorak"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V3.6@1",
+      "taskKey": "us/V3.6",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Početni ciklus modela traje oko 2000 ms.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Premjesti komponentu uz očuvanje veza i za provjeru zadaj interval 3000 ms.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Što mijenja premještanje simbola uz iste vodiče?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V3.6",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Početni ciklus modela traje oko 2000 ms.",
+          "Premjesti komponentu uz očuvanje veza i za provjeru zadaj interval 3000 ms.",
+          "Što mijenja premještanje simbola uz iste vodiče?",
+          "Prag regulacije",
+          "Period mjerenja",
+          "Raspored na crtežu"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V3.7@1",
+      "taskKey": "us/V3.7",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Model može zatvoriti i otvoriti prema temperaturi.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Nakon demonstracije stanja zadržavanja zabilježi ulaz 26,5 °C.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Koji slijed dokazuje zadržavanje otvorenog položaja?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V3.7",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Model može zatvoriti i otvoriti prema temperaturi.",
+          "Nakon demonstracije stanja zadržavanja zabilježi ulaz 26,5 °C.",
+          "Koji slijed dokazuje zadržavanje otvorenog položaja?",
+          "25 → 28 → 26,5 °C",
+          "25 → 25 → 25 °C",
+          "28 → 25 → 25 °C"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V2.S@1",
+      "taskKey": "us/V2.S",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Lokalni zapis razlikuje valjanu, ponovljenu, zastarjelu i nepoznatu naredbu.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Za provjeru u drugoj poruci zadaj novi broj 2 i radnju CLOSE. Mora biti prihvaćena i zatvoriti servo.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Što se događa s ciljem kod odbijene naredbe u ručnom načinu?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V2.S",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Lokalni zapis razlikuje valjanu, ponovljenu, zastarjelu i nepoznatu naredbu.",
+          "Za provjeru u drugoj poruci zadaj novi broj 2 i radnju CLOSE. Mora biti prihvaćena i zatvoriti servo.",
+          "Što se događa s ciljem kod odbijene naredbe u ručnom načinu?",
+          "Uvijek se zatvara",
+          "Uvijek se otvara",
+          "Zadržava dotadašnji cilj"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V4.1@1",
+      "taskKey": "us/V4.1",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Funkcija u biblioteci otvara na 27 °C.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Za provjeru u biblioteci pomakni prag otvaranja na 28 °C. Zadrži prag zatvaranja 26 °C.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Koji rezultat očekuješ između dvaju pragova?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V4.1",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Funkcija u biblioteci otvara na 27 °C.",
+          "Za provjeru u biblioteci pomakni prag otvaranja na 28 °C. Zadrži prag zatvaranja 26 °C.",
+          "Koji rezultat očekuješ između dvaju pragova?",
+          "Uvijek OPEN",
+          "Prethodno stanje",
+          "Uvijek CLOSE"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V4.2@1",
+      "taskKey": "us/V4.2",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Program A koristi zajedničku odluku s početnim pragom.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "U biblioteci postavi prag 28 °C. Za drugi pokus odaberi PROGRAM B sa zadanim nizom. Provjera pokreće B i početni A s novom bibliotekom.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Gdje treba održavati pravilo kojeg se koriste oba programa?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V4.2",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Program A koristi zajedničku odluku s početnim pragom.",
+          "U biblioteci postavi prag 28 °C. Za drugi pokus odaberi PROGRAM B sa zadanim nizom. Provjera pokreće B i početni A s novom bibliotekom.",
+          "Gdje treba održavati pravilo kojeg se koriste oba programa?",
+          "U trećoj kopiji glavnog programa",
+          "U svakoj petlji zasebno",
+          "U zajedničkoj biblioteci"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V4.3@1",
+      "taskKey": "us/V4.3",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Program A očitava ulaz i obrađuje ga zajedničkom funkcijom.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "U biblioteci postavi prag 28 °C i zabilježi PROGRAM B sa zadanim nizom. Provjera pokreće B i početni A s novom bibliotekom.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Što programu B daje ponovljivost?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V4.3",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Program A očitava ulaz i obrađuje ga zajedničkom funkcijom.",
+          "U biblioteci postavi prag 28 °C i zabilježi PROGRAM B sa zadanim nizom. Provjera pokreće B i početni A s novom bibliotekom.",
+          "Što programu B daje ponovljivost?",
+          "Unaprijed zadani niz ulaza",
+          "Nova slučajna temperatura",
+          "Promjena napajanja"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V4.4@1",
+      "taskKey": "us/V4.4",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "TCP model uzorkuje i dok čeka odgovor.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Dodaj drugi uzastopni korak WAIT. Oba trebaju imati novi uzorak, a zatim mora stići potvrda.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Što pokazuje da čekanje odgovora nije zaustavilo mjerenje?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V4.4",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "TCP model uzorkuje i dok čeka odgovor.",
+          "Dodaj drugi uzastopni korak WAIT. Oba trebaju imati novi uzorak, a zatim mora stići potvrda.",
+          "Što pokazuje da čekanje odgovora nije zaustavilo mjerenje?",
+          "Jednak broj naredbe",
+          "Novi redni brojevi uzoraka tijekom čekanja",
+          "Isti zapis dvaput"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V4.5@1",
+      "taskKey": "us/V4.5",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Otvaranje i alarm reagiraju na svoje pragove.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Zabilježi 28 °C nakon niže temperature. Provjera ispituje različite kombinacije dvaju izlaza.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Pri zagrijavanju od 25 na 28 °C, uz pragove 27 i 30 °C, koji je izlaz aktivan?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V4.5",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Otvaranje i alarm reagiraju na svoje pragove.",
+          "Zabilježi 28 °C nakon niže temperature. Provjera ispituje različite kombinacije dvaju izlaza.",
+          "Pri zagrijavanju od 25 na 28 °C, uz pragove 27 i 30 °C, koji je izlaz aktivan?",
+          "Samo alarm",
+          "Oba izlaza",
+          "Samo otvor"
+        ]
+      }
+    },
+    {
+      "id": "26C-us-V4.6@1",
+      "taskKey": "us/V4.6",
+      "kind": "collection",
+      "targets": [
+        "micropython",
+        "s3-cpp"
+      ],
+      "title": "Provjera pokusa i tumačenja",
+      "instructions": "Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. Provjeravač izvodi obje spremljene inačice u simulatoru.",
+      "criteria": [
+        {
+          "description": "Početni alarm reagira na prag od 30 °C.",
+          "id": "pocetni",
+          "maxPoints": 3
+        },
+        {
+          "description": "Za provjeru promijeni samo prag uključivanja alarma na 32 °C.",
+          "id": "izmjena",
+          "maxPoints": 5
+        },
+        {
+          "description": "Što pri pomaku samo praga alarma ostaje jednako?",
+          "id": "tumacenje",
+          "maxPoints": 2
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "us/V4.6",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Početni alarm reagira na prag od 30 °C.",
+          "Za provjeru promijeni samo prag uključivanja alarma na 32 °C.",
+          "Što pri pomaku samo praga alarma ostaje jednako?",
+          "Temperatura otvaranja",
+          "Temperatura uključivanja alarma",
+          "Broj aktivnih alarma pri svakoj temperaturi"
+        ]
+      }
+    },
+    {
+      "id": "26C-urs-lv-LV01@1",
+      "taskKey": "urs-lv/LV01",
+      "kind": "collection",
+      "targets": [
+        "nano"
+      ],
+      "title": "Provjera programa P1–P3",
+      "instructions": "Spremi inačice P1, P2 i P3. Svaka se izvodi zasebno prema uvjetima uz podzadatak.",
+      "criteria": [
+        {
+          "id": "P1",
+          "maxPoints": 3,
+          "description": "P1 · Promijeni PAUSE_MS s 500 na 200, ponovno prenesi program i zapiši kako se promijenilo treperenje."
+        },
+        {
+          "id": "P2",
+          "maxPoints": 3,
+          "description": "P2 · Samostalno napiši loop() u kojem LED dvaput kratko zatreperi (200 ms uključena i 200 ms isključena), a zatim ostane isključena 1000 ms."
+        },
+        {
+          "id": "P3",
+          "maxPoints": 4,
+          "description": "P3 · Uvedi konstantu BROJ_TREPTAJA = 3. Napiši for-petlju koja LED uključi i isključi zadani broj puta, a nakon petlje napravi stanku od 1000 ms."
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "urs-lv/LV01",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Provjera mjeri trajanje uključenja i isključenja D13.",
+          "Provjera traži dva kratka bljeska i dulju stanku u više ciklusa.",
+          "Provjeravaju se tri bljeska, stanka i uporaba konstante u for-petlji."
+        ]
+      }
+    },
+    {
+      "id": "26C-urs-lv-LV02@1",
+      "taskKey": "urs-lv/LV02",
+      "kind": "collection",
+      "targets": [
+        "nano"
+      ],
+      "title": "Provjera programa P1–P3",
+      "instructions": "Spremi inačice P1, P2 i P3. Svaka se izvodi zasebno prema uvjetima uz podzadatak.",
+      "criteria": [
+        {
+          "id": "P1",
+          "maxPoints": 3,
+          "description": "P1 · Promijeni tekst URS - OLED u svoje ime i u sljedećem retku prikaži oznaku razreda 4.f."
+        },
+        {
+          "id": "P2",
+          "maxPoints": 3,
+          "description": "P2 · Napiši uvjet koji svake parne sekunde prikazuje znak * u gornjem desnom kutu zaslona, a tijekom neparne sekunde znak ne prikazuje."
+        },
+        {
+          "id": "P3",
+          "maxPoints": 4,
+          "description": "P3 · Na dnu zaslona nacrtaj okvir i traku napretka sekunde 0-59. Duljinu ispune izračunaj funkcijom map(), a prikaz osvježavaj bez titranja."
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "urs-lv/LV02",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Prikaži ime i 4.f u dvama recima fontom početnog programa.",
+          "Provjera očitava znak * u gornjoj desnoj četvrtini prikaza tijekom parnih i neparnih sekundi.",
+          "Na dnu nacrtaj okvir širok najmanje 40 piksela. Provjera uspoređuje ispunu u nekoliko sekundi."
+        ]
+      }
+    },
+    {
+      "id": "26C-urs-lv-LV03@1",
+      "taskKey": "urs-lv/LV03",
+      "kind": "collection",
+      "targets": [
+        "nano"
+      ],
+      "title": "Provjera programa P1–P3",
+      "instructions": "Spremi inačice P1, P2 i P3. Svaka se izvodi zasebno prema uvjetima uz podzadatak.",
+      "criteria": [
+        {
+          "id": "P1",
+          "maxPoints": 3,
+          "description": "P1 · Uz valjano očitanje DS18B20 izračunaj i ispiši razliku LM35 − DS18B20. Za pogrešku DS18B20 ispiši GRESKA bez računanja razlike."
+        },
+        {
+          "id": "P2",
+          "maxPoints": 3,
+          "description": "P2 · Samostalno dopuni program minimumom i maksimumom za oba senzora. Početne vrijednosti postavi tek nakon prvog valjanog mjerenja."
+        },
+        {
+          "id": "P3",
+          "maxPoints": 4,
+          "description": "P3 · Za deset očitanja izračunaj zaseban prosjek svakog senzora. Za DS18B20 broji samo valjana očitanja; ako nema nijednog, ne dijeli nulom."
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "urs-lv/LV03",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "U zasebnom retku ispiši P1 pa razliku ili GRESKA. Primjer formata je P1 2.4.",
+          "Pri svakom mjerenju ispiši UZ pa dvije temperature redom LM35 i DS18B20. Za nedostupan senzor upiši ERR. U retku P2 ispiši min i maks prvog, zatim drugog senzora.",
+          "Ispiši UZ kao u P2. Nakon svakih deset očitanja u retku P3 ispiši prosjek i broj valjanih uzoraka svakog senzora redom. Za nedostupan prosjek upiši ERR."
+        ]
+      }
+    },
+    {
+      "id": "26C-urs-lv-LV04@1",
+      "taskKey": "urs-lv/LV04",
+      "kind": "collection",
+      "targets": [
+        "nano"
+      ],
+      "title": "Provjera programa P1–P3",
+      "instructions": "Spremi inačice P1, P2 i P3. Svaka se izvodi zasebno prema uvjetima uz podzadatak.",
+      "criteria": [
+        {
+          "id": "P1",
+          "maxPoints": 3,
+          "description": "P1 · Izračunaj T11 − T22 i RH11 − RH22 samo kad su oba odgovarajuća očitanja valjana. U ispisu razlikuj °C i postotne bodove RH."
+        },
+        {
+          "id": "P2",
+          "maxPoints": 3,
+          "description": "P2 · Dodaj zasebne brojače nevaljanih mjerenja za DHT11 i DHT22. Brojač drugog senzora ne smije rasti zbog pogreške prvoga."
+        },
+        {
+          "id": "P3",
+          "maxPoints": 4,
+          "description": "P3 · Iz deset ciklusa izračunaj četiri prosjeka: dvije temperature i dvije vlažnosti. Uz svaki navedi broj valjanih mjerenja."
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "urs-lv/LV04",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "U retku P1 ispiši razliku temperatura i razliku vlažnosti ili GRESKA kad par nije valjan. U izvještaju navedi jedinice.",
+          "Za svaki ciklus u retku P2 ispiši dva zasebna ukupna broja pogrešaka redom za DHT11 i DHT22.",
+          "Ispiši UZ pa T11, T22, RH11, RH22. Za pogrešku upiši ERR. Nakon deset ciklusa u retku P3 za svaku veličinu tim redom ispiši njezin prosjek i broj valjanih uzoraka."
+        ]
+      }
+    },
+    {
+      "id": "26C-urs-lv-LV05@1",
+      "taskKey": "urs-lv/LV05",
+      "kind": "collection",
+      "targets": [
+        "nano"
+      ],
+      "title": "Provjera programa P1–P3",
+      "instructions": "Spremi inačice P1, P2 i P3. Svaka se izvodi zasebno prema uvjetima uz podzadatak.",
+      "criteria": [
+        {
+          "id": "P1",
+          "maxPoints": 3,
+          "description": "P1 · Uz svaki redak ispiši broj valjanih temperaturnih mjerenja od 0 do 5. Za sve valjane temperature odredi najmanju i najveću vrijednost te njihov raspon."
+        },
+        {
+          "id": "P2",
+          "maxPoints": 3,
+          "description": "P2 · Prikupi deset ciklusa. Za svaki od pet senzora izračunaj njegov prosjek, uz zaseban zbroj i broj valjanih očitanja. Jednako učini za sve tri vlažnosti. Ne dijeli nulom."
+        },
+        {
+          "id": "P3",
+          "maxPoints": 4,
+          "description": "P3 · Za svaki od pet temperaturnih prosjeka izračunaj odstupanje od prosjeka dostupnih temperaturnih prosjeka. U izvještaju objasni zašto to nije pogreška prema etalonu. Ako nedostaje senzor, ispravi izvedbu i ponovi seriju."
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "urs-lv/LV05",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "U retku P1 ispiši broj valjanih temperatura, minimum, maksimum i raspon.",
+          "U svakom ciklusu ispiši UZ pa pet temperatura i tri vlažnosti u redoslijedu iz zaglavlja, uz ERR za pogrešku. Nakon deset ciklusa u retku P2 za svaku veličinu ispiši prosjek i broj valjanih uzoraka.",
+          "Zadrži retke UZ iz P2. Nakon deset ciklusa u retku P3 ispiši pet odstupanja temperaturnih prosjeka od zajedničkog prosjeka. Za nedostupno odstupanje upiši ERR."
+        ]
+      }
+    },
+    {
+      "id": "26C-urs-lv-LV06@1",
+      "taskKey": "urs-lv/LV06",
+      "kind": "collection",
+      "targets": [
+        "nano"
+      ],
+      "title": "Provjera programa P1–P3",
+      "instructions": "Spremi inačice P1, P2 i P3. Svaka se izvodi zasebno prema uvjetima uz podzadatak.",
+      "criteria": [
+        {
+          "id": "P1",
+          "maxPoints": 3,
+          "description": "P1 · Promijeni raspon na 30–150° i provjeri oba kraja i sredinu."
+        },
+        {
+          "id": "P2",
+          "maxPoints": 3,
+          "description": "P2 · Dodaj prethodniKut. Pozovi servo.write() samo kada se novi kut razlikuje za najmanje 2°; prvi položaj ipak mora biti zadan."
+        },
+        {
+          "id": "P3",
+          "maxPoints": 4,
+          "description": "P3 · Dodaj postupno približavanje zadanom kutu po 1° svakih 20 ms uz millis(). Potenciometar se mora nastaviti očitavati tijekom kretanja."
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "urs-lv/LV06",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Provjera postavlja potenciometar na početak, kraj i sredinu te mjeri impulse.",
+          "Za provjeru zadrži raspon iz P1. Provjeravaju se prvi položaj, promjena za 1° i zatim promjena za više stupnjeva.",
+          "Provjera mijenja zadani položaj tijekom kretanja i mjeri redoslijed i brzinu promjene impulsa."
+        ]
+      }
+    },
+    {
+      "id": "26C-urs-lv-LV07@1",
+      "taskKey": "urs-lv/LV07",
+      "kind": "collection",
+      "targets": [
+        "nano"
+      ],
+      "title": "Provjera programa P1–P3",
+      "instructions": "Spremi inačice P1, P2 i P3. Svaka se izvodi zasebno prema uvjetima uz podzadatak.",
+      "criteria": [
+        {
+          "id": "P1",
+          "maxPoints": 3,
+          "description": "P1 · Promijeni boje i dodaj svoje inicijale, uz zadržavanje jasnih poruka UKLJUCEN i ISKLJUCEN."
+        },
+        {
+          "id": "P2",
+          "maxPoints": 3,
+          "description": "P2 · Dodaj brojač promjena stanja i prikaži ga na TFT-u. Broji promjenu, ne prolazak kroz loop()."
+        },
+        {
+          "id": "P3",
+          "maxPoints": 4,
+          "description": "P3 · Dodaj automatsko isključivanje nakon pet sekundi pomoću millis(). Ažuriraj relej, tekst, boju i brojač istim događajem."
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "urs-lv/LV07",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Inicijale od dva ili tri slova ispiši u zasebnom retku na TFT-u. Odaberi dvije različite nove boje pokaznika.",
+          "Na TFT-u prikaži broj promjena nakon oznake N= ili u zasebnom retku. Provjera uključuje držanje i otpuštanje tipke.",
+          "Provjera čita relej, stanje i broj promjena na TFT-u prije i nakon automatskog isključenja."
+        ]
+      }
+    },
+    {
+      "id": "26C-urs-lv-LV08@1",
+      "taskKey": "urs-lv/LV08",
+      "kind": "collection",
+      "targets": [
+        "nano"
+      ],
+      "title": "Provjera programa P1–P3",
+      "instructions": "Spremi inačice P1, P2 i P3. Svaka se izvodi zasebno prema uvjetima uz podzadatak.",
+      "criteria": [
+        {
+          "id": "P1",
+          "maxPoints": 3,
+          "description": "P1 · Dodaj oznaku NISKA RAZINA za model ispod 20 % i VISOKA RAZINA iznad 80 %; između prikaži NORMALNO."
+        },
+        {
+          "id": "P2",
+          "maxPoints": 3,
+          "description": "P2 · Spremi prvo valjano mjerenje tlaka i uz svako sljedeće ispiši odstupanje u hPa. Ne postavljaj referencu iz nevaljanog podatka."
+        },
+        {
+          "id": "P3",
+          "maxPoints": 4,
+          "description": "P3 · Na OLED-u izmjenjuj stranicu svih veličina i stranicu s min/maks tlakom. Pomoću millis() odvoji interval mjerenja od intervala izmjene stranice."
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "urs-lv/LV08",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Oznaku razine ispiši na serijsku konzolu ili na OLED.",
+          "U retku P2 ispiši odstupanje tlaka u hPa od prve valjane vrijednosti.",
+          "Na stranicu ekstrema upiši MIN i MAX te njihove vrijednosti u hPa. Provjera mijenja tlak dok se stranice izmjenjuju."
+        ]
+      }
+    },
+    {
+      "id": "26C-urs-lv-LV09@1",
+      "taskKey": "urs-lv/LV09",
+      "kind": "collection",
+      "targets": [
+        "nano"
+      ],
+      "title": "Provjera programa P1–P3",
+      "instructions": "Spremi inačice P1, P2 i P3. Svaka se izvodi zasebno prema uvjetima uz podzadatak.",
+      "criteria": [
+        {
+          "id": "P1",
+          "maxPoints": 3,
+          "description": "P1 · Prilagodi oba praga izmjerenim uvjetima i obrazloži izbor razmaka."
+        },
+        {
+          "id": "P2",
+          "maxPoints": 3,
+          "description": "P2 · Uvedi prosjek pet uzastopnih ADC očitanja te njime upravljaj relejem."
+        },
+        {
+          "id": "P3",
+          "maxPoints": 4,
+          "description": "P3 · Za uključivanje zahtijevaj da zatamnjenje traje neprekidno dvije sekunde. Ako se uvjet prekine, vrijeme se računa iznova. Koristi millis()."
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "urs-lv/LV09",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Za ponovljivu provjeru simulatora odaberi prag mraka 200 i prag svjetla 650 ADC jedinica. Na postaji obrazloži vlastite pragove.",
+          "U retku P2 prikaži zadnjih pet očitanja ADC-a od najstarijeg do najnovijeg i njihov prosjek. Njime upravljaj relejem s pragovima iz P1.",
+          "Provjera simulira dva kratka zatamnjenja odvojena svjetlom pa jedan neprekinuti mrak dulji od 2 s."
+        ]
+      }
+    },
+    {
+      "id": "26C-urs-lv-LV10@1",
+      "taskKey": "urs-lv/LV10",
+      "kind": "collection",
+      "targets": [
+        "nano"
+      ],
+      "title": "Provjera programa P1–P3",
+      "instructions": "Spremi inačice P1, P2 i P3. Svaka se izvodi zasebno prema uvjetima uz podzadatak.",
+      "criteria": [
+        {
+          "id": "P1",
+          "maxPoints": 3,
+          "description": "P1 · Omogući samo dvije potvrđene naredbe vlastitog daljinskog. Dodaj ispis stanja releja nakon obrade."
+        },
+        {
+          "id": "P2",
+          "maxPoints": 3,
+          "description": "P2 · Dodaj brojač stvarnih promjena stanja. Nepoznata tipka, ponavljanje i ON dok je već uključen ne povećavaju brojač."
+        },
+        {
+          "id": "P3",
+          "maxPoints": 4,
+          "description": "P3 · Dodaj automatsko isključivanje pet sekundi nakon prihvaćene naredbe ON. Nova valjana ON naredba obnavlja vrijeme; koristi millis()."
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "urs-lv/LV10",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Na virtualnom daljinskom koristi adresu 0, ON 0x45 i OFF 0x46. Ispiši ON ili OFF nakon obrade.",
+          "Nakon svake obrađene poruke u retku P2 ispiši kumulativni broj stvarnih promjena.",
+          "Provjera ponavlja valjanu ON naredbu i mjeri vrijeme od posljednje ON naredbe."
+        ]
+      }
+    },
+    {
+      "id": "26C-urs-lv-LV11@1",
+      "taskKey": "urs-lv/LV11",
+      "kind": "collection",
+      "targets": [
+        "nano"
+      ],
+      "title": "Provjera programa P1–P3",
+      "instructions": "Spremi inačice P1, P2 i P3. Svaka se izvodi zasebno prema uvjetima uz podzadatak.",
+      "criteria": [
+        {
+          "id": "P1",
+          "maxPoints": 3,
+          "description": "P1 · Promijeni pragove na 25 % i 75 %. Provjeri točno na pragovima i neposredno s obje strane."
+        },
+        {
+          "id": "P2",
+          "maxPoints": 3,
+          "description": "P2 · Broji stvarna uključivanja pumpe. Držanje razine ispod donjeg praga nije novo uključivanje u svakom ciklusu."
+        },
+        {
+          "id": "P3",
+          "maxPoints": 4,
+          "description": "P3 · Uvedi vremensko ograničenje: ako je pumpa neprekidno uključena dulje od pet sekundi, isključi je i zadrži stanje KVAR do reseta pločice."
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "urs-lv/LV11",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Provjeravaju se pragovi 25 % i 75 % pri porastu i padu razine.",
+          "U retku P2 ispiši broj stvarnih uključivanja pumpe. Provjera drži razinu niskom i ponavlja ciklus.",
+          "Provjera očitava relej i poruku KVAR, uključujući novi zahtjev nakon isteka vremena."
+        ]
+      }
+    },
+    {
+      "id": "26C-urs-lv-LV12@1",
+      "taskKey": "urs-lv/LV12",
+      "kind": "collection",
+      "targets": [
+        "nano"
+      ],
+      "title": "Provjera programa P1–P3",
+      "instructions": "Spremi inačice P1, P2 i P3. Svaka se izvodi zasebno prema uvjetima uz podzadatak.",
+      "criteria": [
+        {
+          "id": "P1",
+          "maxPoints": 3,
+          "description": "P1 · Postavi trajanje na pet sekundi i ispiši naziv stanja samo kada se stanje promijeni."
+        },
+        {
+          "id": "P2",
+          "maxPoints": 3,
+          "description": "P2 · Iz P1 napravi inačicu u kojoj pritisak tijekom rada prekida ciklus, vraća SPREMNO, gasi relej i prikazuje 0000."
+        },
+        {
+          "id": "P3",
+          "maxPoints": 4,
+          "description": "P3 · Ponovno kreni od P1. Dodaj PAUZA: pritisak zaustavlja i nastavlja odbrojavanje bez gubitka preostalog vremena. U PAUZA relej mora biti isključen."
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "urs-lv/LV12",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Pri prijelazu ispiši SPREMNO, RAD ili GOTOVO. Provjera prati pet sekundi rada i broj ispisa.",
+          "Provjera ponovno pritišće tipku usred ciklusa te očitava relej i 0000 na pokazniku.",
+          "Provjera uspoređuje preostalo vrijeme prije pauze i nakon nastavka te stanje releja."
+        ]
+      }
+    },
+    {
+      "id": "26C-urs-lv-LV13@1",
+      "taskKey": "urs-lv/LV13",
+      "kind": "collection",
+      "targets": [
+        "nano"
+      ],
+      "title": "Provjera programa P1–P3",
+      "instructions": "Spremi inačice P1, P2 i P3. Svaka se izvodi zasebno prema uvjetima uz podzadatak.",
+      "criteria": [
+        {
+          "id": "P1",
+          "maxPoints": 3,
+          "description": "P1 · Promijeni H na 1,0 °C. Izračunaj novu širinu pojasa i provjeri ponašanje na oba praga."
+        },
+        {
+          "id": "P2",
+          "maxPoints": 3,
+          "description": "P2 · Dodaj ispis proteklog vremena i broj uključenja. Vrijeme očitanja ažuriraj tek kada je dobiveno novo valjano mjerenje."
+        },
+        {
+          "id": "P3",
+          "maxPoints": 4,
+          "description": "P3 · Dodaj zaključavanje nakon pogreške senzora: izlaz ostaje ugašen i nakon povratka očitanja, sve do reseta. Izričito prikaži ZAKLJUCANO."
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "urs-lv/LV13",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Provjera uz stalnu zadanu temperaturu mijenja temperaturu oko oba nova praga.",
+          "U retku P2 pri novom valjanom mjerenju ispiši vrijeme tog očitanja u ms od početka i broj stvarnih uključenja grijanja.",
+          "Provjera prekida podatkovnu vezu i vraća valjanu nisku temperaturu. U zaključanom stanju ispiši ZAKLJUCANO."
+        ]
+      }
+    },
+    {
+      "id": "26C-urs-lv-LV14@1",
+      "taskKey": "urs-lv/LV14",
+      "kind": "collection",
+      "targets": [
+        "nano"
+      ],
+      "title": "Provjera programa P1–P3",
+      "instructions": "Spremi inačice P1, P2 i P3. Svaka se izvodi zasebno prema uvjetima uz podzadatak.",
+      "criteria": [
+        {
+          "id": "P1",
+          "maxPoints": 3,
+          "description": "P1 · Za ADC ispod 200 zadaj PWM 0, a raspon 200–1023 preslikaj u PWM 80–200. Usporedi opažanja s početnim programom."
+        },
+        {
+          "id": "P2",
+          "maxPoints": 3,
+          "description": "P2 · Dodaj postupno povećavanje PWM-a najviše za 5 svakih 50 ms. STOP mora odmah zatražiti nulu, bez postupnog spuštanja."
+        },
+        {
+          "id": "P3",
+          "maxPoints": 4,
+          "description": "P3 · Dodaj prekidni pogon: dvije sekunde rada i jednu sekundu mirovanja pomoću millis(). STOP mora djelovati u oba dijela ciklusa."
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "urs-lv/LV14",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Provjera prvo zadaje nulu pa niz vrijednosti ADC-a te mjeri radni omjer na D5.",
+          "Provjera mjeri porast PWM-a kroz vrijeme i aktivira STOP tijekom porasta.",
+          "Provjera mjeri dva puna radna ciklusa i zatim aktivira STOP."
+        ]
+      }
+    },
+    {
+      "id": "26C-urs-lv-LV15@1",
+      "taskKey": "urs-lv/LV15",
+      "kind": "collection",
+      "targets": [
+        "nano"
+      ],
+      "title": "Provjera programa P1–P3",
+      "instructions": "Spremi inačice P1, P2 i P3. Svaka se izvodi zasebno prema uvjetima uz podzadatak.",
+      "criteria": [
+        {
+          "id": "P1",
+          "maxPoints": 3,
+          "description": "P1 · Promijeni BROJ_KORAKA s 512 na 256. Usporedi dva pomaka i obrazloži očekivani odnos kutova."
+        },
+        {
+          "id": "P2",
+          "maxPoints": 3,
+          "description": "P2 · Dodaj promjenu smjera nakon završenog pomaka. Za obrnuti slijed koristi faza = (faza + 7) % 8. Izvedi jednak broj koraka u oba smjera."
+        },
+        {
+          "id": "P3",
+          "maxPoints": 4,
+          "description": "P3 · Novi pritisak tijekom kretanja neka prekine pomak i ugasi sva četiri izlaza. Ispiši broj poslanih polukoraka. Sljedeći pritisak pokreće nov zadani pomak."
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "urs-lv/LV15",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Provjera broji pravilne električne polukorake i završno gašenje izlaza.",
+          "Provjera pokreće dva dovršena pomaka i uspoređuje broj i smjer polukoraka.",
+          "U retku P3 pri prekidu ispiši broj poslanih polukoraka. Provjera uspoređuje brojilo s izlazima i ponovno pokreće pomak."
+        ]
+      }
+    },
+    {
+      "id": "26C-urs-lv-LV15B@1",
+      "taskKey": "urs-lv/LV15B",
+      "kind": "collection",
+      "targets": [
+        "nano"
+      ],
+      "title": "Provjera programa P1–P3",
+      "instructions": "Spremi inačice P1, P2 i P3. Svaka se izvodi zasebno prema uvjetima uz podzadatak.",
+      "criteria": [
+        {
+          "id": "P1",
+          "maxPoints": 3,
+          "description": "P1 · Postavi broj impulsa za četvrtinu okretaja prema stvarnom motoru. Ako broj nije cijeli, navedi zaokruživanje i očekivani kut."
+        },
+        {
+          "id": "P2",
+          "maxPoints": 3,
+          "description": "P2 · Između dvaju završenih pomaka promijeni DIR pa izvedi isti broj koraka unatrag. Smjer ne mijenjaj usred impulsa."
+        },
+        {
+          "id": "P3",
+          "maxPoints": 4,
+          "description": "P3 · Dodaj mogućnost prekida pokreta novim pritiskom tipke. Zapiši koliko je impulsa poslano do prekida; jasno razlikuj taj broj od izmjerenog položaja."
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "urs-lv/LV15B",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Simulirani motor ima 200 punih koraka po okretaju. Provjera računa četvrtinu okretaja prema postavci motora i pogona.",
+          "Provjera mjeri dva jednaka pomaka suprotnog smjera i traži čiste STEP impulse.",
+          "U retku P3 pri prekidu ispiši broj poslanih impulsa. Provjera broji prihvaćene impulse i ponovno pokreće pomak."
+        ]
+      }
+    },
+    {
+      "id": "26C-urs-lv-LV16@1",
+      "taskKey": "urs-lv/LV16",
+      "kind": "collection",
+      "targets": [
+        "micropython"
+      ],
+      "title": "Provjera programa P1–P3",
+      "instructions": "Spremi inačice P1, P2 i P3. Svaka se izvodi zasebno prema uvjetima uz podzadatak.",
+      "criteria": [
+        {
+          "id": "P1",
+          "maxPoints": 3,
+          "description": "P1 · Dodaj varijablu Ready koja je true samo kada su oba dopuštenja prisutna i motor ne radi. Provjeri sva četiri spoja dopuštenja."
+        },
+        {
+          "id": "P2",
+          "maxPoints": 3,
+          "description": "P2 · Dodaj TON od dvije sekunde prije uključenja. Zahtjev rada pamti zasebno, a nestanak bilo kojeg dopuštenja mora poništiti zahtjev i vrijeme; novi start traži novi pritisak."
+        },
+        {
+          "id": "P3",
+          "maxPoints": 4,
+          "description": "P3 · Dodaj FaultLatched za prekid ProtectionOK i zasebni Reset. Reset prihvati samo uz oba dopuštenja i otpušten Start; reset ne smije sam pokrenuti motor."
+        }
+      ],
+      "checkerVersion": "26C.1",
+      "contract": {
+        "family": "collection",
+        "version": 1,
+        "taskKey": "urs-lv/LV16",
+        "scenario": {
+          "source": "saved-trials"
+        },
+        "limits": {
+          "cpuSecondsPerTrial": 58,
+          "outputBytes": 1048576,
+          "wallMsPerTrial": 65000
+        },
+        "evidence": [
+          "Provjera čita Ready i izlaz Motor za sva četiri spoja dopuštenja te nakon starta.",
+          "Provjera mjeri odgodu TON, prekida dopuštenje tijekom čekanja i ponovno zadaje Start.",
+          "Provjera prekida zaštitu te iskušava reset s pritisnutim Startom, bez dopuštenja i na kraju s ispunjenim uvjetima."
+        ]
+      }
     }
   ]
 }

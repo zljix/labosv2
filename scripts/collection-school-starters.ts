@@ -34,7 +34,7 @@ export async function* schoolCollections() {
     const sheet=JSON.parse(readFileSync('public/zbirke/'+folder+'/MicroPython.json','utf8'));
     yield {entry:{set:track,key,lessonId:id,variantId:track,code:id,title:titles[id as keyof typeof titles],variantTitle:tracks[track],
       guideVersion:'v14',wordHashes:words,goal:sheet.goal,before:sheet.hours,change:practices[id as keyof typeof titles].change,fault:'',
-      expected:'Predaj dopunjeni Word i izvor za svoju izvedbu.',concepts:[],questions:[practices[id as keyof typeof titles].question],criteria:['Postupak i tehnička ispravnost','Praktični dokazi iz učeničkog Worda','Objašnjenje opažanja i zaključak'],targets:Object.keys(templates),templates}};
+      expected:'Zabilježi početni i izmijenjeni pokus te odgovori na pitanje za bodovanje. U Word upiši opažanja sa školske postaje.',concepts:[],questions:[practices[id as keyof typeof titles].question],criteria:['Postupak i tehnička ispravnost','Praktični dokazi iz učeničkog Worda','Objašnjenje opažanja i zaključak'],targets:Object.keys(templates),templates}};
   }
   yield* schoolUrsLabs();
 }
@@ -53,7 +53,7 @@ async function* schoolUrsLabs() {
       variantTitle:labTitle + ' · P1–P3', guideVersion:'v7', wordHashes:{[target]:createHash('sha256').update(word).digest('hex')},
       goal:sheet.goals[0], before:plc ? 'Structured Text · model PLC-a u Labosu i CODESYS na postaji.' : 'Arduino Nano classic · 90 min.',
       change:sheet.tasks.map((task,i) => 'P' + (i + 1) + ' · ' + task).join('\n'), fault:'',
-      expected:'Predaj Word s cijelim programom i opažanjima iza svakog podzadatka.',
+      expected:'Spremi P1, P2 i P3 za zasebnu provjeru. Predaj Word s cijelim programom i opažanjima iza svakog podzadatka.',
       concepts:[], questions:sheet.questions, criteria:sheet.tasks.map((task,i) => 'P' + (i + 1) + ' · ' + task),
       targets:[target], templates:{[target]:filename}
     }};

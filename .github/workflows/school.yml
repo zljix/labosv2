@@ -154,6 +154,7 @@ jobs:
           LAB_TEST_DB_DSN: mysql:host=127.0.0.1;port=3306;dbname=labosv2_test_collections;charset=utf8mb4
           LAB_TEST_DB_USER: labosv2_ci
       - run: npm run test:school-coverage
+      - run: LAB_ARDUINO_CLI="$(command -v arduino-cli)" npm run test:collection-grading
       - name: Provjeri potpuni 1-Wire prijenos i svježinu registra
         run: node --import tsx --test --test-name-pattern="24D telemetry|Match ROM|power cycle|missing external|active GPIO HIGH" verification/onewire.test.ts
       - name: Provjeri PHP/MySQL ugovore, S3 posao i zaštitu od ponovne uporabe rezultata

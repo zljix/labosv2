@@ -1,0 +1,12 @@
+PROGRAM PLC_PRG
+VAR
+    (* Ulazi se mijenjaju u simulatoru. TRUE znaci ispunjen uvjet. *)
+    Start : BOOL := FALSE;          (* Pritisnuta tipka START. *)
+    StopOK : BOOL := TRUE;          (* STOP dopusta rad. *)
+    ProtectionOK : BOOL := TRUE;    (* Zastitno dopustenje prisutno. *)
+    Motor : BOOL := FALSE;          (* Izlaz modela motora. *)
+
+    (* TRUE na pocetku sprjecava start tipkom drzanom pri pokretanju. *)
+    StartOld : BOOL := TRUE;        (* Stanje START-a iz proslog ciklusa. *)
+    StartEdge : BOOL := FALSE;      (* Novi pritisak u ovom ciklusu. *)
+END_VAR

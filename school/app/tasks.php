@@ -55,6 +55,20 @@ function publishTask(\PDO $pdo, array $actor, array $body): array
     $notes = textField($body['teacherNotes'] ?? '', 6000, 'Nastavnička uputa', true);
     $profileId = $body['gradingProfile'] ?? null;
     if ($profileId !== null && (!is_string($profileId) || ($body['criteria'] ?? null) !== null)) fail(422, 'grading_profile', 'Za automatsku provjeru koristi njezine objavljene kriterije.');
+    if (!array_key_exists('gradingProfile', $body) && ($body['criteria'] ?? null) === null) {
+        $target = $entry['targets'][0];
+        $profileId = $entry['gradingSupport'][$target]['profileId'] ?? null;
+    }
+    if ($profileId !== null) {
+        $scale = $body['gradeScale'] ?? [50,65,80,90];
+        if (!is_array($scale) || !array_is_list($scale) || count($scale) !== 4) fail(422, 'grade_scale', 'Unesi četiri postotna praga za ocjene 2–5.');
+        $last = 0;
+        foreach ($scale as $threshold) {
+            if (!is_int($threshold) || $threshold <= $last || $threshold > 100) fail(422, 'grade_scale', 'Pragovi moraju biti rastući cijeli postoci od 1 do 100.');
+            $last = $threshold;
+        }
+        $entry['gradeScale'] = $scale;
+    }
     $rubric = $profileId === null ? rubric($body['criteria'] ?? null, $entry) : gradingRubric($profileId, $key); $starters = [];
     foreach ($entry['templates'] as $target => $filename) {
         // Paths come exclusively from the installed private catalogue.

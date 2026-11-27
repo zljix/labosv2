@@ -40,6 +40,7 @@ import { basicExamples, type BasicExample } from "../circuit/examples";
 import {environmentExamples,environmentCircuit,loadEnvironmentDrivers,type EnvironmentExample} from "../circuit/environmentExamples";
 import {peripheralExample,loadPeripheralDrivers} from "../circuit/peripheralExamples";
 import LessonPanel, {LessonCatalog} from "../lessons/LessonPanel";
+import {CollectionCheck} from '../grading/CollectionCheck';
 import {UrsLabPanel} from '../lessons/UrsLabPanel';
 import {createUrsLab, labForProject, type LabId} from '../lessons/ursLab';
 import {PracticePanel} from '../lessons/PracticePanel';
@@ -981,10 +982,12 @@ export default function App() {
           {lab && <UrsLabPanel key={p.id} coils={runtime.runProjectId===p.id?runtime.simulation?.avr?.coils:undefined} id={lab} project={p} run={()=>{void run();setMobileTab('output');}}
             circuit={()=>{setExpandedCircuit(false);setLabTab('circuit');setMobileTab('lab');}}
             compile={()=>openDialog('arduino')} edit={editCollectionProgram} catalog={()=>openDialog('lessons')}
-            change={(label,files)=>ws.change(label,next=>{Object.assign(next.files,files);})}/>}
-          {practice && <PracticePanel key={p.id} lesson={practice} project={p} consoleText={runtime.runProjectId===p.id?runtime.consoleText:''}
+            change={(label,files)=>ws.change(label,next=>{if(next.id===p.id)Object.assign(next.files,files);})}/>}
+          {practice && <PracticePanel key={p.id} lesson={practice} runSource={runtime.runProjectId===p.id?runtime.runSource:undefined} inputs={runtime.runInputs} project={p} consoleText={runtime.runProjectId===p.id?runtime.consoleText:''}
             run={()=>{void run();setMobileTab('output');}} circuit={()=>{setExpandedCircuit(false);setLabTab('circuit');setMobileTab('lab');}}
-            edit={editCollectionProgram} catalog={()=>openDialog('lessons')} save={(name,text)=>ws.change('Zapis pokusa',doc=>{doc.files[name]=text;})}/>}
+            edit={editCollectionProgram} catalog={()=>openDialog('lessons')} save={files=>ws.change('Zapis pokusa',doc=>{if(doc.id===p.id)Object.assign(doc.files,files);})}/>}
+          {(practice||lab)&&<CollectionCheck key={'provjera-'+p.id} project={p} thresholds={assigned?.gradeScale} taskKey={lab?'urs-lv/'+lab:practice!.track+'/'+practice!.exercise}/>}
+          {collection&&!practice&&<p><button onClick={()=>void selectPractice({track:collection.track,exercise:collection.exercise,edition:'MicroPython'})}>Otvori bodovanu simulaciju za {collection.exercise}</button></p>}
           {collection?.exercise === 'P0' && <P0Instructions track={collection.track} project={p} catalog={()=>openDialog('lessons')}
             run={()=>{void run();setMobileTab('output');}} edit={editCollectionProgram}/>}
           {collection?.exercise === 'V1.4' && <TemperatureWork project={p} output={runtime.consoleText}

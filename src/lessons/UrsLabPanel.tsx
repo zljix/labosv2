@@ -1,3 +1,6 @@
+import {labHints} from '../grading/labCriteria';
+import {labSupportSnapshot} from '../grading/snapshot';
+import {captureBuild,localBuildFile} from '../grading/local';
 import {useState} from 'react';
 import {CollectionDownload} from './CollectionDownload';
 import {labAsset, labIds, labTitle, levelNames, plcFiles, stationCode, ursLabSheets as sheets, type LabId} from './ursLab';
@@ -75,12 +78,19 @@ export function UrsLabPanel({id, project, run, circuit, edit, catalog, change, c
   const sheet = sheets[id], plc = id === 'LV16';
   const files = plc ? plcFiles : [project.entryFile];
   const key = (level:number, i:number) => 'P' + level + '-' + (plc ? plcFiles[i] : 'program.txt');
+  let currentSupport:string|undefined;
+  try{currentSupport=labSupportSnapshot(project);}catch{/* The save button reports size errors. */}
   function saved(level:number) { return files.every((_,i) => !!project.files[key(level,i)]?.trim()); }
-  function capture(level:number) {
+  async function capture(level:number) {
+    try{
     if (files.some(f => !project.files[f]?.trim())) {setFeedback('Najprije upiši cijeli program.'); return;}
     const snapshot = Object.fromEntries(files.map((f,i) => [key(level,i), project.files[f]]));
+    snapshot['P'+level+'-sklop.json']=labSupportSnapshot(project);
+    const artifact=await captureBuild(project);
+    if(artifact)snapshot[localBuildFile(true,level-1)]=JSON.stringify(artifact);
     change('Spremanje programa P' + level, snapshot);
     setConfirm(''); setFeedback('Spremljena je inačica programa za P' + level + '.');
+    }catch(e){setFeedback((e as Error).message);}
   }
   function restore(level:number) {
     change('Povratak na program P' + level, Object.fromEntries(files.map((f,i) => [f, project.files[key(level,i)]])));
@@ -109,11 +119,13 @@ export function UrsLabPanel({id, project, run, circuit, edit, catalog, change, c
       {coils ? <p>Stabilne pobude: {coils.commands} · Polukoraci sa smjerom: {coils.steps} · Procijenjeni kut: {(coils.steps * 360 / 4096).toLocaleString('hr-HR',{maximumFractionDigits:2})}° · Nepravilan prijelaz: {coils.errors}</p> : <p>Pokreni program i pritisni START.</p>}
     </section>}
     <section><h3>Izmjene programa</h3><p>Nakon svakog pokusa spremi cijelu inačicu programa. U Word je zalijepi neposredno ispod pripadajućeg podzadatka pa dodaj rezultat i odgovore.</p>
+      {(id==='LV02'||id==='LV07')&&<label className="lesson-answer">{id==='LV02'?'Ime prikazano na OLED-u':'Inicijali prikazani na TFT-u'}
+        <input maxLength={id==='LV02'?20:3} value={project.files['oznaka-prikaza.txt']??''} onChange={e=>change('Oznaka prikaza',{'oznaka-prikaza.txt':e.target.value})}/></label>}
       {sheet.tasks.map((task,i) => {
         const n = i + 1, exists = saved(n);
-        const same = exists && files.every((f,j) => project.files[f] === project.files[key(n,j)]);
+        const same = exists && currentSupport!==undefined && project.files['P'+n+'-sklop.json']===currentSupport && files.every((f,j) => project.files[f] === project.files[key(n,j)]);
         const note = 'P' + n + '-opazanje.txt';
-        return <section key={n} className="urs-lab-task"><h4>P{n} · {levelNames[i]}</h4><p>{task}</p>
+        return <section key={n} className="urs-lab-task"><h4>P{n} · {levelNames[i]} · {n===3?4:3} boda</h4><p>{task}</p><p><b>Uvjet provjere.</b> {labHints[id][i]}</p>
           <label className="lesson-answer">Opažanje za P{n}<textarea rows={2} maxLength={3000} value={project.files[note] ?? ''}
             onChange={e => change('Opažanje za P' + n, {[note]:e.target.value})}/></label>
           <div className="lesson-inline-actions"><button disabled={same} onClick={() => exists ? setConfirm('save' + n) : capture(n)}>

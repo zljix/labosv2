@@ -68,6 +68,13 @@ copy('docs/stage23i-pilot.md', 'docs/stage23i-pilot.md');
 copy('docs/stage23i-evidence', 'docs/stage23i-evidence');
 writeFileSync(resolve(target, 'README.md'), readFileSync(resolve(target, 'README.md'), 'utf8').replaceAll('../docs/', 'docs/').replaceAll('../docs/stage23e-grading.md', 'docs/stage23e-grading.md').replaceAll('../docs/stage23f-submissions.md', 'docs/stage23f-submissions.md').replaceAll('../docs/stage23g-grading-matrix.md', 'docs/stage23g-grading-matrix.md').replaceAll('../docs/stage23h-reports-administration.md', 'docs/stage23h-reports-administration.md').replaceAll('../docs/stage23i-pilot.md', 'docs/stage23i-pilot.md').replaceAll('../docs/stage24ab-contract.md', 'docs/stage24ab-contract.md').replaceAll('../docs/stage24c-analog.md', 'docs/stage24c-analog.md').replaceAll('../docs/stage24d-sensors.md', 'docs/stage24d-sensors.md').replaceAll('../docs/stage24e-events.md', 'docs/stage24e-events.md').replaceAll('../docs/stage24f-actuators.md', 'docs/stage24f-actuators.md').replaceAll('../docs/stage24g-steppers.md', 'docs/stage24g-steppers.md').replaceAll('../docs/stage24h-displays.md', 'docs/stage24h-displays.md').replaceAll('../docs/stage24i-environment.md', 'docs/stage24i-environment.md').replaceAll('../docs/stage24j-touch.md', 'docs/stage24j-touch.md').replaceAll('../docs/stage24k-storage.md', 'docs/stage24k-storage.md').replaceAll('../docs/stage24l-optical.md', 'docs/stage24l-optical.md'));
 copy('.build/school-grader', 'checker/.build/school-grader'); cpSync('public',resolve(target,'checker/public'),{recursive:true,filter:path=>relative('public',path).split(/[\\/]/)[0]!=='zbirke'});
+// Only installed, read-only reference programs may supply a school grading artifact.
+for(const folder of readdirSync('public/zbirke/urs-lv').filter(n=>/^LV\d+B?$/.test(n)&&n!=='LV16')){
+  const path='public/zbirke/urs-lv/'+folder+'/pocetni.avr.json';copy(path,'checker/'+path);
+}
+for(const name of ['plc.py','plc_st.py']){
+  const path='public/zbirke/urs-lv/podrska/'+name;copy(path,'checker/'+path);
+}
 copy('scripts/avr-compile.mjs', 'checker/scripts/avr-compile.mjs'); copy('school/grader/compile-child.mjs', 'checker/school/grader/compile-child.mjs');
 copy('vendor/arduino', 'checker/vendor/arduino');
 copy('scripts/s3-compile.mjs', 'checker/scripts/s3-compile.mjs');

@@ -18,6 +18,11 @@ function teacherReview(\PDO $pdo, int $id, int $revision): ?array
 function attachTeacherReview(array $grading, ?array $review): array
 {
     if ($review) $grading['teacherReview'] = $review;
+    if (isset($grading['gradeScale'])) {
+        $corrected = ($review['action'] ?? '') === 'correct';
+        $grading['grade'] = gradeFromPoints($corrected ? $review['points'] : $grading['points'],
+            $corrected ? $review['maxPoints'] : $grading['maxPoints'], $grading['gradeScale']);
+    }
     return $grading;
 }
 
@@ -118,7 +123,7 @@ function achievementReport(\PDO $pdo,array $actor,array $filter): array
             'assignment'=>['id'=>$aid,'code'=>$a['task']['definition']['code'],'title'=>$a['task']['definition']['variantTitle'],'version'=>$a['task']['version'],'target'=>$a['target']],
             'status'=>!$w?'not_started':($w['status']==='in_progress' && (int)$w['attempt_number']>1?'reopened':$w['status']),
             'currentAttempt'=>$w?workSummary($w):null,'submission'=>$s?submissionValue($s,$g):null,
-            'assessment'=>['points'=>$points,'maxPoints'=>$max,'source'=>($correction['action']??'')==='correct'?'teacher':($points===null?'pending':'automatic'),'grading'=>$g],
+            'assessment'=>['grade'=>$g['grade']??null,'points'=>$points,'maxPoints'=>$max,'source'=>($correction['action']??'')==='correct'?'teacher':($points===null?'pending':'automatic'),'grading'=>$g],
             'selection'=>$selection?['id'=>(int)$selection['id'],'submissionId'=>$sid?(int)$sid:null,'reason'=>$selection['reason'],'author'=>$selection['author_name'],'selectedAt'=>utcTime($selection['selected_at'])]:null];
     }
     return ['class'=>$c,'rows'=>$rows,'hasMore'=>$more,'next'=>$more?['afterAssignment'=>(int)end($pairs)['assignment_id'],'afterStudent'=>(int)end($pairs)['student_id']]:null,'serverTime'=>gmdate('Y-m-d\TH:i:s\Z')];

@@ -23,6 +23,8 @@ export function useRuntime() {
     [liveInputs, setLiveInputs] = useState<Record<string, LiveInput>>({}),
     [runProjectId,setRunProjectId] = useState<string>(),
     [runRevision, setRunRevision] = useState<number>();
+  const runSource=useRef<Project|undefined>(undefined);
+  const runInputs=useRef<Record<string,LiveInput>>({});
   const sdMemory=useRef(new SDSessionMemory());
   const rtcMemory=useRef(new RTCSessionMemory());
   const session = useRef<RuntimeHandle>(undefined), launch = useRef(0), machine = useRef(""), pressed = useRef(false);
@@ -36,6 +38,7 @@ export function useRuntime() {
     const ticket = ++launch.current;
     void session.current?.stop(); session.current = undefined;
     if (reset) { pressed.current = false; setButton(false); }
+    runSource.current=undefined;runInputs.current={};
     setState("loading");setConsole("");setLed(false);setFrame([]);setSimulation(undefined);setLiveInputs({});setRunRevision(p.revision);setRunProjectId(p.id);
     try {
       const prototype=offlineArtifact!==undefined;
@@ -44,7 +47,9 @@ export function useRuntime() {
       const ready=OFFLINE_AVR&&prototype?p:await projectWithBuild(p);
       if(ticket!==launch.current)return;
       const snapshot = prepareRun(ready);
-      setLiveInputs({...rtcMemory.current.prepare(p,snapshot.circuit),...sdMemory.current.prepare(p,snapshot.circuit)});
+      runSource.current=ready;
+      runInputs.current={...rtcMemory.current.prepare(p,snapshot.circuit),...sdMemory.current.prepare(p,snapshot.circuit)};
+      setLiveInputs(runInputs.current);
       const observe=(event:any)=>{
         if(ticket!==launch.current)return;
         if(event.type==='ready')setState('running');
@@ -92,9 +97,10 @@ export function useRuntime() {
   }
   function input(component: string, values: LiveInput) {
     if (!session.current || !["loading","running","done"].includes(state)) return;
-    setLiveInputs(v=>({...v,[component]:{...v[component],...values}}));
+    runInputs.current={...runInputs.current,[component]:{...runInputs.current[component],...values}};
+    setLiveInputs(runInputs.current);
     session.current.input({component,...values});
   }
   useEffect(() => () => {++launch.current;void session.current?.stop();},[]);
-  return {state,busy:state === "loading" || state === "running",consoleText,led,button,frame,simulation,liveInputs,runProjectId,runRevision,run,stop,toggleButton,input,sendSerial:(serial:string)=>session.current?.input({serial}),clear:()=>setConsole("")};
+  return {state,runSource:runSource.current,runInputs:runInputs.current,busy:state === "loading" || state === "running",consoleText,led,button,frame,simulation,liveInputs,runProjectId,runRevision,run,stop,toggleButton,input,sendSerial:(serial:string)=>session.current?.input({serial}),clear:()=>setConsole("")};
 }

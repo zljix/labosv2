@@ -2,6 +2,9 @@ import {teachingLesson,URS_GUIDE_VERSION} from '../../src/lessons/ursTeaching';
 import {ursLessons,ursTargets,variantAvailable,type UrsTarget} from '../../src/lessons/ursCatalog';
 import {lessons} from '../../src/lessons/catalog';
 import registry from './profiles.json';
+import {sequence,tracks,type Track} from '../../src/lessons/IotUsCatalog';
+import titles from '../../src/lessons/iotUsTitles.json';
+import {labIds,ursLabSheets} from '../../src/lessons/ursLab';
 
 const families:Record<string,[string,string]>={
   gpio:['inputs','Osnovni ulazi i senzori'],regulator:['actuators','Aktuatori i regulacija'],
@@ -21,7 +24,7 @@ export function gradingSupport(taskKey:string,target:string){
     reason:'Dostupna je verzionirana poslužiteljska provjera za ovaj cilj.',
     requirement:target==='micropython'?'Školski Linux provjeravač s izoliranim izvođenjem izvora.':
       'Za promijenjeni Arduino izvor uključi lokalno izolirano prevođenje. Bez prevoditelja vrijedi samo točan izvor iz pouzdanog kataloga.',
-    evidence:profile.id.startsWith('24P-')?'verification/school-input-reliability.test.ts':profile.id.startsWith('24O-')?'verification/school-introductory.test.ts':profile.id.startsWith('24N-')?'verification/school-levels.test.ts':profile.id.startsWith('24M-')?'verification/school-radio.test.ts':profile.id.startsWith('24L-')?'verification/school-optical.test.ts':profile.id.startsWith('24K-')?'verification/school-storage.test.ts':profile.id.startsWith('24J-')?'verification/school-touch.test.ts':profile.id.startsWith('24I-')?'verification/school-environment.test.ts':profile.id.startsWith('24H-')?'verification/school-displays.test.ts':profile.id.startsWith('24G-')?'verification/school-steppers.test.ts':profile.id.startsWith('24F-')?'verification/school-actuators.test.ts':profile.id.startsWith('24E-')?'verification/school-events.test.ts':profile.id.startsWith('24D-')?'verification/school-sensors.test.ts':profile.id.startsWith('24C-')?'verification/school-analog.test.ts':profile.id.startsWith('24B-')?'verification/school-contract.test.ts':profile.id.startsWith('23E-')?'verification/school-grading.test.ts':'verification/school-grading-expanded.test.ts'}:
+    evidence:profile.kind==='collection'?'verification/collection-grading.test.ts':profile.id.startsWith('24P-')?'verification/school-input-reliability.test.ts':profile.id.startsWith('24O-')?'verification/school-introductory.test.ts':profile.id.startsWith('24N-')?'verification/school-levels.test.ts':profile.id.startsWith('24M-')?'verification/school-radio.test.ts':profile.id.startsWith('24L-')?'verification/school-optical.test.ts':profile.id.startsWith('24K-')?'verification/school-storage.test.ts':profile.id.startsWith('24J-')?'verification/school-touch.test.ts':profile.id.startsWith('24I-')?'verification/school-environment.test.ts':profile.id.startsWith('24H-')?'verification/school-displays.test.ts':profile.id.startsWith('24G-')?'verification/school-steppers.test.ts':profile.id.startsWith('24F-')?'verification/school-actuators.test.ts':profile.id.startsWith('24E-')?'verification/school-events.test.ts':profile.id.startsWith('24D-')?'verification/school-sensors.test.ts':profile.id.startsWith('24C-')?'verification/school-analog.test.ts':profile.id.startsWith('24B-')?'verification/school-contract.test.ts':profile.id.startsWith('23E-')?'verification/school-grading.test.ts':'verification/school-grading-expanded.test.ts'}:
     {status:'unsupported' as const,profileId:null,checkerVersion:null,title:null,instructions:null,criteria:[],maxPoints:null,
     reason:target==='s3-cpp'?'Službeni provjeravač još nema adapter za ESP32-S3 C++.':
       'Ova varijanta još nema objavljenu funkcionalnu provjeru za odabrani cilj.',
@@ -47,7 +50,21 @@ export function gradingCoverage(sourceVersion:string){
       status:grading.status,maxPoints:grading.maxPoints,criteria:l.criteria,grading,
       reason:'Zaseban uvodni MicroPython zadatak sa školskim pokušajem i zaključavanjem. Lokalna provjera ne prenosi službene bodove.'};
   });
-  return {format:'labosv2-grading-coverage',version:1,sourceVersion,
+  const collections = [
+    ...Object.entries(tracks).flatMap(([track,name])=>(['P0',...sequence(track as Track)] as (keyof typeof titles)[]).map(id=>({
+      family:track,familyTitle:name,code:id,variantTitle:titles[id],targets:['micropython','s3-cpp']
+    }))),
+    ...labIds.map(id=>({family:'urs-lv',familyTitle:'URS laboratorijske vježbe',code:id,
+      variantTitle:ursLabSheets[id].title,targets:[id==='LV16'?'micropython':'nano']}))
+  ].flatMap(({targets,...lesson})=>targets.map(target=>{
+    const taskKey=lesson.family+'/'+lesson.code,grading=gradingSupport(taskKey,target);
+    return {...lesson,taskKey,target,lessonTitle:lesson.familyTitle,id:taskKey+'/'+target,
+      targetTitle:lesson.code==='LV16'?'PLC · Structured Text':ursTargets[target as UrsTarget].label,
+      preparationCriteria:grading.criteria.map(c=>c.description),grading};
+  }));
+  const all=[...rows,...collections,...introductory];
+  const totals={exercises:new Set(all.map(r=>r.taskKey)).size,combinations:all.length,supported:all.filter(r=>r.grading.status==='supported').length};
+  return {format:'labosv2-grading-coverage',version:1,sourceVersion,totals,collections,
     introductorySummary:{total:introductory.length,supported:introductory.filter(l=>l.status==='supported').length,unsupported:introductory.filter(l=>l.status!=='supported').length},
     summary:{themes:ursLessons.length,variants:ursLessons.reduce((n,l)=>n+l.variants.length,0),
       combinations:rows.length,supported:rows.filter(r=>r.grading.status==='supported').length,
@@ -57,7 +74,7 @@ export function gradingCoverage(sourceVersion:string){
 export function gradingCoverageCSV(coverage:ReturnType<typeof gradingCoverage>){
   const quote=(v:unknown)=>'"'+String(v??'').replace(/^[=+@-]/,"'$&").replaceAll('"','""')+'"';
   const header=['Skup','Tema','Varijanta','Cilj','Status','Rubrika','Najviše bodova','Kriteriji','Uvjet / ograničenje'];
-  const rows=coverage.rows.map(r=>['URS',r.code+' · '+r.lessonTitle,r.variantTitle,r.targetTitle,
+  const rows=[...coverage.rows,...coverage.collections].map(r=>[['iot','us','urs-lv'].includes(r.family)?r.familyTitle:'Zbirka URS',r.code+' · '+r.lessonTitle,r.variantTitle,r.targetTitle,
     r.grading.status==='supported'?'Podržano':'Nije podržano',r.grading.profileId,r.grading.maxPoints,
     r.grading.status==='supported'?r.grading.criteria.map(c=>c.description+' ('+c.maxPoints+')').join(' | '):
       r.preparationCriteria.join(' | '),r.grading.reason+' '+r.grading.requirement]);

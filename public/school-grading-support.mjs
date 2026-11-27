@@ -1,7 +1,7 @@
 const node=(tag,text)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;return el;};
 export function mountGradingCoverage(data,root=document){
-  const $=s=>root.querySelector(s),rows=data.rows;
-  $('#summary').replaceChildren(...[[data.summary.supported,'podržanih kombinacija'],[data.summary.combinations,'URS kombinacija'],[data.summary.themes,'tema']].map(([n,label])=>{const p=node('p');p.append(node('strong',String(n)),node('span',label));return p;}));
+  const $=s=>root.querySelector(s),rows=[...data.rows,...data.collections];
+  $('#summary').replaceChildren(...[[data.totals.supported,'podržanih izvedbi'],[data.totals.exercises,'vježbi i varijanti'],[data.introductory.length,'uvodnih vježbi']].map(([n,label])=>{const p=node('p');p.append(node('strong',String(n)),node('span',label));return p;}));
   for(const [selector,key,label] of [['#family','family','familyTitle'],['#target','target','targetTitle']]){
     const select=$(selector);select.replaceChildren(select.firstElementChild);
     for(const [id,title] of new Map(rows.map(r=>[r[key],r[label]]))){const o=node('option',title);o.value=id;select.append(o);}

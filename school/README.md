@@ -1,4 +1,8 @@
-# Školska predaja za zbirke IoT i US
+# Školska predaja i automatsko ocjenjivanje
+
+Pri objavi nove inačice za sve vježbe predodabrana je automatska provjera. Nastavnik može prilagoditi postotne pragove ocjena 2–5 (početno 50, 65, 80 i 90). Školski servis provjerava spremljenu reviziju učenikova projekta. Za promijenjene programe C++ uključi izolirani školski prevoditelj. Postavke radnika i naredbe za pokretanje opisane su u odjeljku o automatskom bodovanju. Nove pragove i kriterije primjenjuješ objavom i dodjelom nove inačice.
+
+Učenik u IoT-u i US-u zabilježi početni i izmijenjeni pokus te odgovori na pitanje. U URS laboratorijskim vježbama spremi svaku od tri inačice programa. Probna provjera u pregledniku prikazuje ostvarene kriterije. Službeni rezultat vidi se u **Moji bodovi**, nastavničkom pregledu i izvozu po razredu. Tehnička pogreška servisa ostavlja ocjenu praznom. Opažanja na fizičkoj opremi nastavnik pregledava u priloženom Wordu.
 
 Nastavnik na stranici `school.html` odabere razred, objavi inačicu vježbe iz zbirke i dodijeli MicroPython ili Arduino. Učenik otvori dodjelu, preuzme odgovarajući radni list, upiše opažanja i priloži dokaze. Program izmijenjen u Thonnyju ili Arduino IDE-u može učitati u projekt prije zaključavanja. Pri završetku učenik prilaže popunjeni Word do 12 MiB ili izričito označava da dokazi nedostaju. Na fotografijama i u Wordu treba prethodno ukloniti lozinke, ključeve i druge privatne podatke.
 

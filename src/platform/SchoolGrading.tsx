@@ -8,15 +8,16 @@ const labels:Record<string,string>={not_enabled:'Ova inačica zadatka nema služ
 const legacyInputProfiles=['24O-v2-button@1','24B-button-led@1','23E-button-led@1','24O-v5-regulator@1','24I-regulator@1'];
 export function gradingLabel(g:any):string{
   if(!g)return 'Još nema potvrđenog rezultata';
-  if(g.teacherReview?.action==='correct')return `${g.teacherReview.points} / ${g.teacherReview.maxPoints} bodova · nastavnička korekcija`;
-  if(g.points!==null&&g.points!==undefined)return `${g.points} / ${g.maxPoints} potvrđenih bodova${g.status==='program_error'?' · pogreška programa':''}`;
+  const mark=g.grade==null?'':' · ocjena '+g.grade;
+  if(g.teacherReview?.action==='correct')return `${g.teacherReview.points} / ${g.teacherReview.maxPoints} bodova · nastavnička korekcija`+mark;
+  if(g.points!==null&&g.points!==undefined)return `${g.points} / ${g.maxPoints} potvrđenih bodova${g.status==='program_error'?' · pogreška programa':''}`+mark;
   return labels[g.status]??'Rezultat nije dostupan.';
 }
 export function GradingReport({grading}:{grading:any}){
   const report=grading?.report,review=grading?.teacherReview;
   const observations=report?gradingObservations(report,grading?.profileId):[];
   return <div className="school-grade-result"><strong>{gradingLabel(grading)}</strong>
-    <p className="lesson-small">Funkcionalni bodovi potvrđuju ponašanje programa i sklopa prema objavljenim kriterijima. Obrazloženje, samostalnost i demonstriranu promjenu pregledava nastavnik zasebno; bodovi se ovdje ne pretvaraju automatski u ocjenu.</p>
+    <p className="lesson-small">{grading?.gradeScale?'Pragovi ove dodjele: '+grading.gradeScale.map((t:number,i:number)=>(i+2)+' od '+t+' %').join(' · '):'Bodovi se odnose na kriterije objavljene uz ovu inačicu vježbe.'}</p>
     {legacyInputProfiles.includes(grading?.profileId??report?.profileId)&&<p role="note">Ova ranija rubrika tipkala ili regulatora ima poznato ograničenje: unaprijed pripremljen vremenski izlaz može proći bez ovisnosti o upravljačkom ulazu. Izvorni rezultat ostaje sačuvan. Nastavnik može zabilježiti dodatni pregled ili obrazloženu korekciju; za novu dodjelu dostupna je odgovarajuća 24P rubrika.</p>}
     {grading?.revision&&<p>Rezultat pripada spremljenoj reviziji {grading.revision}.</p>}
     {review&&<p>{review.action==='correct'?`Izvorni automatski bodovi: ${grading.points??'nema potvrđenog rezultata'}${grading.points==null?'':' / '+grading.maxPoints}.`:'Vraćeno je automatsko bodovanje.'} {review.reason}<br/><small>{review.author.displayName} · {schoolTime(review.createdAt)}</small></p>}

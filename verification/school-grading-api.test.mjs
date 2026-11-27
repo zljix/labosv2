@@ -4,6 +4,7 @@ import {randomUUID,createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
 import {spawnSync} from 'node:child_process';
 import {schoolFixture} from './school-http-fixture.mjs';
+import {trialFile,trialSnapshot,responseFile} from '../src/grading/snapshot.ts';
 import {gradeJob} from '../school/grader/official.ts';
 
 test('23E actual PHP/MySQL queue, isolated results, immutable binding, permissions and delayed completion',{timeout:180000},async t=>{
@@ -42,7 +43,7 @@ test('23E actual PHP/MySQL queue, isolated results, immutable binding, permissio
     assert.equal(task.rubric.authority,'server-verified');assert.equal(task.rubric.maxPoints,10);assert.match(task.rubric.instructions,/tipkalo/);
     await ok(teacher.client.call('publish-task',{taskKey:'gpio/adc',gradingProfile:profiles[0].id}),422);
     await ok(teacher.client.call('publish-task',{taskKey:'gpio/button',gradingProfile:profiles[0].id,criteria:[{description:'Drukčije',maxPoints:99}]}),422);
-    const descriptive=(await ok(teacher.client.call('publish-task',{taskKey:'gpio/button'}),201)).task;assert.equal(descriptive.rubric.authority,'not-yet-enabled');
+    const descriptive=(await ok(teacher.client.call('publish-task',{taskKey:'gpio/button',gradingProfile:null}),201)).task;assert.equal(descriptive.rubric.authority,'not-yet-enabled');
     const s3=(await ok(teacher.client.call('create-assignment',{classId:c.id,taskVersionId:task.id,target:'s3-cpp'}),201)).assignment;
     assert.equal((await ok(a.client.call('begin-attempt',{assignmentId:s3.id}))).attempt.grading.status,'unsupported');
     const before=(await ok(teacher.client.call('class-work&assignmentId='+assignment.id))).rows;assert(before.every(r=>r.attempt===null));
@@ -117,4 +118,30 @@ test('23E actual PHP/MySQL queue, isolated results, immutable binding, permissio
     assert.equal((await ok(a.client.call('attempt&id='+begin.attempt.id))).attempt.grading.points,10);
     assert.equal((await ok(a.client.call('attempt&id='+opened.attempt.id))).assignment.task.contentHash,task.contentHash);
   });
+  await t.test('new collection assignments grade saved and locked work using the published grade thresholds',async()=>{
+    const key='iot/P0';
+    await ok(teacher.client.call('publish-task',{taskKey:key,gradeScale:[40,60,59,90]}),422);
+    for(const key of ['us/P0','urs-lv/LV16']){
+      const version=(await ok(teacher.client.call('publish-task',{taskKey:key}),201)).task;
+      assert.equal(version.rubric.checkerVersion,'26C.1');assert.deepEqual(version.definition.gradeScale,[50,65,80,90]);
+    }
+    const version=(await ok(teacher.client.call('publish-task',{taskKey:key,gradeScale:[30,50,80,90]}),201)).task;
+    const assignment=(await ok(teacher.client.call('create-assignment',{classId:c.id,taskVersionId:version.id,target:'micropython'}),201)).assignment;
+    const opened=await ok(a.client.call('begin-attempt',{assignmentId:assignment.id}));
+    const p=opened.snapshot.project;
+    p.files[trialFile(0)]=trialSnapshot(p);p.files[responseFile]='2';
+    const attemptId=opened.attempt.id;
+    await ok(a.client.call('save-work',{attemptId,project:p,expectedRevision:1,requestKey:randomUUID()}));
+    await ok(a.client.call('finish-attempt',{attemptId,expectedRevision:2,requestKey:randomUUID(),needsEvidence:true}));
+    const queued=privateCall('claim').job;assert.equal(queued.attemptId,attemptId);assert.equal(queued.revision,2);
+    const report=await gradeJob(queued,{root:process.cwd()});assert.equal(report.points,5,JSON.stringify(report));
+    privateCall('complete',{jobId:queued.jobId,lease:queued.lease,report});
+    const grade=async()=>(await ok(a.client.call('grading&id='+attemptId))).grading;
+    assert.equal((await grade()).grade,3);
+    const roster=(await ok(teacher.client.call('class-work&assignmentId='+assignment.id))).rows;
+    assert.equal(roster.find(r=>r.student.id===a.user.id).attempt.grading.grade,3);
+    await ok(teacher.client.call('review-work',{attemptId,revision:2,action:'correct',reason:'Pregled postaje.',points:8,expectedReviewId:0,requestKey:randomUUID()}));
+    assert.equal((await grade()).grade,4);
+  });
+
 });
